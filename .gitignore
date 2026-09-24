@@ -11,6 +11,7 @@ logs/
 *.zip
 .pytest_cache/
 __pycache__/
+.hermes-tmp.*
 .wrangler/
 .env*
 *.pem
