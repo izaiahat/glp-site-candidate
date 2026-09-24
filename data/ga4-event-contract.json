@@ -1,0 +1,39 @@
+{
+  "events": {
+    "affiliate_click": [
+      "program",
+      "merchant",
+      "page_slug",
+      "link_position",
+      "subid"
+    ],
+    "comparison_table_view": [
+      "page_slug",
+      "table_id"
+    ],
+    "eligibility_quiz_complete": [
+      "page_slug"
+    ],
+    "provider_finder_used": [
+      "page_slug"
+    ],
+    "scroll_75": [
+      "page_slug"
+    ]
+  },
+  "prohibited_params": [
+    "quiz_answers",
+    "bmi_range",
+    "current_meds",
+    "insurance",
+    "state",
+    "email",
+    "referrer",
+    "user_id"
+  ],
+  "remote_key_event_registered": false,
+  "remote_registration_gate": "operator_or_production_config",
+  "schema": "glp-ga4-affiliate-event-contract-v1",
+  "staging_enabled": false,
+  "transport": "existing gtag/dataLayer only after analytics consent; adapter performs no network request"
+}

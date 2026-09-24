@@ -1,0 +1,590 @@
+{
+  "records": [
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-06-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-06-13",
+      "npi": "1992742852",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1992742852",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CENTRAL CALIFORNIA FACULTY MEDICAL GROUP, INC.",
+      "postal_prefix": "93611",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0000X",
+          "description": "Family Medicine, Adolescent Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": false
+        },
+        {
+          "code": "207RI0011X",
+          "description": "Internal Medicine, Interventional Cardiology",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "2084N0400X",
+          "description": "Psychiatry & Neurology, Neurology",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-01-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-03-04",
+      "npi": "1881345171",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1881345171",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALEX Y HERNANDEZ, MD INC",
+      "postal_prefix": "93612",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-08-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-08-28",
+      "npi": "1700610235",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1700610235",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADVANCED CARDIOVASCULAR SPECIALISTS OF CENTRAL CALIFORNIA",
+      "postal_prefix": "93611",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RA0001X",
+          "description": "Internal Medicine, Advanced Heart Failure and Transplant Cardiology",
+          "primary": false
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": true
+        },
+        {
+          "code": "207RC0001X",
+          "description": "Internal Medicine, Clinical Cardiac Electrophysiology",
+          "primary": false
+        },
+        {
+          "code": "207RH0005X",
+          "description": "Internal Medicine, Hypertension Specialist",
+          "primary": false
+        },
+        {
+          "code": "207RI0011X",
+          "description": "Internal Medicine, Interventional Cardiology",
+          "primary": false
+        },
+        {
+          "code": "207RM1200X",
+          "description": "Internal Medicine, Magnetic Resonance Imaging (MRI)",
+          "primary": false
+        },
+        {
+          "code": "207UN0901X",
+          "description": "Nuclear Medicine, Nuclear Cardiology",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2010-05-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-04-24",
+      "npi": "1174842942",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1174842942",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "APNA HEALTH CLINIC INC",
+      "postal_prefix": "93611",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "261QU0200X",
+          "description": "Clinic/Center, Urgent Care",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-05-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-05-20",
+      "npi": "1427623735",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1427623735",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AK ARTHRITIS & RHEUMATOLOGY, INC.",
+      "postal_prefix": "93612",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2026-01-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-01-06",
+      "npi": "1073470621",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1073470621",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BRILYN JACOBSEN MEDICAL PRACTITIONER INC",
+      "postal_prefix": "93612",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-04-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-04-30",
+      "npi": "1144803891",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1144803891",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ATTRAPLSI MEDICAL CORP",
+      "postal_prefix": "93612",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-04-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-05-27",
+      "npi": "1275751257",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1275751257",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CENTRAL VALLEY INDIAN HEALTH, INC",
+      "postal_prefix": "93611",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "1223G0001X",
+          "description": "Dentist, General Practice",
+          "primary": false
+        },
+        {
+          "code": "133N00000X",
+          "description": "Nutritionist",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "213E00000X",
+          "description": "Podiatrist",
+          "primary": false
+        },
+        {
+          "code": "261Q00000X",
+          "description": "Clinic/Center",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-05-26",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-02-24",
+      "npi": "1194518977",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1194518977",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DEHESA DERMATOLOGY INC",
+      "postal_prefix": "93611",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": true
+        },
+        {
+          "code": "207ND0101X",
+          "description": "Dermatology, MOHS-Micrographic Surgery",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "261QM1300X",
+          "description": "Clinic/Center, Multi-Specialty",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-03-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-05-13",
+      "npi": "1235670787",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1235670787",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CENTRAL VALLEY INDIAN HEALTH, INC.",
+      "postal_prefix": "93612",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "261Q00000X",
+          "description": "Clinic/Center",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-11-04",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-03-31",
+      "npi": "1104795459",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1104795459",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ELEVATE HEALTH AND WELLNESS INC",
+      "postal_prefix": "93611",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2012-06-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-05-13",
+      "npi": "1285996454",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1285996454",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CENTRAL VALLEY INDIAN HEALTH, INC.",
+      "postal_prefix": "93612",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "1223G0001X",
+          "description": "Dentist, General Practice",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-03-07",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-06-09",
+      "npi": "1124886882",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1124886882",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "EXPRESS CARE MEDICAL GROUP, A PROFESSIONAL CORPORATION",
+      "postal_prefix": "93611",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-11-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-03-14",
+      "npi": "1396811535",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1396811535",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CLOVIS MEDICAL GROUP INC",
+      "postal_prefix": "93611",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Clovis",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-07-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-08-11",
+      "npi": "1013430982",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1013430982",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "FAMILY WELLNESS CLINIC, INC",
+      "postal_prefix": "93611",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Clovis&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 2,
+      "sanitized_record_count": 1,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Clovis&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 20,
+      "sanitized_record_count": 19,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Clovis&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 20,
+      "sanitized_record_count": 18,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Clovis&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

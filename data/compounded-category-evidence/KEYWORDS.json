@@ -1,0 +1,385 @@
+{
+  "schema": "glp.S14.keyword-evidence.v1",
+  "captured_at_utc": "2026-09-09T09:29:37.299730+00:00",
+  "scope": "Outward demand + own GSC footprint only. Weekly reassessment is a Design/SEO handoff recommendation, not a new schedule.",
+  "sources": [
+    {
+      "id": "KW-DFS",
+      "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S14/DATAFORSEO-RAW.json",
+      "sha256": "0ff3e663938451c9ea5fba578ffea901c07013d393fdf055acfc534bbd298a48",
+      "source": "DataForSEO Google Ads search_volume/live",
+      "location_code": 2840,
+      "language_code": "en",
+      "date": "2026-09-09T09:29:37.299730+00:00",
+      "actual_cost_usd": 0.09
+    },
+    {
+      "id": "KW-GSC",
+      "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S14/GSC-RAW.json",
+      "sha256": "66f1c602cb0cf32e19d3dee7740717f23d3da1a45262d01b7938c4d3e3148a06",
+      "source": "Cogny GSC URL-prefix property https://glpclinicscout.com/",
+      "request": {
+        "site_url": "https://glpclinicscout.com/",
+        "start_date": "2026-08-10",
+        "end_date": "2026-09-06",
+        "dimensions": [
+          "query",
+          "page"
+        ],
+        "search_type": "web",
+        "row_limit": 25000,
+        "start_row": 0,
+        "aggregation_type": "byPage",
+        "dimension_filter_groups": [
+          {
+            "groupType": "and",
+            "filters": [
+              {
+                "dimension": "query",
+                "operator": "includingRegex",
+                "expression": "semaglutide|tirzepatide"
+              }
+            ]
+          }
+        ]
+      },
+      "date": "2026-09-09T09:29:34.538015+00:00"
+    }
+  ],
+  "query_count": 16,
+  "numeric_volume_count": 4,
+  "unknown_volume_count": 12,
+  "queries": [
+    {
+      "query": "compounded semaglutide",
+      "medication": "semaglutide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": 33100,
+      "volume_state": "REPORTED_ESTIMATE",
+      "competition": "HIGH",
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "compounded semaglutide providers",
+      "medication": "semaglutide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "compounded semaglutide cost",
+      "medication": "semaglutide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "OBSERVED",
+      "gsc_rows": [
+        {
+          "keys": [
+            "compounded semaglutide cost",
+            "https://glpclinicscout.com/guides/brand-vs-compounded-glp-1-cost/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 63
+        }
+      ],
+      "gsc_returned_row_impressions": 1,
+      "gsc_returned_row_clicks": 0
+    },
+    {
+      "query": "compounded semaglutide online",
+      "medication": "semaglutide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "best compounded semaglutide",
+      "medication": "semaglutide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "compounded semaglutide without insurance",
+      "medication": "semaglutide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "best online semaglutide program",
+      "medication": "semaglutide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "OBSERVED",
+      "gsc_rows": [
+        {
+          "keys": [
+            "best online semaglutide program",
+            "https://glpclinicscout.com/best/expanded-curated-glp-1-programs/"
+          ],
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 62.81818181818182
+        }
+      ],
+      "gsc_returned_row_impressions": 11,
+      "gsc_returned_row_clicks": 0
+    },
+    {
+      "query": "semaglutide programs",
+      "medication": "semaglutide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": 140,
+      "volume_state": "REPORTED_ESTIMATE",
+      "competition": "LOW",
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "OBSERVED",
+      "gsc_rows": [
+        {
+          "keys": [
+            "semaglutide programs",
+            "https://glpclinicscout.com/best/expanded-curated-glp-1-programs/"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 97
+        }
+      ],
+      "gsc_returned_row_impressions": 5,
+      "gsc_returned_row_clicks": 0
+    },
+    {
+      "query": "compounded tirzepatide",
+      "medication": "tirzepatide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": 40500,
+      "volume_state": "REPORTED_ESTIMATE",
+      "competition": "HIGH",
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "OBSERVED",
+      "gsc_rows": [
+        {
+          "keys": [
+            "compounded tirzepatide",
+            "https://glpclinicscout.com/reviews/wellmedr-review/"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 2
+        }
+      ],
+      "gsc_returned_row_impressions": 1,
+      "gsc_returned_row_clicks": 0
+    },
+    {
+      "query": "compounded tirzepatide providers",
+      "medication": "tirzepatide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "compounded tirzepatide cost",
+      "medication": "tirzepatide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": 2400,
+      "volume_state": "REPORTED_ESTIMATE",
+      "competition": "MEDIUM",
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "compounded tirzepatide online",
+      "medication": "tirzepatide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "best compounded tirzepatide",
+      "medication": "tirzepatide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "compounded tirzepatide without insurance",
+      "medication": "tirzepatide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "best online tirzepatide program",
+      "medication": "tirzepatide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    },
+    {
+      "query": "tirzepatide programs",
+      "medication": "tirzepatide",
+      "source_id": "KW-DFS",
+      "monthly_search_volume": null,
+      "volume_state": "UNKNOWN_NOT_RETURNED",
+      "competition": null,
+      "competition_scope": "Google Ads advertiser competition, not organic SEO difficulty",
+      "gsc_source_id": "KW-GSC",
+      "gsc_state": "NOT_RETURNED_NOT_ZERO",
+      "gsc_rows": [],
+      "gsc_returned_row_impressions": null,
+      "gsc_returned_row_clicks": null
+    }
+  ],
+  "gsc_summary": {
+    "query_page_rows": 51,
+    "distinct_queries": 49,
+    "returned_impressions": 83,
+    "returned_clicks": 0,
+    "limitations": [
+      "URL-prefix property not domain property; country unfiltered, unlike US DataForSEO demand.",
+      "Query filter semaglutide|tirzepatide, completed historical window, not all site traffic.",
+      "GSC suppresses anonymized queries; missing query is not zero demand, no ranking or no indexation.",
+      "One impression at position two is not a stable top-rank claim.",
+      "16-query DataForSEO batch is a scoped demand sample, not comprehensive competitive keyword research."
+    ]
+  },
+  "seo": {
+    "semaglutide": {
+      "proposed_route": "/semaglutide/",
+      "canonical": "https://glpclinicscout.com/semaglutide/",
+      "title": "Compounded Semaglutide: Programs & Costs | Clinic Scout",
+      "h1": "Compounded semaglutide: compare programs and reported costs",
+      "meta_description": "Compare reported compounded semaglutide program prices, billing terms and evidence gaps. Read the FDA caveat and questions to ask before choosing a program.",
+      "primary_query": "compounded semaglutide",
+      "secondary_intents": [
+        "compounded semaglutide cost",
+        "compounded semaglutide providers"
+      ],
+      "rationale": "Own the organic category comparison intent with a useful full registry list, billing-kind distinctions, source dates and uncertainty. Broad demand estimates support the topic; sparse GSC observations do not establish reliable head-term rank or forecast traffic. Qualifiers with null volume remain unmeasured, not disproven demand. No best/cheapest/safe/effective claim.",
+      "source_ids": [
+        "KW-DFS",
+        "KW-GSC",
+        "POLICY-SEO",
+        "INDEXING-AUDIT"
+      ],
+      "lengths": {
+        "title": 55,
+        "h1": 59,
+        "meta_description": 156
+      }
+    },
+    "tirzepatide": {
+      "proposed_route": "/tirzepatide/",
+      "canonical": "https://glpclinicscout.com/tirzepatide/",
+      "title": "Compounded Tirzepatide: Programs & Costs | Clinic Scout",
+      "h1": "Compounded tirzepatide: compare programs and reported costs",
+      "meta_description": "Compare reported compounded tirzepatide program prices, billing terms and evidence gaps. Read the FDA caveat and questions to ask before choosing a program.",
+      "primary_query": "compounded tirzepatide",
+      "secondary_intents": [
+        "compounded tirzepatide cost",
+        "compounded tirzepatide providers"
+      ],
+      "rationale": "Own the organic category comparison intent with a useful full registry list, billing-kind distinctions, source dates and uncertainty. Broad demand estimates support the topic; sparse GSC observations do not establish reliable head-term rank or forecast traffic. Qualifiers with null volume remain unmeasured, not disproven demand. No best/cheapest/safe/effective claim.",
+      "source_ids": [
+        "KW-DFS",
+        "KW-GSC",
+        "POLICY-SEO",
+        "INDEXING-AUDIT"
+      ],
+      "lengths": {
+        "title": 55,
+        "h1": 59,
+        "meta_description": 156
+      }
+    }
+  }
+}

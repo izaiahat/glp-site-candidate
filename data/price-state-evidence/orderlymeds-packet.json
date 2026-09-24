@@ -1,0 +1,142 @@
+{
+  "captured_at_utc": "2026-09-09T16:04:03.762039+00:00",
+  "display_name": "OrderlyMeds",
+  "effects": {
+    "accounts_created": 0,
+    "forms_submitted": 0,
+    "tracking_clicks": 0
+  },
+  "fields": {
+    "cancellation": {
+      "quote": "What is OrderlyMed’s refund policy?\n\nWhen you sign up, you can cancel anytime before the doctor finalizes your prescription. Once your prescription is written after your medical consultation, cancellation is no longer possible. If you’re denied a prescription, don’t worry—we’ll fully refund your payment!\n\nHow long does the refund process take?\n\nRefunds may take 3-5 business days to appear in your bank account, depending on your bank’s processing times. Unfortunately, this is something beyond our control at OrderlyMeds. Thank you for your understanding!\n\nCan I cancel my OrderlyMeds order?\n\nWhen you sign up, you can cancel any time before the doctor finalizes your prescription, unless you’ve selected a multi-month plan. Our standard sign-up process includes month-to-month plans as well as multi-month options. If you have any questions, feel free to reach out!",
+      "source_url": "https://orderlymeds.com/faqs/",
+      "value": "Reported information: 'When you sign up, you can cancel anytime before the doctor finalizes your prescription. Once your prescription is written after your medical consultation, cancellation is no longer possible.' The separate order-cancellation answer qualifies this: 'unless you’ve selected a multi-month plan.' The FAQ says denied prescriptions are fully refunded and refunds may take 3-5 business days. Exact multi-month cancellation/refund entitlement is UNKNOWN; this is not a legal determination.",
+      "verified_as_of": "2026-09-09"
+    },
+    "consultation_fee": {
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+      "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78",
+      "quote": "What’s included in the price?\n\nOur pricing covers in inclusive of everything: your doctor’s visit, medication, syringes, and shipping. We also provide comprehensive onboarding webinars, videos, and additional support material, as well as access to free and discounted partnership perks.\n\nAre there any membership fees? What are the hidden costs?\n\nWe have no membership fees or hidden costs—what you see is what you pay!",
+      "source_url": "https://orderlymeds.com/faqs/",
+      "value": "Reported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+      "verified_as_of": "2026-09-09"
+    },
+    "eligibility": {
+      "quote": "Who is eligible for compounded GLP-1 or GLP-1/GIP medications through OrderlyMeds?\n\nOur licensed providers will determine your eligibility for a compounded GLP-1 injection prescription. Our general requirements include:\n\n– You must be 18 years old or older\n\n– Have a BMI greater than 20 if you are already taking a GLP-1 medication, or greater than 25 if you are new to GLP-1 medications\n\n– Are not pregnant\n\n– Do not have certain medical conditions (i.e. thyroid cancer or hyperthyroidism, gastroparesis, pancreatic cancer or pancreatitis, MEN2 syndrome, or inflammatory bowel disease).\n\n– Require a compounded preparation that produces a significant difference for your needs compared to the FDA-approved product\n\nThis is not a complete list of qualifying requirements. As a part of our process, you will need to complete an online health screening with our telehealth providers to ultimately determine whether you are eligible to be prescribed compounded GLP-1 injections.",
+      "source_url": "https://orderlymeds.com/faqs/",
+      "value": "UNKNOWN definitive eligibility threshold. Reported information: the FAQ says providers determine eligibility, users must be 18 or older, and describes different BMI requirements for existing and new GLP-1 patients. It also lists pregnancy and medical-condition exclusions and a patient-specific compounded-preparation requirement. It explicitly says the list is incomplete and telehealth screening ultimately determines eligibility. Captured product-page BMI wording differs; no threshold is treated as guaranteed admission or medical advice.",
+      "verified_as_of": "2026-09-09"
+    },
+    "first_month_price": {
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+      "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78",
+      "quote": "2 month starter programs\n\nSave 50%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$149/mo**\n\n**$299 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$74/mo**\n\n**$149 for 2 months**\n\n**Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n* * *\n\n**2 month special offer**\n\n\\*Special offer pricing only available to new customers\n\nSave 25%\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$224/mo**\n\n**$449 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$112/mo**\n\n**$224 for 2 months**\n\n* * *\n\n**Monthly plans**\n\nCompounded **Tirzepatide** GLP-1 injections\n\n**$299**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$149**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n* * *\n\n[Get started](https://patients.orderlymeds.com/eligibility)\n\n2 month starter programs\n\nSave 50%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$149/mo**\n\n**$299 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$74/mo**\n\n**$149 for 2 months**\n\n**2 month special offer**\n\nSave 25%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$224/mo**\n\n**$449 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$112/mo**\n\n**$224 for 2 months**\n\n**Monthly plans**\n\nCompounded **Tirzepatide** GLP-1 injections\n\n**$299**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$149**\n\nBrand name monthly plans\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n[Get started](https://patients.orderlymeds.com/eligibility)",
+      "source_url": "https://orderlymeds.com/pricing/",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+      "verified_as_of": "2026-09-09"
+    },
+    "legitscript": {
+      "quote": "**What is OrderlyMeds?**\n\nOrderlyMeds is a 100% online platform that connects patients to licensed healthcare professionals in all 50 states.\n\nThrough OrderlyMeds, you can connect with licensed medical providers who can recommend personalized treatment plans, including prescription GLP-1 medications if appropriate, delivered straight to your door.",
+      "source_url": "https://orderlymeds.com/",
+      "value": "UNKNOWN. This quote identifies the researched provider only and does not establish LegitScript status. Provider self-claims in the FAQ are not independent certification evidence. No certification lookup or certification claim is made.",
+      "verified_as_of": "2026-09-09"
+    },
+    "monthly_price": {
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+      "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78",
+      "quote": "**Monthly plans**\n\nCompounded **Tirzepatide** GLP-1 injections\n\n**$299**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$149**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n* * *",
+      "source_url": "https://orderlymeds.com/pricing/",
+      "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "verified_as_of": "2026-09-09"
+    },
+    "pharmacy_type": {
+      "quote": "What pharmacies does OrderlyMeds use to compound their medications?\n\nWe currently partner with PerfectRx/PerfectionRx, ProRx, Casa, Pharmacy Hub and SmartPharmaRx.\n\nAre OrderlyMeds pharmacies 503A or 503B designated? How are OrderlyMed’s pharmacies regulated?\n\nAll our pharmacy partners are 503A designated. These traditional compounding pharmacies prepare a prescription medication with the active ingredients semaglutide and tirzepatide that support the treatment experience. They must adhere to USP standards, and are also subject to specific sections of the Federal Food, Drug and Cosmetic Act (FDCA), including requirements for compounding drugs based on valid patient-specific prescriptions.1",
+      "source_url": "https://orderlymeds.com/faqs/",
+      "value": "Reported information: the FAQ lists PerfectRx/PerfectionRx, ProRx, Casa, Pharmacy Hub and SmartPharmaRx and says 'All our pharmacy partners are 503A designated.' Exact dispensing pharmacy, licensing and designation are not independently verified. No certification or legal-hold clearance is asserted.",
+      "verified_as_of": "2026-09-09"
+    },
+    "shipping_wait": {
+      "quote": "How long does it take to ship?\n\nYour prescription will be approved within 24-48 hours, and the pharmacy will process and ship it within 2-3 days. We will email you the tracking information as soon as it becomes available. You can expect to receive your medication within 8-10 business days of signing up, with tracking details provided once your order has shipped. We recommend downloading the UPS or FedEx Delivery Manager app to get real-time updates on your order once the pharmacy generates the shipping label.\n\nCan you expedite my order?\n\nNo, we cannot expedite orders at this time.",
+      "source_url": "https://orderlymeds.com/faqs/",
+      "value": "UNKNOWN guaranteed delivery time. Reported information: the FAQ estimates receipt within 8-10 business days of signing up, describing 24-48 hours for prescription approval and 2-3 days for pharmacy processing/shipping; it says expedited orders are unavailable. Another captured pricing-page estimate is shorter, so no single definitive delivery promise is established.",
+      "verified_as_of": "2026-09-09"
+    },
+    "states_served": {
+      "quote": "**What states is OrderlyMeds available in?**\n\nOur providers are licensed to prescribe medication in all 50 states. Prescriptions are based on patient eligibility, and patient-specific compounding needs.",
+      "source_url": "https://orderlymeds.com/",
+      "value": "Reported information: 'Our providers are licensed to prescribe medication in all 50 states. Prescriptions are based on patient eligibility, and patient-specific compounding needs.' This is the provider's statement, not independently verified licensing or unconditional product availability in every state.",
+      "verified_as_of": "2026-09-09"
+    }
+  },
+  "first_party_source_captures": {
+    "bytes": 175147,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+    "sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+  },
+  "official_url": "https://orderlymeds.com/",
+  "program_id": "orderlymeds",
+  "provider_dynamic_profile": {
+    "calculator": {
+      "checked_as_of": "2026-09-09",
+      "evidence_gap_copy": "Enter the selected medication, bundle duration, exact checkout amount and any applicable fees manually; verify offer eligibility and the next-order price.",
+      "first_month_base_usd": null,
+      "mode": "manual",
+      "one_time_fee_usd": null,
+      "price_context": "Reported starter and transfer offers are multi-month totals with rounded monthly teaser figures. The FAQ's month-to-month price wording conflicts with the pricing and product pages. No universal first-payment and recurring-charge tuple is established.",
+      "recurring_month_base_usd": null,
+      "source_url": "https://orderlymeds.com/pricing/"
+    },
+    "evidence_bindings": [
+      {
+        "evidence_sha256": "7d16f8d501e25635327227da83e7881b4d0aee69fb7de964e50bc422fa26619e",
+        "evidence_text": "We offer brand name weight loss treatments Zepbound® (tirzepatide) and Wegovy® (semaglutide), as well as compounded medications where appropriate and prescribed.\n\nNew to GLP-1s\n\nCurrently taking GLP-1s\n\n2 month starter programs\n\nSave 50%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$149/mo**\n\n**$299 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$74/mo**\n\n**$149 for 2 months**\n\n**Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n* * *\n\n**2 month special offer**\n\n\\*Special offer pricing only available to new customers\n\nSave 25%\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$224/mo**\n\n**$449 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$112/mo**\n\n**$224 for 2 months**\n\n* * *\n\n**Monthly plans**\n\nCompounded **Tirzepatide** GLP-1 injections\n\n**$299**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$149**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n* * *\n\n[Get started](https://patients.orderlymeds.com/eligibility)\n\n2 month starter programs\n\nSave 50%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$149/mo**\n\n**$299 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$74/mo**\n\n**$149 for 2 months**\n\n**2 month special offer**\n\nSave 25%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$224/mo**\n\n**$449 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$112/mo**\n\n**$224 for 2 months**\n\n**Monthly plans**\n\nCompounded **Tirzepatide** GLP-1 injections\n\n**$299**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$149**\n\nBrand name monthly plans\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n[Get started](https://patients.orderlymeds.com/eligibility)",
+        "fields": [
+          "calculator.checked_as_of",
+          "calculator.evidence_gap_copy",
+          "calculator.first_month_base_usd",
+          "calculator.mode",
+          "calculator.one_time_fee_usd",
+          "calculator.price_context",
+          "calculator.recurring_month_base_usd",
+          "calculator.source_url",
+          "taxonomy.brand_name_tags",
+          "taxonomy.molecule_tags",
+          "taxonomy.treatment_type_tags",
+          "verified_as_of"
+        ],
+        "source_url": "https://orderlymeds.com/pricing/",
+        "verified_as_of": "2026-09-09"
+      },
+      {
+        "evidence_sha256": "f5d51b0422bac50c971f6e78c8de6b434520c6da757f88acf2c5eb775f465658",
+        "evidence_text": "Our most popular GLP-1/GIP injectable product is available for as little as $149 per month when purchased as a 2 month starter program ($299 total for 2 months), or when purchased month-to-month.",
+        "fields": [
+          "taxonomy.delivery_form_tags"
+        ],
+        "source_url": "https://orderlymeds.com/faqs/",
+        "verified_as_of": "2026-09-09"
+      }
+    ],
+    "taxonomy": {
+      "brand_name_tags": [
+        "wegovy",
+        "zepbound"
+      ],
+      "delivery_form_tags": [
+        "injectable"
+      ],
+      "molecule_tags": [
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "treatment_type_tags": [
+        "brand_name",
+        "compounded"
+      ]
+    },
+    "verified_as_of": "2026-09-09",
+    "version": 1
+  },
+  "schema": "program-deep-research-v1",
+  "status": "PASS_LIMITED"
+}

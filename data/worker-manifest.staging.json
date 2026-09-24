@@ -1,0 +1,2141 @@
+{
+  "as_of": "2026-07-22",
+  "live_program_count": 0,
+  "programs": [
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "tryageless.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access and posted commercial terms; state that the products are compounded and not FDA-approved. Do not repeat 'same molecule' or brand-equivalence language, and make no outcome or safety claims.",
+      "constructor_verified": false,
+      "display_name": "Ageless",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://tryageless.com/affiliate-weight-plans/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "ageless",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "enhance.md"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Restrict distribution to the states allowed by the authenticated program terms. Describe consultations, coaching, price, and cancellation facts only; call the medication compounded and not FDA-approved; avoid sustainable-weight, efficacy, and safety claims.",
+      "constructor_verified": false,
+      "display_name": "Enhance MD",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://enhance.md/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "enhance-md",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "joinfound.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Separate branded FDA-approved options from compounded options. Describe membership/prepay, cancellation, provider review, and posted price facts; state compounded products are not FDA-approved; do not make outcomes or equivalence claims.",
+      "constructor_verified": false,
+      "display_name": "Found Health",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://joinfound.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "found-health",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "galaglp1.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe telehealth access, posted price/terms, and licensed-provider review only. State clearly that listed GLP-1 products are compounded and not FDA-approved. Do not make efficacy, safety, equivalence, or guaranteed-prescription claims.",
+      "constructor_verified": false,
+      "display_name": "Gala Health",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://galaglp1.com/lp/glp1",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "gala-health",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "www.healthrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Promote only the commission-eligible new-patient plans allowed by authenticated terms. Describe the drugs as compounded and not FDA-approved; say prescribing requires licensed-provider review; never promise approval, safety, efficacy, or outcomes; obey trademark-bidding restrictions.",
+      "constructor_verified": false,
+      "display_name": "HealthRX Affiliate Program",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://www.healthrx.com",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "healthrx-affiliate-program",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "mademed.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Use only a SKU-specific destination whose product status is reconciled. Explicitly separate any FDA-approved branded drug from a compounded SKU; never carry the site's broad FDA-approved wording onto a compounded offer. Landing-page/SKU mapping must be verified before wiring.",
+      "constructor_verified": false,
+      "display_name": "MadeMed",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://mademed.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "mademed",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "continue.oaklovesyou.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe access, posted price, shipping, and clinician review. State that the medications are compounded and not FDA-approved. Do not repeat 'same active ingredient,' 'identical molecule,' or blanket 'safe' language from the seller page.",
+      "constructor_verified": false,
+      "display_name": "Oak Weight Loss Program",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://continue.oaklovesyou.com/start-online-visit/quiz",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "oak-weight-loss-program",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "serenahealth.life"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Promote the general telehealth service only until pharmacy and formulation status are verified. Treat +B6 and sublingual formulations as compounded for disclosure; do not call them generic, FDA-approved, or equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Serena Health",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "awin",
+      "official_fallback": "https://serenahealth.life/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "serena-health",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "portal.shedrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Use a clean official destination and keep raw attributed portal URLs private. Separate branded and compounded offerings; state compounds are not FDA-approved; describe access and terms only, with no outcomes or equivalence claims.",
+      "constructor_verified": false,
+      "display_name": "ShedRX",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "awin",
+      "official_fallback": "https://portal.shedrx.com/alp?medPromo=shed10&medamt=10%25&cid=2&pubid=2",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "shedrx",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "telos rx",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "telos-rx",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "paused_network_program_paused",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true,
+      "go_route_wired": false,
+      "research_hold_receipt": {
+        "path": "data/telos-research-hold-receipt.json",
+        "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
+      }
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "trytrimi.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe access, shipping, clinician review, and posted terms. State compounded products are not FDA-approved; do not repeat same-active-ingredient or brand-equivalence language and do not promise results.",
+      "constructor_verified": false,
+      "display_name": "Trimi GLP-1",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://trytrimi.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "trimi-glp-1",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "wellorithm.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Separate FDA-approved branded options from compounded options in every table and sentence. State that compounded products are not FDA-reviewed for safety, quality, or effectiveness. Promote access/terms only, not outcomes.",
+      "constructor_verified": false,
+      "display_name": "Wellorithm GLP 1",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://wellorithm.com/campaign-7",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "wellorithm-glp-1",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "www.yourera.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe the online visit, posted price, cancellation, and fulfillment only. Preserve the site's explicit statement that compounded formulations are not FDA-approved or reviewed for safety/effectiveness; make no outcome or equivalence claims.",
+      "constructor_verified": false,
+      "display_name": "yourEra Program",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://www.yourera.com/hello",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "yourera-program",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Measured",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "measured",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/measured",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "DrHouse",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "drhouse",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/drhouse",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "BiltRx",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "biltrx",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/biltrx",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "OrderlyMeds",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "orderlymeds",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/orderlymeds",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "MyDrHank",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "mydrhank",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/mydrhank",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "GobyMeds",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "gobymeds",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/gobymeds",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "CoreAge Rx GLP-1",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "coreage-rx-glp-1-1632",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/coreage-rx-glp-1-1632",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Bodybuilding.com GLP-1 & Longevity",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/bodybuilding-com-glp-1-longevity-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "SkinnyRx - #1 GLP Weight Loss Provider",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/skinnyrx-1-glp-weight-loss-provider-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "RxSpan MD Telehealth Program",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "rxspan-md-telehealth-program-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/rxspan-md-telehealth-program-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Pallas Health – GLP-1 Weight Loss & NAD",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "pallas-health-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/pallas-health-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Wellmedr",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "wellmedr-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/wellmedr-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "DudeMeds",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "dudemeds-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/dudemeds-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Nu Image Medical",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "nu-image-medical-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/nu-image-medical-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Synergy Rx",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "synergy-rx-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/synergy-rx-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Breeze Meds",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "breeze-meds-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/breeze-meds-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Care Bare Rx GLP1",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "care-bare-rx-glp1-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/care-bare-rx-glp1-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "altRx",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "altrx-glp1-us-cps",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/altrx-glp1-us-cps",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Novi",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "novi-weight-loss-glp-1",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/novi-weight-loss-glp-1",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Curex",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "curex-glp-1",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/curex-glp-1",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Ro",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "ro-wegovy-glp1-quiz-us-cpl",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/ro-wegovy-glp1-quiz-us-cpl",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Eden",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "eden-xentraffic-offer-3051",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/eden-xentraffic-offer-3051",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "FuturHealth",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "futurhealth-wegovy-pillform",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/futurhealth-wegovy-pillform",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Lttl",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "lttl-glp-landing-page-2",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/lttl-glp-landing-page-2",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Enhanced",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "enhanced-tirzepatide-funnel-b",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/enhanced-tirzepatide-funnel-b",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Sunlight.com",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "sunlight-glp1",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/sunlight-glp1",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "JoinSkinny",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "joinskinny-semaglutide-glp-1-us",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/joinskinny-semaglutide-glp-1-us",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "LevelsRx",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/levelsrx-extra-cpa-home-page",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Refills",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "refills",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/refills",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "TMates",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "tmates-xentraffic-offer-3154",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/tmates-xentraffic-offer-3154",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "TrimRX",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "trimrx-xentraffic-offer-3014",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/trimrx-xentraffic-offer-3014",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Yucca Health",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "yucca-health-xentraffic-offer-3117",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/yucca-health-xentraffic-offer-3117",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Longevity Meds",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "longevity-meds-glp-1-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/longevity-meds-glp-1-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "SnagRX",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "snagrx",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/snagrx",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "HumeCare+",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "humecare-data-driven-glp-1-weight-loss-system",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/humecare-data-driven-glp-1-weight-loss-system",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "G-Plans",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "g-plan",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/g-plan",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "JRNYS",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "jrnys-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/jrnys-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "MEDVI",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "medvi-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/medvi-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    }
+  ],
+  "schema": "glp-worker-staging-manifest-v1"
+}

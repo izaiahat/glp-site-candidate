@@ -1,0 +1,1800 @@
+{
+  "as_of": "2026-07-22",
+  "cities": [
+    {
+      "api_result_count": 200,
+      "city": "Portland",
+      "city_slug": "portland-or",
+      "local_value_gate": "HELD_PENDING_DIRECT_GLP_SERVICE_VERIFICATION",
+      "primary_taxonomy_mix": {
+        "Clinic/Center": 10,
+        "Clinic/Center, Adult Mental Health": 5,
+        "Clinic/Center, Health Services": 1,
+        "Clinic/Center, Mental Health (Including Community Mental Health Center)": 6,
+        "Clinic/Center, Urgent Care": 1,
+        "Community/Behavioral Health": 2
+      },
+      "records": [
+        {
+          "city": "Portland",
+          "enumeration_date": "2024-05-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-05-07",
+          "npi": "1336997188",
+          "organization_name": "4D MENTAL HEALTH SERVICES",
+          "postal_prefix": "97266",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": false
+            },
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            },
+            {
+              "code": "261QM0855X",
+              "description": "Clinic/Center, Adolescent and Children Mental Health",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2024-08-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-06-03",
+          "npi": "1124851167",
+          "organization_name": "A LITTLE LIGHT COLLECTIVE, LLC",
+          "postal_prefix": "97213",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "1041C0700X",
+              "description": "Social Worker, Clinical",
+              "primary": false
+            },
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2008-06-04",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-06-04",
+          "npi": "1962661017",
+          "organization_name": "AARON ARMBRUSTER DC LLC",
+          "postal_prefix": "97206",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2025-11-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-11-13",
+          "npi": "1922968882",
+          "organization_name": "ABEJA THERAPY LLC",
+          "postal_prefix": "97239",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2025-06-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-06-09",
+          "npi": "1346134707",
+          "organization_name": "ACCESS TO",
+          "postal_prefix": "97211",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2016-04-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-09-26",
+          "npi": "1235593492",
+          "organization_name": "ACCIDENT AND INJURY CARE, PS",
+          "postal_prefix": "97230",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "111N00000X",
+              "description": "Chiropractor",
+              "primary": false
+            },
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2021-02-24",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-07-01",
+          "npi": "1760076392",
+          "organization_name": "ACG GROUP",
+          "postal_prefix": "97205",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2006-09-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-09-11",
+          "npi": "1235239203",
+          "organization_name": "ACORN HEALING ARTS, LLC",
+          "postal_prefix": "97239",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "261QH0100X",
+              "description": "Clinic/Center, Health Services",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2023-11-20",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-11-20",
+          "npi": "1942075833",
+          "organization_name": "ACUPUNCTURE AND WELLNESS HQ LLC",
+          "postal_prefix": "97202",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2013-01-14",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-01-14",
+          "npi": "1043557838",
+          "organization_name": "ACUPUNCTURE CENTER OF PORTLAND, INC.",
+          "postal_prefix": "97205",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2016-02-24",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-11-30",
+          "npi": "1487014163",
+          "organization_name": "ADVANCED INTERNAL MEDICINE GROUP, PC",
+          "postal_prefix": "97225",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2016-11-30",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2016-11-30",
+          "npi": "1194268748",
+          "organization_name": "ADVANCED RECOVERY TMS LLC",
+          "postal_prefix": "97210",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2022-05-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-05-27",
+          "npi": "1093453102",
+          "organization_name": "AGAPE HEALTH CLINIC",
+          "postal_prefix": "97209",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2008-04-24",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-03-20",
+          "npi": "1386819977",
+          "organization_name": "AGGER CHIROPRACTIC CLINIC LLC",
+          "postal_prefix": "97214",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2023-03-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-03-27",
+          "npi": "1881398832",
+          "organization_name": "AGING SIMPLIFIED LLC",
+          "postal_prefix": "97203",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2026-06-30",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-30",
+          "npi": "1609793884",
+          "organization_name": "ALEMANA COUNSELING, LLC",
+          "postal_prefix": "97219",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2025-11-20",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-11-20",
+          "npi": "1194686048",
+          "organization_name": "ALEXIS ALI LLC",
+          "postal_prefix": "97239",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2024-01-01",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-01-04",
+          "npi": "1619746757",
+          "organization_name": "ALL STAR CHIROPRACTIC LLC",
+          "postal_prefix": "97230",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2026-03-20",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-03-20",
+          "npi": "1033067467",
+          "organization_name": "ALLMINDS MEDICAL GROUP NORTHWEST PC",
+          "postal_prefix": "97204",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2025-09-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-09-22",
+          "npi": "1689546269",
+          "organization_name": "ALOHA MENTAL HEALTH LLC",
+          "postal_prefix": "97217",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2011-02-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2015-05-04",
+          "npi": "1417254749",
+          "organization_name": "AMERICAN CURRENT CARE PA",
+          "postal_prefix": "97230",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "261QU0200X",
+              "description": "Clinic/Center, Urgent Care",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2018-04-03",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-08-12",
+          "npi": "1669978193",
+          "organization_name": "ANCHOR WITHIN COUNSELING",
+          "postal_prefix": "97216",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "171M00000X",
+              "description": "Case Manager/Care Coordinator",
+              "primary": false
+            },
+            {
+              "code": "175T00000X",
+              "description": "Peer Specialist",
+              "primary": false
+            },
+            {
+              "code": "251S00000X",
+              "description": "Community/Behavioral Health",
+              "primary": true
+            },
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": false
+            },
+            {
+              "code": "390200000X",
+              "description": "Student in an Organized Health Care Education/Training Program",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2020-06-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-06-18",
+          "npi": "1073139713",
+          "organization_name": "ANDREW J HUGHES MD",
+          "postal_prefix": "97209",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2022-08-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-08-07",
+          "npi": "1023745239",
+          "organization_name": "ANNE EMMETT THERAPY LLC",
+          "postal_prefix": "97205",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Portland",
+          "enumeration_date": "2021-03-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-08-23",
+          "npi": "1811572860",
+          "organization_name": "ANOTHER CHANCE CLINICAL SERVICES LLC",
+          "postal_prefix": "97229",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "OR",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "251S00000X",
+              "description": "Community/Behavioral Health",
+              "primary": true
+            },
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            }
+          ]
+        }
+      ],
+      "retrieved_as_of": "2026-07-22",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Clinic%2FCenter&address_purpose=LOCATION&city=Portland&state=OR&country_code=US&limit=200&skip=0&pretty=off",
+      "state": "OR"
+    },
+    {
+      "api_result_count": 200,
+      "city": "Sacramento",
+      "city_slug": "sacramento-ca",
+      "local_value_gate": "HELD_PENDING_DIRECT_GLP_SERVICE_VERIFICATION",
+      "primary_taxonomy_mix": {
+        "Clinic/Center": 5,
+        "Clinic/Center, Adult Mental Health": 6,
+        "Clinic/Center, Mental Health (Including Community Mental Health Center)": 9,
+        "Clinic/Center, Primary Care": 1,
+        "Clinic/Center, Rehabilitation, Substance Use Disorder": 1,
+        "Clinic/Center, Urgent Care": 2,
+        "Community/Behavioral Health": 1
+      },
+      "records": [
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2022-01-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-01-22",
+          "npi": "1477204162",
+          "organization_name": "A DIFFERENT PATH",
+          "postal_prefix": "95822",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            },
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": false
+            },
+            {
+              "code": "261QM0855X",
+              "description": "Clinic/Center, Adolescent and Children Mental Health",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2010-12-02",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-12-17",
+          "npi": "1033411657",
+          "organization_name": "ACUPUNCTURE HEAVEN, INC",
+          "postal_prefix": "95816",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "171100000X",
+              "description": "Acupuncturist",
+              "primary": false
+            },
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2022-07-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-07-28",
+          "npi": "1225764491",
+          "organization_name": "ADAM HARRISON, LICENSED CLINICAL SOCIAL WORKER INC.",
+          "postal_prefix": "95811",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2023-09-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-01",
+          "npi": "1801674999",
+          "organization_name": "ADEII HEALTH INC",
+          "postal_prefix": "95818",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "251300000X",
+              "description": "Local Education Agency (LEA)",
+              "primary": false
+            },
+            {
+              "code": "251S00000X",
+              "description": "Community/Behavioral Health",
+              "primary": false
+            },
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            },
+            {
+              "code": "261QM0855X",
+              "description": "Clinic/Center, Adolescent and Children Mental Health",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2016-12-06",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-09-14",
+          "npi": "1205370426",
+          "organization_name": "ALKEME PSYCHOLOGY, APC",
+          "postal_prefix": "95814",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "251S00000X",
+              "description": "Community/Behavioral Health",
+              "primary": false
+            },
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2023-07-03",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-07-03",
+          "npi": "1720765514",
+          "organization_name": "ALLISON J MUNN, MD, INC",
+          "postal_prefix": "95816",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2024-02-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-02-26",
+          "npi": "1568228807",
+          "organization_name": "AMANDEEP KAUR JOHAL, M.D., INC, A MEDICAL CORPORATION",
+          "postal_prefix": "95822",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2018-10-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-10-25",
+          "npi": "1407323660",
+          "organization_name": "AMERICAN CURRENT CARE OF CALIFORNIA, A MEDICAL CORPORATION",
+          "postal_prefix": "95816",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "261QH0100X",
+              "description": "Clinic/Center, Health Services",
+              "primary": false
+            },
+            {
+              "code": "261QU0200X",
+              "description": "Clinic/Center, Urgent Care",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2018-10-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-03-12",
+          "npi": "1790252955",
+          "organization_name": "AMERICAN CURRENT CARE OF CALIFORNIA, A MEDICAL CORPORATION",
+          "postal_prefix": "95834",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "261QH0100X",
+              "description": "Clinic/Center, Health Services",
+              "primary": false
+            },
+            {
+              "code": "261QU0200X",
+              "description": "Clinic/Center, Urgent Care",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2022-06-02",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-06-02",
+          "npi": "1891434148",
+          "organization_name": "AMHS, LICENSED CLINICAL SOCIAL WORKER, PROF CORP",
+          "postal_prefix": "95816",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2018-11-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-11-07",
+          "npi": "1720557721",
+          "organization_name": "ANCHOR THERAPY CLINIC",
+          "postal_prefix": "95827",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "251S00000X",
+              "description": "Community/Behavioral Health",
+              "primary": true
+            },
+            {
+              "code": "251V00000X",
+              "description": "Voluntary or Charitable",
+              "primary": false
+            },
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2008-12-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-12-23",
+          "npi": "1194961169",
+          "organization_name": "ANDA HEALTH, INC.",
+          "postal_prefix": "95841",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2025-12-15",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-12-15",
+          "npi": "1316801251",
+          "organization_name": "ANGELIQUE E. RICHARDSON, MD, PHD, A MEDICAL CORPORATION",
+          "postal_prefix": "95811",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2021-05-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-05-13",
+          "npi": "1508430737",
+          "organization_name": "ARISEMH, INC.",
+          "postal_prefix": "95841",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            },
+            {
+              "code": "261QM0855X",
+              "description": "Clinic/Center, Adolescent and Children Mental Health",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2018-03-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-04-23",
+          "npi": "1356846075",
+          "organization_name": "ASHBY & ASSOCIATES SOFTWARE, INC.",
+          "postal_prefix": "95811",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2007-05-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2016-06-14",
+          "npi": "1932314184",
+          "organization_name": "ASIAN PACIFIC COMMUNITY COUNSELING",
+          "postal_prefix": "95820",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            },
+            {
+              "code": "261QM0855X",
+              "description": "Clinic/Center, Adolescent and Children Mental Health",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2025-11-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-24",
+          "npi": "1750243812",
+          "organization_name": "ASIRAM PSYCHIATRIC NURSING SERVICES, INC.",
+          "postal_prefix": "95816",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2025-07-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-07-25",
+          "npi": "1053293373",
+          "organization_name": "ASP A PROFESSIONAL CLINICAL COUNSELOR INC",
+          "postal_prefix": "95811",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2025-10-21",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-10-21",
+          "npi": "1124995402",
+          "organization_name": "ASP A PROFESSIONAL CLINICAL COUNSELOR INC",
+          "postal_prefix": "95811",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2023-03-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-03-28",
+          "npi": "1700580305",
+          "organization_name": "AT PROVIDER GROUP OF CALIFORNIA PC",
+          "postal_prefix": "95821",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": false
+            },
+            {
+              "code": "261QR0405X",
+              "description": "Clinic/Center, Rehabilitation, Substance Use Disorder",
+              "primary": true
+            },
+            {
+              "code": "324500000X",
+              "description": "Substance Abuse Rehabilitation Facility",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2025-11-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-12-01",
+          "npi": "1396605283",
+          "organization_name": "BC COLLECTIVE OF CA PC",
+          "postal_prefix": "95811",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2018-05-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-05-31",
+          "npi": "1558853135",
+          "organization_name": "BEHAVIORAL HEALTH SOLUTIONS OF THE PACIFIC",
+          "postal_prefix": "95821",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2024-01-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-01-31",
+          "npi": "1043073257",
+          "organization_name": "BHC HERITAGE OAKS HOSPITAL INC.",
+          "postal_prefix": "95841",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2020-12-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-12-21",
+          "npi": "1710573167",
+          "organization_name": "BHC HERITAGE OAKS HOSPITAL INC.",
+          "postal_prefix": "95841",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Sacramento",
+          "enumeration_date": "2023-09-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-09-25",
+          "npi": "1740069293",
+          "organization_name": "BHC HERITAGE OAKS HOSPITAL INC.",
+          "postal_prefix": "95841",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        }
+      ],
+      "retrieved_as_of": "2026-07-22",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Clinic%2FCenter&address_purpose=LOCATION&city=Sacramento&state=CA&country_code=US&limit=200&skip=0&pretty=off",
+      "state": "CA"
+    },
+    {
+      "api_result_count": 200,
+      "city": "San Diego",
+      "city_slug": "san-diego-ca",
+      "local_value_gate": "HELD_PENDING_DIRECT_GLP_SERVICE_VERIFICATION",
+      "primary_taxonomy_mix": {
+        "Clinic/Center": 7,
+        "Clinic/Center, Adult Day Care": 1,
+        "Clinic/Center, Adult Mental Health": 2,
+        "Clinic/Center, Amputee": 1,
+        "Clinic/Center, Mental Health (Including Community Mental Health Center)": 5,
+        "Clinic/Center, Research": 1,
+        "Clinic/Center, Sleep Disorder Diagnostic": 5,
+        "Clinic/Center, Urgent Care": 1,
+        "Clinical Medical Laboratory": 1,
+        "Durable Medical Equipment & Medical Supplies, Oxygen Equipment & Supplies": 1
+      },
+      "records": [
+        {
+          "city": "San Diego",
+          "enumeration_date": "2014-02-06",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2014-02-06",
+          "npi": "1033533435",
+          "organization_name": "1ST PLACE COMMUNITY INITIATIVES",
+          "postal_prefix": "92101",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "253J00000X",
+              "description": "Foster Care Agency",
+              "primary": false
+            },
+            {
+              "code": "261QA0600X",
+              "description": "Clinic/Center, Adult Day Care",
+              "primary": true
+            },
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": false
+            },
+            {
+              "code": "261QM0855X",
+              "description": "Clinic/Center, Adolescent and Children Mental Health",
+              "primary": false
+            },
+            {
+              "code": "320800000X",
+              "description": "Community Based Residential Treatment Facility, Mental Illness",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2018-03-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-03-29",
+          "npi": "1396240339",
+          "organization_name": "A MINDFUL HEALING COUNSELING CENTER",
+          "postal_prefix": "92108",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2026-01-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-09",
+          "npi": "1750248878",
+          "organization_name": "A WARM EMBRACE MARRIAGE AND FAMILY THERAPY, A PROFESSIONAL CORPORATION",
+          "postal_prefix": "92123",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2005-06-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2009-11-18",
+          "npi": "1124022959",
+          "organization_name": "ABILITY BIOMECHANICS INT'L INC",
+          "postal_prefix": "92120",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "261QA0900X",
+              "description": "Clinic/Center, Amputee",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2023-09-20",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-03-11",
+          "npi": "1073391983",
+          "organization_name": "ACCELERATED RESPIRATORY THERAPY LLC",
+          "postal_prefix": "92110",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QS1200X",
+              "description": "Clinic/Center, Sleep Disorder Diagnostic",
+              "primary": false
+            },
+            {
+              "code": "332BX2000X",
+              "description": "Durable Medical Equipment & Medical Supplies, Oxygen Equipment & Supplies",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2022-04-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-04-27",
+          "npi": "1770228421",
+          "organization_name": "ACCESS HEALTH SOLUTION, INC.",
+          "postal_prefix": "92108",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "103T00000X",
+              "description": "Psychologist",
+              "primary": false
+            },
+            {
+              "code": "106H00000X",
+              "description": "Marriage & Family Therapist",
+              "primary": false
+            },
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2022-01-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-01-11",
+          "npi": "1417608472",
+          "organization_name": "ACCUSENSE HEALTH INC.",
+          "postal_prefix": "92108",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QG0250X",
+              "description": "Clinic/Center, Genetics",
+              "primary": false
+            },
+            {
+              "code": "291U00000X",
+              "description": "Clinical Medical Laboratory",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2022-07-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-07-19",
+          "npi": "1679207765",
+          "organization_name": "ACO PSYCHOLOGY INC",
+          "postal_prefix": "92121",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2016-02-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2016-02-27",
+          "npi": "1316307762",
+          "organization_name": "ACT MARRIAGE AND FAMILY COUNSELING INC",
+          "postal_prefix": "92103",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2019-03-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-03-12",
+          "npi": "1720546567",
+          "organization_name": "ACUPUNCTURE INC",
+          "postal_prefix": "92101",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2021-11-14",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-11-14",
+          "npi": "1700542719",
+          "organization_name": "ADAM MARKLE LMFT",
+          "postal_prefix": "92110",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0850X",
+              "description": "Clinic/Center, Adult Mental Health",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2022-03-02",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-03-02",
+          "npi": "1710634431",
+          "organization_name": "ADVANCED CLINICAL RESEARCH CENTER",
+          "postal_prefix": "92119",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QR1100X",
+              "description": "Clinic/Center, Research",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2012-02-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-07-21",
+          "npi": "1629341805",
+          "organization_name": "ADVANCED SLEEP MEDICINE SERVICES INC",
+          "postal_prefix": "92121",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QS1200X",
+              "description": "Clinic/Center, Sleep Disorder Diagnostic",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2012-02-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2017-06-23",
+          "npi": "1194098384",
+          "organization_name": "ADVANCED SLEEP MEDICINE SERVICES, INC.",
+          "postal_prefix": "92103",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QS1200X",
+              "description": "Clinic/Center, Sleep Disorder Diagnostic",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2016-06-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2016-06-29",
+          "npi": "1578914644",
+          "organization_name": "ADVANCED SLEEP MEDICINE SERVICES, INC.",
+          "postal_prefix": "92123",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QS1200X",
+              "description": "Clinic/Center, Sleep Disorder Diagnostic",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2022-01-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-01-22",
+          "npi": "1710639505",
+          "organization_name": "AGILEDIAGNOSTIC, INC.",
+          "postal_prefix": "92129",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2011-04-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-04-26",
+          "npi": "1366733297",
+          "organization_name": "AHI SLEEP INC.",
+          "postal_prefix": "92116",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QS1200X",
+              "description": "Clinic/Center, Sleep Disorder Diagnostic",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2014-05-21",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-09-11",
+          "npi": "1437561784",
+          "organization_name": "AIDS HEALTHCARE FOUNDATION",
+          "postal_prefix": "92103",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2013-11-15",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-03-06",
+          "npi": "1881024669",
+          "organization_name": "AIDS HEALTHCARE FOUNDATION",
+          "postal_prefix": "92103",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2020-05-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-05-19",
+          "npi": "1760005250",
+          "organization_name": "ALCHEME HEALTH",
+          "postal_prefix": "92101",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            },
+            {
+              "code": "261QI0500X",
+              "description": "Clinic/Center, Infusion Therapy",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2021-05-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-05-11",
+          "npi": "1689258188",
+          "organization_name": "ALLIANT INTERNATIONAL UNIVERSITY, INC.",
+          "postal_prefix": "92131",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2025-06-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-10-29",
+          "npi": "1568350346",
+          "organization_name": "AMBER MCKINNEY LICENSED CLINICAL SOCIAL WORKER PROFESSIONAL CORP.",
+          "postal_prefix": "92124",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2012-03-08",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-03-08",
+          "npi": "1386918308",
+          "organization_name": "AMBULATORY CARE SLEEP CENTER",
+          "postal_prefix": "92123",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261QS1200X",
+              "description": "Clinic/Center, Sleep Disorder Diagnostic",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2010-07-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-11-23",
+          "npi": "1326350802",
+          "organization_name": "AMERICAN ACCESS CARE OF SAN DIEGO, LLC",
+          "postal_prefix": "92102",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "San Diego",
+          "enumeration_date": "2018-10-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-10-25",
+          "npi": "1174090336",
+          "organization_name": "AMERICAN CURRENT CARE OF CALIFORNIA, A MEDICAL CORPORATION",
+          "postal_prefix": "92121",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "state": "CA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "261QH0100X",
+              "description": "Clinic/Center, Health Services",
+              "primary": false
+            },
+            {
+              "code": "261QU0200X",
+              "description": "Clinic/Center, Urgent Care",
+              "primary": true
+            }
+          ]
+        }
+      ],
+      "retrieved_as_of": "2026-07-22",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Clinic%2FCenter&address_purpose=LOCATION&city=San+Diego&state=CA&country_code=US&limit=200&skip=0&pretty=off",
+      "state": "CA"
+    }
+  ],
+  "individual_people_included": false,
+  "launch_authorized": false,
+  "phone_included": false,
+  "records_are_glp_clinics": false,
+  "schema": "glp-type5-npi-seed-v1",
+  "source_authority": "official NPPES v2.1 read API",
+  "street_address_included": false
+}

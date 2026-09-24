@@ -1,0 +1,4807 @@
+{
+  "alert_dispatch_state": "HELD_NO_SEND",
+  "methodology": "Each observation is an exact claim projection from one accepted first-party Firecrawl capture. Billing cadence, commitment, phase, prepayment, and medication inclusion remain part of comparison identity; unlike terms never compare.",
+  "price_index": {
+    "methodology": {
+      "comparison_limitations": "The index mixes the lowest eligible advertised starting, introductory, bundle-equivalent, oral, injectable, and microdose amounts when those are the provider's lowest explicit monthly figures. It is not an all-in quote and does not normalize dose, supply, membership, labs, shipping, commitment, eligibility, or later charges.",
+      "exclusion_rule": "Exclude generic GLP-1 prices that cannot be assigned to one medication, amounts with no stated monthly cadence or monthly equivalent, branded-only prices, providers without a current first-party evidence object, and declared duplicate merchant aliases.",
+      "history_policy": "A weekly observation is appended only when the regeneration job actually runs against the then-current tracker and source-file hashes. Earlier weeks are never backfilled, and week-over-week movers remain unavailable until two real observations exist.",
+      "inclusion_rule": "Include a product-specific compounded semaglutide or tirzepatide amount only when the current Clinic Scout content ledger preserves a dated HTTPS first-party source, exact captured wording, an explicit monthly or monthly-equivalent amount, and compounding evidence for that provider.",
+      "statistic": "For each medication, use one eligible lowest explicit monthly or provider-stated monthly-equivalent amount per live unique provider, sort the amounts, and report the middle value as the median plus the observed minimum, maximum, and spread."
+    },
+    "observations": [
+      {
+        "data_as_of": "2026-08-06",
+        "observed_on": "2026-08-08",
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 169,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 125,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 239,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 185,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 147,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 249,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 112,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Core",
+            "id": "enhance-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 180,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Advanced",
+            "id": "enhance-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 179,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 279,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 139,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "telos-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "telos-rx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "oral sublingual",
+            "id": "strut-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "only_published",
+            "provider_id": "strut-health",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "injectable with three-month minimum",
+            "id": "trt-nation-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "only_published",
+            "provider_id": "trt-nation",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 81,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 129,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 74,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 171,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mydrhank-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 240,
+            "billing_basis": "monthly",
+            "formulation": "injectable",
+            "id": "mydrhank-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          },
+          {
+            "amount_usd": 133,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          }
+        ],
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "9af494fe16c8afc3e33c18f3c72b81d61b60af06dec924f7e5f2c343d836bf22",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        }
+      },
+      {
+        "data_as_of": "2026-08-06",
+        "observed_on": "2026-08-12",
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 169,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 125,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 239,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 185,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 147,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 249,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 112,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Core",
+            "id": "enhance-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 180,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Advanced",
+            "id": "enhance-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 179,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 279,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 139,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "telos-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "telos-rx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "oral sublingual",
+            "id": "strut-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "only_published",
+            "provider_id": "strut-health",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "injectable with three-month minimum",
+            "id": "trt-nation-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "only_published",
+            "provider_id": "trt-nation",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 81,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 129,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 74,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 171,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mydrhank-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 240,
+            "billing_basis": "monthly",
+            "formulation": "injectable",
+            "id": "mydrhank-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          },
+          {
+            "amount_usd": 133,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          }
+        ],
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "9af494fe16c8afc3e33c18f3c72b81d61b60af06dec924f7e5f2c343d836bf22",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        }
+      },
+      {
+        "data_as_of": "2026-08-06",
+        "observed_on": "2026-08-15",
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 169,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 125,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 239,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 185,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 147,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 249,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 112,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Core",
+            "id": "enhance-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 180,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Advanced",
+            "id": "enhance-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 179,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 279,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 139,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "telos-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "telos-rx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "oral sublingual",
+            "id": "strut-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "only_published",
+            "provider_id": "strut-health",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "injectable with three-month minimum",
+            "id": "trt-nation-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "only_published",
+            "provider_id": "trt-nation",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 81,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 129,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 74,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 171,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mydrhank-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 240,
+            "billing_basis": "monthly",
+            "formulation": "injectable",
+            "id": "mydrhank-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          },
+          {
+            "amount_usd": 133,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          }
+        ],
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "3a64d6ed549b54cabe217209f65f9f310181c59cc5c1f6fc64225005646c273e",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        }
+      },
+      {
+        "data_as_of": "2026-08-06",
+        "observed_on": "2026-08-16",
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 169,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 125,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 239,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 185,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 147,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 249,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 112,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Core",
+            "id": "enhance-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 180,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Advanced",
+            "id": "enhance-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 179,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 279,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 139,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "telos-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "telos-rx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "oral sublingual",
+            "id": "strut-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "only_published",
+            "provider_id": "strut-health",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "injectable with three-month minimum",
+            "id": "trt-nation-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "only_published",
+            "provider_id": "trt-nation",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 81,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 129,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 74,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 171,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mydrhank-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 240,
+            "billing_basis": "monthly",
+            "formulation": "injectable",
+            "id": "mydrhank-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          },
+          {
+            "amount_usd": 133,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          }
+        ],
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "72dd2f43ad1411dcc68577c7705e15df877982e5d3018bba1f674636b103b338",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        }
+      },
+      {
+        "data_as_of": "2026-08-06",
+        "observed_on": "2026-08-18",
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 169,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 125,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 239,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 185,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 147,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 249,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 112,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Core",
+            "id": "enhance-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 180,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Advanced",
+            "id": "enhance-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 179,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 279,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 139,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "telos-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "telos-rx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "oral sublingual",
+            "id": "strut-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "only_published",
+            "provider_id": "strut-health",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "injectable with three-month minimum",
+            "id": "trt-nation-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "only_published",
+            "provider_id": "trt-nation",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 81,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 129,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 74,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 171,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mydrhank-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 240,
+            "billing_basis": "monthly",
+            "formulation": "injectable",
+            "id": "mydrhank-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          },
+          {
+            "amount_usd": 133,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          }
+        ],
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "861e85de361415a5d82436ae60843c60c76efb0e405a6f327bcae06cf4a2d55a",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        }
+      },
+      {
+        "data_as_of": "2026-08-06",
+        "observed_on": "2026-08-20",
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 169,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 125,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 239,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 185,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 147,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 249,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 112,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Core",
+            "id": "enhance-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 180,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Advanced",
+            "id": "enhance-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 179,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 279,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 139,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "telos-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "telos-rx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "oral sublingual",
+            "id": "strut-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "only_published",
+            "provider_id": "strut-health",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "injectable with three-month minimum",
+            "id": "trt-nation-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "only_published",
+            "provider_id": "trt-nation",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 81,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 129,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 74,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 171,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mydrhank-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 240,
+            "billing_basis": "monthly",
+            "formulation": "injectable",
+            "id": "mydrhank-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          },
+          {
+            "amount_usd": 133,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          }
+        ],
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "408693d9cdf1843ec5e823cfe4851e7c07797cafd8e9003d011691929a3cb969",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        }
+      },
+      {
+        "data_as_of": "2026-08-06",
+        "observed_on": "2026-08-26",
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 169,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 125,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 239,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 185,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 147,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 249,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 112,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Core",
+            "id": "enhance-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 180,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Advanced",
+            "id": "enhance-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 179,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 279,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 139,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "telos-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "telos-rx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "oral sublingual",
+            "id": "strut-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "only_published",
+            "provider_id": "strut-health",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "injectable with three-month minimum",
+            "id": "trt-nation-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "only_published",
+            "provider_id": "trt-nation",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 81,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 129,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 74,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 171,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mydrhank-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 240,
+            "billing_basis": "monthly",
+            "formulation": "injectable",
+            "id": "mydrhank-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          },
+          {
+            "amount_usd": 133,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          }
+        ],
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "fade702249ec7bc797f774611563d04189232295a23fd327726f70096204548d",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        }
+      },
+      {
+        "data_as_of": "2026-08-06",
+        "observed_on": "2026-08-28",
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 169,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 125,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 239,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 185,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 147,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 249,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 112,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Core",
+            "id": "enhance-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 180,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Advanced",
+            "id": "enhance-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 179,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 279,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 139,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "telos-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "telos-rx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "oral sublingual",
+            "id": "strut-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "only_published",
+            "provider_id": "strut-health",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "injectable with three-month minimum",
+            "id": "trt-nation-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "only_published",
+            "provider_id": "trt-nation",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 81,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 129,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 74,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 171,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mydrhank-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 240,
+            "billing_basis": "monthly",
+            "formulation": "injectable",
+            "id": "mydrhank-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          },
+          {
+            "amount_usd": 133,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          }
+        ],
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "fda5fe5471e80ed66442eb42f8cc4b389c0953e6b3d8a154bbc9b75bec2148d5",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        }
+      },
+      {
+        "data_as_of": "2026-08-06",
+        "observed_on": "2026-08-30",
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 169,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "yourera-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "yourera-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 125,
+            "billing_basis": "monthly",
+            "formulation": "annual plan",
+            "id": "trimi-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "trimi-glp-1",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 239,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "shedrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "shedrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 185,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "oak-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "oak-weight-loss-program",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "healthrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "healthrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 159,
+            "billing_basis": "monthly",
+            "formulation": "microdose",
+            "id": "ageless-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "try-ageless",
+            "selection_basis": "lowest_explicit_monthly_including_microdose"
+          },
+          {
+            "amount_usd": 147,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 249,
+            "billing_basis": "monthly",
+            "formulation": "injection or oral dissolving tablet",
+            "id": "wellorithm-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "wellorithm",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 112,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Core",
+            "id": "enhance-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 180,
+            "billing_basis": "monthly",
+            "formulation": "GLP-1 Advanced",
+            "id": "enhance-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "enhance-md",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 179,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 279,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mademed-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mademed",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 139,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "telos-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "telos-rx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly",
+            "formulation": "oral sublingual",
+            "id": "strut-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "only_published",
+            "provider_id": "strut-health",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "injectable with three-month minimum",
+            "id": "trt-nation-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "only_published",
+            "provider_id": "trt-nation",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "coivas-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "coivas",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 119,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 219,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "measured-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "measured",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 81,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 129,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "biltrx-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "biltrx",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 199,
+            "billing_basis": "monthly",
+            "formulation": "not separately stated",
+            "id": "sprout-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "sprout-health",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 74,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 149,
+            "billing_basis": "monthly",
+            "formulation": "injection",
+            "id": "orderlymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "introductory",
+            "provider_id": "orderlymeds",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 171,
+            "billing_basis": "monthly",
+            "formulation": "oral",
+            "id": "mydrhank-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly_including_oral"
+          },
+          {
+            "amount_usd": 240,
+            "billing_basis": "monthly",
+            "formulation": "injectable",
+            "id": "mydrhank-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "starting",
+            "provider_id": "mydrhank",
+            "selection_basis": "lowest_explicit_monthly"
+          },
+          {
+            "amount_usd": 99,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-semaglutide",
+            "medication": "semaglutide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          },
+          {
+            "amount_usd": 133,
+            "billing_basis": "monthly_equivalent",
+            "formulation": "three-month starter bundle",
+            "id": "gobymeds-tirzepatide",
+            "medication": "tirzepatide",
+            "price_phase": "bundle_starting",
+            "provider_id": "gobymeds",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+          }
+        ],
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "c92a8ec4190db7d2b528cd761560beebede6f3a0cd300f6289e618a4dd144bad",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        }
+      },
+      {
+        "observed_on": "2026-09-01",
+        "data_as_of": "2026-08-06",
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "c692111a530aff54f029db662d605a0a7102c50488716816828f6bf0aa673985",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        },
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "id": "yourera-semaglutide",
+            "provider_id": "yourera-program",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 99
+          },
+          {
+            "id": "yourera-tirzepatide",
+            "provider_id": "yourera-program",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 169
+          },
+          {
+            "id": "trimi-semaglutide",
+            "provider_id": "trimi-glp-1",
+            "medication": "semaglutide",
+            "formulation": "annual plan",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 99
+          },
+          {
+            "id": "trimi-tirzepatide",
+            "provider_id": "trimi-glp-1",
+            "medication": "tirzepatide",
+            "formulation": "annual plan",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 125
+          },
+          {
+            "id": "shedrx-semaglutide",
+            "provider_id": "shedrx",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 159
+          },
+          {
+            "id": "shedrx-tirzepatide",
+            "provider_id": "shedrx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 239
+          },
+          {
+            "id": "oak-semaglutide",
+            "provider_id": "oak-weight-loss-program",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 119
+          },
+          {
+            "id": "oak-tirzepatide",
+            "provider_id": "oak-weight-loss-program",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 185
+          },
+          {
+            "id": "healthrx-semaglutide",
+            "provider_id": "healthrx",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 99
+          },
+          {
+            "id": "healthrx-tirzepatide",
+            "provider_id": "healthrx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 149
+          },
+          {
+            "id": "ageless-semaglutide",
+            "provider_id": "try-ageless",
+            "medication": "semaglutide",
+            "formulation": "microdose",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_microdose",
+            "amount_usd": 99
+          },
+          {
+            "id": "ageless-tirzepatide",
+            "provider_id": "try-ageless",
+            "medication": "tirzepatide",
+            "formulation": "microdose",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_microdose",
+            "amount_usd": 159
+          },
+          {
+            "id": "wellorithm-semaglutide",
+            "provider_id": "wellorithm",
+            "medication": "semaglutide",
+            "formulation": "injection or oral dissolving tablet",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 147
+          },
+          {
+            "id": "wellorithm-tirzepatide",
+            "provider_id": "wellorithm",
+            "medication": "tirzepatide",
+            "formulation": "injection or oral dissolving tablet",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 249
+          },
+          {
+            "id": "enhance-semaglutide",
+            "provider_id": "enhance-md",
+            "medication": "semaglutide",
+            "formulation": "GLP-1 Core",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 112
+          },
+          {
+            "id": "enhance-tirzepatide",
+            "provider_id": "enhance-md",
+            "medication": "tirzepatide",
+            "formulation": "GLP-1 Advanced",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 180
+          },
+          {
+            "id": "mademed-semaglutide",
+            "provider_id": "mademed",
+            "medication": "semaglutide",
+            "formulation": "oral",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 179
+          },
+          {
+            "id": "mademed-tirzepatide",
+            "provider_id": "mademed",
+            "medication": "tirzepatide",
+            "formulation": "oral",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 279
+          },
+          {
+            "id": "telos-tirzepatide",
+            "provider_id": "telos-rx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 139
+          },
+          {
+            "id": "strut-semaglutide",
+            "provider_id": "strut-health",
+            "medication": "semaglutide",
+            "formulation": "oral sublingual",
+            "billing_basis": "monthly",
+            "price_phase": "only_published",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 99
+          },
+          {
+            "id": "trt-nation-tirzepatide",
+            "provider_id": "trt-nation",
+            "medication": "tirzepatide",
+            "formulation": "injectable with three-month minimum",
+            "billing_basis": "monthly",
+            "price_phase": "only_published",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 219
+          },
+          {
+            "id": "coivas-semaglutide",
+            "provider_id": "coivas",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 119
+          },
+          {
+            "id": "coivas-tirzepatide",
+            "provider_id": "coivas",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 199
+          },
+          {
+            "id": "measured-semaglutide",
+            "provider_id": "measured",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 119
+          },
+          {
+            "id": "measured-tirzepatide",
+            "provider_id": "measured",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 219
+          },
+          {
+            "id": "biltrx-semaglutide",
+            "provider_id": "biltrx",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 81
+          },
+          {
+            "id": "biltrx-tirzepatide",
+            "provider_id": "biltrx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 129
+          },
+          {
+            "id": "sprout-semaglutide",
+            "provider_id": "sprout-health",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 149
+          },
+          {
+            "id": "sprout-tirzepatide",
+            "provider_id": "sprout-health",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 199
+          },
+          {
+            "id": "orderlymeds-semaglutide",
+            "provider_id": "orderlymeds",
+            "medication": "semaglutide",
+            "formulation": "injection",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 74
+          },
+          {
+            "id": "orderlymeds-tirzepatide",
+            "provider_id": "orderlymeds",
+            "medication": "tirzepatide",
+            "formulation": "injection",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 149
+          },
+          {
+            "id": "mydrhank-semaglutide",
+            "provider_id": "mydrhank",
+            "medication": "semaglutide",
+            "formulation": "oral",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 171
+          },
+          {
+            "id": "mydrhank-tirzepatide",
+            "provider_id": "mydrhank",
+            "medication": "tirzepatide",
+            "formulation": "injectable",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 240
+          },
+          {
+            "id": "gobymeds-semaglutide",
+            "provider_id": "gobymeds",
+            "medication": "semaglutide",
+            "formulation": "three-month starter bundle",
+            "billing_basis": "monthly_equivalent",
+            "price_phase": "bundle_starting",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle",
+            "amount_usd": 99
+          },
+          {
+            "id": "gobymeds-tirzepatide",
+            "provider_id": "gobymeds",
+            "medication": "tirzepatide",
+            "formulation": "three-month starter bundle",
+            "billing_basis": "monthly_equivalent",
+            "price_phase": "bundle_starting",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle",
+            "amount_usd": 133
+          }
+        ]
+      },
+      {
+        "observed_on": "2026-09-02",
+        "data_as_of": "2026-08-06",
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "f9932beb94a425a3b6cf1a69900181f4be6203050f699643275ac7b0561260fd",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        },
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "id": "yourera-semaglutide",
+            "provider_id": "yourera-program",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 99
+          },
+          {
+            "id": "yourera-tirzepatide",
+            "provider_id": "yourera-program",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 169
+          },
+          {
+            "id": "trimi-semaglutide",
+            "provider_id": "trimi-glp-1",
+            "medication": "semaglutide",
+            "formulation": "annual plan",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 99
+          },
+          {
+            "id": "trimi-tirzepatide",
+            "provider_id": "trimi-glp-1",
+            "medication": "tirzepatide",
+            "formulation": "annual plan",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 125
+          },
+          {
+            "id": "shedrx-semaglutide",
+            "provider_id": "shedrx",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 159
+          },
+          {
+            "id": "shedrx-tirzepatide",
+            "provider_id": "shedrx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 239
+          },
+          {
+            "id": "oak-semaglutide",
+            "provider_id": "oak-weight-loss-program",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 119
+          },
+          {
+            "id": "oak-tirzepatide",
+            "provider_id": "oak-weight-loss-program",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 185
+          },
+          {
+            "id": "healthrx-semaglutide",
+            "provider_id": "healthrx",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 99
+          },
+          {
+            "id": "healthrx-tirzepatide",
+            "provider_id": "healthrx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 149
+          },
+          {
+            "id": "ageless-semaglutide",
+            "provider_id": "try-ageless",
+            "medication": "semaglutide",
+            "formulation": "microdose",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_microdose",
+            "amount_usd": 99
+          },
+          {
+            "id": "ageless-tirzepatide",
+            "provider_id": "try-ageless",
+            "medication": "tirzepatide",
+            "formulation": "microdose",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_microdose",
+            "amount_usd": 159
+          },
+          {
+            "id": "wellorithm-semaglutide",
+            "provider_id": "wellorithm",
+            "medication": "semaglutide",
+            "formulation": "injection or oral dissolving tablet",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 147
+          },
+          {
+            "id": "wellorithm-tirzepatide",
+            "provider_id": "wellorithm",
+            "medication": "tirzepatide",
+            "formulation": "injection or oral dissolving tablet",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 249
+          },
+          {
+            "id": "enhance-semaglutide",
+            "provider_id": "enhance-md",
+            "medication": "semaglutide",
+            "formulation": "GLP-1 Core",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 112
+          },
+          {
+            "id": "enhance-tirzepatide",
+            "provider_id": "enhance-md",
+            "medication": "tirzepatide",
+            "formulation": "GLP-1 Advanced",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 180
+          },
+          {
+            "id": "mademed-semaglutide",
+            "provider_id": "mademed",
+            "medication": "semaglutide",
+            "formulation": "oral",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 179
+          },
+          {
+            "id": "mademed-tirzepatide",
+            "provider_id": "mademed",
+            "medication": "tirzepatide",
+            "formulation": "oral",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 279
+          },
+          {
+            "id": "telos-tirzepatide",
+            "provider_id": "telos-rx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 139
+          },
+          {
+            "id": "strut-semaglutide",
+            "provider_id": "strut-health",
+            "medication": "semaglutide",
+            "formulation": "oral sublingual",
+            "billing_basis": "monthly",
+            "price_phase": "only_published",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 99
+          },
+          {
+            "id": "trt-nation-tirzepatide",
+            "provider_id": "trt-nation",
+            "medication": "tirzepatide",
+            "formulation": "injectable with three-month minimum",
+            "billing_basis": "monthly",
+            "price_phase": "only_published",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 219
+          },
+          {
+            "id": "coivas-semaglutide",
+            "provider_id": "coivas",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 119
+          },
+          {
+            "id": "coivas-tirzepatide",
+            "provider_id": "coivas",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 199
+          },
+          {
+            "id": "measured-semaglutide",
+            "provider_id": "measured",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 119
+          },
+          {
+            "id": "measured-tirzepatide",
+            "provider_id": "measured",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 219
+          },
+          {
+            "id": "biltrx-semaglutide",
+            "provider_id": "biltrx",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 81
+          },
+          {
+            "id": "biltrx-tirzepatide",
+            "provider_id": "biltrx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 129
+          },
+          {
+            "id": "sprout-semaglutide",
+            "provider_id": "sprout-health",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 149
+          },
+          {
+            "id": "sprout-tirzepatide",
+            "provider_id": "sprout-health",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 199
+          },
+          {
+            "id": "orderlymeds-semaglutide",
+            "provider_id": "orderlymeds",
+            "medication": "semaglutide",
+            "formulation": "injection",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 74
+          },
+          {
+            "id": "orderlymeds-tirzepatide",
+            "provider_id": "orderlymeds",
+            "medication": "tirzepatide",
+            "formulation": "injection",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 149
+          },
+          {
+            "id": "mydrhank-semaglutide",
+            "provider_id": "mydrhank",
+            "medication": "semaglutide",
+            "formulation": "oral",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 171
+          },
+          {
+            "id": "mydrhank-tirzepatide",
+            "provider_id": "mydrhank",
+            "medication": "tirzepatide",
+            "formulation": "injectable",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 240
+          },
+          {
+            "id": "gobymeds-semaglutide",
+            "provider_id": "gobymeds",
+            "medication": "semaglutide",
+            "formulation": "three-month starter bundle",
+            "billing_basis": "monthly_equivalent",
+            "price_phase": "bundle_starting",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle",
+            "amount_usd": 99
+          },
+          {
+            "id": "gobymeds-tirzepatide",
+            "provider_id": "gobymeds",
+            "medication": "tirzepatide",
+            "formulation": "three-month starter bundle",
+            "billing_basis": "monthly_equivalent",
+            "price_phase": "bundle_starting",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle",
+            "amount_usd": 133
+          }
+        ]
+      },
+      {
+        "observed_on": "2026-09-03",
+        "data_as_of": "2026-08-06",
+        "source_files": {
+          "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+          "program_content_ledger_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830",
+          "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+        },
+        "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+        "records": [
+          {
+            "id": "yourera-semaglutide",
+            "provider_id": "yourera-program",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 99
+          },
+          {
+            "id": "yourera-tirzepatide",
+            "provider_id": "yourera-program",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 169
+          },
+          {
+            "id": "trimi-semaglutide",
+            "provider_id": "trimi-glp-1",
+            "medication": "semaglutide",
+            "formulation": "annual plan",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 99
+          },
+          {
+            "id": "trimi-tirzepatide",
+            "provider_id": "trimi-glp-1",
+            "medication": "tirzepatide",
+            "formulation": "annual plan",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 125
+          },
+          {
+            "id": "shedrx-semaglutide",
+            "provider_id": "shedrx",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 159
+          },
+          {
+            "id": "shedrx-tirzepatide",
+            "provider_id": "shedrx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 239
+          },
+          {
+            "id": "oak-semaglutide",
+            "provider_id": "oak-weight-loss-program",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 119
+          },
+          {
+            "id": "oak-tirzepatide",
+            "provider_id": "oak-weight-loss-program",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 185
+          },
+          {
+            "id": "healthrx-semaglutide",
+            "provider_id": "healthrx",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 99
+          },
+          {
+            "id": "healthrx-tirzepatide",
+            "provider_id": "healthrx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 149
+          },
+          {
+            "id": "ageless-semaglutide",
+            "provider_id": "try-ageless",
+            "medication": "semaglutide",
+            "formulation": "microdose",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_microdose",
+            "amount_usd": 99
+          },
+          {
+            "id": "ageless-tirzepatide",
+            "provider_id": "try-ageless",
+            "medication": "tirzepatide",
+            "formulation": "microdose",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_microdose",
+            "amount_usd": 159
+          },
+          {
+            "id": "wellorithm-semaglutide",
+            "provider_id": "wellorithm",
+            "medication": "semaglutide",
+            "formulation": "injection or oral dissolving tablet",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 147
+          },
+          {
+            "id": "wellorithm-tirzepatide",
+            "provider_id": "wellorithm",
+            "medication": "tirzepatide",
+            "formulation": "injection or oral dissolving tablet",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 249
+          },
+          {
+            "id": "enhance-semaglutide",
+            "provider_id": "enhance-md",
+            "medication": "semaglutide",
+            "formulation": "GLP-1 Core",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 112
+          },
+          {
+            "id": "enhance-tirzepatide",
+            "provider_id": "enhance-md",
+            "medication": "tirzepatide",
+            "formulation": "GLP-1 Advanced",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 180
+          },
+          {
+            "id": "mademed-semaglutide",
+            "provider_id": "mademed",
+            "medication": "semaglutide",
+            "formulation": "oral",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 179
+          },
+          {
+            "id": "mademed-tirzepatide",
+            "provider_id": "mademed",
+            "medication": "tirzepatide",
+            "formulation": "oral",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 279
+          },
+          {
+            "id": "telos-tirzepatide",
+            "provider_id": "telos-rx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 139
+          },
+          {
+            "id": "strut-semaglutide",
+            "provider_id": "strut-health",
+            "medication": "semaglutide",
+            "formulation": "oral sublingual",
+            "billing_basis": "monthly",
+            "price_phase": "only_published",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 99
+          },
+          {
+            "id": "trt-nation-tirzepatide",
+            "provider_id": "trt-nation",
+            "medication": "tirzepatide",
+            "formulation": "injectable with three-month minimum",
+            "billing_basis": "monthly",
+            "price_phase": "only_published",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 219
+          },
+          {
+            "id": "coivas-semaglutide",
+            "provider_id": "coivas",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 119
+          },
+          {
+            "id": "coivas-tirzepatide",
+            "provider_id": "coivas",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 199
+          },
+          {
+            "id": "measured-semaglutide",
+            "provider_id": "measured",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 119
+          },
+          {
+            "id": "measured-tirzepatide",
+            "provider_id": "measured",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 219
+          },
+          {
+            "id": "biltrx-semaglutide",
+            "provider_id": "biltrx",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 81
+          },
+          {
+            "id": "biltrx-tirzepatide",
+            "provider_id": "biltrx",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 129
+          },
+          {
+            "id": "sprout-semaglutide",
+            "provider_id": "sprout-health",
+            "medication": "semaglutide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 149
+          },
+          {
+            "id": "sprout-tirzepatide",
+            "provider_id": "sprout-health",
+            "medication": "tirzepatide",
+            "formulation": "not separately stated",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 199
+          },
+          {
+            "id": "orderlymeds-semaglutide",
+            "provider_id": "orderlymeds",
+            "medication": "semaglutide",
+            "formulation": "injection",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 74
+          },
+          {
+            "id": "orderlymeds-tirzepatide",
+            "provider_id": "orderlymeds",
+            "medication": "tirzepatide",
+            "formulation": "injection",
+            "billing_basis": "monthly",
+            "price_phase": "introductory",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 149
+          },
+          {
+            "id": "mydrhank-semaglutide",
+            "provider_id": "mydrhank",
+            "medication": "semaglutide",
+            "formulation": "oral",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly_including_oral",
+            "amount_usd": 171
+          },
+          {
+            "id": "mydrhank-tirzepatide",
+            "provider_id": "mydrhank",
+            "medication": "tirzepatide",
+            "formulation": "injectable",
+            "billing_basis": "monthly",
+            "price_phase": "starting",
+            "selection_basis": "lowest_explicit_monthly",
+            "amount_usd": 240
+          },
+          {
+            "id": "gobymeds-semaglutide",
+            "provider_id": "gobymeds",
+            "medication": "semaglutide",
+            "formulation": "three-month starter bundle",
+            "billing_basis": "monthly_equivalent",
+            "price_phase": "bundle_starting",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle",
+            "amount_usd": 99
+          },
+          {
+            "id": "gobymeds-tirzepatide",
+            "provider_id": "gobymeds",
+            "medication": "tirzepatide",
+            "formulation": "three-month starter bundle",
+            "billing_basis": "monthly_equivalent",
+            "price_phase": "bundle_starting",
+            "selection_basis": "lowest_explicit_monthly_equivalent_bundle",
+            "amount_usd": 133
+          }
+        ]
+      }
+    ],
+    "publication_state": "PUBLIC_INDEXABLE",
+    "records": [
+      {
+        "amount_usd": 99,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "yourera-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "yourera-program",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 169,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "yourera-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "yourera-program",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 99,
+        "billing_basis": "monthly",
+        "formulation": "annual plan",
+        "id": "trimi-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "trimi-glp-1",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 125,
+        "billing_basis": "monthly",
+        "formulation": "annual plan",
+        "id": "trimi-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "trimi-glp-1",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 159,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "shedrx-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "shedrx",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 239,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "shedrx-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "shedrx",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 119,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "oak-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "oak-weight-loss-program",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 185,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "oak-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "oak-weight-loss-program",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 99,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "healthrx-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "introductory",
+        "provider_id": "healthrx",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 149,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "healthrx-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "introductory",
+        "provider_id": "healthrx",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 99,
+        "billing_basis": "monthly",
+        "formulation": "microdose",
+        "id": "ageless-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "try-ageless",
+        "selection_basis": "lowest_explicit_monthly_including_microdose"
+      },
+      {
+        "amount_usd": 159,
+        "billing_basis": "monthly",
+        "formulation": "microdose",
+        "id": "ageless-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "try-ageless",
+        "selection_basis": "lowest_explicit_monthly_including_microdose"
+      },
+      {
+        "amount_usd": 147,
+        "billing_basis": "monthly",
+        "formulation": "injection or oral dissolving tablet",
+        "id": "wellorithm-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "introductory",
+        "provider_id": "wellorithm",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 249,
+        "billing_basis": "monthly",
+        "formulation": "injection or oral dissolving tablet",
+        "id": "wellorithm-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "wellorithm",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 112,
+        "billing_basis": "monthly",
+        "formulation": "GLP-1 Core",
+        "id": "enhance-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "introductory",
+        "provider_id": "enhance-md",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 180,
+        "billing_basis": "monthly",
+        "formulation": "GLP-1 Advanced",
+        "id": "enhance-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "introductory",
+        "provider_id": "enhance-md",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 179,
+        "billing_basis": "monthly",
+        "formulation": "oral",
+        "id": "mademed-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "mademed",
+        "selection_basis": "lowest_explicit_monthly_including_oral"
+      },
+      {
+        "amount_usd": 279,
+        "billing_basis": "monthly",
+        "formulation": "oral",
+        "id": "mademed-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "mademed",
+        "selection_basis": "lowest_explicit_monthly_including_oral"
+      },
+      {
+        "amount_usd": 139,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "telos-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "telos-rx",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 99,
+        "billing_basis": "monthly",
+        "formulation": "oral sublingual",
+        "id": "strut-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "only_published",
+        "provider_id": "strut-health",
+        "selection_basis": "lowest_explicit_monthly_including_oral"
+      },
+      {
+        "amount_usd": 219,
+        "billing_basis": "monthly",
+        "formulation": "injectable with three-month minimum",
+        "id": "trt-nation-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "only_published",
+        "provider_id": "trt-nation",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 119,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "coivas-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "coivas",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 199,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "coivas-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "coivas",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 119,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "measured-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "measured",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 219,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "measured-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "measured",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 81,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "biltrx-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "biltrx",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 129,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "biltrx-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "biltrx",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 149,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "sprout-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "sprout-health",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 199,
+        "billing_basis": "monthly",
+        "formulation": "not separately stated",
+        "id": "sprout-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "sprout-health",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 74,
+        "billing_basis": "monthly",
+        "formulation": "injection",
+        "id": "orderlymeds-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "introductory",
+        "provider_id": "orderlymeds",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 149,
+        "billing_basis": "monthly",
+        "formulation": "injection",
+        "id": "orderlymeds-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "introductory",
+        "provider_id": "orderlymeds",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 171,
+        "billing_basis": "monthly",
+        "formulation": "oral",
+        "id": "mydrhank-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "starting",
+        "provider_id": "mydrhank",
+        "selection_basis": "lowest_explicit_monthly_including_oral"
+      },
+      {
+        "amount_usd": 240,
+        "billing_basis": "monthly",
+        "formulation": "injectable",
+        "id": "mydrhank-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "starting",
+        "provider_id": "mydrhank",
+        "selection_basis": "lowest_explicit_monthly"
+      },
+      {
+        "amount_usd": 99,
+        "billing_basis": "monthly_equivalent",
+        "formulation": "three-month starter bundle",
+        "id": "gobymeds-semaglutide",
+        "medication": "semaglutide",
+        "price_phase": "bundle_starting",
+        "provider_id": "gobymeds",
+        "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+      },
+      {
+        "amount_usd": 133,
+        "billing_basis": "monthly_equivalent",
+        "formulation": "three-month starter bundle",
+        "id": "gobymeds-tirzepatide",
+        "medication": "tirzepatide",
+        "price_phase": "bundle_starting",
+        "provider_id": "gobymeds",
+        "selection_basis": "lowest_explicit_monthly_equivalent_bundle"
+      }
+    ],
+    "route": "/glp-1-price-index/",
+    "schema": "glp-clinic-scout-price-index-v2"
+  },
+  "publication_state": "LINK_DARK_REVIEW_REQUIRED",
+  "records": [
+    {
+      "amount_qualifier": "monthly equivalent after the first month; 12-month plan prepaid annually; selected plan determines the $74–$149 range",
+      "amount_usd": 74,
+      "billing_cadence": "monthly_equivalent",
+      "checked_at": "2026-09-16T01:06:21.573Z",
+      "commitment_months": 12,
+      "commitment_type": "fixed",
+      "id": "ro-body-annual-prepay",
+      "medication_included": false,
+      "prepayment": "annual_required",
+      "price_phase": "ongoing",
+      "price_type": "membership",
+      "program_name": "Body Program",
+      "provider_id": "ro",
+      "provider_name": "Ro Body",
+      "quote": "First month for $39\n\nAfter your first month, you’ll be charged $74-149/mo depending on the plan you choose.\n\nThe Ro Body membership costs $39 for the first month and as low as $74/month when you prepay for an annual plan.\n\nPlease note that the cost of GLP-1 medication is not included in the membership cost.",
+      "quote_sha256": "5a5fe716e62ea4e88d16b58f6e0bf9f022b9a95bca09fc172ce7e42f38644022",
+      "source_capture_id": "ro-weight-loss-pricing-20260802",
+      "source_scrape_id": "01a0a7c0-1a1b-7396-9b2a-3886b7bb9755",
+      "source_url": "https://ro.co/weight-loss/pricing/"
+    },
+    {
+      "amount_qualifier": "then $74 per month on a 12-month plan after a $25 first month; medication excluded",
+      "amount_usd": 74,
+      "billing_cadence": "monthly",
+      "checked_at": "2026-08-02T01:41:56.582193Z",
+      "commitment_months": 12,
+      "commitment_type": "fixed",
+      "id": "weightwatchers-ongoing-12",
+      "medication_included": false,
+      "prepayment": "not_stated",
+      "price_phase": "ongoing",
+      "price_type": "membership",
+      "program_name": "GLP-1 Program",
+      "provider_id": "weightwatchers",
+      "provider_name": "WeightWatchers Clinic",
+      "quote": "$74 $25/first month\n\nThen, $74/month. GLP-1 meds cost not included\n\n$25/month for your first month with a 12-month or 6-month plan. Cost of GLP-1 medications not included.",
+      "quote_sha256": "21647b079c6ec9d811db86d952cf62088a9271395ae8cb65f9449a9cbe7ab251",
+      "source_capture_id": "weightwatchers-clinic-pricing-20260802",
+      "source_scrape_id": "019fc020-fe2a-7747-b317-2c15ba8985ff",
+      "source_url": "https://www.weightwatchers.com/us/clinic/weight-loss-medication"
+    },
+    {
+      "amount_qualifier": "after a $39 first month; monthly thereafter; cancel anytime; medication excluded",
+      "amount_usd": 149,
+      "billing_cadence": "monthly",
+      "checked_at": "2026-09-14T20:20:29.922Z",
+      "commitment_months": null,
+      "commitment_type": "cancel_anytime",
+      "id": "lifemd-ongoing-monthly",
+      "medication_included": false,
+      "prepayment": "not_stated",
+      "price_phase": "ongoing",
+      "price_type": "membership",
+      "program_name": "Weight Management Program",
+      "provider_id": "lifemd",
+      "provider_name": "LifeMD",
+      "quote": "Our program starts as low as $39 for your first month, and just $149 a month thereafter with the flexibility to cancel anytime.\n\nMedication cost is not included and varies based on insurance coverage or self-pay options.",
+      "quote_sha256": "013b98d6db18ca35a78c166548cd83cd37e89ec79e44b61939858581d025e3d1",
+      "source_capture_id": "lifemd-weight-management-20260802",
+      "source_scrape_id": "01a0a193-edc3-77db-be03-69a2d2b71af7",
+      "source_url": "https://lifemd.com/weight-management/"
+    },
+    {
+      "amount_qualifier": "initial visit; medication and lab work excluded",
+      "amount_usd": 129,
+      "billing_cadence": "one_time",
+      "checked_at": "2026-09-16T02:15:27.171Z",
+      "commitment_months": null,
+      "commitment_type": "one_time",
+      "id": "plushcare-initial-visit",
+      "medication_included": false,
+      "prepayment": "not_applicable",
+      "price_phase": "initial",
+      "price_type": "visit",
+      "program_name": "GLP-1 prescription visit",
+      "provider_id": "plushcare",
+      "provider_name": "PlushCare",
+      "quote": "$129\n\nInitial visits are $129.\n\nPlease note that any medication or lab work costs are not included.",
+      "quote_sha256": "245f2f94013a8a529983d06d9d11f8ec6a4750ba50b514d9aadb3e54d5c6d203",
+      "source_capture_id": "plushcare-glp1-pricing-20260802",
+      "source_scrape_id": "01a0a7ff-5b24-7516-9fdd-e798db145f11",
+      "source_url": "https://plushcare.com/glp-1-prescription/"
+    }
+  ],
+  "schema": "glp-clinic-scout-price-tracker-v2",
+  "source_ledger": {
+    "generated_at_utc": "2026-08-02T01:41:56.582193Z",
+    "ledger_payload_sha256": "ef4d6c369a4706103c98e59022580fa892d25d66238f3a48bcbddcbb8ad54d2a",
+    "schema": "glp-wave4-firecrawl-source-capture-ledger-v1"
+  }
+}

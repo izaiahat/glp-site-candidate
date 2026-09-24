@@ -1,0 +1,1288 @@
+/* PASS 2 — provider/listing/detail evidence anatomy.
+   Source-only layer; assembled with the ordered css-src pipeline. */
+.p3-provider-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.p3-provider-identity :is(h2, h3) {
+  margin: 0;
+  min-width: 0;
+}
+
+.p3-provider-identity .provider-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 96px;
+  min-height: 46px;
+  padding: 8px 10px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-evidence, #17a87e) 18%, transparent);
+  border-radius: 12px;
+  background: #fff;
+  color: #14201b;
+}
+
+.p3-provider-identity .provider-logo--dark {
+  background: #07100d;
+  color: #f4f7f4;
+}
+
+.p3-provider-identity .provider-logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 30px;
+}
+
+.p3-provider-identity .provider-wordmark {
+  font-size: clamp(.7rem, 1.8vw, .92rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.02em;
+  text-align: center;
+}
+
+.p3-feature-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.p3-feature-chips > span,
+.p3-review-state {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: color-mix(in srgb, var(--color-evidence, #17a87e) 10%, transparent);
+  color: var(--cs-ink-on-paper, #14201b);
+  font-size: .78rem;
+  font-weight: 720;
+}
+
+.p3-review-state {
+  margin: 0;
+  background: color-mix(in srgb, var(--color-warning, #f0b23f) 14%, transparent);
+}
+
+.p3-dose-definition {
+  margin: 10px 0 6px;
+  color: var(--cs-muted-on-paper, #51645c);
+  font-size: .88rem;
+  line-height: 1.45;
+}
+
+.p3-filter-chips button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.ready6-provider-mark {
+  display: inline-flex;
+  width: fit-content;
+  max-width: min(100%, 260px);
+  margin: 22px 0 8px;
+  padding: 10px 16px;
+  border: 1px solid rgba(244, 247, 244, .18);
+  border-radius: 12px;
+  background: rgba(244, 247, 244, .08);
+  color: #f4f7f4;
+  font-weight: 800;
+}
+
+.ready6-jump-nav {
+  position: sticky;
+  top: 72px;
+  z-index: 5;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px;
+  border: 1px solid rgba(244, 247, 244, .12);
+  border-radius: 999px;
+  background: rgba(7, 16, 13, .92);
+  backdrop-filter: blur(16px);
+}
+
+.ready6-jump-nav a {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: #f4f7f4;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ready6-jump-nav a:hover,
+.ready6-jump-nav a:focus-visible {
+  background: rgba(63, 217, 164, .16);
+}
+
+@media (max-width: 640px) {
+  .p3-provider-identity { align-items: flex-start; }
+  .p3-provider-identity .provider-logo { width: 82px; }
+  .ready6-jump-nav { top: 60px; margin-inline: -8px; border-radius: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ready6-jump-nav { scroll-behavior: auto; }
+}
+
+/* ===========================================================================
+   Reference-emulation pass — provider detail + pharmacy hub/detail
+   (PAGE-SPECS-20260826/provider-pharmacy spec §5, DESIGN-PASS-WORK-ORDER
+   A2/A3/A5/A7/A8 + F-G pharmacies). Layered after 11-phase3.css on purpose:
+   geometry, density, chip grammar, sticky rail, plan-card grid, hover/glow
+   motion. Tokens come from 00-foundation.css only. Motion: hover feedback and
+   one continuous CSS glow keyframe, killed under prefers-reduced-motion (the
+   00-foundation global kill) and html[data-motion="reduced"].
+   ======================================================================== */
+
+/* ---- provider detail hero (F3: mid-word H1 wrap fix, density) ------------ */
+.p3-detail-page .p3-index-hero {
+  min-height: 0;
+  padding: clamp(28px, 3.6vw, 48px);
+}
+
+.p3-detail-page .p3-index-hero::after {
+  display: none; /* decorative blob competes with the real hero photo (A8) */
+}
+
+.p3-detail-page .p3-index-hero--visual {
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 330px);
+}
+
+.p3-detail-page .p3-provider-identity > h1,
+.p3-detail-page .p3-index-hero h1 {
+  max-width: none;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  font-size: clamp(2rem, 1.35rem + 2.1vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.p3-detail-page .p3-index-hero .lede {
+  max-width: 54ch;
+  margin-top: 12px;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem);
+}
+
+.p3-detail-page .p3-index-hero .p3-hero-actions {
+  margin-top: 20px;
+}
+
+/* Compact single-line disclosure seat: keep the stronger-than-theirs inline
+   disclosure (A5 keep-list) without letting it collide with the hero. */
+.p3-detail-page .p3-source-disclosure {
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  border-radius: 10px;
+  margin-bottom: clamp(14px, 2vw, 22px);
+}
+
+/* ---- two-track layout with sticky conversion rail (F2) ------------------- */
+.p3-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 372px;
+  gap: clamp(20px, 2.6vw, 34px);
+  align-items: start;
+  margin-top: clamp(36px, 4.5vw, 56px);
+}
+
+.p3-detail-main {
+  display: grid;
+  gap: clamp(36px, 4.5vw, 60px);
+  min-width: 0;
+}
+
+.p3-detail-main > section {
+  margin: 0;
+}
+
+.p3-detail-main .section-heading h2 {
+  font-size: clamp(1.5rem, 2.4vw, 2.15rem);
+}
+
+.p3-detail-main .section-heading p {
+  font-size: 0.92rem;
+  color: var(--p3-muted);
+}
+
+.p3-detail-rail {
+  position: sticky;
+  top: 101px; /* 85px fixed nav + breathing room */
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  max-height: calc(100vh - 117px);
+  padding-right: 2px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.p3-rail-card {
+  padding: 18px 20px;
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-card);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-rail-card h2 {
+  margin: 0 0 10px;
+  color: #075c45;
+  font: 780 0.74rem/1.25 var(--font-display);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.p3-rail-card--cta {
+  border-color: rgba(14, 125, 92, 0.24);
+  background:
+    linear-gradient(180deg, rgba(63, 217, 164, 0.12), rgba(255, 255, 255, 0) 46%),
+    var(--p3-panel);
+}
+
+.p3-rail-identity {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+  min-width: 0;
+}
+
+.p3-rail-identity > p {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  min-width: 0;
+}
+
+.p3-rail-identity strong {
+  color: var(--p3-ink);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 780;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.p3-rail-identity small {
+  color: var(--p3-muted);
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.p3-rail-evidence {
+  margin: 0 0 12px;
+  color: var(--p3-muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.p3-rail-card .cs-btn {
+  width: 100%;
+  margin-top: 8px;
+  text-align: center;
+  justify-content: center;
+}
+
+.p3-rail-note {
+  margin: 0 0 8px;
+  color: var(--p3-muted);
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+.p3-rail-row {
+  padding: 10px 0;
+  border-top: 1px solid var(--p3-rule-soft);
+}
+
+.p3-rail-row h3 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+
+.p3-rail-row p {
+  margin: 0 0 4px;
+  color: var(--p3-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.p3-rail-row small {
+  color: var(--p3-muted);
+  font-size: 0.72rem;
+}
+
+.p3-rail-row--link {
+  display: grid;
+  gap: 2px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.p3-rail-row--link strong {
+  color: var(--p3-ink);
+  font-size: 0.92rem;
+  transition: color var(--duration-fast) var(--p3-ease);
+}
+
+.p3-rail-row--link span {
+  color: var(--p3-muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.p3-rail-row--link:hover strong {
+  color: #0e6f53;
+}
+
+.p3-rail-empty {
+  margin: 0;
+  padding: 8px 10px;
+  color: var(--p3-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  background: var(--color-mist-100);
+  border-radius: 8px;
+}
+
+.p3-detail-rail .cs-arrowlink {
+  display: inline-flex;
+  margin-top: 10px;
+  font-size: 0.84rem;
+}
+
+.p3-detail-rail .p3-feature-chips > span {
+  padding: 5px 9px;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 1020px) {
+  .p3-detail-layout { grid-template-columns: minmax(0, 1fr); }
+  /* Mobile parity with their template: rail content appends below main. */
+  .p3-detail-rail { position: static; max-height: none; overflow: visible; }
+}
+
+/* ---- Treatments plan-card grid (F1) -------------------------------------- */
+.p3-plan-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 18px;
+}
+
+.p3-plan-head h2 {
+  margin: 0;
+  font-size: clamp(1.55rem, 2.6vw, 2.2rem);
+}
+
+.p3-plan-head .gcs-kicker {
+  margin-bottom: 8px;
+}
+
+.p3-plan-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.p3-plan-jump {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 7px 14px;
+  border: 1px solid var(--p3-rule);
+  border-radius: var(--radius-pill);
+  color: var(--p3-ink);
+  font-size: 0.82rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition:
+    border-color var(--duration-fast) var(--p3-ease),
+    background-color var(--duration-fast) var(--p3-ease),
+    transform var(--duration-fast) var(--p3-ease);
+}
+
+.p3-plan-jump:hover {
+  transform: translateY(-2px);
+}
+
+.p3-plan-jump--semaglutide { color: #0b6b4e; border-color: rgba(14, 125, 92, 0.34); }
+.p3-plan-jump--semaglutide:hover { background: rgba(70, 214, 162, 0.12); }
+.p3-plan-jump--tirzepatide { color: #4f3fbf; border-color: rgba(106, 88, 201, 0.4); }
+.p3-plan-jump--tirzepatide:hover { background: rgba(169, 155, 242, 0.14); }
+
+.p3-plan-note {
+  margin: 12px 0 0;
+  max-width: 62ch;
+  color: var(--p3-muted);
+  font-size: 0.9rem;
+}
+
+.p3-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 26px);
+  align-items: start;
+  margin-top: 22px;
+}
+
+.p3-plan-card {
+  --plan-accent: #0e7d5c;
+  position: relative;
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px 22px 22px;
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  border-top: 3px solid var(--plan-accent);
+  border-radius: var(--radius-card);
+  box-shadow: var(--cs-card-shadow-paper);
+  scroll-margin-top: 110px;
+  transition:
+    transform 150ms var(--p3-ease),
+    border-color 150ms var(--p3-ease),
+    box-shadow 260ms var(--p3-ease);
+}
+
+.p3-plan-card:hover {
+  border-color: color-mix(in srgb, var(--plan-accent) 34%, transparent);
+  box-shadow: 0 28px 54px -34px rgba(20, 32, 27, 0.48);
+  transform: translateY(-3px);
+}
+
+.p3-plan-card--semaglutide { --plan-accent: #0e7d5c; }
+.p3-plan-card--tirzepatide { --plan-accent: #6a58c9; }
+.p3-plan-card--brand { --plan-accent: #0b6fa8; }
+.p3-plan-card--oral { --plan-accent: #a06b12; }
+
+.p3-plan-card--semaglutide h3 { color: #0b6b4e; }
+.p3-plan-card--tirzepatide h3 { color: #4f3fbf; }
+.p3-plan-card--brand h3 { color: #085e8f; }
+.p3-plan-card--oral h3 { color: #8a5c0d; }
+
+.p3-plan-head-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 16px;
+  align-items: start;
+}
+
+.p3-plan-title {
+  min-width: 0;
+}
+
+.p3-plan-title h3 {
+  margin: 6px 0 0;
+  font-size: clamp(1.12rem, 1.6vw, 1.38rem);
+  line-height: 1.15;
+}
+
+.p3-plan-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--p3-rule);
+  border-radius: var(--radius-pill);
+  color: var(--p3-muted);
+  font: 750 0.66rem/1.2 var(--font-display);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* Big price sits top-right of the card, their "/mo" underneath treatment. */
+.p3-plan-card .p3-source-price {
+  grid-template-columns: auto auto;
+  justify-content: end;
+  justify-items: end;
+  text-align: right;
+  gap: 0 4px;
+}
+
+.p3-plan-card .p3-source-price > strong {
+  font-size: clamp(1.85rem, 2.7vw, 2.45rem);
+}
+
+.p3-plan-card .p3-source-price > span {
+  font-size: 0.78rem;
+}
+
+.p3-plan-card .p3-source-price > small {
+  margin-top: 4px;
+  font-size: 0.7rem;
+}
+
+.p3-plan-card .p3-source-price > details {
+  margin-top: 0;
+}
+
+.p3-plan-card .p3-source-price > details summary {
+  justify-content: flex-end;
+  min-height: 36px;
+  padding: 4px 0;
+  font-size: 0.76rem;
+}
+
+.p3-plan-card .p3-source-price blockquote {
+  text-align: left;
+}
+
+/* Published first-month rate: tinted callout with left accent border — the
+   truthful analog of their savings callout (data is the bound month-1 row). */
+.p3-plan-intro {
+  margin: 0;
+  padding: 9px 12px;
+  color: var(--p3-ink);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  background: color-mix(in srgb, var(--plan-accent) 9%, transparent);
+  border-left: 3px solid var(--plan-accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.p3-plan-intro strong {
+  font-weight: 800;
+}
+
+/* Dose ladder as an always-open two-column table (mg/week | $) */
+.p3-plan-card .p3-dose-grid {
+  margin: 0;
+  background: transparent;
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-control);
+}
+
+.p3-plan-card .p3-dose-grid summary {
+  padding: 10px 14px;
+  color: var(--p3-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.p3-plan-card .p3-dose-grid .p3-dose-definition {
+  margin: 4px 0 2px;
+  padding: 0 14px;
+  font-size: 0.76rem;
+}
+
+.p3-plan-card .p3-dose-grid > small {
+  display: block;
+  padding: 0 14px 8px;
+  color: var(--p3-muted);
+  font-size: 0.7rem;
+}
+
+.p3-plan-card .p3-dose-grid > p {
+  padding: 0 14px 10px;
+  font-size: 0.76rem;
+}
+
+.p3-plan-card .p3-dose-grid li {
+  padding: 8px 14px;
+  font-size: 0.84rem;
+}
+
+.p3-plan-card .p3-dose-grid li.p3-dose-head {
+  background: rgba(20, 32, 27, 0.03);
+  color: var(--p3-muted);
+  font: 750 0.64rem/1.3 var(--font-display);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.p3-plan-card .p3-dose-grid li.p3-dose-head strong {
+  color: var(--p3-muted);
+  font: inherit;
+}
+
+/* First real dose row emphasized — only when the ladder holds real prices. */
+.p3-plan-card .p3-dose-grid[data-dose-model="flat_all_doses"] li.p3-dose-head + li,
+.p3-plan-card .p3-dose-grid[data-dose-model="per_dose"] li.p3-dose-head + li {
+  font-size: 0.95rem;
+}
+
+.p3-plan-card .p3-dose-grid[data-dose-model="flat_all_doses"] li.p3-dose-head + li strong,
+.p3-plan-card .p3-dose-grid[data-dose-model="per_dose"] li.p3-dose-head + li strong {
+  color: var(--p3-ink);
+  font-weight: 800;
+}
+
+.p3-plans .cs-coupon-chip {
+  margin-top: 14px;
+}
+
+@media (max-width: 700px) {
+  .p3-plan-grid { grid-template-columns: minmax(0, 1fr); }
+  .p3-plan-card .p3-source-price { justify-content: start; justify-items: start; text-align: left; }
+  .p3-plan-head-row { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- At a glance: compact fact grid (A8/F6) ------------------------------ */
+.p3-detail-main .p3-glance-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.p3-detail-main .p3-glance-grid .cs-card {
+  padding: 16px 18px;
+}
+
+.p3-detail-main .p3-glance-grid .gcs-kicker {
+  margin-bottom: 6px;
+  font-size: 0.64rem;
+}
+
+.p3-detail-main .p3-glance-grid .cs-card p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.p3-detail-main .p3-glance-grid .cs-card small {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.72rem;
+}
+
+@media (max-width: 900px) {
+  .p3-detail-main .p3-glance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .p3-detail-main .p3-glance-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- tradeoffs + unknowns, reviews module, methodology (F6) -------------- */
+.p3-detail-main .p3-detail-grid > article {
+  padding: clamp(20px, 2.8vw, 30px);
+}
+
+.p3-detail-main .p3-detail-grid h2 {
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+.p3-detail-main .p3-detail-grid h3 {
+  font-size: 1rem;
+}
+
+.p3-detail-main .p3-detail-grid :is(p, li) {
+  font-size: 0.92rem;
+}
+
+.p3-reviews-module {
+  padding: clamp(20px, 2.8vw, 30px);
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-card);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-reviews-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.p3-reviews-head h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+.p3-review-empty-line {
+  margin: 12px 0 0;
+  color: var(--p3-muted);
+  font-size: 0.92rem;
+}
+
+.p3-detail-main .p3-evidence-boundary {
+  padding: 18px 20px;
+  font-size: 0.88rem;
+}
+
+.p3-detail-main .p3-evidence-boundary h2 {
+  font-size: 1.1rem;
+}
+
+/* ---- CTA glow layer (F8: their 0.5s hover glow + soft breathing ring) ---- */
+:is(.p3-detail-page, .p3-pharm-detail, .p3-pharm-hub) a.cs-palette-action {
+  position: relative;
+  z-index: 0;
+}
+
+:is(.p3-detail-page, .p3-pharm-detail, .p3-pharm-hub) a.cs-palette-action::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(closest-side, rgba(70, 214, 162, 0.5), transparent 78%);
+  opacity: 0;
+  filter: blur(6px);
+  pointer-events: none;
+  transition: opacity 0.5s var(--p3-ease);
+}
+
+:is(.p3-detail-page, .p3-pharm-detail, .p3-pharm-hub) a.cs-palette-action:hover::before,
+:is(.p3-detail-page, .p3-pharm-detail, .p3-pharm-hub) a.cs-palette-action:focus-visible::before {
+  opacity: 0.85;
+}
+
+/* The rail's primary CTA carries a continuous soft glow pulse. Killed by the
+   00-foundation reduced-motion sweep and the data-motion="reduced" stamp. */
+.p3-rail-card--cta a.cs-palette-action::before {
+  opacity: 0.24;
+  animation: p3-cta-breathe 3.4s ease-in-out infinite;
+}
+
+.p3-rail-card--cta a.cs-palette-action:hover::before {
+  opacity: 0.9;
+  animation-play-state: paused;
+}
+
+@keyframes p3-cta-breathe {
+  0%, 100% { opacity: 0.18; }
+  50% { opacity: 0.46; }
+}
+
+html[data-motion="reduced"] .p3-rail-card--cta a.cs-palette-action::before {
+  animation: none !important;
+  opacity: 0.24;
+}
+
+/* ---- provider mobile action bar: evidence-state slot polish (F7) --------- */
+@media (max-width: 760px) {
+  .p3-detail-page .p3-index-hero--visual {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .p3-detail-page .p3-provider-sticky small {
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ===========================================================================
+   Pharmacy hub (F5 chip grammar + F9 toolbar + education deck)
+   ======================================================================== */
+.p3-pharm-hub .p3-index-hero .lede {
+  max-width: 66ch;
+}
+
+.p3-hub-boundary {
+  margin: 14px 0 0;
+  max-width: 62ch;
+  color: var(--p3-muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+/* Toolbar, not form: transparent ground, compact pill controls, tiny labels. */
+.p3-pharmacy-filters--toolbar {
+  grid-template-columns: minmax(200px, 1.35fr) repeat(3, minmax(0, 1fr)) minmax(0, 1fr);
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-panel);
+  box-shadow: none;
+  align-items: end;
+}
+
+.p3-pharmacy-filters--toolbar label {
+  gap: 4px;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+}
+
+.p3-pharmacy-filters--toolbar :is(input, select) {
+  min-height: 42px;
+  padding: 8px 12px;
+  background: #fff;
+  border: 1px solid var(--p3-rule);
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  transition: border-color var(--duration-fast) var(--p3-ease);
+}
+
+.p3-pharmacy-filters--toolbar :is(input, select):hover {
+  border-color: rgba(14, 125, 92, 0.4);
+}
+
+@media (max-width: 1020px) {
+  .p3-pharmacy-filters--toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .p3-pharmacy-filters--toolbar .p3-toolbar-search { grid-column: 1 / -1; }
+}
+
+/* Card chip grammar: identity → pathway/status → molecules → additives →
+   evidence state → actions. Scan-first, honesty distinctions intact. */
+.p3-pharmacy-card {
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+  padding: 20px;
+  background:
+    linear-gradient(180deg, var(--cs-accent-gradient-soft) 0 92px, var(--p3-panel) 92px);
+}
+
+.p3-pharmacy-card .p3-pharmacy-mark {
+  width: 64px;
+  font-size: 1.6rem;
+}
+
+.p3-pharmacy-card h2 {
+  font-size: clamp(1.12rem, 1.6vw, 1.35rem);
+}
+
+.p3-pharmacy-facts {
+  display: grid;
+  gap: 0;
+  margin: 14px 0 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-control);
+}
+
+.p3-pharmacy-facts > div {
+  display: grid;
+  gap: 5px;
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--p3-rule-soft);
+}
+
+.p3-pharmacy-facts > div:last-child { border-bottom: 0; }
+.p3-pharmacy-facts :is(dt, dd) { margin: 0; }
+.p3-pharmacy-facts dt {
+  color: var(--p3-muted);
+  font: 750 0.67rem/1.2 var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.p3-pharmacy-facts dd {
+  display: grid;
+  gap: 6px;
+  color: var(--p3-ink);
+  font-size: 0.84rem;
+  font-weight: 690;
+  line-height: 1.46;
+}
+
+.p3-pharmacy-facts small,
+.p3-pharmacy-card > div > small,
+.p3-card-evidence-line {
+  color: var(--p3-muted);
+  font-size: 0.7rem;
+  font-weight: 560;
+  line-height: 1.42;
+}
+
+.p3-card-evidence-line {
+  margin: 11px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--p3-rule-soft);
+}
+
+.p3-pharmacy-card .p3-tagrow {
+  margin-top: 9px;
+  gap: 6px;
+}
+
+.p3-pharmacy-card .p3-tagrow span {
+  min-height: 24px;
+  padding: 4px 9px;
+  font-size: 0.64rem;
+}
+
+.p3-chip,
+.p3-chip--unknown,
+.p3-chip--status,
+.p3-molchip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.p3-chip--status {
+  color: var(--p3-muted);
+  background: transparent;
+  border: 1px solid var(--p3-rule);
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+.p3-pharmacy-card .p3-tagrow .p3-chip--status {
+  font-size: 0.64rem;
+  min-height: 24px;
+}
+
+.p3-chip--unknown,
+.p3-chip--muted {
+  color: var(--p3-muted);
+  background: rgba(20, 32, 27, 0.045);
+  border: 1px dashed var(--p3-rule);
+}
+
+.p3-chip--state {
+  color: #07543f;
+  background: rgba(63, 217, 164, 0.12);
+  border: 1px solid rgba(14, 125, 92, 0.24);
+}
+
+.p3-molrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.p3-molchip--semaglutide {
+  color: #0b6b4e;
+  background: rgba(70, 214, 162, 0.14);
+  border: 1px solid rgba(14, 125, 92, 0.24);
+}
+
+.p3-molchip--tirzepatide {
+  color: #4f3fbf;
+  background: rgba(169, 155, 242, 0.16);
+  border: 1px solid rgba(106, 88, 201, 0.3);
+}
+
+.p3-additive-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+/* Specificity note: 11-phase3's `.p3-additive-chips span` paints amber; the
+   verified-additive chip must read as VERIFIED (mint + check), so the chip
+   selectors carry the parent class. */
+.p3-additive-chips [data-additive-chip] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 26px;
+  padding: 4px 10px;
+  color: #07543f;
+  font-size: 0.72rem;
+  font-weight: 750;
+  line-height: 1.2;
+  background: rgba(63, 217, 164, 0.12);
+  border: 1px solid rgba(14, 125, 92, 0.3);
+  border-radius: var(--radius-pill);
+  transition: box-shadow 0.5s var(--p3-ease);
+}
+
+.p3-additive-chips [data-additive-chip]::before {
+  content: "✓";
+  color: #0e7d5c;
+  font-weight: 900;
+}
+
+.p3-additive-chips [data-additive-unknown] {
+  color: var(--p3-muted);
+  background: rgba(20, 32, 27, 0.045);
+  border: 1px dashed var(--p3-rule);
+}
+
+.p3-pharmacy-card:hover .p3-additive-chips [data-additive-chip] {
+  box-shadow: 0 0 14px -2px rgba(63, 217, 164, 0.55);
+}
+
+/* Pharmacy-detail density (A8): section headings sized to the reading job. */
+.p3-pharm-detail .section-heading h2,
+.p3-pharm-detail .p3-unknowns h2,
+.p3-pharm-detail .p3-source-rail > h2,
+.p3-pharm-detail .p3-accordions > h2 {
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+}
+
+.p3-evrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.p3-pharmacy-card .p3-wrap-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 12px;
+}
+
+/* ===========================================================================
+   Pharmacy detail (F4 conversion path, F10 reviews, F12 reorder/rewrite)
+   ======================================================================== */
+.p3-pharm-detail .p3-pharmacy-hero {
+  min-height: 0;
+  padding: clamp(30px, 4.5vw, 56px);
+}
+
+.p3-pharm-detail .p3-pharmacy-hero h1 {
+  font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.6rem);
+}
+
+.p3-pharm-detail .p3-pharmacy-mark--large {
+  width: 128px;
+  font-size: 3.6rem;
+}
+
+/* Compounded-with split: two molecule columns with a center rule. */
+.p3-compounded-card {
+  min-width: 0;
+}
+
+.p3-molsplit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 6px;
+}
+
+.p3-molside h3 {
+  margin: 0 0 6px;
+  font: 780 0.72rem/1.3 var(--font-display);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.p3-molside--semaglutide h3 { color: #0b6b4e; }
+.p3-molside--tirzepatide h3 { color: #4f3fbf; }
+
+.p3-molside--tirzepatide {
+  padding-left: 18px;
+  border-left: 1px solid var(--p3-rule-soft);
+}
+
+.p3-molside p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--p3-muted);
+}
+
+.p3-availability-note {
+  margin: 14px 0 0;
+  color: var(--p3-muted);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .p3-molsplit { grid-template-columns: minmax(0, 1fr); }
+  .p3-molside--tirzepatide { padding-left: 0; padding-top: 14px; border-left: 0; border-top: 1px solid var(--p3-rule-soft); }
+}
+
+/* Regulatory compliance: compact chip-like cards, one row on desktop. */
+.p3-pharm-reg .p3-classification-grid {
+  margin-top: 12px;
+}
+
+.p3-pharm-reg .p3-classification-grid .cs-card {
+  padding: 16px 18px;
+}
+
+.p3-pharm-reg .p3-classification-grid h3 {
+  font-size: 0.98rem;
+}
+
+.p3-pharm-reg .p3-classification-grid p:last-child {
+  margin: 6px 0 0;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.p3-pharm-reg .p3-classification-grid .gcs-kicker {
+  margin-bottom: 4px;
+  font-size: 0.64rem;
+}
+
+/* Telehealth providers: chip row + reverse-comparison CTA. */
+.p3-provider-chiprow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+
+.p3-provider-chip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 42px;
+  padding: 8px 14px;
+  color: #0e6f53;
+  font-size: 0.88rem;
+  font-weight: 750;
+  text-decoration: none;
+  background: rgba(63, 217, 164, 0.08);
+  border: 1px solid rgba(14, 125, 92, 0.3);
+  border-radius: var(--radius-pill);
+  transition:
+    transform var(--duration-fast) var(--p3-ease),
+    box-shadow var(--duration-fast) var(--p3-ease),
+    background-color var(--duration-fast) var(--p3-ease);
+}
+
+.p3-provider-chip-link:hover {
+  background: rgba(63, 217, 164, 0.16);
+  box-shadow: 0 10px 22px -14px rgba(20, 32, 27, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Advantage panel: reader-benefit framing on light ground (was dark brag). */
+.p3-pharm-detail .p3-advantage {
+  padding: clamp(24px, 3.5vw, 40px);
+  color: var(--p3-ink);
+  background:
+    linear-gradient(160deg, rgba(63, 217, 164, 0.1), rgba(255, 255, 255, 0) 55%),
+    var(--p3-panel);
+  border: 1px solid rgba(14, 125, 92, 0.18);
+}
+
+.p3-pharm-detail .p3-advantage :is(h2, li) {
+  color: var(--p3-ink);
+}
+
+.p3-pharm-detail .p3-advantage h2 {
+  font-size: clamp(1.4rem, 2.3vw, 1.9rem);
+}
+
+.p3-pharm-detail .p3-advantage .gcs-kicker {
+  color: #075c45;
+}
+
+.p3-pharm-detail .p3-advantage p,
+.p3-pharm-detail .p3-advantage small {
+  color: var(--p3-muted);
+}
+
+.p3-advantage-lede {
+  max-width: 62ch;
+}
+
+.p3-pharm-detail .p3-advantage li {
+  font-size: 0.92rem;
+}
+
+/* Dual cross-link shelf: related pharmacies | provider search. */
+.p3-dual-shelf {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+  align-items: stretch;
+  margin-top: clamp(48px, 6.5vw, 84px);
+}
+
+.p3-dual-shelf > section {
+  margin: 0;
+  min-width: 0;
+}
+
+.p3-provider-search-shelf {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: clamp(22px, 3vw, 32px);
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-card);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-provider-search-shelf .cs-btn {
+  justify-self: start;
+}
+
+@media (max-width: 860px) {
+  .p3-dual-shelf { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Mobile bottom bar (F7/D13): mirrors the provider action-bar geometry. */
+.p3-pharmacy-bar {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .p3-pharmacy-bar {
+    position: fixed;
+    z-index: 40;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    min-height: 81px;
+    margin: 0;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    color: var(--p3-ink);
+    background: var(--color-paper-50, #f2f8f4);
+    border-top: 1px solid var(--p3-rule);
+    box-shadow: 0 -16px 36px -26px rgba(7, 16, 13, 0.65);
+  }
+
+  .p3-pharmacy-bar > span {
+    display: grid;
+    min-width: 0;
+    line-height: 1.1;
+  }
+
+  .p3-pharmacy-bar small {
+    color: #51645c;
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .p3-pharmacy-bar strong {
+    overflow: hidden;
+    font-size: 0.92rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .p3-pharmacy-bar .cs-btn {
+    min-height: 48px;
+    padding: 0 14px;
+    white-space: nowrap;
+  }
+
+  .p3-pharmacy-bar.is-released {
+    position: absolute;
+    bottom: 0;
+  }
+
+  /* Content release: the fixed bar must never cover the last module. */
+  main.p3-pharm-detail {
+    padding-bottom: calc(clamp(72px, 8vw, 112px) + 92px);
+  }
+}

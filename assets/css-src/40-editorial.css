@@ -1,0 +1,2218 @@
+/* ============================================================================
+   Layer 40: EDITORIAL — /guides/ hub, guide + research detail, /authors/.
+   Authority: artifacts/ultracode/DESIGN-DIRECTION.md (relit content layer,
+   alternating dark canvas + light bands, kill the card-soup) built ONLY on the
+   tokens/primitives in 00-foundation / 01-primitives / 02-shell.
+
+   Template scopes (markup is renderer-owned; this layer is CSS-only):
+     HUB    = main:has(> nav.library-index)          (/guides/ index only)
+     GUIDE  = main.guide-shell                       (blog-system.mjs detail)
+     AUTHOR = main:has(> section.authored-pages)     (/authors/ profiles)
+
+   Load-bearing facts honored here:
+   - blog-system GUIDE_STYLE is an inline <style data-preserve> INSIDE <main>,
+     so it wins source-order ties against this file. Every rule that must beat
+     it carries deliberately higher specificity (element+class, e.g.
+     `section.guide-offer-module`, `details.faq-item`, `p.table-disclosure`).
+   - addSharedRuntime rewrites class="eyebrow" → class="gcs-kicker" on shipped
+     pages; the guide hero keeps class="kicker". Both are styled here.
+   - GUIDE_STYLE references the legacy --surface-card/--surface-page aliases
+     that layer 00 no longer defines; they are re-aliased under GUIDE scope so
+     preserved inline rules resolve instead of falling to transparent.
+   - .inline-capture / .capture-* are the capture template's surface and are
+     deliberately NOT restyled here (`.panel` rules exclude it). .stars /
+     .score-* / .table-controls appear inside guide comparison tables via
+     upgradeReviewScore; minimal scoped coverage is provided so they can never
+     ship unstyled on editorial routes (review/money layers own them on their
+     own routes; these rules are scope-limited to editorial pages).
+   - No entrance/scroll-reveal opacity states (no JS hooks in this layer, and
+     hidden-content states would violate the animation gate). Ambient aurora
+     reuses foundation's cs-aurora-drift keyframes; under reduced motion the
+     foundation kill-switch freezes it into a designed-static gradient.
+   - Reading progress uses scroll-driven animation, double-gated behind
+     @supports (animation-timeline) AND prefers-reduced-motion: no-preference,
+     so no browser ever shows a dead "progress" affordance.
+   - Pull-quote markup is not emitted by the current renderer; a styled
+     .guide-pullquote hook ships ready for the renderer owner (styling a
+     not-yet-emitted class is safe; the inverse is the defect). Same for the
+     .cs-pager pagination pattern (the hub's live pager/index control is
+     nav.library-index, fully styled below).
+   ========================================================================== */
+
+/* Capture traps remain available to spam filters without becoming visible or
+   consuming layout space. Keep this rule in the editorial bundle itself: the
+   Insights index does not load the home/tools form bundles. */
+.capture-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* ---------------------------------------------------------------------------
+   0. Shared editorial context
+   ------------------------------------------------------------------------ */
+
+/* Light-surface context: same assignment pack as foundation's .cs-on-paper,
+   applied to the editorial surfaces that relight on these templates. Uses
+   foundation tokens only. --color-evidence is additionally re-pointed to the
+   on-paper mint (foundation's own on-paper eyebrow value) so every descendant
+   — including GUIDE_STYLE's mint "+" markers — stays AA on light ground. */
+main:has(> nav.library-index) > section.featured-guides,
+main:has(> nav.library-index) > section:nth-of-type(2n+4),
+main:has(> nav.library-index) .panel.evidence-line:not(.inline-capture),
+main:has(> section.authored-pages) .panel.evidence-line:not(.inline-capture),
+main:has(> section.authored-pages) section.authored-pages {
+  color: var(--cs-ink-on-paper);
+  --text-primary: var(--cs-ink-on-paper);
+  --text-secondary: var(--cs-muted-on-paper);
+  --color-ink: var(--cs-ink-on-paper);
+  --color-muted: var(--cs-muted-on-paper);
+  --color-line: var(--cs-line-on-paper);
+  --color-line-soft: rgba(20, 32, 27, 0.09);
+  --color-line-strong: rgba(20, 32, 27, 0.24);
+  --color-surface: var(--cs-paper-card);
+  --color-surface-float: #ffffff;
+  --shadow-card: var(--cs-card-shadow-paper);
+  --color-focus: #0e7d5c;
+  --color-interactive: #0b6fa8;
+  --color-mist-100: rgba(20, 32, 27, 0.05);
+  --color-evidence: #0c6e51; /* AA on sage/mist/paper (>=5.3:1) */
+}
+
+/* Pass 5: guide detail pages inherit the same dark system as Home, Insights,
+   and Reviews at the shared template boundary. */
+main.guide-shell {
+  color: #f2f8f4;
+  --text-primary: #f2f8f4;
+  --text-secondary: #b8cbc1;
+  --color-ink: #f2f8f4;
+  --color-muted: #b8cbc1;
+  --color-line: rgba(233, 247, 241, 0.18);
+  --color-line-soft: rgba(233, 247, 241, 0.1);
+  --color-line-strong: rgba(233, 247, 241, 0.3);
+  --color-surface: var(--cs-ground-raise);
+  --color-surface-float: var(--cs-ground-band);
+  --color-focus: #5fe3ab;
+  --color-interactive: #84d2f4;
+  --color-mist-100: rgba(233, 247, 241, 0.07);
+  --color-evidence: #5fe3ab;
+  --shadow-card: 0 18px 42px -28px rgba(0, 0, 0, 0.78);
+}
+
+/* Kickers + ledes inside the three editorial scopes (addSharedRuntime ships
+   them as .gcs-kicker; the guide hero keeps .kicker). */
+main.guide-shell .gcs-kicker,
+main.guide-shell .kicker,
+main:has(> nav.library-index) .gcs-kicker,
+main:has(> section.authored-pages) .gcs-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-evidence);
+}
+main:has(> nav.library-index) .lede,
+main:has(> section.authored-pages) .lede {
+  font-size: clamp(1.08rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 62ch;
+}
+
+/* Section heads (hub + authors): heading + dek on one baseline group. */
+main:has(> nav.library-index) .gcs-section-head,
+main:has(> section.authored-pages) .gcs-section-head {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 clamp(22px, 3vw, 34px);
+  max-width: 760px;
+}
+main:has(> nav.library-index) .gcs-section-head h2,
+main:has(> section.authored-pages) .gcs-section-head h2 { margin: 0; }
+main:has(> nav.library-index) .gcs-section-head p,
+main:has(> section.authored-pages) .gcs-section-head p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* ---------------------------------------------------------------------------
+   1. /guides/ HUB — editorial masthead, featured stories, banded rows
+   Section order emitted by renderGuideLibrary:
+     .gcs-home-hero → aside.notice → section.featured-guides → [capture aside,
+     not ours] → nav.library-index → one section per vertical (GLP-1, ED, …).
+   Banding: dark masthead → paper featured band → sticky index rail →
+   vertical sections alternate dark-band (odd) / sage-mist (even).
+   ------------------------------------------------------------------------ */
+
+/* Every hub band is full-bleed with self-centered content. */
+main:has(> nav.library-index) > section,
+main:has(> nav.library-index) > aside.notice {
+  padding-inline: max(var(--gutter), calc((100% - var(--container-content)) / 2));
+}
+main:has(> nav.library-index) > section { padding-block: var(--space-section); }
+
+/* Masthead */
+main:has(> nav.library-index) > .gcs-home-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding-block: clamp(56px, 7vw, 96px) clamp(40px, 5vw, 72px);
+}
+main:has(> nav.library-index) > .gcs-home-hero::before {
+  /* luminous aurora backdrop; freezes to designed-static under reduced motion */
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 36% at 20% 26%, rgba(23, 168, 126, 0.28), transparent 70%),
+    radial-gradient(30% 30% at 78% 18%, rgba(111, 198, 238, 0.18), transparent 70%),
+    radial-gradient(32% 34% at 62% 82%, rgba(169, 155, 242, 0.14), transparent 72%);
+  filter: blur(46px);
+  animation: cs-aurora-drift 30s var(--ease-in-out-expo) infinite;
+}
+main:has(> nav.library-index) > .gcs-home-hero h1 {
+  font-size: clamp(2.4rem, 4.6vw, 4rem);
+  margin-bottom: 0.35em;
+}
+main:has(> nav.library-index) > .gcs-home-hero picture {
+  border-radius: var(--radius-media);
+  overflow: hidden;
+  box-shadow: var(--shadow-float), var(--shadow-glow);
+}
+main:has(> nav.library-index) > .gcs-home-hero img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Evidence-boundary strip (compact, not a card) */
+main:has(> nav.library-index) > aside.notice.evidence-line {
+  padding-block: 18px;
+  border-block: 1px solid var(--color-line-soft);
+  background: var(--cs-ground-band);
+}
+main:has(> nav.library-index) > aside.notice.evidence-line h2 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-evidence);
+  margin: 0 0 4px;
+}
+main:has(> nav.library-index) > aside.notice.evidence-line p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: none;
+}
+
+/* Featured band — paper ground, lead story + two secondary */
+main:has(> nav.library-index) > section.featured-guides {
+  background: var(--cs-paper-warm);
+}
+main:has(> nav.library-index) > section.featured-guides .grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+main:has(> nav.library-index) > section.featured-guides .grid > article:first-child {
+  grid-column: span 7;
+  grid-row: span 2;
+  padding: clamp(26px, 3.4vw, 44px);
+}
+main:has(> nav.library-index) > section.featured-guides .grid > article:first-child h3 {
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  letter-spacing: -0.024em;
+}
+main:has(> nav.library-index) > section.featured-guides .grid > article:not(:first-child) {
+  grid-column: span 5;
+}
+/* the featured-story modifier itself: elevated over shelf cards */
+main:has(> nav.library-index) .panel.guide-card--featured {
+  box-shadow: 0 2px 4px rgba(20, 32, 27, 0.06), 0 24px 48px -22px rgba(20, 32, 27, 0.3);
+}
+main:has(> nav.library-index) .panel.guide-card--featured h3 { letter-spacing: -0.02em; }
+
+/* Sticky section index — the hub's live pager control */
+main:has(> nav.library-index) > nav.library-index {
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 10px max(var(--gutter), calc((100% - var(--container-content)) / 2));
+  background: var(--cs-ground);
+  border-block: 1px solid var(--color-line-soft);
+}
+main:has(> nav.library-index) > nav.library-index::-webkit-scrollbar { display: none; }
+main:has(> nav.library-index) > nav.library-index a {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line);
+  background: var(--color-mist-100);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--duration-instant) ease,
+              border-color var(--duration-fast) ease,
+              background var(--duration-fast) ease;
+}
+main:has(> nav.library-index) > nav.library-index a:hover {
+  color: var(--text-primary);
+  border-color: var(--color-sage-200);
+  background: var(--color-accent-soft);
+}
+/* Anchors targeted from the sticky index need extra clearance. */
+html:has(nav.library-index) { scroll-padding-top: 140px; }
+
+/* Vertical bands: odd = dark band with paper cards, even = sage-mist band */
+main:has(> nav.library-index) > section:nth-of-type(n+3) {
+  background: var(--cs-ground-band);
+}
+main:has(> nav.library-index) > section:nth-of-type(2n+4) {
+  background: var(--cs-sage-mist);
+}
+main:has(> nav.library-index) > section:nth-of-type(n+3) .grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 20px);
+}
+main:has(> nav.library-index) > section:nth-of-type(n+3) .grid > article {
+  grid-column: span 2;
+}
+/* varied rows: the first two entries of each shelf run larger, 2-across */
+main:has(> nav.library-index) > section:nth-of-type(n+3) .grid > article:nth-child(-n+2) {
+  grid-column: span 3;
+}
+main:has(> nav.library-index) > section:nth-of-type(n+3) .grid > article:nth-child(-n+2) h3 {
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+}
+
+/* Hub story card — light card, whole card clickable, visible metadata */
+main:has(> nav.library-index) .panel.evidence-line:not(.inline-capture) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: clamp(18px, 2.4vw, 26px);
+  background: var(--cs-paper-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--cs-card-shadow-paper);
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+              box-shadow var(--duration-fast) ease;
+}
+main:has(> nav.library-index) .panel.evidence-line:not(.inline-capture):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 4px rgba(20, 32, 27, 0.07), 0 22px 44px -20px rgba(20, 32, 27, 0.32);
+}
+main:has(> nav.library-index) .panel.evidence-line:not(.inline-capture):focus-within {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+main:has(> nav.library-index) .panel.evidence-line:not(.inline-capture) .gcs-kicker {
+  margin-bottom: 2px;
+}
+main:has(> nav.library-index) .panel h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.28;
+}
+main:has(> nav.library-index) .panel h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+main:has(> nav.library-index) .panel h3 a:hover { text-decoration: underline; }
+main:has(> nav.library-index) .panel h3 a:focus-visible { outline: none; }
+main:has(> nav.library-index) .panel h3 a::after {
+  /* stretched link: the whole story card is the target */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+main:has(> nav.library-index) .panel > p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: none;
+}
+main:has(> nav.library-index) .panel p:has(> small) {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-line-soft);
+}
+main:has(> nav.library-index) .panel small {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-evidence);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Generic editorial pager pattern (ready for hub pagination; the current hub
+   pager/index is nav.library-index above). */
+main:has(> nav.library-index) .cs-pager,
+main.guide-shell .cs-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-block: var(--space-6);
+}
+main:has(> nav.library-index) .cs-pager a,
+main.guide-shell .cs-pager a {
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: 40px;
+  min-block-size: 40px;
+  padding-inline: 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line);
+  color: var(--text-secondary);
+  font-weight: 650;
+  text-decoration: none;
+  transition: border-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+main:has(> nav.library-index) .cs-pager a:hover,
+main.guide-shell .cs-pager a:hover { color: var(--text-primary); border-color: var(--color-sage-200); }
+main:has(> nav.library-index) .cs-pager [aria-current="page"],
+main.guide-shell .cs-pager [aria-current="page"] {
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: 40px;
+  min-block-size: 40px;
+  border-radius: var(--radius-pill);
+  background: var(--cs-accent-gradient);
+  color: #04120e;
+  font-weight: 700;
+}
+
+/* Hub responsive */
+@media (max-width: 1023px) {
+  main:has(> nav.library-index) > .gcs-home-hero { grid-template-columns: 1fr; }
+  main:has(> nav.library-index) > section.featured-guides .grid,
+  main:has(> nav.library-index) > section:nth-of-type(n+3) .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  main:has(> nav.library-index) > section.featured-guides .grid > article:first-child,
+  main:has(> nav.library-index) > section.featured-guides .grid > article:not(:first-child),
+  main:has(> nav.library-index) > section:nth-of-type(n+3) .grid > article,
+  main:has(> nav.library-index) > section:nth-of-type(n+3) .grid > article:nth-child(-n+2) {
+    grid-column: span 1;
+  }
+  main:has(> nav.library-index) > section.featured-guides .grid > article:first-child {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+}
+@media (max-width: 640px) {
+  main:has(> nav.library-index) > section.featured-guides .grid,
+  main:has(> nav.library-index) > section:nth-of-type(n+3) .grid {
+    grid-template-columns: 1fr;
+  }
+  main:has(> nav.library-index) > section.featured-guides .grid > article:first-child {
+    grid-column: span 1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   2. GUIDE DETAIL — layout spine
+   The article uses the full content canvas. Prose keeps a readable measure,
+   while tables, comparisons, evidence, and capture modules can use the width.
+   ------------------------------------------------------------------------ */
+
+main.guide-shell {
+  /* legacy aliases GUIDE_STYLE still references */
+  --surface-card: var(--color-surface);
+  --surface-page: var(--cs-ground);
+  --border-default: var(--color-line);
+  display: block;
+  padding-inline: var(--gutter);
+  padding-block-end: var(--space-9);
+}
+main.guide-shell > * {
+  max-width: var(--container-reading);
+  margin-inline: auto;
+  margin-block: 0 var(--space-6);
+}
+main.guide-shell > section[aria-labelledby] { margin-block-end: var(--space-7); }
+main.guide-shell > .breadcrumbs,
+main.guide-shell > .guide-hero { max-width: var(--container-content); }
+main.guide-shell > p.guide-evidence-band { margin-block-end: var(--space-5); }
+
+@media (min-width: 1160px) {
+  main.guide-shell {
+    display: grid;
+    grid-template-columns:
+      minmax(var(--gutter), 1fr)
+      minmax(0, min(1120px, calc(100vw - 2 * var(--gutter))))
+      minmax(var(--gutter), 1fr);
+    padding-inline: 0;
+  }
+  main.guide-shell > * {
+    grid-column: 2;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+  main.guide-shell > :is(p, ul, ol):not(.guide-evidence-band) { max-width: 76ch; margin-inline: auto; }
+  main.guide-shell > nav.guide-toc {
+    grid-column: 2;
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+/* Breadcrumbs */
+main.guide-shell > nav.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-block: var(--space-5) var(--space-5);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+main.guide-shell > nav.breadcrumbs a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+main.guide-shell > nav.breadcrumbs a:hover { color: var(--text-primary); text-decoration: underline; }
+main.guide-shell > nav.breadcrumbs span[aria-hidden="true"] { opacity: 0.45; }
+main.guide-shell > nav.breadcrumbs [aria-current="page"] {
+  color: var(--text-primary);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: min(60vw, 480px);
+}
+
+/* ---------------------------------------------------------------------------
+   3. GUIDE DETAIL — authored hero, freshness band, quick answer, boundary
+   ------------------------------------------------------------------------ */
+
+main.guide-shell > section.guide-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  padding-block: clamp(8px, 1.5vw, 20px) clamp(10px, 2vw, 24px);
+}
+main.guide-shell > section.guide-hero::before {
+  content: "";
+  position: absolute;
+  inset: -30% 0; /* no inline bleed: keeps the document free of horizontal overflow */
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42% 40% at 16% 30%, rgba(23, 168, 126, 0.16), transparent 70%),
+    radial-gradient(30% 34% at 86% 70%, rgba(111, 198, 238, 0.1), transparent 72%);
+  filter: blur(52px);
+}
+main.guide-shell .guide-hero .kicker {
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line);
+  background: var(--color-mist-100);
+}
+main.guide-shell .guide-hero h1 {
+  font-size: clamp(2.05rem, 3.6vw, 3.35rem);
+  line-height: 1.04;
+  margin-bottom: 0.4em;
+}
+main.guide-shell p.guide-byline {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+main.guide-shell p.guide-byline a {
+  color: var(--text-primary);
+  font-weight: 650;
+  text-decoration-color: var(--color-sage-200);
+}
+main.guide-shell > section.guide-hero picture {
+  border-radius: var(--radius-media);
+  overflow: hidden;
+  box-shadow: var(--shadow-float);
+}
+main.guide-shell > section.guide-hero img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+@media (max-width: 820px) {
+  main.guide-shell > section.guide-hero { grid-template-columns: 1fr; }
+  main.guide-shell > section.guide-hero img { aspect-ratio: 16 / 9; }
+}
+
+/* Freshness / evidence band — early, visible, quiet (GUIDE_STYLE adds the
+   mint inline-start rule; this extends it without fighting it). */
+main.guide-shell p.guide-evidence-band {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  align-items: baseline;
+  font-variant-numeric: tabular-nums;
+}
+main.guide-shell p.guide-evidence-band time {
+  color: var(--color-evidence);
+  font-weight: 650;
+}
+
+/* Quick answer — the first relit moment: a paper card early in the article */
+main.guide-shell section.answer .panel.evidence-line.quick-answer {
+  background: var(--cs-ground-raise);
+  border-top: 3px solid var(--color-evidence);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-card);
+  padding: clamp(22px, 3vw, 34px);
+}
+main.guide-shell .quick-answer p.gcs-kicker { color: var(--color-evidence); }
+main.guide-shell .quick-answer > p:not(.gcs-kicker) {
+  font-size: clamp(1.05rem, 1.4vw, 1.16rem);
+  line-height: 1.62;
+  margin: 0;
+}
+
+/* Evidence boundary + affiliate disclosure — compact note, not a card */
+main.guide-shell > aside.disclosure {
+  padding: 14px 16px 14px 18px;
+  border: 1px solid var(--color-line);
+  border-inline-start: 3px solid var(--color-interactive);
+  border-radius: var(--radius-control);
+  background: var(--color-mist-100);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+main.guide-shell > aside.disclosure strong { color: var(--text-primary); }
+main.guide-shell .affiliate-disclosure {
+  display: block;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-line-soft);
+}
+
+/* Next-step rows (GUIDE_STYLE owns the flex frame; skin + buttons here).
+   One dominant action: first button solid mint, the rest ghost. */
+main.guide-shell aside.guide-next-card {
+  background: var(--color-mist-100);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: none;
+}
+main.guide-shell .gcs-button,
+main.guide-shell .gcs-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.15;
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--action-primary);
+  color: var(--text-on-accent);
+  box-shadow: 0 10px 26px -14px rgba(70, 220, 171, 0.55);
+  transition: transform var(--duration-instant) var(--ease-out-expo),
+              background var(--duration-fast) ease,
+              border-color var(--duration-fast) ease;
+}
+main.guide-shell .gcs-button:hover,
+main.guide-shell .gcs-cta:hover {
+  background: var(--action-primary-hover);
+  transform: translateY(-1px);
+}
+main.guide-shell .gcs-button.secondary,
+main.guide-shell .gcs-cta-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--color-line-strong);
+  box-shadow: none;
+}
+main.guide-shell .gcs-button.secondary:hover,
+main.guide-shell .gcs-cta-secondary:hover {
+  border-color: var(--color-sage-200);
+  background: var(--color-mist-100);
+}
+main.guide-shell .gcs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+main.guide-shell .gcs-text-link { color: var(--color-interactive); font-weight: 650; }
+main.guide-shell .gcs-note {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  margin: 6px 0 0;
+}
+
+/* Related-comparison intent bridge (wave2 furniture on guide routes) */
+main.guide-shell aside.p1-intent-bridge {
+  padding: 16px 20px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-mist-100);
+}
+main.guide-shell aside.p1-intent-bridge p { margin: 0; }
+main.guide-shell aside.p1-intent-bridge .gcs-kicker { margin-bottom: 6px; }
+
+/* ---------------------------------------------------------------------------
+   4. GUIDE DETAIL — TOC: sticky desktop rail / compact mobile jump bar,
+   with an honest reading-progress affordance (capability-gated).
+   ------------------------------------------------------------------------ */
+
+main.guide-shell > nav.guide-toc {
+  position: relative;
+  padding: 16px 18px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--cs-ground-band);
+}
+main.guide-shell > nav.guide-toc .gcs-kicker { margin-bottom: 8px; }
+main.guide-shell > nav.guide-toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+  counter-reset: cs-toc;
+}
+main.guide-shell > nav.guide-toc li { counter-increment: cs-toc; }
+main.guide-shell > nav.guide-toc a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 8px;
+  border-radius: 9px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 550;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: color var(--duration-instant) ease, background var(--duration-fast) ease;
+}
+main.guide-shell > nav.guide-toc a::before {
+  content: counter(cs-toc, decimal-leading-zero);
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-evidence);
+  opacity: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+main.guide-shell > nav.guide-toc a:hover {
+  color: var(--text-primary);
+  background: var(--color-mist-100);
+}
+
+/* GUIDE_STYLE is preserved after the shared stylesheet; this selector is
+   intentionally stronger than its legacy `.guide-shell p` light-on-dark rule. */
+main.guide-shell.cs-band--paper > section p { color: var(--text-secondary) !important; }
+
+/* compact jump bar below the rail breakpoint */
+@media (max-width: 1159.98px) {
+  main.guide-shell > nav.guide-toc {
+    position: sticky;
+    top: 58px;
+    z-index: 45;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: none;
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 8px var(--gutter);
+    border: 0;
+    border-block: 1px solid var(--color-line-soft);
+    border-radius: 0;
+    background: var(--cs-ground-band);
+  }
+  main.guide-shell > nav.guide-toc .gcs-kicker {
+    margin: 0;
+    flex: none;
+    font-size: 0.68rem;
+  }
+  main.guide-shell > nav.guide-toc ol {
+    display: flex;
+    gap: 6px;
+    min-width: 0; /* flex item may shrink so the chip strip scrolls instead of overflowing */
+    overflow-x: auto;
+    scrollbar-width: none;
+    counter-reset: cs-toc;
+  }
+  main.guide-shell > nav.guide-toc ol::-webkit-scrollbar { display: none; }
+  main.guide-shell > nav.guide-toc a {
+    flex: none;
+    padding: 7px 12px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    background: var(--color-mist-100);
+    font-size: 0.82rem;
+    white-space: nowrap;
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+  main.guide-shell > nav.guide-toc a::before { content: none; }
+  /* anchor clearance under sticky header + jump bar */
+  html:has(main.guide-shell) { scroll-padding-top: 136px; }
+}
+
+/* Reading progress: scroll-driven, only where it genuinely runs. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    main.guide-shell > nav.guide-toc::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--cs-accent-gradient);
+      transform-origin: left center;
+      transform: scaleX(0);
+      animation: cs-ed-read-progress linear both;
+      animation-timeline: scroll(root);
+    }
+    @media (min-width: 1160px) {
+      main.guide-shell > nav.guide-toc::after {
+        left: 18px;
+        right: 18px;
+        bottom: auto;
+        top: 6px;
+        height: 3px;
+      }
+      main.guide-shell > nav.guide-toc { padding-top: 22px; }
+    }
+  }
+}
+@keyframes cs-ed-read-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ---------------------------------------------------------------------------
+   5. GUIDE DETAIL — evidence layer: verified claims, data callouts, checklist
+   ------------------------------------------------------------------------ */
+
+/* Verified claims — sage receipt panel */
+main.guide-shell .claim-evidence {
+  background: var(--cs-ground-raise);
+  border-radius: var(--radius-panel);
+  padding: clamp(22px, 3vw, 34px);
+  box-shadow: var(--shadow-card);
+}
+main.guide-shell .claim-evidence h2 { margin-top: 0; }
+main.guide-shell .claim-evidence > p { color: var(--text-secondary); }
+main.guide-shell .claim-evidence ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: cs-claim;
+}
+main.guide-shell .claim-evidence ol > li {
+  counter-increment: cs-claim;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding-block: 12px;
+  border-top: 1px solid var(--color-line-soft);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+main.guide-shell .claim-evidence ol > li::before {
+  content: counter(cs-claim, decimal-leading-zero);
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-evidence);
+  font-variant-numeric: tabular-nums;
+}
+main.guide-shell .claim-evidence ol > li > span { flex: 1; }
+
+/* Inline citation chips (claims + prose) */
+main.guide-shell sup.inline-citation {
+  line-height: 0;
+  vertical-align: baseline;
+}
+main.guide-shell sup.inline-citation a {
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  margin-inline: 1px;
+  padding: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-mist-100);
+  border: 1px solid var(--color-line);
+  color: var(--color-evidence);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  transition: border-color var(--duration-instant) ease, background var(--duration-fast) ease;
+}
+main.guide-shell sup.inline-citation a:hover {
+  border-color: var(--color-sage-200);
+  background: var(--color-accent-soft);
+}
+
+/* Data callouts — the owned data tables become mist/paper panels with the
+   published figure as the loudest object. */
+main.guide-shell .guide-data-table {
+  background: var(--cs-ground-band);
+  border-radius: var(--radius-panel);
+  padding: clamp(20px, 3vw, 32px);
+  box-shadow: var(--shadow-card);
+}
+main.guide-shell .guide-data-table.information-gain-table {
+  background: color-mix(in srgb, var(--cs-ground-band) 88%, #123b4d);
+}
+main.guide-shell .guide-data-table h2 { margin-top: 0; }
+main.guide-shell .guide-data-table > p { color: var(--text-secondary); font-size: 0.95rem; }
+main.guide-shell .guide-data-table td strong {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: 1.08rem;
+  letter-spacing: -0.015em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* What to verify — split checklist on paper: confirm (mint) / don't assume */
+main.guide-shell .guide-checklist {
+  background: var(--cs-ground-raise);
+  border-radius: var(--radius-panel);
+  padding: clamp(20px, 3vw, 32px);
+  box-shadow: var(--shadow-card);
+}
+main.guide-shell .guide-checklist h2 { margin-top: 0; }
+main.guide-shell .guide-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 28px);
+}
+main.guide-shell .guide-checklist-grid > div {
+  padding-inline-start: 14px;
+  border-inline-start: 3px solid var(--color-evidence);
+}
+main.guide-shell .guide-checklist-grid > div:last-child {
+  border-inline-start-color: color-mix(in srgb, var(--color-warning) 55%, var(--text-secondary));
+}
+main.guide-shell .guide-checklist-grid h3 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+main.guide-shell .guide-checklist-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+main.guide-shell .guide-checklist-grid li {
+  position: relative;
+  padding-inline-start: 22px;
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+main.guide-shell .guide-checklist-grid > div:first-child li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-evidence);
+  font-weight: 800;
+}
+main.guide-shell .guide-checklist-grid > div:last-child li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: color-mix(in srgb, var(--color-warning) 55%, var(--text-secondary));
+  font-weight: 800;
+}
+@media (max-width: 680px) {
+  main.guide-shell .guide-checklist-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------------------------
+   6. GUIDE DETAIL — body rhythm: prose, timeline steps, tables, pull quote
+   ------------------------------------------------------------------------ */
+
+main.guide-shell section h2,
+main.guide-shell nav h2 {
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+}
+main.guide-shell section[aria-labelledby^="section-"] > p {
+  color: var(--color-paper-100);
+}
+main.guide-shell section[aria-labelledby^="section-"] ul {
+  padding-inline-start: 22px;
+  display: grid;
+  gap: 6px;
+}
+main.guide-shell section[aria-labelledby^="section-"] ul li::marker {
+  color: var(--color-evidence);
+}
+
+/* Ordered steps render as a timeline */
+main.guide-shell section[aria-labelledby^="section-"] > ol {
+  list-style: none;
+  margin: 18px 0;
+  padding: 0;
+  counter-reset: cs-step;
+}
+main.guide-shell section[aria-labelledby^="section-"] > ol > li {
+  counter-increment: cs-step;
+  position: relative;
+  padding: 0 0 22px 44px;
+}
+main.guide-shell section[aria-labelledby^="section-"] > ol > li::before {
+  content: counter(cs-step);
+  position: absolute;
+  left: 0;
+  top: -2px;
+  inline-size: 28px;
+  block-size: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-sage-200);
+  color: var(--color-evidence);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 750;
+}
+main.guide-shell section[aria-labelledby^="section-"] > ol > li::after {
+  content: "";
+  position: absolute;
+  left: 13.5px;
+  top: 30px;
+  bottom: 2px;
+  width: 1px;
+  background: var(--color-line);
+}
+main.guide-shell section[aria-labelledby^="section-"] > ol > li:last-child { padding-bottom: 0; }
+main.guide-shell section[aria-labelledby^="section-"] > ol > li:last-child::after { content: none; }
+
+/* Pull quote hook (renderer-ready; not yet emitted) */
+main.guide-shell .guide-pullquote {
+  margin: var(--space-6) 0;
+  padding: 4px 0 4px 22px;
+  border-inline-start: 3px solid var(--color-evidence);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.9vw, 1.5rem);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+/* Tables: horizontal-scroll container by default… */
+main.guide-shell .table-scroll,
+main.guide-shell .table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+  border-radius: var(--radius-card);
+}
+@media (min-width: 1160px) {
+  main.guide-shell > :is(.guide-data-table, .guide-comparison) {
+    grid-column: 2 / 4;
+  }
+}
+main.guide-shell table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.93rem;
+}
+main.guide-shell table caption {
+  caption-side: top;
+  text-align: left;
+  padding-bottom: 10px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+main.guide-shell th {
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-line-strong);
+  vertical-align: bottom;
+}
+main.guide-shell tbody th[scope="row"] {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.93rem;
+  font-weight: 680;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--color-line-soft);
+}
+main.guide-shell td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-line-soft);
+  vertical-align: top;
+}
+main.guide-shell tr:last-child td,
+main.guide-shell tbody tr:last-child th[scope="row"] { border-bottom: 0; }
+
+/* …and the compact mobile treatment (cs-table--stack grammar) for any
+   editorial table whose cells carry data-label. */
+@media (max-width: 720px) {
+  main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) { overflow: visible; }
+  main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) thead {
+    position: absolute;
+    clip: rect(0 0 0 0);
+  }
+  main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) table,
+  main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) tbody { display: block; width: 100%; }
+  main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) tr {
+    --text-primary: var(--cs-ink-on-paper);
+    --text-secondary: var(--cs-muted-on-paper);
+    --color-interactive: #0b6fa8;
+    color: var(--text-primary);
+    background: var(--cs-paper-card);
+    display: grid;
+    gap: 2px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+  main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) tbody th[scope="row"] {
+    display: block;
+    padding: 0 0 4px;
+    border: 0;
+    font-size: 0.98rem;
+  }
+  main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) td {
+    display: grid;
+    grid-template-columns: minmax(96px, 38%) 1fr;
+    gap: 10px;
+    padding: 3px 0;
+    border: 0;
+  }
+  main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) td::before {
+    content: attr(data-label);
+    font-size: 0.8rem;
+    font-weight: 650;
+    color: var(--text-secondary);
+  }
+}
+
+/* Comparison-table furniture that reaches editorial pages (scoped safety;
+   money/review layers own these on their own templates). */
+main.guide-shell .table-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+main.guide-shell .table-controls button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line);
+  background: var(--color-mist-100);
+  color: var(--text-secondary);
+  font-weight: 650;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: color var(--duration-instant) ease, border-color var(--duration-fast) ease;
+}
+main.guide-shell .table-controls button:hover,
+main.guide-shell .table-controls button[aria-pressed="true"] {
+  color: var(--color-evidence);
+  border-color: var(--color-sage-200);
+}
+main.guide-shell .score-lockup { display: inline-flex; align-items: baseline; gap: 10px; }
+main.guide-shell .score-ten {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+main.guide-shell .score-ten span { font-size: 0.72em; font-weight: 600; color: var(--text-secondary); }
+main.guide-shell .stars {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: var(--color-line-strong);
+}
+main.guide-shell .stars-fill {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--cs-star);
+}
+
+/* Guide comparison section wrapper */
+main.guide-shell section.guide-comparison h2 { margin-bottom: 14px; }
+
+/* ---------------------------------------------------------------------------
+   7. GUIDE DETAIL — commercial surfaces (visually distinct from evidence)
+   ------------------------------------------------------------------------ */
+
+/* Proximate affiliate disclosure (beats GUIDE_STYLE's light-theme hardcodes) */
+main.guide-shell p.table-disclosure {
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  border-inline-start: 3px solid var(--color-warning);
+  border-radius: 0 10px 10px 0;
+  background: var(--color-warning-bg);
+  color: inherit;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Offer module — paper card with an unmistakable commercial frame */
+main.guide-shell section.guide-offer-module {
+  background: var(--cs-ground-raise);
+  border: 0;
+  border-inline-start: 4px solid var(--color-evidence);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-card);
+  padding: clamp(20px, 3vw, 32px);
+  margin-block: var(--space-7);
+}
+main.guide-shell section.guide-offer-module h2 { margin-top: 0; }
+main.guide-shell .guide-offer-rows { gap: 12px; }
+main.guide-shell li.guide-offer-row {
+  background: transparent;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  padding: 16px 18px;
+}
+main.guide-shell p.guide-offer-provider {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+}
+main.guide-shell p.guide-offer-wording {
+  margin: 0 0 12px;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+}
+main.guide-shell .guide-offer-checked {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--color-mist-100);
+  color: var(--color-evidence);
+  font-size: 0.78rem;
+  font-weight: 650;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+main.guide-shell .dual-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ---------------------------------------------------------------------------
+   8. GUIDE DETAIL — FAQ, related, sources, boundary close
+   ------------------------------------------------------------------------ */
+
+/* FAQ — hairline list on the canvas (no cards); beats GUIDE_STYLE's shell */
+main.guide-shell section.guide-faq h2 { margin-bottom: 8px; }
+main.guide-shell details.faq-item {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--color-line);
+  border-radius: 0;
+  background: transparent;
+}
+main.guide-shell details.faq-item:last-of-type { border-bottom: 1px solid var(--color-line); }
+main.guide-shell details.faq-item > summary {
+  padding: 16px 4px;
+  font-size: 1.02rem;
+  transition: color var(--duration-instant) ease;
+}
+main.guide-shell details.faq-item > summary:hover { color: var(--color-evidence); }
+main.guide-shell details.faq-item > div { padding: 0 4px 18px; }
+main.guide-shell details.faq-item[open] > div {
+  animation: cs-ed-fade-slide 200ms var(--ease-out-expo);
+}
+@keyframes cs-ed-fade-slide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Keep comparing — arrowed rows */
+main.guide-shell nav.related-guides h2 { font-size: clamp(1.35rem, 2vw, 1.7rem); }
+main.guide-shell nav.related-guides ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px 24px;
+}
+main.guide-shell nav.related-guides a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 4px;
+  border-bottom: 1px solid var(--color-line-soft);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.97rem;
+  text-decoration: none;
+  transition: color var(--duration-instant) ease;
+}
+main.guide-shell nav.related-guides a::after {
+  content: "→";
+  flex: none;
+  color: var(--color-evidence);
+  transition: transform var(--duration-instant) var(--ease-out-expo);
+}
+main.guide-shell nav.related-guides a:hover { color: var(--color-evidence); }
+main.guide-shell nav.related-guides a:hover::after { transform: translateX(3px); }
+
+/* Sources — numbered receipt cards using the reference source-card rhythm. */
+main.guide-shell section.guide-sources h2 { margin-bottom: 16px; }
+main.guide-shell .guide-sources ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  counter-reset: cs-src;
+}
+main.guide-shell .guide-sources ol > li {
+  counter-increment: cs-src;
+  position: relative;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 18px 18px 16px;
+  background: var(--cs-ground-raise);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+main.guide-shell .guide-sources ol > li::before {
+  content: "Source " counter(cs-src);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-evidence);
+}
+main.guide-shell .guide-sources ol > li > strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.3;
+}
+main.guide-shell .guide-sources ol > li > span { color: var(--text-secondary); }
+main.guide-shell .guide-sources ol > li > a {
+  justify-self: start;
+  font-weight: 650;
+  color: var(--color-interactive);
+  word-break: break-word;
+}
+main.guide-shell .guide-sources ol > li > small {
+  color: var(--color-evidence);
+  font-weight: 650;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+main.guide-shell .source-nolink {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Scope-boundary close (classless aside emitted last) */
+main.guide-shell > aside:not([class]) {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line-soft);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* ---------------------------------------------------------------------------
+   9. /authors/ — publisher + editorial-team profiles
+   ------------------------------------------------------------------------ */
+
+main:has(> section.authored-pages) { padding-block-end: var(--space-9); }
+main:has(> section.authored-pages) > .page-band { padding-block: var(--space-4) 0; }
+main:has(> section.authored-pages) > section {
+  max-width: var(--container-content);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  margin-block: 0 var(--space-8);
+}
+/* plain prose sections read at measure */
+main:has(> section.authored-pages) > section:not(.gcs-home-hero):not(.grid):not(.authored-pages) {
+  max-width: calc(var(--container-reading) + 2 * var(--gutter));
+}
+
+main:has(> section.authored-pages) > .gcs-home-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding-block: clamp(36px, 5vw, 72px) clamp(28px, 4vw, 56px);
+}
+main:has(> section.authored-pages) > .gcs-home-hero::before {
+  content: "";
+  position: absolute;
+  inset: -30% 0; /* no inline bleed: keeps the document free of horizontal overflow */
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 38% at 18% 30%, rgba(23, 168, 126, 0.2), transparent 70%),
+    radial-gradient(28% 32% at 84% 66%, rgba(111, 198, 238, 0.12), transparent 72%);
+  filter: blur(48px);
+}
+main:has(> section.authored-pages) > .gcs-home-hero h1 {
+  font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+}
+
+/* identity card */
+main:has(> section.authored-pages) .panel.evidence-line.author-identity-visual {
+  background: var(--cs-paper-card);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--cs-card-shadow-paper);
+  padding: clamp(22px, 3vw, 34px);
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+main:has(> section.authored-pages) .author-identity-visual img {
+  width: min(200px, 60%);
+  border-radius: var(--radius-card);
+}
+main:has(> section.authored-pages) .author-identity-visual h2 {
+  margin: 4px 0 0;
+  font-size: 1.2rem;
+}
+main:has(> section.authored-pages) .author-identity-visual p { margin: 0; }
+main:has(> section.authored-pages) .image-caption {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* paired responsibility cards */
+main:has(> section.authored-pages) > section.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 24px);
+}
+main:has(> section.authored-pages) > section.grid .panel.evidence-line {
+  background: var(--cs-paper-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--cs-card-shadow-paper);
+  padding: clamp(20px, 2.8vw, 30px);
+}
+main:has(> section.authored-pages) > section.grid .panel.evidence-line h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5em;
+}
+main:has(> section.authored-pages) > section.grid .panel.evidence-line p:last-child { margin-bottom: 0; }
+
+/* published-pages index — light band with a two-column numbered ledger */
+main:has(> section.authored-pages) > section.authored-pages {
+  background: var(--cs-paper-warm);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--cs-card-shadow-paper);
+  padding: clamp(24px, 3.4vw, 44px);
+}
+main:has(> section.authored-pages) > section.authored-pages h2 { margin-top: 0; }
+main:has(> section.authored-pages) > section.authored-pages > p { color: var(--text-secondary); }
+main:has(> section.authored-pages) > section.authored-pages ol {
+  margin: 18px 0 0;
+  padding: 0 0 0 1.4em;
+  columns: 2;
+  column-gap: clamp(28px, 4vw, 56px);
+  font-variant-numeric: tabular-nums;
+}
+main:has(> section.authored-pages) > section.authored-pages ol li {
+  break-inside: avoid;
+  padding-block: 5px;
+}
+main:has(> section.authored-pages) > section.authored-pages ol a {
+  color: var(--cs-ink-on-paper);
+  font-weight: 550;
+  text-decoration-color: var(--cs-line-on-paper);
+  text-underline-offset: 0.18em;
+  transition: color var(--duration-instant) ease;
+}
+main:has(> section.authored-pages) > section.authored-pages ol a:hover {
+  color: var(--color-evidence);
+  text-decoration-color: currentColor;
+}
+
+@media (max-width: 900px) {
+  main:has(> section.authored-pages) > .gcs-home-hero,
+  main:has(> section.authored-pages) > section.grid {
+    grid-template-columns: 1fr;
+  }
+  main:has(> section.authored-pages) > section.authored-pages ol { columns: 1; }
+}
+
+/* W18 — editorial pages stay readable without an inner horizontal viewport. */
+@media (max-width: 760px) {
+  main.guide-shell { max-width: 100%; overflow: clip; }
+  main.guide-shell :is(.table-scroll, .table-wrap, .responsive-table) { overflow: visible; width: 100%; max-width: 100%; }
+  main.guide-shell :is(a, button, summary, input, select) { min-height: 44px; }
+  main.guide-shell :is(a, button, summary) { overflow-wrap: anywhere; }
+  .p3-article-share { display: flex; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+}
+
+/* PASS 2 — dedicated source-backed provider/detail + legacy-review anatomy. */
+.p3-provider-identity { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.p3-provider-identity :is(h2, h3) { margin: 0; min-width: 0; }
+.p3-provider-identity .provider-logo {
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+  width: 96px; min-height: 46px; padding: 8px 10px; overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-evidence) 18%, transparent);
+  border-radius: 12px; background: #fff; color: #14201b;
+}
+.p3-provider-identity .provider-logo--dark { background: #07100d; color: #f4f7f4; }
+.p3-provider-identity .provider-logo img { display: block; width: auto; max-width: 100%; max-height: 30px; }
+.p3-provider-identity .provider-wordmark { font-size: .82rem; font-weight: 800; line-height: 1; letter-spacing: -.02em; text-align: center; }
+.p3-feature-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.p3-feature-chips > span,
+.p3-review-state {
+  display: inline-flex; align-items: center; width: fit-content; border-radius: 999px;
+  padding: 6px 10px; background: color-mix(in srgb, var(--color-evidence) 10%, transparent);
+  color: var(--cs-ink-on-paper); font-size: .78rem; font-weight: 720;
+}
+.p3-review-state { margin: 0; background: color-mix(in srgb, var(--color-warning) 14%, transparent); }
+.p3-dose-definition { margin: 10px 0 6px; color: var(--cs-muted-on-paper); font-size: .88rem; line-height: 1.45; }
+.p3-filter-chips button:disabled { cursor: not-allowed; opacity: .45; text-decoration: line-through; text-decoration-thickness: 1px; }
+.ready6-review-hero .ready6-provider-mark {
+  display: inline-flex; width: fit-content; max-width: min(100%, 260px); margin: 22px 0 8px;
+  padding: 10px 16px; border: 1px solid rgba(244,247,244,.18); border-radius: 12px;
+  background: rgba(244,247,244,.08); color: #f4f7f4; font-weight: 800;
+}
+.ready6-jump-nav {
+  position: sticky; top: 72px; z-index: 5; display: flex; gap: 8px; overflow-x: auto;
+  padding: 8px; border: 1px solid rgba(244,247,244,.12); border-radius: 999px;
+  background: rgba(7,16,13,.92); backdrop-filter: blur(16px);
+}
+.ready6-jump-nav a { flex: 0 0 auto; min-height: 44px; padding: 9px 13px; border-radius: 999px; color: #f4f7f4; font-weight: 700; text-decoration: none; }
+.ready6-jump-nav a:hover, .ready6-jump-nav a:focus-visible { background: rgba(63,217,164,.16); }
+.ready6-trust-footer { max-width: none; }
+@media (max-width: 640px) {
+  .p3-provider-identity { align-items: flex-start; }
+  .p3-provider-identity .provider-logo { width: 82px; }
+  .ready6-jump-nav { top: 60px; margin-inline: -8px; border-radius: 0; }
+}
+
+/* Paid/listing surfaces use one deterministic optimized atlas instead of one
+   request per provider. The visible tile remains the provider's captured mark. */
+.p3-provider-identity .provider-logo.provider-logo--sprite {
+  width: 96px;
+  min-width: 96px;
+  height: 46px;
+  min-height: 46px;
+  padding: 0;
+  background-image: url("/assets/provider-logos/pass2-lp-atlas.webp");
+  background-repeat: no-repeat;
+  background-size: var(--p3-logo-atlas-width) var(--p3-logo-atlas-height);
+  background-position: var(--p3-logo-x) var(--p3-logo-y);
+}
+
+/* ===========================================================================
+   DESIGN PASS 2026-08-26 — INSIGHTS INDEX (reference emulation, our palette)
+   Spec: reports/glp-clinic-scout/rebuild/PAGE-SPECS-20260826/insights/spec.md
+   Scope: main.p3-page.cs-ins-index (emitted only by renderPhase3InsightsPage).
+   Their layout language: compact title row, dark ground, dark cards with a
+   hairline border, text-left/photo-right featured card, photo-top 3-up rows,
+   clamped deks, hover = 0.5s gradient tint (no lift, no shadow), low-key chip
+   pagination. Our tokens throughout: observatory ink ground + aurora accents.
+   In site.css this layer concatenates AFTER 11-phase3, and every override
+   below also carries higher specificity than the rule it replaces.
+   ======================================================================== */
+
+main.p3-page.cs-ins-index {
+  /* token remap: this route returns to the site's dark ground (their index is
+     an all-dark surface; "paper bands where their layout uses light panels" —
+     this layout has none). Every text token re-checked ≥4.5:1 on this ground. */
+  --p3-ink: var(--color-paper-50);
+  --p3-muted: var(--color-ink-700);
+  --p3-panel: var(--color-surface);
+  --p3-canvas: var(--cs-ground);
+  --p3-rule: rgba(233, 247, 241, 0.13);
+  --p3-rule-soft: rgba(233, 247, 241, 0.08);
+  --text-primary: var(--color-paper-50);
+  --text-secondary: var(--color-ink-700);
+  --color-ink: var(--color-paper-50);
+  --color-line: rgba(233, 247, 241, 0.13);
+  --color-line-soft: rgba(233, 247, 241, 0.08);
+  --color-line-strong: rgba(233, 247, 241, 0.24);
+  --color-surface: #101d18;
+  --color-surface-float: #15251f;
+  --color-focus: #7fe3ff;
+  --color-interactive: #6fd8ff;
+  --color-mist-100: rgba(233, 247, 241, 0.06);
+  --shadow-card: none;
+  color: var(--text-primary);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(63, 217, 164, 0.07), transparent 26rem),
+    radial-gradient(circle at 92% 14%, rgba(169, 155, 242, 0.06), transparent 30rem),
+    var(--cs-ground);
+}
+
+/* Their content column is a deliberate 960px — narrower than listing pages. */
+main.p3-page.cs-ins-index > * { width: min(100%, 960px); }
+
+/* Row rhythm: their page is a calm card river, not 84px section bands. */
+main.p3-page.cs-ins-index > :is(section, aside, .p3-empty, .p3-filter-empty) {
+  margin-top: clamp(24px, 3.2vw, 38px);
+}
+
+main.p3-page.cs-ins-index :is(a, button, input, summary):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* --- compact title row (their ~90px page header) ------------------------- */
+main.p3-page.cs-ins-index > .p3-insights-hero {
+  display: block;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+body main.p3-page.cs-ins-index > .p3-insights-hero { padding: 6px 0 10px; }
+main.p3-page.cs-ins-index .cs-ins-head { display: grid; gap: 10px; }
+main.p3-page.cs-ins-index .cs-ins-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: nowrap; /* their mobile keeps the Subscribe pill beside the title */
+}
+main.p3-page.cs-ins-index .cs-ins-head-row .cs-btn {
+  width: auto;
+  flex: 0 0 auto;
+}
+main.p3-page.cs-ins-index h1 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: none;
+  margin: 0;
+  font-size: clamp(1.85rem, 3vw, 2.3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: transparent;
+  background: var(--cs-accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+main.p3-page.cs-ins-index .cs-ins-glyph {
+  flex: none;
+  width: 38px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, var(--cs-ground) 0 42%, transparent 43%),
+    var(--cs-accent-gradient);
+}
+main.p3-page.cs-ins-index > .p3-insights-hero .lede {
+  margin: 0;
+  max-width: 78ch;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+main.p3-page.cs-ins-index .cs-ins-head-row .cs-btn { flex: 0 0 auto; }
+
+/* --- featured card: text LEFT (~35%), photo RIGHT, edge-to-edge ---------- */
+main.p3-page.cs-ins-index .p3-feature-story {
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.7fr);
+  min-height: clamp(300px, 29vw, 412px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  box-shadow: none;
+  transition: border-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+main.p3-page.cs-ins-index .p3-feature-story > div {
+  justify-content: flex-start;
+  gap: 12px;
+  padding: clamp(20px, 2.6vw, 32px);
+}
+main.p3-page.cs-ins-index .p3-feature-story h2 {
+  font-size: clamp(1.45rem, 2.1vw, 1.8rem);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+main.p3-page.cs-ins-index .p3-feature-story > div > p:last-child {
+  /* re-clamp: 11-phase3's "never line-clamped" doctrine rule is dead for this
+     surface (operator override 2026-08-26; spec fix #4 — their deks clamp) */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+main.p3-page.cs-ins-index .p3-feature-story picture { display: block; height: 100%; }
+main.p3-page.cs-ins-index .p3-feature-story img {
+  min-height: 0;
+  height: 100%;
+  border-radius: 0;
+}
+main.p3-page.cs-ins-index .p3-feature-story:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--color-line-strong);
+}
+main.p3-page.cs-ins-index .p3-feature-story:hover img { transform: none; filter: none; }
+
+/* --- 3-up small cards: photo top, 18px titles, 3-line clamped deks ------- */
+main.p3-page.cs-ins-index .p3-story-grid { gap: clamp(16px, 2.2vw, 24px); }
+main.p3-page.cs-ins-index .p3-story {
+  position: relative;
+  isolation: isolate;
+  padding: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  box-shadow: none;
+  transition: border-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+main.p3-page.cs-ins-index .p3-story img {
+  height: auto;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+/* clamped boxes carry their spacing as MARGIN — padding inside an overflow-
+   hidden -webkit-box lets the clipped next line bleed into the padding area */
+main.p3-page.cs-ins-index .p3-story h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  padding: 0;
+  margin: 16px 18px 0;
+  font-size: 1.07rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+main.p3-page.cs-ins-index .p3-story > p:last-child {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  padding: 0;
+  margin: 8px 18px 18px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+/* images sit flush inside the card frame; the card's own radius clips them */
+main.p3-page.cs-ins-index :is(.p3-feature-story, .p3-story) .p3-story-picture { border-radius: 0; }
+main.p3-page.cs-ins-index .p3-story:hover { transform: none; box-shadow: none; border-color: var(--color-line-strong); }
+main.p3-page.cs-ins-index .p3-story:hover img { transform: none; filter: none; }
+
+/* Hover choreography (their pattern): a gradient tint layer fades in over
+   0.5s cubic-bezier(0.4,0,0.2,1). Card does not translate or grow shadow.
+   Tint sits above content at 12% — white-on-ink text stays >10:1. */
+main.p3-page.cs-ins-index :is(.p3-feature-story, .p3-story)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: var(--cs-accent-gradient);
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+main.p3-page.cs-ins-index :is(.p3-feature-story, .p3-story):hover::after { opacity: 0.12; }
+
+/* --- pagination: low-key chips, current page filled ---------------------- */
+main.p3-page.cs-ins-index .p3-pagination { gap: 8px; margin-top: clamp(30px, 4vw, 48px); flex-wrap: wrap; }
+main.p3-page.cs-ins-index .p3-pagination-pages {
+  display: flex;
+  gap: 8px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+main.p3-page.cs-ins-index .p3-pagination :is(a, span.p3-pagination-page) {
+  min-height: 38px;
+  padding: 7px 13px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+main.p3-page.cs-ins-index .p3-pagination a {
+  background: transparent;
+  color: var(--text-primary);
+}
+main.p3-page.cs-ins-index .p3-pagination a:hover {
+  transform: none;
+  background: var(--color-mist-100);
+  border-color: var(--color-line-strong);
+}
+main.p3-page.cs-ins-index .p3-pagination span[aria-disabled="true"] {
+  min-height: 38px;
+  padding: 7px 13px;
+  border: 1px solid var(--color-line-soft);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+main.p3-page.cs-ins-index .p3-pagination .p3-pagination-page[aria-current="page"] {
+  background: var(--cs-accent-gradient);
+  border-color: transparent;
+  color: #04120e;
+  font-weight: 750;
+}
+main.p3-page.cs-ins-index .p3-pagination-status {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+/* --- the shared lead-capture aside, relit for the dark index ------------- */
+main.p3-page.cs-ins-index > aside.inline-capture,
+main.p3-page.cs-ins-index aside.inline-capture {
+  --text-primary: var(--color-paper-50);
+  --text-secondary: var(--color-ink-700);
+  --color-line: rgba(233, 247, 241, 0.13);
+  margin-top: clamp(40px, 6vw, 64px);
+  padding: clamp(22px, 3vw, 34px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-panel);
+  color: var(--text-primary);
+  box-shadow: none;
+}
+main.p3-page.cs-ins-index .inline-capture-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  gap: clamp(18px, 3vw, 40px);
+  align-items: center;
+}
+main.p3-page.cs-ins-index .inline-capture h2 { margin: 0 0 8px; font-size: 1.35rem; color: var(--text-primary); }
+main.p3-page.cs-ins-index .inline-capture p { color: var(--text-secondary); }
+main.p3-page.cs-ins-index .inline-capture .gcs-kicker { color: var(--color-evidence); }
+main.p3-page.cs-ins-index .inline-capture input[type="email"] {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+}
+main.p3-page.cs-ins-index .inline-capture .capture-email-field {
+  display: grid;
+  gap: 6px;
+  font-weight: 650;
+  color: var(--text-primary);
+}
+main.p3-page.cs-ins-index .inline-capture .cta.lead {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 12px;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--action-primary);
+  color: var(--text-on-accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) ease, transform var(--duration-instant) var(--ease-out-expo);
+}
+main.p3-page.cs-ins-index .inline-capture .cta.lead:hover {
+  background: var(--action-primary-hover);
+  transform: translateY(-1px);
+}
+main.p3-page.cs-ins-index .inline-capture :is(.capture-consent-note, .gcs-note) {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+main.p3-page.cs-ins-index .inline-capture :is(.capture-consent-note, .gcs-note) a { color: var(--color-interactive); }
+
+/* --- responsive: one uniform card river on mobile (their pattern) -------- */
+@media (max-width: 900px) {
+  main.p3-page.cs-ins-index .p3-feature-story {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  main.p3-page.cs-ins-index .p3-feature-story picture { order: -1; height: auto; }
+  main.p3-page.cs-ins-index .p3-feature-story img { height: auto; aspect-ratio: 16 / 10; }
+  main.p3-page.cs-ins-index .p3-feature-story > div > p:last-child { -webkit-line-clamp: 4; }
+  main.p3-page.cs-ins-index .p3-story-grid { grid-template-columns: 1fr; }
+  main.p3-page.cs-ins-index .inline-capture-grid { grid-template-columns: 1fr; }
+}
+
+/* ===========================================================================
+   DESIGN PASS 2026-08-26 — ARTICLE TEMPLATE (reference emulation, our palette)
+   Spec §2/§4: cinematic photo hero with H1 + byline on a scrim, lede in the
+   first viewport, evidence machinery demoted to an appendix by the sources,
+   compact source cards, photo-top Keep Reading cards, topic chips, curator
+   block over a gradient rule. Body stays our warm-paper band.
+   ======================================================================== */
+
+/* --- cinematic hero ------------------------------------------------------ */
+main.guide-shell > section.guide-hero--cinema {
+  display: flex;
+  align-items: flex-start;
+  min-height: clamp(380px, 56vh, 600px);
+  padding: clamp(22px, 3.4vw, 44px);
+  overflow: hidden;
+  border-radius: var(--radius-media);
+}
+main.guide-shell > section.guide-hero--cinema::before {
+  /* repurpose the base hero's backdrop pseudo as the scrim */
+  inset: 0;
+  z-index: -1;
+  filter: none;
+  background: linear-gradient(180deg, rgba(7, 16, 13, 0.88) 0%, rgba(7, 16, 13, 0.88) 46%, rgba(7, 16, 13, 0.42) 100%);
+}
+main.guide-shell > section.guide-hero--cinema picture {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: 0;
+  box-shadow: none;
+}
+main.guide-shell > section.guide-hero--cinema img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+main.guide-shell section.guide-hero--cinema .guide-hero-copy {
+  /* Keep the light-on-dark tokens with the top-anchored copy. Recheck
+     screenshot contrast after changing the scrim and copy alignment. */
+  --text-primary: #f6faf7;
+  --text-secondary: #d9e8e0;
+  --color-evidence: #5fe3ab;
+  position: relative;
+  max-width: 820px;
+  color: var(--text-primary);
+}
+main.guide-shell section.guide-hero--cinema .kicker {
+  color: #8fe8c6;
+  background: rgba(7, 16, 13, 0.48);
+  border-color: rgba(233, 247, 241, 0.24);
+  backdrop-filter: blur(6px);
+}
+main.guide-shell section.guide-hero--cinema h1 {
+  margin: 14px 0 0.35em;
+  color: #ffffff;
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  line-height: 1.06;
+  text-wrap: balance;
+}
+main.guide-shell section.guide-hero--cinema p.guide-byline { color: var(--text-secondary); }
+main.guide-shell section.guide-hero--cinema p.guide-byline a {
+  color: #ffffff;
+  text-decoration-color: rgba(95, 227, 171, 0.7);
+}
+@media (max-width: 820px) {
+  main.guide-shell > section.guide-hero--cinema { min-height: clamp(300px, 52vh, 460px); }
+  main.guide-shell > section.guide-hero--cinema img { aspect-ratio: auto; }
+}
+
+/* --- share row: quiet strip under the hero, not a pill card -------------- */
+main.guide-shell nav.p3-article-share {
+  width: 100%;
+  max-width: var(--container-content);
+  margin: 12px auto 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* 2026-08-27 screenshot-pixel contrast audit: the shared secondary token is
+   ink-on-paper, but the share control sits on the dark editorial rail. */
+main.guide-shell .p3-article-share .cta.secondary {
+  color: var(--color-paper-50, #f2f8f4);
+  background: var(--color-ink-900, #14201b);
+  border-color: rgba(233, 247, 241, 0.28);
+}
+
+main.guide-shell .p3-article-share .cta.secondary:hover {
+  color: var(--color-ink-950, #07100d);
+  background: var(--cs-accent-gradient);
+  border-color: transparent;
+}
+
+/* --- lede: the direct answer reads as the opening paragraph -------------- */
+main.guide-shell section.answer div.panel.evidence-line.quick-answer {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+main.guide-shell .quick-answer p.guide-lede {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--color-evidence);
+  color: var(--text-primary);
+  font-size: clamp(1.1rem, 1.6vw, 1.28rem);
+  line-height: 1.65;
+}
+
+/* --- body measure: 16px/28 rhythm (their column) ------------------------- */
+main.guide-shell section[aria-labelledby^="section-"] > p {
+  font-size: 1.02rem;
+  line-height: 1.72;
+}
+
+/* --- evidence appendix: demoted, compact, still complete ----------------- */
+main.guide-shell > section.guide-appendix {
+  display: grid;
+  gap: var(--space-5);
+  margin-block-start: var(--space-7);
+}
+main.guide-shell .guide-appendix :is(details.claim-evidence-fold, details.guide-facts-fold) {
+  margin-top: 10px;
+  background: transparent;
+  border-color: var(--color-line);
+}
+main.guide-shell .claim-evidence-fold > ol { padding: 4px 18px 16px; }
+main.guide-shell .guide-facts-fold > .table-scroll { padding: 4px 18px 16px; }
+
+/* --- sources: compact cards; the claim-support rationale clamps ---------- */
+main.guide-shell .guide-sources ol {
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+}
+main.guide-shell .guide-sources ol > li {
+  padding: 14px 16px;
+  font-size: 0.86rem;
+}
+main.guide-shell .guide-sources ol > li > span {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+/* --- Keep Reading: photo-top cards with real deks ------------------------ */
+main.guide-shell .p3-keep-reading > div { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+main.guide-shell .p3-keep-reading .cs-card {
+  --text-primary: #f2f8f4;
+  --text-secondary: #b8cbc1;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  align-content: normal;
+  padding: 0;
+  overflow: hidden;
+  background: var(--cs-ground-raise);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  color: var(--text-primary);
+}
+main.guide-shell .p3-keep-reading .cs-card::after { content: none; }
+main.guide-shell .p3-keep-reading .cs-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: var(--cs-accent-gradient);
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+main.guide-shell .p3-keep-reading .cs-card:hover::before { opacity: 0.1; }
+main.guide-shell .p3-keep-reading .p3-story-picture { display: block; }
+main.guide-shell .p3-keep-reading .p3-story-picture img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+main.guide-shell .p3-keep-reading h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin: 16px 18px 0;
+  padding: 0;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+main.guide-shell .p3-keep-reading .cs-card p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin: 8px 18px 18px;
+  padding: 0;
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+@media (max-width: 900px) {
+  main.guide-shell .p3-keep-reading > div { grid-template-columns: 1fr; }
+}
+
+/* --- topic chips + curator block over a gradient rule -------------------- */
+main.guide-shell nav.cs-article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-block-start: var(--space-7);
+}
+main.guide-shell .cs-article-tags > span {
+  margin-right: 4px;
+  color: var(--text-secondary);
+  font: 700 0.74rem/1 var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+main.guide-shell .cs-article-tags a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--cs-ground-raise);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+main.guide-shell .cs-article-tags a:hover {
+  border-color: var(--color-sage-200);
+  background: var(--cs-ground-band);
+}
+main.guide-shell hr.cs-grad-rule {
+  height: 4px;
+  margin: 0 0 24px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--cs-accent-gradient);
+  opacity: 0.85;
+}
+main.guide-shell aside.cs-curator {
+  margin-block-start: var(--space-8);
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+main.guide-shell .cs-curator-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+main.guide-shell .cs-curator-mark {
+  flex: none;
+  width: 76px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, var(--cs-ground-band) 0 40%, transparent 41%),
+    var(--cs-accent-gradient);
+}
+main.guide-shell .cs-curator .gcs-kicker { margin-bottom: 6px; }
+main.guide-shell .cs-curator p { margin: 0; max-width: 64ch; color: var(--text-secondary); }
+main.guide-shell .cs-curator a { color: var(--text-primary); font-weight: 700; }
+
+/* --- desktop rail: post-article furniture spans reading + rail ----------- */
+@media (min-width: 1160px) {
+  main.guide-shell > nav.p3-article-share,
+  main.guide-shell > section.guide-appendix,
+  main.guide-shell > section.p3-keep-reading,
+  main.guide-shell > aside.p3-article-share[data-article-share],
+  main.guide-shell > nav.cs-article-tags,
+  main.guide-shell > aside.cs-curator {
+    grid-column: 2 / 4;
+  }
+}
+
+/* --- reduced motion: hover tints appear without transition --------------- */
+@media (prefers-reduced-motion: reduce) {
+  main.p3-page.cs-ins-index :is(.p3-feature-story, .p3-story),
+  main.p3-page.cs-ins-index :is(.p3-feature-story, .p3-story)::after,
+  main.guide-shell .p3-keep-reading .cs-card::before {
+    transition: none;
+  }
+}

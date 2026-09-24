@@ -1,0 +1,740 @@
+{
+  "records": [
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-09-11",
+      "npi": "1205851052",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1205851052",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ACCESS HEALTHCARE PC",
+      "postal_prefix": "06112",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": true
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "261QX0100X",
+          "description": "Clinic/Center, Occupational Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-05-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-03-07",
+      "npi": "1083660096",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1083660096",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ASYLUM HILL FAMILY MEDICINE CENTER INC",
+      "postal_prefix": "06105",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "103TC0700X",
+          "description": "Psychologist, Clinical",
+          "primary": false
+        },
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "106H00000X",
+          "description": "Marriage & Family Therapist",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207QS0010X",
+          "description": "Family Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-06-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-06-15",
+      "npi": "1205217304",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1205217304",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALI O. EROL, MD LLC",
+      "postal_prefix": "06114",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-05-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-09-04",
+      "npi": "1083664676",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1083664676",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GREATER HARTFORD ENDOCRINOLOGY INC.",
+      "postal_prefix": "06106",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-05-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-05-08",
+      "npi": "1841937679",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1841937679",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CHARTER OAK HEALTH CENTER, INC.",
+      "postal_prefix": "06106",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": false
+        },
+        {
+          "code": "261QF0400X",
+          "description": "Clinic/Center, Federally Qualified Health Center (FQHC)",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-03-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-12-09",
+      "npi": "1881713337",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1881713337",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ASHANTI MEDICAL ASSOCIATES LLC",
+      "postal_prefix": "06112",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-10-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-05-10",
+      "npi": "1023584216",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1023584216",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HARTFORD HEALTHCARE MEDICAL GROUP SPECIALISTS, PLLC",
+      "postal_prefix": "06106",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "204F00000X",
+          "description": "Transplant Surgery",
+          "primary": false
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207T00000X",
+          "description": "Neurological Surgery",
+          "primary": false
+        },
+        {
+          "code": "2084N0400X",
+          "description": "Psychiatry & Neurology, Neurology",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": true
+        },
+        {
+          "code": "2086S0122X",
+          "description": "Surgery, Plastic and Reconstructive Surgery",
+          "primary": false
+        },
+        {
+          "code": "208800000X",
+          "description": "Urology",
+          "primary": false
+        },
+        {
+          "code": "208C00000X",
+          "description": "Colon & Rectal Surgery",
+          "primary": false
+        },
+        {
+          "code": "208G00000X",
+          "description": "Thoracic Surgery (Cardiothoracic Vascular Surgery)",
+          "primary": false
+        },
+        {
+          "code": "213ES0103X",
+          "description": "Podiatrist, Foot & Ankle Surgery",
+          "primary": false
+        },
+        {
+          "code": "363AS0400X",
+          "description": "Physician Assistant, Surgical",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-08-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-08-28",
+      "npi": "1972084861",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1972084861",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CLINISANITAS",
+      "postal_prefix": "06106",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-12-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-12-01",
+      "npi": "1023970969",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1023970969",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ASSIAH HEALTH AND WELLNESS LLC",
+      "postal_prefix": "06112",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "363LA2200X",
+          "description": "Nurse Practitioner, Adult Health",
+          "primary": false
+        },
+        {
+          "code": "363LP0808X",
+          "description": "Nurse Practitioner, Psych/Mental Health",
+          "primary": false
+        },
+        {
+          "code": "363LP2300X",
+          "description": "Nurse Practitioner, Primary Care",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-02-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-02-17",
+      "npi": "1003882812",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1003882812",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "TRINITY HEALTH OF NEW ENGLAND PROVIDER NETWORK ORGANIZATION INC",
+      "postal_prefix": "06105",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0300X",
+          "description": "Internal Medicine, Geriatric Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RH0000X",
+          "description": "Internal Medicine, Hematology",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "207RX0202X",
+          "description": "Internal Medicine, Medical Oncology",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207VM0101X",
+          "description": "Obstetrics & Gynecology, Maternal & Fetal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207VX0201X",
+          "description": "Obstetrics & Gynecology, Gynecologic Oncology",
+          "primary": false
+        },
+        {
+          "code": "208100000X",
+          "description": "Physical Medicine & Rehabilitation",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-22",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-02-09",
+      "npi": "1912928169",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1912928169",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COLLINS MEDICAL ASSOCIATES 2 PC",
+      "postal_prefix": "06105",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": false
+        },
+        {
+          "code": "207XX0005X",
+          "description": "Orthopaedic Surgery, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "2080A0000X",
+          "description": "Pediatrics, Adolescent Medicine",
+          "primary": false
+        },
+        {
+          "code": "2080P0008X",
+          "description": "Pediatrics, Neurodevelopmental Disabilities",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363AS0400X",
+          "description": "Physician Assistant, Surgical",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        },
+        {
+          "code": "363LP0200X",
+          "description": "Nurse Practitioner, Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "363LX0001X",
+          "description": "Nurse Practitioner, Obstetrics & Gynecology",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-09-10",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-03-27",
+      "npi": "1841485224",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1841485224",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CAPITOL CHEST PHYSICIANS, LLC",
+      "postal_prefix": "06106",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": true
+        },
+        {
+          "code": "207RS0012X",
+          "description": "Internal Medicine, Sleep Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-06-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-07-21",
+      "npi": "1255861050",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1255861050",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CUREMEDICA",
+      "postal_prefix": "06120",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-12-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-03-23",
+      "npi": "1073057071",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1073057071",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CLEANSLATE MEDICAL GROUP OF CONNECTICUT LLC",
+      "postal_prefix": "06105",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RA0401X",
+          "description": "Internal Medicine, Addiction Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Hartford",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-05-29",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-05-29",
+      "npi": "1114810397",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1114810397",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "EMPOWERED DEVELOPMENT LLC",
+      "postal_prefix": "06106",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CT",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": true
+        },
+        {
+          "code": "207QA0000X",
+          "description": "Family Medicine, Adolescent Medicine",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Hartford&state=CT&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 4,
+      "sanitized_record_count": 4,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Hartford&state=CT&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 16,
+      "sanitized_record_count": 14,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Hartford&state=CT&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 27,
+      "sanitized_record_count": 24,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Hartford&state=CT&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

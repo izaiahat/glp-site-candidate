@@ -1,0 +1,374 @@
+{
+  "candidate_id": "glp-approved53-ready6-brand-slug-successor-20260802-r3",
+  "effects": {
+    "ads_mutations": 0,
+    "deployments": 0,
+    "provider_calls": 0,
+    "provider_writes": 0,
+    "sheet_calls": 0,
+    "sheet_writes": 0,
+    "spend_usd": 0,
+    "tracking_clicks": 0
+  },
+  "program_keys": [
+    "Awin:100131",
+    "Awin:119269",
+    "Awin:119743",
+    "Awin:121092",
+    "Awin:121596",
+    "Awin:122084",
+    "Awin:124994",
+    "Awin:125842",
+    "Awin:127003",
+    "Awin:128203",
+    "Awin:128575",
+    "Awin:128761",
+    "Awin:35059",
+    "Awin:58169",
+    "Awin:69428",
+    "Awin:80963",
+    "Awin:81635",
+    "Awin:82737",
+    "Awin:83081",
+    "Awin:88237",
+    "Awin:93033",
+    "CJ Affiliate:2507679",
+    "CJ Affiliate:3056145",
+    "CJ Affiliate:5372369",
+    "CJ Affiliate:6031771",
+    "CJ Affiliate:6105366",
+    "CJ Affiliate:6535418",
+    "CJ Affiliate:7538517",
+    "Katalys:1162",
+    "Katalys:1185",
+    "Katalys:1286",
+    "Katalys:1304",
+    "Katalys:1409",
+    "Katalys:1516",
+    "Katalys:1518",
+    "Katalys:1519",
+    "Katalys:1520",
+    "Katalys:1536",
+    "Katalys:1538",
+    "Katalys:1546",
+    "Katalys:1565",
+    "Katalys:1576",
+    "Katalys:1581",
+    "Katalys:1602",
+    "Katalys:1610",
+    "Katalys:1612",
+    "Katalys:1614",
+    "Katalys:1630",
+    "Katalys:384",
+    "Katalys:647",
+    "Katalys:738",
+    "Partnerize:1011l6645",
+    "Partnerize:1011l6686"
+  ],
+  "reconciled_counts": {
+    "approved_programs_total": 53,
+    "core_exact_id_programs": 53,
+    "excluded_pending_or_catalog_visible": 7,
+    "provider_issued_links": 53
+  },
+  "schema": "approved-program-evidence-snapshot-v1",
+  "source_manifest": {
+    "core": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/13-coverage-routing-plan.json",
+      "role": "53 exact provider-joined/approved program identities",
+      "sha256": "04f0098c71c580f8c40007ed4fe936b1b0fb872a3b2d6db2529340e30332ff43"
+    },
+    "correction": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/141-approved-denominator-correction.json",
+      "role": "stale-60 denominator correction and seven explicit exclusions",
+      "sha256": "d1f0f4c9de371116f2e09b7e5a2bcd66f47902f0e5d513c186e7079024515d00"
+    },
+    "healthtrader": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/108-healthtrader-offer-identities.json",
+      "role": "six null-referral offers excluded from approved denominator",
+      "sha256": "58b468a54179f2bc9b5f1af697c68feee0504160ee498602d996d659380a5685"
+    },
+    "markethealth": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/75-markethealth-sovrn-fresh-authenticated-enumeration.json",
+      "role": "pending program with null primary affiliate link excluded",
+      "sha256": "14dfecaffc04914a9e32ca381c7efa6f624198722c9a2498d8de3e90d879f3a3"
+    },
+    "production_registry": {
+      "path": "/home/ubuntu/business/site-system/flagship-v2/releases/glp-excellence-remaining-spec-20260801-r5/data/program-registry.json",
+      "role": "inherited alias crosswalk only",
+      "sha256": "e5e6f2a7c1318a13cceb1c396f791a41f291096883abd6eb388602a07d725e89"
+    },
+    "tracking": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/76-held-coverage-tracking-closure-delta.json",
+      "role": "provider-issued tracking evidence",
+      "sha256": "bc1a5239ef74c10d0961fc1447697277802ac589580ffd893ab8bd4579704f95"
+    }
+  },
+  "tracking_by_program": {
+    "Awin:100131": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=100131&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:100131/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:119269": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=119269&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:119269/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:119743": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=119743&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:119743/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:121092": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=121092&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:121092/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:121596": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=121596&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:121596/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:122084": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=122084&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:122084/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:124994": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=124994&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:124994/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:125842": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=125842&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:125842/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:127003": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=127003&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:127003/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:128203": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=128203&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:128203/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:128575": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=128575&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:128575/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:128761": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=128761&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:128761/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:35059": {
+      "provider_issued_url": "https://www.awin1.com/cread.php?awinmid=35059&awinaffid=2979387&clickref=&ued=https%3A%2F%2Flyfefuel.com%2F",
+      "source_ref": "core#/programs/program_key=Awin:35059/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:58169": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=58169&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:58169/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:69428": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=69428&id=2979387",
+      "source_ref": "/home/ubuntu/business/reports/glp-affiliate-expansion-20260731/27-final-sheet-live-verify.json#/all_rows/row=182;historical_migration_hold",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:80963": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=80963&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:80963/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:81635": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=81635&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:81635/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:82737": {
+      "provider_issued_url": "https://www.awin1.com/cread.php?awinmid=82737&awinaffid=2979387&clickref=&ued=https%3A%2F%2Fwww.therapyg.com%2F",
+      "source_ref": "core#/programs/program_key=Awin:82737/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:83081": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=83081&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:83081/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:88237": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=88237&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:88237/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Awin:93033": {
+      "provider_issued_url": "https://www.awin1.com/awclick.php?mid=93033&id=2979387",
+      "source_ref": "core#/programs/program_key=Awin:93033/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "CJ Affiliate:2507679": {
+      "provider_issued_url": "https://www.jdoqocy.com/click-101822575-15154073-1652144108000",
+      "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-2507679.json#/selected_tracking_link;link_id=15154073",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "CJ Affiliate:3056145": {
+      "provider_issued_url": "https://www.tkqlhce.com/click-101822575-15734949",
+      "source_ref": "core#/programs/program_key=CJ Affiliate:3056145/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "CJ Affiliate:5372369": {
+      "provider_issued_url": "https://www.tkqlhce.com/click-101822575-14442530-1701742074000",
+      "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-5372369.json#/selected_tracking_link;link_id=14442530",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "CJ Affiliate:6031771": {
+      "provider_issued_url": "https://www.anrdoezrs.net/click-101822575-15299620-1773702587000",
+      "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-6031771.json#/selected_tracking_link;link_id=15299620",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "CJ Affiliate:6105366": {
+      "provider_issued_url": "https://www.jdoqocy.com/click-101822575-15214441-1651111940000",
+      "source_ref": "core#/programs/program_key=CJ Affiliate:6105366/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "CJ Affiliate:6535418": {
+      "provider_issued_url": "https://www.jdoqocy.com/click-101822575-15602729-1692756847000",
+      "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-6535418.json#/selected_tracking_link;link_id=15602729",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "CJ Affiliate:7538517": {
+      "provider_issued_url": "https://www.dpbolvw.net/click-101822575-17100444-1777505235000",
+      "source_ref": "tracking#/programs/program_key=CJ Affiliate:7538517",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1162": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1162&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1162/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1185": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1185&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1185/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1286": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1286&aff_id=13031",
+      "source_ref": "tracking#/programs/program_key=Katalys:1286",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1304": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1304&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1304/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1409": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1409&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1409/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1516": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1516&aff_id=13031",
+      "source_ref": "tracking#/programs/program_key=Katalys:1516",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1518": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1518&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1518/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1519": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1519&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1519/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1520": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1520&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1520/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1536": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1536&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1536/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1538": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1538&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1538/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1546": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1546&aff_id=13031",
+      "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/111-katalys-link-1546.json#/programs/0/tracking_candidates/0",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1565": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1565&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1565/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1576": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1576&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1576/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1581": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1581&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1581/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1602": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1602&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1602/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1610": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1610&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1610/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1612": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1612&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1612/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1614": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1614&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1614/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:1630": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1630&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:1630/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:384": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=384&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:384/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:647": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=647&aff_id=13031",
+      "source_ref": "tracking#/programs/program_key=Katalys:647",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Katalys:738": {
+      "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=738&aff_id=13031",
+      "source_ref": "core#/programs/program_key=Katalys:738/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Partnerize:1011l6645": {
+      "provider_issued_url": "https://prf.hn/l/55Ro98g/",
+      "source_ref": "core#/programs/program_key=Partnerize:1011l6645/canonical_sheet/full_affiliate_link",
+      "state": "candidate_registry_wired_provider_issued"
+    },
+    "Partnerize:1011l6686": {
+      "provider_issued_url": "https://prf.hn/l/xEMBe8j/",
+      "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/122-partnerize-cpap-link-create.json#/tracking_url;link_id=1101l15382778",
+      "state": "candidate_registry_wired_provider_issued"
+    }
+  }
+}

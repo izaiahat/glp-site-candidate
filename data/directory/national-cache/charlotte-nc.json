@@ -1,0 +1,705 @@
+{
+  "records": [
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-12-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-12-11",
+      "npi": "1275340572",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1275340572",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DRDS, PLLC",
+      "postal_prefix": "28226",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Obesity Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "133VN1201X",
+          "description": "Dietitian, Registered, Nutrition, Obesity and Weight Management",
+          "primary": false
+        },
+        {
+          "code": "202D00000X",
+          "description": "Integrative Medicine",
+          "primary": true
+        },
+        {
+          "code": "2083B0002X",
+          "description": "Preventive Medicine, Obesity Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-09-02",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-09-02",
+      "npi": "1922987031",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1922987031",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ATRIUM HEALTH SPECIALTY NETWORK INC",
+      "postal_prefix": "28211",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-10-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-10-28",
+      "npi": "1770035479",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1770035479",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "1800MD LLC",
+      "postal_prefix": "28226",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-07-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-01-08",
+      "npi": "1366014540",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1366014540",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ABUNDANT HEALTH & VITALITY ASSOCIATES PLLC",
+      "postal_prefix": "28210",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RB0002X",
+          "description": "Internal Medicine, Bariatric Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-06-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-03-09",
+      "npi": "1699979732",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1699979732",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CAROLINAS MEDICAL CENTER",
+      "postal_prefix": "28204",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207P00000X",
+          "description": "Emergency Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207VM0101X",
+          "description": "Obstetrics & Gynecology, Maternal & Fetal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": false
+        },
+        {
+          "code": "207XX0005X",
+          "description": "Orthopaedic Surgery, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "2080A0000X",
+          "description": "Pediatrics, Adolescent Medicine",
+          "primary": false
+        },
+        {
+          "code": "2086S0102X",
+          "description": "Surgery, Surgical Critical Care",
+          "primary": true
+        },
+        {
+          "code": "208800000X",
+          "description": "Urology",
+          "primary": false
+        },
+        {
+          "code": "2088P0231X",
+          "description": "Urology, Pediatric Urology",
+          "primary": false
+        },
+        {
+          "code": "208D00000X",
+          "description": "General Practice",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-06-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-10-10",
+      "npi": "1346979093",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1346979093",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "A DIVINE TIME LLC",
+      "postal_prefix": "28212",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "101Y00000X",
+          "description": "Counselor",
+          "primary": false
+        },
+        {
+          "code": "101YA0400X",
+          "description": "Counselor, Addiction (Substance Use Disorder)",
+          "primary": false
+        },
+        {
+          "code": "101YM0800X",
+          "description": "Counselor, Mental Health",
+          "primary": false
+        },
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "175T00000X",
+          "description": "Peer Specialist",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0401X",
+          "description": "Family Medicine, Addiction Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": false
+        },
+        {
+          "code": "261Q00000X",
+          "description": "Clinic/Center",
+          "primary": false
+        },
+        {
+          "code": "261QM0801X",
+          "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+          "primary": false
+        },
+        {
+          "code": "261QM0850X",
+          "description": "Clinic/Center, Adult Mental Health",
+          "primary": true
+        },
+        {
+          "code": "261QM0855X",
+          "description": "Clinic/Center, Adolescent and Children Mental Health",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-09-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-10-02",
+      "npi": "1639957889",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1639957889",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ACCESS DIRECT PRIMARY CARE, PLLC",
+      "postal_prefix": "28277",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2012-08-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-31",
+      "npi": "1932457983",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1932457983",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CAROLINAS MEDICAL CENTER",
+      "postal_prefix": "28204",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-08-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-05-12",
+      "npi": "1972902195",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1972902195",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ACCESS CARE MEDICAL, PLLC",
+      "postal_prefix": "28212",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-06-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2011-09-23",
+      "npi": "1750320271",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1750320271",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALFA MEDICAL CLINIC, PA",
+      "postal_prefix": "28273",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2013-04-17",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2013-04-17",
+      "npi": "1053754341",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1053754341",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CAROLINAS MEDICAL CENTER-NORTHEAST",
+      "postal_prefix": "28262",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-04-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-03-31",
+      "npi": "1073931119",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1073931119",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADVENE HEALTH GROUP, PLLC",
+      "postal_prefix": "28270",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "101YA0400X",
+          "description": "Counselor, Addiction (Substance Use Disorder)",
+          "primary": false
+        },
+        {
+          "code": "101YA0400X",
+          "description": "Counselor, Addiction (Substance Use Disorder)",
+          "primary": true
+        },
+        {
+          "code": "101YM0800X",
+          "description": "Counselor, Mental Health",
+          "primary": false
+        },
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "207QA0000X",
+          "description": "Family Medicine, Adolescent Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0401X",
+          "description": "Family Medicine, Addiction Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084A0401X",
+          "description": "Psychiatry & Neurology, Addiction Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084P0802X",
+          "description": "Psychiatry & Neurology, Addiction Psychiatry",
+          "primary": false
+        },
+        {
+          "code": "2084P0804X",
+          "description": "Psychiatry & Neurology, Child & Adolescent Psychiatry",
+          "primary": false
+        },
+        {
+          "code": "2084P2900X",
+          "description": "Psychiatry & Neurology, Pain Medicine",
+          "primary": false
+        },
+        {
+          "code": "261QM0850X",
+          "description": "Clinic/Center, Adult Mental Health",
+          "primary": false
+        },
+        {
+          "code": "261QR0400X",
+          "description": "Clinic/Center, Rehabilitation",
+          "primary": false
+        },
+        {
+          "code": "364SP0807X",
+          "description": "Clinical Nurse Specialist, Psych/Mental Health, Child & Adolescent",
+          "primary": false
+        },
+        {
+          "code": "364SP0808X",
+          "description": "Clinical Nurse Specialist, Psych/Mental Health",
+          "primary": false
+        },
+        {
+          "code": "364SP0809X",
+          "description": "Clinical Nurse Specialist, Psych/Mental Health, Adult",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-03-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-01-09",
+      "npi": "1588166060",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1588166060",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALLCARE MEDICAL CENTER,PC",
+      "postal_prefix": "28215",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-08-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1285643619",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1285643619",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CAROLINAS PHYSICIANS NETWORK INC",
+      "postal_prefix": "28262",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Charlotte",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-07-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-03-27",
+      "npi": "1063039253",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1063039253",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AMARA WELLNESS SERVICES, INC",
+      "postal_prefix": "28206",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "101YA0400X",
+          "description": "Counselor, Addiction (Substance Use Disorder)",
+          "primary": false
+        },
+        {
+          "code": "101YM0800X",
+          "description": "Counselor, Mental Health",
+          "primary": false
+        },
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "106H00000X",
+          "description": "Marriage & Family Therapist",
+          "primary": false
+        },
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084A0401X",
+          "description": "Psychiatry & Neurology, Addiction Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084P0800X",
+          "description": "Psychiatry & Neurology, Psychiatry",
+          "primary": true
+        },
+        {
+          "code": "251S00000X",
+          "description": "Community/Behavioral Health",
+          "primary": false
+        },
+        {
+          "code": "261QR0405X",
+          "description": "Clinic/Center, Rehabilitation, Substance Use Disorder",
+          "primary": false
+        },
+        {
+          "code": "324500000X",
+          "description": "Substance Abuse Rehabilitation Facility",
+          "primary": false
+        },
+        {
+          "code": "363LA2200X",
+          "description": "Nurse Practitioner, Adult Health",
+          "primary": false
+        },
+        {
+          "code": "363LP0808X",
+          "description": "Nurse Practitioner, Psych/Mental Health",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 1,
+      "sanitized_record_count": 1,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Charlotte&state=NC&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 33,
+      "sanitized_record_count": 30,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Charlotte&state=NC&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 46,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Charlotte&state=NC&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 45,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Charlotte&state=NC&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

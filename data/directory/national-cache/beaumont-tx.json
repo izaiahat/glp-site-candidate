@@ -1,0 +1,575 @@
+{
+  "records": [
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2013-01-02",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-11-18",
+      "npi": "1194061655",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1194061655",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DIAGNOSTIC GROUP INTEGRATED HEALTHCARE SYSTEM PLLC",
+      "postal_prefix": "77701",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207P00000X",
+          "description": "Emergency Medicine",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": false
+        },
+        {
+          "code": "208C00000X",
+          "description": "Colon & Rectal Surgery",
+          "primary": false
+        },
+        {
+          "code": "208D00000X",
+          "description": "General Practice",
+          "primary": false
+        },
+        {
+          "code": "208M00000X",
+          "description": "Hospitalist",
+          "primary": false
+        },
+        {
+          "code": "363LA2100X",
+          "description": "Nurse Practitioner, Acute Care",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        },
+        {
+          "code": "363LG0600X",
+          "description": "Nurse Practitioner, Gerontology",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-09-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-12-12",
+      "npi": "1225133002",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1225133002",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BEAUMONT DERMATOLOGY & FAMILY PRACTICE, LLP",
+      "postal_prefix": "77702",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-06-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1669674875",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1669674875",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AAMER WALI JANJUA, MD, PA",
+      "postal_prefix": "77702",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-08-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-07-27",
+      "npi": "1336159847",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1336159847",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ENDOCRINE CLINIC OF SOUTHEAST TEXAS",
+      "postal_prefix": "77702",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-09-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-06-29",
+      "npi": "1629174891",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1629174891",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BEAUMONT FAMILY PRACTICE ASSOCIATES PA",
+      "postal_prefix": "77706",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-04-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-04-24",
+      "npi": "1841810306",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1841810306",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ABC SURGICAL, LLC",
+      "postal_prefix": "77706",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "174400000X",
+          "description": "Specialist",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": false
+        },
+        {
+          "code": "207XS0117X",
+          "description": "Orthopaedic Surgery, Orthopaedic Surgery of the Spine",
+          "primary": true
+        },
+        {
+          "code": "208VP0014X",
+          "description": "Pain Medicine, Interventional Pain Medicine",
+          "primary": false
+        },
+        {
+          "code": "261Q00000X",
+          "description": "Clinic/Center",
+          "primary": false
+        },
+        {
+          "code": "261QP3300X",
+          "description": "Clinic/Center, Pain",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2005-07-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-11-05",
+      "npi": "1043218514",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1043218514",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "KANDASWAMY JAYARAJ MD PA",
+      "postal_prefix": "77702",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-09-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-09-14",
+      "npi": "1245788629",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1245788629",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BEAUMONT PRIMARY HEALTHCARE, PLLC",
+      "postal_prefix": "77706",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2012-05-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-09-18",
+      "npi": "1720347370",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1720347370",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AHMAD MEDICAL PC",
+      "postal_prefix": "77702",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2005-05-31",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-08-26",
+      "npi": "1922001312",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1922001312",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "SOUTHEAST TEXAS MEDICAL ASSOCIATES, LLP",
+      "postal_prefix": "77702",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "207W00000X",
+          "description": "Ophthalmology",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "261QM1300X",
+          "description": "Clinic/Center, Multi-Specialty",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-07-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-07-09",
+      "npi": "1619463536",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1619463536",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CARE FOR PA",
+      "postal_prefix": "77707",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2005-07-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-01-07",
+      "npi": "1972503373",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1972503373",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BEAUMONT ADULT MEDICINE, P.A.",
+      "postal_prefix": "77702",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-08-17",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-08-17",
+      "npi": "1649646357",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1649646357",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "SOUTHEAST TEXAS SELF-MANAGEMENT OF DIABETES",
+      "postal_prefix": "77702",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-05-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-10-18",
+      "npi": "1568085108",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1568085108",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CENTERWELL SENIOR PRIMARY CARE (TX) PA",
+      "postal_prefix": "77708",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "208D00000X",
+          "description": "General Practice",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Beaumont",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-11-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1992879068",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1992879068",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DIAGNOSTIC & INTERNAL MEDICINE CLINIC PA",
+      "postal_prefix": "77702",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "TX",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Beaumont&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 9,
+      "sanitized_record_count": 8,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Beaumont&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 45,
+      "sanitized_record_count": 42,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Beaumont&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 41,
+      "sanitized_record_count": 34,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Beaumont&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

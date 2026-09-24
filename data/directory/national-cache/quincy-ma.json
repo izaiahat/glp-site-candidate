@@ -1,0 +1,568 @@
+{
+  "records": [
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-04-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-06-20",
+      "npi": "1558756759",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1558756759",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ATRIUS HEALTH, INC.",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RG0300X",
+          "description": "Internal Medicine, Geriatric Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RI0011X",
+          "description": "Internal Medicine, Interventional Cardiology",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "2085R0202X",
+          "description": "Radiology, Diagnostic Radiology",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-09-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-04-29",
+      "npi": "1255051850",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1255051850",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GATHER HEALTH PRIMARY CARE OF MASSACHUSETTS PC",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-09-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-09-13",
+      "npi": "1255850020",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1255850020",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "3DMEDICAL LLC",
+      "postal_prefix": "02171",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-06-22",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-07-20",
+      "npi": "1144426503",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1144426503",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "QUINCY PHYSICIAN CORPORATION",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207LC0200X",
+          "description": "Anesthesiology, Critical Care Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207XX0005X",
+          "description": "Orthopaedic Surgery, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "208M00000X",
+          "description": "Hospitalist",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2005-08-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-11-05",
+      "npi": "1659372902",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1659372902",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GRANITE MEDICAL GROUP INC",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-03-26",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1790803294",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1790803294",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALICJA GUPTA MDPC",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2009-02-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2009-02-09",
+      "npi": "1477792851",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1477792851",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "PREVENTIVE MEDICINE ASSOCIATES",
+      "postal_prefix": "02171",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QA0401X",
+          "description": "Family Medicine, Addiction Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-05-10",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-06-20",
+      "npi": "1245444900",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1245444900",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ATRIUS HEALTH, INC.",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "207K00000X",
+          "description": "Allergy & Immunology",
+          "primary": false
+        },
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207VE0102X",
+          "description": "Obstetrics & Gynecology, Reproductive Endocrinology",
+          "primary": false
+        },
+        {
+          "code": "207W00000X",
+          "description": "Ophthalmology",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "2085B0100X",
+          "description": "Radiology, Body Imaging",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": false
+        },
+        {
+          "code": "208800000X",
+          "description": "Urology",
+          "primary": false
+        },
+        {
+          "code": "231H00000X",
+          "description": "Audiologist",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2009-02-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2009-02-09",
+      "npi": "1922247303",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1922247303",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "PREVENTIVE MEDICINE ASSOCIATES",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QA0401X",
+          "description": "Family Medicine, Addiction Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-03-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1952426918",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1952426918",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CROWN MEDICAL GROUP P.C.",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-07-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-07-14",
+      "npi": "1336303841",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1336303841",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "NOVA MEDICAL SERVICES",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2012-03-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-04-21",
+      "npi": "1447525241",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1447525241",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "PRATT MEDICAL GROUP, INC",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-06-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-09-11",
+      "npi": "1962446021",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1962446021",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "QUINCY MEDICAL CENTER",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        },
+        {
+          "code": "208M00000X",
+          "description": "Hospitalist",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363AS0400X",
+          "description": "Physician Assistant, Surgical",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Quincy",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-01-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-01-21",
+      "npi": "1205225752",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1205225752",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "STEWARD MEDICAL GROUP EXPRESS CARE, INC",
+      "postal_prefix": "02169",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Quincy&state=MA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 2,
+      "sanitized_record_count": 2,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Quincy&state=MA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 6,
+      "sanitized_record_count": 4,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Quincy&state=MA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 14,
+      "sanitized_record_count": 10,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Quincy&state=MA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

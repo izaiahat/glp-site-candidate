@@ -1,0 +1,570 @@
+{
+  "records": [
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-05-02",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2013-01-03",
+      "npi": "1619935558",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1619935558",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALASKA KIDNEY & DIABETES ASSOCIATION",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        },
+        {
+          "code": "207RN0300X",
+          "description": "Internal Medicine, Nephrology",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-07-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-01-28",
+      "npi": "1184232670",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1184232670",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADVANCED MEDICAL GROUP",
+      "postal_prefix": "99515",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": true
+        },
+        {
+          "code": "207ND0101X",
+          "description": "Dermatology, MOHS-Micrographic Surgery",
+          "primary": false
+        },
+        {
+          "code": "207ND0900X",
+          "description": "Dermatology, Dermatopathology",
+          "primary": false
+        },
+        {
+          "code": "207NI0002X",
+          "description": "Dermatology, Clinical & Laboratory Dermatological Immunology",
+          "primary": false
+        },
+        {
+          "code": "207NP0225X",
+          "description": "Dermatology, Pediatric Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207NS0135X",
+          "description": "Dermatology, Procedural Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "261Q00000X",
+          "description": "Clinic/Center",
+          "primary": false
+        },
+        {
+          "code": "261QU0200X",
+          "description": "Clinic/Center, Urgent Care",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-08-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2012-08-30",
+      "npi": "1013025600",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1013025600",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALASKA FAMILY CARE ASSOCIATES, LLC",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2005-12-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2019-03-25",
+      "npi": "1043294648",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1043294648",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "INTERNAL MEDICINE ASSOCIATES, LLC",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": true
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-05-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-05-16",
+      "npi": "1992496590",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1992496590",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADVANCED WEIGHT LOSS & WELLNESS CENTER OF ALASKA,LLC",
+      "postal_prefix": "99515",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "163W00000X",
+          "description": "Registered Nurse",
+          "primary": false
+        },
+        {
+          "code": "171400000X",
+          "description": "Health & Wellness Coach",
+          "primary": false
+        },
+        {
+          "code": "207K00000X",
+          "description": "Allergy & Immunology",
+          "primary": false
+        },
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RN0300X",
+          "description": "Internal Medicine, Nephrology",
+          "primary": false
+        },
+        {
+          "code": "261QI0500X",
+          "description": "Clinic/Center, Infusion Therapy",
+          "primary": false
+        },
+        {
+          "code": "363AM0700X",
+          "description": "Physician Assistant, Medical",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": true
+        },
+        {
+          "code": "363LW0102X",
+          "description": "Nurse Practitioner, Women's Health",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-09-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-10-24",
+      "npi": "1831296995",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1831296995",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALASKA HOSPITALIST GROUP LLC",
+      "postal_prefix": "99503",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-09-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-10-07",
+      "npi": "1659521888",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1659521888",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "J. ROSS TANNER, D.O. LLC",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-09-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-04-23",
+      "npi": "1699872960",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1699872960",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALASKA FAMILY MEDICAL CARE LLC",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-11-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-11-23",
+      "npi": "1215531199",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1215531199",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALASKA IPS MEDICAL SERVICES LLC",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-07-31",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-09-01",
+      "npi": "1114441227",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1114441227",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "JEFFREY D MEDLAND, LLC",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-10-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-10-23",
+      "npi": "1639645021",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1639645021",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALASKA MEDICAL SPECIALTY GROUP LLC",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-01-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-11-13",
+      "npi": "1013727437",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1013727437",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALTEA MEDICAL ALASKA LLC",
+      "postal_prefix": "99504",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RG0300X",
+          "description": "Internal Medicine, Geriatric Medicine",
+          "primary": true
+        },
+        {
+          "code": "208100000X",
+          "description": "Physical Medicine & Rehabilitation",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-01-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-01-21",
+      "npi": "1306022314",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1306022314",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "KONRAD C KALTENBORN MD",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-10-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-01-02",
+      "npi": "1619370319",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1619370319",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALASKA REGIONAL MEDICAL GROUP, LLC",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Anchorage",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-11-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-01-19",
+      "npi": "1245834126",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1245834126",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ANCHORAGE INPATIENT SERVICES LLC",
+      "postal_prefix": "99508",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "AK",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": true
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Anchorage&state=AK&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 6,
+      "sanitized_record_count": 6,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Anchorage&state=AK&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 47,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Anchorage&state=AK&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 37,
+      "sanitized_record_count": 34,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Anchorage&state=AK&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

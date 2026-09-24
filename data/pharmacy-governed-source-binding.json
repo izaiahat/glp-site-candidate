@@ -1,0 +1,25 @@
+{
+  "candidate_raw_source": {
+    "bytes": 161263,
+    "path": "/home/ubuntu/business/site-system/flagship-v2/candidates/glp-design-pass6-staged-20260830/data/pharmacy-research-backfill-20260830.json",
+    "sha256": "17fe9953be4ab69afae004a922a3f9dffc691600661381ff4ed45e056a45dc95"
+  },
+  "candidate_render_input": {
+    "bytes": 1015552,
+    "path": "/home/ubuntu/business/site-system/flagship-v2/candidates/glp-design-pass6-staged-20260830/data/phase3-pharmacy-render-input.json",
+    "sha256": "7e2b63b6e337ca3582bb6419001a35a38e1e527ff180cd13da90b635a8c54ce8"
+  },
+  "governed_manifest": {
+    "bytes": 2999,
+    "path": "/home/ubuntu/business/site-system/flagship-v2/governed/research/snapshots/pharmacy-20260830-pass6-7e2b63b6/MANIFEST.json",
+    "sha256": "466b71826d0d3b9f54418610ced8455d0b6f8ab00791924da12b8710b5068699"
+  },
+  "governed_pointer": {
+    "bytes": 1096,
+    "path": "/home/ubuntu/business/site-system/flagship-v2/governed/research/current-manifest.json",
+    "sha256": "6f7509d72dae0404021c17d932148c2fcad683bbe813292e45cdfbb423048571"
+  },
+  "schema": "glp.candidate-governed-pharmacy-binding.v1",
+  "snapshot_id": "pharmacy-20260830-pass6-7e2b63b6",
+  "status": "PASS_SYNCED"
+}

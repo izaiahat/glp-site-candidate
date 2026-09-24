@@ -1,0 +1,134 @@
+{
+  "captured_at_utc": "2026-09-09T18:39:43.070282+00:00",
+  "display_name": "TRT Nation",
+  "effects": {
+    "accounts_created": 0,
+    "forms_submitted": 0,
+    "tracking_clicks": 0
+  },
+  "fields": {
+    "cancellation": {
+      "quote": "**Nation Medical Inc Reserves the right to hold a No Refund and No Return policy on all purchases made.**\n\n**PRESCRIPTION PURCHASE:**\n\nWhen you purchase your prescription, you expressly acknowledge and agree that Nation Medical Inc. (or a third party payment processor) is authorized to charge you for the price of your chosen plan in addition to any and other charges set forth during the purchase process.\n\n**PRESCRIPTION REFILLS:**\n\nPatient is required to visit the following link on our website [https://trtnation.com/pay/existing-patient/](https://trtnation.com/trt-nation-refill-validation/) to request any and all prescription refills. Nation Medical will NOT automatically refill prescriptions on patients behalf.\n\n**TERMINATION FOR NON PAYMENT:** The patient agrees that any treatment they have purchased will be charged for the given 2.5 month period. TRT NATION shall be in no way liable for any damages caused by the termination of such services. TRT NATION reserves the right to terminate services at any time for any account in delinquency.\n\n**COLLECTION COST:** Patient agrees to pay all fees associated with the collection of the delinquent account under this agreement or otherwise in enforcing the terms of this agreement. Any such litigation shall be performed in the state of Florida.\n\nTRT NATION cannot be held liable for any interruptions of the provided services. TRT Nation reserves the right to terminate services at any time.",
+      "source_url": "https://trtnation.com/cancellation-policy/",
+      "value": "Reported consumer policy: \"Nation Medical Inc Reserves the right to hold a No Refund and No Return policy on all purchases made.\" It also states: \"Nation Medical will NOT automatically refill prescriptions on patients behalf.\" UNKNOWN weight-loss-specific cancellation timing: the general policy references a 2.5-month charging period, so it must not replace the treatment-specific purchase period. No affiliate terms classification or legal determination is made.",
+      "verified_as_of": "2026-09-09"
+    },
+    "consultation_fee": {
+      "quote": "Medications are prescribed by licensed healthcare providers and dispensed through regulated U.S. pharmacies following a medical screening and provider consultation.",
+      "source_url": "https://trtnation.com/weight-loss-therapy/",
+      "value": "UNKNOWN separate consultation fee. The captured weight-loss page describes screening and a provider consultation but does not assign a separate consultation price in this passage; no zero-fee inference is made.",
+      "verified_as_of": "2026-09-09"
+    },
+    "eligibility": {
+      "quote": "Eligibility is determined by a healthcare provider and isn’t guaranteed. Typically, candidates include Adults 25+ with a BMI over 25.",
+      "source_url": "https://trtnation.com/weight-loss-therapy/",
+      "value": "Reported weight-loss criteria: typically adults 25+ with BMI over 25; eligibility is determined by a healthcare provider and is not guaranteed. These are provider-reported criteria, not a publisher determination.",
+      "verified_as_of": "2026-09-09"
+    },
+    "first_month_price": {
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-trt-nation/authoring/trt-nation-c2/captures/weight-loss-therapy.md",
+      "capture_sha256": "a21c34d1a566b170c80734bdd461dfc342d5aaf0e566773dc8208bdd58ec0a4e",
+      "quote": "## Tirzepatide\n\nA breakthrough dual-action injectable for significant, sustainable weight loss by reducing appetite and improving metabolic health.\n\n$219/mo\n\n✓ Significant Weight Loss\n\n✓ Reduces Appetite\n\n✓ Improves Metabolism\n\n✓ Weekly Dosing\n\n[Customize Treatment](https://trtnation.com/mwllw/)\n\n\\*3 months minimum purchase",
+      "source_url": "https://trtnation.com/weight-loss-therapy/",
+      "value": "UNKNOWN exact initial checkout total. The tirzepatide offer reports $219/mo with a three-month minimum purchase; this is not a standalone first-month charge. No promotional reduction or all-in total is asserted.",
+      "verified_as_of": "2026-09-09"
+    },
+    "legitscript": {
+      "quote": "[LegitScript Certified](https://www.legitscript.com/websites/?checker_keywords=trtnation.com)",
+      "source_url": "https://trtnation.com/faqs/",
+      "value": "UNKNOWN independent LegitScript certification status. The provider FAQ publishes the quoted certification link; it was not followed and is only a first-party claim, not independent certification.",
+      "verified_as_of": "2026-09-09"
+    },
+    "monthly_price": {
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-trt-nation/authoring/trt-nation-c2/captures/weight-loss-therapy.md",
+      "capture_sha256": "a21c34d1a566b170c80734bdd461dfc342d5aaf0e566773dc8208bdd58ec0a4e",
+      "quote": "At TRT Nation, we prioritize transparency and accessibility so you can focus on your health, not unexpected price increases. That’s why we offer tirzepatide at a consistent rate of $219 per month, regardless of dosage.",
+      "source_url": "https://trtnation.com/weight-loss-therapy/",
+      "value": "Reported tirzepatide rate: $219 per month regardless of dosage. This is a medication offer rate, not a verified all-in recurring charge.",
+      "verified_as_of": "2026-09-09"
+    },
+    "pharmacy_type": {
+      "quote": "At TRT Nation, we compound every tirzepatide prescription with vitamin B12",
+      "source_url": "https://trtnation.com/weight-loss-therapy/",
+      "value": "Reported formulation: tirzepatide compounded with vitamin B12. UNKNOWN dispensing pharmacy identity and 503A/503B classification. No independent pharmacy licensure, product approval, safety, effectiveness, or branded-supply verification is asserted.",
+      "verified_as_of": "2026-09-09"
+    },
+    "shipping_wait": {
+      "quote": "Once your prescription is reviewed and approved by a TRT Nation provider, your medication is typically processed and shipped within 1–3 business days. Standard delivery takes 3–5 business days depending on your location, so most patients have their medication in hand within one week of approval.",
+      "source_url": "https://trtnation.com/faqs/",
+      "value": "General FAQ reports processing and shipment typically within 1–3 business days after prescription approval and standard delivery taking 3–5 business days depending on location, with most patients receiving medication within one week of approval. This is a general provider estimate, not a guaranteed weight-loss-specific or intake-to-delivery deadline.",
+      "verified_as_of": "2026-09-09"
+    },
+    "states_served": {
+      "quote": "TRT Nation currently serves patients in the majority of U.S. states. State-by-state telehealth regulations vary, and some treatments may not be available in certain states. During your online intake, your eligibility by state is confirmed automatically before you proceed. We are continuously expanding our coverage.",
+      "source_url": "https://trtnation.com/faqs/",
+      "value": "UNKNOWN definitive treatment-specific state list. The general FAQ reports service in the majority of U.S. states, says some treatments may be unavailable in certain states, and confirms state eligibility during intake. This is not an all-state weight-loss availability claim.",
+      "verified_as_of": "2026-09-09"
+    }
+  },
+  "first_party_source_captures": {
+    "bytes": 1444,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-trt-nation/authoring/trt-nation-c2/captures/capture-index.json",
+    "sha256": "2d7524c4b6a26757feb2f4939b8932cb2599998041ff8ce22d7b826a214aca08"
+  },
+  "official_url": "https://trtnation.com/weight-loss-therapy/",
+  "program_id": "trt-nation",
+  "provider_dynamic_profile": {
+    "calculator": {
+      "checked_as_of": "2026-09-09",
+      "evidence_gap_copy": "Enter the actual treatment-specific checkout and subsequent charges manually. A monthly offer rate and minimum purchase do not establish the all-in initial or recurring total; separate consultation and other applicable charges remain UNKNOWN.",
+      "first_month_base_usd": null,
+      "mode": "manual",
+      "one_time_fee_usd": null,
+      "price_context": "Reported tirzepatide offer is $219/mo with a three-month minimum purchase. It is not established as a standalone first-month or all-in checkout charge.",
+      "recurring_month_base_usd": null,
+      "source_url": "https://trtnation.com/weight-loss-therapy/"
+    },
+    "evidence_bindings": [
+      {
+        "evidence_sha256": "d1d4c95db39469e9501074f4343b92b0e29d0fc1db4f015de503496a1793b0f5",
+        "evidence_text": "## Tirzepatide\n\nA breakthrough dual-action injectable for significant, sustainable weight loss by reducing appetite and improving metabolic health.\n\n$219/mo\n\n✓ Significant Weight Loss\n\n✓ Reduces Appetite\n\n✓ Improves Metabolism\n\n✓ Weekly Dosing\n\n[Customize Treatment](https://trtnation.com/mwllw/)\n\n\\*3 months minimum purchase\n\n![Now Available](https://trtnation.com/wp-content/uploads/2025/12/now-available-scaled.jpg)\n\n![Phentermine](https://trtnation.com/wp-content/uploads/2025/12/Phentermine-Product-150x150.png)\n\n## Phentermine\n\nA powerful, short-term oral prescription used to suppress appetite and jump-start your weight loss journey quickly.\n\n$99.99/mo\n\n✓ Curbs Hunger\n\n✓ Increases Energy\n\n✓ Kickstarts Weight Loss\n\n✓ Simple Tablet\n\n[Customize Treatment](https://trtnation.com/mwllw/)\n\n\\*Includes 30 day supply (30ct \\| 37.5mg tablets)",
+        "fields": [
+          "taxonomy.brand_name_tags",
+          "taxonomy.delivery_form_tags",
+          "taxonomy.molecule_tags",
+          "taxonomy.treatment_type_tags",
+          "verified_as_of"
+        ],
+        "source_url": "https://trtnation.com/weight-loss-therapy/",
+        "verified_as_of": "2026-09-09"
+      },
+      {
+        "evidence_sha256": "d1114ecb04ab99d9976422b4107dcaf45368b1dfbab8f1de1258ad35de03998e",
+        "evidence_text": "## Tirzepatide\n\nA breakthrough dual-action injectable for significant, sustainable weight loss by reducing appetite and improving metabolic health.\n\n$219/mo\n\n✓ Significant Weight Loss\n\n✓ Reduces Appetite\n\n✓ Improves Metabolism\n\n✓ Weekly Dosing\n\n[Customize Treatment](https://trtnation.com/mwllw/)\n\n\\*3 months minimum purchase",
+        "fields": [
+          "calculator.checked_as_of",
+          "calculator.evidence_gap_copy",
+          "calculator.first_month_base_usd",
+          "calculator.mode",
+          "calculator.one_time_fee_usd",
+          "calculator.price_context",
+          "calculator.recurring_month_base_usd",
+          "calculator.source_url"
+        ],
+        "source_url": "https://trtnation.com/weight-loss-therapy/",
+        "verified_as_of": "2026-09-09"
+      }
+    ],
+    "taxonomy": {
+      "brand_name_tags": [],
+      "delivery_form_tags": [
+        "injectable",
+        "oral"
+      ],
+      "molecule_tags": [
+        "tirzepatide"
+      ],
+      "treatment_type_tags": []
+    },
+    "verified_as_of": "2026-09-09",
+    "version": 1
+  },
+  "schema": "program-deep-research-v1",
+  "status": "PASS_LIMITED"
+}

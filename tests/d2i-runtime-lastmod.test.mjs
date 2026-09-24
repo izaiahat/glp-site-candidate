@@ -1,0 +1,54 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {normalizedHash,resolveRouteLastmod,resolveCatalogDate,loadRuntimePredecessor,runtimeOnlyLastmodProof} from '../scripts/postbuild-aeo-surface.mjs';
+import {stageCandidateExportPolicy} from '../src/candidate-export-policy.mjs';
+const root='/home/ubuntu/business/site-system/flagship-v2/qa/sealed-d2h-review-20260909T052453Z';
+const manifest='/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/D2/D2h/SEALED-FILES.json';
+const env={GLP_LASTMOD_RUNTIME_PREDECESSOR_ROOT:root,GLP_LASTMOD_RUNTIME_PREDECESSOR_MANIFEST:manifest,GLP_LASTMOD_RUNTIME_PREDECESSOR_MANIFEST_SHA256:'414ce71e33e2b9ec3fd760f8cdc4aeccf77df4c7e8e97e0e98f3602452eb0221'};
+const sha=s=>createHash('sha256').update(s).digest('hex');
+const routes=['/authors/clinic-scout-editorial-team/','/authors/izaiah-tilton/','/editorial-guidelines/','/how-we-make-money/','/how-we-rate/','/insights/','/insights/page/2/','/insights/page/3/','/insights/page/4/','/review-standards/'];
+for(const route of routes)test('real predecessor: runtime-only update keeps recorded date '+route,async()=>{
+ const prior=await loadRuntimePredecessor(env),recorded=prior.provenance.pages[route];
+ const before=await prior.readPage(route),html=stageCandidateExportPolicy(before,{stage:'production-seal'});
+ assert.notEqual(html,before);assert.notEqual(normalizedHash(html),recorded.content_sha256);
+ const proof=await runtimeOnlyLastmodProof({route,html,recorded,predecessor:prior,declared:true});assert.ok(proof,route);
+ const args={route,hash:normalizedHash(html),recorded,releaseDate:'2099-01-01',declared:true,runtimeProof:proof};
+ assert.deepEqual(resolveRouteLastmod(args),{lastmod:recorded.lastmod,action:'declared_runtime_only_kept_recorded'});
+ assert.equal(await runtimeOnlyLastmodProof({route,html,recorded,predecessor:prior,declared:false}),null);
+ assert.throws(()=>resolveRouteLastmod({...args,declared:false}),/lastmod_provenance_stale/);
+ const edited=html.replace('</body>','<p>Actual editorial content change</p></body>');assert.notEqual(edited,html);
+ assert.equal(await runtimeOnlyLastmodProof({route,html:edited,recorded,predecessor:prior,declared:true}),null);
+ assert.throws(()=>resolveRouteLastmod({...args,hash:normalizedHash(edited),declared:false,runtimeProof:null}),/lastmod_provenance_stale/);
+ assert.equal(resolveRouteLastmod({...args,hash:normalizedHash(edited),runtimeProof:null}).lastmod,'2099-01-01');
+ console.log(JSON.stringify({route,predecessor_sha256:sha(before),recorded_lastmod:recorded.lastmod,proof}));
+});
+test('loader refuses missing partial inputs, bad manifest/source/page hashes; no algorithm migration',async()=>{
+ assert.equal(await loadRuntimePredecessor({}),null);
+ await assert.rejects(loadRuntimePredecessor({GLP_LASTMOD_RUNTIME_PREDECESSOR_ROOT:root}),/runtime_predecessor_inputs/);
+ await assert.rejects(loadRuntimePredecessor({...env,GLP_LASTMOD_RUNTIME_PREDECESSOR_MANIFEST_SHA256:'0'.repeat(64)}),/manifest_hash/);
+ const read=async p=>{const s=await readFile(p,'utf8');return p.endsWith('/scripts/postbuild-aeo-surface.mjs')?s+'tampered':s};
+ await assert.rejects(loadRuntimePredecessor(env,read),/file_hash/);
+ const prior=await loadRuntimePredecessor(env,async p=>{const s=await readFile(p,'utf8');return p.endsWith('/how-we-rate/index.html')?s+'tampered':s});
+ await assert.rejects(prior.readPage('/how-we-rate/'),/file_hash/);
+ await assert.rejects(prior.readPage('/../escape/'),/route_invalid/);
+});
+test('byte proof cannot substitute a different recorded provenance or forged proof',async()=>{
+ const prior=await loadRuntimePredecessor(env),route='/how-we-rate/',before=await prior.readPage(route),html=stageCandidateExportPolicy(before,{stage:'production-seal'}),recorded=prior.provenance.pages[route];
+ assert.equal(await runtimeOnlyLastmodProof({route,html,recorded:{...recorded,content_sha256:'a'.repeat(64)},declared:true,predecessor:prior}),null);
+ const proof=await runtimeOnlyLastmodProof({route,html,recorded,declared:true,predecessor:prior});
+ assert.throws(()=>resolveRouteLastmod({route,hash:normalizedHash(html),recorded,releaseDate:'2099-01-01',runtimeProof:proof,declared:false}),/stale/);
+ assert.equal(resolveRouteLastmod({route,hash:'wrong',recorded,releaseDate:'2099-01-01',runtimeProof:proof,declared:true}).action,'declared_change_refreshed');
+ assert.equal(resolveRouteLastmod({route,hash:normalizedHash(html),recorded,releaseDate:'2099-01-01',runtimeProof:proof,declared:true,frozenDate:'2026-07-01'}).lastmod,'2026-07-01');
+ assert.equal(resolveCatalogDate(route,{canonical_path:route,updated_at:'2026-08-01'},'2026-08-01',{lastmod:'2099-01-01'}).lastmod,'2026-08-01');
+});
+test('final-stage differences are not guessed stage6 preimages (explicit algorithm fixture)',async()=>{
+ const prior=await loadRuntimePredecessor(env),route='/how-we-rate/',stage6=await prior.readPage(route),recorded={content_sha256:normalizedHash(stage6),lastmod:'2026-09-08'};
+ const final=stage6.replace('</body>','<p>SIMULATED downstream-only transform</p></body>');assert.notEqual(normalizedHash(final),recorded.content_sha256);
+ const fixture={manifestSha256:'fixture',provenance:{pages:{[route]:recorded}},readPage:async()=>final};
+ const html=stageCandidateExportPolicy(stage6,{stage:'production-seal'});
+ const proof=await runtimeOnlyLastmodProof({route,html,recorded,declared:true,predecessor:fixture});assert.ok(proof);
+ assert.equal(proof.restored_content_sha256,recorded.content_sha256);
+ assert.equal(await runtimeOnlyLastmodProof({route,html:html.replace('</body>','<p>Unrelated edit</p></body>'),recorded,declared:true,predecessor:fixture}),null);
+});

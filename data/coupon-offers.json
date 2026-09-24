@@ -1,0 +1,16 @@
+{
+  "schema": "glp-coupon-offers-v1",
+  "updated_at": "2026-08-22T00:00:00Z",
+  "source_contract": {
+    "write_owner": "affiliate-machines",
+    "consumers": [
+      "site-build"
+    ],
+    "max_age_days": 45,
+    "status_values": [
+      "VERIFIED",
+      "HELD"
+    ]
+  },
+  "offers": []
+}

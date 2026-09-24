@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" width="420" height="96" role="img" aria-label="Clinic Scout">
+  <!-- Fable D1 decision: wordmark only, no icon. -->
+  <defs>
+    <linearGradient id="cs-wordmark" x1="0%" y1="38%" x2="100%" y2="62%">
+      <stop offset="0" stop-color="#17a87e"/>
+      <stop offset=".38" stop-color="#3fd9a4"/>
+      <stop offset=".72" stop-color="#6fc6ee"/>
+      <stop offset="1" stop-color="#a99bf2"/>
+    </linearGradient>
+  </defs>
+  <text x="18" y="63" font-family="Manrope,system-ui,sans-serif" font-size="52" font-weight="800" letter-spacing="-1" fill="#f4f7f4">Clinic<tspan fill="url(#cs-wordmark)"> Scout</tspan></text>
+</svg>

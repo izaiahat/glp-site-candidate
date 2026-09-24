@@ -1,0 +1,560 @@
+{
+  "records": [
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-01-29",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-07-13",
+      "npi": "1104962331",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1104962331",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "SOUTHLAKE CLINIC INC., P.S.",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": false
+        },
+        {
+          "code": "207RI0011X",
+          "description": "Internal Medicine, Interventional Cardiology",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "207RS0012X",
+          "description": "Internal Medicine, Sleep Medicine",
+          "primary": false
+        },
+        {
+          "code": "207UN0901X",
+          "description": "Nuclear Medicine, Nuclear Cardiology",
+          "primary": false
+        },
+        {
+          "code": "208M00000X",
+          "description": "Hospitalist",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-11-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2009-09-22",
+      "npi": "1043490543",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1043490543",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ASSOCIATED VALLEY PROVIDERS PLLC",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "213ES0103X",
+          "description": "Podiatrist, Foot & Ankle Surgery",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-02-26",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2019-02-26",
+      "npi": "1598222564",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1598222564",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "EASTSIDE TMS X WELLNESS CENTER",
+      "postal_prefix": "98057",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "363LP0808X",
+          "description": "Nurse Practitioner, Psych/Mental Health",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2010-12-02",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-12-02",
+      "npi": "1316249907",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1316249907",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ASSOCIATED VALLEY PROVIDERS PLLC",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "213ES0103X",
+          "description": "Podiatrist, Foot & Ankle Surgery",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-09-27",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-09-27",
+      "npi": "1467325126",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1467325126",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ELEVATED MEDICAL HOMES PLLC",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2005-10-17",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1194714790",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1194714790",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DALE E EPPER MD",
+      "postal_prefix": "98059",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-09-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-06",
+      "npi": "1699284471",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1699284471",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "IORA HEALTH WASHINGTON PHYSICIANS, P.C.",
+      "postal_prefix": "98057",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-11-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-08-08",
+      "npi": "1407566961",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1407566961",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "EUGENE GU MD INC PS",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "251B00000X",
+          "description": "Case Management",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-08-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-09-07",
+      "npi": "1003283359",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1003283359",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "IORA SENIOR HEALTH, LLC",
+      "postal_prefix": "98057",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-11-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-04-20",
+      "npi": "1356419212",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1356419212",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HOWARD B MILLER MD INC PS",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-05-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-12-01",
+      "npi": "1871231555",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1871231555",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "JOSHUA HIEP LE, DO, PLLC",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "261Q00000X",
+          "description": "Clinic/Center",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-03-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1609909860",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1609909860",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "JS MEDICAL CLINIC PLLC",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2009-11-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-09-11",
+      "npi": "1205164639",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1205164639",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "MARANATHA MEDICAL CLINIC INC P S",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2009-01-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-07-06",
+      "npi": "1124264577",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1124264577",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "KAISER FOUNDATION HEALTH PLAN OF WASHINGTON",
+      "postal_prefix": "98057",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "261QM1300X",
+          "description": "Clinic/Center, Multi-Specialty",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Renton",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2009-02-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2009-02-11",
+      "npi": "1710126909",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1710126909",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "PACIFIC RHEUMATOLOGY ASSOCIATES INC PS",
+      "postal_prefix": "98055",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Renton&state=WA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 1,
+      "sanitized_record_count": 1,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Renton&state=WA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 30,
+      "sanitized_record_count": 28,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Renton&state=WA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 18,
+      "sanitized_record_count": 14,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Renton&state=WA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

@@ -1,0 +1,525 @@
+{
+  "records": [
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-11-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-10-12",
+      "npi": "1124560081",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1124560081",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ARIA HEALTH PHYSICIAN SERVICES",
+      "postal_prefix": "19114",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2009-10-26",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2009-10-26",
+      "npi": "1104152198",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1104152198",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "2000 SG ASSOCIATES PC",
+      "postal_prefix": "19130",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-05-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1114972114",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1114972114",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "2126 FAIRMOUNT MEDICAL, INC.",
+      "postal_prefix": "19130",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-11-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-11-18",
+      "npi": "1508936071",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1508936071",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CHESTNUT HILL CLINIC COMPANY, LLC",
+      "postal_prefix": "19118",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QS0010X",
+          "description": "Family Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207VM0101X",
+          "description": "Obstetrics & Gynecology, Maternal & Fetal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207VX0201X",
+          "description": "Obstetrics & Gynecology, Gynecologic Oncology",
+          "primary": false
+        },
+        {
+          "code": "2084P0800X",
+          "description": "Psychiatry & Neurology, Psychiatry",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": false
+        },
+        {
+          "code": "225100000X",
+          "description": "Physical Therapist",
+          "primary": false
+        },
+        {
+          "code": "367A00000X",
+          "description": "Advanced Practice Midwife",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-06-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1699979161",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1699979161",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "7622 MEDICAL CENTER DBA 1900 S.G. ASSOCIATES",
+      "postal_prefix": "19130",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-11-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-05-02",
+      "npi": "1902976202",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1902976202",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "7622 MEDICAL CENTER, INC.",
+      "postal_prefix": "19150",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "111N00000X",
+          "description": "Chiropractor",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-09-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-05-28",
+      "npi": "1366546772",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1366546772",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DREXEL UNIVERSITY",
+      "postal_prefix": "19107",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-05-04",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-05-04",
+      "npi": "1316520646",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1316520646",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "A2Z HEALTHCARE, LLC",
+      "postal_prefix": "19147",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "111N00000X",
+          "description": "Chiropractor",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "208100000X",
+          "description": "Physical Medicine & Rehabilitation",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-08-31",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1053423756",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1053423756",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "A. FERREIRA & H. BUSCHIAZZO, M.D.S",
+      "postal_prefix": "19124",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-01-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-01-13",
+      "npi": "1538211552",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1538211552",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "EINSTEIN PRACTICE PLAN, INC",
+      "postal_prefix": "19141",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207VM0101X",
+          "description": "Obstetrics & Gynecology, Maternal & Fetal Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-07-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-02-02",
+      "npi": "1265631626",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1265631626",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ACADEMY ROAD MEDICAL ASSOCIATES, LLC",
+      "postal_prefix": "19114",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-05-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-06-13",
+      "npi": "1487855227",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1487855227",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "A.K.MEDICAL ASSOCIATES.P.C",
+      "postal_prefix": "19131",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-06-17",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-05-05",
+      "npi": "1598700460",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1598700460",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ENDOCRINE METABOLIC ASSOC PC",
+      "postal_prefix": "19114",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-08-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-05",
+      "npi": "1225648140",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1225648140",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ACTION HEALTH CENTERS INC",
+      "postal_prefix": "19133",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Philadelphia",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-04-27",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-04-27",
+      "npi": "1053766089",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1053766089",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ACUTE CARE PHYSICIANS OF PHILADELPHIA LLC",
+      "postal_prefix": "19145",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "PA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 1,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Philadelphia&state=PA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 24,
+      "sanitized_record_count": 22,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Philadelphia&state=PA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 48,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Philadelphia&state=PA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 49,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Philadelphia&state=PA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

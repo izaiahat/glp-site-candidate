@@ -1,0 +1,129 @@
+{
+  "schema": "program-deep-research-v1",
+  "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+  "display_name": "SkinnyRx - #1 GLP Weight Loss Provider",
+  "official_url": "https://skinnyrx.com/",
+  "captured_at_utc": "2026-09-10T16:06:25.672935+00:00",
+  "status": "PASS_LIMITED",
+  "effects": {"accounts_created": 0, "forms_submitted": 0, "tracking_clicks": 0},
+  "first_party_source_captures": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-skinnyrx-1-glp-weight-loss-provider-review/authoring/skinnyrx-1-glp-weight-loss-provider-review-c2/captures/capture-index.json",
+    "sha256": "7fcc9d8e25ec31868b89f440e640e860a94950206221a5e0204f96a3b52f5d28",
+    "bytes": 2460
+  },
+  "fields": {
+    "first_month_price": {
+      "amount_usd": null,
+      "reported_offers": [
+        {"medication": "compounded tirzepatide", "form": "tablets", "amount_usd": 199, "period": "first_month", "quote": "### Compounded Tirzepatide Tablets\n\nOnce-daily tablet with tirzepatide\n\n$199 first month"},
+        {"medication": "compounded tirzepatide", "form": "injectable", "amount_usd": 99, "period": "first_month", "quote": "### Compounded Injectable Tirzepatide\n\nOnce-weekly injection with tirzepatide\n\n$99 first month"},
+        {"medication": "compounded semaglutide", "form": "tablets", "amount_usd": 149, "period": "first_month", "quote": "### Compounded Semaglutide Tablets\n\nOnce-daily tablet with semaglutide\n\n$149 first month"},
+        {"medication": "compounded semaglutide", "form": "injectable", "amount_usd": 99, "period": "first_month", "quote": "### Compounded Injectable Semaglutide\n\nOnce-weekly injection with semaglutide\n\n$99 first month"}
+      ],
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-skinnyrx-1-glp-weight-loss-provider-review/authoring/skinnyrx-1-glp-weight-loss-provider-review-c2/captures/c4d0696f02e68b6d-capture.json",
+      "capture_sha256": "422b063a5719bb3e84b6644e300b2736111e845ad8a9140e1597569ddfa29745",
+      "value": "SkinnyRx reports first-month promotional prices for compounded medications: tirzepatide tablets $199; injectable tirzepatide $99; semaglutide tablets $149; injectable semaglutide $99. These are formulation-specific first-month offers, not established renewal charges or an independently verified all-in checkout total.",
+      "quote": "### Compounded Tirzepatide Tablets\n\nOnce-daily tablet with tirzepatide\n\n$199 first month\n\n[get started\\\\\n\\\\\nget started](https://skinnyrx.com/intake) [learn more\\\\\n\\\\\nlearn more](https://skinnyrx.com/products/tirzepatide-tablets)\n\nMicrodose available\n![Compounded Injectable Tirzepatide](https://skinnyrx.com/assets/injectable-tirzepatide-Cf0j6ZNq.png)\n\n### Compounded Injectable Tirzepatide\n\nOnce-weekly injection with tirzepatide\n\n$99 first month\n\n[get started\\\\\n\\\\\nget started](https://skinnyrx.com/intake) [learn more\\\\\n\\\\\nlearn more](https://skinnyrx.com/products/tirzepatide-injectable)\n\n![Compounded Semaglutide Tablets](https://skinnyrx.com/assets/semaglutide-tablets-BdqGi8IC.png)\n\n### Compounded Semaglutide Tablets\n\nOnce-daily tablet with semaglutide\n\n$149 first month\n\n[get started\\\\\n\\\\\nget started](https://skinnyrx.com/intake) [learn more\\\\\n\\\\\nlearn more](https://skinnyrx.com/products/semaglutide-tablets)\n\nMicrodose available\n![Compounded Injectable Semaglutide](https://skinnyrx.com/assets/injectable-semaglutide-DrXjGrwD.png)\n\n### Compounded Injectable Semaglutide\n\nOnce-weekly injection with semaglutide\n\n$99 first month",
+      "source_url": "https://skinnyrx.com/",
+      "verified_as_of": "2026-09-10"
+    },
+    "monthly_price": {
+      "amount_usd": null,
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-skinnyrx-1-glp-weight-loss-provider-review/authoring/skinnyrx-1-glp-weight-loss-provider-review-c2/captures/1823f455cad2b4d6-capture.json",
+      "capture_sha256": "9f50a6f7c9c2244c43e5a31c72c5d4272bcbac2fb95b12df69760e9a13379ca6",
+      "value": "UNKNOWN recurring monthly dollar amounts. The captured product pages label their prices first month; the terms describe automatic subscription billing at intervals disclosed during checkout but publish no formulation-specific renewal amount. Do not carry introductory prices forward as renewal prices.",
+      "quote": "Certain products and services available for purchase through the Service require that you purchase the product and/or service on an automatically renewing subscription basis. For subscription-based products and services, your payment device will be automatically charged at regular intervals as described for that product or service during the checkout process, until you cancel your subscription.",
+      "source_url": "https://skinnyrx.com/terms",
+      "verified_as_of": "2026-09-10"
+    },
+    "consultation_fee": {
+      "amount_usd": null,
+      "patient_portal_follow_up_extra_fee_usd": 0,
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-skinnyrx-1-glp-weight-loss-provider-review/authoring/skinnyrx-1-glp-weight-loss-provider-review-c2/captures/c4d0696f02e68b6d-capture.json",
+      "capture_sha256": "422b063a5719bb3e84b6644e300b2736111e845ad8a9140e1597569ddfa29745",
+      "value": "UNKNOWN separate initial consultation fee. SkinnyRx states that patient-portal consultations about progress, side effects, or dosage are available at no extra cost; this follow-up scope does not establish a zero initial consultation or membership fee.",
+      "quote": "If you have questions about progress, side effects, or dosage, you can consult with a clinician at no extra cost through our patient portal.",
+      "source_url": "https://skinnyrx.com/",
+      "verified_as_of": "2026-09-10"
+    },
+    "shipping_wait": {
+      "value": "SkinnyRx says shipping and tracking information is provided within 2 business days after the prescription is written. Product pages separately advertise free overnight shipping. These are different processing and shipping milestones, not a guaranteed end-to-end delivery window; exact intake-to-delivery wait is UNKNOWN.",
+      "shipping_offer_evidence": {
+        "quote": "Free overnight shipping on all orders",
+        "source_url": "https://skinnyrx.com/products/semaglutide-injectable",
+        "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-skinnyrx-1-glp-weight-loss-provider-review/authoring/skinnyrx-1-glp-weight-loss-provider-review-c2/captures/794bb059f93218dd-capture.json",
+        "capture_sha256": "84b4fe192d50bb86b2b8a9052c58b0d8e0ea7e572d954913171e2f1de440743f",
+        "verified_as_of": "2026-09-10"
+      },
+      "quote": "After your prescription is written, your medication will be processed, and you will receive shipping and tracking information within 2 business days. You'll have unlimited access to our patient care team and providers for any questions. At the end of each month, you'll fill out a refill form to continue receiving your medication.",
+      "source_url": "https://skinnyrx.com/",
+      "verified_as_of": "2026-09-10"
+    },
+    "cancellation": {
+      "value": "SkinnyRx terms allow cancellation through the Customer Help Center, phone, or online account. Cancellation takes effect at the end of the current period and must occur at least five days before the renewal processing date; renewal may itself be charged up to five days before the next period. No partial-period refunds are promised. Branded-pathway membership fees are non-refundable. The homepage separately describes refunds before prescription review and cancellation before shipment preparation; do not substitute its general cancel-anytime wording for the terms' cutoff.",
+      "quote": "Cancellation will take effect at the end of the current subscription period. Your subscription will automatically renew for another subscription period unless you cancel at least five (5) days before the applicable renewal processing date. Please note: We do not offer refunds for partially used subscription periods. However, SkinnyRx may provide refunds on a case-by-case basis at our sole and absolute discretion.\n\nAny reference in this Section applies only to amounts charged by SkinnyRx and, where applicable, products fulfilled through SkinnyRx-controlled workflows. For branded medications, the applicable third-party pharmacy or manufacturer-affiliated program may have different processing, refill, billing, and shipping timelines. If a Provider determines that the requested branded medication is not appropriate for you, the branded medication workflow may be cancelled. Any SkinnyRx membership fee charged for access to branded medication is non-refundable. You may cancel the membership at any time, but the cancellation will apply prospectively beginning with the next billing period.",
+      "source_url": "https://skinnyrx.com/terms",
+      "verified_as_of": "2026-09-10"
+    },
+    "eligibility": {
+      "value": "SkinnyRx terms restrict services to adults 18 or older and state that meeting the age requirement does not guarantee access. Treatment remains subject to clinical review and prescription; an exact universal BMI threshold is UNKNOWN from these captures.",
+      "quote": "**Eligibility**. Our Services are intended for use by you only if you are 18 years of age or over. If you are not 18 years of age or older, you must not access or use the Services. You acknowledge that satisfying the age requirement does not guarantee that you will receive access to the Services and that SkinnyRx may establish other eligibility requirements.",
+      "source_url": "https://skinnyrx.com/terms",
+      "verified_as_of": "2026-09-10"
+    },
+    "pharmacy_type": {
+      "value": "In response to its pharmacy question, SkinnyRx references 503A pharmacies and makes a provider-reported licensing/compliance claim. The captured evidence does not independently establish any named dispensing pharmacy's license, inspection status, certification, or a 503B designation.",
+      "quote": "Are your pharmacies FDA-compliant?\n\nYes. 503A pharmacies are licensed by state boards of pharmacy and are FDA-compliant.",
+      "source_url": "https://skinnyrx.com/",
+      "verified_as_of": "2026-09-10"
+    },
+    "states_served": {
+      "value": "SkinnyRx terms say certain compounded medication and related offerings are not available in Alabama, Louisiana, or Mississippi. Services are for U.S. jurisdictions where SkinnyRx makes them available. The statement that branded offerings may be available in all U.S. states is conditional, not proof of current brand availability or unrestricted compounded coverage.",
+      "quote": "**Availability of the Services**. We are based in the United States, and the Services are intended for use only by persons located in the United States in jurisdictions where SkinnyRx makes them available. Branded medication offerings may be available in all U.S. states, while certain compounded medication and related offerings are currently not available in Alabama, Louisiana, and Mississippi. We do not offer or provide certain compounded medication and related Services in Alabama, Louisiana, or Mississippi, and we do not permit individuals located in those states to create orders, complete purchases, or otherwise use the Services to obtain those offerings.",
+      "source_url": "https://skinnyrx.com/terms",
+      "verified_as_of": "2026-09-10"
+    },
+    "legitscript": {
+      "value": "UNKNOWN. No independent LegitScript certification determination is made. A provider-published badge or approval-checker link is not treated as certification evidence and was not opened.",
+      "quote": "Verify Approval for www.skinnyrx.com",
+      "source_url": "https://skinnyrx.com/",
+      "verified_as_of": "2026-09-10"
+    }
+  },
+  "provider_dynamic_profile": {
+    "version": 1,
+    "verified_as_of": "2026-09-10",
+    "taxonomy": {
+      "molecule_tags": ["semaglutide", "tirzepatide"],
+      "brand_name_tags": [],
+      "delivery_form_tags": ["injectable", "oral"],
+      "treatment_type_tags": ["compounded"]
+    },
+    "calculator": {
+      "checked_as_of": "2026-09-10",
+      "mode": "manual",
+      "first_month_base_usd": null,
+      "recurring_month_base_usd": null,
+      "one_time_fee_usd": null,
+      "price_context": "First-month offers vary by formulation: compounded tirzepatide tablets $199, injectable tirzepatide $99, semaglutide tablets $149, and injectable semaglutide $99. Recurring monthly amounts and a separate initial consultation fee remain UNKNOWN.",
+      "evidence_gap_copy": "Choose the prescribed formulation and enter confirmed checkout, renewal, and initial fee amounts manually. Published first-month promotions do not establish a recurring charge or one comparable all-in schedule.",
+      "source_url": "https://skinnyrx.com/"
+    },
+    "evidence_bindings": [
+      {
+        "fields": ["calculator.checked_as_of", "calculator.evidence_gap_copy", "calculator.first_month_base_usd", "calculator.mode", "calculator.one_time_fee_usd", "calculator.price_context", "calculator.recurring_month_base_usd", "calculator.source_url", "taxonomy.brand_name_tags", "taxonomy.molecule_tags", "taxonomy.treatment_type_tags", "verified_as_of"],
+        "source_url": "https://skinnyrx.com/",
+        "verified_as_of": "2026-09-10",
+        "evidence_text": "### Compounded Tirzepatide Tablets\n\nOnce-daily tablet with tirzepatide\n\n$199 first month\n\n[get started\\\\\n\\\\\nget started](https://skinnyrx.com/intake) [learn more\\\\\n\\\\\nlearn more](https://skinnyrx.com/products/tirzepatide-tablets)\n\nMicrodose available\n![Compounded Injectable Tirzepatide](https://skinnyrx.com/assets/injectable-tirzepatide-Cf0j6ZNq.png)\n\n### Compounded Injectable Tirzepatide\n\nOnce-weekly injection with tirzepatide\n\n$99 first month\n\n[get started\\\\\n\\\\\nget started](https://skinnyrx.com/intake) [learn more\\\\\n\\\\\nlearn more](https://skinnyrx.com/products/tirzepatide-injectable)\n\n![Compounded Semaglutide Tablets](https://skinnyrx.com/assets/semaglutide-tablets-BdqGi8IC.png)\n\n### Compounded Semaglutide Tablets\n\nOnce-daily tablet with semaglutide\n\n$149 first month\n\n[get started\\\\\n\\\\\nget started](https://skinnyrx.com/intake) [learn more\\\\\n\\\\\nlearn more](https://skinnyrx.com/products/semaglutide-tablets)\n\nMicrodose available\n![Compounded Injectable Semaglutide](https://skinnyrx.com/assets/injectable-semaglutide-DrXjGrwD.png)\n\n### Compounded Injectable Semaglutide\n\nOnce-weekly injection with semaglutide\n\n$99 first month",
+        "evidence_sha256": "e7a8b199435d3c1bc1ecec460f0295141fb6412e6e477fda22c10e50e19d4e39"
+      },
+      {
+        "fields": ["taxonomy.delivery_form_tags"],
+        "source_url": "https://skinnyrx.com/",
+        "verified_as_of": "2026-09-10",
+        "evidence_text": "Injectable medications are administered directly into the body through a needle. This method provides very direct delivery into the bloodstream or tissues and is **administered once per week.**\n\nSublingual (oral) medications are taken by placing them under the tongue, where they dissolve and are absorbed through the mucous membranes into nearby blood vessels. It is **administered once per day.**",
+        "evidence_sha256": "6c29423a241b71394c5fef6d869266d630e4a09f928a4603ea582747242fc984"
+      }
+    ]
+  }
+}

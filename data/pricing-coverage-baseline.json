@@ -1,0 +1,17 @@
+{
+  "schema": "glp-pricing-coverage-baseline-v1",
+  "release_root": "releases/glp-b2-wire-backlog-2026-09-03-20260903T155242Z",
+  "matrix_sha256": "270a6a8c0a5d7eb35eed313f995d42d982968e1e79e9ee1f4bd29a6fb3aeef39",
+  "coverage": {
+    "providers_with_evidenced_pricing": 41,
+    "medication_rows": 118
+  },
+  "authority": "D2f brief and OPUS-CORRECTNESS-SWEEP.md section 7; last accepted release, not the held D2 train",
+  "evidence_owner_waiver": {
+    "path": "data/pricing-waivers/S8-coverage.json",
+    "sha256": "de918c7f978d971427a43fd5770bba21281d8dc99c4db630a497e82624b11d77",
+    "rulings_path": "data/pricing-waivers/S8-rulings.json",
+    "rulings_sha256": "0c6c6def50149868f37955aebe292fde1bc0f9333267c0ab2111e7bcf018cd3c"
+  },
+  "release_train": "release-train-1"
+}

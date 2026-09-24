@@ -1,0 +1,5 @@
+// Fictional browser projection only; full durable issuer tests are parent-owned.
+export function loaderProjection(platform='meta',granted=true){
+ const scope={id:`TEST_A17_SCOPE_${platform}`,revision:1,platform,transport:platform==='meta'?'meta_pixel':'microsoft_uet',target_id:platform==='meta'?'586886932687286':'187271853',origin:`https://a17-${platform}.invalid`,source_path:'/test/administrative/',source_title:'TEST administrative fixture',allowed_referrer:'',source_ref:`TEST_A17_${platform}_SOURCE`,source_revision:'TEST_A17_REV1',permission_sha256:'a'.repeat(64),purpose:'ad_measurement',eligible:true,containment:true,notice_approved:true,retention_approved:true,notice:'TEST fixture only. Optional advertising measurement.',notice_version:'TEST_A17_NOTICE_V1',expires_at_ms:Date.now()+600000};
+ return {scope,receipt:granted?{scope_id:scope.id,scope_revision:scope.revision,notice_version:scope.notice_version,choice:'explicit_opt_in',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'denied',gpc:false,withdrawn:false,expires_at_ms:scope.expires_at_ms}:null,csrf:'TEST_A17_CSRF'};
+}

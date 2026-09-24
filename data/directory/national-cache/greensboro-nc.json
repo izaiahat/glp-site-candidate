@@ -1,0 +1,720 @@
+{
+  "records": [
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-09-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-09-09",
+      "npi": "1861373714",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1861373714",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DOVE YOUTHOLOGY AESTHETIC INSTITUTE, PLLC",
+      "postal_prefix": "27409",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Obesity Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "2083B0002X",
+          "description": "Preventive Medicine, Obesity Medicine",
+          "primary": false
+        },
+        {
+          "code": "208D00000X",
+          "description": "General Practice",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2010-01-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-01-20",
+      "npi": "1487985149",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1487985149",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AJAY KUMAR, M.D., PLLC",
+      "postal_prefix": "27401",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-07-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-07-06",
+      "npi": "1194459461",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1194459461",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AUTHORACARE COLLECTIVE",
+      "postal_prefix": "27405",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "207QH0002X",
+          "description": "Family Medicine, Hospice and Palliative Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2010-04-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-04-09",
+      "npi": "1326364837",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1326364837",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALPHA CLINICS, PA",
+      "postal_prefix": "27405",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-05-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-11-02",
+      "npi": "1487145348",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1487145348",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HEALTHY AMERICA INITIATIVE",
+      "postal_prefix": "27407",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Obesity Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "103TE1100X",
+          "description": "Psychologist, Exercise & Sports",
+          "primary": false
+        },
+        {
+          "code": "133VN1201X",
+          "description": "Dietitian, Registered, Nutrition, Obesity and Weight Management",
+          "primary": false
+        },
+        {
+          "code": "133VN1501X",
+          "description": "Dietitian, Registered, Nutrition, Sports Dietetics",
+          "primary": false
+        },
+        {
+          "code": "207PS0010X",
+          "description": "Emergency Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QB0002X",
+          "description": "Family Medicine, Bariatric Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "2080B0002X",
+          "description": "Pediatrics, Obesity Medicine",
+          "primary": false
+        },
+        {
+          "code": "2080S0010X",
+          "description": "Pediatrics, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "2081S0010X",
+          "description": "Physical Medicine & Rehabilitation, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "2083B0002X",
+          "description": "Preventive Medicine, Obesity Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084B0002X",
+          "description": "Psychiatry & Neurology, Bariatric Medicine",
+          "primary": false
+        },
+        {
+          "code": "224Y00000X",
+          "description": "Clinical Exercise Physiologist",
+          "primary": true
+        },
+        {
+          "code": "261QH0100X",
+          "description": "Clinic/Center, Health Services",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-11-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-06-10",
+      "npi": "1013086321",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1013086321",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "EAGLE PHYSICIANS AND ASSOCIATES PA",
+      "postal_prefix": "27410",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": true
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-10-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-13",
+      "npi": "1003382839",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1003382839",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BETHANY MEDICAL CENTER",
+      "postal_prefix": "27407",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "2084N0400X",
+          "description": "Psychiatry & Neurology, Neurology",
+          "primary": false
+        },
+        {
+          "code": "213E00000X",
+          "description": "Podiatrist",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2010-04-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-04-14",
+      "npi": "1518283613",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1518283613",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALPHA PRIMARY CARE",
+      "postal_prefix": "27406",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-09-24",
+      "npi": "1407871361",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1407871361",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "EAGLE PHYSICIANS AND ASSOCIATES PA",
+      "postal_prefix": "27408",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "163WD0400X",
+          "description": "Registered Nurse, Diabetes Educator",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RG0300X",
+          "description": "Internal Medicine, Geriatric Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RI0011X",
+          "description": "Internal Medicine, Interventional Cardiology",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "207UN0901X",
+          "description": "Nuclear Medicine, Nuclear Cardiology",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "208M00000X",
+          "description": "Hospitalist",
+          "primary": false
+        },
+        {
+          "code": "363AM0700X",
+          "description": "Physician Assistant, Medical",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-01-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-13",
+      "npi": "1316303076",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1316303076",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BETHANY MEDICAL CENTER",
+      "postal_prefix": "27410",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-04-04",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-13",
+      "npi": "1508328816",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1508328816",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BETHANY MEDICAL CENTER",
+      "postal_prefix": "27407",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-03-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-03-19",
+      "npi": "1124522933",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1124522933",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "FORSYTH MEMORIAL HOSPITAL, INC.",
+      "postal_prefix": "27410",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-04-04",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-13",
+      "npi": "1972065282",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1972065282",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BETHANY MEDICAL CENTER",
+      "postal_prefix": "27410",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2026-03-26",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-06-16",
+      "npi": "1639018443",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1639018443",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CARDINAL HEALTH SERVICES, P.C.",
+      "postal_prefix": "27407",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "101YM0800X",
+          "description": "Counselor, Mental Health",
+          "primary": false
+        },
+        {
+          "code": "103T00000X",
+          "description": "Psychologist",
+          "primary": false
+        },
+        {
+          "code": "103TC1900X",
+          "description": "Psychologist, Counseling",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084P0800X",
+          "description": "Psychiatry & Neurology, Psychiatry",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Greensboro",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-06-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-06-11",
+      "npi": "1588077176",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1588077176",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GREENSBORO ENDOCRINOLOGY PLLC",
+      "postal_prefix": "27408",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NC",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 2,
+      "sanitized_record_count": 2,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Greensboro&state=NC&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 13,
+      "sanitized_record_count": 13,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Greensboro&state=NC&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 44,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Greensboro&state=NC&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 44,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Greensboro&state=NC&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

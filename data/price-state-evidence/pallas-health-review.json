@@ -1,0 +1,1302 @@
+{
+  "schema": "s30.provider_patch.v1",
+  "program_id": "pallas-health-review",
+  "provider": "Pallas Health – GLP-1 Weight Loss & NAD",
+  "routes": [
+    "/reviews/pallas-health-review/",
+    "/providers/pallas-health-review/"
+  ],
+  "packet": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/pallas-health-review.json",
+    "sha256": "588d9db1d433c0324446b86e87ff3e94af0b8b1d3f1c18ed596581ee6efcfdfd",
+    "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/pallas-health-review.json",
+    "snapshot_sha256": "02dd705dc9b7a348b473fc00f641aeed292ddf89178eb8d4fc3ef9e2c908acfa",
+    "captured_at": "2026-08-16T07:25:00Z",
+    "age_days": 25.21955797296296,
+    "current_original_path_sha256_at_audit_end": "588d9db1d433c0324446b86e87ff3e94af0b8b1d3f1c18ed596581ee6efcfdfd"
+  },
+  "holds_preserved": [
+    {
+      "registry_program_id": "pallas-health-review",
+      "commercial_state": "live",
+      "suppression_reason": null,
+      "status": null
+    }
+  ],
+  "records": [
+    {
+      "id": "pallas-health-review:first_month_price",
+      "program_id": "pallas-health-review",
+      "field": "first_month_price",
+      "verdict": "UNKNOWN",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/pallas-health-review.json",
+        "sha256": "588d9db1d433c0324446b86e87ff3e94af0b8b1d3f1c18ed596581ee6efcfdfd",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/pallas-health-review.json",
+        "snapshot_sha256": "02dd705dc9b7a348b473fc00f641aeed292ddf89178eb8d4fc3ef9e2c908acfa",
+        "captured_at": "2026-08-16T07:25:00Z",
+        "age_days": 25.21955797296296,
+        "current_original_path_sha256_at_audit_end": "588d9db1d433c0324446b86e87ff3e94af0b8b1d3f1c18ed596581ee6efcfdfd"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "$139 first month is published; semaglutide is then $597 for 12 weeks ($199 monthly average), while tirzepatide is $179 first month then $897 for 12 weeks ($299 monthly average).",
+          "source_url": "https://www.pallashealth.co/",
+          "verified_as_of": "2026-08-16",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "required_change": "Dated packet139/179 schedule not fully re-established in current homepage; do not infer a contradiction from absent179.",
+      "audited_repetitions": [],
+      "audit_page_claims": [
+        {
+          "text": "Pallas publishes introductory and 12-week prices, includes provider care, and advertises no membership fee. Compare the full 12-week cost, not only the first month. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: p"
+        },
+        {
+          "text": "Published price",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: dt"
+        },
+        {
+          "text": "First month advertised at $139; product-specific schedules vary 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Cash-pay pricing is published; insurance coverage is not represented here. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Pricing breakdown",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: h2"
+        },
+        {
+          "text": "$139 first month is published; semaglutide is then $597 for 12 weeks ($199 monthly average), while tirzepatide is $179 first month then $897 for 12 weeks ($299 monthly average). 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pricing breakdown :: p"
+        },
+        {
+          "text": "Price transparency · 30% 7.5/10",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Evidence criteria :: li"
+        },
+        {
+          "text": "Considering Pallas Health – GLP-1 Weight Loss & NAD? Review published pricing, program terms and documented evidence gaps. Confirm current costs and eligibility directly with the provider. That sentence is the scope of this review, not a promise about Pallas Health – GLP-1 Weight Loss & NAD. The evidence set was current through 2026-08-16 and is limited to the sources already identified on this page. Public pages can change after capture, so every amount, policy, availability statement, and workflow detail remains a dated record rather than a quote. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: What the Pallas Health – GLP-1 Weight Loss & NAD record establishes—and what it does not :: p"
+        },
+        {
+          "text": "Published price wording",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: dt"
+        },
+        {
+          "text": "First month advertised at $139; product-specific schedules vary",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: dd"
+        },
+        {
+          "text": "Cash-pay pricing is published; insurance coverage is not represented here.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: dd"
+        },
+        {
+          "text": "Published price First month advertised at $139; product-specific schedules vary 2026-08-16",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: tr"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For Pallas Health – GLP-1 Weight Loss & NAD, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: p"
+        },
+        {
+          "text": "Readers should compare the snapshot with the source page before payment. Ask whether the wording still appears, whether a new condition or footnote has been added, and whether the amount applies to the exact product, dose, route, plan, or service being discussed. If checkout or intake contradicts this dated record, the current written term controls the transaction; the discrepancy should also be submitted through Clinic Scout's correction channel. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: p"
+        },
+        {
+          "text": "How to read Pallas Health – GLP-1 Weight Loss & NAD pricing without inventing a total",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: h3"
+        },
+        {
+          "text": "The captured price evidence for Pallas Health – GLP-1 Weight Loss & NAD is: “First month advertised at $139; product-specific schedules vary” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: How to read Pallas Health – GLP-1 Weight Loss & NAD pricing without inventing a total :: p"
+        },
+        {
+          "text": "A practical written quote should identify the first charge, every recurring charge, the billing cadence, the amount of product or service attached to each charge, the minimum commitment, renewal behavior, cancellation deadline, refund terms, and any charge that can change with dose or state. Keep a copy of that quote and the checkout terms. This is purchasing discipline, not a prediction that Pallas Health – GLP-1 Weight Loss & NAD will impose any particular charge. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: How to read Pallas Health – GLP-1 Weight Loss & NAD pricing without inventing a total :: p"
+        },
+        {
+          "text": "The captured workflow language for Pallas Health – GLP-1 Weight Loss & NAD is: “Free shipping is advertised; no exact delivery window is published.” This is not expanded into an end-to-end timeline unless the source defines the starting event and each stage. Intake completion, clinician review, prescription decision, pharmacy processing, carrier pickup, laboratory processing, manufacturing, and final delivery can describe different clocks. A single speed phrase cannot safely represent all of them, and no timeline establishes eligibility or an outcome. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Eligibility, review, and fulfillment boundaries :: p"
+        },
+        {
+          "text": "The captured coverage statement is: “Cash-pay pricing is published; insurance coverage is not represented here.” The review does not translate benefits checks, reimbursement language, HSA or FSA wording, superbills, prior-authorization help, or general insurance references into guaranteed coverage. Plan rules, account-administrator decisions, medical-necessity criteria, coding, deductibles, and exclusions can change the result. Where the source is silent, the honest status remains unresolved. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "For Pallas Health – GLP-1 Weight Loss & NAD, request the cash price and any insurance-dependent price separately. Confirm whether payment is collected before eligibility or professional review, what happens after denial, whether reimbursement paperwork is supplied, and whether cancellation or refund terms differ after a service begins. This checklist does not imply that Pallas Health – GLP-1 Weight Loss & NAD offers each payment path; it identifies the missing facts a reader needs before treating a headline amount as the final obligation. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "Later 12-week pricing is higher than the introductory month 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "The evidence-navigation fit recorded for this page is: “People comparing a clinician-led GLP-1 program with published introductory and 12-week prices” That is a description of the research task, not a clinical-fit recommendation. A reader who values visible sources and explicit unknowns may use the page to prepare questions. Someone who requires a verified all-in amount, a confirmed delivery date, an independent outcome dataset, or a guaranteed eligibility decision should not treat this page alone as sufficient. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Who may find this Pallas Health – GLP-1 Weight Loss & NAD review useful :: p"
+        },
+        {
+          "text": "Save the page date, URL, screenshots, and any checkout or intake terms that affect cost or eligibility.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: A source-first verification sequence for Pallas Health – GLP-1 Weight Loss & NAD :: li"
+        },
+        {
+          "text": "If a reader proceeds with Pallas Health – GLP-1 Weight Loss & NAD, the evidence task continues after checkout. Retain receipts, consent forms, product or service descriptions, fulfillment records, cancellation instructions, privacy notices, and the contact route for problems. Check whether the delivered or scheduled item matches the written order. Record any changed price or term with its date and source so that a concern can be investigated without relying on memory. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "Refills review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Ro review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "RxSpan MD Telehealth Program review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "The captured wording is “First month advertised at $139; product-specific schedules vary” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Frequently asked questions about the Pallas Health – GLP-1 Weight Loss & NAD evidence :: p"
+        },
+        {
+          "text": "The captured coverage wording is “Cash-pay pricing is published; insurance coverage is not represented here.” Coverage, reimbursement, HSA or FSA eligibility, and prior authorization remain plan- and administrator-specific. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Frequently asked questions about the Pallas Health – GLP-1 Weight Loss & NAD evidence :: p"
+        },
+        {
+          "text": "Use the Pallas Health – GLP-1 Weight Loss & NAD review as a documented starting point. Recheck the direct source, obtain the exact current terms, and stop when an important answer remains unclear. Clear unknowns are more useful than confident estimates: they tell the reader what must be verified before cost, access, timing, product, or support can be compared responsibly. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Editorial conclusion for the captured Pallas Health – GLP-1 Weight Loss & NAD record :: p"
+        },
+        {
+          "text": "Open another provider or cost comparison to check price, inclusions, and unresolved terms side by side.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: p"
+        },
+        {
+          "text": "Provider evidence review Refills review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Ro review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review RxSpan MD Telehealth Program review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Serena Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Shed review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review SkinnyRx - #1 GLP Weight Loss Provider review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review SnagRX review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Sprout Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Strut Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Sunlight.com review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Synergy Rx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review telos rx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review TMates review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Trimi review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review TrimRX review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "People comparing a clinician-led GLP-1 program with published introductory and 12-week prices",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First month $139.00 Reported information · Checked 2026-08-18 · Source Price source Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection) :: article .d3-price-box"
+        },
+        {
+          "text": "First month",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection) :: h3"
+        },
+        {
+          "text": "Thereafter $199.00 / month Billed $597 every 12 weeks ($199/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default. Reported information · Checked 2026-08-18 · Source Price source Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Billed $597 every 12 weeks ($199/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Medication and plan pricing",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Dates, quotes, and source links stay attached to every displayed amount. Exact dose tiers appear only when the provider publishes source-reported per-dose pricing; otherwise the dose grid is omitted.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Treatments :: p"
+        },
+        {
+          "text": "First month $179.00 Reported information · Checked 2026-08-18 · Source Price source Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Treatments :: article .d3-price-box"
+        },
+        {
+          "text": "First month",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Treatments :: h3"
+        },
+        {
+          "text": "Thereafter $299.00 / month Billed $897 every 12 weeks ($299/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default. Reported information · Checked 2026-08-18 · Source Price source Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Billed $897 every 12 weeks ($299/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Cash-pay pricing is published; insurance coverage is not represented here.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: At a glance :: p"
+        },
+        {
+          "text": "Useful for comparing: People comparing a clinician-led GLP-1 program with published introductory and 12-week prices",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Editorial tradeoffs :: p"
+        },
+        {
+          "text": "Later 12-week pricing is higher than the introductory month",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Limitations in the record :: li"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists; this is not a medical recommendation.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Related provider records :: p"
+        },
+        {
+          "text": "Provider names and links come from our reviewed provider list. Prices come from our dated price records; each price links to the source it was taken from, with the date we checked it. Program facts come from our reviewed notes on those dated sources. Clinic Scout does not infer availability, medical fit, ratings, or review counts.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Price rows checked 2026-08-18 · 2 source-dated rows",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Related providers :: p"
+        }
+      ],
+      "operation_ids": [
+        "416b47bb21285760cf28",
+        "cbe92e5190809df56254",
+        "32e39a27fdb4b25871d1",
+        "496e1f5c4dd158e14ccf",
+        "f6d3e6bf04e693055889",
+        "da3b1f05d72956e55e45",
+        "290670d2902940e88aab",
+        "0eac12e211ec5da9c9c1",
+        "80f21a4b48b12de39d0b",
+        "7ed5dc1c4081cde0a8b2",
+        "9961df637b6ff472d205",
+        "9445a246f5677803c818",
+        "d136d1cc365451d19bf1",
+        "3831dea809bfb2b44191"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(2) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Later 12-week pricing is higher than the introductory month"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > article:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Limitations in the record",
+          "tag": "li",
+          "text": "Later 12-week pricing is higher than the introductory month"
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "First month advertised at $139; product-specific schedules vary"
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot",
+          "tag": "dd",
+          "text": "First month advertised at $139; product-specific schedules vary"
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot",
+          "tag": "tr",
+          "text": "Published price First month advertised at $139; product-specific schedules vary 2026-08-16"
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read Pallas Health – GLP-1 Weight Loss & NAD pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for Pallas Health – GLP-1 Weight Loss & NAD is: “First month advertised at $139; product-specific schedules vary” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the Pallas Health – GLP-1 Weight Loss & NAD evidence",
+          "tag": "p",
+          "text": "The captured wording is “First month advertised at $139; product-specific schedules vary” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "$139 first month is published; semaglutide is then $597 for 12 weeks ($199 monthly average), while tirzepatide is $179 first month then $897 for 12 weeks ($299 monthly average)."
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection)",
+          "tag": "p",
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Billed $597 every 12 weeks ($199/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default."
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection)"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded tirzepatide (injection)"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded tirzepatide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Billed $897 every 12 weeks ($299/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default."
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        }
+      ],
+      "disposition": "PATCH_READY",
+      "unknown_disposition": "DROP_RENDERED_CLAIM"
+    },
+    {
+      "id": "pallas-health-review:monthly_price",
+      "program_id": "pallas-health-review",
+      "field": "monthly_price",
+      "verdict": "UNKNOWN",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/pallas-health-review.json",
+        "sha256": "588d9db1d433c0324446b86e87ff3e94af0b8b1d3f1c18ed596581ee6efcfdfd",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/pallas-health-review.json",
+        "snapshot_sha256": "02dd705dc9b7a348b473fc00f641aeed292ddf89178eb8d4fc3ef9e2c908acfa",
+        "captured_at": "2026-08-16T07:25:00Z",
+        "age_days": 25.21955797296296,
+        "current_original_path_sha256_at_audit_end": "588d9db1d433c0324446b86e87ff3e94af0b8b1d3f1c18ed596581ee6efcfdfd"
+      },
+      "attested_values": [],
+      "required_change": "Keep12-week totals and monthly averages explicitly separate; current exact next charge unknown.",
+      "audited_repetitions": [],
+      "audit_page_claims": [
+        {
+          "text": "Pallas publishes introductory and 12-week prices, includes provider care, and advertises no membership fee. Compare the full 12-week cost, not only the first month. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: p"
+        },
+        {
+          "text": "Published price",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: dt"
+        },
+        {
+          "text": "First month advertised at $139; product-specific schedules vary 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Cash-pay pricing is published; insurance coverage is not represented here. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Pricing breakdown",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Bottom line :: h2"
+        },
+        {
+          "text": "$139 first month is published; semaglutide is then $597 for 12 weeks ($199 monthly average), while tirzepatide is $179 first month then $897 for 12 weeks ($299 monthly average). 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pricing breakdown :: p"
+        },
+        {
+          "text": "The captured public page does not publish a complete state list. Provider care is included and no membership fee is advertised. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Eligibility and clinician review :: p"
+        },
+        {
+          "text": "Price transparency · 30% 7.5/10",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Evidence criteria :: li"
+        },
+        {
+          "text": "Considering Pallas Health – GLP-1 Weight Loss & NAD? Review published pricing, program terms and documented evidence gaps. Confirm current costs and eligibility directly with the provider. That sentence is the scope of this review, not a promise about Pallas Health – GLP-1 Weight Loss & NAD. The evidence set was current through 2026-08-16 and is limited to the sources already identified on this page. Public pages can change after capture, so every amount, policy, availability statement, and workflow detail remains a dated record rather than a quote. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: What the Pallas Health – GLP-1 Weight Loss & NAD record establishes—and what it does not :: p"
+        },
+        {
+          "text": "Published price wording",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: dt"
+        },
+        {
+          "text": "First month advertised at $139; product-specific schedules vary",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: dd"
+        },
+        {
+          "text": "Cash-pay pricing is published; insurance coverage is not represented here.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: dd"
+        },
+        {
+          "text": "Published price First month advertised at $139; product-specific schedules vary 2026-08-16",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: tr"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For Pallas Health – GLP-1 Weight Loss & NAD, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: p"
+        },
+        {
+          "text": "How to read Pallas Health – GLP-1 Weight Loss & NAD pricing without inventing a total",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot :: h3"
+        },
+        {
+          "text": "The captured price evidence for Pallas Health – GLP-1 Weight Loss & NAD is: “First month advertised at $139; product-specific schedules vary” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: How to read Pallas Health – GLP-1 Weight Loss & NAD pricing without inventing a total :: p"
+        },
+        {
+          "text": "A practical written quote should identify the first charge, every recurring charge, the billing cadence, the amount of product or service attached to each charge, the minimum commitment, renewal behavior, cancellation deadline, refund terms, and any charge that can change with dose or state. Keep a copy of that quote and the checkout terms. This is purchasing discipline, not a prediction that Pallas Health – GLP-1 Weight Loss & NAD will impose any particular charge. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: How to read Pallas Health – GLP-1 Weight Loss & NAD pricing without inventing a total :: p"
+        },
+        {
+          "text": "The captured coverage statement is: “Cash-pay pricing is published; insurance coverage is not represented here.” The review does not translate benefits checks, reimbursement language, HSA or FSA wording, superbills, prior-authorization help, or general insurance references into guaranteed coverage. Plan rules, account-administrator decisions, medical-necessity criteria, coding, deductibles, and exclusions can change the result. Where the source is silent, the honest status remains unresolved. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "For Pallas Health – GLP-1 Weight Loss & NAD, request the cash price and any insurance-dependent price separately. Confirm whether payment is collected before eligibility or professional review, what happens after denial, whether reimbursement paperwork is supplied, and whether cancellation or refund terms differ after a service begins. This checklist does not imply that Pallas Health – GLP-1 Weight Loss & NAD offers each payment path; it identifies the missing facts a reader needs before treating a headline amount as the final obligation. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "No membership fee is advertised 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "Later 12-week pricing is higher than the introductory month 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "The evidence-navigation fit recorded for this page is: “People comparing a clinician-led GLP-1 program with published introductory and 12-week prices” That is a description of the research task, not a clinical-fit recommendation. A reader who values visible sources and explicit unknowns may use the page to prepare questions. Someone who requires a verified all-in amount, a confirmed delivery date, an independent outcome dataset, or a guaranteed eligibility decision should not treat this page alone as sufficient. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Who may find this Pallas Health – GLP-1 Weight Loss & NAD review useful :: p"
+        },
+        {
+          "text": "If a reader proceeds with Pallas Health – GLP-1 Weight Loss & NAD, the evidence task continues after checkout. Retain receipts, consent forms, product or service descriptions, fulfillment records, cancellation instructions, privacy notices, and the contact route for problems. Check whether the delivered or scheduled item matches the written order. Record any changed price or term with its date and source so that a concern can be investigated without relying on memory. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "For recurring arrangements, confirm the next billing date, refill or reorder trigger, dose or specification changes, required follow-up, pause options, cancellation cutoff, and the consequences of a failed payment or missed step. These are general recordkeeping questions, not claims about Pallas Health – GLP-1 Weight Loss & NAD's actual policy. The provider's current written terms and applicable law determine the answer. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "Refills review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Ro review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "RxSpan MD Telehealth Program review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "The captured wording is “First month advertised at $139; product-specific schedules vary” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Frequently asked questions about the Pallas Health – GLP-1 Weight Loss & NAD evidence :: p"
+        },
+        {
+          "text": "The captured coverage wording is “Cash-pay pricing is published; insurance coverage is not represented here.” Coverage, reimbursement, HSA or FSA eligibility, and prior authorization remain plan- and administrator-specific. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Frequently asked questions about the Pallas Health – GLP-1 Weight Loss & NAD evidence :: p"
+        },
+        {
+          "text": "Compare the same evidence fields: first and recurring charges, cadence, inclusions, commitment, cancellation, shipping, and source date. An unknown field should remain unknown rather than receive a favorable score. 1 Source 1 Pallas Health – GLP-1 Weight Loss & NAD current as of 2026-08-16 Pallas Health – GLP-1 Weight Loss & NAD ↗ Close 2 Source 2 2Pallas Health – GLP-1 Weight Loss & NAD (partner portal — not publicly viewable)current as of 2026-08-16 (partner portal — not publicly viewable) Close 3 Source 3 U.S. Food and Drug Administration current as of 2026-08-16 U.S. Food and Drug Administration ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Frequently asked questions about the Pallas Health – GLP-1 Weight Loss & NAD evidence :: p"
+        },
+        {
+          "text": "Open another provider or cost comparison to check price, inclusions, and unresolved terms side by side.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: p"
+        },
+        {
+          "text": "Provider evidence review Refills review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Ro review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review RxSpan MD Telehealth Program review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Serena Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Shed review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review SkinnyRx - #1 GLP Weight Loss Provider review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review SnagRX review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Sprout Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Strut Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Sunlight.com review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Synergy Rx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review telos rx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review TMates review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Trimi review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review TrimRX review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/pallas-health-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "People comparing a clinician-led GLP-1 program with published introductory and 12-week prices",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First month $139.00 Reported information · Checked 2026-08-18 · Source Price source Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection) :: article .d3-price-box"
+        },
+        {
+          "text": "Thereafter $199.00 / month Billed $597 every 12 weeks ($199/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default. Reported information · Checked 2026-08-18 · Source Price source Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Billed $597 every 12 weeks ($199/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Medication and plan pricing",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Dates, quotes, and source links stay attached to every displayed amount. Exact dose tiers appear only when the provider publishes source-reported per-dose pricing; otherwise the dose grid is omitted.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Treatments :: p"
+        },
+        {
+          "text": "First month $179.00 Reported information · Checked 2026-08-18 · Source Price source Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Treatments :: article .d3-price-box"
+        },
+        {
+          "text": "Thereafter $299.00 / month Billed $897 every 12 weeks ($299/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default. Reported information · Checked 2026-08-18 · Source Price source Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Billed $897 every 12 weeks ($299/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Cash-pay pricing is published; insurance coverage is not represented here.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: At a glance :: p"
+        },
+        {
+          "text": "Consultation or membership",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: At a glance :: p"
+        },
+        {
+          "text": "Provider care is included and no membership fee is advertised.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: At a glance :: p"
+        },
+        {
+          "text": "Useful for comparing: People comparing a clinician-led GLP-1 program with published introductory and 12-week prices",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Editorial tradeoffs :: p"
+        },
+        {
+          "text": "Later 12-week pricing is higher than the introductory month",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Limitations in the record :: li"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists; this is not a medical recommendation.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Related provider records :: p"
+        },
+        {
+          "text": "Provider names and links come from our reviewed provider list. Prices come from our dated price records; each price links to the source it was taken from, with the date we checked it. Program facts come from our reviewed notes on those dated sources. Clinic Scout does not infer availability, medical fit, ratings, or review counts.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Price rows checked 2026-08-18 · 2 source-dated rows",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists.",
+          "location": "https://glpclinicscout.com/providers/pallas-health-review/ :: Related providers :: p"
+        }
+      ],
+      "operation_ids": [
+        "416b47bb21285760cf28",
+        "cbe92e5190809df56254",
+        "32e39a27fdb4b25871d1",
+        "496e1f5c4dd158e14ccf",
+        "f6d3e6bf04e693055889",
+        "da3b1f05d72956e55e45",
+        "290670d2902940e88aab",
+        "80f21a4b48b12de39d0b",
+        "7ed5dc1c4081cde0a8b2",
+        "9961df637b6ff472d205",
+        "9445a246f5677803c818",
+        "d136d1cc365451d19bf1",
+        "3831dea809bfb2b44191"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(2) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Later 12-week pricing is higher than the introductory month"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > article:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Limitations in the record",
+          "tag": "li",
+          "text": "Later 12-week pricing is higher than the introductory month"
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "First month advertised at $139; product-specific schedules vary"
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot",
+          "tag": "dd",
+          "text": "First month advertised at $139; product-specific schedules vary"
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD evidence snapshot",
+          "tag": "tr",
+          "text": "Published price First month advertised at $139; product-specific schedules vary 2026-08-16"
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read Pallas Health – GLP-1 Weight Loss & NAD pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for Pallas Health – GLP-1 Weight Loss & NAD is: “First month advertised at $139; product-specific schedules vary” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the Pallas Health – GLP-1 Weight Loss & NAD evidence",
+          "tag": "p",
+          "text": "The captured wording is “First month advertised at $139; product-specific schedules vary” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/reviews/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html",
+          "sha256": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "$139 first month is published; semaglutide is then $597 for 12 weeks ($199 monthly average), while tirzepatide is $179 first month then $897 for 12 weeks ($299 monthly average)."
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection)",
+          "tag": "p",
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Billed $597 every 12 weeks ($199/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default."
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection)"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded tirzepatide (injection)"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Pallas Health – GLP-1 Weight Loss & NAD · Compounded tirzepatide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Billed $897 every 12 weeks ($299/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default."
+        },
+        {
+          "route": "/providers/pallas-health-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html",
+          "sha256": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9",
+          "selector": "[id=\"plan-pallas-health-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        }
+      ],
+      "disposition": "PATCH_READY",
+      "unknown_disposition": "DROP_RENDERED_CLAIM"
+    }
+  ],
+  "operations": [
+    {
+      "id": "416b47bb21285760cf28",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/31/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "Later 12-week pricing is higher than the introductory month",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "cbe92e5190809df56254",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/31/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "First month advertised at $139; product-specific schedules vary",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "32e39a27fdb4b25871d1",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/31/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "Later 12-week pricing is higher than the introductory month",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "496e1f5c4dd158e14ccf",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/31/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "First month advertised at $139; product-specific schedules vary",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "f6d3e6bf04e693055889",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/31/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "Later 12-week pricing is higher than the introductory month",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "da3b1f05d72956e55e45",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/31/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "First month advertised at $139; product-specific schedules vary",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "290670d2902940e88aab",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/31/limitations/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "Later 12-week pricing is higher than the introductory month",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "0eac12e211ec5da9c9c1",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/31/research_first_month_price/value",
+      "fields": [
+        "first_month_price"
+      ],
+      "notes": [
+        "UNKNOWN: suppress positive assertion; preserve historical quote metadata."
+      ],
+      "op": "replace",
+      "before": "$139 first month is published; semaglutide is then $597 for 12 weeks ($199 monthly average), while tirzepatide is $179 first month then $897 for 12 weeks ($299 monthly average).",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "80f21a4b48b12de39d0b",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/31/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "First month advertised at $139; product-specific schedules vary",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "7ed5dc1c4081cde0a8b2",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/15/page_copy/pricing",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "$139 first month is published; semaglutide is then $597 for 12 weeks ($199 monthly average), while tirzepatide is $179 first month then $897 for 12 weeks ($299 monthly average).",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "9961df637b6ff472d205",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/15/row_contract/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "Later 12-week pricing is higher than the introductory month",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "9445a246f5677803c818",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/15/row_contract/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "First month advertised at $139; product-specific schedules vary",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "d136d1cc365451d19bf1",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/pallas-health-review/medications/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "c9e6365a608296bcdcd5cc4ba7fa7a38f75ccb538d80bca774c9c2c9b2d23cf8",
+        "captured_on": "2026-08-18",
+        "dose_pricing": {
+          "capture_date": "2026-08-18",
+          "expected_render_slots": 5,
+          "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+          "render_action": "OMIT",
+          "source_url": "https://www.pallashealth.co/",
+          "status": "UNKNOWN_NO_SOURCE"
+        },
+        "label": "Compounded semaglutide (injection)",
+        "medication_id": "compounded-semaglutide-injection",
+        "month_1_basis": "intro",
+        "month_1_usd": 139,
+        "notes": "Billed $597 every 12 weeks ($199/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default.",
+        "numeric_provenance": "SOURCE-REPORTED",
+        "ongoing_usd": 199,
+        "quote": "Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+        "source_url": "https://www.pallashealth.co/"
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    },
+    {
+      "id": "3831dea809bfb2b44191",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/pallas-health-review/medications/1",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "c9e6365a608296bcdcd5cc4ba7fa7a38f75ccb538d80bca774c9c2c9b2d23cf8",
+        "captured_on": "2026-08-18",
+        "dose_pricing": {
+          "capture_date": "2026-08-18",
+          "expected_render_slots": 6,
+          "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+          "render_action": "OMIT",
+          "source_url": "https://www.pallashealth.co/",
+          "status": "UNKNOWN_NO_SOURCE"
+        },
+        "label": "Compounded tirzepatide (injection)",
+        "medication_id": "compounded-tirzepatide-injection",
+        "month_1_basis": "intro",
+        "month_1_usd": 179,
+        "notes": "Billed $897 every 12 weeks ($299/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default.",
+        "numeric_provenance": "SOURCE-REPORTED",
+        "ongoing_usd": 299,
+        "quote": "Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+        "source_url": "https://www.pallashealth.co/"
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    }
+  ],
+  "current_page_files": {
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/pallas-health-review/index.html": "37392d748daa376b6adf53a3f35bf0a6d061fb6860e0d8d6837cfc9163c2311e",
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/pallas-health-review/index.html": "c3216f4ebf5f5ee1b798afc8e36af1efb1759295d8e7eb89151197d64520eac9"
+  },
+  "scope": "Data proposal only. No identity, hold, link, score, or release changes."
+}

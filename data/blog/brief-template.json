@@ -1,0 +1,46 @@
+{
+  "ai_assistance_disclosure": "site-editorial-policy",
+  "author": {
+    "author_id": "clinic-scout-editorial-team",
+    "status": "verified_organization"
+  },
+  "brief_id": "REQUIRED",
+  "evidence_review": {
+    "claim_source_map": "REQUIRED",
+    "reviewed_against": [
+      "FDA prescribing information",
+      "peer-reviewed studies"
+    ],
+    "status": "REQUIRED"
+  },
+  "intent": "REQUIRED",
+  "money_page_path": "REQUIRED",
+  "owner_key": "REQUIRED_UNIQUE",
+  "pillar_path": "REQUIRED",
+  "primary_sources": [
+    {
+      "claim_scope": "REQUIRED",
+      "publisher": "REQUIRED",
+      "source_id": "REQUIRED",
+      "url": "https://REQUIRED",
+      "verified_as_of": "YYYY-MM-DD"
+    }
+  ],
+  "publication_gate": "NOINDEX_UNTIL_RISK_SOURCE_AUTHOR_QUALITY_PASS",
+  "required_internal_links": [
+    "REQUIRED_PILLAR",
+    "REQUIRED_MONEY_PAGE"
+  ],
+  "risk_tier": "LOW|MEDIUM|HIGH",
+  "risk_tier_gate": {
+    "HIGH": "REJECT_OR_REFRAME_AS_QUESTIONS_FOR_PRESCRIBER",
+    "LOW": "commercial comparisons; primary commercial/regulatory sources",
+    "MEDIUM": "inline FDA/PubMed/ClinicalTrials primary citations required"
+  },
+  "schema": "glp-blog-brief-v1",
+  "target_query": "REQUIRED",
+  "word_count_band": {
+    "max": 2000,
+    "min": 1500
+  }
+}

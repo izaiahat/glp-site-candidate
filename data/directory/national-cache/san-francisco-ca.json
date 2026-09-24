@@ -1,0 +1,495 @@
+{
+  "records": [
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-06-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-07-09",
+      "npi": "1750950705",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1750950705",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "INTELLIHEALTH MSO LLC",
+      "postal_prefix": "94129",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Obesity Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "2083B0002X",
+          "description": "Preventive Medicine, Obesity Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-02-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2019-02-25",
+      "npi": "1952868002",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1952868002",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AALIYA H YAQUB MD PC",
+      "postal_prefix": "94104",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-10-02",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-01-07",
+      "npi": "1952494973",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1952494973",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADAM BELLAMY MD",
+      "postal_prefix": "94127",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-11-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-11-16",
+      "npi": "1619341500",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1619341500",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AISSATOU HAMAN MD INC",
+      "postal_prefix": "94117",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-08-31",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-07-25",
+      "npi": "1013792514",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1013792514",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "PIPPEN HEALTH OF CALIFORNIA, P.C., A CALIFORNIA PROFESSIONAL CORPORATI",
+      "postal_prefix": "94104",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Obesity Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "133V00000X",
+          "description": "Dietitian, Registered",
+          "primary": false
+        },
+        {
+          "code": "163W00000X",
+          "description": "Registered Nurse",
+          "primary": false
+        },
+        {
+          "code": "171400000X",
+          "description": "Health & Wellness Coach",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "2083B0002X",
+          "description": "Preventive Medicine, Obesity Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2005-12-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-07-02",
+      "npi": "1760466577",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1760466577",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DERALD L SEID D O A MEDICAL CORPORATION",
+      "postal_prefix": "94117",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-11-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-11-14",
+      "npi": "1932069788",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1932069788",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALEXANDER MARSH, M.D., PC",
+      "postal_prefix": "94103",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "2083P0500X",
+          "description": "Preventive Medicine, Preventive Medicine/Occupational Environmental Medicine",
+          "primary": false
+        },
+        {
+          "code": "261QH0100X",
+          "description": "Clinic/Center, Health Services",
+          "primary": false
+        },
+        {
+          "code": "291U00000X",
+          "description": "Clinical Medical Laboratory",
+          "primary": false
+        },
+        {
+          "code": "332B00000X",
+          "description": "Durable Medical Equipment & Medical Supplies",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2010-10-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-10-20",
+      "npi": "1104136431",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1104136431",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALAN J. COLEMAN, M.D.: A PROFESSIONAL CORPORATION",
+      "postal_prefix": "94115",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-03-07",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-07-17",
+      "npi": "1285381566",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1285381566",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "RANA RICHEH MD, INC",
+      "postal_prefix": "94104",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Obesity Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "2083B0002X",
+          "description": "Preventive Medicine, Obesity Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-10-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-06-09",
+      "npi": "1679661656",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1679661656",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GOLDEN GATE ENDOCRINE SPECIALISTS MEDICAL GROUP, INC",
+      "postal_prefix": "94117",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-09-07",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-01-02",
+      "npi": "1861596207",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1861596207",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AMBER BELLAMY MD",
+      "postal_prefix": "94127",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-11-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-11-30",
+      "npi": "1306028329",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1306028329",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALLEN F SMOOT MD INC",
+      "postal_prefix": "94132",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-01-27",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-01-27",
+      "npi": "1992411409",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1992411409",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "TEMPO MEDICAL CALIFORNIA PC",
+      "postal_prefix": "94111",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Obesity Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "2083B0002X",
+          "description": "Preventive Medicine, Obesity Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2011-10-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2011-10-03",
+      "npi": "1699059113",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1699059113",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "NANCY J V BOHANNON, MD, MEDICAL CORPORATION",
+      "postal_prefix": "94110",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Francisco",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2011-03-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-08-16",
+      "npi": "1619275021",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1619275021",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "APOLLO FAMILY MEDICINE AND SLEEP MEDICINE INC",
+      "postal_prefix": "94108",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "2084S0012X",
+          "description": "Psychiatry & Neurology, Sleep Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 8,
+      "sanitized_record_count": 5,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=San+Francisco&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 19,
+      "sanitized_record_count": 18,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=San+Francisco&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 47,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=San+Francisco&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 45,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=San+Francisco&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

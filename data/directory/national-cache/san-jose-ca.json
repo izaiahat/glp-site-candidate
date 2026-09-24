@@ -1,0 +1,550 @@
+{
+  "records": [
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-02-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-08-31",
+      "npi": "1144358581",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1144358581",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DAVID L PETERSON MD",
+      "postal_prefix": "95123",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-09-26",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-09-26",
+      "npi": "1124741095",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1124741095",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ACUTE BEHAVIORAL MEDICAL GROUP OF CALIFORNIA, INC.",
+      "postal_prefix": "95124",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "208M00000X",
+          "description": "Hospitalist",
+          "primary": true
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-09-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-09-21",
+      "npi": "1982890018",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1982890018",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ABALOS-GALITO MEDICAL SERVICE",
+      "postal_prefix": "95122",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-10-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-05-01",
+      "npi": "1861212664",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1861212664",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "EUREKA HEALTH MEDICAL GROUP OF CALIFORNIA, P.C.",
+      "postal_prefix": "95138",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-05-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1568411221",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1568411221",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AFPMG INC",
+      "postal_prefix": "95120",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2005-10-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-09-11",
+      "npi": "1245228154",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1245228154",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADVANCED MEDICAL CENTER INC",
+      "postal_prefix": "95118",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "111N00000X",
+          "description": "Chiropractor",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-09-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-09-06",
+      "npi": "1821283524",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1821283524",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "JOSELITO CABACCAN, MD",
+      "postal_prefix": "95148",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2009-03-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-02-02",
+      "npi": "1700027216",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1700027216",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AN NGOC TO MD INC",
+      "postal_prefix": "95112",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-01-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-01-14",
+      "npi": "1942622717",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1942622717",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AFFORDABLE UNIQUE HEALTH CARE INC",
+      "postal_prefix": "95148",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RN0300X",
+          "description": "Internal Medicine, Nephrology",
+          "primary": true
+        },
+        {
+          "code": "261QE0700X",
+          "description": "Clinic/Center, End-Stage Renal Disease (ESRD) Treatment",
+          "primary": false
+        },
+        {
+          "code": "261QM1300X",
+          "description": "Clinic/Center, Multi-Specialty",
+          "primary": false
+        },
+        {
+          "code": "261QP2300X",
+          "description": "Clinic/Center, Primary Care",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-05-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2012-12-12",
+      "npi": "1619188497",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1619188497",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "PACIFIC ENDOCRINE DIABETES HEALTH CENTER, INC.",
+      "postal_prefix": "95112",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-04-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-08-07",
+      "npi": "1821679648",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1821679648",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "APPLEBAY MEDICAL GROUP INC.",
+      "postal_prefix": "95121",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-01-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-01-30",
+      "npi": "1487467601",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1487467601",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ANJALI DHAR, MD MEDICAL PROFESSIONAL CORPORATION",
+      "postal_prefix": "95126",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-06-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-03-26",
+      "npi": "1700525334",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1700525334",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "PROACTIVE CARE PARTNERS OF CALIFORNIA PC",
+      "postal_prefix": "95113",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-02-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-03-20",
+      "npi": "1679337158",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1679337158",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BRADLEY J. E. PROFESIONAL CORPORATION",
+      "postal_prefix": "95113",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "133N00000X",
+          "description": "Nutritionist",
+          "primary": false
+        },
+        {
+          "code": "133V00000X",
+          "description": "Dietitian, Registered",
+          "primary": false
+        },
+        {
+          "code": "163WN1003X",
+          "description": "Registered Nurse, Nutrition Support",
+          "primary": false
+        },
+        {
+          "code": "171400000X",
+          "description": "Health & Wellness Coach",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "208D00000X",
+          "description": "General Practice",
+          "primary": false
+        },
+        {
+          "code": "224Z00000X",
+          "description": "Occupational Therapy Assistant",
+          "primary": false
+        },
+        {
+          "code": "225100000X",
+          "description": "Physical Therapist",
+          "primary": false
+        },
+        {
+          "code": "225200000X",
+          "description": "Physical Therapy Assistant",
+          "primary": false
+        },
+        {
+          "code": "225X00000X",
+          "description": "Occupational Therapist",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "San Jose",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-10-12",
+      "npi": "1245263458",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1245263458",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ANTHONY J. SAGLIMBENI, M.D., INC",
+      "postal_prefix": "95128",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=San+Jose&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 6,
+      "sanitized_record_count": 5,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=San+Jose&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 46,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=San+Jose&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 49,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=San+Jose&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

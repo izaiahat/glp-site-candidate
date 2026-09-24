@@ -1,0 +1,882 @@
+/* Phase 5 review intake: compact two-step moderation receipt.
+   Scope is intentionally limited to /reviews/submit/ source markup. */
+.p5-review-intake {
+  width: min(760px, calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+  padding: clamp(24px, 4vw, 48px) 0 clamp(64px, 8vw, 96px);
+  color: var(--text-primary);
+}
+
+.p5-review-intake__hero {
+  display: grid;
+  gap: 12px;
+  padding: 0 0 clamp(24px, 4vw, 40px);
+}
+
+.p5-review-intake__hero h1 {
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.p5-review-intake__hero > p:not(.p3-kicker) {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.p5-review-intake__hero dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 12px 0 0;
+  overflow: hidden;
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--radius-card);
+  background: var(--color-line-soft);
+}
+
+.p5-review-intake__hero dl > div {
+  min-width: 0;
+  padding: 14px 16px;
+  background: var(--color-surface);
+}
+
+.p5-review-intake__hero dt {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.p5-review-intake__hero dd {
+  margin: 4px 0 0;
+  color: var(--color-evidence);
+  font-weight: 750;
+}
+
+.p5-review-intake__card {
+  overflow: hidden;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-float);
+  box-shadow: var(--shadow-float);
+}
+
+.p5-review-intake__intro {
+  padding: clamp(20px, 4vw, 32px);
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.p5-review-intake__intro h2,
+.p5-step__heading h3 {
+  margin: 4px 0 8px;
+  text-wrap: balance;
+}
+
+.p5-review-intake__intro > p:last-child,
+.p5-step__heading p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.p5-review-form {
+  display: grid;
+  gap: 0;
+}
+
+.p5-stepper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 16px clamp(20px, 4vw, 32px);
+  list-style: none;
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.p5-stepper li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+.p5-stepper li > span {
+  display: inline-grid;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 50%;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.p5-stepper li[aria-current="step"] {
+  color: var(--text-primary);
+}
+
+.p5-stepper li[aria-current="step"] > span {
+  border-color: var(--color-evidence);
+  background: var(--color-evidence);
+  color: var(--color-ink-950);
+}
+
+.p5-noscript {
+  margin: 20px clamp(20px, 4vw, 32px) 0;
+  padding: 14px 16px;
+  border-left: 3px solid var(--color-warning);
+  background: var(--color-warning-bg);
+  line-height: 1.55;
+}
+
+.p5-step {
+  display: grid;
+  gap: 20px;
+  padding: clamp(20px, 4vw, 32px);
+}
+
+.p5-step + .p5-step {
+  border-top: 1px solid var(--color-line-soft);
+}
+
+.p5-step__heading > span {
+  color: var(--color-evidence);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.p5-review-block {
+  display: grid;
+  min-width: 0;
+  gap: 18px;
+  margin: 0;
+  padding: clamp(18px, 3vw, 24px);
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.p5-review-block > legend {
+  max-width: calc(100% - 24px);
+  padding: 0 8px;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.p5-review-block--contact {
+  border-left: 3px solid var(--color-evidence);
+}
+
+.p5-review-block--optional {
+  border-style: dashed;
+}
+
+.p5-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.p5-field,
+.p5-upload {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.p5-field > small,
+.p5-upload > small {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.p5-field input,
+.p5-field select,
+.p5-field textarea,
+.p5-upload input[type="file"] {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 11px 12px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 10px;
+  background: var(--color-surface-float);
+  color: var(--text-primary);
+  font: inherit;
+  font-weight: 500;
+  transition: border-color 160ms ease-out, background-color 160ms ease-out;
+}
+
+.p5-field textarea {
+  min-height: 132px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.p5-field input:hover,
+.p5-field select:hover,
+.p5-field textarea:hover,
+.p5-upload input[type="file"]:hover {
+  border-color: var(--color-evidence);
+}
+
+.p5-field input:focus-visible,
+.p5-field select:focus-visible,
+.p5-field textarea:focus-visible,
+.p5-upload input[type="file"]:focus-visible,
+.p5-rating input:focus-visible + span,
+.p5-entity-type input:focus-visible + span,
+.p5-check input:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Error color is applied ONLY after a validation pass marks the field scope
+   with [data-field-invalid] (assets/review-intake.js). The previous
+   `:invalid:not(:placeholder-shown)` rule painted required fields alarm-red at
+   rest, because inputs with no placeholder never match :placeholder-shown —
+   the whole untouched form rendered pre-failed (spec fix #4). */
+[data-field-invalid] input,
+[data-field-invalid] select,
+[data-field-invalid] textarea {
+  border-color: var(--color-danger);
+}
+
+.p5-entity-type,
+.p5-rating {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.p5-entity-type legend,
+.p5-rating legend {
+  margin-bottom: 2px;
+  font-weight: 750;
+}
+
+.p5-entity-type > div,
+.p5-rating > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.p5-entity-type label,
+.p5-rating label {
+  position: relative;
+  display: inline-grid;
+  cursor: pointer;
+}
+
+.p5-entity-type input,
+.p5-rating input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.p5-entity-type label > span,
+.p5-rating label > span[aria-hidden="true"] {
+  display: inline-grid;
+  min-width: 48px;
+  min-height: 48px;
+  place-items: center;
+  padding: 8px 14px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 10px;
+  background: var(--color-surface-float);
+  color: var(--text-primary);
+  font-weight: 750;
+  transition: border-color 160ms ease-out, background-color 160ms ease-out, transform 160ms ease-out;
+}
+
+.p5-rating label > span[aria-hidden="true"] {
+  padding: 8px;
+  color: var(--color-held);
+  font-size: 1.25rem;
+}
+
+.p5-entity-type input:checked + span,
+.p5-rating input:checked + span[aria-hidden="true"] {
+  border-color: var(--color-evidence);
+  background: var(--color-accent-soft);
+  color: var(--color-evidence);
+}
+
+.p5-entity-type label:hover > span,
+.p5-rating label:hover > span[aria-hidden="true"] {
+  transform: translateY(-1px);
+  border-color: var(--color-evidence);
+}
+
+.p5-entity-type[data-derived] {
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--color-mist-100);
+}
+
+.p5-entity-type[data-derived] label:has(input:not(:checked)) {
+  display: none;
+}
+
+.p5-upload {
+  padding: 16px;
+  border: 1px dashed var(--color-line-strong);
+  border-radius: 12px;
+  background: var(--color-mist-100);
+}
+
+.p5-upload input[type="file"] {
+  padding: 9px;
+  border-style: solid;
+  background: var(--color-surface);
+}
+
+.p5-review-block--attest {
+  gap: 12px;
+  background: var(--color-warning-bg);
+}
+
+.cs-attest > h4 {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.p5-check {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  min-width: 0;
+  min-height: 44px;
+  font-weight: 550;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.p5-check input {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  accent-color: var(--color-evidence);
+}
+
+.p5-readiness,
+.p5-review-receipt {
+  min-width: 0;
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--color-mist-100);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.p5-readiness[data-state="ready"],
+.p5-review-receipt[data-state="success"] {
+  background: var(--color-accent-soft);
+  color: var(--color-evidence);
+}
+
+.p5-readiness[data-state="incomplete"],
+.p5-review-receipt[data-state="error"] {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+.p5-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.p5-actions .cta {
+  min-height: 48px;
+}
+
+.p5-actions--split > [data-review-back] {
+  margin-right: auto;
+}
+
+.p5-review-receipt:empty {
+  display: none;
+}
+
+.p5-review-receipt:not(:empty) {
+  margin: 0 clamp(20px, 4vw, 32px) clamp(20px, 4vw, 32px);
+  font-weight: 650;
+}
+
+.p5-review-form[aria-busy="true"] {
+  cursor: wait;
+}
+
+.p5-review-form button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+@media (max-width: 640px) {
+  .p5-review-intake {
+    width: min(100% - 24px, 760px);
+    padding-top: 20px;
+  }
+
+  .p5-review-intake__hero dl,
+  .p5-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .p5-review-intake__hero dl {
+    gap: 0;
+    background: transparent;
+  }
+
+  .p5-review-intake__hero dl > div {
+    border-top: 1px solid var(--color-line-soft);
+  }
+
+  .p5-stepper {
+    padding-inline: 18px;
+  }
+
+  .p5-stepper li {
+    align-items: flex-start;
+  }
+
+  .p5-stepper strong {
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+
+  .p5-step,
+  .p5-review-intake__intro {
+    padding-inline: 18px;
+  }
+
+  .p5-review-block {
+    padding-inline: 16px;
+  }
+
+  .p5-actions,
+  .p5-actions--split {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .p5-actions .cta,
+  .p5-actions--split > [data-review-back] {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+/* ==========================================================================
+   INTAKE REDESIGN (reviews-capture spec 2026-08-26, fixes 3/4/5/6):
+   per-field (public)/(private) tags + tooltips, gradient hover-fill stars,
+   accessible entity combobox, branded drag-and-drop evidence zone, styled
+   inline validation. Every duration in this file stays inside the pinned
+   sub-third-of-a-second motion budget (tests/phase5-review-intake.test.mjs).
+   Continuous loops live in 30-review.css.
+   ========================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* honeypot: the review bundle never had .hp (it lived in 11-phase3.css, which
+   this route does not load), so the bot trap rendered as a visible empty box */
+.p5-review-form .hp,
+.p5-review-form .capture-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.cs-intake-hero { padding-bottom: clamp(16px, 3vw, 26px); }
+.cs-intake-hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); max-width: 14ch; }
+.cs-intake-trust { max-width: 62ch; margin: 0; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.55; }
+.cs-intake-trust a { color: var(--color-interactive); }
+
+/* ---- public/private field tags -------------------------------------------- */
+.cs-tag {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cs-tag--public { color: var(--color-evidence); background: var(--color-accent-soft); }
+.cs-tag--private { color: var(--color-interactive); background: rgba(111, 216, 255, 0.13); }
+
+/* ---- info tooltips (CSS-only: hover + focus) ------------------------------ */
+.cs-tipwrap { position: relative; display: inline-block; vertical-align: middle; }
+.cs-tipdot {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-secondary);
+  font: 800 0.68rem/1 var(--font-display);
+  cursor: help;
+}
+.cs-tipdot::after { content: ""; position: absolute; inset: -11px; }
+.cs-tipdot:hover, .cs-tipwrap:focus-within .cs-tipdot { color: var(--color-evidence); border-color: var(--color-sage-200); }
+.cs-tip {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 70;
+  width: min(280px, 74vw);
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--color-surface-float);
+  box-shadow: var(--shadow-float);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+.cs-tipwrap:hover .cs-tip,
+.cs-tipwrap:focus-within .cs-tip { opacity: 1; }
+
+/* ---- styled validation (summary + per-field messages) --------------------- */
+.cs-form-summary {
+  margin: 18px clamp(20px, 4vw, 32px) 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border-left: 3px solid var(--color-danger);
+  background: var(--color-danger-bg);
+}
+.cs-form-summary[hidden] { display: none; }
+.cs-form-summary strong { color: var(--color-danger); font-family: var(--font-display); }
+.cs-form-summary ul { display: grid; gap: 3px; margin: 6px 0 0; padding-left: 18px; color: var(--text-secondary); font-size: 0.88rem; }
+.cs-field-error { display: block; margin-top: 2px; color: var(--color-danger); font-size: 0.82rem; font-weight: 650; }
+fieldset[data-field-invalid] > legend { color: var(--color-danger); }
+.p5-check > .cs-field-error { grid-column: 1 / -1; }
+
+/* ---- entity combobox ------------------------------------------------------ */
+.cs-entity-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  gap: 16px 28px;
+  align-items: start;
+}
+.cs-combobox { position: relative; }
+.cs-combobox > label { display: block; margin-bottom: 0; }
+.cs-combobox__control { position: relative; display: flex; align-items: center; }
+.cs-combobox__control input { padding-right: 38px; }
+.cs-combobox__chevron { position: absolute; right: 14px; color: var(--text-secondary); pointer-events: none; }
+.cs-combobox__list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: grid;
+  gap: 2px;
+  max-height: 320px;
+  margin-top: 6px;
+  padding: 6px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-control);
+  background: var(--color-surface-float);
+  box-shadow: var(--shadow-float);
+}
+.cs-combobox__list[hidden] { display: none; }
+.cs-combobox__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  font: inherit;
+  font-weight: 550;
+  text-align: left;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.cs-combobox__option:hover,
+.cs-combobox__option[aria-selected="true"] { background: var(--color-accent-soft); }
+.cs-combobox__name { min-width: 0; overflow-wrap: anywhere; }
+.cs-combobox__tag {
+  flex: none;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-mist-100);
+  color: var(--text-secondary);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cs-combobox__option--new .cs-combobox__name { color: var(--color-evidence); font-weight: 700; }
+.cs-combobox__option--new .cs-combobox__tag { color: var(--color-evidence); background: var(--color-accent-soft); }
+.cs-combobox[data-entity-state="proposed"] .cs-combobox__control input { border-color: var(--color-sage-200); }
+/* The JS combobox owns the entity type once it is running (selections and the
+   add-new affordance both set it); the no-JS radio chips stay in the markup
+   and are only hidden AFTER the runtime stamps the managed state. */
+[data-review-entity-type-group][data-combobox-managed] { display: none; }
+
+/* ---- gradient hover-fill stars -------------------------------------------- */
+.cs-stars {
+  --star-idle-color: rgba(233, 247, 241, 0.22);
+  --star-idle-stroke: transparent;
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+@supports (-webkit-text-stroke: 1px #000) {
+  .cs-stars { --star-idle-color: transparent; --star-idle-stroke: rgba(191, 226, 212, 0.55); }
+}
+.cs-stars legend { margin-bottom: 4px; padding: 0; font-weight: 750; }
+.cs-stars__row { display: flex; gap: 4px; }
+.cs-stars__item {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.cs-stars__item input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.cs-stars__item:has(input:focus-visible) { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.cs-stars__glyph {
+  font-size: clamp(2.1rem, 3vw, 2.5rem);
+  line-height: 1;
+  color: var(--star-idle-color);
+  -webkit-text-stroke: 1.6px var(--star-idle-stroke);
+  background-image: none;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: transform 150ms var(--ease-out-expo);
+}
+.cs-stars__item:hover .cs-stars__glyph { transform: scale(1.08); }
+/* committed rating: fill up to the checked star */
+.cs-stars__row:has(input:checked) .cs-stars__glyph {
+  background-image: var(--cs-accent-gradient);
+  color: transparent;
+  -webkit-text-stroke-color: transparent;
+}
+.cs-stars__item:has(input:checked) ~ .cs-stars__item .cs-stars__glyph {
+  background-image: none;
+  color: var(--star-idle-color);
+  -webkit-text-stroke-color: var(--star-idle-stroke);
+}
+/* hover preview: fill up to the hovered star, overriding the committed state
+   while the pointer is inside the row (higher specificity by design) */
+.cs-stars .cs-stars__row:hover .cs-stars__item .cs-stars__glyph {
+  background-image: var(--cs-accent-gradient);
+  color: transparent;
+  -webkit-text-stroke-color: transparent;
+}
+.cs-stars .cs-stars__row:hover .cs-stars__item:hover ~ .cs-stars__item .cs-stars__glyph {
+  background-image: none;
+  color: var(--star-idle-color);
+  -webkit-text-stroke-color: var(--star-idle-stroke);
+}
+
+/* ---- optional product/topic disclosure ------------------------------------ */
+.cs-intake-more {
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--radius-control);
+  background: var(--color-mist-100);
+}
+.cs-intake-more summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 10px 16px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+.cs-intake-more summary::-webkit-details-marker { display: none; }
+.cs-intake-more summary small { flex: 1; color: var(--text-secondary); font-weight: 500; font-size: 0.8rem; text-align: right; }
+.cs-intake-more summary::after {
+  content: "";
+  flex: none;
+  inline-size: 9px;
+  block-size: 9px;
+  border-right: 2px solid var(--text-secondary);
+  border-bottom: 2px solid var(--text-secondary);
+  transform: rotate(45deg);
+  transition: transform 160ms var(--ease-out-expo);
+}
+.cs-intake-more[open] summary::after { transform: rotate(225deg); }
+.cs-intake-more > div { padding: 2px 16px 16px; }
+
+/* ---- evidence dropzone ---------------------------------------------------- */
+.cs-dropzone { padding: 0; border: 0; background: transparent; }
+.cs-dropzone > label { margin-bottom: 0; }
+.cs-dropzone__zone {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1.5px solid transparent;
+  border-radius: 18px;
+  background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box, var(--cs-accent-gradient) border-box;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 200ms ease;
+}
+.cs-dropzone__zone:hover, .cs-dropzone__zone:focus-within { box-shadow: var(--shadow-glow); }
+.cs-dropzone__zone[data-drag] { box-shadow: var(--cs-ring); }
+.cs-dropzone__zone > svg { width: 34px; height: 34px; color: var(--color-evidence); }
+.cs-dropzone__cta { display: grid; gap: 2px; margin: 0; max-width: none; }
+.cs-dropzone__cta strong { font-family: var(--font-display); font-weight: 750; }
+.cs-dropzone__cta span { color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; }
+.cs-dropzone__zone input[type="file"] {
+  width: min(100%, 340px);
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-mist-100);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+/* Once the runtime owns the zone (click-anywhere + drag-and-drop + preview),
+   the raw file control collapses to an accessible hidden input. Never hidden
+   before JS runs. */
+html[data-review-intake-enhanced] .cs-dropzone__zone input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.cs-dropzone__preview { display: grid; gap: 8px; }
+.cs-dropzone__preview[hidden] { display: none; }
+.cs-dropzone__file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--color-mist-100);
+}
+.cs-dropzone__thumb { width: 56px; height: 56px; flex: none; object-fit: cover; border-radius: 10px; }
+.cs-dropzone__doc {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--color-surface-float);
+  color: var(--color-evidence);
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+.cs-dropzone__meta { flex: 1; min-width: 0; color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; overflow-wrap: anywhere; }
+.cs-dropzone__remove {
+  flex: none;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--color-danger);
+  font: 700 0.85rem var(--font-display);
+  cursor: pointer;
+}
+.cs-dropzone__remove:hover { text-decoration: underline; }
+
+/* ---- attestation ---------------------------------------------------------- */
+.cs-attest { gap: 10px; background: var(--color-mist-100); border-left: 3px solid var(--color-evidence); }
+.cs-attest .p5-check { align-items: start; }
+.cs-attest .p5-check input { margin-top: 3px; }
+
+@media (max-width: 760px) {
+  .cs-entity-row { grid-template-columns: 1fr; }
+  .cs-stars__row { justify-content: space-between; width: 100%; max-width: 320px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p5-review-intake *,
+  .p5-review-intake *::before,
+  .p5-review-intake *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .p5-entity-type label:hover > span,
+  .p5-rating label:hover > span[aria-hidden="true"],
+  .cs-stars__item:hover .cs-stars__glyph {
+    transform: none;
+  }
+}

@@ -1,0 +1,545 @@
+{
+  "records": [
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-02-10",
+      "npi": "1356363949",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1356363949",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "RIVERSIDE PHYSICIAN SERVICES INC",
+      "postal_prefix": "23601",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-03-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-03-06",
+      "npi": "1437699766",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1437699766",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AFFINITY HEALTHCARE GROUP NEWPORT NEWS, LLC",
+      "postal_prefix": "23605",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QA0401X",
+          "description": "Family Medicine, Addiction Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-11-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-08-19",
+      "npi": "1588438592",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1588438592",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CENTERWELL SENIOR PRIMARY CARE VA PLLC",
+      "postal_prefix": "23607",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "208D00000X",
+          "description": "General Practice",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-06-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-06-12",
+      "npi": "1902848294",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1902848294",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "TIDEWATER PHYSICIANS MULTISPECIALTY GROUP PC",
+      "postal_prefix": "23606",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RN0300X",
+          "description": "Internal Medicine, Nephrology",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207W00000X",
+          "description": "Ophthalmology",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": false
+        },
+        {
+          "code": "2085R0202X",
+          "description": "Radiology, Diagnostic Radiology",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": false
+        },
+        {
+          "code": "208800000X",
+          "description": "Urology",
+          "primary": false
+        },
+        {
+          "code": "291U00000X",
+          "description": "Clinical Medical Laboratory",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-04-07",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-06-09",
+      "npi": "1609455450",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1609455450",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AFFINITY PALLIATIVE OF VIRGINIA LLC",
+      "postal_prefix": "23606",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QH0002X",
+          "description": "Family Medicine, Hospice and Palliative Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-03-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-03-18",
+      "npi": "1699735514",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1699735514",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "EASTERN VIRGINIA RHEUMATOLOGY PLC",
+      "postal_prefix": "23606",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-10-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2009-01-13",
+      "npi": "1629220819",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1629220819",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COMPLETE HEALTHCARE, LLC",
+      "postal_prefix": "23606",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207P00000X",
+          "description": "Emergency Medicine",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-01-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-10-23",
+      "npi": "1922144518",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1922144518",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GEORGE G CHILDS MD PC",
+      "postal_prefix": "23608",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-05-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1548475775",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1548475775",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DANIEL LEE MEDICAL GROUP PC",
+      "postal_prefix": "23608",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-10-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-10-18",
+      "npi": "1891411138",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1891411138",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HEARTLAND HOSPICE SERVICES, LLC",
+      "postal_prefix": "23602",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RH0002X",
+          "description": "Internal Medicine, Hospice and Palliative Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-03-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2011-02-21",
+      "npi": "1942327036",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1942327036",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "FAMILY CARE OF DENBIGH, INC.",
+      "postal_prefix": "23602",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2011-06-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-10-31",
+      "npi": "1568756948",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1568756948",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "JENCARE NEIGHBORHOOD MEDICAL NEW MARKET, LLC",
+      "postal_prefix": "23605",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "3336C0003X",
+          "description": "Pharmacy, Community/Retail Pharmacy",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-10-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-03-04",
+      "npi": "1679662050",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1679662050",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "FAMILY MEDICINE & WOMEN'S HEALTHCARE PC",
+      "postal_prefix": "23606",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-06-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-04-19",
+      "npi": "1376992636",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1376992636",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "MARYVIEW HOSPITAL LLC",
+      "postal_prefix": "23602",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RX0202X",
+          "description": "Internal Medicine, Medical Oncology",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Newport News",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-04-04",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2019-06-11",
+      "npi": "1619400066",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1619400066",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HAMPTON ROADS URGENT CARE, PLLC",
+      "postal_prefix": "23606",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "VA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "2083X0100X",
+          "description": "Preventive Medicine, Occupational Medicine",
+          "primary": false
+        },
+        {
+          "code": "261QP2300X",
+          "description": "Clinic/Center, Primary Care",
+          "primary": false
+        },
+        {
+          "code": "261QU0200X",
+          "description": "Clinic/Center, Urgent Care",
+          "primary": true
+        },
+        {
+          "code": "261QX0100X",
+          "description": "Clinic/Center, Occupational Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 1,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Newport+News&state=VA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 2,
+      "sanitized_record_count": 2,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Newport+News&state=VA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 36,
+      "sanitized_record_count": 29,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Newport+News&state=VA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 27,
+      "sanitized_record_count": 24,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Newport+News&state=VA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

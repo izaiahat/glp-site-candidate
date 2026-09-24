@@ -1,0 +1,14 @@
+/* W3 uses the existing self-hosted quiz design; only its launcher is new. */
+body[data-paid-funnel="route-quiz"]{background:#07100d;color:#edf6f1;margin:0;font-family:Manrope,system-ui,sans-serif}
+body[data-paid-funnel="route-quiz"] [hidden]{display:none!important}
+.pq-brand,.pq-footer,body[data-paid-funnel="route-quiz"]>main{width:min(1080px,calc(100% - 40px));margin-inline:auto}
+.pq-brand{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;border-bottom:1px solid #345044}
+.pq-brand>a{font-weight:800;font-size:1.35rem;color:#edf6f1;text-decoration:none}.pq-brand>span{font-size:.8rem;color:#b4c7bc}
+.pq-intro{max-width:760px;margin:clamp(36px,7vw,88px) auto 40px}.pq-intro h1{font-size:clamp(2.2rem,4.6vw,4rem);line-height:1.08;letter-spacing:-.04em;text-wrap:balance}.pq-lede{font-size:1.15rem;line-height:1.65;color:#d1dfd7;max-width:62ch}
+.pq-facts{display:flex;flex-wrap:wrap;gap:12px 24px;padding-left:20px;font-size:.85rem;color:#b4c7bc}.pq-disclosure{border-left:3px solid #84deb1;padding:12px 16px;line-height:1.55;font-size:.85rem;color:#d1dfd7;margin:24px 0 18px}
+body[data-paid-funnel="route-quiz"] a{color:#9debc5;text-underline-offset:4px}.pq-start{display:inline-flex;justify-content:center;align-items:center;min-height:52px;padding:12px 24px!important;background:#9debc5!important;color:#07100d!important;border-radius:14px;font-weight:800;text-decoration:none}
+.pq-intro details{margin-top:32px;line-height:1.6}.pq-intro summary{cursor:pointer;min-height:44px;padding:10px 0;font-weight:700}.pq-status{min-height:1.5em;line-height:1.5}
+.pq-privacy{border:1px solid #345044;border-radius:14px;padding:20px;margin:32px 0;color:#c4d6cc;font-size:.86rem;line-height:1.6}.pq-privacy p{margin-bottom:0}.pq-footer{padding:20px 0 36px;color:#b4c7bc;line-height:1.6;font-size:.8rem}.pq-footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}.pq-footer a{min-height:44px;display:inline-flex;align-items:center}
+body[data-paid-funnel="route-quiz"] :focus-visible{outline:3px solid #f3ce77!important;outline-offset:5px}body[data-paid-funnel="route-quiz"] .qz-shell{margin:32px auto;scroll-margin-top:16px}
+@media(max-width:600px){.pq-brand{align-items:flex-start;flex-direction:column;gap:6px}.pq-intro{margin-top:32px}.pq-start{width:100%;box-sizing:border-box}.pq-brand,.pq-footer,body[data-paid-funnel="route-quiz"]>main{width:calc(100% - 32px)}.pq-facts{display:block}.pq-facts li{margin:8px 0}.pq-disclosure{padding:10px 12px}.pq-privacy{padding:16px}}
+@media(prefers-reduced-motion:reduce){body[data-paid-funnel="route-quiz"] *,body[data-paid-funnel="route-quiz"] *:before,body[data-paid-funnel="route-quiz"] *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

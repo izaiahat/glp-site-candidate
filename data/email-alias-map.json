@@ -1,0 +1,27 @@
+{
+  "schema": "glp-public-email-alias-map-v1",
+  "version": 1,
+  "domain": "glpclinicscout.com",
+  "why": "The inbox tool sorts by alias, so the alias a public page publishes decides where a real reader's email lands. Before 2026-08-18 every public page published ops@ - the internal catch-all the sorter routes AROUND - so reader mail arrived unsorted. This map makes the alias a property of the page's PURPOSE, and scripts/validate-public-email-aliases.mjs fails the build when a page publishes an alias that does not match its purpose (or publishes ops@ at all).",
+  "never_public": ["ops"],
+  "never_public_reason": "ops@ is the internal default the inbox tool sorts around. A public page publishing it defeats the sorter for every message it attracts.",
+  "aliases": {
+    "support": "Contact, support, corrections, and general user-facing help",
+    "privacy": "Privacy policy, consumer health data, and data-subject requests",
+    "security": "Security disclosures and vulnerability reports",
+    "partners": "Partner, affiliate, and network-facing pages",
+    "clinics": "Clinic and provider-facing pages",
+    "billing": "Billing and payment questions",
+    "hello": "General and about pages with no more specific purpose"
+  },
+  "route_purposes": [
+    { "match": "^/privacy/lead-capture/", "purpose": "contact_and_corrections", "allowed": ["support", "privacy"] },
+    { "match": "^/privacy/", "purpose": "privacy_policy_and_data_requests", "allowed": ["privacy"] },
+    { "match": "^/terms/", "purpose": "terms_and_user_support", "allowed": ["support"] },
+    { "match": "^/google-ads-api/privacy/", "purpose": "privacy_policy_and_data_requests", "allowed": ["privacy"] },
+    { "match": "^/google-ads-api/", "purpose": "api_compliance_support", "allowed": ["support"] },
+    { "match": "^/security", "purpose": "security_disclosure", "allowed": ["security"] },
+    { "match": "^/how-we-make-money/", "purpose": "partner_disclosure", "allowed": ["partners", "support"] },
+    { "match": "^/", "purpose": "general", "allowed": ["support", "hello", "privacy", "security", "partners", "clinics", "billing"] }
+  ]
+}

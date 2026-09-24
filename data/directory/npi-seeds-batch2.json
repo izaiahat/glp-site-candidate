@@ -1,0 +1,4141 @@
+{
+  "as_of": "2026-07-23",
+  "cities": [
+    {
+      "api_result_count": 122,
+      "city": "Phoenix",
+      "city_slug": "phoenix-az",
+      "local_value_gate": "HELD_PENDING_DIRECT_GLP_SERVICE_VERIFICATION",
+      "primary_taxonomy_mix": {
+        "Chiropractor": 1,
+        "Clinic/Center, Federally Qualified Health Center (FQHC)": 2,
+        "Community/Behavioral Health": 1,
+        "Family Medicine": 4,
+        "Family Medicine, Hospice and Palliative Medicine": 1,
+        "General Practice": 1,
+        "Hospitalist": 1,
+        "Integrative Medicine": 1,
+        "Internal Medicine": 3,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 8,
+        "Internal Medicine, Medical Oncology": 1,
+        "Preventive Medicine, Obesity Medicine": 1
+      },
+      "records": [
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2025-04-01",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-04-26",
+          "npi": "1639973761",
+          "organization_name": "PHOENIX METABOLIC HEALTH PLLC",
+          "postal_prefix": "85042",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2008-07-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-22",
+          "npi": "1922264779",
+          "organization_name": "ADVANCED ENDOCRINOLOGY AND METABOLISM, P.C.",
+          "postal_prefix": "85032",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            },
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": false
+            },
+            {
+              "code": "261QM1300X",
+              "description": "Clinic/Center, Multi-Specialty",
+              "primary": false
+            },
+            {
+              "code": "261QR0405X",
+              "description": "Clinic/Center, Rehabilitation, Substance Use Disorder",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2006-05-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-21",
+          "npi": "1407805088",
+          "organization_name": "1ST CARE MEDICAL CLINIC",
+          "postal_prefix": "85021",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2026-03-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-03-11",
+          "npi": "1700733664",
+          "organization_name": "3 PEAKS MEDICAL GROUP, P.C.",
+          "postal_prefix": "85003",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "103T00000X",
+              "description": "Psychologist",
+              "primary": false
+            },
+            {
+              "code": "103TC1900X",
+              "description": "Psychologist, Counseling",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2023-05-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-05-19",
+          "npi": "1619668530",
+          "organization_name": "AL MARADNI PLLC",
+          "postal_prefix": "85040",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2026-05-14",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-14",
+          "npi": "1184553471",
+          "organization_name": "A AND C PRIMARY CARE",
+          "postal_prefix": "85051",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207QH0002X",
+              "description": "Family Medicine, Hospice and Palliative Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2006-07-21",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-02-02",
+          "npi": "1013937895",
+          "organization_name": "ACACIA INTERNAL MEDICINE",
+          "postal_prefix": "85027",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2019-04-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-02-24",
+          "npi": "1770146466",
+          "organization_name": "ARKANGEL ENDOCRINOLOGY & DIABETES",
+          "postal_prefix": "85016",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2025-11-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-11-25",
+          "npi": "1730041971",
+          "organization_name": "A1 INTEGRATIVE HEALTH AND WELLNESS LLC",
+          "postal_prefix": "85020",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "202D00000X",
+              "description": "Integrative Medicine",
+              "primary": true
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207QA0401X",
+              "description": "Family Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": false
+            },
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "261QM0801X",
+              "description": "Clinic/Center, Mental Health (Including Community Mental Health Center)",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2009-05-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-05-11",
+          "npi": "1013142603",
+          "organization_name": "ACCU CARE URGENT CARE LLC",
+          "postal_prefix": "85051",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2026-03-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-03-11",
+          "npi": "1043167851",
+          "organization_name": "AXIS ENDOCRINOLOGY PLLC",
+          "postal_prefix": "85032",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2007-07-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2007-07-11",
+          "npi": "1609075662",
+          "organization_name": "ABUNDANT LIFE CLINIC",
+          "postal_prefix": "85014",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2015-11-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-04-28",
+          "npi": "1205200565",
+          "organization_name": "ADELANTE HEALTHCARE, INC",
+          "postal_prefix": "85013",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "261QF0400X",
+              "description": "Clinic/Center, Federally Qualified Health Center (FQHC)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2010-04-14",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-04-14",
+          "npi": "1831415991",
+          "organization_name": "CRISTIAN E. SCIUTTO, MD PLC",
+          "postal_prefix": "85003",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2023-01-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-10-05",
+          "npi": "1285340174",
+          "organization_name": "AC RECOVERY CENTER AND WELLNESS LLC",
+          "postal_prefix": "85051",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YA0400X",
+              "description": "Counselor, Addiction (Substance Use Disorder)",
+              "primary": false
+            },
+            {
+              "code": "103TA0400X",
+              "description": "Psychologist, Addiction (Substance Use Disorder)",
+              "primary": false
+            },
+            {
+              "code": "104100000X",
+              "description": "Social Worker",
+              "primary": false
+            },
+            {
+              "code": "171M00000X",
+              "description": "Case Manager/Care Coordinator",
+              "primary": false
+            },
+            {
+              "code": "207KA0200X",
+              "description": "Allergy & Immunology, Allergy",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "208VP0014X",
+              "description": "Pain Medicine, Interventional Pain Medicine",
+              "primary": false
+            },
+            {
+              "code": "251S00000X",
+              "description": "Community/Behavioral Health",
+              "primary": true
+            },
+            {
+              "code": "363LF0000X",
+              "description": "Nurse Practitioner, Family",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2006-12-05",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-04-28",
+          "npi": "1528126133",
+          "organization_name": "ADELANTE HEALTHCARE, INC.",
+          "postal_prefix": "85012",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "261QF0400X",
+              "description": "Clinic/Center, Federally Qualified Health Center (FQHC)",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2014-12-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2014-12-22",
+          "npi": "1760870919",
+          "organization_name": "DESERT ENDOCRINOLOGY LLC",
+          "postal_prefix": "85004",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2007-05-30",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-03-03",
+          "npi": "1467653147",
+          "organization_name": "ACCESS2CARE FAMILY MEDICAL CENTER, INC.",
+          "postal_prefix": "85014",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2007-08-16",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-05-28",
+          "npi": "1073705687",
+          "organization_name": "ADVANCED PHYSIOTHERAPY & WELLNESS CENTER LLC",
+          "postal_prefix": "85051",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "111N00000X",
+              "description": "Chiropractor",
+              "primary": true
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2011-06-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-06-22",
+          "npi": "1447546023",
+          "organization_name": "DESERT MERCY DIABETES AND THYROID CENTER PLLC",
+          "postal_prefix": "85018",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2020-11-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-11-19",
+          "npi": "1336742402",
+          "organization_name": "ACCESSMD PLUS LLC",
+          "postal_prefix": "85006",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2006-08-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-07-25",
+          "npi": "1265546261",
+          "organization_name": "AFFILIATED HOSPITALISTS, PLC",
+          "postal_prefix": "85020",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "208M00000X",
+              "description": "Hospitalist",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2009-09-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2014-10-01",
+          "npi": "1992038004",
+          "organization_name": "DISTRICT MEDICAL GROUP, INC",
+          "postal_prefix": "85008",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2017-10-16",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2017-10-16",
+          "npi": "1154832277",
+          "organization_name": "ACCIDENT & INJURY SOLUTIONS",
+          "postal_prefix": "85021",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "204C00000X",
+              "description": "Neuromusculoskeletal Medicine, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "207QS0010X",
+              "description": "Family Medicine, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Phoenix",
+          "enumeration_date": "2008-03-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-04-23",
+          "npi": "1548431042",
+          "organization_name": "AFFILIATED ONCOLOGISTS LTD",
+          "postal_prefix": "85013",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "AZ",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RX0202X",
+              "description": "Internal Medicine, Medical Oncology",
+              "primary": true
+            }
+          ]
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 2,
+          "sanitized_record_count": 1,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Phoenix&state=AZ&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 20,
+          "sanitized_record_count": 19,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Phoenix&state=AZ&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 45,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Phoenix&state=AZ&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 45,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Phoenix&state=AZ&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "AZ"
+    },
+    {
+      "api_result_count": 123,
+      "city": "Denver",
+      "city_slug": "denver-co",
+      "local_value_gate": "HELD_PENDING_DIRECT_GLP_SERVICE_VERIFICATION",
+      "primary_taxonomy_mix": {
+        "Clinic/Center, Medical Specialty": 1,
+        "Family Medicine": 8,
+        "Internal Medicine": 6,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 8,
+        "Psychiatry & Neurology, Psychiatry": 2
+      },
+      "records": [
+        {
+          "city": "Denver",
+          "enumeration_date": "2022-09-15",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-09-15",
+          "npi": "1942922042",
+          "organization_name": "VERY.HEALTH P.C.",
+          "postal_prefix": "80230",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "133N00000X",
+              "description": "Nutritionist",
+              "primary": false
+            },
+            {
+              "code": "133V00000X",
+              "description": "Dietitian, Registered",
+              "primary": false
+            },
+            {
+              "code": "133VN1004X",
+              "description": "Dietitian, Registered, Nutrition, Pediatric",
+              "primary": false
+            },
+            {
+              "code": "133VN1201X",
+              "description": "Dietitian, Registered, Nutrition, Obesity and Weight Management",
+              "primary": false
+            },
+            {
+              "code": "171400000X",
+              "description": "Health & Wellness Coach",
+              "primary": false
+            },
+            {
+              "code": "171M00000X",
+              "description": "Case Manager/Care Coordinator",
+              "primary": false
+            },
+            {
+              "code": "2080A0000X",
+              "description": "Pediatrics, Adolescent Medicine",
+              "primary": false
+            },
+            {
+              "code": "2080B0002X",
+              "description": "Pediatrics, Obesity Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083P0500X",
+              "description": "Preventive Medicine, Preventive Medicine/Occupational Environmental Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083P0901X",
+              "description": "Preventive Medicine, Public Health & General Preventive Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084B0002X",
+              "description": "Psychiatry & Neurology, Bariatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": true
+            },
+            {
+              "code": "2084P0804X",
+              "description": "Psychiatry & Neurology, Child & Adolescent Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "246ZB0600X",
+              "description": "Specialist/Technologist, Other, Biostatistician",
+              "primary": false
+            },
+            {
+              "code": "247000000X",
+              "description": "Technician, Health Information",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2007-12-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-01",
+          "npi": "1093999005",
+          "organization_name": "COMPREHENSIVE ENDOCRINOLOGY, P.C.",
+          "postal_prefix": "80220",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2020-11-02",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-01",
+          "npi": "1821699364",
+          "organization_name": "2HEALTH FOUNDATION",
+          "postal_prefix": "80238",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "261QM2500X",
+              "description": "Clinic/Center, Medical Specialty",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2025-10-01",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-02-05",
+          "npi": "1104790294",
+          "organization_name": "2ND HOME MEDICAL CENTER PLLC",
+          "postal_prefix": "80224",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2025-09-30",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-09-30",
+          "npi": "1962376384",
+          "organization_name": "COST PLUS TRT LLC",
+          "postal_prefix": "80202",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2025-10-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-10-22",
+          "npi": "1740157866",
+          "organization_name": "2ND HOME PHARMACY - EVANS LLC",
+          "postal_prefix": "80224",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207VG0400X",
+              "description": "Obstetrics & Gynecology, Gynecology",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2024-03-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-03-27",
+          "npi": "1053162297",
+          "organization_name": "ABRAMS CONSULTING, PC, DBA COLORADO PREVENTIVE MEDICINE",
+          "postal_prefix": "80220",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2005-06-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-02-18",
+          "npi": "1124024799",
+          "organization_name": "CREEKSIDE ENDOCRINE ASSOCIATES, PC",
+          "postal_prefix": "80246",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2026-06-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-17",
+          "npi": "1487589610",
+          "organization_name": "ADVENTHEALTH PRIMARY CARE RMR",
+          "postal_prefix": "80249",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2020-09-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-02-02",
+          "npi": "1043826795",
+          "organization_name": "ALEGIS CARE OF COLORADO LLC",
+          "postal_prefix": "80222",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207QH0002X",
+              "description": "Family Medicine, Hospice and Palliative Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RH0002X",
+              "description": "Internal Medicine, Hospice and Palliative Medicine",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2006-06-15",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2007-10-31",
+          "npi": "1902840747",
+          "organization_name": "DENVER CENTER FOR BONE HEALTH PC",
+          "postal_prefix": "80209",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2026-06-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-17",
+          "npi": "1558296798",
+          "organization_name": "ADVENTHEALTH PRIMARY CARE RMR",
+          "postal_prefix": "80211",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2022-08-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-08-23",
+          "npi": "1710606983",
+          "organization_name": "ALLIANZ RESEARCH INSTITUTE CO LLC",
+          "postal_prefix": "80219",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2011-01-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-01-19",
+          "npi": "1316242555",
+          "organization_name": "ENDOCRINOLOGY OF THE ROCKIES, PC",
+          "postal_prefix": "80220",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2026-06-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-17",
+          "npi": "1750216800",
+          "organization_name": "ADVENTHEALTH PRIMARY CARE RMR",
+          "postal_prefix": "80210",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2026-03-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-16",
+          "npi": "1346180056",
+          "organization_name": "ALPINE MEDICAL ASSOCIATES P.C.",
+          "postal_prefix": "80202",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "103T00000X",
+              "description": "Psychologist",
+              "primary": false
+            },
+            {
+              "code": "103TC1900X",
+              "description": "Psychologist, Counseling",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2016-01-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2016-01-11",
+          "npi": "1144686874",
+          "organization_name": "ENDOCRINOLOGY SPECIALISTS OF COLORADO, LLC",
+          "postal_prefix": "80210",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2026-06-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-17",
+          "npi": "1871428920",
+          "organization_name": "ADVENTHEALTH PRIMARY CARE RMR",
+          "postal_prefix": "80224",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2023-06-20",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-10-01",
+          "npi": "1104501873",
+          "organization_name": "ALPINE MEDICAL GROUP COLORADO PLLC",
+          "postal_prefix": "80202",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2080A0000X",
+              "description": "Pediatrics, Adolescent Medicine",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2006-10-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-08-22",
+          "npi": "1063597862",
+          "organization_name": "HEALTHONE CLINIC SERVICES LLC",
+          "postal_prefix": "80218",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2013-10-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-11-11",
+          "npi": "1346678729",
+          "organization_name": "AGELESS MEN'S HEALTH HOLDINGS, LLC",
+          "postal_prefix": "80206",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2024-07-10",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-07-10",
+          "npi": "1194562868",
+          "organization_name": "ALPINE MEDICAL GROUP COLORADO PLLC",
+          "postal_prefix": "80210",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2006-10-02",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-04-24",
+          "npi": "1427141456",
+          "organization_name": "HEALTHONE CLINIC SERVICES LLC",
+          "postal_prefix": "80237",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2025-01-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-01-13",
+          "npi": "1053121723",
+          "organization_name": "ALPINE MEDICAL GROUP COLORADO PLLC",
+          "postal_prefix": "80212",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Denver",
+          "enumeration_date": "2024-11-05",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-11-05",
+          "npi": "1336962679",
+          "organization_name": "ALPINE MEDICAL GROUP COLORADO PLLC",
+          "postal_prefix": "80210",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "CO",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 2,
+          "sanitized_record_count": 1,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Denver&state=CO&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 21,
+          "sanitized_record_count": 20,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Denver&state=CO&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 45,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Denver&state=CO&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 46,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Denver&state=CO&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "CO"
+    },
+    {
+      "api_result_count": 115,
+      "city": "Austin",
+      "city_slug": "austin-tx",
+      "local_value_gate": "HELD_PENDING_DIRECT_GLP_SERVICE_VERIFICATION",
+      "primary_taxonomy_mix": {
+        "Clinic/Center, Multi-Specialty": 2,
+        "Family Medicine": 5,
+        "Family Medicine, Geriatric Medicine": 1,
+        "Internal Medicine": 5,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 6,
+        "Internal Medicine, Geriatric Medicine": 1,
+        "Internal Medicine, Sleep Medicine": 1,
+        "Physical Medicine & Rehabilitation": 1,
+        "Preventive Medicine, Obesity Medicine": 2,
+        "Psychiatry & Neurology, Psychiatry": 1
+      },
+      "records": [
+        {
+          "city": "Austin",
+          "enumeration_date": "2026-06-10",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-10",
+          "npi": "1730013160",
+          "organization_name": "AMELIA SOUTHWEST PHYSICIANS",
+          "postal_prefix": "78730",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2006-12-08",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-08-28",
+          "npi": "1821157579",
+          "organization_name": "AUSTIN REGIONAL CLINIC, PA",
+          "postal_prefix": "78723",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207K00000X",
+              "description": "Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RR0500X",
+              "description": "Internal Medicine, Rheumatology",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "207Y00000X",
+              "description": "Otolaryngology",
+              "primary": false
+            },
+            {
+              "code": "207ZP0101X",
+              "description": "Pathology, Anatomic Pathology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            },
+            {
+              "code": "213E00000X",
+              "description": "Podiatrist",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2026-01-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-13",
+          "npi": "1528926128",
+          "organization_name": "360 PLUS CLINICS PLLC",
+          "postal_prefix": "78731",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2020-10-16",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-04-16",
+          "npi": "1750989109",
+          "organization_name": "3D REGENERATION LLC",
+          "postal_prefix": "78738",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "208100000X",
+              "description": "Physical Medicine & Rehabilitation",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2022-05-03",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-03-20",
+          "npi": "1154066140",
+          "organization_name": "AMELIA SOUTHWEST PHYSICIANS, LPPC DBA HEALTHENE, INC.",
+          "postal_prefix": "78730",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207P00000X",
+              "description": "Emergency Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2007-01-04",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-08-22",
+          "npi": "1104973171",
+          "organization_name": "CENTRAL TEXAS PEDIATRIC ENDOCRINOLOGY AND DIABETES, P.A.",
+          "postal_prefix": "78731",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2023-11-30",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-11-30",
+          "npi": "1821864893",
+          "organization_name": "AFRICAN AMERICAN MENS HEALTH CLINIC",
+          "postal_prefix": "78723",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "103T00000X",
+              "description": "Psychologist",
+              "primary": false
+            },
+            {
+              "code": "104100000X",
+              "description": "Social Worker",
+              "primary": false
+            },
+            {
+              "code": "133V00000X",
+              "description": "Dietitian, Registered",
+              "primary": false
+            },
+            {
+              "code": "152W00000X",
+              "description": "Optometrist",
+              "primary": false
+            },
+            {
+              "code": "202D00000X",
+              "description": "Integrative Medicine",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": false
+            },
+            {
+              "code": "208VP0014X",
+              "description": "Pain Medicine, Interventional Pain Medicine",
+              "primary": false
+            },
+            {
+              "code": "251B00000X",
+              "description": "Case Management",
+              "primary": false
+            },
+            {
+              "code": "251S00000X",
+              "description": "Community/Behavioral Health",
+              "primary": false
+            },
+            {
+              "code": "261QM1300X",
+              "description": "Clinic/Center, Multi-Specialty",
+              "primary": true
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": false
+            },
+            {
+              "code": "261QR1300X",
+              "description": "Clinic/Center, Rural Health",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2019-07-05",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-03-03",
+          "npi": "1477115830",
+          "organization_name": "ABC SLEEP PLLC",
+          "postal_prefix": "78749",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RC0200X",
+              "description": "Internal Medicine, Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207RS0012X",
+              "description": "Internal Medicine, Sleep Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2024-05-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-05-14",
+          "npi": "1033959135",
+          "organization_name": "FLOURISH HEALTH LLC",
+          "postal_prefix": "78745",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "202D00000X",
+              "description": "Integrative Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            },
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "261QC1800X",
+              "description": "Clinic/Center, Corporate Health",
+              "primary": false
+            },
+            {
+              "code": "261QM1300X",
+              "description": "Clinic/Center, Multi-Specialty",
+              "primary": true
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2009-09-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2014-05-27",
+          "npi": "1487988424",
+          "organization_name": "LISA GORN, D.O., P.A.",
+          "postal_prefix": "78731",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "174400000X",
+              "description": "Specialist",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2024-03-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-04-01",
+          "npi": "1417708348",
+          "organization_name": "AGNO HEALTH INC",
+          "postal_prefix": "78705",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2022-07-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-07-07",
+          "npi": "1679206692",
+          "organization_name": "ABKSW CENTRAL TEXAS PREFERRED HEALTH PARTNERS PLLC",
+          "postal_prefix": "78705",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2023-08-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-04-15",
+          "npi": "1447035951",
+          "organization_name": "PIPPEN HEALTH OF TEXAS, P.A., A TEXAS PROFESSIONAL ASSOCIATION",
+          "postal_prefix": "78721",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "133V00000X",
+              "description": "Dietitian, Registered",
+              "primary": false
+            },
+            {
+              "code": "163W00000X",
+              "description": "Registered Nurse",
+              "primary": false
+            },
+            {
+              "code": "171400000X",
+              "description": "Health & Wellness Coach",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2025-10-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-27",
+          "npi": "1083583884",
+          "organization_name": "NOVO ENDOCRINOLOGY",
+          "postal_prefix": "78731",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2020-08-24",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-08-24",
+          "npi": "1568075265",
+          "organization_name": "AGNO HEALTH, LLP",
+          "postal_prefix": "78704",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2025-08-02",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-02-26",
+          "npi": "1881578961",
+          "organization_name": "ACO JASON MARTIN MEDICAL CONSULTING",
+          "postal_prefix": "78738",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2010-04-16",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-06-12",
+          "npi": "1902122823",
+          "organization_name": "PADMA K. HORVIT, MD, PA",
+          "postal_prefix": "78750",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2018-06-01",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-06-05",
+          "npi": "1952893307",
+          "organization_name": "AIDS SERVICES OF AUSTIN INC",
+          "postal_prefix": "78752",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2006-07-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-07-02",
+          "npi": "1619982147",
+          "organization_name": "ADULT CARE OF AUSTIN PA",
+          "postal_prefix": "78745",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2007-03-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-02-13",
+          "npi": "1851424634",
+          "organization_name": "SIMONA SCUMPIA MD PA",
+          "postal_prefix": "78758",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2008-11-05",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-09-10",
+          "npi": "1184878191",
+          "organization_name": "ALBRIGHT MEDICAL ASSOCIATES",
+          "postal_prefix": "78703",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207QG0300X",
+              "description": "Family Medicine, Geriatric Medicine",
+              "primary": true
+            },
+            {
+              "code": "207QH0002X",
+              "description": "Family Medicine, Hospice and Palliative Medicine",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2011-09-08",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2015-02-27",
+          "npi": "1497036123",
+          "organization_name": "ADULT PRIMARY CARE PLLC",
+          "postal_prefix": "78746",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2006-06-03",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2007-11-09",
+          "npi": "1740228717",
+          "organization_name": "STEVEN H FEHRENKAMP MD PA",
+          "postal_prefix": "78745",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2026-05-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-23",
+          "npi": "1710814298",
+          "organization_name": "AMMA MEDICAL GROUP PA",
+          "postal_prefix": "78702",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207QG0300X",
+              "description": "Family Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Austin",
+          "enumeration_date": "2010-12-10",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-12-10",
+          "npi": "1154624260",
+          "organization_name": "AGMP",
+          "postal_prefix": "78751",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": true
+            }
+          ]
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 4,
+          "sanitized_record_count": 4,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Austin&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 11,
+          "sanitized_record_count": 11,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Austin&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 43,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Austin&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 47,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Austin&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "TX"
+    },
+    {
+      "api_result_count": 125,
+      "city": "Dallas",
+      "city_slug": "dallas-tx",
+      "local_value_gate": "HELD_PENDING_DIRECT_GLP_SERVICE_VERIFICATION",
+      "primary_taxonomy_mix": {
+        "Family Medicine": 5,
+        "Family Medicine, Adult Medicine": 1,
+        "Internal Medicine": 4,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 5,
+        "Internal Medicine, Pulmonary Disease": 1,
+        "Internal Medicine, Rheumatology": 1,
+        "Orthopaedic Surgery": 1,
+        "Pediatrics, Adolescent Medicine": 1,
+        "Physical Medicine & Rehabilitation, Pain Medicine": 1,
+        "Preferred Provider Organization": 1,
+        "Preventive Medicine, Obesity Medicine": 2,
+        "Psychiatry & Neurology, Neurology": 1,
+        "Surgery": 1
+      },
+      "records": [
+        {
+          "city": "Dallas",
+          "enumeration_date": "2026-01-15",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-15",
+          "npi": "1780542803",
+          "organization_name": "A NEW ME MD PLLC",
+          "postal_prefix": "75235",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2023-01-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-14",
+          "npi": "1427754696",
+          "organization_name": "ASPEN PHYSICIAN NETWORK, PLLC",
+          "postal_prefix": "75234",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RA0001X",
+              "description": "Internal Medicine, Advanced Heart Failure and Transplant Cardiology",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RC0001X",
+              "description": "Internal Medicine, Clinical Cardiac Electrophysiology",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207RR0500X",
+              "description": "Internal Medicine, Rheumatology",
+              "primary": false
+            },
+            {
+              "code": "207T00000X",
+              "description": "Neurological Surgery",
+              "primary": false
+            },
+            {
+              "code": "207X00000X",
+              "description": "Orthopaedic Surgery",
+              "primary": false
+            },
+            {
+              "code": "207XS0117X",
+              "description": "Orthopaedic Surgery, Orthopaedic Surgery of the Spine",
+              "primary": false
+            },
+            {
+              "code": "2084N0400X",
+              "description": "Psychiatry & Neurology, Neurology",
+              "primary": false
+            },
+            {
+              "code": "208800000X",
+              "description": "Urology",
+              "primary": false
+            },
+            {
+              "code": "208C00000X",
+              "description": "Colon & Rectal Surgery",
+              "primary": false
+            },
+            {
+              "code": "305R00000X",
+              "description": "Preferred Provider Organization",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2006-05-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2009-09-28",
+          "npi": "1477505592",
+          "organization_name": "A MEDICAL ADVANTAGE HEALTHCARE SYSTEMS ASSOCIATED",
+          "postal_prefix": "75208",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "2081P2900X",
+              "description": "Physical Medicine & Rehabilitation, Pain Medicine",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2007-08-01",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2007-08-01",
+          "npi": "1487844718",
+          "organization_name": "A JAVED OMAR, MD, PA",
+          "postal_prefix": "75251",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2022-10-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-10-17",
+          "npi": "1841916210",
+          "organization_name": "HOGAN HEALTHCARE SERVICES",
+          "postal_prefix": "75212",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2008-06-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-12-21",
+          "npi": "1538320072",
+          "organization_name": "ASRA KERMANI MD, PA",
+          "postal_prefix": "75214",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2009-10-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2009-10-07",
+          "npi": "1447585567",
+          "organization_name": "A. E. BORME M.D. AND ASSOCIATES",
+          "postal_prefix": "75240",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2015-07-24",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-07-20",
+          "npi": "1184009755",
+          "organization_name": "ABKSW PREFERRED HEALTH PARTNERS, PLLC",
+          "postal_prefix": "75246",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2015-05-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-12-08",
+          "npi": "1477932945",
+          "organization_name": "PAIN AND REHAB ASSOCIATES, PLLC",
+          "postal_prefix": "75252",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "111NR0400X",
+              "description": "Chiropractor, Rehabilitation",
+              "primary": false
+            },
+            {
+              "code": "208100000X",
+              "description": "Physical Medicine & Rehabilitation",
+              "primary": false
+            },
+            {
+              "code": "2081P2900X",
+              "description": "Physical Medicine & Rehabilitation, Pain Medicine",
+              "primary": true
+            },
+            {
+              "code": "2081S0010X",
+              "description": "Physical Medicine & Rehabilitation, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            },
+            {
+              "code": "208VP0014X",
+              "description": "Pain Medicine, Interventional Pain Medicine",
+              "primary": false
+            },
+            {
+              "code": "225400000X",
+              "description": "Rehabilitation Practitioner",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2016-01-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2016-01-12",
+          "npi": "1245696806",
+          "organization_name": "DALLAS DIABETES AND ENDOCRINE CENTER",
+          "postal_prefix": "75230",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2011-01-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-01-26",
+          "npi": "1366748113",
+          "organization_name": "ABC INJURY & REHAB CENTERS, INC.",
+          "postal_prefix": "75234",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "111N00000X",
+              "description": "Chiropractor",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "2084N0400X",
+              "description": "Psychiatry & Neurology, Neurology",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2021-10-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-10-13",
+          "npi": "1114689460",
+          "organization_name": "ABKSW PREFERRED HEALTH SPECIALTY PARTNERS PLLC",
+          "postal_prefix": "75246",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RR0500X",
+              "description": "Internal Medicine, Rheumatology",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2025-01-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-10-15",
+          "npi": "1639981137",
+          "organization_name": "ZYRA MEDICAL GROUP PLLC",
+          "postal_prefix": "75231",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RC0200X",
+              "description": "Internal Medicine, Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": true
+            },
+            {
+              "code": "207RS0012X",
+              "description": "Internal Medicine, Sleep Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2007-04-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2007-12-06",
+          "npi": "1619090222",
+          "organization_name": "DALLAS DIABETES AND ENDOCRINE CENTER",
+          "postal_prefix": "75230",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2019-02-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-11-01",
+          "npi": "1861959959",
+          "organization_name": "ACCESS TELECARE CALIFORNIA, P.C.",
+          "postal_prefix": "75201",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RC0200X",
+              "description": "Internal Medicine, Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207VM0101X",
+              "description": "Obstetrics & Gynecology, Maternal & Fetal Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084N0400X",
+              "description": "Psychiatry & Neurology, Neurology",
+              "primary": true
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2015-04-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-04-20",
+          "npi": "1013303080",
+          "organization_name": "ACCESS TELECARE, PLLC",
+          "postal_prefix": "75201",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RC0200X",
+              "description": "Internal Medicine, Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207VM0101X",
+              "description": "Obstetrics & Gynecology, Maternal & Fetal Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084N0400X",
+              "description": "Psychiatry & Neurology, Neurology",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "208M00000X",
+              "description": "Hospitalist",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2017-10-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-07-29",
+          "npi": "1457861825",
+          "organization_name": "DIABETES & ENDOCRINOLOGY ASSOCIATES P A",
+          "postal_prefix": "75244",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2018-03-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-03-28",
+          "npi": "1043715303",
+          "organization_name": "ADDISON TOTAL WELLNESS CLINIC, PLLC",
+          "postal_prefix": "75248",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207QA0505X",
+              "description": "Family Medicine, Adult Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2020-12-02",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-12-02",
+          "npi": "1982209474",
+          "organization_name": "ACCOUNTABLE PHYSICIAN CARE INC",
+          "postal_prefix": "75229",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2006-05-20",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-04-11",
+          "npi": "1306890736",
+          "organization_name": "ENDOCRINE ASSOCIATES OF DALLAS, P.A.",
+          "postal_prefix": "75231",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2010-09-03",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-07-29",
+          "npi": "1912214446",
+          "organization_name": "ADELITAS MEDICAL-NWH",
+          "postal_prefix": "75203",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2008-03-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-03-28",
+          "npi": "1154593283",
+          "organization_name": "ADVANCED MEDICINE & REHABILITATION OF TEXAS",
+          "postal_prefix": "75214",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207X00000X",
+              "description": "Orthopaedic Surgery",
+              "primary": true
+            },
+            {
+              "code": "225X00000X",
+              "description": "Occupational Therapist",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2005-06-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-01-06",
+          "npi": "1760488936",
+          "organization_name": "HEALTHTEXAS PROVIDER NETWORK",
+          "postal_prefix": "75246",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "207QH0002X",
+              "description": "Family Medicine, Hospice and Palliative Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RI0008X",
+              "description": "Internal Medicine, Hepatology",
+              "primary": false
+            },
+            {
+              "code": "207RR0500X",
+              "description": "Internal Medicine, Rheumatology",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "208100000X",
+              "description": "Physical Medicine & Rehabilitation",
+              "primary": false
+            },
+            {
+              "code": "2084N0400X",
+              "description": "Psychiatry & Neurology, Neurology",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            },
+            {
+              "code": "208M00000X",
+              "description": "Hospitalist",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2007-01-10",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-09-11",
+          "npi": "1972652600",
+          "organization_name": "ADOLESCENT HEALTH ASSOCIATES, P.A.",
+          "postal_prefix": "75230",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "207QA0000X",
+              "description": "Family Medicine, Adolescent Medicine",
+              "primary": false
+            },
+            {
+              "code": "2080A0000X",
+              "description": "Pediatrics, Adolescent Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Dallas",
+          "enumeration_date": "2008-06-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-06-12",
+          "npi": "1073773115",
+          "organization_name": "AHMED KHAN MD PA",
+          "postal_prefix": "75224",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "TX",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": true
+            }
+          ]
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 5,
+          "sanitized_record_count": 4,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Dallas&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 20,
+          "sanitized_record_count": 18,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Dallas&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 45,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Dallas&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 47,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Dallas&state=TX&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "TX"
+    },
+    {
+      "api_result_count": 132,
+      "city": "Las Vegas",
+      "city_slug": "las-vegas-nv",
+      "local_value_gate": "HELD_PENDING_DIRECT_GLP_SERVICE_VERIFICATION",
+      "primary_taxonomy_mix": {
+        "Clinic/Center, Urgent Care": 1,
+        "Dietitian, Registered, Nutrition, Metabolic": 1,
+        "Family Medicine": 6,
+        "Internal Medicine": 8,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 5,
+        "Pediatrics": 1,
+        "Preventive Medicine, Obesity Medicine": 1,
+        "Psychiatry & Neurology, Psychiatry": 2
+      },
+      "records": [
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2022-08-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-08-18",
+          "npi": "1659099349",
+          "organization_name": "AVEY HEALTHCARE INC.",
+          "postal_prefix": "89102",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101Y00000X",
+              "description": "Counselor",
+              "primary": false
+            },
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "1041C0700X",
+              "description": "Social Worker, Clinical",
+              "primary": false
+            },
+            {
+              "code": "171400000X",
+              "description": "Health & Wellness Coach",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": true
+            },
+            {
+              "code": "363LF0000X",
+              "description": "Nurse Practitioner, Family",
+              "primary": false
+            },
+            {
+              "code": "363LP0808X",
+              "description": "Nurse Practitioner, Psych/Mental Health",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2025-03-04",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-06-24",
+          "npi": "1508664905",
+          "organization_name": "A1 ENDOCRINOLOGY",
+          "postal_prefix": "89146",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2010-05-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-11-18",
+          "npi": "1487973509",
+          "organization_name": "1 WORLD MEDICINE INC",
+          "postal_prefix": "89102",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "174400000X",
+              "description": "Specialist",
+              "primary": false
+            },
+            {
+              "code": "207P00000X",
+              "description": "Emergency Medicine",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "2083X0100X",
+              "description": "Preventive Medicine, Occupational Medicine",
+              "primary": false
+            },
+            {
+              "code": "2085R0202X",
+              "description": "Radiology, Diagnostic Radiology",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2023-12-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-12-27",
+          "npi": "1134998503",
+          "organization_name": "A & M MEDICAL CENTER LLC",
+          "postal_prefix": "89102",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2021-11-30",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-11-30",
+          "npi": "1760140404",
+          "organization_name": "MEDI-SLIM WEIGHT LOSS & SPA, LLC",
+          "postal_prefix": "89146",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2005-08-01",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-06-13",
+          "npi": "1245230242",
+          "organization_name": "AVI A OSTROWSKY MD LTD",
+          "postal_prefix": "89128",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2020-06-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-06-19",
+          "npi": "1134745722",
+          "organization_name": "1STAID CARE LLC",
+          "postal_prefix": "89113",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "261QU0200X",
+              "description": "Clinic/Center, Urgent Care",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2023-08-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-08-17",
+          "npi": "1619750023",
+          "organization_name": "A HEALTHY LIFE CENTER LLC",
+          "postal_prefix": "89104",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "202D00000X",
+              "description": "Integrative Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": false
+            },
+            {
+              "code": "208M00000X",
+              "description": "Hospitalist",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363AM0700X",
+              "description": "Physician Assistant, Medical",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            },
+            {
+              "code": "363LF0000X",
+              "description": "Nurse Practitioner, Family",
+              "primary": false
+            },
+            {
+              "code": "363LP2300X",
+              "description": "Nurse Practitioner, Primary Care",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2024-04-01",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-04-01",
+          "npi": "1942051511",
+          "organization_name": "PREMIUM HEALTH PROFESSIONALS LLC",
+          "postal_prefix": "89138",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": true
+            },
+            {
+              "code": "2080B0002X",
+              "description": "Pediatrics, Obesity Medicine",
+              "primary": false
+            },
+            {
+              "code": "2080C0008X",
+              "description": "Pediatrics, Child Abuse Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2080P0203X",
+              "description": "Pediatrics, Pediatric Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "2080P0204X",
+              "description": "Pediatrics, Pediatric Emergency Medicine",
+              "primary": false
+            },
+            {
+              "code": "261QM1300X",
+              "description": "Clinic/Center, Multi-Specialty",
+              "primary": false
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": false
+            },
+            {
+              "code": "261QU0200X",
+              "description": "Clinic/Center, Urgent Care",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2014-03-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-11-11",
+          "npi": "1073931952",
+          "organization_name": "DOCTOR'S HEALTH NETWORK, INC.",
+          "postal_prefix": "89113",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "111NR0400X",
+              "description": "Chiropractor, Rehabilitation",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207W00000X",
+              "description": "Ophthalmology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2080P0205X",
+              "description": "Pediatrics, Pediatric Endocrinology",
+              "primary": false
+            },
+            {
+              "code": "208100000X",
+              "description": "Physical Medicine & Rehabilitation",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": false
+            },
+            {
+              "code": "213E00000X",
+              "description": "Podiatrist",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2026-06-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-12",
+          "npi": "1790619823",
+          "organization_name": "360 MEDICAL GROUP NEVADA, P.C.",
+          "postal_prefix": "89101",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2010-05-05",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2015-03-20",
+          "npi": "1184942815",
+          "organization_name": "A LIST FAMILY SERVICES, LLC",
+          "postal_prefix": "89120",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101Y00000X",
+              "description": "Counselor",
+              "primary": false
+            },
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "103K00000X",
+              "description": "Behavior Analyst",
+              "primary": false
+            },
+            {
+              "code": "104100000X",
+              "description": "Social Worker",
+              "primary": false
+            },
+            {
+              "code": "1041C0700X",
+              "description": "Social Worker, Clinical",
+              "primary": false
+            },
+            {
+              "code": "106H00000X",
+              "description": "Marriage & Family Therapist",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": true
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2011-01-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-10-17",
+          "npi": "1760786552",
+          "organization_name": "EDELSTEIN MEDICAL GROUP, PLLC",
+          "postal_prefix": "89113",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RC0001X",
+              "description": "Internal Medicine, Clinical Cardiac Electrophysiology",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207RR0500X",
+              "description": "Internal Medicine, Rheumatology",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "207W00000X",
+              "description": "Ophthalmology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2085B0100X",
+              "description": "Radiology, Body Imaging",
+              "primary": false
+            },
+            {
+              "code": "208800000X",
+              "description": "Urology",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2007-05-03",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-07-25",
+          "npi": "1073725214",
+          "organization_name": "A L POLLARD RAINBOW HOSPITALISTS",
+          "postal_prefix": "89146",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2025-06-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-06-17",
+          "npi": "1356237051",
+          "organization_name": "A PLUS MOBILE PRIMARY CARE PLLC",
+          "postal_prefix": "89119",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": false
+            },
+            {
+              "code": "3104A0630X",
+              "description": "Assisted Living Facility, Assisted Living, Behavioral Disturbances",
+              "primary": false
+            },
+            {
+              "code": "363LC0200X",
+              "description": "Nurse Practitioner, Critical Care Medicine",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2019-01-16",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-12-30",
+          "npi": "1265906937",
+          "organization_name": "ENAYAT ENDOCRINOLOGY AND METABOLISM, PLLC",
+          "postal_prefix": "89144",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2009-07-15",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-12-31",
+          "npi": "1659501302",
+          "organization_name": "A NICKNAM PC",
+          "postal_prefix": "89106",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2012-08-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-08-29",
+          "npi": "1215285887",
+          "organization_name": "A SROKA DO PROF CORP",
+          "postal_prefix": "89109",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2006-05-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2007-10-02",
+          "npi": "1932156452",
+          "organization_name": "FIRHAAD ISMAIL M. D. , A. P. C.",
+          "postal_prefix": "89121",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2014-11-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2014-11-12",
+          "npi": "1972909380",
+          "organization_name": "A TO Z SLEEP CLINIC OF NV LLC",
+          "postal_prefix": "89121",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "207QS1201X",
+              "description": "Family Medicine, Sleep Medicine",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2016-11-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-09",
+          "npi": "1770025066",
+          "organization_name": "A-P MEDICAL GROUP IROHA PLLC",
+          "postal_prefix": "89119",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "363LF0000X",
+              "description": "Nurse Practitioner, Family",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2005-12-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-09-11",
+          "npi": "1295712693",
+          "organization_name": "FREMONT PRIMARY CARE - ENDOCRINOLOGY",
+          "postal_prefix": "89103",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "133V00000X",
+              "description": "Dietitian, Registered",
+              "primary": false
+            },
+            {
+              "code": "133VN1006X",
+              "description": "Dietitian, Registered, Nutrition, Metabolic",
+              "primary": true
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2008-02-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2014-12-09",
+          "npi": "1295904027",
+          "organization_name": "AARON A ADAOAG MD LTD",
+          "postal_prefix": "89183",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2006-08-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2016-09-23",
+          "npi": "1407967060",
+          "organization_name": "A.S.F. SIDDIQUI, M.D., LTD.",
+          "postal_prefix": "89148",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "city": "Las Vegas",
+          "enumeration_date": "2013-10-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-03-23",
+          "npi": "1194153478",
+          "organization_name": "HEALTHCARE PARTNERS MEDICAL GROUP (COATS) LTD",
+          "postal_prefix": "89119",
+          "publication_status": "HELD_PENDING_DIRECT_SERVICE_VERIFICATION",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NV",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "213E00000X",
+              "description": "Podiatrist",
+              "primary": false
+            }
+          ]
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 3,
+          "sanitized_record_count": 3,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Las+Vegas&state=NV&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 29,
+          "sanitized_record_count": 28,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Las+Vegas&state=NV&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 47,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Las+Vegas&state=NV&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 48,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Las+Vegas&state=NV&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "NV"
+    }
+  ],
+  "individual_people_included": false,
+  "launch_authorized": false,
+  "phone_included": false,
+  "query_taxonomies": [
+    "Obesity Medicine",
+    "Endocrinology, Diabetes & Metabolism",
+    "Family Medicine",
+    "Internal Medicine"
+  ],
+  "records_are_glp_clinics": false,
+  "schema": "glp-type5-npi-seed-v2",
+  "source_authority": "official NPPES v2.1 read API",
+  "street_address_included": false
+}

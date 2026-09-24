@@ -1,0 +1,560 @@
+{
+  "records": [
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-08-29",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-06-22",
+      "npi": "1588773154",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1588773154",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AMERICAN HEALTH NETWORK OF INDIANA, LLC",
+      "postal_prefix": "46038",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": false
+        },
+        {
+          "code": "208100000X",
+          "description": "Physical Medicine & Rehabilitation",
+          "primary": false
+        },
+        {
+          "code": "2084N0400X",
+          "description": "Psychiatry & Neurology, Neurology",
+          "primary": false
+        },
+        {
+          "code": "2084P2900X",
+          "description": "Psychiatry & Neurology, Pain Medicine",
+          "primary": false
+        },
+        {
+          "code": "2085R0202X",
+          "description": "Radiology, Diagnostic Radiology",
+          "primary": false
+        },
+        {
+          "code": "2085U0001X",
+          "description": "Radiology, Diagnostic Ultrasound",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": false
+        },
+        {
+          "code": "208VP0014X",
+          "description": "Pain Medicine, Interventional Pain Medicine",
+          "primary": false
+        },
+        {
+          "code": "332B00000X",
+          "description": "Durable Medical Equipment & Medical Supplies",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-02-22",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2019-02-22",
+      "npi": "1598222846",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1598222846",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AMERICAN ONCOLOGY PARTNERS, P.A.",
+      "postal_prefix": "46037",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RH0000X",
+          "description": "Internal Medicine, Hematology",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": true
+        },
+        {
+          "code": "207RX0202X",
+          "description": "Internal Medicine, Medical Oncology",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-05-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-05-06",
+      "npi": "1639968977",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1639968977",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ASCENDING HEALTHCARE LLC",
+      "postal_prefix": "46038",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-06-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-10",
+      "npi": "1962061135",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1962061135",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CENTRAL INDIANA ORTHOPEDICS, LLC",
+      "postal_prefix": "46037",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QS0010X",
+          "description": "Family Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RS0010X",
+          "description": "Internal Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207T00000X",
+          "description": "Neurological Surgery",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": true
+        },
+        {
+          "code": "207XS0106X",
+          "description": "Orthopaedic Surgery, Hand Surgery",
+          "primary": false
+        },
+        {
+          "code": "207XS0114X",
+          "description": "Orthopaedic Surgery, Adult Reconstructive Orthopaedic Surgery",
+          "primary": false
+        },
+        {
+          "code": "207XS0117X",
+          "description": "Orthopaedic Surgery, Orthopaedic Surgery of the Spine",
+          "primary": false
+        },
+        {
+          "code": "207XX0004X",
+          "description": "Orthopaedic Surgery, Foot and Ankle Surgery",
+          "primary": false
+        },
+        {
+          "code": "207XX0005X",
+          "description": "Orthopaedic Surgery, Sports Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-06-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-08-12",
+      "npi": "1487541108",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1487541108",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AURUM MEDICAL GROUP LLC",
+      "postal_prefix": "46040",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "251E00000X",
+          "description": "Home Health",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-02-26",
+      "npi": "1821015629",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1821015629",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COMMUNITY HOSPITALS OF INDIANA INC",
+      "postal_prefix": "46038",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-10-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-01-07",
+      "npi": "1982155487",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1982155487",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BEACON PRIMARY CARE LLC",
+      "postal_prefix": "46038",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0401X",
+          "description": "Family Medicine, Addiction Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-02-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-03-11",
+      "npi": "1457743684",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1457743684",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DOORSTEPMD LLC",
+      "postal_prefix": "46037",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-05-29",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-10-05",
+      "npi": "1053802736",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1053802736",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BIO-RESTORE FAMILY HEALTHCARE LLC",
+      "postal_prefix": "46038",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-02-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-02-09",
+      "npi": "1417315102",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1417315102",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HEALTHY AGING ENTERPRISE, LLC",
+      "postal_prefix": "46037",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-05-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-06-25",
+      "npi": "1801388558",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1801388558",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BIORESTORE LLC",
+      "postal_prefix": "46038",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-04-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2009-04-30",
+      "npi": "1851563605",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1851563605",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HOOSIER HOUSECALLS, PC",
+      "postal_prefix": "46038",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-05-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2019-05-15",
+      "npi": "1578129508",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1578129508",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COMMUNITY HEALTH NETWORK",
+      "postal_prefix": "46038",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-06-29",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-07-15",
+      "npi": "1720285976",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1720285976",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "INDIANAPOLIS PERIOPERATIVE MEDICINE, LLC",
+      "postal_prefix": "46037",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Fishers",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-04-27",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-04-27",
+      "npi": "1881276004",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1881276004",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COMMUNITY HEALTH NETWORK",
+      "postal_prefix": "46038",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Fishers&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Fishers&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 26,
+      "sanitized_record_count": 25,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Fishers&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 15,
+      "sanitized_record_count": 13,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Fishers&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

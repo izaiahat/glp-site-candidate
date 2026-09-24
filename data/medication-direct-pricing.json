@@ -1,0 +1,18 @@
+{
+  "schema": "glp-medication-direct-pricing-v1",
+  "captured_at": "2026-08-27T23:51:13Z",
+  "medications": {
+    "wegovy-pill": {
+      "display_name": "Wegovy pill",
+      "monthly_price_usd": 149,
+      "price_label": "Official self-pay starting price",
+      "dose_context": "1.5 mg; self-pay pricing varies by dose",
+      "monthly_quantity": "30 tablets",
+      "observed_on": "2026-08-27",
+      "source_publisher": "Novo Nordisk",
+      "source_url": "https://www.wegovy.com/obesity/what-to-pay-for-wegovy.html",
+      "source_excerpt": "Wegovy pill self-pay starting at $149 per month for the 1.5 mg dose; self-pay pricing varies by dose. One month is 30 tablets.",
+      "source_excerpt_sha256": "b5b5d8185a363bcdeb8695cb54f5cd5b85725f2b5783969a1b3f6571303a90cc"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "glp-article-master-provenance-v1",
+  "status": "PASS_VISUAL_QA",
+  "generator": {
+    "provider": "OpenAI",
+    "model": "gpt-image-2-high",
+    "external_generation_calls": 6,
+    "competitor_assets_used": 0
+  },
+  "safety_contract": {
+    "people": 0,
+    "logos": 0,
+    "burned_in_text": 0,
+    "pills": 0,
+    "needles": 0,
+    "product_claims": 0,
+    "labels": 0
+  },
+  "masters": [
+    {
+      "category": "access",
+      "path": "assets/source/article-masters/access.png",
+      "sha256": "26a4710d608b9cd339e0594784513bc53b4f8a62e14d0ebc59b092c9ddf8e694",
+      "width": 1536,
+      "height": 1024,
+      "visual_qa": "PASS_PREMIUM_SAFE_CROP"
+    },
+    {
+      "category": "compare",
+      "path": "assets/source/article-masters/compare.png",
+      "sha256": "7908307cb81dbbef18e265f49df97953d148b6e831ef4c8d0140c13134210d7d",
+      "width": 1536,
+      "height": 1024,
+      "visual_qa": "PASS_PREMIUM_SAFE_CROP"
+    },
+    {
+      "category": "coverage",
+      "path": "assets/source/article-masters/coverage.png",
+      "sha256": "afc65897edb004c39868b994347d5858e12f2985cff9b7f84981cf66cc193cfc",
+      "width": 1536,
+      "height": 1024,
+      "visual_qa": "PASS_PREMIUM_SAFE_CROP"
+    },
+    {
+      "category": "evidence",
+      "path": "assets/source/article-masters/evidence.png",
+      "sha256": "fe0fd41928d9996e43d53a255713622dec45edc8119d3d9779527f0f88975013",
+      "width": 1536,
+      "height": 1024,
+      "visual_qa": "PASS_PREMIUM_SAFE_CROP"
+    },
+    {
+      "category": "pharmacy",
+      "path": "assets/source/article-masters/pharmacy.png",
+      "sha256": "29bf01099a6b4d2fe82b351aaac9991957c56813a7a33dbdf4b8a57430c871dc",
+      "width": 1536,
+      "height": 1024,
+      "visual_qa": "PASS_PREMIUM_SAFE_CROP_NO_LABELS"
+    },
+    {
+      "category": "price",
+      "path": "assets/source/article-masters/price.png",
+      "sha256": "195f9b344764ef82bb04b8c9790b35bfdbcf4314d7086a511fb3402a31301466",
+      "width": 1536,
+      "height": 1024,
+      "visual_qa": "PASS_PREMIUM_SAFE_CROP_NO_LABELS"
+    }
+  ]
+}

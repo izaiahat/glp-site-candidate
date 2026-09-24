@@ -1,0 +1,815 @@
+{
+  "records": [
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-01-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-03-25",
+      "npi": "1992344071",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1992344071",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DEACONESS CLINC INC",
+      "postal_prefix": "47708",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "103T00000X",
+          "description": "Psychologist",
+          "primary": false
+        },
+        {
+          "code": "103TC0700X",
+          "description": "Psychologist, Clinical",
+          "primary": false
+        },
+        {
+          "code": "207K00000X",
+          "description": "Allergy & Immunology",
+          "primary": false
+        },
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "2084N0400X",
+          "description": "Psychiatry & Neurology, Neurology",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-11-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-03-18",
+      "npi": "1932060852",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1932060852",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALLURE WELLNESS AND HEALTH CENTER LLC",
+      "postal_prefix": "47715",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "111N00000X",
+          "description": "Chiropractor",
+          "primary": false
+        },
+        {
+          "code": "207QA0401X",
+          "description": "Family Medicine, Addiction Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "363LP0808X",
+          "description": "Nurse Practitioner, Psych/Mental Health",
+          "primary": false
+        },
+        {
+          "code": "363LW0102X",
+          "description": "Nurse Practitioner, Women's Health",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-08-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2009-02-05",
+      "npi": "1588672992",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1588672992",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BOARD OF TRUSTEES OF WELBORN CLINIC",
+      "postal_prefix": "47713",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "103T00000X",
+          "description": "Psychologist",
+          "primary": false
+        },
+        {
+          "code": "152W00000X",
+          "description": "Optometrist",
+          "primary": false
+        },
+        {
+          "code": "207K00000X",
+          "description": "Allergy & Immunology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207W00000X",
+          "description": "Ophthalmology",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "208800000X",
+          "description": "Urology",
+          "primary": false
+        },
+        {
+          "code": "213E00000X",
+          "description": "Podiatrist",
+          "primary": false
+        },
+        {
+          "code": "261Q00000X",
+          "description": "Clinic/Center",
+          "primary": true
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        },
+        {
+          "code": "363LA2100X",
+          "description": "Nurse Practitioner, Acute Care",
+          "primary": false
+        },
+        {
+          "code": "363LA2200X",
+          "description": "Nurse Practitioner, Adult Health",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-08-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-09-23",
+      "npi": "1619123585",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1619123585",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DEACONESS CLINIC INC.",
+      "postal_prefix": "47713",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207K00000X",
+          "description": "Allergy & Immunology",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207RN0300X",
+          "description": "Internal Medicine, Nephrology",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "2080P0206X",
+          "description": "Pediatrics, Pediatric Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "213E00000X",
+          "description": "Podiatrist",
+          "primary": false
+        },
+        {
+          "code": "231H00000X",
+          "description": "Audiologist",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        },
+        {
+          "code": "363LA2100X",
+          "description": "Nurse Practitioner, Acute Care",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-04-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-04-16",
+      "npi": "1669226593",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1669226593",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ASCENSION MEDICAL GROUP",
+      "postal_prefix": "47710",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2026-05-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-05-06",
+      "npi": "1669309241",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1669309241",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CALIFORNIA EMERGENCY PHYSICIANS MEDICAL GROUP, A PROFESSIONAL CORPORAT",
+      "postal_prefix": "47714",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-08-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-11-04",
+      "npi": "1063668929",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1063668929",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DEACONESS CLINIC, INC",
+      "postal_prefix": "47710",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207ND0101X",
+          "description": "Dermatology, MOHS-Micrographic Surgery",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2011-01-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-03-23",
+      "npi": "1366747347",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1366747347",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CAROL ANN GOODMAN MD LLC",
+      "postal_prefix": "47712",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2026-05-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-05-06",
+      "npi": "1851228431",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1851228431",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CEP AMERICA - INTENSIVISTS PC",
+      "postal_prefix": "47714",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-11-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-09-29",
+      "npi": "1538566500",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1538566500",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DEACONESS CLINIC, INC.",
+      "postal_prefix": "47715",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207K00000X",
+          "description": "Allergy & Immunology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2010-11-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-12-14",
+      "npi": "1881996130",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1881996130",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COOPER MEDICAL GROUP PC",
+      "postal_prefix": "47715",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2011-06-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-08-10",
+      "npi": "1093000283",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1093000283",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DEACONESS CLINIC INC",
+      "postal_prefix": "47712",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-06-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-03-04",
+      "npi": "1427097443",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1427097443",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DEACONESS HOSPITAL, INC",
+      "postal_prefix": "47747",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RC0000X",
+          "description": "Internal Medicine, Cardiovascular Disease",
+          "primary": false
+        },
+        {
+          "code": "207RC0001X",
+          "description": "Internal Medicine, Clinical Cardiac Electrophysiology",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0300X",
+          "description": "Internal Medicine, Geriatric Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RI0011X",
+          "description": "Internal Medicine, Interventional Cardiology",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "2080P0202X",
+          "description": "Pediatrics, Pediatric Cardiology",
+          "primary": false
+        },
+        {
+          "code": "2084N0400X",
+          "description": "Psychiatry & Neurology, Neurology",
+          "primary": false
+        },
+        {
+          "code": "208M00000X",
+          "description": "Hospitalist",
+          "primary": true
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        },
+        {
+          "code": "363LA2100X",
+          "description": "Nurse Practitioner, Acute Care",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-04-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-04-05",
+      "npi": "1235718602",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1235718602",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DEACONESS CLINC INC",
+      "postal_prefix": "47708",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Evansville",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-08-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2019-08-30",
+      "npi": "1235787425",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1235787425",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DEACONESS CLINIC INC",
+      "postal_prefix": "47715",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "2083X0100X",
+          "description": "Preventive Medicine, Occupational Medicine",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Evansville&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 9,
+      "sanitized_record_count": 9,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Evansville&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 50,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Evansville&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 49,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Evansville&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

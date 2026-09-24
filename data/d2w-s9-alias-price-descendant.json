@@ -1,0 +1,150 @@
+{
+  "schema": "d2w-s9-identity-only-alias-price-descendant-v1",
+  "purpose": "Price-only historical reconstruction of the exact source correction; no promotion or release authority.",
+  "authority": {
+    "path": "data/d2w-s9-final-decision.md",
+    "sha256": "9919a9f3d8b147be9699eb8edd9b2d60fe8f27d31f9de63b6232d3118cf2748d"
+  },
+  "predecessor_descriptor": {
+    "path": "data/telos-held-price-basis.json",
+    "sha256": "0c8f55bfe93c0f8250f96d0e7f7ab7053e06634cd5e0e618914b8a6370f72f25"
+  },
+  "field": "review_path",
+  "before_alias": {
+    "commercial_state": "held",
+    "display_name": "telos rx",
+    "go": {
+      "entry_state": "held",
+      "route": "/go/telos-rx-review"
+    },
+    "profiles": {
+      "glp-clinic-scout": {
+        "canonical_identity": {
+          "canonical_program_id": "telos-rx",
+          "identity_key": "telosrx",
+          "reason": "Literal Sheet row93 telos-rx-review identifies existing Telos Rx Katalys offer1612; canonical render identity remains telos-rx. Alias is identity-only, held, unwired and has no public surfaces.",
+          "role": "alias"
+        },
+        "data_profile": {
+          "has_price": false,
+          "has_review_facts": true
+        },
+        "exceptions": {
+          "calculator": {
+            "authority_path": "data/telos-research-hold-receipt.json",
+            "authority_sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585",
+            "enabled": true,
+            "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
+            "surface_restriction_basis": "receipted_network_program_paused"
+          },
+          "compare": {
+            "authority_path": "data/telos-research-hold-receipt.json",
+            "authority_sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585",
+            "enabled": true,
+            "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
+            "surface_restriction_basis": "receipted_network_program_paused"
+          },
+          "go": {
+            "authority_path": "data/telos-research-hold-receipt.json",
+            "authority_sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585",
+            "enabled": true,
+            "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
+            "surface_restriction_basis": "receipted_network_program_paused"
+          },
+          "quiz": {
+            "authority_path": "data/telos-research-hold-receipt.json",
+            "authority_sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585",
+            "enabled": true,
+            "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
+            "surface_restriction_basis": "receipted_network_program_paused"
+          }
+        },
+        "surfaces": {
+          "calculator": false,
+          "compare": false,
+          "go": false,
+          "quiz": false,
+          "review": false,
+          "sitemap": false
+        },
+        "vertical_fit": true,
+        "wired": false
+      }
+    },
+    "program_id": "telos-rx-review",
+    "research_hold_receipt": {
+      "path": "data/telos-research-hold-receipt.json",
+      "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
+    },
+    "review_path": "/reviews/telos-rx-review/",
+    "source_kind": "alias"
+  },
+  "after_alias": {
+    "commercial_state": "held",
+    "display_name": "telos rx",
+    "go": {
+      "entry_state": "held",
+      "route": "/go/telos-rx-review"
+    },
+    "profiles": {
+      "glp-clinic-scout": {
+        "canonical_identity": {
+          "canonical_program_id": "telos-rx",
+          "identity_key": "telosrx",
+          "reason": "Literal Sheet row93 telos-rx-review identifies existing Telos Rx Katalys offer1612; canonical render identity remains telos-rx. Alias is identity-only, held, unwired and has no public surfaces.",
+          "role": "alias"
+        },
+        "data_profile": {
+          "has_price": false,
+          "has_review_facts": true
+        },
+        "exceptions": {
+          "calculator": {
+            "authority_path": "data/telos-research-hold-receipt.json",
+            "authority_sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585",
+            "enabled": true,
+            "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
+            "surface_restriction_basis": "receipted_network_program_paused"
+          },
+          "compare": {
+            "authority_path": "data/telos-research-hold-receipt.json",
+            "authority_sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585",
+            "enabled": true,
+            "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
+            "surface_restriction_basis": "receipted_network_program_paused"
+          },
+          "go": {
+            "authority_path": "data/telos-research-hold-receipt.json",
+            "authority_sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585",
+            "enabled": true,
+            "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
+            "surface_restriction_basis": "receipted_network_program_paused"
+          },
+          "quiz": {
+            "authority_path": "data/telos-research-hold-receipt.json",
+            "authority_sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585",
+            "enabled": true,
+            "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
+            "surface_restriction_basis": "receipted_network_program_paused"
+          }
+        },
+        "surfaces": {
+          "calculator": false,
+          "compare": false,
+          "go": false,
+          "quiz": false,
+          "review": false,
+          "sitemap": false
+        },
+        "vertical_fit": true,
+        "wired": false
+      }
+    },
+    "program_id": "telos-rx-review",
+    "research_hold_receipt": {
+      "path": "data/telos-research-hold-receipt.json",
+      "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
+    },
+    "source_kind": "alias"
+  }
+}

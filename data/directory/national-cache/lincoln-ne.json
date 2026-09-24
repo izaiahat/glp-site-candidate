@@ -1,0 +1,565 @@
+{
+  "records": [
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-03-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-09-19",
+      "npi": "1285138065",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1285138065",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CHI HEALTH CLINIC SPECIALTY, LLC",
+      "postal_prefix": "68510",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RH0002X",
+          "description": "Internal Medicine, Hospice and Palliative Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207RN0300X",
+          "description": "Internal Medicine, Nephrology",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "207VX0000X",
+          "description": "Obstetrics & Gynecology, Obstetrics",
+          "primary": false
+        },
+        {
+          "code": "207XX0005X",
+          "description": "Orthopaedic Surgery, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207Y00000X",
+          "description": "Otolaryngology",
+          "primary": false
+        },
+        {
+          "code": "2080N0001X",
+          "description": "Pediatrics, Neonatal-Perinatal Medicine",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": false
+        },
+        {
+          "code": "208M00000X",
+          "description": "Hospitalist",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-05-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-11-21",
+      "npi": "1699396150",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1699396150",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AGELESS MEN'S HEALTH SERIES II NE LLC",
+      "postal_prefix": "68516",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": true
+        },
+        {
+          "code": "261QP2300X",
+          "description": "Clinic/Center, Primary Care",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-01-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-04-29",
+      "npi": "1164492641",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1164492641",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ARTHRITIS CENTER OF NEBRASKA",
+      "postal_prefix": "68516",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2013-02-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-03-07",
+      "npi": "1720328081",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1720328081",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COMPLETE ENDOCRINOLOGY, LLC",
+      "postal_prefix": "68506",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-02-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-03-19",
+      "npi": "1841005055",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1841005055",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALETHEIA INTEGRATIVE MC LLC",
+      "postal_prefix": "68516",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-12-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-08-30",
+      "npi": "1265590822",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1265590822",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ARTHUR S ANNIN MD PC",
+      "postal_prefix": "68506",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1841216124",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1841216124",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ENDOCRINE CONSULTANTS OF NEBRASKA",
+      "postal_prefix": "68521",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-02-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-02-13",
+      "npi": "1295599876",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1295599876",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALETHEIA INTEGRATIVE MEDICAL LLC",
+      "postal_prefix": "68516",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-05-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-07-07",
+      "npi": "1679528798",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1679528798",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BRYAN PHYSICIAN NETWORK",
+      "postal_prefix": "68502",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207VM0101X",
+          "description": "Obstetrics & Gynecology, Maternal & Fetal Medicine",
+          "primary": false
+        },
+        {
+          "code": "2080N0001X",
+          "description": "Pediatrics, Neonatal-Perinatal Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084N0400X",
+          "description": "Psychiatry & Neurology, Neurology",
+          "primary": false
+        },
+        {
+          "code": "2084P0800X",
+          "description": "Psychiatry & Neurology, Psychiatry",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": false
+        },
+        {
+          "code": "2086S0122X",
+          "description": "Surgery, Plastic and Reconstructive Surgery",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-12-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-01-02",
+      "npi": "1457533218",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1457533218",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "LINCOLN ENDOCRINOLOGY, LLC",
+      "postal_prefix": "68516",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-10-17",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-10-18",
+      "npi": "1184406811",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1184406811",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALETHEIA INTEGRATIVE MEDICAL, LLC",
+      "postal_prefix": "68516",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-09-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-09-08",
+      "npi": "1609597590",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1609597590",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HEARTLAND HOSPICE SERVICES, LLC",
+      "postal_prefix": "68516",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RH0002X",
+          "description": "Internal Medicine, Hospice and Palliative Medicine",
+          "primary": false
+        },
+        {
+          "code": "251G00000X",
+          "description": "Hospice Care, Community Based",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-02-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-02-13",
+      "npi": "1659186864",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1659186864",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALETHEIA MEDICAL SOLUTIONS LLC",
+      "postal_prefix": "68516",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-01-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-01-05",
+      "npi": "1801509732",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1801509732",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HEARTLAND HOSPICE SERVICES, LLC",
+      "postal_prefix": "68516",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RH0002X",
+          "description": "Internal Medicine, Hospice and Palliative Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Lincoln",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-07-21",
+      "npi": "1710917448",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1710917448",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALIVATION HEALTH, LLC",
+      "postal_prefix": "68526",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "NE",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084P0800X",
+          "description": "Psychiatry & Neurology, Psychiatry",
+          "primary": true
+        },
+        {
+          "code": "261QP2300X",
+          "description": "Clinic/Center, Primary Care",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Lincoln&state=NE&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 4,
+      "sanitized_record_count": 4,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Lincoln&state=NE&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 45,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Lincoln&state=NE&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 25,
+      "sanitized_record_count": 22,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Lincoln&state=NE&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

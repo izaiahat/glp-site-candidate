@@ -1,0 +1,560 @@
+{
+  "records": [
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2012-09-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-12-27",
+      "npi": "1558611632",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1558611632",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HOAG MEDICAL GROUP INC.",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207K00000X",
+          "description": "Allergy & Immunology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207QS0010X",
+          "description": "Family Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0300X",
+          "description": "Internal Medicine, Geriatric Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "261QU0200X",
+          "description": "Clinic/Center, Urgent Care",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-07-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2019-07-25",
+      "npi": "1508419680",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1508419680",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALAMS, INC",
+      "postal_prefix": "92627",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-06-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-07-24",
+      "npi": "1427462175",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1427462175",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADNAN AKHTAR D.O. INC",
+      "postal_prefix": "92627",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-03-27",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-04-11",
+      "npi": "1518760560",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1518760560",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "MITRA FATOURECHI-ALSHARIF, PROFESSIONAL CORPORATION",
+      "postal_prefix": "92627",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-10-02",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-10-02",
+      "npi": "1538644802",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1538644802",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BAY BACK CLINICAL INFUSIONS PC",
+      "postal_prefix": "92627",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-09-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-01-10",
+      "npi": "1255423562",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1255423562",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AMES A MEDICAL CORP",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-05-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-10-15",
+      "npi": "1043266760",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1043266760",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BRISTOL PARK MEDICAL GROUP, INC",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "332B00000X",
+          "description": "Durable Medical Equipment & Medical Supplies",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-07-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-07-07",
+      "npi": "1407011463",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1407011463",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CENTER FOR BETTER HEALTH A MEDICAL GROUP, INC.",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "111NX0100X",
+          "description": "Chiropractor, Occupational Health",
+          "primary": false
+        },
+        {
+          "code": "171100000X",
+          "description": "Acupuncturist",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": true
+        },
+        {
+          "code": "2084N0400X",
+          "description": "Psychiatry & Neurology, Neurology",
+          "primary": false
+        },
+        {
+          "code": "213E00000X",
+          "description": "Podiatrist",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-04-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-04-19",
+      "npi": "1790366953",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1790366953",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CARE DIRECT MEDICAL GROUP INC",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-04-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-04-24",
+      "npi": "1396165783",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1396165783",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DARIUSH S. LAVI, M.D., INC.",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-04-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-04-30",
+      "npi": "1669260493",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1669260493",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CARE PARTNERS CALIFORNIA MEDICAL PC",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QG0300X",
+          "description": "Family Medicine, Geriatric Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RG0300X",
+          "description": "Internal Medicine, Geriatric Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-02-09",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2018-02-09",
+      "npi": "1093214579",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1093214579",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DR GROUP, INC.",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-05-04",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-08-24",
+      "npi": "1366063125",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1366063125",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CARECONNECTMD CA PC",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-01-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-12-10",
+      "npi": "1801667597",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1801667597",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "E-LEGACY APC",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "163WP0807X",
+          "description": "Registered Nurse, Psych/Mental Health, Child & Adolescent",
+          "primary": false
+        },
+        {
+          "code": "167G00000X",
+          "description": "Licensed Psychiatric Technician",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084B0040X",
+          "description": "Psychiatry & Neurology, Behavioral Neurology & Neuropsychiatry",
+          "primary": false
+        },
+        {
+          "code": "2084P0800X",
+          "description": "Psychiatry & Neurology, Psychiatry",
+          "primary": false
+        },
+        {
+          "code": "2084P0804X",
+          "description": "Psychiatry & Neurology, Child & Adolescent Psychiatry",
+          "primary": false
+        },
+        {
+          "code": "363LP0808X",
+          "description": "Nurse Practitioner, Psych/Mental Health",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Costa Mesa",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-10-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-23",
+      "npi": "1235006172",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1235006172",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CAS HEALTH MEDICAL GROUP LLC",
+      "postal_prefix": "92626",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Costa+Mesa&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 2,
+      "sanitized_record_count": 2,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Costa+Mesa&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 32,
+      "sanitized_record_count": 26,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Costa+Mesa&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 18,
+      "sanitized_record_count": 15,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Costa+Mesa&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

@@ -1,0 +1,2122 @@
+/* ============================================================================
+   Layer 10: HOMEPAGE — the observatory canvas with a relit content layer.
+   Implements DESIGN-DIRECTION.md homepage rhythm over the markup emitted by
+   renderHomePage (scripts/build-staging.mjs:409-530) + the write()-funnel
+   capture aside. Tokens come exclusively from 00-foundation.css.
+
+   Band rhythm (alternation kills the card-soup):
+     1  hero            dark, living aurora            (cs-hero*)
+     2  strengths       RAISED-ground evidence strip   (cs-strengthbar*)
+     3  medication rail dark ground, LIGHT veil cards  (cs-railcard + veils)
+     4  two-ways-to-pay dark ground, LIGHT cards       (cs-duopanel)
+     5  trust trio      dark aurora glow panel + photo (cs-glowpanel)
+     6  exclusions      dark table                     (cs-screengrid)
+     7  method          FULL LIGHT sage band           (section.verdict)
+     8  receipt wall    dark ground, complete static
+                         keyboard-reachable ledger      (cs-wall*)
+     9  three strongest FULL LIGHT sage band            (cs-homepick, cs-band--sage)
+     10 calculator      luminous action band           (band-calculator)
+     11 boundary        big-type statement             (cs-position)
+     12 editorial grid  FULL LIGHT paper band          (guides .panel)
+     13 trust close     dark compact                   (.panel)
+
+   Scoping contract: selectors unique to this template are global; grammar
+   shared with other templates (.grid/.panel/.verdict/.trust-metrics/
+   .inline-capture*) is scoped under `main:has(> .cs-hero-seq)` — the homepage
+   is the only route whose <main> starts with the hero sequence — so nothing
+   here restyles another template's surface. Small token-driven completions
+   that layers 00-02 omitted but this template emits (.cs-emph, .gcs-kicker,
+   .lede, .cs-btn--gradient/--quiet/--animated, .cs-price__* BEM set,
+   .gcs-section-head, .gcs-text-link, .cs-chiprow, .cs-cardgrid, .cs-tick,
+   .reveal, capture utilities) are defined once here, purely on tokens, and
+   are safe to share.
+
+   Motion (Pass 3): static content and no ambient/product/marquee loops. Pointer
+   feedback is at most 260ms; keyboard and high-frequency state are instant.
+   The two H17 cards are the sole content entrance and are owned by motion.js,
+   never by a CSS-hidden start state.
+   ========================================================================== */
+
+/* ==========================================================================
+   0. SHARED GRAMMAR COMPLETIONS (token-driven, emitted by this template)
+   ========================================================================== */
+
+.gcs-kicker, .kicker {
+  max-width: 45ch;
+  margin: 0 0 12px;
+  color: var(--color-evidence);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.lede, .dek {
+  color: var(--text-secondary);
+  font-size: clamp(1.08rem, 1rem + 0.4vw, 1.26rem);
+  line-height: 1.6;
+}
+.gcs-note { color: var(--text-secondary); font-size: 0.84rem; }
+
+/* Two-word gradient accent inside display type. */
+.cs-emph {
+  background: var(--cs-accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Section head: one consistent scale; variety comes from the band, not the head. */
+.gcs-section-head, .section-heading {
+  max-width: 780px;
+  margin: 0 auto clamp(24px, 3.2vw, 36px);
+  text-align: center;
+}
+.gcs-section-head h2, .section-heading h2 { margin: 0 0 10px; }
+.gcs-section-head p, .section-heading > p:last-child {
+  margin: 0 auto;
+  max-width: 62ch;
+  color: var(--text-secondary);
+}
+
+/* Text link with arrow nudge (feedback tier: 120ms). */
+.gcs-text-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--color-interactive);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color var(--duration-instant) ease, transform var(--duration-instant) var(--ease-out-expo);
+}
+.gcs-text-link:hover { color: var(--text-primary); text-decoration: underline; text-underline-offset: 0.2em; }
+
+/* Chip rows (hero medication chips). */
+.cs-chiprow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cs-chiprow a.cs-chip { text-decoration: none; cursor: pointer; transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease, background var(--duration-fast) ease; }
+.cs-chiprow a.cs-chip:hover { color: var(--text-primary); border-color: var(--color-sage-200); background: var(--color-accent-soft); }
+
+/* Button variants the renderers emit beyond 01's primary/ghost. */
+.cs-btn--gradient {
+  background: var(--cs-accent-gradient);
+  color: #04120e;
+  box-shadow: 0 12px 28px -16px rgba(63, 217, 164, 0.55);
+}
+.cs-btn--gradient:hover { transform: translateY(-1px); box-shadow: 0 16px 34px -16px rgba(63, 217, 164, 0.7); filter: saturate(1.08); }
+.cs-btn--quiet {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--color-line-strong);
+}
+.cs-btn--quiet:hover { border-color: var(--color-sage-200); background: var(--color-mist-100); }
+/* W4 / D24: palette CTA with a static SVG accent and readable arrow. */
+.cs-btn--animated {
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+  background: var(--cs-accent-gradient);
+  background-size: 240% 100%;
+  color: #04120e;
+  box-shadow: 0 14px 34px -14px rgba(63, 217, 164, 0.6);
+}
+main .cs-btn--animated { color: #04120e !important; }
+.cs-btn--animated::before, .cs-btn--animated::after { display: none; }
+.cs-btn--animated:hover { transform: translateY(-1px); box-shadow: 0 18px 40px -14px rgba(63, 217, 164, 0.75); }
+.cs-btn__arrow { display: inline-block; font-size: 1.15em; line-height: 1; }
+.cs-btn__orbit { position: absolute; inset: -5px; width: calc(100% + 10px); height: calc(100% + 10px); overflow: visible; pointer-events: none; }
+.cs-btn__orbit-track { fill: none; stroke: var(--cs-aurora-4); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 20 80; stroke-dashoffset: 0; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 5px rgba(111, 198, 238, 0.7)); animation: cs-btn-border-runner 5s linear infinite; }
+@keyframes cs-btn-border-runner { to { stroke-dashoffset: -100; } }
+
+/* Price lockup BEM set (renderer grammar; 01 carries the packet primitives). */
+.cs-price__figure {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 2.6vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--cs-price-current);
+  font-variant-numeric: tabular-nums;
+}
+.cs-price__unit { font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0; }
+.cs-price__anchor { color: var(--cs-price-anchor); text-decoration: line-through; font-weight: 600; }
+.cs-price__basis {
+  display: block;
+  margin-top: 5px;
+  max-width: 46ch;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.cs-price__figure--none {
+  font-size: 1.02rem;
+  font-weight: 650;
+  letter-spacing: 0;
+  color: var(--color-held);
+}
+p.cs-price { margin: 12px 0 0; }
+.cs-price .price-checked-chip { margin-inline: 8px 0; vertical-align: middle; }
+[data-countup] { font-variant-numeric: tabular-nums; }
+
+/* Card grid + top-pick ring. */
+.cs-cardgrid {
+  display: grid;
+  gap: clamp(16px, 2vw, 24px);
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+.cs-card--ring { box-shadow: var(--cs-ring), var(--shadow-float); }
+
+/* Utilities the injected capture surface depends on. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.capture-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.capture-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 10px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.capture-consent input[type="checkbox"] { width: auto; min-height: 0; margin-top: 3px; }
+.capture-status { margin: 8px 0 0; font-size: 0.86rem; font-weight: 600; color: var(--color-evidence); }
+
+/* Legacy homepage stragglers kept styled so no emitted class is ever naked. */
+.gcs-proof { display: flex; flex-wrap: wrap; gap: 10px 22px; color: var(--text-secondary); font-size: 0.9rem; }
+.cs-articlecard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+.cs-articlecard time { margin-top: auto; font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); }
+.faq-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.faq-list .faq-item {
+  padding: 16px 20px;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* Guides-hub shares this legacy hero class: layout only, no skin, so the
+   library template keeps its own look. */
+.gcs-home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(320px, 5fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+.gcs-home-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.hero-proof { margin-top: 16px; color: var(--text-secondary); }
+.hero-proof small { font-size: 0.84rem; }
+
+/* Spectral divider tick — the receipt tear-line between dark sections. */
+.cs-tick {
+  display: block;
+  width: clamp(64px, 9vw, 120px);
+  height: 3px;
+  margin: clamp(6px, 1.4vw, 16px) auto;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--cs-spectral-line);
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   1. HOMEPAGE SHELL — full-bleed main, self-padding sections
+   ========================================================================== */
+
+main:has(> .cs-hero-seq) {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+main:has(> .cs-hero-seq) > section,
+main:has(> .cs-hero-seq) > aside {
+  padding-inline: max(var(--gutter), calc(50vw - (var(--container-content) / 2)));
+  padding-block: clamp(44px, 5.5vw, 74px);
+}
+main:has(> .cs-hero-seq) > aside { padding-block: clamp(36px, 5vw, 64px); }
+
+/* A tick right before a full band is visual noise — the band edge IS the
+   divider. (Decorative hr, aria-hidden; hiding it removes no content.) */
+main:has(> .cs-hero-seq) > hr.cs-tick:has(+ section.verdict),
+main:has(> .cs-hero-seq) > hr.cs-tick:has(+ section.cs-band--sage),
+main:has(> .cs-hero-seq) > hr.cs-tick:has(+ .gcs-directory-band),
+main:has(> .cs-hero-seq) > hr.cs-tick:has(+ section[aria-labelledby="guides-title"]),
+main:has(> .cs-hero-seq) > hr.cs-tick:has(+ section[aria-labelledby="trust-close"]) { display: none; }
+
+/* ==========================================================================
+   2. HERO — dark luminous observatory with the living aurora
+   ========================================================================== */
+
+.home-hero-band {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+  grid-template-columns: minmax(0, 7fr) minmax(320px, 5fr);
+  padding-block: clamp(56px, 7vw, 96px) clamp(48px, 6.5vw, 84px);
+  background: var(--cs-ground);
+}
+/* Living aurora underlay. If a future renderer pass drops a real
+   .cs-aurora-field node in (02-shell already styles it), the pseudo yields. */
+.home-hero-band::before {
+  content: "";
+  position: absolute;
+  inset: -22%;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(44% 38% at 24% 24%, rgba(23, 168, 126, 0.55), transparent 68%),
+    radial-gradient(34% 32% at 68% 14%, rgba(111, 198, 238, 0.38), transparent 70%),
+    radial-gradient(36% 36% at 86% 56%, rgba(169, 155, 242, 0.34), transparent 72%),
+    radial-gradient(32% 34% at 46% 88%, rgba(63, 217, 164, 0.24), transparent 70%);
+  filter: blur(44px);
+}
+.home-hero-band:has(> .cs-aurora-field)::before { content: none; }
+/* Legibility scrim + seam into the page ground. */
+.home-hero-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(102deg, rgba(7, 16, 13, 0.46) 0%, rgba(7, 16, 13, 0.2) 46%, rgba(7, 16, 13, 0) 72%),
+    linear-gradient(180deg, rgba(7, 16, 13, 0) 74%, var(--cs-ground) 100%);
+}
+.home-hero-band > div, .home-hero-band > .cs-heroproof { position: relative; z-index: 1; }
+.cs-hero { align-items: center; }
+.cs-hero h1 { text-wrap: balance; }
+
+.home-hero-band h1 {
+  max-width: 16ch;
+  font-size: clamp(2.7rem, 4.8vw, 4.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+.home-hero-band .lede { max-width: 52ch; color: var(--color-paper-100); }
+.home-hero-band .gcs-kicker { margin-bottom: 16px; }
+.cs-hero-chips { margin: 20px 0 24px; }
+.cs-hero-word { display: inline; }
+
+/* Proof column: three glass receipts on the aurora. First-payment rule:
+   the qualifier note and checked date sit AT the number, same card, same
+   read — the figure never travels without its context. */
+.cs-heroproof {
+  display: grid;
+  gap: 12px;
+  align-content: center;
+  min-width: 0;
+}
+.cs-heroproof__card {
+  display: grid;
+  gap: 6px;
+  padding: 18px 22px;
+  border-radius: var(--radius-card);
+  background: color-mix(in srgb, var(--color-paper-50) 9%, var(--cs-ground-raise));
+  box-shadow: inset 0 0 0 1px rgba(233, 247, 241, 0.18), 0 22px 48px -30px rgba(0, 0, 0, 0.7);
+}
+.cs-heroproof__card > p { margin: 0; }
+.cs-heroproof__label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-evidence);
+}
+.cs-heroproof__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.cs-heroproof__value .cs-price__unit { font-size: 0.94rem; color: var(--color-paper-100); }
+.cs-heroproof__note { font-size: 0.86rem; line-height: 1.5; color: var(--color-paper-100); }
+.cs-heroproof .price-checked-chip { justify-self: start; margin-top: 2px; }
+
+/* ==========================================================================
+   3. STRENGTHS — compact luminous evidence strip (their press bar's slot)
+   REPAIR B-2: raised off the hero's canvas (--cs-ground-raise, lighter than
+   --cs-ground-band was) with thin top+bottom hairlines so the strip reads as
+   its own clearly-separated ground, not more dark-on-dark; each stat is a
+   solid mint numeral (not the everywhere-gradient) — DESIGN-DIRECTION.md's
+   "one thin spectral line, not gradient-everything".
+   ========================================================================== */
+
+main:has(> .cs-hero-seq) > .cs-strengthbar {
+  padding-block: clamp(30px, 4vw, 48px);
+  background: var(--cs-ground-raise);
+  border-block: 1px solid var(--color-line-soft);
+}
+.cs-strengthbar__eyebrow {
+  margin: 0 0 18px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.cs-strengthbar__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cs-strengthbar__list li {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  padding: 6px clamp(14px, 2vw, 28px);
+  text-align: center;
+}
+.cs-strengthbar__list li + li { border-left: 1px solid var(--color-line-soft); }
+.cs-strengthbar__n {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-evidence);
+}
+.cs-strengthbar__t { font-size: 0.84rem; line-height: 1.45; color: var(--text-secondary); }
+.cs-strengthbar__foot { margin: 16px 0 0; text-align: center; font-size: 0.84rem; color: var(--text-secondary); }
+.cs-strengthbar__foot a { color: var(--color-interactive); }
+
+/* ==========================================================================
+   4. MEDICATION RAIL — light veil carousel cards on the dark ground
+   ========================================================================== */
+
+.cs-rail { position: relative; margin-top: clamp(14px, 2vw, 22px); }
+.cs-rail__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(248px, calc((100% - 3 * clamp(14px, 1.6vw, 20px)) / 4), 320px);
+  gap: clamp(14px, 1.6vw, 20px);
+  overflow-x: auto;
+  padding: 6px 4px 18px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+.cs-rail__track::-webkit-scrollbar { height: 8px; }
+.cs-rail__track::-webkit-scrollbar-thumb { border-radius: var(--radius-pill); background: var(--color-line-strong); }
+.cs-rail__track::-webkit-scrollbar-track { background: transparent; }
+
+.cs-railcard {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 18px 20px;
+  border-radius: var(--radius-panel);
+  text-decoration: none;
+  color: var(--cs-ink-on-paper);
+  box-shadow: var(--cs-card-shadow-paper);
+  /* Relit content layer: light interior context on every veil. */
+  --text-primary: var(--cs-ink-on-paper);
+  --text-secondary: var(--cs-muted-on-paper);
+  --color-ink: var(--cs-ink-on-paper);
+  --color-muted: var(--cs-muted-on-paper);
+  --color-line: var(--cs-line-on-paper);
+  --color-line-soft: rgba(20, 32, 27, 0.09);
+  --color-line-strong: rgba(20, 32, 27, 0.24);
+  --color-evidence: #0e7d5c;
+  --color-accent-soft: rgba(14, 125, 92, 0.11);
+  --color-interactive: #0b6fa8;
+  --cs-price-current: color-mix(in srgb, var(--cs-aurora-1) 82%, var(--cs-ink-on-paper));
+  background: var(--cs-veil-brand);
+}
+.cs-railcard[data-med="semaglutide"] { background: var(--cs-veil-semaglutide); }
+.cs-railcard[data-med="tirzepatide"] { background: var(--cs-veil-tirzepatide); }
+.cs-railcard[data-med="oral"] { background: var(--cs-veil-oral); }
+.cs-railcard[data-med="brand"] { background: var(--cs-veil-brand); }
+/* REPAIR B-3: contained rounded media slot — a fixed height (not max-height)
+   so the box is CLS-stable regardless of an image's intrinsic ratio, holding
+   the product art to a consistent band across every card in the rail. */
+.cs-rail-media {
+  display: block;
+  order: -1;
+  margin: 0 0 6px;
+  height: 180px;
+  border-radius: calc(var(--radius-panel) - 8px);
+  overflow: hidden;
+}
+.cs-rail-media picture { display: block; width: 100%; height: 100%; }
+.cs-railcard__art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cs-railcard__name {
+  margin: 2px 0 0;
+  font-size: 1.16rem;
+  font-weight: 760;
+  letter-spacing: -0.015em;
+  color: var(--cs-ink-on-paper);
+}
+.cs-railcard__status { margin: 0; font-size: 0.86rem; line-height: 1.5; color: var(--cs-muted-on-paper); }
+.cs-railcard__status b { color: var(--cs-ink-on-paper); font-weight: 750; }
+.cs-railcard__price { margin: 6px 0 0; }
+.cs-railcard__price .cs-price__figure { font-size: clamp(1.6rem, 2.2vw, 1.95rem); }
+.cs-railcard__go {
+  margin-top: auto;
+  padding-top: 12px;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: #07523b;
+}
+
+/* ==========================================================================
+   5. TWO WAYS TO PAY — light decision cards on the dark ground
+   ========================================================================== */
+
+.cs-duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.2vw, 26px);
+  align-items: stretch;
+}
+.cs-duopanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(22px, 3vw, 34px);
+  border-radius: var(--radius-panel);
+  background: var(--cs-paper-card);
+  box-shadow: var(--cs-card-shadow-paper);
+  color: var(--cs-ink-on-paper);
+  --text-primary: var(--cs-ink-on-paper);
+  --text-secondary: var(--cs-muted-on-paper);
+  --color-ink: var(--cs-ink-on-paper);
+  --color-muted: var(--cs-muted-on-paper);
+  --color-line: var(--cs-line-on-paper);
+  --color-line-soft: rgba(20, 32, 27, 0.09);
+  --color-line-strong: rgba(20, 32, 27, 0.24);
+  --color-evidence: #0e7d5c;
+  --color-accent-soft: rgba(14, 125, 92, 0.11);
+  --color-interactive: #0b6fa8;
+  --cs-price-current: color-mix(in srgb, var(--cs-aurora-1) 82%, var(--cs-ink-on-paper));
+}
+.cs-duopanel--compounded { background: var(--cs-veil-semaglutide); }
+.cs-duopanel--brand { background: var(--cs-veil-brand); }
+.cs-duopanel > h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  color: var(--cs-ink-on-paper);
+}
+.cs-duopanel--compounded > h3 { color: color-mix(in srgb, var(--cs-drug-semaglutide) 26%, var(--cs-ink-on-paper)); }
+.cs-duopanel--brand > h3 { color: color-mix(in srgb, var(--cs-drug-brand) 26%, var(--cs-ink-on-paper)); }
+.cs-duopanel__lede { margin: 0; font-size: 0.95rem; color: var(--cs-muted-on-paper); }
+.cs-duopanel .cs-price { margin: 2px 0; }
+.cs-duopanel__checks {
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+.cs-duopanel__checks li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 10px;
+  align-items: start;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+.cs-duopanel__checks li::before {
+  content: "✓";
+  font-weight: 900;
+  color: #0e7d5c;
+}
+.cs-duopanel .cs-btn { margin-top: auto; align-self: flex-start; }
+.cs-duopanel__fine { margin: 0; font-size: 0.78rem; line-height: 1.5; color: var(--cs-muted-on-paper); }
+
+/* ==========================================================================
+   6. TRUST TRIO — aurora glow panel with photo feature cards (dark)
+   ========================================================================== */
+
+main:has(> .cs-hero-seq) > .cs-glowpanel {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+  background: var(--cs-ground-raise);
+  border-block: 1px solid var(--color-line-soft);
+}
+.cs-glowpanel::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(34% 30% at 12% 18%, rgba(23, 168, 126, 0.26), transparent 70%),
+    radial-gradient(30% 28% at 88% 78%, rgba(169, 155, 242, 0.18), transparent 72%),
+    radial-gradient(26% 26% at 74% 12%, rgba(111, 198, 238, 0.15), transparent 70%);
+  filter: blur(52px);
+}
+.cs-featuretrio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+.cs-featurecard {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+.cs-featurecard__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px 12px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.cs-featurecard picture { display: block; width: 100%; }
+.cs-featurecard img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.cs-featurecard__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  padding: 16px 18px 18px;
+}
+.cs-featurecard__body p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary); }
+.cs-featurecard__go {
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: #6fd8ff;
+}
+
+.cs-railcard .price-checked-chip,
+.cs-duopanel .price-checked-chip,
+.cs-homepick .price-checked-chip {
+  color: #07523b !important;
+  background: rgba(7, 82, 59, 0.1);
+}
+
+/* ==========================================================================
+   7. EXCLUSIONS — the dark screen-out table
+   ========================================================================== */
+
+.cs-screenwrap {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--cs-ground-band);
+  box-shadow: inset 0 0 0 1px var(--color-line-soft);
+}
+.cs-screengrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cs-screengrid li { display: contents; }
+.cs-screen {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--color-line-soft);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: background var(--duration-instant) ease;
+}
+.cs-screengrid li:nth-child(odd) .cs-screen { border-right: 1px solid var(--color-line-soft); }
+.cs-screengrid li:nth-last-child(-n+2) .cs-screen { border-bottom: 0; }
+.cs-screen:hover { background: var(--color-mist-100); }
+.cs-screen strong {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-weight: 700;
+  font-size: 0.96rem;
+  line-height: 1.4;
+}
+.cs-screen strong::before { content: "✕"; font-weight: 900; color: var(--color-danger); }
+.cs-screen span {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 750;
+  color: var(--color-interactive);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   8. METHOD — the full light sage band (the receipt argument)
+   ========================================================================== */
+
+main:has(> .cs-hero-seq) > section.verdict {
+  padding-block: clamp(56px, 7vw, 88px);
+  background: var(--cs-sage-mist);
+  color: var(--cs-ink-on-paper);
+  --text-primary: var(--cs-ink-on-paper);
+  --text-secondary: var(--cs-muted-on-paper);
+  --color-ink: var(--cs-ink-on-paper);
+  --color-muted: var(--cs-muted-on-paper);
+  --color-line: var(--cs-line-on-paper);
+  --color-line-soft: rgba(20, 32, 27, 0.1);
+  --color-line-strong: rgba(20, 32, 27, 0.24);
+  --color-surface: var(--cs-paper-card);
+  --color-surface-float: #ffffff;
+  --shadow-card: var(--cs-card-shadow-paper);
+  --color-evidence: #0e7d5c;
+  --color-accent-soft: rgba(14, 125, 92, 0.11);
+  --color-interactive: #0b6fa8;
+  --color-focus: #0e7d5c;
+  --color-mist-100: rgba(20, 32, 27, 0.05);
+  --cs-price-current: color-mix(in srgb, var(--cs-aurora-1) 82%, var(--cs-ink-on-paper));
+}
+/* Gradient words need dark stops to hold AA on the light band. */
+main:has(> .cs-hero-seq) > section.verdict .cs-emph {
+  background: linear-gradient(100deg, #0b5f50, #0e7d5c 45%, #275e8e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+main:has(> .cs-hero-seq) > section.verdict h2 { color: var(--cs-ink-on-paper); }
+main:has(> .cs-hero-seq) > section.verdict .gcs-kicker { color: #07523b !important; }
+.verdict-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+.verdict-grid picture img {
+  border-radius: var(--radius-media);
+  box-shadow: var(--cs-card-shadow-paper);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.trust-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0 0;
+}
+.trust-metrics div {
+  padding: 14px 16px;
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.trust-metrics dt {
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.trust-metrics dd {
+  margin: 4px 0 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   9. RECEIPT WALL — complete static keyboard ledger
+   REPAIR B-5: `.cs-wall__cols` is the static ledger viewport
+   only (the renderer marks it aria-hidden and every card inside carries
+   tabindex="-1" — see build-staging.mjs). The single real, always-complete,
+   keyboard-reachable copy of every card lives in `.cs-wall__ledger`, a native
+   <details> below it, so nothing is ever clipped or duplicated for anyone who
+   isn't just watching the loop scroll by.
+   ========================================================================== */
+
+.cs-wall { position: relative; margin-top: clamp(14px, 2vw, 22px); }
+.cs-wall__cols {
+  position: relative;
+  overflow: hidden;
+  height: clamp(420px, 44vw, 560px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.cs-wall__cols::before, .cs-wall__cols::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 72px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--cs-ground), transparent);
+}
+.cs-wall__cols::after {
+  inset: auto 0 0;
+  height: 120px;
+  background: linear-gradient(0deg, var(--cs-ground), transparent);
+}
+.cs-wall__col { display: grid; gap: 16px; align-content: start; }
+.cs-wall__col-set { display: grid; gap: 16px; }
+.cs-wallcard {
+  display: grid;
+  gap: 8px;
+  padding: 18px 20px;
+  border-radius: var(--radius-card);
+  background: var(--cs-paper-card);
+  box-shadow: var(--cs-card-shadow-paper);
+  text-decoration: none;
+  color: var(--cs-ink-on-paper);
+}
+.cs-wallcard__kind {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.cs-wallcard--verdict .cs-wallcard__kind { color: #0e7d5c; }
+.cs-wallcard--receipt .cs-wallcard__kind { color: color-mix(in srgb, var(--color-warning) 46%, #2c2005); }
+.cs-wallcard__who { margin: 0; font-family: var(--font-display); font-size: 1.02rem; font-weight: 800; line-height: 1.25; color: var(--cs-ink-on-paper); }
+.cs-wallcard__body { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--cs-muted-on-paper); }
+.cs-wallcard__meta { margin: 0; font-size: 0.78rem; font-weight: 700; color: var(--cs-muted-on-paper); }
+
+/* The disclosure: collapsed by default, a plain static grid of every card
+   (verdicts + receipts) once expanded — the canonical, non-decorative copy. */
+.cs-wall__ledger { margin-top: 20px; padding-top: 4px; border-top: 1px solid var(--color-line-soft); }
+.cs-wall__ledger-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 2px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-interactive);
+}
+.cs-wall__ledger-summary::-webkit-details-marker { display: none; }
+.cs-wall__ledger-summary::before {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  inline-size: 20px;
+  block-size: 20px;
+  border-radius: 50%;
+  background: var(--color-mist-100);
+  font-weight: 800;
+}
+.cs-wall__ledger[open] .cs-wall__ledger-summary::before { content: "\2212"; }
+.cs-wall__ledger-count { color: var(--text-secondary); font-weight: 600; }
+.cs-wall__ledger-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.cs-wall__cta {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 0;
+}
+
+/* ==========================================================================
+   10. THREE STRONGEST — sage-lit verdict trio
+   REPAIR B-4: the section carries .cs-band--sage (00-foundation), which
+   already flips --text-primary/--text-secondary/--color-line/--color-surface/
+   --shadow-card/--color-interactive/--color-focus for every descendant. The
+   three tokens .cs-band--sage does NOT cover — --color-evidence (the kicker),
+   --color-accent-soft (the checked-date chip) and --cs-price-current (the
+   figure) — are the same three the method band (#7, section.verdict) already
+   overrides for the identical reason: those are bright, dark-ground-only
+   accents that fail AA read directly against a pale sage ground.
+   ========================================================================== */
+
+main:has(> .cs-hero-seq) > section.cs-band--sage {
+  padding-block: clamp(56px, 7vw, 88px);
+  --color-evidence: #0e7d5c;
+  --color-accent-soft: rgba(14, 125, 92, 0.11);
+  --cs-price-current: color-mix(in srgb, var(--cs-aurora-1) 82%, var(--cs-ink-on-paper));
+}
+.cs-homepick { display: flex; flex-direction: column; gap: 8px; }
+.cs-homepick h3 { margin: 0; font-size: 1.3rem; }
+.cs-homepick .gcs-kicker { margin-bottom: 2px; }
+.cs-homepick .cs-price { margin: 4px 0 6px; }
+.cs-homepick .cs-price__figure { font-size: clamp(2rem, 3vw, 2.6rem); }
+.cs-homepick .cs-comparecard__more {
+  margin-top: auto;
+  padding-top: 8px;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: var(--color-interactive);
+  text-decoration: none;
+}
+.cs-homepick .cs-comparecard__more:hover { text-decoration: underline; text-underline-offset: 0.18em; }
+.cs-homepick-more { margin: clamp(22px, 3vw, 32px) 0 0; text-align: center; }
+
+/* ==========================================================================
+   11. CALCULATOR — the luminous action band
+   ========================================================================== */
+
+main:has(> .cs-hero-seq) > .gcs-directory-band {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+  text-align: center;
+  padding-block: clamp(52px, 6.5vw, 84px);
+  background: var(--cs-ground-raise);
+  border-block: 1px solid var(--color-line-soft);
+}
+main:has(> .cs-hero-seq) > .gcs-directory-band::before {
+  content: "";
+  position: absolute;
+  inset: -28%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 34% at 26% 30%, rgba(23, 168, 126, 0.32), transparent 70%),
+    radial-gradient(30% 30% at 76% 24%, rgba(111, 198, 238, 0.2), transparent 70%),
+    radial-gradient(32% 34% at 60% 82%, rgba(169, 155, 242, 0.17), transparent 72%);
+  filter: blur(50px);
+}
+.gcs-directory-band h2 { max-width: 20ch; margin-inline: auto; }
+.gcs-directory-band > p { max-width: 56ch; margin-inline: auto; color: var(--color-paper-100); }
+.gcs-directory-band .cs-btn, .gcs-directory-band .gcs-button { margin-top: 10px; }
+.gcs-directory-band p:last-child { margin: 14px 0 0; }
+.gcs-directory-band small { color: var(--text-secondary); font-size: 0.84rem; }
+.band-calculator, .band-quiz { background: var(--cs-ground-raise); }
+
+/* Evidence surfaces carry a thin mint top rule — the one differentiation
+   device the old system repeated 41 times, reduced to a single quiet marker
+   on the two homepage surfaces that genuinely state evidence policy. */
+main:has(> .cs-hero-seq) section.verdict.evidence-line { box-shadow: inset 0 2px 0 var(--color-evidence); }
+main:has(> .cs-hero-seq) .inline-capture.evidence-line { box-shadow: var(--shadow-float), inset 0 2px 0 var(--color-evidence); }
+
+/* ==========================================================================
+   12. BOUNDARY — the big-type publisher statement
+   ========================================================================== */
+
+.cs-position {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+.cs-position h2 {
+  max-width: 17ch;
+  font-size: clamp(2.1rem, 3.9vw, 3.3rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+.cs-position .lede { max-width: 46ch; }
+.cs-position picture img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-media);
+  box-shadow: var(--shadow-float);
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   13. EDITORIAL GRID (paper band) + TRUST CLOSE (dark) — shared .grid/.panel
+   grammar, scoped to the homepage main so no other template is touched.
+   ========================================================================== */
+
+main:has(> .cs-hero-seq) .grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 20px);
+}
+main:has(> .cs-hero-seq) .panel {
+  display: block;
+  padding: clamp(18px, 2.4vw, 26px);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+main:has(> .cs-hero-seq) .panel h3 { margin: 0 0 6px; font-size: 1.08rem; }
+main:has(> .cs-hero-seq) .panel p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary); }
+
+/* The editorial discovery band goes full paper. */
+main:has(> .cs-hero-seq) > section[aria-labelledby="guides-title"] {
+  padding-block: clamp(56px, 7vw, 88px);
+  background: var(--cs-paper-warm);
+  color: var(--cs-ink-on-paper);
+  --text-primary: var(--cs-ink-on-paper);
+  --text-secondary: var(--cs-muted-on-paper);
+  --color-ink: var(--cs-ink-on-paper);
+  --color-muted: var(--cs-muted-on-paper);
+  --color-line: var(--cs-line-on-paper);
+  --color-line-soft: rgba(20, 32, 27, 0.1);
+  --color-line-strong: rgba(20, 32, 27, 0.24);
+  --color-surface: var(--cs-paper-card);
+  --color-surface-float: #ffffff;
+  --shadow-card: var(--cs-card-shadow-paper);
+  --color-evidence: #0e7d5c;
+  --color-accent-soft: rgba(14, 125, 92, 0.11);
+  --color-interactive: #0b6fa8;
+  --color-focus: #0e7d5c;
+  --color-mist-100: rgba(20, 32, 27, 0.05);
+}
+main:has(> .cs-hero-seq) > section[aria-labelledby="guides-title"] h2,
+main:has(> .cs-hero-seq) > section[aria-labelledby="guides-title"] h3 { color: var(--cs-ink-on-paper); }
+
+/* Trust close stays compact and dark. */
+main:has(> .cs-hero-seq) > section[aria-labelledby="trust-close"] {
+  padding-block: clamp(40px, 5vw, 64px);
+  background: var(--cs-ground-band);
+  border-block: 1px solid var(--color-line-soft);
+}
+
+/* ==========================================================================
+   14. CAPTURE ASIDE — the injected checklist surface
+   ========================================================================== */
+
+main:has(> .cs-hero-seq) > .inline-capture {
+  max-width: min(var(--container-content), calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+  margin-block: clamp(8px, 1.5vw, 20px) clamp(48px, 6vw, 80px);
+}
+main:has(> .cs-hero-seq) > .inline-capture.panel {
+  background: var(--color-surface-float);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-float);
+  padding: clamp(24px, 4vw, 40px);
+}
+.inline-capture-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(18px, 3vw, 32px);
+  align-items: center;
+}
+main:has(> .cs-hero-seq) .inline-capture h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); }
+.inline-capture-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.inline-capture-row input[type="email"] { flex: 1 1 220px; }
+.inline-capture .cta { margin-top: 10px; }
+
+/* ==========================================================================
+   15. MOTION RESTRAINT — static content; short pointer feedback only.
+   ========================================================================== */
+.reveal,
+.cs-hero-seq [data-hero-step],
+.cs-hero-line,
+.cs-tick { opacity: 1; transform: none; animation: none; }
+.cs-railcard,
+.cs-featurecard,
+.cs-wallcard,
+.cs-duopanel,
+.cs-heroproof__card,
+.cs-articlecard,
+main:has(> .cs-hero-seq) .panel,
+.cs-homepick { transition: box-shadow 120ms ease, border-color 120ms ease; }
+.cs-strengthbar__list li { transition: background var(--duration-fast) ease; border-radius: var(--radius-control); }
+
+/* ==========================================================================
+   16. REDUCED MOTION — designed-static states (00-foundation already zeroes
+   every duration; these rules change GEOMETRY, not just timing)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  /* REPAIR B-5: the marquee viewport collapses to a single static, unclipped
+     copy of each column (the second .cs-wall__col-set — emitted only for the
+     seamless scroll loop — is dropped entirely, not cropped by nth-child
+     arithmetic). It is still aria-hidden/decorative; the always-complete,
+     always-static .cs-wall__ledger below it is unaffected either way. */
+  .cs-wall__cols { height: auto; overflow: visible; }
+  .cs-wall__cols::before, .cs-wall__cols::after { display: none; }
+  .cs-wall__col { animation: none !important; }
+  .cs-wall__col-set:last-child { display: none; }
+  .cs-btn--animated::before { display: none; }
+}
+/* Belt-and-braces: site.js stamps html[data-motion="reduced"]; force every
+   staged element visible even if a UA mishandles the media query. */
+html[data-motion="reduced"] .cs-hero-seq [data-hero-step],
+html[data-motion="reduced"] .cs-hero-line,
+html[data-motion="reduced"] .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
+html[data-motion="reduced"] .cs-tick { transform: none !important; opacity: 0.9 !important; }
+
+/* ==========================================================================
+   17. RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+  .cs-strengthbar__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cs-strengthbar__list li { text-align: left; }
+  .cs-strengthbar__list li + li { border-left: 0; }
+  .cs-featuretrio { grid-template-columns: 1fr; }
+  .cs-featurecard img { aspect-ratio: 21 / 9; }
+  .cs-wall__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); height: clamp(400px, 62vw, 480px); }
+  main:has(> .cs-hero-seq) .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .home-hero-band, .gcs-home-hero { grid-template-columns: 1fr; }
+  .home-hero-band { padding-block: clamp(48px, 9vw, 72px) clamp(44px, 8vw, 64px); }
+  .home-hero-band::after {
+    background:
+      linear-gradient(180deg, rgba(7, 16, 13, 0.55) 0%, rgba(7, 16, 13, 0.35) 55%, var(--cs-ground) 100%);
+  }
+  .cs-heroproof { margin-top: 28px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .cs-duo { grid-template-columns: 1fr; }
+  .verdict-grid { grid-template-columns: 1fr; }
+  .cs-position { grid-template-columns: 1fr; }
+  .cs-position h2 { max-width: none; }
+  .cs-screengrid { grid-template-columns: 1fr; }
+  .cs-screengrid li:nth-child(odd) .cs-screen { border-right: 0; }
+  .cs-screengrid li:not(:last-child) .cs-screen { border-bottom: 1px solid var(--color-line-soft); }
+}
+
+@media (max-width: 767px) {
+  main:has(> .cs-hero-seq) > section,
+  main:has(> .cs-hero-seq) > aside { padding-block: clamp(36px, 9vw, 56px); }
+  .home-hero-band h1 { font-size: clamp(2.5rem, 10vw, 3.2rem); }
+  .gcs-home-actions .cs-btn { width: 100%; justify-content: center; border-radius: var(--radius-control); }
+  .inline-capture-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .cs-strengthbar__list { grid-template-columns: 1fr; gap: 2px; }
+  .cs-strengthbar__list li { padding-block: 8px; }
+  .cs-wall__cols { grid-template-columns: 1fr; height: 440px; }
+  .cs-rail__track { grid-auto-columns: min(78vw, 300px); }
+  .cs-screen { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .cs-screen span { white-space: normal; }
+  main:has(> .cs-hero-seq) .grid { grid-template-columns: 1fr; }
+  .trust-metrics { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* PHASE 2 HOME — D18-D44 */
+.cs-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+main:has(> .cs-home2-hero){overflow:clip;background:var(--cs-ground)}
+main:has(> .cs-home2-hero)>section{width:min(var(--container-wide),calc(100% - 2 * var(--gutter)));margin-inline:auto;padding-block:clamp(54px,7vw,88px)}
+.cs-home2-section{position:relative}.cs-home2-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:clamp(26px,4vw,42px)}
+.cs-home2-heading>div{max-width:720px}.cs-home2-heading h2,.cs-home2-lifestyle h2,.cs-home2-calculator h2,.cs-home2-position h2,.cs-home2-help h2{margin:0;max-width:18ch;font-size:clamp(2rem,4vw,3.45rem);line-height:1.02;letter-spacing:-.04em;text-wrap:balance}.cs-home2-heading p{max-width:58ch}.cs-home2-centered{display:flex;justify-content:center;width:100%;max-width:none;margin-top:30px}
+main:has(> .cs-home2-hero)>.cs-home2-hero{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(420px,.98fr);align-items:center;gap:clamp(36px,6vw,88px);width:100%;max-width:none;min-height:min(820px,calc(100svh - 40px));padding:clamp(112px,13vw,164px) max(var(--gutter),calc((100% - var(--container-wide))/2)) clamp(68px,8vw,110px);overflow:hidden;background:radial-gradient(72% 130% at 6% 10%,rgba(23,168,126,.25),transparent 62%),radial-gradient(60% 90% at 96% 16%,rgba(111,198,238,.18),transparent 58%),var(--cs-ground)}
+.cs-home2-flow{position:absolute;inset:-22%;z-index:-1;filter:blur(48px) saturate(1.2);opacity:.72;transform:rotate(-8deg)}.cs-home2-flow span{position:absolute;display:block;border-radius:46% 54% 68% 32%/45% 42% 58% 55%;mix-blend-mode:screen}.cs-home2-flow span:nth-child(1){width:64%;height:58%;left:-3%;top:4%;background:radial-gradient(circle at 40% 40%,rgba(47,216,162,.62),rgba(23,168,126,.03) 68%);animation:none}.cs-home2-flow span:nth-child(2){width:58%;height:52%;right:-2%;top:16%;background:radial-gradient(circle at 50% 50%,rgba(111,198,238,.46),rgba(120,80,190,.04) 70%);animation:none}.cs-home2-flow span:nth-child(3){width:50%;height:44%;left:26%;bottom:-4%;background:radial-gradient(circle at 50% 50%,rgba(242,126,106,.34),rgba(179,93,163,.03) 68%);animation:none}
+.cs-home2-hero__copy{position:relative;z-index:2}.cs-home2-hero h1{max-width:10.5ch;margin:0;font-size:clamp(3.4rem,6.8vw,6.2rem);line-height:.9;letter-spacing:-.065em;text-wrap:balance}.cs-home2-cycle{min-height:2em;margin:24px 0 0;color:var(--color-paper-100);font-size:clamp(1.1rem,1.6vw,1.35rem);font-weight:650;overflow:hidden}.cs-home2-cycle span{display:inline-block}.cs-home2-quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:670px;margin:26px 0 0;padding:0;list-style:none}.cs-home-quick{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:9px 12px;border:1px solid rgba(233,247,241,.16);border-radius:13px;background:rgba(7,16,13,.38);color:var(--text-primary);font-size:.78rem;font-weight:680;text-decoration:none;backdrop-filter:blur(14px);transition:transform 180ms ease,border-color 180ms ease,background 180ms ease}.cs-home-quick:hover{transform:translateY(-2px);border-color:rgba(111,235,194,.62);background:rgba(11,34,27,.68)}
+.cs-home2-cluster{position:relative;min-height:610px}.cs-home2-cluster picture{position:absolute;display:block;overflow:hidden;border:1px solid rgba(233,247,241,.19);border-radius:clamp(24px,3vw,42px);box-shadow:0 38px 80px -32px rgba(0,0,0,.78)}.cs-home2-cluster img{width:100%;height:100%;object-fit:cover}.cs-home2-cluster__main{width:62%;aspect-ratio:.88;left:3%;top:8%;transform:rotate(-5deg);z-index:2}.cs-home2-cluster__side{width:50%;aspect-ratio:.86;right:0;top:0;transform:rotate(5deg);z-index:1}.cs-home2-cluster__hand{width:46%;aspect-ratio:.86;right:8%;bottom:0;transform:rotate(2deg);z-index:3}
+main:has(> .cs-home2-hero)>.cs-home2-marquee{width:100%;max-width:none;padding:20px 0 26px;border-block:1px solid var(--color-line-soft);background:var(--cs-ground-raise)}.cs-home2-marquee>p{margin:0 0 14px;text-align:center;color:var(--text-secondary);font-size:.76rem;font-weight:750;letter-spacing:.14em;text-transform:uppercase}.cs-home2-marquee__window{overflow:hidden}.cs-home2-marquee__track{display:flex;width:max-content;animation:none}.cs-home2-marquee__track:hover,.cs-home2-marquee__track:focus-within{}.cs-home2-marquee__track a{display:grid;gap:1px;min-width:220px;padding:8px 26px;border-right:1px solid var(--color-line-soft);color:var(--text-primary);text-align:center;text-decoration:none}.cs-home2-marquee__track span{font-family:var(--font-display);font-weight:760}.cs-home2-marquee__track small{color:var(--text-secondary)}
+main:has(> .cs-home2-hero)>.cs-home2-trust{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:clamp(22px,4vw,56px);padding-block:34px;border-bottom:1px solid var(--color-line-soft)}.cs-home2-trust>div{display:grid;gap:2px}.cs-home2-trust strong{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.4rem);line-height:.9;color:var(--color-evidence);font-variant-numeric:tabular-nums}.cs-home2-trust span,.cs-home2-trust p{color:var(--text-secondary)}.cs-home2-trust p{justify-self:end;margin:0;font-size:clamp(1.05rem,1.8vw,1.4rem);font-weight:700}
+.cs-home2-controls{display:flex;gap:8px;flex-wrap:wrap}.cs-home2-controls button{min-width:44px;min-height:44px}.cs-home2-med-toggle{position:relative;display:inline-grid;place-items:center}.cs-home2-med-toggle__icon{display:block;width:12px;height:12px;background:linear-gradient(90deg,currentColor 0 36%,transparent 36% 64%,currentColor 64%)}.cs-home2-med-toggle[aria-pressed="true"] .cs-home2-med-toggle__icon{background:currentColor;clip-path:polygon(8% 0,100% 50%,8% 100%)}.cs-home2-med-toggle[aria-pressed="true"]{background:var(--cs-accent-gradient);color:var(--text-on-accent);border-color:transparent}.cs-home2-med-toggle [data-med-toggle-label]{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}.cs-home2-med-toggle[hidden]{display:none}.cs-home2-controls button,.cs-home2-dots button{border:1px solid var(--color-line-soft);background:var(--cs-ground-raise);color:var(--text-primary);cursor:pointer}.cs-home2-controls button{width:48px;height:48px;border-radius:50%;font-size:1.2rem}.cs-home2-med-viewport{overflow:hidden}/* W9 G01 */.cs-home2-med-viewport{touch-action:pan-y}.cs-home-med,.cs-home-med img,.cs-home-med picture{-webkit-user-drag:none;user-select:none}/* /W9 G01 */.cs-home2-med-track{display:flex;gap:18px;transition:transform 260ms cubic-bezier(.32,.72,0,1)}.cs-home-med{flex:0 0 clamp(250px,24vw,310px);overflow:hidden;border:1px solid var(--color-line-soft);border-radius:var(--radius-panel);background:var(--cs-paper-card);color:var(--cs-ink-on-paper);box-shadow:var(--cs-card-shadow-paper)}.cs-home-med__art{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--cs-ground-raise)}.cs-home-med__art img{width:100%;height:100%;object-fit:cover;transition:transform 120ms var(--cs-ease-entrance)}.cs-home-med:hover img{transform:scale(1.045)}.cs-home-med__copy{display:grid;gap:8px;min-height:150px;padding:18px 20px 20px}.cs-home-med__copy h3,.cs-home-med__copy p{margin:0}.cs-home-med__copy p{color:var(--cs-muted-on-paper)}.cs-home-med__copy a{align-self:end;color:#07523b;font-weight:780;text-decoration:none}.cs-home2-dots{display:flex;justify-content:center;gap:2px;margin-top:14px}/* W8: WCAG 2.5.8 target size. Each dot is a 44x44 transparent hit area; the 8px visual dot lives in ::before so the row still reads as dots. Adjacent 44px targets with a 2px gap never overlap. */.cs-home2-dots button{width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:50%;background:transparent;display:grid;place-items:center}.cs-home2-dots button::before{content:"";display:block;width:8px;height:8px;border-radius:50%;border:1px solid var(--color-line-soft);background:var(--cs-ground-raise);transition:width var(--duration-fast,160ms) ease,background-color var(--duration-fast,160ms) ease}.cs-home2-dots button:hover::before{background:var(--color-paper-100)}.cs-home2-dots button[aria-current=true]{background:transparent}.cs-home2-dots button[aria-current=true]::before{width:28px;border-radius:8px;border-color:transparent;background:var(--color-evidence)}
+main:has(> .cs-home2-hero)>.cs-home2-lifestyle{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr);align-items:center;gap:clamp(34px,6vw,78px);width:100%;max-width:none;padding-inline:max(var(--gutter),calc((100% - var(--container-wide))/2));background:var(--cs-ground-raise)}.cs-home2-lifestyle__media{overflow:hidden;min-height:480px;border-radius:var(--radius-panel);box-shadow:var(--shadow-float)}.cs-home2-lifestyle__media picture,.cs-home2-lifestyle__media img{display:block;width:100%;height:100%}.cs-home2-lifestyle__media img{object-fit:cover}.cs-home2-lifestyle__copy p{max-width:52ch}
+.cs-home2-pricegrid,.cs-home2-caregrid,.cs-home2-pickgrid,.cs-home2-newsgrid{display:grid;gap:18px}.cs-home2-pricegrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-home2-price{position:relative;display:grid;gap:16px;padding:clamp(26px,4vw,44px);border-radius:var(--radius-panel);background:var(--cs-paper-warm);color:var(--cs-ink-on-paper);box-shadow:var(--cs-card-shadow-paper)}.cs-home2-price h3,.cs-home2-price p{margin:0}.cs-home2-price>p{color:var(--cs-muted-on-paper)}.cs-home2-price__choices{display:flex;flex-wrap:wrap;gap:7px}.cs-home2-price__choices button{min-height:36px;padding:7px 12px;border:1px solid var(--cs-line-on-paper);border-radius:999px;background:transparent;color:var(--cs-ink-on-paper);cursor:pointer}.cs-home2-price__choices button[aria-pressed=true]{border-color:#0e7d5c;background:rgba(23,168,126,.12)}.cs-home2-price__number{position:relative;display:flex;align-items:baseline;flex-wrap:wrap;gap:7px;min-height:64px}.cs-home2-price__number>span:first-child{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:820;letter-spacing:-.05em;font-variant-numeric:tabular-nums}.cs-home2-info{width:24px;height:24px;border:1px solid var(--cs-line-on-paper);border-radius:50%;background:transparent;cursor:help}.cs-home2-info__tip{position:absolute;left:0;bottom:calc(100% + 8px);z-index:3;max-width:300px;padding:10px 12px;border-radius:10px;background:#07100d;color:#fff;font-size:.78rem;opacity:0;pointer-events:none;transform:translateY(5px);transition:160ms ease}.cs-home2-info:hover+.cs-home2-info__tip,.cs-home2-info:focus+.cs-home2-info__tip{opacity:1;transform:none}
+.cs-home2-caregrid{grid-template-columns:repeat(3,minmax(0,1fr))}.cs-home2-carecard{display:grid;grid-template-rows:220px 1fr;overflow:hidden;padding:0;border:1px solid var(--color-line-soft);border-radius:var(--radius-panel);background:var(--cs-paper-card);color:var(--cs-ink-on-paper);text-align:left;text-decoration:none;cursor:pointer;box-shadow:var(--cs-card-shadow-paper)}.cs-home2-carecard__art{display:block;overflow:hidden}.cs-home2-carecard__art img{width:100%;height:100%;object-fit:cover;transition:transform 120ms var(--cs-ease-entrance)}.cs-home2-carecard>div{padding:24px}.cs-home2-carecard h3,.cs-home2-carecard p{margin:0 0 10px}.cs-home2-carecard p{color:var(--cs-muted-on-paper)}.cs-home2-carecard span{color:#07523b;font-weight:760}.cs-home2-carecard:hover{background:var(--cs-sage-mist)}.cs-home2-carecard:hover img{transform:scale(1.06)}
+.cs-riskgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.cs-riskcard{position:relative;min-height:148px;padding:0;overflow:hidden;border:1px solid var(--color-line-soft);border-radius:var(--radius-card);background:var(--cs-ground-raise);color:var(--text-primary);text-align:left;cursor:pointer}.cs-riskcard__front,.cs-riskcard__back{position:absolute;inset:0;display:grid;align-content:center;gap:8px;padding:24px;transition:opacity 0ms ease,transform 0ms var(--cs-ease-entrance)}.cs-riskcard__front small{color:var(--color-evidence);font-weight:800}.cs-riskcard__front strong{font-family:var(--font-display);font-size:1.3rem}.cs-riskcard__front em{color:var(--text-secondary);font-style:normal;font-size:.82rem}.cs-riskcard__back{background:linear-gradient(120deg,rgba(14,125,92,.98),rgba(34,97,127,.97),rgba(115,66,105,.96));color:#f2f8f4;opacity:0;transform:translateY(10px)}.cs-riskcard__back span{font-weight:700}.cs-riskcard:hover .cs-riskcard__front,.cs-riskcard:has(.cs-riskcard__toggle:focus-visible) .cs-riskcard__front,.cs-riskcard:has([data-risk-card][aria-pressed=true]) .cs-riskcard__front{opacity:0;transform:translateY(-10px)}.cs-riskcard:hover .cs-riskcard__back,.cs-riskcard:has(.cs-riskcard__toggle:focus-visible) .cs-riskcard__back,.cs-riskcard:has([data-risk-card][aria-pressed=true]) .cs-riskcard__back{opacity:1;transform:none}
+main:has(> .cs-home2-hero)>.cs-home2-verdicts{width:100%;max-width:none;padding-inline:0}.cs-home2-verdicts .cs-home2-heading{width:min(var(--container-wide),calc(100% - 2 * var(--gutter)));margin-inline:auto}.cs-home2-verdict-window{overflow:hidden;padding-block:8px 18px}.cs-home2-verdict-track{display:flex;width:max-content;gap:14px;animation:none}.cs-home2-verdict-track:hover,.cs-home2-verdict-track:focus-within{}.cs-home2-verdict{width:min(380px,82vw);min-height:248px;padding:26px;border:1px solid var(--color-line-soft);border-radius:var(--radius-card);background:var(--cs-paper-card);color:var(--cs-ink-on-paper);text-decoration:none;box-shadow:var(--cs-card-shadow-paper)}.cs-home2-verdict>span{color:#0e7d5c;font-family:var(--font-display);font-size:1.5rem;font-weight:820}.cs-home2-verdict h3{margin:12px 0 8px}.cs-home2-verdict p{color:var(--cs-muted-on-paper)}.cs-home2-verdict small{color:#07523b;font-weight:760}
+.cs-home2-pickgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.cs-home2-pick{display:grid;gap:10px;min-height:230px;padding:28px;border:1px solid var(--color-line-soft);border-radius:var(--radius-card);background:var(--cs-ground-raise);color:var(--text-primary);text-decoration:none;transition:transform 240ms ease,box-shadow 240ms ease,border-color 240ms ease}.cs-home2-pick small{color:var(--color-evidence);font-weight:800}.cs-home2-pick h3{margin:0;font-size:1.55rem}.cs-home2-pick p{color:var(--text-secondary)}.cs-home2-pick span{align-self:end;font-weight:760}.cs-home2-pick:hover{transform:scale(1.025);border-color:rgba(111,235,194,.55);box-shadow:0 0 0 1px rgba(111,235,194,.18),0 26px 60px -34px rgba(47,216,162,.7)}
+main:has(> .cs-home2-hero)>.cs-home2-calculator{width:min(980px,calc(100% - 2 * var(--gutter)));padding:clamp(42px,7vw,76px);border-radius:var(--radius-panel);background:radial-gradient(circle at 80% 20%,rgba(111,198,238,.22),transparent 42%),radial-gradient(circle at 10% 90%,rgba(23,168,126,.28),transparent 48%),var(--cs-ground-raise);text-align:center}.cs-home2-calculator h2,.cs-home2-calculator p{margin-inline:auto}.cs-home2-calculator p{max-width:52ch}.cs-home2-review-capture{display:grid;grid-template-columns:1fr .92fr;gap:clamp(32px,6vw,76px);align-items:center}.cs-home2-review-capture>div:first-child{max-width:620px}.cs-home2-review-steps{display:grid;gap:10px}.cs-home2-review-steps span{display:flex;align-items:center;gap:14px;padding:18px 20px;border:1px solid var(--color-line-soft);border-radius:999px;background:var(--cs-ground-raise)}.cs-home2-review-steps b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--color-evidence);color:var(--cs-ground)}
+main:has(> .cs-home2-hero)>.cs-home2-position{position:relative;isolation:isolate;width:100%;max-width:none;overflow:hidden;padding-inline:max(var(--gutter),calc((100% - 980px)/2));text-align:center}.cs-home2-position__wash{position:absolute;inset:8% -10%;z-index:-1;background:radial-gradient(40% 70% at 30% 50%,rgba(23,168,126,.22),transparent 70%),radial-gradient(42% 70% at 70% 50%,rgba(169,155,242,.18),transparent 72%);animation:cs-position-fade 8s ease-in-out infinite alternate}.cs-home2-position h2,.cs-home2-position p{margin-inline:auto}.cs-home2-position p{max-width:58ch}
+@keyframes cs-position-fade { from { opacity: .3; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .cs-home2-position__wash { animation: none !important; opacity: 1; } }
+.cs-home2-articlegrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.cs-home2-article{overflow:hidden;border:1px solid var(--cs-line-on-paper);border-radius:var(--radius-card);background:var(--cs-paper-card);color:var(--cs-ink-on-paper);--text-primary:var(--cs-ink-on-paper);--text-secondary:var(--cs-muted-on-paper);--color-line:var(--cs-line-on-paper);text-decoration:none;box-shadow:var(--cs-card-shadow-paper)}.cs-home2-article picture{display:block;aspect-ratio:16/10;overflow:hidden}.cs-home2-article img{width:100%;height:100%;object-fit:cover;transition:transform 120ms var(--cs-ease-entrance)}.cs-home2-article>div{padding:22px}.cs-home2-article h3,.cs-home2-article p{margin:0 0 10px}.cs-home2-article p{color:var(--cs-muted-on-paper)}.cs-home2-article span{color:#07523b;font-weight:760}.cs-home2-article:hover img{transform:scale(1.045)}
+main:has(> .cs-home2-hero)>.cs-home2-help{width:min(880px,calc(100% - 2 * var(--gutter)));text-align:center}.cs-home2-help h2,.cs-home2-help p{margin-inline:auto}.cs-home2-help p{max-width:52ch}.cs-home2-help>div{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}.cs-home2-newsgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.cs-home2-news{overflow:hidden;min-height:410px;border:1px solid var(--color-line-soft);border-radius:var(--radius-panel);background:linear-gradient(135deg,rgba(23,168,126,.2),rgba(111,198,238,.13),rgba(169,155,242,.17));background-size:200% 200%;color:var(--text-primary);text-decoration:none;animation:none}.cs-home2-news picture{display:block;height:34%;min-height:150px;overflow:hidden}.cs-home2-news img{width:100%;height:100%;object-fit:cover}.cs-home2-news>div{display:grid;align-content:start;gap:10px;min-height:250px;padding:26px}.cs-home2-news small{color:var(--color-evidence);font-weight:800;text-transform:uppercase;letter-spacing:.12em}.cs-home2-news h3{margin:0;font-size:1.55rem}.cs-home2-news span{align-self:end;font-weight:760}
+.cs-review-sheet[hidden]{display:none}.cs-review-sheet{position:fixed;inset:0;z-index:190}.cs-review-sheet__backdrop{position:absolute;inset:0;width:100%;border:0;background:rgba(0,0,0,.58);backdrop-filter:blur(8px)}.cs-review-sheet__panel{position:absolute;right:0;top:0;bottom:0;width:min(620px,100%);overflow:auto;padding:clamp(28px,5vw,54px);background:var(--cs-paper-warm);color:var(--cs-ink-on-paper);box-shadow:-28px 0 80px -28px rgba(0,0,0,.8)}.cs-review-sheet__close{position:absolute;top:16px;right:18px;width:40px;height:40px;border:1px solid var(--cs-line-on-paper);border-radius:50%;background:transparent;color:var(--cs-ink-on-paper);font-size:1.5rem;cursor:pointer}.cs-review-sheet form{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:24px}.cs-review-sheet form>*{grid-column:1/-1}.cs-review-sheet label{display:grid;gap:6px;font-weight:700}.cs-review-sheet input,.cs-review-sheet select,.cs-review-sheet textarea{width:100%;min-height:46px;padding:11px 12px;border:1px solid var(--cs-line-on-paper);border-radius:10px;background:#fff;color:var(--cs-ink-on-paper);font:inherit}.cs-review-sheet textarea{resize:vertical}.cs-review-sheet__pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}.cs-review-sheet__check{grid-template-columns:22px 1fr;align-items:start;font-weight:500!important}.cs-review-sheet__check input{width:18px;min-height:18px}
+@media(max-width:980px){main:has(> .cs-home2-hero)>.cs-home2-hero{grid-template-columns:1fr}.cs-home2-cluster{width:min(680px,100%);min-height:560px;margin-inline:auto}main:has(> .cs-home2-hero)>.cs-home2-lifestyle,.cs-home2-review-capture{grid-template-columns:1fr}.cs-home2-lifestyle__media{min-height:400px}.cs-home2-caregrid,.cs-home2-articlegrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.cs-review-sheet form{grid-template-columns:1fr}main:has(> .cs-home2-hero)>section{padding-block:48px}main:has(> .cs-home2-hero)>.cs-home2-hero{min-height:auto;padding-top:112px}.cs-home2-hero h1{font-size:clamp(3.2rem,15vw,4.5rem)}.cs-home2-quick{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-home2-cluster{min-height:440px}.cs-home2-cluster__main{width:66%}.cs-home2-cluster__side{width:50%}.cs-home2-cluster__hand{width:48%}.cs-home2-heading{align-items:start;flex-direction:column}main:has(> .cs-home2-hero)>.cs-home2-trust{grid-template-columns:1fr 1fr}.cs-home2-trust p{grid-column:1/-1;justify-self:start}.cs-home2-pricegrid,.cs-home2-caregrid,.cs-riskgrid,.cs-home2-pickgrid,.cs-home2-articlegrid,.cs-home2-newsgrid{grid-template-columns:1fr}.cs-home2-lifestyle__media{min-height:330px}.cs-home2-review-steps span{border-radius:18px}.cs-review-sheet__pair{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.cs-btn__orbit-track{stroke-dasharray:100 0;stroke-dashoffset:0}.cs-home2-flow span,.cs-home2-marquee__track,.cs-home2-verdict-track,.cs-home2-position__wash,.cs-home2-news{animation:none!important}.cs-home2-med-track{transition:none}}
+
+/* PASS 4 regression repair — these two duplicated-content rails are the
+   deliberate continuous-motion surfaces on home. Pass 3's W18 override
+   accidentally forced both to `animation:none` at every viewport. Keep the
+   transport CSS-only (no second RAF owner beside GSAP/Lenis), pause only while
+   a reader is directly interacting with a rail, and let the existing global
+   reduced-motion contract render the complete duplicated track statically. */
+.cs-home2-marquee__window,
+.cs-home2-verdict-window {
+  overflow: hidden;
+  overscroll-behavior-inline: contain;
+}
+.cs-home2-marquee__track,
+.cs-home2-verdict-track { will-change: transform; }
+.cs-home2-marquee__track { animation: cs-home2-popular-loop 30s linear infinite; }
+.cs-home2-verdict-track { animation: cs-home2-verdict-loop 56s linear infinite; }
+.cs-home2-marquee__track:hover,
+.cs-home2-marquee__track:focus-within,
+.cs-home2-verdict-track:hover,
+.cs-home2-verdict-track:focus-within { animation-play-state: paused; }
+@keyframes cs-home2-popular-loop { to { transform: translate3d(-50%, 0, 0); } }
+/* The verdict track owns a 14px flex gap. Half its rendered width lands 7px
+   before the duplicate set, so include that half-gap in the loop distance. */
+@keyframes cs-home2-verdict-loop { to { transform: translate3d(calc(-50% - 7px), 0, 0); } }
+.cs-home2-marquee__track a,
+.cs-home2-verdict { scroll-snap-align: center; }
+.cs-home2-marquee > p { display: block; width: 100%; margin-inline: auto; text-align: center; }
+.cs-home2-position h2 { margin-bottom: clamp(18px, 2.2vw, 28px); }
+.cs-home2-position > p:not(.gcs-kicker) { margin-block: 0 clamp(22px, 2.6vw, 34px); }
+
+@media (max-width: 720px) {
+  .cs-home2-quick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cs-home2-quick > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .cs-home-quick { min-height: 48px; font-size: 0.8rem; }
+  .cs-home2-price__choices button, .cs-home2-info, .cs-home2-dots button { min-width: 44px; min-height: 44px; }
+  .cs-home2-info { display: inline-grid; place-items: center; }
+  .cs-home2-med-viewport { touch-action: pan-y; }
+  .cs-home-med { flex-basis: min(312px, calc(100vw - 64px)); }
+  .cs-home2-marquee__window, .cs-home2-verdict-window {
+    overflow: hidden; overscroll-behavior-inline: contain; scrollbar-width: none;
+  }
+  .cs-home2-marquee__window::-webkit-scrollbar, .cs-home2-verdict-window::-webkit-scrollbar { display: none; }
+  .cs-home2-marquee__track a, .cs-home2-verdict { scroll-snap-align: center; }
+  .cs-home2-marquee__track a { min-width: 210px; min-height: 64px; align-content: center; }
+  .cs-home2-verdict { width: min(312px, calc(100vw - 64px)); }
+}
+
+/* PASS 2 — operator home corrections O-2..O-24 and scroll-cost controls. */
+main:has(> .cs-home2-hero) > .cs-home2-hero {
+  min-height: min(760px, calc(100svh - 72px));
+  padding-top: clamp(68px, 7vw, 92px);
+}
+.cs-home2-flow {
+  inset: -10%;
+  opacity: .96;
+  filter: none;
+}
+.cs-home2-flow span { filter: none; mix-blend-mode: normal; }
+
+.cs-home2-flow span:nth-child(1) {
+  background: radial-gradient(ellipse at 40% 40%, rgba(47, 216, 162, .82) 0%, rgba(23, 168, 126, .3) 46%, transparent 76%);
+
+}
+.cs-home2-flow span:nth-child(2) {
+  background: radial-gradient(ellipse at 50% 50%, rgba(111, 198, 238, .7) 0%, rgba(120, 80, 190, .24) 46%, transparent 77%);
+
+}
+.cs-home2-flow span:nth-child(3) {
+  background: radial-gradient(ellipse at 50% 50%, rgba(242, 126, 106, .58) 0%, rgba(179, 93, 163, .2) 46%, transparent 76%);
+
+}
+/* A-1: the operator-approved Aurora System. Three compositor-only paths share
+   one exact 20s cadence but different non-linear orbits and negative offsets,
+   so the field never settles into a repeated-looking pose. */
+.cs-home2-flow span { will-change: transform; }
+.cs-home2-flow span:nth-child(1) { animation: cs-home-aurora-orbit-a 20s cubic-bezier(.45, 0, .55, 1) -3s infinite; }
+.cs-home2-flow span:nth-child(2) { animation: cs-home-aurora-orbit-b 20s cubic-bezier(.45, 0, .55, 1) -9s infinite; }
+.cs-home2-flow span:nth-child(3) { animation: cs-home-aurora-orbit-c 20s cubic-bezier(.45, 0, .55, 1) -15s infinite; }
+@keyframes cs-home-aurora-orbit-a {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  32% { transform: translate3d(9%, 6%, 0) rotate(7deg) scale(1.06); }
+  68% { transform: translate3d(3%, 13%, 0) rotate(-5deg) scale(.96); }
+}
+@keyframes cs-home-aurora-orbit-b {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  35% { transform: translate3d(-11%, 7%, 0) rotate(-8deg) scale(.95); }
+  72% { transform: translate3d(-4%, -10%, 0) rotate(6deg) scale(1.08); }
+}
+@keyframes cs-home-aurora-orbit-c {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  38% { transform: translate3d(8%, -12%, 0) rotate(9deg) scale(1.08); }
+  74% { transform: translate3d(-9%, -4%, 0) rotate(-6deg) scale(.96); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-home2-flow span { animation: none !important; transform: none !important; will-change: auto; }
+}
+.cs-home2-cluster__hand img { transform: scale(1.1); }
+
+.cs-home2-med-viewport { position: relative; isolation: isolate; }
+.cs-home2-med-viewport::before,
+.cs-home2-med-viewport::after {
+  position: absolute; z-index: 4; top: 0; bottom: 0; width: clamp(34px, 7vw, 104px);
+  content: ""; pointer-events: none;
+}
+.cs-home2-med-viewport::before { left: 0; background: linear-gradient(90deg, rgba(7, 16, 13, .78), transparent); }
+.cs-home2-med-viewport::after { right: 0; background: linear-gradient(-90deg, rgba(7, 16, 13, .78), transparent); }
+.cs-home2-med-track { gap: 18px; }
+/* Design pass 2026-08-26 (home spec fix #1): the one-viewport overlay card.
+   Full-bleed art, title ON the image over a dark scrim (AA against the actual
+   pixels), honest qualifier bottom-left, price pill bottom-right, whole card
+   one link. ~539px tall so heading + full cards share a 900px viewport. The
+   veil is our aurora palette standing in for their diagonal gradient overlay. */
+.cs-home-med {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  flex-basis: min(326px, calc(100vw - 58px));
+  height: clamp(460px, 37.5vw, 539px);
+  overflow: hidden;
+  border: 1px solid rgba(233, 247, 241, .14);
+  border-radius: 22px;
+  background: var(--cs-ground-raise);
+  color: #f5fbf8;
+  text-decoration: none;
+  box-shadow: 0 28px 60px -34px rgba(0, 0, 0, .8);
+  transition: transform 260ms var(--cs-ease-standard), box-shadow 260ms ease;
+}
+.cs-home-med .cs-home-med__art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  aspect-ratio: auto;
+  height: 100%;
+}
+.cs-home-med .cs-home-med__art img { width: 100%; height: 100%; object-fit: cover; }
+/* ADOPTED (design pass 2026-08-27, Phase-2 selection #1): shadcn Skeleton
+   pattern (MIT) painted INSIDE the reserved art box — the shimmer sits beneath
+   the lazy-loaded image, so the swap can never shift layout (the box IS the
+   loaded content's box). Iterations are bounded so a long-loaded rail never
+   keeps animating beneath opaque imagery; a failed image degrades to the
+   static block, which is the correct skeleton fallback. Keyframe lives in
+   01-primitives; reduced motion + keyboard modality kill it in 00-foundation. */
+.cs-home-med__art {
+  background-image: linear-gradient(100deg, transparent 32%, rgba(233, 247, 241, 0.09) 50%, transparent 68%);
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  background-position: 130% 0;
+  animation: cs-skeleton-shimmer 1.4s ease-in-out 12;
+}
+.cs-home-med__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(184deg, rgba(4, 16, 12, .84) 0%, rgba(4, 16, 12, .4) 30%, rgba(4, 16, 12, .05) 52%, rgba(4, 16, 12, .14) 66%, rgba(4, 16, 12, .88) 100%);
+}
+.cs-home-med__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: .38;
+  background: linear-gradient(135deg, rgba(23, 168, 126, .5), rgba(111, 198, 238, .3) 48%, rgba(169, 155, 242, .44));
+  mix-blend-mode: screen;
+  transition: opacity 240ms ease;
+}
+.cs-home-med__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px 22px 20px;
+}
+.cs-home-med__overlay h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 2.9vw, 2.6rem);
+  font-weight: 640;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  color: rgba(255, 255, 255, .96);
+  text-wrap: balance;
+}
+.cs-home-med__benefit {
+  display: block;
+  margin-top: 10px;
+  color: rgba(240, 250, 245, .9);
+  font-size: .88rem;
+  line-height: 1.4;
+}
+.cs-home-med__foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+}
+.cs-home-med__qualifier {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: .84rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: rgba(240, 250, 245, .9);
+}
+.cs-home-med__pill {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #fff;
+  color: #07100d;
+  font-family: var(--font-display);
+  font-weight: 780;
+  font-size: .88rem;
+  white-space: nowrap;
+  box-shadow: 0 12px 26px -16px rgba(0, 0, 0, .7);
+  transition: background-color 200ms ease;
+}
+.cs-home-med:hover,
+.cs-home-med:focus-visible { transform: translateY(-3px); box-shadow: 0 30px 64px -30px rgba(63, 217, 164, .55); }
+.cs-home-med:hover .cs-home-med__veil,
+.cs-home-med:focus-visible .cs-home-med__veil { opacity: .5; }
+.cs-home-med:hover .cs-home-med__pill,
+.cs-home-med:focus-visible .cs-home-med__pill { background: rgba(255, 255, 255, .9); }
+.cs-home2-price h3 { color: #14201b; }
+
+.cs-home2-carecard { grid-template-rows: 290px 1fr; min-height: 520px; }
+.cs-home2-carecard h3 { color: #14201b; }
+.cs-home2-verdict .provider-logo,
+.cs-home2-pick .provider-logo { margin-bottom: 14px; }
+.cs-home2-verdict h3,
+.cs-home2-verdict .provider-wordmark { color: #14201b; }
+
+body.cs-review-open { overflow: hidden; }
+.cs-review-sheet { visibility: visible; }
+/* ADOPTED (design pass 2026-08-27, Phase-2 selection #6): shadcn sheet recipe
+   in/out asymmetry (MIT, timings only) — the review sheet enters at 260ms and
+   leaves at 180ms; same edge both ways (Kowalski filter B6). Base rules carry
+   the exit, .is-open carries the slower entrance. */
+.cs-review-sheet__backdrop { opacity: 0; transition: opacity 180ms ease; }
+.cs-review-sheet__panel {
+  display: flex; flex-direction: column; width: min(760px, 100%); max-height: 100dvh; overflow-y: auto; overscroll-behavior: contain;
+  --text-primary: #f2f8f4; --text-secondary: #a7bfb5;
+  --color-line-soft: rgba(233, 247, 241, .13); --color-line-strong: rgba(233, 247, 241, .24);
+  --color-surface: #101d18; --color-surface-float: #15251f; --surface-raised: #101d18;
+  padding: clamp(22px, 3vw, 34px); transform: translateX(100%);
+  background: #07100d; color: #f2f8f4;
+  transition: transform 180ms cubic-bezier(.32,.72,0,1); scrollbar-gutter: stable;
+}
+.cs-review-sheet.is-open .cs-review-sheet__backdrop { opacity: 1; transition: opacity 260ms ease; }
+.cs-review-sheet.is-open .cs-review-sheet__panel { transform: translateX(0); transition: transform 260ms cubic-bezier(.32,.72,0,1); }
+.cs-review-sheet__panel h2 { margin: 0; color: #f2f8f4; }
+.cs-review-sheet__panel > p { margin-block: 7px; color: #a7bfb5; }
+.cs-review-sheet__panel .p5-review-intake__card { background: #0c1815; border-color: rgba(233, 247, 241, .2); }
+.cs-review-sheet__panel .p5-review-intake__intro { padding: 12px 48px 12px 16px; background: #0c1815; }
+.cs-review-sheet__panel .p5-review-intake__intro h2 { margin-block: 2px 4px; }
+.cs-review-sheet__panel .p5-review-intake__intro > p:last-child { line-height: 1.35; }
+.cs-review-sheet__panel .p5-review-form--compact .p5-step { gap: 12px; padding: 14px 16px; }
+.cs-review-sheet__panel .p5-review-form--compact .p5-fields-grid { gap: 10px 14px; }
+.cs-review-sheet__panel .p5-review-form--compact .p5-field { gap: 4px; }
+.cs-review-sheet__panel .p5-review-form--compact .p5-field input,
+.cs-review-sheet__panel .p5-review-form--compact .p5-field select { min-height: 44px; padding: 8px 10px; }
+.cs-review-sheet__panel .p5-review-form--compact textarea { min-height: 88px; padding: 8px 10px; }
+.cs-review-sheet__panel .p5-review-form--compact .p5-review-block--attest { gap: 10px; padding: 10px 14px; }
+.cs-review-sheet__panel .p5-review-form--compact .p5-actions .cta { width: 100%; justify-content: center; }
+/* The sheet embeds the canonical two-step Phase-5 intake. The retired
+   four-column direct-child grid squeezed each step wrapper into one quarter of
+   the panel. The form owns one column; its .p5-fields-grid owns field columns. */
+.cs-review-sheet .p5-review-form { grid-template-columns: minmax(0, 1fr); gap: 0; width: 100%; margin-top: 12px; }
+.cs-review-sheet .p5-review-form > * { grid-column: 1; min-width: 0; }
+.cs-review-sheet .p5-step { width: 100%; }
+.cs-review-sheet .p5-fields-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cs-review-sheet textarea { height: auto; min-height: 132px; max-height: none; }
+.cs-review-sheet .p5-review-form > input[name="company"] { position: absolute; left: -10000px; }
+
+
+@media (max-width: 720px) {
+  main:has(> .cs-home2-hero) > .cs-home2-hero { padding-top: 72px; }
+  .cs-home2-med-viewport::before,
+  .cs-home2-med-viewport::after { width: 34px; }
+  .cs-home-med { flex-basis: min(326px, calc(100vw - 58px)); }
+  .cs-home2-carecard { grid-template-rows: 240px 1fr; min-height: 450px; }
+  .cs-review-sheet .p5-fields-grid { grid-template-columns: 1fr; }
+  .cs-review-sheet__panel { overflow-y: auto; padding: 22px 18px calc(24px + env(safe-area-inset-bottom)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-review-sheet__panel,
+  .cs-review-sheet__backdrop,
+  .cs-home-med { transition-duration: 0ms; }
+}
+
+/* PASS 3 / PHASE 2 / LANE B — desktop home visual + motion closure. */
+
+/* Use the desktop canvas for comparison, editorial, and result-card bands. */
+main:has(> .cs-home2-hero) > :is(
+  .cs-home2-pricing,
+  .cs-home2-care,
+  .cs-home2-strongest,
+  .cs-home2-editorial,
+  .cs-home2-news-section
+) {
+  width: min(1560px, calc(100% - 2 * var(--gutter)));
+  max-width: none;
+}
+main:has(> .cs-home2-hero) > .cs-home2-meds {
+  width: 100%;
+  max-width: none;
+}
+.cs-home2-meds > :is(.cs-home2-heading, .cs-home2-dots) {
+  width: min(var(--container-wide), calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+}
+.cs-home2-meds > .cs-home2-heading { margin-bottom: clamp(26px, 4vw, 42px); }
+.cs-home2-pricegrid,
+.cs-home2-caregrid,
+.cs-home2-pickgrid,
+.cs-home2-articlegrid,
+.cs-home2-newsgrid { min-width: 0; gap: clamp(18px, 2vw, 28px); }
+:is(.cs-home2-pricegrid, .cs-home2-caregrid, .cs-home2-pickgrid, .cs-home2-articlegrid, .cs-home2-newsgrid) > * {
+  min-width: 0;
+}
+:is(.cs-home2-pick, .cs-home2-article, .cs-home2-news) h3 {
+  overflow-wrap: anywhere;
+}
+
+/* Design pass 2026-08-26 (fix #1): their card pitch — wide overlay
+   cards, three fully visible plus a real next-card peek at 1440, edge veils keeping the outer
+   cards legible. site.js supplies the leading peek and auto-advance. */
+@media (min-width: 721px) {
+  .cs-home-med { flex: 0 0 clamp(320px, 25vw, 384px); }
+  .cs-home2-med-viewport::before,
+  .cs-home2-med-viewport::after { width: clamp(48px, 7vw, 112px); }
+}
+
+/* Dark, wide route comparison pair. Route labels are gradient type; all
+   explanatory and price text stays high-contrast white on the dark body. */
+.cs-home2-price {
+  min-height: 470px;
+  align-content: start;
+  padding: clamp(30px, 3.4vw, 52px);
+  border: 1px solid rgba(233, 247, 241, .16);
+  background:
+    radial-gradient(70% 90% at 4% 0%, rgba(23, 168, 126, .2), transparent 64%),
+    radial-gradient(65% 90% at 100% 100%, rgba(169, 155, 242, .18), transparent 68%),
+    #07100d;
+  color: #f5fbf8;
+  box-shadow: 0 34px 76px -38px rgba(0, 0, 0, .88), inset 0 1px rgba(255, 255, 255, .04);
+}
+.cs-home2-price :is(h3, .cs-home2-price__number, .cs-home2-price__number small) { color: #f5fbf8; }
+.cs-home2-price > p { color: #cfddd7; }
+.cs-home2-price > :is(.gcs-kicker, .cs-home2-price__route) {
+  width: fit-content;
+  margin-bottom: 0;
+  background: linear-gradient(100deg, #6febb9 0%, #6fc6ee 52%, #d3a9f3 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.cs-home2-price:nth-child(2) > :is(.gcs-kicker, .cs-home2-price__route) {
+  background-image: linear-gradient(100deg, #8fd8ff 0%, #c6b5ff 48%, #ffad99 100%);
+}
+.cs-home2-price__choices button {
+  min-height: 42px;
+  border-color: rgba(233, 247, 241, .24);
+  background: rgba(255, 255, 255, .045);
+  color: #f5fbf8;
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+.cs-home2-price__choices button:hover,
+.cs-home2-price__choices button:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(111, 235, 185, .72);
+  background: rgba(111, 235, 185, .1);
+}
+.cs-home2-price__choices button[aria-pressed="true"] {
+  border-color: #6febb9;
+  background: linear-gradient(110deg, rgba(23, 168, 126, .28), rgba(111, 198, 238, .18));
+  color: #fff;
+}
+.cs-home2-price .cs-btn { align-self: end; width: fit-content; margin-top: auto; }
+
+.cs-home2-product-disclosure {
+  width: min(68ch, calc(100% - 2 * var(--gutter)));
+  margin: 10px auto 0;
+  color: var(--text-secondary);
+  font-size: .7rem;
+  line-height: 1.45;
+  text-align: center;
+  opacity: .76;
+}
+
+/* Styled tooltip: visible hover/focus/expanded states, a real focus target,
+   high-contrast panel, and a pointer that visually associates help with price. */
+.cs-home2-info {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 44px; /* >=44px activation box (responsive-matrix contract; measured 42x42 on 2026-09-17) */
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(233, 247, 241, .42);
+  background: rgba(255, 255, 255, .08);
+  color: #f5fbf8;
+  font: 800 .88rem/1 var(--font-display);
+  box-shadow: inset 0 0 0 4px rgba(7, 16, 13, .32);
+}
+.cs-home2-info:hover,
+.cs-home2-info:focus-visible,
+.cs-home2-info[aria-expanded="true"] {
+  border-color: #6febb9;
+  background: rgba(111, 235, 185, .16);
+}
+.cs-home2-info:focus-visible { outline: 3px solid #8fd8ff; outline-offset: 3px; }
+.cs-home2-info__tip {
+  left: auto;
+  right: 0;
+  bottom: calc(100% + 14px);
+  width: min(320px, calc(100vw - 48px));
+  max-width: none;
+  padding: 14px 16px;
+  border: 1px solid rgba(7, 16, 13, .14);
+  border-radius: 14px;
+  background: #f8fcfa;
+  color: #14201b;
+  font-size: .84rem;
+  font-weight: 620;
+  line-height: 1.5;
+  text-align: left;
+  box-shadow: 0 24px 56px -24px rgba(0, 0, 0, .75);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(6px) scale(.98);
+  transform-origin: right bottom;
+}
+.cs-home2-info__tip::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 100%;
+  width: 12px;
+  height: 12px;
+  border-right: 1px solid rgba(7, 16, 13, .14);
+  border-bottom: 1px solid rgba(7, 16, 13, .14);
+  background: #f8fcfa;
+  transform: translateY(-6px) rotate(45deg);
+}
+.cs-home2-info:hover + .cs-home2-info__tip,
+.cs-home2-info:focus-visible + .cs-home2-info__tip,
+.cs-home2-info[aria-expanded="true"] + .cs-home2-info__tip {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+/* The care trio lives inside one rounded aurora field instead of three tall,
+   disconnected cards. The cards keep a broad editorial proportion. */
+main:has(> .cs-home2-hero) > .cs-home2-care {
+  isolation: isolate;
+  overflow: hidden;
+  padding-inline: clamp(24px, 3.5vw, 58px);
+  border: 1px solid rgba(233, 247, 241, .14);
+  border-radius: clamp(30px, 4vw, 56px);
+  background:
+    radial-gradient(72% 110% at 0% 0%, rgba(23, 168, 126, .34), transparent 66%),
+    radial-gradient(70% 120% at 100% 100%, rgba(169, 155, 242, .27), transparent 68%),
+    linear-gradient(135deg, #0b1c17 0%, #10282a 52%, #191a30 100%);
+  box-shadow: 0 38px 90px -54px rgba(63, 217, 164, .56);
+}
+.cs-home2-care .cs-home2-heading :is(h2, p) { color: #f5fbf8; }
+.cs-home2-care .gcs-kicker { color: #8ce8c2; }
+.cs-home2-caregrid { gap: clamp(18px, 2.2vw, 30px); }
+@media (min-width: 981px) {
+  .cs-home2-carecard {
+    grid-template-rows: clamp(200px, 17vw, 250px) 1fr;
+    min-height: 430px;
+    border-color: rgba(233, 247, 241, .24);
+  }
+}
+
+.cs-riskcard__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(111, 235, 185, .34);
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(111, 235, 185, .14), rgba(143, 216, 255, .08));
+  color: var(--color-evidence);
+}
+.cs-riskcard__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cs-home2-logistics {
+  display: grid;
+  gap: clamp(44px, 5.5vw, 76px);
+  width: 100vw !important;
+  max-width: none !important;
+  margin-inline: calc(50% - 50vw) !important;
+  padding-inline: 0;
+}
+/* Design pass 2026-08-26 (home spec fix #4): their real geometry. Panel 1 =
+   TEXT LEFT / IMAGE RIGHT (--reverse pushes the DOM-first art to the right
+   half), panel 2 mirrored. Exact 50% halves in a 1376 container on the bare
+   page ground — no panel fill (choreography in motion.js v2: each half enters
+   from its own outer edge). Centered gradient divider bars sit between the
+   panels; a 4px gradient underline bar sits under each heading; the image
+   half carries a soft gradient glow ring. */
+.cs-home2-logistics__divider {
+  width: clamp(128px, 13vw, 192px);
+  height: 4px;
+  margin: 0 auto;
+  border-radius: var(--radius-pill);
+  background: var(--cs-accent-gradient);
+}
+.cs-home2-logistics__card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+  overflow: visible;
+  padding: clamp(8px, 1.2vw, 18px) 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.cs-home2-logistics__card--reverse > .cs-home2-logistics__art { order: 2; }
+.cs-home2-logistics__copy { min-width: 0; padding: clamp(10px, 2vw, 26px) 0 clamp(10px, 2vw, 26px) clamp(26px, 3.4vw, 48px); }
+.cs-home2-logistics__card--reverse > .cs-home2-logistics__copy { padding: clamp(10px, 2vw, 26px) clamp(26px, 3.4vw, 48px) clamp(10px, 2vw, 26px) 0; }
+.cs-home2-logistics__card h2 {
+  max-width: 15ch;
+  margin: 0;
+  font-size: clamp(2rem, 3.5vw, 3.45rem);
+  line-height: 1;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.cs-home2-logistics__copy h2::after {
+  content: "";
+  display: block;
+  width: clamp(100px, 10vw, 140px);
+  height: 4px;
+  margin-top: 16px;
+  border-radius: var(--radius-pill);
+  background: var(--cs-spectral-line);
+}
+.cs-home2-logistics__card p { max-width: 54ch; color: var(--text-secondary); }
+.cs-home2-logistics__copy .cs-btn { margin-top: 6px; }
+.cs-home2-logistics__art {
+  position: relative;
+  display: block;
+  min-width: 0;
+  aspect-ratio: 688 / 400;
+  overflow: visible;
+  border-radius: 0;
+  box-shadow: none;
+}
+.cs-home2-logistics__art::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  z-index: -1;
+  border-radius: 20px;
+  background: linear-gradient(120deg, var(--cs-aurora-5), var(--cs-aurora-4) 52%, var(--cs-aurora-3));
+  filter: blur(16px);
+  opacity: .28;
+}
+.cs-home2-logistics__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: 0 30px 64px -36px rgba(0, 0, 0, .75);
+}
+
+@media (max-width: 980px) {
+  .cs-home2-logistics { width: 100% !important; margin-inline: 0 !important; padding-inline: 0; }
+  .cs-home2-logistics__card,
+  .cs-home2-logistics__card--reverse {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    min-height: 0;
+  }
+  .cs-home2-logistics__card--reverse > .cs-home2-logistics__art { order: 0; }
+  .cs-home2-logistics__copy,
+  .cs-home2-logistics__card--reverse > .cs-home2-logistics__copy { padding: 0 4px; }
+  .cs-home2-logistics__art,
+  .cs-home2-logistics__art img { border-radius: 14px; }
+}
+
+.cs-home2-med-viewport { touch-action: pan-y; }
+
+/* Top-pick identity marks get a dedicated aurora band—the top third of each
+   card—so both light and dark provider marks remain readable. */
+.cs-home2-pick {
+  min-height: 330px;
+  overflow: hidden;
+  padding: 28px;
+}
+.cs-home2-pick > :first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% + 56px);
+  min-height: 112px;
+  margin: -28px -28px 10px;
+  padding: 18px 28px;
+  border: 0;
+  border-bottom: 1px solid rgba(233, 247, 241, .18);
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(111, 235, 185, .58), transparent 48%),
+    radial-gradient(circle at 86% 84%, rgba(179, 148, 244, .55), transparent 52%),
+    linear-gradient(120deg, #174735, #284e65 56%, #4b365d) !important;
+  color: #fff;
+}
+.cs-home2-pick > .provider-logo img { max-width: min(100%, 190px); max-height: 64px; }
+.cs-home2-pick > .provider-wordmark { color: #fff; text-align: center; }
+
+/* The editorial/news shelves retain their responsive column rules while their
+   parent sections use the wider desktop canvas above. */
+.cs-home2-article .gcs-kicker { color: #07523b; }
+.cs-home2-news { min-height: 390px; }
+.cs-home2-newsgrid .cs-home2-news {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  min-height: 450px;
+  animation: cs-news-gradient 14s ease-in-out infinite alternate;
+}
+.cs-home2-newsgrid .cs-home2-news picture { position: relative; height: 100%; min-height: 0; }
+.cs-home2-newsgrid .cs-home2-news img { position: absolute; inset: 0; }
+.cs-home2-newsgrid .cs-home2-news > div { min-height: 0; }
+@keyframes cs-news-gradient { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+
+/* D16: the home bundle owns its mail icon; Insights keeps its own rules. */
+.cs-home2-news-section .cs-subscribe-mail { width: 20px; height: 20px; flex: 0 0 20px; }
+@keyframes cs-home-news-mail-bounce {
+  0%, 70%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-3px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cs-home2-news-section .cs-subscribe-mail { animation: cs-home-news-mail-bounce 1.8s ease-in-out infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-home2-news-section .cs-subscribe-mail { animation: none; transform: none; }
+}
+
+/* ==========================================================================
+   DESIGN PASS 2026-08-26 — reference emulation, home family (spec fixes
+   #1 #3 #5 #7 #8 #9 #10 #11). Their geometry/density/motion grammar, our
+   palette/typography/imagery. Later-in-file on purpose: these override the
+   earlier provisional blocks at equal specificity.
+   ========================================================================== */
+
+/* Fix #7 — hero medication chips at pill scale (their h36–44 outline pills,
+   4+3 wrap), hover = alpha lift. */
+.cs-home2-quick { display: flex; flex-wrap: wrap; gap: 10px; max-width: 660px; }
+.cs-home2-quick > li { display: contents; }
+.cs-home-quick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 9px 20px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: rgba(233, 247, 241, .06);
+  box-shadow: inset 0 0 0 1px rgba(233, 247, 241, .34);
+  color: var(--text-primary);
+  font-size: .95rem;
+  font-weight: 650;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  transition: background-color 200ms ease, box-shadow 200ms ease;
+}
+.cs-home-quick:hover,
+.cs-home-quick:focus-visible {
+  transform: none;
+  background: rgba(233, 247, 241, .26);
+  box-shadow: inset 0 0 0 1px rgba(233, 247, 241, .58);
+  color: var(--text-primary);
+}
+
+/* The hero CTA uses the same shared Aurora System as every other action. Its
+   SVG perimeter remains the 5s high-contrast runner; keeping overflow visible
+   prevents the old top-left clipping/frozen-border regression. */
+.cs-btn--orbit { isolation: isolate; overflow: visible; }
+
+/* Fix #1 — one-viewport medication band: compact heading over full-height
+   cards (their header 2 lines ≈ 36px + card 539). */
+main:has(> .cs-home2-hero) > .cs-home2-meds { padding-block: clamp(38px, 4.5vw, 56px); }
+.cs-home2-meds > .cs-home2-heading { margin-bottom: clamp(16px, 2.2vw, 26px); }
+.cs-home2-meds .cs-home2-heading h2 { font-size: clamp(1.8rem, 2.6vw, 2.3rem); }
+.cs-home2-meds .cs-home2-heading p { margin-bottom: 0; }
+.cs-home2-dots { margin-top: 16px; }
+
+/* Fix #3 — hover identity for card affordances that lacked one. */
+.cs-home2-verdict { transition: transform 220ms var(--cs-ease-entrance), box-shadow 220ms ease, border-color 220ms ease; }
+.cs-home2-verdict:hover { transform: translateY(-3px); border-color: rgba(111, 235, 194, .4); box-shadow: 0 26px 56px -34px rgba(47, 216, 162, .5); }
+.cs-home2-marquee__track a { border-radius: 12px; transition: background-color 180ms ease; }
+.cs-home2-marquee__track a:hover { background: rgba(233, 247, 241, .06); }
+
+/* Fix #11 — calculator promo folded into the pricing band as a slim row. */
+.cs-home2-pricing__calc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 28px;
+  margin-top: clamp(18px, 2.4vw, 28px);
+  padding: clamp(20px, 2.6vw, 30px) clamp(22px, 3vw, 40px);
+  border: 1px solid rgba(233, 247, 241, .16);
+  border-radius: var(--radius-panel);
+  background:
+    radial-gradient(circle at 86% 18%, rgba(111, 198, 238, .2), transparent 46%),
+    radial-gradient(circle at 8% 88%, rgba(23, 168, 126, .24), transparent 50%),
+    var(--cs-ground-raise);
+}
+.cs-home2-pricing__calc > div { max-width: 62ch; }
+.cs-home2-pricing__calc h3 { margin: 0 0 4px; font-size: clamp(1.15rem, 1.8vw, 1.45rem); }
+.cs-home2-pricing__calc p { margin: 0; color: var(--text-secondary); font-size: .95rem; }
+.cs-home2-pricing__calc .gcs-kicker { margin-bottom: 6px; }
+.cs-home2-pricing__calc .cs-btn { flex: 0 0 auto; }
+
+/* Fix #8 — review wall module. Empty state today (0 approved first-party
+   reviews); the 3-column keyframe marquee below activates only when approved
+   records render. */
+.cs-home2-wall__intro { max-width: 780px; margin-inline: auto; text-align: center; }
+.cs-home2-wall__intro h2 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3.45rem);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.cs-home2-wall__intro > p { max-width: 60ch; margin: 0 auto; color: var(--text-secondary); }
+.cs-home2-wall__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.cs-home2-wall .cs-home2-review-steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 980px;
+  margin: 30px auto 0;
+}
+.cs-home2-wall .cs-home2-review-steps b {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  aspect-ratio: 1;
+  line-height: 1;
+}
+.cs-home2-wall__empty {
+  max-width: 62ch;
+  margin: 18px auto 0;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: .92rem;
+}
+.cs-home2-wall__cols {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  height: clamp(440px, 46vw, 580px);
+  margin-top: 34px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 10%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 10%, #000 88%, transparent 100%);
+}
+.cs-home2-wall__col { animation: cs-wall-drift var(--wall-speed, 46s) linear infinite; }
+.cs-home2-wall__col:nth-child(1) { --wall-speed: 46s; }
+.cs-home2-wall__col:nth-child(2) { --wall-speed: 62s; }
+.cs-home2-wall__col:nth-child(3) { --wall-speed: 53s; }
+.cs-home2-wall__cols:hover .cs-home2-wall__col,
+.cs-home2-wall__cols:focus-within .cs-home2-wall__col { animation-play-state: paused; }
+@keyframes cs-wall-drift { to { transform: translateY(-50%); } }
+.cs-home2-wall__set { display: grid; gap: 16px; padding-bottom: 16px; align-content: start; }
+.cs-home2-wallreview {
+  display: grid;
+  gap: 10px;
+  padding: 20px 22px;
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--radius-card);
+  background: var(--cs-ground-raise);
+  color: var(--text-primary);
+}
+.cs-home2-wallreview header { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 8px; }
+.cs-home2-wallreview header a,
+.cs-home2-wallreview header b { font-family: var(--font-display); font-weight: 780; color: var(--color-evidence); text-decoration: none; }
+.cs-home2-wallreview header a:hover { text-decoration: underline; text-underline-offset: .18em; }
+.cs-home2-wallreview header span,
+.cs-home2-wallreview time { color: var(--text-secondary); font-size: .8rem; }
+.cs-home2-wallreview time { margin-left: auto; }
+.cs-home2-wallstars { color: #f4c87a; letter-spacing: .12em; font-size: .95rem; }
+.cs-home2-wallreview > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: .92rem;
+  line-height: 1.55;
+}
+.cs-home2-wallreview footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--text-secondary); font-size: .82rem; }
+.cs-home2-wallchip { padding: 4px 10px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-pill); font-weight: 700; }
+
+/* Fix #11 — position statement as a slim interstitial. */
+main:has(> .cs-home2-hero) > .cs-home2-position { padding-block: clamp(36px, 4.5vw, 58px); }
+
+/* Fix #5 + #9 — one rounded editorial panel (their S10): centered heading,
+   newsletter pill opening the sitewide subscribe sheet, light high-contrast
+   guide cards, one read-more. */
+main:has(> .cs-home2-hero) > .cs-home2-editorial {
+  width: min(1400px, calc(100% - 2 * var(--gutter)));
+  padding: clamp(40px, 5vw, 72px) clamp(24px, 3.5vw, 64px);
+  border: 1px solid rgba(233, 247, 241, .12);
+  border-radius: clamp(28px, 3vw, 44px);
+  background:
+    radial-gradient(60% 90% at 12% 0%, rgba(23, 168, 126, .16), transparent 60%),
+    radial-gradient(56% 90% at 92% 100%, rgba(169, 155, 242, .14), transparent 62%),
+    linear-gradient(160deg, #0b1a15, #0d1d21 58%, #14152a);
+}
+.cs-home2-editorial__head { max-width: 820px; margin: 0 auto clamp(26px, 3.5vw, 40px); text-align: center; }
+.cs-home2-editorial__head h2 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 4vw, 3.45rem);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.cs-home2-editorial__head > p { max-width: 58ch; margin: 0 auto 18px; color: var(--text-secondary); }
+.cs-home2-editorial__more { display: flex; justify-content: center; margin: 22px 0 0; text-align: center; }
+.cs-home2-article {
+  border-color: rgba(255, 255, 253, .85);
+  background: #fdfcf8;
+  box-shadow: 0 22px 48px -30px rgba(0, 0, 0, .65);
+  transition: transform 220ms var(--cs-ease-entrance), box-shadow 220ms ease;
+}
+.cs-home2-article picture { aspect-ratio: 16 / 9; }
+.cs-home2-article > div { padding: 18px 20px 20px; }
+.cs-home2-article h3 { font-size: 1.12rem; }
+.cs-home2-article > div > p:not(.gcs-kicker) {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: .9rem;
+}
+.cs-home2-article:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .72); }
+
+/* Fix #11 — pre-footer help line (their S11 pattern; gradient underline links). */
+main:has(> .cs-home2-hero) > .cs-home2-help {
+  width: 100%;
+  max-width: none;
+  padding-block: clamp(26px, 3vw, 40px);
+  border-top: 1px solid var(--color-line-soft);
+  text-align: center;
+}
+.cs-home2-help__line { max-width: 920px; margin: 0 auto; color: var(--text-secondary); font-size: 1.02rem; }
+.cs-home2-help__line strong { color: var(--text-primary); font-family: var(--font-display); }
+.cs-home2-help__line a {
+  color: var(--color-interactive);
+  font-weight: 700;
+  text-decoration: none;
+  background-image: var(--cs-spectral-line);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 100%;
+  padding-bottom: 2px;
+  transition: color 160ms ease;
+}
+.cs-home2-help__line a:hover { color: var(--text-primary); }
+
+/* Fix #10 — risk-grid hover veil timing: gradient layer in ~100ms, content
+   crossfade ~300ms. */
+.cs-riskcard__front { transition: opacity 300ms ease, transform 300ms var(--cs-ease-entrance); }
+.cs-riskcard__back { transition: opacity 100ms ease, transform 300ms var(--cs-ease-entrance); }
+.cs-riskcard__back span { opacity: 0; transform: translateY(8px); transition: opacity 300ms ease, transform 300ms var(--cs-ease-entrance); }
+.cs-riskcard:hover .cs-riskcard__back span,
+.cs-riskcard:has(.cs-riskcard__toggle:focus-visible) .cs-riskcard__back span,
+.cs-riskcard:has([data-risk-card][aria-pressed="true"]) .cs-riskcard__back span { opacity: 1; transform: none; }
+
+@media (max-width: 720px) {
+  .cs-home2-quick { gap: 8px; }
+  .cs-home-quick { min-height: 48px; padding-inline: 16px; font-size: .88rem; }
+  .cs-home2-wall__cols { grid-template-columns: 1fr; height: 480px; }
+  .cs-home2-wall__col:nth-child(n+2) { display: none; }
+  .cs-home2-wall .cs-home2-review-steps { grid-template-columns: 1fr; }
+  .cs-home2-pricing__calc { flex-direction: column; align-items: flex-start; }
+  .cs-home2-editorial__more { justify-content: center; }
+  main:has(> .cs-home2-hero) > .cs-home2-lifestyle { padding-inline: var(--gutter); }
+  .cs-home2-lifestyle__media { min-height: 0; aspect-ratio: 4 / 3; }
+  .cs-home2-lifestyle__media picture,
+  .cs-home2-lifestyle__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
+  .cs-home2-logistics__art { aspect-ratio: 4 / 3; }
+  .cs-home2-logistics__copy,
+  .cs-home2-logistics__card--reverse > .cs-home2-logistics__copy { padding-inline: var(--gutter); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-home2-wall__col { animation: none !important; }
+  .cs-home2-wall__cols { height: auto; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .cs-home2-wall__set[aria-hidden="true"] { display: none; }
+  .cs-home-med,
+  .cs-home-med__veil,
+  .cs-home-med__pill,
+  .cs-home2-article,
+  .cs-home2-verdict,
+  .cs-riskcard__front,
+  .cs-riskcard__back,
+  .cs-riskcard__back span { transition-duration: 0ms; }
+  .cs-riskcard__back span { transform: none; }
+}
+
+
+/* 2026-09-17 (GLP-38 responsive contract: mobile action labels <= 2 lines, targets >= 44px). Home care cards and risk
+   cards were whole-card <a>/<button> elements, so the sampled "button label" was the card's prose (5-8 lines). Each
+   card is now an <article> whose single action/toggle carries the label and stretches over the card (whole card
+   stays clickable, keyboard focus lands on the action). */
+.cs-home2-carecard { position: relative; }
+.cs-home2-carecard__action { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; font: inherit; font-weight: 760; color: #07523b; cursor: pointer; text-decoration: none; }
+.cs-home2-carecard__action::after { content: ""; position: absolute; inset: 0; }
+.cs-home2-carecard:has(.cs-home2-carecard__action:focus-visible) { outline: 2px solid var(--cs-aurora-3, #6febb9); outline-offset: 2px; }
+.cs-home2-carecard__action:focus-visible { outline: none; }
+.cs-riskcard__toggle { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; font: inherit; font-size: .88rem; font-weight: 760; color: var(--color-evidence); cursor: pointer; text-align: left; }
+.cs-riskcard__toggle::after { content: ""; position: absolute; inset: 0; }
+.cs-riskcard:has(.cs-riskcard__toggle:focus-visible) { outline: 2px solid var(--cs-aurora-3, #6febb9); outline-offset: 2px; }
+.cs-riskcard__toggle:focus-visible { outline: none; }
+.cs-riskcard__back { pointer-events: none; }

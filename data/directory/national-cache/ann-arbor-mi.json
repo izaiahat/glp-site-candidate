@@ -1,0 +1,460 @@
+{
+  "records": [
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-07-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-21",
+      "npi": "1235975137",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1235975137",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "SAHA WEIGHT WELLNESS CLINIC P.L.C",
+      "postal_prefix": "48105",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Obesity Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "2083B0002X",
+          "description": "Preventive Medicine, Obesity Medicine",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": false
+        },
+        {
+          "code": "208G00000X",
+          "description": "Thoracic Surgery (Cardiothoracic Vascular Surgery)",
+          "primary": false
+        },
+        {
+          "code": "261QM2500X",
+          "description": "Clinic/Center, Medical Specialty",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-04",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-05-03",
+      "npi": "1962432963",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1962432963",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "REGENTS OF THE UNIVERSITY OF MICHIGAN",
+      "postal_prefix": "48109",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-01-07",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-08-25",
+      "npi": "1275294688",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1275294688",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AAFMC PLLC",
+      "postal_prefix": "48103",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2013-04-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2013-04-11",
+      "npi": "1063855823",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1063855823",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADVANCE CARE VISITING PHYSICIANS",
+      "postal_prefix": "48105",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-08-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-08-21",
+      "npi": "1083447551",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1083447551",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "VITALITY HEALTH PLLC",
+      "postal_prefix": "48103",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Obesity Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "2083B0002X",
+          "description": "Preventive Medicine, Obesity Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-07-29",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-02-18",
+      "npi": "1477436293",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1477436293",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "THRIVE ENDOCRINOLOGY & DIABETES CARE, PLLC",
+      "postal_prefix": "48103",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-11-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-11-08",
+      "npi": "1992529713",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1992529713",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AARON HELLER DO PLLC",
+      "postal_prefix": "48104",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-11-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-09-23",
+      "npi": "1366517708",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1366517708",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ARBOR INTERNAL MEDICINE, PLLC",
+      "postal_prefix": "48104",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-04-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-04-20",
+      "npi": "1477940294",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1477940294",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADVANCE PRIMARY CARE",
+      "postal_prefix": "48104",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-06-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2009-09-02",
+      "npi": "1245435486",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1245435486",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CHELSEA AREA PRIMARY CARE PLLC",
+      "postal_prefix": "48103",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-05-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-01-26",
+      "npi": "1982082988",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1982082988",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ALCONA CITIZENS FOR HEALTH, INC",
+      "postal_prefix": "48105",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-04-17",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-04-17",
+      "npi": "1306010673",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1306010673",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COMMUNITY SUPPORTED ANTHROPOSOPHICAL MEDICINE",
+      "postal_prefix": "48103",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-04-16",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-11-19",
+      "npi": "1568636983",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1568636983",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ANN ARBOR FAMILY CARE, PLLC",
+      "postal_prefix": "48103",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-08-05",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-08-05",
+      "npi": "1144411299",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1144411299",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DAVID K. VALLANCE, M.D., P.C.",
+      "postal_prefix": "48105",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RR0500X",
+          "description": "Internal Medicine, Rheumatology",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Ann Arbor",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-02-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-02-14",
+      "npi": "1760806442",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1760806442",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ARBOR PALLIATIVE CARE",
+      "postal_prefix": "48103",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "MI",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QH0002X",
+          "description": "Family Medicine, Hospice and Palliative Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 2,
+      "sanitized_record_count": 2,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Ann+Arbor&state=MI&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 2,
+      "sanitized_record_count": 2,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Ann+Arbor&state=MI&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 46,
+      "sanitized_record_count": 42,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Ann+Arbor&state=MI&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 50,
+      "sanitized_record_count": 47,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Ann+Arbor&state=MI&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

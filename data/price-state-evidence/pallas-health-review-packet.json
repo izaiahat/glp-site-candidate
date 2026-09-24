@@ -1,0 +1,111 @@
+{
+  "captured_at_utc": "2026-08-16T07:25:00Z",
+  "display_name": "Pallas Health – GLP-1 Weight Loss & NAD",
+  "effects": {
+    "accounts_created": 0,
+    "forms_submitted": 0,
+    "tracking_clicks": 0
+  },
+  "fields": {
+    "cancellation": {
+      "quote": "Cancel anytime.",
+      "source_url": "https://www.pallashealth.co/",
+      "value": "Cancel anytime is advertised.",
+      "verified_as_of": "2026-08-16"
+    },
+    "consultation_fee": {
+      "quote": "Provider care included. No membership.",
+      "source_url": "https://www.pallashealth.co/",
+      "value": "Provider care is included and no membership fee is advertised.",
+      "verified_as_of": "2026-08-16"
+    },
+    "first_month_price": {
+      "quote": "$139 first month. Semaglutide $597 for 12 weeks ($199/mo average). Tirzepatide $179 first month, then $897 for 12 weeks ($299/mo average).",
+      "source_url": "https://www.pallashealth.co/",
+      "value": "$139 first month is published; semaglutide is then $597 for 12 weeks ($199 monthly average), while tirzepatide is $179 first month then $897 for 12 weeks ($299 monthly average).",
+      "verified_as_of": "2026-08-16"
+    },
+    "legitscript": {
+      "quote": "Pallas Health is LegitScript Healthcare Merchant Certified.",
+      "source_url": "https://www.pallashealth.co/",
+      "value": "Pallas Health states that it is LegitScript Healthcare Merchant Certified.",
+      "verified_as_of": "2026-08-16"
+    },
+    "pharmacy_type": {
+      "quote": "Compounded Semaglutide Injection. Compounded Tirzepatide Injection.",
+      "source_url": "https://www.pallashealth.co/",
+      "value": "The page identifies compounded semaglutide and tirzepatide but does not publish a 503A or 503B pharmacy designation.",
+      "verified_as_of": "2026-08-16"
+    },
+    "shipping_wait": {
+      "quote": "Free shipping.",
+      "source_url": "https://www.pallashealth.co/",
+      "value": "Free shipping is advertised; no exact delivery window is published.",
+      "verified_as_of": "2026-08-16"
+    },
+    "states_served": {
+      "quote": "NOT_FOUND: no complete state availability list on the captured public page.",
+      "source_url": "https://app.katalys.com/pub/098e5455-ca72-4099-9ff9-a9dd014148e7/explore/1622",
+      "value": "The captured public page does not publish a complete state list.",
+      "verified_as_of": "2026-08-16"
+    }
+  },
+  "legitscript_source_captures": {
+    "bytes": 2126,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-authorities/approved-five-20260816/legitscript-source-captures.json",
+    "sha256": "f3dc487339896cad2b2e2940a6a4813fdf608d74fcac9ddf1f3001e0fc2c34b3"
+  },
+  "program_id": "pallas-health-review",
+  "provider_dynamic_profile": {
+    "calculator": {
+      "checked_as_of": "2026-08-16",
+      "evidence_gap_copy": "Enter the exact first and recurring amounts manually after choosing the current product, format, and commitment because one comparable schedule is not established.",
+      "first_month_base_usd": null,
+      "mode": "manual",
+      "one_time_fee_usd": null,
+      "price_context": "Multiple products, formats, bundles, or introductory schedules prevent one comparable first and recurring monthly figure.",
+      "recurring_month_base_usd": null,
+      "source_url": "https://www.pallashealth.co/"
+    },
+    "evidence_bindings": [
+      {
+        "evidence_sha256": "b98b70b3df572b33485c9f82f3c2d7ef822c03f2908eb11f7ec2914c2d0ead72",
+        "evidence_text": "$139 first month. Semaglutide $597 for 12 weeks ($199/mo average). Tirzepatide $179 first month, then $897 for 12 weeks ($299/mo average). | Provider care included. No membership. Free shipping. Cancel anytime.",
+        "fields": [
+          "calculator.checked_as_of",
+          "calculator.evidence_gap_copy",
+          "calculator.first_month_base_usd",
+          "calculator.mode",
+          "calculator.one_time_fee_usd",
+          "calculator.price_context",
+          "calculator.recurring_month_base_usd",
+          "calculator.source_url",
+          "taxonomy.brand_name_tags",
+          "taxonomy.delivery_form_tags",
+          "taxonomy.molecule_tags",
+          "taxonomy.treatment_type_tags",
+          "verified_as_of"
+        ],
+        "source_url": "https://www.pallashealth.co/",
+        "verified_as_of": "2026-08-16"
+      }
+    ],
+    "taxonomy": {
+      "brand_name_tags": [],
+      "delivery_form_tags": [],
+      "molecule_tags": [
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "treatment_type_tags": []
+    },
+    "verified_as_of": "2026-08-16",
+    "version": 1
+  },
+  "schema": "program-deep-research-v1",
+  "source_captures": {
+    "bytes": 2874,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-authorities/approved-five-20260816/first-party-source-captures.json",
+    "sha256": "ddcf1e3f81f1a361377a41063de7cb2728d3cf85981c03cf304973e5bca731fd"
+  }
+}

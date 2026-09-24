@@ -1,0 +1,1638 @@
+{
+  "base_provider_review_count": 13,
+  "checked_as_of": "2026-07-30",
+  "current_contract_sha256": "6f64b4de008cfd9808f1007d9eb80a64f5eb7b6c7444b5ea2de2eaaff777db55",
+  "expected_provider_review_count": 54,
+  "fastpath_provider_count": 43,
+  "providers": [
+    {
+      "activation_at_utc": "2026-08-02T10:00:00Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-06",
+      "field_bindings": {
+        "accreditation": [
+          "accreditation_and_pharmacy"
+        ],
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_refunds"
+        ],
+        "eligibility": [
+          "eligibility_and_states"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "shipping_and_returns"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 269,
+        "media_type": "image/svg+xml",
+        "path": "/assets/provider-logos/mademed.svg",
+        "sha256": "07df6b74726b15086fb89c89f08209635d3114af7b71859341d50d111f7fe2e0",
+        "source_path": "assets/provider-logo-sources/mademed.svg",
+        "surface": "light",
+        "width": 1431
+      },
+      "program_id": "mademed",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-02T10:00:00Z",
+      "affiliate_cta_state": "HOLD_NETWORK_PROGRAM_PAUSED",
+      "checked_as_of": "2026-08-06",
+      "field_bindings": {
+        "accreditation": [
+          "accreditation_and_pharmacy"
+        ],
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_refunds"
+        ],
+        "eligibility": [
+          "eligibility_and_states"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "shipping_and_returns"
+        ]
+      },
+      "hold_copy": "Affiliate program paused. The retired link is unavailable; this historical editorial page does not authorize promotion.",
+      "logo": {
+        "height": 628,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/telos-rx.webp",
+        "sha256": "715578123913d499a203a91ff3e6f344612adcbe47e255336f92914d0ac8a199",
+        "source_path": "assets/provider-logo-sources/telos-rx.webp",
+        "surface": "light",
+        "width": 1200
+      },
+      "program_id": "telos-rx",
+      "route_state": "READY_EDITORIAL_LINK_DARK",
+      "research_hold_receipt": {
+        "path": "data/telos-research-hold-receipt.json",
+        "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
+      }
+    },
+    {
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "field_bindings": {
+        "affiliate_constraint": [
+          "affiliate_exclusivity"
+        ],
+        "bottom_line": [
+          "pricing_inclusions_eligibility_shipping"
+        ],
+        "cancellation": [
+          "terms"
+        ],
+        "eligibility": [
+          "pricing_inclusions_eligibility_shipping"
+        ],
+        "pricing": [
+          "pricing_inclusions_eligibility_shipping"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_inclusions_eligibility_shipping",
+          "terms"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "identity_state": "PASS_EXACT_PROVIDER_NETWORK_PROGRAM_ID",
+      "logo": {
+        "height": 533,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/live-vital-launch.webp",
+        "sha256": "0d86ac65d87dcf1c270f13d900f73f89b27478436ac58015151ba1a733a32773",
+        "source_path": "assets/provider-logo-sources/live-vital-launch.webp",
+        "surface": "light",
+        "width": 800
+      },
+      "program_id": "live-vital-launch",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-02T10:00:00Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-06",
+      "field_bindings": {
+        "accreditation": [
+          "accreditation_and_pharmacy"
+        ],
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_refunds"
+        ],
+        "eligibility": [
+          "eligibility_and_states"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "regulatory_warning": [
+          "provider_specific_fda_warning"
+        ],
+        "shipping": [
+          "shipping_and_returns"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 377,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/strut-health.webp",
+        "sha256": "7bbc956e10f73a7ee388b48822eb02a0e51cff3ba8c9700e66ca36f8482fa84e",
+        "source_path": "assets/provider-logo-sources/strut-health.webp",
+        "surface": "light",
+        "width": 936
+      },
+      "program_id": "strut-health",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-08",
+      "field_bindings": {
+        "accreditation": [
+          "accreditation_and_pharmacy"
+        ],
+        "affiliate_constraint": [
+          "affiliate_exclusivity"
+        ],
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_refunds"
+        ],
+        "eligibility": [
+          "eligibility_and_states"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "shipping_and_returns"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "capture_method": "browser response body; origin served image/webp at verified 250x83 intrinsic dimensions",
+        "height": 83,
+        "media_type": "image/webp",
+        "official_source": "https://trtnation.com/wp-content/uploads/2024/12/LOGO-with-R-e1737473379227.png",
+        "path": "/assets/provider-logos/trt-nation.webp",
+        "sha256": "6402ffc1173736a3b483611938314b8744d9089b02dc1b8f00a8c0b0ac7bfe55",
+        "source_path": "assets/provider-logo-sources/trt-nation.webp",
+        "surface": "light",
+        "width": 250
+      },
+      "program_id": "trt-nation",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-06T06:22:02.219798Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-06",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "logo": {
+        "height": 22,
+        "media_type": "image/svg+xml",
+        "path": "/assets/provider-logos/measured.svg",
+        "sha256": "629d28b487bb2135668d4f480a1d01ce80e9e90f56649bcee13b7449c1cfa319",
+        "source_path": "assets/provider-logos/measured.svg",
+        "surface": "light",
+        "width": 140
+      },
+      "program_id": "measured",
+      "rescission_note": "MEASURED_TERMS_RESCISSION_V1",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-06T07:20:00Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-06",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 45,
+        "media_type": "image/svg+xml",
+        "path": "/assets/provider-logos/drhouse.svg",
+        "sha256": "a1b77db5daf7bd9d625452b3c5d2b460bee9f4698f41c491a805b16af61a9d69",
+        "source_path": "assets/provider-logos/drhouse.svg",
+        "surface": "light",
+        "width": 170
+      },
+      "program_id": "drhouse",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-06T07:20:00Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-06",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 208,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/biltrx.webp",
+        "sha256": "e79196320eaa1464a49ab0464d9d937ae038a662fc10733115b092d3053d902a",
+        "source_path": "assets/provider-logos/biltrx.webp",
+        "surface": "light",
+        "width": 427
+      },
+      "program_id": "biltrx",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-06T09:56:00Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-06",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 63,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/orderlymeds.webp",
+        "sha256": "eab41bf3122ef6f46aaa6a034e37a8bd4fe20a2bd25f5de6ec2dc0e7ca05b0d3",
+        "source_path": "assets/provider-logos/orderlymeds.webp",
+        "surface": "light",
+        "width": 345
+      },
+      "program_id": "orderlymeds",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-06T10:35:00Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-06",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 90,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/mydrhank.webp",
+        "sha256": "209cee34a61359984c2f923c3a1f62c4d7e30f15c194e0e5f81acdf2771f07be",
+        "source_path": "assets/provider-logos/mydrhank.webp",
+        "surface": "light",
+        "width": 381
+      },
+      "program_id": "mydrhank",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-06T11:05:00Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-06",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 208,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/gobymeds.webp",
+        "sha256": "462134957dea0636751c1a03fd9905c022ecd9283f406be8b556fafdc8e1d619",
+        "source_path": "assets/provider-logos/gobymeds.webp",
+        "surface": "light",
+        "width": 196
+      },
+      "program_id": "gobymeds",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-16T08:19:47Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-16",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 142,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/coreage-rx-glp-1-1632.webp",
+        "sha256": "e14856d285c4907dddb495849239ec766c1e44135b2a7e678a06e0b33c20d950",
+        "source_path": "assets/provider-logos/coreage-rx-glp-1-1632.webp",
+        "surface": "light",
+        "width": 577
+      },
+      "program_id": "coreage-rx-glp-1-1632",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-16T08:19:51Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-16",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 96,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/bodybuilding-com-glp-1-longevity-review.webp",
+        "sha256": "f2257167d6dd1789a7855e173c050f12351ef74d4907921daa8661628e0c72ab",
+        "source_path": "assets/provider-logos/bodybuilding-com-glp-1-longevity-review.webp",
+        "surface": "light",
+        "width": 96
+      },
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-16T08:19:54Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-16",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 512,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/skinnyrx-1-glp-weight-loss-provider-review.webp",
+        "sha256": "038c72bd687869c9755919693c0ea7e32ebb7087efdd28d7e39730c5ea5bda58",
+        "source_path": "assets/provider-logos/skinnyrx-1-glp-weight-loss-provider-review.webp",
+        "surface": "light",
+        "width": 512
+      },
+      "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-16T08:19:57Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-16",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 384,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/rxspan-md-telehealth-program-review.webp",
+        "sha256": "1bdc062e16e2a822da5f801700615d137d25d356406663d5a638500e477214bb",
+        "source_path": "assets/provider-logos/rxspan-md-telehealth-program-review.webp",
+        "surface": "light",
+        "width": 1024
+      },
+      "program_id": "rxspan-md-telehealth-program-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-16T08:20:00Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-16",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 1024,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/pallas-health-review.webp",
+        "sha256": "4df1e4c60f4df38dbd9bf7a019443cfa9eed968af7885bfea80cc1a85e620c85",
+        "source_path": "assets/provider-logos/pallas-health-review.webp",
+        "surface": "light",
+        "width": 1024
+      },
+      "program_id": "pallas-health-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-18T01:39:25Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-18",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 211,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/wellmedr-review.webp",
+        "sha256": "a515fd1cfce72d9aa81a1dd12c78b14e6899a14ce161d3145b5a12865920e2c8",
+        "source_path": "assets/provider-logos/wellmedr-review.webp",
+        "surface": "light",
+        "width": 1024
+      },
+      "program_id": "wellmedr-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-18T01:39:28Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-18",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 256,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/dudemeds-review.webp",
+        "sha256": "4a488ff80fb71774418581dfb0bb44a71aec5393b342299e77e7caf934b5b3ad",
+        "source_path": "assets/provider-logos/dudemeds-review.webp",
+        "surface": "light",
+        "width": 1024
+      },
+      "program_id": "dudemeds-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-21T01:06:07Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-20",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 826,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/nu-image-medical-review.webp",
+        "sha256": "90199d64d6121382523571606c7c59e83722834124b59a7267a7c209954fe5a7",
+        "source_path": "assets/provider-logos/nu-image-medical-review.webp",
+        "surface": "light",
+        "width": 2803
+      },
+      "program_id": "nu-image-medical-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-28T07:43:25Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-27",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 320,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/synergy-rx-review.webp",
+        "sha256": "aa11f3161d2eb797586ed7aef7cf2a7b6c5595c5bf54deca13dc0c418f6e2b93",
+        "source_path": "assets/provider-logos/synergy-rx-review.webp",
+        "surface": "light",
+        "width": 1068
+      },
+      "program_id": "synergy-rx-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-30T21:25:58Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-29",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 156,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/breeze-meds-review.webp",
+        "sha256": "d3f7f2079fd95760f43d4f7820e2b72847e588087ff67ce481bbf2bb7fe7aa6b",
+        "source_path": "assets/provider-logos/breeze-meds-review.webp",
+        "surface": "light",
+        "width": 350
+      },
+      "program_id": "breeze-meds-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-08-30T21:26:26Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-30",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 209,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/care-bare-rx-glp1-review.webp",
+        "sha256": "26ffa1aa1cb8e7b61da1a62a35be08c41f37dd0db9ed08de11538b089766e8e8",
+        "source_path": "assets/provider-logos/care-bare-rx-glp1-review.webp",
+        "surface": "dark",
+        "width": 1269
+      },
+      "program_id": "care-bare-rx-glp1-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:30:39Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 385,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/altrx-glp1-us-cps.webp",
+        "sha256": "970fdaf8d9f9450ea6b4bd3fde3a8a025a6c6e2464a0b68ebfcdb3c99a8d3cad",
+        "source_path": "assets/provider-logos/altrx-glp1-us-cps.webp",
+        "surface": "light",
+        "width": 1200
+      },
+      "program_id": "altrx-glp1-us-cps",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:30:55Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-30",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 360,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/novi-weight-loss-glp-1.webp",
+        "sha256": "d0b0a5c6152060c388bea17f2c3255fa39d1397f490471a2f95940fdb755ae0d",
+        "source_path": "assets/provider-logos/novi-weight-loss-glp-1.webp",
+        "surface": "light",
+        "width": 1200
+      },
+      "program_id": "novi-weight-loss-glp-1",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:31:11Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-31",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 203,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/curex-glp-1.webp",
+        "sha256": "8cadbc40001dbe22f08187be874fa9e76f2c060ffcaae836cc733c6769144432",
+        "source_path": "assets/provider-logos/curex-glp-1.webp",
+        "surface": "light",
+        "width": 1000
+      },
+      "program_id": "curex-glp-1",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:31:27Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 640,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/ro-wegovy-glp1-quiz-us-cpl.webp",
+        "sha256": "4cb17c0fa9b7625076869a0a3aacc06918943b4c05d0fd7bd4956693e5f102f1",
+        "source_path": "assets/provider-logos/ro-wegovy-glp1-quiz-us-cpl.webp",
+        "surface": "light",
+        "width": 640
+      },
+      "program_id": "ro-wegovy-glp1-quiz-us-cpl",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:31:43Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-31",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 387,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/eden-xentraffic-offer-3051.webp",
+        "sha256": "a9b096d42002964e04fecd59bc5f41b154df9275ff7bd010b6ce45655bad5230",
+        "source_path": "assets/provider-logos/eden-xentraffic-offer-3051.webp",
+        "surface": "light",
+        "width": 1000
+      },
+      "program_id": "eden-xentraffic-offer-3051",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:31:59Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-08-31",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 200,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/futurhealth-wegovy-pillform.webp",
+        "sha256": "5a5bb062d38c8a747f9b31335460c926d80dfdc5866488a791460838468cf772",
+        "source_path": "assets/provider-logos/futurhealth-wegovy-pillform.webp",
+        "surface": "light",
+        "width": 200
+      },
+      "program_id": "futurhealth-wegovy-pillform",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:32:15Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 775,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/lttl-glp-landing-page-2.webp",
+        "sha256": "e1c78fe5f50cacb5aa73c7aa9b70d7908463d5b2a2926a3db948ca5e8339cc1f",
+        "source_path": "assets/provider-logos/lttl-glp-landing-page-2.webp",
+        "surface": "light",
+        "width": 1564
+      },
+      "program_id": "lttl-glp-landing-page-2",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:32:31Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 286,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/enhanced-tirzepatide-funnel-b.webp",
+        "sha256": "6037bf8769700eacc57b4494d5c49fa84d1dda5c2168c8d7e6f8d0983d7ca93b",
+        "source_path": "assets/provider-logos/enhanced-tirzepatide-funnel-b.webp",
+        "surface": "dark",
+        "width": 1993
+      },
+      "program_id": "enhanced-tirzepatide-funnel-b",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:32:47Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 305,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/sunlight-glp1.webp",
+        "sha256": "d188d4da1f22f459f5a59e064ecb5a8a836b40f09b46e4c7d0a9fb1f32c2f0a9",
+        "source_path": "assets/provider-logos/sunlight-glp1.webp",
+        "surface": "light",
+        "width": 1200
+      },
+      "program_id": "sunlight-glp1",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:33:04Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 1080,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/joinskinny-semaglutide-glp-1-us.webp",
+        "sha256": "564cc6d111b85106b5fc6e8e097ecc84466551c4ed3e6844b47d36b5c55f0fe1",
+        "source_path": "assets/provider-logos/joinskinny-semaglutide-glp-1-us.webp",
+        "surface": "light",
+        "width": 1080
+      },
+      "program_id": "joinskinny-semaglutide-glp-1-us",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:33:20Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 185,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/levelsrx-extra-cpa-home-page.webp",
+        "sha256": "67462c51dfcd907cad40a7ad82475b576b5defc55356267c86c193030759a7ca",
+        "source_path": "assets/provider-logos/levelsrx-extra-cpa-home-page.webp",
+        "surface": "light",
+        "width": 1200
+      },
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:33:36Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 376,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/refills.webp",
+        "sha256": "e6172e6f21d1c1fe8a338e0377066cbaa87194c89297f5555eb7f718a64b0ed4",
+        "source_path": "assets/provider-logos/refills.webp",
+        "surface": "light",
+        "width": 1080
+      },
+      "program_id": "refills",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:33:52Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 218,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/tmates-xentraffic-offer-3154.webp",
+        "sha256": "7fd72e21bc876947346791c591b0afb3d6479773dbbd729d2dfb126d33fb6995",
+        "source_path": "assets/provider-logos/tmates-xentraffic-offer-3154.webp",
+        "surface": "light",
+        "width": 1000
+      },
+      "program_id": "tmates-xentraffic-offer-3154",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:34:09Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 262,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/trimrx-xentraffic-offer-3014.webp",
+        "sha256": "90d689754385af565a533a7f21f0e45427e9f90bbaf5d0f94d9a36f04360c4f8",
+        "source_path": "assets/provider-logos/trimrx-xentraffic-offer-3014.webp",
+        "surface": "light",
+        "width": 1080
+      },
+      "program_id": "trimrx-xentraffic-offer-3014",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:34:26Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 369,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/yucca-health-xentraffic-offer-3117.webp",
+        "sha256": "cd5280ddf6c1d0da47d44f4e33c7068418086119d7a2a947ae0ebe99b89f4859",
+        "source_path": "assets/provider-logos/yucca-health-xentraffic-offer-3117.webp",
+        "surface": "light",
+        "width": 1080
+      },
+      "program_id": "yucca-health-xentraffic-offer-3117",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:34:43Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 30,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/longevity-meds-glp-1-review.webp",
+        "sha256": "a993330b2c9253f51cf58ea84aef9a7d886cad64dd267d564a49c17f2ece2a52",
+        "source_path": "assets/provider-logos/longevity-meds-glp-1-review.webp",
+        "surface": "light",
+        "width": 220
+      },
+      "program_id": "longevity-meds-glp-1-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:34:59Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 1000,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/snagrx.webp",
+        "sha256": "49f94733715957f08338b36ace9c3da0bbd7430593d20b6de0724f996342574b",
+        "source_path": "assets/provider-logos/snagrx.webp",
+        "surface": "light",
+        "width": 1000
+      },
+      "program_id": "snagrx",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-02T02:35:16Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 213,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/humecare-data-driven-glp-1-weight-loss-system.webp",
+        "sha256": "c224e41467b9d278a27142de4a267eed707feaf72bb80e26d53e2a8bfdba6b03",
+        "source_path": "assets/provider-logos/humecare-data-driven-glp-1-weight-loss-system.webp",
+        "surface": "light",
+        "width": 1200
+      },
+      "program_id": "humecare-data-driven-glp-1-weight-loss-system",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-03T12:37:30Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 333,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/g-plan.webp",
+        "sha256": "ed5fd9f366785ddd1bf973d3d4d22d9fc2a73092bac6b279a2a365c5780ea7df",
+        "source_path": "assets/provider-logos/g-plan.webp",
+        "surface": "light",
+        "width": 1080
+      },
+      "program_id": "g-plan",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-03T15:52:42Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 200,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/jrnys-review.webp",
+        "sha256": "45210eb496767a4907a7cb8ce49aa112bd40380886d2decfdc0cbfaa39363c77",
+        "source_path": "assets/provider-logos/jrnys-review.webp",
+        "surface": "light",
+        "width": 200
+      },
+      "program_id": "jrnys-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-09-03T15:52:58Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-09-01",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 105,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/medvi-review.webp",
+        "sha256": "27fb5a61bdb79fd39b6295d9b83b5dfee726d448ccf297fc84b5b231006fa689",
+        "source_path": "assets/provider-logos/medvi-review.webp",
+        "surface": "light",
+        "width": 500
+      },
+      "program_id": "medvi-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    }
+  ],
+  "publication_policy": {
+    "affiliate_links_enabled": true,
+    "criteria_without_evidence_render_as": "Pending evidence",
+    "editorial_routes_release_ready": true,
+    "per_provider_gate_required": true,
+    "promotion_authorized": true,
+    "tracking_links_clicked_for_qa": false
+  },
+  "schema": "glp-provider-fastpath-integration-v1",
+  "source_contract_sha256": "efec82946f768dc4257f66c084783d3088017c55cf1576469d712841066a032d",
+  "source_evidence_ledger_sha256": "9cd3b793c1725ee7152961986abc2a4fe1ab9fd9d98e7051d4ad0e0cde4eef18",
+  "synergy_pricing_assessment_sha256": "5da0d64e0bed2236f32b25ecccae4489c93effb527a65526d382f51c469fe035"
+}

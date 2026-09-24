@@ -1,0 +1,163 @@
+{
+  "email_sends_authorized": false,
+  "go_route_program_count": 0,
+  "lead_sharing_authorized": false,
+  "live_program_count": 58,
+  "live_program_count_basis": "Derived from data/program-registry.json (commercial_state=live AND vertical_fit AND wired AND surfaces.review), keyed by render identity and intersected with data/program-content-ledger.json. program_count stays the Katalys Sheet direct-activation subset with tracking-link hashes; it is NOT the count of live providers on the site and must never be rendered as one.",
+  "live_review_routes_outside_program_register": [
+    {
+      "program_id": "katalys-1286",
+      "reason": "Monetized READY6 candidate route with no dated program-deep-research-v1 artifact and no content-ledger entry; not yet a tracked program.",
+      "review_path": "/reviews/sprout-health/",
+      "source_kind": "approved53_ready6"
+    },
+    {
+      "program_id": "katalys-1304",
+      "reason": "Monetized READY6 candidate route with no dated program-deep-research-v1 artifact and no content-ledger entry; not yet a tracked program.",
+      "review_path": "/reviews/direct-meds/",
+      "source_kind": "approved53_ready6"
+    },
+    {
+      "program_id": "katalys-1516",
+      "reason": "Monetized READY6 candidate route with no dated program-deep-research-v1 artifact and no content-ledger entry; not yet a tracked program.",
+      "review_path": "/reviews/shed/",
+      "source_kind": "approved53_ready6"
+    },
+    {
+      "program_id": "katalys-647",
+      "reason": "Monetized READY6 candidate route with no dated program-deep-research-v1 artifact and no content-ledger entry; not yet a tracked program.",
+      "review_path": "/reviews/mangorx/",
+      "source_kind": "approved53_ready6"
+    }
+  ],
+  "operator_gate_receipt_sha256": "119eb0772c7f40047a5890324e41c7f5ecc543932ac5291ccff9fc2181b288d5",
+  "program_count": 11,
+  "programs": [
+    {
+      "display_name": "Enhance.MD",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "738",
+      "program_id": "enhance-md",
+      "sheet_row": 98,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "7ede453e58c533c7d04eafd043709e62fd3ab35415578ffa07701e8937ac1f0d"
+    },
+    {
+      "display_name": "Found",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1162",
+      "program_id": "found-health",
+      "sheet_row": 110,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "67e894d2636b329bc9b1363c972180d2460376402676b220d8c2e7bde8470150"
+    },
+    {
+      "display_name": "Gala GLP-1",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1576",
+      "program_id": "gala-health",
+      "sheet_row": 88,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "59153c264b9ea9cf28e850ff04b6dd1f6ed53f2727f52cb4c8ff44dc9e6cabfe"
+    },
+    {
+      "display_name": "HealthRX",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1630",
+      "program_id": "healthrx",
+      "sheet_row": 87,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "453d776b4d993592550d6c4216a0bb407e8fbdb143170022ae2c017f1907ee7f"
+    },
+    {
+      "display_name": "Oak Longevity",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1581",
+      "program_id": "oak-weight-loss-program",
+      "sheet_row": 102,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "f733858b186a4a1c4d7fd899cbd038fe31fbfc980d1fea1f9253412f86a4918e"
+    },
+    {
+      "display_name": "Serena Health",
+      "link_mode": "transparent_direct",
+      "network": "Awin",
+      "network_program_id": "128203",
+      "program_id": "serena-health",
+      "sheet_row": 242,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "www.awin1.com",
+      "tracking_link_sha256": "7c5920faafcb8cd0d52ac26dee85a5e6a81cdaaef6469e4b4ba0031be86a1ce0"
+    },
+    {
+      "display_name": "Shed",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1516",
+      "program_id": "shedrx",
+      "sheet_row": 323,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "c1edceee8642dfdb5a64a2c9520edcff7666768b855c12b4bb206c34098558b6"
+    },
+    {
+      "display_name": "Trimi",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1614",
+      "program_id": "trimi-glp-1",
+      "sheet_row": 132,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "317c2db7493e9cf2e0e1917fb6edef35bf0f64fe5b4225e022fd4d9d0b1df618"
+    },
+    {
+      "display_name": "AgelessRx",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1538",
+      "program_id": "try-ageless",
+      "sheet_row": 94,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "f160cdd13074620be4ba6fac5258d2480ae1dcb45327a9b11e0e49cc3e4ed650"
+    },
+    {
+      "display_name": "Wellorithm",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1565",
+      "program_id": "wellorithm",
+      "sheet_row": 97,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "ba549ec100fbc1cbb69f1a3427c82edf1b5d30c6f6daa2bb6d2c6ddb0b6829be"
+    },
+    {
+      "display_name": "yourEra",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1602",
+      "program_id": "yourera-program",
+      "sheet_row": 131,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "0488d47f6f5d947c63abbdbae7d85518a36c01472b7b6facd55155363aa79e3c"
+    }
+  ],
+  "schema": "glp-affiliate-sheet-derived-selection-v1",
+  "source": "live canonical Affiliate Applications Sheet snapshot",
+  "source_snapshot_sha256": "6dd8e465aed3e620464e791440c86d3a1a5fff511d3f82ab0c522be60dd9deb1",
+  "spend_usd": 0,
+  "status": "APPROVED_FOR_TRANSPARENT_DIRECT_BUILD"
+}

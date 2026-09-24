@@ -1,0 +1,30 @@
+{
+  "schema": "glp-receipted-research-hold-v1",
+  "program_id": "telos-rx",
+  "sheet_seo_slug": "telos-rx-review",
+  "network": "Katalys",
+  "network_program_id": "1612",
+  "sheet_row": 93,
+  "disposition": "HOLD",
+  "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
+  "link_disposition": "link_retired_network_program_paused",
+  "promotion_authorized": false,
+  "live_link_allowed": false,
+  "research_intake_authorized": false,
+  "operator_ack": {
+    "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/D2w/RELEASE-1/CONTINUATION-1/ACK.json",
+    "sha256": "3eabb6f43dbd2610f313eb1b1220e5aa5d59ae36426b5dd6e31e13db4d710b8e"
+  },
+  "row_readback": {
+    "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/D2w/RELEASE-1/RESEARCH/CURRENT-ROW-READBACK.json",
+    "sha256": "323acb673fb7628c50229fce9adddfa0a4ae0d30c66944e84d85103a6f0566e8",
+    "row_fingerprint": "d7347b8f978206a0d72b6b16bd3abc27e09ac696395ef78e4d6f902534862ffd"
+  },
+  "https_source_note": {
+    "literal_sheet_official_url": "http://www.telosrx.com",
+    "prior_https_source_url": "https://telosrx.com/pages/for-men",
+    "disposition": "EXISTING_CAPTURE_ONLY_NOT_NEW_GOVERNED_INTAKE",
+    "fetch_performed": false,
+    "url_rewrite_performed": false
+  }
+}

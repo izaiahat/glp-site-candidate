@@ -1,0 +1,570 @@
+{
+  "records": [
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-08-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-08-28",
+      "npi": "1245064609",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1245064609",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "SUMMIT MEDICAL PARTNERS",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2016-06-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-06-01",
+      "npi": "1457709321",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1457709321",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ANAS ENTABI M.D., INC",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-06-29",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-06-29",
+      "npi": "1427735646",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1427735646",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AV INTENSIVIST GROUP INC",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": true
+        },
+        {
+          "code": "363LA2100X",
+          "description": "Nurse Practitioner, Acute Care",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2011-11-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-03-15",
+      "npi": "1851668800",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1851668800",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CARE 1ST PRIMARY AND URGENT CARE CENTER - PALMDALE",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "261QP2300X",
+          "description": "Clinic/Center, Primary Care",
+          "primary": false
+        },
+        {
+          "code": "261QU0200X",
+          "description": "Clinic/Center, Urgent Care",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-11-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-05-26",
+      "npi": "1528249802",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1528249802",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DESILVA MEDICAL, INC.",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-02-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-10-22",
+      "npi": "1952446247",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1952446247",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ELEA D. ENGLISH M.D. INC",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-12-27",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-12-27",
+      "npi": "1316121247",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1316121247",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GARRISON FAMILY MEDICAL GROUP",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "132700000X",
+          "description": "Dietary Manager",
+          "primary": false
+        },
+        {
+          "code": "204C00000X",
+          "description": "Neuromusculoskeletal Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207K00000X",
+          "description": "Allergy & Immunology",
+          "primary": false
+        },
+        {
+          "code": "207N00000X",
+          "description": "Dermatology",
+          "primary": false
+        },
+        {
+          "code": "207NI0002X",
+          "description": "Dermatology, Clinical & Laboratory Dermatological Immunology",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207QA0000X",
+          "description": "Family Medicine, Adolescent Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0401X",
+          "description": "Family Medicine, Addiction Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QG0300X",
+          "description": "Family Medicine, Geriatric Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QS0010X",
+          "description": "Family Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "208100000X",
+          "description": "Physical Medicine & Rehabilitation",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-09-24",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-09-24",
+      "npi": "1073120085",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1073120085",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GARRISON FAMILY MEDICAL GROUP INC",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2012-05-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2019-10-28",
+      "npi": "1013277334",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1013277334",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "INPATIENT SERVICES OF CALIFORNIA INC",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-10-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-22",
+      "npi": "1205023249",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1205023249",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GONZALO GONZALEZ MARTINEZ MD INC",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-02-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2008-07-10",
+      "npi": "1659549400",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1659549400",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "JOHN KAYVANFAR MD INC",
+      "postal_prefix": "93550",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2009-11-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2011-04-28",
+      "npi": "1821326489",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1821326489",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HAMEEDUZ ZAFAR, MD, INC",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-06-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2011-03-01",
+      "npi": "1669409025",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1669409025",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "KAIN KUMAR MD INC",
+      "postal_prefix": "93551",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-09-29",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-06-18",
+      "npi": "1851015176",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1851015176",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HEALTH FIRST FAMILY PRACTICE",
+      "postal_prefix": "93550",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "261QP2300X",
+          "description": "Clinic/Center, Primary Care",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Palmdale",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-07-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-07-12",
+      "npi": "1073712790",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1073712790",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "PACIFIC NEURO DIAGNOSTIC MEDICAL GROUP, INC.",
+      "postal_prefix": "93550",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "CA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "103T00000X",
+          "description": "Psychologist",
+          "primary": false
+        },
+        {
+          "code": "111N00000X",
+          "description": "Chiropractor",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207T00000X",
+          "description": "Neurological Surgery",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": true
+        },
+        {
+          "code": "208100000X",
+          "description": "Physical Medicine & Rehabilitation",
+          "primary": false
+        },
+        {
+          "code": "2081P2900X",
+          "description": "Physical Medicine & Rehabilitation, Pain Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Palmdale&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 1,
+      "sanitized_record_count": 1,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Palmdale&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 16,
+      "sanitized_record_count": 12,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Palmdale&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 14,
+      "sanitized_record_count": 13,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Palmdale&state=CA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

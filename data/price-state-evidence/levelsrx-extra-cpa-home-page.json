@@ -1,0 +1,1820 @@
+{
+  "schema": "s30.provider_patch.v1",
+  "program_id": "levelsrx-extra-cpa-home-page",
+  "provider": "LevelsRx",
+  "routes": [
+    "/reviews/levelsrx-extra-cpa-home-page/",
+    "/providers/levelsrx-extra-cpa-home-page/"
+  ],
+  "packet": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/levelsrx-extra-cpa-home-page.json",
+    "sha256": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0",
+    "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/levelsrx-extra-cpa-home-page.json",
+    "snapshot_sha256": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0",
+    "captured_at": "2026-09-01T05:26:20.555221+00:00",
+    "age_days": 9.301958783923611,
+    "current_original_path_sha256_at_audit_end": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0"
+  },
+  "holds_preserved": [
+    {
+      "registry_program_id": "levelsrx-extra-cpa-home-page",
+      "commercial_state": "live",
+      "suppression_reason": null,
+      "status": null
+    }
+  ],
+  "records": [
+    {
+      "id": "levelsrx-extra-cpa-home-page:first_month_price",
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "field": "first_month_price",
+      "verdict": "PAGE_OVERSTATES",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/levelsrx-extra-cpa-home-page.json",
+        "sha256": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/levelsrx-extra-cpa-home-page.json",
+        "snapshot_sha256": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0",
+        "captured_at": "2026-09-01T05:26:20.555221+00:00",
+        "age_days": 9.301958783923611,
+        "current_original_path_sha256_at_audit_end": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "required_change": "Remove exact First month dollar cards: source says starting per month, not exact first payment.",
+      "audited_repetitions": [
+        {
+          "field": "first_month_price",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: LevelsRx · Compounded semaglutide (injection) :: article .d3-price-box; https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: LevelsRx · Compounded semaglutide (injection) :: h3; https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Treatments :: article .d3-price-box; https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Treatments :: h3; https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: article .d3-price-box; https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: h3",
+          "current_text": "First month",
+          "replacement": "Exact first charge not established. Reported starting monthly price shown below.",
+          "reason": "Sibling pricing cards promote starting figures into exact initial charges.",
+          "affected_price_components": [
+            {
+              "text": "First month $150.00 Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Compounded Semaglutide (GLP-1)",
+              "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: LevelsRx · Compounded semaglutide (injection) :: article .d3-price-box"
+            },
+            {
+              "text": "First month $150.00 Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Oral Compounded Semaglutide (GLP-1)",
+              "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Treatments :: article .d3-price-box"
+            },
+            {
+              "text": "First month $240.00 Reported information · Checked 2026-09-01 · Source Price source Starting at $240/mo\\n\\n### Compounded Tirzepatide (GLP-1/GIP)",
+              "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: article .d3-price-box"
+            }
+          ],
+          "rendering_operation": "Replace heading AND adjacent .d3-price-value with Not stated; remove recurring suffix when cadence is unestablished. Retain dated source quote only as supporting evidence, not a current quote."
+        }
+      ],
+      "audit_page_claims": [
+        {
+          "text": "LevelsRx publishes compounded semaglutide, compounded tirzepatide, and oral compounded semaglutide options with virtual clinician consultations and support included. Its prices are treatment-specific starting amounts, so confirm the selected checkout and renewal total. 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Bottom line :: p"
+        },
+        {
+          "text": "Published price",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Bottom line :: dt"
+        },
+        {
+          "text": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Pricing breakdown",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Bottom line :: h2"
+        },
+        {
+          "text": "LevelsRx publishes starting prices of $150 per month for compounded semaglutide, $240 per month for compounded tirzepatide, and $150 per month for oral compounded semaglutide. It states that virtual clinician consultations, prescription management, coaching, and lab charges are included without separate membership costs. 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Pricing breakdown :: p"
+        },
+        {
+          "text": "Price transparency · 30% 7.5/10",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Evidence criteria :: li"
+        },
+        {
+          "text": "Considering LevelsRx? Review published pricing, program terms and documented evidence gaps. Confirm current costs and eligibility directly with the provider. That sentence is the scope of this review, not a promise about LevelsRx. The evidence set was current through 2026-09-02 and is limited to the sources already identified on this page. Public pages can change after capture, so every amount, policy, availability statement, and workflow detail remains a dated record rather than a quote. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: What the LevelsRx record establishes—and what it does not :: p"
+        },
+        {
+          "text": "Published price wording",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: dt"
+        },
+        {
+          "text": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: dd"
+        },
+        {
+          "text": "Published price From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month 2026-09-02",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: tr"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For LevelsRx, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: p"
+        },
+        {
+          "text": "Readers should compare the snapshot with the source page before payment. Ask whether the wording still appears, whether a new condition or footnote has been added, and whether the amount applies to the exact product, dose, route, plan, or service being discussed. If checkout or intake contradicts this dated record, the current written term controls the transaction; the discrepancy should also be submitted through Clinic Scout's correction channel. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: p"
+        },
+        {
+          "text": "How to read LevelsRx pricing without inventing a total",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: h3"
+        },
+        {
+          "text": "The captured price evidence for LevelsRx is: “From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: How to read LevelsRx pricing without inventing a total :: p"
+        },
+        {
+          "text": "A practical written quote should identify the first charge, every recurring charge, the billing cadence, the amount of product or service attached to each charge, the minimum commitment, renewal behavior, cancellation deadline, refund terms, and any charge that can change with dose or state. Keep a copy of that quote and the checkout terms. This is purchasing discipline, not a prediction that LevelsRx will impose any particular charge. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: How to read LevelsRx pricing without inventing a total :: p"
+        },
+        {
+          "text": "The captured workflow language for LevelsRx is: “LevelsRx states: “Free home delivery” and “Fast, reliable delivery for every refill once you complete the required refill form.” It does not publish a delivery-day estimate.” This is not expanded into an end-to-end timeline unless the source defines the starting event and each stage. Intake completion, clinician review, prescription decision, pharmacy processing, carrier pickup, laboratory processing, manufacturing, and final delivery can describe different clocks. A single speed phrase cannot safely represent all of them, and no timeline establishes eligibility or an outcome. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Eligibility, review, and fulfillment boundaries :: p"
+        },
+        {
+          "text": "For LevelsRx, request the cash price and any insurance-dependent price separately. Confirm whether payment is collected before eligibility or professional review, what happens after denial, whether reimbursement paperwork is supplied, and whether cancellation or refund terms differ after a service begins. This checklist does not imply that LevelsRx offers each payment path; it identifies the missing facts a reader needs before treating a headline amount as the final obligation. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "Treatment-specific starting prices and free home delivery are published 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "Save the page date, URL, screenshots, and any checkout or intake terms that affect cost or eligibility.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: A source-first verification sequence for LevelsRx :: li"
+        },
+        {
+          "text": "If a reader proceeds with LevelsRx, the evidence task continues after checkout. Retain receipts, consent forms, product or service descriptions, fulfillment records, cancellation instructions, privacy notices, and the contact route for problems. Check whether the delivered or scheduled item matches the written order. Record any changed price or term with its date and source so that a concern can be investigated without relying on memory. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "Live Vital Launch review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Longevity Meds review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Lttl review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "The captured wording is “From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Frequently asked questions about the LevelsRx evidence :: p"
+        },
+        {
+          "text": "Use the LevelsRx review as a documented starting point. Recheck the direct source, obtain the exact current terms, and stop when an important answer remains unclear. Clear unknowns are more useful than confident estimates: they tell the reader what must be verified before cost, access, timing, product, or support can be compared responsibly. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Editorial conclusion for the captured LevelsRx record :: p"
+        },
+        {
+          "text": "Open another provider or cost comparison to check price, inclusions, and unresolved terms side by side.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: p"
+        },
+        {
+          "text": "Provider evidence review Live Vital Launch review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Longevity Meds review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Lttl review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MadeMed review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MangoRx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Measured review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MEDVI review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MyDrHank review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Novi review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Nu Image Medical review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Oak Longevity review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review OrderlyMeds review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Pallas Health – GLP-1 Weight Loss & NAD review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Refills review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Ro review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: LevelsRx · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First month $150.00 Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Compounded Semaglutide (GLP-1)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: LevelsRx · Compounded semaglutide (injection) :: article .d3-price-box"
+        },
+        {
+          "text": "First month",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: LevelsRx · Compounded semaglutide (injection) :: h3"
+        },
+        {
+          "text": "Thereafter $150.00 / month Provider-published starting price; confirm the selected checkout and renewal total. Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Compounded Semaglutide (GLP-1)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: p"
+        },
+        {
+          "text": "Medication and plan pricing",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: p"
+        },
+        {
+          "text": "Dates, quotes, and source links stay attached to every displayed amount. Exact dose tiers appear only when the provider publishes source-reported per-dose pricing; otherwise the dose grid is omitted.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Treatments :: p"
+        },
+        {
+          "text": "First month $150.00 Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Oral Compounded Semaglutide (GLP-1)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Treatments :: article .d3-price-box"
+        },
+        {
+          "text": "First month",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Treatments :: h3"
+        },
+        {
+          "text": "Thereafter $150.00 / month Provider-published starting price; confirm the selected checkout and renewal total. Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Oral Compounded Semaglutide (GLP-1)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: p"
+        },
+        {
+          "text": "First month $240.00 Reported information · Checked 2026-09-01 · Source Price source Starting at $240/mo\\n\\n### Compounded Tirzepatide (GLP-1/GIP)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: article .d3-price-box"
+        },
+        {
+          "text": "First month",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: h3"
+        },
+        {
+          "text": "Thereafter $240.00 / month Provider-published starting price; confirm the selected checkout and renewal total. Reported information · Checked 2026-09-01 · Source Price source Starting at $240/mo\\n\\n### Compounded Tirzepatide (GLP-1/GIP)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: p"
+        },
+        {
+          "text": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Limitations in the record :: li"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists; this is not a medical recommendation.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Related provider records :: p"
+        },
+        {
+          "text": "Provider names and links come from our reviewed provider list. Prices come from our dated price records; each price links to the source it was taken from, with the date we checked it. Program facts come from our reviewed notes on those dated sources. Clinic Scout does not infer availability, medical fit, ratings, or review counts.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Price rows checked 2026-09-01 · 3 source-dated rows",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Related providers :: p"
+        }
+      ],
+      "operation_ids": [
+        "46f8fefd4f3b21d7223a",
+        "dd304fb1bc220808f1b1",
+        "25fead523ac3ca865aea",
+        "a7804cd20ffce74038e5",
+        "944c32643edfb2aae25f",
+        "48273e83748576c94a19",
+        "b17240d81f5610431e88",
+        "e785ccc7e2774f41b6cf",
+        "44a3ae661d2465f83aa2",
+        "90f8a4b865ce91b61d53",
+        "ed54b7080d3aecac6c57",
+        "e371c1993806bec1bfa5",
+        "a723583b19d85431bbb7",
+        "717de62a069c6f68d0a0",
+        "d4115d1c905994af771f",
+        "5923c0ab7c31fef96bb0",
+        "c107a93b0b1374c7e4af",
+        "f9392df9d4136c75c43f"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(2) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > article:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Limitations in the record",
+          "tag": "li",
+          "text": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(1) > li:nth-of-type(3)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Treatment-specific starting prices and free home delivery are published"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "LevelsRx evidence snapshot",
+          "tag": "dd",
+          "text": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "LevelsRx evidence snapshot",
+          "tag": "tr",
+          "text": "Published price From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month 2026-09-02"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read LevelsRx pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for LevelsRx is: “From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the LevelsRx evidence",
+          "tag": "p",
+          "text": "The captured wording is “From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "LevelsRx publishes starting prices of $150 per month for compounded semaglutide, $240 per month for compounded tirzepatide, and $150 per month for oral compounded semaglutide. It states that virtual clinician consultations, prescription management, coaching, and lab charges are included without separate membership costs."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded semaglutide (injection)",
+          "tag": "p",
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "LevelsRx · Compounded semaglutide (injection)"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "LevelsRx · Compounded semaglutide (oral)"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded semaglutide (oral)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "h3",
+          "text": "LevelsRx · Compounded tirzepatide (injection)"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded tirzepatide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        }
+      ],
+      "disposition": "PATCH_READY"
+    },
+    {
+      "id": "levelsrx-extra-cpa-home-page:monthly_price",
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "field": "monthly_price",
+      "verdict": "PAGE_OVERSTATES",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/levelsrx-extra-cpa-home-page.json",
+        "sha256": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/levelsrx-extra-cpa-home-page.json",
+        "snapshot_sha256": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0",
+        "captured_at": "2026-09-01T05:26:20.555221+00:00",
+        "age_days": 9.301958783923611,
+        "current_original_path_sha256_at_audit_end": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "required_change": "Keep $150/$240/$150 as treatment-specific starting prices, not exact recurring charges.",
+      "audited_repetitions": [
+        {
+          "field": "monthly_price",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box",
+          "current_text": "Thereafter",
+          "replacement": "Reported starting monthly price; exact recurring charge not established",
+          "reason": "Monthly starting amount is not a renewal contract.",
+          "affected_price_components": [
+            {
+              "text": "Thereafter $150.00 / month Provider-published starting price; confirm the selected checkout and renewal total. Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Compounded Semaglutide (GLP-1)",
+              "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box"
+            },
+            {
+              "text": "Thereafter $150.00 / month Provider-published starting price; confirm the selected checkout and renewal total. Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Oral Compounded Semaglutide (GLP-1)",
+              "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box"
+            },
+            {
+              "text": "Thereafter $240.00 / month Provider-published starting price; confirm the selected checkout and renewal total. Reported information · Checked 2026-09-01 · Source Price source Starting at $240/mo\\n\\n### Compounded Tirzepatide (GLP-1/GIP)",
+              "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box"
+            }
+          ],
+          "rendering_operation": "Replace heading AND adjacent .d3-price-value with Not stated; remove recurring suffix when cadence is unestablished. Retain dated source quote only as supporting evidence, not a current quote."
+        }
+      ],
+      "audit_page_claims": [
+        {
+          "text": "LevelsRx publishes compounded semaglutide, compounded tirzepatide, and oral compounded semaglutide options with virtual clinician consultations and support included. Its prices are treatment-specific starting amounts, so confirm the selected checkout and renewal total. 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Bottom line :: p"
+        },
+        {
+          "text": "Published price",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Bottom line :: dt"
+        },
+        {
+          "text": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Pricing breakdown",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Bottom line :: h2"
+        },
+        {
+          "text": "LevelsRx publishes starting prices of $150 per month for compounded semaglutide, $240 per month for compounded tirzepatide, and $150 per month for oral compounded semaglutide. It states that virtual clinician consultations, prescription management, coaching, and lab charges are included without separate membership costs. 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Pricing breakdown :: p"
+        },
+        {
+          "text": "Price transparency · 30% 7.5/10",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Evidence criteria :: li"
+        },
+        {
+          "text": "Considering LevelsRx? Review published pricing, program terms and documented evidence gaps. Confirm current costs and eligibility directly with the provider. That sentence is the scope of this review, not a promise about LevelsRx. The evidence set was current through 2026-09-02 and is limited to the sources already identified on this page. Public pages can change after capture, so every amount, policy, availability statement, and workflow detail remains a dated record rather than a quote. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: What the LevelsRx record establishes—and what it does not :: p"
+        },
+        {
+          "text": "Published price wording",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: dt"
+        },
+        {
+          "text": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: dd"
+        },
+        {
+          "text": "Published price From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month 2026-09-02",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: tr"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For LevelsRx, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: p"
+        },
+        {
+          "text": "How to read LevelsRx pricing without inventing a total",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: LevelsRx evidence snapshot :: h3"
+        },
+        {
+          "text": "The captured price evidence for LevelsRx is: “From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: How to read LevelsRx pricing without inventing a total :: p"
+        },
+        {
+          "text": "A practical written quote should identify the first charge, every recurring charge, the billing cadence, the amount of product or service attached to each charge, the minimum commitment, renewal behavior, cancellation deadline, refund terms, and any charge that can change with dose or state. Keep a copy of that quote and the checkout terms. This is purchasing discipline, not a prediction that LevelsRx will impose any particular charge. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: How to read LevelsRx pricing without inventing a total :: p"
+        },
+        {
+          "text": "For LevelsRx, request the cash price and any insurance-dependent price separately. Confirm whether payment is collected before eligibility or professional review, what happens after denial, whether reimbursement paperwork is supplied, and whether cancellation or refund terms differ after a service begins. This checklist does not imply that LevelsRx offers each payment path; it identifies the missing facts a reader needs before treating a headline amount as the final obligation. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "Treatment-specific starting prices and free home delivery are published 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "If a reader proceeds with LevelsRx, the evidence task continues after checkout. Retain receipts, consent forms, product or service descriptions, fulfillment records, cancellation instructions, privacy notices, and the contact route for problems. Check whether the delivered or scheduled item matches the written order. Record any changed price or term with its date and source so that a concern can be investigated without relying on memory. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "For recurring arrangements, confirm the next billing date, refill or reorder trigger, dose or specification changes, required follow-up, pause options, cancellation cutoff, and the consequences of a failed payment or missed step. These are general recordkeeping questions, not claims about LevelsRx's actual policy. The provider's current written terms and applicable law determine the answer. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "Live Vital Launch review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Longevity Meds review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Lttl review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "The captured wording is “From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Frequently asked questions about the LevelsRx evidence :: p"
+        },
+        {
+          "text": "Compare the same evidence fields: first and recurring charges, cadence, inclusions, commitment, cancellation, shipping, and source date. An unknown field should remain unknown rather than receive a favorable score. 1 Source 1 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 2 Source 2 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 3 Source 3 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close 4 Source 4 LevelsRx current as of 2026-09-01 LevelsRx ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Frequently asked questions about the LevelsRx evidence :: p"
+        },
+        {
+          "text": "Open another provider or cost comparison to check price, inclusions, and unresolved terms side by side.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: p"
+        },
+        {
+          "text": "Provider evidence review Live Vital Launch review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Longevity Meds review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Lttl review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MadeMed review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MangoRx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Measured review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MEDVI review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MyDrHank review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Novi review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Nu Image Medical review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Oak Longevity review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review OrderlyMeds review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Pallas Health – GLP-1 Weight Loss & NAD review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Refills review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Ro review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/levelsrx-extra-cpa-home-page/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: LevelsRx · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First month $150.00 Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Compounded Semaglutide (GLP-1)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: LevelsRx · Compounded semaglutide (injection) :: article .d3-price-box"
+        },
+        {
+          "text": "Thereafter $150.00 / month Provider-published starting price; confirm the selected checkout and renewal total. Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Compounded Semaglutide (GLP-1)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: p"
+        },
+        {
+          "text": "Medication and plan pricing",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: p"
+        },
+        {
+          "text": "Dates, quotes, and source links stay attached to every displayed amount. Exact dose tiers appear only when the provider publishes source-reported per-dose pricing; otherwise the dose grid is omitted.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Treatments :: p"
+        },
+        {
+          "text": "First month $150.00 Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Oral Compounded Semaglutide (GLP-1)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Treatments :: article .d3-price-box"
+        },
+        {
+          "text": "Thereafter $150.00 / month Provider-published starting price; confirm the selected checkout and renewal total. Reported information · Checked 2026-09-01 · Source Price source Starting at $150/mo\\n\\n### Oral Compounded Semaglutide (GLP-1)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: p"
+        },
+        {
+          "text": "First month $240.00 Reported information · Checked 2026-09-01 · Source Price source Starting at $240/mo\\n\\n### Compounded Tirzepatide (GLP-1/GIP)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: article .d3-price-box"
+        },
+        {
+          "text": "Thereafter $240.00 / month Provider-published starting price; confirm the selected checkout and renewal total. Reported information · Checked 2026-09-01 · Source Price source Starting at $240/mo\\n\\n### Compounded Tirzepatide (GLP-1/GIP)",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Thereafter :: p"
+        },
+        {
+          "text": "Consultation or membership",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: At a glance :: p"
+        },
+        {
+          "text": "Virtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: At a glance :: p"
+        },
+        {
+          "text": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Limitations in the record :: li"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists; this is not a medical recommendation.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Related provider records :: p"
+        },
+        {
+          "text": "Provider names and links come from our reviewed provider list. Prices come from our dated price records; each price links to the source it was taken from, with the date we checked it. Program facts come from our reviewed notes on those dated sources. Clinic Scout does not infer availability, medical fit, ratings, or review counts.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Price rows checked 2026-09-01 · 3 source-dated rows",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists.",
+          "location": "https://glpclinicscout.com/providers/levelsrx-extra-cpa-home-page/ :: Related providers :: p"
+        }
+      ],
+      "operation_ids": [
+        "46f8fefd4f3b21d7223a",
+        "dd304fb1bc220808f1b1",
+        "25fead523ac3ca865aea",
+        "a7804cd20ffce74038e5",
+        "944c32643edfb2aae25f",
+        "48273e83748576c94a19",
+        "b17240d81f5610431e88",
+        "e785ccc7e2774f41b6cf",
+        "44a3ae661d2465f83aa2",
+        "90f8a4b865ce91b61d53",
+        "ed54b7080d3aecac6c57",
+        "e371c1993806bec1bfa5",
+        "a723583b19d85431bbb7",
+        "717de62a069c6f68d0a0",
+        "d4115d1c905994af771f",
+        "5923c0ab7c31fef96bb0",
+        "c107a93b0b1374c7e4af",
+        "f9392df9d4136c75c43f"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(2) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > article:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Limitations in the record",
+          "tag": "li",
+          "text": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(1) > li:nth-of-type(3)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Treatment-specific starting prices and free home delivery are published"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "LevelsRx evidence snapshot",
+          "tag": "dd",
+          "text": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "LevelsRx evidence snapshot",
+          "tag": "tr",
+          "text": "Published price From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month 2026-09-02"
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read LevelsRx pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for LevelsRx is: “From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the LevelsRx evidence",
+          "tag": "p",
+          "text": "The captured wording is “From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/reviews/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "LevelsRx publishes starting prices of $150 per month for compounded semaglutide, $240 per month for compounded tirzepatide, and $150 per month for oral compounded semaglutide. It states that virtual clinician consultations, prescription management, coaching, and lab charges are included without separate membership costs."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded semaglutide (injection)",
+          "tag": "p",
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "LevelsRx · Compounded semaglutide (injection)"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "LevelsRx · Compounded semaglutide (oral)"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded semaglutide (oral)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "h3",
+          "text": "LevelsRx · Compounded tirzepatide (injection)"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "LevelsRx · Compounded tirzepatide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Provider-published starting price; confirm the selected checkout and renewal total."
+        },
+        {
+          "route": "/providers/levelsrx-extra-cpa-home-page/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html",
+          "sha256": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f",
+          "selector": "[id=\"plan-levelsrx-extra-cpa-home-page-2\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        }
+      ],
+      "disposition": "PATCH_READY"
+    }
+  ],
+  "operations": [
+    {
+      "id": "46f8fefd4f3b21d7223a",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/48/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "dd304fb1bc220808f1b1",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/48/pros/2",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Treatment-specific starting prices and free home delivery are published",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "25fead523ac3ca865aea",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/48/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.\n\nVirtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Virtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "a7804cd20ffce74038e5",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/48/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "944c32643edfb2aae25f",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/48/pros/2",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Treatment-specific starting prices and free home delivery are published",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "48273e83748576c94a19",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/48/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.\n\nVirtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Virtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "b17240d81f5610431e88",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/48/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "e785ccc7e2774f41b6cf",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/48/pros/2",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Treatment-specific starting prices and free home delivery are published",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "44a3ae661d2465f83aa2",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/48/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.\n\nVirtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Virtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "90f8a4b865ce91b61d53",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/48/limitations/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "ed54b7080d3aecac6c57",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/48/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.\n\nVirtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Virtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "e371c1993806bec1bfa5",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/32/page_copy/pricing",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "LevelsRx publishes starting prices of $150 per month for compounded semaglutide, $240 per month for compounded tirzepatide, and $150 per month for oral compounded semaglutide. It states that virtual clinician consultations, prescription management, coaching, and lab charges are included without separate membership costs.",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.\n\nVirtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Virtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "a723583b19d85431bbb7",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/32/row_contract/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Published amounts are treatment-specific starting prices rather than guaranteed checkout totals",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "717de62a069c6f68d0a0",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/32/row_contract/pros/2",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Treatment-specific starting prices and free home delivery are published",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "d4115d1c905994af771f",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/32/row_contract/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "From $150 per month for compounded semaglutide or oral compounded semaglutide; compounded tirzepatide starts at $240 per month",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.\n\nCompounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.\n\nVirtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Virtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+          "source_url": "https://www.levelsrx.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "5923c0ab7c31fef96bb0",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/levelsrx-extra-cpa-home-page/medications/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "69d434d3dcf84e97e9a2b6d4db06238c1af6b8307767e54305cf48a872fb07f4",
+        "captured_on": "2026-09-01",
+        "label": "Compounded semaglutide (injection)",
+        "medication_id": "compounded-semaglutide-injection",
+        "month_1_basis": "same_as_ongoing",
+        "month_1_usd": 150,
+        "notes": "Provider-published starting price; confirm the selected checkout and renewal total.",
+        "ongoing_usd": 150,
+        "quote": "Starting at $150/mo\\n\\n### Compounded Semaglutide (GLP-1)",
+        "source_url": "https://www.levelsrx.com/"
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    },
+    {
+      "id": "c107a93b0b1374c7e4af",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/levelsrx-extra-cpa-home-page/medications/1",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "69d434d3dcf84e97e9a2b6d4db06238c1af6b8307767e54305cf48a872fb07f4",
+        "captured_on": "2026-09-01",
+        "label": "Compounded semaglutide (oral)",
+        "medication_id": "compounded-semaglutide-oral",
+        "month_1_basis": "same_as_ongoing",
+        "month_1_usd": 150,
+        "notes": "Provider-published starting price; confirm the selected checkout and renewal total.",
+        "ongoing_usd": 150,
+        "quote": "Starting at $150/mo\\n\\n### Oral Compounded Semaglutide (GLP-1)",
+        "source_url": "https://www.levelsrx.com/"
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    },
+    {
+      "id": "f9392df9d4136c75c43f",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/levelsrx-extra-cpa-home-page/medications/2",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "69d434d3dcf84e97e9a2b6d4db06238c1af6b8307767e54305cf48a872fb07f4",
+        "captured_on": "2026-09-01",
+        "label": "Compounded tirzepatide (injection)",
+        "medication_id": "compounded-tirzepatide-injection",
+        "month_1_basis": "same_as_ongoing",
+        "month_1_usd": 240,
+        "notes": "Provider-published starting price; confirm the selected checkout and renewal total.",
+        "ongoing_usd": 240,
+        "quote": "Starting at $240/mo\\n\\n### Compounded Tirzepatide (GLP-1/GIP)",
+        "source_url": "https://www.levelsrx.com/"
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    }
+  ],
+  "current_page_files": {
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/levelsrx-extra-cpa-home-page/index.html": "20535bd1d49b19108c66fd0e2ab3d5588245aa928dc95bf53d56225d189fd9a3",
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/levelsrx-extra-cpa-home-page/index.html": "e7df378a87651cdb49a4bcb893a8d49206f5cfeb1731c14667c4a5355679be7f"
+  },
+  "scope": "Data proposal only. No identity, hold, link, score, or release changes."
+}

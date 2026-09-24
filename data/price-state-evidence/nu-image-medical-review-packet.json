@@ -1,0 +1,122 @@
+{
+  "captured_at_utc": "2026-08-20T22:37:54.389500+00:00",
+  "display_name": "Nu Image Medical",
+  "effects": {
+    "accounts_created": 0,
+    "forms_submitted": 0,
+    "tracking_clicks": 0
+  },
+  "fields": {
+    "cancellation": {
+      "quote": "You may cancel your auto-renewal at any time. However, cancellations must be made at least forty-eight (48) hours before the renewal processing date to avoid being charged for the next period.",
+      "source_url": "https://nuimagemedical.com/cancellation-refund",
+      "value": "Auto-renewal can be cancelled at any time from the account, but the request must arrive at least forty-eight (48) hours before the renewal processing date or the next period is charged.",
+      "verified_as_of": "2026-08-20"
+    },
+    "consultation_fee": {
+      "quote": "\\*All treatments require a medical evaluation. Pricing varies by plan and subscription.",
+      "source_url": "https://nuimagemedical.com/",
+      "value": "No separate consultation fee is published; the provider states a medical evaluation is required and pricing varies by plan and subscription.",
+      "verified_as_of": "2026-08-20"
+    },
+    "eligibility": {
+      "quote": "There is no guarantee a prescription will be written.",
+      "source_url": "https://nuimagemedical.com/terms-conditions",
+      "value": "A provider reviews the patient's information and makes the prescribing decision; a prescription is not guaranteed.",
+      "verified_as_of": "2026-08-20"
+    },
+    "first_month_price": {
+      "quote": "Semaglutide\n\nInjection\n\nAs low as $99/mo",
+      "source_url": "https://nuimagemedical.com/weight-loss-medications",
+      "value": "Semaglutide injection is published at as low as $99/mo, the lowest published entry price of the four GLP-1 SKUs; no separate first-month rate is published.",
+      "verified_as_of": "2026-08-20"
+    },
+    "legitscript": {
+      "quote": "Neither Nu Image nor Providers endorse any specific medication, pharmacy, or pharmacologic product.",
+      "source_url": "https://nuimagemedical.com/terms-conditions",
+      "value": "No positive LegitScript certification claim is made because no LegitScript certification was evidenced in this cycle's first-party captures.",
+      "verified_as_of": "2026-08-20"
+    },
+    "monthly_price": {
+      "quote": "### Semaglutide\n\nInjection\n\nAs low as $99/mo\n\nInjectable option designed to help support appetite awareness as part of a provider-supervised plan\n\n[View treatment](https://nuimagemedical.com/semaglutide) [Buy Now](https://nuimagemedical.com/enroll?program=weight_loss)\n\n![Semaglutide rapid-dissolve tablet sachet](https://nuimagemedical.com/assets/img/weight-loss-medications/semaglutide-rdt-card.png)\n\n### Semaglutide RDT\n\nRapid-dissolve tablets\n\nAs low as $269/mo\n\nNeedle-free daily option designed to support metabolic health and consistency under professional care\n\n[View treatment](https://nuimagemedical.com/semaglutide) [Buy Now](https://nuimagemedical.com/enroll?program=weight_loss)\n\n![Tirzepatide injection vial and syringe](https://nuimagemedical.com/assets/img/weight-loss-medications/tirzepatide-injection-card.png)\n\n### Tirzepatide\n\nInjection\n\nAs low as $299/mo\n\nA dual-pathway injectable option designed to support metabolic health and steady progress under provider care\n\n[View treatment](https://nuimagemedical.com/tirzepatide) [Buy Now](https://nuimagemedical.com/enroll?program=weight_loss)\n\n![Tirzepatide rapid-dissolve tablet sachet](https://nuimagemedical.com/assets/img/weight-loss-medications/tirzepatide-rdt-card.png)\n\n### Tirzepatide RDT\n\nRapid-dissolve tablets\n\nAs low as $314/mo\n\nA convenient, needle-free daily format prescribed to help you navigate plateaus and maintain continued progress",
+      "source_url": "https://nuimagemedical.com/weight-loss-medications",
+      "value": "Four GLP-1 SKUs carry published monthly prices: semaglutide injection as low as $99/mo, semaglutide RDT as low as $269/mo, tirzepatide injection as low as $299/mo and tirzepatide RDT as low as $314/mo.",
+      "verified_as_of": "2026-08-20"
+    },
+    "pharmacy_type": {
+      "quote": "We provide access to prescription fulfillment services offered by the following pharmacies: Absolute Pharmacy, LLC, Belmar Pharma Solutions, The Pharmacy Hub, and TMC Acquisition, LLC dba Tailor Made Compounding.",
+      "source_url": "https://nuimagemedical.com/terms-conditions",
+      "value": "The provider names Absolute Pharmacy, Belmar Pharma Solutions, The Pharmacy Hub and TMC Acquisition dba Tailor Made Compounding as prescription-fulfillment services; it does not publish a 503A or 503B designation.",
+      "verified_as_of": "2026-08-20"
+    },
+    "shipping_wait": {
+      "quote": "**1–2 days** Typical Shipping",
+      "source_url": "https://nuimagemedical.com/about",
+      "value": "The provider publishes a typical shipping time of 1–2 days.",
+      "verified_as_of": "2026-08-20"
+    },
+    "states_served": {
+      "quote": "Nu Image and Providers operate subject to state and federal regulations, and the Services may not be available in your state.",
+      "source_url": "https://nuimagemedical.com/terms-conditions",
+      "value": "No complete state availability list is published; services are limited to U.S. states where they are available.",
+      "verified_as_of": "2026-08-20"
+    }
+  },
+  "first_party_source_captures": {
+    "bytes": 188202,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/20260820T223428Z/authoring/nu-image-medical-review-c3/captures/nu-image-medical-review-captures.json",
+    "sha256": "e778ec0f3f31afbdc8e2076cb86515bcfdc60d5808bcf157e635f10553ee8109"
+  },
+  "official_url": "https://nuimagemedical.com/weight-loss-medications",
+  "program_id": "nu-image-medical-review",
+  "provider_dynamic_profile": {
+    "calculator": {
+      "checked_as_of": "2026-08-20",
+      "evidence_gap_copy": "Enter the exact first and recurring amounts manually after choosing the molecule and the injection or rapid-dissolve format, because every published figure is stated only as an 'as low as' monthly price.",
+      "first_month_base_usd": null,
+      "mode": "manual",
+      "one_time_fee_usd": null,
+      "price_context": "Four separately priced GLP-1 SKUs are published: semaglutide injection as low as $99/mo, semaglutide RDT as low as $269/mo, tirzepatide injection as low as $299/mo and tirzepatide RDT as low as $314/mo. Each is an 'as low as' monthly figure, so no single comparable first and recurring amount exists.",
+      "recurring_month_base_usd": null,
+      "source_url": "https://nuimagemedical.com/weight-loss-medications"
+    },
+    "evidence_bindings": [
+      {
+        "evidence_sha256": "a20049fc464858a39ca12c1298351763c9a78bdac6dbce66c6438181754f22cd",
+        "evidence_text": "### Semaglutide\n\nInjection\n\nAs low as $99/mo\n\nInjectable option designed to help support appetite awareness as part of a provider-supervised plan\n\n[View treatment](https://nuimagemedical.com/semaglutide) [Buy Now](https://nuimagemedical.com/enroll?program=weight_loss)\n\n![Semaglutide rapid-dissolve tablet sachet](https://nuimagemedical.com/assets/img/weight-loss-medications/semaglutide-rdt-card.png)\n\n### Semaglutide RDT\n\nRapid-dissolve tablets\n\nAs low as $269/mo\n\nNeedle-free daily option designed to support metabolic health and consistency under professional care\n\n[View treatment](https://nuimagemedical.com/semaglutide) [Buy Now](https://nuimagemedical.com/enroll?program=weight_loss)\n\n![Tirzepatide injection vial and syringe](https://nuimagemedical.com/assets/img/weight-loss-medications/tirzepatide-injection-card.png)\n\n### Tirzepatide\n\nInjection\n\nAs low as $299/mo\n\nA dual-pathway injectable option designed to support metabolic health and steady progress under provider care\n\n[View treatment](https://nuimagemedical.com/tirzepatide) [Buy Now](https://nuimagemedical.com/enroll?program=weight_loss)\n\n![Tirzepatide rapid-dissolve tablet sachet](https://nuimagemedical.com/assets/img/weight-loss-medications/tirzepatide-rdt-card.png)\n\n### Tirzepatide RDT\n\nRapid-dissolve tablets\n\nAs low as $314/mo\n\nA convenient, needle-free daily format prescribed to help you navigate plateaus and maintain continued progress",
+        "fields": [
+          "calculator.checked_as_of",
+          "calculator.evidence_gap_copy",
+          "calculator.first_month_base_usd",
+          "calculator.mode",
+          "calculator.one_time_fee_usd",
+          "calculator.price_context",
+          "calculator.recurring_month_base_usd",
+          "calculator.source_url",
+          "taxonomy.brand_name_tags",
+          "taxonomy.delivery_form_tags",
+          "taxonomy.molecule_tags",
+          "taxonomy.treatment_type_tags",
+          "verified_as_of"
+        ],
+        "source_url": "https://nuimagemedical.com/weight-loss-medications",
+        "verified_as_of": "2026-08-20"
+      }
+    ],
+    "taxonomy": {
+      "brand_name_tags": [],
+      "delivery_form_tags": [
+        "injectable"
+      ],
+      "molecule_tags": [
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "treatment_type_tags": []
+    },
+    "verified_as_of": "2026-08-20",
+    "version": 1
+  },
+  "schema": "program-deep-research-v1",
+  "status": "PASS"
+}

@@ -1,0 +1,625 @@
+{
+  "records": [
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-11-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2011-02-01",
+      "npi": "1205080769",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1205080769",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "MERCY PHYSICIAN ASSOCIATES, INC",
+      "postal_prefix": "52402",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2015-07-10",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-07-10",
+      "npi": "1053795880",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1053795880",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ABBE CENTER",
+      "postal_prefix": "52405",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-02-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-02-02",
+      "npi": "1386785293",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1386785293",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADVANCED SPINE AND REHAB CENTER PC",
+      "postal_prefix": "52402",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "111N00000X",
+          "description": "Chiropractor",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "332B00000X",
+          "description": "Durable Medical Equipment & Medical Supplies",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2014-10-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-10-23",
+      "npi": "1962807784",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1962807784",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "MERCY PHYSICIAN ASSOCIATES, INC",
+      "postal_prefix": "52402",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-08-21",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1699880138",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1699880138",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AFFILIATES OF FAMILY PRACTICE OF CEDAR RAPIDS",
+      "postal_prefix": "52403",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-12-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-12-14",
+      "npi": "1932868205",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1932868205",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AMENITY HEALTHCARE, LLC",
+      "postal_prefix": "52404",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QH0002X",
+          "description": "Family Medicine, Hospice and Palliative Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RH0002X",
+          "description": "Internal Medicine, Hospice and Palliative Medicine",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-08-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2014-02-25",
+      "npi": "1508879578",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1508879578",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "UNITYPOINT CLINIC - MULTI-SPECIALTY",
+      "postal_prefix": "52401",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RC0200X",
+          "description": "Internal Medicine, Critical Care Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207RN0300X",
+          "description": "Internal Medicine, Nephrology",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        },
+        {
+          "code": "363LA2200X",
+          "description": "Nurse Practitioner, Adult Health",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2013-03-06",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2013-03-26",
+      "npi": "1942541560",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1942541560",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CEDAR RAPIDS COMMUNITY CANCER CENTER FOUNDATION",
+      "postal_prefix": "52403",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RH0002X",
+          "description": "Internal Medicine, Hospice and Palliative Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": false
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        },
+        {
+          "code": "207RX0202X",
+          "description": "Internal Medicine, Medical Oncology",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207VX0201X",
+          "description": "Obstetrics & Gynecology, Gynecologic Oncology",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": false
+        },
+        {
+          "code": "2080P0207X",
+          "description": "Pediatrics, Pediatric Hematology-Oncology",
+          "primary": false
+        },
+        {
+          "code": "208D00000X",
+          "description": "General Practice",
+          "primary": true
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-02-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-02-01",
+      "npi": "1780380782",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1780380782",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AMERICAN GOLD HEALTH PRO LLC",
+      "postal_prefix": "52401",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-04-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2015-05-18",
+      "npi": "1851564157",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1851564157",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CEDAR RAPIDS MEDICAL EDUCATION FOUNDATION",
+      "postal_prefix": "52403",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-05-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-07-20",
+      "npi": "1982654497",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1982654497",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COGENT HEALTHCARE OF IOWA, PC",
+      "postal_prefix": "52403",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "208M00000X",
+          "description": "Hospitalist",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-12-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-09-30",
+      "npi": "1225806888",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1225806888",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CLARKS MEDICAL SERVICES LLC",
+      "postal_prefix": "52402",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "261QM1300X",
+          "description": "Clinic/Center, Multi-Specialty",
+          "primary": true
+        },
+        {
+          "code": "3336C0002X",
+          "description": "Pharmacy, Clinic Pharmacy",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2012-02-02",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2012-02-27",
+      "npi": "1326310681",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1326310681",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DANIEL E MCGRAIL, MD, PLC",
+      "postal_prefix": "52403",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RI0200X",
+          "description": "Internal Medicine, Infectious Disease",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2005-05-31",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-04-20",
+      "npi": "1841293131",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1841293131",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DR YANG AHN, MD, PC",
+      "postal_prefix": "52404",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Cedar Rapids",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2022-06-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-07-01",
+      "npi": "1790415909",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1790415909",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GOODSIDE HEALTH MEDICAL, PLLC",
+      "postal_prefix": "52404",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "208000000X",
+          "description": "Pediatrics",
+          "primary": true
+        },
+        {
+          "code": "261Q00000X",
+          "description": "Clinic/Center",
+          "primary": false
+        },
+        {
+          "code": "261QM1300X",
+          "description": "Clinic/Center, Multi-Specialty",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Cedar+Rapids&state=IA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 3,
+      "sanitized_record_count": 3,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Cedar+Rapids&state=IA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 45,
+      "sanitized_record_count": 42,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Cedar+Rapids&state=IA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 20,
+      "sanitized_record_count": 17,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Cedar+Rapids&state=IA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

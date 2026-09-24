@@ -1,0 +1,580 @@
+{
+  "records": [
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-01-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-04-24",
+      "npi": "1992396337",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1992396337",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COMMUNITY PHYSICIANS OF INDIANA INC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-09-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2017-06-22",
+      "npi": "1245334457",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1245334457",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "AMERICAN HEALTH NETWORK OF INDIANA, LLC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": false
+        },
+        {
+          "code": "207V00000X",
+          "description": "Obstetrics & Gynecology",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": false
+        },
+        {
+          "code": "208100000X",
+          "description": "Physical Medicine & Rehabilitation",
+          "primary": false
+        },
+        {
+          "code": "2084N0400X",
+          "description": "Psychiatry & Neurology, Neurology",
+          "primary": false
+        },
+        {
+          "code": "2084P2900X",
+          "description": "Psychiatry & Neurology, Pain Medicine",
+          "primary": false
+        },
+        {
+          "code": "2085R0202X",
+          "description": "Radiology, Diagnostic Radiology",
+          "primary": false
+        },
+        {
+          "code": "2085U0001X",
+          "description": "Radiology, Diagnostic Ultrasound",
+          "primary": false
+        },
+        {
+          "code": "208600000X",
+          "description": "Surgery",
+          "primary": false
+        },
+        {
+          "code": "208VP0014X",
+          "description": "Pain Medicine, Interventional Pain Medicine",
+          "primary": false
+        },
+        {
+          "code": "332B00000X",
+          "description": "Durable Medical Equipment & Medical Supplies",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2026-06-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-06-30",
+      "npi": "1023935236",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1023935236",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ABODE CARE PARTNERS VB, LLC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2010-10-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-10-14",
+      "npi": "1609186402",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1609186402",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ENDOCRINOLOGY DIABETES AND OBESITY CLINIC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2026-05-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-05-12",
+      "npi": "1063340842",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1063340842",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "APOGEE HEALTH SERVICES LLC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-10-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-03-30",
+      "npi": "1124780465",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1124780465",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CARELINE HIN100 LLC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RH0002X",
+          "description": "Internal Medicine, Hospice and Palliative Medicine",
+          "primary": false
+        },
+        {
+          "code": "251G00000X",
+          "description": "Hospice Care, Community Based",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2018-11-10",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-07-28",
+      "npi": "1568930220",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1568930220",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "IMPACT PHYSICIAN GROUP, INDIANA LLC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": false
+        },
+        {
+          "code": "207RG0100X",
+          "description": "Internal Medicine, Gastroenterology",
+          "primary": false
+        },
+        {
+          "code": "207RP1001X",
+          "description": "Internal Medicine, Pulmonary Disease",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-12-04",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-12-04",
+      "npi": "1477369528",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1477369528",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ARY MEDICAL LLC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        },
+        {
+          "code": "207QB0002X",
+          "description": "Family Medicine, Bariatric Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-09-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-10-06",
+      "npi": "1205506862",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1205506862",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CARELINE PIN100 LLC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RG0300X",
+          "description": "Internal Medicine, Geriatric Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RH0002X",
+          "description": "Internal Medicine, Hospice and Palliative Medicine",
+          "primary": false
+        },
+        {
+          "code": "363LP2300X",
+          "description": "Nurse Practitioner, Primary Care",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-05-11",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1033324223",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1033324223",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "NIGHTINGALE CARE SERVICES",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207RE0101X",
+          "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-01-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-01-04",
+      "npi": "1689110413",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1689110413",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "BE WELL FAMILY CARE, LLC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-08-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2007-12-06",
+      "npi": "1609981711",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1609981711",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CENTRAL INDIANA ORTHOPEDICS",
+      "postal_prefix": "46033",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QS0010X",
+          "description": "Family Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207RS0010X",
+          "description": "Internal Medicine, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "207T00000X",
+          "description": "Neurological Surgery",
+          "primary": false
+        },
+        {
+          "code": "207X00000X",
+          "description": "Orthopaedic Surgery",
+          "primary": true
+        },
+        {
+          "code": "207XS0106X",
+          "description": "Orthopaedic Surgery, Hand Surgery",
+          "primary": false
+        },
+        {
+          "code": "207XS0114X",
+          "description": "Orthopaedic Surgery, Adult Reconstructive Orthopaedic Surgery",
+          "primary": false
+        },
+        {
+          "code": "207XS0117X",
+          "description": "Orthopaedic Surgery, Orthopaedic Surgery of the Spine",
+          "primary": false
+        },
+        {
+          "code": "207XX0004X",
+          "description": "Orthopaedic Surgery, Foot and Ankle Surgery",
+          "primary": false
+        },
+        {
+          "code": "207XX0005X",
+          "description": "Orthopaedic Surgery, Sports Medicine",
+          "primary": false
+        },
+        {
+          "code": "208100000X",
+          "description": "Physical Medicine & Rehabilitation",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-10-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1093899858",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1093899858",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CARMEL FAMILY CARE, P.C.",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-07-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-03-08",
+      "npi": "1093735276",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1093735276",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COMMUNITY HOSPITALS OF INDIANA INC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Carmel",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-05-19",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-06-16",
+      "npi": "1639122518",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1639122518",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COMMUNITY HOSPITALS OF INDIANA, INC",
+      "postal_prefix": "46032",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "IN",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Carmel&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 4,
+      "sanitized_record_count": 4,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Carmel&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 33,
+      "sanitized_record_count": 33,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Carmel&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 21,
+      "sanitized_record_count": 20,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Carmel&state=IN&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

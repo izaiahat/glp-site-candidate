@@ -1,0 +1,560 @@
+{
+  "records": [
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2026-01-14",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2026-01-14",
+      "npi": "1134087422",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1134087422",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ADVANCED WOUND THERAPY-WA, PLLC",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-02-15",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-06-02",
+      "npi": "1922072081",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1922072081",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "CANCER CARE NORTHWEST CENTERS P S",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "1041C0700X",
+          "description": "Social Worker, Clinical",
+          "primary": false
+        },
+        {
+          "code": "207RH0003X",
+          "description": "Internal Medicine, Hematology & Oncology",
+          "primary": true
+        },
+        {
+          "code": "207RX0202X",
+          "description": "Internal Medicine, Medical Oncology",
+          "primary": false
+        },
+        {
+          "code": "2086X0206X",
+          "description": "Surgery, Surgical Oncology",
+          "primary": false
+        },
+        {
+          "code": "332900000X",
+          "description": "Non-Pharmacy Dispensing Site",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2021-05-03",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-08-10",
+      "npi": "1235712621",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1235712621",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ATTICUS HEALTH, PLLC",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QA0000X",
+          "description": "Family Medicine, Adolescent Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QA0505X",
+          "description": "Family Medicine, Adult Medicine",
+          "primary": true
+        },
+        {
+          "code": "207QG0300X",
+          "description": "Family Medicine, Geriatric Medicine",
+          "primary": false
+        },
+        {
+          "code": "2084P0800X",
+          "description": "Psychiatry & Neurology, Psychiatry",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-10-12",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-10-12",
+      "npi": "1215718457",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1215718457",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "INTEGRA HEALTH AND WELLNESS PLLC",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2019-09-30",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-03-08",
+      "npi": "1952942096",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1952942096",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "COGENT MEDICINE PNW, PLLC",
+      "postal_prefix": "99206",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207QH0002X",
+          "description": "Family Medicine, Hospice and Palliative Medicine",
+          "primary": false
+        },
+        {
+          "code": "261QP2300X",
+          "description": "Clinic/Center, Primary Care",
+          "primary": false
+        },
+        {
+          "code": "305S00000X",
+          "description": "Point of Service",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2024-02-01",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2024-02-02",
+      "npi": "1336902345",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1336902345",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "MULTICARE HEALTH SYSTEM",
+      "postal_prefix": "99037",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RG0300X",
+          "description": "Internal Medicine, Geriatric Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2009-08-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2021-06-22",
+      "npi": "1730311531",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1730311531",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "DONALD K WILLIAMS DO PC",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-07-18",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2016-07-28",
+      "npi": "1043410194",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1043410194",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "NORTHWEST HEALTH SUMMIT, PS",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "207VG0400X",
+          "description": "Obstetrics & Gynecology, Gynecology",
+          "primary": true
+        },
+        {
+          "code": "2084P0800X",
+          "description": "Psychiatry & Neurology, Psychiatry",
+          "primary": false
+        },
+        {
+          "code": "363A00000X",
+          "description": "Physician Assistant",
+          "primary": false
+        },
+        {
+          "code": "363L00000X",
+          "description": "Nurse Practitioner",
+          "primary": false
+        },
+        {
+          "code": "363LF0000X",
+          "description": "Nurse Practitioner, Family",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2007-01-08",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2022-01-25",
+      "npi": "1770631327",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1770631327",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "GILMAN FAMILY PRACTICE, PS",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2020-09-28",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-12-21",
+      "npi": "1265049829",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1265049829",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "ROBERT I HUSTRULID MD PLLC",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2025-02-25",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-07-08",
+      "npi": "1730986035",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1730986035",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "HRT EVERGREEN PC",
+      "postal_prefix": "99206",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2023-11-20",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2025-12-15",
+      "npi": "1891560918",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1891560918",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "SHILLMED, PLLC",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "204D00000X",
+          "description": "Neuromusculoskeletal Medicine & OMM",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": true
+        },
+        {
+          "code": "207RB0002X",
+          "description": "Internal Medicine, Bariatric Medicine",
+          "primary": false
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2017-10-13",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2023-08-30",
+      "npi": "1366953630",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1366953630",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "IDEAL OPTION, PLLC",
+      "postal_prefix": "99212",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207QA0401X",
+          "description": "Family Medicine, Addiction Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2008-09-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2010-07-16",
+      "npi": "1811147283",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1811147283",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "WA-SPOK VH URGENT CARE LLC",
+      "postal_prefix": "99212",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Internal Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": false
+        },
+        {
+          "code": "207R00000X",
+          "description": "Internal Medicine",
+          "primary": false
+        },
+        {
+          "code": "208D00000X",
+          "description": "General Practice",
+          "primary": false
+        },
+        {
+          "code": "261QU0200X",
+          "description": "Clinic/Center, Urgent Care",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    },
+    {
+      "city": "Spokane Valley",
+      "direct_service_source_url": null,
+      "direct_service_verified_as_of": null,
+      "enumeration_date": "2006-02-23",
+      "enumeration_type": "NPI-2",
+      "evidence_class": "NPPES_REGISTRY_ONLY_NOT_SERVICE_EVIDENCE",
+      "glp_service_verified": false,
+      "last_updated": "2020-08-22",
+      "npi": "1497721278",
+      "nppes_api_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1497721278",
+      "nppes_checked_at_utc": "2026-07-23T20:45:00Z",
+      "organization_name": "LINDA HARRISON MD",
+      "postal_prefix": "99216",
+      "publication_status": "HELD_NATIONAL_DIRECTORY_RELEASE",
+      "source_query_taxonomy": "Family Medicine",
+      "state": "WA",
+      "status": "A",
+      "taxonomies": [
+        {
+          "code": "207Q00000X",
+          "description": "Family Medicine",
+          "primary": true
+        }
+      ],
+      "weight_management_service_verified": false
+    }
+  ],
+  "source_queries": [
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Spokane+Valley&state=WA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Obesity Medicine"
+    },
+    {
+      "api_result_count": 0,
+      "sanitized_record_count": 0,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Spokane+Valley&state=WA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+    },
+    {
+      "api_result_count": 20,
+      "sanitized_record_count": 16,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Spokane+Valley&state=WA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Family Medicine"
+    },
+    {
+      "api_result_count": 9,
+      "sanitized_record_count": 7,
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Spokane+Valley&state=WA&country_code=US&limit=50&skip=0&pretty=off",
+      "taxonomy_description": "Internal Medicine"
+    }
+  ]
+}

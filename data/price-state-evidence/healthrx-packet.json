@@ -1,0 +1,136 @@
+{
+  "captured_at_utc": "2026-09-09T17:31:24.848406+00:00",
+  "display_name": "HealthRX",
+  "effects": {
+    "accounts_created": 0,
+    "forms_submitted": 0,
+    "tracking_clicks": 0
+  },
+  "fields": {
+    "cancellation": {
+      "quote": "How do I cancel?\n\nLog in to your HealthRX.com account and cancel in a single click. We refund any unshipped dose. No phone calls, no friction.\n\nCan I return my medication once I receive it?\n\nNo. Federal and State law do not allow medication returns after dispensing. All sales are final once shipped. Contact support with specific concerns.",
+      "source_url": "https://healthrx.com/faq",
+      "value": "Reported information: the FAQ says account cancellation is available in a single click, unshipped doses are refunded, and all sales are final once shipped. Its statement about returns and law is the provider's wording, not an independent legal finding. A detailed prepaid-plan refund calculation is UNKNOWN in these captures.",
+      "verified_as_of": "2026-09-09"
+    },
+    "consultation_fee": {
+      "quote": "Nothing else is added. No consultation fee, no shipping charge, no price change when your dose goes up.",
+      "source_url": "https://healthrx.com/glp1-offer-v1",
+      "value": "Reported information: the GLP-1 offer page says no additional consultation fee or shipping charge and no price change when dose increases; this is not an independently verified checkout total.",
+      "verified_as_of": "2026-09-09",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-healthrx/authoring/healthrx-c1/captures/healthrx-detail-captures.json",
+      "capture_sha256": "0bafe437274076490a1e4247308413ab58083b20e3fc569cd7695af66dffe28b"
+    },
+    "eligibility": {
+      "quote": "#### Suitable for\n\n- · Adults with BMI ≥ 30, or BMI ≥ 27 with a weight-related condition\n- · Patients new to GLP-1 therapy\n- · Patients seeking the most studied compound in the category\n\n#### Not suitable for\n\n- · Personal or family history of medullary thyroid carcinoma\n- · Multiple Endocrine Neoplasia syndrome type 2 (MEN-2)\n- · History of severe pancreatitis\n- · Pregnant or breastfeeding\n- · Severe gastrointestinal disease",
+      "source_url": "https://healthrx.com/semaglutide",
+      "value": "Reported information, not eligibility advice: the compounded-semaglutide page lists adults with BMI ≥30, or BMI ≥27 with a weight-related condition, under Suitable for, and publishes the exclusions quoted here. This does not guarantee approval or a prescription.",
+      "verified_as_of": "2026-09-09"
+    },
+    "first_month_price": {
+      "quote": "From $99/month on a 12-month prepaid semaglutide plan ($1,163 today; $1,188 at renewal). Tirzepatide plans start at $179/month. You confirm the exact plan before payment.",
+      "source_url": "https://healthrx.com/glp1-offer-v1",
+      "value": "Reported information: the compounded-semaglutide offer advertises $99/month on a 12-month prepaid plan, with $1,163 due today and $1,188 at renewal. The $99 figure is not the first charge or a month-to-month offer. An exact first-month-only semaglutide charge is UNKNOWN for a separately selected monthly plan; no checkout was entered.",
+      "verified_as_of": "2026-09-09",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-healthrx/authoring/healthrx-c1/captures/healthrx-detail-captures.json",
+      "capture_sha256": "0bafe437274076490a1e4247308413ab58083b20e3fc569cd7695af66dffe28b"
+    },
+    "legitscript": {
+      "quote": "LEGITSCRIPT-CERTIFIED\n\nCERT 50087439 · 503A PHARMACY",
+      "source_url": "https://healthrx.com/semaglutide",
+      "value": "UNKNOWN. The provider publishes this certification claim, but no independent LegitScript registry verification was performed. The quoted badge text is a first-party claim only, not independent certification or acceptance.",
+      "verified_as_of": "2026-09-09"
+    },
+    "monthly_price": {
+      "quote": "Compounded tirzepatide plans start at $179/mo with the annual option. The monthly Subscribe & Save plan is $193 for the first month, then $214 per month. The price you see at checkout is the price billed. No insurance required.",
+      "source_url": "https://healthrx.com/tirzepatide",
+      "value": "Reported information for compounded tirzepatide only: the product page lists annual-option pricing from $179/month and a separate monthly Subscribe & Save plan at $193 for the first month, then $214/month. The annual-option figure is not a monthly-plan first charge. No checkout or personalized offer was verified.",
+      "verified_as_of": "2026-09-09",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-healthrx/authoring/healthrx-c1/captures/healthrx-detail-captures.json",
+      "capture_sha256": "0bafe437274076490a1e4247308413ab58083b20e3fc569cd7695af66dffe28b"
+    },
+    "pharmacy_type": {
+      "quote": "HealthRX.com is a compounding apothecary for GLP-1 weight management. We connect patients with independent US-licensed clinicians and a licensed Section 503A compounding pharmacy. We do not employ doctors and we do not own a pharmacy.",
+      "source_url": "https://healthrx.com/faq",
+      "value": "Reported information: HealthRX says it connects patients with independent US-licensed clinicians and a licensed Section 503A compounding pharmacy, and says it neither employs doctors nor owns a pharmacy. Specific dispensing-pharmacy identity and independent licensure verification remain UNKNOWN.",
+      "verified_as_of": "2026-09-09"
+    },
+    "shipping_wait": {
+      "quote": "After a licensed provider reviews your file and writes a prescription, your medication ships from a licensed 503A pharmacy within 24-48 hours. Overnight carrier. Rush No-Contact delivery. No signature required.",
+      "source_url": "https://www.healthrx.com",
+      "value": "Reported information: the homepage says shipment within 24–48 hours after provider review and prescription, using an overnight carrier and no-signature delivery. This is not a guaranteed order-to-door time or an independently observed delivery.",
+      "verified_as_of": "2026-09-09"
+    },
+    "states_served": {
+      "quote": "Where does HealthRX.com offer service?\n\nAll 50 US states.",
+      "source_url": "https://healthrx.com/faq",
+      "value": "Reported information: the FAQ advertises service in all 50 US states. Individual clinician and dispensing availability were not independently verified.",
+      "verified_as_of": "2026-09-09"
+    }
+  },
+  "first_party_source_captures": {
+    "bytes": 1108,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-healthrx/authoring/healthrx-c1/captures/healthrx-capture-index.json",
+    "sha256": "9a929b1a806a8483cc81ba4ee8001faf08636472324725a063be2bab589d91cf"
+  },
+  "official_url": "https://www.healthrx.com",
+  "program_id": "healthrx",
+  "provider_dynamic_profile": {
+    "calculator": {
+      "checked_as_of": "2026-09-09",
+      "evidence_gap_copy": "Select the molecule and plan, then enter its confirmed upfront and renewal charges manually. Advertised monthly equivalents for prepaid plans are not monthly cash charges; a single provider-wide monthly total is not established.",
+      "first_month_base_usd": null,
+      "mode": "manual",
+      "one_time_fee_usd": null,
+      "price_context": "Reported semaglutide offer: from $99/month on a 12-month prepaid plan, $1,163 today and $1,188 at renewal. Tirzepatide is a different plan advertised from $179/month; do not combine the molecules or billing periods.",
+      "recurring_month_base_usd": null,
+      "source_url": "https://healthrx.com/glp1-offer-v1"
+    },
+    "evidence_bindings": [
+      {
+        "evidence_sha256": "c6c23b127adda095e276732c1776c3cae687f3eae892f72ba416a7254784d19f",
+        "evidence_text": "Compounded semaglutide and tirzepatide vials",
+        "fields": [
+          "taxonomy.brand_name_tags",
+          "taxonomy.delivery_form_tags",
+          "taxonomy.molecule_tags",
+          "taxonomy.treatment_type_tags",
+          "verified_as_of"
+        ],
+        "source_url": "https://www.healthrx.com",
+        "verified_as_of": "2026-09-09"
+      },
+      {
+        "evidence_sha256": "17b2d32764b8f1c9ef812a0042adaa96966bc24788eafbff388682bbe3252fc3",
+        "evidence_text": "From **$99/month** on a 12-month prepaid semaglutide plan ($1,163 today; $1,188 at renewal). Tirzepatide plans start at **$179/month**.",
+        "fields": [
+          "calculator.checked_as_of",
+          "calculator.evidence_gap_copy",
+          "calculator.first_month_base_usd",
+          "calculator.mode",
+          "calculator.one_time_fee_usd",
+          "calculator.price_context",
+          "calculator.recurring_month_base_usd",
+          "calculator.source_url"
+        ],
+        "source_url": "https://healthrx.com/glp1-offer-v1",
+        "verified_as_of": "2026-09-09"
+      }
+    ],
+    "taxonomy": {
+      "brand_name_tags": [],
+      "delivery_form_tags": [],
+      "molecule_tags": [
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "treatment_type_tags": [
+        "compounded"
+      ]
+    },
+    "verified_as_of": "2026-09-09",
+    "version": 1
+  },
+  "schema": "program-deep-research-v1",
+  "status": "PASS_LIMITED"
+}

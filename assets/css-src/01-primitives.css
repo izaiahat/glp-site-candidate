@@ -1,0 +1,417 @@
+/* ============================================================================
+   Layer 01: PRIMITIVES — buttons, chips, cards, price lockups, popovers,
+   tables, tabs, details, inputs, logo tiles. Class names preserved as contract.
+   ========================================================================== */
+
+/* D2p: dated evidence links have a WCAG 2.2 minimum target. */
+a[data-citation],
+.typed-price ul[aria-label="Dated price evidence"] a {
+  display: inline-block;
+  min-height: 24px;
+  line-height: 24px;
+}
+
+/* W9/D53: shared coupon controls must ship in every route-family bundle. */
+.cs-coupon-chip { display: inline-flex; align-items: center; gap: 7px; width: fit-content; margin-block: 10px 2px; padding: 8px 11px; border: 1px solid color-mix(in srgb, var(--color-evidence) 42%, transparent); border-radius: 999px; background: var(--cs-accent-gradient); background-size: 220% 220%; color: #07120e; font: 750 0.8rem/1 var(--font-display); cursor: pointer; transition: transform 180ms var(--cs-ease-standard), box-shadow 180ms var(--cs-ease-standard); }
+.cs-coupon-chip:hover, .cs-coupon-chip:focus-visible { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(23, 78, 166, 0.18); }
+.cs-coupon-chip.is-copied { transform: scale(0.98); }
+.cs-coupon-toast { position: fixed; z-index: 95; right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); max-width: min(360px, calc(100vw - 36px)); padding: 13px 17px; border-radius: 999px; background: var(--cs-accent-gradient); color: #07120e; font: 750 0.86rem/1.25 var(--font-display); box-shadow: 0 16px 48px rgba(7, 18, 14, 0.3); opacity: 0; transform: translateY(14px); pointer-events: none; transition: opacity 300ms var(--cs-ease-standard), transform 300ms var(--cs-ease-standard); }
+.cs-coupon-toast.is-visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 640px) { .cs-coupon-toast { left: 18px; right: 18px; max-width: none; text-align: center; } }
+@media (prefers-reduced-motion: reduce) { .cs-coupon-chip, .cs-coupon-toast { transition: none; } }
+
+/* ---- buttons -------------------------------------------------------------- */
+.cta, .cs-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  line-height: 1.15; text-decoration: none; cursor: pointer;
+  border-radius: var(--radius-pill); padding: 14px 26px;
+  border: 1px solid transparent; min-height: 48px;
+  transition: transform var(--duration-instant) var(--ease-out-expo),
+              background var(--duration-fast) ease, border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+.cta.primary, .cta.affiliate, .cs-btn--primary {
+  background: var(--action-primary); color: var(--text-on-accent);
+  box-shadow: 0 10px 26px -14px rgba(70, 220, 171, 0.55);
+}
+.cta.primary:hover, .cta.affiliate:hover, .cs-btn--primary:hover {
+  background: var(--action-primary-hover); transform: translateY(-1px);
+  box-shadow: 0 14px 30px -14px rgba(70, 220, 171, 0.7);
+}
+.cta.secondary, .cta.internal, .cs-btn--ghost {
+  background: transparent; color: var(--text-primary);
+  border-color: var(--color-line-strong);
+}
+.cta.secondary:hover, .cta.internal:hover, .cs-btn--ghost:hover {
+  border-color: var(--color-sage-200); background: var(--color-mist-100);
+}
+.cta.lead { background: var(--color-mist-100); color: var(--text-primary); border-color: var(--color-line); }
+.cta.lead:hover { border-color: var(--color-line-strong); }
+/* Bare .cta/.cs-btn (no variant class) previously painted NOTHING: anchors fell
+   through to the cyan link color, native buttons to UA gray, and neither had a
+   hover. Default = ghost identity; :where() keeps specificity at one class so
+   every variant above/below still overrides cleanly. */
+.cta:where(:not(.primary):not(.affiliate):not(.secondary):not(.internal):not(.lead):not(.cs-palette-action)),
+.cs-btn:where(:not([class*="cs-btn--"]):not(.cs-palette-action)) {
+  background: var(--color-mist-100);
+  color: var(--text-primary);
+  border-color: var(--color-line-strong);
+}
+.cta:where(:not(.primary):not(.affiliate):not(.secondary):not(.internal):not(.lead):not(.cs-palette-action)):hover,
+.cs-btn:where(:not([class*="cs-btn--"]):not(.cs-palette-action)):hover {
+  border-color: var(--color-sage-200);
+  background: var(--color-accent-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px -18px rgba(70, 214, 162, 0.5);
+}
+
+/* Standalone arrow links ("Browse all N guides →"): branded, never raw cyan. */
+.cs-arrowlink {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-display); font-weight: 750; font-size: 0.95rem;
+  color: var(--color-evidence); text-decoration: none;
+}
+.cs-arrowlink .cs-arrow { transition: transform var(--duration-instant) var(--ease-out-expo); }
+.cs-arrowlink:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+.cs-arrowlink:hover .cs-arrow { transform: translateX(4px); }
+.cs-on-paper .cs-arrowlink, .cs-band--paper .cs-arrowlink,
+.cs-band--sage .cs-arrowlink, .cs-band--mist .cs-arrowlink { color: #0e7d5c; }
+.cta .cs-arrow { transition: transform var(--duration-instant) var(--ease-out-expo); }
+.cta:hover .cs-arrow { transform: translateX(3px); }
+/* ADOPTED (design pass 2026-08-27, Phase-2 selection #4): ui-skills.com
+   "Add scale feedback to pressed buttons" recipe (ibelick/ui-skills, MIT) —
+   CSS-only :active scale(0.98) at the 90ms instant tier across the whole
+   .cta/.cs-btn family, complementing the shipped hover sweep. The second rule
+   out-specifies the palette-action :hover transform so the press cue survives
+   on primary CTAs. Keyboard-modality + reduced-motion kills live in
+   00-foundation. */
+.cta:active, .cs-btn:active { transform: translateY(0) scale(0.98); }
+:is(.cs-palette-action, .cta.primary, .cta.affiliate, .cs-btn--primary, .cs-btn--gradient, .cs-btn--animated):hover:active {
+  transform: translateY(0) scale(0.98);
+}
+.cta[aria-disabled="true"], .cs-btn[disabled] {
+  background: var(--color-held-bg); color: var(--color-held);
+  border-color: transparent; cursor: not-allowed; box-shadow: none; transform: none;
+}
+
+/* Shared palette-action utility (W4). Existing semantic button variants alias
+   into it so a renderer cannot accidentally leave one palette CTA static. */
+:is(.cs-palette-action, .cta.primary, .cta.affiliate, .cs-btn--primary, .cs-btn--gradient, .cs-btn--animated) {
+  background-color: var(--cs-aurora-2);
+  background-image: var(--cs-accent-gradient);
+  background-size: 240% 100%;
+  background-position: 0% 50%;
+  color: var(--text-on-accent) !important;
+  border-color: transparent;
+}
+/* Design pass 2026-08-27: the old hover only changed background-color UNDER a
+   fully-covering gradient image — visually imperceptible on every primary CTA
+   site-wide. The 240% background-size was built for a sweep; use it. */
+:is(.cs-palette-action, .cta.primary, .cta.affiliate, .cs-btn--primary, .cs-btn--gradient, .cs-btn--animated) {
+  transition: background-position var(--duration-base) var(--ease-out-expo),
+              transform var(--duration-instant) var(--ease-out-expo),
+              box-shadow var(--duration-fast) ease;
+}
+:is(.cs-palette-action, .cta.primary, .cta.affiliate, .cs-btn--primary, .cs-btn--gradient, .cs-btn--animated):hover {
+  background-color: var(--cs-aurora-3);
+  background-image: var(--cs-accent-gradient);
+  background-position: 100% 50%;
+  color: var(--text-on-accent) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px -14px rgba(63, 217, 164, 0.65);
+}
+
+/* PASS 4 AURORA SYSTEM
+   Shared primitive so every route-family bundle receives the same continuously
+   orbiting perimeter. Animating the conic angle avoids the clipped/frozen
+   pseudo-element defect on long pills and compact controls. */
+@property --cs-button-aurora-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes cs-button-aurora-orbit { to { --cs-button-aurora-angle: 360deg; } }
+
+:is(.cs-palette-action, .cta.primary, .cta.affiliate, .cs-btn--primary, .cs-btn--gradient, .cs-btn--animated, .cs-btn--writeglow) {
+  --cs-button-face: var(--cs-accent-gradient, linear-gradient(104deg, #17a87e 0%, #3fd9a4 38%, #6fc6ee 72%, #a99bf2 100%));
+  border: 2px solid transparent;
+  background:
+    var(--cs-button-face) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), #6febb9 0deg, #6fc6ee 82deg, #c6b5ff 160deg, #ffad99 236deg, #6febb9 360deg) border-box;
+  background-origin: border-box;
+  animation: cs-button-aurora-orbit 5s linear infinite;
+  box-shadow: 0 12px 30px -16px rgba(70, 220, 171, .58);
+}
+:is(.cs-palette-action, .cta.primary, .cta.affiliate, .cs-btn--primary, .cs-btn--gradient, .cs-btn--animated, .cs-btn--writeglow):is(:hover, :focus-visible) {
+  filter: saturate(1.16) brightness(1.04);
+  box-shadow: 0 16px 40px -15px rgba(111, 198, 238, .66), 0 0 0 1px rgba(111, 235, 185, .18);
+}
+
+:is(
+  .cta.secondary,
+  .cta.internal,
+  .cs-btn--ghost,
+  .cs-btn--quiet,
+  .cs-home-quick,
+  .cta:where(:not(.primary):not(.affiliate):not(.lead):not(.cs-palette-action)),
+  .cs-btn:where(:not([class*="cs-btn--"]):not(.cs-palette-action))
+) {
+  --cs-button-face: linear-gradient(transparent, transparent);
+  border: 1px solid transparent;
+  background:
+    var(--cs-button-face) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), rgba(111, 235, 185, .46), rgba(111, 198, 238, .28) 28%, rgba(198, 181, 255, .38) 58%, rgba(255, 173, 153, .26) 78%, rgba(111, 235, 185, .46)) border-box;
+  background-origin: border-box;
+  animation: cs-button-aurora-orbit 8s linear infinite;
+}
+:is(
+  .cta.secondary,
+  .cta.internal,
+  .cs-btn--ghost,
+  .cs-btn--quiet,
+  .cs-home-quick,
+  .cta:where(:not(.primary):not(.affiliate):not(.lead):not(.cs-palette-action)),
+  .cs-btn:where(:not([class*="cs-btn--"]):not(.cs-palette-action))
+):is(:hover, :focus-visible) {
+  --cs-button-face: linear-gradient(rgba(111, 235, 185, .1), rgba(111, 198, 238, .06));
+  box-shadow: 0 12px 30px -20px rgba(111, 198, 238, .7), inset 0 0 24px rgba(111, 235, 185, .04);
+}
+:is(.cta, .cs-btn, .cs-home-quick):is([aria-disabled="true"], [disabled]) {
+  animation: none;
+  filter: none;
+}
+
+/* ---- chips / badges / status ---------------------------------------------- */
+.cs-chip, .chip, .pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.82rem; font-weight: 600; line-height: 1;
+  padding: 7px 12px; border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line); color: var(--text-secondary);
+  background: var(--color-mist-100); white-space: nowrap;
+}
+.cs-chip--positive { color: var(--cs-pill-positive); background: var(--cs-pill-positive-bg); border-color: transparent; }
+.cs-chip--negative { color: var(--cs-pill-negative); background: var(--cs-pill-negative-bg); border-color: transparent; }
+.cs-chip--warn { color: var(--color-warning); background: var(--color-warning-bg); border-color: transparent; }
+.cs-chip--held { color: var(--color-held); background: var(--color-held-bg); border-color: transparent; }
+.cs-chip--drug-semaglutide { color: var(--cs-drug-semaglutide); border-color: currentColor; background: transparent; }
+.cs-chip--drug-tirzepatide { color: var(--cs-drug-tirzepatide); border-color: currentColor; background: transparent; }
+.cs-chip--drug-brand { color: var(--cs-drug-brand); border-color: currentColor; background: transparent; }
+.price-checked-chip, .cs-checked {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; font-weight: 600; color: var(--color-evidence);
+  padding: 5px 10px; border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+}
+.cs-on-paper .price-checked-chip { color: #0e7d5c; background: rgba(14, 125, 92, 0.1); }
+
+/* ---- price lockups -------------------------------------------------------- */
+.cs-price {
+  font-family: var(--font-display); font-weight: 800; letter-spacing: -0.03em;
+  color: var(--cs-price-current); font-variant-numeric: tabular-nums;
+}
+.cs-price--xl { font-size: clamp(2rem, 3.4vw, 2.9rem); line-height: 1; }
+.cs-price--lg { font-size: 1.65rem; line-height: 1.05; }
+.cs-price .cs-price-cadence { font-size: 0.55em; font-weight: 600; color: var(--text-secondary); letter-spacing: 0; }
+.cs-price-anchor { color: var(--cs-price-anchor); text-decoration: line-through; font-weight: 600; }
+.cs-price-context {
+  display: block; font-size: 0.86rem; color: var(--text-secondary); font-weight: 500;
+}
+.cs-price-packet { display: grid; gap: 4px; }
+.cs-price-packet .cs-price-first { font-weight: 700; color: var(--text-primary); }
+/* Wellmedr-class rule: first payment ALWAYS at equal-or-greater prominence
+   than ongoing. The packet renders first-payment line before ongoing line. */
+.cs-cheaper-callout {
+  display: grid; gap: 2px; padding: 10px 14px; border-radius: var(--radius-control);
+  background: var(--color-warning-bg); border: 1px solid rgba(240, 178, 63, 0.35);
+  color: var(--color-warning); font-size: 0.86rem; font-weight: 650;
+}
+.cs-cheaper-callout small { color: var(--text-secondary); font-weight: 500; }
+
+/* ---- cards ---------------------------------------------------------------- */
+.cs-card, .card {
+  background: var(--color-surface); border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card); padding: var(--space-5);
+  transition: transform var(--duration-fast) var(--ease-out-expo), box-shadow var(--duration-fast) ease;
+}
+a.cs-card:hover, .cs-card--hover:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: var(--shadow-float);
+}
+.cs-card--float { background: var(--color-surface-float); box-shadow: var(--shadow-float); }
+.cs-card--veil-semaglutide { background: var(--cs-veil-semaglutide); }
+.cs-card--veil-tirzepatide { background: var(--cs-veil-tirzepatide); }
+.cs-card--veil-oral { background: var(--cs-veil-oral); }
+.cs-card--veil-brand { background: var(--cs-veil-brand); }
+.cs-card[class*="--veil-"] {
+  color: var(--cs-ink-on-paper);
+  --text-primary: var(--cs-ink-on-paper);
+  --text-secondary: var(--cs-muted-on-paper);
+  --color-line: var(--cs-line-on-paper);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+.cs-card--featured {
+  background: var(--cs-accent-gradient); color: #04120e;
+  --text-primary: #04120e; --text-secondary: rgba(4, 18, 14, 0.72);
+  --color-line: rgba(4, 18, 14, 0.2);
+  box-shadow: 0 24px 56px -24px rgba(63, 217, 164, 0.5);
+}
+
+/* ---- logo tiles ----------------------------------------------------------- */
+.cs-logo-tile {
+  width: var(--cs-tile); height: var(--cs-tile); border-radius: 16px;
+  display: grid; place-items: center; overflow: hidden;
+  background: #ffffff; box-shadow: inset 0 0 0 1px rgba(20, 32, 27, 0.1);
+}
+.cs-logo-tile img { max-width: 78%; max-height: 66%; object-fit: contain; transform: scale(var(--logo-content-scale, 1)); }
+.cs-wordmark-tile {
+  width: var(--cs-tile); height: var(--cs-tile); border-radius: 16px;
+  display: grid; place-items: center; text-align: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 0.72rem;
+  letter-spacing: 0.02em; line-height: 1.05; padding: 6px;
+  background: var(--cs-accent-gradient-soft); color: var(--text-primary);
+  box-shadow: inset 0 0 0 1px var(--color-line);
+}
+
+/* ---- info dots / popovers (hover info boxes) ------------------------------ */
+.cs-infodot {
+  inline-size: 44px; block-size: 44px; border-radius: 50%; position: relative; isolation: isolate;
+  display: inline-grid; place-items: center; font-size: 0.72rem; font-weight: 700;
+  background: transparent; color: var(--text-secondary);
+  border: 0; cursor: pointer; vertical-align: middle;
+}
+.cs-infodot::before {
+  content: ""; position: absolute; inset: 12px; z-index: -1; border-radius: 50%;
+  background: var(--color-mist-100); border: 1px solid var(--color-line);
+}
+.cs-infodot:hover, .cs-infodot[aria-expanded="true"] { color: var(--color-evidence); }
+.cs-infodot:hover::before, .cs-infodot[aria-expanded="true"]::before { border-color: var(--color-sage-200); }
+.cs-popover {
+  position: absolute; z-index: 60; max-width: 320px;
+  background: var(--color-surface-float); color: var(--text-primary);
+  border-radius: var(--radius-control); box-shadow: var(--shadow-float);
+  padding: 12px 14px; font-size: 0.86rem; line-height: 1.5;
+  opacity: 0; transform: translateY(4px); pointer-events: none;
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) var(--ease-out-expo);
+}
+.cs-popover.is-open { opacity: 1; transform: none; pointer-events: auto; }
+
+/* ---- tables + mobile fallbacks -------------------------------------------- */
+.table-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+.table-controls button {
+  min-height: 48px; padding: 11px 14px;
+  border: 1px solid var(--color-line); border-radius: var(--radius-control);
+  background: var(--color-surface); color: var(--text-primary);
+  font-weight: 650; cursor: pointer;
+  transition: border-color var(--duration-instant) ease, background var(--duration-instant) ease;
+}
+.table-controls button[aria-pressed="true"] {
+  border-color: var(--color-evidence); background: var(--color-sage-100);
+}
+.cs-table-wrap { overflow-x: auto; border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+table.cs-table { border-collapse: collapse; width: 100%; background: var(--color-surface); font-size: 0.94rem; }
+.cs-table th {
+  text-align: left; font-family: var(--font-display); font-size: 0.78rem;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);
+  padding: 12px 16px; border-bottom: 1px solid var(--color-line-strong);
+}
+.cs-table td { padding: 12px 16px; border-bottom: 1px solid var(--color-line-soft); vertical-align: top; }
+.cs-table tr:last-child td { border-bottom: 0; }
+.cs-table tbody tr { transition: background var(--duration-instant) ease; }
+.cs-table tbody tr:hover { background: var(--color-mist-100); }
+@media (max-width: 720px) {
+  .cs-table--stack thead { position: absolute; clip: rect(0 0 0 0); }
+  .cs-table--stack tr { display: grid; gap: 2px; padding: 12px 0; border-bottom: 1px solid var(--color-line-soft); }
+  .cs-table--stack td { display: grid; grid-template-columns: minmax(96px, 38%) 1fr; gap: 10px; border: 0; padding: 4px 16px; }
+  .cs-table--stack td::before { content: attr(data-label); font-weight: 650; color: var(--text-secondary); font-size: 0.82rem; }
+}
+
+/* ---- segmented controls / tabs -------------------------------------------- */
+.cs-segment { display: inline-flex; padding: 4px; gap: 2px; border-radius: var(--radius-pill); background: var(--color-mist-100); border: 1px solid var(--color-line); }
+.cs-segment button, .cs-segment [role="tab"] {
+  border: 0; background: transparent; color: var(--text-secondary);
+  font-weight: 650; font-size: 0.9rem; padding: 8px 16px; border-radius: var(--radius-pill);
+  cursor: pointer; transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+.cs-segment [aria-pressed="true"], .cs-segment [aria-selected="true"] {
+  background: var(--cs-accent-gradient); color: #04120e;
+}
+
+/* ---- details / accordions ------------------------------------------------- */
+details.cs-details { border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); }
+details.cs-details + details.cs-details { margin-top: 10px; }
+.cs-details summary {
+  cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; padding: 16px 20px; font-family: var(--font-display); font-weight: 650;
+}
+.cs-details summary::-webkit-details-marker { display: none; }
+.cs-details summary::after {
+  content: ""; inline-size: 10px; block-size: 10px; flex: none;
+  border-right: 2px solid var(--text-secondary); border-bottom: 2px solid var(--text-secondary);
+  transform: rotate(45deg); transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+.cs-details[open] summary::after { transform: rotate(225deg) translate(-2px, -2px); }
+.cs-details > :not(summary) { padding: 0 20px 18px; }
+
+/* ---- inputs --------------------------------------------------------------- */
+input[type="text"], input[type="email"], input[type="number"], input[type="search"], select, textarea {
+  font: inherit; color: var(--text-primary);
+  background: var(--color-mist-100); border: 1px solid var(--color-line);
+  border-radius: var(--radius-control); padding: 12px 14px; min-height: 48px; width: 100%;
+  transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease;
+}
+input:hover, select:hover, textarea:hover { border-color: var(--color-line-strong); }
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: none; border-color: var(--color-sage-200); box-shadow: var(--cs-ring);
+}
+label { font-weight: 650; font-size: 0.92rem; display: block; margin-bottom: 6px; }
+.capture-email-field { display: grid; gap: 6px; width: 100%; margin: 0; }
+.capture-email-field > span { display: block; }
+
+/* ---- source receipts / citations ------------------------------------------ */
+.cs-receipt {
+  display: grid; gap: 6px; padding: 14px 16px; border-radius: var(--radius-card);
+  background: var(--color-surface); box-shadow: var(--shadow-card);
+  font-size: 0.88rem;
+}
+.cs-receipt .cs-receipt-source { color: var(--color-interactive); word-break: break-word; }
+.cs-receipt .cs-receipt-date { color: var(--color-evidence); font-weight: 650; font-size: 0.8rem; }
+.cs-unknown {
+  color: var(--color-held); font-style: italic; font-size: 0.9em;
+}
+.cs-unknown::before { content: "— "; }
+
+/* ---- skeleton / page-load states -------------------------------------------
+   ADOPTED (design pass 2026-08-27, Phase-2 selection #1): shadcn/ui Skeleton
+   pattern (MIT — github.com/shadcn-ui/ui) rebuilt on our tokens: shimmer rides
+   a background-position keyframe; under reduced motion or keyboard modality
+   the 00-foundation kills leave a static block, which is the correct fallback.
+   HARD RULE carried from the selection: a skeleton occupies EXACTLY the box of
+   the content it stands in for — zero layout shift on swap. Appliers (quiz
+   results, search panel, med-rail art) each hold that geometry in their own
+   layer. */
+.cs-skeleton {
+  display: block;
+  border-radius: var(--radius-control);
+  background-color: var(--color-mist-100);
+  background-image: linear-gradient(100deg, transparent 32%, rgba(233, 247, 241, 0.1) 50%, transparent 68%);
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  background-position: 130% 0;
+  animation: cs-skeleton-shimmer 1.4s ease-in-out infinite;
+  color: transparent;
+  pointer-events: none;
+  user-select: none;
+}
+.cs-skeleton--text { block-size: 0.9em; border-radius: 6px; }
+.cs-skeleton--pill { border-radius: var(--radius-pill); }
+@keyframes cs-skeleton-shimmer {
+  from { background-position: 130% 0; }
+  to { background-position: -90% 0; }
+}
+
+/* ADOPTED (design pass 2026-08-27, Phase-2 selection #5): ui-skills.com
+   "Use tabular-nums for data" recipe (ibelick/ui-skills, MIT) — every counter
+   and count-up target renders fixed-width digits so the tween never jitters.
+   Price lockups carry the same declaration per owning layer. */
+[data-counter], [data-counter-to], [data-cost-countup] { font-variant-numeric: tabular-nums; }

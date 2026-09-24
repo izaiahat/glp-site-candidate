@@ -1,0 +1,449 @@
+{
+  "programs": [
+    {
+      "asset_url": null,
+      "output_file": "found-health.svg",
+      "program_id": "found-health",
+      "provider": "Found",
+      "selector_class": "nav-brand-logo",
+      "source_kind": "inline_svg",
+      "source_page_url": "https://joinfound.com/terms/offer-terms",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://www.yourera.com/website/assets/logo-dark.png",
+      "output_file": "yourera-program.webp",
+      "program_id": "yourera-program",
+      "provider": "yourEra",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.yourera.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://trytrimi.com/_next/static/media/trimi-logo-clean.5002ccb9.png",
+      "output_file": "trimi-glp-1.webp",
+      "program_id": "trimi-glp-1",
+      "provider": "Trimi",
+      "source_kind": "remote_image",
+      "source_page_url": "https://trytrimi.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e55bb8c70d7ec9a46689ac_ShedRx%20Logo.avif",
+      "output_file": "shedrx.webp",
+      "program_id": "shedrx",
+      "provider": "Shed",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.shedrx.com/compounded-semaglutide/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://galaglp1.com/_next/image?url=%2Fassets%2Fimages%2Flogo-black.png&w=384&q=75",
+      "output_file": "gala-health.webp",
+      "program_id": "gala-health",
+      "provider": "Gala GLP-1",
+      "source_kind": "remote_image",
+      "source_page_url": "https://galaglp1.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/6941681eb922d6bffb7289c0/69b77f8f349bf11990c80b6e_6942bff7c18e39faf74a68ba_oak-logo%201.svg",
+      "output_file": "oak-weight-loss-program.webp",
+      "program_id": "oak-weight-loss-program",
+      "provider": "Oak Longevity",
+      "source_kind": "embedded_raster_svg",
+      "source_page_url": "https://www.oaklovesyou.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": null,
+      "fallback_note": "The first-party header renders its brand as styled text rather than an image; the local SVG preserves the verified HealthRx.com text lockup without claiming an official downloadable logo file.",
+      "output_file": "healthrx.svg",
+      "program_id": "healthrx",
+      "provider": "HealthRX",
+      "selector_class": "site-nav-logo",
+      "source_kind": "first_party_text_lockup",
+      "source_page_url": "https://healthrx.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://tryageless.com/wp-content/uploads/2026/04/TA-Logo-2-1.png",
+      "output_file": "try-ageless.webp",
+      "program_id": "try-ageless",
+      "provider": "AgelessRx",
+      "source_kind": "remote_image",
+      "source_page_url": "https://tryageless.com/affiliate-weight-plans/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://wellorithm.com/assets/images/campaign-7/logo-main.webp",
+      "output_file": "wellorithm.webp",
+      "program_id": "wellorithm",
+      "provider": "Wellorithm",
+      "source_kind": "remote_image",
+      "source_page_url": "https://wellorithm.com/campaign-7",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/68c1a712d98781ef02cda7a8/68d29a4f785a3cea192ef531_DarkNewlogo.svg",
+      "output_file": "enhance-md.svg",
+      "program_id": "enhance-md",
+      "provider": "Enhance.MD",
+      "source_kind": "remote_image",
+      "source_page_url": "https://enhance.md/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://serenahealth.life/storefront/images/logo-transparent.png",
+      "output_file": "serena-health.webp",
+      "program_id": "serena-health",
+      "provider": "Serena Health",
+      "source_kind": "remote_image",
+      "source_page_url": "https://serenahealth.life/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://joinmademed.com/",
+      "expected_sha256": "07df6b74726b15086fb89c89f08209635d3114af7b71859341d50d111f7fe2e0",
+      "local_file": "assets/provider-logo-sources/mademed.svg",
+      "output_file": "mademed.svg",
+      "program_id": "mademed",
+      "provider": "MadeMed",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://joinmademed.com/",
+      "surface": "light",
+      "verified_as_of": "2026-07-30"
+    },
+    {
+      "asset_url": "https://www.telosrx.com/favicon.svg",
+      "expected_sha256": "715578123913d499a203a91ff3e6f344612adcbe47e255336f92914d0ac8a199",
+      "local_file": "assets/provider-logo-sources/telos-rx.webp",
+      "output_file": "telos-rx.webp",
+      "program_id": "telos-rx",
+      "provider": "telos rx",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://www.telosrx.com/weightlossprograms",
+      "surface": "light",
+      "verified_as_of": "2026-07-30"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/67be6872e24c348560fb6063/67dba61c8aa5cd070b88c7b6_g10.png",
+      "expected_sha256": "0d86ac65d87dcf1c270f13d900f73f89b27478436ac58015151ba1a733a32773",
+      "local_file": "assets/provider-logo-sources/live-vital-launch.webp",
+      "output_file": "live-vital-launch.webp",
+      "program_id": "live-vital-launch",
+      "provider": "Live Vital Launch",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://livevital.com/semaglutide-glp-1",
+      "surface": "light",
+      "verified_as_of": "2026-07-30"
+    },
+    {
+      "asset_url": "https://www.struthealth.com/_next/static/media/strut-logo.7723844b.svg",
+      "expected_sha256": "7bbc956e10f73a7ee388b48822eb02a0e51cff3ba8c9700e66ca36f8482fa84e",
+      "local_file": "assets/provider-logo-sources/strut-health.webp",
+      "output_file": "strut-health.webp",
+      "program_id": "strut-health",
+      "provider": "Strut Health",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://www.struthealth.com/weight-loss",
+      "surface": "light",
+      "verified_as_of": "2026-07-30"
+    },
+    {
+      "asset_url": "https://trtnation.com/wp-content/uploads/2024/12/LOGO-with-R-e1737473379227.png",
+      "expected_sha256": "6402ffc1173736a3b483611938314b8744d9089b02dc1b8f00a8c0b0ac7bfe55",
+      "local_file": "assets/provider-logo-sources/trt-nation.webp",
+      "output_file": "trt-nation.webp",
+      "program_id": "trt-nation",
+      "provider": "TRT Nation",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://trtnation.com/weight-loss-medications/",
+      "surface": "light",
+      "verified_as_of": "2026-07-30"
+    },
+    {
+      "asset_url": "https://trymeasured.com/logo.svg",
+      "output_file": "measured.svg",
+      "program_id": "measured",
+      "provider": "Measured",
+      "source_kind": "remote_image",
+      "source_page_url": "https://trymeasured.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://www.coivas.com/logo.svg",
+      "output_file": "coivas.svg",
+      "program_id": "coivas",
+      "provider": "Coivas",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.coivas.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://drhouse.com/app/themes/drhouse/public/svgs/menu/logo-2024.1ea60d.svg",
+      "output_file": "drhouse.svg",
+      "program_id": "drhouse",
+      "provider": "DrHouse",
+      "source_kind": "remote_image",
+      "source_page_url": "https://drhouse.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://biltrx.com/wp-content/uploads/2025/02/biltrx-logo-scaled.webp",
+      "output_file": "biltrx.webp",
+      "program_id": "biltrx",
+      "provider": "BiltRx",
+      "source_kind": "remote_image",
+      "source_page_url": "https://biltrx.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://orderlymeds.com/wp-content/uploads/2026/04/orderly-meds-logo-r-header-1.png",
+      "output_file": "orderlymeds.webp",
+      "program_id": "orderlymeds",
+      "provider": "OrderlyMeds",
+      "source_kind": "remote_image",
+      "source_page_url": "https://orderlymeds.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://mydrhank.com/assets/logo-Dk6R4bNG.png",
+      "output_file": "mydrhank.webp",
+      "program_id": "mydrhank",
+      "provider": "MyDrHank",
+      "source_kind": "remote_image",
+      "source_page_url": "https://mydrhank.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/664e1d5777485eb27ba73dd5/6a208a2269bf2a682a5b17b0_GobyMeds-Icon.png",
+      "output_file": "gobymeds.webp",
+      "program_id": "gobymeds",
+      "provider": "GobyMeds",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.gobymeds.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://www.synergyrx.co/assets/images/brand/logo.svg",
+      "output_file": "synergy-rx-review.webp",
+      "program_id": "synergy-rx-review",
+      "provider": "Synergy Rx",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.synergyrx.co/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://www.breezemeds.com/assets/images/brand/logo.png",
+      "output_file": "breeze-meds-review.webp",
+      "program_id": "breeze-meds-review",
+      "provider": "Breeze Meds",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.breezemeds.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://images.squarespace-cdn.com/content/v1/6868571883272f63d52d6593/43f2d3e6-170d-4db3-8b36-904c25bdd942/carebarerx-horizontal-inverted-rgb-1269px%40300ppi.png?format=1500w",
+      "output_file": "care-bare-rx-glp1-review.webp",
+      "program_id": "care-bare-rx-glp1-review",
+      "provider": "Care Bare Rx GLP1",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.carebarerx.com/home2",
+      "surface": "dark"
+    },
+    {
+      "asset_url": "https://www.altrx.com/green-lander/section-14/altrx-logo.svg",
+      "output_file": "altrx-glp1-us-cps.webp",
+      "program_id": "altrx-glp1-us-cps",
+      "provider": "altRx",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.altrx.com",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://assets.embeddables.com/novi-logo_015221831483870574.svg",
+      "output_file": "novi-weight-loss-glp-1.webp",
+      "program_id": "novi-weight-loss-glp-1",
+      "provider": "Novi",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.joinnovi.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/61bbbbd3e287ff6cf9bcbda8/66f64184a30e0919d28c5316_curex-logo.svg",
+      "output_file": "curex-glp-1.webp",
+      "program_id": "curex-glp-1",
+      "provider": "Curex",
+      "source_kind": "remote_image",
+      "source_page_url": "https://getcurex.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://ro.co/rocostatic/favicon.svg",
+      "output_file": "ro-wegovy-glp1-quiz-us-cpl.webp",
+      "program_id": "ro-wegovy-glp1-quiz-us-cpl",
+      "provider": "Ro",
+      "source_kind": "remote_image",
+      "source_page_url": "https://ro.co/lp/weight-loss/quiz/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a0ccac3db38d1a0339ab77a_logo.png",
+      "output_file": "eden-xentraffic-offer-3051.webp",
+      "program_id": "eden-xentraffic-offer-3051",
+      "provider": "Eden",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.eden.health/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://landing.fh.co/logos/futurhealth-logo-icon.webp",
+      "output_file": "futurhealth-wegovy-pillform.webp",
+      "program_id": "futurhealth-wegovy-pillform",
+      "provider": "FuturHealth",
+      "source_kind": "remote_image",
+      "source_page_url": "https://landing.fh.co/medication-wegovy-pillform-discount/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/6a071fa95dd6adbb58e14102/6a3be913bd470ba5c35f194e_lttl-logo-white-63wA2E4Y.png",
+      "output_file": "lttl-glp-landing-page-2.webp",
+      "program_id": "lttl-glp-landing-page-2",
+      "provider": "Lttl",
+      "source_kind": "remote_image",
+      "source_page_url": "https://lttl.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://framerusercontent.com/images/L27wBVHjc8XIP3sns60POcVI.png",
+      "output_file": "enhanced-tirzepatide-funnel-b.webp",
+      "program_id": "enhanced-tirzepatide-funnel-b",
+      "provider": "Enhanced",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.enhanced.com/live-enhanced/products/tirzepatide",
+      "surface": "dark"
+    },
+    {
+      "asset_url": "https://www.sunlight.com/wp-content/themes/sunlight/assets/images/sunlight-logo.svg?v=1",
+      "output_file": "sunlight-glp1.webp",
+      "program_id": "sunlight-glp1",
+      "provider": "Sunlight.com",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.sunlight.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://joinskinny.com/images/common/jslogo.png",
+      "output_file": "joinskinny-semaglutide-glp-1-us.webp",
+      "program_id": "joinskinny-semaglutide-glp-1-us",
+      "provider": "JoinSkinny",
+      "source_kind": "remote_image",
+      "source_page_url": "https://joinskinny.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/6941a913cecfd97ea31325cc/69497d7b5aad993286381870_levelsRx%20logo.svg",
+      "output_file": "levelsrx-extra-cpa-home-page.webp",
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "provider": "LevelsRx",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.levelsrx.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/683079b098a24bdd710a41e6/683079b098a24bdd710a4534_Refills-Dark.svg",
+      "output_file": "refills.webp",
+      "program_id": "refills",
+      "provider": "Refills",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.refills.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://tmates.com/logos/tmates-full-color.svg",
+      "output_file": "tmates-xentraffic-offer-3154.webp",
+      "program_id": "tmates-xentraffic-offer-3154",
+      "provider": "TMates",
+      "source_kind": "remote_image",
+      "source_page_url": "https://tmates.com/products/semaglutide",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://trimrx.com/blog/wp-content/themes/trimrx/assets/images/logo-white.svg",
+      "output_file": "trimrx-xentraffic-offer-3014.webp",
+      "program_id": "trimrx-xentraffic-offer-3014",
+      "provider": "TrimRX",
+      "source_kind": "remote_image",
+      "source_page_url": "https://trimrx.com/glp1/offer-v8-hero",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://tryyucca.com/new-yucca-logo.svg",
+      "output_file": "yucca-health-xentraffic-offer-3117.webp",
+      "program_id": "yucca-health-xentraffic-offer-3117",
+      "provider": "Yucca Health",
+      "source_kind": "remote_image",
+      "source_page_url": "https://tryyucca.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://www.longevitymeds.com/frontend/home/v4/images/logo.webp",
+      "output_file": "longevity-meds-glp-1-review.webp",
+      "program_id": "longevity-meds-glp-1-review",
+      "provider": "Longevity Meds",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.longevitymeds.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://snagrx.com/images/logo.svg",
+      "output_file": "snagrx.webp",
+      "program_id": "snagrx",
+      "provider": "SnagRX",
+      "source_kind": "remote_image",
+      "source_page_url": "https://snagrx.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://humecare.com/cdn/shop/files/svgviewer-output_5.svg?v=1776429134&width=600",
+      "output_file": "humecare-data-driven-glp-1-weight-loss-system.webp",
+      "program_id": "humecare-data-driven-glp-1-weight-loss-system",
+      "provider": "HumeCare+",
+      "source_kind": "remote_image",
+      "source_page_url": "https://humecare.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://g-plans.com/images/branding/g-plans-logo.svg",
+      "output_file": "g-plan.webp",
+      "program_id": "g-plan",
+      "provider": "G-Plans",
+      "source_kind": "remote_image",
+      "source_page_url": "https://g-plans.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://jrnys.com/jrnys/images/2024-09-20_14-29-39.png",
+      "output_file": "jrnys-review.webp",
+      "program_id": "jrnys-review",
+      "provider": "JRNYS",
+      "source_kind": "remote_image",
+      "source_page_url": "https://jrnys.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://framerusercontent.com/images/1BRDkIzVV7TxG8fJDyUWdUDDE.png?width=500&height=105",
+      "output_file": "medvi-review.webp",
+      "program_id": "medvi-review",
+      "provider": "MEDVI",
+      "source_kind": "remote_image",
+      "source_page_url": "https://glp1.medvi.org/",
+      "surface": "light"
+    }
+  ],
+  "research_authority": "Firecrawl first-party branding extraction plus direct first-party HTML verification",
+  "runtime_remote_assets_allowed": false,
+  "schema": "glp-provider-logo-sources-v1",
+  "verified_as_of": "2026-09-01"
+}

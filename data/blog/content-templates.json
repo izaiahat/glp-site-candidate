@@ -1,0 +1,43 @@
+{
+  "schema": "clinic-scout-blog-templates-v1-addenda-a-f",
+  "origin": "glp1first structural baseline improved with mature comparison-site monetization and evidence gates; no copied prose, claims, or branding",
+  "author_id": "clinic-scout-editorial-team",
+  "clinician_required": false,
+  "templates": [
+    {
+      "template_id": "low-commercial-comparison",
+      "risk_tier": "LOW",
+      "intents": ["provider-vs-provider", "best-by-constraint", "cost-and-fees"],
+      "required_blocks": ["direct-answer", "comparison-table", "section-winners", "total-cost-check", "limitations", "source-ledger", "inline-ftc-disclosure", "private-quiz-cta"],
+      "minimum_primary_or_commercial_sources": 2,
+      "affiliate_allowed_after_gate": true
+    },
+    {
+      "template_id": "medium-coverage-guide",
+      "risk_tier": "MEDIUM",
+      "intents": ["insurer-specific", "prior-authorization", "state-coverage"],
+      "required_blocks": ["direct-answer", "scope-and-date", "plan-variation-warning", "official-plan-sources", "cms-or-regulatory-source", "questions-to-ask", "source-ledger"],
+      "minimum_sources": 3,
+      "primary_medical_or_regulatory_source_required": true,
+      "affiliate_allowed_after_gate": false
+    },
+    {
+      "template_id": "medium-evidence-explainer",
+      "risk_tier": "MEDIUM",
+      "intents": ["drug-status", "mechanism", "side-effect-overview", "consumer-safety"],
+      "required_blocks": ["direct-answer", "what-evidence-shows", "what-evidence-does-not-show", "fda-label-or-safety-source", "peer-reviewed-sources", "questions-for-prescriber", "source-ledger"],
+      "minimum_sources": 3,
+      "inline_claim_citations_required": true,
+      "affiliate_allowed_after_gate": false
+    },
+    {
+      "template_id": "high-risk-reframe-only",
+      "risk_tier": "HIGH",
+      "intents": ["dosing", "individualized-treatment", "diagnosis", "outcome-prediction"],
+      "publication_state": "BLOCKED_OR_REFRAME",
+      "allowed_output": "non-individualized questions to ask a licensed prescriber",
+      "affiliate_allowed_after_gate": false
+    }
+  ],
+  "global_release_gates": ["unique-keyword-owner", "risk-tier", "claim-source-map", "evidence-review-receipt", "honest-author", "quality", "internal-links", "noindex-batch", "operator-release"]
+}

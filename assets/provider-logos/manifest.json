@@ -1,0 +1,2980 @@
+{
+  "count": 57,
+  "logo_treatment_counts": {
+    "dark-chip": 11,
+    "light-chip": 46
+  },
+  "logo_treatment_derived_by": "scripts/analyze-provider-logo-luminance.py",
+  "logo_treatment_schema": "glp-provider-logo-treatment-v1",
+  "logos": [
+    {
+      "bytes": 5132,
+      "height": 26,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.356
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          2,
+          600,
+          171
+        ],
+        "mark_share": [
+          1.0,
+          0.282
+        ],
+        "reason": "mark_not_centred_in_canvas"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.34,
+        "contrast_on_light_chip": 21.0,
+        "mean_ink_rgb": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "measured_pixels": 8576,
+        "relative_luminance": 0.0,
+        "translucent_share": 0.9302
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/svg+xml",
+      "output_file": "found-health.svg",
+      "output_sha256": "77c9e5438ce8322d936dcc2f3d81f59137dc96d8dfb35afba5978bce684757f1",
+      "program_id": "found-health",
+      "provider": "Found",
+      "public_path": "/assets/provider-logos/found-health.svg",
+      "raw_sha256": "bb06fe5e72137938a060439b3640e6d5528e436d0babffeec8c5b518869579ca",
+      "resolved_url": "https://joinfound.com/terms/offer-terms",
+      "runtime_remote_load": false,
+      "source_asset_url": null,
+      "source_kind": "inline_svg",
+      "source_page_url": "https://joinfound.com/terms/offer-terms",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 90
+    },
+    {
+      "bytes": 11746,
+      "height": 126,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          14,
+          9,
+          494,
+          117
+        ],
+        "mark_share": [
+          0.945,
+          0.857
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.08,
+        "contrast_on_light_chip": 14.53,
+        "mean_ink_rgb": [
+          42.2,
+          41.2,
+          37.2
+        ],
+        "measured_pixels": 5815,
+        "relative_luminance": 0.0223,
+        "translucent_share": 0.8161
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "yourera-program.webp",
+      "output_sha256": "e373238163456508ca3cf6811b8fdffdbed1e96e5072e3693e81abb12e1eb76b",
+      "program_id": "yourera-program",
+      "provider": "yourEra",
+      "public_path": "/assets/provider-logos/yourera-program.webp",
+      "raw_sha256": "cce81567f74c37735fb024c7460f0d3205eff40946d331ae7b3c6e15c6f83c1b",
+      "resolved_url": "https://www.yourera.com/website/assets/logo-dark.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.yourera.com/website/assets/logo-dark.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.yourera.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 508
+    },
+    {
+      "bytes": 8162,
+      "height": 130,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          14,
+          9,
+          494,
+          121
+        ],
+        "mark_share": [
+          0.945,
+          0.862
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.2,
+        "contrast_on_light_chip": 13.1,
+        "mean_ink_rgb": [
+          1.2,
+          49.1,
+          94.0
+        ],
+        "measured_pixels": 9886,
+        "relative_luminance": 0.0302,
+        "translucent_share": 0.6694
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "trimi-glp-1.webp",
+      "output_sha256": "968b5f93673a9e40afbdb4f94e96878b173ed9a59d78854b2e402e5a51ba7e7f",
+      "program_id": "trimi-glp-1",
+      "provider": "Trimi",
+      "public_path": "/assets/provider-logos/trimi-glp-1.webp",
+      "raw_sha256": "75019a10cda65d3b3df2e7c57c07ea911dd95a658866d707fd854971c9008911",
+      "resolved_url": "https://trytrimi.com/_next/static/media/trimi-logo-clean.5002ccb9.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://trytrimi.com/_next/static/media/trimi-logo-clean.5002ccb9.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://trytrimi.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 508
+    },
+    {
+      "bytes": 1916,
+      "height": 98,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          8,
+          7,
+          284,
+          91
+        ],
+        "mark_share": [
+          0.945,
+          0.857
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.34,
+        "contrast_on_light_chip": 21.0,
+        "mean_ink_rgb": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "measured_pixels": 7212,
+        "relative_luminance": 0.0,
+        "translucent_share": 0.7779
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "shedrx.webp",
+      "output_sha256": "c21353d6643238b11fc44f8181e52fdf9afd6c7b343dcce5a70273bc36db230d",
+      "program_id": "shedrx",
+      "provider": "Shed",
+      "public_path": "/assets/provider-logos/shedrx.webp",
+      "raw_sha256": "37ff235981b312202c13dbbbfcf4a0222cdc94dd5bf774ae8a228392020cbcfe",
+      "resolved_url": "https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e55bb8c70d7ec9a46689ac_ShedRx%20Logo.avif",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e55bb8c70d7ec9a46689ac_ShedRx%20Logo.avif",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.shedrx.com/compounded-semaglutide/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 292
+    },
+    {
+      "bytes": 13144,
+      "height": 179,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.155,
+        "mark_box": [
+          11,
+          12,
+          391,
+          167
+        ],
+        "mark_share": [
+          0.945,
+          0.866
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.31,
+        "contrast_on_light_chip": 20.57,
+        "mean_ink_rgb": [
+          3.5,
+          3.5,
+          3.5
+        ],
+        "measured_pixels": 20381,
+        "relative_luminance": 0.0011,
+        "translucent_share": 0.5866
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "gala-health.webp",
+      "output_sha256": "07159f7b0b33928988859295057e8f7c9a6a914b03859ed8e2c95b160136c7a2",
+      "program_id": "gala-health",
+      "provider": "Gala GLP-1",
+      "public_path": "/assets/provider-logos/gala-health.webp",
+      "raw_sha256": "fc71106abdae8b83ed422915956d70090d14735163f0826feb34e70ce51cf261",
+      "resolved_url": "https://galaglp1.com/_next/image?url=%2Fassets%2Fimages%2Flogo-black.png&w=384&q=75",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://galaglp1.com/_next/image?url=%2Fassets%2Fimages%2Flogo-black.png&w=384&q=75",
+      "source_kind": "remote_image",
+      "source_page_url": "https://galaglp1.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 402
+    },
+    {
+      "bytes": 13934,
+      "height": 158,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          14,
+          11,
+          494,
+          147
+        ],
+        "mark_share": [
+          0.945,
+          0.861
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 2.66,
+        "contrast_on_light_chip": 5.9,
+        "mean_ink_rgb": [
+          22.0,
+          116.4,
+          21.4
+        ],
+        "measured_pixels": 10409,
+        "relative_luminance": 0.128,
+        "translucent_share": 0.7239
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "oak-weight-loss-program.webp",
+      "output_sha256": "8647a9faed6aacea00f96ce1833f5c8db040c1034c1ffd7568756d0766996b81",
+      "program_id": "oak-weight-loss-program",
+      "provider": "Oak Longevity",
+      "public_path": "/assets/provider-logos/oak-weight-loss-program.webp",
+      "raw_sha256": "3b67e577271d797f17c1db324f594fde0f4cfa0886d2d0b81961b7494b1742df",
+      "resolved_url": "https://cdn.prod.website-files.com/6941681eb922d6bffb7289c0/69b77f8f349bf11990c80b6e_6942bff7c18e39faf74a68ba_oak-logo%201.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/6941681eb922d6bffb7289c0/69b77f8f349bf11990c80b6e_6942bff7c18e39faf74a68ba_oak-logo%201.svg",
+      "source_kind": "embedded_raster_svg",
+      "source_page_url": "https://www.oaklovesyou.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 508
+    },
+    {
+      "bytes": 696,
+      "height": 72,
+      "logo_fit": {
+        "center_offset": [
+          0.062,
+          0.384
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          7,
+          15,
+          518,
+          124
+        ],
+        "mark_share": [
+          0.852,
+          0.182
+        ],
+        "reason": "mark_not_centred_in_canvas"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.64,
+        "contrast_on_light_chip": 9.56,
+        "mean_ink_rgb": [
+          34.1,
+          75.8,
+          74.4
+        ],
+        "measured_pixels": 5331,
+        "relative_luminance": 0.0598,
+        "translucent_share": 0.9579
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/svg+xml",
+      "output_file": "healthrx.svg",
+      "output_sha256": "64404ca9c943ed057f0425c34dd2605b82bf597077e4d34207a1d53b0fb22e8d",
+      "program_id": "healthrx",
+      "provider": "HealthRX",
+      "public_path": "/assets/provider-logos/healthrx.svg",
+      "raw_sha256": "d9f94b427c7f05e607e6613f0a20727c759f7da52be3b1664d1a48b22947d5e8",
+      "resolved_url": "https://healthrx.com/",
+      "runtime_remote_load": false,
+      "source_asset_url": null,
+      "source_kind": "first_party_text_lockup",
+      "source_page_url": "https://healthrx.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 310
+    },
+    {
+      "bytes": 8824,
+      "height": 183,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.166,
+        "mark_box": [
+          14,
+          13,
+          494,
+          170
+        ],
+        "mark_share": [
+          0.945,
+          0.858
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.31,
+        "contrast_on_light_chip": 20.59,
+        "mean_ink_rgb": [
+          3.2,
+          3.3,
+          2.6
+        ],
+        "measured_pixels": 7042,
+        "relative_luminance": 0.001,
+        "translucent_share": 0.849
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "try-ageless.webp",
+      "output_sha256": "b1a5ad70f8e9c1df32c8a89468cc4fcf5d85ae90c69a590acd4e77f940a163c8",
+      "program_id": "try-ageless",
+      "provider": "AgelessRx",
+      "public_path": "/assets/provider-logos/try-ageless.webp",
+      "raw_sha256": "266b1e7e7ce7cd6ea5c30fe9ffd527293bbc2e40aae74ba2ea33aae1cf93c639",
+      "resolved_url": "https://tryageless.com/wp-content/uploads/2026/04/TA-Logo-2-1.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://tryageless.com/wp-content/uploads/2026/04/TA-Logo-2-1.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://tryageless.com/affiliate-weight-plans/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 508
+    },
+    {
+      "bytes": 12612,
+      "height": 98,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          14,
+          7,
+          494,
+          91
+        ],
+        "mark_share": [
+          0.945,
+          0.857
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.05,
+        "contrast_on_light_chip": 16.54,
+        "mean_ink_rgb": [
+          3.5,
+          26.8,
+          78.0
+        ],
+        "measured_pixels": 5738,
+        "relative_luminance": 0.0135,
+        "translucent_share": 0.7785
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "wellorithm.webp",
+      "output_sha256": "1a14d20a870de05b3b965b01f58f8737bea029864d9847c7313e6b8f1cbfc778",
+      "program_id": "wellorithm",
+      "provider": "Wellorithm",
+      "public_path": "/assets/provider-logos/wellorithm.webp",
+      "raw_sha256": "7a88a233a44113676acab5e549c2d5e12d722e31f913e9d73dcef38faaf6cca8",
+      "resolved_url": "https://wellorithm.com/assets/images/campaign-7/logo-main.webp",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://wellorithm.com/assets/images/campaign-7/logo-main.webp",
+      "source_kind": "remote_image",
+      "source_page_url": "https://wellorithm.com/campaign-7",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 508
+    },
+    {
+      "bytes": 1818,
+      "height": 24,
+      "logo_fit": {
+        "center_offset": [
+          0.001,
+          0.452
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          1,
+          599,
+          57
+        ],
+        "mark_share": [
+          0.998,
+          0.093
+        ],
+        "reason": "mark_not_centred_in_canvas"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.34,
+        "contrast_on_light_chip": 21.0,
+        "mean_ink_rgb": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "measured_pixels": 4108,
+        "relative_luminance": 0.0,
+        "translucent_share": 0.9718
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/svg+xml",
+      "output_file": "enhance-md.svg",
+      "output_sha256": "8294560c3792c8a37fe7a9a0c2d7e692a0aef8a6373ab4bebc515aa631349bd0",
+      "program_id": "enhance-md",
+      "provider": "Enhance.MD",
+      "public_path": "/assets/provider-logos/enhance-md.svg",
+      "raw_sha256": "5cc181be9c7fff7e8440fca16e530a17ae51a7a0e6cfb393d9410bcefdfc9dd8",
+      "resolved_url": "https://cdn.prod.website-files.com/68c1a712d98781ef02cda7a8/68d29a4f785a3cea192ef531_DarkNewlogo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/68c1a712d98781ef02cda7a8/68d29a4f785a3cea192ef531_DarkNewlogo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://enhance.md/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 247
+    },
+    {
+      "bytes": 22854,
+      "height": 163,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          14,
+          11,
+          494,
+          152
+        ],
+        "mark_share": [
+          0.945,
+          0.865
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.42,
+        "contrast_on_light_chip": 11.01,
+        "mean_ink_rgb": [
+          55.2,
+          62.4,
+          50.8
+        ],
+        "measured_pixels": 4216,
+        "relative_luminance": 0.0454,
+        "translucent_share": 0.938
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "synergy-rx.webp",
+      "output_sha256": "ff64bc5bb4f13403c9f233db2ef43e743d8f0e1a9b119660dd6d90c219b81746",
+      "program_id": "synergy-rx",
+      "provider": "Synergy RX",
+      "public_path": "/assets/provider-logos/synergy-rx.webp",
+      "raw_sha256": "7903c27b65899728a1923759d2fca197125c5e008ec681f78d3582ffb11ad3fb",
+      "resolved_url": "https://www.synergyrx.co/assets/images/brand/logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.synergyrx.co/assets/images/brand/logo.svg",
+      "source_kind": "embedded_raster_svg",
+      "source_page_url": "https://synergyrx.co/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 508
+    },
+    {
+      "bytes": 9606,
+      "height": 91,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          14,
+          6,
+          494,
+          85
+        ],
+        "mark_share": [
+          0.945,
+          0.868
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 9.35,
+        "contrast_on_light_chip": 1.68,
+        "mean_ink_rgb": [
+          194.6,
+          197.0,
+          237.9
+        ],
+        "measured_pixels": 3858,
+        "relative_luminance": 0.5764,
+        "translucent_share": 0.8684
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "care-bare-rx-glp1.webp",
+      "output_sha256": "b5049531d695849b816424ff84dc471e9de92e418c3a3ab522c65add7717e9f4",
+      "program_id": "care-bare-rx-glp1",
+      "provider": "CareBareRX",
+      "public_path": "/assets/provider-logos/care-bare-rx-glp1.webp",
+      "raw_sha256": "ee6018cd6f0cfb9e848063c74ffa9bc912c1cadd22125ef075529ce2267b1d69",
+      "resolved_url": "https://images.squarespace-cdn.com/content/v1/6868571883272f63d52d6593/43f2d3e6-170d-4db3-8b36-904c25bdd942/carebarerx-horizontal-inverted-rgb-1269px%40300ppi.png?format=1500w",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://images.squarespace-cdn.com/content/v1/6868571883272f63d52d6593/43f2d3e6-170d-4db3-8b36-904c25bdd942/carebarerx-horizontal-inverted-rgb-1269px%40300ppi.png?format=1500w",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.carebarerx.com/home2",
+      "surface": "dark",
+      "verified_as_of": "2026-08-06",
+      "width": 508
+    },
+    {
+      "bytes": 15718,
+      "height": 106,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          14,
+          7,
+          494,
+          99
+        ],
+        "mark_share": [
+          0.945,
+          0.868
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 2.13,
+        "contrast_on_light_chip": 7.37,
+        "mean_ink_rgb": [
+          124.2,
+          47.4,
+          169.4
+        ],
+        "measured_pixels": 3227,
+        "relative_luminance": 0.0925,
+        "translucent_share": 0.9068
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "serena-health.webp",
+      "output_sha256": "a6bccc2642f3bf64ea724fa1e0eced2273324a64621e747be6c719866d02f865",
+      "program_id": "serena-health",
+      "provider": "Serena Health",
+      "public_path": "/assets/provider-logos/serena-health.webp",
+      "raw_sha256": "e8a9f6b2708693c6d7d1c77cda13ee0b4a35724340aefde90b18c258eb26300e",
+      "resolved_url": "https://serenahealth.life/storefront/images/logo-transparent.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://serenahealth.life/storefront/images/logo-transparent.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://serenahealth.life/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 508
+    },
+    {
+      "bytes": 5057,
+      "height": 269,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.406
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          600,
+          113
+        ],
+        "mark_share": [
+          1.0,
+          0.188
+        ],
+        "reason": "mark_not_centred_in_canvas"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.46,
+        "contrast_on_light_chip": 10.76,
+        "mean_ink_rgb": [
+          0.0,
+          68.5,
+          78.6
+        ],
+        "measured_pixels": 5110,
+        "relative_luminance": 0.0476,
+        "translucent_share": 0.9675
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/svg+xml",
+      "output_file": "mademed.svg",
+      "output_sha256": "07df6b74726b15086fb89c89f08209635d3114af7b71859341d50d111f7fe2e0",
+      "program_id": "mademed",
+      "provider": "MadeMed",
+      "public_path": "/assets/provider-logos/mademed.svg",
+      "raw_sha256": "07df6b74726b15086fb89c89f08209635d3114af7b71859341d50d111f7fe2e0",
+      "resolved_url": "https://joinmademed.com/",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://joinmademed.com/",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://joinmademed.com/",
+      "surface": "light",
+      "verified_as_of": "2026-07-30",
+      "width": 1431
+    },
+    {
+      "bytes": 76202,
+      "height": 628,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1200,
+          628
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "opaque_artwork_whole_image",
+        "contrast_on_dark_chip": 14.94,
+        "contrast_on_light_chip": 1.05,
+        "mean_ink_rgb": [
+          249.8,
+          249.2,
+          249.6
+        ],
+        "measured_pixels": 53440,
+        "relative_luminance": 0.9506,
+        "translucent_share": 0.0
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "opaque_artwork_light_box_matched",
+      "media_type": "image/webp",
+      "output_file": "telos-rx.webp",
+      "output_sha256": "715578123913d499a203a91ff3e6f344612adcbe47e255336f92914d0ac8a199",
+      "program_id": "telos-rx",
+      "provider": "telos rx",
+      "public_path": "/assets/provider-logos/telos-rx.webp",
+      "raw_sha256": "715578123913d499a203a91ff3e6f344612adcbe47e255336f92914d0ac8a199",
+      "resolved_url": "https://www.telosrx.com/favicon.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.telosrx.com/favicon.svg",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://www.telosrx.com/weightlossprograms",
+      "surface": "light",
+      "verified_as_of": "2026-07-30",
+      "width": 1200
+    },
+    {
+      "bytes": 24920,
+      "height": 533,
+      "logo_fit": {
+        "center_offset": [
+          0.002,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          2,
+          0,
+          795,
+          533
+        ],
+        "mark_share": [
+          0.991,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 12.79,
+        "contrast_on_light_chip": 1.23,
+        "mean_ink_rgb": [
+          231.7,
+          232.0,
+          232.2
+        ],
+        "measured_pixels": 1600,
+        "relative_luminance": 0.8067,
+        "translucent_share": 0.9877
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "live-vital-launch.webp",
+      "output_sha256": "0d86ac65d87dcf1c270f13d900f73f89b27478436ac58015151ba1a733a32773",
+      "program_id": "live-vital-launch",
+      "provider": "Live Vital Launch",
+      "public_path": "/assets/provider-logos/live-vital-launch.webp",
+      "raw_sha256": "0d86ac65d87dcf1c270f13d900f73f89b27478436ac58015151ba1a733a32773",
+      "resolved_url": "https://cdn.prod.website-files.com/67be6872e24c348560fb6063/67dba61c8aa5cd070b88c7b6_g10.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/67be6872e24c348560fb6063/67dba61c8aa5cd070b88c7b6_g10.png",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://livevital.com/semaglutide-glp-1",
+      "surface": "light",
+      "verified_as_of": "2026-07-30",
+      "width": 800
+    },
+    {
+      "bytes": 9154,
+      "height": 377,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          936,
+          377
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.02,
+        "contrast_on_light_chip": 16.06,
+        "mean_ink_rgb": [
+          33.5,
+          29.1,
+          59.5
+        ],
+        "measured_pixels": 13386,
+        "relative_luminance": 0.0154,
+        "translucent_share": 0.7344
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "strut-health.webp",
+      "output_sha256": "7bbc956e10f73a7ee388b48822eb02a0e51cff3ba8c9700e66ca36f8482fa84e",
+      "program_id": "strut-health",
+      "provider": "Strut Health",
+      "public_path": "/assets/provider-logos/strut-health.webp",
+      "raw_sha256": "7bbc956e10f73a7ee388b48822eb02a0e51cff3ba8c9700e66ca36f8482fa84e",
+      "resolved_url": "https://www.struthealth.com/_next/static/media/strut-logo.7723844b.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.struthealth.com/_next/static/media/strut-logo.7723844b.svg",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://www.struthealth.com/weight-loss",
+      "surface": "light",
+      "verified_as_of": "2026-07-30",
+      "width": 936
+    },
+    {
+      "bytes": 4756,
+      "height": 83,
+      "logo_fit": {
+        "center_offset": [
+          0.012,
+          0.006
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          38,
+          3,
+          218,
+          79
+        ],
+        "mark_share": [
+          0.72,
+          0.916
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.21,
+        "contrast_on_light_chip": 19.03,
+        "mean_ink_rgb": [
+          18.5,
+          15.9,
+          8.5
+        ],
+        "measured_pixels": 3085,
+        "relative_luminance": 0.0052,
+        "translucent_share": 0.9162
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "trt-nation.webp",
+      "output_sha256": "6402ffc1173736a3b483611938314b8744d9089b02dc1b8f00a8c0b0ac7bfe55",
+      "program_id": "trt-nation",
+      "provider": "TRT Nation",
+      "public_path": "/assets/provider-logos/trt-nation.webp",
+      "raw_sha256": "6402ffc1173736a3b483611938314b8744d9089b02dc1b8f00a8c0b0ac7bfe55",
+      "resolved_url": "https://trtnation.com/wp-content/uploads/2024/12/LOGO-with-R-e1737473379227.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://trtnation.com/wp-content/uploads/2024/12/LOGO-with-R-e1737473379227.png",
+      "source_kind": "prevalidated_local",
+      "source_page_url": "https://trtnation.com/weight-loss-medications/",
+      "surface": "light",
+      "verified_as_of": "2026-07-30",
+      "width": 250
+    },
+    {
+      "bytes": 4086,
+      "height": 22,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.422
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          600,
+          94
+        ],
+        "mark_share": [
+          1.0,
+          0.157
+        ],
+        "reason": "mark_not_centred_in_canvas"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.34,
+        "contrast_on_light_chip": 21.0,
+        "mean_ink_rgb": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "measured_pixels": 6189,
+        "relative_luminance": 0.0,
+        "translucent_share": 0.9524
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/svg+xml",
+      "output_file": "measured.svg",
+      "output_sha256": "629d28b487bb2135668d4f480a1d01ce80e9e90f56649bcee13b7449c1cfa319",
+      "program_id": "measured",
+      "provider": "Measured",
+      "public_path": "/assets/provider-logos/measured.svg",
+      "raw_sha256": "1de48e4b7de93e0fac70f4b28056785a8f3759e6d61821dbadb78ce4b2f4211d",
+      "resolved_url": "https://trymeasured.com/logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://trymeasured.com/logo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://trymeasured.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 140
+    },
+    {
+      "bytes": 8911,
+      "height": 111,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.389
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          600,
+          133
+        ],
+        "mark_share": [
+          1.0,
+          0.222
+        ],
+        "reason": "mark_not_centred_in_canvas"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.34,
+        "contrast_on_light_chip": 21.0,
+        "mean_ink_rgb": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "measured_pixels": 5235,
+        "relative_luminance": 0.0,
+        "translucent_share": 0.9618
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/svg+xml",
+      "output_file": "coivas.svg",
+      "output_sha256": "e8622673ea5446d0666010b680e772774a1c7cf5bd48faf71d396acaeb4a23b5",
+      "program_id": "coivas",
+      "provider": "Coivas",
+      "public_path": "/assets/provider-logos/coivas.svg",
+      "raw_sha256": "b524b89e79a467110105baa2d8c822f36f932b8e2861a9fab0e55c15a6a74ec6",
+      "resolved_url": "https://www.coivas.com/logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.coivas.com/logo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.coivas.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 504
+    },
+    {
+      "bytes": 8091,
+      "height": 45,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.367
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          1,
+          1,
+          599,
+          158
+        ],
+        "mark_share": [
+          0.997,
+          0.262
+        ],
+        "reason": "mark_not_centred_in_canvas"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.82,
+        "contrast_on_light_chip": 8.6,
+        "mean_ink_rgb": [
+          77.6,
+          67.4,
+          127.9
+        ],
+        "measured_pixels": 9407,
+        "relative_luminance": 0.0721,
+        "translucent_share": 0.9192
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/svg+xml",
+      "output_file": "drhouse.svg",
+      "output_sha256": "a1b77db5daf7bd9d625452b3c5d2b460bee9f4698f41c491a805b16af61a9d69",
+      "program_id": "drhouse",
+      "provider": "DrHouse",
+      "public_path": "/assets/provider-logos/drhouse.svg",
+      "raw_sha256": "2402d51a208569f53d3cb6665c66dc0aea55b903f8df1969425582df1c6d82c6",
+      "resolved_url": "https://drhouse.com/app/themes/drhouse/public/svgs/menu/logo-2024.1ea60d.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://drhouse.com/app/themes/drhouse/public/svgs/menu/logo-2024.1ea60d.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://drhouse.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 170
+    },
+    {
+      "bytes": 8780,
+      "height": 208,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.156,
+        "mark_box": [
+          12,
+          14,
+          415,
+          194
+        ],
+        "mark_share": [
+          0.944,
+          0.865
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 14.78,
+        "contrast_on_light_chip": 1.06,
+        "mean_ink_rgb": [
+          254.4,
+          246.7,
+          243.2
+        ],
+        "measured_pixels": 15270,
+        "relative_luminance": 0.9397,
+        "translucent_share": 0.7254
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "biltrx.webp",
+      "output_sha256": "e79196320eaa1464a49ab0464d9d937ae038a662fc10733115b092d3053d902a",
+      "program_id": "biltrx",
+      "provider": "BiltRx",
+      "public_path": "/assets/provider-logos/biltrx.webp",
+      "raw_sha256": "fc82cbd24df90073b442188fda6170ab9a77a3e5bdd636ca4c78a54ecaf5356c",
+      "resolved_url": "https://biltrx.com/wp-content/uploads/2025/02/biltrx-logo-scaled.webp",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://biltrx.com/wp-content/uploads/2025/02/biltrx-logo-scaled.webp",
+      "source_kind": "remote_image",
+      "source_page_url": "https://biltrx.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 427
+    },
+    {
+      "bytes": 1982,
+      "height": 63,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          10,
+          6,
+          335,
+          57
+        ],
+        "mark_share": [
+          0.942,
+          0.81
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.46,
+        "contrast_on_light_chip": 10.72,
+        "mean_ink_rgb": [
+          15.7,
+          66.6,
+          88.8
+        ],
+        "measured_pixels": 4582,
+        "relative_luminance": 0.0479,
+        "translucent_share": 0.8331
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "orderlymeds.webp",
+      "output_sha256": "eab41bf3122ef6f46aaa6a034e37a8bd4fe20a2bd25f5de6ec2dc0e7ca05b0d3",
+      "program_id": "orderlymeds",
+      "provider": "OrderlyMeds",
+      "public_path": "/assets/provider-logos/orderlymeds.webp",
+      "raw_sha256": "326f5daa76357ebdef556e9008046ac55b0b80a2cfd489166df2c35d694cc3be",
+      "resolved_url": "https://orderlymeds.com/wp-content/uploads/2026/04/orderly-meds-logo-r-header-1.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://orderlymeds.com/wp-content/uploads/2026/04/orderly-meds-logo-r-header-1.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://orderlymeds.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 345
+    },
+    {
+      "bytes": 2828,
+      "height": 90,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          11,
+          6,
+          370,
+          84
+        ],
+        "mark_share": [
+          0.942,
+          0.867
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 2.22,
+        "contrast_on_light_chip": 7.07,
+        "mean_ink_rgb": [
+          1.1,
+          94.4,
+          135.8
+        ],
+        "measured_pixels": 5915,
+        "relative_luminance": 0.0986,
+        "translucent_share": 0.8268
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "mydrhank.webp",
+      "output_sha256": "209cee34a61359984c2f923c3a1f62c4d7e30f15c194e0e5f81acdf2771f07be",
+      "program_id": "mydrhank",
+      "provider": "MyDrHank",
+      "public_path": "/assets/provider-logos/mydrhank.webp",
+      "raw_sha256": "a802c1f513036ffb4c829e09d238e64515a96e0917013c6c3a8522bb466fa626",
+      "resolved_url": "https://mydrhank.com/assets/logo-Dk6R4bNG.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://mydrhank.com/assets/logo-Dk6R4bNG.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://mydrhank.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 381
+    },
+    {
+      "bytes": 4954,
+      "height": 208,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.156,
+        "mark_box": [
+          8,
+          14,
+          188,
+          194
+        ],
+        "mark_share": [
+          0.918,
+          0.865
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.92,
+        "contrast_on_light_chip": 8.19,
+        "mean_ink_rgb": [
+          103.7,
+          57.5,
+          140.9
+        ],
+        "measured_pixels": 25510,
+        "relative_luminance": 0.0782,
+        "translucent_share": 0.3861
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "gobymeds.webp",
+      "output_sha256": "462134957dea0636751c1a03fd9905c022ecd9283f406be8b556fafdc8e1d619",
+      "program_id": "gobymeds",
+      "provider": "GobyMeds",
+      "public_path": "/assets/provider-logos/gobymeds.webp",
+      "raw_sha256": "409442a290493afc1b7364c9d0ce5923a8138256617a264e3971b26e8c0f7679",
+      "resolved_url": "https://cdn.prod.website-files.com/664e1d5777485eb27ba73dd5/6a208a2269bf2a682a5b17b0_GobyMeds-Icon.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/664e1d5777485eb27ba73dd5/6a208a2269bf2a682a5b17b0_GobyMeds-Icon.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.gobymeds.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-06",
+      "width": 196
+    },
+    {
+      "bytes": 7152,
+      "height": 142,
+      "logo_fit": {
+        "center_offset": [
+          0.001,
+          0.025
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          4,
+          18,
+          574,
+          131
+        ],
+        "mark_share": [
+          0.988,
+          0.796
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.5,
+        "contrast_on_light_chip": 10.43,
+        "mean_ink_rgb": [
+          67.6,
+          57.3,
+          98.6
+        ],
+        "measured_pixels": 3462,
+        "relative_luminance": 0.0507,
+        "translucent_share": 0.9051
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "coreage-rx-glp-1-1632.webp",
+      "output_sha256": "e14856d285c4907dddb495849239ec766c1e44135b2a7e678a06e0b33c20d950",
+      "program_id": "coreage-rx-glp-1-1632",
+      "provider": "CoreAge Rx GLP-1",
+      "public_path": "/assets/provider-logos/coreage-rx-glp-1-1632.webp",
+      "raw_sha256": "d20da7411703a2fca645961167cf31bb5caaf3cb1a3b4ec23571c453b4292dcb",
+      "resolved_url": "https://d9hhrg4mnvzow.cloudfront.net/get.coreagerx.com/home35/3e8804b0-coreage-logo.webp",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://d9hhrg4mnvzow.cloudfront.net/get.coreagerx.com/home35/3e8804b0-coreage-logo.webp",
+      "source_kind": "remote_image",
+      "source_page_url": "https://get.coreagerx.com/home35/",
+      "surface": "light",
+      "verified_as_of": "2026-08-16",
+      "width": 577
+    },
+    {
+      "bytes": 1546,
+      "height": 96,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 2.0,
+        "mark_box": [
+          3,
+          24,
+          93,
+          72
+        ],
+        "mark_share": [
+          0.938,
+          0.5
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 3.4,
+        "contrast_on_light_chip": 4.61,
+        "mean_ink_rgb": [
+          68.0,
+          102.0,
+          252.4
+        ],
+        "measured_pixels": 2448,
+        "relative_luminance": 0.1779,
+        "translucent_share": 0.774
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "bodybuilding-com-glp-1-longevity-review.webp",
+      "output_sha256": "f2257167d6dd1789a7855e173c050f12351ef74d4907921daa8661628e0c72ab",
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "provider": "Bodybuilding.com GLP-1 & Longevity",
+      "public_path": "/assets/provider-logos/bodybuilding-com-glp-1-longevity-review.webp",
+      "raw_sha256": "90fe1bc59c1e389fe3a6d4629784fb8e64b287cec8615f8361ae666e40c353d0",
+      "resolved_url": "https://bbhealthplus.com/icon.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://bbhealthplus.com/icon.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://bbhealthplus.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-16",
+      "width": 96
+    },
+    {
+      "bytes": 11104,
+      "height": 512,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.001
+        ],
+        "content_scale": 3.0,
+        "mark_box": [
+          72,
+          205,
+          440,
+          306
+        ],
+        "mark_share": [
+          0.719,
+          0.197
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.14,
+        "contrast_on_light_chip": 17.9,
+        "mean_ink_rgb": [
+          25.2,
+          0.5,
+          84.3
+        ],
+        "measured_pixels": 3912,
+        "relative_luminance": 0.0086,
+        "translucent_share": 0.9737
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "skinnyrx-1-glp-weight-loss-provider-review.webp",
+      "output_sha256": "038c72bd687869c9755919693c0ea7e32ebb7087efdd28d7e39730c5ea5bda58",
+      "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+      "provider": "SkinnyRx - #1 GLP Weight Loss Provider",
+      "public_path": "/assets/provider-logos/skinnyrx-1-glp-weight-loss-provider-review.webp",
+      "raw_sha256": "b6b08e93fca0feff4bd3a7230c0666cfb9fbd5c30a58381b0eb068288a558588",
+      "resolved_url": "https://skinnyrx.com/icons/icon-512.webp",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://skinnyrx.com/icons/icon-512.webp",
+      "source_kind": "remote_image",
+      "source_page_url": "https://skinnyrx.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-16",
+      "width": 512
+    },
+    {
+      "bytes": 36554,
+      "height": 384,
+      "logo_fit": {
+        "center_offset": [
+          0.007,
+          0.04
+        ],
+        "content_scale": 1.535,
+        "mark_box": [
+          120,
+          110,
+          918,
+          305
+        ],
+        "mark_share": [
+          0.779,
+          0.508
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 4.12,
+        "contrast_on_light_chip": 3.81,
+        "mean_ink_rgb": [
+          126.0,
+          132.1,
+          130.5
+        ],
+        "measured_pixels": 7359,
+        "relative_luminance": 0.2259,
+        "translucent_share": 0.8453
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "rxspan-md-telehealth-program-review.webp",
+      "output_sha256": "1bdc062e16e2a822da5f801700615d137d25d356406663d5a638500e477214bb",
+      "program_id": "rxspan-md-telehealth-program-review",
+      "provider": "RxSpan MD Telehealth Program",
+      "public_path": "/assets/provider-logos/rxspan-md-telehealth-program-review.webp",
+      "raw_sha256": "797287b406c387f14d1be75d1324550d9d1589e5e1af74cec6ed928b0a898d28",
+      "resolved_url": "https://www.rxspanmd.com/_amplify/image?url=%2Fimages%2Flogo.png&w=1536&q=100",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.rxspanmd.com/_amplify/image?url=%2Fimages%2Flogo.png&w=1536&q=100",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.rxspanmd.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-16",
+      "width": 1024
+    },
+    {
+      "bytes": 6754,
+      "height": 1024,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "opaque_artwork_whole_image",
+        "contrast_on_dark_chip": 1.91,
+        "contrast_on_light_chip": 8.21,
+        "mean_ink_rgb": [
+          72.6,
+          80.6,
+          79.2
+        ],
+        "measured_pixels": 102400,
+        "relative_luminance": 0.0779,
+        "translucent_share": 0.0
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "opaque_artwork_dark_box_matched",
+      "media_type": "image/webp",
+      "output_file": "pallas-health-review.webp",
+      "output_sha256": "4df1e4c60f4df38dbd9bf7a019443cfa9eed968af7885bfea80cc1a85e620c85",
+      "program_id": "pallas-health-review",
+      "provider": "Pallas Health \u2013 GLP-1 Weight Loss & NAD",
+      "public_path": "/assets/provider-logos/pallas-health-review.webp",
+      "raw_sha256": "7b7810a852a4163bceaaa9ed4945855ccc8e948371337c1c2b30f3014eb90607",
+      "resolved_url": "https://www.pallashealth.co/images/pallas-logo-email.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.pallashealth.co/images/pallas-logo-email.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.pallashealth.co/",
+      "surface": "light",
+      "verified_as_of": "2026-08-16",
+      "width": 1024
+    },
+    {
+      "bytes": 61422,
+      "height": 211,
+      "logo_fit": {
+        "center_offset": [
+          0.001,
+          0.012
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          20,
+          1021,
+          186
+        ],
+        "mark_share": [
+          0.997,
+          0.787
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.05,
+        "contrast_on_light_chip": 15.0,
+        "mean_ink_rgb": [
+          15.9,
+          41.8,
+          51.8
+        ],
+        "measured_pixels": 7024,
+        "relative_luminance": 0.02,
+        "translucent_share": 0.7741
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "wellmedr-review.webp",
+      "output_sha256": "a515fd1cfce72d9aa81a1dd12c78b14e6899a14ce161d3145b5a12865920e2c8",
+      "program_id": "wellmedr-review",
+      "provider": "Wellmedr",
+      "public_path": "/assets/provider-logos/wellmedr-review.webp",
+      "raw_sha256": "7faf33b7d54bc915efd289d0a8a01d809c1b568233e822812dea5673dd3c68ab",
+      "resolved_url": "https://www.wellmedr.com/cdn/shop/files/logo_b442f51a-866b-4794-8c77-dc64d917dac3.png?v=1760635034",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.wellmedr.com/cdn/shop/files/logo_b442f51a-866b-4794-8c77-dc64d917dac3.png?v=1760635034",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+      "surface": "light",
+      "verified_as_of": "2026-08-18",
+      "width": 1024
+    },
+    {
+      "bytes": 31072,
+      "height": 256,
+      "logo_fit": {
+        "center_offset": [
+          0.002,
+          0.004
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          23,
+          50,
+          1006,
+          208
+        ],
+        "mark_share": [
+          0.96,
+          0.617
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 5.42,
+        "contrast_on_light_chip": 2.89,
+        "mean_ink_rgb": [
+          254.1,
+          105.6,
+          0.2
+        ],
+        "measured_pixels": 8516,
+        "relative_luminance": 0.3131,
+        "translucent_share": 0.7136
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "dudemeds-review.webp",
+      "output_sha256": "4a488ff80fb71774418581dfb0bb44a71aec5393b342299e77e7caf934b5b3ad",
+      "program_id": "dudemeds-review",
+      "provider": "DudeMeds",
+      "public_path": "/assets/provider-logos/dudemeds-review.webp",
+      "raw_sha256": "39a93e2245c62f066819c419bc736b3bfe7930a14f59f94fea44dc31cfb9d65e",
+      "resolved_url": "https://framerusercontent.com/images/9pqv9oIWRARDcYIWLafJ9roTB9o.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://framerusercontent.com/images/9pqv9oIWRARDcYIWLafJ9roTB9o.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.dudemeds.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-18",
+      "width": 1024
+    },
+    {
+      "bytes": 18832,
+      "height": 826,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          2803,
+          826
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.34,
+        "contrast_on_light_chip": 21.0,
+        "mean_ink_rgb": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "measured_pixels": 10278,
+        "relative_luminance": 0.0,
+        "translucent_share": 0.7042
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "nu-image-medical-review.webp",
+      "output_sha256": "90199d64d6121382523571606c7c59e83722834124b59a7267a7c209954fe5a7",
+      "program_id": "nu-image-medical-review",
+      "provider": "Nu Image Medical",
+      "public_path": "/assets/provider-logos/nu-image-medical-review.webp",
+      "raw_sha256": "90199d64d6121382523571606c7c59e83722834124b59a7267a7c209954fe5a7",
+      "resolved_url": "https://nuimagemedical.com/assets/img/nu-logo-black.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://nuimagemedical.com/assets/img/nu-logo-black.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://nuimagemedical.com/weight-loss-medications",
+      "surface": "light",
+      "verified_as_of": "2026-08-20",
+      "width": 2803
+    },
+    {
+      "bytes": 104800,
+      "height": 320,
+      "logo_fit": {
+        "center_offset": [
+          0.002,
+          0.011
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          1,
+          0,
+          1063,
+          313
+        ],
+        "mark_share": [
+          0.994,
+          0.978
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.41,
+        "contrast_on_light_chip": 11.15,
+        "mean_ink_rgb": [
+          54.4,
+          61.5,
+          50.1
+        ],
+        "measured_pixels": 4707,
+        "relative_luminance": 0.0442,
+        "translucent_share": 0.9298
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "synergy-rx-review.webp",
+      "output_sha256": "aa11f3161d2eb797586ed7aef7cf2a7b6c5595c5bf54deca13dc0c418f6e2b93",
+      "program_id": "synergy-rx-review",
+      "provider": "Synergy Rx",
+      "public_path": "/assets/provider-logos/synergy-rx-review.webp",
+      "raw_sha256": "aa11f3161d2eb797586ed7aef7cf2a7b6c5595c5bf54deca13dc0c418f6e2b93",
+      "resolved_url": "https://www.synergyrx.co/assets/images/brand/logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.synergyrx.co/assets/images/brand/logo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.synergyrx.co/",
+      "surface": "light",
+      "verified_as_of": "2026-08-27",
+      "width": 1068
+    },
+    {
+      "bytes": 22840,
+      "height": 156,
+      "logo_fit": {
+        "center_offset": [
+          0.024,
+          0.022
+        ],
+        "content_scale": 1.268,
+        "mark_box": [
+          30,
+          13,
+          337,
+          136
+        ],
+        "mark_share": [
+          0.877,
+          0.788
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 4.17,
+        "contrast_on_light_chip": 3.76,
+        "mean_ink_rgb": [
+          90.4,
+          139.4,
+          149.1
+        ],
+        "measured_pixels": 5969,
+        "relative_luminance": 0.2294,
+        "translucent_share": 0.9156
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "breeze-meds-review.webp",
+      "output_sha256": "d3f7f2079fd95760f43d4f7820e2b72847e588087ff67ce481bbf2bb7fe7aa6b",
+      "program_id": "breeze-meds-review",
+      "provider": "Breeze Meds",
+      "public_path": "/assets/provider-logos/breeze-meds-review.webp",
+      "raw_sha256": "d0cba8a368103c046fd208f0dcc74f2390822a9ce33a798255197a5d64320b93",
+      "resolved_url": "https://www.breezemeds.com/assets/images/brand/logo.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.breezemeds.com/assets/images/brand/logo.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.breezemeds.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-29",
+      "width": 350
+    },
+    {
+      "bytes": 10820,
+      "height": 209,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1269,
+          209
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 9.34,
+        "contrast_on_light_chip": 1.68,
+        "mean_ink_rgb": [
+          194.5,
+          196.8,
+          237.8
+        ],
+        "measured_pixels": 4360,
+        "relative_luminance": 0.5755,
+        "translucent_share": 0.8252
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "care-bare-rx-glp1-review.webp",
+      "output_sha256": "26ffa1aa1cb8e7b61da1a62a35be08c41f37dd0db9ed08de11538b089766e8e8",
+      "program_id": "care-bare-rx-glp1-review",
+      "provider": "Care Bare Rx GLP1",
+      "public_path": "/assets/provider-logos/care-bare-rx-glp1-review.webp",
+      "raw_sha256": "26ffa1aa1cb8e7b61da1a62a35be08c41f37dd0db9ed08de11538b089766e8e8",
+      "resolved_url": "https://images.squarespace-cdn.com/content/v1/6868571883272f63d52d6593/43f2d3e6-170d-4db3-8b36-904c25bdd942/carebarerx-horizontal-inverted-rgb-1269px%40300ppi.png?format=1500w",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://images.squarespace-cdn.com/content/v1/6868571883272f63d52d6593/43f2d3e6-170d-4db3-8b36-904c25bdd942/carebarerx-horizontal-inverted-rgb-1269px%40300ppi.png?format=1500w",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.carebarerx.com/home2",
+      "surface": "dark",
+      "verified_as_of": "2026-08-30",
+      "width": 1269
+    },
+    {
+      "bytes": 12408,
+      "height": 385,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1200,
+          385
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "opaque_artwork_whole_image",
+        "contrast_on_dark_chip": 5.84,
+        "contrast_on_light_chip": 2.69,
+        "mean_ink_rgb": [
+          157.8,
+          157.8,
+          157.8
+        ],
+        "measured_pixels": 32960,
+        "relative_luminance": 0.3409,
+        "translucent_share": 0.0
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "opaque_artwork_light_box_matched",
+      "media_type": "image/webp",
+      "output_file": "altrx-glp1-us-cps.webp",
+      "output_sha256": "970fdaf8d9f9450ea6b4bd3fde3a8a025a6c6e2464a0b68ebfcdb3c99a8d3cad",
+      "program_id": "altrx-glp1-us-cps",
+      "provider": "altRx",
+      "public_path": "/assets/provider-logos/altrx-glp1-us-cps.webp",
+      "raw_sha256": "30b6166e5054a284dec59abcaa0d7d001b7b2e0ecf7f4d1cb0f5290e8cbad1e9",
+      "resolved_url": "https://www.altrx.com/green-lander/section-14/altrx-logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.altrx.com/green-lander/section-14/altrx-logo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.altrx.com",
+      "surface": "light",
+      "verified_as_of": "2026-09-01",
+      "width": 1200
+    },
+    {
+      "bytes": 13492,
+      "height": 360,
+      "logo_fit": {
+        "center_offset": [
+          0.005,
+          0.001
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          14,
+          1187,
+          345
+        ],
+        "mark_share": [
+          0.989,
+          0.919
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.01,
+        "contrast_on_light_chip": 15.86,
+        "mean_ink_rgb": [
+          53.2,
+          28.1,
+          12.0
+        ],
+        "measured_pixels": 10381,
+        "relative_luminance": 0.0162,
+        "translucent_share": 0.7003
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "novi-weight-loss-glp-1.webp",
+      "output_sha256": "d0b0a5c6152060c388bea17f2c3255fa39d1397f490471a2f95940fdb755ae0d",
+      "program_id": "novi-weight-loss-glp-1",
+      "provider": "Novi",
+      "public_path": "/assets/provider-logos/novi-weight-loss-glp-1.webp",
+      "raw_sha256": "908c665f157f6acfaf59fa8eb591c61a58538c1f5e7cc6185951d5270a84d0fe",
+      "resolved_url": "https://assets.embeddables.com/novi-logo_015221831483870574.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://assets.embeddables.com/novi-logo_015221831483870574.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.joinnovi.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-30",
+      "width": 1200
+    },
+    {
+      "bytes": 11006,
+      "height": 203,
+      "logo_fit": {
+        "center_offset": [
+          0.002,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          997,
+          203
+        ],
+        "mark_share": [
+          0.997,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.34,
+        "contrast_on_light_chip": 21.0,
+        "mean_ink_rgb": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "measured_pixels": 11079,
+        "relative_luminance": 0.0,
+        "translucent_share": 0.5258
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "curex-glp-1.webp",
+      "output_sha256": "8cadbc40001dbe22f08187be874fa9e76f2c060ffcaae836cc733c6769144432",
+      "program_id": "curex-glp-1",
+      "provider": "Curex",
+      "public_path": "/assets/provider-logos/curex-glp-1.webp",
+      "raw_sha256": "80b7ffc8b0f01c17b110616aed36922087766c3fa54650df6bee888e487f45fb",
+      "resolved_url": "https://cdn.prod.website-files.com/61bbbbd3e287ff6cf9bcbda8/66f64184a30e0919d28c5316_curex-logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/61bbbbd3e287ff6cf9bcbda8/66f64184a30e0919d28c5316_curex-logo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://getcurex.com/",
+      "surface": "light",
+      "verified_as_of": "2026-08-31",
+      "width": 1000
+    },
+    {
+      "bytes": 5314,
+      "height": 640,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          640,
+          640
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "opaque_artwork_whole_image",
+        "contrast_on_dark_chip": 11.92,
+        "contrast_on_light_chip": 1.32,
+        "mean_ink_rgb": [
+          224.4,
+          224.4,
+          224.4
+        ],
+        "measured_pixels": 102400,
+        "relative_luminance": 0.7481,
+        "translucent_share": 0.0
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "opaque_artwork_light_box_matched",
+      "media_type": "image/webp",
+      "output_file": "ro-wegovy-glp1-quiz-us-cpl.webp",
+      "output_sha256": "4cb17c0fa9b7625076869a0a3aacc06918943b4c05d0fd7bd4956693e5f102f1",
+      "program_id": "ro-wegovy-glp1-quiz-us-cpl",
+      "provider": "Ro",
+      "public_path": "/assets/provider-logos/ro-wegovy-glp1-quiz-us-cpl.webp",
+      "raw_sha256": "4cb17c0fa9b7625076869a0a3aacc06918943b4c05d0fd7bd4956693e5f102f1",
+      "resolved_url": "https://ro.co/rocostatic/favicon.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://ro.co/rocostatic/favicon.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://ro.co/lp/weight-loss/quiz/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 640
+    },
+    {
+      "bytes": 20796,
+      "height": 387,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1000,
+          387
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "opaque_artwork_whole_image",
+        "contrast_on_dark_chip": 7.88,
+        "contrast_on_light_chip": 1.99,
+        "mean_ink_rgb": [
+          158.6,
+          190.3,
+          184.6
+        ],
+        "measured_pixels": 39680,
+        "relative_luminance": 0.4779,
+        "translucent_share": 0.0
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "opaque_artwork_light_box_matched",
+      "media_type": "image/webp",
+      "output_file": "eden-xentraffic-offer-3051.webp",
+      "output_sha256": "a9b096d42002964e04fecd59bc5f41b154df9275ff7bd010b6ce45655bad5230",
+      "program_id": "eden-xentraffic-offer-3051",
+      "provider": "Eden",
+      "public_path": "/assets/provider-logos/eden-xentraffic-offer-3051.webp",
+      "raw_sha256": "23f12edd6f0f2d5a4513f2687a8f1b16e0274341cfeec65e506a1890add1d578",
+      "resolved_url": "https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a0ccac3db38d1a0339ab77a_logo.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a0ccac3db38d1a0339ab77a_logo.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.eden.health/",
+      "surface": "light",
+      "verified_as_of": "2026-08-31",
+      "width": 1000
+    },
+    {
+      "bytes": 2008,
+      "height": 200,
+      "logo_fit": {
+        "center_offset": [
+          0.01,
+          0.0
+        ],
+        "content_scale": 1.471,
+        "mark_box": [
+          64,
+          32,
+          132,
+          168
+        ],
+        "mark_share": [
+          0.34,
+          0.68
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.25,
+        "contrast_on_light_chip": 12.56,
+        "mean_ink_rgb": [
+          56.7,
+          32.3,
+          124.0
+        ],
+        "measured_pixels": 4259,
+        "relative_luminance": 0.0336,
+        "translucent_share": 0.8984
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "futurhealth-wegovy-pillform.webp",
+      "output_sha256": "5a5bb062d38c8a747f9b31335460c926d80dfdc5866488a791460838468cf772",
+      "program_id": "futurhealth-wegovy-pillform",
+      "provider": "FuturHealth",
+      "public_path": "/assets/provider-logos/futurhealth-wegovy-pillform.webp",
+      "raw_sha256": "af1e13b3b316a6a21920eeae2efbd7bcac04bb959f8447b723baefa57b3e188d",
+      "resolved_url": "https://landing.fh.co/logos/futurhealth-logo-icon.webp",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://landing.fh.co/logos/futurhealth-logo-icon.webp",
+      "source_kind": "remote_image",
+      "source_page_url": "https://landing.fh.co/medication-wegovy-pillform-discount/",
+      "surface": "light",
+      "verified_as_of": "2026-08-31",
+      "width": 200
+    },
+    {
+      "bytes": 38764,
+      "height": 775,
+      "logo_fit": {
+        "center_offset": [
+          0.002,
+          0.003
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          50,
+          46,
+          1519,
+          734
+        ],
+        "mark_share": [
+          0.939,
+          0.888
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 15.52,
+        "contrast_on_light_chip": 1.01,
+        "mean_ink_rgb": [
+          253.8,
+          253.8,
+          253.8
+        ],
+        "measured_pixels": 22737,
+        "relative_luminance": 0.9895,
+        "translucent_share": 0.5811
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "lttl-glp-landing-page-2.webp",
+      "output_sha256": "e1c78fe5f50cacb5aa73c7aa9b70d7908463d5b2a2926a3db948ca5e8339cc1f",
+      "program_id": "lttl-glp-landing-page-2",
+      "provider": "Lttl",
+      "public_path": "/assets/provider-logos/lttl-glp-landing-page-2.webp",
+      "raw_sha256": "161a0f6518a92057501ab500f1772cd8deae24f810899dde01a5467ce22e6624",
+      "resolved_url": "https://cdn.prod.website-files.com/6a071fa95dd6adbb58e14102/6a3be913bd470ba5c35f194e_lttl-logo-white-63wA2E4Y.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/6a071fa95dd6adbb58e14102/6a3be913bd470ba5c35f194e_lttl-logo-white-63wA2E4Y.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://lttl.com/",
+      "surface": "light",
+      "verified_as_of": "2026-09-01",
+      "width": 1564
+    },
+    {
+      "bytes": 37354,
+      "height": 286,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1993,
+          286
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "opaque_artwork_whole_image",
+        "contrast_on_dark_chip": 2.31,
+        "contrast_on_light_chip": 6.79,
+        "mean_ink_rgb": [
+          91.6,
+          90.6,
+          94.2
+        ],
+        "measured_pixels": 14720,
+        "relative_luminance": 0.1047,
+        "translucent_share": 0.0
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "opaque_artwork_dark_box_matched",
+      "media_type": "image/webp",
+      "output_file": "enhanced-tirzepatide-funnel-b.webp",
+      "output_sha256": "6037bf8769700eacc57b4494d5c49fa84d1dda5c2168c8d7e6f8d0983d7ca93b",
+      "program_id": "enhanced-tirzepatide-funnel-b",
+      "provider": "Enhanced",
+      "public_path": "/assets/provider-logos/enhanced-tirzepatide-funnel-b.webp",
+      "raw_sha256": "67a0e756b17bf36961e65729a1d5c0ebfb8315da085dccd63761b5876a2fe736",
+      "resolved_url": "https://framerusercontent.com/images/L27wBVHjc8XIP3sns60POcVI.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://framerusercontent.com/images/L27wBVHjc8XIP3sns60POcVI.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.enhanced.com/live-enhanced/products/tirzepatide",
+      "surface": "dark",
+      "verified_as_of": "2026-09-01",
+      "width": 1993
+    },
+    {
+      "bytes": 8640,
+      "height": 305,
+      "logo_fit": {
+        "center_offset": [
+          0.033,
+          0.036
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          78,
+          27,
+          1200,
+          300
+        ],
+        "mark_share": [
+          0.935,
+          0.895
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 2.18,
+        "contrast_on_light_chip": 7.19,
+        "mean_ink_rgb": [
+          85.2,
+          84.3,
+          116.5
+        ],
+        "measured_pixels": 5492,
+        "relative_luminance": 0.096,
+        "translucent_share": 0.8336
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "sunlight-glp1.webp",
+      "output_sha256": "d188d4da1f22f459f5a59e064ecb5a8a836b40f09b46e4c7d0a9fb1f32c2f0a9",
+      "program_id": "sunlight-glp1",
+      "provider": "Sunlight.com",
+      "public_path": "/assets/provider-logos/sunlight-glp1.webp",
+      "raw_sha256": "1850bf86705cfbfa7bcad29738c58444409da193fb8ae8b8c8ecadb18176264f",
+      "resolved_url": "https://www.sunlight.com/wp-content/themes/sunlight/assets/images/sunlight-logo.svg?v=1",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.sunlight.com/wp-content/themes/sunlight/assets/images/sunlight-logo.svg?v=1",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.sunlight.com/",
+      "surface": "light",
+      "verified_as_of": "2026-09-01",
+      "width": 1200
+    },
+    {
+      "bytes": 10518,
+      "height": 1080,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1080,
+          1080
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "opaque_artwork_whole_image",
+        "contrast_on_dark_chip": 2.01,
+        "contrast_on_light_chip": 7.82,
+        "mean_ink_rgb": [
+          40.8,
+          83.3,
+          134.6
+        ],
+        "measured_pixels": 102400,
+        "relative_luminance": 0.0843,
+        "translucent_share": 0.0
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "opaque_artwork_dark_box_matched",
+      "media_type": "image/webp",
+      "output_file": "joinskinny-semaglutide-glp-1-us.webp",
+      "output_sha256": "564cc6d111b85106b5fc6e8e097ecc84466551c4ed3e6844b47d36b5c55f0fe1",
+      "program_id": "joinskinny-semaglutide-glp-1-us",
+      "provider": "JoinSkinny",
+      "public_path": "/assets/provider-logos/joinskinny-semaglutide-glp-1-us.webp",
+      "raw_sha256": "ac57247bbf9e2b935b46016900258fc3c5d53bbc4135797d25111218fdbd3182",
+      "resolved_url": "https://joinskinny.com/images/common/jslogo.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://joinskinny.com/images/common/jslogo.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://joinskinny.com/",
+      "surface": "light",
+      "verified_as_of": "2026-09-01",
+      "width": 1080
+    },
+    {
+      "bytes": 12716,
+      "height": 185,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          2,
+          1,
+          1197,
+          184
+        ],
+        "mark_share": [
+          0.996,
+          0.989
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 2.18,
+        "contrast_on_light_chip": 7.19,
+        "mean_ink_rgb": [
+          95.7,
+          85.5,
+          78.2
+        ],
+        "measured_pixels": 5974,
+        "relative_luminance": 0.0959,
+        "translucent_share": 0.7022
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "levelsrx-extra-cpa-home-page.webp",
+      "output_sha256": "67462c51dfcd907cad40a7ad82475b576b5defc55356267c86c193030759a7ca",
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "provider": "LevelsRx",
+      "public_path": "/assets/provider-logos/levelsrx-extra-cpa-home-page.webp",
+      "raw_sha256": "67462c51dfcd907cad40a7ad82475b576b5defc55356267c86c193030759a7ca",
+      "resolved_url": "https://cdn.prod.website-files.com/6941a913cecfd97ea31325cc/69497d7b5aad993286381870_levelsRx%20logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/6941a913cecfd97ea31325cc/69497d7b5aad993286381870_levelsRx%20logo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.levelsrx.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 1200
+    },
+    {
+      "bytes": 11060,
+      "height": 376,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.2,
+        "mark_box": [
+          40,
+          40,
+          1040,
+          336
+        ],
+        "mark_share": [
+          0.926,
+          0.787
+        ],
+        "reason": "mark_upscaled_to_fill_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 2.73,
+        "contrast_on_light_chip": 5.75,
+        "mean_ink_rgb": [
+          44.2,
+          112.5,
+          104.5
+        ],
+        "measured_pixels": 10979,
+        "relative_luminance": 0.1325,
+        "translucent_share": 0.7355
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "refills.webp",
+      "output_sha256": "e6172e6f21d1c1fe8a338e0377066cbaa87194c89297f5555eb7f718a64b0ed4",
+      "program_id": "refills",
+      "provider": "Refills",
+      "public_path": "/assets/provider-logos/refills.webp",
+      "raw_sha256": "e6172e6f21d1c1fe8a338e0377066cbaa87194c89297f5555eb7f718a64b0ed4",
+      "resolved_url": "https://cdn.prod.website-files.com/683079b098a24bdd710a41e6/683079b098a24bdd710a4534_Refills-Dark.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/683079b098a24bdd710a41e6/683079b098a24bdd710a4534_Refills-Dark.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.refills.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 1080
+    },
+    {
+      "bytes": 18970,
+      "height": 218,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.005
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1000,
+          216
+        ],
+        "mark_share": [
+          1.0,
+          0.991
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.94,
+        "contrast_on_light_chip": 8.08,
+        "mean_ink_rgb": [
+          46.4,
+          83.3,
+          112.0
+        ],
+        "measured_pixels": 6454,
+        "relative_luminance": 0.0799,
+        "translucent_share": 0.7711
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "tmates-xentraffic-offer-3154.webp",
+      "output_sha256": "7fd72e21bc876947346791c591b0afb3d6479773dbbd729d2dfb126d33fb6995",
+      "program_id": "tmates-xentraffic-offer-3154",
+      "provider": "TMates",
+      "public_path": "/assets/provider-logos/tmates-xentraffic-offer-3154.webp",
+      "raw_sha256": "1fb71297749aac495ab4461369e70757d95646eaa1f7eec7a5b992f5f3860387",
+      "resolved_url": "https://tmates.com/logos/tmates-full-color.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://tmates.com/logos/tmates-full-color.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://tmates.com/products/semaglutide",
+      "surface": "light",
+      "verified_as_of": "2026-09-01",
+      "width": 1000
+    },
+    {
+      "bytes": 9614,
+      "height": 262,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1080,
+          262
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 14.23,
+        "contrast_on_light_chip": 1.1,
+        "mean_ink_rgb": [
+          235.5,
+          246.5,
+          240.5
+        ],
+        "measured_pixels": 6570,
+        "relative_luminance": 0.9029,
+        "translucent_share": 0.7924
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "trimrx-xentraffic-offer-3014.webp",
+      "output_sha256": "90d689754385af565a533a7f21f0e45427e9f90bbaf5d0f94d9a36f04360c4f8",
+      "program_id": "trimrx-xentraffic-offer-3014",
+      "provider": "TrimRX",
+      "public_path": "/assets/provider-logos/trimrx-xentraffic-offer-3014.webp",
+      "raw_sha256": "90d689754385af565a533a7f21f0e45427e9f90bbaf5d0f94d9a36f04360c4f8",
+      "resolved_url": "https://trimrx.com/blog/wp-content/themes/trimrx/assets/images/logo-white.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://trimrx.com/blog/wp-content/themes/trimrx/assets/images/logo-white.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://trimrx.com/glp1/offer-v8-hero",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 1080
+    },
+    {
+      "bytes": 22334,
+      "height": 369,
+      "logo_fit": {
+        "center_offset": [
+          0.003,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1073,
+          369
+        ],
+        "mark_share": [
+          0.994,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.09,
+        "contrast_on_light_chip": 14.37,
+        "mean_ink_rgb": [
+          31.1,
+          43.1,
+          55.1
+        ],
+        "measured_pixels": 9629,
+        "relative_luminance": 0.0231,
+        "translucent_share": 0.7623
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "yucca-health-xentraffic-offer-3117.webp",
+      "output_sha256": "cd5280ddf6c1d0da47d44f4e33c7068418086119d7a2a947ae0ebe99b89f4859",
+      "program_id": "yucca-health-xentraffic-offer-3117",
+      "provider": "Yucca Health",
+      "public_path": "/assets/provider-logos/yucca-health-xentraffic-offer-3117.webp",
+      "raw_sha256": "cd5280ddf6c1d0da47d44f4e33c7068418086119d7a2a947ae0ebe99b89f4859",
+      "resolved_url": "https://tryyucca.com/new-yucca-logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://tryyucca.com/new-yucca-logo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://tryyucca.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 1080
+    },
+    {
+      "bytes": 2736,
+      "height": 30,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          220,
+          30
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 3.14,
+        "contrast_on_light_chip": 5.0,
+        "mean_ink_rgb": [
+          51.1,
+          112.6,
+          186.9
+        ],
+        "measured_pixels": 2429,
+        "relative_luminance": 0.1601,
+        "translucent_share": 0.7529
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "longevity-meds-glp-1-review.webp",
+      "output_sha256": "a993330b2c9253f51cf58ea84aef9a7d886cad64dd267d564a49c17f2ece2a52",
+      "program_id": "longevity-meds-glp-1-review",
+      "provider": "Longevity Meds",
+      "public_path": "/assets/provider-logos/longevity-meds-glp-1-review.webp",
+      "raw_sha256": "a993330b2c9253f51cf58ea84aef9a7d886cad64dd267d564a49c17f2ece2a52",
+      "resolved_url": "https://www.longevitymeds.com/frontend/home/v4/images/logo.webp",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.longevitymeds.com/frontend/home/v4/images/logo.webp",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.longevitymeds.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 220
+    },
+    {
+      "bytes": 53678,
+      "height": 1000,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1000,
+          1000
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.32,
+        "contrast_on_light_chip": 11.91,
+        "mean_ink_rgb": [
+          54.9,
+          55.0,
+          55.0
+        ],
+        "measured_pixels": 96980,
+        "relative_luminance": 0.0382,
+        "translucent_share": 0.0567
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "snagrx.webp",
+      "output_sha256": "49f94733715957f08338b36ace9c3da0bbd7430593d20b6de0724f996342574b",
+      "program_id": "snagrx",
+      "provider": "SnagRX",
+      "public_path": "/assets/provider-logos/snagrx.webp",
+      "raw_sha256": "49f94733715957f08338b36ace9c3da0bbd7430593d20b6de0724f996342574b",
+      "resolved_url": "https://snagrx.com/images/logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://snagrx.com/images/logo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://snagrx.com/",
+      "surface": "light",
+      "verified_as_of": "2026-09-01",
+      "width": 1000
+    },
+    {
+      "bytes": 7124,
+      "height": 213,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          12,
+          25,
+          1189,
+          188
+        ],
+        "mark_share": [
+          0.981,
+          0.765
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.19,
+        "contrast_on_light_chip": 18.72,
+        "mean_ink_rgb": [
+          18.1,
+          18.1,
+          18.1
+        ],
+        "measured_pixels": 3831,
+        "relative_luminance": 0.0061,
+        "translucent_share": 0.8534
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "humecare-data-driven-glp-1-weight-loss-system.webp",
+      "output_sha256": "c224e41467b9d278a27142de4a267eed707feaf72bb80e26d53e2a8bfdba6b03",
+      "program_id": "humecare-data-driven-glp-1-weight-loss-system",
+      "provider": "HumeCare+",
+      "public_path": "/assets/provider-logos/humecare-data-driven-glp-1-weight-loss-system.webp",
+      "raw_sha256": "c224e41467b9d278a27142de4a267eed707feaf72bb80e26d53e2a8bfdba6b03",
+      "resolved_url": "https://humecare.com/cdn/shop/files/svgviewer-output_5.svg?v=1776429134&width=600",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://humecare.com/cdn/shop/files/svgviewer-output_5.svg?v=1776429134&width=600",
+      "source_kind": "remote_image",
+      "source_page_url": "https://humecare.com/",
+      "surface": "light",
+      "verified_as_of": "2026-09-01",
+      "width": 1200
+    },
+    {
+      "bytes": 8952,
+      "height": 333,
+      "logo_fit": {
+        "center_offset": [
+          0.004,
+          0.017
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          1071,
+          322
+        ],
+        "mark_share": [
+          0.992,
+          0.967
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 15.68,
+        "contrast_on_light_chip": 1.0,
+        "mean_ink_rgb": [
+          255.0,
+          255.0,
+          255.0
+        ],
+        "measured_pixels": 11728,
+        "relative_luminance": 1.0,
+        "translucent_share": 0.6659
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "g-plan.webp",
+      "output_sha256": "ed5fd9f366785ddd1bf973d3d4d22d9fc2a73092bac6b279a2a365c5780ea7df",
+      "program_id": "g-plan",
+      "provider": "G-Plans",
+      "public_path": "/assets/provider-logos/g-plan.webp",
+      "raw_sha256": "ed5fd9f366785ddd1bf973d3d4d22d9fc2a73092bac6b279a2a365c5780ea7df",
+      "resolved_url": "https://g-plans.com/images/branding/g-plans-logo.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://g-plans.com/images/branding/g-plans-logo.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://g-plans.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 1080
+    },
+    {
+      "bytes": 12824,
+      "height": 200,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          200,
+          200
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "opaque_artwork_whole_image",
+        "contrast_on_dark_chip": 14.22,
+        "contrast_on_light_chip": 1.1,
+        "mean_ink_rgb": [
+          232.7,
+          246.5,
+          247.1
+        ],
+        "measured_pixels": 40000,
+        "relative_luminance": 0.9023,
+        "translucent_share": 0.0
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "opaque_artwork_light_box_matched",
+      "media_type": "image/webp",
+      "output_file": "jrnys-review.webp",
+      "output_sha256": "45210eb496767a4907a7cb8ce49aa112bd40380886d2decfdc0cbfaa39363c77",
+      "program_id": "jrnys-review",
+      "provider": "JRNYS",
+      "public_path": "/assets/provider-logos/jrnys-review.webp",
+      "raw_sha256": "45210eb496767a4907a7cb8ce49aa112bd40380886d2decfdc0cbfaa39363c77",
+      "resolved_url": "https://jrnys.com/jrnys/images/2024-09-20_14-29-39.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://jrnys.com/jrnys/images/2024-09-20_14-29-39.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://jrnys.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 200
+    },
+    {
+      "bytes": 1934,
+      "height": 105,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          500,
+          105
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.34,
+        "contrast_on_light_chip": 21.0,
+        "mean_ink_rgb": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "measured_pixels": 12703,
+        "relative_luminance": 0.0,
+        "translucent_share": 0.4619
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "medvi-review.webp",
+      "output_sha256": "27fb5a61bdb79fd39b6295d9b83b5dfee726d448ccf297fc84b5b231006fa689",
+      "program_id": "medvi-review",
+      "provider": "MEDVI",
+      "public_path": "/assets/provider-logos/medvi-review.webp",
+      "raw_sha256": "27fb5a61bdb79fd39b6295d9b83b5dfee726d448ccf297fc84b5b231006fa689",
+      "resolved_url": "https://framerusercontent.com/images/1BRDkIzVV7TxG8fJDyUWdUDDE.png?width=500&height=105",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://framerusercontent.com/images/1BRDkIzVV7TxG8fJDyUWdUDDE.png?width=500&height=105",
+      "source_kind": "remote_image",
+      "source_page_url": "https://glp1.medvi.org/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 500
+    }
+  ],
+  "runtime_remote_assets": 0,
+  "schema": "glp-provider-logo-manifest-v1",
+  "source_manifest_sha256": "2126d375499ac087b1faf8ced9c342998d1e9db6823043e74c06c6e0cb805de9",
+  "status": "PASS",
+  "verified_as_of": "2026-08-06"
+}

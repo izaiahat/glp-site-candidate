@@ -1,0 +1,69 @@
+{
+  "schema": "affiliati-receiver-contract-v4-registered-subid-owned-click-join",
+  "status": "CANDIDATE_ONLY_REMOTE_MIGRATION_HELD",
+  "network": "Affiliati",
+  "affiliate_id": "15309",
+  "public_endpoint": "https://glpclinicscout.com/api/postback/affiliati",
+  "registered_callback_template_without_secret": "https://glpclinicscout.com/api/postback/affiliati?subid=#s2#&click_id=#s2#&placement=#s1#&conversion_id=#leadid#&payout=#price#&offer_id=#oid#&event=conversion",
+  "auth": {
+    "scheme": "static_query_key",
+    "query_parameter": "key",
+    "secret_binding": "AFFILIATI_POSTBACK_KEY",
+    "constant_time_compare": true,
+    "secret_value_recorded": false,
+    "absent_or_wrong_status": 403
+  },
+  "identity_contract": {
+    "operator_override": "D2w Release 1 user amendment: registered subid click identity; A13 registered-template evidence",
+    "s1": "placement; not conversion identity",
+    "s2": "owned UUIDv7 cs_click_id; returned in authoritative subid and optional click_id compatibility duplicate",
+    "outbound_rule": "s1 carries placement; s2 carries the owned UUIDv7. The outbound constructor is unchanged. This repair corrects the local callback-template record to the existing A13 evidence; no remote network-template write or fresh portal readback occurred.",
+    "receiver_rule": "subid/#s2# is required authoritative UUIDv7; optional click_id/#s2# must match it exactly. placement/#s1# is optional placement, never click identity. Duplicate identity parameters are rejected. Exactly one owned click must match network, account, offer and governed program. TEST lineage cannot be promoted to real revenue."
+  },
+  "parameter_map": {
+    "subid": {"macro": "#s2#", "required": true, "role": "authoritative UUIDv7 cs_click_id"},
+    "click_id": {"macro": "#s2#", "required": false, "role": "compatibility duplicate; must equal subid when supplied"},
+    "placement": {"macro": "#s1#", "required": false, "role": "placement; never conversion identity"},
+    "conversion_id": {"macro": "#leadid#", "required": true, "role": "append-only idempotency identity"},
+    "payout": {"macro": "#price#", "required": false, "empty_test_value_allowed": true, "currency": "USD"},
+    "offer_id": {"macro": "#oid#", "required": true},
+    "event": {"literal": "conversion", "required": true}
+  },
+  "persistence": {
+    "database_binding": "GLP_DB",
+    "d1_database_id": "bcb91d2d-c3f1-4c55-93e3-070587e86d60",
+    "click_table": "affiliate_click_map",
+    "revenue_table": "analytics_revenue_ledger_v1",
+    "ownership_join": "affiliate_click_map.click_token = postback.subid AND network = affiliati AND network_account_ref = receiver.accountRef AND network_offer_id = postback.offer_id AND program_id IN receiver.programsByOffer[postback.offer_id]",
+    "append_only": true,
+    "idempotency": "network + network_account_ref + program_id + conversion_id + event_type",
+    "replay_status": 200,
+    "conflicting_replay_status": 409,
+    "no_write_rejections": [
+      "click_identity_not_owned",
+      "cs_click_id_invalid",
+      "required_field_missing:subid",
+      "click_id_roundtrip_mismatch"
+    ]
+  },
+  "offers": [
+    {"offer_id": "40044", "provider": "Direct Meds", "campaign_id": "1055694", "tracking_host": "epsilonmkt.com", "tracking_href_sha256": "1139718b6e33a73c0d51d95e77413b24b5fe2201e59f024bd7afc4fc4247a7cc"},
+    {"offer_id": "42896", "provider": "JRNYS", "campaign_id": "1055693", "tracking_host": "maanantaispc.com", "tracking_href_sha256": "4d65ae7716adf027db89f08091213d0b56c837abe1b268871aac9e85d6974e34"},
+    {"offer_id": "43194", "provider": "MEDVI", "campaign_id": "1055692", "tracking_host": "epsilonmkt.com", "tracking_href_sha256": "216f16c4f1491840a763a0647464968c14209d036bc13fc9f704ef634ad1553c"}
+  ],
+  "required_live_proof": {
+    "unsigned_status": 403,
+    "wrong_secret_status": 403,
+    "signed_synthetic_status": 200,
+    "idempotent_replay_status": 200,
+    "unknown_click_status": 409,
+    "click_id_roundtrip_offer_count": 3,
+    "remote_migration_required": "migrations/007_postback_scoped_identity.sql",
+    "current_production_activation": false
+  },
+  "tracking_links_requested": 0,
+  "tracking_links_opened": 0,
+  "tracking_links_clicked": 0,
+  "operator_messages_sent": 0,
+  "source_spec": "reports/ops/briefs/POSTBACK-AFFILIATI-SPEC-20260828.md"
+}

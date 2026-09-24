@@ -1,0 +1,57 @@
+{
+  "at": "2026-09-09T01:17:46.302553+00:00",
+  "account_id": "189346863",
+  "uet": {
+    "UetTags": [
+      {
+        "Name": "GLP Clinic Scout Primary UET",
+        "Description": "Primary sitewide measurement tag for GLP Clinic Scout. No campaigns enabled.",
+        "TrackingScript": "<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:\"187271853\"};o.q=w[u],w[u]=new UET(o),w[u].push(\"pageLoad\")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!==\"loaded\"&&s!==\"complete\"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,\"script\",\"//bat.bing.com/bat.js\",\"uetq\");</script><noscript><img src=\"//bat.bing.com/action/0?ti=187271853&Ver=2\" height=\"0\" width=\"0\" style=\"display:none; visibility: hidden;\" /></noscript>",
+        "TrackingNoScript": "<img src=\"//bat.bing.com/action/0?ti=187271853&Ver=2\" height=\"0\" width=\"0\" style=\"display:none; visibility: hidden;\" />",
+        "TrackingStatus": "Unverified",
+        "CustomerShare": {
+          "OwnerCustomerId": "255039117",
+          "CustomerAccountShares": []
+        },
+        "Id": "187271853"
+      }
+    ],
+    "PartialErrors": []
+  },
+  "offline_goals": {
+    "ConversionGoals": [],
+    "PartialErrors": []
+  },
+  "event_goals": {
+    "ConversionGoals": [
+      {
+        "CategoryExpression": "lead",
+        "CategoryOperator": "Equals",
+        "ActionExpression": "submit",
+        "ActionOperator": "Equals",
+        "LabelExpression": "glp_clinic_scout",
+        "LabelOperator": "Equals",
+        "ValueOperator": null,
+        "Type": "Event",
+        "Value": null,
+        "Name": "GLP Clinic Scout Lead",
+        "Status": "Active",
+        "Scope": "Account",
+        "CountType": "Unique",
+        "Revenue": {
+          "Type": "NoValue",
+          "Value": null,
+          "CurrencyCode": null
+        },
+        "ConversionWindowInMinutes": 43200,
+        "TagId": "187271853",
+        "TrackingStatus": "TagUnverified",
+        "ExcludeFromBidding": false,
+        "GoalCategory": "SubmitLeadForm",
+        "Id": "160554000"
+      }
+    ],
+    "PartialErrors": []
+  },
+  "writes": 0
+}

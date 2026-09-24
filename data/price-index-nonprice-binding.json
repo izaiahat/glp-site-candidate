@@ -1,0 +1,27 @@
+{
+  "schema": "glp.frozen-price-nonprice-binding.v5",
+  "supersedes": {"path":"data/price-index-nonprice-binding-v5.json","sha256":"883e15d5ac7821fedabcbab4ddc354b1b2d0f3d901ee594c47a648ff1b42c947"},
+  "research_binding": {"path":"/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/D2w/RELEASE-1/CONTINUATION-1/COIVAS/INTEGRATION.json","sha256":"2862d82812d945907d052bd9d966a816774ce30fd2077cafb342a7528b88ed95"},
+  "nonprice_fields": [
+    {"program_id":"shedrx","key":"meds_offered"},
+    {"program_id":"shedrx","key":"meds_offered_evidence"},
+    {"program_id":"enhance-md","key":"meds_offered"},
+    {"program_id":"enhance-md","key":"meds_offered_evidence"},
+    {"program_id":"wellorithm","key":"meds_offered"},
+    {"program_id":"wellorithm","key":"meds_offered_evidence"},
+    {"program_id":"gala-health","key":"meds_offered"},
+    {"program_id":"gala-health","key":"meds_offered_evidence"},
+    {"program_id":"found-health","key":"meds_offered"},
+    {"program_id":"found-health","key":"meds_offered_evidence"},
+    {"program_id":"try-ageless","key":"meds_offered"},
+    {"program_id":"try-ageless","key":"meds_offered_evidence"}
+  ],
+  "predecessor_binding": {
+    "path": "data/price-index-nonprice-binding-v4.json",
+    "sha256": "7cfd57c572f561aed9e8ccb3ff7d9c7d24bd8351ec1dc966a4fd9afeb9c41d72"
+  },
+  "successor": {
+    "path": "data/s32-ledger-successor-v1.json",
+    "sha256": "b72bd81bcc9ad0f60e3a7ea012ead6be6a2310a5c193065c5125bf69ba8ea815"
+  }
+}

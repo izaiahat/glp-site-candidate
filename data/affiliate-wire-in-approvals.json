@@ -1,0 +1,1483 @@
+{
+  "current_terms_reassessment": {
+    "as_of_utc": "2026-08-12T17:32:35Z",
+    "evidence_path": "reports/glp-clinic-scout/affiliate-machine/bridge-finish-1-20260812/awin-41-stage1-5-research.json",
+    "evidence_sha256": "7eb6660110af1b7f64149036217723c1095398b9d2016dfb7da32135dfc6ae73",
+    "governance_scope": "accepted_live_preserved_rejected_terms_rescinded_20260831",
+    "legality_standard": "Existing authorized live links stay live. Exact operator terms decisions govern future change: accepted rows may use only the expansion surfaces explicitly named here; rejected rows cannot authorize new activation or material expansion.",
+    "programs": [
+      {
+        "authorized_material_expansion_surfaces": [
+          "calculator"
+        ],
+        "existing_live_surfaces": [
+          "compare",
+          "cost",
+          "quiz"
+        ],
+        "existing_release_alias": "drhouse",
+        "future_change_terms_gate_open": true,
+        "historical_activation_authority_ref": "data/affiliate-wire-in-approvals.json#/programs/existing_release_alias=drhouse/historical_activation_authority",
+        "hold_reason": null,
+        "hold_trigger": null,
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": true,
+        "may_authorize_new_activation": false,
+        "provider_program_id": "53271",
+        "terms_capture_sha256": "057abd9906c845526609cba57f49dddaad50817b914fa7275e84fcd36d457928",
+        "verdict": "PASS"
+      },
+      {
+        "authorized_material_expansion_surfaces": [],
+        "decision_receipt_path": "reports/glp-affiliate-auto-reconciler/operator-actions/awin-terms-80963-16f018b7b29ed64c.json",
+        "decision_receipt_sha256": "febcdea976a2f28813a347552486420f6468f338a74a4551890210e348ebe17b",
+        "decision_recorded_at_utc": "2026-08-12T23:37:51Z",
+        "existing_live_surfaces": [],
+        "existing_release_alias": "shedrx",
+        "future_change_terms_gate_open": true,
+        "historical_activation_authority_ref": "data/approved-program-registry.json#/programs/provider_program_id=80963",
+        "hold_reason": null,
+        "hold_trigger": null,
+        "live_link_disposition": "retired_best_terms_higher_payout",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "operator_words": "ACCEPT-TERMS 80963",
+        "provenance": "discord-message-1537243566156546078",
+        "provider_program_id": "80963",
+        "reversible_by": "REJECT-TERMS 80963",
+        "status": "operator_accepted_terms",
+        "terms_capture_sha256": "2e5be275d28919d8ec86293b26ac829261e48bae23d471daa37c67b82225d53c",
+        "verdict": "operator_accepted_terms"
+      },
+      {
+        "authorized_material_expansion_surfaces": [
+          "calculator"
+        ],
+        "decision_receipt_path": "reports/glp-affiliate-auto-reconciler/operator-actions/awin-terms-115383-16f018b7b29ed64c.json",
+        "decision_receipt_sha256": "6c9e8f2c782a71fefeecc20ad7c7deca873587b70bbf4745126139010c32b281",
+        "decision_recorded_at_utc": "2026-08-12T23:37:51Z",
+        "existing_live_surfaces": [
+          "compare",
+          "cost",
+          "quiz"
+        ],
+        "existing_release_alias": "biltrx",
+        "future_change_terms_gate_open": true,
+        "historical_activation_authority_ref": "data/affiliate-wire-in-approvals.json#/programs/existing_release_alias=biltrx/historical_activation_authority",
+        "hold_reason": null,
+        "hold_trigger": null,
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": true,
+        "may_authorize_new_activation": false,
+        "operator_words": "ACCEPT-TERMS 115383",
+        "provenance": "discord-message-1537243566156546078",
+        "provider_program_id": "115383",
+        "reversible_by": "REJECT-TERMS 115383",
+        "status": "operator_accepted_terms",
+        "terms_capture_sha256": "b25de4e99dc49473b0af967182132585e2d27d26ce24439ebfc6451480ba9071",
+        "verdict": "operator_accepted_terms"
+      },
+      {
+        "authorized_material_expansion_surfaces": [],
+        "decision_receipt_path": "/home/ubuntu/business/reports/ops/decisions/measured-go-exception-rescinded-20260831.json",
+        "decision_receipt_sha256": "743efb19f484f5cebd74b5894b9321ff3e97ac4a0d15e0b54214b68f68c8e51d",
+        "decision_recorded_at_utc": "2026-08-31T00:35:00Z",
+        "existing_live_surfaces": [
+          "compare",
+          "cost",
+          "quiz"
+        ],
+        "existing_release_alias": "measured",
+        "future_change_terms_gate_open": true,
+        "historical_activation_authority_ref": "data/affiliate-wire-in-approvals.json#/programs/existing_release_alias=measured/historical_activation_authority",
+        "hold_reason": null,
+        "hold_trigger": null,
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "operator_words": "i never denied measured i told u this i want it wired in fully live on the site if it isnt but i think it is stop saying i denied it. remove that wherever it has that in the system.",
+        "provenance": "operator-decision-supersession-20260831",
+        "provider_program_id": "126727",
+        "rescission_note": "MEASURED_TERMS_RESCISSION_V1",
+        "reversible_by": "ACCEPT-TERMS 126727",
+        "risk_acceptance": {
+          "accepted_on": "2026-09-03",
+          "authority": "operator decision measured-go-exception-rescinded-20260831 plus the 2026-08-14 standing terms-review doctrine, which postdates the 2026-08-13 hold and makes the seven mechanical triggers logged risk-acceptances rather than holds",
+          "legality_review": "no illegal term and no term requiring illegal action; the indemnity is an ordinary participation indemnity, which the doctrine accepts with this record rather than holding on",
+          "mechanical_trigger": "advertiser_supplied_copy_indemnity",
+          "operator_decision_receipt": {
+            "bytes": 4107,
+            "path": "/home/ubuntu/business/reports/ops/decisions/measured-go-exception-rescinded-20260831.json",
+            "sha256": "743efb19f484f5cebd74b5894b9321ff3e97ac4a0d15e0b54214b68f68c8e51d"
+          },
+          "operator_words": "i never denied measured i told u this i want it wired in fully live on the site if it isnt but i think it is stop saying i denied it. remove that wherever it has that in the system.",
+          "risk_accepted": true,
+          "supersedes_decision_receipt": "reports/glp-clinic-scout/affiliate-machine/awin-item1-terms-decisions-20260813/awin-terms-126727-5128fd05084c6ad0.json",
+          "trigger_class": "participation_provider_product_liability_indemnity"
+        },
+        "status": "operator_accepted_terms",
+        "terms_capture_sha256": "4700f573b5f0dc3471880cb1b3ee070ee67ea577623ba1e29b1070037c40804a",
+        "verdict": "operator_accepted_terms"
+      },
+      {
+        "authorized_material_expansion_surfaces": [],
+        "existing_live_surfaces": [
+          "compare",
+          "cost",
+          "quiz",
+          "calculator"
+        ],
+        "existing_release_alias": "serena-health",
+        "future_change_terms_gate_open": true,
+        "historical_activation_authority_ref": "data/approved-program-registry.json#/programs/provider_program_id=128203",
+        "hold_reason": null,
+        "hold_trigger": null,
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "provider_program_id": "128203",
+        "terms_capture_sha256": "d171eb271579c8d5c816df1be4faab0240af905d88107f1d2eca9dc8f65d4fbe",
+        "verdict": "PASS"
+      },
+      {
+        "authorized_material_expansion_surfaces": [
+          "calculator"
+        ],
+        "existing_live_surfaces": [
+          "compare",
+          "cost",
+          "quiz"
+        ],
+        "existing_release_alias": "coivas",
+        "future_change_terms_gate_open": true,
+        "historical_activation_authority_ref": "data/approved-program-registry.json#/programs/provider_program_id=128761",
+        "hold_reason": null,
+        "hold_trigger": null,
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": true,
+        "may_authorize_new_activation": false,
+        "provider_program_id": "128761",
+        "terms_capture_sha256": "bcfc571179a8d27ab6c8fa148bf665494036d8829d46795fe40105390797781b",
+        "verdict": "PASS"
+      }
+    ]
+  },
+  "note": "Independent approval + provider-issued tracking record for live fastpath programs wired after the approved-53 wave. Held to the same cross-check as data/approved-program-registry.json and deliberately NOT derived from data/provider-page-contracts.json.",
+  "programs": [
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 240,
+      "current_terms_reassessment": {
+        "as_of_utc": "2026-08-12T17:32:35Z",
+        "authorized_material_expansion_surfaces": [],
+        "decision_receipt_path": "/home/ubuntu/business/reports/ops/decisions/measured-go-exception-rescinded-20260831.json",
+        "decision_receipt_sha256": "743efb19f484f5cebd74b5894b9321ff3e97ac4a0d15e0b54214b68f68c8e51d",
+        "decision_recorded_at_utc": "2026-08-31T00:35:00Z",
+        "evidence_sha256": "4700f573b5f0dc3471880cb1b3ee070ee67ea577623ba1e29b1070037c40804a",
+        "existing_live_surfaces": [
+          "compare",
+          "cost",
+          "quiz"
+        ],
+        "future_change_terms_gate_open": true,
+        "hold_reason": null,
+        "hold_trigger": null,
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "operator_words": "i never denied measured i told u this i want it wired in fully live on the site if it isnt but i think it is stop saying i denied it. remove that wherever it has that in the system.",
+        "provenance": "operator-decision-supersession-20260831",
+        "rescission_note": "MEASURED_TERMS_RESCISSION_V1",
+        "reversible_by": "ACCEPT-TERMS 126727",
+        "risk_acceptance": {
+          "accepted_on": "2026-09-03",
+          "authority": "operator decision measured-go-exception-rescinded-20260831 plus the 2026-08-14 standing terms-review doctrine, which postdates the 2026-08-13 hold and makes the seven mechanical triggers logged risk-acceptances rather than holds",
+          "legality_review": "no illegal term and no term requiring illegal action; the indemnity is an ordinary participation indemnity, which the doctrine accepts with this record rather than holding on",
+          "mechanical_trigger": "advertiser_supplied_copy_indemnity",
+          "operator_decision_receipt": {
+            "bytes": 4107,
+            "path": "/home/ubuntu/business/reports/ops/decisions/measured-go-exception-rescinded-20260831.json",
+            "sha256": "743efb19f484f5cebd74b5894b9321ff3e97ac4a0d15e0b54214b68f68c8e51d"
+          },
+          "operator_words": "i never denied measured i told u this i want it wired in fully live on the site if it isnt but i think it is stop saying i denied it. remove that wherever it has that in the system.",
+          "risk_accepted": true,
+          "supersedes_decision_receipt": "reports/glp-clinic-scout/affiliate-machine/awin-item1-terms-decisions-20260813/awin-terms-126727-5128fd05084c6ad0.json",
+          "trigger_class": "participation_provider_product_liability_indemnity"
+        },
+        "status": "operator_accepted_terms",
+        "verdict": "operator_accepted_terms"
+      },
+      "display_name": "Measured",
+      "existing_release_alias": "measured",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "classification_path": "reports/glp-affiliate-auto-reconciler/approval-classifications/glp/awin-126727.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Awin",
+      "provider_program_id": "126727",
+      "publisher_id": "2979387",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.awin1.com/cread.php?awinmid=126727&awinaffid=2979387&clickref=glp-scout-126727&ued=https%3A%2F%2Fquiz.trymeasured.com%2Fpartner"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 173,
+      "current_terms_reassessment": {
+        "as_of_utc": "2026-08-12T17:32:35Z",
+        "authorized_material_expansion_surfaces": [
+          "calculator"
+        ],
+        "evidence_sha256": "057abd9906c845526609cba57f49dddaad50817b914fa7275e84fcd36d457928",
+        "existing_live_surfaces": [
+          "compare",
+          "cost",
+          "quiz"
+        ],
+        "future_change_terms_gate_open": true,
+        "hold_reason": null,
+        "hold_trigger": null,
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": true,
+        "may_authorize_new_activation": false,
+        "verdict": "PASS"
+      },
+      "display_name": "DrHouse",
+      "existing_release_alias": "drhouse",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "reports/glp-affiliate-auto-reconciler/approval-classifications/glp/awin-53271.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Awin",
+      "provider_program_id": "53271",
+      "publisher_id": "2979387",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.awin1.com/cread.php?awinmid=53271&awinaffid=2979387&clickref=glp-scout-53271&ued=https%3A%2F%2Fdrhouse.com%2Fweight-loss%2F"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 226,
+      "current_terms_reassessment": {
+        "as_of_utc": "2026-08-12T17:32:35Z",
+        "authorized_material_expansion_surfaces": [
+          "calculator"
+        ],
+        "decision_receipt_path": "reports/glp-affiliate-auto-reconciler/operator-actions/awin-terms-115383-16f018b7b29ed64c.json",
+        "decision_receipt_sha256": "6c9e8f2c782a71fefeecc20ad7c7deca873587b70bbf4745126139010c32b281",
+        "decision_recorded_at_utc": "2026-08-12T23:37:51Z",
+        "evidence_sha256": "b25de4e99dc49473b0af967182132585e2d27d26ce24439ebfc6451480ba9071",
+        "existing_live_surfaces": [
+          "compare",
+          "cost",
+          "quiz"
+        ],
+        "future_change_terms_gate_open": true,
+        "hold_reason": null,
+        "hold_trigger": null,
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": true,
+        "may_authorize_new_activation": false,
+        "operator_words": "ACCEPT-TERMS 115383",
+        "provenance": "discord-message-1537243566156546078",
+        "reversible_by": "REJECT-TERMS 115383",
+        "status": "operator_accepted_terms",
+        "verdict": "operator_accepted_terms"
+      },
+      "display_name": "BiltRx",
+      "existing_release_alias": "biltrx",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "reports/glp-affiliate-auto-reconciler/approval-classifications/glp/awin-115383.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Awin",
+      "provider_program_id": "115383",
+      "publisher_id": "2979387",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.awin1.com/cread.php?awinmid=115383&awinaffid=2979387&clickref=glp-scout-115383&ued=https%3A%2F%2Fbiltrx.com%2F"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 22,
+      "display_name": "OrderlyMeds",
+      "existing_release_alias": "orderlymeds",
+      "network": "Direct affiliate",
+      "provider_program_id": "2",
+      "publisher_id": "2608",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "terms": {
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "reports/glp-affiliate-auto-reconciler/approval-classifications/glp/everflow-2.json",
+        "rubric_verdict": "PASS"
+      },
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://orderlymeds.com/?_ef_transaction_id=&oid=2&affid=2608&source_id=glp-scout-orderlymeds-review"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 128,
+      "display_name": "MyDrHank",
+      "existing_release_alias": "mydrhank",
+      "network": "Katalys",
+      "provider_program_id": "1425",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "terms": {
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "reports/glp-affiliate-auto-reconciler/approval-classifications/glp/katalys-1425.json",
+        "rubric_verdict": "PASS"
+      },
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1425&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 36,
+      "display_name": "GobyMeds",
+      "existing_release_alias": "gobymeds",
+      "network": "Direct website-publisher application / manual review",
+      "provider_program_id": "vuMPMv",
+      "publisher_id": "vuMPMv",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "terms": {
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "reports/glp-affiliate-auto-reconciler/approval-classifications/glp/gobymeds-gobymeds-affiliate.json",
+        "rubric_verdict": "PASS"
+      },
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://my.gobymeds.com/s/vuMPMv"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 124,
+      "current_terms_reassessment": {
+        "as_of_utc": "2026-08-15T14:21:25Z",
+        "evidence_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/sister-pools/other-worthwhile-affiliate-programs/katalys-1610.json",
+        "future_change_terms_gate_open": true,
+        "hold_trigger": null,
+        "live_link_disposition": "activate_b2_legality_only",
+        "may_authorize_material_expansion": true,
+        "may_authorize_new_activation": true,
+        "verdict": "ACCEPTED_LEGALITY_ONLY_MECHANICAL_RISK_LOGGED"
+      },
+      "display_name": "Live Vital Launch",
+      "existing_release_alias": "live-vital-launch",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "autonomy-master-list-20260814-b3",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/sister-pools/other-worthwhile-affiliate-programs/katalys-1610.json",
+        "rubric_verdict_at_activation": "PASS_LEGALITY_ONLY"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1610",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1610&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 2,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "CoreAge Rx GLP-1",
+      "existing_release_alias": "coreage-rx-glp-1-1632",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approved-five-20260816/katalys-1632.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1632",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1632&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 89,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Bodybuilding.com GLP-1 & Longevity",
+      "existing_release_alias": "bodybuilding-com-glp-1-longevity-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approved-five-20260816/katalys-1584.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1584",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1584&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 96,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "SkinnyRx - #1 GLP Weight Loss Provider",
+      "existing_release_alias": "skinnyrx-1-glp-weight-loss-provider-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approved-five-20260816/katalys-1464.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1464",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1464&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 99,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "RxSpan MD Telehealth Program",
+      "existing_release_alias": "rxspan-md-telehealth-program-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approved-five-20260816/katalys-1599.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1599",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1599&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 776,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Pallas Health \u2013 GLP-1 Weight Loss & NAD",
+      "existing_release_alias": "pallas-health-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approved-five-20260816/katalys-1622.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1622",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1622&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 113,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Wellmedr",
+      "existing_release_alias": "wellmedr-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approved-backfill-20260818/katalys-1593.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1593",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1593&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 122,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "DudeMeds",
+      "existing_release_alias": "dudemeds-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approved-backfill-20260818/katalys-1361.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1361",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1361&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 649,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Nu Image Medical",
+      "existing_release_alias": "nu-image-medical-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/trackdesk-nu-image-medical.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Trackdesk",
+      "provider_program_id": "nu-image-medical",
+      "publisher_id": "glp-clinic-scout",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://nuimagemedical.com/?linkId=lp_716390&sourceId=glp-clinic-scout&tenantId=nu-image-medical"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 103,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Synergy Rx",
+      "existing_release_alias": "synergy-rx-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/katalys-1520.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1520",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1520&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 104,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Breeze Meds",
+      "existing_release_alias": "breeze-meds-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/katalys-1518.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1518",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1518&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 105,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Care Bare Rx GLP1",
+      "existing_release_alias": "care-bare-rx-glp1-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/katalys-1519.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1519",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1519&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 664,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "altRx",
+      "existing_release_alias": "altrx-glp1-us-cps",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3162.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6KS2D4R",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6KS2D4R/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 666,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Novi",
+      "existing_release_alias": "novi-weight-loss-glp-1",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3140.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6JPGXXF",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6JPGXXF/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 667,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Curex",
+      "existing_release_alias": "curex-glp-1",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3159.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6KMTPWZ",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6KMTPWZ/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 675,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Ro",
+      "existing_release_alias": "ro-wegovy-glp1-quiz-us-cpl",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3164.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6KWS5L1",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6KWS5L1/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 747,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Eden",
+      "existing_release_alias": "eden-xentraffic-offer-3051",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3051.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6D9WBFD",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6D9WBFD/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 669,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "FuturHealth",
+      "existing_release_alias": "futurhealth-wegovy-pillform",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3176.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6LHGQF9",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6LHGQF9/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 689,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Lttl",
+      "existing_release_alias": "lttl-glp-landing-page-2",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3252.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6Q91WCF",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6Q91WCF/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 690,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Enhanced",
+      "existing_release_alias": "enhanced-tirzepatide-funnel-b",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3253.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6QBDR42",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6QBDR42/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 691,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Sunlight.com",
+      "existing_release_alias": "sunlight-glp1",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3254.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6QCRMSM",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6QCRMSM/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 692,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "JoinSkinny",
+      "existing_release_alias": "joinskinny-semaglutide-glp-1-us",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3255.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6QF6JK8",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6QF6JK8/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 734,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "LevelsRx",
+      "existing_release_alias": "levelsrx-extra-cpa-home-page",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3245.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6PX9P76",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6PX9P76/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 737,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Refills",
+      "existing_release_alias": "refills",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3109.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6H6FK4L",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6H6FK4L/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 753,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "TMates",
+      "existing_release_alias": "tmates-xentraffic-offer-3154",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3154.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6KDXB7X",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6KDXB7X/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 754,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "TrimRX",
+      "existing_release_alias": "trimrx-xentraffic-offer-3014",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3014.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6BGHM6X",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6BGHM6X/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 755,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Yucca Health",
+      "existing_release_alias": "yucca-health-xentraffic-offer-3117",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3117.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6HKJM1G",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6HKJM1G/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 759,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Longevity Meds",
+      "existing_release_alias": "longevity-meds-glp-1-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3277.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6RHPZQL",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6RHPZQL/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 660,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "SnagRX",
+      "existing_release_alias": "snagrx",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/katalys-1645.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1645",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1645&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 661,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "HumeCare+",
+      "existing_release_alias": "humecare-data-driven-glp-1-weight-loss-system",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/katalys-1588.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Katalys",
+      "provider_program_id": "1588",
+      "publisher_id": "13031",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1588&aff_id=13031"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 738,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "G-Plans",
+      "existing_release_alias": "g-plan",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/xentraffic-3048.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "XenTraffic",
+      "provider_program_id": "6D5PN7K",
+      "publisher_id": "841W6MT",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://www.xfnjwej33dd.com/841W6MT/6D5PN7K/"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 761,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "JRNYS",
+      "existing_release_alias": "jrnys-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/affiliati-42896.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Affiliati",
+      "provider_program_id": "42896",
+      "publisher_id": "15309",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://maanantaispc.com/?a=15309&c=177612&s1="
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 783,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "MEDVI",
+      "existing_release_alias": "medvi-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/glp-affiliate-auto-reconciler/approval-classifications/glp/affiliati-43194.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "Affiliati",
+      "provider_program_id": "43194",
+      "publisher_id": "15309",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://epsilonmkt.com/?a=15309&c=178786&s1="
+      },
+      "wire_in_ready": true
+    }
+  ],
+  "schema": "glp-affiliate-wire-in-approvals-v1",
+  "source_authority": {
+    "b2_sheet_row": 124,
+    "canonical_sheet": "Affiliate Applications Sheet",
+    "mission": "g6_r1a_glp_affiliate_wirein_20260806",
+    "sheet_snapshot_sha256": "d07efd9a6ba8008de35db14705a9502481a03ef50f129978fe36a0b657995c8c"
+  }
+}

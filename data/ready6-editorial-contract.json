@@ -1,0 +1,463 @@
+{
+  "schema": "glp-approved53-ready6-editorial-contract-v1",
+  "candidate_id": "glp-approved53-ready6-brand-slug-successor-20260802-r3",
+  "candidate_state": "READY6_PRODUCTION_REVIEW_INDEXABLE",
+  "checked_as_of": "2026-08-02",
+  "source_contracts": {
+    "original_reduction": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/207-net-new32-firecrawl-reduction.json",
+      "sha256": "7446b29034a0d3726371b30af033093ec9c966f471a5615edd891621f145c105",
+      "role": "original merchant research"
+    },
+    "editorial_packet": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/208-net-new32-editorial-research-packet.md",
+      "sha256": "71f9cb6a489df85a90013cf27ac7dd3dd8ff6aa3d28a58818e7462c4e3ac7be8",
+      "role": "original merchant editorial evidence"
+    },
+    "fda_compounding": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/221-ready3-fda-compounding-source.json",
+      "sha256": "c236df282783b72e11797b8168fd0a0fc0ee3a48aebdaad0a6ea6defb78aacb2",
+      "role": "official independent FDA compounding source"
+    },
+    "final_readjudication": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/223-net-new32-legality-only-readjudication.json",
+      "sha256": "a0cbbed3fbc11b56a05f101ef7266fdbe8931abdc3ce69dbfa33b604effd736b",
+      "role": "controlling final 32-record partition"
+    },
+    "legality_report": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/224-net-new32-legality-only-report.md",
+      "sha256": "8065199f28a7377089e267ead930f13154617d466618293b9978f80993bfd180",
+      "role": "human-readable legality ruling"
+    }
+  },
+  "publication_policy": {
+    "bridge_review_state": "PENDING",
+    "deployment_authority": false,
+    "deployed": false,
+    "indexable": true,
+    "sitemap_included": true,
+    "link_mode": "transparent_direct",
+    "local_candidate_active_ctas": 6,
+    "provider_issued_urls_only": true,
+    "tracking_link_click_qa_performed": false
+  },
+  "final_research_partition": {
+    "ready_editorial_direct_total": 6,
+    "adjacent_sister_pool_total": 25,
+    "drop_genuine_legal_route_block_total": 1,
+    "held_total": 0,
+    "total": 32
+  },
+  "programs": [
+    {
+      "program_key": "Awin:128761",
+      "registry_id": "awin-128761",
+      "network": "Awin",
+      "provider_program_id": "128761",
+      "display_name": "Coivas",
+      "review_path": "/reviews/coivas/",
+      "official_sources": [
+        {
+          "url": "https://www.coivas.com/",
+          "publisher": "Coivas",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_merchant"
+        },
+        {
+          "url": "https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers",
+          "publisher": "U.S. Food and Drug Administration",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_regulator"
+        }
+      ],
+      "page": {
+        "title": "Coivas review: published GLP-1 terms and evidence gaps",
+        "description": "A source-cited review of Coivas's published compounded-semaglutide offer, conflicting price statements, clinician boundary, and unresolved evidence gaps.",
+        "bottom_line": "Coivas presents a telehealth weight-loss program involving compounded semaglutide. The available evidence supports describing the published workflow and its unresolved commercial terms, but it does not support an efficacy claim, outcome prediction, individualized recommendation, or numeric score.",
+        "first_party_findings": [
+          "Coivas describes the offered medication as compounded semaglutide.",
+          "Coivas says a medical consultation with a licensed care provider is required.",
+          "Reported introductory monthly equivalent: $119/mo for new GLP-1 users, billed $357 for the first 3 months; not a $119 first checkout charge. The captured selector joins medication names, so use the Challenge page for medication-specific context.\n\nCoivas Challenge reports quarterly semaglutide at $119/mo then $149/mo, and quarterly tirzepatide at $199/mo then $229/mo. Introductory pricing is limited to new GLP-1 users and the first billing cycle. Monthly equivalents are not monthly billing."
+        ],
+        "pricing": "Reported introductory monthly equivalent: $119/mo for new GLP-1 users, billed $357 for the first 3 months; not a $119 first checkout charge. The captured selector joins medication names, so use the Challenge page for medication-specific context.\n\nCoivas Challenge reports quarterly semaglutide at $119/mo then $149/mo, and quarterly tirzepatide at $199/mo then $229/mo. Introductory pricing is limited to new GLP-1 users and the first billing cycle. Monthly equivalents are not monthly billing.\n\nCoivas reports clinician review included and no separate membership or per-visit fees.",
+        "price_volatility_warning": "Prices and program terms can change. Recheck the current checkout amount, billing cadence, included services, pharmacy terms, cancellation terms, and any recurring charge directly with Coivas.",
+        "clinician_boundary": "Coivas's published consultation requirement does not establish that any reader is eligible or that a prescription will be issued. Eligibility, prescribing, product selection, and treatment decisions belong to a licensed clinician; this review does not provide medical advice or dosing guidance.",
+        "regulatory": "The source describes compounded semaglutide, which is distinct from FDA-approved branded semaglutide drugs. Compounded drugs are not FDA approved, and FDA does not premarket-review them for safety, effectiveness, or quality.",
+        "evidence_gaps": [
+          "Reported introductory monthly equivalent: $119/mo for new GLP-1 users, billed $357 for the first 3 months; not a $119 first checkout charge. The captured selector joins medication names, so use the Challenge page for medication-specific context.\n\nCoivas Challenge reports quarterly semaglutide at $119/mo then $149/mo, and quarterly tirzepatide at $199/mo then $229/mo. Introductory pricing is limited to new GLP-1 users and the first billing cycle. Monthly equivalents are not monthly billing.",
+          "Some Services are offered on a subscription basis. By enrolling in a subscription, you authorize us to charge your payment method on a recurring basis at the then-current rate. Prices are subject to change with 30 days' notice. You may cancel your subscription at any time through your account settings or by contacting support.\n\nAll fees are in U.S. dollars and are non-refundable except as required by law or as expressly stated in our Refund Policy. We do not currently accept insurance; you are responsible for all charges.",
+          "No comparable independent public-review dataset was captured.",
+          "No evidence supports an efficacy promise, outcome guarantee, or individualized recommendation."
+        ],
+        "review_sections": [
+          {
+            "heading": "Reported pricing and subscription terms",
+            "body": "Reported introductory monthly equivalent: $119/mo for new GLP-1 users, billed $357 for the first 3 months; not a $119 first checkout charge. The captured selector joins medication names, so use the Challenge page for medication-specific context.\n\nCoivas Challenge reports quarterly semaglutide at $119/mo then $149/mo, and quarterly tirzepatide at $199/mo then $229/mo. Introductory pricing is limited to new GLP-1 users and the first billing cycle. Monthly equivalents are not monthly billing.\n\nCoivas reports clinician review included and no separate membership or per-visit fees.\n\nSome Services are offered on a subscription basis. By enrolling in a subscription, you authorize us to charge your payment method on a recurring basis at the then-current rate. Prices are subject to change with 30 days' notice. You may cancel your subscription at any time through your account settings or by contacting support.\n\nAll fees are in U.S. dollars and are non-refundable except as required by law or as expressly stated in our Refund Policy. We do not currently accept insurance; you are responsible for all charges."
+          },
+          {
+            "heading": "What the captured Coivas page can actually establish",
+            "body": "Coivas reports clinician review included and no separate membership or per-visit fees.\n\nCoivas partners with state-licensed 503A compounding pharmacies and 503B outsourcing facilities to fulfill prescriptions when appropriate.\n\nCoivas reports most reviews within 24 hours and typical arrival within a few business days after approval; this is not a guaranteed delivery date.\n\nCoivas reports availability in all 50 states; its Terms limit services to states where it is authorized to provide telehealth services.\n\nSome Services are offered on a subscription basis. By enrolling in a subscription, you authorize us to charge your payment method on a recurring basis at the then-current rate. Prices are subject to change with 30 days' notice. You may cancel your subscription at any time through your account settings or by contacting support.\n\nAll fees are in U.S. dollars and are non-refundable except as required by law or as expressly stated in our Refund Policy. We do not currently accept insurance; you are responsible for all charges."
+          },
+          {
+            "heading": "Build a Coivas cost worksheet before entering checkout",
+            "body": "Reported introductory monthly equivalent: $119/mo for new GLP-1 users, billed $357 for the first 3 months; not a $119 first checkout charge. The captured selector joins medication names, so use the Challenge page for medication-specific context.\n\nCoivas Challenge reports quarterly semaglutide at $119/mo then $149/mo, and quarterly tirzepatide at $199/mo then $229/mo. Introductory pricing is limited to new GLP-1 users and the first billing cycle. Monthly equivalents are not monthly billing.\n\nSome Services are offered on a subscription basis. By enrolling in a subscription, you authorize us to charge your payment method on a recurring basis at the then-current rate. Prices are subject to change with 30 days' notice. You may cancel your subscription at any time through your account settings or by contacting support.\n\nAll fees are in U.S. dollars and are non-refundable except as required by law or as expressly stated in our Refund Policy. We do not currently accept insurance; you are responsible for all charges."
+          },
+          {
+            "heading": "A consultation is a gate, not an outcome promise",
+            "body": "Coivas’s consultation language indicates that a care-provider interaction is part of the merchant’s described pathway. It does not promise that a reader qualifies, that semaglutide will be prescribed, that compounded medication is appropriate, or that a particular result will follow. Before relying on the offer, a prospective patient can ask who conducts the consultation, what jurisdiction licenses apply, how follow-up questions are handled, which pharmacy would dispense an approved prescription, and what happens if no prescription is issued. Those are service-clarity questions, not medical advice. Product selection, prescribing, dosing, and monitoring remain matters for a licensed clinician. The practical consumer decision is whether Coivas discloses enough about the pathway and contract to justify proceeding to its consultation—not whether this page can predict treatment suitability or performance."
+          }
+        ],
+        "cta_label": "Visit Coivas",
+        "brand_name": "Coivas"
+      }
+    },
+    {
+      "program_key": "Katalys:1286",
+      "registry_id": "katalys-1286",
+      "network": "Katalys",
+      "provider_program_id": "1286",
+      "display_name": "Sprout Health",
+      "review_path": "/reviews/sprout-health/",
+      "official_sources": [
+        {
+          "url": "https://joinsprouthealth.com/weightloss-k/",
+          "publisher": "Sprout Health",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_merchant"
+        },
+        {
+          "url": "https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers",
+          "publisher": "U.S. Food and Drug Administration",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_regulator"
+        }
+      ],
+      "page": {
+        "title": "Sprout Health review: published GLP-1 terms and evidence gaps",
+        "description": "A source-cited review of Sprout Health's published compounded GLP-1 offer, $149 starting-price statement, clinician boundary, and unresolved terms.",
+        "bottom_line": "Sprout Health presents a telehealth weight-loss service involving compounded semaglutide and tirzepatide. The captured page supports a restrained description of the service and clinician boundary, but cadence, inclusions, total cost, and several fulfillment terms remain unverified, so no numeric score or treatment recommendation is assigned.",
+        "first_party_findings": [
+          "Sprout Health says compounded semaglutide and tirzepatide are prescribed by U.S.-licensed clinicians and delivered to the patient.",
+          "Sprout Health says GLP-1 medications require a prescription and are provided only when clinically appropriate.",
+          "Sprout Health says results are not guaranteed and vary from person to person."
+        ],
+        "pricing": "UNKNOWN exact first-month cash charge or initial checkout total. The assigned landing URL reports an as-low-as $110/month rate on a six-month plan. This is a conditional advertised monthly rate, not proof of a $110 first payment or a confirmed total upfront charge. Medication-specific applicability, payment schedule and renewal amount for that offer are not resolved by the headline. No multiplication into a purported checkout total and no zero-price inference are made.\n\nReported starting monthly prices: compounded semaglutide $149, compounded tirzepatide $199, Wegovy $1799 and Zepbound $1999. These are product-specific starting prices, not exact initial or recurring charges for a selected plan. They are not interchangeable with the separate $110/month six-month headline. Exact customer-specific renewal prices, term and dose conditions remain UNKNOWN without the selected checkout disclosure. The brand tags are supported by explicit product offer cards, not ingredient comparisons; availability for any individual patient is not guaranteed.\n\nReported information: the refund policy deducts a flat $50 clinical-review fee only after provider review and before the prescription is sent to the pharmacy. Before review it states full refund; after pharmacy submission it states non-refundable. The $50 is a conditional refund deduction, not evidence of a standard additional upfront consultation charge. The separately quoted checkout-inclusion statement is bound in provider_dynamic_profile. The consultation's standalone price remains UNKNOWN, not zero.",
+        "price_volatility_warning": "Prices and program terms can change. Recheck the current amount, billing cadence, medication and service inclusions, pharmacy terms, shipping, cancellation, and recurring charges before payment.",
+        "clinician_boundary": "Sprout Health's first-party description says prescription treatment is considered only when clinically appropriate. That does not establish eligibility or guarantee a prescription. A licensed clinician must make prescribing and treatment decisions; this review gives no individualized recommendation or dosing advice.",
+        "regulatory": "The page describes compounded semaglutide and tirzepatide, which are distinct from FDA-approved branded drugs. Compounded drugs are not FDA approved, and FDA does not premarket-review them for safety, effectiveness, or quality.",
+        "evidence_gaps": [
+          "UNKNOWN exact first-month cash charge or initial checkout total. The assigned landing URL reports an as-low-as $110/month rate on a six-month plan. This is a conditional advertised monthly rate, not proof of a $110 first payment or a confirmed total upfront charge. Medication-specific applicability, payment schedule and renewal amount for that offer are not resolved by the headline. No multiplication into a purported checkout total and no zero-price inference are made.\n\nReported starting monthly prices: compounded semaglutide $149, compounded tirzepatide $199, Wegovy $1799 and Zepbound $1999. These are product-specific starting prices, not exact initial or recurring charges for a selected plan. They are not interchangeable with the separate $110/month six-month headline. Exact customer-specific renewal prices, term and dose conditions remain UNKNOWN without the selected checkout disclosure. The brand tags are supported by explicit product offer cards, not ingredient comparisons; availability for any individual patient is not guaranteed.",
+          "Reported information: the FAQ says orders typically ship within 3-7 business days after the clinician issues a prescription. This is a dispatch timeframe, not a guaranteed arrival date. The same capture's headline says Ships in 2-3 days, while the captured how-it-works page also states 3-7 business days. The discrepancy remains explicit; no guaranteed end-to-end delivery time is asserted.\n\nReported information: cancellation requests must be received at least 48 hours before the next billing date to avoid that charge; later requests take effect the following cycle. Cancellation stops future charges and does not refund orders already sent to the pharmacy. This is more specific than the landing page's cancel-anytime headline. These are the provider's consumer terms, not affiliate-program terms or a legal determination.",
+          "No comparable independent public-review dataset was captured.",
+          "No evidence supports an efficacy promise, outcome guarantee, or individualized recommendation."
+        ],
+        "review_sections": [
+          {
+            "heading": "Reported plan and billing information",
+            "body": "UNKNOWN exact first-month cash charge or initial checkout total. The assigned landing URL reports an as-low-as $110/month rate on a six-month plan. This is a conditional advertised monthly rate, not proof of a $110 first payment or a confirmed total upfront charge. Medication-specific applicability, payment schedule and renewal amount for that offer are not resolved by the headline. No multiplication into a purported checkout total and no zero-price inference are made.\n\nReported starting monthly prices: compounded semaglutide $149, compounded tirzepatide $199, Wegovy $1799 and Zepbound $1999. These are product-specific starting prices, not exact initial or recurring charges for a selected plan. They are not interchangeable with the separate $110/month six-month headline. Exact customer-specific renewal prices, term and dose conditions remain UNKNOWN without the selected checkout disclosure. The brand tags are supported by explicit product offer cards, not ingredient comparisons; availability for any individual patient is not guaranteed."
+          },
+          {
+            "heading": "Map Sprout’s delivery chain before comparing convenience",
+            "body": "Reported information: the FAQ says orders typically ship within 3-7 business days after the clinician issues a prescription. This is a dispatch timeframe, not a guaranteed arrival date. The same capture's headline says Ships in 2-3 days, while the captured how-it-works page also states 3-7 business days. The discrepancy remains explicit; no guaranteed end-to-end delivery time is asserted.\n\nReported information: the provider's notice lists Foothills Pharmacy and Promise Pharmacy as external-service contacts, alongside MD Integrations. This is not confirmation that either pharmacy dispenses every listed medication or fulfills a particular patient order. Exact dispensing assignment, 503A/503B classification and independently verified licensure are UNKNOWN. The product evidence separately identifies compounded semaglutide and compounded tirzepatide; no pharmacy certification or drug-approval status is inferred.\n\nReported information: cancellation requests must be received at least 48 hours before the next billing date to avoid that charge; later requests take effect the following cycle. Cancellation stops future charges and does not refund orders already sent to the pharmacy. This is more specific than the landing page's cancel-anytime headline. These are the provider's consumer terms, not affiliate-program terms or a legal determination."
+          },
+          {
+            "heading": "Sprout’s appropriateness language limits the claim",
+            "body": "The merchant states that GLP-1 medication requires a prescription and is provided only when clinically appropriate. That is an important boundary: it describes a conditional process rather than guaranteed access. It does not define eligibility criteria, establish that a particular drug will be offered, or predict whether a clinician will prescribe after review. It also does not turn compounded semaglutide or tirzepatide into FDA-approved products. For consumer research, the useful questions concern process transparency: who reviews the case, what information is required, whether another product may be proposed, and what financial terms apply if treatment is not prescribed. Those questions preserve the clinician’s role while letting a reader evaluate the service contract. Suitability, product choice, dosing, contraindications, and monitoring are outside the scope of this editorial review."
+          },
+          {
+            "heading": "What to document if Sprout answers the open terms",
+            "body": "Before paying, request a written breakdown of the first charge and recurring charge, cadence, medication, supply duration, clinical visits, shipping, laboratory work if any, refill handling, cancellation deadline, and refund policy. Also ask for current state availability and the dispensing-pharmacy identity applicable to the prescription pathway. Keep the response with its date rather than assuming an answer remains permanent. If the $149 amount applies only under a condition, record that condition beside the price instead of presenting the figure alone. This checklist is deliberately commercial and operational; it makes no recommendation about treatment. Its purpose is to prevent a starting-price banner and broad delivery statement from carrying more evidentiary weight than they deserve when Sprout is compared with another provider."
+          }
+        ],
+        "cta_label": "Visit Sprout Health",
+        "brand_name": "Sprout Health"
+      }
+    },
+    {
+      "program_key": "Katalys:647",
+      "registry_id": "katalys-647",
+      "network": "Katalys",
+      "provider_program_id": "647",
+      "display_name": "MangoRx",
+      "review_path": "/reviews/mangorx/",
+      "official_sources": [
+        {
+          "url": "https://mangorx.com/",
+          "publisher": "MangoRx",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_merchant"
+        },
+        {
+          "url": "https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers",
+          "publisher": "U.S. Food and Drug Administration",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_regulator"
+        }
+      ],
+      "page": {
+        "title": "MangoRx review: published weight-loss terms and evidence gaps",
+        "description": "A source-cited review of MangoRx's published telemedicine statements, FDA-approved-versus-compounded distinction, unknown weight-loss pricing, and unresolved terms.",
+        "bottom_line": "MangoRx presents a men's-health telemedicine platform that includes weight-loss treatment. Its homepage supports describing the clinician-prescribed model and its explicit compounded-drug disclaimer, but it does not establish the exact weight-loss product, price, cadence, inclusions, or eligibility. Pricing is unknown and no numeric score or treatment recommendation is assigned.",
+        "first_party_findings": [
+          "MangoRx describes doctor-prescribed treatments across erectile dysfunction, testosterone, hair loss, and weight loss and refers broadly to FDA-approved treatments.",
+          "MangoRx separately states that compounded drugs are not FDA approved and do not undergo premarket review or safety testing."
+        ],
+        "pricing": "MangoRx weight-loss pricing is unknown. No weight-loss price was captured on the homepage, so this review makes no price, savings, monthly-cost, or value claim.",
+        "price_volatility_warning": "Prices and program terms can change. Ask MangoRx to identify the exact product and verify the current amount, cadence, inclusions, pharmacy terms, shipping, cancellation, and recurring charges before payment.",
+        "clinician_boundary": "MangoRx's first-party wording describes doctor-prescribed treatment, but the captured page does not establish eligibility or guarantee a prescription. A licensed clinician must determine whether a prescription and any specific product are appropriate; this review provides no individualized recommendation or dosing advice.",
+        "regulatory": "FDA-approved branded drugs and compounded drugs are not interchangeable regulatory categories. MangoRx's broad reference to FDA-approved treatments must not be read to mean that every product on the platform is FDA approved. Compounded drugs are not FDA approved, and FDA does not premarket-review them for safety, effectiveness, or quality.",
+        "evidence_gaps": [
+          "Weight-loss pricing is explicitly unknown.",
+          "The exact weight-loss product, brand or compounded status, prescriber pathway, dispensing pharmacy, state availability, eligibility, cadence, inclusions, shipping, cancellation, and refund terms were not established by the captured page.",
+          "No comparable independent public-review dataset was captured.",
+          "No evidence supports an efficacy promise, outcome guarantee, or individualized recommendation."
+        ],
+        "review_sections": [
+          {
+            "heading": "MangoRx’s broader men’s-health catalog creates a scope problem",
+            "body": "MangoRx’s homepage discusses several treatment categories—erectile dysfunction, testosterone, hair loss, and weight loss—under one telemedicine brand. A statement that applies somewhere in that catalog does not automatically describe the weight-loss pathway. The captured page did not isolate the exact weight-loss product, its branded or compounded status, its commercial terms, or the steps between intake and dispensing. This makes category discipline essential. Readers should not import a price, approval reference, guarantee, or service detail from another MangoRx line into a GLP-related comparison. Our review uses only the statements that can safely be tied to the weight-loss scope and marks the rest unknown. That restraint is more useful than treating a broad platform description as a complete product specification."
+          },
+          {
+            "heading": "Product identity must come before any MangoRx price comparison",
+            "body": "No weight-loss price was captured, and the exact medication was not established. Those two gaps are connected: a meaningful cost comparison needs to know what product or service unit is being priced. Before evaluating value, ask MangoRx to identify the proposed medication, whether it is an FDA-approved branded drug or a compounded product, the supply duration, billing cadence, consultation or membership charges, dispensing pharmacy, and shipping terms. A price from a different treatment category would not answer those questions. Neither would a generic “starting at” figure without a product label. Until MangoRx publishes or supplies weight-loss-specific terms, this page cannot estimate monthly expense, savings, or relative affordability. Unknown is the accurate result—not zero, expensive, cheap, or competitive."
+          },
+          {
+            "heading": "Read MangoRx’s FDA wording at the product level",
+            "body": "The homepage refers broadly to FDA-approved treatments and separately acknowledges that compounded drugs are not FDA approved or subject to premarket review. Both statements can be true across a mixed catalog, but they do not reveal the regulatory status of a particular weight-loss prescription. A reader should require product-level identification rather than infer that every option inherits the strongest category label displayed by the brand. If a branded drug is discussed, verify its name and approval status through an official regulator source. If a compounded drug is discussed, preserve the FDA boundary stated in this review. The distinction is not a judgment that one reader should choose either category; it is a safeguard against collapsing materially different regulatory pathways into a single marketing phrase."
+          },
+          {
+            "heading": "A practical evidence request for MangoRx",
+            "body": "Ask MangoRx for a weight-loss-specific document or written response covering product identity, clinician-review process, eligibility, states served, dispensing entity, billing cadence, all included services, shipment interval, renewal, cancellation, and refunds. If the answer references a different page, confirm that the page actually concerns weight loss rather than another men’s-health category. Save the date because inventory and terms can change. The existence of doctor-prescribed treatments on the platform does not guarantee that any reader will qualify or receive a prescription, and a product list cannot predict outcomes. This evidence request separates the questions a merchant can answer from those reserved for a licensed clinician. It also creates a clean basis for a future update without filling today’s empty fields with assumptions."
+          }
+        ],
+        "cta_label": "Visit MangoRx",
+        "brand_name": "MangoRx"
+      }
+    },
+    {
+      "program_key": "Katalys:1304",
+      "registry_id": "katalys-1304",
+      "network": "Katalys",
+      "provider_program_id": "1304",
+      "display_name": "Direct Meds GLP-1 Offers Top Funnels",
+      "review_path": "/reviews/direct-meds/",
+      "official_sources": [
+        {
+          "url": "https://directmeds.com/dm-offers/",
+          "publisher": "Direct Meds",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_merchant"
+        },
+        {
+          "url": "https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers",
+          "publisher": "U.S. Food and Drug Administration",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_regulator"
+        }
+      ],
+      "page": {
+        "brand_name": "Direct Meds",
+        "title": "Direct Meds review: GLP-1 offer facts and evidence gaps",
+        "description": "A source-cited review of Direct Meds’ published clinician-oversight and pharmacy-compounding statements, qualified starting-price display, regulatory boundary, and unresolved terms.",
+        "bottom_line": "Direct Meds presents a telehealth GLP-1 weight-management offer. Its official page supports attributing licensed-physician oversight and pharmacy compounding to the merchant, but it does not establish eligibility, a guaranteed prescription, treatment outcomes, a complete price, or a numeric score.",
+        "first_party_findings": [
+          "Direct Meds says all prescriptions are overseen by fully licensed and insured physicians.",
+          "Direct Meds says its pharmacy compounds medication and delivers it to the patient."
+        ],
+        "pricing": "A promotional GLP-1 landing page advertises a $147 starting amount but does not bind that figure to one medication, delivery form, or complete first-payment schedule.\n\nThe cited landing page publishes treatment-specific monthly prices of $297 for Semaglutide and $399 for Tirzepatide rather than one provider-wide monthly amount.\n\nThe cited landing page says doctor visits, normally $99 per visit, are included with medication, injection supplies, and shipping in its stated pricing.",
+        "price_volatility_warning": "Prices and program terms can change. Recheck the current checkout amount, billing cadence, medication and service inclusions, dispensing-pharmacy identity, shipping, state availability, cancellation, refund, and recurring-charge terms directly with Direct Meds.",
+        "clinician_boundary": "Direct Meds’ published physician-oversight statement is a first-party merchant fact, not proof that any reader is eligible or will receive a prescription. A licensed clinician must make eligibility, prescribing, product-selection, and treatment decisions; this review gives no individualized recommendation, medical advice, or dosing guidance.",
+        "regulatory": "Direct Meds describes pharmacy-compounded medication. Compounded products are distinct from FDA-approved branded drugs. Compounded drugs are not FDA approved, and FDA does not premarket-review them for safety, effectiveness, or quality.",
+        "evidence_gaps": [
+          "The starting-price display is ambiguous and does not establish a complete total.",
+          "Subscriptions may be canceled, but medication already received is not refundable under the published prescription-product policy.",
+          "Eligibility, states served, dispensing-pharmacy identity, supply period, and shipping terms remain unverified.",
+          "No evidence supports an efficacy promise, weekly-loss claim, outcome guarantee, superiority claim, or individualized recommendation."
+        ],
+        "review_sections": [
+          {
+            "heading": "The crossed Direct Meds price display needs decoding",
+            "body": "A promotional GLP-1 landing page advertises a $147 starting amount but does not bind that figure to one medication, delivery form, or complete first-payment schedule.\n\nThe cited landing page publishes treatment-specific monthly prices of $297 for Semaglutide and $399 for Tirzepatide rather than one provider-wide monthly amount.\n\nThe cited landing page says doctor visits, normally $99 per visit, are included with medication, injection supplies, and shipping in its stated pricing.\n\nSubscriptions may be canceled, but medication already received is not refundable under the published prescription-product policy.\n\nDirect Meds says approved prescriptions ship within one to two business days with free tracked delivery from a U.S.-certified pharmacy."
+          },
+          {
+            "heading": "Physician oversight does not answer the eligibility question",
+            "body": "The merchant says prescriptions are overseen by fully licensed and insured physicians. That is a first-party statement about the service structure, not evidence that every visitor qualifies, will be prescribed medication, or will receive a particular product. It also does not describe how the physician interaction occurs, which jurisdictions apply, what records are reviewed, or what happens financially if no prescription is issued. Those operational details matter when comparing telehealth pathways, but they should not be converted into a quality or safety score without independent evidence. Prospective patients can ask Direct Meds who performs the review, whether follow-up is included, how questions are routed, and which fees remain due after a declined prescription. Medical suitability, product choice, dosing, and monitoring stay with the treating licensed clinician."
+          },
+          {
+            "heading": "“Our pharmacy compounds” leaves fulfillment details open",
+            "body": "Direct Meds states that its pharmacy compounds medication and delivers it to the patient. The captured offer does not identify the pharmacy, its location, the states it serves, the supply period, shipping method, refill timing, or which compounded product would apply to a particular prescription. A general compounding statement also does not change the FDA status of the finished drug. Consumer diligence should focus on the documented chain: which legal entity dispenses, how a prescription is transferred, how shipment problems are handled, and where pharmacy-specific disclosures can be read before enrollment. None of these missing facts proves a fulfillment problem. They simply prevent a broad merchant sentence from supporting stronger claims about availability, consistency, speed, or product quality."
+          },
+          {
+            "heading": "A Direct Meds contract audit should precede the offer click",
+            "body": "Capture the current offer page and ask for a written statement of the first charge, recurring cadence, medication and service inclusions, shipment interval, renewal rule, cancellation deadline, and refund treatment. Confirm state availability and the dispensing-pharmacy identity relevant to the proposed prescription. If $147 requires a promotion, commitment, or specific product, record that condition beside the amount; if $249 serves another role, document it separately. This checklist does not assume hidden fees or unfavorable terms. It prevents an ambiguous visual price and two broad workflow claims from being treated as a complete agreement. A future update can score commercial transparency only after those fields are documented and comparable. Treatment suitability and outcomes are not part of that commercial score and are not predicted here."
+          }
+        ],
+        "cta_label": "Visit Direct Meds"
+      }
+    },
+    {
+      "program_key": "Katalys:1516",
+      "registry_id": "katalys-1516",
+      "network": "Katalys",
+      "provider_program_id": "1516",
+      "display_name": "SHED",
+      "review_path": "/reviews/shed/",
+      "official_sources": [
+        {
+          "url": "https://portal.tryshed.com/alp",
+          "publisher": "SHED",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_merchant"
+        },
+        {
+          "url": "https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers",
+          "publisher": "U.S. Food and Drug Administration",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_regulator"
+        }
+      ],
+      "page": {
+        "brand_name": "SHED",
+        "title": "SHED review: published weight-loss offer facts and gaps",
+        "description": "A source-cited review of SHED’s questionnaire and licensed-provider-review statements, compounded-versus-brand offering, qualified $199 starting price, and unresolved terms.",
+        "bottom_line": "SHED presents a telehealth workflow involving questionnaire intake, licensed-provider review, and compounded or brand-name weight-loss medication. Those are attributed merchant statements; the evidence does not establish eligibility, prescription issuance, outcomes, complete pricing, or a numeric score.",
+        "first_party_findings": [
+          "SHED says a licensed provider reviews questionnaire information and medication ships only if approved.",
+          "SHED says it offers compounded and brand-name medication for weight loss and other uses."
+        ],
+        "pricing": "UNKNOWN exact first charge for a selected plan. The multi-month terms offer full upfront payment or checkout-selected installments; the actual amount and cadence are presented at checkout. The same paragraph states conversion after the Minimum Term to a monthly or 28-day standard rate, currently $199 for Compounded Semaglutide and $299 for Compounded Tirzepatide. These are stated standard renewal rates, not proof of the first checkout charge or universal all-in cost.\n\nReported monthly list prices, not a universal checkout total: standard compounded Semaglutide injections $199 and standard Tirzepatide injections $299; Semaglutide sublingual drops Starter $229 or Standard $329; Tirzepatide sublingual drops Starter $279, Maintenance $349 or Standard $419; Semaglutide lozenges Starter $199 or Standard $299. The source separately lists Microdose and Premium options; those are not substituted for standard weight-loss plans. Exact selected-plan recurring all-in charge and billing cadence remain UNKNOWN.\n\nUNKNOWN separate universal consultation fee. Shed's billing article says subscription charges cover provider access, follow-ups or refill requests, prescription management and care-team support. This does not establish a zero consultation fee or one all-in total across treatment plans.",
+        "price_volatility_warning": "Prices and program terms can change. Recheck the current amount, billing cadence, medication and service inclusions, brand or compounded status, pharmacy and shipping terms, state availability, cancellation, refund, and recurring-charge terms directly with SHED.",
+        "clinician_boundary": "SHED’s questionnaire and licensed-provider-review statements do not establish that any reader is eligible or that a prescription will be issued. A licensed clinician must make eligibility, prescribing, product-selection, and treatment decisions; this review gives no individualized recommendation, medical advice, or dosing guidance.",
+        "regulatory": "SHED describes both brand-name and compounded medication. FDA-approved branded drugs and compounded drugs are different regulatory categories. Compounded drugs are not FDA approved, and FDA does not premarket-review them for safety, effectiveness, or quality.",
+        "evidence_gaps": [
+          "UNKNOWN exact first charge for a selected plan. The multi-month terms offer full upfront payment or checkout-selected installments; the actual amount and cadence are presented at checkout. The same paragraph states conversion after the Minimum Term to a monthly or 28-day standard rate, currently $199 for Compounded Semaglutide and $299 for Compounded Tirzepatide. These are stated standard renewal rates, not proof of the first checkout charge or universal all-in cost.",
+          "The exact product, brand or compounded status for a given patient, dispensing pharmacy, and supply period remain unverified.",
+          "State availability, eligibility details, shipping, cancellation, refund, and renewal terms remain unverified.",
+          "No evidence supports a quantified weight-loss claim, outcome guarantee, efficacy promise, or individualized recommendation."
+        ],
+        "review_sections": [
+          {
+            "heading": "SHED describes a sequence, not an automatic approval",
+            "body": "SHED’s merchant page outlines a questionnaire followed by review from a licensed provider, with medication shipping only if approved. The order of those steps is meaningful because it presents access as conditional rather than guaranteed. The captured evidence does not show the questionnaire criteria, review format, response timeline, states served, or financial outcome when a provider does not approve treatment. A prospective customer can ask which charge occurs before review, which occurs after approval, whether the clinical interaction includes follow-up, and how a declined case is handled. Those questions test process transparency without second-guessing clinical judgment. The questionnaire cannot determine suitability on its own, and this review does not predict whether a provider will prescribe, which medication may be discussed, or what result may follow."
+          },
+          {
+            "heading": "Brand-name and compounded options create a product fork",
+            "body": "SHED says it offers both brand-name and compounded medication, but the captured page does not establish what a particular person would be offered or how the commercial terms differ. The categories should remain separate throughout any comparison. An FDA-approved branded drug has a different regulatory status from a compounded product; the presence of one category on the platform does not transfer that status to the other. Before evaluating price or access, ask SHED to identify the proposed product, its regulatory category, dispensing source, supply period, and the conditions governing any substitution or change. This is not advice to choose one category. It is a demand for product-level clarity so that a broad portfolio statement does not obscure which evidence, price, pharmacy, and disclosures actually apply to the individual service being considered."
+          },
+          {
+            "heading": "“As low as $199” does not identify the SHED package",
+            "body": "The $199 statement is a lower-bound marketing phrase. The source did not identify cadence, medication, dose, supply duration, consultation bundle, shipping, renewal, or the eligibility conditions attached to that amount. It would be inaccurate to present $199 as a universal monthly total or to compare it directly with a quote that covers a different product or time period. Ask SHED for the first amount due and subsequent charges, then match each charge to a named product and service list. If brand-name and compounded pathways carry different terms, keep separate rows for them. The goal is not to assume the final cost will be higher; it is to prevent an unqualified floor from becoming a fabricated complete price. Date every answer because availability and program terms may change."
+          },
+          {
+            "heading": "What a complete SHED evidence file would contain",
+            "body": "A comparison-ready record would identify the product category, prescribing pathway, dispensing pharmacy, states served, supply interval, shipping terms, clinical services, billing cadence, renewal, cancellation, and refund policy. It would also state what happens to any payment if the licensed provider does not approve a prescription. Save the exact merchant language rather than paraphrasing an “up to” result or promotional claim that was intentionally excluded from this review. The captured page does not support quantified weight-loss expectations, comparative effectiveness, or a personalized recommendation. Those omissions are not placeholders to be filled with averages from another provider. They define the boundary of the current evidence. SHED can close commercial or operational gaps with updated documentation; only a clinician can address an individual patient’s medical questions."
+          }
+        ],
+        "cta_label": "Visit SHED"
+      }
+    },
+    {
+      "program_key": "Katalys:1518",
+      "registry_id": "katalys-1518",
+      "network": "Katalys",
+      "provider_program_id": "1518",
+      "display_name": "Breeze Meds",
+      "review_path": "/reviews/breezemeds/",
+      "official_sources": [
+        {
+          "url": "https://www.breezemeds.com/",
+          "publisher": "BreezeMeds",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_merchant"
+        },
+        {
+          "url": "https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers",
+          "publisher": "U.S. Food and Drug Administration",
+          "checked_as_of": "2026-08-02",
+          "source_type": "official_regulator"
+        }
+      ],
+      "page": {
+        "brand_name": "BreezeMeds",
+        "title": "BreezeMeds review: published GLP-1 facts and evidence gaps",
+        "description": "A source-cited review of BreezeMeds’ licensed-provider, pharmacy-partner, GLP-access, and starting-price statements with regulatory and commercial gaps made explicit.",
+        "bottom_line": "BreezeMeds presents a telehealth service offering GLP access through licensed providers and names pharmacy partners. Those are attributed merchant statements; the captured evidence does not establish eligibility, prescription issuance, outcomes, complete pricing, privacy compliance, or a numeric score.",
+        "first_party_findings": [
+          "BreezeMeds says licensed providers participate in its service and advertises GLP access.",
+          "BreezeMeds names Belmar Pharmacy, Strive Pharmacy, and Casa Pharma Rx as pharmacy partners."
+        ],
+        "pricing": "BreezeMeds published starting prices of $199 for a GLP-1 injection and $299 for oral semaglutide. The captured evidence does not establish billing cadence, medication or service inclusions, total cost, renewal terms, or eligibility for either amount. Verify current complete terms before payment.",
+        "price_volatility_warning": "Prices and program terms can change. Recheck the current amount, billing cadence, exact product, medication and service inclusions, pharmacy and shipping terms, state availability, cancellation, refund, privacy, and recurring-charge terms directly with BreezeMeds.",
+        "clinician_boundary": "BreezeMeds’ licensed-provider statement does not establish that any reader is eligible or that a prescription will be issued. A licensed clinician must make eligibility, prescribing, product-selection, and treatment decisions; this review gives no individualized recommendation, medical advice, or dosing guidance.",
+        "regulatory": "BreezeMeds discusses GLP access in a market that includes FDA-approved branded drugs and compounded drugs; those are different regulatory categories. Compounded drugs are not FDA approved, and FDA does not premarket-review them for safety, effectiveness, or quality.",
+        "evidence_gaps": [
+          "Published prices are starting amounts; cadence, inclusions, total cost, and renewal terms remain unverified.",
+          "The exact medication, branded or compounded status, eligibility, states served, and supply period remain unverified.",
+          "Named pharmacy partners do not establish which pharmacy would dispense for a particular patient; shipping, cancellation, and refund terms remain unverified.",
+          "The existence of a privacy policy is not proof of compliance, and no evidence supports rapid-loss, outcome, efficacy, media-endorsement, or individualized-recommendation claims."
+        ],
+        "review_sections": [
+          {
+            "heading": "Named pharmacy partners are not a dispensing assignment",
+            "body": "BreezeMeds names Belmar Pharmacy, Strive Pharmacy, and Casa Pharma Rx as partners. That is more specific than an unnamed fulfillment claim, but it still does not identify which pharmacy would dispense for a particular patient, product, or state. Partner naming does not establish that every pharmacy handles every medication, that a prescription is guaranteed, or that identical shipping and support terms apply across the network. Before enrollment, ask BreezeMeds which pharmacy is expected to fill the proposed prescription, where that entity is licensed to serve, how the assignment can change, and who resolves dispensing or shipment issues. These are allocation questions, not accusations about any named organization. They keep a list of recognizable partners from being mistaken for a complete patient-level fulfillment contract."
+          },
+          {
+            "heading": "Injection and oral semaglutide prices describe different offers",
+            "body": "BreezeMeds published starting prices of $199 for a GLP-1 injection and $299 for oral semaglutide. The labels identify two different formats, so the figures should not be blended into one representative BreezeMeds cost. The captured page does not establish cadence, exact product, branded or compounded status, supply duration, service inclusions, shipping, renewal, or who qualifies for either starting amount. A useful worksheet gives each format its own row and requires a dated breakdown of the first and recurring charges. It should also identify whether clinical review, follow-up, medication, and delivery are included. The numbers remain merchant starting statements until those commercial units are known; they do not prove affordability, savings, availability, suitability, or expected results."
+          },
+          {
+            "heading": "A privacy-policy link is not a compliance finding",
+            "body": "The existence of a published privacy policy shows that a document is available to read. It does not, by itself, verify operational compliance, security controls, data flows, retention, vendor practices, or how a particular health interaction is handled. This review therefore does not award BreezeMeds a privacy or compliance conclusion from the link alone. A consumer can examine what data the service says it collects, which parties it says receive information, how communications are used, and what choices or contact routes are described. Questions about legal compliance require evidence and expertise beyond a storefront review. Keeping that boundary explicit also prevents unrelated media logos, testimonials, or presentation cues from substituting for documentation about the actual service, pharmacies, clinical workflow, and commercial agreement."
+          },
+          {
+            "heading": "The BreezeMeds decision file needs product-level terms",
+            "body": "Before comparing BreezeMeds, request the exact medication and regulatory category, licensed-provider pathway, likely dispensing pharmacy, states served, supply interval, shipping method, billing cadence, included services, renewal, cancellation, and refund terms. Match each response to either the injection or oral offer rather than assuming both share one contract. Record the amount due now and the next scheduled amount, and date the evidence because starting prices and availability can change. Leave promotional outcome, testimonial, and endorsement implications out of the decision record because the captured evidence does not support them as independent fact. This checklist evaluates documentation quality only. It does not determine medical eligibility, recommend a format, or predict whether a clinician will prescribe or a patient will experience a particular outcome."
+          }
+        ],
+        "cta_label": "Visit BreezeMeds"
+      }
+    }
+  ],
+  "score_rubric": {
+    "overall_score": null,
+    "status": "NOT_SCORED_EVIDENCE_GAPS",
+    "explanation": "No numeric score is assigned. A first-party page can establish published statements but cannot by itself close comparable pricing, care-process, independent-review, shipping, pharmacy, eligibility, or policy evidence gaps.",
+    "criteria": [
+      {
+        "name": "Price transparency",
+        "weight_percent": 30,
+        "result": "Pending evidence"
+      },
+      {
+        "name": "Care-process visibility",
+        "weight_percent": 25,
+        "result": "Pending evidence"
+      },
+      {
+        "name": "Insurance support",
+        "weight_percent": 15,
+        "result": "Pending evidence"
+      },
+      {
+        "name": "Comparable independent public reviews",
+        "weight_percent": 15,
+        "result": "Pending evidence"
+      },
+      {
+        "name": "Shipping and pharmacy transparency",
+        "weight_percent": 15,
+        "result": "Pending evidence"
+      }
+    ]
+  },
+  "effects": {
+    "ads_mutations": 0,
+    "deployments": 0,
+    "email_sends": 0,
+    "provider_calls": 0,
+    "provider_writes": 0,
+    "public_site_writes": 0,
+    "spend_usd": 0,
+    "tracking_clicks": 0
+  }
+}

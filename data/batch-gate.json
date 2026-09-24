@@ -1,0 +1,8 @@
+{
+  "launch_authorized": false,
+  "lifecycle": "SUPERSEDED_INPUT_NOT_ACTIVE_AUTHORITY",
+  "note": "This data file is retained only as a historical Phase 1 input. The generated public gate and Batch 2 validator/acceptance receipts are authoritative.",
+  "operator_release_status": "HELD",
+  "schema": "glp-phase2-historical-input-gate-v1",
+  "superseded_by": "public/batch-gate.json"
+}

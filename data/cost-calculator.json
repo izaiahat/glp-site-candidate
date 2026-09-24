@@ -1,0 +1,21 @@
+{
+  "attribution_month": "202608",
+  "description": "Use dated advertised starting prices, then add known fees and discounts to compare a more realistic total.",
+  "disclaimer": "Planning estimate \u2014 verify current prices at checkout.",
+  "dynamic_profile_schema": "glp-provider-dynamic-profiles-v1",
+  "expanded_comparison_path": "/providers/?sort=cheapest",
+  "first_month_overrides": {},
+  "h1": "What will your GLP\u20111 program really cost?",
+  "max_months": 24,
+  "one_time_overrides": {},
+  "override_basis": "No hardcoded override is final authority. program-registry provider_dynamic_profiles carries evidence-derived autofill or blank manual-entry adjudication for every canonical provider.",
+  "path": "/tools/glp-1-cost-calculator/",
+  "provider_anchor_prefix": "provider-",
+  "quiz_path": "/quiz/provider-fit/",
+  "recurring_overrides": {},
+  "related_comparison_path": "/providers/?sort=cheapest",
+  "schema": "glp-cost-calculator-v1",
+  "source_policy": "derive_longest_current_price_context_per_program_from_money_page_specs",
+  "title": "GLP-1 monthly cost calculator",
+  "unknown_cost_label": "No usable monthly price was published in the checked source."
+}

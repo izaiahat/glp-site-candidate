@@ -1,0 +1,252 @@
+{
+  "schema": "glp.compounded-category-content.v1",
+  "evidence_directory": "compounded-category-evidence",
+  "scope": "This directory is alphabetical, not a clinical, cheapest-price or commission-ranked recommendation. It is not a claim to cover the whole market.",
+  "unknown_product": "Confirm the exact product, formulation and availability in your state with the provider before proceeding.",
+  "unknown_price": "Price not published in the pages we checked for this product and plan. Ask the provider for its current written quote.",
+  "unknown_evidence": "We do not have enough published detail to describe this program's terms here. Check the linked review and ask the provider.",
+  "medications": {
+    "semaglutide": {
+      "intro": "Compare compounded semaglutide programs, payment schedules and cancellation terms. Prices come only from provider pages Clinic Scout checked; missing prices are shown as not published in those pages.",
+      "sections": [
+        {
+          "heading": "What compounded semaglutide is—and is not",
+          "paragraphs": [
+            {
+              "text": "Compounded medicines are prepared for needs an FDA-approved medication cannot meet; FDA gives examples such as making a medicine without a dye a patient is allergic to, or changing a tablet to a liquid for someone unable to swallow it.",
+              "source_ids": [
+                "SEMA-FDA-QA"
+              ]
+            },
+            {
+              "text": "This page uses compounded semaglutide to mean the compounded-product category, not a brand-name drug comparison or a claim of FDA-approved equivalence.",
+              "source_ids": [
+                "SEMA-FDA"
+              ]
+            },
+            {
+              "text": "FDA says compounded drugs should only be used in patients whose medical needs cannot be met by an FDA-approved drug.",
+              "source_ids": [
+                "SEMA-FDA"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Semaglutide-specific details to check",
+          "paragraphs": [
+            {
+              "text": "FDA reports concerns about semaglutide salt forms, including semaglutide sodium and semaglutide acetate, which it describes as different active ingredients from those used in approved drugs.",
+              "source_ids": [
+                "SEMA-FDA"
+              ]
+            },
+            {
+              "text": "FDA has received reports of dosing errors involving compounded injectable semaglutide, including some requiring hospitalization; this comparison does not provide dosing or administration instructions.",
+              "source_ids": [
+                "SEMA-FDA"
+              ]
+            },
+            {
+              "text": "A provider may discuss several medications and forms without offering every combination. Confirm the exact compounded semaglutide product before choosing a plan.",
+              "source_ids": []
+            }
+          ]
+        }
+      ],
+      "commitment": "The examples below are different payment structures, not a cheapest-provider ranking; quoted monthly equivalents, prepaid supply and advertised floors are not interchangeable cash charges.",
+      "questions": [
+        "Which exact semaglutide formulation and product is being offered, and is it compounded?",
+        "Is the displayed figure an advertised minimum, a monthly cash charge, a prepaid bundle or a monthly equivalent of a longer billing term?",
+        "What is due at checkout, what renews, and which consultation, membership, medication, laboratory or shipping charges are separate?",
+        "What are the new-patient or introductory restrictions, and what changes after the introductory period?",
+        "Does cancellation stop only future billing, or also an order already sent to the pharmacy?",
+        "Who will answer medication questions after delivery, and which pharmacy will fill the prescription?"
+      ],
+      "method": "We compare published program terms, not treatment suitability. Each source link carries the date we checked it. A missing price means the pages we checked did not establish that product's plan price; the provider may have other offers. A licensed clinician determines whether treatment is appropriate for you."
+    },
+    "tirzepatide": {
+      "intro": "Compare compounded tirzepatide programs, payment schedules and cancellation terms. Prices come only from provider pages Clinic Scout checked; missing prices are shown as not published in those pages. Read each review and confirm availability with the provider.",
+      "sections": [
+        {
+          "heading": "What compounded tirzepatide is—and is not",
+          "paragraphs": [
+            {
+              "text": "FDA describes compounding for a patient who cannot be treated with an FDA-approved medication, with examples such as making a medicine without a dye or in a different dosage form. Compounded drugs are not the same as FDA-approved generic drugs.",
+              "source_ids": [
+                "T-FDA-QA-FRESH"
+              ]
+            },
+            {
+              "text": "FDA says a compounded drug might be appropriate if a patient’s medical need cannot be met by an FDA-approved drug, or if the FDA-approved drug is not commercially available. This is general regulatory context—not a finding that a listed provider, a particular prescription or a patient qualifies for compounding.",
+              "source_ids": [
+                "T-FDA-GLP-FRESH"
+              ]
+            },
+            {
+              "text": "The category label is not a brand-drug equivalence claim or a recommendation to use one formulation over another. This page compares reported commercial terms; treatment and dose advice are outside its scope.",
+              "source_ids": []
+            }
+          ]
+        },
+        {
+          "heading": "Tirzepatide-specific comparison pitfalls",
+          "paragraphs": [
+            {
+              "text": "A provider's mention of tirzepatide does not establish every formulation it offers. Check the exact compounded product, delivery form and availability before choosing a plan.",
+              "source_ids": []
+            },
+            {
+              "text": "A semaglutide offer is not a tirzepatide price. We show a compounded tirzepatide price only when the checked provider page supports that product and plan; otherwise it stays unpriced here.",
+              "source_ids": []
+            }
+          ]
+        }
+      ],
+      "commitment": "Start with what is charged, and when. A monthly-looking number need not be a monthly payment: monthly equivalents and upfront charges are labeled separately, and missing fees stay not stated. Ask for the selected plan's written order summary rather than multiplying the headline yourself.",
+      "questions": [
+        "Which exact compounded tirzepatide product and formulation does your current written offer cover, and is it available for my location?",
+        "What is due at checkout, what supply does that payment cover, and what is the next billing date?",
+        "Which consultation, shipping, membership and other required charges are included in this particular plan?",
+        "Is this a first-time-patient or introductory offer, and what written terms govern the next cycle?",
+        "What action stops future billing, and what separate cutoff determines whether an already-placed order can be canceled or refunded?",
+        "Which pharmacy would fulfill the individual prescription, and how can I obtain that information before proceeding?"
+      ],
+      "method": "We compare dated provider pages and label their prices by payment structure. FDA sources explain the regulatory caution. This is not a firsthand treatment review, medical recommendation or stock check; confirm current terms and availability directly with the provider."
+    }
+  },
+  "price_note_rewrites": [
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Medication-plan charge only; total first payment not stated. Published monthly-plan base charge before optional SLIM50 extra $50 off every order; promotion eligibility/checkout application unverified. Countdown is not a dated expiry.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This medication-only monthly price excludes the optional SLIM50 discount of $50 per order; eligibility and checkout application are unverified, and the countdown gives no dated expiry."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised starting price; summer offer ends September 15 at midnight. Selected-plan first and renewal charges not stated. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This advertised starting price is a summer offer ending September 15 at midnight; the figure does not establish the exact selected-plan first and renewal debits, optional fees or shipping charges."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Full billed amount not stated. New to GLP-1s first billing cycle only then $149/mo",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The full billed amount is not stated; this offer is for people new to GLP-1s, covers the first billing cycle only and then changes to $149/mo."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Product-page starting price; prescription subject to clinical eligibility. The separate home35 annual-prepay offer is not treated as this product-page charge. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This product-page starting price requires clinical eligibility and is separate from the home35 annual-prepayment offer; the figure does not establish the exact selected-plan first and renewal debits, optional fees or shipping charges."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. standard month-to-month; not promotional headline medication, doctors visits, shipping and injection supplies included Terms specify billing every 30 days, rather than by calendar month. Cancel auto-refill at least 48 hours before the next processing date.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This standard, non-promotional month-to-month plan includes medication, doctor visits, shipping and injection supplies and bills every 30 days rather than by calendar month; cancel auto-refill at least 48 hours before the next processing date."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. For first-time patients 12 weeks of medication shipping, consultation, and injection kit Standard total; expired promotions are not included",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This standard total is for first-time patients and includes 12 weeks of medication, shipping, consultation and an injection kit; expired promotions are not included."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised monthly equivalent on a 12-month prepaid plan, not a monthly debit. Offer page $1,163 today/$1,188 renewal conflicts with pricing page $1,188/$1,163; exact selected checkout charge not stated. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This is a monthly equivalent for 12 months paid upfront, not a monthly charge: the offer page lists $1,163 initially/$1,188 at renewal, but the pricing page lists $1,188/$1,163; the exact selected checkout charge, optional fees and shipping remain unresolved."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised starting monthly price. Selected dose, plan duration and exact first/renewal charges not stated. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This advertised monthly starting price does not specify the selected dose or plan duration and does not establish exact first and renewal debits, optional fees or shipping charges."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. $657 billed per payment. 60 tablets shipped every 2 months; not billing period Not FDA-approved Separate From $179/mo floor is not quarterly cash price",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The payment is $657, while 60 tablets ship every two months on a separate delivery schedule; the product is not FDA-approved, and the separate “From $179/mo” price is not the quarterly payment."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Billing schedule not stated. B-12 injection Reported product-specific combination; not a brand substitute Actual billing schedule not stated",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This product-specific combination includes a B-12 injection and is not a brand substitute; the actual billing schedule is not stated."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Billing schedule not stated. ondansetron oral tablet Reported product-specific combination; not a brand substitute Actual billing schedule not stated",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This product-specific combination includes an ondansetron oral tablet and is not a brand substitute; the actual billing schedule is not stated."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Two-month starter total, paid upfront in full; only new customers starting the lowest dose qualify. Rounded monthly marketing equivalents are not first-month debits. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This two-month starter supply is paid in full upfront and is only for new customers starting the lowest dose; rounded monthly advertising figures are not first-month charges and do not establish exact selected-plan debits, optional fees or shipping charges."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Billing schedule not stated. A clinician must determine eligibility; this listing is not an assurance of approval or quality.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. A clinician must determine eligibility, and this listing does not assure approval or quality; the billing schedule is not stated."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. $1,188 billed per payment. Annual Billed yearly",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The annual plan bills $1,188 once a year."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised Monthly Plan starting amount; the same page also advertises $49/mo on twelve-month plans and inconsistent $150/$200-off offers. Final selected plan and checkout amount not stated. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This advertised Monthly Plan starting price appears alongside $49/mo twelve-month plans and conflicting $150/$200 discounts; the final selected plan, checkout amount, optional fees and shipping charges are not established."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Billing schedule not stated. A clinician must determine eligibility; this listing is not an assurance of approval or quality. Advertised starting price includes $100 off first month only; ongoing charge not stated, not inferred from compare-at amount.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This advertised starting price includes $100 off the first month only, with no stated ongoing charge or billing schedule and no renewal inferred from the crossed-out price; a clinician must determine eligibility, and this listing does not assure approval or quality."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Full billed amount not stated. New to GLP-1s first billing cycle only then $229/mo",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The full billed amount is not stated; this offer is for people new to GLP-1s, covers the first billing cycle only and then changes to $229/mo."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Full billed amount not stated. 12-month Billed every 48 weeks Save 15% + $100 off first order The monthly equivalent is not the amount charged at checkout",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The advertised 12-month plan bills every 48 weeks and offers 15% savings plus $100 off the first order; the full billed amount is not stated, and its monthly equivalent is not the checkout charge."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised monthly equivalent on a 12-month prepaid plan, not a monthly debit. Pricing page advertises $2,148 initial total and $2,123 renewal. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This is a monthly equivalent for 12 months paid upfront, not a monthly charge; the pricing page lists $2,148 initially and $2,123 at renewal but does not establish exact selected-plan debits, optional fees or shipping charges."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. $897 billed per payment. 60 tablets shipped every 2 months; not billing period Not FDA-approved Separate From $279/mo floor is not quarterly cash price If not prescribed, refund excludes $39 doctor visit fee.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The payment is $897, while 60 tablets ship every two months on a separate delivery schedule; the product is not FDA-approved, the separate “From $279/mo” price is not the quarterly payment, and a refund when no prescription is issued excludes the $39 doctor visit fee."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. $1,500 billed per payment. Annual Billed yearly",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The annual plan bills $1,500 once a year."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised Monthly Plan starting amount; shipped every four weeks. Promotional terms vary on the same page; final checkout debit not stated. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This advertised Monthly Plan starting price covers shipments every four weeks, but promotional terms differ on the same page; the final checkout debit, exact selected-plan first and renewal debits, optional fees and shipping charges are not established."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Billing schedule not stated. + subscription fees and clinical care excluded coverage-dependent care costs",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The billing schedule is not stated; subscription fees and clinical care are excluded, and care costs depend on coverage."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Billing schedule not stated. Cash price. Insurance may reduce cost. Provider visit included Free shipping Cancel anytime",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The billing schedule is not stated; the provider advertises a cash price that insurance may reduce, an included visit, free shipping and cancellation at any time."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised starting monthly figure; form not stated. Mandatory three-month term and full supply upfront regardless of billing option. Exact prepaid total and renewal debits not stated. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This advertised monthly starting figure does not state the medication form; a three-month term and full supply upfront apply regardless of billing option, while the exact prepaid total, selected-plan first and renewal debits, optional fees and shipping charges are not established."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Billing schedule not stated. Cancel anytime Membership-only; medication not included in this quoted access floor",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This starting price covers membership access only, not medication; the billing schedule is not stated, and the provider advertises cancellation at any time."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised as-low-as amount from the medication product page; eligibility and dose dependent. Category and cross-sell cards show inconsistent tirzepatide injection ($269 versus $289) and semaglutide tablet ($269 versus $289) prices; exact checkout debit not stated. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The product-page starting amount depends on eligibility and dose; category and cross-sell cards disagree on tirzepatide injection and semaglutide tablet prices ($269 versus $289 for each), and exact checkout, selected-plan first and renewal debits, optional fees and shipping charges are not established."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised brand monthly plan. Full payment at order per FAQ; prescription and final checkout terms remain subject to provider confirmation. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This is an advertised brand monthly plan with full payment at order according to the FAQ; the prescription and final checkout terms require provider confirmation, and exact selected-plan first and renewal debits, optional fees and shipping charges are not established."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Compounded medication; form unstated. Quarterly plan: charged only after clinician prescription, then renews every 12 weeks until cancellation. The advertised monthly average is not a monthly debit. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The compounded medication's form is not stated; this quarterly plan is charged only after a clinician prescribes and renews every 12 weeks until cancellation, the advertised monthly average is not a monthly debit, and exact selected-plan first and renewal debits, optional fees and shipping charges are not established."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. $2,094 billed per payment. Advertised rounded monthly equivalent, not monthly debit; twelve-month plan billed upfront with STARTNOW promo. Auto-renews; final price confirmed at checkout. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The advertised rounded monthly equivalent is not a monthly debit: the twelve-month STARTNOW promotional plan bills $2,094 upfront and auto-renews; the final price requires checkout confirmation, and exact selected-plan first and renewal debits, optional fees and shipping charges are not established."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. $2,905 billed per payment. Advertised rounded monthly equivalent, not monthly debit; twelve-month plan billed upfront with STARTNOW promo. Auto-renews; final price confirmed at checkout. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The advertised rounded monthly equivalent is not a monthly debit: the twelve-month STARTNOW promotional plan bills $2,905 upfront and auto-renews; the final price requires checkout confirmation, and exact selected-plan first and renewal debits, optional fees and shipping charges are not established."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. $1,933 billed per payment. Advertised rounded monthly equivalent, not monthly debit; twelve-month plan billed upfront with STARTNOW promo. Auto-renews; final price confirmed at checkout. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. The advertised rounded monthly equivalent is not a monthly debit: the twelve-month STARTNOW promotional plan bills $1,933 upfront and auto-renews; the final price requires checkout confirmation, and exact selected-plan first and renewal debits, optional fees and shipping charges are not established."
+    },
+    {
+      "source_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. Advertised brand starting amount for month-to-month plan; selected dose and final debit not stated. Exact selected-plan first and renewal debits, optional fees and shipping charges are not established by this advertised figure.",
+      "reader_note": "Total initial and renewal charges, including any separate fees, are not stated here; request a complete quote. This is an advertised brand starting amount for a month-to-month plan; the selected dose, final debit, exact selected-plan first and renewal debits, optional fees and shipping charges are not established."
+    }
+  ]
+}

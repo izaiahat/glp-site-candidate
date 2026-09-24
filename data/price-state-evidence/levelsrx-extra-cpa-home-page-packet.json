@@ -1,0 +1,132 @@
+{
+  "captured_at_utc": "2026-09-01T05:26:20.555221+00:00",
+  "display_name": "LevelsRx",
+  "effects": {
+    "accounts_created": 0,
+    "forms_submitted": 0,
+    "tracking_clicks": 0
+  },
+  "fields": {
+    "cancellation": {
+      "quote": "Cancellation requests must be submitted at least 7 days before your next billing cycle to take effect in the current billing period.",
+      "source_url": "https://www.levelsrx.com/terms-conditions",
+      "value": "Cancellation requires at least seven days' notice before the next billing cycle. The terms state that cancellation must be handled by phone.",
+      "verified_as_of": "2026-09-01"
+    },
+    "consultation_fee": {
+      "quote": "LevelsRx offers multiple subscription types, all of which include comprehensive coaching and services with no hidden fees, membership costs, or lab charges. Each plan provides regular virtual consultations with a clinician, prescription management and renewals (if applicable), support with insurance coverage for medications, and access to 1:1 nutritionist coaching, ongoing chat support, and health guides.",
+      "source_url": "https://www.levelsrx.com/",
+      "value": "Virtual clinician consultations are included in the subscription, with no separate membership or lab charge stated.",
+      "verified_as_of": "2026-09-01"
+    },
+    "eligibility": {
+      "quote": "While prescriptions for weight loss medication cannot be guaranteed for every patient, if you are 18 years of age or older and meet specific criteria such as weight and certain associated health conditions, your healthcare provider may consider you eligible for a prescription.",
+      "source_url": "https://www.levelsrx.com/",
+      "value": "Patients must be at least 18 and satisfy clinician-reviewed weight and health criteria; prescriptions are not guaranteed.",
+      "verified_as_of": "2026-09-01"
+    },
+    "first_month_price": {
+      "quote": "Starting at $150/mo\n\n### Compounded Semaglutide (GLP-1)",
+      "source_url": "https://www.levelsrx.com/",
+      "value": "UNKNOWN — compounded semaglutide starts at $150 per month, but the page does not label this amount as the exact first-month charge.",
+      "verified_as_of": "2026-09-01"
+    },
+    "legitscript": {
+      "quote": "LegitScript\n\nCertified",
+      "source_url": "https://www.levelsrx.com/",
+      "value": "The provider page displays the words LegitScript and Certified. Independent current registry status was not separately checked.",
+      "verified_as_of": "2026-09-01"
+    },
+    "monthly_price": {
+      "quote": "Starting at $150/mo\n\n### Compounded Semaglutide (GLP-1)\n\nA powerful GLP-1 medication that helps regulate appetite, reduce cravings, and promote steady weight loss.\n\n- Weekly injection\n- Efficacy for long-term weight loss\n- Ideal for patients needing appetite control and blood sugar balance\n\n[Get started](https://app.levelsrx.com/onboarding/warm-up/bmi)\n\nStarting at $240/mo\n\n### Compounded Tirzepatide (GLP-1/GIP)\n\nA next-generation dual-action medication (GLP-1 + GIP) that delivers enhanced metabolic control and faster results.\n\n- Weekly injection\n- Often leads to greater reductions in weight and waist circumference\n- Supports improved insulin sensitivity\n\n[Get started](https://app.levelsrx.com/onboarding/warm-up/bmi)\n\nStarting at $150/mo\n\n### Oral Compounded Semaglutide (GLP-1)\n\nA GLP-1 therapy formulated as an oral liposomal liquid to help regulate appetite, reduce cravings, and support steady weight loss.\n\n- Oral liquid (dropper)\n- Supports feeling fuller and staying metabolically balanced\n- Ideal if seeking a non-injectable GLP-1 option\n\n[Get started](https://app.levelsrx.com/onboarding/warm-up/bmi)",
+      "source_url": "https://www.levelsrx.com/",
+      "value": "Compounded semaglutide and oral compounded semaglutide are advertised from $150 per month. Compounded tirzepatide is advertised from $240 per month. These are starting prices, not guaranteed fixed totals.",
+      "verified_as_of": "2026-09-01"
+    },
+    "pharmacy_type": {
+      "quote": "By accepting these Terms of Use, you additionally understand and agree that LevelsRx is not acting as a pharmacy, nor does LevelsRx control or interfere with any such services.",
+      "source_url": "https://www.levelsrx.com/terms-conditions",
+      "value": "UNKNOWN — LevelsRx names third-party partner pharmacies in its terms, but the checked pages do not establish a 503A or 503B pharmacy class.",
+      "verified_as_of": "2026-09-01"
+    },
+    "shipping_wait": {
+      "quote": "Free home delivery\n\nFast, reliable delivery for every refill once you complete the required refill form",
+      "source_url": "https://www.levelsrx.com/",
+      "value": "Home delivery is advertised as free. The page promises fast refill delivery but does not publish a day range.",
+      "verified_as_of": "2026-09-01"
+    },
+    "states_served": {
+      "quote": "Certain Services may not be available in all states.",
+      "source_url": "https://www.levelsrx.com/terms-conditions",
+      "value": "UNKNOWN — no authoritative state list is published on the checked pages.",
+      "verified_as_of": "2026-09-01"
+    }
+  },
+  "first_party_source_captures": {
+    "bytes": 148765,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/deploy-fix-20260831-successor-27-g3-levelsrx-extra-cpa-home-page-a01/authoring/levelsrx-extra-cpa-home-page-c1/captures/levelsrx-extra-cpa-home-page-captures.json",
+    "sha256": "69d434d3dcf84e97e9a2b6d4db06238c1af6b8307767e54305cf48a872fb07f4"
+  },
+  "official_url": "https://www.levelsrx.com/",
+  "program_id": "levelsrx-extra-cpa-home-page",
+  "provider_dynamic_profile": {
+    "calculator": {
+      "checked_as_of": "2026-09-01",
+      "evidence_gap_copy": "Select the medication and form, then enter the current checkout and renewal totals manually because the page publishes treatment-specific starting prices rather than one provider-wide schedule.",
+      "first_month_base_usd": null,
+      "mode": "manual",
+      "one_time_fee_usd": null,
+      "price_context": "LevelsRx publishes starting monthly prices by molecule and delivery form: $150 for compounded semaglutide, $240 for compounded tirzepatide, and $150 for oral compounded semaglutide.",
+      "recurring_month_base_usd": null,
+      "source_url": "https://www.levelsrx.com/"
+    },
+    "evidence_bindings": [
+      {
+        "evidence_sha256": "36dcb2ec2d7d568008ea6f0b4723982c39a41768ae97cc3289ee1ab368e0c93e",
+        "evidence_text": "Starting at $150/mo\n\n### Compounded Semaglutide (GLP-1)\n\nA powerful GLP-1 medication that helps regulate appetite, reduce cravings, and promote steady weight loss.\n\n- Weekly injection\n- Efficacy for long-term weight loss\n- Ideal for patients needing appetite control and blood sugar balance\n\n[Get started](https://app.levelsrx.com/onboarding/warm-up/bmi)\n\nStarting at $240/mo\n\n### Compounded Tirzepatide (GLP-1/GIP)\n\nA next-generation dual-action medication (GLP-1 + GIP) that delivers enhanced metabolic control and faster results.\n\n- Weekly injection\n- Often leads to greater reductions in weight and waist circumference\n- Supports improved insulin sensitivity\n\n[Get started](https://app.levelsrx.com/onboarding/warm-up/bmi)\n\nStarting at $150/mo\n\n### Oral Compounded Semaglutide (GLP-1)\n\nA GLP-1 therapy formulated as an oral liposomal liquid to help regulate appetite, reduce cravings, and support steady weight loss.\n\n- Oral liquid (dropper)\n- Supports feeling fuller and staying metabolically balanced\n- Ideal if seeking a non-injectable GLP-1 option\n\n[Get started](https://app.levelsrx.com/onboarding/warm-up/bmi)",
+        "fields": [
+          "taxonomy.brand_name_tags",
+          "taxonomy.delivery_form_tags",
+          "taxonomy.molecule_tags",
+          "taxonomy.treatment_type_tags",
+          "verified_as_of"
+        ],
+        "source_url": "https://www.levelsrx.com/",
+        "verified_as_of": "2026-09-01"
+      },
+      {
+        "evidence_sha256": "36dcb2ec2d7d568008ea6f0b4723982c39a41768ae97cc3289ee1ab368e0c93e",
+        "evidence_text": "Starting at $150/mo\n\n### Compounded Semaglutide (GLP-1)\n\nA powerful GLP-1 medication that helps regulate appetite, reduce cravings, and promote steady weight loss.\n\n- Weekly injection\n- Efficacy for long-term weight loss\n- Ideal for patients needing appetite control and blood sugar balance\n\n[Get started](https://app.levelsrx.com/onboarding/warm-up/bmi)\n\nStarting at $240/mo\n\n### Compounded Tirzepatide (GLP-1/GIP)\n\nA next-generation dual-action medication (GLP-1 + GIP) that delivers enhanced metabolic control and faster results.\n\n- Weekly injection\n- Often leads to greater reductions in weight and waist circumference\n- Supports improved insulin sensitivity\n\n[Get started](https://app.levelsrx.com/onboarding/warm-up/bmi)\n\nStarting at $150/mo\n\n### Oral Compounded Semaglutide (GLP-1)\n\nA GLP-1 therapy formulated as an oral liposomal liquid to help regulate appetite, reduce cravings, and support steady weight loss.\n\n- Oral liquid (dropper)\n- Supports feeling fuller and staying metabolically balanced\n- Ideal if seeking a non-injectable GLP-1 option\n\n[Get started](https://app.levelsrx.com/onboarding/warm-up/bmi)",
+        "fields": [
+          "calculator.checked_as_of",
+          "calculator.evidence_gap_copy",
+          "calculator.first_month_base_usd",
+          "calculator.mode",
+          "calculator.one_time_fee_usd",
+          "calculator.price_context",
+          "calculator.recurring_month_base_usd",
+          "calculator.source_url"
+        ],
+        "source_url": "https://www.levelsrx.com/",
+        "verified_as_of": "2026-09-01"
+      }
+    ],
+    "taxonomy": {
+      "brand_name_tags": [],
+      "delivery_form_tags": [
+        "oral"
+      ],
+      "molecule_tags": [
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "treatment_type_tags": [
+        "compounded"
+      ]
+    },
+    "verified_as_of": "2026-09-01",
+    "version": 1
+  },
+  "schema": "program-deep-research-v1",
+  "status": "PASS"
+}

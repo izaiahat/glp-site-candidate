@@ -1,0 +1,39 @@
+{
+  "schema": "clinic-scout-held-blog-drafts-v1",
+  "release_authorized": false,
+  "drafts": [
+    {
+      "draft_id": "bcbs-glp1-california",
+      "template_id": "medium-coverage-guide",
+      "canonical_path": "/coverage/bcbs-glp-1-california/",
+      "primary_keyword": "does blue cross blue shield cover glp-1 medications in california",
+      "h1": "How to verify a California Blue Cross or Blue Shield plan's current GLP-1 coverage",
+      "risk_tier": "MEDIUM",
+      "status": "HELD_SOURCE_BRIEF_REQUIRED",
+      "hold_reason": "Plan-specific official documents, current formulary evidence, and CMS/regulatory context are not yet mapped claim by claim.",
+      "required_sources": 3
+    },
+    {
+      "draft_id": "kaiser-glp1-oregon",
+      "template_id": "medium-coverage-guide",
+      "canonical_path": "/coverage/kaiser-glp-1-oregon/",
+      "primary_keyword": "does kaiser cover glp-1 for weight management in oregon",
+      "h1": "How to check current Kaiser GLP-1 coverage rules in Oregon",
+      "risk_tier": "MEDIUM",
+      "status": "HELD_SOURCE_BRIEF_REQUIRED",
+      "hold_reason": "Current Oregon plan documents and plan-variation evidence are not yet mapped claim by claim.",
+      "required_sources": 3
+    },
+    {
+      "draft_id": "insurance-support-california",
+      "template_id": "low-commercial-comparison",
+      "canonical_path": "/best/glp-1-insurance-support-california/",
+      "primary_keyword": "online glp-1 provider with insurance support in california",
+      "h1": "Online GLP-1 programs with documented insurance-support processes in California",
+      "risk_tier": "LOW",
+      "status": "HELD_PROGRAM_AND_SOURCE_GATES",
+      "hold_reason": "No program has cleared current service-area, insurance-support, economics, redirector-ToS, and operator-selection gates.",
+      "required_sources": 2
+    }
+  ]
+}

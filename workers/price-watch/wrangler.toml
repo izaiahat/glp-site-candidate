@@ -1,0 +1,28 @@
+name = "glp-clinic-scout-price-watch"
+main = "../price-watch-scheduler.mjs"
+compatibility_date = "2026-08-08"
+compatibility_flags = [ "nodejs_compat" ]
+account_id = "f860943dff399ffb1db0a28dcd3dadfd"
+workers_dev = false
+preview_urls = false
+keep_vars = true
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[triggers]
+crons = [ "0 15 * * 1" ]
+
+[[d1_databases]]
+binding = "EMAIL_DB"
+database_name = "glp-clinic-scout-prod"
+database_id = "bcb91d2d-c3f1-4c55-93e3-070587e86d60"
+
+[vars]
+EMAIL_RUNTIME_MODE = "production_operator_approved"
+EMAIL_OPERATOR_RECEIPT_SHA256 = "fed001deeb0ba25a6ee8361249c72c5a68b2e4f2dfdef45f8e420ed8dacd2d1f"
+EMAIL_SEND_GATE = "operator-approved:fed001deeb0ba25a6ee8361249c72c5a68b2e4f2dfdef45f8e420ed8dacd2d1f"
+EMAIL_WARMUP_STATUS = "PASS"
+EMAIL_WEEKLY_CAP = "25"
+EMAIL_WARMUP_DAILY_CAP = "25"

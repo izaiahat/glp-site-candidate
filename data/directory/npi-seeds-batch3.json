@@ -1,0 +1,4904 @@
+{
+  "as_of": "2026-07-23",
+  "cities": [
+    {
+      "api_result_count": 129,
+      "city": "Chicago",
+      "city_slug": "chicago-il",
+      "local_value_gate": "HELD_DIRECT_SERVICE_THRESHOLD",
+      "primary_taxonomy_mix": {
+        "Clinic/Center, Health Services": 1,
+        "Clinical Medical Laboratory": 1,
+        "Family Medicine": 3,
+        "Family Medicine, Adolescent Medicine": 1,
+        "General Practice": 2,
+        "Internal Medicine": 6,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 7,
+        "Nurse Practitioner, Psych/Mental Health": 1,
+        "Preventive Medicine, Obesity Medicine": 1,
+        "Registered Nurse, Wound Care": 2
+      },
+      "records": [
+        {
+          "city": "Chicago",
+          "enumeration_date": "2019-05-15",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-05-15",
+          "npi": "1578129524",
+          "organization_name": "KINETIX MEDICAL WEIGHT LOSS AND WELLNESS, LLC",
+          "postal_prefix": "60642",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2006-05-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-09-11",
+          "npi": "1053367664",
+          "organization_name": "ASSOCIATES IN INTERNAL MEDICINE, LTD.",
+          "postal_prefix": "60611",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2013-06-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-06-18",
+          "npi": "1942649421",
+          "organization_name": "1 CARE INC.",
+          "postal_prefix": "60615",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "103T00000X",
+              "description": "Psychologist",
+              "primary": false
+            },
+            {
+              "code": "104100000X",
+              "description": "Social Worker",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207QA0401X",
+              "description": "Family Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "208100000X",
+              "description": "Physical Medicine & Rehabilitation",
+              "primary": false
+            },
+            {
+              "code": "2083X0100X",
+              "description": "Preventive Medicine, Occupational Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084A0401X",
+              "description": "Psychiatry & Neurology, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            },
+            {
+              "code": "208C00000X",
+              "description": "Colon & Rectal Surgery",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": true
+            },
+            {
+              "code": "208G00000X",
+              "description": "Thoracic Surgery (Cardiothoracic Vascular Surgery)",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2008-04-03",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-05",
+          "npi": "1578736112",
+          "organization_name": "1 ON 1 MD PLLC",
+          "postal_prefix": "60614",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2022-04-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-02-15",
+          "npi": "1730823162",
+          "organization_name": "PEARLS OF VEDA MEDICAL AND HOLISTIC",
+          "postal_prefix": "60628",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "202D00000X",
+              "description": "Integrative Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": true
+            },
+            {
+              "code": "251E00000X",
+              "description": "Home Health",
+              "primary": false
+            },
+            {
+              "code": "261QH0100X",
+              "description": "Clinic/Center, Health Services",
+              "primary": false
+            },
+            {
+              "code": "261QU0200X",
+              "description": "Clinic/Center, Urgent Care",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2018-12-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-04-22",
+          "npi": "1245701812",
+          "organization_name": "CHRYSALIS HEALTH OF ILLINOIS P.C.",
+          "postal_prefix": "60647",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2025-08-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-26",
+          "npi": "1922987833",
+          "organization_name": "1977 MESK",
+          "postal_prefix": "60614",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "163WW0000X",
+              "description": "Registered Nurse, Wound Care",
+              "primary": true
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2022-02-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-02-18",
+          "npi": "1720733777",
+          "organization_name": "996 LABS LLC",
+          "postal_prefix": "60602",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "103TP0016X",
+              "description": "Psychologist, Prescribing (Medical)",
+              "primary": false
+            },
+            {
+              "code": "170300000X",
+              "description": "Genetic Counselor, MS",
+              "primary": false
+            },
+            {
+              "code": "183500000X",
+              "description": "Pharmacist",
+              "primary": false
+            },
+            {
+              "code": "207K00000X",
+              "description": "Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207SG0201X",
+              "description": "Medical Genetics, Clinical Genetics (M.D.)",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "207ZP0105X",
+              "description": "Pathology, Clinical Pathology/Laboratory Medicine",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "208800000X",
+              "description": "Urology",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": false
+            },
+            {
+              "code": "291U00000X",
+              "description": "Clinical Medical Laboratory",
+              "primary": true
+            },
+            {
+              "code": "333600000X",
+              "description": "Pharmacy",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2021-12-21",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-12-21",
+          "npi": "1770243412",
+          "organization_name": "VEDA MEDICAL AND CONSULTING RESEARCH",
+          "postal_prefix": "60617",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "171400000X",
+              "description": "Health & Wellness Coach",
+              "primary": false
+            },
+            {
+              "code": "1744R1102X",
+              "description": "Specialist, Research Study",
+              "primary": false
+            },
+            {
+              "code": "207P00000X",
+              "description": "Emergency Medicine",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083A0300X",
+              "description": "Preventive Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            },
+            {
+              "code": "251E00000X",
+              "description": "Home Health",
+              "primary": false
+            },
+            {
+              "code": "261QC1500X",
+              "description": "Clinic/Center, Community Health",
+              "primary": false
+            },
+            {
+              "code": "261QH0100X",
+              "description": "Clinic/Center, Health Services",
+              "primary": true
+            },
+            {
+              "code": "405300000X",
+              "description": "Prevention Professional",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2007-10-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2007-11-27",
+          "npi": "1730378423",
+          "organization_name": "CHUNG M. SONG, MD, SC",
+          "postal_prefix": "60621",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2025-08-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-26",
+          "npi": "1073490314",
+          "organization_name": "1977 MESK MEDICAL GROUP LLC",
+          "postal_prefix": "60614",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "163WW0000X",
+              "description": "Registered Nurse, Wound Care",
+              "primary": true
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2012-10-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-10-09",
+          "npi": "1033461413",
+          "organization_name": "A & H HEALTH CARE SERVICES INC",
+          "postal_prefix": "60659",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2006-10-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-04-20",
+          "npi": "1598847642",
+          "organization_name": "DR. FREDRICK ELLYIN, LTD",
+          "postal_prefix": "60625",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2023-01-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-13",
+          "npi": "1942916572",
+          "organization_name": "360 TALK THERAPY INC",
+          "postal_prefix": "60620",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "207QA0401X",
+              "description": "Family Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "363LP0808X",
+              "description": "Nurse Practitioner, Psych/Mental Health",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2009-04-06",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2009-11-03",
+          "npi": "1003058058",
+          "organization_name": "A KAVALIUNAS MD SC",
+          "postal_prefix": "60629",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2006-05-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-04-22",
+          "npi": "1821048778",
+          "organization_name": "ENDOCRINE & DIABETES ASSOCIATES S C",
+          "postal_prefix": "60602",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2015-09-14",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-11-13",
+          "npi": "1467820001",
+          "organization_name": "3P4CARE (IL) LLC AVONDALE",
+          "postal_prefix": "60618",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2006-11-24",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-08-22",
+          "npi": "1578639498",
+          "organization_name": "A REZVAN MD SC AND ASSOCIATES",
+          "postal_prefix": "60707",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2014-09-05",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2016-03-01",
+          "npi": "1366843682",
+          "organization_name": "ENDOCRINOLOGY CONSULTS AND CARE SERVICE CORPORATION",
+          "postal_prefix": "60659",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2009-08-14",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2009-08-14",
+          "npi": "1548492234",
+          "organization_name": "63RD ADVANCED HEALTH CLINIC INC",
+          "postal_prefix": "60636",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207QA0000X",
+              "description": "Family Medicine, Adolescent Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2022-07-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-07-09",
+          "npi": "1609502707",
+          "organization_name": "AAMG REACH PLLC",
+          "postal_prefix": "60643",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2021-06-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-06-25",
+          "npi": "1881261006",
+          "organization_name": "INSIGHT CHICAGO, INC.",
+          "postal_prefix": "60616",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101Y00000X",
+              "description": "Counselor",
+              "primary": false
+            },
+            {
+              "code": "176B00000X",
+              "description": "Midwife",
+              "primary": false
+            },
+            {
+              "code": "207K00000X",
+              "description": "Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207L00000X",
+              "description": "Anesthesiology",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "207W00000X",
+              "description": "Ophthalmology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2007-08-08",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-04-12",
+          "npi": "1205027810",
+          "organization_name": "A M JABR MD SC",
+          "postal_prefix": "60622",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2008-04-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-05-16",
+          "npi": "1326213471",
+          "organization_name": "ABDUL SATTAR MD SC",
+          "postal_prefix": "60640",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Chicago",
+          "enumeration_date": "2005-08-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-12-18",
+          "npi": "1164415485",
+          "organization_name": "JAMES C SHEININ, M.D., LTD",
+          "postal_prefix": "60602",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "IL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 5,
+          "sanitized_record_count": 3,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Chicago&state=IL&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 24,
+          "sanitized_record_count": 21,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Chicago&state=IL&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 49,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Chicago&state=IL&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 49,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Chicago&state=IL&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "IL"
+    },
+    {
+      "api_result_count": 158,
+      "city": "New York",
+      "city_slug": "new-york-ny",
+      "local_value_gate": "HELD_DIRECT_SERVICE_THRESHOLD",
+      "primary_taxonomy_mix": {
+        "Clinic/Center, Urgent Care": 1,
+        "Family Medicine": 3,
+        "General Practice": 1,
+        "Internal Medicine": 7,
+        "Internal Medicine, Cardiovascular Disease": 1,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 3,
+        "Neurological Surgery": 1,
+        "Preventive Medicine, Medical Toxicology": 1,
+        "Preventive Medicine, Obesity Medicine": 7
+      },
+      "records": [
+        {
+          "city": "New York",
+          "enumeration_date": "2023-02-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-09-26",
+          "npi": "1225736705",
+          "organization_name": "180 DEGREES MEDICAL PLLC",
+          "postal_prefix": "10037",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2019-10-08",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-01-09",
+          "npi": "1912549262",
+          "organization_name": "ACCORD MEDICAL CARE PC",
+          "postal_prefix": "10013",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "133V00000X",
+              "description": "Dietitian, Registered",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": true
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "261QM1300X",
+              "description": "Clinic/Center, Multi-Specialty",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2013-01-14",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-03-23",
+          "npi": "1922345768",
+          "organization_name": "181ST STREET MEDICAL P.C.",
+          "postal_prefix": "10033",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "261QU0200X",
+              "description": "Clinic/Center, Urgent Care",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2008-03-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2009-08-04",
+          "npi": "1235301631",
+          "organization_name": "139 MEDICAL FACILITY P C",
+          "postal_prefix": "10031",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2023-01-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-02-15",
+          "npi": "1497469175",
+          "organization_name": "ALFIE HEALTH, LLC",
+          "postal_prefix": "10038",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2010-02-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-02-18",
+          "npi": "1346562345",
+          "organization_name": "AMAR LAL PUROHIT, P.C.",
+          "postal_prefix": "10021",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            },
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2023-12-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-12-13",
+          "npi": "1063280634",
+          "organization_name": "525 MEDICAL GROUP OF NEW JERSEY PC",
+          "postal_prefix": "10016",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2016-05-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-05-27",
+          "npi": "1386091486",
+          "organization_name": "14 STREET MEDICAL, PC",
+          "postal_prefix": "10003",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RI0011X",
+              "description": "Internal Medicine, Interventional Cardiology",
+              "primary": false
+            },
+            {
+              "code": "207RM1200X",
+              "description": "Internal Medicine, Magnetic Resonance Imaging (MRI)",
+              "primary": false
+            },
+            {
+              "code": "207RS0012X",
+              "description": "Internal Medicine, Sleep Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084D0003X",
+              "description": "Psychiatry & Neurology, Diagnostic Neuroimaging",
+              "primary": false
+            },
+            {
+              "code": "2084N0008X",
+              "description": "Psychiatry & Neurology, Neuromuscular Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084N0400X",
+              "description": "Psychiatry & Neurology, Neurology",
+              "primary": false
+            },
+            {
+              "code": "2084P2900X",
+              "description": "Psychiatry & Neurology, Pain Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084S0010X",
+              "description": "Psychiatry & Neurology, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084S0012X",
+              "description": "Psychiatry & Neurology, Sleep Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084V0102X",
+              "description": "Psychiatry & Neurology, Vascular Neurology",
+              "primary": false
+            },
+            {
+              "code": "2085B0100X",
+              "description": "Radiology, Body Imaging",
+              "primary": false
+            },
+            {
+              "code": "2085D0003X",
+              "description": "Radiology, Diagnostic Neuroimaging",
+              "primary": false
+            },
+            {
+              "code": "2251N0400X",
+              "description": "Physical Therapist, Neurology",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2023-12-14",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-12-14",
+          "npi": "1235907668",
+          "organization_name": "ILANT MEDICAL GROUP KS PA",
+          "postal_prefix": "10029",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            },
+            {
+              "code": "261QH0100X",
+              "description": "Clinic/Center, Health Services",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2011-01-04",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-03-12",
+          "npi": "1285938381",
+          "organization_name": "ASIAN DIABETES CENTER LLC",
+          "postal_prefix": "10013",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2007-06-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2016-05-25",
+          "npi": "1073719597",
+          "organization_name": "ADRIENNE SPROUSE MD LLC",
+          "postal_prefix": "10016",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083P0500X",
+              "description": "Preventive Medicine, Preventive Medicine/Occupational Environmental Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083T0002X",
+              "description": "Preventive Medicine, Medical Toxicology",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2024-04-05",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-04-05",
+          "npi": "1942052428",
+          "organization_name": "211 MEDICAL OF MANHATTAN NEW YORK PC",
+          "postal_prefix": "10017",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2026-07-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-07-13",
+          "npi": "1396664496",
+          "organization_name": "OBEON MEDICAL ARIZONA, P.C.",
+          "postal_prefix": "10001",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2012-02-08",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-02-21",
+          "npi": "1093087926",
+          "organization_name": "BARRY J. KLYDE MD. PC",
+          "postal_prefix": "10021",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2011-10-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-10-12",
+          "npi": "1396020145",
+          "organization_name": "AGEONICS",
+          "postal_prefix": "10016",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "111N00000X",
+              "description": "Chiropractor",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2015-08-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2015-08-19",
+          "npi": "1326414798",
+          "organization_name": "337 LENOX MEDICAL SERVICES, P.C.",
+          "postal_prefix": "10027",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2026-07-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-07-13",
+          "npi": "1801715909",
+          "organization_name": "OBEON MEDICAL TEXAS, PLLC",
+          "postal_prefix": "10001",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2006-04-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-08-15",
+          "npi": "1861457202",
+          "organization_name": "BETH ISRAEL MEDICAL CENTER",
+          "postal_prefix": "10003",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207K00000X",
+              "description": "Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RA0401X",
+              "description": "Internal Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0200X",
+              "description": "Internal Medicine, Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207RR0500X",
+              "description": "Internal Medicine, Rheumatology",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2022-05-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-05-22",
+          "npi": "1386382265",
+          "organization_name": "AGHOMD, PLLC",
+          "postal_prefix": "10016",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2021-08-03",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-11-10",
+          "npi": "1821762915",
+          "organization_name": "360 COMPLETE MEDICAL PC",
+          "postal_prefix": "10022",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2023-01-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-28",
+          "npi": "1871207555",
+          "organization_name": "PURPLE CIRCLE PHYSICIAN PC",
+          "postal_prefix": "10016",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2007-06-06",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-02-03",
+          "npi": "1790988996",
+          "organization_name": "BIMC FACULTY PRACTICE",
+          "postal_prefix": "10003",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207K00000X",
+              "description": "Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207RR0500X",
+              "description": "Internal Medicine, Rheumatology",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2015-07-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2015-07-22",
+          "npi": "1770968505",
+          "organization_name": "ALEXANDRE SCHEER, MD, PC",
+          "postal_prefix": "10001",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "111N00000X",
+              "description": "Chiropractor",
+              "primary": false
+            },
+            {
+              "code": "171100000X",
+              "description": "Acupuncturist",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207T00000X",
+              "description": "Neurological Surgery",
+              "primary": true
+            },
+            {
+              "code": "207X00000X",
+              "description": "Orthopaedic Surgery",
+              "primary": false
+            },
+            {
+              "code": "2083S0010X",
+              "description": "Preventive Medicine, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": false
+            },
+            {
+              "code": "208M00000X",
+              "description": "Hospitalist",
+              "primary": false
+            },
+            {
+              "code": "225100000X",
+              "description": "Physical Therapist",
+              "primary": false
+            },
+            {
+              "code": "225700000X",
+              "description": "Massage Therapist",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2017-10-10",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2017-10-10",
+          "npi": "1366952913",
+          "organization_name": "436 GWB MEDICAL OFFICE PC",
+          "postal_prefix": "10033",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "New York",
+          "enumeration_date": "2021-06-24",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-06-24",
+          "npi": "1043889967",
+          "organization_name": "SIA MEDICAL PC",
+          "postal_prefix": "10021",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "NY",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 8,
+          "sanitized_record_count": 7,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=New+York&state=NY&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 48,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=New+York&state=NY&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 47,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=New+York&state=NY&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 48,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=New+York&state=NY&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "NY"
+    },
+    {
+      "api_result_count": 157,
+      "city": "Miami",
+      "city_slug": "miami-fl",
+      "local_value_gate": "HELD_DIRECT_SERVICE_THRESHOLD",
+      "primary_taxonomy_mix": {
+        "Family Medicine": 6,
+        "Internal Medicine": 7,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 5,
+        "Internal Medicine, Interventional Cardiology": 2,
+        "Nurse Practitioner, Psych/Mental Health": 1,
+        "Pediatrics": 1,
+        "Pediatrics, Obesity Medicine": 2,
+        "Preventive Medicine, Obesity Medicine": 1
+      },
+      "records": [
+        {
+          "city": "Miami",
+          "enumeration_date": "2017-12-08",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2017-12-08",
+          "npi": "1609381904",
+          "organization_name": "APPLE MARKETING, INC.",
+          "postal_prefix": "33175",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2018-01-02",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-08-24",
+          "npi": "1295242196",
+          "organization_name": "ANZARA HEALTH",
+          "postal_prefix": "33133",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2026-06-08",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-08",
+          "npi": "1659204766",
+          "organization_name": "24K HEALTH AND FITNESS",
+          "postal_prefix": "33161",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207QB0002X",
+              "description": "Family Medicine, Bariatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "363LP0808X",
+              "description": "Nurse Practitioner, Psych/Mental Health",
+              "primary": true
+            },
+            {
+              "code": "363LP2300X",
+              "description": "Nurse Practitioner, Primary Care",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2014-01-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-12-05",
+          "npi": "1861815177",
+          "organization_name": "40TH STREET INPATIENT SERVICES, LLC",
+          "postal_prefix": "33175",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2023-01-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-20",
+          "npi": "1154037869",
+          "organization_name": "ATLANTIS HEALTH CLINIC, LLC",
+          "postal_prefix": "33173",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "163WI0500X",
+              "description": "Registered Nurse, Infusion Therapy",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084N0400X",
+              "description": "Psychiatry & Neurology, Neurology",
+              "primary": false
+            },
+            {
+              "code": "261QI0500X",
+              "description": "Clinic/Center, Infusion Therapy",
+              "primary": false
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2007-02-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2007-10-23",
+          "npi": "1861533739",
+          "organization_name": "ARIEL ZISMAN MD PA",
+          "postal_prefix": "33180",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2019-07-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-07-18",
+          "npi": "1700439700",
+          "organization_name": "305 MEDICAL CARE INC",
+          "postal_prefix": "33165",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "208100000X",
+              "description": "Physical Medicine & Rehabilitation",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2007-05-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-09-16",
+          "npi": "1316148414",
+          "organization_name": "A RUBEN CARIDE MD PA",
+          "postal_prefix": "33176",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2025-09-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-18",
+          "npi": "1487526935",
+          "organization_name": "INVERSIONES LOS CUATRO LLC",
+          "postal_prefix": "33130",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2080B0002X",
+              "description": "Pediatrics, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2013-09-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-09-12",
+          "npi": "1790110492",
+          "organization_name": "BAPTIST DIABETES ASSOCIATES, P.A.",
+          "postal_prefix": "33156",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2018-10-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-06-11",
+          "npi": "1831665694",
+          "organization_name": "305 MEDICAL CENTERS LLC",
+          "postal_prefix": "33174",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "261QM1300X",
+              "description": "Clinic/Center, Multi-Specialty",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2006-08-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2009-03-24",
+          "npi": "1235247081",
+          "organization_name": "A TERRELONGE MD PA",
+          "postal_prefix": "33155",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2026-05-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-19",
+          "npi": "1891624441",
+          "organization_name": "INVERSIONES LOS CUATRO LLC",
+          "postal_prefix": "33130",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207LP4000X",
+              "description": "Anesthesiology, Physician Nutrition Specialist",
+              "primary": false
+            },
+            {
+              "code": "207RS0012X",
+              "description": "Internal Medicine, Sleep Medicine",
+              "primary": false
+            },
+            {
+              "code": "2080B0002X",
+              "description": "Pediatrics, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2025-03-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-09-15",
+          "npi": "1922808153",
+          "organization_name": "BENESSERE SPECIALTY MEDICAL GROUP LLCP",
+          "postal_prefix": "33172",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RI0011X",
+              "description": "Internal Medicine, Interventional Cardiology",
+              "primary": true
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2021-04-30",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-01-29",
+          "npi": "1851974588",
+          "organization_name": "7TH AVENUE MEDICAL PLAZA LLC",
+          "postal_prefix": "33150",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "261QP2300X",
+              "description": "Clinic/Center, Primary Care",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2020-07-10",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-09-28",
+          "npi": "1417575945",
+          "organization_name": "A3G INVESTMENTS",
+          "postal_prefix": "33165",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2022-02-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-02-09",
+          "npi": "1891449757",
+          "organization_name": "BERO ENDOCRINOLOGY, LLC",
+          "postal_prefix": "33126",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2008-08-28",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-08-28",
+          "npi": "1780832188",
+          "organization_name": "A & D MEDICAL CENTER INC",
+          "postal_prefix": "33135",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2010-10-19",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2012-03-06",
+          "npi": "1740590132",
+          "organization_name": "AA FAMILY MEDICAL CENTER INC",
+          "postal_prefix": "33180",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2020-02-20",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-01-22",
+          "npi": "1346873015",
+          "organization_name": "CHRYSALIS HEALTH OF FLORIDA P.A.",
+          "postal_prefix": "33179",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2006-07-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-08-22",
+          "npi": "1003839457",
+          "organization_name": "A & V THERAPY CENTER INC",
+          "postal_prefix": "33135",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2023-02-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-02-27",
+          "npi": "1831898113",
+          "organization_name": "ABELLA PRIME LLC",
+          "postal_prefix": "33183",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2025-03-21",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-03-09",
+          "npi": "1538960968",
+          "organization_name": "CLAREMEDICA SPECIALTY NETWORK OF FLORIDA LLC",
+          "postal_prefix": "33173",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "152W00000X",
+              "description": "Optometrist",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RI0011X",
+              "description": "Internal Medicine, Interventional Cardiology",
+              "primary": true
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "2081P2900X",
+              "description": "Physical Medicine & Rehabilitation, Pain Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084N0400X",
+              "description": "Psychiatry & Neurology, Neurology",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "208800000X",
+              "description": "Urology",
+              "primary": false
+            },
+            {
+              "code": "213E00000X",
+              "description": "Podiatrist",
+              "primary": false
+            },
+            {
+              "code": "213ES0103X",
+              "description": "Podiatrist, Foot & Ankle Surgery",
+              "primary": false
+            },
+            {
+              "code": "225100000X",
+              "description": "Physical Therapist",
+              "primary": false
+            },
+            {
+              "code": "363AM0700X",
+              "description": "Physician Assistant, Medical",
+              "primary": false
+            },
+            {
+              "code": "363LP0808X",
+              "description": "Nurse Practitioner, Psych/Mental Health",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2009-12-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2009-12-17",
+          "npi": "1275862419",
+          "organization_name": "A WALKER CARE CORP",
+          "postal_prefix": "33147",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Miami",
+          "enumeration_date": "2021-03-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-05-28",
+          "npi": "1952987703",
+          "organization_name": "ACT HOSPITALIST LLC",
+          "postal_prefix": "33169",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "FL",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 7,
+          "sanitized_record_count": 4,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Miami&state=FL&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 48,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Miami&state=FL&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 49,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Miami&state=FL&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 44,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Miami&state=FL&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "FL"
+    },
+    {
+      "api_result_count": 117,
+      "city": "Atlanta",
+      "city_slug": "atlanta-ga",
+      "local_value_gate": "HELD_DIRECT_SERVICE_THRESHOLD",
+      "primary_taxonomy_mix": {
+        "Clinic/Center": 1,
+        "Family Medicine": 5,
+        "Hospice Care, Community Based": 1,
+        "Internal Medicine": 9,
+        "Internal Medicine, Cardiovascular Disease": 1,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 4,
+        "Internal Medicine, Infectious Disease": 1,
+        "Nurse Practitioner, Family": 1,
+        "Preventive Medicine, Obesity Medicine": 2
+      },
+      "records": [
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2019-02-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-09-19",
+          "npi": "1134686090",
+          "organization_name": "BELTLINE WEIGHT LOSS LLC",
+          "postal_prefix": "30305",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "133VN1201X",
+              "description": "Dietitian, Registered, Nutrition, Obesity and Weight Management",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2006-05-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-06-19",
+          "npi": "1366492282",
+          "organization_name": "ATLANTA DIABETES ASSOCIATES",
+          "postal_prefix": "30318",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2025-06-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-09-22",
+          "npi": "1649165309",
+          "organization_name": "26HEALTH, INC - GEORGIA",
+          "postal_prefix": "30311",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            },
+            {
+              "code": "363LF0000X",
+              "description": "Nurse Practitioner, Family",
+              "primary": false
+            },
+            {
+              "code": "363LP0808X",
+              "description": "Nurse Practitioner, Psych/Mental Health",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2026-06-30",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-30",
+          "npi": "1083531297",
+          "organization_name": "ABODE CARE PARTNERS VB, LLC",
+          "postal_prefix": "30309",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2023-06-09",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-06-09",
+          "npi": "1245914449",
+          "organization_name": "CHASTAIN INTEGRATIVE MEDICINE LLC",
+          "postal_prefix": "30342",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083A0300X",
+              "description": "Preventive Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083P0500X",
+              "description": "Preventive Medicine, Preventive Medicine/Occupational Environmental Medicine",
+              "primary": false
+            },
+            {
+              "code": "261Q00000X",
+              "description": "Clinic/Center",
+              "primary": true
+            },
+            {
+              "code": "405300000X",
+              "description": "Prevention Professional",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2008-08-04",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2008-08-04",
+          "npi": "1659537165",
+          "organization_name": "EMORY MEDICAL CARE FOUNDATION INC",
+          "postal_prefix": "30303",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RA0401X",
+              "description": "Internal Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RC0200X",
+              "description": "Internal Medicine, Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RH0000X",
+              "description": "Internal Medicine, Hematology",
+              "primary": false
+            },
+            {
+              "code": "207RH0003X",
+              "description": "Internal Medicine, Hematology & Oncology",
+              "primary": false
+            },
+            {
+              "code": "207RI0001X",
+              "description": "Internal Medicine, Clinical & Laboratory Immunology",
+              "primary": false
+            },
+            {
+              "code": "207RI0008X",
+              "description": "Internal Medicine, Hepatology",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207RR0500X",
+              "description": "Internal Medicine, Rheumatology",
+              "primary": false
+            },
+            {
+              "code": "207RX0202X",
+              "description": "Internal Medicine, Medical Oncology",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2007-03-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-02-01",
+          "npi": "1528198678",
+          "organization_name": "ABSOLUTECARE, LLC",
+          "postal_prefix": "30309",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": true
+            },
+            {
+              "code": "291U00000X",
+              "description": "Clinical Medical Laboratory",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2025-07-25",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-08-12",
+          "npi": "1023990447",
+          "organization_name": "ALCHEMIST HEALTH & WELLNESS, LLC",
+          "postal_prefix": "30350",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "163WI0500X",
+              "description": "Registered Nurse, Infusion Therapy",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "363LC1500X",
+              "description": "Nurse Practitioner, Community Health",
+              "primary": false
+            },
+            {
+              "code": "363LF0000X",
+              "description": "Nurse Practitioner, Family",
+              "primary": true
+            },
+            {
+              "code": "363LP0808X",
+              "description": "Nurse Practitioner, Psych/Mental Health",
+              "primary": false
+            },
+            {
+              "code": "363LP2300X",
+              "description": "Nurse Practitioner, Primary Care",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2024-08-20",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-05-28",
+          "npi": "1033942750",
+          "organization_name": "SEEN MEDICAL GROUP OF GA, PC",
+          "postal_prefix": "30342",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2006-06-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-08-22",
+          "npi": "1720023393",
+          "organization_name": "ERNEST W. BEASLEY, JR, MD, PC",
+          "postal_prefix": "30342",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2019-03-15",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-08-21",
+          "npi": "1649739020",
+          "organization_name": "ACCUMEDIC DIAGNOSTIC MANAGEMENT LLC",
+          "postal_prefix": "30318",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2013-05-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-05-17",
+          "npi": "1871939751",
+          "organization_name": "ALEX E. RIKHTER, MD P.C.",
+          "postal_prefix": "30328",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2023-01-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-06-13",
+          "npi": "1487369187",
+          "organization_name": "WEIGHT A MINUTE CLINIC LLC",
+          "postal_prefix": "30309",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2007-06-05",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-08-22",
+          "npi": "1588866198",
+          "organization_name": "JUDSON G BLACK MD LLC",
+          "postal_prefix": "30342",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2021-03-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2021-03-22",
+          "npi": "1790361699",
+          "organization_name": "ADEEL & SANA LLC",
+          "postal_prefix": "30349",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2018-07-26",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-07-26",
+          "npi": "1972080554",
+          "organization_name": "ALLCARE GA PC",
+          "postal_prefix": "30342",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2010-02-16",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-02-16",
+          "npi": "1629390836",
+          "organization_name": "LIBERTY BELL GROUP INC",
+          "postal_prefix": "30309",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2024-06-03",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-06-03",
+          "npi": "1922849108",
+          "organization_name": "ADVANCED WOUND SOLUTIONS OF GA LLC",
+          "postal_prefix": "30350",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2013-06-12",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-06-12",
+          "npi": "1801234885",
+          "organization_name": "ALLERGY SPECIALISTS OF GEORGIA",
+          "postal_prefix": "30354",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2020-11-18",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-11-18",
+          "npi": "1013510403",
+          "organization_name": "MOREHOUSE HEALTHCARE, INC.",
+          "postal_prefix": "30310",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207QA0505X",
+              "description": "Family Medicine, Adult Medicine",
+              "primary": false
+            },
+            {
+              "code": "207QG0300X",
+              "description": "Family Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RA0002X",
+              "description": "Internal Medicine, Adult Congenital Heart Disease",
+              "primary": false
+            },
+            {
+              "code": "207RA0201X",
+              "description": "Internal Medicine, Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207RA0401X",
+              "description": "Internal Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RB0002X",
+              "description": "Internal Medicine, Bariatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RC0200X",
+              "description": "Internal Medicine, Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RH0003X",
+              "description": "Internal Medicine, Hematology & Oncology",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2007-06-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2010-10-05",
+          "npi": "1316144058",
+          "organization_name": "AEROCLINIC",
+          "postal_prefix": "30320",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2007-06-21",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-08-22",
+          "npi": "1497951081",
+          "organization_name": "AMARC MEDICAL & RESEARCH CLINIC",
+          "postal_prefix": "30315",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2006-06-22",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-04-16",
+          "npi": "1801832324",
+          "organization_name": "MOREHOUSE HEALTHCARE, INC.",
+          "postal_prefix": "30318",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": true
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RX0202X",
+              "description": "Internal Medicine, Medical Oncology",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "207VG0400X",
+              "description": "Obstetrics & Gynecology, Gynecology",
+              "primary": false
+            },
+            {
+              "code": "207VM0101X",
+              "description": "Obstetrics & Gynecology, Maternal & Fetal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207VX0201X",
+              "description": "Obstetrics & Gynecology, Gynecologic Oncology",
+              "primary": false
+            },
+            {
+              "code": "207W00000X",
+              "description": "Ophthalmology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2022-11-21",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-06-09",
+          "npi": "1154030856",
+          "organization_name": "AFFINITY CARE OF GEORGIA LLC",
+          "postal_prefix": "30324",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207QH0002X",
+              "description": "Family Medicine, Hospice and Palliative Medicine",
+              "primary": false
+            },
+            {
+              "code": "251G00000X",
+              "description": "Hospice Care, Community Based",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Atlanta",
+          "enumeration_date": "2014-01-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2014-01-27",
+          "npi": "1275956278",
+          "organization_name": "ANGELA K CROWELL MD",
+          "postal_prefix": "30303",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "GA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 4,
+          "sanitized_record_count": 4,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Atlanta&state=GA&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 13,
+          "sanitized_record_count": 12,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Atlanta&state=GA&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 47,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Atlanta&state=GA&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 46,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Atlanta&state=GA&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "GA"
+    },
+    {
+      "api_result_count": 108,
+      "city": "Boston",
+      "city_slug": "boston-ma",
+      "local_value_gate": "HELD_DIRECT_SERVICE_THRESHOLD",
+      "primary_taxonomy_mix": {
+        "Family Medicine": 3,
+        "Family Medicine, Adult Medicine": 2,
+        "Internal Medicine": 12,
+        "Internal Medicine, Endocrinology, Diabetes & Metabolism": 3,
+        "Orthopaedic Surgery": 1,
+        "Pediatrics": 1,
+        "Preventive Medicine, Obesity Medicine": 1,
+        "Psychiatry & Neurology, Psychiatry": 1,
+        "Psychologist": 1
+      },
+      "records": [
+        {
+          "city": "Boston",
+          "enumeration_date": "2023-01-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-01-27",
+          "npi": "1275249799",
+          "organization_name": "TEMPO MEDICAL MASSACHUSETTS PC",
+          "postal_prefix": "02109",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Obesity Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "2083B0002X",
+              "description": "Preventive Medicine, Obesity Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2007-01-29",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-12-18",
+          "npi": "1871639914",
+          "organization_name": "ATRIUS HEALTH, INC.",
+          "postal_prefix": "02215",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "1041C0700X",
+              "description": "Social Worker, Clinical",
+              "primary": false
+            },
+            {
+              "code": "207K00000X",
+              "description": "Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RH0003X",
+              "description": "Internal Medicine, Hematology & Oncology",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "207W00000X",
+              "description": "Ophthalmology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2085R0202X",
+              "description": "Radiology, Diagnostic Radiology",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            },
+            {
+              "code": "225100000X",
+              "description": "Physical Therapist",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2006-05-04",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2020-08-22",
+          "npi": "1205884038",
+          "organization_name": "ALBRIGHT ASSOCIATES",
+          "postal_prefix": "02115",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2007-04-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-09-11",
+          "npi": "1710102397",
+          "organization_name": "ACADEMIC RESEARCH CORPORATION",
+          "postal_prefix": "02215",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207P00000X",
+              "description": "Emergency Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            },
+            {
+              "code": "208G00000X",
+              "description": "Thoracic Surgery (Cardiothoracic Vascular Surgery)",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2025-03-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-10-31",
+          "npi": "1235939927",
+          "organization_name": "BLUE CIRCLE HEALTH CLINICAL INC",
+          "postal_prefix": "02109",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "104100000X",
+              "description": "Social Worker",
+              "primary": false
+            },
+            {
+              "code": "1041C0700X",
+              "description": "Social Worker, Clinical",
+              "primary": false
+            },
+            {
+              "code": "133V00000X",
+              "description": "Dietitian, Registered",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            },
+            {
+              "code": "363LF0000X",
+              "description": "Nurse Practitioner, Family",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2023-11-27",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-08-22",
+          "npi": "1942076492",
+          "organization_name": "AMPERSEX.VA PC",
+          "postal_prefix": "02108",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207QA0505X",
+              "description": "Family Medicine, Adult Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2007-12-14",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2014-04-08",
+          "npi": "1770766529",
+          "organization_name": "ARBOUR INC",
+          "postal_prefix": "02130",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207PE0004X",
+              "description": "Emergency Medicine, Emergency Medical Services",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RA0401X",
+              "description": "Internal Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": true
+            },
+            {
+              "code": "2084P0802X",
+              "description": "Psychiatry & Neurology, Addiction Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "2084P0804X",
+              "description": "Psychiatry & Neurology, Child & Adolescent Psychiatry",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2026-01-16",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-16",
+          "npi": "1699634683",
+          "organization_name": "BLUE CIRCLE HEALTH OF MASSACHUSETTS PC",
+          "postal_prefix": "02109",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2014-11-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-12-31",
+          "npi": "1497151773",
+          "organization_name": "ASSOCIATED PHYSICIANS OF HARVARD MEDICAL FACULTY PHYSICIANS AT BETH IS",
+          "postal_prefix": "02215",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2007-01-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2015-06-24",
+          "npi": "1225175979",
+          "organization_name": "ATRIUS HEALTH, INC",
+          "postal_prefix": "02215",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "101YM0800X",
+              "description": "Counselor, Mental Health",
+              "primary": false
+            },
+            {
+              "code": "103T00000X",
+              "description": "Psychologist",
+              "primary": true
+            },
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "2085R0202X",
+              "description": "Radiology, Diagnostic Radiology",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            },
+            {
+              "code": "225100000X",
+              "description": "Physical Therapist",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            },
+            {
+              "code": "364S00000X",
+              "description": "Clinical Nurse Specialist",
+              "primary": false
+            },
+            {
+              "code": "367A00000X",
+              "description": "Advanced Practice Midwife",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2023-04-21",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-01-16",
+          "npi": "1104513951",
+          "organization_name": "BLUE CIRCLE HEALTH, INC.",
+          "postal_prefix": "02109",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2011-07-11",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-07-11",
+          "npi": "1427346568",
+          "organization_name": "BEACON GROUPS HEALTHCARE,LLC",
+          "postal_prefix": "02111",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207QA0505X",
+              "description": "Family Medicine, Adult Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2007-05-10",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-06-20",
+          "npi": "1265646921",
+          "organization_name": "ATRIUS HEALTH, INC.",
+          "postal_prefix": "02109",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "1041C0700X",
+              "description": "Social Worker, Clinical",
+              "primary": false
+            },
+            {
+              "code": "152W00000X",
+              "description": "Optometrist",
+              "primary": false
+            },
+            {
+              "code": "163W00000X",
+              "description": "Registered Nurse",
+              "primary": false
+            },
+            {
+              "code": "164W00000X",
+              "description": "Licensed Practical Nurse",
+              "primary": false
+            },
+            {
+              "code": "207KA0200X",
+              "description": "Allergy & Immunology, Allergy",
+              "primary": false
+            },
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2085B0100X",
+              "description": "Radiology, Body Imaging",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2006-10-13",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2025-10-30",
+          "npi": "1245320910",
+          "organization_name": "BMC AFFILIATED PHYSICIANS, INC.",
+          "postal_prefix": "02118",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207P00000X",
+              "description": "Emergency Medicine",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "207X00000X",
+              "description": "Orthopaedic Surgery",
+              "primary": false
+            },
+            {
+              "code": "207Y00000X",
+              "description": "Otolaryngology",
+              "primary": false
+            },
+            {
+              "code": "207ZP0102X",
+              "description": "Pathology, Anatomic Pathology & Clinical Pathology",
+              "primary": false
+            },
+            {
+              "code": "2084A0401X",
+              "description": "Psychiatry & Neurology, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "2084N0400X",
+              "description": "Psychiatry & Neurology, Neurology",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "2085R0202X",
+              "description": "Radiology, Diagnostic Radiology",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2006-05-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2023-12-20",
+          "npi": "1134166390",
+          "organization_name": "BOSTON UNIVERSITY FAMILY MEDICINE, INC.",
+          "postal_prefix": "02118",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2006-05-04",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2018-04-24",
+          "npi": "1740238526",
+          "organization_name": "ATRIUS HEALTH, INC.",
+          "postal_prefix": "02215",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "103T00000X",
+              "description": "Psychologist",
+              "primary": false
+            },
+            {
+              "code": "207K00000X",
+              "description": "Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RH0003X",
+              "description": "Internal Medicine, Hematology & Oncology",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "207W00000X",
+              "description": "Ophthalmology",
+              "primary": false
+            },
+            {
+              "code": "207X00000X",
+              "description": "Orthopaedic Surgery",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2084P0800X",
+              "description": "Psychiatry & Neurology, Psychiatry",
+              "primary": false
+            },
+            {
+              "code": "2085R0202X",
+              "description": "Radiology, Diagnostic Radiology",
+              "primary": false
+            },
+            {
+              "code": "2085R0203X",
+              "description": "Radiology, Therapeutic Radiology",
+              "primary": false
+            },
+            {
+              "code": "208600000X",
+              "description": "Surgery",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2006-07-17",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2013-03-14",
+          "npi": "1235157769",
+          "organization_name": "BRIGHAM AND WOMENS PHYSICIANS ORGANIZATION INC",
+          "postal_prefix": "02115",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RA0201X",
+              "description": "Internal Medicine, Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RC0001X",
+              "description": "Internal Medicine, Clinical Cardiac Electrophysiology",
+              "primary": false
+            },
+            {
+              "code": "207RC0200X",
+              "description": "Internal Medicine, Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RH0000X",
+              "description": "Internal Medicine, Hematology",
+              "primary": false
+            },
+            {
+              "code": "207RH0003X",
+              "description": "Internal Medicine, Hematology & Oncology",
+              "primary": false
+            },
+            {
+              "code": "207RI0011X",
+              "description": "Internal Medicine, Interventional Cardiology",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207RS0012X",
+              "description": "Internal Medicine, Sleep Medicine",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2006-05-24",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-06-12",
+          "npi": "1457306664",
+          "organization_name": "CHILDREN'S HOSPITAL PEDIATRIC ASSOCIATES, INC",
+          "postal_prefix": "02115",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207N00000X",
+              "description": "Dermatology",
+              "primary": false
+            },
+            {
+              "code": "207QA0401X",
+              "description": "Family Medicine, Addiction Medicine",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": true
+            },
+            {
+              "code": "2080P0006X",
+              "description": "Pediatrics, Developmental - Behavioral Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2080P0201X",
+              "description": "Pediatrics, Pediatric Allergy/Immunology",
+              "primary": false
+            },
+            {
+              "code": "2080P0203X",
+              "description": "Pediatrics, Pediatric Critical Care Medicine",
+              "primary": false
+            },
+            {
+              "code": "2080P0204X",
+              "description": "Pediatrics, Pediatric Emergency Medicine",
+              "primary": false
+            },
+            {
+              "code": "2080P0205X",
+              "description": "Pediatrics, Pediatric Endocrinology",
+              "primary": false
+            },
+            {
+              "code": "2080P0206X",
+              "description": "Pediatrics, Pediatric Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "2080P0207X",
+              "description": "Pediatrics, Pediatric Hematology-Oncology",
+              "primary": false
+            },
+            {
+              "code": "2080P0208X",
+              "description": "Pediatrics, Pediatric Infectious Diseases",
+              "primary": false
+            },
+            {
+              "code": "2080P0210X",
+              "description": "Pediatrics, Pediatric Nephrology",
+              "primary": false
+            },
+            {
+              "code": "2080P0214X",
+              "description": "Pediatrics, Pediatric Pulmonology",
+              "primary": false
+            },
+            {
+              "code": "2080P0216X",
+              "description": "Pediatrics, Pediatric Rheumatology",
+              "primary": false
+            },
+            {
+              "code": "363LP0200X",
+              "description": "Nurse Practitioner, Pediatrics",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2007-04-10",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2022-06-20",
+          "npi": "1841413887",
+          "organization_name": "ATRIUS HEALTH, INC.",
+          "postal_prefix": "02116",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "111N00000X",
+              "description": "Chiropractor",
+              "primary": false
+            },
+            {
+              "code": "163W00000X",
+              "description": "Registered Nurse",
+              "primary": false
+            },
+            {
+              "code": "164W00000X",
+              "description": "Licensed Practical Nurse",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207V00000X",
+              "description": "Obstetrics & Gynecology",
+              "primary": false
+            },
+            {
+              "code": "208000000X",
+              "description": "Pediatrics",
+              "primary": false
+            },
+            {
+              "code": "2085B0100X",
+              "description": "Radiology, Body Imaging",
+              "primary": false
+            },
+            {
+              "code": "363L00000X",
+              "description": "Nurse Practitioner",
+              "primary": false
+            },
+            {
+              "code": "367A00000X",
+              "description": "Advanced Practice Midwife",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2006-07-07",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2011-04-07",
+          "npi": "1356373799",
+          "organization_name": "BRIGHAM AND WOMENS PHYSICIANS ORGANIZATION INC",
+          "postal_prefix": "02115",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207K00000X",
+              "description": "Allergy & Immunology",
+              "primary": false
+            },
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RA0000X",
+              "description": "Internal Medicine, Adolescent Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RH0000X",
+              "description": "Internal Medicine, Hematology",
+              "primary": false
+            },
+            {
+              "code": "207RH0003X",
+              "description": "Internal Medicine, Hematology & Oncology",
+              "primary": false
+            },
+            {
+              "code": "207RI0008X",
+              "description": "Internal Medicine, Hepatology",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RX0202X",
+              "description": "Internal Medicine, Medical Oncology",
+              "primary": false
+            },
+            {
+              "code": "208D00000X",
+              "description": "General Practice",
+              "primary": false
+            },
+            {
+              "code": "208M00000X",
+              "description": "Hospitalist",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2006-06-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2026-02-10",
+          "npi": "1740216811",
+          "organization_name": "CHILDREN'S SPORTS MEDICINE FOUNDATION INC.",
+          "postal_prefix": "02115",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "103TC0700X",
+              "description": "Psychologist, Clinical",
+              "primary": false
+            },
+            {
+              "code": "207PS0010X",
+              "description": "Emergency Medicine, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "207QS0010X",
+              "description": "Family Medicine, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "207X00000X",
+              "description": "Orthopaedic Surgery",
+              "primary": true
+            },
+            {
+              "code": "207XX0005X",
+              "description": "Orthopaedic Surgery, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "2080S0010X",
+              "description": "Pediatrics, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "213E00000X",
+              "description": "Podiatrist",
+              "primary": false
+            },
+            {
+              "code": "213ES0000X",
+              "description": "Podiatrist, Sports Medicine",
+              "primary": false
+            },
+            {
+              "code": "363A00000X",
+              "description": "Physician Assistant",
+              "primary": false
+            },
+            {
+              "code": "363LP0200X",
+              "description": "Nurse Practitioner, Pediatrics",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2015-08-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2015-08-31",
+          "npi": "1518334150",
+          "organization_name": "AUM HEALING CENTER LLC",
+          "postal_prefix": "02118",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2006-05-31",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-06-10",
+          "npi": "1912954124",
+          "organization_name": "EVANS MEDICAL FOUNDATION, INC.",
+          "postal_prefix": "02118",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Endocrinology, Diabetes & Metabolism",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            },
+            {
+              "code": "207RC0000X",
+              "description": "Internal Medicine, Cardiovascular Disease",
+              "primary": false
+            },
+            {
+              "code": "207RE0101X",
+              "description": "Internal Medicine, Endocrinology, Diabetes & Metabolism",
+              "primary": false
+            },
+            {
+              "code": "207RG0100X",
+              "description": "Internal Medicine, Gastroenterology",
+              "primary": false
+            },
+            {
+              "code": "207RG0300X",
+              "description": "Internal Medicine, Geriatric Medicine",
+              "primary": false
+            },
+            {
+              "code": "207RH0003X",
+              "description": "Internal Medicine, Hematology & Oncology",
+              "primary": false
+            },
+            {
+              "code": "207RI0200X",
+              "description": "Internal Medicine, Infectious Disease",
+              "primary": false
+            },
+            {
+              "code": "207RN0300X",
+              "description": "Internal Medicine, Nephrology",
+              "primary": false
+            },
+            {
+              "code": "207RP1001X",
+              "description": "Internal Medicine, Pulmonary Disease",
+              "primary": false
+            },
+            {
+              "code": "207RR0500X",
+              "description": "Internal Medicine, Rheumatology",
+              "primary": false
+            },
+            {
+              "code": "363LA2200X",
+              "description": "Nurse Practitioner, Adult Health",
+              "primary": false
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2024-04-23",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2024-04-23",
+          "npi": "1487409280",
+          "organization_name": "CIRCLE MEDICAL CARE GROUP PA",
+          "postal_prefix": "02110",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Family Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207Q00000X",
+              "description": "Family Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        },
+        {
+          "city": "Boston",
+          "enumeration_date": "2019-08-06",
+          "enumeration_type": "NPI-2",
+          "glp_service_verified": false,
+          "last_updated": "2019-08-06",
+          "npi": "1619522760",
+          "organization_name": "AVACYN HEALTH PC",
+          "postal_prefix": "02135",
+          "publication_status": "HELD_DIRECT_SERVICE_THRESHOLD",
+          "source_query_taxonomy": "Internal Medicine",
+          "state": "MA",
+          "status": "A",
+          "taxonomies": [
+            {
+              "code": "207R00000X",
+              "description": "Internal Medicine",
+              "primary": true
+            }
+          ],
+          "weight_management_service_verified": false
+        }
+      ],
+      "retrieved_as_of": "2026-07-23",
+      "sanitized_record_count": 25,
+      "source_name": "NPPES NPI Registry API v2.1",
+      "source_queries": [
+        {
+          "api_result_count": 1,
+          "sanitized_record_count": 1,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Obesity+Medicine&address_purpose=LOCATION&city=Boston&state=MA&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Obesity Medicine"
+        },
+        {
+          "api_result_count": 14,
+          "sanitized_record_count": 14,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Endocrinology%2C+Diabetes+%26+Metabolism&address_purpose=LOCATION&city=Boston&state=MA&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Endocrinology, Diabetes & Metabolism"
+        },
+        {
+          "api_result_count": 43,
+          "sanitized_record_count": 34,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Family+Medicine&address_purpose=LOCATION&city=Boston&state=MA&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Family Medicine"
+        },
+        {
+          "api_result_count": 50,
+          "sanitized_record_count": 49,
+          "source_url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=Internal+Medicine&address_purpose=LOCATION&city=Boston&state=MA&country_code=US&limit=50&skip=0&pretty=off",
+          "taxonomy_description": "Internal Medicine"
+        }
+      ],
+      "state": "MA"
+    }
+  ],
+  "endpoint_included": false,
+  "individual_people_included": false,
+  "launch_authorized": false,
+  "phone_included": false,
+  "query_taxonomies": [
+    "Obesity Medicine",
+    "Endocrinology, Diabetes & Metabolism",
+    "Family Medicine",
+    "Internal Medicine"
+  ],
+  "records_are_glp_clinics": false,
+  "schema": "glp-type5-npi-seed-batch3-v1",
+  "source_authority": "official NPPES v2.1 read API",
+  "street_address_included": false
+}

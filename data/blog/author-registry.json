@@ -1,0 +1,39 @@
+{
+  "authors": [
+    {
+      "accountable_legal_entity": "Tilton Group LLC",
+      "attribution_display": "By the Clinic Scout Editorial Team · Independent research · every claim source-cited",
+      "author_id": "clinic-scout-editorial-team",
+      "authority_basis": "Operator-owned first-party GLP Clinic Scout publication identity",
+      "bio_path": "/authors/clinic-scout-editorial-team/",
+      "clinical_credentials_claimed": false,
+      "display_name": "Clinic Scout Editorial Team",
+      "entity_type": "Organization",
+      "fictional_person": false,
+      "identity_verified_as_of": "2026-07-23",
+      "individual_identity_claimed": false,
+      "status": "verified_organization",
+      "transparency_note": "Organizational byline for the GLP Clinic Scout research desk, accountable to Tilton Group LLC; not a clinician or fabricated person."
+    },
+    {
+      "accountable_legal_entity": "Tilton Group LLC",
+      "attribution_display": "By Izaiah Tilton, Publisher · Independent research · every claim source-cited",
+      "author_id": "izaiah-tilton",
+      "authority_basis": "Named publisher and owner accountable for GLP Clinic Scout source comparison and consumer verification workflows",
+      "bio_path": "/authors/izaiah-tilton/",
+      "clinical_credentials_claimed": false,
+      "display_name": "Izaiah Tilton",
+      "entity_type": "Person",
+      "fictional_person": false,
+      "identity_verified_as_of": "2026-07-23",
+      "individual_identity_claimed": true,
+      "role": "Publisher",
+      "same_as": [
+        "https://github.com/izaiahat"
+      ],
+      "status": "verified_human",
+      "transparency_note": "Named publisher responsible for commercial-term research and primary-source comparison; not a clinician and does not provide medical advice."
+    }
+  ],
+  "schema": "editorial-author-registry-v2"
+}

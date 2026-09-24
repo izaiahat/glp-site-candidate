@@ -1,0 +1,1671 @@
+Choose your goal
+
+Weight Loss
+
+Weight Loss
+
+Lose the weight and keep it off.
+
+GLP-1 Solutions
+
+[Compounded Tirzepatide Injections Rx\\
+\\
+Weekly injection](https://www.tryshed.com/products/compounded-tirzepatide-injections) [Compounded Semaglutide Injections Rx\\
+\\
+Weekly injection](https://www.tryshed.com/products/compounded-semaglutide-injections) [GLP-1 Liquid Drops Rx\\
+\\
+Daily oral drops, no needle](https://www.tryshed.com/products/product/glp-1-liquid-drops) [GLP-1 Lozenges Rx\\
+\\
+Sublingual lozenge, dissolves under the tongue](https://www.tryshed.com/products/product/glp-1-lozenges) [Foundayo®Rx\\
+\\
+Daily GLP-1 pill (orforglipron), no needle](https://www.tryshed.com/products/foundayo) [Wegovy®Rx\\
+\\
+Weekly injection pen (semaglutide)](https://www.tryshed.com/products/product/wegovy) [Zepbound®Rx\\
+\\
+Weekly injection pen (tirzepatide)](https://www.tryshed.com/products/product/zepbound-shed-membership)
+
+Additional Weight-Loss Solutions
+
+[Metformin + Naltrexone + Topiramate Rx\\
+\\
+Daily oral capsule · metabolic & appetite support](https://www.tryshed.com/products/product/metformin-naltrexone-topiramate) [MIC + B12 Rx\\
+\\
+Injection · fat-metabolism & energy support](https://www.tryshed.com/products/product/mic-b12-injections) [Naltrexone + Bupropion Rx\\
+\\
+Daily oral capsule · appetite & craving support](https://www.tryshed.com/products/product/naltrexone-bupropion)
+
+Featured product
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a6206b9d9064897a1544064_nav_glp1.png)
+
+GLP-1s
+
+From $159/mo
+
+Lose 5% of your weight in 120 days or your money back\*
+
+[Get started](https://www.tryshed.com/products/product/glp-1-injections#)
+
+\*Terms apply. [See full Terms and Conditions.](https://www.tryshed.com/resources/legal/terms)
+
+[Explore all weight-loss products →](https://www.tryshed.com/products/category/weight-loss)
+
+Sex Health NEW
+
+Sex Health
+
+Have better sex.
+
+For Men
+
+[Rise Rx\\
+\\
+Tablet · triple-action ED support (Apomorphine /Tadalafil / Vardenafil)](https://www.tryshed.com/products/rise) [Steady Rx\\
+\\
+Daily tablet · everyday ED support (Tadalafil 5mg)](https://www.tryshed.com/products/steady) [Extend Rx\\
+\\
+Tablet · triple-action lasting-longer / PE support(Paroxetine / Tadalafil / L-Theanine)](https://www.tryshed.com/products/extend)
+
+For Women
+
+[Desire Rx\\
+\\
+Sublingual tablet · libido support (Oxytocin /Bremelanotide)](https://www.tryshed.com/products/desire) [Euphoria Rx\\
+\\
+Topical cream · arousal support (L-Arginine / Oxytocin+ Niacin)](https://www.tryshed.com/products/euphoria)
+
+Featured product
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a62167f7dcc67456ea7cf2d_nav_rise.png)
+
+Rise
+
+From $66.33 /mo
+
+Triple-action ED ·
+
+get hard, fast
+
+[Get started](https://www.tryshed.com/products/rise)
+
+[Explore all men's products →](https://www.tryshed.com/products/mens-sexual-health) [Explore all women's products →](https://www.tryshed.com/products/womens-sexual-health)
+
+Longevity + Vitality
+
+Longevity+ Vitality
+
+Support for energy, mood, and healthy aging.
+
+Medications
+
+[Microdose GLP-1 Rx\\
+\\
+Weekly injection · low-dose metabolic support](https://www.tryshed.com/products/microdose) [Glutathione Rx\\
+\\
+Injection · antioxidant support](https://www.tryshed.com/products/glutathione-injections) [Methylene Blue Rx\\
+\\
+Oral capsule · focus & cellular energy](https://www.tryshed.com/products/product/methylene-blue)
+
+[NAD+ Rx\\
+\\
+Injection, tablet, or nasal spray · cellular energy](https://www.tryshed.com/products/nad) [Low-Dose Naltrexone (LDN) Rx\\
+\\
+Oral capsule · wellness & recovery support](https://www.tryshed.com/products/product/ldn) [Sermorelin Rx\\
+\\
+Injection · growth-hormone (peptide) support](https://www.tryshed.com/products/product/sermorelin)
+
+Featured product
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a621bcd255ac5d18c6ddd42_nav_nad.png)
+
+NAD+
+
+From $144/mo
+
+Increase energy and vitality
+
+[Get started](https://portal.tryshed.com/signupEmb?formMed=nad&_gl=1*1889sm8*_gcl_au*MjA2MzM1MzYwNC4xNzgyNDA5MDM5LjE5NDU3MjU4NDYuMTc4MzUzMjM2Ny4xNzgzNTMyMzY2)
+
+[Explore all longevity products →](https://www.tryshed.com/products/longevity)
+
+Hair
+
+Hair
+
+Regrow thicker, fuller hair.
+
+Women's Hair
+
+[Women's 3-in-1 Hair Tablet Rx\\
+\\
+Oral tablet](https://www.tryshed.com/products/product/womens-3-1-hair-capsule) [Women's 5-in-1 Hair Serum Rx\\
+\\
+Topical serum](https://www.tryshed.com/products/product/womens-5-1-hair-solution) [Copper Peptide Hair Serum\\
+\\
+Topical serum · GHK-Cu](https://www.tryshed.com/products/product/womens-ghk-cu-scalp-peptide-solution)
+
+Men's Hair
+
+[Men's Minoxidil + Finasteride Serum Rx\\
+\\
+Topical serum · 2-in-1](https://www.tryshed.com/products/product/mens-2-1-hair-solution) [Men's 3-in-1 Hair Tablet Rx\\
+\\
+Oral tablet](https://www.tryshed.com/products/product/mens-3-1-hair-tablet) [Men's 5-in-1 Hair Serum Rx\\
+\\
+Topical serum](https://www.tryshed.com/products/product/mens-5-1-hair-solution) [Copper Peptide Hair Serum\\
+\\
+Topical serum · GHK-Cu](https://www.tryshed.com/products/product/ghk-cu-scalp-peptide-solution)
+
+Featured product
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a621f854b8e041f210fef87_nav_hair.png)
+
+Copper PeptideHair Serum
+
+From $93/mo
+
+Grow your hair back with peptides
+
+[Get started](https://portal.tryshed.com/signupEmb?formMed=hair&_gl=1*1889sm8*_gcl_au*MjA2MzM1MzYwNC4xNzgyNDA5MDM5LjE5NDU3MjU4NDYuMTc4MzUzMjM2Ny4xNzgzNTMyMzY2)
+
+[Explore all women's hair →](https://www.tryshed.com/products/womens-hair-solutions) [Explore all men's hair →](https://www.tryshed.com/products/mens-hair-solutions)
+
+More
+
+More
+
+Support, tools, and resources.
+
+Programs
+
+[Health Coaching](https://www.tryshed.com/products/health-coaching) [Referral Program](https://www.tryshed.com/resources/support/referrals)
+
+[Affiliate Program](https://www.tryshed.com/products/health-coaching)
+
+Company
+
+[Help Center](https://help.tryshed.com/en/?_gl=1*18aiksi*_gcl_au*MjA2MzM1MzYwNC4xNzgyNDA5MDM5LjE5NDU3MjU4NDYuMTc4MzUzMjM2Ny4xNzgzNTMyMzY2) [Blog](https://www.tryshed.com/blog) [Terms and Conditions](https://www.tryshed.com/resources/legal/terms) [Login to Portal](https://portal.tryshed.com/)
+
+ALREADY A MEMBER?
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a62248312c12d8fb754d7ad_nav_member.png)
+
+Log in to your Member Portal
+
+Get support, resources, and connect with the community.
+
+[Get started](https://portal.tryshed.com/)
+
+Featured product
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a6206b9d9064897a1544064_nav_glp1.png)
+
+GLP-1s
+
+From $159/mo
+
+Lose 5% of your weight in 120 days or your money back\*
+
+[Get started](https://www.tryshed.com/products/product/glp-1-injections#)
+
+\*Terms apply. [See full Terms and Conditions.](https://www.tryshed.com/resources/legal/terms)
+
+[Get started](https://www.tryshed.com/products/product/glp-1-injections#) [Login](https://portal.tryshed.com/)
+
+Compounded Semaglutide as low as $159/mo
+
+120-Day Weight Loss Guarantee\*
+
+Compounded Trizepatide starting as low as $239/mo
+
+Share your results with us, and the world, by tagging @tryshed
+
+Bonus gift: Free Clear Protein + Hydration when with your new prescription subscription.
+
+[Get started\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/68932d5644aee8ee9a4c3135_%E2%86%92%20(1).svg)](https://www.tryshed.com/products/product/glp-1-injections#)
+
+[![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e55bb8c70d7ec9a46689ac_ShedRx%20Logo.avif)](https://www.tryshed.com/?r=0)
+
+Weight Loss
+
+Weight Loss
+
+Lose the weight and keep it off.
+
+GLP-1 Solutions
+
+[Compounded Tirzepatide Injections Rx\\
+\\
+Weekly injection](https://www.tryshed.com/products/compounded-tirzepatide-injections) [Compounded Semaglutide Injections Rx\\
+\\
+Weekly injection](https://www.tryshed.com/products/compounded-semaglutide-injections) [GLP-1 Liquid Drops Rx\\
+\\
+Daily oral drops, no needle](https://www.tryshed.com/products/product/glp-1-liquid-drops) [GLP-1 Lozenges Rx\\
+\\
+Sublingual lozenge, dissolves under the tongue](https://www.tryshed.com/products/product/glp-1-lozenges) [Foundayo®Rx\\
+\\
+Daily GLP-1 pill (orforglipron), no needle](https://www.tryshed.com/products/foundayo) [Wegovy®Rx\\
+\\
+Weekly injection pen (semaglutide)](https://www.tryshed.com/products/product/wegovy) [Zepbound®Rx\\
+\\
+Weekly injection pen (tirzepatide)](https://www.tryshed.com/products/product/zepbound-shed-membership)
+
+Additional Weight-Loss Solutions
+
+[Metformin + Naltrexone + Topiramate Rx\\
+\\
+Daily oral capsule · metabolic & appetite support](https://www.tryshed.com/products/product/metformin-naltrexone-topiramate) [MIC + B12 Rx\\
+\\
+Injection · fat-metabolism & energy support](https://www.tryshed.com/products/product/mic-b12-injections) [Naltrexone + Bupropion Rx\\
+\\
+Daily oral capsule · appetite & craving support](https://www.tryshed.com/products/product/naltrexone-bupropion)
+
+Featured product
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a6206b9d9064897a1544064_nav_glp1.png)
+
+GLP-1s
+
+From $159/mo
+
+Lose 5% of your weight in 120 days or your money back\*
+
+[Get started](https://www.tryshed.com/products/product/glp-1-injections#)
+
+\*Terms apply. [See full Terms and Conditions.](https://www.tryshed.com/resources/legal/terms)
+
+[Explore all weight-loss products →](https://www.tryshed.com/products/category/weight-loss)
+
+Sex Health NEW
+
+Sex Health
+
+Have better sex.
+
+For Men
+
+[Rise Rx\\
+\\
+Tablet · triple-action ED support (Apomorphine /Tadalafil / Vardenafil)](https://www.tryshed.com/products/rise) [Steady Rx\\
+\\
+Daily tablet · everyday ED support (Tadalafil 5mg)](https://www.tryshed.com/products/steady) [Extend Rx\\
+\\
+Tablet · triple-action lasting-longer / PE support(Paroxetine / Tadalafil / L-Theanine)](https://www.tryshed.com/products/extend)
+
+For Women
+
+[Desire Rx\\
+\\
+Sublingual tablet · libido support (Oxytocin /Bremelanotide)](https://www.tryshed.com/products/desire) [Euphoria Rx\\
+\\
+Topical cream · arousal support (L-Arginine / Oxytocin+ Niacin)](https://www.tryshed.com/products/euphoria)
+
+Featured product
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a62167f7dcc67456ea7cf2d_nav_rise.png)
+
+Rise
+
+From $66.33 /mo
+
+Triple-action ED ·
+
+get hard, fast
+
+[Get started](https://www.tryshed.com/products/rise)
+
+[Explore all men's products →](https://www.tryshed.com/products/mens-sexual-health) [Explore all women's products →](https://www.tryshed.com/products/womens-sexual-health)
+
+Longevity + Vitality
+
+Longevity+ Vitality
+
+Support for energy, mood, and healthy aging.
+
+Medications
+
+[Microdose GLP-1 Rx\\
+\\
+Weekly injection · low-dose metabolic support](https://www.tryshed.com/products/microdose) [Glutathione Rx\\
+\\
+Injection · antioxidant support](https://www.tryshed.com/products/glutathione-injections) [Methylene Blue Rx\\
+\\
+Oral capsule · focus & cellular energy](https://www.tryshed.com/products/product/methylene-blue)
+
+[NAD+ Rx\\
+\\
+Injection, tablet, or nasal spray · cellular energy](https://www.tryshed.com/products/nad) [Low-Dose Naltrexone (LDN) Rx\\
+\\
+Oral capsule · wellness & recovery support](https://www.tryshed.com/products/product/ldn) [Sermorelin Rx\\
+\\
+Injection · growth-hormone (peptide) support](https://www.tryshed.com/products/product/sermorelin)
+
+Featured product
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a621bcd255ac5d18c6ddd42_nav_nad.png)
+
+NAD+
+
+From $144/mo
+
+Increase energy and vitality
+
+[Get started](https://portal.tryshed.com/signupEmb?formMed=nad&_gl=1*1889sm8*_gcl_au*MjA2MzM1MzYwNC4xNzgyNDA5MDM5LjE5NDU3MjU4NDYuMTc4MzUzMjM2Ny4xNzgzNTMyMzY2)
+
+[Explore all longevity products →](https://www.tryshed.com/products/longevity)
+
+Hair
+
+Hair
+
+Regrow thicker, fuller hair.
+
+Women's Hair
+
+[Women's 3-in-1 Hair Tablet Rx\\
+\\
+Oral tablet](https://www.tryshed.com/products/product/womens-3-1-hair-capsule) [Women's 5-in-1 Hair Serum Rx\\
+\\
+Topical serum](https://www.tryshed.com/products/product/womens-5-1-hair-solution) [Copper Peptide Hair Serum\\
+\\
+Topical serum · GHK-Cu](https://www.tryshed.com/products/product/womens-ghk-cu-scalp-peptide-solution)
+
+Men's Hair
+
+[Men's Minoxidil + Finasteride Serum Rx\\
+\\
+Topical serum · 2-in-1](https://www.tryshed.com/products/product/mens-2-1-hair-solution) [Men's 3-in-1 Hair Tablet Rx\\
+\\
+Oral tablet](https://www.tryshed.com/products/product/mens-3-1-hair-tablet) [Men's 5-in-1 Hair Serum Rx\\
+\\
+Topical serum](https://www.tryshed.com/products/product/mens-5-1-hair-solution) [Copper Peptide Hair Serum\\
+\\
+Topical serum · GHK-Cu](https://www.tryshed.com/products/product/ghk-cu-scalp-peptide-solution)
+
+Featured product
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a621f854b8e041f210fef87_nav_hair.png)
+
+Copper PeptideHair Serum
+
+From $93/mo
+
+Grow your hair back with peptides
+
+[Get started](https://portal.tryshed.com/signupEmb?formMed=hair&_gl=1*1889sm8*_gcl_au*MjA2MzM1MzYwNC4xNzgyNDA5MDM5LjE5NDU3MjU4NDYuMTc4MzUzMjM2Ny4xNzgzNTMyMzY2)
+
+[Explore all women's hair →](https://www.tryshed.com/products/womens-hair-solutions) [Explore all men's hair →](https://www.tryshed.com/products/mens-hair-solutions)
+
+More
+
+More
+
+Support, tools, and resources.
+
+Programs
+
+[Health Coaching](https://www.tryshed.com/products/health-coaching) [Referral Program](https://www.tryshed.com/resources/support/referrals)
+
+[Affiliate Program](https://www.tryshed.com/products/health-coaching)
+
+Company
+
+[Help Center](https://help.tryshed.com/en/?_gl=1*18aiksi*_gcl_au*MjA2MzM1MzYwNC4xNzgyNDA5MDM5LjE5NDU3MjU4NDYuMTc4MzUzMjM2Ny4xNzgzNTMyMzY2) [Blog](https://www.tryshed.com/blog) [Terms and Conditions](https://www.tryshed.com/resources/legal/terms) [Login to Portal](https://portal.tryshed.com/)
+
+ALREADY A MEMBER?
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a62248312c12d8fb754d7ad_nav_member.png)
+
+Log in to your Member Portal
+
+Get support, resources, and connect with the community.
+
+[Get started](https://portal.tryshed.com/)
+
+[Login](https://portal.tryshed.com/) [Get started](https://portal.tryshed.com/signupEmb?formMed=intro)
+
+X
+
+## Which product are you interested in?
+
+### Weight Management
+
+Weight-loss solutions designed to transform and sustain
+
+[GLP-1 Injections\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/glp-1-injections) [GLP-1 Liquid Drops\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/glp-1-liquid-drops) [GLP-1 Lozenges\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/glp-1-lozenges) [Ozempic®\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/ozempic) [Mounjaro®\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/mounjaro)
+
+[Wegovy®\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/wegovy) [Metformin + Naltrexone + Topiramate\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/metformin-naltrexone-topiramate) [MIC + B12\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/mic-b12-injections) [Naltrexone + Buproprion\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/naltrexone-bupropion)
+
+### Longevity + Vitality
+
+Longevity medications designed to extend and enhance
+
+[NAD+\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/nad) [Low-Dose Naltrexone\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/ldn) [Methylene Blue\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/methylene-blue) [Sermorelin\\
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/686754677daf53fe3504dd61_Arrow%201.png)](https://www.tryshed.com/products/sermorelin)
+
+### Women’s Hair
+
+Thoughtful hair solutions designed with women in mind
+
+[Start your journey](https://www.tryshed.com/category/womens-hair)
+
+### Men’s Hair
+
+Straightforward support for your everyday
+
+[Start your journey](https://www.tryshed.com/category/mens-hair)
+
+‹
+
+![Slide 1](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e89050c116706e37dacd3_img_wegovy_pr_01.png)
+
+![Slide 2](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e8905aae2245ae04f69ad_img_wegovy_pr_02.png)
+
+![Slide 3](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e8904123fe448d1bf6819_img_wegovy_pr_03.png)
+
+![Slide 4](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e8905e653b8f8f8e78042_img_wegovy_pr_04.png)
+
+›
+
+![Slide 1](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e89050c116706e37dacd3_img_wegovy_pr_01.png)![Slide 2](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e8905aae2245ae04f69ad_img_wegovy_pr_02.png)![Slide 3](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e8904123fe448d1bf6819_img_wegovy_pr_03.png)![Slide 4](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e8905e653b8f8f8e78042_img_wegovy_pr_04.png)
+
+In clinical trials of the oral Wegovy® (semaglutide) pill, participants taking the medication with diet and exercise achieved average weight loss of about 14%–17% over ~64 weeks compared with ~2% with placebo. Some participants achieved ≥20% weight loss when treatment was continued. Results vary by individual and treatment adherence.
+
+# Buy GLP-1 Injections Online
+
+Starting at $149/ month +
+
+Lose 14-15% of your body weight\*
+
+FDA-approved GLP-1. Now in a pen and a pill.
+
+Insurance or cash-pay options
+
+100% online, provider-led care
+
+Free GLP-1 shot tracking app
+
+Achieve your weight-loss goals with the right treatment. We offer weight-loss injections such as compounded GLP-1 alternatives as deemed clinically necessary by a licensed provider. The best option will be determined based on your health needs to help you achieve your weight-loss goals.
+
+[See if you qualify →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+In clinical trials of Wegovy® (FDA-approved semaglutide), participants achieved an average weight loss of approximately 15% over 68 weeks, with some participants achieving up to 20% with continued treatment and adherence, when combined with diet and exercise. This compares to approximately 2–3% weight loss with diet and exercise alone.
+
+FAQ
+
+### What is Wegovy®?
+
+Wegovy® (semaglutide) is an FDA-approved prescription medication used for chronic weight management in adults with obesity or excess weight. It belongs to a class of medications called GLP-1 receptor agonists.
+
+Wegovy® works by mimicking a natural hormone in your body that helps regulate appetite and blood sugar, which can support reduced food intake and healthier eating patterns when combined with lifestyle changes.
+
+FAQ
+
+### How effective is Wegovy® for weight loss?
+
+Wegovy® has been clinically studied for weight management. In clinical trials, adults who used Wegovy® alongside diet and lifestyle changes lost an average of 14–15% of their body weight over one year.\*
+
+Individual results vary based on factors such as dosage, adherence, lifestyle habits, and overall health.
+
+FAQ
+
+### What is the Wegovy® pill, and how is it different from the Wegovy® pen?
+
+Both the Wegovy® pill and the Wegovy® pen contain the same active ingredient, semaglutide, and are FDA-approved for weight management. The main difference is how and how often they’re taken.
+
+Similarities:
+
+- Both are FDA-approved Wegovy® formulations
+- Both use semaglutide as the active ingredient
+- Both follow a gradual dose-increase schedule determined by a provider
+- Side effects are generally similar and can be managed with provider support
+
+Differences:
+
+- Wegovy® pen: Taken as a once-weekly injection
+- Wegovy® pill: Taken orally once per day
+
+Your Shed provider will help determine which option may be appropriate based on your health history, preferences, and treatment goals.
+
+FAQ
+
+### What’s the difference between Ozempic® and Wegovy®?
+
+Both medications contain semaglutide, but they are FDA-approved for different uses.
+
+- Ozempic® is approved to treat type 2 diabetes
+- Wegovy® is specifically approved for chronic weight management
+
+In some cases, providers may prescribe Ozempic® off-label for weight management when appropriate, but Wegovy® is the formulation designed and approved for weight loss.
+
+Health
+
+### What is Wegovy®?
+
+Health
+
+### How effective is Wegovy® for weight loss?
+
+Health
+
+### What is the Wegovy® pill, and how is it different from the Wegovy® pen?
+
+Health
+
+### What’s the difference between Ozempic® and Wegovy®?
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c2206511511a7a020f_img_forbes_health.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69a5967c38edd9b22d22b752_img_logo_cnn.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c2cde9bf78f0fe5347_feb1a6ad8e50c18fa30652f34e03fbc2_img_fitt_insider.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c264e0d5dbf65f5dd3_30d0a8d8c745255249d1f084dd63a40b_img_fsa_store.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69a5967c863d2ed8274e6f03_img_logo_rakuten.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c2a84584df530c4591_img_pr_newswire.png)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c2206511511a7a020f_img_forbes_health.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69a5967c38edd9b22d22b752_img_logo_cnn.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c2cde9bf78f0fe5347_feb1a6ad8e50c18fa30652f34e03fbc2_img_fitt_insider.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c264e0d5dbf65f5dd3_30d0a8d8c745255249d1f084dd63a40b_img_fsa_store.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69a5967c863d2ed8274e6f03_img_logo_rakuten.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c2a84584df530c4591_img_pr_newswire.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69a5967cf9d92b90a1dbb496_img_logo_upsellit.png)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c2206511511a7a020f_img_forbes_health.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69a5967c38edd9b22d22b752_img_logo_cnn.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c2cde9bf78f0fe5347_feb1a6ad8e50c18fa30652f34e03fbc2_img_fitt_insider.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c264e0d5dbf65f5dd3_30d0a8d8c745255249d1f084dd63a40b_img_fsa_store.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69a5967c863d2ed8274e6f03_img_logo_rakuten.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/691f81c2a84584df530c4591_img_pr_newswire.png)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69a5967cf9d92b90a1dbb496_img_logo_upsellit.png)
+
+# Meet the Wegovy® Pill
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e6c49dcc64d2e16851ec7_img_wegovy_pill.png)
+
+Lose
+
+14-15%
+
+of your body weight\*
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e6fc4566081adcb62c81a_icon_shieldcheck_teal.png)
+
+A new, FDA-approved way to take Wegovy®, no injections required.
+
+Wegovy® is now available as a once-daily pill, offering a needle-free option for people who prefer oral medication. Like the Wegovy® pen, the pill contains semaglutide and is FDA-approved for chronic weight management.
+
+This new delivery method gives patients more flexibility in how they take Wegovy®, while still receiving provider-guided care through Shed.
+
+[See if you qualify →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e6c49dcc64d2e16851ec7_img_wegovy_pill.png)
+
+Lose
+
+14-15%
+
+of your body weight\*
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e6fc4566081adcb62c81a_icon_shieldcheck_teal.png)
+
+\*In clinical trials of Wegovy® (FDA-approved semaglutide), participants achieved an average weight loss of approximately 15% over 68 weeks, with some participants achieving up to 20% with continued treatment and adherence, when combined with diet and exercise. This compares to approximately 2–3% weight loss with diet and exercise alone.
+
+# Two ways to take Wegovy®
+
+Same active ingredient. Two FDA-approved delivery options, guided by your provider.
+
+Feature
+
+Medication Type
+
+FDA-approved
+
+Active ingredient
+
+Average weight loss
+
+Price
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695fcf1ba65f7afc3acd2981_img_wegovy_table_01.png)
+
+Wegovy® Pen
+
+Once weekly
+
+Yes
+
+Semaglutide
+
+15% in a year\*
+
+Starts at $199
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695fcf1b4a9b0176aceb84fb_img_wegovy_table_02.png)
+
+Wegovy® Pill
+
+Once daily
+
+Yes
+
+Semaglutide
+
+14% in a year\*
+
+Starts at $149
+
+# Two ways to take Wegovy®
+
+Same active ingredient. Two FDA-approved delivery options, guided by your provider.
+
+Pen
+
+Wegovy® Pen
+
+Medication Type
+
+Once-weekly injection
+
+FDA-approved
+
+Yes
+
+Active ingredient
+
+Semaglutide
+
+Average weight loss
+
+15% in a year\*
+
+Insurance or cash-pay
+
+Either
+
+Price
+
+Starts at $199
+
+Pill
+
+Wegovy® Pill
+
+Medication Type
+
+Once-daily pill
+
+FDA-approved
+
+Yes
+
+Active ingredient
+
+Semaglutide
+
+Average weight loss
+
+14% in a year\*
+
+Insurance or cash-pay
+
+Either
+
+Price
+
+Starts at $149
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6942a18678472e8f2425f320_icon_arrow_2_black_left.png)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6942a186bcdc7b15660e51f5_icon_arrow_2_black_right.png)
+
+1
+
+2
+
+## Don’t take our word for it
+
+Real people. Real results.
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69495393e5785ec1662e729d_kim_h_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69495399edf8b651595a4a91_kim_h_after.jpg)
+
+After
+
+-60
+
+lbs
+
+Kim H.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694956bb8c9fd8c94a75b56c_alyssa_k_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694956bd910697ddcc57d6fa_alyssa_k_after.jpg)
+
+After
+
+-53
+
+lbs
+
+Alyssa K.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694969d8ff24bdb21d1a7fe8_bryanna_m_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496a30ae7e989d3ed645c7_bryanna_m_after.jpg)
+
+After
+
+-80
+
+lbs
+
+Bryanna M.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496b673d0d32acd092b117_sue_p_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496b724348a8d603efcbcf_sue_p_after.jpg)
+
+After
+
+-30
+
+lbs
+
+Sue P.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496e152a1f1f4a58a94d90_lisa_p_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496e1950d3504918591569_lisa_p_after.jpg)
+
+After
+
+-59
+
+lbs
+
+Lisa P.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496e84ead2cfbf00f0a116_jesse_e_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/696a2c3c00a12b2f3e7278e8_jesse_after.jpg)
+
+After
+
+-70
+
+lbs
+
+Jesse E.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496ee3b869148793f7d181_jessica_a_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496ee6ecae8bd9cd5acff2_jessica_a_after.jpg)
+
+After
+
+-30
+
+lbs
+
+Jessica A.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496f995e7749705079550e_al_s_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496f9ef9f2fe01f72edc8e_al_s_after.png)
+
+After
+
+-60
+
+lbs
+
+Al S.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/6949707429e83428424d5029_carolann_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69497075162f9835e6338af7_carolann_after.jpg)
+
+After
+
+-50
+
+lbs
+
+Carolann
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496fe1cc0afba0c4325688_michelle_c_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496fe4923eb7c3cf90344d_michelle_c_after.jpg)
+
+After
+
+-77
+
+lbs
+
+Michelle C.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694970a80636dc04fb939825_michelle_h_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694970ab5ce033aa66a25055_michelle_h_after.jpg)
+
+After
+
+-31
+
+lbs
+
+Michelle H.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694970d2738e0a2742251ca6_dawn_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694970d5c3995bbbf51f52be_dawn_after.jpg)
+
+After
+
+-53
+
+lbs
+
+Dawn 2
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69495393e5785ec1662e729d_kim_h_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69495399edf8b651595a4a91_kim_h_after.jpg)
+
+After
+
+-60
+
+lbs
+
+Kim H.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694956bb8c9fd8c94a75b56c_alyssa_k_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694956bd910697ddcc57d6fa_alyssa_k_after.jpg)
+
+After
+
+-53
+
+lbs
+
+Alyssa K.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694969d8ff24bdb21d1a7fe8_bryanna_m_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496a30ae7e989d3ed645c7_bryanna_m_after.jpg)
+
+After
+
+-80
+
+lbs
+
+Bryanna M.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496b673d0d32acd092b117_sue_p_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496b724348a8d603efcbcf_sue_p_after.jpg)
+
+After
+
+-30
+
+lbs
+
+Sue P.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496e152a1f1f4a58a94d90_lisa_p_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496e1950d3504918591569_lisa_p_after.jpg)
+
+After
+
+-59
+
+lbs
+
+Lisa P.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496e84ead2cfbf00f0a116_jesse_e_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/696a2c3c00a12b2f3e7278e8_jesse_after.jpg)
+
+After
+
+-70
+
+lbs
+
+Jesse E.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496ee3b869148793f7d181_jessica_a_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496ee6ecae8bd9cd5acff2_jessica_a_after.jpg)
+
+After
+
+-30
+
+lbs
+
+Jessica A.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496f995e7749705079550e_al_s_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496f9ef9f2fe01f72edc8e_al_s_after.png)
+
+After
+
+-60
+
+lbs
+
+Al S.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/6949707429e83428424d5029_carolann_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69497075162f9835e6338af7_carolann_after.jpg)
+
+After
+
+-50
+
+lbs
+
+Carolann
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496fe1cc0afba0c4325688_michelle_c_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69496fe4923eb7c3cf90344d_michelle_c_after.jpg)
+
+After
+
+-77
+
+lbs
+
+Michelle C.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694970a80636dc04fb939825_michelle_h_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694970ab5ce033aa66a25055_michelle_h_after.jpg)
+
+After
+
+-31
+
+lbs
+
+Michelle H.
+
+Verified Member
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694970d2738e0a2742251ca6_dawn_before.jpg)
+
+Before
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/694970d5c3995bbbf51f52be_dawn_after.jpg)
+
+After
+
+-53
+
+lbs
+
+Dawn 2
+
+Verified Member
+
+[See what the right weight-loss tools can do for you →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+[See if you qualify →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+## Your simple 4-step weight-loss plan
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695fa28b746e517e9d7bc374_img_step1_lightteal.png)
+
+Step 1
+
+#### Take a 5-minute quiz
+
+Answer a few questions about your health history and goals, so we can match you with the right program.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695fa28be3d884c0f00a3449_img_step2_gray.png)
+
+Step 2
+
+#### Provider Review
+
+A medical provider will look over your answers and determine if you’re a good fit.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/694ab365ba299d5687c865f0_img_step3_teal.avif)
+
+Step 3
+
+#### Medications shipped to your home
+
+If prescribed, your prescription will be delivered to your doorstep with clear instructions based on your prescribed format (injection or pill).
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/694ab3669c5634f1a18ed822_img_step4_cream.avif)
+
+Step 4
+
+#### Ongoing support
+
+Get access to Shed Health Coaching, unlimited provider follow-ups, step-by-step health courses, and more.\*
+
+[See if you qualify →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695e8f33634e3f0ade5cd9ca_Frame%204352.jpg)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/695fe4b54785b0ec00b05a65_Frame%204352_sp.png)
+
+## Start your weight-loss journey with Wegovy®
+
+## Start your weight-loss journey with Wegovy®
+
+Supports healthy metabolic function\*
+
+Slows digestion\*
+
+Can reduce appetite\*
+
+Supports weight management\*
+
+FDA approved
+
+Clinically studied
+
+Easy to use
+
+[Get started →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+\*This information is for educational purposes only and is not a substitute for professional medical advice. Please consult your healthcare provider before starting or changing any medication or treatment. Results may vary.
+
+Included free with Shed
+
+Stay on track with Pivot
+
+Get free access to Pivot, the GLP-1 tracking app built to help you log your doses, track side effects, monitor habits, and see your progress clearly, all in one place.
+
+[Get started →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69f3780dbf60f72d204cb9e4_82502308a2769c0c1cdf6f74c8dd2987_img_pivot_cta_screen.png)
+
+[Get started →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+Shed Team
+
+## With you from day one
+
+To ensure you get the results you’re working toward, you'll be assigned a team of experts to be with you at every step of your evolution.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf30e7361ca1899f57f0e_73b656696b381145271d523a311a0770_648b5b0b61beb5822e252485fb6ddea0.jpg)
+
+Neely Wood (RN)
+
+Your nurse is here to support your care, answer questions, and help you feel confident throughout your journey. They work closely with your provider to ensure you have what you need.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf30e7206ee02a593f1d7_7769961b276369f8032bb3e3a5877236_54cb2ad0c600cd694040ae6ac0730875.avif)
+
+Noah Swendson
+
+Your Member Success Manager is your go-to support person throughout your journey. They’ll check in regularly to answer questions and make sure you’re fully supported every step of the way.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf30dedb3213e172aeb89_f9a4012f8f299f1fe2d4b199e0d864fd_bd8e6bb622a050c89e58a6042c8843db.jpg)
+
+Dr. Asad Niazi (MD)
+
+Your provider will prescribe the best medication for your needs and adjust it as needed. You’ll have free follow-up appointments to make sure you’re feeling great and getting expert, personalized care.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ed95eb62f1bbce21cedf34_e843f54258fb437d5424e0c69dba9df6_45dc2629fb3a35d349ce5866a39f472e.avif)
+
+Pardise Mossalman (CHC)
+
+Your Health Coach will guide you in building healthy habits that complement your medication. Together, you’ll create sustainable changes to help you reach your goals.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf31a8a54909310dffebb_00107dda71c470aeb9207d57a0fa1fb2_59a6364416f0084d5e65ff2fa16eb0e5.avif)
+
+Roseanne Schnell (RD)
+
+Our expert coaches and nutritionists have created online resources to help you make lasting lifestyle changes. Whether you're learning about nutrition, movement, or mindset, everything is designed to support your success.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf30e7361ca1899f57f0e_73b656696b381145271d523a311a0770_648b5b0b61beb5822e252485fb6ddea0.jpg)
+
+Neely Wood (RN)
+
+Your nurse is here to support your care, answer questions, and help you feel confident throughout your journey. They work closely with your provider to ensure you have what you need.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf30e7206ee02a593f1d7_7769961b276369f8032bb3e3a5877236_54cb2ad0c600cd694040ae6ac0730875.avif)
+
+Noah Swendson
+
+Your Member Success Manager is your go-to support person throughout your journey. They’ll check in regularly to answer questions and make sure you’re fully supported every step of the way.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf30dedb3213e172aeb89_f9a4012f8f299f1fe2d4b199e0d864fd_bd8e6bb622a050c89e58a6042c8843db.jpg)
+
+Dr. Asad Niazi (MD)
+
+Your provider will prescribe the best medication for your needs and adjust it as needed. You’ll have free follow-up appointments to make sure you’re feeling great and getting expert, personalized care.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ed95eb62f1bbce21cedf34_e843f54258fb437d5424e0c69dba9df6_45dc2629fb3a35d349ce5866a39f472e.avif)
+
+Pardise Mossalman (CHC)
+
+Your Health Coach will guide you in building healthy habits that complement your medication. Together, you’ll create sustainable changes to help you reach your goals.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf31a8a54909310dffebb_00107dda71c470aeb9207d57a0fa1fb2_59a6364416f0084d5e65ff2fa16eb0e5.avif)
+
+Roseanne Schnell (RD)
+
+Our expert coaches and nutritionists have created online resources to help you make lasting lifestyle changes. Whether you're learning about nutrition, movement, or mindset, everything is designed to support your success.
+
+[Get started with Shed→](https://intercom.help/shed-9729c1613019/en)
+
+Shed FAQs
+
+## Questions? We’ve got answers.
+
+Health
+
+### What is Wegovy®?
+
+Wegovy® (semaglutide) is an FDA-approved prescription medication used for chronic weight management in adults with obesity or excess weight. It belongs to a class of medications called GLP-1 receptor agonists.
+
+Wegovy® works by mimicking a natural hormone in your body that helps regulate appetite and blood sugar, which can support reduced food intake and healthier eating patterns when combined with lifestyle changes.
+
+‍
+
+Health
+
+### How effective is Wegovy® for weight loss?
+
+Wegovy® has been clinically studied for weight management. In clinical trials, adults who used Wegovy® alongside diet and lifestyle changes lost an average of 14–15% of their body weight over one year.\*
+
+Individual results vary based on factors such as dosage, adherence, lifestyle habits, and overall health.
+
+Health
+
+### What is the Wegovy® pill, and how is it different from the Wegovy® pen?
+
+Both the Wegovy® pill and the Wegovy® pen contain the same active ingredient, semaglutide, and are FDA-approved for weight management. The main difference is how and how often they’re taken.Similarities:
+
+- Both are FDA-approved Wegovy® formulations
+- Both use semaglutide as the active ingredient
+- Both follow a gradual dose-increase schedule determined by a provider
+- Side effects are generally similar and can be managed with provider support
+
+Differences:
+
+- Wegovy® pen: Taken as a once-weekly injection
+- Wegovy® pill: Taken orally once per day
+
+Your Shed provider will help determine which option may be appropriate based on your health history, preferences, and treatment goals.
+
+Health
+
+### What’s the difference between Ozempic® and Wegovy®?
+
+Both medications contain semaglutide, but they are FDA-approved for different uses.
+
+- Ozempic® is approved to treat type 2 diabetes
+- Wegovy® is specifically approved for chronic weight management
+
+In some cases, providers may prescribe Ozempic® off-label for weight management when appropriate, but Wegovy® is the formulation designed and approved for weight loss.
+
+Health
+
+### How does Shed’s Wegovy® program work?
+
+Shed provides access to Wegovy® through a fully online, provider-led care model.
+
+If prescribed, your program includes:
+
+- A medical review by a licensed provider
+- Ongoing provider support and follow-ups
+- Text-based Health Coaching\*\*
+- Educational tools and resources
+- A supportive community to help you stay on track
+
+Medication costs are separate from the monthly Shed membership.
+
+Health
+
+### Is Wegovy® right for everyone?
+
+Wegovy® is not appropriate for everyone. A licensed healthcare provider will review your health history and goals to determine whether Wegovy® may be a safe and suitable option for you.
+
+[See more in our help center](https://www.tryshed.com/resources/help-dep)
+
+_Compounded medications are prepared by licensed pharmacies to meet the specific needs of individual patients. These medications are not reviewed or approved by the FDA for safety, effectiveness, or quality. However, they are made in accordance with strict regulatory guidelines. If your clinician determines that a compounded medication is clinically appropriate for you, please be aware that it is not an FDA-approved product._
+
+_Ozempic®, Wegovy®, and Rybelsus® are the only FDA-approved products containing semaglutide produced by Novo Nordisk, Inc., while Zepbound® and Mounjaro® are the only FDA-approved products containing tirzepatide produced by Lilly USA LLC._
+
+[←\\
+\\
+Back to \\
+\\
+Weight Loss](https://www.tryshed.com/products/category/weight-loss)
+
+[![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b812c5b894ea56b3882c15_Frame%20427319239.jpg)](https://www.tryshed.com/products/product/glp-1-injections#w-tabs-0-data-w-pane-0)[![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b8132051c8831b137a1299_GLP-1_injection_angle%204_off-white%201.jpg)](https://www.tryshed.com/products/product/glp-1-injections#w-tabs-0-data-w-pane-1)[![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b813e64decdcf4722ab163_Group%201690.png)](https://www.tryshed.com/products/product/glp-1-injections#w-tabs-0-data-w-pane-2)[![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7b53066ad7e7754f8f2fe_59d5cde121707ca59a3e3aae85978ac5.avif)](https://www.tryshed.com/products/product/glp-1-injections#w-tabs-0-data-w-pane-3)
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b812c5b894ea56b3882c15_Frame%20427319239.jpg)
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b8132051c8831b137a1299_GLP-1_injection_angle%204_off-white%201.jpg)
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b813e64decdcf4722ab163_Group%201690.png)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7b53066ad7e7754f8f2fe_59d5cde121707ca59a3e3aae85978ac5.avif)
+
+Weight Loss
+
+# Buy GLP-1 Injections Online
+
+Starting at $199
+
+Achieve your weight-loss goals with the right treatment. We offer weight-loss injections such as compounded GLP-1 alternatives as deemed clinically necessary by a licensed provider. The best option will be determined based on your health needs to help you achieve your weight-loss goals.
+
+[Try GLP-1 Injections today →](https://www.tryshed.com/products/product/glp-1-injections#) [Are GLP-1 Injections right for you?](https://www.tryshed.com/products/product/glp-1-injections#)
+
+[Try GLP-1 Injections today →](https://www.tryshed.com/products/product/glp-1-injections#) [Are GLP-1 Injections right for you?](https://www.tryshed.com/products/product/glp-1-injections#)
+
+Weight Loss
+
+Buy GLP-1 Injections Online
+
+Starting at $199
+
+[![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b812c5b894ea56b3882c15_Frame%20427319239.jpg)](https://www.tryshed.com/products/product/glp-1-injections#w-tabs-1-data-w-pane-0)[![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b8132051c8831b137a1299_GLP-1_injection_angle%204_off-white%201.jpg)](https://www.tryshed.com/products/product/glp-1-injections#w-tabs-1-data-w-pane-1)[![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b813e64decdcf4722ab163_Group%201690.png)](https://www.tryshed.com/products/product/glp-1-injections#w-tabs-1-data-w-pane-2)[![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7b53066ad7e7754f8f2fe_59d5cde121707ca59a3e3aae85978ac5.avif)](https://www.tryshed.com/products/product/glp-1-injections#w-tabs-1-data-w-pane-3)
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b812c5b894ea56b3882c15_Frame%20427319239.jpg)
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b8132051c8831b137a1299_GLP-1_injection_angle%204_off-white%201.jpg)
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/69b813e64decdcf4722ab163_Group%201690.png)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7b53066ad7e7754f8f2fe_59d5cde121707ca59a3e3aae85978ac5.avif)
+
+Achieve your weight-loss goals with the right treatment. We offer weight-loss injections such as compounded GLP-1 alternatives as deemed clinically necessary by a licensed provider. The best option will be determined based on your health needs to help you achieve your weight-loss goals.
+
+[Try GLP-1 Injections today →](https://www.tryshed.com/products/product/glp-1-injections#) [Are GLP-1 Injections right for you?](https://www.tryshed.com/products/product/glp-1-injections#)
+
+[Try GLP-1 Injections today →](https://www.tryshed.com/products/product/glp-1-injections#) [Are GLP-1 Injections right for you?](https://www.tryshed.com/products/product/glp-1-injections#)
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/67eed7c5e2a662aae37cbdca_Frame%202164.png)
+
+Weight loss
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/67eed7cc7e22e8e191b65b75_Frame%202164-1.png)
+
+Individual to you
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/67eed7d1d9d36012e9536d05_Frame%202164-2.png)
+
+Reduces blood sugar
+
+### What included in the  Shed Membership?
+
+### What's included in the  Shed Membership?
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Unlimited provider visits
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Shed Community access with resources, educational courses, nutrition plans, and continuous support
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Support from our Member Success and medical teams every step of the way
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Complimentary text-based Health Coaching\*\* for ongoing guidance
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Dedicated support on prescription orders—no more insurance hassles!
+
+[Sign up today](https://www.tryshed.com/products/product/glp-1-injections#)
+
+[Sign up today](https://portal.tryshed.com/signupEmb?formMed=glp1)
+
+Medication not included.
+
+### What's included in the  Shed Membership?
+
+### What included in the  Shed Membership?
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Unlimited provider visits
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Shed Community access with resources, educational courses, nutrition plans, and continuous support
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Support from our Member Success and medical teams every step of the way
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Complimentary text-based Health Coaching\*\* for ongoing guidance
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e90755a3c2433046f063f8_Frame.svg)
+
+Dedicated support on prescription orders—no more insurance hassles!
+
+[Sign up today](https://portal.tryshed.com/signupEmb?formMed=glp1)
+
+[Sign up today](https://portal.tryshed.com/signupEmb?formMed=glp1)
+
+Medication not included.
+
+## Start your weight-loss journey for the last time.
+
+Science-backed results + personalized support
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7268c2170c16fafd5a2f2_Frame%20666.svg)
+
+Semaglutide
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7268c2170c16fafd5a2f2_Frame%20666.svg)
+
+Member-specific formulations
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7268c2170c16fafd5a2f2_Frame%20666.svg)
+
+Reduces appetite
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7268c2170c16fafd5a2f2_Frame%20666.svg)
+
+Regulates blood sugar levels
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7268c2170c16fafd5a2f2_Frame%20666.svg)
+
+Slows down digestion
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7268c2170c16fafd5a2f2_Frame%20666.svg)
+
+Self-administered
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7268c2170c16fafd5a2f2_Frame%20666.svg)
+
+Easy to use
+
+[Try GLP-1 today →](https://www.tryshed.com/products/product/glp-1-injections#) [Are GLP-1 Injections right for you?](https://www.tryshed.com/products/product/glp-1-injections#)
+
+[Try GLP-1 today →](https://www.tryshed.com/products/product/glp-1-injections#) [Are GLP-1 Injections right for you?](https://www.tryshed.com/products/product/glp-1-injections#)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e6bc4a14185e094e56e64e_46b7e7306400b5eb9e483c7bfaf971b6.avif)
+
+How Shed works
+
+## Shed journey
+
+3-minute signup, 100% online
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67f5506cb281ab1d64e55d27_DTS_AWAY_Daniel_Faro%CC%80_Photos_ID7527.jpg)![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/68a4d1fd7a12963ab150bf32_howItWorks.jpg)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ed91dacc821242d48576ba_Frame%20676.svg)
+
+Receive a personalized plan.
+
+Fill out a quick online form with your goals and health history. We’ll assess your eligibility and craft a personalized treatment plan just for you.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ed94a0a52dfc9f9d72ea29_Frame%20676.svg)
+
+Take the leap.
+
+Your medication will be delivered to your doorstep—no pharmacy lines, no hassle.
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ed94b0e5ac761f7ac0f03c_Frame%20676.svg)
+
+Experience lasting results.
+
+Stay in touch with your Member Success Team, who are dedicated to helping you reach your desired results.
+
+[Start your journey](https://www.tryshed.com/products/product/glp-1-injections#) [See if you qualify](https://www.tryshed.com/products/product/glp-1-injections#)
+
+[Start your journey](https://www.tryshed.com/products/product/glp-1-injections#) [See if you qualify for other options](https://www.tryshed.com/products/product/glp-1-injections#)
+
+Included free with Shed
+
+Stay on track with Pivot
+
+Get free access to Pivot, the GLP-1 tracking app built to help you log your doses, track side effects, monitor habits, and see your progress clearly, all in one place.
+
+[Get started →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/69f3780dbf60f72d204cb9e4_82502308a2769c0c1cdf6f74c8dd2987_img_pivot_cta_screen.png)
+
+[Get started →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+Clinician-recommended
+
+## Revolutionizing the way you lose weight
+
+“GLP-1 injections aren’t just another weight-loss tool—they’ve completely rewritten the script for members who’ve struggled for years. With the power to target appetite, inflammation, metabolism, and blood sugar all at once, they’re unlocking results that were once out of reach and restoring hope in the process, all while being neuroprotective, as well.”
+
+![](https://cdn.prod.website-files.com/67e55d5b9aabbf4e50251e45/684ba199077f7c0e38996d78_67ecf30dedb3213e172aeb89_bd8e6bb622a050c89e58a6042c8843db.avif)
+
+Dr. Asad Niazi (MD)
+
+Doctor of Medicine (MD),
+
+Internal Medicine Physician
+
+“GLP-1 injections aren’t just another weight-loss tool—they’ve completely rewritten the script for members who’ve struggled for years. With the power to target appetite, inflammation, metabolism, and blood sugar all at once, they’re unlocking results that were once out of reach and restoring hope in the process, all while being neuroprotective, as well.”
+
+### Looking for weight-loss solutions?
+
+While GLP-1 microdosing is ideal for maintenance, longevity, and overall wellness support, those with a significant weight-loss goal may be better suited for a standard GLP-1 dose.
+
+[Explore all our GLP-1 Solutions](https://www.tryshed.com/products/product/glp-1-injections#)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e58ce7eb3a378a671c3478_9161214f9eb973b8076ccf1f8b899ebe.avif)
+
+## Be the real you
+
+[Start your weight-loss journey →](https://www.tryshed.com/products/product/glp-1-injections#)
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ea42b3e09e26ed5a6817da_Frame%20672.svg)
+
+100% online visit + checkout
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ea42b2b4dc6057c528f74a_Frame%204347.svg)
+
+1:1 expert care
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ea42b3873f0da82905100d_Frame%20668.svg)
+
+Clinically-backed
+
+![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67e7268c2170c16fafd5a2f2_Frame%20666.svg)
+
+Simple, achievable results
+
+Pricing
+
+## You're a few clicks away from GLP-1 Injections.
+
+Weight Loss
+
+GLP-1 Injections
+
+Starting at $199/month
+
+Medication and supplies included
+
+Member support
+
+Free shipping
+
+[Sign Up](https://www.tryshed.com/products/product/glp-1-injections#)
+
+Shed FAQs
+
+## Questions about Buy GLP-1 Injections Online? We've got answers.
+
+Health
+
+### How do GLP-1 Injections work?
+
+GLP-1 Injections mimic a natural hormone in your body that helps regulate appetite, blood sugar, and insulin levels. This leads to decreased hunger, slower digestion, and better glucose control.
+
+Health
+
+### How are they administered?
+
+GLP-1 Injections are taken as a once-weekly injection, typically into the abdomen or thigh. Most members find them very simple to use after the first dose or two.
+
+Health
+
+### Who are they ideal for?
+
+Members with obesity, metabolic syndrome, type 2 diabetes, or anyone struggling with weight loss who hasn’t had success with lifestyle alone.
+
+Health
+
+### Are there any side effects?
+
+The most common ones include mild nausea, bloating, or constipation—usually short-lived and manageable.
+
+[See more in our Help Center](https://www.tryshed.com/resources/help-dep)
+
+_Compounded medications are prepared by licensed pharmacies to meet the specific needs of individual patients. These medications are not reviewed or approved by the FDA for safety, effectiveness, or quality. However, they are made in accordance with strict regulatory guidelines. If your clinician determines that a compounded medication is clinically appropriate for you, please be aware that it is not an FDA-approved product._
+
+_Ozempic®, Wegovy®, and Rybelsus® are the only FDA-approved products containing semaglutide produced by Novo Nordisk, Inc., while Zepbound® and Mounjaro® are the only FDA-approved products containing tirzepatide produced by Lilly USA LLC._
+
+[![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a343513c42b8bde25bb046a_img_shed_white_logo.svg)](https://www.tryshed.com/?r=0)
+
+[![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a6a1b50c4c0a23f83bf0213_icon_insta.svg)](https://www.instagram.com/tryshed/?hl=en)[![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a6a1b4f6c2388d439e5cc8d_icon_tiktok.svg)](https://www.tiktok.com/@tryshed)[![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a6a1b4fcd6663cdf7d28146_icon_fb.svg)](https://www.facebook.com/tryshed/)[![](https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/6a6a1b4f149abfae58ded33b_icon_youtube.svg)](https://www.youtube.com/@try_shed)
+
+[![Verify Approval for www.tryshed.com](https://static.legitscript.com/seals/44256860.png)](https://www.legitscript.com/websites/?checker_keywords=tryshed.com "Verify LegitScript Approval for www.tryshed.com")
+
+Weight Loss
+
+[Compounded Semaglutide](https://www.tryshed.com/products/compounded-semaglutide-injections) [Compounded Tirzepatide](https://www.tryshed.com/products/compounded-tirzepatide-injections) [Oral GLP-1\\
+\\
+(Foundayo®)](https://www.tryshed.com/products/foundayo) [Wegovy®](https://www.tryshed.com/products/product/wegovy) [Zepbound®](https://www.tryshed.com/products/product/zepbound-shed-membership) [MIC + B12](https://www.tryshed.com/products/product/mic-b12-injections) [View all →](https://www.tryshed.com/products/category/weight-loss)
+
+Sex Health NEW
+
+[Rise (Men)](https://www.tryshed.com/products/rise) [Steady (Men)](https://www.tryshed.com/products/steady) [Extend (Men)](https://www.tryshed.com/products/extend) [Desire (Women)](https://www.tryshed.com/products/desire) [Euphoria (Women)](https://www.tryshed.com/products/euphoria) [View all Men’s→](https://www.tryshed.com/products/mens-sexual-health) [View all Women’s→](https://www.tryshed.com/products/womens-sexual-health)
+
+Longevity
+
+[NAD+](https://www.tryshed.com/products/nad) [Microdose GLP-1](https://www.tryshed.com/products/microdose) [Glutathione](https://www.tryshed.com/products/glutathione-injections) [Sermorelin](https://www.tryshed.com/products/product/sermorelin) [View all →](https://www.tryshed.com/products/longevity)
+
+Hair
+
+[Copper Peptide Serum](https://www.tryshed.com/products/product/ghk-cu-scalp-peptide-solution) [View all Men’s→](https://www.tryshed.com/products/mens-hair-solutions) [View all Women’s→](https://www.tryshed.com/products/womens-hair-solutions)
+
+Company
+
+[Supplements](https://shedsupplements.com/) [Help Center](https://www.tryshed.com/resources/help-dep) [Blog](https://www.tryshed.com/blog) [Login to Portal](https://portal.tryshed.com/) [Referral Program](https://www.tryshed.com/resources/support/referrals) [Affiliate Program](https://portal.tryshed.com/)
+
+Stay in the know.
+
+Real guidance, member results, and offers. No spam, ever.
+
+Thank you! Your submission has been received!
+
+Oops! Something went wrong while submitting the form.
+
+[![Verify Approval for www.tryshed.com](https://static.legitscript.com/seals/44256860.png)](https://www.legitscript.com/websites/?checker_keywords=tryshed.com "Verify LegitScript Approval for www.tryshed.com")
+
+Compounded medications are not FDA-approved and are prepared by a licensed pharmacy based on a provider's prescription. A prescription is only issued after a consultationwith a licensed provider who determines whether treatment is appropriate. Results may vary. Please refer to the Terms and Conditions for full details on the Shed weight-lossguarantee. In clinical trials of Wegovy® (2.4 mg), average weight loss was 15% and 20% when paired with diet and exercise.
+
+© 2026 Shed. All rights reserved.
+
+[Terms](https://www.tryshed.com/resources/legal/terms) [Privacy](https://www.tryshed.com/resources/legal/privacy-policy) [Help](https://www.tryshed.com/resources/help-dep) [Hippa Notice](https://www.tryshed.com/resources/legal/hipaa-notice)

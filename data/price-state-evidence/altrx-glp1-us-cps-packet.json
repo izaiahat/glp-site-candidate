@@ -1,0 +1,138 @@
+{
+  "schema": "program-deep-research-v1",
+  "program_id": "altrx-review",
+  "display_name": "altRx",
+  "official_url": "https://www.altrx.com",
+  "captured_at_utc": "2026-09-10T13:50:20.306875+00:00",
+  "status": "PASS_LIMITED",
+  "effects": {"accounts_created": 0, "forms_submitted": 0, "tracking_clicks": 0},
+  "fields": {
+    "first_month_price": {
+      "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+      "quote": "## Start for just $89\n\nSame price at every dose. Transparent pricing.",
+      "source_url": "https://www.altrx.com",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+      "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+    },
+    "monthly_price": {
+      "value": "Reported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.",
+      "quote": "# Compounded GLP-1\n\n(4.4)234 verified review\n\n$89/mo",
+      "source_url": "https://www.altrx.com/products/compounded-semaglutide",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+      "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+    },
+    "consultation_fee": {
+      "value": "UNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+      "quote": "Your altRx membership includes telehealth consultations with a licensed provider, a personalized care plan, prescription fulfillment if appropriate, and shipping. All pricing is displayed in our pricing section.",
+      "source_url": "https://www.altrx.com",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+      "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+    },
+    "shipping_wait": {
+      "value": "Reported typical processing plus delivery: approximately 4–5 business days in the post-evaluation workflow, conditional on clinician assessment and prescribing where appropriate. This is not a guaranteed signup-to-arrival time or a dispatch-only estimate. A current 4–5-day processing-and-delivery estimate does not establish that a historical 2–3-day dispatch claim was contradicted; no current dispatch-only interval was established in this cycle.",
+      "quote": "A licensed provider will review your health evaluation and conduct a telehealth consultation, which may take place via live video or through an asynchronous provider review, as determined by your provider and in accordance with the telehealth laws of your state. If the provider determines that treatment is appropriate, a prescription will be sent to a licensed pharmacy for fulfillment. Typical processing and delivery time is approximately 4–5 business days. Your care team is available throughout your membership at [care@altrx.com](mailto:care@altrx.com).",
+      "source_url": "https://www.altrx.com",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+      "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+    },
+    "cancellation": {
+      "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+      "quote": "## Cancellation Policy\n\nYou may cancel your Subscription Service at any time and for any reason. To cancel, contact patient support at [care@altrx.com](mailto:care@altrx.com) or [+1 607-601-6969](tel:+160****6969) and request cancellation, or cancel through your online account/patient portal (if applicable).\n\nCancellation requests must be received at least 72 hours prior to your next billing date in order to stop the next charge. If your request is received inside that 72-hour window, your Subscription Service will be charged in accordance with the then-current billing cycle, that charge is non-refundable, and the cancellation will take effect at the start of the subsequent billing cycle.\n\nAfter cancellation, you will continue to receive the Subscription Services through the end of the then-current paid term. Cancellation does not entitle you to a refund of any amount already paid.\n\n## Multi-Month and Bundled Plans\n\n**MULTI-MONTH AND BUNDLED SUBSCRIPTION PLANS ARE SOLD AS A SINGLE, INDIVISIBLE PURCHASE AND ARE NON-REFUNDABLE IN WHOLE AND IN PART.**\n\nIf you purchase a multi-month or bundled plan, you are purchasing the full term at a discounted, bundled rate in exchange for the full-term commitment. No refund or credit will be issued for any unused month, unused service, undelivered or unshipped medication, or remaining portion of the term, and the purchase price will not be prorated or reduced for any reason.\n\nIf you cancel a multi-month or bundled plan in a timely manner, the cancellation stops any future renewal of that plan. You retain access to the Subscription Services through the end of the term you purchased, and no portion of the amount paid will be refunded.\n\n## Medical Disqualification\n\nIf our healthcare provider determines that you are not clinically eligible for the Subscription Services, your Subscription Service will be canceled and you will be issued a refund for any unused portion of the amount paid for the then-current term. For purposes of this policy, used portions of Subscription Services include costs associated with a live or asynchronous consultation that has taken place; a healthcare provider review of your intake, records, and lab results; issued prescriptions; dispensed or shipped medication; or ordered or performed lab services.\n\nIf a medical disqualification occurs, the value of services already rendered will be deducted from your refund, and billing will stop going forward.",
+      "source_url": "https://www.altrx.com/refund-cancellation-policy",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+      "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+    },
+    "eligibility": {
+      "value": "Reported minimum enrollment age: 18. The provider evaluates medical history, medications and contraindications, including personal or family history of medullary thyroid carcinoma or MEN2. Clinical eligibility and prescribing remain provider decisions. The FAQ discusses reassessment below BMI 25, not a universal initial BMI threshold. Medical services are reported as provided through independent OpenLoop practices; altRx itself supplies the technology platform and administrative services, not prescribing decisions.",
+      "quote": "GLP-1 receptor agonists are a class of medications originally developed for type 2 diabetes that are also used for weight management in certain patients. The compounded versions available through the altRx membership have not been evaluated for safety, efficacy, or quality. Your provider will evaluate your medical history, current medications, and contraindications (including a personal or family history of medullary thyroid carcinoma or MEN2 syndrome) to determine whether treatment is appropriate for you.\n\nWhat if I want to pause or cancel?\n\nYou may pause or cancel your membership at any time. If you and your provider decide to discontinue GLP-1 treatment, your provider may recommend a tapering schedule. Weight regain after discontinuation is common and your provider can discuss strategies for long-term weight management.\n\nWhat is included in my membership?\n\nYour altRx membership includes telehealth consultations with a licensed provider, a personalized care plan, prescription fulfillment if appropriate, and shipping. All pricing is displayed in our pricing section.\n\nWhat is the minimum age to enroll in altRx?\n\nYou must be at least 18 years of age to enroll in the altRx membership. GLP-1 medications are not prescribed to individuals under 18 through this platform.\n\nWhat happens if my BMI falls below 25?\n\nBecause GLP-1s for weight management are indicated for obesity or overweight with a related condition, your clinician will reassess and may adjust dosing, shift to maintenance, or pause/discontinue depending on your health goals and risk factors.",
+      "source_url": "https://www.altrx.com",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+      "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+    },
+    "pharmacy_type": {
+      "value": "Reported information only: the provider states, 'Compounded medications are prepared by state-licensed 503A compounding pharmacies.' It also states, 'These medications are not FDA approved and have not been evaluated by the FDA for safety, efficacy, or quality.' Specific dispensing pharmacy for an individual order, independent licensing and current regulatory standing remain UNKNOWN. Provider-reported pharmacy relationships are not independent certification findings.",
+      "quote": "Compounded medications are prepared by state-licensed 503A compounding pharmacies. These medications are not FDA approved and have not been evaluated by the FDA for safety, efficacy, or quality.",
+      "source_url": "https://www.altrx.com",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+      "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+    },
+    "states_served": {
+      "value": "Reported service availability: all fifty U.S. states and the District of Columbia, not outside the United States. The homepage separately qualifies that provider availability and prescribing authority vary by state. This is service-level coverage, not a guarantee of every medication in every state.",
+      "quote": "5. **Availability.** The Services are offered only to individuals located within the United States and are available in all fifty (50) states and the District of Columbia. altRx and OpenLoop operate from the United States, and the Services are not intended for use outside the United States.",
+      "source_url": "https://www.altrx.com/v3/terms-and-conditions",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+      "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+    },
+    "legitscript": {
+      "value": "UNKNOWN. No independent LegitScript lookup was performed; no certification or current-standing claim is made. The quoted provider description is context only and supplies no certification evidence.",
+      "quote": "Trinity HealthCare Supply, LLC d/b/a altRx provides the technology platform and administrative services and does not provide medical services or make prescribing decisions.",
+      "source_url": "https://www.altrx.com",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+      "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+    }
+  },
+  "first_party_source_captures": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+    "sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a",
+    "bytes": 199623
+  },
+  "provider_dynamic_profile": {
+    "version": 1,
+    "taxonomy": {
+      "molecule_tags": ["semaglutide", "tirzepatide"],
+      "brand_name_tags": ["wegovy", "zepbound"],
+      "delivery_form_tags": [],
+      "treatment_type_tags": ["brand_name", "compounded"]
+    },
+    "calculator": {
+      "mode": "manual",
+      "first_month_base_usd": null,
+      "recurring_month_base_usd": null,
+      "one_time_fee_usd": null,
+      "evidence_gap_copy": "Enter the selected plan's actual first charge, renewal amount, billing cadence and fees manually. Product-page monthly prices do not establish selected-plan totals or a separately itemized consultation fee.",
+      "price_context": "Reported monthly advertisements are not proof of the first or recurring charge for a selected bundled plan. The provider describes a single bundled price, not itemized by service, visit, shipment or month. Missing exact costs remain UNKNOWN, not zero.",
+      "source_url": "https://www.altrx.com/refund-cancellation-policy",
+      "checked_as_of": "2026-09-10"
+    },
+    "evidence_bindings": [
+      {
+        "fields": ["taxonomy.molecule_tags", "verified_as_of"],
+        "evidence_text": "If your provider determines that treatment is appropriate, you will receive a personalized care plan. Your provider may prescribe GLP-1 (Compounded Semaglutide) or GLP-1/GIP (Compounded Tirzepatide) as part of your plan based on your individual health profile.",
+        "evidence_sha256": "6d9a26bbe2dbdf2c66b7ea038c3d065f323c9e8390a0ffeb0117cafe4c8c62af",
+        "source_url": "https://www.altrx.com",
+        "verified_as_of": "2026-09-10"
+      },
+      {
+        "fields": ["taxonomy.brand_name_tags", "taxonomy.delivery_form_tags"],
+        "evidence_text": "### Zepbound\n\nInjection\n\n![Zepbound](https://ik.imagekit.io/t9fldaz6d/Untitled%20(11)%201.png)\n\n[Get started](https://www.altrx.com/v3/consultation?offer=offer_u8&productId=zepbound) [More details](https://www.altrx.com/products/zepbound)\n\n### Wegovy\n\nInjection\n\n![Wegovy](https://www.altrx.com/assets/images/products/wegovy.webp)\n\n[Get started](https://www.altrx.com/v3/consultation?offer=offer_u8&productId=wegovy) [More details](https://www.altrx.com/products/wegovy)\n\n### Ozempic\n\nInjection\n\n![Ozempic](https://www.altrx.com/assets/images/products/ozempic.webp)\n\n[Get started](https://www.altrx.com/v3/consultation?offer=offer_u8&productId=ozempic) [More details](https://www.altrx.com/products/ozempic)",
+        "evidence_sha256": "92a69a4dd13b7f97fc209c3956e274973ecaa0668f8e95a11ca7c0328596548e",
+        "source_url": "https://www.altrx.com",
+        "verified_as_of": "2026-09-10"
+      },
+      {
+        "fields": ["taxonomy.treatment_type_tags"],
+        "evidence_text": "Zepbound® is the brand name for tirzepatide manufactured by Eli Lilly, FDA approved specifically for chronic weight management in adults with obesity or overweight with weight-related conditions. Unlike Mounjaro® (approved for diabetes), Zepbound® is formulated and indicated specifically for weight loss.\n\nZepbound® features a unique dual-action mechanism, activating both GLP-1 and GIP receptors to provide superior appetite control and metabolic support. At altRx, Zepbound® is prescribed through licensed clinicians who create personalized treatment plans with ongoing telehealth support.\n\nThe Science Behind Zepbound®\n\nZepbound®'s dual-receptor mechanism represents the most advanced approach to medical weight management. GLP-1 suppresses appetite, slows gastric emptying, and improves insulin sensitivity. GIP enhances metabolic rate, improves fat utilization, and may reduce fat storage.\n\nThe landmark SURMOUNT clinical trial demonstrated exceptional results: participants taking the highest dose (15mg) lost an average of 22.5% of their body weight — the highest efficacy ever seen in a weight loss medication trial. Beyond weight loss, Zepbound® improved cardiovascular risk factors, inflammation markers, and overall metabolic health.\n\nHow It Feels to Take Zepbound®\n\nMost users report a dramatic reduction in 'food noise' — the constant mental preoccupation with food and eating. Appetite decreases significantly within the first week, and cravings for high-calorie foods tend to fade. Meals become satisfying with much smaller portions, and the desire to snack virtually disappears for many users.\n\nInitial side effects may include nausea, digestive changes, or mild fatigue — typically resolving within 2–4 weeks. The dual-action mechanism often provides more sustained appetite control throughout the day. Dosing starts at 2.5mg weekly and increases gradually every 4 weeks.\n\nSpecifications\n\n**Administration:** Once-weekly subcutaneous injection using pre-filled AutoInjector pen with built-in needle\n\n**Dosing:** Escalates gradually: 2.5mg → 5mg → 7.5mg → 10mg → 12.5mg → 15mg (max), increasing every 4 weeks based on tolerance\n\n**Storage:** Refrigerate unused pens (36–46°F); can be kept at room temperature (up to 86°F) for up to 21 days before first use\n\n**Manufacturer:** Eli Lilly and Company\n\n![Zepbound®](https://ik.imagekit.io/t9fldaz6d/Untitled%20(11)%201.png)\n\n![An altRx member smiling](https://www.altrx.com/altrx/why-altrx.webp)\n\n![](https://www.altrx.com/altrx/why-avatar.webp)\n\nEvery AltRx plan pairs prescribed medication. 🤩\n\n34 lbs\n\n## Why AltRx?\n\naltRx offers a modern approach to weight management with personalized GLP-1 injection therapies designed to support steady results. Our formulations are crafted to align with your body's unique response, providing a treatment experience that's easy to follow and helps you achieve your goals.\n\nEach program is overseen by licensed healthcare professionals through convenient telehealth visits, allowing your dose and plan to adjust as you progress. With altRx, you get more than a medication—you get a guided, supportive pathway to lasting results.\n\nThrough the altRx healthcare membership, licensed providers may prescribe Compounded Semaglutide or Compounded Tirzepatide, prepared by state-regulated 503A compounding pharmacies.",
+        "evidence_sha256": "5a025b0bd0487fe23d2ca28d7020e6907a13cf5c43a4017f06b62459dc22220c",
+        "source_url": "https://www.altrx.com/products/zepbound",
+        "verified_as_of": "2026-09-10"
+      },
+      {
+        "fields": ["calculator.checked_as_of", "calculator.evidence_gap_copy", "calculator.first_month_base_usd", "calculator.mode", "calculator.one_time_fee_usd", "calculator.price_context", "calculator.recurring_month_base_usd", "calculator.source_url"],
+        "evidence_text": "Your Subscription Service price is a single, bundled price for the program purchased. It is not itemized by individual service, visit, shipment, or month, and no portion of it is separately refundable.",
+        "evidence_sha256": "101ebc80a8e78fbf397d18a77898133c8415ce59908b3798c8c76c42a2a862aa",
+        "source_url": "https://www.altrx.com/refund-cancellation-policy",
+        "verified_as_of": "2026-09-10"
+      }
+    ],
+    "verified_as_of": "2026-09-10"
+  }
+}

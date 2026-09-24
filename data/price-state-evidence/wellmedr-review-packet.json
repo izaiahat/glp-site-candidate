@@ -1,0 +1,118 @@
+{
+  "schema": "program-deep-research-v1",
+  "program_id": "wellmedr-review",
+  "display_name": "Wellmedr",
+  "official_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+  "captured_at_utc": "2026-09-10T16:32:34.039131+00:00",
+  "status": "PASS_LIMITED",
+  "effects": {"accounts_created": 0, "forms_submitted": 0, "tracking_clicks": 0},
+  "first_party_source_captures": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-wellmedr-review/authoring/wellmedr-review-c2/captures/wellmedr-review-captures.json",
+    "sha256": "de49920431448c2c62a3d37cb47e63df22699e3c8298d6e259417b759eea3a32",
+    "bytes": 393356
+  },
+  "fields": {
+    "first_month_price": {
+      "amount_usd": null,
+      "value": "UNKNOWN exact first-month charge and initial checkout total. The landing page advertises $49/mo on 12-month plans, while medication cards show semaglutide starting at $49 a month and tirzepatide at $89 a month. These are reported starting figures, not attested first-month charges. The refund policy says prepaid 3-, 6-, and 12-month plans are paid in full; its 21-Day Plan is not calendar-month billing. Other product pages advertise 50% off the first month without an absolute price. No discounts are combined or applied arithmetically.",
+      "quote": "Labor Day Sale: 🎉 Lock In **$200 OFF** Every Month, or **$49/mo** on 12/month Plans — For Life.",
+      "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-wellmedr-review/authoring/wellmedr-review-c2/captures/wellmedr-review-captures.json",
+      "capture_sha256": "de49920431448c2c62a3d37cb47e63df22699e3c8298d6e259417b759eea3a32",
+      "verified_as_of": "2026-09-10",
+      "reported_offers": [{"medication": "GLP-1 plan; banner does not name molecule", "amount_usd": 49, "period": "month", "price_type": "advertised_monthly_equivalent_12_month_plan", "quote": "Labor Day Sale: 🎉 Lock In **$200 OFF** Every Month, or **$49/mo** on 12/month Plans — For Life.", "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss", "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-wellmedr-review/authoring/wellmedr-review-c2/captures/wellmedr-review-captures.json", "capture_sha256": "de49920431448c2c62a3d37cb47e63df22699e3c8298d6e259417b759eea3a32", "verified_as_of": "2026-09-10"}],
+      "prepayment_evidence": {"quote": "- The 21-Day Plan renews every 21 calendar days and is not calendar-month billing;\n- The 3-, 6-, and 12-Month Plans are prepaid in full and renew for the same term only when you separately authorize automatic renewal at checkout;", "source_url": "https://www.wellmedr.com/pages/refund-and-cancellation-policy", "verified_as_of": "2026-09-10"},
+      "other_promotion_evidence": {"quote": "### 50% off your first month", "source_url": "https://www.wellmedr.com/products/injectable-semaglutide", "verified_as_of": "2026-09-10"}
+    },
+    "monthly_price": {
+      "amount_usd": null,
+      "value": "Reported landing-page starting figures: semaglutide $49 a month, tirzepatide $89 a month, Ozempic $1,399 and Zepbound $1,599 under month-to-month plan headings. These are named offer cards, not brand comparisons, but do not guarantee prescribing or current dispensing availability. UNKNOWN exact recurring charge for a selected treatment and plan. The same page advertises $49/mo on 12-month plans; the refund policy explicitly says per-month prepaid prices are equivalents, not monthly billing. Its separate 21-Day Plan bills every 21 calendar days, while prepaid renewal requires separate affirmative enrollment. Four-week shipping is not a billing cadence.",
+      "quote": "If a prepaid plan is advertised using a “per month” amount, that figure is only the total prepaid price divided by the number of months. It does not mean the plan is billed monthly.",
+      "source_url": "https://www.wellmedr.com/pages/refund-and-cancellation-policy",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-wellmedr-review/authoring/wellmedr-review-c2/captures/wellmedr-review-captures.json",
+      "capture_sha256": "de49920431448c2c62a3d37cb47e63df22699e3c8298d6e259417b759eea3a32",
+      "verified_as_of": "2026-09-10",
+      "reported_offers": [
+        {"medication": "semaglutide", "amount_usd": 49, "period": "month", "price_type": "starting_from_not_confirmed_billing_amount", "quote": "**## Semaglutide**\n\n**Proven & Steady**\n\n**Effective appetite control with steady and consistent weight-loss results.**\n\n**⭐ Recommended for most patients**\n\n**## Monthly Plan**\n\n**Starting At**\n**$49 a month**", "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss", "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-wellmedr-review/authoring/wellmedr-review-c2/captures/wellmedr-review-captures.json", "capture_sha256": "de49920431448c2c62a3d37cb47e63df22699e3c8298d6e259417b759eea3a32", "verified_as_of": "2026-09-10"},
+        {"medication": "tirzepatide", "amount_usd": 89, "period": "month", "price_type": "starting_from_not_confirmed_billing_amount", "quote": "**## Tirzepatide**\n\n**Most Powerful Option**\n\n**Strong appetite control for faster and more effective weight loss.**\n\n**⭐ Recommended for most patients**\n\n**## Monthly Plan**\n\n**Starting At**\n**$89 a month**", "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss", "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-wellmedr-review/authoring/wellmedr-review-c2/captures/wellmedr-review-captures.json", "capture_sha256": "de49920431448c2c62a3d37cb47e63df22699e3c8298d6e259417b759eea3a32", "verified_as_of": "2026-09-10"},
+        {"medication": "Ozempic", "amount_usd": 1399, "period": "month", "price_type": "starting_from", "quote": "**## Ozempic Starting at $1,399**\n\n**Contains Semaglutide**\n\n**Month-to-month plan Includes:**", "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss", "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-wellmedr-review/authoring/wellmedr-review-c2/captures/wellmedr-review-captures.json", "capture_sha256": "de49920431448c2c62a3d37cb47e63df22699e3c8298d6e259417b759eea3a32", "verified_as_of": "2026-09-10"},
+        {"medication": "Zepbound", "amount_usd": 1599, "period": "month", "price_type": "starting_from", "quote": "**## Zepbound starting at $1,599**\n\n**Contains Tirzepatide**\n\n**Month-to-month plan Includes:**", "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss", "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-wellmedr-review/authoring/wellmedr-review-c2/captures/wellmedr-review-captures.json", "capture_sha256": "de49920431448c2c62a3d37cb47e63df22699e3c8298d6e259417b759eea3a32", "verified_as_of": "2026-09-10"}
+      ]
+    },
+    "consultation_fee": {
+      "amount_usd": null,
+      "value": "UNKNOWN consultation dollar amount; not zero. The landing page says medication and provider support are included. The terms authorize an initial consultation charge and state consultation fees become nonrefundable at intake submission. The dedicated refund policy instead describes separately itemized and accepted service fees and Medication Fulfillment Start. This conflict is retained, not adjudicated as a legal conclusion or a free-consultation promise.",
+      "quote": "**Your plan includes medication, provider support, ongoing check-ins & progress tracking.**",
+      "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-wellmedr-review/authoring/wellmedr-review-c2/captures/wellmedr-review-captures.json",
+      "capture_sha256": "de49920431448c2c62a3d37cb47e63df22699e3c8298d6e259417b759eea3a32",
+      "verified_as_of": "2026-09-10",
+      "terms_evidence": {"quote": "**Refunds:**    Consultation fees are non-refundable once your intake is submitted.    Medication orders are non-refundable once the pharmacy processes or ships your prescription.    Please review our Refund & Cancellation Policy for full details.", "source_url": "https://www.wellmedr.com/pages/terms-conditions", "verified_as_of": "2026-09-10"}
+    },
+    "cancellation": {
+      "value": "The dedicated policy now says cancellation is effective when the request is received, with no retention conversation or administrative approval required. A request received before charge submission stops that charge; later requests stop future renewals and trigger review of the current payment under refund rules. The old 48-hour notice rule is not carried forward. Canceling renewal does not itself end a prepaid current term or refund a processed payment. Before Medication Fulfillment Start, the policy provides a full affected-payment refund unless a separately itemized and accepted service fee applies; after that point, completed services and pharmacy-started medication are nonrefundable except as legally required, with objectively unearned portions refundable. Terms-of-use wording about intake-stage consultation refunds conflicts and is retained separately, not resolved here.",
+      "quote": "**Your cancellation is effective at the timestamp our system receives the online request, email, telephone request, or voicemail.** No retention conversation or administrative approval is required. Online and email submissions receive an immediate automated receipt; final confirmation is sent within one business day.\n\nA request received before a scheduled charge is actually submitted will stop that charge. If the charge was already submitted before cancellation became effective, cancellation stops later renewals and the current payment is reviewed under the refund rules below.",
+      "source_url": "https://www.wellmedr.com/pages/refund-and-cancellation-policy",
+      "verified_as_of": "2026-09-10",
+      "current_term_evidence": {"quote": "Canceling automatic renewal stops the next prepaid-term charge but does not, by itself, terminate the Current Term. Scheduled services and shipments during the Current Term may continue, subject to updated clinical review, required check-ins, Medication Fulfillment Start, and medication availability.", "source_url": "https://www.wellmedr.com/pages/refund-and-cancellation-policy", "verified_as_of": "2026-09-10"},
+      "refund_evidence": {"quote": "| **Cancellation after payment but before Medication Fulfillment Start** | Unless a clinical-review or other service fee was separately itemized and accepted at checkout, the full affected payment will be refunded. If a separately accepted service was completed, every objectively unearned amount will be refunded. |\n| **Cancellation after Medication Fulfillment Start** | Documented clinical services already performed and patient-specific medication for which Medication Fulfillment Start occurred are nonrefundable, except where law requires otherwise. Every objectively unearned or unfulfilled portion will be refunded, and future renewals will stop. |", "source_url": "https://www.wellmedr.com/pages/refund-and-cancellation-policy", "verified_as_of": "2026-09-10"}
+    },
+    "shipping_wait": {
+      "value": "The FAQ reports shipment within 1–2 business days after provider approval and standard delivery typically taking 3–5 business days. These are distinct dispatch and delivery estimates, not a guaranteed combined intake-to-arrival wait. The dedicated policy says medication ships after clinical approval and pharmacy processing and the checkout-disclosed timeframe applies. Landing-page four-week shipments describe refills, not initial delivery. Exact checkout-specific arrival date is UNKNOWN.",
+      "quote": "Most orders ship within 1–2 business days after your provider approves your treatment. Standard delivery typically takes 3–5 business days.",
+      "source_url": "https://www.wellmedr.com/pages/faq",
+      "verified_as_of": "2026-09-10",
+      "policy_evidence": {"quote": "Medication ships after clinical approval and pharmacy processing. The shipment timeframe disclosed at checkout applies once you have submitted all information expressly identified at checkout as necessary to complete the order. We will not use an undisclosed internal event to restart or extend a promised shipping period.", "source_url": "https://www.wellmedr.com/pages/refund-and-cancellation-policy", "verified_as_of": "2026-09-10"}
+    },
+    "eligibility": {
+      "value": "The terms require age 18 or older, residence in an available state, truthful medical intake and agreement to the telehealth consent. Clinical eligibility and prescribing are determined by independent clinicians, not guaranteed by assessment or payment. A universal numeric BMI threshold is UNKNOWN; the landing page says BMI or weight must meet clinical requirements. Wellmedr is the non-clinical access platform for a clinical partner network, not itself a prescribing clinic.",
+      "quote": "**2\\. Eligibility**  To use the Services, you must:    Be at least 18 years old    Reside in a state where our services are available    Complete a medical intake truthfully and accurately    Agree to the OpenLoop Telehealth Consent and relevant clinical agreements",
+      "source_url": "https://www.wellmedr.com/pages/terms-conditions",
+      "verified_as_of": "2026-09-10",
+      "clinical_evidence": {"quote": "Completing this health assessment does not guarantee treatment or a prescription and does not create a provider-patient relationship with WellMedr LLC. A licensed clinician will review the information you provide, determine whether telehealth care is appropriate, and make all diagnosis and prescribing decisions using independent clinical judgment. A prescription is never guaranteed.", "source_url": "https://www.wellmedr.com/", "verified_as_of": "2026-09-10"}
+    },
+    "pharmacy_type": {
+      "value": "The product pages name Mycelium Pharmacy as the dispensing partner and describe it as licensed; that is provider-reported, not independent license verification. Other page text describes compounded medications and states that WellMedr does not itself dispense. Specific 503A/503B classification and independent inspection status are UNKNOWN. The generic FAQ claims only FDA-approved medications, conflicting with explicit compounded offerings and their not-FDA-approved disclaimer; the FAQ is not used to certify compounded products.",
+      "quote": "All prescription medications are fulfilled and shipped by our licensed pharmacy partner: Mycelium Pharmacy",
+      "source_url": "https://www.wellmedr.com/products/injectable-tirzepatide",
+      "verified_as_of": "2026-09-10",
+      "compounding_evidence": {"quote": "When clinically appropriate and legally available, a clinician may prescribe a compounded medication. Compounded medications are not FDA-approved, are not FDA-approved generic drugs, and are not reviewed by FDA for safety, effectiveness, or quality before marketing.", "source_url": "https://www.wellmedr.com/", "verified_as_of": "2026-09-10"},
+      "conflicting_faq_evidence": {"quote": "Yes. We only work with U.S. licensed pharmacies that dispense FDA-approved medications.", "source_url": "https://www.wellmedr.com/pages/faq", "verified_as_of": "2026-09-10"}
+    },
+    "states_served": {
+      "value": "UNKNOWN exact coverage list. The landing page says eligibility is checked during sign-up; the FAQ limits shipments to U.S. states where services are available and excludes international shipping. Nationwide marketing and state-specific legal disclosures in the generic telehealth consent do not establish all-state GLP-1 availability.",
+      "quote": "**We are expanding rapidly — eligibility is checked during sign-up.**",
+      "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+      "verified_as_of": "2026-09-10",
+      "shipping_coverage_evidence": {"quote": "We currently ship to all U.S. states where our services are available. We do not ship internationally at this time.", "source_url": "https://www.wellmedr.com/pages/faq", "verified_as_of": "2026-09-10"}
+    },
+    "legitscript": {
+      "value": "UNKNOWN. No certification claim is asserted. The provider publishes badge wording; no independent certification lookup was performed and no linked badge or tracking URL was opened.",
+      "quote": "LegitScript\n\nCertified",
+      "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+      "verified_as_of": "2026-09-10"
+    }
+  },
+  "provider_dynamic_profile": {
+    "version": 1,
+    "verified_as_of": "2026-09-10",
+    "taxonomy": {"molecule_tags": ["semaglutide", "tirzepatide"], "brand_name_tags": ["zepbound"], "delivery_form_tags": ["injectable", "oral"], "treatment_type_tags": ["compounded"]},
+    "calculator": {
+      "mode": "manual",
+      "first_month_base_usd": null,
+      "recurring_month_base_usd": null,
+      "one_time_fee_usd": null,
+      "price_context": "Starting-price cards and a 12-month promotional equivalent do not establish one initial or recurring charge. The dedicated refund policy distinguishes 21-day billing from prepaid terms. Consultation amount is unknown; no discount is combined. Named Zepbound and Ozempic offer cards are reported offers, not proof of dispensing availability. Ozempic is not an allowed dynamic brand tag; no taxonomy extension is made.",
+      "source_url": "https://www.wellmedr.com/pages/refund-and-cancellation-policy",
+      "checked_as_of": "2026-09-10",
+      "evidence_gap_copy": "Enter the selected medication's exact checkout amount, separately disclosed fees, renewal amount and billing interval manually. Do not use a prepaid monthly equivalent or four-week shipment schedule as a monthly charge."
+    },
+    "evidence_bindings": [
+      {"fields": ["taxonomy.molecule_tags", "verified_as_of"], "evidence_text": "**Semaglutide & Tirzepatide in-stock**", "evidence_sha256": "ef4608663b20dd035de2e13e2ca0536ab11302c774c5417fec980a0640b90ee8", "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss", "verified_as_of": "2026-09-10"},
+      {"fields": ["taxonomy.brand_name_tags"], "evidence_text": "**## Zepbound starting at $1,599**\n\n**Contains Tirzepatide**\n\n**Month-to-month plan Includes:**", "evidence_sha256": "047acdb8c1671d133e1db6a264a311e4664bfbb326a55a5733c8d291f6247ca8", "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss", "verified_as_of": "2026-09-10"},
+      {"fields": ["taxonomy.delivery_form_tags"], "evidence_text": "No. You can choose between injectable or oral versions—both provide clinically proven results.", "evidence_sha256": "5605398ab3faae5b0189154894dc9a54ae2b70d52b2426a480e790a492476b69", "source_url": "https://www.wellmedr.com/pages/weight-loss", "verified_as_of": "2026-09-10"},
+      {"fields": ["taxonomy.treatment_type_tags"], "evidence_text": "### Compounded GLP-1\n\nContains Semaglutide", "evidence_sha256": "f9af2886a234f54a1c3901c05a76579eecd0a43ffcf261047c3c8796106b3fe7", "source_url": "https://www.wellmedr.com/pages/weight-loss", "verified_as_of": "2026-09-10"},
+      {"fields": ["calculator.checked_as_of", "calculator.evidence_gap_copy", "calculator.first_month_base_usd", "calculator.mode", "calculator.one_time_fee_usd", "calculator.price_context", "calculator.recurring_month_base_usd", "calculator.source_url"], "evidence_text": "If a prepaid plan is advertised using a “per month” amount, that figure is only the total prepaid price divided by the number of months. It does not mean the plan is billed monthly.", "evidence_sha256": "c6d45a9f7ccbf9bd5dfbb6c4688b1deb3b551c3afa11cb471fff54ddcb43948b", "source_url": "https://www.wellmedr.com/pages/refund-and-cancellation-policy", "verified_as_of": "2026-09-10"}
+    ]
+  }
+}

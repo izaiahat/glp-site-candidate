@@ -1,0 +1,114 @@
+{
+  "captured_at_utc": "2026-08-16T07:25:00Z",
+  "display_name": "RxSpan MD Telehealth Program",
+  "effects": {
+    "accounts_created": 0,
+    "forms_submitted": 0,
+    "tracking_clicks": 0
+  },
+  "fields": {
+    "cancellation": {
+      "quote": "NOT_FOUND: no complete product-specific cancellation and refund schedule on the captured page.",
+      "source_url": "https://www.rxspanmd.com/",
+      "value": "The captured page does not publish a complete product-specific cancellation and refund schedule.",
+      "verified_as_of": "2026-08-16"
+    },
+    "consultation_fee": {
+      "quote": "Clinician-led care. No hidden fees.",
+      "source_url": "https://www.rxspanmd.com/",
+      "value": "Clinician-led care is included and no hidden fees are advertised; no separate consultation fee is published.",
+      "verified_as_of": "2026-08-16"
+    },
+    "first_month_price": {
+      "quote": "Wegovy $1,349; Semaglutide capsule or injection $249; Tirzepatide injection $329; Zepbound $1,069; Tirzepatide capsule $349; Ozempic $1,299.",
+      "source_url": "https://www.rxspanmd.com/",
+      "value": "Published prices include Wegovy $1,349, semaglutide capsule or injection $249, tirzepatide injection $329, Zepbound $1,069, tirzepatide capsule $349, and Ozempic $1,299.",
+      "verified_as_of": "2026-08-16"
+    },
+    "legitscript": {
+      "quote": "Verify Approval for www.rxspanmd.com",
+      "source_url": "https://www.rxspanmd.com/",
+      "value": "The provider page links to the LegitScript website approval checker for rxspanmd.com; this is a provider-published verification link, not an independent Clinic Scout verification.",
+      "verified_as_of": "2026-08-16"
+    },
+    "pharmacy_type": {
+      "quote": "NOT_FOUND: no 503A or 503B pharmacy designation on the captured page.",
+      "source_url": "https://www.rxspanmd.com/",
+      "value": "The captured page does not publish a 503A or 503B pharmacy designation.",
+      "verified_as_of": "2026-08-16"
+    },
+    "shipping_wait": {
+      "quote": "Free expedited delivery.",
+      "source_url": "https://www.rxspanmd.com/",
+      "value": "Free expedited delivery is advertised; no exact number of days is published.",
+      "verified_as_of": "2026-08-16"
+    },
+    "states_served": {
+      "quote": "Service available in all 50 states with availability varying by treatment.",
+      "source_url": "https://app.katalys.com/pub/098e5455-ca72-4099-9ff9-a9dd014148e7/explore/1599",
+      "value": "Service is advertised in all 50 states, with availability varying by treatment and jurisdiction.",
+      "verified_as_of": "2026-08-16"
+    }
+  },
+  "legitscript_source_captures": {
+    "bytes": 2126,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-authorities/approved-five-20260816/legitscript-source-captures.json",
+    "sha256": "f3dc487339896cad2b2e2940a6a4813fdf608d74fcac9ddf1f3001e0fc2c34b3"
+  },
+  "program_id": "rxspan-md-telehealth-program-review",
+  "provider_dynamic_profile": {
+    "calculator": {
+      "checked_as_of": "2026-08-16",
+      "evidence_gap_copy": "Enter the exact first and recurring amounts manually after choosing the current product, format, and commitment because one comparable schedule is not established.",
+      "first_month_base_usd": null,
+      "mode": "manual",
+      "one_time_fee_usd": null,
+      "price_context": "Multiple products, formats, bundles, or introductory schedules prevent one comparable first and recurring monthly figure.",
+      "recurring_month_base_usd": null,
+      "source_url": "https://www.rxspanmd.com/"
+    },
+    "evidence_bindings": [
+      {
+        "evidence_sha256": "2a1255c61f057e97618eac23b2a9868b9712e86210eeedd1c3c82a3d87f93d7b",
+        "evidence_text": "Wegovy $1,349; Semaglutide capsule or injection $249; Tirzepatide injection $329; Zepbound $1,069; Tirzepatide capsule $349; Ozempic $1,299. | Free expedited delivery. Clinician-led care. No hidden fees. Service available in all 50 states with availability varying by treatment.",
+        "fields": [
+          "calculator.checked_as_of",
+          "calculator.evidence_gap_copy",
+          "calculator.first_month_base_usd",
+          "calculator.mode",
+          "calculator.one_time_fee_usd",
+          "calculator.price_context",
+          "calculator.recurring_month_base_usd",
+          "calculator.source_url",
+          "taxonomy.brand_name_tags",
+          "taxonomy.delivery_form_tags",
+          "taxonomy.molecule_tags",
+          "taxonomy.treatment_type_tags",
+          "verified_as_of"
+        ],
+        "source_url": "https://www.rxspanmd.com/",
+        "verified_as_of": "2026-08-16"
+      }
+    ],
+    "taxonomy": {
+      "brand_name_tags": [
+        "wegovy",
+        "zepbound"
+      ],
+      "delivery_form_tags": [],
+      "molecule_tags": [
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "treatment_type_tags": []
+    },
+    "verified_as_of": "2026-08-16",
+    "version": 1
+  },
+  "schema": "program-deep-research-v1",
+  "source_captures": {
+    "bytes": 2874,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-authorities/approved-five-20260816/first-party-source-captures.json",
+    "sha256": "ddcf1e3f81f1a361377a41063de7cb2728d3cf85981c03cf304973e5bca731fd"
+  }
+}

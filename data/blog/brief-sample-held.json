@@ -1,0 +1,63 @@
+{
+  "audience": "Adults comparing commercial program features; not treatment selection",
+  "batch_gate_passed": false,
+  "canonical_path": "/guides/how-to-compare-online-glp-1-providers/",
+  "conclusion": "Use the checklist to narrow questions, then discuss treatment decisions, risks, and eligibility with a qualified healthcare professional.",
+  "direct_answer": "Compare total price, product and pharmacy disclosures, prescribing and follow-up process, insurance support, shipping, cancellation terms, and evidence freshness. Do not treat a program comparison as medical advice or eligibility screening.",
+  "evidence_review": {
+    "content_sha256": null,
+    "reviewed_at": null,
+    "status": "HELD"
+  },
+  "h1": "How to compare online GLP-1 providers without guessing",
+  "has_affiliate_cta": true,
+  "inline_ftc_disclosure": true,
+  "operator_release_receipt": null,
+  "primary_keyword": "how to compare online glp-1 providers",
+  "risk_tier": "LOW",
+  "schema": "blog-brief-v2-addendum-a",
+  "search_intent": "commercial investigation",
+  "sections": [
+    {
+      "heading": "Start with total cost, not a headline price",
+      "paragraphs": [
+        "Ask whether the displayed price includes intake, clinician visits, medication, supplies, shipping, lab work, and follow-up. A low teaser price is not comparable with an all-in program unless each component and renewal cadence is clear.",
+        "Record the source URL and checked date for every price. If a provider does not publish an all-in amount, label the field unknown rather than estimating it."
+      ]
+    },
+    {
+      "heading": "Separate branded FDA-approved products from compounded products",
+      "paragraphs": [
+        "A comparison must identify the product category without implying that a compounded drug is FDA-approved or a generic equivalent. Compounded drugs are not FDA-approved. Availability and legal conditions can change, so the source date matters."
+      ]
+    },
+    {
+      "heading": "Check oversight, support, shipping, and cancellation",
+      "paragraphs": [
+        "Commercial pages should describe the documented process rather than promise a result. Verify the stated prescribing workflow, follow-up cadence, support channel, shipping area, refund or cancellation terms, and insurance-assistance claims from current primary pages."
+      ]
+    }
+  ],
+  "source_checked_through": "2026-07-22",
+  "sources": [
+    {
+      "claim_ids": [
+        "compounded-status"
+      ],
+      "publisher": "FDA",
+      "url": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fda-concerns-unapproved-glp-1-drugs-used-weight-loss",
+      "verified_as_of": "2026-07-22"
+    },
+    {
+      "claim_ids": [
+        "affiliate-disclosure"
+      ],
+      "publisher": "FTC",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "verified_as_of": "2026-07-22"
+    }
+  ],
+  "title": "How to compare online GLP-1 providers \u2014 evidence checklist",
+  "updated_at": "2026-07-22",
+  "word_count": 612
+}

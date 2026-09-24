@@ -1,0 +1,1824 @@
+{
+  "schema": "s30.provider_patch.v1",
+  "program_id": "altrx-glp1-us-cps",
+  "provider": "altRx",
+  "routes": [
+    "/reviews/altrx-glp1-us-cps/",
+    "/providers/altrx-glp1-us-cps/"
+  ],
+  "packet": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/altrx-review.json",
+    "sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+    "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/REFRESHED-PACKETS/altrx-review-8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870.json",
+    "snapshot_sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+    "captured_at": "2026-09-10T13:50:20.306875+00:00"
+  },
+  "holds_preserved": [
+    {
+      "registry_program_id": "altrx-glp1-us-cps",
+      "commercial_state": "live",
+      "suppression_reason": null,
+      "status": null
+    }
+  ],
+  "records": [
+    {
+      "id": "altrx-glp1-us-cps:first_month_price",
+      "program_id": "altrx-glp1-us-cps",
+      "field": "first_month_price",
+      "verdict": "PAGE_OVERSTATES",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/altrx-review.json",
+        "sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/REFRESHED-PACKETS/altrx-review-8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870.json",
+        "snapshot_sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+        "captured_at": "2026-09-10T13:50:20.306875+00:00"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "required_change": "Reported information: source-listed semaglutide injection $89/mo; tirzepatide $149/mo is dated prior evidence. Exact selected-plan initial charge is UNKNOWN.",
+      "audited_repetitions": [
+        {
+          "field": "first_month_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 8",
+          "current_text": "### First month",
+          "replacement": "Reported information: source-listed semaglutide injection $89/mo; tirzepatide $149/mo is dated prior evidence. Exact selected-plan initial charge is UNKNOWN.",
+          "reason": "A single monthly rate does not establish first-month debit; live review and packet explicitly retain that uncertainty."
+        },
+        {
+          "field": "first_month_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 9",
+          "current_text": "**$89.00** Reported information · Checked 2026-08-30 · SourcePrice source",
+          "replacement": "Reported information: source-listed semaglutide injection $89/mo; tirzepatide $149/mo is dated prior evidence. Exact selected-plan initial charge is UNKNOWN.",
+          "reason": "A single monthly rate does not establish first-month debit; live review and packet explicitly retain that uncertainty."
+        },
+        {
+          "field": "first_month_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 10",
+          "current_text": "> $89/mo",
+          "replacement": "Reported information: source-listed semaglutide injection $89/mo; tirzepatide $149/mo is dated prior evidence. Exact selected-plan initial charge is UNKNOWN.",
+          "reason": "A single monthly rate does not establish first-month debit; live review and packet explicitly retain that uncertainty."
+        },
+        {
+          "field": "first_month_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 20",
+          "current_text": "### First month",
+          "replacement": "Reported information: source-listed semaglutide injection $89/mo; tirzepatide $149/mo is dated prior evidence. Exact selected-plan initial charge is UNKNOWN.",
+          "reason": "A single monthly rate does not establish first-month debit; live review and packet explicitly retain that uncertainty."
+        },
+        {
+          "field": "first_month_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 21",
+          "current_text": "**$149.00** Reported information · Checked 2026-08-30 · SourcePrice source",
+          "replacement": "Reported information: source-listed semaglutide injection $89/mo; tirzepatide $149/mo is dated prior evidence. Exact selected-plan initial charge is UNKNOWN.",
+          "reason": "A single monthly rate does not establish first-month debit; live review and packet explicitly retain that uncertainty."
+        },
+        {
+          "field": "first_month_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 22",
+          "current_text": "> $149/mo",
+          "replacement": "Reported information: source-listed semaglutide injection $89/mo; tirzepatide $149/mo is dated prior evidence. Exact selected-plan initial charge is UNKNOWN.",
+          "reason": "A single monthly rate does not establish first-month debit; live review and packet explicitly retain that uncertainty."
+        }
+      ],
+      "audit_page_claims": [
+        {
+          "text": "First-party provider logo fallback. No original editorial scene is available; provider evidence appears in accessible page content.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: top :: block 1"
+        },
+        {
+          "text": "altRx is strongest for people who want licensed-provider review, compounded semaglutide or tirzepatide options, telehealth consultations included, and availability stated for all 50 U.S. states. Confirm the exact first and recurring charges for the selected treatment before enrollment.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Bottom line :: block 3"
+        },
+        {
+          "text": "Published priceCompounded GLP-1 injection at $89 per month",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Bottom line :: block 6"
+        },
+        {
+          "text": "## Pricing breakdown",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Pricing breakdown :: block 10"
+        },
+        {
+          "text": "altRx publishes compounded GLP-1 injections at $89 per month. Current pages publish different prices by treatment and do not identify one provider-wide first charge and renewal total, so confirm both for the selected treatment.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Pricing breakdown :: block 11"
+        },
+        {
+          "text": "Published price wordingCompounded GLP-1 injection at $89 per month",
+          "location": "/reviews/altrx-glp1-us-cps/ :: altRx evidence snapshot :: block 36"
+        },
+        {
+          "text": "| Evidence field | Captured wording | Checked |\n| --- | --- | --- |\n| Published price | Compounded GLP-1 injection at $89 per month | 2026-09-02 |\n| Cadence, supply, and inclusions | Use only the wording above; unstated fields remain unknown. | 2026-09-02 |",
+          "location": "/reviews/altrx-glp1-us-cps/ :: altRx evidence snapshot :: block 40"
+        },
+        {
+          "text": "- One provider-wide first charge and recurring total is not established across the published treatment prices \n- Processed payments and prescription orders already in processing are not refundable \n- Provider availability and prescribing authority vary by state",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Documented strengths and tradeoffs :: block 61"
+        },
+        {
+          "text": "### A source-first verification sequence for altRx",
+          "location": "/reviews/altrx-glp1-us-cps/ :: A source-first verification sequence for altRx :: block 66"
+        },
+        {
+          "text": "1. Open each cited source and confirm that the relevant wording remains visible.\n2. Save the page date, URL, screenshots, and any checkout or intake terms that affect cost or eligibility.\n3. List every field that remains “not stated,” including cadence, supply, inclusions, timing, availability, and refund rules where applicable.\n4. Send those questions to altRx and request answers in writing before payment.\n5. Compare the written response with the public wording and ask for clarification when they differ.\n6. Do not infer clinical quality, outcomes, or individual suitability from commercial transparency.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: A source-first verification sequence for altRx :: block 67"
+        },
+        {
+          "text": "This sequence makes the review reproducible. Another reader can start with the same captured claims, inspect the same source notes, and see where a later page changed. It also keeps correction work precise: a correction should identify the statement, the current first-party source, and the date observed rather than replacing one unsupported claim with another.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: A source-first verification sequence for altRx :: block 68"
+        },
+        {
+          "text": "Source checking is intentionally narrower than a full provider audit. Clinic Scout did not independently verify every license, pharmacy relationship, laboratory accreditation, product lot, customer experience, or outcome for altRx through this page. The absence of such verification is not a negative finding; it simply marks the boundary of this editorial artifact.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: A source-first verification sequence for altRx :: block 69"
+        },
+        {
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "/providers/altrx-glp1-us-cps/ :: altRx · Compounded semaglutide (injection) :: block 7"
+        },
+        {
+          "text": "### First month",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 8"
+        },
+        {
+          "text": "**$89.00** Reported information · Checked 2026-08-30 · SourcePrice source",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 9"
+        },
+        {
+          "text": "> $89/mo",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 10"
+        },
+        {
+          "text": "**$89.00** / month",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 12"
+        },
+        {
+          "text": "The product page publishes one monthly amount for the compounded semaglutide injection and no separate first-month rate.",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 13"
+        },
+        {
+          "text": "> $89/mo",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 15"
+        },
+        {
+          "text": "### First month",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 20"
+        },
+        {
+          "text": "**$149.00** Reported information · Checked 2026-08-30 · SourcePrice source",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 21"
+        },
+        {
+          "text": "> $149/mo",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 22"
+        },
+        {
+          "text": "**$149.00** / month",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 24"
+        },
+        {
+          "text": "The product page publishes one monthly amount for the compounded tirzepatide injection and no separate first-month rate.",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 25"
+        },
+        {
+          "text": "> $149/mo",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 27"
+        },
+        {
+          "text": "- One provider-wide first charge and recurring total is not established across the published treatment prices\n- Processed payments and prescription orders already in processing are not refundable\n- Provider availability and prescribing authority vary by state",
+          "location": "/providers/altrx-glp1-us-cps/ :: Limitations in the record :: block 49"
+        }
+      ],
+      "operation_ids": [
+        "f2d855b069f7f5735bd1",
+        "7c4b60672ad74d150314",
+        "ed023321cdf6cfbebc86",
+        "ed67411e00396ee91a3e",
+        "f283d3dc8e69d2cc7539",
+        "81e9690564c79a314fa6",
+        "ae8245d4ddeec986e9e4",
+        "9d56bc449f50e815287f",
+        "b56b40a6b17855a6b347"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "Compounded GLP-1 injection at $89 per month"
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "altRx evidence snapshot",
+          "tag": "dd",
+          "text": "Compounded GLP-1 injection at $89 per month"
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "altRx evidence snapshot",
+          "tag": "tr",
+          "text": "Published price Compounded GLP-1 injection at $89 per month 2026-09-02"
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read altRx pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for altRx is: “Compounded GLP-1 injection at $89 per month” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the altRx evidence",
+          "tag": "p",
+          "text": "The captured wording is “Compounded GLP-1 injection at $89 per month” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "altRx · Compounded semaglutide (injection)",
+          "tag": "p",
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "altRx · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "The product page publishes one monthly amount for the compounded semaglutide injection and no separate first-month rate."
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "altRx · Compounded semaglutide (injection)"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "altRx · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "altRx · Compounded tirzepatide (injection)"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "altRx · Compounded tirzepatide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "The product page publishes one monthly amount for the compounded tirzepatide injection and no separate first-month rate."
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "altRx publishes compounded GLP-1 injections at $89 per month. Current pages publish different prices by treatment and do not identify one provider-wide first charge and renewal total, so confirm both for the selected treatment."
+        }
+      ],
+      "disposition": "PATCH_READY"
+    },
+    {
+      "id": "altrx-glp1-us-cps:monthly_price",
+      "program_id": "altrx-glp1-us-cps",
+      "field": "monthly_price",
+      "verdict": "PAGE_OVERSTATES",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/altrx-review.json",
+        "sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/REFRESHED-PACKETS/altrx-review-8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870.json",
+        "snapshot_sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+        "captured_at": "2026-09-10T13:50:20.306875+00:00"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.",
+          "source_url": "https://www.altrx.com/products/compounded-semaglutide",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "required_change": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+      "audited_repetitions": [
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 11",
+          "current_text": "### Thereafter",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 12",
+          "current_text": "**$89.00** / month",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 13",
+          "current_text": "The product page publishes one monthly amount for the compounded semaglutide injection and no separate first-month rate.",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 14",
+          "current_text": "Reported information · Checked 2026-08-30 · SourcePrice source",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 15",
+          "current_text": "> $89/mo",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 16",
+          "current_text": "Medication and plan pricing",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 23",
+          "current_text": "### Thereafter",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 24",
+          "current_text": "**$149.00** / month",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 25",
+          "current_text": "The product page publishes one monthly amount for the compounded tirzepatide injection and no separate first-month rate.",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 26",
+          "current_text": "Reported information · Checked 2026-08-30 · SourcePrice source",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        },
+        {
+          "field": "monthly_price",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 27",
+          "current_text": "> $149/mo",
+          "replacement": "Reported advertised monthly amount, not an independently established renewal total. Confirm selected-plan first charge and renewal schedule.",
+          "reason": "Do not convert monthly product-price evidence into a provider-wide first/thereafter schedule."
+        }
+      ],
+      "audit_page_claims": [
+        {
+          "text": "Published priceCompounded GLP-1 injection at $89 per month",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Bottom line :: block 6"
+        },
+        {
+          "text": "altRx publishes compounded GLP-1 injections at $89 per month. Current pages publish different prices by treatment and do not identify one provider-wide first charge and renewal total, so confirm both for the selected treatment.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Pricing breakdown :: block 11"
+        },
+        {
+          "text": "Cancellation and refundsaltRx states that a monthly subscription may be canceled to prevent future charges.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 16"
+        },
+        {
+          "text": "altRx states that a monthly subscription may be canceled to prevent future charges. It also states that processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 17"
+        },
+        {
+          "text": "Published price wordingCompounded GLP-1 injection at $89 per month",
+          "location": "/reviews/altrx-glp1-us-cps/ :: altRx evidence snapshot :: block 36"
+        },
+        {
+          "text": "| Evidence field | Captured wording | Checked |\n| --- | --- | --- |\n| Published price | Compounded GLP-1 injection at $89 per month | 2026-09-02 |\n| Cadence, supply, and inclusions | Use only the wording above; unstated fields remain unknown. | 2026-09-02 |",
+          "location": "/reviews/altrx-glp1-us-cps/ :: altRx evidence snapshot :: block 40"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For altRx, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: altRx evidence snapshot :: block 42"
+        },
+        {
+          "text": "- One provider-wide first charge and recurring total is not established across the published treatment prices \n- Processed payments and prescription orders already in processing are not refundable \n- Provider availability and prescribing authority vary by state",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Documented strengths and tradeoffs :: block 61"
+        },
+        {
+          "text": "One useful comparison each week. No spam, no sold lists, and you can unsubscribe anytime.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 101"
+        },
+        {
+          "text": "Email address",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 102"
+        },
+        {
+          "text": "Sign up",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 103"
+        },
+        {
+          "text": "**Your optional tracking choices** · Cookie choices",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 105"
+        },
+        {
+          "text": "Analytics — optional site usage measurement",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 107"
+        },
+        {
+          "text": "Advertising measurement",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 108"
+        },
+        {
+          "text": "Health quiz answers are never sent to analytics. Advertising personalization stays off.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 109"
+        },
+        {
+          "text": "Reject optionalSave choices",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 110"
+        },
+        {
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "/providers/altrx-glp1-us-cps/ :: altRx · Compounded semaglutide (injection) :: block 7"
+        },
+        {
+          "text": "**$89.00** Reported information · Checked 2026-08-30 · SourcePrice source",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 9"
+        },
+        {
+          "text": "> $89/mo",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 10"
+        },
+        {
+          "text": "### Thereafter",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 11"
+        },
+        {
+          "text": "**$89.00** / month",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 12"
+        },
+        {
+          "text": "The product page publishes one monthly amount for the compounded semaglutide injection and no separate first-month rate.",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 13"
+        },
+        {
+          "text": "Reported information · Checked 2026-08-30 · SourcePrice source",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 14"
+        },
+        {
+          "text": "> $89/mo",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 15"
+        },
+        {
+          "text": "Medication and plan pricing",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 16"
+        },
+        {
+          "text": "Reported plan prices and billing terms are shown above",
+          "location": "/providers/altrx-glp1-us-cps/ :: Treatments :: block 19"
+        },
+        {
+          "text": "**$149.00** Reported information · Checked 2026-08-30 · SourcePrice source",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 21"
+        },
+        {
+          "text": "> $149/mo",
+          "location": "/providers/altrx-glp1-us-cps/ :: First month :: block 22"
+        },
+        {
+          "text": "### Thereafter",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 23"
+        },
+        {
+          "text": "**$149.00** / month",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 24"
+        },
+        {
+          "text": "The product page publishes one monthly amount for the compounded tirzepatide injection and no separate first-month rate.",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 25"
+        },
+        {
+          "text": "Reported information · Checked 2026-08-30 · SourcePrice source",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 26"
+        },
+        {
+          "text": "> $149/mo",
+          "location": "/providers/altrx-glp1-us-cps/ :: Thereafter :: block 27"
+        },
+        {
+          "text": "Monthly subscriptions may be canceled to prevent future charges; processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 41"
+        },
+        {
+          "text": "- One provider-wide first charge and recurring total is not established across the published treatment prices\n- Processed payments and prescription orders already in processing are not refundable\n- Provider availability and prescribing authority vary by state",
+          "location": "/providers/altrx-glp1-us-cps/ :: Limitations in the record :: block 49"
+        },
+        {
+          "text": "One useful comparison each week. No spam, no sold lists, and you can unsubscribe anytime.",
+          "location": "/providers/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 67"
+        },
+        {
+          "text": "Email address",
+          "location": "/providers/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 68"
+        },
+        {
+          "text": "Sign up",
+          "location": "/providers/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 69"
+        },
+        {
+          "text": "**Your optional tracking choices** · Cookie choices",
+          "location": "/providers/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 71"
+        },
+        {
+          "text": "Analytics — optional site usage measurement",
+          "location": "/providers/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 73"
+        },
+        {
+          "text": "Advertising measurement",
+          "location": "/providers/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 74"
+        },
+        {
+          "text": "Health quiz answers are never sent to analytics. Advertising personalization stays off.",
+          "location": "/providers/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 75"
+        },
+        {
+          "text": "Reject optionalSave choices",
+          "location": "/providers/altrx-glp1-us-cps/ :: Know when GLP-1 prices move. :: block 76"
+        }
+      ],
+      "operation_ids": [
+        "f2d855b069f7f5735bd1",
+        "7c4b60672ad74d150314",
+        "ed023321cdf6cfbebc86",
+        "f283d3dc8e69d2cc7539",
+        "81e9690564c79a314fa6",
+        "ae8245d4ddeec986e9e4",
+        "9d56bc449f50e815287f",
+        "b56b40a6b17855a6b347"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "Compounded GLP-1 injection at $89 per month"
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "altRx evidence snapshot",
+          "tag": "dd",
+          "text": "Compounded GLP-1 injection at $89 per month"
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "altRx evidence snapshot",
+          "tag": "tr",
+          "text": "Published price Compounded GLP-1 injection at $89 per month 2026-09-02"
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read altRx pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for altRx is: “Compounded GLP-1 injection at $89 per month” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the altRx evidence",
+          "tag": "p",
+          "text": "The captured wording is “Compounded GLP-1 injection at $89 per month” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "altRx publishes compounded GLP-1 injections at $89 per month. Current pages publish different prices by treatment and do not identify one provider-wide first charge and renewal total, so confirm both for the selected treatment."
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "altRx · Compounded semaglutide (injection)",
+          "tag": "p",
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "altRx · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "The product page publishes one monthly amount for the compounded semaglutide injection and no separate first-month rate."
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "altRx · Compounded semaglutide (injection)"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "altRx · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "altRx · Compounded tirzepatide (injection)"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "altRx · Compounded tirzepatide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "The product page publishes one monthly amount for the compounded tirzepatide injection and no separate first-month rate."
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"plan-altrx-glp1-us-cps-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        }
+      ],
+      "disposition": "PATCH_READY"
+    },
+    {
+      "id": "altrx-glp1-us-cps:shipping_wait",
+      "program_id": "altrx-glp1-us-cps",
+      "field": "shipping_wait",
+      "verdict": "UNKNOWN",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/altrx-review.json",
+        "sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/REFRESHED-PACKETS/altrx-review-8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870.json",
+        "snapshot_sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+        "captured_at": "2026-09-10T13:50:20.306875+00:00"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/shipping_wait/value",
+          "value": "Reported typical processing plus delivery: approximately 4–5 business days in the post-evaluation workflow, conditional on clinician assessment and prescribing where appropriate. This is not a guaranteed signup-to-arrival time or a dispatch-only estimate. A current 4–5-day processing-and-delivery estimate does not establish that a historical 2–3-day dispatch claim was contradicted; no current dispatch-only interval was established in this cycle.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "required_change": "Do not label the unsupported detail current. Preserve only the dated packet claim with its capture date, or drop that claim; exact current applicability remains UNKNOWN.",
+      "audited_repetitions": [],
+      "audit_page_claims": [
+        {
+          "text": "ShippingaltRx states that compounded medication is typically shipped within 2–3 business days after prescription approval and that delivery timing can vary with pharmacy processing and carrier operations.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Bottom line :: block 9"
+        },
+        {
+          "text": "altRx states that a licensed provider reviews the health evaluation and determines whether treatment and a prescription are appropriate. It states that membership is available in all 50 U.S. states, subject to state-specific provider availability and prescribing authority.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Eligibility and clinician review :: block 13"
+        },
+        {
+          "text": "## Shipping",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 14"
+        },
+        {
+          "text": "altRx states that compounded medication is typically shipped within 2–3 business days after prescription approval and that delivery timing can vary with pharmacy processing and carrier operations.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 15"
+        },
+        {
+          "text": "Cancellation and refundsaltRx states that a monthly subscription may be canceled to prevent future charges.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 16"
+        },
+        {
+          "text": "altRx states that a monthly subscription may be canceled to prevent future charges. It also states that processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 17"
+        },
+        {
+          "text": "Compounded-drug statusaltRx states: “Compounded drugs are not FDA approved and are not evaluated for safety, effectiveness, or…",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 18"
+        },
+        {
+          "text": "altRx states: “Compounded drugs are not FDA approved and are not evaluated for safety, effectiveness, or quality standards.” It also states: “Compounded drugs are permitted to be prescribed under federal law but are not FDA approved and do not undergo safety, effectiveness, or manufacturing review.”",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 19"
+        },
+        {
+          "text": "Affiliate status",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 20"
+        },
+        {
+          "text": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 21"
+        },
+        {
+          "text": "Process wordingaltRx states that compounded medication is typically shipped within 2–3 business days after prescription approval and that delivery timing can vary with pharmacy processing and carrier operations.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: altRx evidence snapshot :: block 39"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For altRx, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: altRx evidence snapshot :: block 42"
+        },
+        {
+          "text": "- Compounded semaglutide and tirzepatide options are published \n- Telehealth consultations and shipping are stated as included \n- Membership is stated as available in all 50 U.S. states",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Documented strengths and tradeoffs :: block 58"
+        },
+        {
+          "text": "The evidence-navigation fit recorded for this page is: “People comparing licensed-provider access to compounded semaglutide or tirzepatide with included telehealth consultations and nationwide stated availability” That is a description of the research task, not a clinical-fit recommendation. A reader who values visible sources and explicit unknowns may use the page to prepare questions. Someone who requires a verified all-in amount, a confirmed delivery date, an independent outcome dataset, or a guaranteed eligibility decision should not treat this page alone as sufficient.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Who may find this altRx review useful :: block 64"
+        },
+        {
+          "text": "Source checking is intentionally narrower than a full provider audit. Clinic Scout did not independently verify every license, pharmacy relationship, laboratory accreditation, product lot, customer experience, or outcome for altRx through this page. The absence of such verification is not a negative finding; it simply marks the boundary of this editorial artifact.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: A source-first verification sequence for altRx :: block 69"
+        },
+        {
+          "text": "Consultation or membership",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 34"
+        },
+        {
+          "text": "The membership includes telehealth consultations; the captured pages do not publish a separate consultation amount.",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 35"
+        },
+        {
+          "text": "View consultation or membership source · current as of 2026-09-02",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 36"
+        },
+        {
+          "text": "Shipping or timing",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 37"
+        },
+        {
+          "text": "Compounded medication is typically shipped within 2–3 business days after prescription approval; delivery timing can vary.",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 38"
+        },
+        {
+          "text": "View shipping or timing source · current as of 2026-09-02",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 39"
+        },
+        {
+          "text": "Monthly subscriptions may be canceled to prevent future charges; processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 41"
+        },
+        {
+          "text": "altRx states that its membership is available in all 50 U.S. states, subject to state-specific provider availability and prescribing authority.",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 44"
+        },
+        {
+          "text": "Compounded medication is typically shipped within 2–3 business days after prescription approval; delivery timing can vary.",
+          "location": "/providers/altrx-glp1-us-cps/ :: Feature evidence and unknowns :: block 51"
+        }
+      ],
+      "operation_ids": [
+        "b36b36c2d6796a9810cf",
+        "109769ee5052303be453",
+        "3c97221606cb16565917",
+        "d731eacc2a19d36c6ffb",
+        "8baf750be1393d5d805a",
+        "10943ca13ffeba5ec095"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(2) > article:nth-of-type(4) > p:nth-of-type(2)",
+          "heading": "At a glance",
+          "tag": "p",
+          "text": "Compounded medication is typically shipped within 2–3 business days after prescription approval; delivery timing can vary."
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Feature evidence and unknowns",
+          "tag": "p",
+          "text": "Compounded medication is typically shipped within 2–3 business days after prescription approval; delivery timing can vary."
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(4) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "altRx states that compounded medication is typically shipped within 2–3 business days after prescription approval and that delivery timing can vary with pharmacy processing and carrier operations."
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"shipping\"] > p:nth-of-type(1)",
+          "heading": "Shipping",
+          "tag": "p",
+          "text": "altRx states that compounded medication is typically shipped within 2–3 business days after prescription approval and that delivery timing can vary with pharmacy processing and carrier operations."
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(4) > dd:nth-of-type(1)",
+          "heading": "altRx evidence snapshot",
+          "tag": "dd",
+          "text": "altRx states that compounded medication is typically shipped within 2–3 business days after prescription approval and that delivery timing can vary with pharmacy processing and carrier operations."
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(10)",
+          "heading": "Eligibility, review, and fulfillment boundaries",
+          "tag": "p",
+          "text": "The captured workflow language for altRx is: “altRx states that compounded medication is typically shipped within 2–3 business days after prescription approval and that delivery timing can vary with pharmacy processing and carrier operations.” This is not expanded into an end-to-end timeline unless the source defines the starting event and each stage. Intake completion, clinician review, prescription decision, pharmacy processing, carrier pickup, laboratory processing, manufacturing, and final delivery can describe different clocks. A single speed phrase cannot safely represent all of them, and no timeline establishes eligibility or an outcome."
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(4) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the altRx evidence",
+          "tag": "p",
+          "text": "The captured process wording is “altRx states that compounded medication is typically shipped within 2–3 business days after prescription approval and that delivery timing can vary with pharmacy processing and carrier operations.” Ask which event starts each clock and which stages can pause before treating it as an end-to-end timeline."
+        }
+      ],
+      "disposition": "PATCH_READY",
+      "unknown_disposition": "DROP_RENDERED_CLAIM"
+    },
+    {
+      "id": "altrx-glp1-us-cps:cancellation",
+      "program_id": "altrx-glp1-us-cps",
+      "field": "cancellation",
+      "verdict": "PAGE_OVERSTATES",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/altrx-review.json",
+        "sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/REFRESHED-PACKETS/altrx-review-8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870.json",
+        "snapshot_sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870",
+        "captured_at": "2026-09-10T13:50:20.306875+00:00"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/cancellation/value",
+          "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+          "source_url": "https://www.altrx.com/refund-cancellation-policy",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "required_change": "Replace the unqualified processed-payments/no-refunds summary. Reported cancellation policy: request at least 72 hours before renewal; later requests affect the subsequent cycle. The Terms separately say 48 hours, so disclose that conflict and ask the provider to confirm the applicable deadline. Paid and bundled terms are generally nonrefundable, with a provider-initiated medical-disqualification exception for the unused current term after services already rendered. Do not promise a refund or silently pick one deadline.",
+      "audited_repetitions": [
+        {
+          "field": "cancellation",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 16",
+          "current_text": "Cancellation and refundsaltRx states that a monthly subscription may be canceled to prevent future charges.",
+          "replacement": "Replace the unqualified processed-payments/no-refunds summary. Reported cancellation policy: request at least 72 hours before renewal; later requests affect the subsequent cycle. The Terms separately say 48 hours, so disclose that conflict and ask the provider to confirm the applicable deadline. Paid and bundled terms are generally nonrefundable, with a provider-initiated medical-disqualification exception for the unused current term after services already rendered. Do not promise a refund or silently pick one deadline.",
+          "reason": "Current cancellation policy contains material cutoff and exception missing from dated packet/page."
+        },
+        {
+          "field": "cancellation",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 17",
+          "current_text": "altRx states that a monthly subscription may be canceled to prevent future charges. It also states that processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+          "replacement": "Replace the unqualified processed-payments/no-refunds summary. Reported cancellation policy: request at least 72 hours before renewal; later requests affect the subsequent cycle. The Terms separately say 48 hours, so disclose that conflict and ask the provider to confirm the applicable deadline. Paid and bundled terms are generally nonrefundable, with a provider-initiated medical-disqualification exception for the unused current term after services already rendered. Do not promise a refund or silently pick one deadline.",
+          "reason": "Current cancellation policy contains material cutoff and exception missing from dated packet/page."
+        },
+        {
+          "field": "cancellation",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 41",
+          "current_text": "Monthly subscriptions may be canceled to prevent future charges; processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+          "replacement": "Replace the unqualified processed-payments/no-refunds summary. Reported cancellation policy: request at least 72 hours before renewal; later requests affect the subsequent cycle. The Terms separately say 48 hours, so disclose that conflict and ask the provider to confirm the applicable deadline. Paid and bundled terms are generally nonrefundable, with a provider-initiated medical-disqualification exception for the unused current term after services already rendered. Do not promise a refund or silently pick one deadline.",
+          "reason": "Current cancellation policy contains material cutoff and exception missing from dated packet/page."
+        }
+      ],
+      "audit_page_claims": [
+        {
+          "text": "Cancellation and refundsaltRx states that a monthly subscription may be canceled to prevent future charges.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 16"
+        },
+        {
+          "text": "altRx states that a monthly subscription may be canceled to prevent future charges. It also states that processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Shipping :: block 17"
+        },
+        {
+          "text": "- One provider-wide first charge and recurring total is not established across the published treatment prices \n- Processed payments and prescription orders already in processing are not refundable \n- Provider availability and prescribing authority vary by state",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Documented strengths and tradeoffs :: block 61"
+        },
+        {
+          "text": "The page is an evidence record, not a recommendation, outcome claim, or statement that the reviewed option is suitable for a particular person. The page cannot choose a treatment, test, supplement, or service for the reader. For health-related decisions, discuss personal risks, alternatives, and follow-up with an appropriately licensed professional. For purchasing decisions, compare written terms, cancellation rights, privacy handling, and the identity of every entity involved before submitting payment or sensitive information.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: Who may find this altRx review useful :: block 65"
+        },
+        {
+          "text": "1. Open each cited source and confirm that the relevant wording remains visible.\n2. Save the page date, URL, screenshots, and any checkout or intake terms that affect cost or eligibility.\n3. List every field that remains “not stated,” including cadence, supply, inclusions, timing, availability, and refund rules where applicable.\n4. Send those questions to altRx and request answers in writing before payment.\n5. Compare the written response with the public wording and ask for clarification when they differ.\n6. Do not infer clinical quality, outcomes, or individual suitability from commercial transparency.",
+          "location": "/reviews/altrx-glp1-us-cps/ :: A source-first verification sequence for altRx :: block 67"
+        },
+        {
+          "text": "Cancellation",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 40"
+        },
+        {
+          "text": "Monthly subscriptions may be canceled to prevent future charges; processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 41"
+        },
+        {
+          "text": "View cancellation source · current as of 2026-09-02",
+          "location": "/providers/altrx-glp1-us-cps/ :: At a glance :: block 42"
+        },
+        {
+          "text": "- One provider-wide first charge and recurring total is not established across the published treatment prices\n- Processed payments and prescription orders already in processing are not refundable\n- Provider availability and prescribing authority vary by state",
+          "location": "/providers/altrx-glp1-us-cps/ :: Limitations in the record :: block 49"
+        }
+      ],
+      "operation_ids": [
+        "4d22a3aff07b99a7d8f3",
+        "9367bc7946d2d8b989c9",
+        "2aa5f04d39c800723c86",
+        "70d6ba640be380ef2039",
+        "86dc49d1581edb00cb85",
+        "96fed5cb44d996c5482a",
+        "ba4148b29965cb8b70aa"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(2) > li:nth-of-type(2)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Processed payments and prescription orders already in processing are not refundable"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > article:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2)",
+          "heading": "Limitations in the record",
+          "tag": "li",
+          "text": "Processed payments and prescription orders already in processing are not refundable"
+        },
+        {
+          "route": "/providers/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html",
+          "sha256": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(2) > article:nth-of-type(5) > p:nth-of-type(2)",
+          "heading": "At a glance",
+          "tag": "p",
+          "text": "Monthly subscriptions may be canceled to prevent future charges; processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded."
+        },
+        {
+          "route": "/reviews/altrx-glp1-us-cps/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html",
+          "sha256": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+          "selector": "[id=\"cancellation\"] > div:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Shipping",
+          "tag": "p",
+          "text": "altRx states that a monthly subscription may be canceled to prevent future charges. It also states that processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded."
+        }
+      ],
+      "disposition": "PATCH_READY"
+    }
+  ],
+  "operations": [
+    {
+      "id": "b36b36c2d6796a9810cf",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/38/average_wait",
+      "fields": [
+        "shipping_wait"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "Compounded medication is typically shipped within 2–3 business days after prescription approval; delivery timing can vary.",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "4d22a3aff07b99a7d8f3",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/38/cons/1",
+      "fields": [
+        "cancellation"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Processed payments and prescription orders already in processing are not refundable",
+      "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+      "source_refs": [
+        {
+          "pointer": "/fields/cancellation/value",
+          "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+          "source_url": "https://www.altrx.com/refund-cancellation-policy",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "f2d855b069f7f5735bd1",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/38/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded GLP-1 injection at $89 per month",
+      "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.\n\nReported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.\n\nUNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.",
+          "source_url": "https://www.altrx.com/products/compounded-semaglutide",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "UNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "109769ee5052303be453",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/38/average_wait",
+      "fields": [
+        "shipping_wait"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "Compounded medication is typically shipped within 2–3 business days after prescription approval; delivery timing can vary.",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "9367bc7946d2d8b989c9",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/38/cons/1",
+      "fields": [
+        "cancellation"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Processed payments and prescription orders already in processing are not refundable",
+      "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+      "source_refs": [
+        {
+          "pointer": "/fields/cancellation/value",
+          "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+          "source_url": "https://www.altrx.com/refund-cancellation-policy",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "7c4b60672ad74d150314",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/38/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded GLP-1 injection at $89 per month",
+      "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.\n\nReported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.\n\nUNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.",
+          "source_url": "https://www.altrx.com/products/compounded-semaglutide",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "UNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "3c97221606cb16565917",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/38/average_wait",
+      "fields": [
+        "shipping_wait"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "Compounded medication is typically shipped within 2–3 business days after prescription approval; delivery timing can vary.",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "2aa5f04d39c800723c86",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/38/cons/1",
+      "fields": [
+        "cancellation"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Processed payments and prescription orders already in processing are not refundable",
+      "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+      "source_refs": [
+        {
+          "pointer": "/fields/cancellation/value",
+          "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+          "source_url": "https://www.altrx.com/refund-cancellation-policy",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "ed023321cdf6cfbebc86",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/38/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded GLP-1 injection at $89 per month",
+      "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.\n\nReported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.\n\nUNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.",
+          "source_url": "https://www.altrx.com/products/compounded-semaglutide",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "UNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "d731eacc2a19d36c6ffb",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/38/average_wait",
+      "fields": [
+        "shipping_wait"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "Compounded medication is typically shipped within 2–3 business days after prescription approval; delivery timing can vary.",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "70d6ba640be380ef2039",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/38/limitations/1",
+      "fields": [
+        "cancellation"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Processed payments and prescription orders already in processing are not refundable",
+      "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+      "source_refs": [
+        {
+          "pointer": "/fields/cancellation/value",
+          "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+          "source_url": "https://www.altrx.com/refund-cancellation-policy",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "86dc49d1581edb00cb85",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/38/research_cancellation",
+      "fields": [
+        "cancellation"
+      ],
+      "notes": [
+        "Whole evidence-field replacement: value, quote and source date travel together."
+      ],
+      "op": "replace",
+      "before": {
+        "quote": "You may cancel your monthly subscription at any time to prevent future charges. Cancellation does not refund any payment that has already been processed. Once a prescription order has been approved an",
+        "source_url": "https://www.altrx.com/refund-cancellation-policy",
+        "value": "Monthly subscriptions may be canceled to prevent future charges; processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+        "verified_as_of": "2026-09-02"
+      },
+      "value": {
+        "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+        "quote": "## Cancellation Policy\n\nYou may cancel your Subscription Service at any time and for any reason. To cancel, contact patient support at [care@altrx.com](mailto:care@altrx.com) or [+1 607-601-6969](tel:+160****6969) and request cancellation, or cancel through your online account/patient portal (if applicable).\n\nCancellation requests must be received at least 72 hours prior to your next billing date in order to stop the next charge. If your request is received inside that 72-hour window, your Subscription Service will be charged in accordance with the then-current billing cycle, that charge is non-refundable, and the cancellation will take effect at the start of the subsequent billing cycle.\n\nAfter cancellation, you will continue to receive the Subscription Services through the end of the then-current paid term. Cancellation does not entitle you to a refund of any amount already paid.\n\n## Multi-Month and Bundled Plans\n\n**MULTI-MONTH AND BUNDLED SUBSCRIPTION PLANS ARE SOLD AS A SINGLE, INDIVISIBLE PURCHASE AND ARE NON-REFUNDABLE IN WHOLE AND IN PART.**\n\nIf you purchase a multi-month or bundled plan, you are purchasing the full term at a discounted, bundled rate in exchange for the full-term commitment. No refund or credit will be issued for any unused month, unused service, undelivered or unshipped medication, or remaining portion of the term, and the purchase price will not be prorated or reduced for any reason.\n\nIf you cancel a multi-month or bundled plan in a timely manner, the cancellation stops any future renewal of that plan. You retain access to the Subscription Services through the end of the term you purchased, and no portion of the amount paid will be refunded.\n\n## Medical Disqualification\n\nIf our healthcare provider determines that you are not clinically eligible for the Subscription Services, your Subscription Service will be canceled and you will be issued a refund for any unused portion of the amount paid for the then-current term. For purposes of this policy, used portions of Subscription Services include costs associated with a live or asynchronous consultation that has taken place; a healthcare provider review of your intake, records, and lab results; issued prescriptions; dispensed or shipped medication; or ordered or performed lab services.\n\nIf a medical disqualification occurs, the value of services already rendered will be deducted from your refund, and billing will stop going forward.",
+        "source_url": "https://www.altrx.com/refund-cancellation-policy",
+        "verified_as_of": "2026-09-10",
+        "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+        "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+      },
+      "source_refs": [
+        {
+          "pointer": "/fields/cancellation",
+          "value": {
+            "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+            "quote": "## Cancellation Policy\n\nYou may cancel your Subscription Service at any time and for any reason. To cancel, contact patient support at [care@altrx.com](mailto:care@altrx.com) or [+1 607-601-6969](tel:+160****6969) and request cancellation, or cancel through your online account/patient portal (if applicable).\n\nCancellation requests must be received at least 72 hours prior to your next billing date in order to stop the next charge. If your request is received inside that 72-hour window, your Subscription Service will be charged in accordance with the then-current billing cycle, that charge is non-refundable, and the cancellation will take effect at the start of the subsequent billing cycle.\n\nAfter cancellation, you will continue to receive the Subscription Services through the end of the then-current paid term. Cancellation does not entitle you to a refund of any amount already paid.\n\n## Multi-Month and Bundled Plans\n\n**MULTI-MONTH AND BUNDLED SUBSCRIPTION PLANS ARE SOLD AS A SINGLE, INDIVISIBLE PURCHASE AND ARE NON-REFUNDABLE IN WHOLE AND IN PART.**\n\nIf you purchase a multi-month or bundled plan, you are purchasing the full term at a discounted, bundled rate in exchange for the full-term commitment. No refund or credit will be issued for any unused month, unused service, undelivered or unshipped medication, or remaining portion of the term, and the purchase price will not be prorated or reduced for any reason.\n\nIf you cancel a multi-month or bundled plan in a timely manner, the cancellation stops any future renewal of that plan. You retain access to the Subscription Services through the end of the term you purchased, and no portion of the amount paid will be refunded.\n\n## Medical Disqualification\n\nIf our healthcare provider determines that you are not clinically eligible for the Subscription Services, your Subscription Service will be canceled and you will be issued a refund for any unused portion of the amount paid for the then-current term. For purposes of this policy, used portions of Subscription Services include costs associated with a live or asynchronous consultation that has taken place; a healthcare provider review of your intake, records, and lab results; issued prescriptions; dispensed or shipped medication; or ordered or performed lab services.\n\nIf a medical disqualification occurs, the value of services already rendered will be deducted from your refund, and billing will stop going forward.",
+            "source_url": "https://www.altrx.com/refund-cancellation-policy",
+            "verified_as_of": "2026-09-10",
+            "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+            "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+          }
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "ed67411e00396ee91a3e",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/38/research_first_month_price",
+      "fields": [
+        "first_month_price"
+      ],
+      "notes": [
+        "Whole evidence-field replacement: value, quote and source date travel together."
+      ],
+      "op": "replace",
+      "before": {
+        "quote": "# Compounded GLP-1\n\n(4.4)234 verified review\n\n$89/mo",
+        "source_url": "https://www.altrx.com/products/compounded-semaglutide",
+        "value": "UNKNOWN — the compounded GLP-1 injection page publishes $89 per month but does not identify a separate initial charge or renewal amount.",
+        "verified_as_of": "2026-09-02"
+      },
+      "value": {
+        "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+        "quote": "## Start for just $89\n\nSame price at every dose. Transparent pricing.",
+        "source_url": "https://www.altrx.com",
+        "verified_as_of": "2026-09-10",
+        "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+        "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+      },
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price",
+          "value": {
+            "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+            "quote": "## Start for just $89\n\nSame price at every dose. Transparent pricing.",
+            "source_url": "https://www.altrx.com",
+            "verified_as_of": "2026-09-10",
+            "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+            "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+          }
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "8baf750be1393d5d805a",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/38/research_shipping_wait/value",
+      "fields": [
+        "shipping_wait"
+      ],
+      "notes": [
+        "UNKNOWN: suppress positive assertion; preserve historical quote metadata."
+      ],
+      "op": "replace",
+      "before": "Compounded medication is typically shipped within 2–3 business days after prescription approval; delivery timing can vary.",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "f283d3dc8e69d2cc7539",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/38/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded GLP-1 injection at $89 per month",
+      "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.\n\nReported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.\n\nUNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.",
+          "source_url": "https://www.altrx.com/products/compounded-semaglutide",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "UNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "96fed5cb44d996c5482a",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/22/page_copy/cancellation",
+      "fields": [
+        "cancellation"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "altRx states that a monthly subscription may be canceled to prevent future charges. It also states that processed payments, prescription orders already in processing, and dispatched shipments are not canceled or refunded.",
+      "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+      "source_refs": [
+        {
+          "pointer": "/fields/cancellation/value",
+          "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+          "source_url": "https://www.altrx.com/refund-cancellation-policy",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "81e9690564c79a314fa6",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/22/page_copy/pricing",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "altRx publishes compounded GLP-1 injections at $89 per month. Current pages publish different prices by treatment and do not identify one provider-wide first charge and renewal total, so confirm both for the selected treatment.",
+      "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.\n\nReported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.\n\nUNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.",
+          "source_url": "https://www.altrx.com/products/compounded-semaglutide",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "UNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "10943ca13ffeba5ec095",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/22/page_copy/shipping",
+      "fields": [
+        "shipping_wait"
+      ],
+      "notes": [
+        "UNKNOWN claim dropped."
+      ],
+      "op": "replace",
+      "before": "altRx states that compounded medication is typically shipped within 2–3 business days after prescription approval and that delivery timing can vary with pharmacy processing and carrier operations.",
+      "value": "",
+      "source_refs": [],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "ba4148b29965cb8b70aa",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/22/row_contract/cons/1",
+      "fields": [
+        "cancellation"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Processed payments and prescription orders already in processing are not refundable",
+      "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+      "source_refs": [
+        {
+          "pointer": "/fields/cancellation/value",
+          "value": "Reported policy: request cancellation through patient support or the patient portal if available at least 72 hours before the next billing date to stop the next charge. A request inside that window leaves that cycle's charge non-refundable and takes effect at the start of the subsequent cycle. Cancellation stops future renewal, not refunds of paid terms; multi-month and bundled plans are indivisible and non-refundable in whole or part. The provider-initiated medical-disqualification exception refunds the unused portion of the then-current term after deducting services already rendered and stops future billing. Do not state an unqualified no-refund rule. The freshly captured Terms separately say forty-eight (48) hours and incorporate additional terms; telehealth consent says no refunds or exchanges. These different source statements are preserved in typed-facts-spec.json, not silently adjudicated or turned into a refund promise.",
+          "source_url": "https://www.altrx.com/refund-cancellation-policy",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "ae8245d4ddeec986e9e4",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/22/row_contract/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded GLP-1 injection at $89 per month",
+      "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.\n\nReported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.\n\nUNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "UNKNOWN exact first checkout charge and commitment for a selected plan. The current homepage advertises 'Start for just $89' and 'Same price at every dose', but does not establish the first payment for a multi-month bundle. Do not convert an advertised starting figure into an exact first-month total.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported Compounded GLP-1 advertised price: USD 89 per month. This is a product-page monthly figure, not proof of a selected plan's first payment, renewal amount or commitment. Exact selected-plan recurring charge and billing cadence remain UNKNOWN; the policy describes bundled single-month and multi-month purchases. Other offered products have separate quoted prices in this cycle's typed-facts-spec.json.",
+          "source_url": "https://www.altrx.com/products/compounded-semaglutide",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "UNKNOWN separately itemized consultation fee, not zero. The provider reports telehealth consultations, a personalized care plan, prescription fulfillment if appropriate, and shipping as included in membership. A free assessment does not establish a zero-dollar clinician consultation.",
+          "source_url": "https://www.altrx.com",
+          "verified_as_of": "2026-09-10",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-altrx-review/authoring/altrx-review-c2/captures/altrx-review-captures.json",
+          "capture_sha256": "f67f46e9af7e6489eb2dbc7b2b581e259b97aa5cae33abdd52f3887f5658d41a"
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "9d56bc449f50e815287f",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/altrx-glp1-us-cps/medications/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "2fbfbb44d74250d819dcb9b99dc1cf0e79d7bd8785f5b6963d9d94c978559c2a",
+        "captured_on": "2026-08-30",
+        "label": "Compounded semaglutide (injection)",
+        "medication_id": "compounded-semaglutide-injection",
+        "month_1_basis": "same_as_ongoing",
+        "month_1_usd": 89,
+        "notes": "The product page publishes one monthly amount for the compounded semaglutide injection and no separate first-month rate.",
+        "ongoing_usd": 89,
+        "quote": "$89/mo",
+        "source_url": "https://www.altrx.com/products/compounded-semaglutide"
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    },
+    {
+      "id": "b56b40a6b17855a6b347",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/altrx-glp1-us-cps/medications/1",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "2fbfbb44d74250d819dcb9b99dc1cf0e79d7bd8785f5b6963d9d94c978559c2a",
+        "captured_on": "2026-08-30",
+        "label": "Compounded tirzepatide (injection)",
+        "medication_id": "compounded-tirzepatide-injection",
+        "month_1_basis": "same_as_ongoing",
+        "month_1_usd": 149,
+        "notes": "The product page publishes one monthly amount for the compounded tirzepatide injection and no separate first-month rate.",
+        "ongoing_usd": 149,
+        "quote": "$149/mo",
+        "source_url": "https://www.altrx.com/products/compounded-tirzepatide"
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    }
+  ],
+  "current_page_files": {
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/altrx-glp1-us-cps/index.html": "e373d8b274ac99e5064cbdf48ac2badfe47a7c1328d759bb4b8c9da35fe923a8",
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/altrx-glp1-us-cps/index.html": "97492a4230f532b241a4161d8573a4ba3c39c9da3000eaf232d7ad0785f930e1"
+  },
+  "scope": "Data proposal only. No identity, hold, link, score, or release changes."
+}

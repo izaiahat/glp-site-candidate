@@ -1,0 +1,4789 @@
+/* ============================================================================
+   CLINIC SCOUT — PHASE 3 VISUAL SYSTEM
+   Layer 11: product, category, insight, and pharmacy route families
+   Scope: classes emitted by src/phase3-page-graph.mjs only
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Phase 3 canvas and shared rhythm
+   -------------------------------------------------------------------------- */
+
+.p3-page {
+  --p3-max: 1320px;
+  --p3-rule: var(--cs-line-on-paper, rgba(20, 32, 27, 0.14));
+  --p3-rule-soft: rgba(20, 32, 27, 0.09);
+  --p3-ink: var(--cs-ink-on-paper, #14201b);
+  --p3-muted: var(--cs-muted-on-paper, rgba(20, 32, 27, 0.68));
+  --p3-panel: var(--cs-paper-card, #fffdf7);
+  --p3-canvas: var(--cs-paper-warm, #f7f5ee);
+  --p3-accent: var(--cs-aurora-2, #17a87e);
+  --p3-accent-bright: var(--cs-aurora-3, #3fd9a4);
+  --p3-ease: var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: clamp(22px, 3.5vw, 46px) var(--gutter, clamp(16px, 3vw, 32px)) clamp(72px, 8vw, 112px);
+  overflow: clip;
+  color: var(--p3-ink);
+  background:
+    radial-gradient(circle at 8% 2%, rgba(63, 217, 164, 0.11), transparent 28rem),
+    radial-gradient(circle at 96% 23%, rgba(169, 155, 242, 0.09), transparent 32rem),
+    var(--p3-canvas);
+  --text-primary: var(--p3-ink);
+  --text-secondary: var(--p3-muted);
+  --color-ink: var(--p3-ink);
+  --color-line: var(--p3-rule);
+  --color-line-soft: var(--p3-rule-soft);
+  --color-line-strong: rgba(20, 32, 27, 0.24);
+  --color-surface: var(--p3-panel);
+  --color-surface-float: #fff;
+  --color-focus: #0e7d5c;
+  --color-interactive: #0b6fa8;
+  --color-mist-100: rgba(20, 32, 27, 0.045);
+  --shadow-card: var(--cs-card-shadow-paper, 0 12px 32px -18px rgba(20, 32, 27, 0.25));
+}
+
+.p3-page *,
+.p3-page *::before,
+.p3-page *::after {
+  box-sizing: border-box;
+}
+
+.p3-page > * {
+  width: min(100%, var(--p3-max));
+  margin-inline: auto;
+}
+
+.p3-page > :is(section, aside, .p3-provider-grid, .p3-intent-grid, .p3-pharmacy-grid, .p3-filter-empty) {
+  margin-top: clamp(48px, 6.5vw, 84px);
+}
+
+.p3-page > :is(.p3-product-hero, .p3-category-hero, .p3-bulk-hero, .p3-index-hero, .p3-insights-hero, .p3-pharmacy-hero) {
+  margin-top: 0;
+}
+
+.p3-page :is(h1, h2, h3, p) {
+  text-wrap: pretty;
+}
+
+.p3-page h1 {
+  max-width: 13ch;
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 6.6rem);
+  line-height: 0.91;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+
+.p3-page h2 {
+  text-wrap: balance;
+}
+
+.p3-page a {
+  text-underline-offset: 0.2em;
+}
+
+.p3-page .lede {
+  max-width: 58ch;
+  margin: 22px 0 0;
+  color: var(--p3-muted);
+  font-size: clamp(1.08rem, 1rem + 0.45vw, 1.3rem);
+  line-height: 1.58;
+}
+
+.p3-page .gcs-kicker {
+  display: block;
+  max-width: 52ch;
+  margin: 0 0 14px;
+  color: #07523b;
+  font: 750 0.76rem/1.25 var(--font-display);
+  letter-spacing: 0.145em;
+  text-transform: uppercase;
+}
+
+.p3-page .breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto clamp(26px, 4vw, 44px);
+  color: var(--p3-muted);
+  font-size: 0.86rem;
+}
+
+.p3-page .breadcrumbs a {
+  color: var(--p3-muted);
+  text-decoration: none;
+  transition: color var(--duration-instant, 0ms) var(--p3-ease);
+}
+
+.p3-page .breadcrumbs a:hover {
+  color: var(--p3-ink);
+}
+
+.p3-page .breadcrumbs [aria-hidden="true"] {
+  opacity: 0.4;
+}
+
+.p3-page .breadcrumbs [aria-current="page"] {
+  overflow: hidden;
+  max-width: min(55vw, 460px);
+  color: var(--p3-ink);
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.p3-page .section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+  align-items: end;
+  gap: 20px clamp(28px, 5vw, 68px);
+  max-width: none;
+  margin: 0 0 clamp(24px, 3.5vw, 38px);
+  text-align: left;
+}
+
+.p3-page .section-heading > * {
+  margin: 0;
+}
+
+.p3-page .section-heading .gcs-kicker {
+  grid-column: 1;
+  margin-bottom: 4px;
+}
+
+.p3-page .section-heading h2 {
+  grid-column: 1;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+}
+
+.p3-page .section-heading > p:last-child {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: end;
+  max-width: 54ch;
+  color: var(--p3-muted);
+  line-height: 1.6;
+}
+
+.p3-page .cs-btn--quiet {
+  color: var(--p3-ink) !important;
+  background: rgba(255, 255, 255, 0.54);
+  border-color: var(--p3-rule);
+  backdrop-filter: blur(10px);
+}
+
+.p3-page .cs-btn--quiet:hover {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(14, 125, 92, 0.42);
+}
+
+.p3-page :is(button, a, input, select, summary):focus-visible,
+.p3-article-share a:focus-visible,
+.p3-keep-reading a:focus-visible {
+  outline: 2px solid var(--color-focus, #0e7d5c);
+  outline-offset: 3px;
+}
+
+.p3-page ::selection {
+  color: var(--cs-ink-on-paper, #14201b);
+  background: rgba(63, 217, 164, 0.4);
+}
+
+/* Pass 5 comparison router: the operator called out /compare/ as the clearest
+   remaining split-theme route. Keep the Phase 3 primitives, but place them on
+   the same dark editorial ground as home, insights, and reviews. */
+.p5-compare-page {
+  --p3-ink: #f2f8f4;
+  --p3-muted: rgba(218, 233, 226, 0.72);
+  --p3-panel: rgba(15, 34, 28, 0.8);
+  --p3-canvas: #07100d;
+  --p3-rule: rgba(218, 233, 226, 0.16);
+  --p3-rule-soft: rgba(218, 233, 226, 0.1);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 8% 6%, rgba(63, 217, 164, 0.16), transparent 30rem),
+    radial-gradient(circle at 92% 24%, rgba(169, 155, 242, 0.14), transparent 34rem),
+    linear-gradient(180deg, #07100d 0%, #0a1713 52%, #07100d 100%);
+}
+
+.p5-compare-page .gcs-kicker {
+  color: #77e5bc;
+}
+
+.p5-compare-page .breadcrumbs,
+.p5-compare-page .breadcrumbs a,
+.p5-compare-page .breadcrumbs [aria-current="page"] {
+  color: rgba(218, 233, 226, 0.72);
+}
+
+.p5-compare-hero {
+  max-width: 920px;
+  padding-block: clamp(34px, 6vw, 78px) clamp(16px, 3vw, 32px);
+}
+
+.p5-compare-hero h1 {
+  max-width: 11ch;
+  color: #f2f8f4;
+}
+
+.p5-compare-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.5vw, 30px);
+}
+
+.p5-compare-path {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+  padding: clamp(24px, 3.8vw, 44px);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.055), transparent 58%),
+    rgba(12, 29, 23, 0.78);
+  border: 1px solid var(--p3-rule);
+  border-radius: clamp(22px, 2.8vw, 32px);
+  box-shadow: 0 34px 80px -54px rgba(0, 0, 0, 0.9);
+}
+
+.p5-compare-path > header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.p5-compare-number {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  color: #07100d;
+  background: linear-gradient(135deg, #77e5bc, #d8ffd5);
+  border-radius: 50%;
+  font: 800 0.78rem/1 var(--font-display);
+  letter-spacing: 0.08em;
+}
+
+.p5-compare-path h2 {
+  margin: 0;
+  color: #f2f8f4;
+  font-size: clamp(1.65rem, 2.9vw, 2.65rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.p5-compare-path header p:last-child {
+  margin: 16px 0 0;
+  color: var(--p3-muted);
+  line-height: 1.58;
+}
+
+.p5-compare-medications,
+.p5-compare-provider-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.p5-compare-med {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3px 16px;
+  align-items: center;
+  min-height: 62px;
+  padding: 12px 16px;
+  color: #f2f8f4;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(218, 233, 226, 0.12);
+  border-radius: 14px;
+  transition: background 180ms var(--p3-ease), border-color 180ms var(--p3-ease), transform 180ms var(--p3-ease);
+}
+
+.p5-compare-med span {
+  font-weight: 750;
+}
+
+.p5-compare-med small {
+  grid-column: 1;
+  color: var(--p3-muted);
+}
+
+.p5-compare-med b {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  color: #77e5bc;
+  font-size: 1.2rem;
+}
+
+.p5-compare-med:hover {
+  background: rgba(119, 229, 188, 0.09);
+  border-color: rgba(119, 229, 188, 0.4);
+  transform: translateX(3px);
+}
+
+.p5-compare-provider-actions .cs-btn {
+  width: 100%;
+  min-height: 52px;
+  justify-content: center;
+}
+
+.p5-compare-page .cs-btn--quiet {
+  color: #f2f8f4 !important;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(218, 233, 226, 0.18);
+  backdrop-filter: none;
+}
+
+.p5-compare-boundary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px 24px;
+  align-items: baseline;
+  padding: 22px 0 0;
+  color: var(--p3-muted);
+  border-top: 1px solid var(--p3-rule);
+}
+
+.p5-compare-boundary strong {
+  color: #f2f8f4;
+}
+
+.p5-compare-boundary p {
+  margin: 0;
+}
+
+@media (max-width: 780px) {
+  .p5-compare-paths { grid-template-columns: minmax(0, 1fr); }
+  .p5-compare-path > header { grid-template-columns: minmax(0, 1fr); }
+  .p5-compare-boundary { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p5-compare-med { transition: none; }
+  .p5-compare-med:hover { transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Brand product family
+   -------------------------------------------------------------------------- */
+
+.p3-product-hero {
+  --p3-hero-accent: var(--cs-drug-brand, #7cc9ff);
+  --p3-hero-veil: var(--cs-veil-brand);
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  align-items: center;
+  gap: clamp(36px, 5vw, 72px);
+  min-height: 620px;
+  padding: clamp(38px, 5.5vw, 72px);
+  overflow: hidden;
+  color: var(--p3-ink);
+  background: var(--p3-hero-veil);
+  border: 1px solid rgba(20, 32, 27, 0.08);
+  border-radius: clamp(24px, 3vw, 34px);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-product-hero--mint {
+  --p3-hero-accent: var(--cs-drug-oral, #f3bd5c);
+  --p3-hero-veil: var(--cs-veil-oral);
+}
+
+.p3-product-hero--teal,
+.p3-product-hero--emerald {
+  --p3-hero-accent: var(--cs-drug-semaglutide, #46dcab);
+  --p3-hero-veil: var(--cs-veil-semaglutide);
+}
+
+.p3-product-hero--coral {
+  --p3-hero-accent: var(--color-coral-500, #ee806a);
+  --p3-hero-veil: linear-gradient(155deg, #f6ded6 0%, #faeee7 55%, #fff8f1 100%);
+}
+
+.p3-product-hero--violet {
+  --p3-hero-accent: var(--cs-drug-tirzepatide, #b3a4f5);
+  --p3-hero-veil: var(--cs-veil-tirzepatide);
+}
+
+.p3-product-hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: -30% -10% auto 42%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--p3-hero-accent) 42%, transparent);
+  border-radius: 50%;
+  content: "";
+  opacity: 0.72;
+  transform: rotate(-12deg);
+}
+
+.p3-product-hero::after {
+  position: absolute;
+  z-index: -1;
+  right: -10%;
+  bottom: -38%;
+  width: 52%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--p3-hero-accent);
+  content: "";
+  filter: blur(94px);
+  opacity: 0.16;
+}
+
+.p3-product-hero > div:first-child {
+  position: relative;
+  z-index: 2;
+}
+
+.p3-product-hero h1 {
+  color: var(--p3-ink);
+}
+
+.p3-product-hero .lede {
+  max-width: 48ch;
+}
+
+.p3-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.p3-product-float {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 380px);
+  aspect-ratio: 1;
+  justify-self: end;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--p3-hero-accent) 18%, white);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 46% 54% 43% 57% / 52% 42% 58% 48%;
+  box-shadow:
+    0 38px 80px -42px color-mix(in srgb, var(--p3-hero-accent) 72%, transparent),
+    inset 0 0 0 1px rgba(20, 32, 27, 0.07);
+  animation: none;
+}
+
+.p3-product-float img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p3-med-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 7px;
+  overflow-x: auto;
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 12px 30px -26px rgba(20, 32, 27, 0.4);
+  scrollbar-width: none;
+}
+
+.p3-med-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.p3-med-tabs a {
+  flex: 1 0 auto;
+  min-width: 116px;
+  padding: 10px 18px;
+  color: var(--p3-muted);
+  font: 700 0.88rem/1.1 var(--font-display);
+  text-align: center;
+  text-decoration: none;
+  background-position: 100% 50%;
+  background-size: 240% 100%;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  transition:
+    color var(--duration-instant, 0ms) var(--p3-ease),
+    border-color var(--duration-instant, 0ms) var(--p3-ease),
+    background-position 120ms var(--ease-in-out-expo, cubic-bezier(0.87, 0, 0.13, 1));
+}
+
+.p3-med-tabs a:hover {
+  color: var(--p3-ink);
+  border-color: var(--p3-rule);
+}
+
+.p3-med-tabs a[aria-current="page"] {
+  color: var(--cs-ink-on-paper, #14201b);
+  background-image: var(--cs-accent-gradient);
+  background-position: 0 50%;
+  border-color: transparent;
+  box-shadow: 0 10px 24px -16px rgba(23, 168, 126, 0.6);
+}
+
+.p3-selfpay-summary {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.45fr) minmax(260px, 1fr) minmax(210px, 0.52fr);
+  align-items: center;
+  gap: 20px clamp(24px, 4vw, 54px);
+  padding: clamp(26px, 4vw, 42px);
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid var(--p3-rule-soft);
+  border-left: 5px solid var(--p3-accent);
+  border-radius: var(--radius-panel);
+}
+
+.p3-selfpay-summary .gcs-kicker,
+.p3-selfpay-summary :is(h2, p) {
+  margin: 0;
+}
+
+.p3-selfpay-summary h2 {
+  font-size: clamp(1.45rem, 2.6vw, 2.25rem);
+}
+
+.p3-selfpay-summary p {
+  color: var(--p3-muted);
+  line-height: 1.55;
+}
+
+.p3-selfpay-summary > a {
+  justify-self: end;
+  color: #0e6f53;
+  font-weight: 750;
+}
+
+.p3-crosslinks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.p3-crosslinks .cs-card {
+  display: grid;
+  gap: 4px;
+  padding: 22px 24px;
+  color: var(--p3-ink);
+  text-decoration: none;
+  background: var(--p3-panel);
+  border: 1px solid transparent;
+}
+
+.p3-crosslinks .cs-card::after {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  justify-self: end;
+  color: #0e7d5c;
+  content: "→";
+  font-size: 1.35rem;
+  transition: transform var(--duration-fast) var(--p3-ease);
+}
+
+.p3-crosslinks .cs-card:hover::after {
+  transform: translateX(4px);
+}
+
+.p3-crosslinks span {
+  color: var(--p3-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.p3-crosslinks strong {
+  font: 750 1.2rem/1.2 var(--font-display);
+}
+
+.p3-insurance {
+  display: grid;
+  grid-template-columns: minmax(0, 0.76fr) minmax(380px, 1.24fr);
+  align-items: start;
+  gap: clamp(36px, 6vw, 84px);
+  padding: clamp(34px, 5vw, 64px);
+  color: var(--color-paper-50, #f2f8f4);
+  background:
+    radial-gradient(circle at 15% 110%, rgba(63, 217, 164, 0.22), transparent 40%),
+    var(--color-ink-950, #07100d);
+  border: 1px solid rgba(233, 247, 241, 0.1);
+  border-radius: clamp(24px, 3vw, 34px);
+  box-shadow: 0 30px 70px -44px rgba(7, 16, 13, 0.8);
+  --text-primary: var(--color-paper-50, #f2f8f4);
+  --text-secondary: var(--color-ink-700, #a7bfb5);
+  --color-line: rgba(233, 247, 241, 0.14);
+  --color-line-soft: rgba(233, 247, 241, 0.08);
+  --color-line-strong: rgba(233, 247, 241, 0.28);
+  --color-mist-100: rgba(233, 247, 241, 0.06);
+}
+
+.p3-insurance .gcs-kicker {
+  color: var(--cs-aurora-3, #3fd9a4);
+}
+
+.p3-insurance h2 {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(2rem, 4.4vw, 4rem);
+}
+
+.p3-insurance > div > p:last-child {
+  color: var(--text-secondary);
+}
+
+.p3-insurance form {
+  display: grid;
+  gap: 18px;
+  padding: clamp(22px, 3vw, 34px);
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(233, 247, 241, 0.14);
+  border-radius: var(--radius-panel);
+  backdrop-filter: blur(18px);
+}
+
+.p3-insurance :is(label, legend) {
+  color: var(--color-paper-50, #f2f8f4);
+  font-weight: 650;
+}
+
+.p3-insurance label {
+  display: grid;
+  gap: 9px;
+}
+
+.p3-insurance label output {
+  justify-self: start;
+  margin-top: 0;
+  color: var(--cs-aurora-3, #3fd9a4);
+  font-weight: 800;
+}
+
+.p3-insurance input[type="number"] {
+  color: var(--color-paper-50, #f2f8f4);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(233, 247, 241, 0.2);
+}
+
+.p3-page .p3-insurance input[type="range"] {
+  width: 100%;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  margin: 4px 0 0;
+  appearance: none;
+  background: transparent;
+}
+
+.p3-insurance input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: linear-gradient(90deg, var(--cs-aurora-2) 0 var(--p3-progress, 0%), rgba(233, 247, 241, 0.16) var(--p3-progress, 0%));
+  border-radius: var(--radius-pill);
+}
+
+.p3-insurance input[type="range"]::-moz-range-track {
+  height: 6px;
+  background: rgba(233, 247, 241, 0.16);
+  border-radius: var(--radius-pill);
+}
+
+.p3-insurance input[type="range"]::-moz-range-progress {
+  height: 6px;
+  background: var(--cs-accent-gradient);
+  border-radius: var(--radius-pill);
+}
+
+.p3-insurance input[type="range"]::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  margin-top: -5px;
+  appearance: none;
+  background: var(--cs-aurora-3, #3fd9a4);
+  border: 3px solid var(--color-ink-950, #07100d);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(63, 217, 164, 0.72);
+  transition: background-color 150ms var(--p3-ease), border-color 150ms var(--p3-ease);
+}
+
+.p3-insurance input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--cs-aurora-3, #3fd9a4);
+  border: 3px solid var(--color-ink-950, #07100d);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(63, 217, 164, 0.72);
+  transition: background-color 150ms var(--p3-ease), border-color 150ms var(--p3-ease);
+}
+
+.p3-progress-labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: -10px;
+  color: var(--color-ink-700, #a7bfb5);
+  font-size: 0.72rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.p3-progress-labels span {
+  padding: 6px 4px;
+  border-radius: var(--radius-control);
+}
+
+.p3-progress-labels span:first-child {
+  text-align: left;
+}
+
+.p3-progress-labels span:last-child {
+  text-align: right;
+}
+
+.p3-progress-labels span.is-active {
+  color: var(--cs-ink-on-paper, #14201b);
+  background: var(--cs-accent-gradient);
+  font-weight: 800;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p3-insurance input[type="range"]::-webkit-slider-thumb { transition: none; }
+  .p3-insurance input[type="range"]::-moz-range-thumb { transition: none; }
+}
+
+.p3-insurance fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.p3-copay-picks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.p3-copay-picks button {
+  min-height: 44px;
+  color: var(--color-paper-50, #f2f8f4);
+  font-weight: 750;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(233, 247, 241, 0.18);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    color var(--duration-instant, 0ms) var(--p3-ease),
+    background-color var(--duration-instant, 0ms) var(--p3-ease),
+    border-color var(--duration-instant, 0ms) var(--p3-ease),
+    transform var(--duration-instant, 0ms) var(--p3-ease);
+}
+
+.p3-copay-picks button:hover {
+  border-color: var(--cs-aurora-3, #3fd9a4);
+  transform: translateY(-1px);
+}
+
+.p3-copay-picks button[aria-pressed="true"] {
+  color: var(--cs-ink-on-paper, #14201b);
+  background: var(--color-paper-50, #f2f8f4);
+  border-color: var(--color-paper-50, #f2f8f4);
+}
+
+.p3-insurance-result {
+  display: block;
+  min-height: 58px;
+  padding: 15px 17px;
+  color: var(--color-paper-50, #f2f8f4);
+  line-height: 1.45;
+  background: rgba(63, 217, 164, 0.09);
+  border: 1px solid rgba(63, 217, 164, 0.3);
+  border-radius: var(--radius-control);
+  transition: opacity 260ms var(--p3-ease), transform 260ms var(--p3-ease);
+}
+
+/* --------------------------------------------------------------------------
+   Provider cards, filters, and category routes
+   -------------------------------------------------------------------------- */
+
+.p3-provider-section {
+  scroll-margin-top: 96px;
+}
+
+/* Keep C-route keyboard targets clear of the real first-visit notice. */
+html:has(main.listing[data-listing-archetype="C"]) { scroll-padding-bottom: var(--consent-clearance, 0px); }
+main.listing[data-listing-archetype="C"] :is(button, input, select, a) { scroll-margin-bottom: var(--consent-clearance, 0px); }
+main.listing[data-listing-archetype="C"] [data-provider-load-more] { max-width: calc(100% - 8px); margin-inline: 4px; }
+main.listing[data-listing-archetype="C"] .p3-filterbar .p3-filter-chips { padding: 4px; }
+
+
+.p3-provider-grid,
+.p3-pharmacy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(16px, 2.2vw, 24px);
+}
+
+.p3-load-more {
+  display: flex;
+  width: min(100%, 360px);
+  margin: 28px auto 0;
+}
+
+.p3-load-more[hidden] { display: none; }
+
+.p3-provider-card {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  color: var(--p3-ink);
+  background: var(--p3-panel);
+  border: 1px solid transparent;
+  box-shadow: var(--cs-card-shadow-paper);
+  transition:
+    transform 150ms var(--p3-ease),
+    border-color 150ms var(--p3-ease),
+    box-shadow 260ms var(--p3-ease);
+}
+
+/* Listing cards sit several viewports below the decision module. Keep their
+   complete source HTML and exact 522px resting geometry, but let Chromium skip
+   style/layout/paint work until a card approaches the viewport. This is scoped
+   to cards only: sections, filters, disclosures, and load-more controls remain
+   fully laid out so later interactions cannot disappear. */
+.p3-provider-grid > .p3-provider-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 522px;
+}
+
+/* WebKit can retarget a trusted click from the hub disclosure button to the
+   section when auto-contained cards materialize during Playwright's/user-agent
+   scroll-to-control step. The provider hub already ships only four complete
+   card bodies on mobile, so laying out those shells keeps the control stable
+   without restoring the removed deferred-card cost. */
+@media (max-width: 760px) {
+  .p3-provider-section[data-initial-visible] .p3-provider-grid > .p3-provider-card {
+    content-visibility: visible;
+    contain-intrinsic-size: none;
+  }
+}
+
+.p3-provider-card > :not(.p3-card-aurora) {
+  position: relative;
+  z-index: 1;
+}
+
+.p3-card-aurora {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 auto;
+  height: 132px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(63, 217, 164, 0.38), transparent 48%),
+    radial-gradient(circle at 88% 20%, rgba(169, 155, 242, 0.32), transparent 46%),
+    var(--cs-accent-gradient-soft);
+  background-size: 180% 180%;
+  border-bottom: 1px solid var(--p3-rule-soft);
+  opacity: 0.82;
+  animation: none;
+}
+
+.p3-provider-card:hover {
+  border-color: rgba(14, 125, 92, 0.24);
+  box-shadow: 0 28px 54px -34px rgba(20, 32, 27, 0.48);
+  transform: translateY(-3px);
+}
+
+.p3-provider-card header {
+  min-height: 104px;
+  padding: 20px 22px 16px;
+}
+
+.p3-provider-card header h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+}
+
+.p3-provider-card header .gcs-kicker {
+  margin-bottom: 7px;
+  color: #075c45;
+  font-size: 0.68rem;
+}
+
+.p3-card-headline-price {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 0 7px;
+  width: 100%;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--p3-rule-soft);
+}
+.p3-card-headline-price > span {
+  grid-column: 1 / -1;
+  color: var(--p3-muted);
+  font: 750 0.68rem/1.2 var(--font-display);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.p3-card-headline-price > strong {
+  color: var(--p3-ink);
+  font: 800 clamp(2rem, 3vw, 2.7rem)/1 var(--font-display);
+  letter-spacing: -0.05em;
+}
+.p3-card-headline-price > small { color: var(--p3-muted); }
+
+.p3-card-price-matrix {
+  display: grid;
+  margin: 0 18px 14px;
+  overflow: hidden;
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-control);
+}
+.p3-card-price-matrix > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 38px;
+  padding: 7px 11px;
+  border-bottom: 1px solid var(--p3-rule-soft);
+}
+.p3-card-price-matrix > div:last-child { border-bottom: 0; }
+.p3-card-price-matrix span {
+  overflow: hidden;
+  color: var(--p3-muted);
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.p3-card-price-matrix strong { color: var(--p3-ink); font-size: 0.88rem; }
+.p3-card-price-matrix strong small { color: var(--p3-muted); font-weight: 500; }
+
+.p3-card-ledger {
+  display: grid;
+  gap: 0;
+  margin: 0 18px 14px;
+  overflow: hidden;
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-control);
+}
+
+.p3-card-ledger > div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.8fr) minmax(0, 1.2fr);
+  gap: 12px;
+  padding: 8px 11px;
+  border-bottom: 1px solid var(--p3-rule-soft);
+}
+
+.p3-card-ledger > div:last-child { border-bottom: 0; }
+.p3-card-ledger :is(dt, dd) { margin: 0; font-size: 0.76rem; line-height: 1.42; }
+.p3-card-ledger dt { color: var(--p3-muted); font-weight: 650; }
+.p3-card-ledger dd { color: var(--p3-ink); font-weight: 720; text-align: right; }
+
+/* Option C summary cards use a fixed evidence-qualified contract rather than
+   row density that varies with missing research. Long source-reported facts
+   read as compact one-column statements; source and capture date stay visibly
+   attached to the fact they support. */
+.p3-card-ledger.p3-card-contract > div {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+  padding: 12px 13px;
+}
+
+.p3-card-ledger.p3-card-contract dd {
+  display: grid;
+  gap: 6px;
+  text-align: left;
+}
+
+.p3-card-ledger.p3-card-contract dd > span {
+  font-size: 0.86rem;
+  line-height: 1.48;
+}
+
+.p3-card-ledger.p3-card-contract small,
+.p3-provider-card header > small {
+  color: var(--p3-muted);
+  font-size: 0.7rem;
+  font-weight: 560;
+  line-height: 1.4;
+}
+
+/* The compact listing surface shows the first three decision terms. Remaining
+   governed terms stay in source HTML and in the price-evidence disclosure. */
+.p3-provider-card .p3-feature-chips > span:nth-child(n + 4) { display: none; }
+
+.p3-card-evidence {
+  margin: 0 18px 14px;
+  overflow: hidden;
+  border-color: var(--p3-rule-soft);
+  border-radius: var(--radius-control);
+}
+.p3-card-evidence > summary { min-height: 42px; padding: 10px 13px; font-size: 0.8rem; }
+.p3-card-evidence > section { padding: 12px; border-top: 1px solid var(--p3-rule-soft); }
+.p3-card-evidence h4 { margin: 0 0 8px; color: var(--p3-ink); font-size: 0.86rem; }
+.p3-card-evidence .p3-med-price,
+.p3-card-evidence .p3-dose-grid { margin: 0; padding: 0; }
+.p3-card-evidence .p3-source-price > strong { font-size: 1.5rem; }
+
+.p3-provider-card .p3-state-evidence {
+  margin: 0 18px 14px;
+  border-color: var(--p3-rule-soft);
+  border-radius: var(--radius-control);
+}
+.p3-provider-card .p3-state-evidence > summary { min-height: 42px; padding: 10px 13px; font-size: 0.8rem; }
+.p3-provider-card .p3-state-evidence > p { margin: 0; padding: 0 13px 13px; font-size: 0.8rem; }
+
+.p3-med-price {
+  padding: 16px 22px;
+  border-top: 1px solid var(--p3-rule-soft);
+}
+
+.p3-med-price + .p3-med-price {
+  background: rgba(20, 32, 27, 0.025);
+}
+
+.p3-med-label {
+  margin: 0 0 9px;
+  color: var(--p3-muted);
+  font: 750 0.72rem/1.2 var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.p3-source-price {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 0 5px;
+}
+
+.p3-source-price > strong {
+  color: var(--p3-ink);
+  /* Their listing makes the price the page hierarchy after the H1 — ours now
+     matches that weight (category spec §1 typography). */
+  font: 800 clamp(2.4rem, 4.2vw, 3.55rem)/0.94 var(--font-display);
+  letter-spacing: -0.055em;
+}
+
+.p3-source-price > span {
+  color: var(--p3-muted);
+  font-size: 0.9rem;
+}
+
+.p3-source-price > small {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  color: var(--p3-muted);
+  font-size: 0.76rem;
+}
+
+.p3-source-price > details {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.p3-source-price > details summary {
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 44px;
+  padding: 10px 0;
+  color: #0e6f53;
+  font-size: 0.8rem;
+}
+
+.p3-source-price > details summary::after {
+  width: 7px;
+  height: 7px;
+  margin-left: 3px;
+}
+
+.p3-source-price blockquote {
+  margin: 13px 0 9px;
+  padding-left: 12px;
+  color: var(--p3-muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  border-left: 2px solid rgba(14, 125, 92, 0.32);
+}
+
+.p3-source-price details a {
+  color: #0e6f53;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.p3-dose-grid {
+  margin: 0 18px 18px;
+  overflow: hidden;
+  background: rgba(20, 32, 27, 0.025);
+  border-color: var(--p3-rule-soft);
+  border-radius: var(--radius-control);
+}
+
+.p3-dose-grid summary {
+  padding: 14px 16px;
+  color: var(--p3-ink);
+  font-size: 0.88rem;
+}
+
+.p3-dose-grid > p {
+  margin: 0;
+  padding: 0 16px 13px;
+  color: var(--p3-muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.p3-dose-grid ul {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--p3-rule-soft);
+}
+
+.p3-dose-grid li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 16px;
+  color: var(--p3-muted);
+  font-size: 0.79rem;
+  border-bottom: 1px solid var(--p3-rule-soft);
+}
+
+.p3-dose-grid li:last-child {
+  border-bottom: 0;
+}
+
+.p3-dose-grid li strong {
+  color: var(--p3-muted);
+  font-weight: 650;
+}
+
+.p3-card-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 10px;
+  margin-top: auto;
+  padding: 0 18px 18px;
+}
+
+.p3-card-actions .cs-btn {
+  width: 100%;
+  min-height: 44px;
+}
+
+.p3-card-actions > :is(.cs-btn, [data-affiliate-unavailable]) { min-width: 0; }
+
+.p3-unavailable-action {
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  min-height: 50px;
+  margin: 0;
+  padding: 9px 12px;
+  border: 1px solid rgba(26, 79, 63, 0.2);
+  border-radius: var(--radius-control);
+  background: rgba(244, 249, 246, 0.88);
+  color: var(--p3-muted);
+  line-height: 1.25;
+}
+
+.p3-unavailable-action strong {
+  color: var(--p3-ink);
+  font-size: 0.78rem;
+}
+
+.p3-unavailable-action span {
+  font-size: 0.7rem;
+}
+
+.p3-card-evidence-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  margin: -6px 18px 12px;
+  border-top: 1px solid var(--p3-rule-soft);
+}
+
+.p3-card-evidence-links .p3-card-link {
+  min-height: 36px;
+  padding: 8px 6px 0;
+  font-size: 0.74rem;
+}
+
+.p3-unverified-remainder {
+  margin-top: clamp(28px, 4vw, 48px);
+  overflow: hidden;
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.p3-unverified-remainder > summary {
+  min-height: 64px;
+  padding: 18px 22px;
+  color: var(--p3-ink);
+  font-weight: 780;
+}
+
+.p3-unverified-remainder > p { margin: 0; padding: 0 22px 18px; color: var(--p3-muted); }
+.p3-unverified-grid { padding: 0 22px 22px; }
+
+.p3-intent-preview { display: block; margin-top: 10px; color: #0c6e51; font-size: 0.88rem; }
+
+.p3-card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 12px;
+  color: #0e6f53;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.p3-card-link--muted {
+  color: var(--p3-muted);
+  cursor: default;
+  text-decoration: none;
+}
+
+.p3-provider-records {
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-provider-records > summary {
+  min-height: 68px;
+  padding: 20px 24px;
+  color: var(--p3-ink);
+  font: 750 1rem/1.25 var(--font-display);
+}
+
+.p3-provider-records[open] > summary { border-bottom: 1px solid var(--p3-rule-soft); }
+.p3-provider-records__intro { padding: 24px 24px 0; }
+.p3-provider-records__intro h2 { margin: 0 0 8px; font-size: clamp(1.45rem, 2.5vw, 2rem); }
+.p3-provider-records__intro p { margin: 0; color: var(--p3-muted); }
+.p3-provider-records > .p3-intent-grid { padding: 24px; }
+
+.p3-category-hero,
+.p3-bulk-hero,
+.p3-index-hero,
+.p3-insights-hero,
+.p3-pharmacy-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: clamp(24px, 3vw, 34px);
+}
+
+:is(.p3-index-hero--visual, .p3-bulk-hero--visual) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 440px);
+  gap: clamp(24px, 4vw, 58px);
+  align-items: center;
+}
+.p3-visual-hero__copy { min-width: 0; }
+
+.p3-category-hero {
+  --p3-category-color: var(--cs-drug-semaglutide, #46dcab);
+  --p3-category-veil: var(--cs-veil-semaglutide);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: center;
+  /* Density (work order A8): their category hero is a tight ~320px block —
+     heading, controls, and the first card row share a laptop viewport. */
+  min-height: 0;
+  padding: clamp(28px, 3.6vw, 44px);
+  background: var(--p3-category-veil);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+:is(.p3-product-visual, .p3-provider-visual) {
+  display: block;
+  width: min(38vw, 440px);
+  overflow: hidden;
+  justify-self: end;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: clamp(18px, 2.6vw, 28px);
+  box-shadow: 0 34px 72px -42px rgba(8, 36, 29, 0.82);
+}
+:is(.p3-product-visual, .p3-provider-visual) img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Operator defect (work order A7, brand spec D1): the disclosure figcaption had
+   NO rule anywhere, so it inherited 18px body type with zero padding and its
+   last line rode the figure's rounded 18-28px bottom edge — reading as text
+   overflowing the card on the product hero and every related-product card.
+   The caption is now a quiet, inset disclosure line inside the panel. */
+:is(.p3-product-visual, .p3-provider-visual) figcaption {
+  margin: 0;
+  padding: 10px 16px 14px;
+  color: var(--cs-muted-on-paper, #51645c);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  background: rgba(255, 255, 255, 0.82);
+  border-top: 1px solid var(--cs-line-on-paper, rgba(20, 32, 27, 0.14));
+}
+
+.p3-category-hero--semaglutide {
+  --p3-category-color: var(--cs-drug-semaglutide, #46dcab);
+  --p3-category-veil: var(--cs-veil-semaglutide);
+}
+
+.p3-category-hero--tirzepatide {
+  --p3-category-color: var(--cs-drug-tirzepatide, #b3a4f5);
+  --p3-category-veil: var(--cs-veil-tirzepatide);
+}
+
+.p3-category-hero > div:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.p3-category-orb {
+  position: relative;
+  width: min(28vw, 280px);
+  aspect-ratio: 1;
+  justify-self: end;
+  background:
+    radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.92), transparent 15%),
+    radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--p3-category-color) 74%, white), var(--p3-category-color));
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 44% 56% 60% 40% / 51% 42% 58% 49%;
+  box-shadow: 0 34px 72px -40px color-mix(in srgb, var(--p3-category-color) 82%, transparent);
+  animation: none;
+}
+
+.p3-category-orb::before {
+  position: absolute;
+  inset: 18%;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: inherit;
+  content: "";
+}
+
+.p3-filterbar {
+  position: sticky;
+  z-index: 18;
+  top: 90px;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+  padding: clamp(20px, 3vw, 30px);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--cs-card-shadow-paper);
+  backdrop-filter: blur(18px);
+}
+
+.p3-filterbar[data-pharmacy-reverse-filters] {
+  position: relative;
+  z-index: auto;
+  top: auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.p3-filterbar fieldset {
+  grid-column: span 4;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.p3-filterbar fieldset legend {
+  margin-bottom: 9px;
+  color: var(--p3-muted);
+  font: 750 0.7rem/1.2 var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.p3-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.p3-filter-chips button,
+.p3-state-control > button,
+.p3-filter-empty button {
+  min-height: 38px;
+  padding: 8px 13px;
+  color: var(--p3-muted);
+  font: 700 0.8rem/1.1 var(--font-display);
+  background: rgba(20, 32, 27, 0.035);
+  background-position: 100% 50%;
+  background-size: 240% 100%;
+  border: 1px solid var(--p3-rule);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    color var(--duration-instant, 0ms) var(--p3-ease),
+    border-color var(--duration-instant, 0ms) var(--p3-ease),
+    background-position 120ms var(--ease-in-out-expo, cubic-bezier(0.87, 0, 0.13, 1)),
+    transform var(--duration-instant, 0ms) var(--p3-ease);
+}
+
+.p3-filter-chips button:hover,
+.p3-state-control > button:hover,
+.p3-filter-empty button:hover {
+  color: var(--p3-ink);
+  border-color: rgba(14, 125, 92, 0.4);
+  transform: translateY(-1px);
+}
+
+.p3-filter-empty button,
+.p3-filterbar [data-pharmacy-reverse-reset] {
+  min-height: 44px;
+}
+
+.p3-filterbar [data-pharmacy-reverse-reset] {
+  padding: 8px 13px;
+}
+
+[data-pharmacy-reverse-filters] label { min-width: 0; }
+[data-pharmacy-reverse-filters] select {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.p3-reverse-card {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 22px;
+}
+.p3-reverse-card > * { margin: 0; }
+.p3-reverse-card .p3-provider-identity h2 { font-size: clamp(1.35rem, 2vw, 1.75rem); }
+.p3-reverse-price {
+  display: grid;
+  gap: 3px;
+  padding: 15px;
+  background: var(--cs-accent-gradient-soft);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-control);
+}
+.p3-reverse-price > span {
+  color: var(--p3-muted);
+  font: 750 0.68rem/1.2 var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.p3-reverse-price > strong { color: var(--p3-ink); font: 800 2rem/1 var(--font-display); }
+.p3-reverse-price > strong small { color: var(--p3-muted); font: 600 0.8rem/1.2 var(--font-body); }
+.p3-reverse-price > small { color: var(--p3-muted); }
+.p3-reverse-card > .p3-wrap-actions {
+  display: grid;
+  gap: 9px;
+  margin-top: auto;
+}
+.p3-reverse-card > .p3-wrap-actions :is(.cs-btn, .cs-arrowlink) { width: 100%; }
+
+main[data-phase3-route="/pharmacies/"] [data-pharmacy-filters] button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.p3-filter-chips button[aria-selected="true"],
+.p3-filter-chips button:not([role="tab"])[aria-pressed="true"] {
+  color: var(--cs-ink-on-paper, #14201b);
+  background-image: var(--cs-accent-gradient);
+  background-position: 0 50%;
+  border-color: transparent;
+  box-shadow: 0 8px 20px -14px rgba(23, 168, 126, 0.55);
+}
+
+.p3-more-filters {
+  grid-column: span 8;
+  align-self: start;
+  overflow: visible;
+  background: rgba(20, 32, 27, 0.025);
+  border-color: var(--p3-rule-soft);
+  border-radius: var(--radius-control);
+  transition: background-color 200ms var(--p3-ease);
+}
+
+.p3-more-filters summary {
+  min-height: 44px;
+  padding: 11px 15px;
+  color: var(--p3-ink);
+  font-size: 0.86rem;
+}
+
+.p3-more-filters[open] {
+  background: rgba(20, 32, 27, 0.045);
+}
+
+.p3-more-filters > fieldset {
+  display: block;
+  width: auto;
+  margin: 0 14px 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--p3-rule-soft);
+  animation: none;
+}
+
+.p3-state-control {
+  position: relative;
+  grid-column: span 4;
+  align-self: end;
+}
+
+.p3-state-control > button {
+  width: 100%;
+  min-height: 44px;
+  color: var(--p3-ink);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.p3-state-popover {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 10px);
+  right: 0;
+  display: grid;
+  width: min(330px, calc(100vw - 32px));
+  max-height: 300px;
+  padding: 12px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule);
+  border-radius: var(--radius-card);
+  box-shadow: 0 28px 60px -26px rgba(20, 32, 27, 0.48);
+}
+
+.p3-state-popover[hidden] {
+  display: none;
+}
+
+.p3-state-popover input {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  margin-bottom: 8px;
+  color: var(--p3-ink);
+  background: var(--p3-panel);
+}
+
+.p3-state-popover button {
+  min-height: 44px;
+  padding: 8px 10px;
+  color: var(--p3-muted);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.p3-state-popover button:hover,
+.p3-state-popover button[aria-selected="true"] {
+  color: var(--p3-ink);
+  background: rgba(63, 217, 164, 0.12);
+}
+
+.p3-filter-result {
+  min-height: 1.5em;
+  margin: 18px 0 20px;
+  color: var(--p3-muted);
+  font-size: 0.9rem;
+}
+
+.p3-filter-empty,
+.p3-empty {
+  grid-column: 1 / -1;
+  padding: clamp(26px, 4vw, 42px);
+  color: var(--p3-muted);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px dashed rgba(20, 32, 27, 0.22);
+  border-radius: var(--radius-card);
+}
+
+.p3-filter-empty[hidden] {
+  display: none;
+}
+
+.p3-filter-empty :is(h2, h3),
+.p3-empty :is(h2, h3) {
+  margin-top: 0;
+  color: var(--p3-ink);
+}
+
+.p3-evidence-boundary {
+  display: block;
+  padding: 22px 24px;
+  color: #604b12;
+  line-height: 1.55;
+  background: var(--color-warning-bg, #fff4ce);
+  border: 1px solid rgba(126, 89, 0, 0.18);
+  border-left: 5px solid var(--color-warning, #a06b00);
+  border-radius: var(--radius-card);
+}
+
+/* --------------------------------------------------------------------------
+   Route hubs, bulk plans, self-pay, and route retirement
+   -------------------------------------------------------------------------- */
+
+.p3-index-hero,
+.p3-bulk-hero {
+  padding: clamp(42px, 6.5vw, 76px);
+  background:
+    radial-gradient(circle at 94% 12%, rgba(111, 198, 238, 0.18), transparent 25rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(234, 250, 243, 0.7));
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-index-hero::after,
+.p3-bulk-hero::after {
+  position: absolute;
+  right: clamp(24px, 6vw, 72px);
+  bottom: clamp(22px, 4vw, 48px);
+  width: clamp(70px, 10vw, 132px);
+  aspect-ratio: 1;
+  background: var(--cs-accent-gradient);
+  border-radius: 39% 61% 58% 42% / 54% 38% 62% 46%;
+  content: "";
+  opacity: 0.17;
+  transform: rotate(16deg);
+}
+
+.p3-index-hero > *,
+.p3-bulk-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.p3-index-hero h1,
+.p3-bulk-hero h1 {
+  max-width: 14ch;
+}
+
+/* Packs spec fix 2 (operator: our 3-month page "looks totally different"):
+   the preset routes are comparison tools, not editorial pages. Compress the
+   hero so headline + filter rail + the first card row land inside viewport 1. */
+.p3-bulk-hero {
+  padding: clamp(24px, 3.4vw, 40px) clamp(28px, 4vw, 52px);
+}
+
+.p3-bulk-hero h1 {
+  margin-bottom: 0.2em;
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+}
+
+.p3-bulk-hero .lede {
+  max-width: 62ch;
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.p3-intent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+
+.p3-intent-card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  min-height: 210px;
+  padding: clamp(22px, 3vw, 30px);
+  overflow: hidden;
+  color: var(--p3-ink);
+  text-decoration: none;
+  background: var(--p3-panel);
+  border: 1px solid transparent;
+}
+
+.p3-intent-card::before {
+  position: absolute;
+  right: -30px;
+  bottom: -38px;
+  width: 130px;
+  aspect-ratio: 1;
+  background: var(--cs-accent-gradient-soft);
+  border-radius: 50%;
+  content: "";
+  transition: transform 260ms var(--p3-ease), opacity 260ms var(--p3-ease);
+}
+
+.p3-intent-card::after {
+  margin-top: auto;
+  padding-top: 20px;
+  color: #0e7d5c;
+  content: "Explore →";
+  font-weight: 750;
+}
+
+.p3-intent-card:hover::before {
+  opacity: 0.78;
+  transform: scale(1.2);
+}
+
+.p3-intent-card :is(h2, p) {
+  position: relative;
+  z-index: 1;
+}
+
+.p3-intent-card h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+}
+
+.p3-intent-card p:last-of-type {
+  color: var(--p3-muted);
+  line-height: 1.5;
+}
+
+.p3-selfpay-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: clamp(30px, 5vw, 54px);
+  overflow: hidden;
+  color: var(--color-paper-50, #f2f8f4);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(169, 155, 242, 0.28), transparent 30%),
+    radial-gradient(circle at 12% 110%, rgba(63, 217, 164, 0.24), transparent 34%),
+    var(--color-ink-950, #07100d);
+  border: 1px solid rgba(233, 247, 241, 0.12);
+  border-radius: var(--radius-panel);
+  box-shadow: 0 34px 70px -46px rgba(7, 16, 13, 0.86);
+}
+
+.p3-selfpay-cta :is(h2, p, .gcs-kicker) {
+  margin-top: 0;
+}
+
+.p3-selfpay-cta h2 {
+  margin-bottom: 9px;
+  color: inherit;
+}
+
+.p3-selfpay-cta p {
+  max-width: 60ch;
+  margin-bottom: 0;
+  color: var(--color-ink-700, #a7bfb5);
+}
+
+.p3-selfpay-cta .gcs-kicker {
+  color: var(--cs-aurora-3, #3fd9a4);
+}
+
+.p3-selfpay-cta .cs-btn {
+  flex: 0 0 auto;
+}
+
+.p3-accordions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.p3-accordions > h2 {
+  grid-column: 1 / -1;
+  margin: 0 0 12px;
+}
+
+.p3-accordions details {
+  align-self: start;
+  overflow: hidden;
+  background: var(--p3-panel);
+  border-color: var(--p3-rule-soft);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-accordions summary {
+  min-height: 76px;
+  padding: 18px 20px;
+  color: var(--p3-ink);
+  font-size: 0.95rem;
+}
+
+.p3-accordions details > p {
+  margin: 0;
+  padding: 0 20px 20px;
+  color: var(--p3-muted);
+  line-height: 1.58;
+}
+
+.p3-accordions details[open] > p {
+  animation: none;
+}
+
+.p3-related {
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid var(--p3-rule);
+}
+
+.p3-related h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.p3-related > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.p3-related a {
+  padding: 9px 14px;
+  color: var(--p3-ink);
+  font-weight: 700;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid var(--p3-rule);
+  border-radius: var(--radius-pill);
+  transition: border-color 150ms var(--p3-ease), transform 150ms var(--p3-ease);
+}
+
+.p3-related a:hover {
+  border-color: rgba(14, 125, 92, 0.42);
+  transform: translateY(-1px);
+}
+
+/* Operator defect (work order A7): "Continue with source-checked Clinic Scout
+   research" rendered as a left-pinned column with dead right space because
+   `.p3-related > div { display: flex }` (0,1,1) silently out-ranked
+   `.p3-story-grid` (0,1,0), and the `.p3-related a` pill skin restyled the
+   story/product cards into translucent pills. These rules out-rank both and
+   restore the centered full-width 3-up shelf with real card identity. */
+.p3-related > .p3-story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.2vw, 24px);
+  width: 100%;
+}
+
+.p3-related :is(.p3-story, .p3-product-related-card) {
+  padding: 16px;
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-card, 18px);
+}
+
+.p3-related :is(.p3-story, .p3-product-related-card):hover {
+  border-color: rgba(14, 125, 92, 0.42);
+  transform: translateY(-2px);
+}
+
+.p3-page .p3-product-related .p3-product-related-card {
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.p3-page .p3-product-related .p3-product-related-card:is(:hover, :focus-visible) {
+  transform: translateY(-2px) scale(1.02);
+  background-color: color-mix(in srgb, var(--p3-panel) 88%, white) !important;
+}
+
+/* Keep the light-background/focus feedback without spatial motion. */
+@media (prefers-reduced-motion: reduce) {
+  .p3-page .p3-product-related .p3-product-related-card {
+    transition: none;
+  }
+
+  .p3-page .p3-product-related .p3-product-related-card:is(:hover, :focus-visible) {
+    transform: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .p3-related > .p3-story-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .p3-related > .p3-story-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.p3-redirect {
+  display: grid;
+  min-height: min(620px, 70vh);
+  place-content: center;
+  justify-items: start;
+  padding: clamp(42px, 8vw, 92px);
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-redirect h1 {
+  max-width: 10ch;
+}
+
+.p3-redirect > p:not(.gcs-kicker) {
+  max-width: 52ch;
+  color: var(--p3-muted);
+  font-size: 1.15rem;
+}
+
+.p3-redirect .cs-btn {
+  margin-top: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   Insights index and article augmentations
+   -------------------------------------------------------------------------- */
+
+.p3-insights-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 34px;
+  padding: clamp(42px, 6vw, 72px);
+  background:
+    radial-gradient(circle at 88% 10%, rgba(169, 155, 242, 0.22), transparent 28rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(234, 250, 243, 0.68));
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-insights-hero h1 {
+  max-width: 12ch;
+  color: #0e6f53;
+  background: var(--cs-accent-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.p3-insights-hero .cs-btn {
+  flex: 0 0 auto;
+}
+
+.p3-insight-cycle {
+  display: grid;
+  gap: clamp(18px, 2.4vw, 28px);
+}
+
+.p3-feature-story {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  min-height: 400px;
+  overflow: hidden;
+  color: var(--p3-ink);
+  text-decoration: none;
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--cs-card-shadow-paper);
+  transition: transform 150ms var(--p3-ease), box-shadow 260ms var(--p3-ease);
+}
+
+.p3-feature-story img {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  background: var(--cs-accent-gradient-soft);
+  transition: transform 260ms var(--p3-ease), filter 260ms var(--p3-ease);
+}
+
+.p3-feature-story > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(26px, 4vw, 44px);
+}
+
+.p3-feature-story h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+}
+
+.p3-feature-story p:last-child {
+  display: -webkit-box;
+  margin-bottom: 0;
+  overflow: hidden;
+  color: var(--p3-muted);
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.p3-feature-story:hover {
+  box-shadow: 0 30px 64px -38px rgba(20, 32, 27, 0.5);
+  transform: translateY(-2px);
+}
+
+.p3-feature-story:hover img {
+  filter: saturate(1.05);
+  transform: scale(1.025);
+}
+
+.p3-story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.2vw, 24px);
+}
+
+.p3-story {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 16px;
+  overflow: hidden;
+  color: var(--p3-ink);
+  text-decoration: none;
+  background: var(--p3-panel);
+  border: 1px solid transparent;
+}
+
+.p3-story img {
+  width: 100%;
+  height: 155px;
+  margin-bottom: 18px;
+  object-fit: cover;
+  background: var(--cs-accent-gradient-soft);
+  border-radius: 12px;
+  transition: transform 260ms var(--p3-ease), filter 260ms var(--p3-ease);
+}
+
+.p3-story .gcs-kicker {
+  margin-bottom: 8px;
+  font-size: 0.68rem;
+}
+
+.p3-story h3 {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.p3-story > p:last-child {
+  display: -webkit-box;
+  margin-bottom: 0;
+  overflow: hidden;
+  color: var(--p3-muted);
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+/* Packs-cost fix 8: generated story cards end in a CTA span, so the previous
+   :last-child rule missed their deks and let full summaries stretch the rail. */
+.p3-related .p3-story > p:not(.gcs-kicker) {
+  display: -webkit-box;
+  margin: 8px 0 12px;
+  overflow: hidden;
+  color: var(--p3-muted);
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.p3-related .p3-story > span:last-child { margin-top: auto; }
+
+/* Work-order A7/A8: the bulk-page display-heading rule made this utility shelf
+   title six lines tall. Keep the section centered but fit its heading and
+   three-card row inside one laptop viewport. */
+.p3-bulk-page .p3-related .section-heading h2 {
+  max-width: 24ch;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  line-height: 1.05;
+}
+
+.p3-story:hover img {
+  filter: saturate(1.05);
+  transform: scale(1.025);
+}
+
+.p3-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: clamp(42px, 6vw, 70px);
+}
+
+.p3-pagination :is(a, span) {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 15px;
+  border: 1px solid var(--p3-rule);
+  border-radius: var(--radius-pill);
+}
+
+.p3-pagination a {
+  color: var(--p3-ink);
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--p3-panel);
+  transition: border-color 150ms var(--p3-ease), transform 150ms var(--p3-ease);
+}
+
+.p3-pagination a:hover {
+  border-color: rgba(14, 125, 92, 0.42);
+  transform: translateY(-1px);
+}
+
+.p3-pagination span {
+  color: var(--p3-muted);
+  background: transparent;
+}
+
+.p3-article-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: min(calc(100% - (2 * var(--gutter, 24px))), var(--container-reading, 720px));
+  margin: clamp(18px, 3vw, 28px) auto;
+  padding: 12px 14px;
+  color: var(--text-secondary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+}
+
+.p3-article-share > span {
+  margin: 0 7px 0 3px;
+  font: 750 0.72rem/1 var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.p3-article-share a {
+  padding: 7px 12px;
+  color: var(--text-primary);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  transition: border-color 150ms var(--ease-out-expo), background-color 150ms var(--ease-out-expo);
+}
+
+.p3-article-share a:hover {
+  background: var(--color-mist-100);
+  border-color: var(--color-line-strong);
+}
+
+.p3-article-share[data-article-share] {
+  display: block;
+  margin-top: clamp(36px, 6vw, 72px);
+  padding: clamp(22px, 4vw, 40px);
+  color: #eff8f4;
+  background: #09251d;
+  border-color: rgba(255, 255, 255, 0.14);
+  border-radius: clamp(18px, 2.6vw, 28px);
+}
+.p3-article-share[data-article-share] :is(h2, p) { color: inherit; }
+.p3-article-share[data-article-share] h2 { max-width: 24ch; margin: 0 0 18px; }
+.p3-article-share[data-article-share] > div { display: flex; flex-wrap: wrap; gap: 10px; }
+.p3-article-share[data-article-share] [data-share-status] { min-height: 1.4em; margin: 12px 0 0; font-size: 0.84rem; }
+.p3-article-share[data-article-share] a { color: inherit; }
+
+.p3-keep-reading {
+  width: min(calc(100% - (2 * var(--gutter, 24px))), var(--container-content, 1180px));
+  margin: clamp(54px, 8vw, 96px) auto;
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid var(--color-line);
+}
+
+.p3-keep-reading > h2 {
+  margin: 0 0 24px;
+}
+
+.p3-keep-reading > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 32px);
+}
+
+.p3-keep-reading .cs-card {
+  position: relative;
+  display: grid;
+  min-height: 190px;
+  align-content: end;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.p3-keep-reading .cs-card::after {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  color: var(--color-evidence);
+  content: "↗";
+  font-size: 1.25rem;
+  transition: transform 150ms var(--ease-out-expo);
+}
+
+.p3-keep-reading .cs-card:hover::after {
+  transform: translate(2px, -2px);
+}
+
+.p3-keep-reading h3 {
+  margin: 0;
+}
+
+.p3-keep-reading .cs-card p {
+  margin-bottom: 0;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Pharmacy directory, detail, and reverse comparison
+   -------------------------------------------------------------------------- */
+
+.p3-pharmacy-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+  padding: clamp(20px, 3vw, 30px);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-pharmacy-filters label {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  color: var(--p3-muted);
+  font: 750 0.72rem/1.2 var(--font-display);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.p3-pharmacy-filters :is(input, select) {
+  min-width: 0;
+  color: var(--p3-ink);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  text-transform: none;
+  background: rgba(255, 255, 255, 0.78);
+  border-color: var(--p3-rule);
+}
+
+.p3-pharmacy-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+  min-width: 0;
+  padding: 24px;
+  overflow: hidden;
+  color: var(--p3-ink);
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  box-shadow: var(--cs-card-shadow-paper);
+  transition: transform 150ms var(--p3-ease), box-shadow 260ms var(--p3-ease);
+}
+
+.p3-pharmacy-card::before {
+  content: none;
+}
+
+.p3-pharmacy-index-head {
+  display: grid;
+  gap: 10px;
+  max-width: 900px;
+  margin-top: clamp(20px, 4vw, 42px);
+}
+
+.p3-pharmacy-index-head :is(h1, p) { margin-block: 0; }
+.p3-pharmacy-index-head > p:last-child { color: var(--p3-muted); font-size: 1.05rem; }
+
+.p3-pharmacy-method {
+  margin-top: clamp(48px, 7vw, 88px);
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-panel);
+  background: var(--p3-panel);
+}
+
+.p3-pharmacy-method :is(h2, p) { max-width: 72ch; }
+
+.p3-pharmacy-card .p3-molchip,
+.p3-pharmacy-card .p3-chip {
+  color: #063d30;
+  background: rgba(63, 217, 164, 0.2);
+  border-color: rgba(14, 111, 83, 0.34);
+}
+
+.p3-pharmacy-card:hover {
+  box-shadow: 0 28px 56px -36px rgba(20, 32, 27, 0.5);
+  transform: translateY(-3px);
+}
+
+.p3-pharmacy-mark {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 74px;
+  aspect-ratio: 1;
+  place-items: center;
+  color: var(--cs-ink-on-paper, #14201b);
+  font: 800 2rem/1 var(--font-display);
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.94), transparent 16%),
+    var(--cs-accent-gradient);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 40% 60% 55% 45% / 52% 42% 58% 48%;
+  box-shadow: 0 18px 34px -20px rgba(20, 32, 27, 0.48);
+}
+
+.p3-pharmacy-card > div:last-child {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.p3-pharmacy-card h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+.p3-pharmacy-card p {
+  color: var(--p3-muted);
+  line-height: 1.5;
+}
+
+.p3-pharmacy-facts {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.p3-pharmacy-facts > div {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid var(--p3-rule-soft);
+}
+
+.p3-pharmacy-facts dt {
+  color: var(--p3-muted);
+  font: 700 0.7rem/1.3 var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.p3-pharmacy-facts dd {
+  margin: 0;
+  color: var(--p3-ink);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.p3-pharmacy-card > div:last-child > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0e6f53;
+  font-weight: 750;
+}
+
+.p3-pharmacy-card > div:last-child > a::after {
+  content: "→";
+  transition: transform 150ms var(--p3-ease);
+}
+
+.p3-pharmacy-card > div:last-child > a:hover::after {
+  transform: translateX(3px);
+}
+
+.p3-tagrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 13px;
+}
+
+.p3-tagrow span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 6px 10px;
+  color: #075c45;
+  font: 750 0.68rem/1 var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(63, 217, 164, 0.12);
+  border: 1px solid rgba(14, 125, 92, 0.18);
+  border-radius: var(--radius-pill);
+}
+
+.p3-rating-empty {
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  background: rgba(20, 32, 27, 0.035);
+  border-left: 2px solid var(--p3-rule);
+  border-radius: 0 8px 8px 0;
+}
+
+.p3-pharmacy-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  align-items: center;
+  gap: 40px;
+  min-height: 430px;
+  padding: clamp(38px, 6vw, 72px);
+  background:
+    radial-gradient(circle at 94% 10%, rgba(169, 155, 242, 0.22), transparent 28rem),
+    var(--cs-veil-semaglutide);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-pharmacy-hero > div:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.p3-pharmacy-hero h1 {
+  max-width: 12ch;
+}
+
+.p3-pharmacy-mark--large {
+  width: 160px;
+  justify-self: end;
+  font-size: 4.6rem;
+  box-shadow: 0 34px 64px -34px rgba(20, 32, 27, 0.58);
+}
+
+.p3-classification-grid,
+.p3-detail-grid,
+.p3-action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+.p3-classification-grid {
+  margin-top: 18px;
+}
+
+.p3-classification-grid .cs-card {
+  color: var(--p3-ink);
+  background: var(--p3-panel);
+  border: 1px solid transparent;
+}
+
+.p3-classification-grid h3 {
+  margin: 0;
+}
+
+.p3-classification-grid p:last-child {
+  color: var(--p3-muted);
+}
+
+.p3-detail-grid > article {
+  min-width: 0;
+  padding: clamp(24px, 4vw, 38px);
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-card);
+}
+
+.p3-detail-grid h2 {
+  margin-top: 0;
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+}
+
+.p3-detail-grid article h2:not(:first-child) {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--p3-rule-soft);
+}
+
+.p3-detail-grid :is(p, li) {
+  color: var(--p3-muted);
+  line-height: 1.58;
+}
+
+.p3-action-grid {
+  align-items: start;
+}
+
+.p3-action {
+  padding: clamp(22px, 3vw, 32px);
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-card);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-action h3 {
+  margin: 0;
+}
+
+.p3-action p:not(.gcs-kicker),
+.p3-action small {
+  color: var(--p3-muted);
+}
+
+.p3-unknowns,
+.p3-advantage {
+  padding: clamp(30px, 5vw, 54px);
+  border-radius: var(--radius-panel);
+}
+
+.p3-unknowns {
+  color: #604b12;
+  background: var(--color-warning-bg, #fff4ce);
+  border: 1px solid rgba(126, 89, 0, 0.18);
+}
+
+.p3-unknowns h2 {
+  margin-top: 0;
+  color: #3d300e;
+}
+
+.p3-unknowns ul,
+.p3-advantage ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 28px;
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.p3-advantage {
+  color: var(--color-paper-50, #f2f8f4);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(111, 198, 238, 0.18), transparent 32%),
+    var(--color-ink-950, #07100d);
+  border: 1px solid rgba(233, 247, 241, 0.12);
+}
+
+.p3-advantage :is(h2, p, li) {
+  color: inherit;
+}
+
+.p3-advantage .gcs-kicker {
+  color: var(--cs-aurora-3, #3fd9a4);
+}
+
+.p3-advantage p,
+.p3-advantage small {
+  color: var(--color-ink-700, #a7bfb5);
+}
+
+.p3-source-rail {
+  padding-top: clamp(28px, 4vw, 46px);
+  border-top: 1px solid var(--p3-rule);
+}
+
+.p3-source-rail > h2 {
+  margin-top: 0;
+}
+
+.p3-source-rail ol {
+  display: grid;
+  grid-auto-columns: minmax(260px, 0.72fr);
+  grid-auto-flow: column;
+  gap: 14px;
+  margin: 0 calc(-1 * var(--gutter, 24px));
+  padding: 8px var(--gutter, 24px) 18px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  list-style: none;
+  scroll-snap-type: inline proximity;
+  scrollbar-color: rgba(14, 125, 92, 0.35) transparent;
+}
+
+.p3-source-rail li {
+  min-width: 0;
+  padding: 20px;
+  background: var(--p3-panel);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-card);
+  box-shadow: var(--cs-card-shadow-paper);
+  scroll-snap-align: start;
+}
+
+.p3-source-rail li > a {
+  color: #0e6f53;
+  font-size: 0.84rem;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.p3-source-rail blockquote {
+  margin: 14px 0 0;
+  padding-left: 13px;
+  color: var(--p3-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  border-left: 2px solid rgba(14, 125, 92, 0.26);
+}
+
+/* --------------------------------------------------------------------------
+   Tablet and mobile fidelity
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  .p3-product-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(270px, 0.7fr);
+    min-height: 560px;
+  }
+
+  .p3-provider-grid,
+  .p3-pharmacy-grid,
+  .p3-intent-grid,
+  .p3-story-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .p3-filterbar fieldset {
+    grid-column: span 6;
+  }
+
+  .p3-more-filters,
+  .p3-state-control {
+    grid-column: span 6;
+  }
+
+  .p3-pharmacy-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .p3-feature-story {
+    grid-template-columns: minmax(0, 1.45fr) minmax(260px, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .p3-page {
+    padding: 20px 16px 72px;
+    overflow: clip;
+  }
+
+  .p3-filterbar {
+    position: relative;
+    top: auto;
+  }
+
+  .p3-card-actions { grid-template-columns: 1fr; }
+
+  .p3-page > :is(section, aside, .p3-provider-grid, .p3-intent-grid, .p3-pharmacy-grid, .p3-filter-empty) {
+    margin-top: 48px;
+  }
+
+  .p3-page > :is(.p3-product-hero, .p3-category-hero, .p3-bulk-hero, .p3-index-hero, .p3-insights-hero, .p3-pharmacy-hero) {
+    margin-top: 0;
+  }
+
+  .p3-page h1 {
+    max-width: 100%;
+    font-size: clamp(2.85rem, 14vw, 4.5rem);
+    line-height: 0.94;
+  }
+
+  .p3-page .lede {
+    margin-top: 18px;
+    font-size: 1.08rem;
+    line-height: 1.55;
+  }
+
+  .p3-page .breadcrumbs {
+    margin-bottom: 24px;
+    font-size: 0.8rem;
+  }
+
+  .p3-page .section-heading {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .p3-page .section-heading > *,
+  .p3-page .section-heading > p:last-child {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .p3-product-hero {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    min-height: 0;
+    padding: 34px 24px 28px;
+  }
+
+  .p3-product-hero::before {
+    inset: auto -32% 4% 22%;
+  }
+
+  .p3-product-hero::after {
+    right: -28%;
+    bottom: -12%;
+    width: 88%;
+  }
+
+  .p3-hero-actions {
+    display: grid;
+  }
+
+  .p3-hero-actions .cs-btn {
+    width: 100%;
+  }
+
+  .p3-product-float {
+    width: min(100%, 300px);
+    justify-self: center;
+    padding: 34px;
+  }
+
+  .p3-product-float span {
+    font-size: clamp(2rem, 11vw, 3rem);
+  }
+
+  .p3-med-tabs {
+    width: calc(100% + 16px);
+    margin-right: -16px;
+    padding-right: 23px;
+    border-radius: var(--radius-card) 0 0 var(--radius-card);
+    scroll-padding-inline: 7px;
+    scroll-snap-type: inline proximity;
+  }
+
+  .p3-med-tabs a {
+    min-width: 124px;
+    scroll-snap-align: start;
+  }
+
+  .p3-selfpay-summary {
+    grid-template-columns: 1fr;
+    padding: 26px 24px;
+  }
+
+  .p3-selfpay-summary > a {
+    justify-self: start;
+  }
+
+  .p3-crosslinks {
+    grid-template-columns: 1fr;
+  }
+
+  .p3-insurance {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 32px 22px;
+  }
+
+  .p3-insurance h2 {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .p3-insurance form {
+    padding: 20px 16px;
+  }
+
+  .p3-progress-labels {
+    gap: 4px;
+    font-size: 0.65rem;
+  }
+
+  .p3-copay-picks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .p3-category-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 34px 24px 28px;
+  }
+
+  :is(.p3-index-hero--visual, .p3-bulk-hero--visual) {
+    grid-template-columns: 1fr;
+  }
+
+  .p3-category-orb {
+    width: min(68vw, 250px);
+    margin-top: 28px;
+    justify-self: center;
+  }
+
+  :is(.p3-product-visual, .p3-provider-visual) {
+    width: 100%;
+    margin-top: 24px;
+    justify-self: stretch;
+  }
+
+  .p3-filterbar {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px 14px;
+  }
+
+  .p3-filterbar[data-pharmacy-reverse-filters] {
+    grid-template-columns: 1fr;
+  }
+
+  .p3-filterbar fieldset,
+  .p3-more-filters,
+  .p3-state-control {
+    grid-column: 1;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .p3-filterbar fieldset:not(:first-of-type) .p3-filter-chips {
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .p3-filterbar fieldset:not(:first-of-type) .p3-filter-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .p3-filter-chips button {
+    flex: 0 0 auto;
+  }
+
+  .p3-more-filters {
+    max-height: none;
+    transition: background-color 200ms var(--p3-ease), opacity 150ms var(--p3-ease);
+  }
+
+  .p3-state-popover {
+    position: absolute;
+    right: auto;
+    left: 50%;
+    width: min(330px, calc(100vw - 32px));
+    max-height: 300px;
+    transform: translateX(-50%);
+  }
+
+  .p3-provider-grid,
+  .p3-pharmacy-grid,
+  .p3-intent-grid,
+  .p3-story-grid,
+  .p3-classification-grid,
+  .p3-detail-grid,
+  .p3-action-grid,
+  .p3-accordions,
+  .p3-keep-reading > div {
+    grid-template-columns: 1fr;
+  }
+
+  .p3-provider-card {
+    width: 100%;
+  }
+
+  .p3-provider-card header {
+    min-height: 122px;
+  }
+
+  .p3-intent-card {
+    min-height: 190px;
+  }
+
+  .p3-selfpay-cta {
+    display: grid;
+    padding: 30px 24px;
+  }
+
+  .p3-selfpay-cta .cs-btn {
+    width: 100%;
+  }
+
+  .p3-accordions > h2 {
+    margin-bottom: 4px;
+  }
+
+  .p3-accordions summary {
+    min-height: 0;
+  }
+
+  .p3-index-hero,
+  .p3-bulk-hero,
+  .p3-insights-hero,
+  .p3-pharmacy-hero {
+    padding: 34px 24px;
+  }
+
+  .p3-index-hero::after,
+  .p3-bulk-hero::after {
+    right: 18px;
+    bottom: 16px;
+    width: 74px;
+  }
+
+  .p3-insights-hero {
+    display: grid;
+    align-items: start;
+  }
+
+  .p3-insights-hero .cs-btn {
+    width: 100%;
+  }
+
+  .p3-feature-story {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .p3-feature-story img {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .p3-feature-story > div {
+    padding: 26px 22px 30px;
+  }
+
+  .p3-story {
+    padding: 14px;
+  }
+
+  .p3-story img {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .p3-pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .p3-pagination :is(a, span) {
+    padding-inline: 12px;
+  }
+
+  .p3-article-share {
+    width: calc(100% - 32px);
+    border-radius: var(--radius-card);
+  }
+
+  .p3-article-share > span {
+    width: 100%;
+    margin-bottom: 3px;
+  }
+
+  .p3-keep-reading {
+    width: calc(100% - 32px);
+  }
+
+  .p3-pharmacy-filters {
+    grid-template-columns: 1fr;
+    padding: 18px 14px;
+  }
+
+  .p3-pharmacy-card {
+    grid-template-columns: 66px minmax(0, 1fr);
+    padding: 20px;
+    background: linear-gradient(180deg, var(--cs-accent-gradient-soft) 0 136px, var(--p3-panel) 136px);
+  }
+
+  .p3-pharmacy-mark {
+    width: 66px;
+    font-size: 1.7rem;
+  }
+
+  .p3-pharmacy-hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    min-height: 0;
+  }
+
+  .p3-pharmacy-mark--large {
+    width: 130px;
+    justify-self: start;
+    font-size: 3.7rem;
+  }
+
+  .p3-unknowns ul,
+  .p3-advantage ul {
+    grid-template-columns: 1fr;
+  }
+
+  .p3-source-rail ol {
+    grid-auto-columns: minmax(248px, 82vw);
+  }
+
+  .p3-redirect {
+    min-height: 520px;
+    padding: 36px 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .p3-page {
+    padding-inline: 14px;
+  }
+
+  .p3-page h1 {
+    font-size: clamp(2.65rem, 13.5vw, 3.55rem);
+  }
+
+  .p3-product-hero,
+  .p3-category-hero,
+  .p3-index-hero,
+  .p3-bulk-hero,
+  .p3-insights-hero,
+  .p3-pharmacy-hero {
+    padding-inline: 20px;
+  }
+
+  .p3-product-float {
+    width: min(100%, 272px);
+  }
+
+  .p3-source-price > strong {
+    font-size: 2.4rem;
+  }
+
+  .p3-pharmacy-card {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px 16px;
+  }
+
+  .p3-pharmacy-mark {
+    width: 58px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .p3-page :is(.p3-provider-card, .p3-pharmacy-card, .p3-intent-card, .p3-feature-story, .p3-story):hover {
+    transform: none;
+  }
+
+  .p3-page .cs-card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p3-page *,
+  .p3-page *::before,
+  .p3-page *::after,
+  .p3-article-share *,
+  .p3-keep-reading * {
+    scroll-behavior: auto !important;
+    animation-duration: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0ms !important;
+  }
+
+  .p3-product-float,
+  .p3-category-orb,
+  .p3-card-aurora {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
+/* Provider-detail mobile action bar: measured 390×81 fixed geometry. */
+.p3-provider-sticky {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .p3-provider-sticky {
+    position: fixed;
+    z-index: 40;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    min-height: 81px;
+    margin: 0;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    color: var(--p3-ink);
+    background: var(--color-paper-50, #f2f8f4);
+    border-top: 1px solid var(--p3-rule);
+    box-shadow: 0 -16px 36px -26px rgba(7, 16, 13, 0.65);
+  }
+
+  .p3-provider-sticky > span {
+    display: grid;
+    min-width: 0;
+    line-height: 1.1;
+  }
+
+  .p3-provider-sticky small {
+    color: var(--p3-muted);
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .p3-provider-sticky strong {
+    overflow: hidden;
+    font-size: 0.92rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .p3-provider-sticky .cs-btn {
+    min-height: 48px;
+    padding: 0 14px;
+    white-space: nowrap;
+  }
+
+  /* Link-dark providers keep the full unavailability explanation in the hero.
+     Repeating it in the fixed action bar forced the measured 81px bar above
+     200px on narrow screens and obscured the record. The bar retains the
+     provider identity and its valid fit action without implying a live link. */
+  .p3-provider-sticky:has([data-affiliate-unavailable]) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .p3-provider-sticky [data-affiliate-unavailable] {
+    display: none;
+  }
+
+  .p3-provider-sticky.is-released {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 370px) {
+  .p3-provider-sticky {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .p3-provider-sticky [data-provider-sticky-review] {
+    display: none;
+  }
+}
+
+
+/* Work order A5/A8: keep the legally required affiliate disclosure, but as a
+   compact one-line note — it must not read as another content card. */
+.p3-source-disclosure {
+  padding: 10px 14px;
+  color: var(--p3-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid var(--p3-rule-soft);
+  border-left: 3px solid var(--cs-aurora-2, #5ed1ff);
+  border-radius: 12px;
+}
+
+.p3-source-disclosure strong {
+  color: var(--p3-ink);
+}
+
+.cs-match-chip {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 24px;
+  padding: 4px 9px;
+  color: #07543f;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.1;
+  background: rgba(93, 233, 180, 0.2);
+  border: 1px solid rgba(14, 125, 92, 0.24);
+  border-radius: 999px;
+}
+
+.cs-match-chip[hidden] {
+  display: none;
+}
+
+/* W18 — mobile provider/pharmacy controls and fixed-action invariants. */
+.cs-mobile-filter-trigger,
+.cs-mobile-filter-header,
+.cs-mobile-filter-backdrop { display: none; }
+@media (max-width: 760px) {
+  .cs-mobile-filter-trigger {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; min-height: 52px; margin-top: 18px; padding: 0 16px;
+    border: 1px solid var(--p3-rule); border-radius: 999px;
+    background: var(--p3-panel); color: var(--p3-ink); box-shadow: var(--cs-card-shadow-paper);
+    font: inherit; font-weight: 800; cursor: pointer;
+  }
+  .cs-mobile-filter-trigger > span:last-child { color: var(--p3-muted); font-size: 0.76rem; }
+  .cs-mobile-filter-backdrop {
+    position: fixed; inset: 0; z-index: 218; width: 100%; height: 100%;
+    display: block; padding: 0; border: 0; background: rgba(0, 0, 0, 0.54); backdrop-filter: blur(5px);
+  }
+  .cs-mobile-filter-backdrop[hidden] { display: none; }
+  :is(.p3-filterbar, .p3-pharmacy-filters)[data-mobile-filter-ready="true"],
+  .p3-page.listing[data-listing-archetype] :is(.p3-filterbar, .p3-pharmacy-filters)[data-mobile-filter-ready="true"] {
+    position: fixed; inset: auto 0 0; z-index: 219; display: grid; width: 100%; max-height: min(78dvh, 680px);
+    margin: 0; padding: 18px 16px calc(20px + env(safe-area-inset-bottom)); overflow-y: auto;
+    border: 0; border-radius: 24px 24px 0 0; background: var(--p3-canvas, #f7f5ee);
+    box-shadow: 0 -24px 70px rgba(0, 0, 0, 0.38); opacity: 0; transform: translateY(100%);
+    transition: opacity 220ms ease, transform 240ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  :is(.p3-filterbar, .p3-pharmacy-filters)[data-mobile-filter-ready="true"].is-open,
+  .p3-page.listing[data-listing-archetype] :is(.p3-filterbar, .p3-pharmacy-filters)[data-mobile-filter-ready="true"].is-open { opacity: 1; transform: none; }
+  .cs-mobile-filter-header {
+    position: sticky; top: -18px; z-index: 2; grid-column: 1 / -1;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    margin: -18px -16px 4px; padding: 16px; border-bottom: 1px solid var(--p3-rule-soft);
+    background: rgba(247, 245, 238, 0.97); backdrop-filter: blur(18px);
+  }
+  .cs-mobile-filter-header strong { font-family: var(--font-display); font-size: 1.05rem; }
+  .cs-mobile-filter-header button {
+    min-height: 44px; padding: 0 15px; border: 0; border-radius: 999px;
+    background: var(--p3-accent); color: #04120e; font: inherit; font-weight: 800; cursor: pointer;
+  }
+  .p3-filterbar fieldset { grid-column: 1 / -1; }
+  .p3-filter-chips, [data-bulk-drug] {
+    display: flex; max-width: 100%; overflow-x: auto; gap: 8px; padding-bottom: 4px;
+    scroll-snap-type: x proximity; scrollbar-width: none;
+  }
+  .p3-filter-chips::-webkit-scrollbar, [data-bulk-drug]::-webkit-scrollbar { display: none; }
+  .p3-filter-chips button, [data-bulk-drug-value] { flex: 0 0 auto; min-height: 44px; scroll-snap-align: start; }
+  .p3-pharmacy-filters label { grid-column: 1 / -1; }
+  .p3-pharmacy-filters :is(input, select, button) { min-height: 48px; }
+  .p3-state-popover {
+    position: static;
+    inset: auto;
+    width: 100%;
+    max-height: min(50dvh, 360px);
+    margin-top: 8px;
+    transform: none;
+  }
+  .p3-page:has([data-provider-sticky]) { padding-bottom: calc(116px + env(safe-area-inset-bottom)); }
+  .p3-provider-sticky { transition: none; }
+  .p3-provider-sticky :is(a, button) { min-height: 48px; }
+  .p3-provider-card :is(a, button), .p3-story :is(a, button), .p3-pharmacy-card :is(a, button) { min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.p3-filterbar, .p3-pharmacy-filters)[data-mobile-filter-ready="true"], .p3-provider-sticky { transition-duration: 0ms; animation-duration: 0ms; }
+}
+
+/* Pass-2 Phase-3 gap repairs: state is explicit and every visual remains bound to
+   the existing product/article derivative inventory. */
+.p3-insurance-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.p3-insurance-paths article {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: 14px;
+}
+
+.p3-insurance-paths :is(h3, p) { margin: 0; }
+.p3-insurance-paths h3 { margin-bottom: 7px; }
+
+.p3-product-related > div:last-child,
+.p3-pharmacy-related > div:last-child {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.p3-product-related-card {
+  display: grid;
+  gap: 8px;
+  overflow: hidden;
+  color: var(--p3-ink);
+  text-decoration: none;
+}
+
+.p3-product-card-picture,
+.p3-story-picture {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.p3-product-card-picture img,
+.p3-story-picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.p3-product-card-picture img { aspect-ratio: 1; }
+.p3-story-picture img { aspect-ratio: 16 / 9; }
+
+[data-dose-row][data-selected="true"],
+[data-dose-row].is-selected-dose {
+  background: rgba(93, 233, 180, 0.18);
+  box-shadow: inset 3px 0 0 #0e7d5c;
+}
+
+.p3-additive-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 10px 0;
+}
+
+.p3-additive-chips span {
+  padding: 5px 9px;
+  color: #604b12;
+  font-size: 0.76rem;
+  font-weight: 750;
+  background: #fff4ce;
+  border: 1px solid rgba(126, 89, 0, 0.2);
+  border-radius: 999px;
+}
+
+.p3-pharmacy-related a {
+  display: grid;
+  gap: 6px;
+  color: var(--p3-ink);
+  text-decoration: none;
+}
+
+.p3-article-author,
+.p3-article-faq {
+  width: min(100% - 32px, 920px);
+  margin: 20px auto;
+  padding: clamp(18px, 3vw, 28px);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: var(--radius-card);
+}
+
+.p3-article-author p:last-child { margin-bottom: 0; }
+
+/* Carrier FAQs are paper modules inside the dark guide shell. */
+main.guide-shell .p3-article-faq {
+  --p3-ink: #14201b;
+  --text-primary: #14201b;
+  --text-secondary: #51645c;
+  color: #14201b;
+  background: #fffdf7;
+}
+main.guide-shell .p3-article-faq :is(h2, summary, p) {
+  color: #14201b;
+}
+main.guide-shell .p3-article-faq .gcs-kicker {
+  color: #11674f;
+}
+
+.p3-article-faq details {
+  padding: 14px 0;
+  border-top: 1px solid var(--p3-rule-soft);
+}
+
+.p3-article-faq summary {
+  color: var(--p3-ink);
+  font-weight: 800;
+  cursor: pointer;
+  /* >=44px activation box for the disclosure control (measured 29px on 2026-09-17); list-item keeps the marker */
+  box-sizing: border-box;
+  min-height: 44px;
+  padding-block: 10px;
+}
+
+/* Pass-2 review hub and governed submission surface. Generated editorial art
+   is deliberately separate from authentic moderated review evidence. */
+.p3-review-hub,
+.p3-review-submit {
+  display: grid;
+  gap: clamp(28px, 5vw, 64px);
+  padding-bottom: clamp(64px, 8vw, 112px);
+}
+
+.p3-review-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(34px, 6vw, 78px);
+  overflow: hidden;
+  color: #eefbf5;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(93, 233, 180, 0.2), transparent 26rem),
+    linear-gradient(135deg, #071713, #0c2622 58%, #0a171f);
+  border-radius: clamp(22px, 3vw, 38px);
+  box-shadow: 0 36px 90px -46px rgba(3, 20, 17, 0.85);
+}
+
+.p3-review-hero :is(h1, h2, p) { color: inherit; }
+.p3-review-hero h1 { max-width: 12ch; margin: 0 0 18px; }
+.p3-review-hero p { max-width: 58ch; }
+.p3-review-hero__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+
+.p3-review-approved-state {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 0;
+}
+.p3-review-approved-state div {
+  min-width: 150px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.p3-review-approved-state dt { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.72; }
+.p3-review-approved-state dd { margin: 3px 0 0; font: 800 1.2rem/1.1 var(--p3-display); }
+
+.p3-review-visual {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: clamp(18px, 2.5vw, 30px);
+  box-shadow: 0 32px 70px -32px rgba(0, 0, 0, 0.78);
+}
+
+.p3-review-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.p3-review-directory,
+.p3-review-method,
+.p3-review-form-wrap {
+  padding: clamp(28px, 5vw, 64px);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: clamp(20px, 3vw, 34px);
+  box-shadow: var(--cs-card-shadow-paper);
+}
+
+.p3-review-directory__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
+  gap: 24px;
+  align-items: end;
+  margin-bottom: clamp(24px, 4vw, 42px);
+}
+
+.p3-review-directory__head :is(h2, p) { margin-top: 0; }
+.p3-review-search { display: grid; gap: 7px; color: var(--p3-muted); font-weight: 750; }
+.p3-review-search input { width: 100%; min-height: 48px; }
+.p3-review-search span { min-height: 1.4em; font-size: 0.82rem; font-weight: 650; }
+
+.p3-review-type-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 24px;
+}
+.p3-review-type-filter button[aria-pressed="true"] {
+  color: #fff;
+  background: var(--p3-forest);
+  border-color: var(--p3-forest);
+}
+
+.p3-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px);
+}
+.p3-review-load-more { display: flex; margin: 28px auto 0; }
+.p3-review-load-more[hidden] { display: none; }
+
+.p3-review-card {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: 10px;
+  min-width: 0;
+  padding: clamp(18px, 2.6vw, 28px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: 20px;
+  box-shadow: 0 20px 45px -36px rgba(14, 38, 31, 0.75);
+}
+
+.p3-review-card[hidden],
+.p3-empty[hidden] { display: none; }
+.p3-review-card :is(h2, p) { margin: 0; }
+.p3-review-card h2 { font-size: clamp(1.25rem, 2.1vw, 1.75rem); }
+.p3-review-card__logo,
+.p3-review-card__wordmark {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 76px;
+  padding: 12px;
+  overflow: hidden;
+  color: var(--p3-ink);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 850;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--p3-rule-soft);
+  border-radius: 14px;
+}
+
+.p3-review-card__logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.p3-review-method h2 { max-width: 20ch; }
+.p3-review-method .p3-feature-grid { margin-top: 24px; }
+
+.p3-review-form-wrap {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.p3-review-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.p3-review-form > label,
+.p3-review-form > fieldset { display: grid; gap: 7px; min-width: 0; margin: 0; font-weight: 780; }
+.p3-review-form > label:has(textarea),
+.p3-review-form > .p3-check,
+.p3-review-form > button,
+.p3-review-form > .p3-form-status { grid-column: 1 / -1; }
+.p3-review-form :is(input:not([type="radio"]):not([type="checkbox"]), select, textarea) { width: 100%; }
+.p3-review-form small { color: var(--p3-muted); font-size: 0.79rem; font-weight: 600; line-height: 1.45; }
+.p3-review-form .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.p3-review-form .p3-check { grid-template-columns: auto 1fr; align-items: start; font-weight: 650; }
+.p3-review-form .p3-check input { margin-top: 0.28em; }
+
+.p3-rating,
+.p3-entity-type { padding: 0; border: 0; }
+.p3-rating legend,
+.p3-entity-type legend { margin-bottom: 7px; }
+.p3-rating > div { display: grid; grid-template-columns: repeat(5, minmax(44px, 1fr)); gap: 7px; }
+.p3-entity-type > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.p3-rating label,
+.p3-entity-type label { position: relative; min-width: 0; }
+.p3-rating input,
+.p3-entity-type input { position: absolute; opacity: 0; }
+.p3-rating label > span,
+.p3-entity-type label > span {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  color: var(--p3-ink);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--p3-rule);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.p3-rating input:checked + span,
+.p3-entity-type input:checked + span { color: #04120e; background: var(--p3-accent); border-color: #0e7d5c; }
+.p3-rating input:focus-visible + span,
+.p3-entity-type input:focus-visible + span { outline: 3px solid var(--p3-focus, #2a75ff); outline-offset: 2px; }
+.p3-form-status { min-height: 1.5em; margin: 0; color: var(--p3-muted); }
+
+@media (max-width: 900px) {
+  .p3-review-hero,
+  .p3-review-form-wrap { grid-template-columns: 1fr; }
+  .p3-review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .p3-review-directory__head,
+  .p3-review-grid,
+  .p3-review-form { grid-template-columns: 1fr; }
+  .p3-review-form > * { grid-column: 1 !important; }
+  .p3-review-hero,
+  .p3-review-directory,
+  .p3-review-method,
+  .p3-review-form-wrap { padding: 22px; border-radius: 20px; }
+}
+
+@media (max-width: 760px) {
+  .p3-insurance-paths,
+  .p3-product-related > div:last-child,
+  .p3-pharmacy-related > div:last-child { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   PASS 3 / PHASE 3 / LANE F — DESKTOP ACCEPTANCE CONTRACT
+
+   This final Phase 3 layer deliberately owns desktop geometry and containment.
+   Copy keeps a readable measure, while page furniture, filter rails, listings,
+   directories, and editorial cycles use the available 1440/1366 canvas.
+   ========================================================================== */
+
+.p3-page {
+  --p3-max: 1320px;
+  --p3-reading: 70ch;
+
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.p3-page > *,
+.p3-page :is(
+  section,
+  article,
+  aside,
+  nav,
+  form,
+  fieldset,
+  details,
+  header,
+  div,
+  picture,
+  img
+) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.p3-page :is(h1, h2, h3, p, li, blockquote, small, strong, span, a, button, summary, label, legend, output) {
+  overflow-wrap: anywhere;
+}
+
+.p3-page :is(img, svg, video, canvas) {
+  max-width: 100%;
+}
+
+.p3-page :is(.cs-btn, button, summary) {
+  height: auto;
+  white-space: normal;
+}
+
+.p3-page .lede,
+.p3-page .section-heading > p:last-child,
+.p3-page :is(.p3-evidence-boundary, .p3-source-disclosure) {
+  max-width: var(--p3-reading);
+}
+
+/* Decorative masks must never become content masks. Each decoration is kept
+   inside its own box while text, source links, and actions may grow normally. */
+.p3-page :is(
+  .p3-provider-card,
+  .p3-pharmacy-card,
+  .p3-intent-card,
+  .p3-product-related-card,
+  .p3-story
+) {
+  min-width: 0;
+  overflow: visible;
+  border-radius: var(--radius-card, 18px);
+}
+
+.p3-card-aurora {
+  overflow: clip;
+  pointer-events: none;
+  border-radius: var(--radius-card, 18px) var(--radius-card, 18px) 0 0;
+}
+
+.p3-pharmacy-card::before {
+  top: 8px;
+  right: 8px;
+  width: 104px;
+  opacity: 0.78;
+}
+
+.p3-intent-card::before {
+  right: 12px;
+  bottom: 12px;
+  width: 88px;
+  opacity: 0.5;
+}
+
+.p3-page :is(.p3-provider-card, .p3-pharmacy-card, .p3-intent-card, .p3-story, .p3-feature-story) > * {
+  min-width: 0;
+}
+
+/* Provider identity owns a high-contrast tile on top of the aurora band. The
+   atlas tile geometry remains pinned; text fallbacks may wrap instead of clip. */
+.p3-page .p3-provider-card header {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(63, 217, 164, 0.24), transparent 52%),
+    radial-gradient(circle at 92% 16%, rgba(169, 155, 242, 0.22), transparent 48%),
+    linear-gradient(135deg, rgba(233, 250, 243, 0.96), rgba(238, 235, 255, 0.9));
+  border-radius: var(--radius-card, 18px) var(--radius-card, 18px) 0 0;
+}
+
+.p3-page .p3-provider-identity {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.p3-page .p3-provider-identity > :is(h1, h2, h3) {
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: unset;
+  white-space: normal;
+}
+
+/* A4 LOGO ROOT-CAUSE (design pass 2026-08-26): these chip rules previously used
+   the `background` SHORTHAND. In the site-editorial.css bundle this layer
+   concatenates AFTER 40-editorial.css, so the shorthand reset the sprite rule's
+   `background-image` to none at equal (0,3,0) specificity — every atlas chip on
+   the /lp/ category pages painted as a blank white (light) or near-black (dark)
+   rectangle. Chips must only ever set background-COLOR, and the sprite rule
+   below re-asserts its own image properties so no bundle order can regress it. */
+.p3-page .p3-provider-identity .provider-logo {
+  display: grid;
+  width: 96px;
+  min-width: 96px;
+  height: 54px;
+  min-height: 54px;
+  max-width: 100%;
+  padding: 7px 9px;
+  place-items: center;
+  overflow: clip;
+  color: #14201b;
+  background-color: #fff;
+  border: 1px solid rgba(20, 32, 27, 0.14);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px -18px rgba(7, 16, 13, 0.72);
+}
+
+.p3-page .p3-provider-identity .provider-logo--dark {
+  color: #f4f7f4;
+  background-color: #07100d;
+  border-color: rgba(244, 247, 244, 0.24);
+}
+
+.p3-page .p3-provider-identity .provider-logo.provider-logo--sprite {
+  width: 96px;
+  min-width: 96px;
+  height: 46px;
+  min-height: 46px;
+  padding: 0;
+  background-image: url("/assets/provider-logos/pass2-lp-atlas.webp");
+  background-repeat: no-repeat;
+  background-size: var(--p3-logo-atlas-width) var(--p3-logo-atlas-height);
+  background-position: var(--p3-logo-x) var(--p3-logo-y);
+}
+
+.p3-page .p3-provider-identity .provider-logo--wordmark {
+  width: 96px;
+  min-width: 96px;
+  height: auto;
+  min-height: 54px;
+}
+
+.p3-page .p3-provider-identity .provider-logo--wordmark .provider-wordmark {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  color: inherit;
+  font-size: clamp(0.62rem, 0.7vw, 0.8rem);
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+  text-overflow: unset;
+  white-space: normal;
+}
+
+.p3-page .p3-provider-card .p3-feature-chips {
+  max-width: 100%;
+  padding: 18px 24px 0;
+}
+
+.p3-page .p3-provider-card :is(.p3-feature-chips > span, .p3-state-evidence, .p3-review-state) {
+  max-width: 100%;
+  white-space: normal;
+}
+
+.p3-page .p3-provider-card :is(.p3-state-evidence, .p3-review-state) {
+  width: auto;
+  margin: 16px 24px 0;
+  line-height: 1.45;
+}
+
+.p3-page .p3-provider-card .p3-state-evidence {
+  padding: 12px 14px;
+  color: var(--p3-muted);
+  background: rgba(20, 32, 27, 0.035);
+  border-left: 3px solid rgba(14, 125, 92, 0.38);
+  border-radius: 0 10px 10px 0;
+}
+
+/* Category spec §2 deviation 6: honest no-reviews state stays, but as one
+   quiet muted line below the CTA instead of a visually heavy warning chip. */
+.p3-page .p3-provider-card .p3-review-state {
+  display: block;
+  padding: 0;
+  margin: 12px 22px 0;
+  color: var(--p3-muted);
+  font-size: 0.74rem;
+  font-weight: 500;
+  background: transparent;
+  border-radius: 0;
+}
+
+.p3-page .p3-source-price {
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  max-width: 100%;
+}
+
+.p3-page :is(.p3-source-price, .p3-dose-grid, .p3-card-actions, [data-dose-pricing-for]) :is(a, span, strong, small, p, li) {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.p3-page .p3-card-actions {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.p3-page .p3-card-actions .cs-btn {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  padding-block: 10px;
+}
+
+/* Filter and directory controls wrap within their assigned grid tracks. Native
+   controls remain usable when enhancement never runs. */
+.p3-page :is(.p3-filterbar, .p3-pharmacy-filters) > *,
+.p3-page :is(.p3-filterbar, .p3-pharmacy-filters) :is(fieldset, label, select, input, button),
+.p3-page :is(.p3-filter-chips, .p3-tagrow, .p3-additive-chips) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.p3-page :is(.p3-filterbar, .p3-pharmacy-filters) :is(select, input) {
+  width: 100%;
+}
+
+.p3-page .p3-filter-chips button {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+.p3-page :is(.p3-filter-empty, .p3-empty) {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Editorial descriptions are never line-clamped; a variable-height card is
+   preferable to silently dropping a title or source-qualified sentence. */
+.p3-feature-story p:last-child,
+.p3-story h3,
+.p3-story > p:last-child {
+  display: block;
+  overflow: visible;
+  -webkit-box-orient: initial;
+  -webkit-line-clamp: unset;
+}
+
+.p3-story-picture,
+.p3-product-card-picture {
+  overflow: clip;
+  border-radius: 12px;
+}
+
+/* Branded editorial renders use contain, never cover. This preserves the full
+   generated composition and exact brand lettering in hero and related cards. */
+.p3-page :is(.p3-product-float, .p3-product-card-picture) {
+  background:
+    radial-gradient(circle at 16% 8%, rgba(63, 217, 164, 0.22), transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(169, 155, 242, 0.2), transparent 42%),
+    rgba(255, 255, 255, 0.78);
+}
+
+.p3-page :is(.p3-product-float, .p3-product-card-picture) img {
+  width: 100%;
+  height: 100%;
+  padding: clamp(10px, 1.4vw, 20px);
+  object-fit: contain !important;
+  object-position: 50% 50%;
+}
+
+
+/* Time-based CSS loops are opt-in while the surface is actively hovered or
+   keyboard-focused. Their idle/offscreen state spends no animation frames. */
+.p3-category-orb,
+.p3-card-aurora {
+  animation: none;
+}
+
+.p3-category-hero:is(:hover, :focus-within) .p3-category-orb,
+.p3-provider-card:is(:hover, :focus-within) .p3-card-aurora,
+.p3-page .is-motion-visible :is(.p3-category-orb, .p3-card-aurora) {
+  animation: none;
+}
+
+/* Wide desktop anatomy: brand artwork leads on the left, copy follows on the
+   right, and listing/editorial cycles retain three readable tracks. */
+@media (min-width: 1100px) {
+  .p3-page {
+    --p3-max: 1320px;
+  }
+
+  .p3-product-hero {
+    grid-template-columns: minmax(360px, 0.78fr) minmax(0, 1fr);
+    min-height: clamp(540px, 64vh, 620px);
+  }
+
+  .p3-product-hero > div:first-child {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .p3-product-hero > .p3-product-float {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .p3-provider-grid,
+  .p3-pharmacy-grid,
+  .p3-intent-grid,
+  .p3-story-grid,
+  .p3-product-related > div:last-child,
+  .p3-pharmacy-related > div:last-child {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .p3-page > :is(.p3-filterbar, .p3-pharmacy-filters) {
+    width: min(100%, var(--p3-max));
+  }
+}
+
+/* The shorter 1366×768 target keeps its full anatomy above the fold without
+   collapsing desktop grids or surrendering page width. */
+@media (min-width: 1100px) and (max-height: 820px) {
+  .p3-page {
+    padding-top: 24px;
+  }
+
+  .p3-page > :is(section, aside, .p3-provider-grid, .p3-intent-grid, .p3-pharmacy-grid, .p3-filter-empty) {
+    margin-top: clamp(42px, 5vw, 64px);
+  }
+
+  .p3-page > :is(.p3-product-hero, .p3-category-hero, .p3-bulk-hero, .p3-index-hero, .p3-insights-hero, .p3-pharmacy-hero) {
+    margin-top: 0;
+  }
+
+  .p3-page h1 {
+    font-size: clamp(3rem, 6.2vw, 5.2rem);
+  }
+
+  .p3-product-hero {
+    min-height: 510px;
+    padding-block: 44px;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .p3-category-orb,
+  .p3-card-aurora {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p3-page,
+  .p3-page *,
+  .p3-page *::before,
+  .p3-page *::after {
+    scroll-behavior: auto !important;
+    animation-name: none !important;
+    animation-duration: 0ms !important;
+    animation-iteration-count: 1 !important;
+    animation: none !important;
+    transition-duration: 0ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* CSS Media Queries Level 5 gives JS-disabled browsers an explicit static
+   contract. Hidden native states remain hidden; authored content does not. */
+@media (scripting: none) {
+  .p3-page,
+  .p3-page *,
+  .p3-page *::before,
+  .p3-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .p3-page :is([data-motion], [data-motion-group], [data-motion-loop]) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  .p3-page :is(.p3-filterbar, .p3-pharmacy-filters) {
+    position: static !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ===========================================================================
+   DESIGN PASS 2026-08-26 — money/category/brand/pack emulation layer
+   Specs: reports/glp-clinic-scout/rebuild/PAGE-SPECS-20260826/
+   (category-compounded, brand-ozempic-wegovy, brand-mounjaro-zepbound,
+   packs-cost). Our tokens only; reference geometry, our palette.
+   =========================================================================== */
+
+/* --- Filterbar hygiene (category spec §2 deviation 3) ---------------------- */
+/* The cross-product switch links were auto-placed into ONE 12-column grid
+   track, wrapping a word per line. They are a full-row chip rail. */
+.p3-filterbar > .p3-cross-route-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  grid-column: 1 / -1;
+  align-items: center;
+}
+
+.p3-filterbar > .p3-cross-route-options a {
+  padding: 8px 13px;
+  color: var(--p3-muted);
+  font: 700 0.8rem/1.1 var(--font-display);
+  white-space: nowrap;
+  text-decoration: none;
+  background: rgba(20, 32, 27, 0.035);
+  border: 1px solid var(--p3-rule);
+  border-radius: var(--radius-pill);
+  transition: color 120ms var(--p3-ease), border-color 120ms var(--p3-ease), transform 120ms var(--p3-ease);
+}
+
+.p3-filterbar > .p3-cross-route-options a:hover,
+.p3-filterbar > .p3-cross-route-options a:focus-visible {
+  color: var(--p3-ink);
+  border-color: rgba(14, 125, 92, 0.4);
+  transform: translateY(-1px);
+}
+
+/* The native state selector is the no-JS fallback: its helper text stays
+   accessible but silent, and the select stops rendering as a bare control. */
+.p3-state-native {
+  display: block;
+  margin-top: 8px;
+}
+
+.p3-state-native-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.p3-state-native select {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  color: var(--p3-ink);
+  font: 600 0.85rem/1.2 var(--font-display);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--p3-rule);
+  border-radius: var(--radius-control, 12px);
+}
+
+/* --- Promoted winner card (packs spec fix 4; category spec §1 winner) ------ */
+/* Earned strictly from captured data: the card carrying the lowest source-dated
+   price in the rendered set. Treatment = stronger aurora header, gradient ring,
+   one badge chip, and their slow breathing-halo idle (CSS keyframes only). */
+.p3-provider-card[data-promoted] {
+  border-color: rgba(23, 168, 126, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(23, 168, 126, 0.22),
+    0 24px 54px -30px rgba(11, 111, 104, 0.5);
+}
+
+.p3-provider-card[data-promoted] .p3-card-aurora {
+  height: 148px;
+  opacity: 0.92;
+  animation: p3-winner-breathe 4.5s var(--p3-ease, ease-in-out) infinite;
+}
+
+.p3-winner-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 10px;
+  padding: 5px 11px;
+  color: #07543f;
+  font: 800 0.68rem/1.1 var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--cs-accent-gradient);
+  border-radius: var(--radius-pill);
+}
+
+@keyframes p3-winner-breathe {
+  0%, 100% { opacity: 0.68; }
+  50% { opacity: 0.95; }
+}
+
+/* --- Quiz interstitial (category spec fix 5) ------------------------------- */
+/* Their second conversion path at the scroll-fatigue point: one dark card in
+   the grid after slot 2. Dark ground on a paper page, so text tokens remap. */
+.p3-quiz-interstitial {
+  --text-primary: #f4f7f4;
+  --text-secondary: rgba(244, 247, 244, 0.74);
+
+  position: relative;
+  display: grid;
+  gap: 10px;
+  align-content: center;
+  justify-items: start;
+  padding: clamp(24px, 3vw, 34px);
+  overflow: hidden;
+  color: var(--text-primary);
+  background:
+    radial-gradient(circle at 16% 8%, rgba(63, 217, 164, 0.24), transparent 46%),
+    radial-gradient(circle at 90% 88%, rgba(169, 155, 242, 0.22), transparent 44%),
+    var(--cs-ground, #07100d);
+  border: 1px solid rgba(244, 247, 244, 0.14);
+  border-radius: var(--radius-card, 18px);
+}
+
+.p3-quiz-interstitial .gcs-kicker {
+  color: var(--cs-aurora-3, #3fd9a4);
+}
+
+.p3-quiz-interstitial h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+}
+
+.p3-quiz-interstitial p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.p3-quiz-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.p3-quiz-chips span {
+  padding: 5px 11px;
+  color: var(--text-secondary);
+  font: 700 0.72rem/1.1 var(--font-display);
+  border: 1px solid rgba(244, 247, 244, 0.22);
+  border-radius: var(--radius-pill);
+}
+
+/* --- Brand hero conversion parity (brand specs fix 1 / F4) ----------------- */
+.p3-hero-price {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  align-items: baseline;
+  margin: 14px 0 0;
+}
+
+.p3-hero-price strong {
+  font: 800 clamp(1.9rem, 3vw, 2.6rem)/0.96 var(--font-display);
+  letter-spacing: -0.045em;
+}
+
+.p3-hero-price span {
+  color: var(--p3-muted);
+  font-size: 0.86rem;
+}
+
+.p3-hero-crosslink {
+  margin: 12px 0 0;
+  font-size: 0.88rem;
+}
+
+.p3-hero-crosslink a {
+  color: #0e6f53;
+  font-weight: 700;
+}
+
+/* --- Their signature hero-render idle bob (brand spec F8) ------------------ */
+.p3-product-hero .p3-product-float,
+.listing__drug-summary > figure.p3-product-visual {
+  animation: p3-hero-bob 5.5s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+@keyframes p3-hero-bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
+}
+
+/* Packs spec §2 (/bulk/): the decorative corner orb collided with card text.
+   Decoration stays under content, always. */
+.p3-intent-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p3-provider-card[data-promoted] .p3-card-aurora,
+  .p3-product-hero .p3-product-float,
+  .listing__drug-summary > figure.p3-product-visual {
+    animation: none !important;
+  }
+}
+
+/* ADOPTED (design pass 2026-08-27, Phase-2 selection #5): ui-skills.com
+   "Use tabular-nums for data" recipe (ibelick/ui-skills, MIT) — the phase-3
+   price lockups were the last price surfaces without fixed-width digits
+   (01-primitives .cs-price, the quiz prices, and the calculator anchor already
+   carry it; tables get it globally in 90-compat). */
+.p3-card-headline-price > strong,
+.p3-card-price-matrix strong,
+.p3-source-price > strong,
+.p3-med-price { font-variant-numeric: tabular-nums; }
+
+/* ===========================================================================
+   PASS 5 — ONE-SITE DARK GROUND
+
+   Phase 3 previously imposed a paper canvas on every generated commerce route,
+   which made the mapped medication, pack, provider, and pharmacy journeys read
+   as a second website. This template-level layer keeps the existing evidence
+   hierarchy and route mechanics while remapping the shared primitives to the
+   same dark Clinic Scout ground used by home, guides, comparison, and reviews.
+   Logo tiles and warning states remain intentionally light for source fidelity
+   and contrast; the page canvas, heroes, controls, and evidence panels do not.
+   =========================================================================== */
+
+.p3-page:not(.p5-compare-page) {
+  --p3-ink: #f2f8f4;
+  --p3-muted: rgba(218, 233, 226, 0.74);
+  --p3-panel: rgba(15, 34, 28, 0.86);
+  --p3-canvas: #07100d;
+  --p3-rule: rgba(218, 233, 226, 0.18);
+  --p3-rule-soft: rgba(218, 233, 226, 0.11);
+  --text-primary: var(--p3-ink);
+  --text-secondary: var(--p3-muted);
+  --color-ink: var(--p3-ink);
+  --color-line: var(--p3-rule);
+  --color-line-soft: var(--p3-rule-soft);
+  --color-line-strong: rgba(218, 233, 226, 0.3);
+  --color-surface: var(--p3-panel);
+  --color-surface-float: #12281f;
+  --color-focus: #77e5bc;
+  --color-interactive: #6fd8ff;
+
+  color-scheme: dark;
+  background:
+    radial-gradient(circle at 8% 2%, rgba(63, 217, 164, 0.1), transparent 30rem),
+    radial-gradient(circle at 96% 23%, rgba(169, 155, 242, 0.09), transparent 34rem),
+    var(--p3-canvas);
+}
+
+.p3-page:not(.p5-compare-page) .gcs-kicker {
+  color: #77e5bc;
+}
+
+.p3-page:not(.p5-compare-page) .cs-btn--quiet {
+  color: var(--p3-ink) !important;
+  background: rgba(255, 255, 255, 0.055);
+  border-color: var(--p3-rule);
+}
+
+.p3-page:not(.p5-compare-page) .cs-btn--quiet:hover {
+  background: rgba(119, 229, 188, 0.1);
+  border-color: rgba(119, 229, 188, 0.44);
+}
+
+.p3-page:not(.p5-compare-page) :is(
+  .p3-product-hero,
+  .p3-category-hero,
+  .p3-bulk-hero,
+  .p3-index-hero,
+  .p3-insights-hero,
+  .p3-pharmacy-hero
+) {
+  color: var(--p3-ink);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(63, 217, 164, 0.18), transparent 38%),
+    radial-gradient(circle at 92% 14%, rgba(169, 155, 242, 0.17), transparent 42%),
+    linear-gradient(145deg, rgba(12, 38, 30, 0.98), rgba(10, 23, 20, 0.96));
+  border-color: var(--p3-rule-soft);
+  box-shadow: 0 34px 78px -48px rgba(0, 0, 0, 0.92);
+}
+
+.p3-page:not(.p5-compare-page) :is(.p3-product-hero, .p3-category-hero) {
+  --p3-hero-veil: linear-gradient(145deg, rgba(12, 38, 30, 0.98), rgba(10, 23, 20, 0.96));
+  --p3-category-veil: linear-gradient(145deg, rgba(12, 38, 30, 0.98), rgba(10, 23, 20, 0.96));
+}
+
+.p3-page:not(.p5-compare-page) :is(.p3-product-float, .p3-product-visual, .p3-provider-visual) {
+  background:
+    radial-gradient(circle at 16% 8%, rgba(63, 217, 164, 0.15), transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(169, 155, 242, 0.14), transparent 42%),
+    #10231c;
+  border-color: rgba(218, 233, 226, 0.17);
+}
+
+.p3-page:not(.p5-compare-page) :is(.p3-product-visual, .p3-provider-visual) figcaption {
+  color: var(--p3-muted);
+  background: rgba(8, 24, 19, 0.94);
+  border-top-color: var(--p3-rule-soft);
+}
+
+.p3-page:not(.p5-compare-page) :is(
+  .p3-med-tabs,
+  .p3-selfpay-summary,
+  .p3-filterbar,
+  .p3-pharmacy-filters,
+  .p3-source-disclosure,
+  .p3-unverified-remainder,
+  .p3-provider-records,
+  .p3-filter-empty,
+  .p3-empty,
+  .p3-article-author,
+  .p3-article-faq,
+  .p3-insurance-paths article,
+  .p3-review-directory,
+  .p3-review-method,
+  .p3-review-form-wrap
+) {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: var(--p3-rule-soft);
+  box-shadow: 0 24px 58px -42px rgba(0, 0, 0, 0.9);
+}
+
+.p3-page:not(.p5-compare-page) :is(
+  .p3-provider-card,
+  .p3-intent-card,
+  .p3-accordions details,
+  .p3-related a,
+  .p3-related .p3-story,
+  .p3-related .p3-product-related-card,
+  .p3-redirect,
+  .p3-feature-story,
+  .p3-story,
+  .p3-classification-grid .cs-card,
+  .p3-detail-grid > article,
+  .p3-action,
+  .p3-review-card
+) {
+  color: var(--p3-ink);
+  background: var(--p3-panel);
+  border-color: var(--p3-rule-soft);
+  box-shadow: 0 24px 58px -42px rgba(0, 0, 0, 0.9);
+}
+
+.p3-page:not(.p5-compare-page) .p3-pharmacy-card {
+  color: var(--p3-ink);
+  background: var(--p3-panel);
+  border-color: var(--p3-rule-soft);
+  box-shadow: 0 24px 58px -42px rgba(0, 0, 0, 0.9);
+}
+
+.p3-page:not(.p5-compare-page) .p3-provider-card header {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(63, 217, 164, 0.2), transparent 52%),
+    radial-gradient(circle at 92% 16%, rgba(169, 155, 242, 0.18), transparent 48%),
+    linear-gradient(135deg, rgba(18, 55, 44, 0.97), rgba(25, 37, 54, 0.94));
+  border-bottom: 1px solid var(--p3-rule-soft);
+}
+
+.p3-page:not(.p5-compare-page) .p3-provider-card header .gcs-kicker {
+  color: #77e5bc;
+}
+
+.p3-page:not(.p5-compare-page) :is(
+  .p3-filter-chips button,
+  .p3-state-control > button,
+  .p3-filterbar > .p3-cross-route-options a,
+  .p3-state-native select,
+  .p3-pharmacy-filters input,
+  .p3-pharmacy-filters select,
+  .p3-rating label > span,
+  .p3-entity-type label > span,
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea
+) {
+  color: var(--p3-ink);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: var(--p3-rule);
+}
+
+.p3-page:not(.p5-compare-page) :is(
+  .p3-med-price + .p3-med-price,
+  .p3-dose-grid,
+  .p3-more-filters,
+  .p3-provider-card .p3-state-evidence,
+  .p3-rating-empty
+) {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.p3-page:not(.p5-compare-page) .p3-more-filters[open] {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.p3-page:not(.p5-compare-page) :is(
+  .p3-selfpay-summary > a,
+  .p3-crosslinks .cs-card::after,
+  .p3-source-price > details summary,
+  .p3-source-price details a,
+  .p3-intent-preview,
+  .p3-card-link,
+  .p3-intent-card::after,
+  .p3-related a,
+  .p3-pharmacy-card > div:last-child > a,
+  .p3-source-rail li > a,
+  .p3-hero-crosslink a
+) {
+  color: #77e5bc;
+}
+
+.p3-page:not(.p5-compare-page) :is(.p3-tagrow span, .cs-match-chip) {
+  color: #baf6dc;
+  background: rgba(63, 217, 164, 0.12);
+  border-color: rgba(119, 229, 188, 0.28);
+}
+
+.p3-page:not(.p5-compare-page) .p3-unavailable-action {
+  color: var(--p3-muted);
+  background: rgba(255, 255, 255, 0.045);
+  border-color: var(--p3-rule-soft);
+}
+
+.p3-page:not(.p5-compare-page) .p3-card-aurora {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(63, 217, 164, 0.3), transparent 48%),
+    radial-gradient(circle at 88% 20%, rgba(169, 155, 242, 0.25), transparent 46%),
+    rgba(16, 49, 39, 0.7);
+}
+
+.p3-page:not(.p5-compare-page) .p3-state-popover {
+  background: #10231c;
+  border-color: var(--p3-rule);
+  box-shadow: 0 28px 60px -26px rgba(0, 0, 0, 0.9);
+}
+
+.p3-page:not(.p5-compare-page) .p3-state-popover input {
+  background: #10231c;
+}
+
+.p3-page:not(.p5-compare-page) .p3-provider-sticky {
+  color: var(--p3-ink);
+  background: rgba(7, 16, 13, 0.97);
+  border-top-color: var(--p3-rule);
+}
+
+/* PASS 5 performance closure: large directory/story grids keep their semantics
+   in the accessibility tree while deferring below-fold layout and paint work. */
+.p3-page :is(
+  .p3-provider-grid > .p3-provider-card,
+  .p3-related > .p3-story,
+  .p3-related > .p3-product-related-card
+) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
+
+/* Supplemental evidence cards must paint their text with the outer card. */
+.p3-page .p3-provider-grid > [data-unpublished-price-card] {
+  content-visibility: visible;
+  contain-intrinsic-size: none;
+}
+
+/* Product pages carry several evidence-heavy sections after a mobile hero that
+   is already taller than the first viewport. Let the browser skip initial
+   layout and paint for those offscreen sections while preserving their full
+   no-JS markup, accessibility semantics, and native scroll discovery. The
+   source disclosure and hero remain eager so LCP and trust copy are stable. */
+@media (max-width: 760px) {
+  .p3-page:not(.p5-compare-page) .cs-mobile-filter-header {
+    background: rgba(7, 16, 13, 0.98);
+  }
+
+  .p3-card-evidence-links .p3-card-link {
+    min-height: 44px;
+  }
+}
+
+/* GLP34 pharmacy geometry: local dimensions, never global container changes. */
+.p3-page .p3-pharmacy-grid {
+  width: min(100%, 960px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-inline: auto;
+  align-items: start;
+}
+.p3-page:not(.p5-compare-page) .p3-pharmacy-filters,
+.p3-page:not(.p5-compare-page) .p3-pharmacy-filters :is(input, select, option) {
+  color-scheme: dark;
+  background: #10231c;
+  color: var(--p3-ink);
+}
+.p3-page .p3-pharmacy-filters :is(input, select) { min-height: 48px; }
+.p3-page .p3-pharmacy-card { min-height: 400px; }
+.p3-page .p3-pharmacy-mark { width: 70px; height: 70px; }
+@media (max-width: 760px) {
+  .p3-page .p3-pharmacy-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* GLP-34 shared listing layout only. No detail/editorial/global token changes. */
+/* Provider listings use compact field stacks, not detail-page header spacing.
+   Keep D's independently verified pharmacy geometry outside these overrides. */
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-filterbar fieldset { flex: 0 1 auto; margin: 0; padding: 0; border: 0; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-filterbar fieldset legend { margin-bottom: 4px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-filterbar .p3-more-filters { display: contents; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-filterbar :is(button, select, input, .p3-cross-route-options a) { min-height: 44px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-filter-chips button { padding: 8px 10px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-provider-card { min-height: 520px; padding: 16px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-provider-card .p3-card-header { width: 100%; max-width: none; margin: 0; padding: 0 0 12px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-card-header .gcs-kicker { margin: 0 0 6px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-card-header :is(h3, .p3-provider-identity) { margin-block: 0; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-card-contract { width: 100%; margin: 0; padding: 0; gap: 8px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-card-contract > div { padding: 0 0 8px; gap: 3px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-card-contract dd { margin: 0; gap: 3px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-card-contract dd > span { font-size: 13px; line-height: 1.4; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) :is(.p3-card-contract small, .p3-card-header > small) { font-size: 11px; line-height: 1.4; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-card-actions { width: 100%; margin-top: auto; padding: 12px 0 0; gap: 8px; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .p3-card-actions .cs-btn { min-height: 44px; padding: 8px; font-size: 13px; line-height: 1.4; }
+/* Preserve the minimum citation target when source links sit next to each other. */
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) :is(.p3-card-contract small, .p3-card-header > small) a { display: inline-block; min-height: 24px; line-height: 24px; }
+/* Keep the product figure in its real grid track; the generic visual is 440px. */
+.p3-page.listing[data-listing-archetype="B"] .listing__drug-summary > .p3-product-visual { width: min(100%, 240px); min-width: 0; max-width: 100%; }
+.p3-page.listing[data-listing-archetype="B"] .listing__drug-panel :is(h2, h3) { margin: 0 0 8px; }
+.p3-page.listing[data-listing-archetype="B"] .listing__drug-panel p { margin: 8px 0; }
+.p3-page.listing[data-listing-archetype="B"] .listing__drug-price { margin-block: 12px; }
+/* These are actual light-painted descendants, not inherited palette tokens. */
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) :is(.p3-product-card-picture, .d3-directory-table, .d3-directory-table caption, .d3-directory-table th, .d3-directory-table td) { background: #10231c; color: #edf6f1; border-color: #30483d; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .d3-directory-table :is(a, strong, th p, .d3-amount) { color: #edf6f1; }
+.p3-page.listing[data-listing-archetype]:not([data-listing-archetype="D"]) .d3-directory-table .d3-plan-terms { color: #b7c9bf; }
+.p3-page.listing[data-listing-archetype] {
+  --p3-ink: #edf6f1;
+  --p3-muted: #b7c9bf;
+  --p3-rule: #30483d;
+  width: min(1024px, calc(100% - 32px));
+  max-width: 1024px;
+  margin-inline: auto;
+  padding-inline: 0;
+  min-width: 0;
+  color: var(--p3-ink);
+}
+/* The compact A/B/C/E listing cap does not replace the D pharmacy directory. */
+@media (min-width: 1100px) {
+  .p3-page.listing[data-listing-archetype="D"] {
+    width: min(var(--p3-max), calc(100% - 32px));
+    max-width: var(--p3-max);
+  }
+}
+.p3-page.listing[data-listing-archetype] > * { min-width: 0; max-width: 100%; }
+.p3-page.listing[data-listing-archetype] .listing__intro { margin: 0 0 16px; padding: 16px 0 0; }
+.p3-page.listing[data-listing-archetype="A"] .listing__intro--bulk-visual { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 30%); gap: 8px 20px; }
+.p3-page.listing[data-listing-archetype="A"] .listing__intro--bulk-visual > :not(.p3-product-visual) { grid-column: 1; }
+.p3-page.listing[data-listing-archetype="A"] .listing__intro--bulk-visual > .p3-product-visual { grid-column: 2; grid-row: 1 / span 3; width: 100%; align-self: start; }
+@media (max-width: 759px) {
+  .p3-page.listing[data-listing-archetype="A"] .listing__intro--bulk-visual { display: block; }
+  .p3-page.listing[data-listing-archetype="A"] .listing__intro--bulk-visual > .p3-product-visual { width: min(100%, 320px); margin: 8px auto; }
+}
+.p3-page.listing[data-listing-archetype] .listing__intro--state { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px 16px; }
+.p3-page.listing[data-listing-archetype] .listing__intro--state > h1 { grid-column: 1; grid-row: 1; }
+.p3-page.listing[data-listing-archetype] .listing__intro--state > .p3-state-control { grid-column: 2; grid-row: 1; justify-self: end; align-self: start; width: auto; margin: 0; }
+.p3-page.listing[data-listing-archetype="C"] .listing__intro--state > .p3-state-control { margin-inline: 4px; }
+/* Native no-JS focus scrolling exposes the select border, not an outer ring. */
+.p3-page.listing[data-listing-archetype="C"] [data-state-native]:focus-visible { outline-offset: -2px; }
+.p3-page.listing[data-listing-archetype="C"] .p3-card-actions > .cs-btn--quiet:focus-visible { outline-color: currentColor; outline-offset: -2px; }
+.p3-page.listing[data-listing-archetype] .listing__intro--state > :not(h1, .p3-state-control) { grid-column: 1 / -1; }
+.p3-page.listing[data-listing-archetype] .listing__intro--state .p3-state-popover { left: auto; right: 0; width: min(280px, calc(100vw - 64px)); }
+.p3-page.listing[data-listing-archetype] .listing__intro--state .p3-state-native { display: block; }
+@media (max-width: 759px) {
+  .p3-page.listing[data-listing-archetype] .listing__intro--state { padding-top: 16px; }
+  .p3-page.listing[data-listing-archetype] .listing__intro--state > h1 { grid-column: 1 / -1; grid-row: 1; }
+  .p3-page.listing[data-listing-archetype] .listing__intro--state > .p3-state-control { grid-column: 1 / -1; grid-row: 2; justify-self: start; }
+  .p3-page.listing[data-listing-archetype] .listing__intro--state .p3-state-popover { left: 0; right: auto; }
+}
+.p3-page.listing[data-listing-archetype] .listing__intro h1 {
+  margin: 0 0 8px;
+  max-width: none;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.p3-page.listing[data-listing-archetype] .listing__support { font-size: 14px; line-height: 1.5; max-width: 70ch; margin: 0; color: var(--p3-muted); }
+.p3-page.listing[data-listing-archetype] .listing__count { white-space: normal; }
+.p3-page.listing[data-listing-archetype] .listing__disclosure-lead { margin: 8px 0 0; padding: 0; border: 0; background: transparent; color: var(--p3-muted); font-size: 13px; line-height: 1.5; }
+/* Keep the native fallback available alongside the enhanced state control. */
+.p3-page.listing[data-listing-archetype] [data-provider-filters][data-filter-state-ready="true"] .p3-state-native { display: block; }
+.p3-page.listing[data-listing-archetype] :is(.p3-filterbar, .p3-pharmacy-filters) {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: end;
+  position: relative;
+  inset: auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 20px;
+  padding: 12px;
+  gap: 12px;
+  box-sizing: border-box;
+  background: #10231c;
+  color: var(--p3-ink);
+  border: 1px solid var(--p3-rule);
+  border-radius: 12px;
+  backdrop-filter: none;
+}
+.p3-page.listing[data-listing-archetype] :is(fieldset, .p3-state-control, .p3-more-filters, .p3-pharmacy-filters label) { min-width: 0; max-width: 100%; }
+.p3-page.listing[data-listing-archetype] :is(.p3-filter-chips, .p3-cross-route-options) { flex-wrap: wrap; min-width: 0; max-width: 100%; }
+.p3-page.listing[data-listing-archetype] :is(input, select, option, .p3-filter-chips button, .p3-state-control button, .p3-more-filters, .p3-state-popover) {
+  color-scheme: dark;
+  color: var(--p3-ink);
+  background: #10231c;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.p3-page.listing[data-listing-archetype] :is(.p3-filter-chips button, .p3-state-control button) { white-space: normal; }
+.p3-page.listing[data-listing-archetype] .listing-results { margin: 0; padding: 0; width: 100%; }
+.p3-page.listing[data-listing-archetype] .listing-results > h2.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.p3-page.listing[data-listing-archetype] .listing-grid {
+  display: grid;
+  width: min(992px, 100%);
+  max-width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 32px;
+  margin: 0 auto;
+}
+.p3-page.listing[data-listing-archetype="D"] .listing-grid { width: min(960px, 100%); gap: 16px; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  padding: 20px;
+  min-height: 400px;
+}
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-card > * { min-width: 0; width: auto; max-width: 100%; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-card > .p3-pharmacy-mark { width: 64px; height: 64px; align-self: flex-start; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-card dl { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; margin: 0; background: transparent; border-color: var(--p3-rule); }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-card dl > div { display: block; padding: 8px; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-card :is(dt, dd) { margin: 0; grid-column: auto; min-width: 0; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-card small { display: block; font-size: 11px; line-height: 1.4; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-filters { margin-bottom: 12px; gap: 10px; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-filters fieldset { flex: 0 1 auto; padding: 0; margin: 0; border: 0; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-filters :is(button, select, input[type="search"]) { min-height: 44px; font-size: 14px; }
+.p3-page.listing[data-listing-archetype="D"] .p3-filter-chips button { padding: 8px 10px; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-filters label { flex: 0 1 160px; }
+.p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-filters .p3-state-control { flex: 0 1 160px; }
+.p3-page.listing[data-listing-archetype="D"] .p3-state-popover { z-index: 20; }
+.p3-page.listing[data-listing-archetype] .listing-grid > * { min-width: 0; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; }
+.p3-page.listing[data-listing-archetype] .listing__drug-panel {
+  margin: 0 0 24px;
+  padding: 20px;
+  border: 1px solid var(--p3-rule);
+  border-radius: 12px;
+  background: #10231c;
+}
+.p3-page.listing[data-listing-archetype] .listing__drug-summary { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: start; gap: 24px; }
+.p3-page.listing[data-listing-archetype] .listing__drug-summary > * { min-width: 0; margin: 0; }
+.p3-page.listing[data-listing-archetype] .listing__drug-panel :is(p, figcaption) { font-size: 14px; line-height: 1.5; color: var(--p3-muted); }
+.p3-page.listing[data-listing-archetype] .listing__drug-panel :is(h2, h3) { font-size: 20px; line-height: 1.3; }
+.p3-page.listing[data-listing-archetype] .listing__drug-panel :is(picture, img) { display: block; position: static; width: 100%; max-width: 100%; height: auto; transform: none; }
+.p3-page.listing[data-listing-archetype] .listing__drug-panel :is(details, .p3-source-price) { padding: 8px 0; background: transparent; color: var(--p3-ink); }
+.p3-page.listing[data-listing-archetype] .listing__drug-faq { margin-top: 16px; }
+.p3-page.listing[data-listing-archetype] :is(.listing__category-art, .d3-directory-prices) { margin-top: 24px; min-width: 0; }
+.p3-page.listing[data-listing-archetype] .listing__category-art :is(picture, img) { display: block; width: 100%; max-width: 100%; height: auto; }
+@media (max-width: 759px) {
+  .p3-page.listing[data-listing-archetype] .listing-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; width: 100%; }
+  .p3-page.listing[data-listing-archetype] .listing__drug-summary { grid-template-columns: minmax(0, 1fr); }
+  .p3-page.listing[data-listing-archetype] .listing__drug-panel { padding: 16px; }
+  .p3-page.listing[data-listing-archetype] .listing__drug-summary > .p3-product-visual { max-width: 240px; margin-inline: auto; }
+  .p3-page.listing[data-listing-archetype] .p3-pharmacy-filters label { flex: 1 1 130px; }
+  .p3-page.listing[data-listing-archetype] .p3-state-popover { left: 0; right: auto; width: min(280px, calc(100vw - 64px)); }
+}
+
+/* Organic categories have a multi-row filter form, not a viewport-sized sticky
+   overlay. Leave the mobile sheet's fixed positioning and LP motion untouched. */
+@media (min-width: 900px) {
+  [data-g08-medication] .p3-filterbar { position: relative; top: auto; z-index: auto; }
+}
+[data-g08-medication] .g08-state-control { display: grid; gap: 8px; grid-column: 1 / -1; }
+[data-g08-medication] [data-state-native] { display: block; min-height: 44px; width: 100%; max-width: 24rem; }
+/* D51 Fable ruling: listing cards remain still, unlike LP/provider cards. */
+[data-g08-medication] [data-phase3-provider],
+[data-g08-medication] [data-phase3-provider]:hover {
+  transform: none !important; animation: none !important; transition: none !important;
+}
+[data-g08-medication] [data-phase3-provider]::before,
+[data-g08-medication] [data-phase3-provider]::after { content: none !important; animation: none !important; }
+
+

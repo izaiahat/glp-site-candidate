@@ -1,0 +1,692 @@
+/* ============================================================================
+   Layer 02: SHELL — header/nav/search/drawer, footer, consent + sticky
+   choreography, page bands, aurora field. Class names preserved as contract.
+   ========================================================================== */
+
+/* ---- skip link ------------------------------------------------------------ */
+.skip-link {
+  position: absolute; left: 16px; top: 0; z-index: 200;
+  background: var(--action-primary); color: var(--text-on-accent);
+  font-weight: 700; padding: 10px 18px; border-radius: 0 0 12px 12px;
+  transform: translateY(-100%);
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+.skip-link:focus-visible { position: relative; display: block; width: fit-content; transform: none; }
+
+/* ---- header --------------------------------------------------------------- */
+.gcs-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(7, 16, 13, 0.68);
+  border-bottom: 1px solid var(--color-line-soft);
+  backdrop-filter: blur(18px) saturate(1.22);
+  -webkit-backdrop-filter: blur(18px) saturate(1.22);
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    backdrop-filter 300ms ease;
+}
+/* Design pass 2026-08-27, nav spec F3: home begins over the hero with no
+   opaque header slab, then crossfades to the shared glass surface on scroll. */
+body[data-cs-template="home"]:not(.cs-scrolled) .gcs-nav {
+  background-color: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+body.cs-scrolled .gcs-nav {
+  background: rgba(8, 20, 16, 0.6);
+  box-shadow: 0 18px 48px -34px rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(26px) saturate(1.45);
+  -webkit-backdrop-filter: blur(26px) saturate(1.45);
+}
+/* Design pass 2026-08-26 (home spec fix #12): their 4px gradient hairline
+   across the very top of the header. */
+.gcs-nav::before {
+  content: ""; display: block; height: 4px; background: var(--cs-spectral-line);
+}
+/* Pass 3 desktop shared-shell contract:
+   Insights > Bulk > Telehealth Providers > Compounding Pharmacies > Reviews > Find your fit.
+   Quiz and Calculator remain utility destinations, not primary-nav styling
+   assumptions. At 1440px the shell uses the viewport instead of inheriting the
+   narrower content container; mobile keeps the established drawer contract. */
+.gcs-nav-inner {
+  position: relative; width: 100%; max-width: 1840px; margin: 0 auto;
+  padding: 0 clamp(18px, 2vw, 36px);
+  display: flex; align-items: center; gap: clamp(10px, 1vw, 16px); min-height: 72px;
+  transition: min-height var(--duration-base) var(--ease-out-expo);
+}
+body.cs-scrolled .gcs-nav-inner { min-height: 72px; }
+.gcs-brand {
+  display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; max-width: 176px;
+  text-decoration: none; color: var(--text-primary); font-family: var(--font-display);
+  font-weight: 800; font-size: 1.12rem; letter-spacing: -0.02em; white-space: nowrap;
+  transition: none;
+}
+.gcs-brand img, .gcs-brand svg { width: 34px; height: 34px; border-radius: 9px; }
+body.cs-search-open .gcs-brand { opacity: 0; transform: translateX(-18px); max-width: 0; pointer-events: none; }
+.gcs-links { display: flex; align-items: center; gap: 2px; min-width: 0; margin-left: auto; list-style: none; padding: 0; }
+.gcs-links > li { flex: 0 0 auto; }
+.gcs-links > li > a:not(.cta), .cs-navgroup > button {
+  position: relative; display: inline-flex; align-items: center; gap: 6px;
+  min-height: 46px; padding: 9px 10px; border: 0; border-radius: var(--radius-control);
+  color: var(--text-secondary); background-color: transparent; background-image: none;
+  background-size: 240% 100%;
+  font-weight: 680; font-size: 0.86rem; text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease,
+              transform 180ms var(--ease-out-expo);
+}
+.gcs-links > li > a:not(.cta):hover, .cs-navgroup > button:hover {
+  color: #04120e; background-image: var(--cs-accent-gradient);
+  -webkit-background-clip: border-box; background-clip: border-box;
+  box-shadow: 0 10px 28px -18px rgba(63, 217, 164, 0.8); transform: translateY(-1px);
+}
+.gcs-links > li > a[aria-current="page"]:not(.cta),
+.cs-navgroup.is-active > button {
+  color: var(--cs-aurora-3); background-color: transparent; background-image: none;
+  animation: none; transform: none;
+  box-shadow: inset 0 -2px 0 rgba(63, 217, 164, 0.62);
+}
+.cs-navgroup > button[aria-expanded="true"] {
+  color: var(--text-on-accent); background-color: var(--cs-aurora-3); background-image: none;
+  animation: none; transform: none;
+  box-shadow: none;
+}
+
+.gcs-links > li > a:not(.cta):focus-visible, .cs-navgroup > button:focus-visible {
+  outline: 2px solid var(--cs-aurora-3); outline-offset: 2px;
+}
+.gcs-links .cta { margin-left: 6px; padding: 10px 18px; min-height: 46px; white-space: nowrap; }
+.gcs-links a.cta.primary { color: var(--text-on-accent); }
+
+/* dropdown groups */
+.cs-navgroup { position: relative; }
+.cs-navgroup > button::after {
+  content: ""; inline-size: 7px; block-size: 7px;
+  border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+  transform: rotate(45deg) translateY(-2px); transition: transform 200ms var(--ease-out-expo);
+}
+.cs-navgroup > button[aria-expanded="true"]::after { transform: rotate(225deg) translateY(2px); }
+.cs-navmenu {
+  position: absolute; top: calc(100% + 10px); left: 0; min-width: 292px; z-index: 110;
+  /* Fix #12: teal-gradient tinted dropdown panel (their pattern, our palette). */
+  background:
+    linear-gradient(180deg, rgba(23, 168, 126, 0.16), rgba(23, 168, 126, 0.03) 46%, rgba(169, 155, 242, 0.05) 100%),
+    rgba(13, 31, 25, 0.82);
+  border: 1px solid rgba(233, 247, 241, 0.14);
+  border-radius: 20px; box-shadow: var(--shadow-float), 0 24px 80px -36px rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(26px) saturate(1.5); -webkit-backdrop-filter: blur(26px) saturate(1.5);
+  /* ADOPTED (design pass 2026-08-27, Phase-2 selection #2): shadcn/ui
+     data-state dropdown keyframe recipe (MIT) — fade + rise + zoom-98% on our
+     tokens. RECONCILIATION NOTE: the census lane's F7 landing (symmetric
+     150ms, scale-95) is superseded by this selection per
+     LIBRARY-MENU-20260827/FABLE-SELECTIONS.md ("THIS spec supersedes"):
+     open 170ms on the expanded state, close faster at 120ms (asymmetry per
+     the sheet recipe). Caret keeps its 200ms rotation; keyboard and
+     reduced-motion kills remain intact. */
+  padding: 9px; display: grid; gap: 2px; opacity: 0; transform: translateY(-8px) scale(0.98);
+  transform-origin: top left; pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms var(--ease-out-expo);
+}
+.cs-navgroup > button[aria-expanded="true"] + .cs-navmenu {
+  opacity: 1; transform: none; pointer-events: auto;
+  transition: opacity 170ms ease, transform 170ms var(--ease-out-expo);
+}
+.cs-navmenu a {
+  --cs-menu-accent: var(--cs-aurora-3); position: relative; display: grid; gap: 3px;
+  padding: 11px 13px 13px; border-radius: 12px; text-decoration: none;
+  color: var(--text-primary); font-weight: 650; font-size: 0.93rem; overflow: hidden;
+}
+.cs-navmenu a:nth-child(even) { --cs-menu-accent: var(--cs-aurora-5); }
+.cs-navmenu a::after {
+  content: ""; position: absolute; left: 13px; right: 13px; bottom: 7px; height: 2px;
+  background: var(--cs-menu-accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 240ms var(--ease-out-expo);
+}
+.cs-navmenu a small { color: var(--text-secondary); font-weight: 500; font-size: 0.79rem; line-height: 1.35; }
+.cs-navmenu a:hover { color: var(--cs-menu-accent); background: rgba(233, 247, 241, 0.055); }
+.cs-navmenu a:hover::after { transform: scaleX(1); }
+body.cs-navmenu-open main, body.cs-navmenu-open .gcs-footer {
+  filter: blur(2.5px); transition: filter 220ms ease;
+}
+
+/* ---- search (in-place header product surface) ----------------------------- */
+.cs-search { position: static; z-index: 145; flex: 0 0 220px; }
+.cs-search-toggle {
+  display: inline-flex; align-items: center; gap: 9px; inline-size: 220px;
+  background: rgba(233, 247, 241, 0.055); border: 1px solid var(--color-line);
+  color: var(--text-secondary); border-radius: var(--radius-pill);
+  padding: 10px 17px; font-size: 0.9rem; cursor: pointer; min-height: 46px;
+  transition: border-color 180ms ease, color 180ms ease, opacity 180ms ease, transform 260ms var(--ease-out-expo);
+}
+.cs-search-toggle:hover { border-color: var(--color-line-strong); color: var(--text-primary); }
+body.cs-search-open .cs-search-toggle { opacity: 0; transform: scaleX(0.7); pointer-events: none; }
+/* ADOPTED (design pass 2026-08-27, Phase-2 selection #3): transitions.dev free
+   tier input-expand pattern (free terms: commercial use + modification
+   permitted) — the field expands from the toggle's footprint at 200ms
+   ease-out-expo on open, 160ms on close. Keyboard-initiated open animates NOT
+   AT ALL (Kowalski filter B4) via the 00-foundation input-modality kill. */
+.cs-search-panel {
+  position: absolute; top: 50%; left: clamp(18px, 2vw, 36px); right: clamp(18px, 2vw, 36px); z-index: 150; width: auto;
+  opacity: 0; transform: translateY(-50%) scaleX(0.24); transform-origin: left center; pointer-events: none;
+  transition: opacity 140ms ease, transform 160ms var(--ease-out-expo);
+}
+.cs-search-panel.is-open {
+  opacity: 1; transform: translateY(-50%) scaleX(1); pointer-events: auto;
+  transition: opacity 160ms ease, transform 200ms var(--ease-out-expo);
+}
+body.cs-search-open .gcs-brand, body.cs-search-open .gcs-links { opacity: 0; pointer-events: none; }
+.cs-search-box {
+  width: 100%; min-height: 50px; display: flex; gap: 8px; align-items: center;
+  background: rgba(13, 31, 25, 0.9); border: 1px solid rgba(233, 247, 241, 0.18);
+  border-radius: var(--radius-pill); box-shadow: var(--shadow-float), var(--shadow-glow);
+  backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  padding: 5px 8px;
+}
+.cs-search-back {
+  inline-size: 38px; block-size: 38px; flex: 0 0 38px; display: inline-grid; place-items: center;
+  border: 0; border-radius: 50%; background: transparent; color: var(--text-primary); cursor: pointer;
+}
+.cs-search-back:hover { background: var(--color-mist-100); }
+.cs-search-box input { flex: 1; min-width: 0; min-height: 38px; border: 0; background: none; box-shadow: none; color: var(--text-primary); font-size: 1rem; }
+.cs-search-box input:focus-visible { outline: 0; box-shadow: none; border: 0; }
+.cs-search-status { display: none; gap: 4px; align-items: center; min-width: 42px; justify-content: center; }
+.cs-search-panel.is-searching .cs-search-status { display: inline-flex; }
+.cs-search-status .cs-dot { inline-size: 5px; block-size: 5px; border-radius: 50%; background: var(--cs-aurora-3); opacity: 0.55; }
+.cs-search-results {
+  position: absolute; top: calc(100% + 12px); right: 0; width: 100%; max-height: min(68vh, 620px);
+  overflow: auto; display: grid; gap: 8px; align-content: start; padding: 12px;
+  background: rgba(10, 24, 19, 0.92); border: 1px solid rgba(233, 247, 241, 0.13);
+  border-radius: 22px; box-shadow: var(--shadow-float);
+  backdrop-filter: blur(26px) saturate(1.35); -webkit-backdrop-filter: blur(26px) saturate(1.35);
+}
+.cs-search-results:empty { display: none; }
+/* Selection #3 (same transitions.dev adoption): the results panel enters at
+   160ms fade+rise the moment it first populates (display none → grid restarts
+   the keyframe); per-keystroke re-renders keep the element displayed, so the
+   entrance never replays while typing — and typing itself stamps keyboard
+   modality, which kills all animation (Kowalski filter B2/B4). Rows stagger
+   20ms ONLY on the panel-open quick-links render (site.js sets the class +
+   delay); typed result rows never animate. */
+@media (prefers-reduced-motion: no-preference) {
+  .cs-search-results { animation: cs-search-results-in 160ms var(--ease-out-expo); }
+  .cs-search-hit--enter { animation: cs-search-results-in 160ms var(--ease-out-expo) backwards; }
+}
+@keyframes cs-search-results-in {
+  from { opacity: 0; translate: 0 6px; }
+  to { opacity: 1; translate: 0 0; }
+}
+/* Selection #1 (shadcn Skeleton, MIT): searching-state placeholder rows hold
+   the exact .cs-search-hit geometry (same grid, padding, radius, type sizes)
+   so the swap to real hits cannot shift the panel; the panel itself is an
+   overlay, so page layout never moves. Shimmer is effectively static here —
+   searching only happens mid-typing, where keyboard modality kills animation
+   (a deliberately calm, high-frequency state per Kowalski filter B2). */
+.cs-search-skeleton { display: grid; gap: 8px; width: 100%; margin-top: 14px; }
+.cs-search-hit--skeleton {
+  display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; padding: 13px 15px;
+  background: rgba(233, 247, 241, 0.03); border: 1px solid transparent; border-radius: 15px;
+}
+.cs-search-hit--skeleton .cs-search-type-skeleton { inline-size: 52px; block-size: 20px; align-self: start; }
+.cs-search-hit--skeleton .cs-search-title-skeleton { inline-size: min(46%, 220px); block-size: 1.05em; margin-block: 2px; }
+.cs-search-hit--skeleton .cs-search-meta-skeleton { grid-column: 2; inline-size: min(72%, 340px); block-size: 0.85em; }
+.cs-search-summary { margin: 2px 4px 5px; color: var(--text-secondary); font: 700 0.76rem/1.2 var(--font-display); letter-spacing: 0.12em; text-transform: uppercase; }
+.cs-search-hit {
+  display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; padding: 13px 15px;
+  text-decoration: none; background: rgba(233, 247, 241, 0.055); border: 1px solid transparent;
+  border-radius: 15px; color: var(--text-primary); font-weight: 650;
+  transition: transform 150ms var(--ease-out-expo), border-color 180ms ease, background 180ms ease;
+}
+.cs-search-hit:hover, .cs-search-hit.is-cursor { transform: translateY(-1px); border-color: var(--color-line-strong); background: rgba(233, 247, 241, 0.085); }
+.cs-search-type { align-self: start; padding: 4px 8px; border-radius: var(--radius-pill); background: var(--cs-accent-gradient-soft); color: var(--color-evidence); font-size: 0.68rem; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em; }
+.cs-search-hit__title { min-width: 0; }
+.cs-search-hit small { grid-column: 2; color: var(--text-secondary); font-weight: 500; font-size: 0.82rem; line-height: 1.4; }
+.cs-search-hit mark { background: none; color: var(--color-evidence); }
+.cs-search-loading, .cs-search-empty { min-height: 210px; display: grid; place-items: center; align-content: center; gap: 8px; text-align: center; color: var(--text-secondary); }
+.cs-search-loading strong, .cs-search-empty strong { color: var(--text-primary); font: 750 1.08rem/1.2 var(--font-display); }
+.cs-search-loading > span, .cs-search-empty > span:last-child { font-size: 0.9rem; }
+.cs-search-swarm { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; margin-top: 8px; }
+.cs-search-swarm span { inline-size: 13px; block-size: 13px; border-radius: 5px; background: var(--cs-accent-gradient); box-shadow: 0 8px 20px -8px rgba(63, 217, 164, 0.8); }
+.cs-search-swarm span:nth-child(even) { border-radius: 50%; }
+.cs-search-empty__icon { inline-size: 48px; block-size: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--cs-accent-gradient-soft); color: var(--cs-aurora-4); font-size: 1.6rem; }
+.cs-search-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---- mobile drawer -------------------------------------------------------- */
+.cs-menu-toggle { display: none; }
+@media (min-width: 1181px) and (max-width: 1320px) {
+  .gcs-nav-inner { gap: 8px; }
+  .gcs-brand { max-width: 154px; }
+  .gcs-links > li > a:not(.cta), .cs-navgroup > button { padding-inline: 7px; font-size: 0.82rem; }
+  .gcs-links .cta { padding-inline: 13px; }
+  .cs-search { flex-basis: 176px; }
+  .cs-search-toggle { inline-size: 176px; padding-inline: 13px; }
+}
+@media (min-width: 901px) and (max-width: 1180px) {
+  .gcs-nav-inner { gap: 5px; }
+  .gcs-brand { max-width: 138px; font-size: 1rem; }
+  .gcs-links > li > a:not(.cta), .cs-navgroup > button { padding-inline: 6px; font-size: 0.79rem; }
+  .gcs-links .cta { padding-inline: 11px; }
+  /* Keep the complete desktop navigation; search uses its existing icon target
+     while the full label would push the final CTA outside the viewport. */
+  .cs-search { flex-basis: 44px; }
+  .cs-search-toggle { inline-size: 44px; min-height: 44px; padding: 0; justify-content: center; }
+  .cs-search-toggle span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}
+@media (max-width: 900px) {
+  .gcs-nav { position: fixed; inset: 0 0 auto; min-height: 72px; }
+  /* Pharmacy breadcrumbs precede the hero; reserve the fixed shell's height. */
+  body main.p3-page[data-phase3-route^="/pharmacies/"] { padding-block-start: 92px; }
+  .gcs-nav-inner { min-height: 69px; padding-inline: 12px; gap: 8px; }
+  body.cs-scrolled .gcs-nav-inner { min-height: 69px; }
+  .gcs-brand { margin-right: auto; }
+  .gcs-links { display: none; }
+  .cs-search { flex: 0 0 44px; margin-left: auto; }
+  .cs-search-toggle { inline-size: 44px; min-height: 44px; padding: 0; justify-content: center; border: 0; background: transparent; }
+  .cs-search-toggle span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .cs-search-panel { position: fixed; top: 2px; left: 0; right: 0; width: 100vw; height: 70px; transform: scaleX(0.28); transform-origin: right center; }
+  .cs-search-panel.is-open { transform: scaleX(1); }
+  .cs-search-box { min-height: 70px; padding: 0 13px; border: 0; border-radius: 0; background: rgba(8, 20, 16, 0.94); box-shadow: none; }
+  .cs-search-back { inline-size: 44px; block-size: 44px; flex-basis: 44px; padding: 0; }
+  .cs-search-box input { min-height: 38px; font-size: 1rem; }
+  .cs-search-results { position: fixed; top: 72px; left: 0; right: 0; width: 100vw; max-height: calc(100dvh - 72px); border-radius: 0 0 20px 20px; border-inline: 0; padding: 16px; }
+  .cs-search-hit { grid-template-columns: 1fr auto; min-height: 112px; padding: 16px; }
+  .cs-search-type { grid-column: 2; grid-row: 1; }
+  .cs-search-hit__title { grid-column: 1; grid-row: 1; }
+  .cs-search-hit small { grid-column: 1 / -1; }
+  .cs-menu-toggle {
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    inline-size: 56px; block-size: 44px; border-radius: var(--radius-pill);
+    background: var(--color-mist-100); border: 1px solid var(--color-line);
+    color: var(--text-primary); cursor: pointer; font-size: 0.78rem; font-weight: 700;
+    transition: opacity 180ms ease;
+  }
+  body.cs-search-open .cs-menu-toggle { opacity: 0; pointer-events: none; }
+  .cs-drawer {
+    position: fixed; inset-block: 0; inset-inline: auto 0; width: min(280px, calc(100vw - 48px)); max-inline-size: 100vw; z-index: 140;
+    background: rgba(13, 31, 25, 0.94); border-radius: 16px 0 0 0; box-shadow: var(--shadow-float);
+    backdrop-filter: blur(26px) saturate(1.45); -webkit-backdrop-filter: blur(26px) saturate(1.45);
+    padding: 24px 18px; display: grid; gap: 4px; align-content: start; overflow: auto;
+    transform: translateX(100%); transition: transform 240ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .cs-drawer.is-open { transform: none; }
+  .cs-drawer a { padding: 11px 10px; border-radius: 10px; text-decoration: none; color: var(--text-primary); font-weight: 650; font-size: 0.95rem; }
+  .cs-drawer a:hover, .cs-drawer a[aria-current="page"] { background: var(--cs-accent-gradient-soft); }
+  .cs-drawer__close {
+    display: inline-flex; align-items: center; justify-content: flex-end; gap: 8px; justify-self: end;
+    min-block-size: 44px; padding: 8px 10px; border: 0; border-radius: 10px;
+    background: transparent; color: var(--text-primary); cursor: pointer; font: 700 0.8rem/1 var(--font-display);
+  }
+  .cs-drawer__close:hover, .cs-drawer__close:focus-visible { background: var(--cs-accent-gradient-soft); }
+  .cs-drawer .cta { margin-top: 14px; }
+  .cs-drawer__section { display: grid; gap: 1px; margin-block: 7px; }
+  .cs-drawer__toggle {
+    display: flex; align-items: center; justify-content: space-between; inline-size: 100%;
+    min-block-size: 44px; padding: 10px; border: 0; border-radius: 10px;
+    background: transparent; color: var(--text-primary); cursor: pointer;
+    font: 750 0.76rem/1.2 var(--font-display); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .cs-drawer__toggle:hover, .cs-drawer__toggle:focus-visible { background: var(--cs-accent-gradient-soft); }
+  /* Selection #2 (shadcn data-state recipe, MIT): drawer caret aligned to the
+     nav caret's 200ms rotate; section panels fade+rise at 170ms on reveal.
+     Keyboard toggling animates NOT AT ALL via the 00-foundation modality kill. */
+  .cs-drawer__toggle svg { transition: transform 200ms var(--ease-out-expo); }
+  .cs-drawer__toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .cs-drawer__panel { display: grid; gap: 1px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .cs-drawer__panel { animation: cs-drawer-section-in 170ms var(--ease-out-expo); }
+  }
+  .cs-drawer__panel[hidden] { display: none; }
+  body.cs-drawer-open { overflow: hidden; }
+  .cs-scrim {
+    position: fixed; inset: 0; z-index: 130; background: rgba(0, 0, 0, 0.4);
+    opacity: 0; pointer-events: none; transition: opacity 180ms ease;
+  }
+  .cs-scrim.is-open { opacity: 1; pointer-events: auto; }
+}
+@media (max-width: 640px) {
+  /* Interior first rows clear the shell's actual height, including wrapped rows. */
+  body:not([data-cs-template="home"]) .gcs-nav { position: sticky; }
+  /* The pharmacy spacer was compensating for the fixed, out-of-flow shell. */
+  body main.p3-page[data-phase3-route^="/pharmacies/"] { padding-block-start: 20px; }
+}
+/* selection #2 companion keyframe for the drawer section reveal above */
+@keyframes cs-drawer-section-in {
+  from { opacity: 0; translate: 0 -6px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* ---- representative first-content rhythm ---------------------------------
+   Keep desktop breadcrumbs and hero framing, but remove the compounded shell +
+   hero whitespace that pushed the first H1 beyond the representative 200px
+   nav-to-content budget. Narrow mobile interiors keep their shell in flow. */
+@media (min-width: 901px) {
+  body main.p3-page { padding-block-start: 30px; }
+  body main.p3-page > .breadcrumbs { margin-block-end: 28px; }
+  body main.p3-page > :is(
+    .p3-product-hero,
+    .p3-category-hero,
+    .p3-bulk-hero,
+    .p3-index-hero,
+    .p3-insights-hero,
+    .p3-pharmacy-hero
+  ) { padding-block: 48px; }
+  body main.p3-page > .p3-product-hero { min-height: 520px; }
+  body[data-cs-template="review"] > header.ready6-review-hero { padding-top: 40px; }
+}
+
+/* Pharmacy warning panels retain their dark palette with readable text. */
+body .p3-pharm-detail .p3-unknowns,
+body .p3-pharm-detail .p3-unknowns h2 { color: #f2f8f4; }
+
+/* ---- page bands + aurora field -------------------------------------------- */
+.page-band, .cs-band { padding-block: var(--space-section); position: relative; }
+.cs-band--tight { padding-block: calc(var(--space-section) * 0.6); }
+.cs-container { max-width: var(--container-content); margin: 0 auto; padding-inline: var(--gutter); }
+.cs-container--wide { max-width: var(--container-wide); }
+.cs-container--reading { max-width: var(--container-reading); }
+.cs-aurora-field {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
+}
+.cs-aurora-field::before, .cs-aurora-field::after {
+  content: ""; position: absolute; inset: -22%;
+  background:
+    radial-gradient(38% 34% at 24% 30%, rgba(23, 168, 126, 0.34), transparent 70%),
+    radial-gradient(30% 30% at 74% 22%, rgba(111, 198, 238, 0.22), transparent 70%),
+    radial-gradient(34% 36% at 58% 78%, rgba(169, 155, 242, 0.18), transparent 72%);
+  filter: blur(48px);
+  animation: none;
+}
+.cs-aurora-field::after {
+  background:
+    radial-gradient(30% 28% at 80% 66%, rgba(63, 217, 164, 0.2), transparent 70%),
+    radial-gradient(26% 30% at 14% 74%, rgba(111, 198, 238, 0.14), transparent 72%);
+  animation: none;
+}
+.cs-aurora-static { display: none; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(42% 36% at 26% 32%, rgba(23, 168, 126, 0.26), transparent 70%),
+    radial-gradient(34% 32% at 72% 24%, rgba(111, 198, 238, 0.16), transparent 70%);
+}
+.cs-band > .cs-container, .page-band > .cs-container { position: relative; z-index: 1; }
+
+/* ---- footer ---------------------------------------------------------------- */
+.cs-prefooter {
+  border-top: 1px solid var(--color-line-soft);
+  background: var(--cs-ground-band);
+}
+.gcs-footer {
+  background: var(--cs-ground-band); border-top: 1px solid var(--color-line-soft);
+  padding: var(--space-8) 0 var(--space-6); font-size: 0.92rem;
+}
+.gcs-footer .cs-container { display: grid; gap: var(--space-6); }
+.cs-footer-grid { display: grid; gap: var(--space-6); grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.cs-footer-grid h4 { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 12px; }
+.cs-footer-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.cs-footer-grid a,
+.cs-footer-legal a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding-block: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.cs-footer-grid a:hover { color: var(--text-primary); text-decoration: underline; }
+/* Design pass 2026-08-26 (fix #9): footer entries that trigger the subscribe
+   sheet are buttons styled as footer links (price alerts / newsletter). */
+.cs-footer-linkbtn {
+  display: inline-flex; align-items: center;
+  min-width: 44px; min-height: 44px; padding: 6px 0;
+  border: 0; background: none; cursor: pointer;
+  color: var(--text-secondary); font: inherit; text-align: left;
+}
+.cs-footer-linkbtn:hover { color: var(--text-primary); text-decoration: underline; }
+.cs-footer-legal { border-top: 1px solid var(--color-line-soft); padding-top: var(--space-5); color: var(--text-secondary); font-size: 0.85rem; display: grid; gap: 10px; }
+
+/* ---- sticky CTA + consent choreography ------------------------------------ */
+.sticky {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+  display: none; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
+  padding: 12px max(var(--gutter), env(safe-area-inset-left)) calc(12px + env(safe-area-inset-bottom));
+  background: var(--cs-ground-band); border-top: 1px solid var(--color-line);
+}
+@media (max-width: 768px) { .sticky.is-active { display: grid; } }
+/* ADOPTED (design pass 2026-08-27, Phase-2 selection #6): shadcn toast recipe
+   timing (MIT, timings only) — the consent corner card's rise tightens from
+   500ms to a 200ms rise. PRESENTATION ONLY: the keyframe, its courtesy delay,
+   and every consent semantic stay in consent-runtime.mjs; this section#
+   selector deliberately out-specifies the runtime's injected #gcs-consent. */
+section#gcs-consent { animation-duration: 200ms; }
+#gcs-consent {
+  /* consent toast contract: compact, bottom-safe, never covers a primary action
+     (placement chain in consent-runtime.mjs handles collision; these styles
+     keep it small and clearly secondary). */
+  font-size: 0.85rem; line-height: 1.45;
+  max-width: min(560px, calc(100vw - 24px));
+  border-radius: var(--radius-card);
+  background: var(--color-surface-float); color: var(--text-primary);
+  box-shadow: var(--shadow-float);
+}
+/* Design pass 2026-08-26 (home spec fix #2): on desktop the consent toast
+   becomes a bottom-RIGHT corner mini-toast that stays off the money modules.
+   PRESENTATION ONLY — consent semantics, storage, analytics gating, and the
+   runtime collision/fallback chain (.is-alt-left/.is-alt-top/.is-inflow, which
+   carry higher specificity than this base rule and still win) are untouched.
+   `section#gcs-consent` deliberately out-specifies the runtime's `#gcs-consent`
+   base rule, which is injected later in <head> and would otherwise re-center it. */
+@media (min-width: 769px) {
+  section#gcs-consent {
+    left: auto; right: 20px; bottom: 20px; translate: none;
+    grid-template-columns: 1fr;
+    width: min(390px, calc(100vw - 40px));
+    gap: 10px; padding: 14px 16px;
+    font-size: 0.8rem; line-height: 1.4;
+  }
+  section#gcs-consent .gcs-consent-actions { justify-content: flex-start; }
+  section#gcs-consent .gcs-consent-actions button { min-height: 44px; padding: 9px 14px; }
+  section#gcs-consent.is-inflow {
+    position: static; width: auto; max-width: none; translate: none;
+    grid-template-columns: minmax(0, 1fr) auto; border-radius: 0;
+  }
+}
+
+/* ---- W5 / D17 subscribe bottom sheet ------------------------------------ */
+.cs-prefooter__inner {
+  width: min(100% - (2 * var(--gutter)), var(--container-content)); margin-inline: auto;
+  padding-block: var(--space-6); display: flex; align-items: center; justify-content: center;
+  gap: var(--space-5); text-align: center; flex-wrap: wrap;
+}
+.cs-prefooter__inner p { margin: 0; }
+.cs-subscribe-open span { display: inline-block; }
+.cs-subscribe-mail { display: inline-block; width: 1.1em; height: 1.1em; animation: cs-subscribe-mail-bob 2.4s ease-in-out infinite; }
+@keyframes cs-subscribe-mail-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@media (prefers-reduced-motion: reduce) { .cs-subscribe-mail { animation: none; } }
+.cs-subscribe-layer {
+  position: fixed; inset: 0; z-index: 220; pointer-events: none;
+  opacity: 0; transition: opacity 180ms ease;
+}
+.cs-subscribe-layer[hidden] { display: none; }
+.cs-subscribe-layer.is-open { opacity: 1; pointer-events: auto; }
+.cs-subscribe-backdrop {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0;
+  background: rgba(0, 0, 0, 0.4); opacity: 0; cursor: default;
+  backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0);
+  transition: opacity 180ms ease;
+}
+.cs-subscribe-layer.is-open .cs-subscribe-backdrop {
+  opacity: 1; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+/* Design pass 2026-08-26 (home spec fix #9): compact bottom sheet — their
+   ~240px single-purpose sheet: gradient title, one email row, close X. The
+   form fields, consent note, honeypot, and transport contract are UNTOUCHED. */
+.cs-subscribe-sheet {
+  position: absolute; inset: auto 0 var(--consent-clearance, 0px);
+  min-height: min(25dvh, calc(100dvh - var(--consent-clearance, 0px) - 16px));
+  max-height: calc(100dvh - var(--consent-clearance, 0px) - 16px); overflow-y: auto;
+  padding: 24px max(var(--gutter), calc((100vw - min(1000px, 100vw)) / 2));
+  display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 28px; align-items: center; align-content: center;
+  background: rgba(13, 31, 25, 0.97); border-top: 1px solid rgba(233, 247, 241, 0.16);
+  box-shadow: 0 -28px 80px rgba(0, 0, 0, 0.36); color: var(--text-primary);
+  transform: translateY(102%); opacity: 0;
+  /* ADOPTED (design pass 2026-08-27, Phase-2 selection #6): shadcn sheet recipe
+     in/out asymmetry (MIT, timings only): 260ms in / 180ms out. The base rule
+     carries the exit; .is-open below carries the slower entrance. */
+  transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), opacity 140ms ease;
+}
+.cs-subscribe-layer.is-open .cs-subscribe-sheet {
+  transform: translateY(0); opacity: 1;
+  transition: transform 260ms cubic-bezier(0.32, 0.72, 0, 1), opacity 200ms ease;
+}
+.cs-subscribe-close {
+  position: absolute; top: 14px; right: max(16px, var(--gutter)); width: 36px; height: 36px;
+  border: 1px solid var(--color-line); border-radius: 50%; background: rgba(233, 247, 241, 0.06);
+  color: var(--text-primary); font-size: 1.55rem; line-height: 1; cursor: pointer;
+}
+.cs-subscribe-copy { display: grid; gap: 6px; }
+.cs-subscribe-copy h2 {
+  margin: 0; font-size: clamp(1.3rem, 2.2vw, 1.6rem); line-height: 1.05;
+  background: var(--cs-accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent;
+  width: fit-content;
+}
+.cs-subscribe-copy p { margin: 0; color: var(--text-secondary); max-width: 60ch; font-size: 0.92rem; }
+.cs-subscribe-form { display: grid; gap: 8px; }
+.cs-subscribe-consent-note { margin: 0; color: var(--text-secondary); font-size: 0.78rem; line-height: 1.35; }
+.cs-subscribe-status:empty { display: none; }
+.cs-subscribe-form > label:first-child { font-weight: 750; }
+.cs-subscribe-fields { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+
+/* Security trap shared by every capture renderer. Keep it in the shell so a
+   route cannot expose the bot field merely because its page-specific bundle
+   omits a duplicate honeypot rule. */
+.capture-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+.cs-subscribe-fields input {
+  min-width: 0; min-height: 50px; border-radius: var(--radius-pill); border: 1px solid var(--color-line);
+  background: rgba(233, 247, 241, 0.07); color: var(--text-primary); padding-inline: 18px;
+}
+.cs-subscribe-fields input:focus-visible { outline: 2px solid var(--cs-aurora-3); outline-offset: 2px; }
+.cs-subscribe-consent { display: flex; gap: 9px; align-items: flex-start; color: var(--text-secondary); font-size: 0.82rem; line-height: 1.4; }
+.cs-subscribe-consent input { margin-top: 3px; accent-color: var(--cs-aurora-3); }
+.cs-subscribe-form input[name="company"] { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.cs-subscribe-status { min-height: 1.4em; margin: 0; color: var(--text-secondary); font-size: 0.86rem; }
+body.cs-subscribe-open { overflow: hidden; }
+
+@media (max-width: 700px) {
+  .cs-subscribe-sheet { grid-template-columns: 1fr; gap: 10px; padding: 16px 20px calc(16px + env(safe-area-inset-bottom)); }
+  .cs-subscribe-copy { padding-right: 32px; gap: 4px; }
+  .cs-subscribe-copy .gcs-kicker { display: none; }
+  .cs-subscribe-copy h2 { font-size: 1.1rem; line-height: 1.15; }
+  .cs-subscribe-copy p { font-size: 0.8rem; line-height: 1.3; }
+  .cs-subscribe-form > label:first-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .cs-subscribe-fields input { min-height: 44px; }
+  .cs-subscribe-fields .cs-btn { min-height: 44px; padding-inline: 16px; }
+  .cs-subscribe-consent-note { font-size: 0.75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-subscribe-layer, .cs-subscribe-backdrop, .cs-subscribe-sheet { transition-duration: 0ms; }
+}
+
+/* ---- W6 welcome-back + W7 state personalization ------------------------- */
+.cs-welcome-toast {
+  position: fixed; right: max(18px, var(--gutter)); bottom: max(18px, env(safe-area-inset-bottom)); z-index: 180;
+  width: min(420px, calc(100vw - 36px)); padding: 16px 48px 16px 18px;
+  display: grid; gap: 7px; background: rgba(13, 31, 25, 0.94); color: var(--text-primary);
+  border: 1px solid rgba(233, 247, 241, 0.16); border-radius: 18px;
+  backdrop-filter: blur(18px) saturate(1.35); -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  box-shadow: var(--shadow-float); opacity: 0; transform: translateY(18px) scale(0.98); pointer-events: none;
+  transition: opacity 180ms ease, transform 240ms var(--ease-out-expo);
+}
+.cs-welcome-toast.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.cs-welcome-toast p { margin: 0; color: var(--text-secondary); }
+.cs-welcome-toast strong { color: var(--text-primary); }
+.cs-welcome-toast a { color: var(--cs-aurora-3); font-weight: 750; }
+.cs-welcome-toast button { position: absolute; top: 9px; right: 10px; width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: var(--text-primary); font-size: 1.35rem; cursor: pointer; }
+.cs-welcome-toast button:hover { background: rgba(233, 247, 241, 0.07); }
+.cs-state-chip {
+  width: max-content; max-width: 100%; margin-top: 12px; display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 10px; color: var(--text-secondary); background: rgba(233, 247, 241, 0.055);
+  border: 1px solid var(--color-line); border-radius: var(--radius-pill); font-size: 0.8rem; font-weight: 700;
+}
+.cs-state-chip > span:first-child { width: 7px; height: 7px; border-radius: 50%; background: var(--cs-aurora-3); box-shadow: 0 0 12px rgba(63, 217, 164, 0.7); }
+.cs-state-chip select { min-height: 30px; max-width: 180px; border: 0; background: transparent; color: var(--text-primary); font: inherit; cursor: pointer; }
+.cs-state-chip select:focus-visible { outline: 2px solid var(--cs-aurora-3); outline-offset: 3px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { .cs-welcome-toast { transition-duration: 0ms; } }
+
+/* ---- W18 mobile interaction shell --------------------------------------- */
+@media (max-width: 760px) {
+  html, body { max-width: 100%; overflow-x: clip; }
+  html:has(body.cs-mobile-filters-open) { overflow: hidden; overscroll-behavior: none; }
+  body:is(.cs-search-open, .cs-mobile-filters-open) { overflow: hidden; overscroll-behavior: none; }
+
+  .cs-search-panel {
+    position: fixed; inset: 0; z-index: 230; width: 100%; height: 100dvh;
+    display: grid; grid-template-rows: 72px minmax(0, 1fr);
+    background: rgba(7, 16, 13, 0.98); opacity: 0;
+    transform: translateY(100%); transform-origin: center bottom;
+    transition: opacity 180ms ease, transform 240ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .cs-search-panel.is-open { opacity: 1; transform: none; }
+  .cs-search-box {
+    min-height: 72px; padding: env(safe-area-inset-top) 14px 0;
+    border: 0; border-bottom: 1px solid rgba(233, 247, 241, 0.14); border-radius: 0;
+    background: rgba(8, 20, 16, 0.98); box-shadow: none;
+  }
+  .cs-search-back { inline-size: 44px; block-size: 44px; flex-basis: 44px; }
+  .cs-search-box input { min-height: 48px; font-size: 1rem; }
+  .cs-search-results {
+    position: static; width: 100%; max-height: none; min-height: 0; overflow-y: auto;
+    grid-auto-rows: max-content;
+    padding: 16px 16px calc(28px + env(safe-area-inset-bottom));
+    border: 0; border-radius: 0; background: transparent; box-shadow: none;
+  }
+  .cs-search-hit { grid-template-columns: 1fr auto; min-height: 96px; padding: 14px; }
+  .cs-search-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  .cs-search { flex-basis: 44px; }
+  .cs-search-toggle { inline-size: 44px; }
+  .cs-menu-toggle { min-height: 44px; block-size: 44px; }
+  :is(.cs-drawer, .cs-search-panel, .cs-prefooter, .cs-subscribe-layer) :is(a, button, input, select) { min-block-size: 44px; }
+
+  .cs-mobile-card-table { min-width: 0 !important; width: 100%; }
+  .cs-mobile-card-table thead {
+    position: absolute !important; width: 1px !important; height: 1px !important;
+    overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important;
+  }
+  .cs-mobile-card-table tbody,
+  .cs-mobile-card-table tr,
+  .cs-mobile-card-table th,
+  .cs-mobile-card-table td { display: block; width: 100%; min-width: 0; max-width: 100%; }
+  .cs-mobile-card-table tbody { display: grid; gap: 14px; }
+  .cs-mobile-card-table tbody tr {
+    padding: 16px 18px; overflow: hidden; border: 1px solid var(--color-line-soft);
+    border-radius: 16px; background: var(--cs-paper-card, #fffdf7); box-shadow: var(--cs-card-shadow-paper);
+  }
+  .cs-mobile-card-table tbody th,
+  .cs-mobile-card-table tbody td { padding: 7px 0 !important; border: 0 !important; overflow-wrap: anywhere; }
+  .cs-mobile-card-table tbody th::before,
+  .cs-mobile-card-table tbody td::before {
+    content: attr(data-label); display: block; margin-bottom: 2px;
+    color: var(--cs-muted-on-paper, var(--text-secondary)); font-size: 0.68rem;
+    font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
+  }
+  .cs-mobile-card-table caption { display: block; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gcs-nav,
+  .cs-navgroup > button::after,
+  .cs-navmenu,
+  .cs-search-panel { transition-duration: 0ms; }
+}
+
+/* Footer disclosure stack (design pass 2026-08-27, nav spec F1): visible
+   medical-boundary + affiliate paragraphs on every page, their pattern, our
+   words. Muted, small, honest — never hidden. */
+.cs-footer-disclosure { max-width: 88ch; color: var(--text-secondary); font-size: 0.8rem; line-height: 1.55; }

@@ -1,0 +1,162 @@
+{
+  "schema": "glp-llms-priority-v1",
+  "source_spec": "reports/glp-clinic-scout/rebuild/SPEC-AEO-20260819.md \u00a72",
+  "title": "GLP Clinic Scout",
+  "summary": [
+    "Independent comparison site for online GLP-1 (semaglutide and tirzepatide)",
+    "weight-loss programs and telehealth providers. Every price is captured from a",
+    "provider's own first-party page and shown with a visible \"checked YYYY-MM-DD\"",
+    "date and a source link. Fields we cannot verify are omitted, never estimated.",
+    "Educational comparison only: not medical advice and not a substitute for a",
+    "licensed clinician. Operated by Tilton Group LLC (California, USA)."
+  ],
+  "key_facts": [
+    "Provider rankings are computed at build time from five published criteria\n  (price clarity, care-process visibility, insurance support, shipping\n  transparency, verifiable evidence). Clinic Scout may earn commissions from provider links. Check the ordering method stated for each comparison. Payment is not evidence of quality, safety or medical suitability.",
+    "The GLP-1 Price Index reports the median, minimum, and maximum advertised\n  monthly price for compounded semaglutide and tirzepatide across the live\n  provider universe, refreshed weekly, with a per-provider source link and\n  capture date for every observation.",
+    "Reviews cite the dispensing pharmacy's state-board licence number and the\n  regulatory basis (FD&C Act 503A, USP <797>) where verified, each with a\n  capture date.",
+    "Coverage is reported honestly (e.g. \"17 of 33 eligible providers covered\").",
+    "Affiliate relationships exist and are disclosed on every commercial page;\n  they do not create medical claims or alter rankings."
+  ],
+  "sections": [
+    {
+      "heading": "Compare and choose",
+      "links": [
+        {
+          "route": "/providers/",
+          "label": "GLP-1 provider directory",
+          "note": "source-dated provider records grouped by medication and plan intent"
+        },
+        {
+          "route": "/glp-1-price-index/",
+          "label": "GLP-1 Price Index",
+          "note": "weekly median/min/max advertised prices for compounded semaglutide and tirzepatide, source-linked per provider"
+        },
+        {
+          "route": "/best/ozempic-alternatives/",
+          "label": "Ozempic alternatives",
+          "note": "dated comparison of alternatives with regulatory status"
+        },
+        {
+          "route": "/pharmacies/",
+          "label": "Compounding pharmacy evidence directory",
+          "note": "source-bound pharmacy identity, pathway, regulator citation, and explicit unknown fields"
+        },
+        {
+          "route": "/quiz/provider-fit/",
+          "label": "Provider-fit quiz",
+          "note": "answers stay on-device; matches are commercial fit, not clinical recommendations"
+        }
+      ]
+    },
+    {
+      "heading": "Cost guides (dated, source-cited)",
+      "links": [
+        {
+          "route": "/guides/mounjaro-cost-without-insurance/",
+          "label": "Mounjaro cost without insurance"
+        },
+        {
+          "route": "/guides/ozempic-cost-without-insurance/",
+          "label": "Ozempic cost without insurance"
+        },
+        {
+          "route": "/guides/zepbound-wegovy-cost-without-insurance/",
+          "label": "Zepbound vs Wegovy cost"
+        },
+        {
+          "route": "/self-pay/",
+          "label": "Self-pay GLP-1 price paths",
+          "note": "source-dated provider prices with term and evidence boundaries"
+        },
+        {
+          "route": "/guides/lilly-patient-assistance-vs-savings/",
+          "label": "Lilly patient assistance vs savings"
+        }
+      ]
+    },
+    {
+      "heading": "Safety and verification",
+      "links": [
+        {
+          "route": "/guides/counterfeit-ozempic-verification-reporting/",
+          "label": "Counterfeit Ozempic: verify and report",
+          "note": "FDA-sourced identifier checks and reporting channels"
+        },
+        {
+          "route": "/guides/compounded-semaglutide-vs-ozempic-regulatory-status/",
+          "label": "Compounded semaglutide vs Ozempic: regulatory status"
+        },
+        {
+          "route": "/guides/compounded-tirzepatide-vs-zepbound-regulatory-status/",
+          "label": "Compounded tirzepatide vs Zepbound: regulatory status"
+        },
+        {
+          "route": "/guides/online-glp-1-intake-to-pharmacy-fulfillment/",
+          "label": "How online GLP-1 intake-to-pharmacy fulfillment works"
+        },
+        {
+          "route": "/guides/glp-1-subscription-cancellation-terms/",
+          "label": "Subscription cancellation terms compared"
+        }
+      ]
+    },
+    {
+      "heading": "Provider reviews (evidence-first)",
+      "links": [
+        {
+          "route": "/reviews/orderlymeds/",
+          "label": "OrderlyMeds review"
+        },
+        {
+          "route": "/reviews/gobymeds/",
+          "label": "GobyMeds review"
+        }
+      ],
+      "trailing_lines": [
+        "- All provider reviews are listed in the sitemap under /reviews/"
+      ]
+    },
+    {
+      "heading": "Methodology and accountability",
+      "links": [
+        {
+          "route": "/how-we-rate/",
+          "label": "How we rate"
+        },
+        {
+          "route": "/review-standards/",
+          "label": "Review standards"
+        },
+        {
+          "route": "/editorial-guidelines/",
+          "label": "Editorial guidelines"
+        },
+        {
+          "route": "/how-we-make-money/",
+          "label": "How we make money"
+        },
+        {
+          "route": "/authors/clinic-scout-editorial-team/",
+          "label": "Editorial team"
+        }
+      ]
+    }
+  ],
+  "machine_readable": [
+    {
+      "label": "Sitemap",
+      "url": "https://glpclinicscout.com/sitemap.xml",
+      "file": "sitemap.xml"
+    },
+    {
+      "label": "Price Index dataset (CSV)",
+      "url": "https://glpclinicscout.com/glp-1-price-index/data/latest.csv",
+      "file": "glp-1-price-index/data/latest.csv"
+    },
+    {
+      "label": "Price Index dataset (JSON)",
+      "url": "https://glpclinicscout.com/glp-1-price-index/data/latest.json",
+      "file": "glp-1-price-index/data/latest.json"
+    }
+  ]
+}

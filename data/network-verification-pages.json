@@ -1,0 +1,13 @@
+{
+  "schema": "glp-network-verification-pages-v1",
+  "note": "Affiliate-network site-ownership verification files. Each network hands us an exact byte payload and a fixed URL; the network's crawler fetches that URL and compares the body verbatim. They are BUILD SOURCE, not hand-placed files: build-staging.mjs emits them exactly like the IndexNow key file, so a clean rebuild from source regenerates every one of them. They are excluded from the sitemap and served noindex - they are machine-verification endpoints, not pages for readers.",
+  "pages": [
+    {
+      "network": "LinkConnector",
+      "path": "linkconnector.htm",
+      "final_url": "https://glpclinicscout.com/linkconnector.htm",
+      "content": "<p>LinkConnector Validation</p>",
+      "purpose": "site ownership verification"
+    }
+  ]
+}

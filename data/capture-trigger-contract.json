@@ -1,0 +1,31 @@
+{
+  "desktop_exit_intent": true,
+  "frequency_cap": {
+    "per_days": 7,
+    "per_session": 1
+  },
+  "mobile_fullscreen_interstitial": false,
+  "mobile_surfaces": [
+    "scroll-slide-in",
+    "sticky-inline"
+  ],
+  "runtime_enabled": false,
+  "schema": "glp-capture-triggers-v1",
+  "topic_matched_upgrades": [
+    "cost-comparison-checklist",
+    "monthly-cost-calculator",
+    "nausea-management-questions-checklist",
+    "side-effect-and-dosing-observation-tracker"
+  ],
+  "trigger_any": [
+    {
+      "scroll_percent": [
+        25,
+        40
+      ]
+    },
+    {
+      "dwell_seconds": 15
+    }
+  ]
+}

@@ -1,0 +1,309 @@
+{
+  "schema": "glp-attested-price-retention-v1",
+  "baseline_matrix_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818",
+  "authority": "PLAN/D2/FABLE-FINAL-PASS.md:169-170; RELEASE-2-PARENT-REVIEW/PRICE-STATE-REPAIR-BRIEF.md",
+  "bindings": [
+    {
+      "program_id": "altrx-glp1-us-cps",
+      "path": "data/price-state-evidence/altrx-glp1-us-cps.json",
+      "sha256": "5148292d40df3fbadc57bcf170d8cc5065feee4ad098fdd2e4742c1a9edb2b84",
+      "packet_path": "data/price-state-evidence/altrx-glp1-us-cps-packet.json",
+      "packet_sha256": "8250145ee26e73cb8a4ec2840b3d32ad46b0c8d93d5328f555d54d8f1e2ef870"
+    },
+    {
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "path": "data/price-state-evidence/bodybuilding-com-glp-1-longevity-review.json",
+      "sha256": "13ca84021b53d465e50e57e549d1579ba950910591640943d6c06ee8a908ed20",
+      "packet_path": "data/price-state-evidence/bodybuilding-com-glp-1-longevity-review-packet.json",
+      "packet_sha256": "99f54b4b2b6f1c956927f098fba359e30746cc3c3c207ea055f5a63a43649ebf"
+    },
+    {
+      "program_id": "coreage-rx-glp-1-1632",
+      "path": "data/price-state-evidence/coreage-rx-glp-1-1632.json",
+      "sha256": "20b028e69279aebe1f18d6f09e376a3e87ee785d1329b43280eb4a2d7ddeb784",
+      "packet_path": "data/price-state-evidence/coreage-rx-glp-1-1632-packet.json",
+      "packet_sha256": "c0c136c668cc753f4499df74de803900e372f09aaf93208e2f30d7fc5b5ad8fe"
+    },
+    {
+      "program_id": "healthrx",
+      "path": "data/price-state-evidence/healthrx.json",
+      "sha256": "8faaa8f56050a581bebdef32f2a9d3b602f2f65d30f7b947eef7ddaaf8d0e9bd",
+      "packet_path": "data/price-state-evidence/healthrx-packet.json",
+      "packet_sha256": "9bfd4e468df438930d4f37561e06f4103e030a8f8036c365f1c7ec3b870927b3"
+    },
+    {
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "path": "data/price-state-evidence/levelsrx-extra-cpa-home-page.json",
+      "sha256": "e8e03c1f675bb4d261ae692efb39ca1fa676edabb214ce4ece3c0979b9b9c07a",
+      "packet_path": "data/price-state-evidence/levelsrx-extra-cpa-home-page-packet.json",
+      "packet_sha256": "74c470c9452fdae74fdecf0ac0d0594340db76a553ef303d91b3e1618e7783d0"
+    },
+    {
+      "program_id": "longevity-meds-glp-1-review",
+      "path": "data/price-state-evidence/longevity-meds-glp-1-review.json",
+      "sha256": "89c2de9c85cc5ecc4c03ccdc0d75f6e7de92957c64cd4f97bc042a0ab490137c",
+      "packet_path": "data/price-state-evidence/longevity-meds-glp-1-review-packet.json",
+      "packet_sha256": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7"
+    },
+    {
+      "program_id": "nu-image-medical-review",
+      "path": "data/price-state-evidence/nu-image-medical-review.json",
+      "sha256": "0ebdbfe858060ee37154f048c048ed8d736a40f86ba9de5cdafbb473219047ab",
+      "packet_path": "data/price-state-evidence/nu-image-medical-review-packet.json",
+      "packet_sha256": "ea5bbce40382439247cfe12294d854f7ccd48e95b1987f806ea43c7dcd961d0d"
+    },
+    {
+      "program_id": "orderlymeds",
+      "path": "data/price-state-evidence/orderlymeds.json",
+      "sha256": "a24f80b1ae7f337aaa971cd370edafe30ed86cc16703e42978310a9bce35cbeb",
+      "packet_path": "data/price-state-evidence/orderlymeds-packet.json",
+      "packet_sha256": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3"
+    },
+    {
+      "program_id": "pallas-health-review",
+      "path": "data/price-state-evidence/pallas-health-review.json",
+      "sha256": "16d1c672bdc4ad3f246be0b5a8ff02578c6057ea8ad9768dd6c3bac473a360e9",
+      "packet_path": "data/price-state-evidence/pallas-health-review-packet.json",
+      "packet_sha256": "02dd705dc9b7a348b473fc00f641aeed292ddf89178eb8d4fc3ef9e2c908acfa"
+    },
+    {
+      "program_id": "rxspan-md-telehealth-program-review",
+      "path": "data/price-state-evidence/rxspan-md-telehealth-program-review.json",
+      "sha256": "1084394e874f07ae331e55be527d820e08530f5c4e906ee49ab756d7a105bf60",
+      "packet_path": "data/price-state-evidence/rxspan-md-telehealth-program-review-packet.json",
+      "packet_sha256": "b593803c8630bdc1530d6eb2112073aa6b25cb71fb49ca2fc9989b196b8afd9d"
+    },
+    {
+      "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+      "path": "data/price-state-evidence/skinnyrx-1-glp-weight-loss-provider-review.json",
+      "sha256": "08d0c2336f3bd69a264f78228c2682f4f70938c79ae62bde57df58f95c2df148",
+      "packet_path": "data/price-state-evidence/skinnyrx-1-glp-weight-loss-provider-review-packet.json",
+      "packet_sha256": "45a62664ea0bb3c8cbaa816cee932414f2beb8ed5e511b5c3f88d72b5ecc646e"
+    },
+    {
+      "program_id": "wellmedr-review",
+      "path": "data/price-state-evidence/wellmedr-review.json",
+      "sha256": "072194b98c1d5c66f7902714871c1c05484350162472a3e438565b8e61498aff",
+      "packet_path": "data/price-state-evidence/wellmedr-review-packet.json",
+      "packet_sha256": "4967405a45ea128f9d01af9a7e962214249323c80fc0185c7ebe85b21f7b5423"
+    }
+  ],
+  "removed_rows": [
+    {
+      "program_id": "altrx-glp1-us-cps",
+      "baseline_index": 0,
+      "operation_id": "9d56bc449f50e815287f",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "altrx-glp1-us-cps",
+      "baseline_index": 1,
+      "operation_id": "b56b40a6b17855a6b347",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "baseline_index": 0,
+      "operation_id": "40ee31cde9d20a148feb",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "baseline_index": 1,
+      "operation_id": "2a86bed44ae6e0f71c2f",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "coreage-rx-glp-1-1632",
+      "baseline_index": 0,
+      "operation_id": "fed6dd4680235f032421",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "coreage-rx-glp-1-1632",
+      "baseline_index": 1,
+      "operation_id": "fba622823b3bd9202cb9",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "healthrx",
+      "baseline_index": 0,
+      "operation_id": "9637f8b13ab69e07d9d0",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "healthrx",
+      "baseline_index": 1,
+      "operation_id": "207825f2cffbbeed0772",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "baseline_index": 0,
+      "operation_id": "5923c0ab7c31fef96bb0",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "baseline_index": 1,
+      "operation_id": "c107a93b0b1374c7e4af",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "baseline_index": 2,
+      "operation_id": "f9392df9d4136c75c43f",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "longevity-meds-glp-1-review",
+      "baseline_index": 0,
+      "operation_id": "83261615c84b0e2c8ca9",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "longevity-meds-glp-1-review",
+      "baseline_index": 1,
+      "operation_id": "cf1ab774a2baf0585091",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "nu-image-medical-review",
+      "baseline_index": 0,
+      "operation_id": "9f23317686fbe96191e2",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "nu-image-medical-review",
+      "baseline_index": 1,
+      "operation_id": "1600383bf4e5b96c5e98",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "nu-image-medical-review",
+      "baseline_index": 2,
+      "operation_id": "f30d1a22da53351049ec",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "nu-image-medical-review",
+      "baseline_index": 3,
+      "operation_id": "4f818dff4737b2284570",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "orderlymeds",
+      "baseline_index": 0,
+      "operation_id": "110a593197bdda98e119",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "orderlymeds",
+      "baseline_index": 1,
+      "operation_id": "2b6e26cf8a406d3d172d",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "pallas-health-review",
+      "baseline_index": 0,
+      "operation_id": "d136d1cc365451d19bf1",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "pallas-health-review",
+      "baseline_index": 1,
+      "operation_id": "3831dea809bfb2b44191",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "rxspan-md-telehealth-program-review",
+      "baseline_index": 0,
+      "operation_id": "427cb7607d4988a56beb",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "rxspan-md-telehealth-program-review",
+      "baseline_index": 1,
+      "operation_id": "4a690eaac74a2e50d70b",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "rxspan-md-telehealth-program-review",
+      "baseline_index": 2,
+      "operation_id": "e1d80292a994d13cf0ed",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "rxspan-md-telehealth-program-review",
+      "baseline_index": 3,
+      "operation_id": "80aac9937de887089489",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "rxspan-md-telehealth-program-review",
+      "baseline_index": 4,
+      "operation_id": "98e5153862e6d0342419",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "rxspan-md-telehealth-program-review",
+      "baseline_index": 5,
+      "operation_id": "fc08875dd86d9941f720",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "rxspan-md-telehealth-program-review",
+      "baseline_index": 6,
+      "operation_id": "85dd842aeedda7a88bfa",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+      "baseline_index": 0,
+      "operation_id": "1a84000ff479eaa1ba5a",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+      "baseline_index": 1,
+      "operation_id": "09576db2f26ca2b5ff0a",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+      "baseline_index": 2,
+      "operation_id": "f30b36a9977573390d36",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+      "baseline_index": 3,
+      "operation_id": "932fd5e5346b8a41b52d",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "wellmedr-review",
+      "baseline_index": 0,
+      "operation_id": "e7a9732278b73f619040",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "wellmedr-review",
+      "baseline_index": 1,
+      "operation_id": "64d5109bed64c30f42e8",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "wellmedr-review",
+      "baseline_index": 2,
+      "operation_id": "09f672f8c981f5c75b35",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    },
+    {
+      "program_id": "wellmedr-review",
+      "baseline_index": 3,
+      "operation_id": "db45cf54e4ddcd85a9cb",
+      "reason": "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+    }
+  ]
+}

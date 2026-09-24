@@ -1,0 +1,106 @@
+{
+  "schema": "clinic-scout-resend-machine-v1",
+  "provider": "resend",
+  "status": "LIVE_SCHEDULED_ZERO_ELIGIBLE",
+  "runtime_enabled": true,
+  "send_authorized": true,
+  "domain": {
+    "sending_domain": "glpclinicscout.com",
+    "sending_subdomain": "glpclinicscout.com",
+    "resend_domain_id": "d7f48d39-91e7-4496-9040-cb714b3841ed",
+    "resend_domain_status": "verified",
+    "resend_domain_region": "us-east-1",
+    "resend_sending_capability": "enabled",
+    "sender_alias": "izaiah@glpclinicscout.com",
+    "sender_alias_kind": "separate_google_workspace_mailbox",
+    "reply_to": "izaiah@glpclinicscout.com",
+    "from_name": "GLP Clinic Scout",
+    "from_identity": "GLP Clinic Scout <izaiah@glpclinicscout.com>",
+    "spf": "PASS",
+    "dkim": "PASS",
+    "dmarc": "PASS",
+    "dmarc_policy": "p=none",
+    "resend_domain_verified": true,
+    "alias_routing_verified": true,
+    "provider_evidence_path": "/home/ubuntu/business/reports/glp-clinic-scout/growth/build-4/newsletter-amendment-fresh-readback-20260809.json",
+    "dns_evidence_path": "/home/ubuntu/business/reports/glp-clinic-scout/growth/build-4/newsletter-amendment-fresh-readback-20260809.json",
+    "alias_evidence_path": "/home/ubuntu/business/reports/glp-clinic-scout/growth/build-4/newsletter-amendment-fresh-readback-20260809.json",
+    "warmup_status": "PASS",
+    "warmup_daily_caps": [25, 50, 100, 250, 500]
+  },
+  "activation_evidence": {
+    "status": "PASS_LIVE_SCHEDULED_ZERO_ELIGIBLE",
+    "readback_path": "/home/ubuntu/business/reports/glp-clinic-scout/growth/build-4/newsletter-amendment-fresh-readback-20260809.json",
+    "readback_sha256": "35b0a988fd82ec4135010ee14c92efe0f753b7917a1dbc77a1a425c1ae9708b2",
+    "current_release_root": "/home/ubuntu/business/site-system/flagship-v2/releases/glp-growth-build6-build4-20260809-r2",
+    "provider_module_sha256": "a8bedafa0fd3bb0be3a9a6c179a23c38885c1d85fb03af188ed8bb0668186a33",
+    "from_identity": "GLP Clinic Scout <izaiah@glpclinicscout.com>",
+    "reply_to": "izaiah@glpclinicscout.com",
+    "operator_receipt_sha256": "fed001deeb0ba25a6ee8361249c72c5a68b2e4f2dfdef45f8e420ed8dacd2d1f"
+  },
+  "alias_decision": {
+    "chosen": "izaiah@glpclinicscout.com",
+    "decision": "operator_selected_separate_monitored_workspace_mailbox",
+    "reason": "The operator selected izaiah@glpclinicscout.com for Build 4 outreach. Live Gmail DWD profile readback proved it is a separate Google Workspace mailbox, and the canonical five-minute inbox control plane now monitors it as its own active mailbox row.",
+    "alternatives_considered": [
+      "ops@glpclinicscout.com",
+      "billing@glpclinicscout.com",
+      "clinics@glpclinicscout.com",
+      "hello@glpclinicscout.com",
+      "partners@glpclinicscout.com",
+      "privacy@glpclinicscout.com",
+      "security@glpclinicscout.com",
+      "support@glpclinicscout.com",
+      "pricewatch@glpclinicscout.com"
+    ],
+    "alias_mutations": 0,
+    "label_mutations": 0,
+    "filter_mutations": 0
+  },
+  "postal_address": {
+    "value": "Tilton Group LLC, 2108 N St, Ste N, Sacramento, CA 95816",
+    "evidence_path": "src/legal-pages.mjs",
+    "evidence_surface": "/privacy/lead-capture/"
+  },
+  "subscriber_source_of_truth": "Cloudflare D1 EMAIL_DB",
+  "subscriber_tags": ["vertical", "funnel_stage", "consent_status", "consent_source"],
+  "normal_first_go_live_gate": true,
+  "legal_counsel_gate": false,
+  "never_send_without_opt_in": true,
+  "welcome_sequence": [
+    {"step":1,"day":0,"subject":"Your Clinic Scout comparison guide","preheader":"Start with the costs and constraints that change the decision.","purpose":"requested guide","affiliate_slot":false},
+    {"step":2,"day":1,"subject":"The advertised price is rarely the whole price","preheader":"A five-line cost check before you compare.","purpose":"price education","affiliate_slot":false},
+    {"step":3,"day":3,"subject":"How to compare your first two options","preheader":"Evidence, service area, terms, and the limits of rankings.","purpose":"first held comparison","affiliate_slot":true},
+    {"step":4,"day":5,"subject":"Seven questions to ask before enrolling","preheader":"Use this checklist on any provider call.","purpose":"provider questions","affiliate_slot":false},
+    {"step":5,"day":7,"subject":"Your next best comparison step","preheader":"A second look, plus how Clinic Scout handles evidence and incentives.","purpose":"second held comparison","affiliate_slot":true}
+  ],
+  "newsletter": {
+    "cadence":"weekly",
+    "format":"zero-click value-first briefing",
+    "content_source":"data/price-tracker.json validated by src/price-index.mjs",
+    "source_route":"/glp-1-price-index/",
+    "site_capture_funnel_stages":["content-upgrade","quiz-lead"],
+    "active_subscriber_required":true,
+    "suppression_rechecked_at_claim":true,
+    "value_percent":80,
+    "promotion_percent_max":20,
+    "featured_program_rotation":"eligible top-K only; deterministic weekly rotation; no repeat until pool exhausted",
+    "promo_code":"render only when verified current and program-authorized"
+  },
+  "engagement": {
+    "webhook_events":["email.sent","email.delivered","email.delivery_delayed","email.failed","email.opened","email.clicked","email.bounced","email.complained","email.suppressed"],
+    "signature_headers":["svix-id","svix-timestamp","svix-signature"],
+    "per_email_epc":true,
+    "minimum_clicks_for_optimization":30,
+    "sunset_days":60,
+    "win_back_day":55,
+    "hard_sunset_day":90
+  },
+  "unsubscribe": {"one_click":true,"list_unsubscribe_headers":true,"suppression_is_immediate":true},
+  "operator_approval": {
+    "required": true,
+    "statement": "Operator approval and the selected sender must be receipt-bound before runtime_enabled or send_authorized may be true.",
+    "receipt_sha256": "fed001deeb0ba25a6ee8361249c72c5a68b2e4f2dfdef45f8e420ed8dacd2d1f"
+  },
+  "credentials_in_artifact":false
+}

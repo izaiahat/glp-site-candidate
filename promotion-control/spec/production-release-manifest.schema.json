@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glp-additive-production-release-manifest-v1",
+  "type": "object",
+  "required": ["schema", "status", "manifest_sha256", "release_mode", "candidate", "diff", "prior_production", "preview_receipt", "rollback", "effects", "eligibility", "promotion_grammar"],
+  "properties": {
+    "schema": {"const": "glp-additive-production-release-manifest-v1"},
+    "status": {"enum": ["HELD_PREVIEW_ACCEPTANCE_AND_OPERATOR_AUTHORITY", "ELIGIBLE_FOR_EXACT_OPERATOR_COMMAND"]},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "release_mode": {"const": "additive_preserve_existing_production_routes_functions_bindings"},
+    "candidate": {"type": "object", "required": ["root", "tree_sha256", "surface_manifest_sha256", "public_tree_sha256", "binding"]},
+    "diff": {"type": "object", "required": ["path", "sha256", "changed", "added", "deleted"]},
+    "prior_production": {"type": "object", "required": ["project", "branch", "deployment_id"]},
+    "preview_receipt": {"type": "object", "required": ["required", "path", "sha256", "status"]},
+    "rollback": {"type": "object", "required": ["path", "sha256", "automatic_authorized", "executed"]},
+    "effects": {"type": "object"},
+    "eligibility": {"type": "object", "required": ["production", "affiliate_runtime", "capture_runtime"]},
+    "promotion_grammar": {"const": "PROMOTE GLP-P1 <release-manifest-sha256>"}
+  }
+}

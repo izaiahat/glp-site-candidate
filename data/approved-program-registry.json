@@ -1,0 +1,1427 @@
+{
+  "allowed_provider_tracking_hosts": {
+    "Awin": [
+      "www.awin1.com"
+    ],
+    "CJ Affiliate": [
+      "www.anrdoezrs.net",
+      "www.dpbolvw.net",
+      "www.jdoqocy.com",
+      "www.tkqlhce.com"
+    ],
+    "HealthTrader": [],
+    "Katalys": [
+      "track.revoffers.com"
+    ],
+    "MarketHealth": [],
+    "Partnerize": [
+      "prf.hn"
+    ]
+  },
+  "candidate_id": "glp-approved53-ready6-brand-slug-successor-20260802-r3",
+  "expected_program_count": 53,
+  "expected_provider_counts": {
+    "Awin": 21,
+    "CJ Affiliate": 7,
+    "Katalys": 23,
+    "Partnerize": 2
+  },
+  "generated_from_captured_evidence_at": "2026-08-02",
+  "programs": [
+    {
+      "canonical_sheet_row": 299,
+      "canonical_vertical": "mens-health-ed",
+      "display_name": "HealthyRXS",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:100131",
+      "provider_program_id": "100131",
+      "registry_id": "awin-100131",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=100131;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=299"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=100131&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:100131/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 153,
+      "canonical_vertical": "diagnostics-testing",
+      "display_name": "Mito Health Affiliate Program",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:119269",
+      "provider_program_id": "119269",
+      "registry_id": "awin-119269",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=119269;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=153"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=119269&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:119269/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 230,
+      "canonical_vertical": "mens-health-hair",
+      "display_name": "Advanced Trichology",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "advanced-trichology",
+      "network": "Awin",
+      "program_key": "Awin:119743",
+      "provider_program_id": "119743",
+      "registry_id": "awin-119743",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=119743;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=230"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=119743&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:119743/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 154,
+      "canonical_vertical": "fitness-equipment",
+      "display_name": "Forcebandz - Resistance Bands",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:121092",
+      "provider_program_id": "121092",
+      "registry_id": "awin-121092",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=121092;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=154"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=121092&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:121092/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 155,
+      "canonical_vertical": "fitness-equipment",
+      "display_name": "AEKE US",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:121596",
+      "provider_program_id": "121596",
+      "registry_id": "awin-121596",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=121596;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=155"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=121596&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:121596/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 156,
+      "canonical_vertical": "fitness-equipment",
+      "display_name": "Keppi",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:122084",
+      "provider_program_id": "122084",
+      "registry_id": "awin-122084",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=122084;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=156"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=122084&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:122084/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 157,
+      "canonical_vertical": "supplements-nutrition",
+      "display_name": "Health Stix",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:124994",
+      "provider_program_id": "124994",
+      "registry_id": "awin-124994",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=124994;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=157"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=124994&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:124994/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 239,
+      "canonical_vertical": "general-wellness",
+      "display_name": "EASYLONGER",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:125842",
+      "provider_program_id": "125842",
+      "registry_id": "awin-125842",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=125842;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=239"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=125842&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:125842/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 158,
+      "canonical_vertical": "fitness-equipment",
+      "display_name": "REVO",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:127003",
+      "provider_program_id": "127003",
+      "registry_id": "awin-127003",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=127003;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=158"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=127003&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:127003/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 242,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Serena Health",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "serena-health",
+      "network": "Awin",
+      "program_key": "Awin:128203",
+      "provider_program_id": "128203",
+      "registry_id": "awin-128203",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=128203;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=242"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=128203&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:128203/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 243,
+      "canonical_vertical": "fitness-equipment",
+      "display_name": "Moveincore",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:128575",
+      "provider_program_id": "128575",
+      "registry_id": "awin-128575",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=128575;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=243"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=128575&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:128575/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 346,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Coivas",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:128761",
+      "provider_program_id": "128761",
+      "registry_id": "awin-128761",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=128761;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=346"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=128761&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:128761/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 163,
+      "canonical_vertical": "supplements-nutrition",
+      "display_name": "LyfeFuel (US)",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "lyfefuel-us",
+      "network": "Awin",
+      "program_key": "Awin:35059",
+      "provider_program_id": "35059",
+      "registry_id": "awin-35059",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=35059;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=163"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/cread.php?awinmid=35059&awinaffid=2979387&clickref=&ued=https%3A%2F%2Flyfefuel.com%2F",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:35059/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 175,
+      "canonical_vertical": "supplements-nutrition",
+      "display_name": "Modify Health (US)",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:58169",
+      "provider_program_id": "58169",
+      "registry_id": "awin-58169",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=58169;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=175"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=58169&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:58169/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 182,
+      "canonical_vertical": "fitness-equipment",
+      "display_name": "Ultrahuman Healthcare",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:69428",
+      "provider_program_id": "69428",
+      "registry_id": "awin-69428",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=69428;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=182",
+        "/home/ubuntu/business/reports/glp-affiliate-expansion-20260731/27-final-sheet-live-verify.json#/all_rows/row=182;historical_migration_hold"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=69428&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "/home/ubuntu/business/reports/glp-affiliate-expansion-20260731/27-final-sheet-live-verify.json#/all_rows/row=182;historical_migration_hold",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 194,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "ShedRX",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:80963",
+      "provider_program_id": "80963",
+      "registry_id": "awin-80963",
+      "routing_class": "approved_tracking_ready_route_retired_best_terms",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=80963;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=194"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=80963&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:80963/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 196,
+      "canonical_vertical": "diagnostics-testing",
+      "display_name": "Circle DNA (US)",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:81635",
+      "provider_program_id": "81635",
+      "registry_id": "awin-81635",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=81635;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=196"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=81635&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:81635/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 197,
+      "canonical_vertical": "mens-health-hair",
+      "display_name": "Therapy-G",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:82737",
+      "provider_program_id": "82737",
+      "registry_id": "awin-82737",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=82737;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=197"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/cread.php?awinmid=82737&awinaffid=2979387&clickref=&ued=https%3A%2F%2Fwww.therapyg.com%2F",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:82737/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 305,
+      "canonical_vertical": "mens-health-hair",
+      "display_name": "Salonceuticals",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:83081",
+      "provider_program_id": "83081",
+      "registry_id": "awin-83081",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=83081;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=305"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=83081&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:83081/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 202,
+      "canonical_vertical": "mens-health-hair",
+      "display_name": "Hairmax.com",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:88237",
+      "provider_program_id": "88237",
+      "registry_id": "awin-88237",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=88237;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=202"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=88237&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:88237/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 291,
+      "canonical_vertical": "mens-health-hair",
+      "display_name": "APPEARANZ INC",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Awin",
+      "program_key": "Awin:93033",
+      "provider_program_id": "93033",
+      "registry_id": "awin-93033",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "01-awin-api-inventory.json#advertiser_id=93033;relationship=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=291"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.awin1.com/awclick.php?mid=93033&id=2979387",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Awin:93033/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.awin1.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 134,
+      "canonical_vertical": "diagnostics-testing",
+      "display_name": "Personalabs",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "CJ Affiliate",
+      "program_key": "CJ Affiliate:2507679",
+      "provider_program_id": "2507679",
+      "registry_id": "cj-affiliate-2507679",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "03-cj-joined-api-inventory.json#advertiser_id=2507679;relationship_status=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=134",
+        "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-2507679.json#/selected_tracking_link;link_id=15154073"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.jdoqocy.com/click-101822575-15154073-1652144108000",
+        "public_go_surface": false,
+        "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-2507679.json#/selected_tracking_link;link_id=15154073",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.jdoqocy.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 251,
+      "canonical_vertical": "fitness-equipment",
+      "display_name": "Power Systems",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "CJ Affiliate",
+      "program_key": "CJ Affiliate:3056145",
+      "provider_program_id": "3056145",
+      "registry_id": "cj-affiliate-3056145",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "03-cj-joined-api-inventory.json#advertiser_id=3056145;relationship_status=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=251"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.tkqlhce.com/click-101822575-15734949",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=CJ Affiliate:3056145/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.tkqlhce.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 140,
+      "canonical_vertical": "mens-health-ed",
+      "display_name": "HealthyMale",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "CJ Affiliate",
+      "program_key": "CJ Affiliate:5372369",
+      "provider_program_id": "5372369",
+      "registry_id": "cj-affiliate-5372369",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "03-cj-joined-api-inventory.json#advertiser_id=5372369;relationship_status=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=140",
+        "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-5372369.json#/selected_tracking_link;link_id=14442530"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.tkqlhce.com/click-101822575-14442530-1701742074000",
+        "public_go_surface": false,
+        "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-5372369.json#/selected_tracking_link;link_id=14442530",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.tkqlhce.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 136,
+      "canonical_vertical": "diagnostics-testing",
+      "display_name": "Peekaboo Early Gender DNA Test + empowerDX + SpermCheck Test",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "CJ Affiliate",
+      "program_key": "CJ Affiliate:6031771",
+      "provider_program_id": "6031771",
+      "registry_id": "cj-affiliate-6031771",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "03-cj-joined-api-inventory.json#advertiser_id=6031771;relationship_status=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=136",
+        "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-6031771.json#/selected_tracking_link;link_id=15299620"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.anrdoezrs.net/click-101822575-15299620-1773702587000",
+        "public_go_surface": false,
+        "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-6031771.json#/selected_tracking_link;link_id=15299620",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.anrdoezrs.net"
+      }
+    },
+    {
+      "canonical_sheet_row": 351,
+      "canonical_vertical": "diagnostics-testing",
+      "display_name": "Paternity Lab",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "paternity-lab",
+      "network": "CJ Affiliate",
+      "program_key": "CJ Affiliate:6105366",
+      "provider_program_id": "6105366",
+      "registry_id": "cj-affiliate-6105366",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "03-cj-joined-api-inventory.json#advertiser_id=6105366;relationship_status=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=351"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.jdoqocy.com/click-101822575-15214441-1651111940000",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=CJ Affiliate:6105366/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.jdoqocy.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 435,
+      "canonical_vertical": "supplements-nutrition",
+      "display_name": "Isagenix",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "CJ Affiliate",
+      "program_key": "CJ Affiliate:6535418",
+      "provider_program_id": "6535418",
+      "registry_id": "cj-affiliate-6535418",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "03-cj-joined-api-inventory.json#advertiser_id=6535418;relationship_status=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=435",
+        "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-6535418.json#/selected_tracking_link;link_id=15602729"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://www.jdoqocy.com/click-101822575-15602729-1692756847000",
+        "public_go_surface": false,
+        "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/110-cj-link-6535418.json#/selected_tracking_link;link_id=15602729",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "www.jdoqocy.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 141,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "TRT Nation",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "trt-nation",
+      "network": "CJ Affiliate",
+      "program_key": "CJ Affiliate:7538517",
+      "provider_program_id": "7538517",
+      "registry_id": "cj-affiliate-7538517",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "03-cj-joined-api-inventory.json#advertiser_id=7538517;relationship_status=joined",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=141"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": true,
+        "link_click_qa": {
+          "attribution_stamp_present": true,
+          "authority": "BRIDGE-20260818-AFF-TRT-001-CONTENT-FIT-LIFT",
+          "cjevent": "7276581a9ac211f1837601fa0a1eba23",
+          "network_link_id": "17115008",
+          "observed_final_status": 200,
+          "observed_final_url": "https://trtnation.com/weight-loss-therapy/?cjdata=MXxOfDB8WXww&cjevent=7276581a9ac211f1837601fa0a1eba23",
+          "performed_at_utc": "2026-08-18T06:14:00Z",
+          "receipt": "reports/glp-clinic-scout/affiliate-machine/trt-nation-content-fit-lift-20260818/link-click-qa-20260818.json",
+          "receipt_sha256": "cfe4f57315153b60dd3a8bf8fc7781d077efe591ff9250ad9148790e16d162cc"
+        },
+        "provider_issued_url": "https://www.tkqlhce.com/click-101822575-17115008?url=https%3A%2F%2Ftrtnation.com%2Fweight-loss-therapy%2F",
+        "public_go_surface": false,
+        "source_ref": "reports/glp-clinic-scout/affiliate-machine/trt-nation-content-fit-lift-20260818/link-click-qa-20260818.json#/tracking_url",
+        "state": "content_fit_lifted_provider_issued",
+        "superseded_content_fit_blocker": "The creative captured on 2026-08-02 resolved to testosterone replacement, not the source-cited GLP weight-loss program. Superseded by a verified GLP deep link on 2026-08-18.",
+        "superseded_evidence_snapshot_url_sha256": "7f8561a17dce497491fd0caa9ab7c8429d1494c5083dd13e971f6f3d1d7f7382",
+        "tracking_host": "www.tkqlhce.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 110,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Found Health",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "found-health",
+      "network": "Katalys",
+      "program_key": "Katalys:1162",
+      "provider_program_id": "1162",
+      "registry_id": "katalys-1162",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1162;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=110"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1162&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1162/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 272,
+      "canonical_vertical": "fitness-equipment",
+      "display_name": "Future",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Katalys",
+      "program_key": "Katalys:1185",
+      "provider_program_id": "1185",
+      "registry_id": "katalys-1185",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1185;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=272"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1185&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1185/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 111,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Sprout Health",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Katalys",
+      "program_key": "Katalys:1286",
+      "provider_program_id": "1286",
+      "registry_id": "katalys-1286",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1286;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=111"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1286&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "tracking#/programs/program_key=Katalys:1286",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 108,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Direct Meds GLP-1 Offers Top Funnels",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Katalys",
+      "program_key": "Katalys:1304",
+      "provider_program_id": "1304",
+      "registry_id": "katalys-1304",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1304;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=108"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1304&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1304/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 270,
+      "canonical_vertical": "diagnostics-testing",
+      "display_name": "Everlywell",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Katalys",
+      "program_key": "Katalys:1409",
+      "provider_program_id": "1409",
+      "registry_id": "katalys-1409",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1409;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=270"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1409&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1409/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 323,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "SHED",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "shedrx",
+      "network": "Katalys",
+      "program_key": "Katalys:1516",
+      "provider_program_id": "1516",
+      "registry_id": "katalys-1516",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1516;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=323"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1516&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "tracking#/programs/program_key=Katalys:1516",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 104,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Breeze Meds",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Katalys",
+      "program_key": "Katalys:1518",
+      "provider_program_id": "1518",
+      "registry_id": "katalys-1518",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1518;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=104"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1518&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1518/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 105,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Care Bare Rx GLP1",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "care-bare-rx-glp1",
+      "network": "Katalys",
+      "program_key": "Katalys:1519",
+      "provider_program_id": "1519",
+      "registry_id": "katalys-1519",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1519;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=105"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1519&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1519/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 103,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Synergy Rx",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "synergy-rx",
+      "network": "Katalys",
+      "program_key": "Katalys:1520",
+      "provider_program_id": "1520",
+      "registry_id": "katalys-1520",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1520;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=103"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1520&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1520/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 92,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "MadeMed",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "mademed",
+      "network": "Katalys",
+      "program_key": "Katalys:1536",
+      "provider_program_id": "1536",
+      "registry_id": "katalys-1536",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1536;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=92"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1536&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1536/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 94,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Ageless",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "try-ageless",
+      "network": "Katalys",
+      "program_key": "Katalys:1538",
+      "provider_program_id": "1538",
+      "registry_id": "katalys-1538",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1538;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=94"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1538&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1538/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 314,
+      "canonical_vertical": "mens-health-ed",
+      "display_name": "BraveRX Telemedicine - ED",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Katalys",
+      "program_key": "Katalys:1546",
+      "provider_program_id": "1546",
+      "registry_id": "katalys-1546",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1546;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=314",
+        "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/111-katalys-link-1546.json#/programs/0/tracking_candidates/0"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1546&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/111-katalys-link-1546.json#/programs/0/tracking_candidates/0",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 97,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Wellorithm GLP 1",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "wellorithm",
+      "network": "Katalys",
+      "program_key": "Katalys:1565",
+      "provider_program_id": "1565",
+      "registry_id": "katalys-1565",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1565;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=97"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1565&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1565/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 88,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Gala Health",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "gala-health",
+      "network": "Katalys",
+      "program_key": "Katalys:1576",
+      "provider_program_id": "1576",
+      "registry_id": "katalys-1576",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1576;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=88"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1576&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1576/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 102,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Oak Weight Loss Program",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "oak-weight-loss-program",
+      "network": "Katalys",
+      "program_key": "Katalys:1581",
+      "provider_program_id": "1581",
+      "registry_id": "katalys-1581",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1581;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=102"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1581&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1581/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 131,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "yourEra Program",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "yourera-program",
+      "network": "Katalys",
+      "program_key": "Katalys:1602",
+      "provider_program_id": "1602",
+      "registry_id": "katalys-1602",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1602;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=131"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1602&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1602/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 124,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Live Vital Launch",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "live-vital-launch",
+      "network": "Katalys",
+      "program_key": "Katalys:1610",
+      "provider_program_id": "1610",
+      "registry_id": "katalys-1610",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1610;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=124"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1610&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1610/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 93,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "telos rx",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "telos-rx",
+      "network": "Katalys",
+      "program_key": "Katalys:1612",
+      "provider_program_id": "1612",
+      "registry_id": "katalys-1612",
+      "routing_class": "held_network_program_paused",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1612;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=93"
+      ],
+      "tracking": {
+        "candidate_registry_wired": false,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1612&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1612/canonical_sheet/full_affiliate_link",
+        "state": "link_retired_network_program_paused",
+        "tracking_host": "track.revoffers.com"
+      },
+      "research_hold_receipt": {
+        "path": "data/telos-research-hold-receipt.json",
+        "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
+      }
+    },
+    {
+      "canonical_sheet_row": 132,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Trimi GLP-1",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "trimi-glp-1",
+      "network": "Katalys",
+      "program_key": "Katalys:1614",
+      "provider_program_id": "1614",
+      "registry_id": "katalys-1614",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1614;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=132"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1614&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1614/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 87,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "HealthRX Affiliate Program",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "healthrx",
+      "network": "Katalys",
+      "program_key": "Katalys:1630",
+      "provider_program_id": "1630",
+      "registry_id": "katalys-1630",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1630;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=87"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=1630&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:1630/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 127,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Strut Health",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "strut-health",
+      "network": "Katalys",
+      "program_key": "Katalys:384",
+      "provider_program_id": "384",
+      "registry_id": "katalys-384",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=384;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=127"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=384&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:384/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 320,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "MangoRx",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Katalys",
+      "program_key": "Katalys:647",
+      "provider_program_id": "647",
+      "registry_id": "katalys-647",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=647;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=320"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=647&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "tracking#/programs/program_key=Katalys:647",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 98,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "Enhance MD",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": "enhance-md",
+      "network": "Katalys",
+      "program_key": "Katalys:738",
+      "provider_program_id": "738",
+      "registry_id": "katalys-738",
+      "routing_class": "current_glp_live_wired",
+      "source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=738;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=98"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://track.revoffers.com/aff_c?offer_id=738&aff_id=13031",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Katalys:738/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "track.revoffers.com"
+      }
+    },
+    {
+      "canonical_sheet_row": 148,
+      "canonical_vertical": "glp1-weightloss",
+      "display_name": "eMed.com",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Partnerize",
+      "program_key": "Partnerize:1011l6645",
+      "provider_program_id": "1011l6645",
+      "registry_id": "partnerize-1011l6645",
+      "routing_class": "glp1_weightloss_coverage_candidate",
+      "source_refs": [
+        "02-partnerize-api-inventory.json#campaign_id=1011l6645;status=approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=148"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://prf.hn/l/55Ro98g/",
+        "public_go_surface": false,
+        "source_ref": "core#/programs/program_key=Partnerize:1011l6645/canonical_sheet/full_affiliate_link",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "prf.hn"
+      }
+    },
+    {
+      "canonical_sheet_row": 151,
+      "canonical_vertical": "general-wellness",
+      "display_name": "cpap.com",
+      "enumeration_class": "provider_joined_or_approved_exact_id",
+      "existing_release_alias": null,
+      "network": "Partnerize",
+      "program_key": "Partnerize:1011l6686",
+      "provider_program_id": "1011l6686",
+      "registry_id": "partnerize-1011l6686",
+      "routing_class": "sister_pool_vertical",
+      "source_refs": [
+        "02-partnerize-api-inventory.json#campaign_id=1011l6686;status=approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=151",
+        "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/122-partnerize-cpap-link-create.json#/tracking_url;link_id=1101l15382778"
+      ],
+      "tracking": {
+        "candidate_registry_wired": true,
+        "click_qa_performed": false,
+        "provider_issued_url": "https://prf.hn/l/xEMBe8j/",
+        "public_go_surface": false,
+        "source_ref": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/122-partnerize-cpap-link-create.json#/tracking_url;link_id=1101l15382778",
+        "state": "candidate_registry_wired_provider_issued",
+        "tracking_host": "prf.hn"
+      }
+    }
+  ],
+  "publication_policy": {
+    "all_review_briefs_require_bridge_acceptance": true,
+    "auto_deploy": false,
+    "auto_generate_public_pages": false,
+    "auto_publish": false,
+    "missing_tracking_url_disposition": "none_in_exact_provider_approved_set",
+    "provider_issued_tracking_urls_only": true
+  },
+  "schema": "approved-program-successor-registry-v1",
+  "source_manifest": {
+    "core": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/13-coverage-routing-plan.json",
+      "role": "53 exact provider-joined/approved program identities",
+      "sha256": "04f0098c71c580f8c40007ed4fe936b1b0fb872a3b2d6db2529340e30332ff43"
+    },
+    "correction": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/141-approved-denominator-correction.json",
+      "role": "stale-60 denominator correction and seven explicit exclusions",
+      "sha256": "d1f0f4c9de371116f2e09b7e5a2bcd66f47902f0e5d513c186e7079024515d00"
+    },
+    "healthtrader": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/98-technical-terminalization/108-healthtrader-offer-identities.json",
+      "role": "six null-referral offers excluded from approved denominator",
+      "sha256": "58b468a54179f2bc9b5f1af697c68feee0504160ee498602d996d659380a5685"
+    },
+    "markethealth": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/75-markethealth-sovrn-fresh-authenticated-enumeration.json",
+      "role": "pending program with null primary affiliate link excluded",
+      "sha256": "14dfecaffc04914a9e32ca381c7efa6f624198722c9a2498d8de3e90d879f3a3"
+    },
+    "production_registry": {
+      "path": "/home/ubuntu/business/site-system/flagship-v2/releases/glp-excellence-remaining-spec-20260801-r5/data/program-registry.json",
+      "role": "inherited alias crosswalk only",
+      "sha256": "e5e6f2a7c1318a13cceb1c396f791a41f291096883abd6eb388602a07d725e89"
+    },
+    "tracking": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-reconciliation-20260802/76-held-coverage-tracking-closure-delta.json",
+      "role": "provider-issued tracking evidence",
+      "sha256": "bc1a5239ef74c10d0961fc1447697277802ac589580ffd893ab8bd4579704f95"
+    }
+  },
+  "source_release": {
+    "immutable": true,
+    "path": "/home/ubuntu/business/site-system/flagship-v2/releases/glp-excellence-remaining-spec-20260801-r5",
+    "tree_sha256_before_candidate": "6db8b978c2f34bdb8886d38a274914797c7abe6c446c6ea818fab0bf7528d1b8"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "activated_existing_review_path": "/reviews/trt-nation/",
+  "approved_denominator": {
+    "enumeration_class": "provider_joined_or_approved_exact_id",
+    "included": true,
+    "mixed_semantics_disclosure": "Provider approval and a provider-issued URL do not independently authorize claims, publication, or deployment."
+  },
+  "candidate_id": "glp-approved53-ready6-brand-slug-successor-20260802-r3",
+  "coverage_gate": {
+    "bridge_review_state": "BRIDGE-20260818-AFF-TRT-001-CONTENT-FIT-LIFT",
+    "deployment_authority": true,
+    "editorial_approval_state": "ACCEPTED_EXISTING_SOURCE_CITED_PAGE_CONTENT_UNCHANGED",
+    "publication_state": "READY_INCREMENTAL_EXISTING_PAGE_ACTIVATION",
+    "scaffold_complete": true,
+    "tracking_gate_state": "PASS_PROVIDER_ISSUED_QA_VERIFIED"
+  },
+  "cta": {
+    "enabled": true,
+    "evidence_only_provider_issued_url_present": false,
+    "link_click_qa_performed": true,
+    "link_click_qa_receipt": "reports/glp-clinic-scout/affiliate-machine/trt-nation-content-fit-lift-20260818/link-click-qa-20260818.json",
+    "provider_issued_url_present": true,
+    "public_affiliate_surface": true,
+    "public_go_surface": true,
+    "tracking_registry_state": "content_fit_lifted_provider_issued"
+  },
+  "editorial": {
+    "approved_claims": [
+      "Existing source-cited GLP weight-loss review content is unchanged and now carries one active commercial CTA.",
+      "The CTA is a CJ EvergreenLink deep link whose destination was verified on 2026-08-18 to be TRT Nation's weight-loss-therapy page, not the testosterone vertical."
+    ],
+    "forbidden_without_evidence": [
+      "medical efficacy claims",
+      "guaranteed outcomes",
+      "unsupported price or savings claims",
+      "unsupported GLP-1 fit",
+      "unsupported provider relationship semantics"
+    ],
+    "sections": {
+      "commercial_terms": "accepted_existing_page_contract",
+      "comparison_and_recommendation_basis": "accepted_existing_page_contract",
+      "geography_and_eligibility": "accepted_existing_page_contract",
+      "identity_and_offer_scope": "accepted_existing_page_contract",
+      "pricing_and_cadence": "accepted_existing_page_contract",
+      "regulatory_and_claim_review": "accepted_existing_page_contract"
+    },
+    "state": "existing_page_editorial_content_fit_lifted_for_link_activation"
+  },
+  "exact_identity": {
+    "display_name": "TRT Nation",
+    "network": "CJ Affiliate",
+    "provider_program_id": "7538517",
+    "source_refs": [
+      "03-cj-joined-api-inventory.json#advertiser_id=7538517;relationship_status=joined",
+      "12-sheet-provider-diff-post-apply.json#/all_rows/row=141"
+    ]
+  },
+  "existing_release_alias": "trt-nation",
+  "program_key": "CJ Affiliate:7538517",
+  "proposed_review_path": "/reviews/cj-affiliate-7538517/",
+  "registry_id": "cj-affiliate-7538517",
+  "schema": "approved-program-review-brief-scaffold-v1"
+}

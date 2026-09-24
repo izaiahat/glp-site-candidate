@@ -1,0 +1,82 @@
+{
+  "schema": "glp-funnel-v2-economics-v1",
+  "status": "CANDIDATE_PREVIEW_ONLY",
+  "generated_at_utc": "2026-08-29T22:03:11Z",
+  "source": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/ads/real-numbers-campaign-build-20260829/14-real-provider-economics-v2.json",
+    "sha256": "bc6fefcf23f0258683d755f3d78e606cf2cba3580effb01b42b5f7c1948b7ecb",
+    "basis": "fresh authenticated network-reported EPC per affiliate outbound click"
+  },
+  "public_disclosure": "Affiliate links may pay Clinic Scout. On this paid-traffic comparison, the shortlist is ordered by current network-reported earnings per outbound click among approved programs with matching source-dated treatment evidence. That is a commercial order, not a quality, safety, medical-fit, rating, or patient-outcome ranking.",
+  "paid_search_provider_order": [
+    {
+      "program_id": "wellmedr-review",
+      "provider": "Wellmedr",
+      "network": "katalys",
+      "network_program_id": "1593",
+      "network_epc_usd": 30.647139,
+      "network_cvr": 0.186497,
+      "paid_search_allowed": true,
+      "tracking_ready": true,
+      "wired_live": true,
+      "operator_directed": true,
+      "source_offer_record": "katalys/1593"
+    },
+    {
+      "program_id": "trimi-glp-1",
+      "provider": "Trimi GLP-1",
+      "network": "katalys",
+      "network_program_id": "1614",
+      "network_epc_usd": 14.471543,
+      "network_cvr": 0.035836,
+      "paid_search_allowed": true,
+      "tracking_ready": true,
+      "wired_live": true,
+      "source_offer_record": "katalys/1614"
+    },
+    {
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "provider": "Bodybuilding Health+",
+      "network": "katalys",
+      "network_program_id": "1584",
+      "network_epc_usd": 8.067227,
+      "network_cvr": 0.021639,
+      "paid_search_allowed": true,
+      "tracking_ready": true,
+      "wired_live": true,
+      "source_offer_record": "katalys/1584"
+    },
+    {
+      "program_id": "shedrx",
+      "provider": "ShedRX",
+      "network": "katalys",
+      "network_program_id": "1516",
+      "network_epc_usd": 5.074257,
+      "network_cvr": 0.012376,
+      "paid_search_allowed": true,
+      "tracking_ready": true,
+      "wired_live": true,
+      "source_offer_record": "katalys/1516"
+    },
+    {
+      "program_id": "sprout-health",
+      "provider": "Sprout Health",
+      "network": "katalys",
+      "network_program_id": "1286",
+      "network_epc_usd": 3.322942,
+      "network_cvr": 0.010229,
+      "paid_search_allowed": true,
+      "tracking_ready": true,
+      "wired_live": true,
+      "source_offer_record": "katalys/1286"
+    }
+  ],
+  "excluded": [
+    {
+      "program_id": "gala-health",
+      "provider": "Gala GLP-1",
+      "network_epc_usd": 6.02785,
+      "reason": "paid_search_explicitly_prohibited"
+    }
+  ]
+}

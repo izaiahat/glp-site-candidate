@@ -1,0 +1,1968 @@
+{
+  "schema": "s30.provider_patch.v1",
+  "program_id": "orderlymeds",
+  "provider": "OrderlyMeds",
+  "routes": [
+    "/reviews/orderlymeds/",
+    "/providers/orderlymeds/"
+  ],
+  "packet": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/orderlymeds.json",
+    "sha256": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3",
+    "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/orderlymeds.json",
+    "snapshot_sha256": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3",
+    "captured_at": "2026-09-09T16:04:03.762039+00:00",
+    "age_days": 0.859097752025463,
+    "current_original_path_sha256_at_audit_end": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3"
+  },
+  "holds_preserved": [
+    {
+      "registry_program_id": "orderlymeds",
+      "commercial_state": "live",
+      "suppression_reason": null,
+      "status": null
+    }
+  ],
+  "records": [
+    {
+      "id": "orderlymeds:first_month_price",
+      "program_id": "orderlymeds",
+      "field": "first_month_price",
+      "verdict": "PAGE_OVERSTATES",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/orderlymeds.json",
+        "sha256": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/orderlymeds.json",
+        "snapshot_sha256": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3",
+        "captured_at": "2026-09-09T16:04:03.762039+00:00",
+        "age_days": 0.859097752025463,
+        "current_original_path_sha256_at_audit_end": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "required_change": "Correct first-month74 claim: this is advertised monthly equivalent of $149 two-month starter, not a $74 first cash charge.",
+      "audited_repetitions": [
+        {
+          "field": "first_month_price",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Documented strengths and tradeoffs :: li",
+          "current_text": "at $74 for the first month",
+          "replacement": "at an advertised $74/month equivalent, with $149 charged for a two-month starter",
+          "reason": "Two-month total cannot be rephrased as first payment."
+        }
+      ],
+      "audit_page_claims": [
+        {
+          "text": "OrderlyMeds publishes the lowest entry price in our current set, but the headline is an introductory rate: compounded semaglutide is advertised at $74/month and the provider's own page says $149/mo thereafter, and compounded tirzepatide runs $149 stepping up to $299. Read the second number as the real ongoing cost. The consultation is free, there is no membership fee, and the prescriber network covers all 50 states, but cancellation closes the moment the doctor finalises the prescription rather than at the end of a billing period. 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: p"
+        },
+        {
+          "text": "Published price",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dt"
+        },
+        {
+          "text": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Pricing breakdown",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: h2"
+        },
+        {
+          "text": "Compounded semaglutide starts at $74/month ($149 for 2 months) and steps up to $149/month thereafter. Compounded tirzepatide (GLP-1/GIP) starts at $149/month ($299 for 2 months) and steps up to $299/month thereafter. Brand-name pens are billed at list: Wegovy $1,839/month, Zepbound $1,498/month. 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Pricing breakdown :: p"
+        },
+        {
+          "text": "All 50 U.S. states. No separate consultation charge and no membership fee: the virtual consultation is advertised as free and the medication price is the whole provider fee. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Eligibility and clinician review :: p"
+        },
+        {
+          "text": "Price transparency · 30% 7.5/10",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Evidence criteria :: li"
+        },
+        {
+          "text": "Considering OrderlyMeds? Review published pricing, program terms and documented evidence gaps. Confirm current costs and eligibility directly with the provider. That sentence is the scope of this review, not a promise about OrderlyMeds. The evidence set was current through 2026-08-06 and is limited to the sources already identified on this page. Public pages can change after capture, so every amount, policy, availability statement, and workflow detail remains a dated record rather than a quote. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: What the OrderlyMeds record establishes—and what it does not :: p"
+        },
+        {
+          "text": "Published price wording",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dt"
+        },
+        {
+          "text": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dd"
+        },
+        {
+          "text": "Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dd"
+        },
+        {
+          "text": "Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dd"
+        },
+        {
+          "text": "Published price Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list 2026-08-06",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: tr"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For OrderlyMeds, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: p"
+        },
+        {
+          "text": "Readers should compare the snapshot with the source page before payment. Ask whether the wording still appears, whether a new condition or footnote has been added, and whether the amount applies to the exact product, dose, route, plan, or service being discussed. If checkout or intake contradicts this dated record, the current written term controls the transaction; the discrepancy should also be submitted through Clinic Scout's correction channel. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: p"
+        },
+        {
+          "text": "How to read OrderlyMeds pricing without inventing a total",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: h3"
+        },
+        {
+          "text": "The captured price evidence for OrderlyMeds is: “Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: How to read OrderlyMeds pricing without inventing a total :: p"
+        },
+        {
+          "text": "A practical written quote should identify the first charge, every recurring charge, the billing cadence, the amount of product or service attached to each charge, the minimum commitment, renewal behavior, cancellation deadline, refund terms, and any charge that can change with dose or state. Keep a copy of that quote and the checkout terms. This is purchasing discipline, not a prediction that OrderlyMeds will impose any particular charge. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: How to read OrderlyMeds pricing without inventing a total :: p"
+        },
+        {
+          "text": "The captured product or service language is: “Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required” That wording is preserved without upgrading it into a claim about approval, equivalence, efficacy, safety, availability, or suitability. A brand reference, ingredient name, category label, test description, supplement description, or program name can answer what a page discusses; it cannot by itself prove what a person will receive or whether a licensed professional will consider it appropriate. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Product and service wording for OrderlyMeds :: p"
+        },
+        {
+          "text": "The captured workflow language for OrderlyMeds is: “About 8-10 business days from sign-up to delivery, with tracking supplied at dispatch. Orders cannot be expedited.” This is not expanded into an end-to-end timeline unless the source defines the starting event and each stage. Intake completion, clinician review, prescription decision, pharmacy processing, carrier pickup, laboratory processing, manufacturing, and final delivery can describe different clocks. A single speed phrase cannot safely represent all of them, and no timeline establishes eligibility or an outcome. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Eligibility, review, and fulfillment boundaries :: p"
+        },
+        {
+          "text": "The captured coverage statement is: “Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan” The review does not translate benefits checks, reimbursement language, HSA or FSA wording, superbills, prior-authorization help, or general insurance references into guaranteed coverage. Plan rules, account-administrator decisions, medical-necessity criteria, coding, deductibles, and exclusions can change the result. Where the source is silent, the honest status remains unresolved. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "For OrderlyMeds, request the cash price and any insurance-dependent price separately. Confirm whether payment is collected before eligibility or professional review, what happens after denial, whether reimbursement paperwork is supplied, and whether cancellation or refund terms differ after a service begins. This checklist does not imply that OrderlyMeds offers each payment path; it identifies the missing facts a reader needs before treating a headline amount as the final obligation. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "Lowest published introductory compounded-semaglutide price in our current set at $74 for the first month 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "The evidence-navigation fit recorded for this page is: “Cash-pay readers who want the lowest published first-month compounded-GLP-1 price and will plan around the introductory rate doubling after the promotional period” That is a description of the research task, not a clinical-fit recommendation. A reader who values visible sources and explicit unknowns may use the page to prepare questions. Someone who requires a verified all-in amount, a confirmed delivery date, an independent outcome dataset, or a guaranteed eligibility decision should not treat this page alone as sufficient. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Who may find this OrderlyMeds review useful :: p"
+        },
+        {
+          "text": "Save the page date, URL, screenshots, and any checkout or intake terms that affect cost or eligibility.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: A source-first verification sequence for OrderlyMeds :: li"
+        },
+        {
+          "text": "If a reader proceeds with OrderlyMeds, the evidence task continues after checkout. Retain receipts, consent forms, product or service descriptions, fulfillment records, cancellation instructions, privacy notices, and the contact route for problems. Check whether the delivered or scheduled item matches the written order. Record any changed price or term with its date and source so that a concern can be investigated without relying on memory. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "Pallas Health – GLP-1 Weight Loss & NAD review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Refills review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Ro review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "The captured wording is “Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Frequently asked questions about the OrderlyMeds evidence :: p"
+        },
+        {
+          "text": "The captured product or service wording is “Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required” Confirm the exact product, service scope, and fulfillment entity directly before payment. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Frequently asked questions about the OrderlyMeds evidence :: p"
+        },
+        {
+          "text": "The captured coverage wording is “Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan” Coverage, reimbursement, HSA or FSA eligibility, and prior authorization remain plan- and administrator-specific. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Frequently asked questions about the OrderlyMeds evidence :: p"
+        },
+        {
+          "text": "Use the OrderlyMeds review as a documented starting point. Recheck the direct source, obtain the exact current terms, and stop when an important answer remains unclear. Clear unknowns are more useful than confident estimates: they tell the reader what must be verified before cost, access, timing, product, or support can be compared responsibly. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Editorial conclusion for the captured OrderlyMeds record :: p"
+        },
+        {
+          "text": "Open another provider or cost comparison to check price, inclusions, and unresolved terms side by side.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: p"
+        },
+        {
+          "text": "Provider evidence review Pallas Health – GLP-1 Weight Loss & NAD review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Refills review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Ro review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review RxSpan MD Telehealth Program review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Serena Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Shed review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review SkinnyRx - #1 GLP Weight Loss Provider review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review SnagRX review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Sprout Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Strut Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Sunlight.com review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Synergy Rx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review telos rx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review TMates review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Trimi review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Cash-pay readers who want the lowest published first-month compounded-GLP-1 price and will plan around the introductory rate doubling after the promotional period",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: OrderlyMeds · Wegovy (brand) :: p"
+        },
+        {
+          "text": "First source-listed plan: Wegovy (brand). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: OrderlyMeds · Wegovy (brand) :: p"
+        },
+        {
+          "text": "First month $1,839.00 Reported information · Checked 2026-09-09 · Source Price source **Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: OrderlyMeds · Wegovy (brand) :: article .d3-price-box"
+        },
+        {
+          "text": "First month",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: OrderlyMeds · Wegovy (brand) :: h3"
+        },
+        {
+          "text": "Thereafter $1,839.00 / month Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates. Reported information · Checked 2026-09-09 · Source Price source **Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Thereafter :: p"
+        },
+        {
+          "text": "Medication and plan pricing",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Thereafter :: p"
+        },
+        {
+          "text": "Dates, quotes, and source links stay attached to every displayed amount. Exact dose tiers appear only when the provider publishes source-reported per-dose pricing; otherwise the dose grid is omitted.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Treatments :: p"
+        },
+        {
+          "text": "First month $1,498.00 Reported information · Checked 2026-09-09 · Source Price source **Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Treatments :: article .d3-price-box"
+        },
+        {
+          "text": "First month",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Treatments :: h3"
+        },
+        {
+          "text": "Thereafter $1,498.00 / month Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates. Reported information · Checked 2026-09-09 · Source Price source **Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Thereafter :: p"
+        },
+        {
+          "text": "Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: At a glance :: p"
+        },
+        {
+          "text": "Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: At a glance :: p"
+        },
+        {
+          "text": "No separate consultation charge and no membership fee: the virtual consultation is advertised as free and the medication price is the whole provider fee.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: At a glance :: p"
+        },
+        {
+          "text": "Useful for comparing: Cash-pay readers who want the lowest published first-month compounded-GLP-1 price and will plan around the introductory rate doubling after the promotional period",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Editorial tradeoffs :: p"
+        },
+        {
+          "text": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Limitations in the record :: li"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists; this is not a medical recommendation.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Related provider records :: p"
+        },
+        {
+          "text": "Provider names and links come from our reviewed provider list. Prices come from our dated price records; each price links to the source it was taken from, with the date we checked it. Program facts come from our reviewed notes on those dated sources. Clinic Scout does not infer availability, medical fit, ratings, or review counts.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Price rows checked 2026-09-09 · 2 source-dated rows",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Related providers :: p"
+        }
+      ],
+      "operation_ids": [
+        "7a187af59daed0508f5a",
+        "ac94efcb3581efeecbfc",
+        "b99450fcf9c9e65e57d4",
+        "7e55e80ad9c97475cfd3",
+        "b5d7f4516822ad620b69",
+        "3ea7572bc376f11c4ce4",
+        "5d76c12d60f6ca891b1c",
+        "61aacfefa2bda8fa0da4",
+        "1d7ea8cb38b8f5f2ac52",
+        "63a51c09027f8fe3fa74",
+        "686e647613a2be9ffc33",
+        "d97e45e832fc61ade89c",
+        "93f8a7f26bfb99b5344b",
+        "981c92159e9a500a7722",
+        "81f5e11bdf13ec5e2988",
+        "b6c48d4fa3f7a0c577a0",
+        "110a593197bdda98e119",
+        "2b6e26cf8a406d3d172d"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(2) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > article:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Limitations in the record",
+          "tag": "li",
+          "text": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Lowest published introductory compounded-semaglutide price in our current set at $74 for the first month"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "OrderlyMeds evidence snapshot",
+          "tag": "dd",
+          "text": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "OrderlyMeds evidence snapshot",
+          "tag": "tr",
+          "text": "Published price Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list 2026-08-06"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read OrderlyMeds pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for OrderlyMeds is: “Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the OrderlyMeds evidence",
+          "tag": "p",
+          "text": "The captured wording is “Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "OrderlyMeds · Wegovy (brand)",
+          "tag": "p",
+          "text": "First source-listed plan: Wegovy (brand). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "OrderlyMeds · Wegovy (brand)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates."
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "OrderlyMeds · Wegovy (brand)"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "OrderlyMeds · Wegovy (brand)",
+          "tag": "h3",
+          "text": "OrderlyMeds · Zepbound (brand)"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "OrderlyMeds · Zepbound (brand)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates."
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "Compounded semaglutide starts at $74/month ($149 for 2 months) and steps up to $149/month thereafter. Compounded tirzepatide (GLP-1/GIP) starts at $149/month ($299 for 2 months) and steps up to $299/month thereafter. Brand-name pens are billed at list: Wegovy $1,839/month, Zepbound $1,498/month."
+        }
+      ],
+      "disposition": "PATCH_READY"
+    },
+    {
+      "id": "orderlymeds:monthly_price",
+      "program_id": "orderlymeds",
+      "field": "monthly_price",
+      "verdict": "PAGE_OVERSTATES",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/orderlymeds.json",
+        "sha256": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/orderlymeds.json",
+        "snapshot_sha256": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3",
+        "captured_at": "2026-09-09T16:04:03.762039+00:00",
+        "age_days": 0.859097752025463,
+        "current_original_path_sha256_at_audit_end": "df2dce7d30cf212daeac3b159f1bf04291d8100d79152cb64332703282be88d3"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "required_change": "Remove automatic step-up/thereafter language: packet establishes separately listed monthly plans, not automatic renewal.",
+      "audited_repetitions": [
+        {
+          "field": "monthly_price",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dd; https://glpclinicscout.com/reviews/orderlymeds/ :: Pricing breakdown :: p; https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dd; https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: tr; https://glpclinicscout.com/reviews/orderlymeds/ :: How to read OrderlyMeds pricing without inventing a total :: p; https://glpclinicscout.com/reviews/orderlymeds/ :: Frequently asked questions about the OrderlyMeds evidence :: p",
+          "current_text": "$149/month thereafter",
+          "replacement": "$149 listed monthly plan; automatic renewal charge not established",
+          "reason": "Separate monthly plan is not proven automatic step-up."
+        },
+        {
+          "field": "monthly_price",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dd; https://glpclinicscout.com/reviews/orderlymeds/ :: Pricing breakdown :: p; https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dd; https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: tr; https://glpclinicscout.com/reviews/orderlymeds/ :: How to read OrderlyMeds pricing without inventing a total :: p; https://glpclinicscout.com/reviews/orderlymeds/ :: Frequently asked questions about the OrderlyMeds evidence :: p",
+          "current_text": "$299/month thereafter",
+          "replacement": "$299 listed monthly plan; automatic renewal charge not established",
+          "reason": "Separate monthly plan is not proven automatic step-up."
+        },
+        {
+          "field": "monthly_price",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: p",
+          "current_text": "Read the second number as the real ongoing cost.",
+          "replacement": "The separate monthly plan prices are reported information, not a confirmed renewal quote.",
+          "reason": "Remove unsupported renewal and verification upgrade."
+        }
+      ],
+      "audit_page_claims": [
+        {
+          "text": "OrderlyMeds publishes the lowest entry price in our current set, but the headline is an introductory rate: compounded semaglutide is advertised at $74/month and the provider's own page says $149/mo thereafter, and compounded tirzepatide runs $149 stepping up to $299. Read the second number as the real ongoing cost. The consultation is free, there is no membership fee, and the prescriber network covers all 50 states, but cancellation closes the moment the doctor finalises the prescription rather than at the end of a billing period. 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: p"
+        },
+        {
+          "text": "Published price",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dt"
+        },
+        {
+          "text": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Pricing breakdown",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Bottom line :: h2"
+        },
+        {
+          "text": "Compounded semaglutide starts at $74/month ($149 for 2 months) and steps up to $149/month thereafter. Compounded tirzepatide (GLP-1/GIP) starts at $149/month ($299 for 2 months) and steps up to $299/month thereafter. Brand-name pens are billed at list: Wegovy $1,839/month, Zepbound $1,498/month. 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Pricing breakdown :: p"
+        },
+        {
+          "text": "All 50 U.S. states. No separate consultation charge and no membership fee: the virtual consultation is advertised as free and the medication price is the whole provider fee. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Eligibility and clinician review :: p"
+        },
+        {
+          "text": "Price transparency · 30% 7.5/10",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Evidence criteria :: li"
+        },
+        {
+          "text": "Considering OrderlyMeds? Review published pricing, program terms and documented evidence gaps. Confirm current costs and eligibility directly with the provider. That sentence is the scope of this review, not a promise about OrderlyMeds. The evidence set was current through 2026-08-06 and is limited to the sources already identified on this page. Public pages can change after capture, so every amount, policy, availability statement, and workflow detail remains a dated record rather than a quote. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: What the OrderlyMeds record establishes—and what it does not :: p"
+        },
+        {
+          "text": "Published price wording",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dt"
+        },
+        {
+          "text": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dd"
+        },
+        {
+          "text": "Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dd"
+        },
+        {
+          "text": "Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: dd"
+        },
+        {
+          "text": "Published price Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list 2026-08-06",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: tr"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For OrderlyMeds, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: p"
+        },
+        {
+          "text": "How to read OrderlyMeds pricing without inventing a total",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: OrderlyMeds evidence snapshot :: h3"
+        },
+        {
+          "text": "The captured price evidence for OrderlyMeds is: “Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: How to read OrderlyMeds pricing without inventing a total :: p"
+        },
+        {
+          "text": "A practical written quote should identify the first charge, every recurring charge, the billing cadence, the amount of product or service attached to each charge, the minimum commitment, renewal behavior, cancellation deadline, refund terms, and any charge that can change with dose or state. Keep a copy of that quote and the checkout terms. This is purchasing discipline, not a prediction that OrderlyMeds will impose any particular charge. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: How to read OrderlyMeds pricing without inventing a total :: p"
+        },
+        {
+          "text": "The captured product or service language is: “Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required” That wording is preserved without upgrading it into a claim about approval, equivalence, efficacy, safety, availability, or suitability. A brand reference, ingredient name, category label, test description, supplement description, or program name can answer what a page discusses; it cannot by itself prove what a person will receive or whether a licensed professional will consider it appropriate. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Product and service wording for OrderlyMeds :: p"
+        },
+        {
+          "text": "The captured coverage statement is: “Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan” The review does not translate benefits checks, reimbursement language, HSA or FSA wording, superbills, prior-authorization help, or general insurance references into guaranteed coverage. Plan rules, account-administrator decisions, medical-necessity criteria, coding, deductibles, and exclusions can change the result. Where the source is silent, the honest status remains unresolved. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "For OrderlyMeds, request the cash price and any insurance-dependent price separately. Confirm whether payment is collected before eligibility or professional review, what happens after denial, whether reimbursement paperwork is supplied, and whether cancellation or refund terms differ after a service begins. This checklist does not imply that OrderlyMeds offers each payment path; it identifies the missing facts a reader needs before treating a headline amount as the final obligation. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "Lowest published introductory compounded-semaglutide price in our current set at $74 for the first month 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "Cancellation is only possible before the doctor finalises the prescription, not on a monthly cycle, and multi-month plans are excluded from that window 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "The evidence-navigation fit recorded for this page is: “Cash-pay readers who want the lowest published first-month compounded-GLP-1 price and will plan around the introductory rate doubling after the promotional period” That is a description of the research task, not a clinical-fit recommendation. A reader who values visible sources and explicit unknowns may use the page to prepare questions. Someone who requires a verified all-in amount, a confirmed delivery date, an independent outcome dataset, or a guaranteed eligibility decision should not treat this page alone as sufficient. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Who may find this OrderlyMeds review useful :: p"
+        },
+        {
+          "text": "If a reader proceeds with OrderlyMeds, the evidence task continues after checkout. Retain receipts, consent forms, product or service descriptions, fulfillment records, cancellation instructions, privacy notices, and the contact route for problems. Check whether the delivered or scheduled item matches the written order. Record any changed price or term with its date and source so that a concern can be investigated without relying on memory. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "For recurring arrangements, confirm the next billing date, refill or reorder trigger, dose or specification changes, required follow-up, pause options, cancellation cutoff, and the consequences of a failed payment or missed step. These are general recordkeeping questions, not claims about OrderlyMeds's actual policy. The provider's current written terms and applicable law determine the answer. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "Pallas Health – GLP-1 Weight Loss & NAD review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Refills review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "Ro review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "The captured wording is “Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Frequently asked questions about the OrderlyMeds evidence :: p"
+        },
+        {
+          "text": "The captured product or service wording is “Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required” Confirm the exact product, service scope, and fulfillment entity directly before payment. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Frequently asked questions about the OrderlyMeds evidence :: p"
+        },
+        {
+          "text": "The captured coverage wording is “Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan” Coverage, reimbursement, HSA or FSA eligibility, and prior authorization remain plan- and administrator-specific. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Frequently asked questions about the OrderlyMeds evidence :: p"
+        },
+        {
+          "text": "Compare the same evidence fields: first and recurring charges, cadence, inclusions, commitment, cancellation, shipping, and source date. An unknown field should remain unknown rather than receive a favorable score. 1 Source 1 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 2 Source 2 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close 3 Source 3 OrderlyMeds current as of 2026-08-06 OrderlyMeds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Frequently asked questions about the OrderlyMeds evidence :: p"
+        },
+        {
+          "text": "Open another provider or cost comparison to check price, inclusions, and unresolved terms side by side.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: p"
+        },
+        {
+          "text": "Provider evidence review Pallas Health – GLP-1 Weight Loss & NAD review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Refills review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Ro review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review RxSpan MD Telehealth Program review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Serena Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Shed review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review SkinnyRx - #1 GLP Weight Loss Provider review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review SnagRX review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Sprout Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Strut Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Sunlight.com review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Synergy Rx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review telos rx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review TMates review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Trimi review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/orderlymeds/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Cash-pay readers who want the lowest published first-month compounded-GLP-1 price and will plan around the introductory rate doubling after the promotional period",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: OrderlyMeds · Wegovy (brand) :: p"
+        },
+        {
+          "text": "First source-listed plan: Wegovy (brand). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: OrderlyMeds · Wegovy (brand) :: p"
+        },
+        {
+          "text": "First month $1,839.00 Reported information · Checked 2026-09-09 · Source Price source **Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: OrderlyMeds · Wegovy (brand) :: article .d3-price-box"
+        },
+        {
+          "text": "Thereafter $1,839.00 / month Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates. Reported information · Checked 2026-09-09 · Source Price source **Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Thereafter :: p"
+        },
+        {
+          "text": "Medication and plan pricing",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Thereafter :: p"
+        },
+        {
+          "text": "Dates, quotes, and source links stay attached to every displayed amount. Exact dose tiers appear only when the provider publishes source-reported per-dose pricing; otherwise the dose grid is omitted.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Treatments :: p"
+        },
+        {
+          "text": "First month $1,498.00 Reported information · Checked 2026-09-09 · Source Price source **Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Treatments :: article .d3-price-box"
+        },
+        {
+          "text": "Thereafter $1,498.00 / month Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates. Reported information · Checked 2026-09-09 · Source Price source **Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Thereafter :: p"
+        },
+        {
+          "text": "Compounded semaglutide and compounded tirzepatide (GLP-1/GIP) from 503A compounding pharmacies, plus FDA-approved brand-name pens Wegovy and Zepbound at list price. Prescription and clinician approval required",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: At a glance :: p"
+        },
+        {
+          "text": "Cash-pay. OrderlyMeds publishes flat medication pricing with no membership fee and no separate consultation charge; brand-name pens are billed at list price rather than through a plan",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: At a glance :: p"
+        },
+        {
+          "text": "Consultation or membership",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: At a glance :: p"
+        },
+        {
+          "text": "No separate consultation charge and no membership fee: the virtual consultation is advertised as free and the medication price is the whole provider fee.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: At a glance :: p"
+        },
+        {
+          "text": "Useful for comparing: Cash-pay readers who want the lowest published first-month compounded-GLP-1 price and will plan around the introductory rate doubling after the promotional period",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Editorial tradeoffs :: p"
+        },
+        {
+          "text": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Limitations in the record :: li"
+        },
+        {
+          "text": "Cancellation is only possible before the doctor finalises the prescription, not on a monthly cycle, and multi-month plans are excluded from that window",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Limitations in the record :: li"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists; this is not a medical recommendation.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Related provider records :: p"
+        },
+        {
+          "text": "Provider names and links come from our reviewed provider list. Prices come from our dated price records; each price links to the source it was taken from, with the date we checked it. Program facts come from our reviewed notes on those dated sources. Clinic Scout does not infer availability, medical fit, ratings, or review counts.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Price rows checked 2026-09-09 · 2 source-dated rows",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists.",
+          "location": "https://glpclinicscout.com/providers/orderlymeds/ :: Related providers :: p"
+        }
+      ],
+      "operation_ids": [
+        "7a187af59daed0508f5a",
+        "d3eb8ccadb84b99d2193",
+        "ac94efcb3581efeecbfc",
+        "b99450fcf9c9e65e57d4",
+        "7e55e80ad9c97475cfd3",
+        "b15ceefee5312a7d8283",
+        "b5d7f4516822ad620b69",
+        "3ea7572bc376f11c4ce4",
+        "5d76c12d60f6ca891b1c",
+        "2993605806f9308e3d99",
+        "61aacfefa2bda8fa0da4",
+        "1d7ea8cb38b8f5f2ac52",
+        "63a51c09027f8fe3fa74",
+        "e29a67061427c739559b",
+        "d97e45e832fc61ade89c",
+        "93f8a7f26bfb99b5344b",
+        "981c92159e9a500a7722",
+        "48783b0026229aa7c166",
+        "81f5e11bdf13ec5e2988",
+        "b6c48d4fa3f7a0c577a0",
+        "110a593197bdda98e119",
+        "2b6e26cf8a406d3d172d"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(2) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > article:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Limitations in the record",
+          "tag": "li",
+          "text": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(2) > li:nth-of-type(2)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Cancellation is only possible before the doctor finalises the prescription, not on a monthly cycle, and multi-month plans are excluded from that window"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"main\"] > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > article:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2)",
+          "heading": "Limitations in the record",
+          "tag": "li",
+          "text": "Cancellation is only possible before the doctor finalises the prescription, not on a monthly cycle, and multi-month plans are excluded from that window"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Lowest published introductory compounded-semaglutide price in our current set at $74 for the first month"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "OrderlyMeds evidence snapshot",
+          "tag": "dd",
+          "text": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "OrderlyMeds evidence snapshot",
+          "tag": "tr",
+          "text": "Published price Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list 2026-08-06"
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read OrderlyMeds pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for OrderlyMeds is: “Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the OrderlyMeds evidence",
+          "tag": "p",
+          "text": "The captured wording is “Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/reviews/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html",
+          "sha256": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "Compounded semaglutide starts at $74/month ($149 for 2 months) and steps up to $149/month thereafter. Compounded tirzepatide (GLP-1/GIP) starts at $149/month ($299 for 2 months) and steps up to $299/month thereafter. Brand-name pens are billed at list: Wegovy $1,839/month, Zepbound $1,498/month."
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "OrderlyMeds · Wegovy (brand)",
+          "tag": "p",
+          "text": "First source-listed plan: Wegovy (brand). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "OrderlyMeds · Wegovy (brand)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates."
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "OrderlyMeds · Wegovy (brand)"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "OrderlyMeds · Wegovy (brand)",
+          "tag": "h3",
+          "text": "OrderlyMeds · Zepbound (brand)"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "OrderlyMeds · Zepbound (brand)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates."
+        },
+        {
+          "route": "/providers/orderlymeds/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html",
+          "sha256": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0",
+          "selector": "[id=\"plan-orderlymeds-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        }
+      ],
+      "disposition": "PATCH_READY"
+    }
+  ],
+  "operations": [
+    {
+      "id": "7a187af59daed0508f5a",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/23/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "d3eb8ccadb84b99d2193",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/23/cons/1",
+      "fields": [
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Cancellation is only possible before the doctor finalises the prescription, not on a monthly cycle, and multi-month plans are excluded from that window",
+      "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "ac94efcb3581efeecbfc",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/23/pros/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Lowest published introductory compounded-semaglutide price in our current set at $74 for the first month",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "b99450fcf9c9e65e57d4",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/23/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.\n\nReported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Reported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+          "source_url": "https://orderlymeds.com/faqs/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "7e55e80ad9c97475cfd3",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/23/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "b15ceefee5312a7d8283",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/23/cons/1",
+      "fields": [
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Cancellation is only possible before the doctor finalises the prescription, not on a monthly cycle, and multi-month plans are excluded from that window",
+      "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "b5d7f4516822ad620b69",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/23/pros/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Lowest published introductory compounded-semaglutide price in our current set at $74 for the first month",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "3ea7572bc376f11c4ce4",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/23/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.\n\nReported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Reported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+          "source_url": "https://orderlymeds.com/faqs/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "5d76c12d60f6ca891b1c",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/23/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "2993605806f9308e3d99",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/23/cons/1",
+      "fields": [
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Cancellation is only possible before the doctor finalises the prescription, not on a monthly cycle, and multi-month plans are excluded from that window",
+      "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "61aacfefa2bda8fa0da4",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/23/pros/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Lowest published introductory compounded-semaglutide price in our current set at $74 for the first month",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "1d7ea8cb38b8f5f2ac52",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/23/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.\n\nReported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Reported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+          "source_url": "https://orderlymeds.com/faqs/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "63a51c09027f8fe3fa74",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/23/limitations/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "e29a67061427c739559b",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/23/limitations/1",
+      "fields": [
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Cancellation is only possible before the doctor finalises the prescription, not on a monthly cycle, and multi-month plans are excluded from that window",
+      "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "686e647613a2be9ffc33",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/23/research_first_month_price",
+      "fields": [
+        "first_month_price"
+      ],
+      "notes": [
+        "Whole evidence-field replacement: value, quote and source date travel together."
+      ],
+      "op": "replace",
+      "before": {
+        "quote": "Compounded Tirzepatide GLP-1/GIP injections $149/mo $299 for 2 months Compounded Semaglutide GLP-1 injections $74/mo $149 for 2 months Brand name monthly plans Wegovy (GLP-1 pen) $1,839 Zepbound (GLP-",
+        "source_url": "https://orderlymeds.com/pricing/",
+        "value": "Compounded semaglutide starts at $74/month ($149 for 2 months) and steps up to $149/month thereafter. Compounded tirzepatide (GLP-1/GIP) starts at $149/month ($299 for 2 months) and steps up to $299/month thereafter. Brand-name pens are billed at list: Wegovy $1,839/month, Zepbound $1,498/month.",
+        "verified_as_of": "2026-08-06"
+      },
+      "value": {
+        "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+        "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78",
+        "quote": "2 month starter programs\n\nSave 50%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$149/mo**\n\n**$299 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$74/mo**\n\n**$149 for 2 months**\n\n**Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n* * *\n\n**2 month special offer**\n\n\\*Special offer pricing only available to new customers\n\nSave 25%\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$224/mo**\n\n**$449 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$112/mo**\n\n**$224 for 2 months**\n\n* * *\n\n**Monthly plans**\n\nCompounded **Tirzepatide** GLP-1 injections\n\n**$299**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$149**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n* * *\n\n[Get started](https://patients.orderlymeds.com/eligibility)\n\n2 month starter programs\n\nSave 50%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$149/mo**\n\n**$299 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$74/mo**\n\n**$149 for 2 months**\n\n**2 month special offer**\n\nSave 25%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$224/mo**\n\n**$449 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$112/mo**\n\n**$224 for 2 months**\n\n**Monthly plans**\n\nCompounded **Tirzepatide** GLP-1 injections\n\n**$299**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$149**\n\nBrand name monthly plans\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n[Get started](https://patients.orderlymeds.com/eligibility)",
+        "source_url": "https://orderlymeds.com/pricing/",
+        "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+        "verified_as_of": "2026-09-09"
+      },
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price",
+          "value": {
+            "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+            "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78",
+            "quote": "2 month starter programs\n\nSave 50%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$149/mo**\n\n**$299 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$74/mo**\n\n**$149 for 2 months**\n\n**Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n* * *\n\n**2 month special offer**\n\n\\*Special offer pricing only available to new customers\n\nSave 25%\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$224/mo**\n\n**$449 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$112/mo**\n\n**$224 for 2 months**\n\n* * *\n\n**Monthly plans**\n\nCompounded **Tirzepatide** GLP-1 injections\n\n**$299**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$149**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n* * *\n\n[Get started](https://patients.orderlymeds.com/eligibility)\n\n2 month starter programs\n\nSave 50%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$149/mo**\n\n**$299 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$74/mo**\n\n**$149 for 2 months**\n\n**2 month special offer**\n\nSave 25%\n\n\\*Special offer pricing only available to new customers\n\nFeatured product\n\nCompounded **Tirzepatide** GLP-1/GIP injections\n\n**$224/mo**\n\n**$449 for 2 months**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$112/mo**\n\n**$224 for 2 months**\n\n**Monthly plans**\n\nCompounded **Tirzepatide** GLP-1 injections\n\n**$299**\n\nCompounded **Semaglutide** GLP-1 injections\n\n**$149**\n\nBrand name monthly plans\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**\n\n[Get started](https://patients.orderlymeds.com/eligibility)",
+            "source_url": "https://orderlymeds.com/pricing/",
+            "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+            "verified_as_of": "2026-09-09"
+          }
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "d97e45e832fc61ade89c",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/23/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.\n\nReported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Reported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+          "source_url": "https://orderlymeds.com/faqs/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "93f8a7f26bfb99b5344b",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/8/page_copy/pricing",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded semaglutide starts at $74/month ($149 for 2 months) and steps up to $149/month thereafter. Compounded tirzepatide (GLP-1/GIP) starts at $149/month ($299 for 2 months) and steps up to $299/month thereafter. Brand-name pens are billed at list: Wegovy $1,839/month, Zepbound $1,498/month.",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.\n\nReported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Reported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+          "source_url": "https://orderlymeds.com/faqs/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "981c92159e9a500a7722",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/8/row_contract/cons/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "The advertised $74 and $149 figures are new-customer introductory rates that step up to $149 and $299 respectively — the provider's own page says so",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "48783b0026229aa7c166",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/8/row_contract/cons/1",
+      "fields": [
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Cancellation is only possible before the doctor finalises the prescription, not on a monthly cycle, and multi-month plans are excluded from that window",
+      "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "81f5e11bdf13ec5e2988",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/8/row_contract/pros/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Lowest published introductory compounded-semaglutide price in our current set at $74 for the first month",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "b6c48d4fa3f7a0c577a0",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/8/row_contract/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Compounded semaglutide from $74/month introductory ($149 for 2 months), $149/month thereafter; compounded tirzepatide from $149/month introductory, $299/month thereafter; Wegovy $1,839/month and Zepbound $1,498/month at list",
+      "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.\n\nReported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.\n\nReported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "Reported information: new-customer two-month starter totals are $149 for compounded semaglutide and $299 for compounded tirzepatide; advertised monthly equivalents are $74 and $149. Separate two-month special-offer totals are $224 and $449. These are bundle prices, not verified first-month checkout charges. Exact selected checkout amount and applicable offer eligibility remain UNKNOWN. Do not convert a rounded monthly teaser into a first payment.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Reported information: monthly plans list compounded tirzepatide $299, compounded semaglutide $149, Wegovy $1,839 and Zepbound $1,498. These are reported plan prices, not a verified automatic renewal charge or confirmed patient-specific supply. Exact selected next-order total remains UNKNOWN.",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "Reported information: the FAQ states the price includes the doctor's visit, medication, syringes and shipping, with no membership fees or hidden costs. No independently verified standalone consultation tariff is established.",
+          "source_url": "https://orderlymeds.com/faqs/",
+          "verified_as_of": "2026-09-09",
+          "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S18-research-packet-orderlymeds/authoring/orderlymeds-c1/captures/orderlymeds-captures.json",
+          "capture_sha256": "fc53afbab3d00aca705da8465e5edcecaca032469c140ea14e03a6a1d8dcaa78"
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "110a593197bdda98e119",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/orderlymeds/medications/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "30beab41a1efc5f5e1e899807b7c5418099ad4f3ee065b9831a127f3bb67d64e",
+        "captured_on": "2026-09-09",
+        "dose_pricing": {
+          "capture_date": "2026-08-18",
+          "expected_render_slots": 5,
+          "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+          "render_action": "OMIT",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "status": "UNKNOWN_NO_SOURCE"
+        },
+        "label": "Wegovy (brand)",
+        "medication_id": "brand-wegovy",
+        "month_1_basis": "same_as_ongoing",
+        "month_1_usd": 1839,
+        "numeric_provenance": "SOURCE-REPORTED",
+        "ongoing_usd": 1839,
+        "quote": "**Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**",
+        "source_url": "https://orderlymeds.com/pricing/",
+        "notes": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates."
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    },
+    {
+      "id": "2b6e26cf8a406d3d172d",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/orderlymeds/medications/1",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "30beab41a1efc5f5e1e899807b7c5418099ad4f3ee065b9831a127f3bb67d64e",
+        "captured_on": "2026-09-09",
+        "dose_pricing": {
+          "capture_date": "2026-08-18",
+          "expected_render_slots": 6,
+          "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+          "render_action": "OMIT",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "status": "UNKNOWN_NO_SOURCE"
+        },
+        "label": "Zepbound (brand)",
+        "medication_id": "brand-zepbound",
+        "month_1_basis": "same_as_ongoing",
+        "month_1_usd": 1498,
+        "numeric_provenance": "SOURCE-REPORTED",
+        "ongoing_usd": 1498,
+        "quote": "**Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**",
+        "source_url": "https://orderlymeds.com/pricing/",
+        "notes": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates."
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    }
+  ],
+  "current_page_files": {
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/orderlymeds/index.html": "bbffca10ca8a686f10b8ce80392f3585cbec5d97c924923d7877cbdb10695572",
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/orderlymeds/index.html": "8e751ecb3f4829db01d091450cb03e818738ce994d913d849c3911a3bb7da2c0"
+  },
+  "scope": "Data proposal only. No identity, hold, link, score, or release changes."
+}

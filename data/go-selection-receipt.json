@@ -1,0 +1,615 @@
+{
+  "schema": "glp-go-selection-v1",
+  "status": "ADOPTED_CANDIDATE_NOT_RELEASE_ACCEPTANCE",
+  "task": "D2s",
+  "at_utc": "2026-09-10T02:36:01.129338+00:00",
+  "scope": "Commercial adoption and local release candidate only; no bridge acceptance or deployment",
+  "operator_ruling": {
+    "path": "/home/ubuntu/.claude/projects/-home-ubuntu-business/memory/paid-links-always-wire-tracked-routes-20260909.md",
+    "sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b"
+  },
+  "brief": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/briefs/plan/D2s-TRAIN4-DATA-RELEASE.md",
+  "steer": "Missing partner approval is item-local; hold Longevity3277 and NuImage, proceed with every evidenced entry, then wait for final pass8.",
+  "qa": {
+    "codec_proof_sha256": "95799971716a191eb34eeac4a73c3e7bf5841088e1dee92eff6537623c893957",
+    "contract_tests_sha256": "2f84f42787045e2747227b39983d7bb46b4eb43a746845a44325067624db6cdd",
+    "external_fetches": 0,
+    "scoped_constructor_proof_only": true
+  },
+  "count": 19,
+  "programs": [
+    {
+      "program_id": "gobymeds",
+      "render_id": "gobymeds",
+      "route": "/go/gobymeds",
+      "network": "direct",
+      "network_offer_id": null,
+      "issued_link": "https://my.gobymeds.com/s/vuMPMv",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://www.gobymeds.com/partnerships/affiliates",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/gobymeds/OPERATOR-SELECTION.json",
+          "exists": true,
+          "sha256": "a9937c5a0fa34acfe428ce85aa8023940eb14b1c063d4f04403111a406ba1097"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/gobymeds-signin.json",
+          "sha256": "1eb1ae6d113d9e7725773fa19cf4c4affb45fc64991b05d1aa3ebb1132f7a021"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/gobymeds-signin-r3.json",
+          "sha256": "38f468832b59358bb2dc5e49157832538086b3fd1d7c359fd9a8706430e2e47a"
+        }
+      ],
+      "subid_parameter": null,
+      "group": "held8",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "render_id": "levelsrx-extra-cpa-home-page",
+      "route": "/go/levelsrx-extra-cpa-home-page",
+      "network": "xentraffic",
+      "network_offer_id": "3245",
+      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6PX9P76/",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/levelsrx/OPERATOR-SELECTION.json",
+          "exists": true,
+          "sha256": "17e50114782d688dae2f850607dceb62fc620b91346dfd069f9f39e3128ee271"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-offer-3245.json",
+          "sha256": "8ac07dee0515fa1d4e24363abffc565624eecad7ad069527cfb08847bfa0a87d"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/levelsrx-extra-cpa-home-page.json",
+          "sha256": "0f399aed31254f53481e27bf6748707fba132aa8e1132aab5888d5bc5858ceff"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-signin.json",
+          "sha256": "97e7267aea27fe86a148f0c331afb67d3ca2733c6b7458578ad25c9fd8a12942"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "held8",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "longevity-meds-glp-1-review",
+      "render_id": "longevity-meds-glp-1-review",
+      "route": "/go/longevity-meds-glp-1-review",
+      "network": "xentraffic",
+      "network_offer_id": "3277",
+      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6RHPZQL/",
+      "disposition": "HOLD",
+      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/longevity-meds/OPERATOR-SELECTION.json",
+          "exists": true,
+          "sha256": "cb2ffd43720a00a7036c4275d2df08ceb9ab95845dfa6519116bc52db1999430"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-offer-3277.json",
+          "sha256": "93a910d5c74eacccb2258c456eb420ea496bebb18f0556686411b800731c210c"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/longevity-meds-glp-1-review.json",
+          "sha256": "f15ea751477315a0960b417dad0237d9379ed352007868380b5985a82b403dc9"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-signin.json",
+          "sha256": "97e7267aea27fe86a148f0c331afb67d3ca2733c6b7458578ad25c9fd8a12942"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "held8",
+      "promotion_authorized": false,
+      "constructor_verified": false,
+      "advertiser_permission_verified": false,
+      "encoding_verified": false,
+      "privacy_qa_passed": false,
+      "hold_reason": "Exact publisher creative/content approval required, not merely issued tracking link.",
+      "required_artifact": "Dated in-portal approval by XenTraffic/Longevity for offer3277 and the exact GLP Clinic Scout creative/landing-page URLs and revision/hash",
+      "approval_request_owner": "scout; request in portal under its own assignment"
+    },
+    {
+      "program_id": "nu-image-medical-review",
+      "render_id": "nu-image-medical-review",
+      "route": "/go/nu-image-medical-review",
+      "network": "trackdesk",
+      "network_offer_id": "5141d0e3-8018-42d9-9ac5-05bfd79aabbf",
+      "issued_link": "https://nuimagemedical.com/?linkId=lp_716390&sourceId=glp-clinic-scout&tenantId=nu-image-medical",
+      "disposition": "HOLD",
+      "terms_source_url": "https://help.trackdesk.com/en/articles/12580559-deep-links",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/nu-image-medical-review/OPERATOR-SELECTION.json",
+          "exists": true,
+          "sha256": "0cfc41f973c286a6e530b7e36c71e9d7afd00f07788c5509612fe75a9ce9cbc3"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/nuimage-signin-r4.json",
+          "sha256": "e001e51991fd24e3e0b6e6937e1c20b9501b6d79f6e558c172edda3f9146b135"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/nuimage-api-5ab9e8bca7c0.json",
+          "sha256": "e1eb9f195efa5318d5a5cc761222da13455852f318aebb13337248ef908b282e"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/nuimage-onboard-20260819/portal/20-glp1-get-link.txt",
+          "sha256": "22daa1fee5c2b8fae25a4419bf9c945c63592c8fa7a2018687af7b37b67dba07",
+          "captured_at_utc": "2026-08-19T00:50:06.566Z",
+          "source_url": "https://nu-image-medical.trackdesk.com/offers/5141d0e3-8018-42d9-9ac5-05bfd79aabbf/get-link",
+          "locator": null
+        }
+      ],
+      "subid_parameter": "affS1",
+      "group": "held8",
+      "promotion_authorized": false,
+      "constructor_verified": false,
+      "advertiser_permission_verified": false,
+      "encoding_verified": false,
+      "privacy_qa_passed": false,
+      "hold_reason": "Exact publisher creative/content approval required, not merely issued tracking link.",
+      "required_artifact": "Dated in-portal approval by NuImage for partner content/landing-page URLs and revision/hash under offer5141d0e3-8018-42d9-9ac5-05bfd79aabbf, issued linkId lp_716390",
+      "approval_request_owner": "scout; request in portal under its own assignment"
+    },
+    {
+      "program_id": "orderlymeds",
+      "render_id": "orderlymeds",
+      "route": "/go/orderlymeds",
+      "network": "everflow",
+      "network_offer_id": "2",
+      "issued_link": "https://www.tzca1z1u.com/57D8F2P/3QQG7/",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/orderlymeds/OPERATOR-SELECTION.json",
+          "exists": true,
+          "sha256": "a68ef3e7effa3554ac52532876d533077ed7d502875baaaf48fd18120e25b603"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1750/portal-captures-r2/orderlymeds-offer-2.json",
+          "sha256": "4f1fcaeb296e620ead3e8b189ff8db6376affc13a9376d6a76686401eb2896a7"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/Q45b/DISPATCH-1655/s18-inputs/orderlymeds.json",
+          "sha256": "5e5e102c6c5579055a0ab705211c26720eeaa9f19ed032c73c75ccbadca5ba1a"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "held8",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "tmates-xentraffic-offer-3154",
+      "render_id": "tmates-xentraffic-offer-3154",
+      "route": "/go/tmates-xentraffic-offer-3154",
+      "network": "xentraffic",
+      "network_offer_id": "3154",
+      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6KDXB7X/",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/tmates-3154/OPERATOR-SELECTION.json",
+          "exists": true,
+          "sha256": "d08d4ca3856369519d06d8982d809a6a6a4c931be2aada80bde3b33f433735e8"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-offer-3154.json",
+          "sha256": "dab9d1a783d3720e8a58894bb3cf81d243a3d369fb672734a7b0990f9175339f"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/tmates-xentraffic-offer-3154.json",
+          "sha256": "e6eeba185db1d50891a4c926132b17be78f6265db69d74c60b98a95a6a2c9d9e"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-signin.json",
+          "sha256": "97e7267aea27fe86a148f0c331afb67d3ca2733c6b7458578ad25c9fd8a12942"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "held8",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "trt-nation",
+      "render_id": "trt-nation",
+      "route": "/go/trt-nation",
+      "network": "cj",
+      "network_offer_id": "7538517",
+      "issued_link": "https://www.tkqlhce.com/click-101822575-17115008?url=https%3A%2F%2Ftrtnation.com%2Fweight-loss-therapy%2F",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://developers.cj.com/docs/data-imports/action-data",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/trt-nation/OPERATOR-SELECTION.json",
+          "exists": true,
+          "sha256": "cbaefcf78063242d1ccd8db743baca90fc94807e91e97e171ab388ef895b0e13"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/Q45b/DISPATCH-1655/s18-inputs/trt-nation.json",
+          "sha256": "55d52dd78f874946fbf5a58fa4c26abefa46c0330ad050eedad21d838fba236a"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S18/other-rails/cj-trt-program-terms.json",
+          "sha256": "0f9f1a06f5eac5b5eef238ebc354d51d10e176c9185cb7dcc06a26becf861b5c",
+          "captured_at_utc": "2026-09-09T15:54:00Z",
+          "source_url": "https://programs.api.cj.com/query",
+          "locator": null
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S18/other-rails/cj-trt-links.json",
+          "sha256": "7c2f2963182d512c2f80bb167e8366954c41544c26c970656bf297c546483976",
+          "captured_at_utc": "2026-09-09T15:50:51Z",
+          "source_url": "https://link-search.api.cj.com/v2/link-search",
+          "locator": null
+        }
+      ],
+      "subid_parameter": "sid",
+      "group": "held8",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "yucca-health-xentraffic-offer-3117",
+      "render_id": "yucca-health-xentraffic-offer-3117",
+      "route": "/go/yucca-health-xentraffic-offer-3117",
+      "network": "xentraffic",
+      "network_offer_id": "3142",
+      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6JS8PDM/",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/yucca-3117/OPERATOR-SELECTION.json",
+          "exists": true,
+          "sha256": "8099806b1cbd6810dbd970053226095df1078ffb04e2a6c49546f5c6bbbe907d"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-offer-3142.json",
+          "sha256": "163a161e64c908e3c18df84dbefe9679ae934198a1e8cbdb1aaf1373200c5572"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/yucca-health-xentraffic-offer-3117.json",
+          "sha256": "de497ac77a0d07c06b56d8375efe67b444750fa44cbc6e84001a11cf388a0a13"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-signin.json",
+          "sha256": "97e7267aea27fe86a148f0c331afb67d3ca2733c6b7458578ad25c9fd8a12942"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "held8",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "awin-128761",
+      "render_id": "coivas",
+      "route": "/go/coivas",
+      "network": "awin",
+      "network_offer_id": "128761",
+      "issued_link": "https://www.awin1.com/awclick.php?mid=128761&id=2979387",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/site-system/flagship-v2/qa/sealed-train3c-review-20260909T234231Z/data/approved-program-registry.json",
+          "exists": true,
+          "sha256": "f1cf7c6e3a5005c5b06e379a65e3463e18b2eeba470dd73753b760df270e0d4d"
+        }
+      ],
+      "subid_parameter": "clickref",
+      "group": "supersession4",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "katalys-1286",
+      "render_id": "sprout-health",
+      "route": "/go/sprout-health",
+      "network": "katalys",
+      "network_offer_id": "1286",
+      "issued_link": "https://track.revoffers.com/aff_c?offer_id=1286&aff_id=13031",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/site-system/flagship-v2/qa/sealed-train3c-review-20260909T234231Z/data/approved-program-registry.json",
+          "exists": true,
+          "sha256": "f1cf7c6e3a5005c5b06e379a65e3463e18b2eeba470dd73753b760df270e0d4d"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "supersession4",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "katalys-647",
+      "render_id": "mangorx",
+      "route": "/go/mangorx",
+      "network": "katalys",
+      "network_offer_id": "647",
+      "issued_link": "https://track.revoffers.com/aff_c?offer_id=647&aff_id=13031",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/site-system/flagship-v2/qa/sealed-train3c-review-20260909T234231Z/data/approved-program-registry.json",
+          "exists": true,
+          "sha256": "f1cf7c6e3a5005c5b06e379a65e3463e18b2eeba470dd73753b760df270e0d4d"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "supersession4",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "katalys-1304",
+      "render_id": "direct-meds",
+      "route": "/go/direct-meds",
+      "network": "affiliati",
+      "network_offer_id": "40044",
+      "issued_link": "https://epsilonmkt.com/?a=15309&c=169817",
+      "disposition": "ADOPT",
+      "terms_source_url": null,
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/GUSTAVO-TELEGRAM/DIGEST.md",
+          "exists": true,
+          "sha256": "86e0690e8450aea012815fe8fa705658e799ac8bf07a2d0ef50e79b808c10cb9"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/direct-meds/OPERATOR-SELECTION.json",
+          "exists": true,
+          "sha256": "218a65bfcb658d243f085d4c89b7cfb7ec62e9e16296262a77b0d12ec265840b"
+        }
+      ],
+      "subid_parameter": "s2",
+      "group": "supersession4",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "jrnys-review",
+      "render_id": "jrnys-review",
+      "route": "/go/jrnys-review",
+      "network": "affiliati",
+      "network_offer_id": "42896",
+      "issued_link": "https://maanantaispc.com/?a=15309&c=177612&s1=",
+      "disposition": "ADOPT",
+      "terms_source_url": null,
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/GUSTAVO-TELEGRAM/DIGEST.md",
+          "exists": true,
+          "sha256": "86e0690e8450aea012815fe8fa705658e799ac8bf07a2d0ef50e79b808c10cb9"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/A13/BLOCKER.md",
+          "exists": true,
+          "sha256": "cebef609cd4abaaa867786dd00542b06ccc7b1d2653dc98e5466f99b2eac3c06"
+        }
+      ],
+      "subid_parameter": "s2",
+      "group": "affiliati_mint2",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "medvi-review",
+      "render_id": "medvi-review",
+      "route": "/go/medvi-review",
+      "network": "affiliati",
+      "network_offer_id": "43194",
+      "issued_link": "https://epsilonmkt.com/?a=15309&c=178786&s1=",
+      "disposition": "ADOPT",
+      "terms_source_url": null,
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/GUSTAVO-TELEGRAM/DIGEST.md",
+          "exists": true,
+          "sha256": "86e0690e8450aea012815fe8fa705658e799ac8bf07a2d0ef50e79b808c10cb9"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/A13/BLOCKER.md",
+          "exists": true,
+          "sha256": "cebef609cd4abaaa867786dd00542b06ccc7b1d2653dc98e5466f99b2eac3c06"
+        }
+      ],
+      "subid_parameter": "s2",
+      "group": "affiliati_mint2",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "sunlight-glp1",
+      "render_id": "sunlight-glp1",
+      "route": "/go/sunlight-glp1",
+      "network": "xentraffic",
+      "network_offer_id": "3254",
+      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6QCRMSM/",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliates/BEST-TERMS-MACHINE-20260825/switch-backlog.json",
+          "exists": true,
+          "sha256": "2c6570087799c684383605e2acba61bb5bb74fffa07c33568fff38d7910198f5"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/backrun-20260909T150051Z/sheet-full-row-export.json",
+          "exists": true,
+          "sha256": "1c936e3fec83f7d260869ee0ec57444bb260c89f4552010d9703dd021f414265"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "rail-switch",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "lttl-glp-landing-page-2",
+      "render_id": "lttl-glp-landing-page-2",
+      "route": "/go/lttl-glp-landing-page-2",
+      "network": "xentraffic",
+      "network_offer_id": "3252",
+      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6Q91WCF/",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliates/BEST-TERMS-MACHINE-20260825/switch-backlog.json",
+          "exists": true,
+          "sha256": "2c6570087799c684383605e2acba61bb5bb74fffa07c33568fff38d7910198f5"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/backrun-20260909T150051Z/sheet-full-row-export.json",
+          "exists": true,
+          "sha256": "1c936e3fec83f7d260869ee0ec57444bb260c89f4552010d9703dd021f414265"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "rail-switch",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "ro-wegovy-glp1-quiz-us-cpl",
+      "render_id": "ro-wegovy-glp1-quiz-us-cpl",
+      "route": "/go/ro-wegovy-glp1-quiz-us-cpl",
+      "network": "xentraffic",
+      "network_offer_id": "3164",
+      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6KWS5L1/",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliates/BEST-TERMS-MACHINE-20260825/switch-backlog.json",
+          "exists": true,
+          "sha256": "2c6570087799c684383605e2acba61bb5bb74fffa07c33568fff38d7910198f5"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/backrun-20260909T150051Z/sheet-full-row-export.json",
+          "exists": true,
+          "sha256": "1c936e3fec83f7d260869ee0ec57444bb260c89f4552010d9703dd021f414265"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "rail-switch",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "eden-xentraffic-offer-3051",
+      "render_id": "eden-xentraffic-offer-3051",
+      "route": "/go/eden-xentraffic-offer-3051",
+      "network": "xentraffic",
+      "network_offer_id": "3051",
+      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6D9WBFD/",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliates/BEST-TERMS-MACHINE-20260825/switch-backlog.json",
+          "exists": true,
+          "sha256": "2c6570087799c684383605e2acba61bb5bb74fffa07c33568fff38d7910198f5"
+        },
+        {
+          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/backrun-20260909T150051Z/sheet-full-row-export.json",
+          "exists": true,
+          "sha256": "1c936e3fec83f7d260869ee0ec57444bb260c89f4552010d9703dd021f414265"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "rail-switch",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    },
+    {
+      "program_id": "humecare-data-driven-glp-1-weight-loss-system",
+      "render_id": "humecare-data-driven-glp-1-weight-loss-system",
+      "route": "/go/humecare-data-driven-glp-1-weight-loss-system",
+      "network": "katalys",
+      "network_offer_id": "1588",
+      "issued_link": "https://track.revoffers.com/aff_c?offer_id=1588&aff_id=13031",
+      "disposition": "ADOPT",
+      "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "source_evidence": [
+        {
+          "path": "/home/ubuntu/business/site-system/flagship-v2/qa/candidate-train4-d2s-20260910/data/provider-page-contracts.json",
+          "sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+        }
+      ],
+      "subid_parameter": "sub1",
+      "group": "hume-sheet661",
+      "promotion_authorized": true,
+      "constructor_verified": true,
+      "advertiser_permission_verified": true,
+      "encoding_verified": true,
+      "privacy_qa_passed": true
+    }
+  ]
+}

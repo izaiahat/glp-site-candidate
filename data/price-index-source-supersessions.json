@@ -1,0 +1,56 @@
+{
+  "schema": "glp.price-index-source-supersessions.v1",
+  "supersessions": [
+    {
+      "observed_on": "2026-09-03",
+      "superseded_at_utc": "2026-09-03T12:37:53.663Z",
+      "superseded_observation_sha256": "8ea71a37ccc9fd2921eb30119617ae188c508bd36c628be75497f528bd1a28ba",
+      "superseded_source_files": {
+        "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+        "program_content_ledger_sha256": "f5df1f11aa22d0c8fb3402801e5a4a91cee250e38533be36a4c37dc79e8123ca",
+        "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+      },
+      "superseding_source_files": {
+        "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+        "program_content_ledger_sha256": "e8c14325b84ffe6c1af0a4849dc1b5781fe3cfdeb9be8a7dbfdf40832e2ada9b",
+        "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+      },
+      "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+      "basis": "source_files changed through governed registry mutation on the same PT day; observed values unchanged"
+    },
+    {
+      "observed_on": "2026-09-03",
+      "superseded_at_utc": "2026-09-03T15:53:18.896Z",
+      "superseded_observation_sha256": "3e02b304e55a575511527f25987dc2bf026f0659de685c80ba5accde61736014",
+      "superseded_source_files": {
+        "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+        "program_content_ledger_sha256": "e8c14325b84ffe6c1af0a4849dc1b5781fe3cfdeb9be8a7dbfdf40832e2ada9b",
+        "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+      },
+      "superseding_source_files": {
+        "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+        "program_content_ledger_sha256": "b27881275cd7237d8bddc2190563bf65743672cf8da3232128384507c5d6afdf",
+        "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+      },
+      "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+      "basis": "source_files changed through governed registry mutation on the same PT day; observed values unchanged"
+    },
+    {
+      "observed_on": "2026-09-03",
+      "superseded_at_utc": "2026-09-09T20:05:26.371Z",
+      "superseded_observation_sha256": "dfb41d7144f0af6f92c808b32bb6cd3bfc282468257ecdafe0e418fdc3f5f8cf",
+      "superseded_source_files": {
+        "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+        "program_content_ledger_sha256": "b27881275cd7237d8bddc2190563bf65743672cf8da3232128384507c5d6afdf",
+        "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+      },
+      "superseding_source_files": {
+        "original_data_study_sha256": "bdf2dd3f2a3c035d804c0a1bf29940266d0abd9e28dbe3df0d15060b32d1ca2c",
+        "program_content_ledger_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830",
+        "program_registry_sha256": "7940a48ddb453a1ebe274a48ed1c1fb7b5afdedfbbb4bed364153da6b5293499"
+      },
+      "record_set_sha256": "e3f7ada04c046cc6bde63df3fe4117f6a7e87e97c0601c32035874dbd4433ad9",
+      "basis": "source_files changed through governed registry mutation on the same PT day; observed values unchanged"
+    }
+  ]
+}

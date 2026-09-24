@@ -1,0 +1,1679 @@
+[
+  {
+    "id": "T-REG",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-d2h-review-20260909T052453Z/data/program-registry.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "ce972c573b1b853dd9662a55b84929c89400015a7438f399ecc241aab3a610ef",
+    "role": "live_registry_snapshot",
+    "quotes": []
+  },
+  {
+    "id": "T-IDENTITY",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-d2h-review-20260909T052453Z/src/provider-identity.mjs",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "1c1d1078c90b8d528973141422137a6f92e73377c7c503bb136585a6aaa70a80",
+    "role": "live_identity_helper",
+    "quotes": []
+  },
+  {
+    "id": "T-LEDGER",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-d2h-review-20260909T052453Z/data/program-content-ledger.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "b27881275cd7237d8bddc2190563bf65743672cf8da3232128384507c5d6afdf",
+    "role": "identity_input",
+    "quotes": []
+  },
+  {
+    "id": "T-POINTER",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/current-content-base.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "e926ad659fed06bcbb16a1811fea9422ae400fd33b701d02fcf3a6cd2aebd8cc",
+    "role": "internal_contract",
+    "quotes": []
+  },
+  {
+    "id": "T-S11",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S11/RULINGS-V2.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "b090c8b0598f09b6eba67221c599c31b82ab3b53f0f38d3e90d3ce96861c9ed9",
+    "role": "typed_price_ruling",
+    "quotes": []
+  },
+  {
+    "id": "T-LABEL",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S11/LABEL-CONTRACT.md",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "da29c25751a186a9a15a727fea2301987f35849568c855343bec9ba935e89188",
+    "role": "internal_contract",
+    "quotes": []
+  },
+  {
+    "id": "T-S12",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S12/RULINGS.md",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "4ffd7ebaf6afff5f3806aceb4625aa7577726b472823cb2a5249e8994e665975",
+    "role": "internal_contract",
+    "quotes": []
+  },
+  {
+    "id": "T-BRIEF",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/briefs/plan/S14-COMPOUNDED-CATEGORY-CONTENT.md",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "b4e2cbbd69b800bf9b2dc347756e19b0b8af17ba14df919367da27b9d3898049",
+    "role": "internal_contract",
+    "quotes": []
+  },
+  {
+    "id": "T-FDA-CONSTANT",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-d2h-review-20260909T052453Z/src/ready6-editorial.mjs",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "1752f97ce26c699401d3373b6c1a52d6289ec426bc2ff5ef1a4d421efdea0a5a",
+    "role": "approved_copy_constant",
+    "quotes": [
+      "Compounded drugs are not FDA approved, and FDA does not premarket-review them for safety, effectiveness, or quality."
+    ]
+  },
+  {
+    "id": "T-FDA",
+    "source_url": "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/bodybuilding-com-glp-1-longevity-review/5d7e393067cc6321.md",
+    "captured_at_utc": "2026-09-08T22:07:38.589824+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "9eae06856a1d12504e2049adb9b5df4769ee903291e393545eb105cf69f9ddfa",
+    "role": "official_regulator",
+    "quotes": [
+      "unapproved versions do not undergo FDA’s review for safety, effectiveness and quality before they are marketed.",
+      "A [compounded drug](https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers \"Compounding and the FDA: Questions and Answers\") might be appropriate if a patient’s medical need cannot be met by an FDA-approved drug, or the FDA-approved drug is not commercially available. However, compounded drugs are not FDA approved. This means the agency does not review compounded drugs for safety, effectiveness or quality before they are marketed."
+    ]
+  },
+  {
+    "id": "T-D-try-ageless",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/try-ageless/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "091b2b74def4566886eee0f9aa9c01dccf769423d545c749a40bc36601e0664d",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-try-ageless",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/try-ageless/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "4c6dda74a3ba83f557137d561ff7e66a5aaafc7134b01740d8e79d82363ccce2",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-try-ageless-S03",
+    "source_url": "https://tryageless.com/terms/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/try-ageless/captures/922cf09b0a910720.md",
+    "captured_at_utc": "2026-09-08T03:27:21.161633+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "e1259d31deebc11d3c2de2133be9e24a557ab2286fa2ae0be17ac678c9864844",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "If prescribed, medications may be dispensed through a licensed pharmacy partner such as Pharmacy Hub.",
+      "You may choose to use your own pharmacy by requesting a prescription transfer during the consultation."
+    ]
+  },
+  {
+    "id": "T-P-b3f33645fa0a3dc0",
+    "source_url": "https://tryageless.com/affiliate-weight-plans/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/try-ageless/fresh/6324648caa8db05c.md",
+    "captured_at_utc": "2026-09-09T00:55:41.242213+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "b3f33645fa0a3dc025e7f55b5ff0aa3e36b85537cb69eb6e6035c1df96d651b1",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "### Tirzepatide + B12\n\nInjection · Dual GLP-1/GIP Agonist\n\nClinical Study Formula with B12. A dual GLP-1/GIP agonist — activates two metabolic receptors instead of one for **greater average weight loss**.\n\nMonthly$349 every month",
+      "compounded tirzepatide",
+      "### Tirzepatide Drops\n\nOral · Sublingual · Needle-Free\n\nDaily sublingual liquid drops — needle-free tirzepatide for patients who prefer oral dosing or want a more travel-friendly format. Apply daily under the tongue.\n\nMonthly$199 every month",
+      "### Tirzepatide Drops\n\nOral · Sublingual · Needle-Free\n\nDaily sublingual liquid drops — needle-free tirzepatide for patients who prefer oral dosing or want a more travel-friendly format. Apply daily under the tongue.\n\nMonthly$199 every month\n\nwas $299$199/moSave $100/mo\n\nQuarterly Save $150$549 every 3 months · $183/mo\n\nwas $897$183/mo\n\n6-Month Save $360$1,074 every 6 months · $179/mo\n\nwas $1,794$179/mo\n\nYearly Best Value$1,908 yearly · $159/mo · Save 56%\n\nwas $4,308$159/moLowest price\n\n- **Tirzepatide active** — needle-free format\n- Daily sublingual drops under the tongue\n- Travel-friendly bottle, no refrigeration\n- Best for needle-averse patients\n- Lowest entry price of any tirzepatide format\n\n[Start with Drops →](https://tryageless.com/ol-glp1/)\n\n⬢\n\n**USP-grade pharmaceutical purity** Compounded by state-licensed U.S. 503A pharmacies."
+    ]
+  },
+  {
+    "id": "T-D-altrx-glp1-us-cps",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/altrx-glp1-us-cps/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "22a6412f35d4e12e832da94d67887b7558251b7cc424786f70d1fb1304a439af",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-altrx-glp1-us-cps",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/altrx-glp1-us-cps/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "db8273d2263a75fb2612e3618c7317fa02aa9de8d43d7f2117982e0aa5492b26",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-altrx-glp1-us-cps-S02",
+    "source_url": "https://www.altrx.com/refund-cancellation-policy",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/altrx-glp1-us-cps/captures/f59784298a5629a8.md",
+    "captured_at_utc": "2026-09-08T22:07:13.276708+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "ba75e596c131cc5ad520799a472857e2d0149d3ff277ea9e565d001339ac9d5e",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "If you purchase a multi-month or bundled plan, you are purchasing the full term at a discounted, bundled rate in exchange for the full-term commitment."
+    ]
+  },
+  {
+    "id": "T-D-biltrx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/biltrx/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "1880fa68bbf5d398286dd04ba0a836a7c72b085d396e8b6a6dec52d57f0a2c72",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-biltrx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/biltrx/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "48f7c561a02519ca7975a327cf11c96d948abc598038edefe67dc421347b55fd",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-biltrx-S01",
+    "source_url": "https://biltrx.com/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/biltrx/captures/e70db317088e7dac.md",
+    "captured_at_utc": "2026-09-08T03:28:19.388665+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "f239f29e3504095c4e99a2aa7a8cbde1ba241a94ae51b66cd3cc1336741d333a",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Some BiltRx products are available with a subscription option.",
+      "Subscriptions allow for automatic recurring delivery",
+      "Subscription availability varies by product, and one-time purchases are always an option."
+    ]
+  },
+  {
+    "id": "T-D-care-bare-rx-glp1-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/care-bare-rx-glp1-review/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "931882135465e19587dc17e2535f25d61142e00642e4a5b6e0cbec03686d617d",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-care-bare-rx-glp1-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/care-bare-rx-glp1-review/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "71305c4e1faa53b032c1ab96a7c15130fe74b3176accc006aaaa616387146a54",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-care-bare-rx-glp1-review-S03",
+    "source_url": "https://www.carebarerx.com/faq",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/parent-carebare/S03.txt",
+    "captured_at_utc": "2026-08-30T12:12:25.031727+00:00",
+    "capture_date": "2026-08-30",
+    "date_basis": "source receipt",
+    "sha256": "33b010f4f8e14fbb24d68c9c4fd3a82b4e02400258fcde69ef3f0fb9ea981e54",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Have a telehealth consultation with your doctor, who will check what treatment is needed and write a prescription if appropriate."
+    ]
+  },
+  {
+    "id": "T-D-coivas",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/coivas/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "b2a42894051d5310cebc679202e60f7ca85af71928cb0db81a0d174d1a76d0aa",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-coivas",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/coivas/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "06a963dbde74445b401c5e8aba2b98934bffa63f90aaf8b2de86642a2aff0867",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-coivas-S01",
+    "source_url": "https://www.coivas.com/treatments/weight-loss",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/coivas/captures/586e54c1713f00dc.md",
+    "captured_at_utc": "2026-09-08T03:28:16.292583+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "91d342fd45fa6da1e295a089c70a26c369f7aab5186065bc3f46061176dbf6d5",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "You can pause or cancel your plan at any time from your member portal. Active orders already shipped to the pharmacy cannot be recalled."
+    ]
+  },
+  {
+    "id": "T-P-d78132fbc359554b",
+    "source_url": "https://www.coivas.com/challenge",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/coivas/2026-09-08-d78132fbc359554b.md",
+    "captured_at_utc": "2026-09-08T03:28:14.697212+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "d78132fbc359554b645b5cd4d656a8c88589d65a206f5962adf97a84e73fccc4",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "Compounded\n\nTirzepatide\n\nMost popular\n\nDual action GIP/GLP-1\n\nStronger appetite suppression\n\nSupports hunger and blood sugar regulation\n\nRecommended for those seeking enhanced weight loss support\n\n![Tirzepatide](https://www.coivas.com/tirzepatide.png)\n\nQuarterly\n\nNew to GLP-1s$199/mo\n\nthen $229/mo",
+      "Intro pricing is for patients starting GLP-1 therapy for the first time and applies to the first billing cycle only. After that, subscriptions renew at the standard price unless canceled.",
+      "The Challenge covers compounded semaglutide or compounded tirzepatide — both once-weekly GLP-1 injections prescribed by a licensed clinician based on your health history and goals. Brand-name medications like Ozempic, Wegovy, Mounjaro, and Zepbound are not included."
+    ]
+  },
+  {
+    "id": "T-D-coreage-rx-glp-1-1632",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/coreage-rx-glp-1-1632/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "fef66333104d49240e20413db94bac2d89c1408bc2bb796343c83c8570339394",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-coreage-rx-glp-1-1632",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/coreage-rx-glp-1-1632/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "fa88d189fb6496563eeb86f89f9c1810a61dcb9d095f222af39894c452d68a3f",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-coreage-rx-glp-1-1632-S01",
+    "source_url": "https://get.coreagerx.com/home35/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/coreage-rx-glp-1-1632/captures/390f5a794ba91954.md",
+    "captured_at_utc": "2026-09-08T22:07:10.432044+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "98f4644bd749ea35eb0a9b63bac18cb8f11dc9b70d929c5cbbda205e43b9082e",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Prescription products require an online evaluation with a licensed medical professional who will determine if a prescription is appropriate."
+    ]
+  },
+  {
+    "id": "T-D-curex-glp-1",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/curex-glp-1/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "13787f397b06181af0b2f538f7f1d01e48fd3c02162091b76065a2671ee90216",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-curex-glp-1",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/curex-glp-1/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "f96acb7c737618784437669bbedb103c0f4a1470b4be0a0a170829e3cac7414f",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-curex-glp-1-S02",
+    "source_url": "https://getcurex.com/legal/terms",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/curex-glp-1/b147f20327a25582.md",
+    "captured_at_utc": "2026-09-08T22:07:40.123595+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "fb36273a4414e32672da6cd2018c56a6b7caf56bf7cdffc13955049432143e05",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Once a product has entered the fulfillment process, defined as compounding, preparation, or shipment, you are responsible for the full cost of that order."
+    ]
+  },
+  {
+    "id": "T-D-direct-meds",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/direct-meds/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "1bee61c4848e6fe76c1c35b7b5f31a3157e74fac478002d5594f8bd7386bb88a",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-direct-meds",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/direct-meds/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "18f499b1e0c8844fed6cd42a2e7813954c76344bbd71b1a928ec9d54d250b691",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-direct-meds-S03",
+    "source_url": "https://directmeds.com/dm-company/terms.html",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/direct-meds/captures/8c7e34fa79f03bdf.md",
+    "captured_at_utc": "2026-09-08T03:28:13.631481+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "b01dcd2c0c0210fcc916865622a0917bb7a5441ab8465cff2e1bca99ddb5068c",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "You may cancel any time up to 48 hours before the next processing date by turning off auto-refill in your account portal."
+    ]
+  },
+  {
+    "id": "T-P-7e1f7792f503b578",
+    "source_url": "https://directmeds.com/dm-offers/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/direct-meds/fresh/a80a347a32a64629.md",
+    "captured_at_utc": "2026-09-09T00:55:27.217359+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "7e1f7792f503b57856aef4e99a2546a606b143f22c0c76ef4ab2faef467b5178",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "Direct Meds partners with licensed doctors and pharmacy to offer competitive pricing on\ncompounded GLP-1 weight loss medications. Our pricing is transparent with no hidden costs or\nmonthly fees.\n\nFor Semaglutide we charge $297/month. For Tirzepatide we charge $399/month.\n\nIncluded in this simple pricing is your medication, doctors visits (normally $99/visit),\n1-day FedEx or UPS shipping, and all supplies needed for injections.\n\nCompetitors will often charge ‘access’ or membership fees. Direct Meds does not have those so\nthat pricing is extremely clear and you don’t get surprise costs.",
+      "Direct Meds allows you to get prescription weight loss medications such as semaglutide &\ntirzepatide from the comfort of your home. Your pricing is one simple monthly price and\nincludes medication, supplies, doctor review and shipping. Once you've selected and paid for\nthe first month of your chosen medication, you will need to complete an intake form for the\ndoctor to review and approve your prescription. Once your doctor approves your prescription,\nour pharmacies will ship out your medication within 2 business days.",
+      "With Direct Meds there are no contracts for our month to month pricing. We also offer\nsubscribe and save discounts where customers will agree to a subscription length for stated\nmonthly discount. Month to month customers can cancel their shipment anytime by sending an\nemail to [help@directmeds.com](mailto:help@directmeds.com) or call us at [888-696-7176](tel:888-696-7176). We want to make sure that our customers",
+      "Yes, both of our GLP-1 weight loss medications are real prescription medications that are\nprescribed by a doctor and compounded by a real US based pharmacy. We offer only the best\nSemaglutide and Tirzepatide medications for weightloss management for customers that meet",
+      "**For Semaglutide & Tirzepatide Injections:**\n\nYou will be provided with small insulin sized needles along with your medication. Your doctor\nwill explain how and when to take your medication during your telemed visit. You will start\nwith a low dose to begin your treatment once per week as your body gets used to the\nmedication and increase your dose every 4 weeks until you are at your full dosage.\nMedication will be administered by injecting into the fatty area on your stomach weekly.",
+      "For Tirzepatide we charge $399/month."
+    ]
+  },
+  {
+    "id": "T-D-eden-xentraffic-offer-3051",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/eden-xentraffic-offer-3051/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "c72255895fffdd1f8b1a9b9889df84eb9317629f2c2b6c9b8dcc1d3428c0a24e",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-eden-xentraffic-offer-3051",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/eden-xentraffic-offer-3051/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "94e2549ebcf3bca4b2d7ec301a8c37a84b61f30e9a5fa2cf850c14c9d0c26147",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-eden-xentraffic-offer-3051-S01",
+    "source_url": "https://www.eden.health/treatment/glp-1-treatments",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/eden-xentraffic-offer-3051/captures/9ee8957bc4a9b4c4.md",
+    "captured_at_utc": "2026-09-08T22:07:56.876128+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "c436c119a083e9498aa1f3103eda6355124e961c8e09adbde09a8e41bde8cac7",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Please note that canceling your treatment plan in the portal will not cancel any active orders that have already been sent to the pharmacy."
+    ]
+  },
+  {
+    "id": "T-D-enhance-md",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/enhance-md/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "84f742fcd5d4d4c838676a9bdb7c0908538645d7c3664e1270440af3ad8fb763",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-enhance-md",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/enhance-md/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "4fe1ab1704bba07e51bda2559793166758809720b6de4e7de982c791f90c396b",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-enhance-md-S02",
+    "source_url": "https://enhance.md/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/enhance-md/captures/7add38563b38e7b5.md",
+    "captured_at_utc": "2026-09-08T03:27:59.525277+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "ef2b7e7bc1addd951d8f0405eca83f6d6ccccabe15b953952531dc0aa2941604",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Personalized GLP-1 Program for Sustainable Weight Management. Provider consultations, compounded medication and wellness coaching."
+    ]
+  },
+  {
+    "id": "T-P-27fc43654fc2c99d",
+    "source_url": "https://enhance.md/product/advanced-tirzepatide",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S9/reader-a/captures/enhance-tirz.md",
+    "captured_at_utc": "2026-09-09T07:25:07.417120+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "27fc43654fc2c99d3fafd6f66cf24a789146f9bf3968bd95f3ecad756915e151",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "12-month\n\nSave 15% + $100 off first order\n\nBilled every 48 weeks\n\n$280/mo\n\n6-month",
+      "# GLP-1 Advanced tirzepatide prescription online for weight loss",
+      "Your subscription includes 4 weeks of compounded tirzepatide medication, ongoing provider care and support, metabolic lab testing every 6 months, essential supplies (syringes and alcohol pads), wellness coaching, and full platform access with educational content.",
+      "GLP-1 medications are administered as a subcutaneous injection, meaning the medication is injected just beneath the skin—not into muscle or vein. Most patients find the process simple and well-tolerated after their first few doses.",
+      "GLP-1 Advanced uses compounded tirzepatide"
+    ]
+  },
+  {
+    "id": "T-P-d0d119044526c930",
+    "source_url": "https://enhance.md/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/enhance-md/fresh/7add38563b38e7b5.md",
+    "captured_at_utc": "2026-09-09T00:55:29.445699+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "d0d119044526c930844bcf8c127ac0dae051da28c4a1ef7636854aabdf169503",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "[View Details](https://enhance.md/product/advanced-tirzepatide)\n\n### GLP-1 Advanced\n\ntirzepatide\n\nStarting at\n\n$280\n\n/month"
+    ]
+  },
+  {
+    "id": "T-D-enhanced-tirzepatide-funnel-b",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/enhanced-tirzepatide-funnel-b/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "48291836aeea78e4a79246175fc4e4ad8216f01d6cf3b1e9ecd523fb26faebb9",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-enhanced-tirzepatide-funnel-b",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/enhanced-tirzepatide-funnel-b/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "091bdea8b32ec7eb82835db6895e27221ab4e5ec0a248d1320d7805d05eae1c3",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-enhanced-tirzepatide-funnel-b-S02",
+    "source_url": "https://www.enhanced.com/agreements/terms-of-service",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/enhanced-tirzepatide-funnel-b/captures/b2ea86f2a1318ebe.md",
+    "captured_at_utc": "2026-09-08T22:07:23.927078+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "76b8da4902f1c1be9fcf66e94535c56d482cf2f8aba088d7776b2f4a8172bc54",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "The price of our products do not include delivery charges.",
+      "All delivery times are estimates only."
+    ]
+  },
+  {
+    "id": "T-D-found-health",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/found-health/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "2da7ebcefd8265776b6f732db7f4ffcaa4e81f233eab66fc401a4f803eed7e38",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-found-health",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/found-health/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "989598a5411a90263a07bd9ff93223d7fdad6c920a6bee1e369cfc8b52f07a9a",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-found-health-S02",
+    "source_url": "https://joinfound.com/terms/offer-terms",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/found-health/captures/09acdfd93a06da77.md",
+    "captured_at_utc": "2026-09-08T03:27:55.658507+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "4b2b416e63084f0702712978102716dca5030d618d78531a50a501b0b6bcec8e",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "GLP-1 medications and Contrave **®** are not included in the CORE Subscription Plan fee"
+    ]
+  },
+  {
+    "id": "T-D-gala-health",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/gala-health/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "b642c711a82f7d5979d54eb1f4843581baefedb79b03e26188732fcb0e77720d",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-gala-health",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/gala-health/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "d79b4d5be9c94c565564e9720652582356314290ade9f59860e8d680388ab3c9",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-gala-health-S01",
+    "source_url": "https://galaglp1.com/weight-loss/compounded-glp1",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/gala-health/captures/b60df7dcc3ecba25.md",
+    "captured_at_utc": "2026-09-08T03:27:56.345637+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "1167548ede84a5ed8347f53f5da1e9776a52a50fa55dcbe2be4cc63e2e31316d",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Provider visit included",
+      "Free shipping, ongoing support included"
+    ]
+  },
+  {
+    "id": "T-D-gobymeds",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/gobymeds/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "56e41894f0872d1c4731167b78045d952fb9b90f3673cb42e4e38fb5b5d0ea04",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-gobymeds",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/gobymeds/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "1d873094676ddde7e43c3f42994d93aabe4168d8d8ce2b66be26350423b28817",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-gobymeds-S02",
+    "source_url": "https://www.gobymeds.com/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/gobymeds/captures/7f171b8d5b5c6cfb.md",
+    "captured_at_utc": "2026-09-08T03:27:44.824862+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "a109ff4411b134849b36f74923524d137555dc327c14fbc4342bc0cadeabcd9a",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "No membership fees or hidden costs."
+    ]
+  },
+  {
+    "id": "T-P-f8d8904a3ef8c527",
+    "source_url": "https://www.gobymeds.com/getting-started/pricing",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/gobymeds/fresh/3e5ea62683fdcfc0.md",
+    "captured_at_utc": "2026-09-09T00:55:29.047437+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "f8d8904a3ef8c527256b86666d7767429e57e036eb4a7ffe20047bef9b5bc8bd",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "### Compounded Tirzepatide  3-Month  Starter Bundle\n\nFor **first-time patients** beginning their GLP-1/GIP compounded tirzepatide journey. Bundle includes 12 weeks of medication, shipping, consultation, and injection kit. **Total $399**"
+    ]
+  },
+  {
+    "id": "T-D-healthrx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/healthrx/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "25ead6d8bd4d1e5a81a1d424527969ef1516fe859b044a07603d80e4b82280b9",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-healthrx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/healthrx/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "1668e1fb1f56ffb3e096b3ca7c629570314b4456774e69444d851bc904ba7002",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-healthrx-S01",
+    "source_url": "https://healthrx.com/pricing",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/healthrx/captures/fc0201f648d5455c.md",
+    "captured_at_utc": "2026-09-08T03:27:38.471629+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "4f99f48dbcedbee7c1db81b684a1c4b83a52a6ee6d8c8202afe463c8de85739d",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "You can cancel online in one click at any time, and any unshipped dose is refunded."
+    ]
+  },
+  {
+    "id": "T-D-humecare-data-driven-glp-1-weight-loss-system",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/humecare-data-driven-glp-1-weight-loss-system/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "e490690067c023e15fee70a7daafcaf9ee2e2b1a89a5a252d9a267a7d5d82199",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-humecare-data-driven-glp-1-weight-loss-system",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/humecare-data-driven-glp-1-weight-loss-system/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "22bb4795c7f4dacfbd11966b26d311b7c36f2150c5dcbde63265e4ae109d56ea",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-humecare-data-driven-glp-1-weight-loss-system-S02",
+    "source_url": "https://app.humecare.com/terms-conditions",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/humecare-data-driven-glp-1-weight-loss-system/36b4766b4c68e0eb.md",
+    "captured_at_utc": "2026-09-08T22:07:53.967521+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "8ce24d6573daf2feaa404e296f612c10bab9631abae0c7e2b8f5867eb631af29",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Your membership will automatically renew unless you cancel before your renewal date."
+    ]
+  },
+  {
+    "id": "T-D-joinskinny-semaglutide-glp-1-us",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/joinskinny-semaglutide-glp-1-us/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "af3b8287e2438c52ec6d92df70b5cc6b82e1947d508ef7e262bd39fda9539d69",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-joinskinny-semaglutide-glp-1-us",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/joinskinny-semaglutide-glp-1-us/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "1ad212b41ecb609671904ae27ac4ac4f5f6de709e624879831e88890977bfe1e",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-joinskinny-semaglutide-glp-1-us-S01",
+    "source_url": "https://joinskinny.com/refund-and-cancellations-policy/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/joinskinny-semaglutide-glp-1-us/captures/c5f475f549c2d9f5.md",
+    "captured_at_utc": "2026-09-08T22:07:32.164505+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "03e4a1602af598d038997e8456cc9adc20c61079e0d807daf720973e7341b859",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "your subscription and charges will continue even if you do not complete the refill form and do not receive a medication shipment in a given period."
+    ]
+  },
+  {
+    "id": "T-D-jrnys-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/jrnys-review/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "857fa08c5f03594ec5b37cd68879546d24369711f6c0109428f1adeee9c1029b",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-jrnys-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/jrnys-review/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "79486d26646c95297bc8034c3f48ebeb061374477dfa22010f7fc4cbaabe3e5e",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-jrnys-review-S02",
+    "source_url": "https://jrnys.com/cancellation-policy",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/jrnys-review/79d95f54e36cc11a.md",
+    "captured_at_utc": "2026-09-08T22:07:57.450961+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "08d6d29987d783ca6d36fc9357ae01b99884248fd02279c7356769b3f7b6954c",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Subscribers are required to give a notice of at least 7 days prior to their next billing cycle for cancellation of their subscription."
+    ]
+  },
+  {
+    "id": "T-D-levelsrx-extra-cpa-home-page",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/levelsrx-extra-cpa-home-page/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "bd2cae7dd28940cc1ead5afb3ee27b8db35cd9c39aa0cab6f9a89955ab0da231",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-levelsrx-extra-cpa-home-page",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/levelsrx-extra-cpa-home-page/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "44d489364e39df83a49b7e6dbb20998d5bb0ce122b83bef385442c445c6b5542",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-levelsrx-extra-cpa-home-page-S02",
+    "source_url": "https://www.levelsrx.com/terms-conditions",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/levelsrx-extra-cpa-home-page/captures/5d14031647dbd747.md",
+    "captured_at_utc": "2026-09-08T22:07:33.956544+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "01d14d308d44d996a48d7327ee057d9153a628353168135d5da17a8051a866ab",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "To cancel your LevelsRx subscription, you must contact our customer support team by phone. Cancellations cannot be processed via email, chat, or website submission."
+    ]
+  },
+  {
+    "id": "T-D-longevity-meds-glp-1-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/longevity-meds-glp-1-review/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "09d9f5b9710d3b517b5aa30b6ac54b22216a0f0d4cd639175f7f6e5445e65126",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-longevity-meds-glp-1-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/longevity-meds-glp-1-review/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "a3b47abded0aa681e34c3b997e562c78a0a3e68208257a83c0904cd1ef25f5fb",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-longevity-meds-glp-1-review-S01",
+    "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/longevity-meds-glp-1-review/captures/14e98c173dfe8cd3.md",
+    "captured_at_utc": "2026-09-08T22:07:36.537978+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "48e5848df96353b2c103dda4c91b037025c8e91fa6697d5b3a020ba4c1fb8b6e",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Programs involving medications like Tirzepatide or Semaglutide include a mandatory three-month term, as the full supply is provided up front. You are required to complete this entire period regardless of your selected billing option."
+    ]
+  },
+  {
+    "id": "T-D-lttl-glp-landing-page-2",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/lttl-glp-landing-page-2/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "cc2c1235015bdce9afda8c788943cad9ef801927f38774595e6558df5afff5bf",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-lttl-glp-landing-page-2",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/lttl-glp-landing-page-2/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "40386e9c14c4aa80a1b60e6b5efbbdbba4af6539d951a8ddbeb104f8fa740c1f",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-lttl-glp-landing-page-2-S02",
+    "source_url": "https://lttl.com/returns-refunds",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/lttl-glp-landing-page-2/5c7892148dfa48e6.md",
+    "captured_at_utc": "2026-09-08T22:08:08.217527+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "969704c393711f6110f06abb2fd77a13cb72c66ba31e6496671f691d4a1cac79",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Cancellation stops future shipments and charges. Orders that have already been processed by the pharmacy cannot be canceled or refunded."
+    ]
+  },
+  {
+    "id": "T-D-mademed",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/mademed/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "66584b047af16b6470f2050df56141506117270d9eee69f3b3d5f7b431ee7a87",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-mademed",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/mademed/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "bd88f1f4537cbd155ac5e2b7b629e388d637f699072d3d9fa7f88405cfebef54",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-mademed-S01",
+    "source_url": "https://mademed.com/rx/injectable-semaglutide",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/mademed/captures/e7a1507d0d9813ba.md",
+    "captured_at_utc": "2026-09-08T03:27:35.802844+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "3a188850bd6ae905d91ad33bc8f62f85a2a63279fd74f28fdad2602e52e265e8",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "physician consultation",
+      "Injection supplies included"
+    ]
+  },
+  {
+    "id": "T-P-386eec9986677239",
+    "source_url": "https://mademed.com/rx/oral-tirzepatide/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/mademed/fresh/1605cab844233161.md",
+    "captured_at_utc": "2026-09-09T00:57:28.173610+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "386eec99866772395339113906a57abc45c68eb0d2753f1788b7cbc1d21f1de3",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "Quarterly\n6-monthSave $20/mo\nMost Popular\n\n$299/month\n\n60 tablets shipped every 2 months. Your dose only changes when you request it, no automatic increases. Billed $897 every 3 months.",
+      "# Oral Tirzepatide\n\nDual GLP-1/GIP action in a daily tablet. No needles required. From $279/mo.",
+      "This is a compounded medication that has not been approved by the FDA. It is prepared by a licensed US pharmacy.",
+      "Daily Sublingual Tablet",
+      "# Oral Tirzepatide"
+    ]
+  },
+  {
+    "id": "T-D-orderlymeds",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/orderlymeds/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "34c31de1e0feb84a6a550ba3d3e4dfbc42d009af0092ff7932c287d070aa9e28",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-orderlymeds",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/orderlymeds/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "aedc2a6e5a6bf75b91335826a8c8baf3a613638f370c8b2656d2d7da252b8ef9",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-orderlymeds-S02",
+    "source_url": "https://orderlymeds.com/faqs/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/orderlymeds/b535df570ca37d8d.md",
+    "captured_at_utc": "2026-09-08T22:18:31.953635+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "fc19831ae4f234169496212fbb09dfb2cb61e0a5a5b58f893805039da16280d9",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "When you sign up, you can cancel any time before the doctor finalizes your prescription, unless you’ve selected a multi-month plan."
+    ]
+  },
+  {
+    "id": "T-D-refills",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/refills/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "d6d93b0fe59655f1fd977ea3d868bc27eb0318755665c3b07d5447245b6f0ae0",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-refills",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/refills/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "2f585188526ff9643196599c6098ba73f28a89a53da7cd2e4a5f3938c919d799",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-refills-S02",
+    "source_url": "https://www.refills.com/faq",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/refills/64d212c60074c371.md",
+    "captured_at_utc": "2026-09-08T22:08:10.119385+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "e8f043abae2405f3702289d743a362af920eee6a5e0f2aee22b485550bb1d55a",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "You can pause, skip, or cancel your subscription anytime through your account dashboard. No penalties or long-term commitments."
+    ]
+  },
+  {
+    "id": "T-D-shedrx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/shedrx/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "4aef8813409c0d4649c4c6877c3e00bcd8bd18ef18e407a39bc813d13fa28edd",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-shedrx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/shedrx/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "1ee89961399367924729e77f16220bf8f5faae441fe7002e186bc436acef27fb",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-shedrx-S01",
+    "source_url": "https://www.tryshed.com/products/product/wegovy",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/shedrx/captures/s1-dce25d1c51d67eda.md",
+    "captured_at_utc": "2026-09-08T19:37:35.952254+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "89d674008df8499bd7b8c005dd61d8a4f99b29586c7034fde1e0713e5541fd3a",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Shed is not a pharmacy and does not dispense medications. Prescriptions are fulfilled and shipped by a third-party pharmacy."
+    ]
+  },
+  {
+    "id": "T-P-ada6b7bb41363235",
+    "source_url": "https://www.shedrx.com/compounded-semaglutide/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/shedrx/fresh/21e0d4345b98e9dd.md",
+    "captured_at_utc": "2026-09-09T00:55:38.335667+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "ada6b7bb413632354f1b6d048ebf2c2be60182ab9276bf94e5c32883cdf205f8",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "Compounded Trizepatide starting as low as $239/mo",
+      "Compounded Tirzepatide Injections Rx"
+    ]
+  },
+  {
+    "id": "T-D-snagrx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/snagrx/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "1bdef1fbe1b33f51130a79c15b69b65a438b08d818d03322b3b999f48893f2dd",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-snagrx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/snagrx/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "41169137799b51b57aec2a6e4edaf35a29de2f83ac5a92d5a7a11eba37656de6",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-snagrx-S02",
+    "source_url": "https://snagrx.com/refund-policy",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/snagrx/308c71128f16127d.md",
+    "captured_at_utc": "2026-09-08T22:08:16.602855+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "396d00687a246fd84c4eb3694807938509940e0a48ffde889a2f72dd0f5306da",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Cancellation requests must be received at least 72 hours prior to\nyour next billing date in order to stop the next charge."
+    ]
+  },
+  {
+    "id": "T-D-sprout-health",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/sprout-health/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "eed2f199b26d75ccec694ce5a8bc910ccd569c7f83b69fe908572f7cefe8a848",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-sprout-health",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/sprout-health/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "40b60dc666bd72595d4f68ff1a959f7aed26ddbcbcd6e2f7f9e737276be49f56",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-sprout-health-S02",
+    "source_url": "https://joinsprouthealth.com/refund_returns/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/sprout-health/captures/415484f1e8da98e2.md",
+    "captured_at_utc": "2026-09-08T03:27:34.143388+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "68f980a36809db79c0721d05a842b0aa0aa63525b60912ec9a67cdc6c7380757",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "To avoid being charged for the next billing cycle, we need to receive your cancellation request at least 48 hours before your next scheduled billing date."
+    ]
+  },
+  {
+    "id": "T-D-sunlight-glp1",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/sunlight-glp1/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "d6b37ca5bb4bc0f693c6f5e5208ce8fc41c2365d8aa36d6cf641999b46b0818b",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-sunlight-glp1",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/sunlight-glp1/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "2a0c54f03d570c3a4842ffae5d40b1cc5515d4363652f93e14d91da8456443c1",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-sunlight-glp1-S01",
+    "source_url": "https://www.sunlight.com/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/sunlight-glp1/8054d04eb81e9a31.md",
+    "captured_at_utc": "2026-09-08T22:08:15.884572+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "b2c498d1f6de5e0ebaa33ef278da74e434c43cadcd489a19bbf41209223a7e63",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Sunlight GLP-1 weight loss treatments are self-pay with flat monthly pricing and do not require insurance."
+    ]
+  },
+  {
+    "id": "T-D-synergy-rx-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/synergy-rx-review/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "6dedad814ffc2e7781ee8c0603b48514e2ceef86d8a3c15266ef86f22ec158f5",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-synergy-rx-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/synergy-rx-review/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "c93437a4a0d4269893fd3dbfee43eb22d20a39c9145ff3deef6ca0ec9ace8897",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-synergy-rx-review-S01",
+    "source_url": "https://www.synergyrx.co/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/synergy-rx-review/captures/ffc29241b603b3bf.md",
+    "captured_at_utc": "2026-09-08T22:08:00.780603+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "4729462299243f90b9409541038b8e35751fc207c841e04ddff4f1b22781ba8a",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Most plans include provider visits, prescription, medication, and follow-up care."
+    ]
+  },
+  {
+    "id": "T-D-telos-rx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/telos-rx/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "2f46d0e1e411d298f0bdb440ab9aae86f7542c0bfd7838c6798d4ca619ab37ec",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-telos-rx",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/telos-rx/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "e6f1f531985cfd7e5d803181949ed00bda1261840a3ce6b9f010d2b9dce5d26c",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-telos-rx-S01",
+    "source_url": "https://telosrx.com/pages/semaglutide",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/telos-rx/captures/3891758e99895024.md",
+    "captured_at_utc": "2026-09-08T03:27:26.892803+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "177d1ac092c32226b1982b4d88176bce89c04f2049cba9a135394d87ce4ed63b",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Certain medications, specific formulations, or fulfillment options may vary."
+    ]
+  },
+  {
+    "id": "T-P-b6ec40073d4b1345",
+    "source_url": "https://telosrx.com/pages/for-men",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/telos-rx/fresh/290f652b454d12b5.md",
+    "captured_at_utc": "2026-09-09T00:55:40.132514+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "b6ec40073d4b13450b34035d7883a6d3f39cfb5adbf87cca75420f56ab02c8cb",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "Tirzepatide\n\n### As low as $139/month"
+    ]
+  },
+  {
+    "id": "T-P-87d8b636f5177806",
+    "source_url": "https://telosrx.com/pages/glp-1-options",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/telos-rx/2026-09-08-87d8b636f5177806.md",
+    "captured_at_utc": "2026-09-08T03:27:19.318206+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "87d8b636f517780688a9b7c51473c50656af2228cb4d3ca3bb85ca1e44ed189b",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "| --- | --- | --- | --- | --- |\n| Drug class | Dual GIP + GLP-1 agonist | GLP-1 agonist | Dual GIP + GLP-1 agonist | Dual GIP + GLP-1 (low dose) |\n| How it works | Two gut-hormone pathways to curb appetite | One GLP-1 pathway to curb appetite | Same dual pathway, absorbed under the tongue | Same dual pathway, eased in at a lower dose |\n| Format | Weekly injection | Weekly injection | Daily drops, no needle | Weekly injection |\n| Side-effect profile | Typical GLP-1 ramp, titrated gradually | Typical GLP-1 ramp, titrated gradually | Typical GLP-1 ramp, titrated gradually | Built to be the gentlest of the four |\n| As low as | **$139**/mo | **$99**/mo | **$9**/day | **$116**/mo |\n| Best for | Wanting the strongest, dual-pathway option | Wanting a proven, lower-cost place to start | Wanting the dual molecule without needles | Wanting to ease in with fewer side effects |\n\nAll four are compounded from licensed US pharmacies and are not FDA-approved.",
+      "|  | Tirzepatide | Semaglutide | Oral Tirz. | Microdosed Tirz. |\n| --- | --- | --- | --- | --- |\n| Drug class | Dual GIP + GLP-1 agonist | GLP-1 agonist | Dual GIP + GLP-1 agonist | Dual GIP + GLP-1 (low dose) |\n| How it works | Two gut-hormone pathways to curb appetite | One GLP-1 pathway to curb appetite | Same dual pathway, absorbed under the tongue | Same dual pathway, eased in at a lower dose |\n| Format | Weekly injection | Weekly injection | Daily drops, no needle | Weekly injection |\n| Side-effect profile | Typical GLP-1 ramp, titrated gradually | Typical GLP-1 ramp, titrated gradually | Typical GLP-1 ramp, titrated gradually | Built to be the gentlest of the four |\n| As low as | **$139**/mo | **$99**/mo | **$9**/day | **$116**/mo |\n| Best for | Wanting the strongest, dual-pathway option | Wanting a proven, lower-cost place to start | Wanting the dual molecule without needles | Wanting to ease in with fewer side effects |\n\nAll four are compounded from licensed US pharmacies and are not FDA-approved."
+    ]
+  },
+  {
+    "id": "T-D-tmates-xentraffic-offer-3154",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/tmates-xentraffic-offer-3154/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "9ce56a5f9b2b0996fafeb164609dadd50bffbff2cc712e1382ed0b6dc210d489",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-tmates-xentraffic-offer-3154",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/tmates-xentraffic-offer-3154/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "8f68b235c3e196c1f3fb38b520208ea40a9f819de3084a8315ca42204dc804ed",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-tmates-xentraffic-offer-3154-S03",
+    "source_url": "https://tmates.com/terms",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/tmates-xentraffic-offer-3154/captures/58857ce9aaf8c301.md",
+    "captured_at_utc": "2026-09-08T22:08:12.287546+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "5a8e4dcab641237b5335741332b5c62b7273dbc7e8bff936d8a4fac864209257",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "a prescription is written and transmitted to a pharmacy: No refund.",
+      "if a refund request is not approved, any payment plans will remain in place."
+    ]
+  },
+  {
+    "id": "T-D-trimi-glp-1",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/trimi-glp-1/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "b7d14730e61e5d8e4bfc6d5e2532fd04081ab54e961b472458d5a33a3eeacce6",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-trimi-glp-1",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/trimi-glp-1/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "7f85a98a45546a7e3e5b9a92b89280f42172c5ba4480a6979c60b84b9a38403d",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-trimi-glp-1-S03",
+    "source_url": "https://trytrimi.com/refund-policy",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/trimi-glp-1/captures/763639195745b791.md",
+    "captured_at_utc": "2026-09-08T03:27:18.585909+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "34eb0f93bac17c5f38c593d0e433371b1201031d661517fa8814b47cd2a095cb",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Before that moment, you can cancel for a full refund. After it, the order is final."
+    ]
+  },
+  {
+    "id": "T-P-e209d23ea812bc8f",
+    "source_url": "https://trytrimi.com/guides/treatments-tirzepatide.pdf",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/trimi-glp-1/2026-09-08-e209d23ea812bc8f.md",
+    "captured_at_utc": "2026-09-08T04:06:33.471660+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "e209d23ea812bc8f1c7ff761eb514a1968e4a55d112393ad65ec73a8ac6ba3a9",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "# Compounded Tirzepatide\n\n# Prescription dual GIP/GLP-1 weight loss treatment\n\n$1,500 per year\n\nSave $1,680\n\n# Get started\n\n---\n\n| Benefits | Pricing | Description |\n| --- | --- | --- |\n| Monthly Billed monthly | $235 |  |\n| Quarterly Billed every 3 months ($199/mo) | $597 Save $108 |  |\n| 6 Months Popular Billed every 6 months ($175/mo) | $1,050 Save $540 |  |\n| Annual Billed yearly",
+      "Annual Billed yearly ($125/mo)",
+      "INJECTION\nTirzepatide"
+    ]
+  },
+  {
+    "id": "T-D-trimrx-xentraffic-offer-3014",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/trimrx-xentraffic-offer-3014/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "8b09eafec6d2a5da7ddffba276ea12f8c128cbf66c3ffdc07a383de6182d5da6",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-trimrx-xentraffic-offer-3014",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/trimrx-xentraffic-offer-3014/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "c9e4f764fda3965caab72724190e3ed6f4f7e464e274f540f543850db708c263",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-trimrx-xentraffic-offer-3014-S02",
+    "source_url": "https://trimrx.com/terms-and-conditions",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/trimrx-xentraffic-offer-3014/captures/b979875e775e358c.md",
+    "captured_at_utc": "2026-09-08T22:08:09.347669+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "17dc241d3c230fb02a2e3812591d248b7595d2efcb912be5896c4cd642df613f",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "To receive a refund for the unused prepaid portion of the plan attributable to future unfilled orders, the consumer must separately request a refund within 28 days of the payment date for the applicable prepaid multi-month plan."
+    ]
+  },
+  {
+    "id": "T-D-wellmedr-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/wellmedr-review/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "e9506d3e34ac02a42b803bced082d369258262e31d5cf8622c90b3f5c1900c0c",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-wellmedr-review",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/wellmedr-review/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "4158eb806f4a2b5477753e4f17e1c1f5d3f1f11c0f9afac81c2d23a8735ad9d5",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-wellmedr-review-S02",
+    "source_url": "https://www.wellmedr.com/pages/refund-and-cancellation-policy",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-2/captures/wellmedr-review/d9ed9f69ebf9891b.md",
+    "captured_at_utc": "2026-09-08T22:08:23.778530+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "8aed3352d5d610ee51845b54c1441616b5cd4e53b8433bba63c1647fe706060e",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "The key cutoff is whether the dispensing pharmacy has documented that it began preparing, compounding, filling, or dispensing the patient-specific prescription."
+    ]
+  },
+  {
+    "id": "T-D-wellorithm",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/wellorithm/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "b8ef63023ffbc4cafb777d1c0de00af9928731c91197f4366cd2955bcd4a7579",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-wellorithm",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/wellorithm/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "940e52298cb267cc9d25b4e2a46c1e9cea33d5922be50622a32091c70e9c6955",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-wellorithm-S02",
+    "source_url": "https://wellorithm.com/faqs",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/wellorithm/captures/s1-6c64e565a3e2758e.md",
+    "captured_at_utc": "2026-09-08T19:37:29.990278+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "e3f30378c9a99f13ebe0d9b29d2bec8ecde7a0bb17565b6d8901d5bde629f6a3",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Currently, we cannot provide services in Louisiana or outside the United States."
+    ]
+  },
+  {
+    "id": "T-P-df8a19528dfec7d6",
+    "source_url": "https://wellorithm.com/campaign-3",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S9/reader-b/captures/well-campaign3.md",
+    "captured_at_utc": "2026-09-09T07:26:14.142673+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "df8a19528dfec7d6498f253111ff488ccf2fdbf351ef96b7e19183f55d883c2f",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "### Tirzepatide Injection  (Compounded)\n\nStarting at\n\n$249/mo$349\n\nCompounded Tirzepatide is used to support appetite control and weight management.Enjoy **$100 off your first month** — no pressure, just",
+      "### Compounded Tirzepatide Oral Dissolving Tablets\n\nStarting at\n\n$249/mo$349\n\nTirzepatide ODT provides GLP-1 based support in an easy-to-take dissolving tablet.Enjoy **$100 off your first month** — no pressure, just"
+    ]
+  },
+  {
+    "id": "T-D-yourera-program",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/yourera-program/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "a56892ab2f7aad1399fe8dbc6e6bc51e4f7eba31b6b446a0816ccedf5e757485",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-yourera-program",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/yourera-program/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "f4df39362450ffb164506ef2bbf5c065526439dd3eec61b4c30205099fa4fc21",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-yourera-program-S02",
+    "source_url": "https://www.yourera.com/refund-policy",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/WS-R/FLEET/yourera-program/captures/81939a1b014cd2dd.md",
+    "captured_at_utc": "2026-09-08T03:30:55.282650+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "acb053aa9e6a0b3b4a2dbe829c8ff51ae5f5d5bf6a09b30573fbef9ddd924efc",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "Once your prescription has begun processing at the pharmacy, **no refunds will be issued**."
+    ]
+  },
+  {
+    "id": "T-P-4d1a94c1e437faa8",
+    "source_url": "https://www.yourera.com/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S8/captures/yourera-program/fresh/f3d846aeb635d587.md",
+    "captured_at_utc": "2026-09-09T00:55:42.413002+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "4d1a94c1e437faa85df6d7bf9b508ef09af61cfbdf141bf40c17edf38c261e24",
+    "role": "first_party_price_witness",
+    "quotes": [
+      "## Compounded Tirzepatide\n\nDual GIP/GLP-1 therapy, the next-generation approach to metabolic health.\n\nNo Hidden Costs U.S. Licensed Pharmacies Physician-Directed\n\n[from $159/mo  \\|  CHECK ELIGIBILITY](https://intake.yourera.com/start-online-visit/vuy17?utm_source=yourera&utm_medium=lp&utm_campaign=homepage&promo=YourEra20&promo-source=coupon)\n\nWelcome kit with injection supplies included"
+    ]
+  },
+  {
+    "id": "T-D-yucca-health-xentraffic-offer-3117",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/yucca-health-xentraffic-offer-3117/DATA.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "937d29f3689efe75f4d5ef9da951ab3f64c78a1e9a858d253fbf661c9e37cb9c",
+    "role": "S4_authored_fact_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-E-yucca-health-xentraffic-offer-3117",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/pages/yucca-health-xentraffic-offer-3117/EVIDENCE.json",
+    "captured_at_utc": "2026-09-09T09:33:19.751443+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read, not upstream capture",
+    "sha256": "79fd5774f7fa998a2d6a7ad205b56f642ff284a439fa83bca1fb0571da9a1522",
+    "role": "S4_quote_binding",
+    "quotes": []
+  },
+  {
+    "id": "T-C-yucca-health-xentraffic-offer-3117-S03",
+    "source_url": "https://tryyucca.com/refund-policy",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S4/authoring-batch-1/yucca-health-xentraffic-offer-3117/captures/fe069b4c84e835eb.md",
+    "captured_at_utc": "2026-09-08T22:08:15.847996+00:00",
+    "capture_date": "2026-09-08",
+    "date_basis": "source receipt",
+    "sha256": "2c2d3178862917cc5c6aa995de7aa8fce45b2497d71af09a072fd8cf9864e252",
+    "role": "first_party_nonprice_witness",
+    "quotes": [
+      "All sales are final once your prescription is submitted to the pharmacy.",
+      "Cancellation stops future charges only; it does not refund charges already processed or orders already in progress."
+    ]
+  },
+  {
+    "id": "T-PARENT-ROSTER",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S14/REGISTRY-RECOMPUTE.json",
+    "captured_at_utc": "2026-09-09T09:31:19.757Z",
+    "capture_date": "2026-09-09",
+    "date_basis": "local input read",
+    "sha256": "3c9cf17d9d7e8e00810086f7c020c9451695747caba9d214c8e1b2b4da413006",
+    "role": "independent_registry_recompute",
+    "quotes": []
+  },
+  {
+    "id": "T-DEFINITION",
+    "source_url": "https://biltrx.com/all-medications/compounded-tirzepatide/",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S9/reader-a/captures/bilt-tirz.md",
+    "captured_at_utc": "2026-09-09T07:23:58.160307+00:00",
+    "capture_date": "2026-09-09",
+    "date_basis": "source receipt",
+    "sha256": "af7f0e7161f938f8a6a39618692936f2eaff7e9a478ec02ee9d3467a267ed837",
+    "role": "first_party_definition_only_no_price",
+    "quotes": [
+      "Compounded tirzepatide is a customized prescription treatment prepared by a licensed compounding pharmacy pursuant to a healthcare provider’s prescription. Tirzepatide activates both GLP-1 and GIP receptors, hormones involved in appetite regulation and metabolic function."
+    ]
+  },
+  {
+    "id": "T-KEYWORDS",
+    "source_url": null,
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S14/KEYWORDS.json",
+    "captured_at_utc": "2026-09-09T09:29:37.299730+00:00",
+    "capture_date": "2026-09-09",
+    "sha256": "c9722e63145715d55243b925ff2bde8d82454f4e99d1f522b2068c5398b17981",
+    "role": "parent_keyword_reconciliation",
+    "quotes": [],
+    "date_basis": "parent analytics receipt"
+  },
+  {
+    "id": "T-FDA-QA-FRESH",
+    "source_url": "https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S14/sources/FDA-QA.md",
+    "captured_at_utc": "2026-09-09T09:34:51.027193+00:00",
+    "capture_date": "2026-09-09",
+    "sha256": "5f098eaa7d47d6b1081d1dde2fd1edb58cb4ecb79d7b7963e25689559d343e29",
+    "role": "official_regulator",
+    "quotes": [
+      "A drug may be [compounded](https://www.fda.gov/drugs/guidance-compliance-regulatory-information/human-drug-compounding \"Human Drug Compounding\") for a patient who cannot be treated with an FDA-approved medication, such as a patient who has an allergy to a certain dye and needs a medication to be made without it, or an elderly patient or a child who cannot swallow a tablet or capsule and needs a medicine in a liquid dosage form. Practitioners in hospitals, clinics, and other health care facilities sometimes provide compounded drugs to patients when an FDA-approved drug is not medically appropriate to treat them. In these situations, compounding can serve an important patient need.",
+      "Compounded drugs are not FDA-approved. This means that FDA does not verify the safety, effectiveness or quality of compounded drugs before they are marketed. Consumers and health care professionals rely on FDA’s drug approval process for verification of safety, effectiveness and quality.",
+      "No. A [generic drug](https://www.fda.gov/drugs/generic-drugs/generic-drugs-questions-answers \"Generic Drugs: Questions & Answers\") is approved by FDA under 505(j) of the FD&C Act and meets all of the requirements of that section (including establishing therapeutic equivalence to a brand name drug, among others), while a compounded drug is not approved by FDA."
+    ],
+    "receipt_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S14/sources/FDA-QA-RECEIPT.json",
+    "receipt_sha256": "80629a09d8fc4775f4d678fb2f6a40970753cc7cd70416563afffd96fc6de049",
+    "date_basis": "fresh Firecrawl receipt maxAge=0"
+  },
+  {
+    "id": "T-FDA-GLP-FRESH",
+    "source_url": "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+    "local_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S14/sources/FDA-GLP.md",
+    "captured_at_utc": "2026-09-09T09:34:50.762641+00:00",
+    "capture_date": "2026-09-09",
+    "sha256": "4024132bdd0e288edd695eaaeae9479954036c57f6fb367ce3b337a8efc1699d",
+    "role": "official_regulator",
+    "quotes": [
+      "A [compounded drug](https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers \"Compounding and the FDA: Questions and Answers\") might be appropriate if a patient’s medical need cannot be met by an FDA-approved drug, or the FDA-approved drug is not commercially available. However, compounded drugs are not FDA approved. This means the agency does not review compounded drugs for safety, effectiveness or quality before they are marketed."
+    ],
+    "receipt_path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S14/sources/FDA-GLP-RECEIPT.json",
+    "receipt_sha256": "84813132727e316dff9d3b9df76a00cf4d68f1b32f33da170d6ec4000afc865e",
+    "date_basis": "fresh Firecrawl receipt maxAge=0"
+  }
+]

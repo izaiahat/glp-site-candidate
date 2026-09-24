@@ -1,0 +1,1510 @@
+/* ============================================================================
+   Layer 30: REVIEW PAGES — /reviews/* (comparison-derived + fastpath templates)
+   ULTRACODE redesign 2026-08-21. Builds on 00-foundation tokens, 01-primitives,
+   02-shell. Direction: artifacts/ultracode/DESIGN-DIRECTION.md.
+
+   SCOPE CONTRACT
+   Every rule is scoped to `body:has(#bottom-line)` (or `html:has(#bottom-line)`):
+   the `#bottom-line` id is emitted ONLY by src/provider-review.mjs (both review
+   templates, plus the frozen legacy review bytes that came from the same
+   renderer family). Money pages emit a `.bottom-line` CLASS but never the id,
+   and the clean-room lanes (READY6 reviews, mystery shop, original-data) never
+   load site.css — so shared class names that also appear on other templates
+   (.stage, .jump-nav, .facts, .panel, .gcs-kicker, ul.grid, .inline-citation,
+   .inline-capture, .review-depth injected by wave2 on all commercial routes)
+   are styled here for review pages only and never restyled elsewhere.
+   READY6 clean-room pages carry their own inline CSS and never reference this
+   file; nothing here can touch them.
+
+   LAYOUT
+   Dark observatory canvas (body ground from 00) with a static aurora glow
+   behind the identity hero, desktop two-column grid: reading column left,
+   sticky quick-facts rail right (the `main > dl.facts` block), collapsing to
+   one column under 1080px. Jump-nav becomes a sticky TOC with a scroll-driven
+   reading-progress line. Evidence sections get VARIED treatments (paper /
+   sage / mist light bands, amber caution rule, danger warning, ruled lists,
+   receipt rows) instead of repeated identical panels — light-surface sections
+   mirror the 00-foundation `.cs-on-paper` context variables verbatim because
+   the renderer emits no band class hook on these routes.
+   ========================================================================== */
+
+/* ---- anchor offset: sticky site nav (~70px) + sticky jump-nav (~50px) ----- */
+html:has(#bottom-line) { scroll-padding-top: 136px; }
+
+/* ==========================================================================
+   1. IDENTITY HERO (page <header>: stage chip, eyebrow, H1, dek, byline,
+      affiliate micro-disclosure)
+   ========================================================================== */
+body:has(#bottom-line) > header {
+  width: min(var(--container-wide), calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+  padding: clamp(44px, 6.5vw, 84px) 0 10px;
+  animation: none;
+}
+body:has(#bottom-line) > header .stage {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+  color: var(--color-evidence);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+body:has(#bottom-line) > header .eyebrow { display: inline-flex; margin-bottom: 12px; }
+body:has(#bottom-line) > header h1 {
+  max-width: 21ch;
+  margin-bottom: 0.3em;
+}
+body:has(#bottom-line) > header > h1 + p {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  margin-bottom: 0.9em;
+}
+body:has(#bottom-line) > header .byline {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35em;
+}
+body:has(#bottom-line) > header .byline.affiliate-note {
+  font-size: 0.88rem;
+  max-width: 68ch;
+}
+
+/* ==========================================================================
+   2. JUMP-NAV — sticky TOC with scroll-driven reading progress
+   ========================================================================== */
+body:has(#bottom-line) .jump-nav {
+  position: sticky;
+  top: 70px; /* site nav 68px + 2px spectral line */
+  z-index: 60;
+  margin-top: 14px;
+  background: var(--cs-ground);
+  border-block: 1px solid var(--color-line-soft);
+  transition: top var(--duration-fast) var(--ease-out-expo);
+}
+body.cs-scrolled:has(#bottom-line) .jump-nav { top: 58px; }
+body:has(#bottom-line) .jump-nav-scroll {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding: 8px var(--gutter);
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+body:has(#bottom-line) .jump-nav-scroll::-webkit-scrollbar { display: none; }
+body:has(#bottom-line) .jump-nav a,
+body:has(#bottom-line) .ready6-jump-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 13px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-instant) ease, background var(--duration-instant) ease;
+}
+body:has(#bottom-line) .jump-nav a:hover,
+body:has(#bottom-line) .ready6-jump-nav a:hover,
+body:has(#bottom-line) .ready6-jump-nav a:focus-visible {
+  color: var(--text-primary);
+  background: var(--color-mist-100);
+}
+/* Pass 3: the article shell has no scroll-driven animation owner. */
+
+/* ==========================================================================
+   3. MAIN SCAFFOLD — aurora hero glow + two-column sticky-rail grid
+   ========================================================================== */
+body:has(#bottom-line) main {
+  position: relative;
+  width: min(var(--container-wide), calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+  padding-bottom: var(--space-9);
+}
+/* Static aurora glow behind the identity hero: anchored to the document top
+   at full viewport width (no container clipping = no gradient seams); the
+   bottom edge is mask-faded. Decorative only, no motion. */
+body:has(#bottom-line)::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: min(760px, 90vh);
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(44% 52% at 26% 4%, rgba(23, 168, 126, 0.16), transparent 62%),
+    radial-gradient(38% 46% at 72% 2%, rgba(111, 198, 238, 0.1), transparent 60%),
+    radial-gradient(34% 44% at 50% 34%, rgba(169, 155, 242, 0.08), transparent 62%);
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 97%);
+  mask-image: linear-gradient(180deg, #000 55%, transparent 97%);
+}
+/* the injected empty .page-band div was pure dead vertical space — retire it */
+body:has(#bottom-line) main > .page-band { display: none; }
+/* vertical rhythm for the reading column — tightened (REPAIR C, cs-band--tight
+   ratio ~0.6-0.7x) to bring review pages under the 14,000px compression
+   target with zero copy loss: identical section set, less air between them. */
+body:has(#bottom-line) main > * + * { margin-top: 14px; }
+body:has(#bottom-line) main > .breadcrumbs { margin-top: 0; }
+body:has(#bottom-line) main > .actions,
+body:has(#bottom-line) main > .inline-capture,
+body:has(#bottom-line) main > .panel.evidence-line.review-depth,
+body:has(#bottom-line) main > .panel.evidence-line.related-coverage { margin-top: 30px; }
+
+@media (min-width: 1080px) {
+  /* REPAIR C 2026-08-21: 90-compat.css carries a legacy single-column reading
+     cap — `body:has(main section#bottom-line) main { width: min(820px, …);
+     max-width: 820px }` (specificity 1-id/0-class/4-type, and 90 loads after
+     30 in the assembled sheet) — correct BELOW this breakpoint, but at
+     desktop width it was starving the grid's content column down to ~416px
+     and forcing every evidence section to wrap into a tall single column,
+     which is what actually blew the page height out (16,292px → 23,054px:
+     the rail never had room to engage). `main:has(> dl.facts)` raises this
+     rule's id+class tally past the compat rule's so the two-column layout
+     gets the full container width back; the compat rule keeps governing the
+     narrower single-column reading measure at <1080px untouched. */
+  body:has(#bottom-line) main:has(> dl.facts) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 348px;
+    column-gap: clamp(32px, 4vw, 56px);
+    align-items: start;
+    width: min(var(--container-wide), calc(100% - 2 * var(--gutter)));
+    max-width: var(--container-wide);
+  }
+  body:has(#bottom-line) main > * { grid-column: 1; min-width: 0; }
+  body:has(#bottom-line) main > dl.facts {
+    grid-column: 2;
+    grid-row: 1 / span 60; /* rail owns the full column; items never exceed 60 */
+    position: sticky;
+    top: 140px; /* clears site nav (70px) + sticky jump-nav (~50px) + gap */
+    margin-top: 0;
+    max-height: calc(100vh - 164px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+}
+
+/* breadcrumbs (derived row injected at the write funnel) */
+body:has(#bottom-line) .breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding-block: 4px 18px;
+}
+body:has(#bottom-line) .breadcrumbs a { color: var(--text-secondary); text-decoration: none; }
+body:has(#bottom-line) .breadcrumbs a:hover { color: var(--text-primary); text-decoration: underline; }
+body:has(#bottom-line) .breadcrumbs span[aria-hidden="true"] { opacity: 0.45; }
+body:has(#bottom-line) .breadcrumbs span[aria-current="page"] { color: var(--text-primary); font-weight: 600; }
+
+/* compact editorial heading scale inside the article (foundation h2 is a
+   section-display scale; review sections read as chapters) */
+body:has(#bottom-line) main h2 { font-size: clamp(1.4rem, 2vw, 1.8rem); }
+
+/* ==========================================================================
+   4. VERDICT / IDENTITY MODULE — .summary#bottom-line
+      (logo lockup, "Bottom line" label, verdict copy, score-ten lockup)
+   ========================================================================== */
+body:has(#bottom-line) main > .summary {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(20px, 2.8vw, 30px);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-float);
+  box-shadow: var(--shadow-float);
+}
+body:has(#bottom-line) main > .summary::before {
+  /* the one spectral evidence rule on the identity object */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--cs-spectral-line);
+}
+body:has(#bottom-line) .review-logo {
+  display: grid;
+  place-items: center;
+  width: min(230px, 100%);
+  height: 84px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(20, 32, 27, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+body:has(#bottom-line) .review-logo--dark {
+  background: var(--color-ink-950);
+  box-shadow: inset 0 0 0 1px var(--color-line-strong);
+}
+body:has(#bottom-line) .review-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(var(--logo-content-scale, 1));
+}
+body:has(#bottom-line) main > .summary > h2 {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-evidence);
+  margin: 0 0 10px;
+}
+body:has(#bottom-line) main > .summary > p {
+  font-size: clamp(1.1rem, 1.55vw, 1.3rem);
+  line-height: 1.6;
+  font-weight: 500;
+  max-width: 62ch;
+}
+
+/* score lockup (merit /10 + honest star visualization; produced by
+   upgradeReviewScore at build time) */
+body:has(#bottom-line) .score { margin: 22px 0 6px; }
+body:has(#bottom-line) .score-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+body:has(#bottom-line) .score-ten {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+body:has(#bottom-line) .score-ten span {
+  font-size: 0.52em;
+  font-weight: 650;
+  color: var(--text-secondary);
+  letter-spacing: 0;
+}
+body:has(#bottom-line) .stars {
+  position: relative;
+  display: inline-block;
+  font-size: 1.3rem;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  color: rgba(233, 247, 241, 0.22);
+}
+body:has(#bottom-line) .stars-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--cs-star);
+}
+body:has(#bottom-line) .score-unscored {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 650;
+  color: var(--color-held);
+}
+body:has(#bottom-line) .score-basis {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  max-width: 58ch;
+  margin: 0;
+}
+
+/* ==========================================================================
+   5. QUICK-FACTS RAIL — main > dl.facts (price language + checked dates)
+   ========================================================================== */
+body:has(#bottom-line) main > dl.facts {
+  margin-block: 26px 0;
+  padding: 10px 22px 14px;
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-float);
+  box-shadow: var(--shadow-float);
+}
+body:has(#bottom-line) main > dl.facts > div {
+  padding-block: 11px;
+  border-top: 1px solid var(--color-line-soft);
+}
+body:has(#bottom-line) main > dl.facts > div:first-child { border-top: 0; }
+body:has(#bottom-line) main > dl.facts dt {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+body:has(#bottom-line) main > dl.facts dd {
+  margin: 6px 0 0;
+  font-weight: 600;
+  font-size: 0.97rem;
+  line-height: 1.5;
+}
+/* the price fact leads the rail — complete published wording, never a bare
+   headline number (Wellmedr rule: qualifiers stay in the same string) */
+body:has(#bottom-line) main > dl.facts > div:first-child dd {
+  font-family: var(--font-display);
+  font-size: 1.16rem;
+  font-weight: 720;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--cs-price-current);
+  font-variant-numeric: tabular-nums;
+}
+body:has(#bottom-line) main > dl.facts dd small {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--color-evidence);
+}
+/* between single-column and rail widths, let the facts flow as a 2-up grid */
+@media (min-width: 560px) and (max-width: 1079.98px) {
+  body:has(#bottom-line) main > dl.facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    column-gap: 28px;
+    padding-top: 14px;
+  }
+  body:has(#bottom-line) main > dl.facts > div:first-child { border-top: 1px solid var(--color-line-soft); }
+}
+
+/* ==========================================================================
+   6. EVIDENCE SECTIONS — varied treatments, not repeated panels
+   ========================================================================== */
+body:has(#bottom-line) main > .review-depth:not(.panel) {
+  padding: clamp(18px, 2.4vw, 26px);
+  border-radius: var(--radius-card);
+}
+body:has(#bottom-line) main > .review-depth:not(.panel) > h2 { margin-bottom: 0.45em; }
+body:has(#bottom-line) main > .review-depth:not(.panel) > h2::after {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 3px;
+  border-radius: 2px;
+  margin-top: 10px;
+  background: var(--cs-spectral-line);
+}
+body:has(#bottom-line) main > .review-depth:not(.panel) > p:last-child { margin-bottom: 0; }
+
+/* 6a-pre. EVIDENCE DISCLOSURES — sections beyond the first three render as
+   <details class="review-depth cs-details"> (renderEvidenceSection in
+   src/provider-review.mjs). Reuses 01-primitives' .cs-details chevron/summary
+   base and this file's own #id band colors (still keyed by plain #id, so
+   they apply to <details> exactly as they did to <section>); only the box
+   padding model changes so the closed state reads as one compact row instead
+   of a full open-section card. Content inside is byte-identical to the open
+   form, just re-homed — this is the compression lever, not a copy edit. */
+body:has(#bottom-line) main > details.review-depth.cs-details {
+  padding: 0;
+  border: 0;
+}
+body:has(#bottom-line) main > details.review-depth.cs-details > summary {
+  align-items: flex-start;
+  padding: clamp(16px, 2.4vw, 22px) clamp(20px, 3vw, 30px);
+}
+body:has(#bottom-line) main > details.review-depth.cs-details > summary::after { margin-top: 7px; }
+body:has(#bottom-line) .cs-details-label {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+body:has(#bottom-line) .cs-details-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 750;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+body:has(#bottom-line) .cs-details-gist {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+body:has(#bottom-line) main > details.review-depth.cs-details > .cs-details-body {
+  padding: 0 clamp(20px, 3vw, 30px) clamp(18px, 2.6vw, 24px);
+}
+body:has(#bottom-line) main > details.review-depth.cs-details > .cs-details-body > p:last-child { margin-bottom: 0; }
+body:has(#bottom-line) main > details.review-depth.cs-details[open] > summary {
+  padding-bottom: clamp(10px, 1.4vw, 14px);
+}
+
+/* 6a. LIGHT BANDS (the relight): pricing=paper, eligibility=sage,
+       shipping=mist, customer-review consensus=card paper.
+       Context vars mirror 00-foundation .cs-on-paper (no class hook here). */
+body:has(#bottom-line) main > #pricing,
+body:has(#bottom-line) main > #eligibility,
+body:has(#bottom-line) main > #shipping,
+body:has(#bottom-line) main > #customer-reviews {
+  color: var(--cs-ink-on-paper);
+  --text-primary: var(--cs-ink-on-paper);
+  --text-secondary: var(--cs-muted-on-paper);
+  --color-ink: var(--cs-ink-on-paper);
+  --color-muted: var(--cs-muted-on-paper);
+  --color-line: var(--cs-line-on-paper);
+  --color-line-soft: rgba(20, 32, 27, 0.09);
+  --color-line-strong: rgba(20, 32, 27, 0.24);
+  --color-surface: var(--cs-paper-card);
+  --color-surface-float: #ffffff;
+  --shadow-card: var(--cs-card-shadow-paper);
+  --color-focus: #0e7d5c;
+  --color-interactive: #0b6fa8;
+  --color-mist-100: rgba(20, 32, 27, 0.05);
+  --color-evidence: #0e7d5c;
+  box-shadow: var(--cs-card-shadow-paper);
+}
+body:has(#bottom-line) main > #pricing { background: var(--cs-paper-warm); }
+body:has(#bottom-line) main > #eligibility { background: var(--cs-sage-mist); }
+body:has(#bottom-line) main > #shipping { background: var(--cs-blue-mist); }
+body:has(#bottom-line) main > #customer-reviews { background: var(--cs-paper-card); }
+body:has(#bottom-line) main > #customer-reviews > h2::after { background: var(--cs-star); }
+
+/* 6b. DARK VARIANTS: cancellation=amber caution rule, accreditation=evidence
+       rule, how-it-works=floating surface, regulatory=danger rule. */
+body:has(#bottom-line) main > #cancellation {
+  background: linear-gradient(90deg, var(--color-warning-bg), transparent 46%);
+  border-left: 3px solid var(--color-warning);
+  border-radius: 6px var(--radius-card) var(--radius-card) 6px;
+}
+body:has(#bottom-line) main > #cancellation > h2::after { background: var(--color-warning); }
+body:has(#bottom-line) main > #accreditation {
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-evidence);
+  border-radius: 6px var(--radius-card) var(--radius-card) 6px;
+  box-shadow: var(--shadow-card);
+}
+body:has(#bottom-line) main > #how-it-works {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+body:has(#bottom-line) main > #regulatory {
+  background: var(--color-danger-bg);
+  border-left: 3px solid var(--color-danger);
+  border-radius: 6px var(--radius-card) var(--radius-card) 6px;
+}
+body:has(#bottom-line) main > #regulatory > h2::after { background: var(--color-danger); }
+
+/* provider-specific FDA warning aside (fastpath) — loud and honest */
+body:has(#bottom-line) .regulatory-warning {
+  padding: clamp(22px, 3vw, 30px);
+  border-radius: var(--radius-card);
+  background: var(--color-danger-bg);
+  box-shadow: inset 0 0 0 1px rgba(255, 143, 122, 0.35);
+}
+body:has(#bottom-line) .regulatory-warning .eyebrow { color: var(--color-danger); }
+body:has(#bottom-line) .regulatory-warning h2 { font-size: clamp(1.3rem, 1.9vw, 1.6rem); }
+body:has(#bottom-line) .regulatory-warning p:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   7. PROMO EVIDENCE — verified vs held vs unknown states
+   ========================================================================== */
+body:has(#bottom-line) .promo-evidence {
+  padding: 14px 18px;
+  border-radius: var(--radius-control);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+body:has(#bottom-line) .promo-evidence strong { color: var(--text-primary); }
+body:has(#bottom-line) .promo-evidence[data-promo-state="active"] {
+  background: var(--cs-pill-positive-bg);
+  border-left: 3px solid var(--cs-pill-positive);
+}
+body:has(#bottom-line) .promo-evidence[data-promo-state="active"] strong { color: var(--cs-pill-positive); }
+body:has(#bottom-line) .promo-evidence[data-promo-state="held"] {
+  background: var(--color-warning-bg);
+  border-left: 3px solid var(--color-warning);
+}
+body:has(#bottom-line) .promo-evidence[data-promo-state="not-verified"] {
+  background: var(--color-mist-100);
+  box-shadow: inset 0 0 0 1px var(--color-line-soft);
+}
+
+/* affiliate status (held link context) — quiet, clearly secondary */
+body:has(#bottom-line) .affiliate-status {
+  padding: 16px 18px;
+  border-radius: var(--radius-control);
+  background: var(--color-held-bg);
+  border-left: 3px solid var(--color-held);
+}
+body:has(#bottom-line) .affiliate-status-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-held);
+  margin: 0 0 4px;
+}
+body:has(#bottom-line) .affiliate-status p:last-child {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   8. PROS / WATCH-OUTS — split tint cards
+   ========================================================================== */
+body:has(#bottom-line) .pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+body:has(#bottom-line) .pros-cons > section {
+  padding: 16px 20px;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+body:has(#bottom-line) .pros-cons > section:first-child { border-top: 3px solid var(--cs-pill-positive); }
+body:has(#bottom-line) .pros-cons > section:last-child { border-top: 3px solid var(--color-warning); }
+body:has(#bottom-line) .pros-cons h2 { font-size: 1.05rem; margin-bottom: 10px; }
+body:has(#bottom-line) .pros-cons ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+body:has(#bottom-line) .pros-cons > section:first-child li::marker { color: var(--cs-pill-positive); }
+body:has(#bottom-line) .pros-cons > section:last-child li::marker { color: var(--color-warning); }
+@media (max-width: 720px) {
+  body:has(#bottom-line) .pros-cons { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   9. SCORING INPUTS — ruled table-list, no card shell (anti-card-soup)
+   ========================================================================== */
+body:has(#bottom-line) main > .criteria { padding: 6px 2px; }
+body:has(#bottom-line) main > .criteria > p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 68ch;
+}
+body:has(#bottom-line) main > .criteria ul {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+body:has(#bottom-line) main > .criteria li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 2px;
+  border-top: 1px solid var(--color-line-soft);
+  font-size: 0.95rem;
+}
+body:has(#bottom-line) main > .criteria li:last-child { border-bottom: 1px solid var(--color-line-soft); }
+body:has(#bottom-line) main > .criteria li span { color: var(--text-secondary); font-weight: 600; }
+body:has(#bottom-line) main > .criteria li strong {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* ==========================================================================
+   10. COMPARISON APPEARANCES — "see it in context" link rows
+   ========================================================================== */
+body:has(#bottom-line) main > .comparisons ul {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+body:has(#bottom-line) main > .comparisons li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 18px;
+  padding: 14px 16px;
+  border-radius: var(--radius-control);
+  background: var(--color-mist-100);
+  transition: box-shadow var(--duration-fast) ease;
+}
+body:has(#bottom-line) main > .comparisons li:hover { box-shadow: inset 0 0 0 1px var(--color-line-strong); }
+body:has(#bottom-line) main > .comparisons li a { font-weight: 650; }
+body:has(#bottom-line) main > .comparisons li span { color: var(--text-secondary); font-size: 0.9rem; }
+
+/* ==========================================================================
+   11. SOURCES — receipt rows (dated, numbered, checked)
+   ========================================================================== */
+body:has(#bottom-line) main > .sources > h2 { margin-bottom: 0.4em; }
+body:has(#bottom-line) main > .sources ol {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+body:has(#bottom-line) main > .sources li {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px 14px;
+  padding: 11px 16px;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  font-size: 0.92rem;
+}
+body:has(#bottom-line) main > .sources li > span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-evidence);
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: 0.85rem;
+}
+body:has(#bottom-line) main > .sources li a { word-break: break-word; font-weight: 600; }
+body:has(#bottom-line) main > .sources li small {
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--color-evidence);
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  body:has(#bottom-line) main > .sources li { grid-template-columns: 28px minmax(0, 1fr); }
+  body:has(#bottom-line) main > .sources li small { grid-column: 2; }
+}
+body:has(#bottom-line) main > .sources li > .source-nolink {
+  display: inline;
+  width: auto;
+  height: auto;
+  place-items: initial;
+  color: var(--text-secondary);
+  font: inherit;
+  background: transparent;
+  border-radius: 0;
+  overflow-wrap: anywhere;
+}
+body:has(#bottom-line) main > .sources li > .source-nolink small {
+  display: inline;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================================
+   12. ACTIONS — qualified CTA close (one dominant action + quiet internal)
+   ========================================================================== */
+body:has(#bottom-line) main > .actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+body:has(#bottom-line) main > .actions .cta { margin: 0; width: 100%; }
+/* held state renders as a non-interactive notice, styled by 01's
+   [aria-disabled]; keep its box model in line with the live pair */
+body:has(#bottom-line) main > .actions .affiliate-hold { text-align: center; }
+@media (max-width: 640px) {
+  body:has(#bottom-line) main > .actions { grid-template-columns: 1fr; }
+  body:has(#bottom-line) main > .actions .cta { border-radius: 14px; }
+}
+
+/* fastpath editorial disclosure — quiet coda */
+body:has(#bottom-line) main > .disclosure {
+  padding: 16px 20px;
+  border-radius: var(--radius-card);
+  background: var(--color-mist-100);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+body:has(#bottom-line) main > .disclosure h2 {
+  font-size: 0.8rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+body:has(#bottom-line) main > .disclosure p:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   13. CITATIONS — superscript chips (both templates + wave2 refs)
+   ========================================================================== */
+body:has(#bottom-line) .citation a,
+body:has(#bottom-line) .inline-citation {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  height: auto;
+  padding: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-mist-100);
+  color: var(--color-interactive);
+  font-weight: 700;
+  font-style: normal;
+  text-decoration: none;
+  transition: background var(--duration-instant) ease, color var(--duration-instant) ease;
+}
+body:has(#bottom-line) .citation a:hover,
+body:has(#bottom-line) .citation a:focus-visible,
+body:has(#bottom-line) .inline-citation:hover,
+body:has(#bottom-line) .inline-citation:focus-visible {
+  background: var(--color-accent-soft);
+  color: var(--color-evidence);
+}
+body:has(#bottom-line) sup.citation { margin-left: 2px; font-size: 0.68em; }
+
+/* READY6 review panels use a paper surface but do not emit the legacy
+   `.summary` hook. Rebind the paper-context variables so inherited headings,
+   body copy, and lists cannot remain light-on-light. */
+body:has(.ready6-review-hero) main > .panel:not(.inline-capture) {
+  color: var(--cs-ink-on-paper, #14201b);
+  --text-primary: var(--cs-ink-on-paper, #14201b);
+  --text-secondary: var(--cs-muted-on-paper, #51645c);
+  --color-evidence: #0e7d5c;
+}
+
+@media (max-width: 760px) {
+  body:has(#bottom-line) table.cs-mobile-card-table tbody tr {
+    color: var(--cs-ink-on-paper, #14201b);
+    background: var(--cs-paper-card, #fffdf7);
+  }
+
+  body:has(#bottom-line) table.cs-mobile-card-table td {
+    color: var(--cs-muted-on-paper, #51645c);
+  }
+
+  body:has(#bottom-line) table.cs-mobile-card-table td:first-child,
+  body:has(#bottom-line) table.cs-mobile-card-table td::before {
+    color: var(--cs-ink-on-paper, #14201b);
+  }
+}
+body:has(#bottom-line) .review-depth-citations {
+  display: inline-flex;
+  gap: 4px;
+  margin-left: 4px;
+  vertical-align: baseline;
+  font-size: 0.78rem;
+}
+
+/* ==========================================================================
+   14. EXTENDED EVIDENCE AUDIT (wave2 .panel.evidence-line.review-depth)
+       — long-form editorial band, typographic hierarchy over box shells
+   ========================================================================== */
+body:has(#bottom-line) main > .panel.evidence-line.review-depth {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(22px, 3vw, 36px) clamp(18px, 2.6vw, 30px);
+  border-radius: var(--radius-panel);
+  background: var(--cs-ground-band);
+}
+body:has(#bottom-line) main > .panel.evidence-line.review-depth::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--cs-spectral-line);
+}
+body:has(#bottom-line) .gcs-kicker {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-evidence);
+  margin: 0 0 12px;
+}
+body:has(#bottom-line) main > .panel.review-depth h2 { font-size: clamp(1.5rem, 2.2vw, 2rem); max-width: 30ch; }
+body:has(#bottom-line) main > .panel.review-depth h3 {
+  margin-top: 1.3em;
+  font-size: 1.14rem;
+}
+/* REPAIR C: this is the longest single section on the page (13 subsections
+   of unabridged evidence prose). The copy itself is untouched — only the
+   density drops, from the site-wide 1.65 body line-height down to a still-
+   comfortable 1.5 (WCAG 1.4.8 floor), with a slightly tighter paragraph
+   rhythm. Text content, word count, and reading order are unchanged. */
+body:has(#bottom-line) main > .panel.review-depth p,
+body:has(#bottom-line) main > .panel.review-depth li {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+body:has(#bottom-line) main > .panel.review-depth p { margin-bottom: 0.8em; }
+body:has(#bottom-line) main > .panel.review-depth ul,
+body:has(#bottom-line) main > .panel.review-depth ol { padding-left: 20px; line-height: 1.5; }
+body:has(#bottom-line) main > .panel.review-depth li { margin-block: 5px; }
+body:has(#bottom-line) main > .panel.review-depth li::marker { color: var(--color-evidence); }
+
+/* evidence snapshot mini-facts inside the audit */
+body:has(#bottom-line) .panel.review-depth dl.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+body:has(#bottom-line) .panel.review-depth dl.facts > div {
+  padding: 11px 14px;
+  border-radius: var(--radius-control);
+  background: var(--color-mist-100);
+}
+body:has(#bottom-line) .panel.review-depth dl.facts dt {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+body:has(#bottom-line) .panel.review-depth dl.facts dd {
+  margin: 5px 0 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* audit evidence tables */
+body:has(#bottom-line) .review-pricing-evidence,
+body:has(#bottom-line) .review-alternatives {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 0.92rem;
+}
+body:has(#bottom-line) .review-pricing-evidence caption,
+body:has(#bottom-line) .review-alternatives caption {
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--text-secondary);
+  padding-bottom: 8px;
+}
+body:has(#bottom-line) .review-pricing-evidence th,
+body:has(#bottom-line) .review-alternatives th {
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-line-strong);
+}
+body:has(#bottom-line) .review-pricing-evidence td,
+body:has(#bottom-line) .review-alternatives td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-line-soft);
+  vertical-align: top;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+body:has(#bottom-line) .review-pricing-evidence td:first-child,
+body:has(#bottom-line) .review-alternatives td:first-child { color: var(--text-primary); font-weight: 600; }
+
+/* audit FAQ disclosures */
+body:has(#bottom-line) .review-faq {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+}
+body:has(#bottom-line) .review-faq details {
+  border-radius: var(--radius-control);
+  background: var(--color-mist-100);
+}
+body:has(#bottom-line) .review-faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  font-family: var(--font-display);
+  font-weight: 650;
+  color: var(--text-primary);
+}
+body:has(#bottom-line) .review-faq summary::-webkit-details-marker { display: none; }
+body:has(#bottom-line) .review-faq summary::after {
+  content: "";
+  inline-size: 9px;
+  block-size: 9px;
+  flex: none;
+  border-right: 2px solid var(--text-secondary);
+  border-bottom: 2px solid var(--text-secondary);
+  transform: rotate(45deg);
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+body:has(#bottom-line) .review-faq details[open] summary::after { transform: rotate(225deg); }
+body:has(#bottom-line) .review-faq details > p { padding: 0 16px 14px; margin: 0; }
+
+/* ==========================================================================
+   15. RELATED COVERAGE — light sage editorial close
+   ========================================================================== */
+body:has(#bottom-line) main > .panel.evidence-line.related-coverage {
+  padding: clamp(20px, 3vw, 32px) clamp(18px, 2.6vw, 30px);
+  border-radius: var(--radius-panel);
+  background: var(--cs-sage-mist);
+  color: var(--cs-ink-on-paper);
+  --text-primary: var(--cs-ink-on-paper);
+  --text-secondary: var(--cs-muted-on-paper);
+  --color-ink: var(--cs-ink-on-paper);
+  --color-muted: var(--cs-muted-on-paper);
+  --color-line: var(--cs-line-on-paper);
+  --color-line-soft: rgba(20, 32, 27, 0.09);
+  --color-line-strong: rgba(20, 32, 27, 0.24);
+  --color-surface: var(--cs-paper-card);
+  --color-surface-float: #ffffff;
+  --shadow-card: var(--cs-card-shadow-paper);
+  --color-focus: #0e7d5c;
+  --color-interactive: #0b6fa8;
+  --color-mist-100: rgba(20, 32, 27, 0.05);
+  --color-evidence: #0e7d5c;
+}
+body:has(#bottom-line) main > .related-coverage h2 { font-size: clamp(1.5rem, 2.2vw, 2rem); max-width: 28ch; }
+body:has(#bottom-line) main > .related-coverage > p { color: var(--text-secondary); max-width: 68ch; }
+body:has(#bottom-line) main > .related-coverage ul.grid {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+body:has(#bottom-line) main > .related-coverage ul.grid a {
+  display: grid;
+  gap: 6px;
+  height: 100%;
+  padding: 18px;
+  border-radius: var(--radius-card);
+  background: var(--cs-paper-card);
+  box-shadow: var(--cs-card-shadow-paper);
+  color: var(--cs-ink-on-paper);
+  text-decoration: none;
+  transition: transform var(--duration-instant) var(--ease-out-expo), box-shadow var(--duration-fast) ease;
+}
+body:has(#bottom-line) main > .related-coverage ul.grid a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(20, 32, 27, 0.08), 0 18px 40px -20px rgba(20, 32, 27, 0.3);
+}
+body:has(#bottom-line) main > .related-coverage ul.grid .gcs-kicker {
+  font-size: 0.68rem;
+  margin: 0;
+}
+body:has(#bottom-line) main > .related-coverage ul.grid strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.3;
+}
+body:has(#bottom-line) main > .related-coverage ul.grid small {
+  color: var(--cs-muted-on-paper);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   16. EMAIL CAPTURE ASIDE (sitewide P1 surface, styled here for reviews only)
+   ========================================================================== */
+body:has(#bottom-line) main > .inline-capture {
+  padding: clamp(20px, 2.8vw, 30px);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+body:has(#bottom-line) .inline-capture-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  body:has(#bottom-line) .inline-capture-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+body:has(#bottom-line) .inline-capture h2 { font-size: clamp(1.25rem, 1.8vw, 1.55rem); }
+body:has(#bottom-line) .inline-capture p { color: var(--text-secondary); font-size: 0.95rem; }
+body:has(#bottom-line) .inline-capture form { display: grid; gap: 12px; }
+body:has(#bottom-line) .inline-capture .cta { justify-self: start; }
+body:has(#bottom-line) .capture-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 0;
+}
+body:has(#bottom-line) .capture-consent input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  flex: none;
+  margin-top: 2px;
+  accent-color: var(--color-evidence);
+}
+body:has(#bottom-line) .capture-status {
+  min-height: 1.3em;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: var(--color-evidence);
+}
+body:has(#bottom-line) .gcs-note { margin: 0; font-size: 0.8rem; color: var(--text-secondary); }
+body:has(#bottom-line) .capture-honeypot,
+body:has(#bottom-line) .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Provider-specific original editorial scene. The governed provider logo and
+   evidence stay outside the generated pixels. */
+body:has(#bottom-line) .cs-review-scene {
+  margin: 0 0 clamp(24px, 4vw, 42px);
+  overflow: hidden;
+  background: #071713;
+  border: 1px solid rgba(13, 111, 83, 0.22);
+  border-radius: clamp(18px, 2.6vw, 30px);
+  box-shadow: 0 34px 74px -44px rgba(2, 26, 21, 0.8);
+}
+body:has(#bottom-line) .cs-review-scene picture,
+body:has(#bottom-line) .cs-review-scene img {
+  display: block;
+  width: 100%;
+}
+body:has(#bottom-line) .cs-review-scene img {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+body:has(#bottom-line) .cs-review-scene figcaption {
+  padding: 10px 14px;
+  color: rgba(238, 251, 245, 0.78);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  background: #071713;
+}
+
+/* ==========================================================================
+   17. SMALL-VIEWPORT POLISH
+   ========================================================================== */
+@media (max-width: 640px) {
+  body:has(#bottom-line) > header { padding-top: 36px; }
+  body:has(#bottom-line) main > .summary,
+  body:has(#bottom-line) main > .review-depth:not(.panel) { padding: 20px 18px; }
+  body:has(#bottom-line) .review-logo { width: min(200px, 100%); height: 72px; }
+  body:has(#bottom-line) .score-ten { font-size: 2rem; }
+}
+.ready6-review-hero .ready6-provider-mark {
+  display: block;
+  width: fit-content;
+  margin: 0 0 0.75rem;
+}
+
+.ready6-review-hero .ready6-provider-mark img {
+  display: block;
+  width: auto;
+  height: 3rem;
+  max-width: 13.75rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* ==========================================================================
+   18. REVIEWS HUB — /reviews/ trust hero + entity grid + CTA band + wall
+   (reviews-capture spec 2026-08-26, fixes 1/2/7/8). Class-scoped: these
+   selectors exist only on the hub template. Continuous loop animations live
+   HERE (not in 31) deliberately: 31's motion budget is pinned <300ms.
+   ========================================================================== */
+.cs-revhub { width: min(var(--container-wide), calc(100% - 2 * var(--gutter))); margin-inline: auto; padding-bottom: var(--space-9); }
+body main.cs-revhub > * + * { margin-top: clamp(40px, 5vw, 72px); }
+.cs-revhub .p3-kicker {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-evidence);
+  margin: 0 0 12px;
+}
+
+/* ---- 18a. trust hero ------------------------------------------------------ */
+.cs-revhub-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+  padding-top: clamp(36px, 5vw, 64px);
+}
+.cs-revhub-hero__copy h1 { max-width: 15ch; margin-bottom: 0.35em; }
+.cs-revhub-hero__lede { color: var(--text-secondary); max-width: 52ch; font-size: clamp(1.02rem, 1.3vw, 1.15rem); }
+.cs-revhub-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 620px;
+  margin: 18px 0 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-mist-100);
+  border: 1px solid var(--color-line-strong);
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+.cs-revhub-search:focus-within { border-color: var(--color-sage-200); box-shadow: var(--cs-ring); }
+.cs-revhub-search input {
+  flex: 1;
+  min-height: 54px;
+  padding: 12px 8px 12px 22px;
+  border: 0;
+  background: transparent;
+  border-radius: var(--radius-pill);
+}
+.cs-revhub-search input:focus-visible { outline: none; border: 0; box-shadow: none; }
+.cs-revhub-search button {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-right: 5px;
+  flex: none;
+  border: 0;
+  border-radius: 50%;
+  background: var(--cs-accent-gradient);
+  color: var(--text-on-accent);
+  cursor: pointer;
+  transition: transform var(--duration-instant) var(--ease-out-expo);
+}
+.cs-revhub-search button:hover { transform: scale(1.05); }
+.cs-revhub-trust {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  max-width: 620px;
+  margin-top: 16px;
+  padding: 16px 18px;
+  border-radius: var(--radius-card);
+  background: var(--cs-accent-gradient-soft);
+  box-shadow: inset 0 0 0 1px var(--color-line);
+}
+.cs-revhub-trust__shield { color: var(--color-evidence); margin-top: 2px; }
+.cs-revhub-trust p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--text-primary); max-width: none; }
+.cs-revhub-trust a { color: var(--color-interactive); }
+.cs-revhub-write {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 20px;
+}
+.cs-revhub-write p { margin: 0; font-weight: 600; color: var(--text-secondary); }
+.cs-revhub-state { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 0; }
+.cs-revhub-state div {
+  min-width: 150px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--color-mist-100);
+  box-shadow: inset 0 0 0 1px var(--color-line-soft);
+}
+.cs-revhub-state dt { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
+.cs-revhub-state dd { margin: 3px 0 0; font: 800 1.15rem/1.1 var(--font-display); color: var(--color-evidence); }
+
+/* animated write-a-review pill: our aurora plays the role of their rainbow */
+.cs-btn--writeglow {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--cs-aurora-2);
+  background-image: var(--cs-accent-gradient);
+  background-size: 240% 100%;
+  color: var(--text-on-accent) !important;
+  border-color: transparent;
+  animation: cs-writeglow-pan 6s linear infinite;
+}
+.cs-btn--writeglow::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--cs-accent-gradient);
+  background-size: 240% 100%;
+  filter: blur(14px);
+  opacity: 0.45;
+  animation: cs-writeglow-pan 6s linear infinite;
+}
+.cs-btn--writeglow:hover { transform: translateY(-1px); }
+.cs-btn--writeglow:hover::after { opacity: 0.75; }
+@keyframes cs-writeglow-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---- 18b. photo-collage empty state (invitation slots, drifting) ---------- */
+.cs-revhub-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  height: min(520px, 56vh);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+}
+.cs-revhub-collage__col { min-width: 0; }
+.cs-revhub-collage__track { display: grid; gap: 14px; animation: cs-collage-drift 26s linear infinite; }
+.cs-revhub-collage__col--reverse .cs-revhub-collage__track { animation-direction: reverse; }
+.cs-revhub-collage:hover .cs-revhub-collage__track { animation-play-state: paused; }
+.cs-revhub-collage__dup { display: grid; gap: 14px; }
+.cs-revhub-collage__tile {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  min-height: 150px;
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    var(--cs-accent-gradient) border-box;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.cs-revhub-collage__tile svg { color: var(--color-evidence); opacity: 0.85; }
+@keyframes cs-collage-drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-50% - 7px)); }
+}
+
+/* ---- 18c. entity directory grid ------------------------------------------- */
+.cs-logo-tile--72 { --cs-tile: 72px; overflow: hidden; }
+/* A4: measured-light wordmarks sit on the dark tile ground instead of white */
+.cs-logo-tile--dark { background: var(--color-ink-950); box-shadow: inset 0 0 0 1px var(--color-line-strong); }
+.cs-revhub-directory__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+.cs-revhub-directory__head h2 { margin-bottom: 0; font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
+.cs-revhub-filter { display: grid; gap: 7px; font-weight: 700; font-size: 0.9rem; color: var(--text-secondary); }
+.cs-revhub-filter span { min-height: 1.4em; font-size: 0.82rem; font-weight: 650; color: var(--color-evidence); }
+.cs-chip-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-strong);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+.cs-chip-toggle:hover { border-color: var(--color-sage-200); color: var(--text-primary); }
+.cs-chip-toggle[aria-pressed="true"] {
+  background: var(--cs-accent-gradient);
+  border-color: transparent;
+  color: var(--text-on-accent);
+}
+.cs-revhub-typerow { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 22px; }
+.cs-revhub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: clamp(12px, 1.6vw, 20px);
+}
+.cs-revhub-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 10px;
+  min-width: 0;
+  padding: 18px;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.cs-revhub-card::after {
+  /* their measured 0.5s hover overlay, our palette */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--cs-accent-gradient-soft);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cs-revhub-card:hover::after { opacity: 0.7; }
+.cs-revhub-card:hover { box-shadow: var(--shadow-float); }
+.cs-revhub-card[hidden] { display: none; }
+.cs-revhub-card__head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.cs-revhub-card__type {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-mist-100);
+}
+.cs-revhub-card h3 { margin: 0; font-size: 1.06rem; line-height: 1.25; overflow-wrap: anywhere; }
+.cs-revhub-card__status { margin: 0; font-size: 0.82rem; font-weight: 600; color: var(--color-held); }
+.cs-revhub-card__actions { position: relative; z-index: 1; display: grid; gap: 6px; justify-items: start; }
+.cs-revhub-card__actions .cs-arrowlink { font-size: 0.9rem; }
+.cs-revhub-card__share {
+  font-size: 0.84rem;
+  font-weight: 650;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.cs-revhub-card__share:hover { color: var(--color-evidence); text-decoration: underline; }
+.cs-revhub-empty {
+  padding: 28px;
+  border-radius: var(--radius-card);
+  background: var(--color-mist-100);
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+.cs-revhub-empty[hidden] { display: none; }
+.cs-revhub-loadmore { display: flex; margin: 26px auto 0; }
+.cs-revhub-loadmore[hidden] { display: none; }
+
+/* ---- 18d. mid-page gradient CTA band -------------------------------------- */
+.cs-revhub-band {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 28px;
+  padding: clamp(26px, 3.6vw, 44px) clamp(22px, 3vw, 44px);
+  border-radius: var(--radius-panel);
+  background: var(--cs-ground-band);
+  box-shadow: var(--shadow-float);
+}
+.cs-revhub-band__wash {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 130% at 8% 0%, rgba(23, 168, 126, 0.35), transparent 60%),
+    radial-gradient(50% 120% at 55% 100%, rgba(111, 198, 238, 0.22), transparent 62%),
+    radial-gradient(45% 120% at 98% 10%, rgba(169, 155, 242, 0.26), transparent 60%);
+}
+.cs-revhub-band__copy h2 { margin-bottom: 0.25em; font-size: clamp(1.4rem, 2.2vw, 1.9rem); }
+.cs-revhub-band__copy p { margin: 0; color: var(--text-secondary); max-width: 56ch; }
+.cs-revhub-band__cta {
+  background: var(--color-paper-50);
+  color: #04120e !important;
+  border-color: transparent;
+  font-weight: 750;
+}
+.cs-revhub-band__cta:hover { background: #ffffff; transform: translateY(-1px); box-shadow: 0 14px 34px -16px rgba(242, 248, 244, 0.55); }
+
+/* ---- 18e. review wall — honest zero state --------------------------------- */
+.cs-revhub-wall {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: clamp(24px, 3.5vw, 56px);
+  align-items: center;
+  padding: clamp(24px, 3.4vw, 40px);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.cs-revhub-wall__copy h2 { font-size: clamp(1.4rem, 2.2vw, 1.9rem); }
+.cs-revhub-wall__copy p { color: var(--text-secondary); }
+.cs-revhub-wall__ghosts { display: grid; gap: 12px; }
+.cs-revhub-ghostcard {
+  display: grid;
+  gap: 9px;
+  justify-items: start;
+  padding: 16px 18px;
+  border: 1px dashed var(--color-line-strong);
+  border-radius: var(--radius-card);
+  opacity: 0.75;
+}
+.cs-revhub-ghostcard:nth-child(2) { margin-left: 8%; }
+.cs-revhub-ghostcard__stars { color: rgba(233, 247, 241, 0.18); letter-spacing: 0.12em; font-size: 1rem; }
+.cs-revhub-ghostcard__line { width: 82%; height: 8px; border-radius: 4px; background: var(--color-mist-100); }
+.cs-revhub-ghostcard__line--short { width: 54%; }
+.cs-revhub-ghostcard__chip {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-held);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-held-bg);
+}
+
+/* ---- 18f. moderation method ----------------------------------------------- */
+.cs-revhub-method h2 { max-width: 26ch; font-size: clamp(1.4rem, 2.2vw, 1.9rem); }
+.cs-revhub-method__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+.cs-revhub-method__grid article {
+  padding: 18px 20px;
+  border-radius: var(--radius-card);
+  background: var(--color-mist-100);
+}
+.cs-revhub-method__grid h3 { font-size: 1.02rem; margin-bottom: 6px; }
+.cs-revhub-method__grid p { margin: 0; font-size: 0.92rem; color: var(--text-secondary); }
+
+/* ---- 18g. small viewports -------------------------------------------------- */
+@media (max-width: 960px) {
+  .cs-revhub-hero { grid-template-columns: 1fr; }
+  .cs-revhub-collage { height: 300px; grid-template-columns: 1fr 1fr; }
+  .cs-revhub-wall { grid-template-columns: 1fr; }
+  .cs-revhub-directory__head { grid-template-columns: 1fr; align-items: start; }
+}
+@media (max-width: 640px) {
+  .cs-revhub-grid { grid-template-columns: 1fr; }
+  .cs-revhub-band { justify-content: flex-start; }
+}
+
+/* Continuous loops die completely under reduced motion; static layout keeps
+   every tile and CTA fully visible (nothing is hidden behind the animation). */
+@media (prefers-reduced-motion: reduce) {
+  .cs-revhub-collage__track { animation: none !important; }
+  .cs-revhub-collage__dup { display: none; }
+  .cs-revhub-collage { height: auto; -webkit-mask-image: none; mask-image: none; }
+  .cs-btn--writeglow, .cs-btn--writeglow::after { animation: none !important; }
+  .cs-revhub-card::after { transition: none !important; }
+}

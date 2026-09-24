@@ -1,0 +1,1302 @@
+{
+  "capture_method": "Direct first-party capture with headless Chrome (no third-party scraping service); each row cites the page URL, the capture date, and the sha256 of the captured document.",
+  "captured_on": "2026-08-18",
+  "coverage": {
+    "providers_total": 58,
+    "providers_with_evidenced_pricing": 18,
+    "providers_pricing_unavailable": 40,
+    "medication_rows": 48,
+    "rows_with_intro_month_1": 11
+  },
+  "evidence_rule": "A price ships only when a verbatim quote from the captured page contains it. A provider whose captured pages do not publish an attributable per-medication price ships an honest 'pricing unavailable' state - never an estimate.",
+  "medication_labels": {
+    "brand-mounjaro": "Mounjaro (brand)",
+    "brand-ozempic": "Ozempic (brand)",
+    "brand-saxenda": "Saxenda (brand)",
+    "brand-wegovy": "Wegovy (brand)",
+    "brand-zepbound": "Zepbound (brand)",
+    "compounded-liraglutide-injection": "Compounded liraglutide (injection)",
+    "compounded-semaglutide-injection": "Compounded semaglutide (injection)",
+    "compounded-semaglutide-oral": "Compounded semaglutide (oral)",
+    "compounded-tirzepatide-injection": "Compounded tirzepatide (injection)",
+    "compounded-tirzepatide-oral": "Compounded tirzepatide (oral)",
+    "membership-only": "Program membership (medication billed separately)",
+    "retatrutide": "Retatrutide"
+  },
+  "medication_order": [
+    "compounded-semaglutide-injection",
+    "compounded-semaglutide-oral",
+    "compounded-tirzepatide-injection",
+    "compounded-tirzepatide-oral",
+    "compounded-liraglutide-injection",
+    "retatrutide",
+    "brand-ozempic",
+    "brand-wegovy",
+    "brand-mounjaro",
+    "brand-zepbound",
+    "brand-saxenda",
+    "membership-only"
+  ],
+  "month_1_basis_values": {
+    "intro": "the provider publishes a first-month/promotional price that differs from the recurring price",
+    "same_as_ongoing": "the provider publishes ONE price with no separate first-month rate"
+  },
+  "providers": {
+    "altrx-glp1-us-cps": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "2fbfbb44d74250d819dcb9b99dc1cf0e79d7bd8785f5b6963d9d94c978559c2a",
+          "captured_on": "2026-08-30",
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 89,
+          "notes": "The product page publishes one monthly amount for the compounded semaglutide injection and no separate first-month rate.",
+          "ongoing_usd": 89,
+          "quote": "$89/mo",
+          "source_url": "https://www.altrx.com/products/compounded-semaglutide"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "2fbfbb44d74250d819dcb9b99dc1cf0e79d7bd8785f5b6963d9d94c978559c2a",
+          "captured_on": "2026-08-30",
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 149,
+          "notes": "The product page publishes one monthly amount for the compounded tirzepatide injection and no separate first-month rate.",
+          "ongoing_usd": 149,
+          "quote": "$149/mo",
+          "source_url": "https://www.altrx.com/products/compounded-tirzepatide"
+        }
+      ],
+      "program_id": "altrx-glp1-us-cps",
+      "provider": "altRx",
+      "unavailable_reason": null
+    },
+    "biltrx": {
+      "medications": [],
+      "program_id": "biltrx",
+      "provider": "BiltRx",
+      "unavailable_reason": "Reported information (captured 2026-09-08): listed compounded-medication prices exclude consultation and shipping. The reviewed pages do not establish the complete selected-plan initial charge and recurring charge including those separately applicable fees. Obtain an itemized billing schedule before calculator pricing is enabled."
+    },
+    "bodybuilding-com-glp-1-longevity-review": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "4329c07b2607bc95083e7e5250871f730be497b89f81a6071ad95364ea7e1d76",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://bbhealthplus.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 179,
+          "notes": "1-month (no-commitment) price used as primary; longer bundles (3/6/12mo) offer lower per-month rates but are not a first-month intro discount. Delivery form (injection vs oral) not stated; defaulted to injection.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 179,
+          "quote": "Compounded Semaglutide 5 reviews · Bundle Options: · 1 Month · $ 179 /mo",
+          "source_url": "https://bbhealthplus.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "4329c07b2607bc95083e7e5250871f730be497b89f81a6071ad95364ea7e1d76",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://bbhealthplus.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 209,
+          "notes": "1-month (no-commitment) price used as primary; longer bundles (3/6/12mo) offer lower per-month rates but are not a first-month intro discount. Delivery form (injection vs oral) not stated; defaulted to injection.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 209,
+          "quote": "Compounded Tirzepatide 2 reviews · POPULAR · Bundle Options: · 1 Month · $ 209 /mo 3 M",
+          "source_url": "https://bbhealthplus.com/"
+        }
+      ],
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "provider": "Bodybuilding.com GLP-1 & Longevity",
+      "unavailable_reason": null
+    },
+    "breeze-meds-review": {
+      "medications": [],
+      "program_id": "breeze-meds-review",
+      "provider": "Breeze Meds",
+      "unavailable_reason": "The captured first-party page publishes semaglutide injection starting at $199 per month but does not identify it as compounded or brand-name; the governed matrix cannot classify it without inventing a treatment type."
+    },
+    "care-bare-rx-glp1-review": {
+      "medications": [],
+      "program_id": "care-bare-rx-glp1-review",
+      "provider": "Care Bare Rx",
+      "unavailable_reason": "The captured first-party pages publish a $199 starting figure and say price varies by medication and dose, but do not establish one exact comparable first-month and recurring amount."
+    },
+    "coivas": {
+      "medications": [],
+      "program_id": "coivas",
+      "provider": "Coivas",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "coreage-rx-glp-1-1632": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "56f042127a51165c029ee4889ed2f9d03a8d24b981eb2b7a6f552ad88ea4726b",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://get.coreagerx.com/home35/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 149,
+          "notes": "Page markets a flat $149/mo price 'on every dose, every month, forever' (no price hike after month 1). Delivery form not stated; defaulted to injection.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 149,
+          "quote": "Lock In Your Price Today — $149/mo START SEMAGLUTIDE NOW Most",
+          "source_url": "https://get.coreagerx.com/home35/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "56f042127a51165c029ee4889ed2f9d03a8d24b981eb2b7a6f552ad88ea4726b",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://get.coreagerx.com/home35/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 149,
+          "notes": "An adjacent, unattributed '$99/Month' figure also appears near this CTA but could not be reliably tied to a specific plan/medication, so it was omitted; $149 matches the page's flat-rate claim and is the labeled tirzepatide CTA price. Delivery form not stated; defaulted to injection.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 149,
+          "quote": "START TIRZEPATIDE NOW $149/",
+          "source_url": "https://get.coreagerx.com/home35/"
+        }
+      ],
+      "program_id": "coreage-rx-glp-1-1632",
+      "provider": "CoreAge Rx GLP-1",
+      "unavailable_reason": null
+    },
+    "curex-glp-1": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "30dae5b2b7f54bb8af9681fb2adb3fe2f6af06f84825a8bc06976e21d3357bc8",
+          "captured_on": "2026-08-31",
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "intro",
+          "month_1_usd": 49,
+          "notes": "Curex publishes this treatment's first-month starting price, but does not attribute its provider-wide ongoing floor to this medication and form; ongoing_usd is therefore unreported rather than estimated.",
+          "ongoing_usd": null,
+          "quote": "First Month starting at $49",
+          "source_url": "https://getcurex.com/cl/glp"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "30dae5b2b7f54bb8af9681fb2adb3fe2f6af06f84825a8bc06976e21d3357bc8",
+          "captured_on": "2026-08-31",
+          "label": "Compounded semaglutide (oral)",
+          "medication_id": "compounded-semaglutide-oral",
+          "month_1_basis": "intro",
+          "month_1_usd": 49,
+          "notes": "Curex publishes this treatment's first-month starting price, but does not attribute its provider-wide ongoing floor to this medication and form; ongoing_usd is therefore unreported rather than estimated.",
+          "ongoing_usd": null,
+          "quote": "First Month starting at $49",
+          "source_url": "https://getcurex.com/cl/glp"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "30dae5b2b7f54bb8af9681fb2adb3fe2f6af06f84825a8bc06976e21d3357bc8",
+          "captured_on": "2026-08-31",
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "intro",
+          "month_1_usd": 149,
+          "notes": "Curex publishes this treatment's first-month starting price, but does not attribute its provider-wide ongoing floor to this medication and form; ongoing_usd is therefore unreported rather than estimated.",
+          "ongoing_usd": null,
+          "quote": "First Month starting at $149",
+          "source_url": "https://getcurex.com/cl/glp"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "30dae5b2b7f54bb8af9681fb2adb3fe2f6af06f84825a8bc06976e21d3357bc8",
+          "captured_on": "2026-08-31",
+          "label": "Compounded tirzepatide (oral)",
+          "medication_id": "compounded-tirzepatide-oral",
+          "month_1_basis": "intro",
+          "month_1_usd": 149,
+          "notes": "Curex publishes this treatment's first-month starting price, but does not attribute its provider-wide ongoing floor to this medication and form; ongoing_usd is therefore unreported rather than estimated.",
+          "ongoing_usd": null,
+          "quote": "First Month starting at $149",
+          "source_url": "https://getcurex.com/cl/glp"
+        }
+      ],
+      "program_id": "curex-glp-1",
+      "provider": "Curex",
+      "unavailable_reason": null
+    },
+    "direct-meds": {
+      "medications": [],
+      "program_id": "direct-meds",
+      "provider": "Direct Meds",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "drhouse": {
+      "medications": [],
+      "program_id": "drhouse",
+      "provider": "DrHouse",
+      "unavailable_reason": "The captured pages (drhouse.com/pricing/ and drhouse.com/) only publish general telehealth visit costs ($129 visit or copay, ~$25 typical copay) with no mention of GLP-1, semaglutide, tirzepatide, or any weight-loss medication or its price."
+    },
+    "dudemeds-review": {
+      "medications": [],
+      "program_id": "dudemeds-review",
+      "provider": "DudeMeds",
+      "unavailable_reason": "The captured pages state only a generic 'Prices from: $149 / month' starting price for GLP-1 treatments (oral and injectable options available) without naming which specific medication (semaglutide, tirzepatide, etc.) that price corresponds to."
+    },
+    "eden-xentraffic-offer-3051": {
+      "medications": [],
+      "program_id": "eden-xentraffic-offer-3051",
+      "provider": "Eden",
+      "unavailable_reason": "Eden publishes separate medication and required membership components, while a current first-party semaglutide article publishes a conflicting combined first-month and recurring program total. One stable treatment-specific first and recurring total cannot be represented without choosing between conflicting first-party figures."
+    },
+    "enhance-md": {
+      "medications": [],
+      "program_id": "enhance-md",
+      "provider": "Enhance.MD",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "enhanced-tirzepatide-funnel-b": {
+      "medications": [],
+      "program_id": "enhanced-tirzepatide-funnel-b",
+      "provider": "Enhanced",
+      "unavailable_reason": "Current first-party Enhanced pages conflict on a stable comparable tirzepatide total: the product page advertises starting at $129 per month, while the GLP-1 pathway page lists $299 billed every month. Confirm current checkout and renewal terms."
+    },
+    "found-health": {
+      "medications": [],
+      "program_id": "found-health",
+      "provider": "Found",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "futurhealth-wegovy-pillform": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "fe1bc3e6eb8a4f724637526e9cec9a7a161081aaf6097115c8cd0bb035bfcfaa",
+          "captured_on": "2026-08-31",
+          "label": "Wegovy (brand)",
+          "medication_id": "brand-wegovy",
+          "month_1_basis": "intro",
+          "month_1_usd": 248,
+          "notes": "FuturHealth identifies the offer as its Wegovy Pill program and states that the published price includes program membership and medication cost at any dose, if prescribed.",
+          "ongoing_usd": 298,
+          "quote": "If prescribed $248 first month, then auto-renews at $298/mo.",
+          "source_url": "https://landing.fh.co/medication-wegovy-pillform5-discount"
+        }
+      ],
+      "program_id": "futurhealth-wegovy-pillform",
+      "provider": "FuturHealth",
+      "unavailable_reason": null
+    },
+    "g-plan": {
+      "medications": [],
+      "program_id": "g-plan",
+      "provider": "G-Plans",
+      "unavailable_reason": "The current first-party pages captured on 2026-09-01 do not publish an exact medication price."
+    },
+    "gala-health": {
+      "medications": [],
+      "program_id": "gala-health",
+      "provider": "Gala GLP-1",
+      "unavailable_reason": "Reported information (captured 2026-09-08): the compounded-product starting rate is tied to a yearly subscription, while the homepage quotes a different starting rate for a three-month plan. The reviewed pages do not establish one selected-plan initial debit and recurring charge; confirm term, upfront total and renewal conditions before calculator pricing is enabled."
+    },
+    "gobymeds": {
+      "medications": [],
+      "program_id": "gobymeds",
+      "provider": "GobyMeds",
+      "unavailable_reason": "Reported information (captured 2026-09-08): published starter prices are twelve-week bundle totals for first-time patients, with a separate promotional price also displayed. These are not standalone first-month invoices and do not establish a matched ongoing selected-plan charge. Confirm starter eligibility, applicable promotion, payment timing and subsequent billing before calculator pricing is enabled."
+    },
+    "healthrx": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "4f99f48dbcedbee7c1db81b684a1c4b83a52a6ee6d8c8202afe463c8de85739d",
+          "captured_on": "2026-09-08",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://healthrx.com/pricing",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "intro",
+          "month_1_usd": 99,
+          "notes": "Monthly Plan: page states new patients pay $99 for the first month, with the standard monthly-plan rate at $190/mo thereafter. Longer prepaid plans (3/6/12-month) bring the effective monthly rate as low as $99/mo on the 12-month plan; that separate flat-rate plan was not used here to avoid conflating it with the true first-month/ongoing pair.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 190,
+          "quote": "Compounded semaglutide is $190 on the monthly plan ($99 for your first month), $399 for 3 months, $714 for 6 months, and $1,188 for 12 months, which works out to $99/mo.",
+          "source_url": "https://healthrx.com/pricing"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "4f99f48dbcedbee7c1db81b684a1c4b83a52a6ee6d8c8202afe463c8de85739d",
+          "captured_on": "2026-09-08",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://healthrx.com/pricing",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "intro",
+          "month_1_usd": 149,
+          "notes": "Monthly Plan: new patients pay $149 for the first month, $239/mo standard thereafter. The 12-month prepaid plan brings the effective rate to $179/mo; not used here for the same reason noted on semaglutide.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 239,
+          "quote": "Compounded tirzepatide is $239 on the monthly plan ($149 for your first month), $627 for 3 months, $1,194 for 6 months, and $2,148 for 12 months, which works out to $179/mo.",
+          "source_url": "https://healthrx.com/pricing"
+        }
+      ],
+      "program_id": "healthrx",
+      "provider": "HealthRX",
+      "unavailable_reason": null
+    },
+    "humecare-data-driven-glp-1-weight-loss-system": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "24a70406583ee45511de94da6e139d3c970a7f8170664014c86f291abe8dda0a",
+          "captured_on": "2026-09-01",
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 199,
+          "notes": "The HumeCare GLP-1 program page publishes $199 per month billed monthly and specifically identifies compounded semaglutide. The subscription includes medication if prescribed, ongoing care, and full program access. This is a program-level price, not a standalone medication-only price.",
+          "ongoing_usd": 199,
+          "quote": "$199/month, billed monthly.",
+          "source_url": "https://humecare.com/pages/gs-microdose-glp1-rx"
+        }
+      ],
+      "program_id": "humecare-data-driven-glp-1-weight-loss-system",
+      "provider": "HumeCare+",
+      "unavailable_reason": null
+    },
+    "joinskinny-semaglutide-glp-1-us": {
+      "medications": [],
+      "program_id": "joinskinny-semaglutide-glp-1-us",
+      "provider": "JoinSkinny",
+      "unavailable_reason": "The fresh first-party captures describe transparent flat-rate monthly pricing and bundle options but publish no numeric first-month or recurring amount. A numeric pricing row would require an unsupported inference."
+    },
+    "jrnys-review": {
+      "medications": [],
+      "program_id": "jrnys-review",
+      "provider": "JRNYS",
+      "unavailable_reason": "JRNYS publishes weight-loss membership starting at $89 per month but states that medication is not included; the captured first-party pages do not publish a complete comparable medication price."
+    },
+    "levelsrx-extra-cpa-home-page": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "69d434d3dcf84e97e9a2b6d4db06238c1af6b8307767e54305cf48a872fb07f4",
+          "captured_on": "2026-09-01",
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 150,
+          "notes": "Provider-published starting price; confirm the selected checkout and renewal total.",
+          "ongoing_usd": 150,
+          "quote": "Starting at $150/mo\\n\\n### Compounded Semaglutide (GLP-1)",
+          "source_url": "https://www.levelsrx.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "69d434d3dcf84e97e9a2b6d4db06238c1af6b8307767e54305cf48a872fb07f4",
+          "captured_on": "2026-09-01",
+          "label": "Compounded semaglutide (oral)",
+          "medication_id": "compounded-semaglutide-oral",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 150,
+          "notes": "Provider-published starting price; confirm the selected checkout and renewal total.",
+          "ongoing_usd": 150,
+          "quote": "Starting at $150/mo\\n\\n### Oral Compounded Semaglutide (GLP-1)",
+          "source_url": "https://www.levelsrx.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "69d434d3dcf84e97e9a2b6d4db06238c1af6b8307767e54305cf48a872fb07f4",
+          "captured_on": "2026-09-01",
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 240,
+          "notes": "Provider-published starting price; confirm the selected checkout and renewal total.",
+          "ongoing_usd": 240,
+          "quote": "Starting at $240/mo\\n\\n### Compounded Tirzepatide (GLP-1/GIP)",
+          "source_url": "https://www.levelsrx.com/"
+        }
+      ],
+      "program_id": "levelsrx-extra-cpa-home-page",
+      "provider": "LevelsRx",
+      "unavailable_reason": null
+    },
+    "live-vital-launch": {
+      "medications": [],
+      "program_id": "live-vital-launch",
+      "provider": "Live Vital Launch",
+      "unavailable_reason": "Rechecked 2026-09-08: published starting-at $99/mo ($299 total, 10 weeks) and $183/mo ($549 total, 10 weeks) do not establish exact first-month and renewal billing. Enter exact quoted costs manually; unknown is not zero."
+    },
+    "longevity-meds-glp-1-review": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "1a80f687e3bc737daaf010f76ea400a9fccd8f61c449e7be67d73117857eef3f",
+          "captured_on": "2026-09-01",
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 84.99,
+          "notes": "The homepage publishes $84.99 as the semaglutide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front.",
+          "ongoing_usd": 84.99,
+          "quote": "$84.99",
+          "source_url": "https://www.longevitymeds.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "1a80f687e3bc737daaf010f76ea400a9fccd8f61c449e7be67d73117857eef3f",
+          "captured_on": "2026-09-01",
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 114.99,
+          "notes": "The homepage publishes $114.99 as the tirzepatide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front.",
+          "ongoing_usd": 114.99,
+          "quote": "$114.99",
+          "source_url": "https://www.longevitymeds.com/"
+        }
+      ],
+      "program_id": "longevity-meds-glp-1-review",
+      "provider": "Longevity Meds",
+      "unavailable_reason": null
+    },
+    "lttl-glp-landing-page-2": {
+      "medications": [],
+      "program_id": "lttl-glp-landing-page-2",
+      "provider": "Lttl",
+      "unavailable_reason": "Lttl publishes starting prices and monthly equivalents that vary by treatment and supply commitment, including plans billed for multiple months at once. The checked pages do not establish one treatment-specific month-one charge and recurring monthly charge that can be represented without conflating a monthly equivalent with the checkout total."
+    },
+    "mademed": {
+      "medications": [],
+      "program_id": "mademed",
+      "provider": "MadeMed",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "mangorx": {
+      "medications": [],
+      "program_id": "mangorx",
+      "provider": "MangoRx",
+      "unavailable_reason": "Exact first and recurring medication schedule not established by captured public evidence."
+    },
+    "measured": {
+      "medications": [],
+      "program_id": "measured",
+      "provider": "Measured",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "medvi-review": {
+      "medications": [],
+      "program_id": "medvi-review",
+      "provider": "MEDVI",
+      "unavailable_reason": "MEDVI publishes a $179 first month and $299 refills for its semaglutide program, and separately publishes starting prices for GLP-1 injections and tablets, but the captured page does not bind the semaglutide program's $179/$299 schedule to one delivery form in the governed pricing-matrix vocabulary. A delivery-form-specific medication row would require an unsupported inference."
+    },
+    "mydrhank": {
+      "medications": [],
+      "program_id": "mydrhank",
+      "provider": "MyDrHank",
+      "unavailable_reason": "Exact first and recurring medication schedule not established by captured public evidence."
+    },
+    "novi-weight-loss-glp-1": {
+      "medications": [],
+      "program_id": "novi-weight-loss-glp-1",
+      "provider": "Novi",
+      "unavailable_reason": "Novi publishes starting monthly figures of $99 and $133, but the captured pricing section does not bind either figure to a named medication or establish treatment-specific first and recurring charges."
+    },
+    "nu-image-medical-review": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "e778ec0f3f31afbdc8e2076cb86515bcfdc60d5808bcf157e635f10553ee8109",
+          "captured_on": "2026-08-20",
+          "dose_pricing": {
+            "capture_date": "2026-08-20",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://nuimagemedical.com/weight-loss-medications",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 99,
+          "notes": "Published only as an 'as low as' floor for the injection SKU; no separate first-month price is published. The matrix's closed vocabulary places non-brand semaglutide in its compounded bucket; that label is not presented as a provider claim.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 99,
+          "quote": "As low as $99/mo",
+          "source_url": "https://nuimagemedical.com/weight-loss-medications"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "e778ec0f3f31afbdc8e2076cb86515bcfdc60d5808bcf157e635f10553ee8109",
+          "captured_on": "2026-08-20",
+          "dose_pricing": {
+            "capture_date": "2026-08-20",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://nuimagemedical.com/weight-loss-medications",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (oral)",
+          "medication_id": "compounded-semaglutide-oral",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 269,
+          "notes": "Published only as an 'as low as' floor for the rapid-dissolve tablet SKU; no separate first-month price is published. The matrix's closed vocabulary maps this tablet format to oral and non-brand semaglutide to its compounded bucket; those labels are not presented as provider claims.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 269,
+          "quote": "As low as $269/mo",
+          "source_url": "https://nuimagemedical.com/weight-loss-medications"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "e778ec0f3f31afbdc8e2076cb86515bcfdc60d5808bcf157e635f10553ee8109",
+          "captured_on": "2026-08-20",
+          "dose_pricing": {
+            "capture_date": "2026-08-20",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://nuimagemedical.com/weight-loss-medications",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 299,
+          "notes": "Published only as an 'as low as' floor for the injection SKU; no separate first-month price is published. The matrix's closed vocabulary places non-brand tirzepatide in its compounded bucket; that label is not presented as a provider claim.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 299,
+          "quote": "As low as $299/mo",
+          "source_url": "https://nuimagemedical.com/weight-loss-medications"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "e778ec0f3f31afbdc8e2076cb86515bcfdc60d5808bcf157e635f10553ee8109",
+          "captured_on": "2026-08-20",
+          "dose_pricing": {
+            "capture_date": "2026-08-20",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://nuimagemedical.com/weight-loss-medications",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (oral)",
+          "medication_id": "compounded-tirzepatide-oral",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 314,
+          "notes": "Published only as an 'as low as' floor for the rapid-dissolve tablet SKU; no separate first-month price is published. The matrix's closed vocabulary maps this tablet format to oral and non-brand tirzepatide to its compounded bucket; those labels are not presented as provider claims.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 314,
+          "quote": "As low as $314/mo",
+          "source_url": "https://nuimagemedical.com/weight-loss-medications"
+        }
+      ],
+      "program_id": "nu-image-medical-review",
+      "provider": "Nu Image Medical",
+      "unavailable_reason": null
+    },
+    "oak-weight-loss-program": {
+      "medications": [],
+      "program_id": "oak-weight-loss-program",
+      "provider": "Oak Longevity",
+      "unavailable_reason": "Exact first and recurring medication schedule not established by captured public evidence."
+    },
+    "orderlymeds": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "30beab41a1efc5f5e1e899807b7c5418099ad4f3ee065b9831a127f3bb67d64e",
+          "captured_on": "2026-09-09",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://orderlymeds.com/pricing/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Wegovy (brand)",
+          "medication_id": "brand-wegovy",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 1839,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 1839,
+          "quote": "**Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "notes": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates."
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "30beab41a1efc5f5e1e899807b7c5418099ad4f3ee065b9831a127f3bb67d64e",
+          "captured_on": "2026-09-09",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://orderlymeds.com/pricing/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Zepbound (brand)",
+          "medication_id": "brand-zepbound",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 1498,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 1498,
+          "quote": "**Brand name monthly plans**\n\nWegovy® (GLP-1 pen)\n\n**$1,839**\n\nZepbound® (GLP-1/GIP pen)\n\n**$1,498**",
+          "source_url": "https://orderlymeds.com/pricing/",
+          "notes": "Reported brand-name monthly plan price, not a compounded starter promotion. Same published plan rate for the initial one-month order and a requested one-month refill; no automatic renewal or guaranteed future price. Pricing page says no membership fees or hidden costs; FAQ says charged only when a refill is requested. Prescription/eligibility required. No insurance savings or coupon subtraction modeled. This evidence restoration does not clear commercial, calculator-mode, clinical, or release gates."
+        }
+      ],
+      "program_id": "orderlymeds",
+      "provider": "OrderlyMeds",
+      "unavailable_reason": null
+    },
+    "pallas-health-review": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "c9e6365a608296bcdcd5cc4ba7fa7a38f75ccb538d80bca774c9c2c9b2d23cf8",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.pallashealth.co/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "intro",
+          "month_1_usd": 139,
+          "notes": "Billed $597 every 12 weeks ($199/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 199,
+          "quote": "Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "source_url": "https://www.pallashealth.co/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "c9e6365a608296bcdcd5cc4ba7fa7a38f75ccb538d80bca774c9c2c9b2d23cf8",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.pallashealth.co/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "intro",
+          "month_1_usd": 179,
+          "notes": "Billed $897 every 12 weeks ($299/mo average per the page); page does not state injection vs. oral route, injection assumed as the unqualified default.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 299,
+          "quote": "Compounded semaglutide is $ 139 for your first month, then $ 597 every 12 weeks ($ 199 /mo average); compounded tirzepatide is $ 179 first month, then $ 897 every 12 weeks ($ 299 /mo average).",
+          "source_url": "https://www.pallashealth.co/"
+        }
+      ],
+      "program_id": "pallas-health-review",
+      "provider": "Pallas Health – GLP-1 Weight Loss & NAD",
+      "unavailable_reason": null
+    },
+    "refills": {
+      "medications": [],
+      "program_id": "refills",
+      "provider": "Refills",
+      "unavailable_reason": "Refills advertises Personalized GLP-1 for as low as $5 per day but says cost depends on the medication, prescribed plan, and state. The captured pages do not establish one medication-specific first charge and recurring monthly total for the governed pricing matrix."
+    },
+    "ro-wegovy-glp1-quiz-us-cpl": {
+      "medications": [],
+      "program_id": "ro-wegovy-glp1-quiz-us-cpl",
+      "provider": "Ro",
+      "unavailable_reason": "Ro publishes separate membership pricing and dose-specific cash prices for the Wegovy pill and Wegovy pen. The governed matrix has no form-and-dose row that can represent one comparable first and recurring total without collapsing materially different prices."
+    },
+    "rxspan-md-telehealth-program-review": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "cf4bf9ead56a58332892a18c97cc3eeb86619a5d54e00fbf1f5a53ee5d513931",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.rxspanmd.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 249,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 249,
+          "quote": "Semaglutide Injection · $249",
+          "source_url": "https://www.rxspanmd.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "cf4bf9ead56a58332892a18c97cc3eeb86619a5d54e00fbf1f5a53ee5d513931",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.rxspanmd.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (oral)",
+          "medication_id": "compounded-semaglutide-oral",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 249,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 249,
+          "quote": "Semaglutide Capsules · $249",
+          "source_url": "https://www.rxspanmd.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "cf4bf9ead56a58332892a18c97cc3eeb86619a5d54e00fbf1f5a53ee5d513931",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.rxspanmd.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 329,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 329,
+          "quote": "Tirzepatide Injection · $329",
+          "source_url": "https://www.rxspanmd.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "cf4bf9ead56a58332892a18c97cc3eeb86619a5d54e00fbf1f5a53ee5d513931",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.rxspanmd.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (oral)",
+          "medication_id": "compounded-tirzepatide-oral",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 349,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 349,
+          "quote": "Tirzepatide Capsules · $349",
+          "source_url": "https://www.rxspanmd.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "cf4bf9ead56a58332892a18c97cc3eeb86619a5d54e00fbf1f5a53ee5d513931",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.rxspanmd.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Ozempic (brand)",
+          "medication_id": "brand-ozempic",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 1299,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 1299,
+          "quote": "Ozempic® · $1299",
+          "source_url": "https://www.rxspanmd.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "cf4bf9ead56a58332892a18c97cc3eeb86619a5d54e00fbf1f5a53ee5d513931",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.rxspanmd.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Wegovy (brand)",
+          "medication_id": "brand-wegovy",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 1349,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 1349,
+          "quote": "Wegovy® · $1349",
+          "source_url": "https://www.rxspanmd.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "cf4bf9ead56a58332892a18c97cc3eeb86619a5d54e00fbf1f5a53ee5d513931",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.rxspanmd.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Zepbound (brand)",
+          "medication_id": "brand-zepbound",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 1069,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 1069,
+          "quote": "Zepbound® · $1069",
+          "source_url": "https://www.rxspanmd.com/"
+        }
+      ],
+      "program_id": "rxspan-md-telehealth-program-review",
+      "provider": "RxSpan MD Telehealth Program",
+      "unavailable_reason": null
+    },
+    "serena-health": {
+      "medications": [],
+      "program_id": "serena-health",
+      "provider": "Serena Health",
+      "unavailable_reason": "Exact first and recurring medication schedule not established by captured public evidence."
+    },
+    "shedrx": {
+      "medications": [],
+      "program_id": "shedrx",
+      "provider": "Shed",
+      "unavailable_reason": "Exact first and recurring medication schedule not established by captured public evidence."
+    },
+    "skinnyrx-1-glp-weight-loss-provider-review": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "216ec454d535a0a4b9513045a9c21bca270816a1a2e64d1c834fb6488a833cde",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://skinnyrx.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 199,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 199,
+          "quote": "Compounded Injectable Semaglutide · Once-weekly injection with semaglutide · From $199 / month",
+          "source_url": "https://skinnyrx.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "216ec454d535a0a4b9513045a9c21bca270816a1a2e64d1c834fb6488a833cde",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://skinnyrx.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (oral)",
+          "medication_id": "compounded-semaglutide-oral",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 249,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 249,
+          "quote": "Compounded Semaglutide Tablets · Once-daily tablet with semaglutide · From $249 / month",
+          "source_url": "https://skinnyrx.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "216ec454d535a0a4b9513045a9c21bca270816a1a2e64d1c834fb6488a833cde",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://skinnyrx.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 299,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 299,
+          "quote": "Compounded Injectable Tirzepatide · Once-weekly injection with tirzepatide · From $299 / month",
+          "source_url": "https://skinnyrx.com/"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "216ec454d535a0a4b9513045a9c21bca270816a1a2e64d1c834fb6488a833cde",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://skinnyrx.com/",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (oral)",
+          "medication_id": "compounded-tirzepatide-oral",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 299,
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 299,
+          "quote": "Compounded Tirzepatide Tablets · Once-daily tablet with tirzepatide · From $299 / month",
+          "source_url": "https://skinnyrx.com/"
+        }
+      ],
+      "program_id": "skinnyrx-1-glp-weight-loss-provider-review",
+      "provider": "SkinnyRx - #1 GLP Weight Loss Provider",
+      "unavailable_reason": null
+    },
+    "snagrx": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "c555d2a95a7494fc2f631818405b48fdcac3c35309ce07a7694c9f9c9a5b13b9",
+          "captured_on": "2026-09-01",
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 99,
+          "notes": "The published monthly plan is $99 per month billed monthly. Lower monthly equivalents require longer plans billed once.",
+          "ongoing_usd": 99,
+          "quote": "Monthly: $99 per month, billed monthly",
+          "source_url": "https://snagrx.com/terms-conditions"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "c555d2a95a7494fc2f631818405b48fdcac3c35309ce07a7694c9f9c9a5b13b9",
+          "captured_on": "2026-09-01",
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 149,
+          "notes": "The published monthly plan is $149 per month billed monthly. Lower monthly equivalents require longer plans billed once.",
+          "ongoing_usd": 149,
+          "quote": "Monthly: $149 per month, billed monthly",
+          "source_url": "https://snagrx.com/terms-conditions"
+        }
+      ],
+      "program_id": "snagrx",
+      "provider": "SnagRX",
+      "unavailable_reason": null
+    },
+    "sprout-health": {
+      "medications": [],
+      "program_id": "sprout-health",
+      "provider": "Sprout Health",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "strut-health": {
+      "medications": [],
+      "program_id": "strut-health",
+      "provider": "Strut Health",
+      "unavailable_reason": "Exact first and recurring medication schedule not established by captured public evidence."
+    },
+    "sunlight-glp1": {
+      "medications": [],
+      "program_id": "sunlight-glp1",
+      "provider": "Sunlight.com",
+      "unavailable_reason": "Current first-party pages publish different starting prices for semaglutide and tirzepatide and state that injection and oral options are available, but they do not bind each published price to one delivery form in the pricing matrix vocabulary. A delivery-form-specific row would require an unsupported inference."
+    },
+    "synergy-rx-review": {
+      "medications": [],
+      "program_id": "synergy-rx-review",
+      "provider": "Synergy Rx",
+      "unavailable_reason": "The captured first-party pages do not publish an exact GLP-1 first-month or recurring price. Synergy Rx states that pricing varies by treatment plan, medication type, and compounded versus brand-name selection and is provided after consultation."
+    },
+    "telos-rx": {
+      "medications": [],
+      "program_id": "telos-rx",
+      "provider": "telos rx",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "tmates-xentraffic-offer-3154": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "1ecc06802b44f63090349ce2d4bf39bceb936243b8aa76abe70397e199693d35",
+          "captured_on": "2026-09-01",
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 249,
+          "notes": "The cited product page offers injectable and oral formats under the displayed plan selector. This row records the injectable format only.",
+          "ongoing_usd": 249,
+          "quote": "$249/month",
+          "source_url": "https://tmates.com/products/semaglutide"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "1ecc06802b44f63090349ce2d4bf39bceb936243b8aa76abe70397e199693d35",
+          "captured_on": "2026-09-01",
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 297,
+          "notes": "The cited product page offers injectable and oral formats under the displayed plan selector. This row records the injectable format only.",
+          "ongoing_usd": 297,
+          "quote": "$297/month",
+          "source_url": "https://tmates.com/products/tirzepatide"
+        }
+      ],
+      "program_id": "tmates-xentraffic-offer-3154",
+      "provider": "TMates",
+      "unavailable_reason": null
+    },
+    "trimi-glp-1": {
+      "medications": [],
+      "program_id": "trimi-glp-1",
+      "provider": "Trimi",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "trimrx-xentraffic-offer-3014": {
+      "medications": [],
+      "program_id": "trimrx-xentraffic-offer-3014",
+      "provider": "TrimRX",
+      "unavailable_reason": "Current TrimRX first-party pages publish conflicting starting and package figures: the offer page starts at $149, the homepage starts GLP-1 at $179 and GLP-1 + GIP at $259, product pages show $199 and $349, and the terms publish separate first-month and follow-up package charges. No single medication-specific first charge and recurring monthly total can be bound honestly to the governed pricing matrix."
+    },
+    "trt-nation": {
+      "medications": [],
+      "program_id": "trt-nation",
+      "provider": "TRT Nation",
+      "unavailable_reason": "Exact first and recurring medication schedule not established by captured public evidence."
+    },
+    "try-ageless": {
+      "medications": [],
+      "program_id": "try-ageless",
+      "provider": "AgelessRx",
+      "unavailable_reason": "Reported information (captured 2026-09-08): captured routes display materially different semaglutide monthly and annual prices, and the separately captured product URL contains a differently named product section. The applicable selected-product offer and complete initial/recurring charges are unresolved. Confirm product identity, controlling route, term and any consultation charge before calculator pricing is enabled."
+    },
+    "wellmedr-review": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "681fe85bb861c4933421a119b5157783e971dbcad76d279f7e394f296edc9372",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "intro",
+          "month_1_usd": 199,
+          "notes": "Card shows '$299' (compare-at, excluded), '$199/ today' (first payment), and 'Starting At $59 a month' (ongoing rate).",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 59,
+          "quote": "Monthly Plan · $299 $199/ today · --> Starting At $59 a month",
+          "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "681fe85bb861c4933421a119b5157783e971dbcad76d279f7e394f296edc9372",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "intro",
+          "month_1_usd": 299,
+          "notes": "Card shows '$399' (compare-at, excluded), '$299/ today' (first payment), and 'Starting At $99 a month' (ongoing rate).",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 99,
+          "quote": "Monthly Plan · $399 $299/ today · --> Starting At $99 a month",
+          "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "681fe85bb861c4933421a119b5157783e971dbcad76d279f7e394f296edc9372",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 5,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Ozempic (brand)",
+          "medication_id": "brand-ozempic",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 1399,
+          "notes": "Listed as 'Month-to-month plan'; no separate first-month figure given.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 1399,
+          "quote": "Ozempic Starting at $1,399 · Contains Semaglutide",
+          "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "681fe85bb861c4933421a119b5157783e971dbcad76d279f7e394f296edc9372",
+          "captured_on": "2026-08-18",
+          "dose_pricing": {
+            "capture_date": "2026-08-18",
+            "expected_render_slots": 6,
+            "reason": "No exact first-party quote establishes a price for each dose or explicitly states that one price applies to all doses. Medication-level price must not be extrapolated.",
+            "render_action": "OMIT",
+            "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
+            "status": "UNKNOWN_NO_SOURCE"
+          },
+          "label": "Zepbound (brand)",
+          "medication_id": "brand-zepbound",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 1599,
+          "notes": "Listed as 'Month-to-month plan'; no separate first-month figure given.",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "ongoing_usd": 1599,
+          "quote": "Zepbound starting at $1,599 · Contains Tirzepatide",
+          "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss"
+        }
+      ],
+      "program_id": "wellmedr-review",
+      "provider": "Wellmedr",
+      "unavailable_reason": null
+    },
+    "wellorithm": {
+      "medications": [],
+      "program_id": "wellorithm",
+      "provider": "Wellorithm",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "yourera-program": {
+      "medications": [],
+      "program_id": "yourera-program",
+      "provider": "yourEra",
+      "unavailable_reason": "Current evidence does not establish an exact comparable first-month and recurring cash-charge schedule. Enter the selected plan quote manually."
+    },
+    "yucca-health-xentraffic-offer-3117": {
+      "medications": [
+        {
+          "cadence": "month",
+          "capture_sha256": "6cb86ac6408d205c61909bc103bc2a9e8fc7c409d2f5a2f595006e03940e0047",
+          "captured_on": "2026-09-01",
+          "label": "Compounded semaglutide (injection)",
+          "medication_id": "compounded-semaglutide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 146,
+          "notes": "Uses the published month-to-month, no-commitment price. The lower $125 per-month rate requires a six-month plan billed at $750 every six months.",
+          "ongoing_usd": 146,
+          "quote": "$146 /moSave 40.7%",
+          "source_url": "https://tryyucca.com/treatments/semaglutide"
+        },
+        {
+          "cadence": "month",
+          "capture_sha256": "6cb86ac6408d205c61909bc103bc2a9e8fc7c409d2f5a2f595006e03940e0047",
+          "captured_on": "2026-09-01",
+          "label": "Compounded tirzepatide (injection)",
+          "medication_id": "compounded-tirzepatide-injection",
+          "month_1_basis": "same_as_ongoing",
+          "month_1_usd": 258,
+          "notes": "Uses the published month-to-month, no-commitment price. The lower $225 per-month rate requires a six-month plan billed at $1,350 every six months.",
+          "ongoing_usd": 258,
+          "quote": "$258 /moSave 27.9%",
+          "source_url": "https://tryyucca.com/treatments/tirzepatide"
+        }
+      ],
+      "program_id": "yucca-health-xentraffic-offer-3117",
+      "provider": "Yucca Health",
+      "unavailable_reason": null
+    }
+  },
+  "quote_normalization": "Quotes are verbatim provider wording with one normalization: the capture harness marks block boundaries with a pilcrow so a <dd> value cannot run into the next <dt>. Those markers are OUR artifact, not the provider's text, so they render as a middot separator. Every price was verified against the RAW capture before this normalization.",
+  "research_backfill_20260830": {
+    "capture_date": "2026-08-30",
+    "explicit_source_reported_dose_slots": 11,
+    "firecrawl_research_jobs": [
+      "01a05490-6c4f-7201-95e2-532c33b7f780",
+      "01a05490-6d60-7479-86cc-06e27b75738e"
+    ],
+    "numeric_provenance_policy": "Every numeric price is SOURCE-REPORTED; no per-dose extrapolation.",
+    "tracking_link_network_requests": 0,
+    "unknown_no_source_dose_slots": 531,
+    "unknown_render_action": "OMIT"
+  },
+  "schema": "glp-provider-pricing-matrix-v1",
+  "verification": "scripts/validate-provider-pricing-matrix.mjs re-checks every quote against the shipped matrix and fails the build on a price whose number is not literally inside its own quote.",
+  "version": 1
+}

@@ -1,0 +1,112 @@
+{
+  "schema": "glp-quiz-scoring-rationale-v1",
+  "decided_on": "2026-08-18",
+  "decided_by": "site engineer, under operator delegation ('decide on merit') 2026-08-18",
+  "authority": "src/quiz-ranking.mjs is the code. This file is the argument. scripts/validate-quiz-scoring-rationale.mjs fails the build if the two disagree, so neither can drift away from the other.",
+  "the_problem": [
+    "The quiz's first question is 'What matters most to you?'. Until 2026-08-18 that answer changed WHO was eligible and never changed WHO RANKED FIRST: every result set, for every answer, was ordered by one number - priority_score, which is meritScore() from src/merit-ranking.mjs, the comparison page's general 'how completely does this provider publish its commercial terms' score.",
+    "Measured on the 2026-08-18 payload, a reader who answered 'Lowest total cost' was shown OrderlyMeds ($819 published 6-month all-in), HealthRX ($1,049) and AgelessRx ($1,194), while yourEra ($594) and Trimi ($594) - the two cheapest providers in the entire comparison - sat at ranks 4 and 5 and could never appear. The price lane was ranked by price TRANSPARENCY, not by price.",
+    "Ties were broken alphabetically. Three providers with byte-identical evidence profiles (mademed, skinnyrx, telos-rx) were therefore ordered by name forever: 'mademed' was always shown and 'telos-rx' never was. Deterministic, but not merit.",
+    "The price lane's MEMBERSHIP test (scripts/glp_surface_unification.py, `published['comparable_price']`) predates data/provider-pricing-matrix.json and reads starting_price_sort in the content ledger. It admitted 11 of 32 providers. 29 providers now publish a verified, attributable, per-medication price. That stale test is also the whole cause of the operator-reported 'price + commercial insurance returns nothing in all 51 states' dead end - five providers both bill insurance and publish a cash price, and every one of them was locked out of the price lane."
+  ],
+  "the_decision": [
+    "The goal answer now selects a WEIGHT PROFILE over the same evidence-derived criteria the comparison page already scores. No criterion is re-scored; only how much each one counts for this reader changes. A criterion the reader's answer cannot speak to goes to 0 rather than being kept 'for balance', because a dimension that does not matter to this reader is noise in their ranking.",
+    "One new dimension, evidenced_all_in_cost, enters the price profile only. It is the provider's lowest published month_1 + 5 x ongoing cost among the medications compatible with the reader's medication answer, taken verbatim from data/provider-pricing-matrix.json (31 providers, 95 rows, each carrying a quote, a source URL, a capture date and the sha256 of the captured page).",
+    "Ties break on that same published all-in cost before program_id.",
+    "The price lane's membership is re-derived from the pricing matrix at every build.",
+    "Weights never add or remove a provider from a result set. Only the published rules, the state exclusions and the therapeutic evidence do that. A paused or removed provider cannot be re-ranked into view, because it is not a candidate at all."
+  ],
+  "dimensions": {
+    "evidenced_all_in_cost": {
+      "what": "100 x (cheapest published 6-month all-in anywhere in the comparison for what the reader asked for) / (this provider's cheapest published 6-month all-in for the same). A ratio, so twice the price is half the score.",
+      "why_6_months": "The shortest window in which an introductory first month is honestly diluted rather than dominant. It is also the window the cost calculator already renders, so the two surfaces quote the same arithmetic.",
+      "intro_price_honesty": "Scoring month_1 + 5 x ongoing rather than the headline price IS the intro-price rule. A provider advertising $49 for month one and $349 after cannot out-rank a provider charging $99 flat, because the arithmetic already knows. No separate penalty is needed and none is applied.",
+      "membership_only_excluded": "A membership fee with the medication billed separately is not a medication price and is never compared to one. A provider whose only published row is membership-only has no all-in cost - which is the honest answer, and which keeps it out of the price lane.",
+      "no_price_scores_zero": "A provider that publishes no attributable medication price scores 0 on this dimension. That is not a punishment for honesty; it is the literal answer to 'how does your price compare' when there is no price. Those providers keep their full standing in every other profile."
+    },
+    "price_transparency": "Unchanged from the comparison rubric: price published with a first-party source and a date, resolving to one comparable figure, with the consultation-fee position and the cancellation terms published. This is what makes a low number trustworthy, which is why it stays second-heaviest in the price profile.",
+    "shipping_transparency": "Raised in the price profile because a slow or unstated first shipment is a month of cost with no medicine, and raised in the medication-form profile because a form choice that does not arrive is not a choice.",
+    "medical_oversight": "Publishes the dispensing/compounding chain, an accreditation signal, the medication set and prescription gate, and the eligibility scope. It is the ONLY criterion that scores the published medication set, which is why it leads the medication-form profile.",
+    "insurance_support": "Whether the payment position is published at all, and whether it is active insurance help rather than cash-pay only. Leads the insurance-support profile; zeroed in the price and medication-form profiles, where the reader has told us it is not their question.",
+    "public_reviews": "Dropped from the denominator whenever no comparable independent review dataset was verified - identical to meritScore(). No provider in the comparison currently has one, so today it is never scored against anyone. It is never awarded on provider-hosted testimonials."
+  },
+  "profiles": {
+    "default": {
+      "weights": {
+        "price_transparency": 30,
+        "medical_oversight": 25,
+        "insurance_support": 15,
+        "public_reviews": 15,
+        "shipping_transparency": 15
+      },
+      "why": "Byte-identical to the comparison page's rubric (src/merit-ranking.mjs#RUBRIC_WEIGHTS). A reader who states no priority must not be ranked differently by the quiz than by the comparison page, or the site contradicts itself."
+    },
+    "price": {
+      "weights": {
+        "evidenced_all_in_cost": 40,
+        "price_transparency": 30,
+        "shipping_transparency": 15,
+        "medical_oversight": 15
+      },
+      "why": "The thing itself leads. How unambiguously the price is published - with the consult fee and cancellation terms - is second, because that is what makes the number believable. Shipping is third. Insurance support is 0: this reader is paying cash.",
+      "why_not_higher": "40% is deliberately not 65%. At 40% the top of the price lane is $594, $594 and $774 all-in - against $819, $1,049 and $1,194 before. Two providers publish a lower figure still (BiltRx $486, Wellmedr $494) and do not reach the top three, because neither publishes a delivery timeframe and BiltRx's price statement scores 55 on transparency. A weight high enough to float them would make the lane say 'cheapest wins regardless of whether they tell you anything', which is a worse answer for a price shopper than the one we give. Every card in this lane prints its own published all-in figure and its check date, so a reader can see the arithmetic we ranked on."
+    },
+    "insurance-support": {
+      "weights": {
+        "insurance_support": 45,
+        "medical_oversight": 25,
+        "price_transparency": 15,
+        "shipping_transparency": 15
+      },
+      "why": "The published insurance position leads by a wide margin. Oversight and price transparency still carry weight because a coverage denial puts this reader straight onto the cash price."
+    },
+    "medication-form": {
+      "weights": {
+        "medical_oversight": 45,
+        "shipping_transparency": 30,
+        "price_transparency": 25
+      },
+      "why": "medical_oversight is the only criterion that scores the published medication set, the prescription gate and the dispensing chain. Shipping is raised because a form choice that does not arrive is not a choice. Insurance support is 0 for the same reason as the price profile.",
+      "why_no_breadth_dimension": "A 'how many molecules does this provider evidence' dimension was considered and rejected. The medication question is asked IMMEDIATELY after the goal question, so a reader who cares about form almost always names the form, and the filter has already done that work; adding breadth would then penalise a focused provider for evidence the reader did not ask for. On the one path where the reader answers 'not sure', the profile still ranks on how completely the medication set and dispensing chain are published, which is the closest evidenced proxy we have."
+    },
+    "coaching": {
+      "weights": {
+        "price_transparency": 30,
+        "medical_oversight": 25,
+        "insurance_support": 15,
+        "public_reviews": 15,
+        "shipping_transparency": 15
+      },
+      "why": "DELIBERATELY IDENTICAL TO THE DEFAULT. The rubric contains no criterion that measures coaching quality, contact cadence or ongoing support, and we will not manufacture one so this profile looks bespoke. 'Coaching' still narrows the candidate set through the providers' own published rules; it does not re-rank. Writing that down is more honest than inventing a weight.",
+      "what_would_change_it": "A criterion scoring published check-in cadence, coach credentials, or included-visit counts, sourced the same way every other criterion is. Then this profile gets weights of its own."
+    }
+  },
+  "unreachable_rulings": {
+    "basis": "A top-3 recommender over 32 providers can only ever surface a subset. These are the providers that no answer path places in the top 3, each judged on the evidence rather than left as an unexplained silence. Before this change there were 10; after it there are 8. On 2026-08-18 TRT Nation joined the quiz pool when its affiliate content-fit hold was lifted, and it is unreachable too, so there are now 9. All 9 are ruled LEGITIMATELY OUTRANKED, and each ruling names the specific published evidence that would change it - so the ruling is a diagnosis, not a verdict.",
+    "recovered_by_the_re_weighting": {
+      "trimi-glp-1": "Now reachable and frequently first in the price lane: $594 published 6-month all-in for compounded semaglutide, $750 for tirzepatide - the cheapest tirzepatide in the comparison. Previously invisible because its evidence-completeness score (75) sat below providers charging 40% more.",
+      "live-vital-launch": "Now reachable and often first for both price and medication form: $594 all-in, a fully published dispensing chain and a concrete delivery timeframe. Previously invisible at score 83 behind three providers that beat it on evidence breadth alone.",
+      "telos-rx": "Now reachable. It was the loser of a three-way alphabetical tie with mademed and skinnyrx at identical evidence profiles; the published-price tie-break decides it on a fact instead of a letter."
+    },
+    "providers": {}
+  },
+  "guardrails": {
+    "no_removed_provider_can_be_re_ranked_into_view": "scripts/audit-quiz-results-matrix.mjs asserts membership in both directions against data/program-registry.json on every build: a candidate the registry no longer lists live is a build-failing defect, and so is a live quiz provider missing from the candidate set. Re-weighting cannot touch that, because weights only order a set that eligibility has already fixed.",
+    "golden_vectors_are_never_loosened_silently": "Every golden vector carries a written rationale saying whether it changed, what it changed from and why. Four of eight changed in this pass; two were added; two are unchanged and act as regression guards on the two decisions that were deliberately NOT to change anything (the default profile and the coaching profile).",
+    "the_page_and_this_file_cannot_drift": "scripts/validate-quiz-scoring-rationale.mjs compares every weight in this file against src/quiz-ranking.mjs and every ruling against the live audit's unreachable list, and fails the build on any difference - including a ruling for a provider that has since become reachable."
+  },
+  "historical_top_three_rulings": {
+    "basis": "A top-3 recommender over 32 providers can only ever surface a subset. These are the providers that no answer path places in the top 3, each judged on the evidence rather than left as an unexplained silence. Before this change there were 10; after it there are 8. On 2026-08-18 TRT Nation joined the quiz pool when its affiliate content-fit hold was lifted, and it is unreachable too, so there are now 9. All 9 are ruled LEGITIMATELY OUTRANKED, and each ruling names the specific published evidence that would change it - so the ruling is a diagnosis, not a verdict.",
+    "recovered_by_the_re_weighting": {
+      "trimi-glp-1": "Now reachable and frequently first in the price lane: $594 published 6-month all-in for compounded semaglutide, $750 for tirzepatide - the cheapest tirzepatide in the comparison. Previously invisible because its evidence-completeness score (75) sat below providers charging 40% more.",
+      "live-vital-launch": "Now reachable and often first for both price and medication form: $594 all-in, a fully published dispensing chain and a concrete delivery timeframe. Previously invisible at score 83 behind three providers that beat it on evidence breadth alone.",
+      "telos-rx": "Now reachable. It was the loser of a three-way alphabetical tie with mademed and skinnyrx at identical evidence profiles; the published-price tie-break decides it on a fact instead of a letter."
+    },
+    "providers": {}
+  },
+  "price_state_contract": {
+    "authority": "PLAN/D2/FABLE-FINAL-PASS.md:169-170",
+    "result_scope": "all_eligible",
+    "reason": "All supported matches are reachable, ranked by the existing evidence criteria. Unknown prices do not enter the cost lane. Medication-form membership requires existing source-cleared therapeutic attributes; insurance, geography, medication and holds remain binding."
+  }
+}

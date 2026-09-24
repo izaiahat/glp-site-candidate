@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'./tests/browser',testMatch:'a17-loaders.spec.mjs',workers:1,retries:0,timeout:30000,outputDir:'/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/A17/loaders/browser-artifacts',reporter:[['list'],['json',{outputFile:'/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/A17/loaders/playwright.json'}]],use:{browserName:'chromium',serviceWorkers:'block',trace:'retain-on-failure',headless:true}});

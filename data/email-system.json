@@ -1,0 +1,55 @@
+{
+  "all_links_via_go": true,
+  "deliverability": {
+    "spam_rate_max": 0.003,
+    "sunset_inactive_days": [
+      60,
+      90
+    ]
+  },
+  "lead_sale_authorized": false,
+  "newsletter": {
+    "cadence": "weekly",
+    "links_within_first_words": 200,
+    "planned_affiliate_links_max": 2,
+    "promo_share_percent": 20,
+    "value_share_percent": 80
+  },
+  "promo_code_pairing_where_verified": true,
+  "runtime_enabled": false,
+  "schema": "glp-email-system-v1",
+  "segmentation": [
+    "vertical",
+    "funnel_stage"
+  ],
+  "send_authorized": false,
+  "welcome_sequence": [
+    {
+      "affiliate_links": 0,
+      "day": 0,
+      "purpose": "deliver matched cost-comparison guide"
+    },
+    {
+      "affiliate_links": 0,
+      "day": 1,
+      "purpose": "education on comparing program price components"
+    },
+    {
+      "affiliate_links": 0,
+      "day": 3,
+      "planned_go_links": 1,
+      "purpose": "first provider comparison with FTC disclosure"
+    },
+    {
+      "affiliate_links": 0,
+      "day": 5,
+      "purpose": "value: questions to ask providers"
+    },
+    {
+      "affiliate_links": 0,
+      "day": 7,
+      "planned_go_links": 1,
+      "purpose": "second provider comparison and social-proof methodology"
+    }
+  ]
+}

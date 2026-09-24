@@ -1,0 +1,11 @@
+{
+  "schema": "glp.frozen-price-nonprice-binding.v5",
+  "predecessor_binding": {
+    "path": "data/price-index-nonprice-binding-v4.json",
+    "sha256": "7cfd57c572f561aed9e8ccb3ff7d9c7d24bd8351ec1dc966a4fd9afeb9c41d72"
+  },
+  "successor": {
+    "path": "data/s32-ledger-successor-v1.json",
+    "sha256": "b72bd81bcc9ad0f60e3a7ea012ead6be6a2310a5c193065c5125bf69ba8ea815"
+  }
+}

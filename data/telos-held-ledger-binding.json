@@ -1,0 +1,23 @@
+{
+  "schema": "glp.exact-telos-held-ledger-projection.v1",
+  "program_id": "telos-rx",
+  "frozen_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830",
+  "hold_receipt": {
+    "path": "data/telos-research-hold-receipt.json",
+    "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
+  },
+  "before_fields": {
+    "live_link_allowed": true,
+    "promotion_authorized": true,
+    "status": "live_operator_approved_transparent_direct"
+  },
+  "after_fields": {
+    "live_link_allowed": false,
+    "promotion_authorized": false,
+    "status": "paused_network_program_paused",
+    "research_hold_receipt": {
+      "path": "data/telos-research-hold-receipt.json",
+      "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
+    }
+  }
+}

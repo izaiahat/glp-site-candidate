@@ -1,0 +1,421 @@
+{
+  "brand_pages": [
+    {
+      "accent": "mint",
+      "ingredient": "oral semaglutide",
+      "medication_ids": [
+        "brand-wegovy-pill",
+        "compounded-semaglutide-oral"
+      ],
+      "name": "Wegovy pill",
+      "research_route": "/guides/wegovy-pills-oral-semaglutide-cost/",
+      "route": "/wegovy-pill/",
+      "slug": "wegovy-pill"
+    },
+    {
+      "accent": "teal",
+      "ingredient": "semaglutide",
+      "medication_ids": [
+        "brand-wegovy"
+      ],
+      "name": "Wegovy",
+      "research_route": "/guides/wegovy-side-effects-evidence-guide/",
+      "route": "/wegovy/",
+      "slug": "wegovy"
+    },
+    {
+      "accent": "coral",
+      "ingredient": "semaglutide",
+      "medication_ids": [
+        "brand-ozempic"
+      ],
+      "name": "Ozempic",
+      "research_route": "/guides/ozempic-cost-without-insurance/",
+      "route": "/ozempic/",
+      "slug": "ozempic"
+    },
+    {
+      "accent": "emerald",
+      "ingredient": "tirzepatide",
+      "medication_ids": [
+        "brand-mounjaro"
+      ],
+      "name": "Mounjaro",
+      "research_route": "/guides/mounjaro-cost-without-insurance/",
+      "route": "/mounjaro/",
+      "slug": "mounjaro"
+    },
+    {
+      "accent": "violet",
+      "ingredient": "tirzepatide",
+      "medication_ids": [
+        "brand-zepbound"
+      ],
+      "name": "Zepbound",
+      "research_route": "/guides/zepbound-insurance-coverage/",
+      "route": "/zepbound/",
+      "slug": "zepbound"
+    }
+  ],
+  "bulk_intents": [
+    {
+      "duration": "3-month",
+      "href": "/3-month/?drug=SEMAGLUTIDE&form=COMPOUNDED&plan=3&sort=cheapest",
+      "medication_id": "compounded-semaglutide-injection",
+      "name": "3-month semaglutide"
+    },
+    {
+      "duration": "3-month",
+      "href": "/3-month/?drug=TIRZEPATIDE&form=COMPOUNDED&plan=3&sort=cheapest",
+      "medication_id": "compounded-tirzepatide-injection",
+      "name": "3-month tirzepatide"
+    },
+    {
+      "duration": "6-plus-month",
+      "href": "/6-month/?drug=SEMAGLUTIDE&form=COMPOUNDED&duration=6&sort=cheapest",
+      "medication_id": "compounded-semaglutide-injection",
+      "name": "6+ month semaglutide"
+    },
+    {
+      "duration": "6-plus-month",
+      "href": "/6-month/?drug=TIRZEPATIDE&form=COMPOUNDED&duration=6&sort=cheapest",
+      "medication_id": "compounded-tirzepatide-injection",
+      "name": "6+ month tirzepatide"
+    }
+  ],
+  "bulk_pages": [
+    {
+      "duration": "3-month",
+      "duration_months": 3,
+      "medication_ids": [
+        "compounded-semaglutide-injection",
+        "compounded-tirzepatide-injection"
+      ],
+      "name": "3-month",
+      "route": "/3-month/"
+    },
+    {
+      "duration": "6-plus-month",
+      "duration_months": 6,
+      "medication_ids": [
+        "compounded-semaglutide-injection",
+        "compounded-tirzepatide-injection"
+      ],
+      "name": "6+ month",
+      "route": "/6-month/"
+    }
+  ],
+  "canonical_served_equivalents": {
+    "o35_mounjaro_coupon": {
+      "disposition": "served_under_independent_exact_byte_route_contract",
+      "requested_route": "/guides/mounjaro-coupon/",
+      "served_route": "/guides/mounjaro-coupon/"
+    }
+  },
+  "comparison_pages": [
+    {
+      "kind": "cross-duration",
+      "duration_months": [1, 3],
+      "medication_ids": [
+        "compounded-tirzepatide-injection",
+        "compounded-semaglutide-injection"
+      ],
+      "name": "Compare 1-Month vs 3-Month Tirzepatide Plans",
+      "route": "/both/",
+      "slug": "both"
+    },
+    {
+      "kind": "plan-preset",
+      "medication_ids": [
+        "compounded-tirzepatide-injection",
+        "compounded-semaglutide-injection"
+      ],
+      "name": "Compare Tirzepatide Starter Plans",
+      "route": "/starter/",
+      "slug": "starter"
+    },
+    {
+      "kind": "plan-preset",
+      "medication_ids": [
+        "compounded-tirzepatide-injection",
+        "compounded-semaglutide-injection"
+      ],
+      "name": "Compare Tirzepatide Step Up Plans",
+      "route": "/step-up/",
+      "slug": "step-up"
+    }
+  ],
+  "compounded_pages": [
+    {
+      "medication_id": "compounded-semaglutide-injection",
+      "name": "Compounded semaglutide",
+      "route": "/lp/best-providers/compounded-semaglutide/",
+      "slug": "compounded-semaglutide",
+      "tone": "semaglutide"
+    },
+    {
+      "medication_id": "compounded-tirzepatide-injection",
+      "name": "Compounded tirzepatide",
+      "route": "/lp/best-providers/compounded-tirzepatide/",
+      "slug": "compounded-tirzepatide",
+      "tone": "tirzepatide"
+    }
+  ],
+  "expected_indexable_routes": 174,
+  "legacy_redirects": [
+    [
+      "/guides/",
+      "/insights/"
+    ]
+  ],
+  "organic_compounded_pages": [
+    {
+      "medication": "semaglutide",
+      "route": "/semaglutide/"
+    },
+    {
+      "medication": "tirzepatide",
+      "route": "/tirzepatide/"
+    }
+  ],
+  "provider_work_order_additions": [
+    {
+      "commercial_facts_status": "unbound",
+      "display_name": "Nu Image Medical",
+      "governance_identity_source": "affiliate-wire-in-approvals.json",
+      "governance_source": "reports/glp-clinic-scout/affiliate-machine/liveness/liveness-20260824T140011Z.json",
+      "live_link_allowed": false,
+      "official_fallback": null,
+      "program_id": "nu-image-medical-review",
+      "promotion_authorized": false,
+      "review_path": null
+    }
+  ],
+  "retired_evidence_wall_redirects": [
+    [
+      "/cost/online-glp-1-programs/",
+      "/providers/"
+    ],
+    [
+      "/best/online-glp-1-providers/",
+      "/providers/"
+    ],
+    [
+      "/best/expanded-curated-glp-1-programs/",
+      "/providers/"
+    ],
+    [
+      "/best/glp-1-shipping-review-times/",
+      "/providers/"
+    ],
+    [
+      "/compare/month-to-month-vs-annual-glp-1-programs/",
+      "/bulk/"
+    ],
+    [
+      "/compare/trimi-vs-shed/",
+      "/providers/"
+    ],
+    [
+      "/compare/glp-1-program-shipping-and-clinician-review/",
+      "/providers/"
+    ],
+    [
+      "/compare/wellorithm-vs-enhance-md/",
+      "/providers/"
+    ],
+    [
+      "/compare/serena-health-vs-oak-longevity/",
+      "/providers/"
+    ],
+    [
+      "/compare/glp-1-insurance-support-vs-self-pay/",
+      "/self-pay/"
+    ],
+    [
+      "/compare/found-vs-yourera/",
+      "/providers/"
+    ],
+    [
+      "/compare/healthrx-vs-agelessrx/",
+      "/providers/"
+    ]
+  ],
+  "retirement_receipts": {
+    "/best/expanded-curated-glp-1-programs/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 3,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/providers/"
+    },
+    "/best/glp-1-shipping-review-times/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 4,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/providers/"
+    },
+    "/best/online-glp-1-providers/": {
+      "disposition": "retired_by_ruling_no_page_pages_function",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 2,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')",
+        "scripts/validate-g9-retirement.mjs:101 - REDIRECT_MAP.delete(\"/best/online-glp-1-providers/\"): the retired comparison route is handled by a query-aware Pages Function; a static redirect would erase medication intent."
+      ],
+      "served_by": "functions/best/online-glp-1-providers (query-aware Pages Function)",
+      "target": "/providers/"
+    },
+    "/compare/found-vs-yourera/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 11,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/providers/"
+    },
+    "/compare/glp-1-insurance-support-vs-self-pay/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 10,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/self-pay/"
+    },
+    "/compare/glp-1-program-shipping-and-clinician-review/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 7,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/providers/"
+    },
+    "/compare/healthrx-vs-agelessrx/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "identity_note": "'agelessrx' has no entry in data/program-registry.json (60 programs), so this pair has no second provider identity to render.",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 12,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/providers/"
+    },
+    "/compare/month-to-month-vs-annual-glp-1-programs/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 5,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/bulk/"
+    },
+    "/compare/serena-health-vs-oak-longevity/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 9,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/providers/"
+    },
+    "/compare/trimi-vs-shed/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "identity_note": "'shed' is not a program identity of its own: data/program-registry.json carries only shedrx (canonical_identity.role=canonical) and /reviews/shed/ 301s to /reviews/shedrx/ (SHED-IDENTITY-RECONCILIATION-20260806.md). No page can be minted at this pair without inventing a provider.",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 6,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/providers/"
+    },
+    "/compare/wellorithm-vs-enhance-md/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 8,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/providers/"
+    },
+    "/cost/online-glp-1-programs/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:94 - independent verdict 'CONFIRMED (for its 12)': all 12 retired_evidence_wall_redirects are physically absent AND present in public/_redirects, zero redirect chains.",
+      "inventory_item": 1,
+      "ruling": "GAP-MATRIX D54 'Clean product/category pages without evidence walls' - disposition delete-ours: 'Delete by component identity, preserve legal/affiliate/source truth where required and add redirects for replaced URLs.'",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:70",
+        "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md:132 (explicit 12-route delete-ours inventory)",
+        "reports/glp-clinic-scout/rebuild/WORK-ORDER-FULL-EMULATION-20260822.md:98 (W11/D45: 'kill every D54 evidence-wall surface (redirects preserved - no 404s from old URLs)')"
+      ],
+      "target": "/providers/"
+    },
+    "/guides/": {
+      "disposition": "retired_by_ruling_no_page_301_redirect",
+      "hub_only_note": "Only the /guides/ HUB index is retired. The /guides/<slug>/ article routes are live and unaffected; 76 of them are built.",
+      "independent_verification": "reports/glp-clinic-scout/rebuild/OPUS-VERIFY-FINAL-20260822.md:245 (S8) ruled the declared retirement was being shadowed by a physical public/guides/index.html and that the fix is to delete the shadowing file or drop the redirect declaration. The shadowing files were deleted, so the declared retirement now actually fires.",
+      "ruling": "T7/T8 editorial merge: the /guides hub merges into /insights.",
+      "ruling_pointers": [
+        "reports/glp-clinic-scout/rebuild/SPEC-LAYOUT-GLPWINNER-20260819.md:113",
+        "reports/glp-clinic-scout/rebuild/SPEC-LAYOUT-GLPWINNER-20260819.md:318",
+        "reports/glp-clinic-scout/rebuild/BUILD-SPEC-PACK-20260819.md:24"
+      ],
+      "target": "/insights/"
+    }
+  },
+  "schema": "glp-phase3-page-graph-v1",
+  "source_contract": {
+    "brand_spec": "reports/glp-clinic-scout/competitors/teardown-20260822/STRUCTURAL-SPEC-BRAND-PRODUCT.md",
+    "compounded_spec": "reports/glp-clinic-scout/competitors/teardown-20260822/STRUCTURAL-SPEC-COMPOUNDED-CATEGORY.md",
+    "copy_rule": "original_clinic_scout_copy_and_bound_source_data_only",
+    "gap_matrix": "reports/glp-clinic-scout/competitors/teardown-20260822/GAP-MATRIX.md",
+    "insights_specs": [
+      "reports/glp-clinic-scout/competitors/teardown-20260822/STRUCTURAL-SPEC-INSIGHTS-INDEX.md",
+      "reports/glp-clinic-scout/competitors/teardown-20260822/STRUCTURAL-SPEC-INSIGHTS-ARTICLE.md"
+    ],
+    "motion_runtime": "CS_MOTION_GSAP_LENIS_ONLY",
+    "pharmacy_spec": "reports/glp-clinic-scout/competitors/teardown-20260822/STRUCTURAL-SPEC-PHARMACIES.md",
+    "route_graph": "reports/glp-clinic-scout/competitors/teardown-20260822/ROUTE-GRAPH.md"
+  },
+  "status": "STAGED_NOT_DEPLOYED"
+}

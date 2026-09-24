@@ -1,0 +1,245 @@
+/* ============================================================================
+   Layer 99: PASS 4 ACTION AURORA — final route-family action bridge.
+
+   Route layers still emit several historical semantic button classes. This
+   final layer deliberately runs after every template layer so those local
+   background shorthands cannot erase the shared orbiting perimeter. It does
+   not turn filters, tabs, carousel controls, or disclosure toggles into CTAs.
+   ========================================================================== */
+
+/* Primary actions: conversion, capture, submit, and governed outbound starts. */
+:is(
+  .cs-palette-action,
+  .cta.primary,
+  .cta.affiliate,
+  .cta.lead,
+  .cs-btn--primary,
+  .cs-btn--gradient,
+  .cs-btn--animated,
+  .cs-btn--writeglow,
+  .gcs-nav-action,
+  .gcs-button:not(.secondary),
+  .gcs-cta:not(.gcs-cta-secondary),
+  .gcs-cta-primary,
+  .begin,
+  .submit,
+  .qz-next,
+  .qm-form .begin,
+  .qz-card-actions a:last-child,
+  .cs-revhub-band__cta,
+  [data-explore-providers],
+  .cost-form button[type="submit"],
+  .inline-capture button[type="submit"],
+  [data-newsletter-form] button[type="submit"],
+  .p5-review-form button[type="submit"]
+) {
+  --cs-button-face: var(--cs-accent-gradient, linear-gradient(104deg, #17a87e 0%, #3fd9a4 38%, #6fc6ee 72%, #a99bf2 100%));
+  border: 2px solid transparent;
+  background:
+    var(--cs-button-face) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), #6febb9 0deg, #6fc6ee 82deg, #c6b5ff 160deg, #ffad99 236deg, #6febb9 360deg) border-box;
+  background-origin: border-box;
+  color: var(--text-on-accent) !important;
+  animation: none;
+  box-shadow: 0 12px 30px -16px rgba(70, 220, 171, .58);
+}
+
+/* A-1: the home hero is the one persistent border runner. Every other shared
+   action starts its orbit only when the reader points to or focuses it. */
+.gcs-home-actions > .cs-btn.cs-btn--orbit {
+  animation: cs-button-aurora-orbit 5s linear infinite;
+}
+
+/* Insights owns an intentionally specific capture-card selector. Reassert the
+   shared action face at equal-or-higher specificity so its old solid fill
+   cannot erase the aurora background layers. */
+main.p3-page.cs-ins-index .inline-capture .cta.lead {
+  border: 2px solid transparent;
+  background:
+    var(--cs-button-face) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), #6febb9 0deg, #6fc6ee 82deg, #c6b5ff 160deg, #ffad99 236deg, #6febb9 360deg) border-box;
+  background-origin: border-box;
+}
+
+:is(
+  .cs-palette-action,
+  .cta.primary,
+  .cta.affiliate,
+  .cta.lead,
+  .cs-btn--primary,
+  .cs-btn--gradient,
+  .cs-btn--animated,
+  .cs-btn--writeglow,
+  .gcs-nav-action,
+  .gcs-button:not(.secondary),
+  .gcs-cta:not(.gcs-cta-secondary),
+  .gcs-cta-primary,
+  .begin,
+  .submit,
+  .qz-next,
+  .qm-form .begin,
+  .qz-card-actions a:last-child,
+  .cs-revhub-band__cta,
+  [data-explore-providers],
+  .cost-form button[type="submit"],
+  .inline-capture button[type="submit"],
+  [data-newsletter-form] button[type="submit"],
+  .p5-review-form button[type="submit"]
+):is(:hover, :focus-visible) {
+  --cs-button-face: linear-gradient(100deg, #53dba5, #75c7ee 48%, #b5a6f4);
+  background:
+    var(--cs-button-face) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), #6febb9 0deg, #6fc6ee 82deg, #c6b5ff 160deg, #ffad99 236deg, #6febb9 360deg) border-box !important;
+  background-origin: border-box !important;
+  animation: cs-button-aurora-orbit 5s linear infinite;
+  filter: saturate(1.16) brightness(1.04);
+  box-shadow: 0 16px 40px -15px rgba(111, 198, 238, .66), 0 0 0 1px rgba(111, 235, 185, .18);
+}
+
+main.p3-page.cs-ins-index .inline-capture .cta.lead:is(:hover, :focus-visible) {
+  background:
+    var(--cs-button-face) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), #6febb9 0deg, #6fc6ee 82deg, #c6b5ff 160deg, #ffad99 236deg, #6febb9 360deg) border-box;
+}
+
+/* Ghost actions: alternate paths retain a quieter, slower aurora perimeter. */
+:is(
+  .cta.secondary,
+  .cta.internal,
+  .cs-btn--ghost,
+  .cs-btn--quiet,
+  .cs-home-quick,
+  .gcs-button.secondary,
+  .gcs-cta-secondary,
+  .qz-back,
+  .qz-card-actions a:first-child:not(:last-child),
+  .cta:where(:not(.primary):not(.affiliate):not(.lead):not(.cs-palette-action)),
+  .cs-btn:where(:not([class*="cs-btn--"]):not(.cs-palette-action):not(.cs-revhub-band__cta))
+) {
+  --cs-button-face: linear-gradient(transparent, transparent);
+  border: 1px solid transparent;
+  /* A ghost action paints no face, so its own perimeter stops are the lightest
+     surface its text is read against. At the previous .46/.38 mint and violet
+     alphas that perimeter composited to rgb(59,127,100) / rgb(55,117,92) over
+     the dark bands, which held "Read our <Provider> review" (#edf6f1) to 4.34,
+     "Compare programs" / "Find my match" (#f2f8f4) to 4.48 and the cyan
+     "View <Provider> provider details" link (--color-interactive) to 3.36 -
+     three serious WCAG AA failures (GLP-38 WO-15). The stops keep their hues
+     and their order; only the mint and violet alphas come down, so every
+     perimeter colour now composites no lighter than the band it sits on and the
+     band's own light text clears 4.5 on all four families. */
+  background:
+    var(--cs-button-face) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), rgba(111, 235, 185, .30), rgba(111, 198, 238, .28) 28%, rgba(198, 181, 255, .30) 58%, rgba(255, 173, 153, .26) 78%, rgba(111, 235, 185, .30)) border-box;
+  background-origin: border-box;
+  animation: none;
+}
+
+/* The home treatment chips sit over the moving green hero field. A chip that
+   pairs a dark face with this bright perimeter cannot be read at AA in either
+   direction: the sampled surfaces run from the #347a5f face to the perimeter's
+   rgb(89, 195, 153), and no single text colour clears 4.5 against both ends of
+   that 2.37:1 spread - the former #f2f8f4 text measured 2.01 against the
+   perimeter (GLP-38 WO-15). The chip therefore commits to ONE band: the
+   light evidence-green surface the sampler already reads, painted as an opaque
+   background-colour so every perimeter stop composites over the chip itself
+   rather than over the dark hero behind it. Its text is the site's existing
+   ink-on-light token, not a new colour, and the worst sampled pair is the face
+   at 7.7:1. The orbiting perimeter keeps its full-strength stops. */
+.cs-home-quick,
+.cs-home2-centered > .cta.secondary,
+.gcs-home-actions > .cs-btn--quiet {
+  --cs-button-face: linear-gradient(#59c399, #59c399);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#59c399, #59c399) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), rgba(111, 235, 185, .78), rgba(111, 198, 238, .52) 28%, rgba(198, 181, 255, .62) 58%, rgba(255, 173, 153, .48) 78%, rgba(111, 235, 185, .78)) border-box !important;
+  background-color: #59c399 !important;
+  background-origin: border-box;
+  color: var(--cs-ink-on-paper, #14201b) !important;
+}
+
+:is(
+  .cta.secondary,
+  .cta.internal,
+  .cs-btn--ghost,
+  .cs-btn--quiet,
+  .cs-home-quick,
+  .gcs-button.secondary,
+  .gcs-cta-secondary,
+  .qz-back,
+  .qz-card-actions a:first-child:not(:last-child),
+  .cta:where(:not(.primary):not(.affiliate):not(.lead):not(.cs-palette-action)),
+  .cs-btn:where(:not([class*="cs-btn--"]):not(.cs-palette-action):not(.cs-revhub-band__cta))
+):is(:hover, :focus-visible) {
+  --cs-button-face: linear-gradient(rgba(111, 235, 185, .1), rgba(111, 198, 238, .06));
+  /* Hover and keyboard focus are read states too: the perimeter lifts over the
+     resting alphas above but stays inside the same AA headroom, so a focused
+     ghost action never becomes the light surface its own label fails against. */
+  background:
+    var(--cs-button-face) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), rgba(111, 235, 185, .34), rgba(111, 198, 238, .30) 28%, rgba(198, 181, 255, .32) 58%, rgba(255, 173, 153, .28) 78%, rgba(111, 235, 185, .34)) border-box !important;
+  background-origin: border-box !important;
+  animation: cs-button-aurora-orbit 8s linear infinite;
+  box-shadow: 0 12px 30px -20px rgba(111, 198, 238, .7), inset 0 0 24px rgba(111, 235, 185, .04);
+}
+
+.cs-home-quick:is(:hover, :focus-visible),
+.cs-home2-centered > .cta.secondary:is(:hover, :focus-visible),
+.gcs-home-actions > .cs-btn--quiet:is(:hover, :focus-visible) {
+  --cs-button-face: linear-gradient(#4fb78c, #4fb78c);
+  background:
+    linear-gradient(#4fb78c, #4fb78c) padding-box,
+    conic-gradient(from var(--cs-button-aurora-angle), rgba(111, 235, 185, .86), rgba(111, 198, 238, .62) 28%, rgba(198, 181, 255, .7) 58%, rgba(255, 173, 153, .56) 78%, rgba(111, 235, 185, .86)) border-box !important;
+  background-color: #4fb78c !important;
+  background-origin: border-box;
+  color: var(--cs-ink-on-paper, #14201b) !important;
+}
+
+:is(
+  .cta,
+  .cs-btn,
+  .cs-home-quick,
+  .gcs-nav-action,
+  .gcs-button,
+  .gcs-cta,
+  .begin,
+  .submit,
+  .qz-next,
+  .qz-back,
+  [data-explore-providers]
+):is([aria-disabled="true"], [disabled]) {
+  animation: none;
+  filter: none;
+}
+
+/* Directory cards constrain actions to one grid column. The aurora's wider
+   transparent border must stay inside that column rather than adding an 8px
+   scrollable edge to every pharmacy action. */
+.p3-pharmacy-card .cs-btn {
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  justify-content: center;
+  gap: 0;
+  padding-inline: 18px;
+  overflow-wrap: anywhere;
+}
+
+/* The legacy pharmacy-detail halo extends eight pixels outside every action,
+   which creates a false horizontal overflow edge on directory cards. The
+   shared border-box aurora above supersedes that pseudo-element. */
+.p3-pharmacy-card .cs-btn.cs-palette-action::before {
+  display: none;
+}
+
+/* This shelf uses the shared dark action face, not the legacy light palette. */
+.p3-pharm-detail .p3-provider-search-shelf .cs-btn.cs-palette-action {
+  color: #f2f8f4 !important;
+}
+
+/* Preserve the 44px measured target floor after fractional layout in WebKit. */
+main[data-phase3-route="/providers/"] [data-phase3-provider] a[data-analytics-event="affiliate_click"] {
+  min-block-size: 45px;
+}

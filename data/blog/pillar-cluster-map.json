@@ -1,0 +1,62 @@
+{
+  "accepted_program_count": 13,
+  "clusters": [
+    {
+      "articles": [
+        "/guides/trimi-vs-yourera/",
+        "/guides/gala-vs-shed/",
+        "/guides/found-vs-trimi-insurance-self-pay/",
+        "/guides/glp-1-insurance-support-vs-coverage/",
+        "/guides/healthrx-vs-agelessrx/",
+        "/guides/wellorithm-vs-enhance-md/"
+      ],
+      "cluster_id": "commercial-provider-pairs",
+      "intent": "commercial_comparison",
+      "money_pages": [
+        "/compare/serena-health-vs-oak-longevity/"
+      ]
+    },
+    {
+      "articles": [
+        "/guides/found-vs-trimi-insurance-self-pay/",
+        "/guides/glp-1-program-total-cost-comparison/",
+        "/guides/glp-1-insurance-support-vs-coverage/",
+        "/guides/compare-online-glp-1-provider-fees/",
+        "/guides/glp-1-hsa-fsa-reimbursement-evidence/"
+      ],
+      "cluster_id": "commercial-cost-and-coverage",
+      "intent": "commercial_cost"
+    },
+    {
+      "articles": [
+        "/guides/verify-online-glp-1-program-product-status/",
+        "/guides/online-glp-1-intake-to-pharmacy-fulfillment/",
+        "/guides/verify-online-glp-1-pharmacy/"
+      ],
+      "cluster_id": "evidence-process-and-pharmacy",
+      "intent": "informational_due_diligence"
+    }
+  ],
+  "commercial_first_order": true,
+  "held_program_ids": [
+    "direct-meds",
+    "emed",
+    "mademed",
+    "strut-health",
+    "telos-rx"
+  ],
+  "net_new_batch3": {
+    "articles": [
+      "/guides/glp-1-hsa-fsa-reimbursement-evidence/",
+      "/guides/online-glp-1-intake-to-pharmacy-fulfillment/",
+      "/guides/verify-online-glp-1-pharmacy/"
+    ],
+    "money_pages": [
+      "/compare/serena-health-vs-oak-longevity/"
+    ]
+  },
+  "order_policy": "accepted-existing-commercial-then-net-new-informational",
+  "program_pool_exhausted": true,
+  "release_authorized": false,
+  "schema": "glp-clinic-scout-pillar-cluster-map-v2"
+}

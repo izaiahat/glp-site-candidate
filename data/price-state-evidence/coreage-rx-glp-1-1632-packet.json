@@ -1,0 +1,130 @@
+{
+  "schema": "program-deep-research-v1",
+  "program_id": "coreage-rx-glp-1-1632-review",
+  "display_name": "CoreAge Rx GLP-1",
+  "official_url": "https://coreagerx.com/",
+  "captured_at_utc": "2026-09-10T14:25:02.387362+00:00",
+  "status": "PASS_LIMITED",
+  "effects": {
+    "accounts_created": 0,
+    "forms_submitted": 0,
+    "tracking_clicks": 0
+  },
+  "fields": {
+    "first_month_price": {
+      "value": "UNKNOWN exact first-month charge and initial checkout total. The landing page explicitly qualifies displayed starting prices as based on a 12-month plan paid in full. A starting monthly equivalent is not a first-month bill. No annual checkout total, first charge, or renewal amount is inferred from multiplication or the page's flat-rate headline. See monthly_price for medication-specific starting figures and the unresolved homepage pricing discrepancy.",
+      "quote": "Prices shown are starting at, based on a 12-month plan paid in full.",
+      "source_url": "https://get.coreagerx.com/home35/",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-coreage-rx-glp-1-1632-review/authoring/coreage-rx-glp-1-1632-review-c1/captures/coreage-rx-glp-1-1632-review-captures.json",
+      "capture_sha256": "c5069254d4ba89025cb0dccb0da0a8e4bdcac420adf6f4f1bd5cea19107f0b91"
+    },
+    "monthly_price": {
+      "value": "Reported starting figures: compounded semaglutide from $99/mo and compounded tirzepatide from $149/mo, explicitly named in separate homepage product sections and corroborated by their individual product pages. These are not established monthly-billed charges. The same homepage also says the combined GLP-1 offering is from $199/mo; that discrepancy is unresolved. The home35 landing page's starting prices are expressly based on a 12-month plan paid in full, as quoted in first_month_price. Its broad $149 flat-rate claim is not applied to every medication. Exact selected-plan recurring charge, renewal cadence and all-in price remain UNKNOWN. No efficacy claim in the source excerpt is adopted.",
+      "quote": "Compounded Tirzepatide and Semaglutide, prescribed by US-licensed clinicians and shipped to your door — from $199/mo.\n\nSemaglutide\n\nTirzepatide\n\nSemaglutide\n\n![Semaglutide](https://www.coreagerx.com/wp-content/uploads/2026/06/Semaglutide-1.webp)\n\nStart with Semaglutide from\n\n$99/mo\n\nSame price at every dose\n\nIncludes all supplies\n\nFast, free shipping to your door\n\nYour current weight\n\n182\n\nlbs\n\nYou could lose up to\n\n27\n\nlbs\n\nwith Semaglutide\n\n[See if you’re eligible for Semaglutide](https://www.coreagerx.com/product/semaglutide)\n\nTirzepatide\n\n![Tirzepatide](https://www.coreagerx.com/wp-content/uploads/2026/06/Tirzepatide-1.webp)\n\nStart with Tirzepatide from\n\n$149/mo\n\nSame price at every dose\n\nIncludes all supplies\n\nFast, free shipping to your door\n\nYour current weight\n\n182\n\nlbs\n\nYou could lose up to\n\n36\n\nlbs\n\nwith Tirzepatide\n\n[See if you’re eligible for Tirzepatide](https://www.coreagerx.com/product/tirzepatide)",
+      "source_url": "https://coreagerx.com/",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-coreage-rx-glp-1-1632-review/authoring/coreage-rx-glp-1-1632-review-c1/captures/coreage-rx-glp-1-1632-review-captures.json",
+      "capture_sha256": "c5069254d4ba89025cb0dccb0da0a8e4bdcac420adf6f4f1bd5cea19107f0b91"
+    },
+    "consultation_fee": {
+      "value": "UNKNOWN exact fee for the selected GLP-1 treatment; not zero. The refund policy reports a possible $50–$100 consultation fee depending on the treatment purchased and says it is non-refundable once consultation or medical review begins. This is a conditional provider-reported range, not a universal additional charge or a confirmed first-order amount.",
+      "quote": "Provider consultation fees are non-refundable once the consultation or medical review process has begun.\n\nDepending on the treatment purchased, the consultation fee may range from $50–$100.\n\nThe consultation fee may remain non-refundable even if:\n\n- You cancel before pharmacy fulfillment.\n- The provider determines that treatment is not medically appropriate.\n- You change your mind.\n- You fail to submit required documents or information.\n- Your order becomes non-refundable under the 30-Day Patient Documentation Policy.",
+      "source_url": "https://www.coreagerx.com/returns-refund-policy",
+      "verified_as_of": "2026-09-10",
+      "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-coreage-rx-glp-1-1632-review/authoring/coreage-rx-glp-1-1632-review-c1/captures/coreage-rx-glp-1-1632-review-details-captures.json",
+      "capture_sha256": "dd6eaed3b3c62da93bf246a45b602313285ccb5e91579c560a08ec684647cf6f"
+    },
+    "shipping_wait": {
+      "value": "Reported information: medication typically arrives approximately 2–3 business days after pharmacy shipment. This is carrier transit, not time from checkout to arrival. Medical review, documentation, approval and compounding occur before shipment, so end-to-end arrival time remains UNKNOWN. Standard prescription shipping is included unless otherwise disclosed at checkout; no unconditional zero shipping charge is inferred.",
+      "quote": "## 3\\. Shipping & Delivery\n\n- **Shipping Method:** Standard shipping through USPS, UPS, FedEx, or another designated carrier.\n- **Shipping Cost:** Standard shipping is included on prescription medication orders unless otherwise disclosed at checkout.\n- **Estimated Delivery:** Medication typically arrives within approximately 2–3 business days after the pharmacy ships the order.\n\nThe total time between purchase and delivery may be longer because medical review, documentation, prescription approval, and pharmacy compounding must occur before shipment.",
+      "source_url": "https://www.coreagerx.com/returns-refund-policy",
+      "verified_as_of": "2026-09-10"
+    },
+    "cancellation": {
+      "value": "Reported information, not a legal determination: the policy allows cancellation through the patient account or Patient Care Team before renewal is processed to stop future charges; this does not automatically cancel or refund processed orders. It also describes one-time purchases and automatic-renewal subscriptions, so no universal no-subscription claim is made. Order cancellation is conditional on no provider approval, no pharmacy transmission and remaining within the policy's refund window. Applicable consultation fees may be retained. The policy says prescription orders are final after both approval and pharmacy transmission, and establishes a 30-calendar-day order refund cutoff subject to applicable law. Canceling future renewals remains distinct from refunding the current order.",
+      "quote": "## 2\\. One-Time Purchases, Subscriptions & Automatic Renewals\n\nCoreAge Rx may offer both one-time purchases and subscription plans with automatic renewals, depending on the treatment or plan you select.\n\nIf you enroll in a subscription, the applicable price, billing frequency, renewal terms, and other material subscription terms will be presented to you at the time of purchase.\n\nBy enrolling in an automatically renewing plan, you authorize CoreAge Rx to charge your selected payment method at each applicable renewal until you cancel the subscription.\n\n### Canceling a Subscription\n\nYou may cancel your subscription at any time to prevent future renewal charges by using the available cancellation option in your patient account or by contacting our Patient Care Team.\n\nCanceling a subscription:\n\n- Stops future automatic renewals.\n- Does not automatically cancel or refund an order that has already been processed.\n- Does not provide a refund for medication already approved, submitted for pharmacy fulfillment, compounded, dispensed, or shipped.\n- Does not provide a refund for an order that has otherwise become non-refundable under this policy.\n\nTo avoid your next renewal charge, your cancellation request must be received before the applicable renewal is processed.\n\n## 3\\. Shipping & Delivery\n\n- **Shipping Method:** Standard shipping through USPS, UPS, FedEx, or another designated carrier.\n- **Shipping Cost:** Standard shipping is included on prescription medication orders unless otherwise disclosed at checkout.\n- **Estimated Delivery:** Medication typically arrives within approximately 2–3 business days after the pharmacy ships the order.\n\nThe total time between purchase and delivery may be longer because medical review, documentation, prescription approval, and pharmacy compounding must occur before shipment.\n\n### Tracking\n\nTracking information will be provided once available from the pharmacy or shipping carrier.\n\n### Lost or Damaged Packages\n\nIf your medication is lost or damaged during transit, contact our Patient Care Team promptly.\n\nAfter reviewing the circumstances, CoreAge Rx will work with the pharmacy and/or carrier to arrange an appropriate replacement or reshipment when applicable.\n\n## 4\\. Refund & Cancellation Policy\n\n### Before Provider Approval and Pharmacy Fulfillment\n\nYou may request to cancel an order if:\n\n- Your prescription has not yet been approved by a licensed provider; and\n- Your prescription/order has not yet been transmitted to the pharmacy for fulfillment; and\n- The order has not otherwise become non-refundable under the 30-Day Patient Documentation Policy below.\n\nAny applicable non-refundable provider consultation fee will be deducted from the refund.\n\n### If You Are Not Medically Eligible\n\nIf a licensed provider determines that you are not medically eligible for the treatment you purchased, the refundable treatment or medication portion of your payment will be returned to your original payment method.\n\nAny applicable provider consultation fee of $50–$100 is non-refundable, because the medical consultation and eligibility review have already been performed.\n\n### When Prescription Orders Become Final\n\n**ALL PRESCRIPTION SALES ARE FINAL** once your prescription has been:\n\n- Approved by a licensed medical provider; and\n- Transmitted to the pharmacy for fulfillment.\n\nOnce this occurs, the order cannot be canceled, returned, or refunded.\n\nThis applies even if:\n\n- The medication has not yet shipped.\n- You change your mind about treatment.\n- You no longer wish to take the medication.\n- You purchase treatment elsewhere.\n- You request cancellation after pharmacy fulfillment has begun.\n\nPrescription medications are prepared and dispensed for an individual patient and cannot generally be returned to pharmacy inventory after dispensing.\n\n## 5\\. 30-Day Refund Cutoff\n\nAll orders become final and non-refundable 30 calendar days after the original purchase date.\n\nOnce 30 calendar days have passed from the date of purchase, no refund will be issued for any reason, regardless of whether the medication has shipped or the order has been completed, except where otherwise required by applicable law.\n\nThis includes orders delayed or unable to proceed because required patient information has not been provided, including:\n\n- Medical intake forms\n- Valid photo identification\n- Patient photographs\n- Lab results\n- Medical records\n- Primary care provider documentation\n- Health history or medication information\n- Responses to provider questions\n- Address or identity verification\n- Any other information or documentation required to review, prescribe, or fulfill treatment\n\nPatients are responsible for completing all requested steps and providing all required information within 30 calendar days of purchase.\n\nFailure to complete these requirements within the 30-day period does not extend the refund window.\n\nAfter 30 calendar days, the order remains non-refundable even if:\n\n- The prescription has not yet been approved.\n- The prescription has not yet been sent to the pharmacy.\n- The medication has not been compounded.\n- The medication has not been shipped.\n- Additional information or documentation is still required from the patient.\n- The patient no longer wishes to continue treatment.\n\nRequests to cancel or receive a refund must therefore be submitted and eligible for refund within 30 calendar days of the original purchase date.\n\nThis 30-day cutoff applies to the individual order or renewal charge being refunded and does not prevent a patient from canceling a subscription to stop future renewal charges.",
+      "source_url": "https://www.coreagerx.com/returns-refund-policy",
+      "verified_as_of": "2026-09-10"
+    },
+    "eligibility": {
+      "value": "Reported information: offers are limited to United States residents aged 18 and older. Prescription products require consultation and a valid prescription; individual treatment eligibility is a clinician decision, not established by age alone. A treatment-specific BMI threshold is UNKNOWN in the captured public pages.",
+      "quote": "Prescription products are available only through consultation with a licensed healthcare provider and require a valid prescription. Individual results may vary. Consult a licensed health professional before starting any treatment. Offers available only to residents of the United States aged 18 and older.",
+      "source_url": "https://get.coreagerx.com/home35/",
+      "verified_as_of": "2026-09-10"
+    },
+    "pharmacy_type": {
+      "value": "Reported information: the policy describes transmission to a pharmacy for compounding and fulfillment and calls that pharmacy licensed. Exact dispensing pharmacy identity, 503A/503B classification and independently verified licensing or registration remain UNKNOWN. This is not a certification, FDA product approval or legal-clearance claim.",
+      "quote": "If approved, your prescription is transmitted to a licensed pharmacy for compounding and fulfillment.",
+      "source_url": "https://www.coreagerx.com/returns-refund-policy",
+      "verified_as_of": "2026-09-10"
+    },
+    "states_served": {
+      "value": "Reported information: United States only, with restrictions depending on therapy and medication to be disclosed during intake. The FAQ names California, Massachusetts, Rhode Island and Vermont in physician-assignment information; that is not a complete GLP-1 coverage list. Definitive medication-specific state coverage and exclusions remain UNKNOWN. This first-party research does not modify inherited network restrictions, held providers or relationships.",
+      "quote": "CoreAge Rx offers service in the United States only but based on the therapy and medication being prescribed, there may be restrictions based on state. This will be disclosed and confirmed per therapy and as part of the intake process.  In the following states California, Massachusetts, Rhode Island, and Vermont the following physicians will be assigned to you: Dr Jeffrey Shellenberger and Dr Marc Serota.\n\nRhode Island: Dr Marc Serota MD17024\n\nVermont: Dr Jeffrey Shellenberger 042.0015585-COMP\n\nCalifornia: Dr Jeffrey Shellenberger C160558\n\nMassachusetts: Dr Jeffrey Shellenberger 290752",
+      "source_url": "https://www.coreagerx.com/faq",
+      "verified_as_of": "2026-09-10"
+    },
+    "legitscript": {
+      "value": "UNKNOWN. The quoted passage identifies the platform only and is not certification evidence. No independent LegitScript lookup was performed; provider certification wording and badges are not adopted as certification claims.",
+      "quote": "DSO Fine Shrimp d/b/a CoreAgeRx provides the technology platform and administrative coordination services.",
+      "source_url": "https://coreagerx.com/",
+      "verified_as_of": "2026-09-10"
+    }
+  },
+  "first_party_source_captures": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-coreage-rx-glp-1-1632-review/authoring/coreage-rx-glp-1-1632-review-c1/capture-index.json",
+    "sha256": "985d2bdf56827d5ea7f9104f0a3337ec6b819717977c56257ffc6551c9d139c1",
+    "bytes": 930
+  },
+  "provider_dynamic_profile": {
+    "version": 1,
+    "verified_as_of": "2026-09-10",
+    "taxonomy": {
+      "molecule_tags": ["semaglutide", "tirzepatide"],
+      "brand_name_tags": [],
+      "delivery_form_tags": [],
+      "treatment_type_tags": ["compounded"]
+    },
+    "calculator": {
+      "mode": "manual",
+      "first_month_base_usd": null,
+      "recurring_month_base_usd": null,
+      "one_time_fee_usd": null,
+      "source_url": "https://get.coreagerx.com/home35/",
+      "checked_as_of": "2026-09-10",
+      "price_context": "The landing page qualifies starting prices as based on a 12-month plan paid in full. Product-specific monthly starting figures do not establish actual first or renewal charges. Applicable consultation fees are conditional and the exact treatment-specific fee remains UNKNOWN, not zero.",
+      "evidence_gap_copy": "Enter the selected medication's actual checkout total, payment cadence, renewal amount and applicable consultation fee manually. Do not autofill first or recurring charges from starting monthly equivalents. Delivery-form tags are not defaulted to injection."
+    },
+    "evidence_bindings": [
+      {
+        "fields": ["taxonomy.brand_name_tags", "taxonomy.molecule_tags", "taxonomy.treatment_type_tags", "verified_as_of"],
+        "evidence_text": "Compounded Tirzepatide and Semaglutide, prescribed by US-licensed clinicians and shipped to your door — from $199/mo.",
+        "evidence_sha256": "584f361b03172341ff4a7fa2b69d8b5a781d4ab9cb8f072a3a4ce4811e4d8934",
+        "source_url": "https://coreagerx.com/",
+        "verified_as_of": "2026-09-10"
+      },
+      {
+        "fields": ["taxonomy.delivery_form_tags"],
+        "evidence_text": "Therefore, when you take GLP-1 injections, you feel fuller faster and are less likely to overeat.",
+        "evidence_sha256": "9b7c471fb1636c0e3c48f80885ce66cd65e790f7f06f768dbacdd78ecee7a3b1",
+        "source_url": "https://www.coreagerx.com/product/semaglutide",
+        "verified_as_of": "2026-09-10"
+      },
+      {
+        "fields": ["calculator.checked_as_of", "calculator.evidence_gap_copy", "calculator.first_month_base_usd", "calculator.mode", "calculator.price_context", "calculator.recurring_month_base_usd", "calculator.source_url"],
+        "evidence_text": "Prices shown are starting at, based on a 12-month plan paid in full.",
+        "evidence_sha256": "db975d7faa326ca509feeae1e3882d84be39a0da279d7f6f88bc539a1c505f59",
+        "source_url": "https://get.coreagerx.com/home35/",
+        "verified_as_of": "2026-09-10"
+      },
+      {
+        "fields": ["calculator.one_time_fee_usd"],
+        "evidence_text": "Provider consultation fees are non-refundable once the consultation or medical review process has begun.\n\nDepending on the treatment purchased, the consultation fee may range from $50–$100.\n\nThe consultation fee may remain non-refundable even if:\n\n- You cancel before pharmacy fulfillment.\n- The provider determines that treatment is not medically appropriate.\n- You change your mind.\n- You fail to submit required documents or information.\n- Your order becomes non-refundable under the 30-Day Patient Documentation Policy.",
+        "evidence_sha256": "2612bd04fbace5a9ab5dd91dde5d8203ace0896dae5cb6a79c2b2529ebcb17d8",
+        "source_url": "https://www.coreagerx.com/returns-refund-policy",
+        "verified_as_of": "2026-09-10"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "approved_denominator": {
+    "enumeration_class": "provider_joined_or_approved_exact_id",
+    "included": true,
+    "mixed_semantics_disclosure": "Provider approval and a provider-issued URL do not independently authorize claims, publication, or deployment."
+  },
+  "candidate_id": "glp-approved53-ready6-brand-slug-successor-20260802-r3",
+  "coverage_gate": {
+    "bridge_review_state": "PENDING",
+    "deployment_authority": false,
+    "editorial_approval_state": "PENDING",
+    "publication_state": "BLOCKED",
+    "scaffold_complete": true,
+    "tracking_gate_state": "READY_FOR_NONCLICK_REVIEW"
+  },
+  "cta": {
+    "enabled": false,
+    "link_click_qa_performed": false,
+    "provider_issued_url_present": true,
+    "public_go_surface": false,
+    "tracking_registry_state": "candidate_registry_wired_provider_issued"
+  },
+  "editorial": {
+    "approved_claims": [],
+    "forbidden_without_evidence": [
+      "medical efficacy claims",
+      "guaranteed outcomes",
+      "unsupported price or savings claims",
+      "unsupported GLP-1 fit",
+      "unsupported provider relationship semantics"
+    ],
+    "sections": {
+      "commercial_terms": "pending",
+      "comparison_and_recommendation_basis": "pending",
+      "geography_and_eligibility": "pending",
+      "identity_and_offer_scope": "pending",
+      "pricing_and_cadence": "pending",
+      "regulatory_and_claim_review": "pending"
+    },
+    "state": "scaffold_pending_evidence_review"
+  },
+  "exact_identity": {
+    "display_name": "Gala Health",
+    "network": "Katalys",
+    "provider_program_id": "1576",
+    "source_refs": [
+      "04-katalys-graphql-inventory.json#offerId=1576;relationship=Approved",
+      "12-sheet-provider-diff-post-apply.json#/all_rows/row=88"
+    ]
+  },
+  "existing_release_alias": "gala-health",
+  "program_key": "Katalys:1576",
+  "proposed_review_path": "/reviews/katalys-1576/",
+  "registry_id": "katalys-1576",
+  "schema": "approved-program-review-brief-scaffold-v1"
+}

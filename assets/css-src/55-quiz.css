@@ -1,0 +1,770 @@
+/* Phase 4 quiz + compact matcher source layer — v2 (operator notes 2026-08-26).
+   The quiz is a full-viewport dark stage: no paper card, floating choice pills,
+   a thin animated progress filament, and horizontal slide choreography between
+   positions (driven by quiz-page.js class swaps; all motion dies under
+   prefers-reduced-motion and no essential content is CSS-hidden before JS). */
+
+.qz-shell {
+  width: min(100% - 32px, 1080px);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: calc(100dvh - 92px);
+  padding-block: clamp(18px, 3vw, 40px) clamp(28px, 4vw, 56px);
+}
+
+/* Reserve real scroll range as well as an unobscured scroll-to-target region.
+   The mobile !important shorthand below must consume the same clearance. */
+html:has(body[data-page="quiz-provider-fit"]), html:has(.qm-shell) {
+  scroll-padding-bottom: var(--consent-clearance, 0px);
+}
+body[data-page="quiz-provider-fit"] main.qz-shell {
+  padding-bottom: calc(clamp(28px, 4vw, 56px) + var(--consent-clearance, 0px));
+}
+
+body[data-page="quiz-provider-fit"] [data-quiz-position] :is(button, input, select, a) {
+  scroll-margin-bottom: var(--consent-clearance, 0px);
+}
+.qm-shell :is(button, input, select, a) { scroll-margin-bottom: calc(var(--consent-clearance, 0px) + 16px); }
+
+.qm-shell {
+  width: min(100% - 32px, 1080px);
+  margin-inline: auto;
+  padding-block: clamp(24px, 5vw, 72px);
+}
+.qm-shell [data-full-quiz-link] { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* compact intro: one kicker + one balanced heading, nothing else above the frame */
+.qz-intro {
+  max-width: 860px;
+  margin: 0 auto clamp(14px, 2vw, 26px);
+  text-align: center;
+}
+.qz-intro h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+}
+.qm-intro {
+  max-width: 760px;
+  margin: 0 auto clamp(24px, 4vw, 44px);
+  text-align: center;
+}
+
+.qz-intro h1,
+.qm-intro h1,
+.qz-position h2,
+.qz-result-shell > h2 {
+  text-wrap: balance;
+}
+
+.qz-intro p,
+.qm-intro p,
+.qz-help,
+.qz-card p,
+.qz-result-shell p {
+  text-wrap: pretty;
+}
+
+.qz-footnote {
+  margin: clamp(16px, 2vw, 26px) auto 0;
+  max-width: 640px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+.qz-footnote a { color: inherit; }
+
+.qz-question-shell,
+.qm-form {
+  width: min(100%, 800px);
+  margin-inline: auto;
+}
+
+.qz-question-shell {
+  position: relative;
+  overflow: visible;
+}
+
+/* The head-level `.js` marker lands before the stylesheet can paint. It keeps
+   progressive no-JS content intact while preventing the enhanced quiz from
+   painting seven stacked steps and an empty results shell before hydration. */
+html.js [data-phase4-quiz]:not(.qz-enhanced) .qz-position:not(:first-of-type),
+html.js [data-phase4-quiz]:not(.qz-enhanced) .qz-result-shell {
+  display: none;
+}
+
+/* thin progress filament */
+.qz-progress {
+  height: 4px;
+  margin: 0 0 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-mist-100);
+}
+.qz-progress > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--cs-accent-gradient);
+  transform: scaleX(0.142857);
+  transform-origin: left center;
+  transition: transform 420ms var(--ease-out-expo);
+}
+
+.qz-progress-text {
+  margin: 0 0 clamp(18px, 3vw, 34px);
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* positions float on the site ground — no card, no border */
+.qz-position {
+  padding: clamp(6px, 1vw, 14px) 0;
+  border: 0;
+  background: none;
+  color: var(--text-primary);
+}
+
+.qz-position-label {
+  margin: 0 0 10px;
+  color: var(--color-evidence);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.qz-position h2 {
+  margin-block: 0 10px;
+  color: var(--text-primary);
+  font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+}
+
+.qz-position h3 { margin-block: 18px 8px; }
+
+.qz-help { color: var(--text-secondary); }
+
+/* floating choice pills */
+.qz-choice-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-block: clamp(20px, 3vw, 30px);
+}
+
+.qz-choice,
+.qz-next,
+.qz-back,
+.qm-form button,
+.qz-method summary {
+  min-height: 44px;
+  font: inherit;
+}
+
+.qz-choice {
+  width: auto;
+  padding: 12px 20px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--text-primary);
+  font-weight: 650;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--duration-instant) var(--ease-out-expo),
+              border-color var(--duration-fast) ease, background var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+.qz-choice:hover {
+  border-color: var(--color-sage-200);
+  background: var(--color-surface-float);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px -16px rgba(70, 214, 162, 0.55);
+}
+.qz-choice[aria-pressed="true"] {
+  border-color: transparent;
+  background-color: var(--cs-aurora-2);
+  background-image: var(--cs-accent-gradient);
+  background-size: 240% 100%;
+  color: var(--text-on-accent);
+  box-shadow: 0 12px 30px -14px rgba(63, 217, 164, 0.55);
+}
+
+.qz-choice:focus-visible,
+.qz-next:focus-visible,
+.qz-back:focus-visible,
+.qm-form input:focus-visible,
+.qm-form select:focus-visible,
+.qz-position input:focus-visible,
+.qz-position select:focus-visible,
+.qz-card a:focus-visible,
+.qz-result-shell summary:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.qz-actions,
+.qm-actions,
+.qz-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.qz-next,
+.qz-back,
+.qm-form .begin,
+.qz-card-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 11px 24px;
+  border-radius: 999px;
+  font-weight: 750;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--duration-instant) var(--ease-out-expo),
+              background var(--duration-fast) ease, border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease, opacity var(--duration-base) ease;
+}
+
+.qz-next,
+.qm-form .begin,
+.qz-card-actions a:last-child {
+  border: 1px solid transparent;
+  background-color: var(--cs-aurora-2);
+  background-image: var(--cs-accent-gradient);
+  background-size: 240% 100%;
+  color: var(--text-on-accent);
+}
+.qz-next:hover,
+.qm-form .begin:hover,
+.qz-card-actions a:last-child:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px -14px rgba(63, 217, 164, 0.6);
+}
+
+/* Next reveals itself only once the position is answerable (their pattern) */
+.qz-next[data-armed="false"] {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+}
+
+.qz-back,
+.qz-card-actions a:first-child {
+  border: 1px solid var(--color-line-strong);
+  background: transparent;
+  color: var(--text-primary);
+}
+.qz-back:hover {
+  border-color: var(--color-sage-200);
+  background: var(--color-mist-100);
+}
+
+/* slide choreography between positions (classes set by quiz-page.js) */
+@media (prefers-reduced-motion: no-preference) {
+  .qz-position.qz-slide-in-right { animation: qz-in-right 340ms var(--ease-out-expo) both; }
+  .qz-position.qz-slide-in-left { animation: qz-in-left 340ms var(--ease-out-expo) both; }
+  .qz-position.qz-slide-out-left { animation: qz-out-left 260ms ease-in both; }
+  .qz-position.qz-slide-out-right { animation: qz-out-right 260ms ease-in both; }
+}
+@keyframes qz-in-right { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: none; } }
+@keyframes qz-in-left { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: none; } }
+@keyframes qz-out-left { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateX(-56px); } }
+@keyframes qz-out-right { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateX(56px); } }
+
+.qz-error,
+.qm-error {
+  min-height: 1.5em;
+  margin-block: 10px 0;
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+.qz-field-grid,
+.qm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.qz-position label,
+.qm-form label {
+  display: grid;
+  gap: 7px;
+  margin-block: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.qz-position input,
+.qz-position select {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-control, 12px);
+  background: var(--color-surface);
+  color: var(--text-primary);
+  font: inherit;
+}
+.qm-form input,
+.qm-form select {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid rgba(20, 32, 27, 0.24);
+  border-radius: var(--radius-control, 12px);
+  background: #fff;
+  color: var(--cs-ink-on-paper, #14201b);
+  font: inherit;
+}
+
+.qz-position [aria-invalid="true"],
+.qm-form [aria-invalid="true"] {
+  border-color: var(--color-danger);
+  box-shadow: inset 0 0 0 1px var(--color-danger);
+}
+
+.qz-maintenance { align-self: end; }
+
+/* results — dark stage cards */
+.qz-result-shell {
+  width: min(100%, 1080px);
+  margin: clamp(24px, 5vw, 56px) auto 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-primary);
+}
+.qz-result-shell h2 { color: var(--text-primary); }
+
+.qz-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-block: 24px;
+}
+
+.qz-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card, 18px);
+  background: var(--color-surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--duration-fast) var(--ease-out-expo), box-shadow var(--duration-fast) ease;
+}
+.qz-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-float); }
+
+.qz-card--top {
+  border: 2px solid var(--cs-aurora-3);
+  box-shadow: 0 18px 44px -22px rgba(63, 217, 164, 0.45);
+}
+
+.qz-card-status {
+  margin: 0 0 8px;
+  color: var(--color-evidence);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.qz-card-identity { display: grid; gap: 12px; }
+
+.qz-logo-slot {
+  display: flex;
+  width: 100%;
+  min-height: 74px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(20, 32, 27, 0.1);
+  border-radius: 14px;
+  background: #ffffff;
+  color: #14201b;
+  font-weight: 850;
+  text-align: center;
+}
+
+.qz-logo-slot--dark {
+  background: #14201b;
+  color: #fff;
+  border-color: var(--color-line);
+}
+
+.qz-logo-slot img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 52px;
+  object-fit: contain;
+}
+
+.qz-card-name {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  text-wrap: balance;
+}
+
+.qz-card-price {
+  margin: 4px 0 0;
+  color: var(--cs-price-current);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+
+.qz-card-price--unknown {
+  color: var(--color-warning);
+  font-size: 1rem;
+}
+
+.qz-card-term,
+.qz-card-context,
+.qz-card-plan,
+.qz-card-review,
+.qz-card-match {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.qz-card-features {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-secondary);
+}
+
+/* Results v2 grammar (operator 2026-08-27): chips carry matched facts, the
+   compliance prose folds, earned badges stay data-derived. */
+.qz-card-features--chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  padding: 0;
+  list-style: none;
+}
+.qz-card-features--chips li {
+  padding: 5px 11px;
+  border: 1px solid var(--color-sage-200);
+  border-radius: 999px;
+  color: var(--color-evidence);
+  background: var(--color-accent-soft);
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+.qz-card-more {
+  margin: 2px 0 0;
+  border-top: 1px solid var(--color-line-soft);
+  padding-top: 8px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+.qz-card-more summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+.qz-card-more[open] summary { color: var(--text-primary); }
+.qz-card-more p { margin: 8px 0 0; }
+.qz-card-source { font-size: 0.85rem; margin-top: 2px; }
+.qz-chip-earned {
+  display: inline-flex;
+  margin-left: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background-color: var(--cs-aurora-2);
+  background-image: var(--cs-accent-gradient);
+  background-size: 240% 100%;
+  color: var(--text-on-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+/* Focus mode: the pre-paint JS marker removes below-stage chrome before first
+   paint. No-JS readers never get the marker, so the full footer stays visible. */
+html.js body[data-page="quiz-provider-fit"] .cs-prefooter,
+html.js body[data-page="quiz-provider-fit"] .gcs-footer { display: none; }
+
+/* End-of-results email capture stays compact and belongs to the dark quiz
+   surface. It must not read as an unrelated white landing-page slab. */
+.qz-result-shell .inline-capture {
+  padding: clamp(16px, 2vw, 24px);
+  color: var(--color-paper-50, #f2f8f4);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(169, 155, 242, 0.16), transparent 42%),
+    linear-gradient(145deg, rgba(20, 45, 36, 0.98), rgba(9, 24, 19, 0.98));
+  border: 1px solid rgba(63, 217, 164, 0.34);
+  box-shadow: 0 28px 68px -46px rgba(0, 0, 0, 0.82);
+}
+.qz-result-shell .inline-capture h2 {
+  margin-bottom: 4px;
+  color: var(--color-paper-50, #f2f8f4);
+  font-size: 1.15rem;
+}
+.qz-result-shell .inline-capture .gcs-kicker { display: none; }
+.qz-result-shell .inline-capture :is(p, label, .capture-consent-note) {
+  color: rgba(233, 247, 241, 0.78);
+}
+.qz-result-shell .inline-capture p { margin-bottom: 8px; font-size: 0.85rem; }
+.qz-result-shell .inline-capture a { color: #76e6c4; }
+.qz-result-shell .inline-capture input {
+  color: var(--color-paper-50, #f2f8f4);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(233, 247, 241, 0.28);
+}
+.qz-result-shell .inline-capture input::placeholder { color: rgba(233, 247, 241, 0.56); }
+
+/* Beat the paper-mode quiz scope that lands later in the bundle. */
+body[data-page="quiz-provider-fit"] .qz-result-shell .inline-capture {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(169, 155, 242, 0.16), transparent 42%),
+    linear-gradient(145deg, rgba(20, 45, 36, 0.98), rgba(9, 24, 19, 0.98));
+  color: var(--color-paper-50, #f2f8f4);
+}
+
+.qz-card-actions {
+  align-items: stretch;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.qz-card-actions a {
+  flex: 1 1 130px;
+  text-align: center;
+}
+
+.qz-card-actions a:only-child {
+  border: 1px solid var(--color-line-strong);
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.qz-empty {
+  margin-block: 22px;
+  padding: 24px;
+  border: 1px dashed rgba(240, 178, 63, 0.55);
+  border-radius: 14px;
+  background: var(--color-warning-bg);
+  color: var(--text-primary);
+}
+
+.qz-method {
+  margin-block: 24px;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid color-mix(in srgb, var(--cs-aurora-2) 28%, var(--color-line));
+  border-radius: var(--radius-card, 18px);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--cs-aurora-1) 8%, transparent), transparent 46%),
+    var(--color-surface);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-card);
+}
+
+.qz-method summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.qz-compute-status {
+  width: min(280px, calc(100% - 32px));
+  margin: 20px auto 0;
+  padding: 8px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-accent-soft);
+  color: var(--color-evidence);
+  font-weight: 750;
+  text-align: center;
+}
+
+/* Preserve the status row after the compute beat. Collapsing `[hidden]`
+   shifted the already-laid-out result cards and broke the zero-CLS swap. */
+.qz-compute-status[hidden] {
+  display: block !important;
+  visibility: hidden;
+}
+
+.qz-result-shell > p:has([data-explore-providers]) {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.qz-explore { margin-inline: auto; text-decoration: none; }
+
+.qz-noscript {
+  margin: 24px auto 0;
+  padding: clamp(22px, 4vw, 40px);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card, 20px);
+  background: var(--color-surface);
+  color: var(--text-primary);
+}
+
+/* compact matcher stays a paper module on its host pages */
+.qm-form {
+  --text-primary: var(--cs-ink-on-paper, #14201b);
+  --text-secondary: var(--cs-muted-on-paper, #51645c);
+  --color-interactive: #0b6fa8;
+  width: min(100%, 600px);
+  padding: clamp(22px, 4vw, 40px);
+  border: 1px solid color-mix(in srgb, var(--cs-paper-card, #fffdf7) 18%, transparent);
+  border-radius: var(--radius-card, 20px);
+  background: var(--cs-paper-card, #fffdf7);
+  color: var(--cs-ink-on-paper, #14201b);
+  box-shadow: 0 20px 54px -34px rgba(0, 0, 0, 0.5);
+}
+.qm-form label { color: var(--cs-ink-on-paper, #14201b); }
+
+.qm-actions > p {
+  flex: 1 1 230px;
+  margin: 0;
+}
+
+@keyframes qz-result-confirm {
+  from { opacity: 0.92; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .qz-result-shell.is-new {
+    animation: qz-result-confirm 180ms ease-out both;
+  }
+}
+
+/* ADOPTED (design pass 2026-08-27, Phase-2 selection #1): shadcn Skeleton
+   pattern (MIT) for the "matching you with providers" beat. The REAL result
+   cards are already laid out in the grid — their content is merely invisible
+   while .is-computing holds — so the skeleton occupies EXACTLY the loaded
+   content's box and the swap cannot shift layout (zero CLS by construction).
+   Shimmer keyframe lives in 01-primitives; quiz-page.js only applies this
+   state for pointer sessions without reduced motion, and the 00-foundation
+   kills make it a static block everywhere else. */
+.qz-results.is-computing .qz-card > * { visibility: hidden; }
+.qz-results.is-computing .qz-card {
+  background-image: linear-gradient(100deg, transparent 32%, rgba(233, 247, 241, 0.08) 50%, transparent 68%);
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  background-position: 130% 0;
+  animation: cs-skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+/* BUILT IN-HOUSE (design pass 2026-08-27, Phase-2 selection #8): quiz RESULTS
+   entrance — THE sanctioned rare moment (Kowalski: richness belongs on
+   arrival, never on the working path). Cards rise staggered 60ms at 500ms on
+   an easeOutQuart curve (power3.out equivalent); the top-match badge pops 80ms
+   after its card lands; the earned chip fades in last. Opacity/transform only,
+   boxes stay in flow — zero layout shift. Plays once per arrival; reduced
+   motion and keyboard modality render the final state instantly
+   (00-foundation). quiz-page.js drives the classes + per-card index. */
+@media (prefers-reduced-motion: no-preference) {
+  .qz-results.is-entering .qz-card {
+    animation: qz-card-enter 500ms cubic-bezier(0.165, 0.84, 0.44, 1) backwards;
+    animation-delay: calc(var(--qz-enter-index, 0) * 60ms);
+  }
+  .qz-results.is-entering .qz-card--top .qz-card-status {
+    animation: qz-badge-pop 200ms var(--ease-out-expo) backwards;
+    animation-delay: 580ms; /* top card lands at 500ms + 80ms beat */
+  }
+  .qz-results.is-entering .qz-chip-earned {
+    animation: qz-chip-in 240ms ease backwards;
+    animation-delay: 800ms; /* after the last card (120ms + 500ms) and the badge */
+  }
+}
+@keyframes qz-card-enter {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes qz-badge-pop {
+  from { opacity: 0; transform: scale(0.7); }
+  60% { opacity: 1; transform: scale(1.05); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes qz-chip-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 760px) {
+  .qm-shell {
+    width: min(100% - 24px, 1080px);
+    padding-block: 18px 48px;
+  }
+
+  /* The mobile navigation is fixed and therefore leaves normal flow. Reserve
+     its 75px footprint so the private-guide kicker and title never render
+     underneath it. */
+  body[data-page="quiz-provider-fit"] main#main.qz-shell {
+    width: min(100% - 24px, 1080px);
+    min-height: 100dvh;
+    padding-block: 95px calc(48px + var(--consent-clearance, 0px)) !important;
+  }
+
+  .qz-field-grid,
+  .qm-grid,
+  .qz-results {
+    grid-template-columns: 1fr;
+  }
+
+  .qz-choice { flex: 1 1 44%; }
+
+  .qm-form,
+  .qz-noscript {
+    padding: 20px;
+  }
+
+  .qz-actions,
+  .qm-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .qz-actions > *,
+  .qm-actions > * {
+    width: 100%;
+  }
+
+  .qz-actions > span:empty {
+    display: none;
+  }
+
+  .qz-next,
+  .qz-back,
+  .qm-form .begin {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qz-result-shell,
+  .qz-card,
+  .qz-choice,
+  .qz-next,
+  .qz-position,
+  .qz-progress > span {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .qz-next[data-armed="false"] { opacity: 1; transform: none; pointer-events: auto; }
+}

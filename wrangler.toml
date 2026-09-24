@@ -1,0 +1,18 @@
+name = "glp-clinic-scout"
+pages_build_output_dir = "./public"
+compatibility_date = "2026-08-24"
+
+[vars]
+REVIEW_CAPTURE_MODE = "enabled"
+NEWSLETTER_CAPTURE_MODE = "enabled"
+CONTENT_UPGRADE_CAPTURE_MODE = "enabled"
+
+[[d1_databases]]
+binding = "GLP_DB"
+database_name = "glp-clinic-scout-prod"
+database_id = "bcb91d2d-c3f1-4c55-93e3-070587e86d60"
+
+[[d1_databases]]
+binding = "EMAIL_DB"
+database_name = "glp-clinic-scout-prod"
+database_id = "bcb91d2d-c3f1-4c55-93e3-070587e86d60"

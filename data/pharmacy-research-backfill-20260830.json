@@ -1,0 +1,3573 @@
+{
+  "capture_date": "2026-08-30",
+  "entities": [
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Hallandale Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "As a 503A designated pharmacy, adhering to USP 797 standards is fundamental to our operations at Hallandale Pharmacy.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://hallandalerx.com/quality/",
+          "value": "The pharmacy describes itself as a 503A designated pharmacy."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Semaglutide Flex-Dose 2 mL Injectable 2.5 mg/mL",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://hallandalerx.com/product-group/glp-1/",
+          "value": "Semaglutide Flex-Dose 2 mL Injectable 2.5 mg/mL"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "# Tirzepatide Flex-Dose 3 mL\n- Form: Injectable\n- Size: 3 mL\n- Concentration: 10 mg/mL",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://hallandalerx.com/product/tirzepatide-flex-dose-3-ml-injectable-10-mg-ml/",
+          "value": "Tirzepatide Flex-Dose 3 mL Injectable 10 mg/mL"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We collaborate exclusively with FDA-registered API manufacturers, subjecting them to thorough vendor audits conducted by our quality team before sourcing. Additionally, we rigorously verify the Certificate of Analysis (COA) internally",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://hallandalerx.com/quality/",
+          "value": "The pharmacy says it collaborates exclusively with FDA-registered API manufacturers and verifies certificates of analysis internally."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Hallandale Pharmacy",
+      "unknown_no_source_fields": [
+        "Full state-by-state license and shipping footprint",
+        "Categorical absence of any affiliated 503B entity",
+        "State-board disciplinary-action search outside Florida"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Empower Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Empower Pharmacy is licensed nationwide and meets or exceeds the standards set by the industry.",
+          "field": "other_state_licenses",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.empowerpharmacy.com/compound-medication/news/what-is-a-compounding-pharmacy/",
+          "value": "Empower states it is licensed nationwide."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Empower Pharmacy is our 503A compounding pharmacy and Empower Pharma is our 503B outsourcing facility.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.empowerpharmacy.com/compound-medication/news/what-is-a-compounding-pharmacy/",
+          "value": "Empower Pharmacy identifies itself as the 503A compounding pharmacy."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Empower Pharmacy is our 503A compounding pharmacy and Empower Pharma is our 503B outsourcing facility.",
+          "field": "503b_registration",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.empowerpharmacy.com/compound-medication/news/what-is-a-compounding-pharmacy/",
+          "value": "The site identifies Empower Pharma (not Empower Pharmacy) as its 503B outsourcing facility; registration status/number was not stated in the reviewed page."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Semaglutide / Cyanocobalamin Injection\nTirzepatide / Niacinamide Injection",
+          "field": "medications_offered",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.empowerpharmacy.com/glp1-agonists/",
+          "value": "Semaglutide / Cyanocobalamin Injection and Tirzepatide / Niacinamide Injection"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We source all our medications and active pharmaceutical ingredients from FDA-registered suppliers and manufacturers.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.empowerpharmacy.com/",
+          "value": "Empower says it sources medications and active pharmaceutical ingredients from FDA-registered suppliers and manufacturers."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "503b_registration",
+        "medications_offered",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Empower Pharmacy",
+      "unknown_no_source_fields": [
+        "Current FDA 503B registration for any Empower-affiliated facility",
+        "Current state-board disciplinary orders and their dispositions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Red Rock Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "# FL Pharmacy License\n**License Number:** PH  32706",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://redrockhomepharmacy.com/licenses",
+          "value": "The official licenses page publishes pharmacy licenses for multiple states, including Florida license PH 32706."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "As a 503A compounding pharmacy licensed in 49 states, we follow rigorous USP <795>,<797>, and <800> guidelines",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://redrockhomepharmacy.com/quality",
+          "value": "Red Rock identifies itself as a 503A compounding pharmacy licensed in 49 states."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Semaglutide with Vitamin B12\nSemaglutide with Glycine\nTirzepatide with Glycine\nTirzepatide with Vitamin B12",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://redrockhomepharmacy.com/faq",
+          "value": "Semaglutide with Vitamin B12; Semaglutide with Glycine; Tirzepatide with Glycine; Tirzepatide with Vitamin B12"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Our team of experienced pharmacists and technicians uses only high-grade ingredients from FDA-registered suppliers",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://redrockhomepharmacy.com/quality",
+          "value": "Red Rock says it uses high-grade ingredients from FDA-registered suppliers."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "medications_offered",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Red Rock Pharmacy",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Exhaustive state-board disciplinary-action search"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "ReviveRX",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Licensed in 45/50 U.S. states + Puerto Rico, ReviveRX is ready to support your practice wherever your patients are.",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://reviverx.com/old/about",
+          "value": "Licensed in 45/50 U.S. states + Puerto Rico"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "At ReviveRX, we’re committed to giving clinicians confidence in every prescription they send. As a licensed mail-order pharmacy and 503A compounding facility, our focus is simple: personalized compounded medications, timely fulfillment, and a partnership-first approach that supports better patient care.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://reviverx.com/",
+          "value": "503A compounding facility"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We prepare commercially available and custom-compounded medications in USP-compliant clean rooms and ship directly to your patients.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://reviverx.com/",
+          "value": "Ships directly to patients; prescriptions required and no products dispensed without a doctor's prescription"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "all medications require a legal and valid prescription from a properly licensed to be prescribed by a physician or certified licensed health care professional. No drug products items will be dispensed as in-office use or without a doctor’s prescription.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://reviverx.com/",
+          "value": "Valid prescription requirement"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "ReviveRX",
+      "unknown_no_source_fields": [
+        "Current semaglutide compounding relevance",
+        "State-board disciplinary actions outside Texas"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "TX ProMed Pharmacy and Wellness",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "TX ProMed Pharmacy and Wellness",
+      "unknown_no_source_fields": [
+        "Legal-entity suffix",
+        "Former physical location",
+        "Former services",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Strive Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "503A compounding pharmacies like Strive are not directly regulated by the FDA, they are expected to comply with applicable FDA guidance and may be inspected by the FDA if concerns or issues arise.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.strivepharmacy.com/blog/what-is-a-compounding-pharmacy",
+          "value": "Strive is described as a 503A compounding pharmacy"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "# Semaglutide/Glycine/B12\nSemaglutide/Glycine/B12 is an injectable compounded medication",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.strivepharmacy.com/medications/semaglutide-glycine-b12",
+          "value": "Semaglutide/Glycine/B12 (injection)"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "# Tirzepatide/Glycine/B12\nTirzepatide/Glycine/B12 is an injectable compounded medication",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.strivepharmacy.com/medications/tirzepatide-glycine-b12",
+          "value": "Tirzepatide/Glycine/B12 (injection)"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Yes, all of our compounded medications require a prescription from a licensed provider.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.strivepharmacy.com/blog/what-is-a-compounding-pharmacy",
+          "value": "Compounded medications require a prescription from a licensed provider"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Strive Pharmacy",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Complete state-license footprint",
+        "Texas agreed-board-order terms"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "South Lake Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "As a pharmacy that offers specialty, compounding, and retail services we have access to the most specialized medications and the ability to customize medications to meet all of your needs.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://slcompounding.com/about/",
+          "value": "The pharmacy describes specialty, compounding, and retail services and customization of medications."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "South Lake Pharmacy",
+      "unknown_no_source_fields": [
+        "Explicit 503A pathway",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Any non-Florida licenses"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Rx Compound Store",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "RxCompoundStore fills prescriptions for weight loss drugs. These prescriptions are compounded in RxCompoundStore’s sterile room on demand.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://rxcompoundstore.com/services/weight-loss/",
+          "value": "Weight-loss prescriptions are compounded in a sterile room on demand."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Rx Compound Store",
+      "unknown_no_source_fields": [
+        "Explicit 503A pathway",
+        "Founded year",
+        "All non-Florida license records"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "AnazaoHealth",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "AnazaoHealth Corporation, Las Vegas, NV",
+          "field": "legal_identity",
+          "primary_source_type": "FDA primary source",
+          "provenance_tag": "REGULATOR-VERIFIED",
+          "source_url": "https://www.fda.gov/drugs/human-drug-compounding/registered-outsourcing-facilities",
+          "value": "AnazaoHealth Corporation"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Both facilities have the appropriate licensure to conduct business in most states, the District of Columbia, and selected U.S. territories.",
+          "field": "other_state_licenses",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.anazaohealth.com/",
+          "value": "The company states that both facilities have licensure in most states, the District of Columbia, and selected U.S. territories."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "a 54,000-square-foot traditional 503A compounding pharmacy in Tampa",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.anazaohealth.com/",
+          "value": "Traditional 503A compounding pharmacy in Tampa."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "AnazaoHealth compounds preparations for Age Management, Weight Management, IV Therapy, Sexual Health, Vitamin Injections, Hormone Replacement, Hair Care Solutions, Aesthetics and more.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy site",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.anazaohealth.com/",
+          "value": "AnazaoHealth compounds preparations for multiple service areas including weight management."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "legal_identity",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "AnazaoHealth",
+      "unknown_no_source_fields": [
+        "Explicit semaglutide relevance",
+        "Explicit tirzepatide relevance",
+        "State-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "REGULATOR_VERIFIED"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Ousia Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Ousia Pharmacy",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "First-party site content",
+        "Former services",
+        "Semaglutide relevance under allowed sources",
+        "Tirzepatide relevance under allowed sources",
+        "Any active state licenses"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Aequita Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Aequita Pharmacy",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "First-party site content",
+        "Exact current license status after agreed order",
+        "Multistate footprint",
+        "Official FDA recall record"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Southend Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Each formulation in the Southend portfolio reflects 503A patient specific compounding",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://southendpharmacystore.com/products/",
+          "value": "Southend states it is a 503A compounding pharmacy and describes its formulations as 503A patient-specific compounding."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "# Semaglutide / Pyridoxine HCl\n1.5 mg / 8 mg per mL (1 mL)",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://southendpharmacystore.com/products/semaglutide-pyridoxine-1-5mg-8mg/",
+          "value": "Semaglutide / Pyridoxine HCl; 1.5 mg / 8 mg per mL (1 mL)"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "# Tirzepatide / Pyridoxine HCl\n6 mg / 2 mg per mL (1 mL)",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://southendpharmacystore.com/products/tirzepatide-pyridoxine-6mg-2mg/",
+          "value": "Tirzepatide / Pyridoxine HCl; 6 mg / 2 mg per mL (1 mL)"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Every temperature-sensitive order ships via UPS Next Day Air in temperature-controlled, insulated packaging with ice bricks",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://southendpharmacystore.com/faq/",
+          "value": "Southend describes next-day cold-chain delivery and UPS Next Day Air temperature-controlled shipping."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Southend Pharmacy",
+      "unknown_no_source_fields": [
+        "Corporate legal name",
+        "Founded year",
+        "Exact multistate license footprint"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Nova Specialty Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Custom Formulations ... White Label Solutions ... Start prescribing with Nova Specialty Pharmacy and give your patients the convenience of mail-order or in-store pickup.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.novaspecialtypharmacy.com/",
+          "value": "Offers custom formulations and white-label solutions; prescription fulfillment includes mail-order or in-store pickup."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Texas: In March 2026 the Pharmacy Quality Assurance Commission charged Echo Health, LLC doing business as Nova Specialty Pharmacy with unlicensed practice and notified the business of its intent to issue a cease-and-desist order. Between January and August 2024, Nova Specialty Pharmacy allegedly shipped drugs to patients in Washington without holding a Washington pharmacy or nonresident pharmacy license.",
+          "field": "regulatory_actions",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official state board/health department source",
+          "provenance_tag": "REGULATOR-VERIFIED",
+          "source_url": "https://doh.wa.gov/newsroom/state-disciplines-health-care-providers-03-26-2026",
+          "value": "Washington State Department of Health reported that Echo Health, LLC d/b/a Nova Specialty Pharmacy was charged with unlicensed practice and notified of intent to issue a cease-and-desist order; the report says it allegedly shipped drugs to Washington patients without a Washington pharmacy or nonresident pharmacy license."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "regulatory_actions",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Nova Specialty Pharmacy",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Explicit 503A pathway",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Current lawful service footprint",
+        "Texas order terms"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "REGULATOR_VERIFIED"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Beaker Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Corporation / Company Owner Name | APTEEK RX LLC ... Business (DBA) Name | BEAKER PHARMACY",
+          "field": "legal_identity",
+          "primary_source_type": "official state board source",
+          "provenance_tag": "REGULATOR-VERIFIED",
+          "source_url": "https://lv.pharmacy.ok.gov/osbpinquire/PhrmcyDetail.asp?CountyAndLic=99%2D9012",
+          "value": "APTEEK RX LLC (DBA Beaker Pharmacy)"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "License Number | 99-9012 ... Type of Pharmacy | Non-Resident ... Status | CLOSED",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official state board source",
+          "provenance_tag": "REGULATOR-VERIFIED",
+          "source_url": "https://lv.pharmacy.ok.gov/osbpinquire/PhrmcyDetail.asp?CountyAndLic=99%2D9012",
+          "value": "Oklahoma non-resident pharmacy license 99-9012; status CLOSED."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Credential/License Number : 2449 - 43 ... Professions : Pharmacy (Out-of-State) ... Status : License is current (Active) ... Eligible To Practice : Eligible ... Credential Expiration Date : 2028-05-31",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official state licensing source",
+          "provenance_tag": "REGULATOR-VERIFIED",
+          "source_url": "https://license.wi.gov/s/licenseView?id=0cE3d0000002HpQEAU",
+          "value": "Wisconsin out-of-state pharmacy credential 2449-43; status current (Active), eligible to practice; expiration 2028-05-31."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Our compounding lab allows us to take your doctor’s prescription and create a medication specifically for you.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://beakerpharmacy.com/beakerpharmacy-compounding",
+          "value": "Provides custom medication compounding from a doctor’s prescription."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "legal_identity",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Beaker Pharmacy",
+      "unknown_no_source_fields": [
+        "Explicit 503A pathway",
+        "Founded year",
+        "Semaglutide relevance",
+        "Tirzepatide relevance"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "REGULATOR_VERIFIED"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Shields Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Precision Compounding ... We Ship Direct to Patient or Clinic",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://shieldspharmacy.com/",
+          "value": "Provides precision compounding and ships medications directly to patients or clinics."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Shields Pharmacy",
+      "unknown_no_source_fields": [
+        "Explicit 503A pathway",
+        "Founded year",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Complete state-license footprint",
+        "Public-complaint details"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Tailor Made Compounding",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Licensed in 46 states",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://tailormadecompounding.com/",
+          "value": "Licensed in 46 states"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "503A Compounding Pharmacy",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://tailormadecompounding.com/",
+          "value": "503A compounding pharmacy"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "other_state_licenses"
+      ],
+      "source_entity_name": "Tailor Made Compounding",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Tirzepatide relevance",
+        "State-board disciplinary orders",
+        "Categorical current 503B absence"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Wells Pharmacy Network",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "operating a 20,500 SF 503A pharmacy",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://wellsrx.com/",
+          "value": "20,500 SF 503A pharmacy"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "a 20,000 SF FDA Registered 503B Outsourcing Facility that dispenses bulk medication for physician office use",
+          "field": "503b_registration",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://wellsrx.com/",
+          "value": "20,000 SF FDA Registered 503B Outsourcing Facility"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Introducing Semaglutide, SL RDT",
+          "field": "medications_offered",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://wellsrx.com/compounded-medications/weight-management/",
+          "value": "Semaglutide, SL RDT"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "FDA Registered 503B Outsourcing Facility that dispenses bulk medication for physician office use",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://wellsrx.com/",
+          "value": "503B facility dispenses bulk medication for physician office use"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "503b_registration",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Wells Pharmacy Network",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Most-recent FDA 503B registration date",
+        "Complete state-license footprint",
+        "State-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Boothwyn Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Boothwyn Pharmacy is a compounding pharmacy operating under the provisions of Section 503A of the Federal Food, Drug, and Cosmetic Act (FD&C Act).",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://boothwyn.com/patient-faq/",
+          "value": "503A pharmacy"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Boothwyn Pharmacy compounds tirzepatide only on a patient-specific prescription basis",
+          "field": "medications_offered",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://boothwyn.com/boothwyn-pharmacy-tirzepatide-what-patients-should-know-about-compounded-glp-1-options/",
+          "value": "Compounded tirzepatide"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Boothwyn Pharmacy compounds tirzepatide only on a patient-specific prescription basis, and each order is prepared for the individual patient named on the prescription.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://boothwyn.com/boothwyn-pharmacy-tirzepatide-what-patients-should-know-about-compounded-glp-1-options/",
+          "value": "Tirzepatide is compounded only on a patient-specific prescription basis"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-ec41-74d9-a695-96bb1dfe129d.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Boothwyn Pharmacy",
+      "unknown_no_source_fields": [
+        "Complete state-license footprint",
+        "Pennsylvania license number",
+        "Current probation terms/status"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Midtown Express Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Midtown Express Pharmacy",
+      "unknown_no_source_fields": [
+        "Explicit 503A pathway",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Complete state-license footprint",
+        "Current state-by-state shipping eligibility"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Designer Drugs",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We're licensed to ship to all 50 states",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.designerdrugslabs.com/",
+          "value": "All 50 states claimed"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "other_state_licenses"
+      ],
+      "source_entity_name": "Designer Drugs",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Tennessee follow-up action"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Westchester Compounding Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "With the help of your physician, we can compound medications",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.wc-rx.com/weight-loss/",
+          "value": "Compounding with physician involvement"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Westchester Compounding Pharmacy",
+      "unknown_no_source_fields": [
+        "Corporate legal name",
+        "Explicit 503A pathway",
+        "Founded year",
+        "Full street address",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Individual state license numbers/statuses",
+        "State-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Link Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Coverage: We are licensed to serve you in any of the following states: Arizona (AZ), Colorado (CO), Connecticut (CT), District of Columbia (DC), Delaware (DE), Florida (FL), Georgia (GA), Hawaii (HI), Iowa (IA), Idaho (ID), Illinois (IL), Indiana (IN), Kansas (KS), Maine (ME), Minnesota (MN), Missouri (MO), Montana (MT), North Carolina (NC), North Dakota (ND), Nebraska (NE), New Hampshire (NH), New Mexico (NM), New York (NY), Ohio (OH), Oklahoma (OK), Oregon (OR), Pennsylvania (PA), Rhode Island (RI), South Dakota (SD), Texas (TX), Utah (UT), Vermont (VT), Wisconsin (WI), Wyoming (WY).",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.linkrx.org/",
+          "value": "Licensed-to-serve list published for 34 jurisdictions"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Semaglutide",
+          "field": "medications_offered",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.linkrx.org/peptide-resources/",
+          "value": "Semaglutide"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Tirzepatide",
+          "field": "medications_offered",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.linkrx.org/peptide-resources/",
+          "value": "Tirzepatide"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "medications_offered",
+        "other_state_licenses"
+      ],
+      "source_entity_name": "Link Pharmacy",
+      "unknown_no_source_fields": [
+        "Corporate legal name",
+        "Explicit 503A pathway",
+        "Founded year",
+        "State-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Precision Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Precision Pharmacy",
+      "unknown_no_source_fields": [
+        "Legal entity for the Bellmore pharmacy",
+        "Explicit 503A pathway",
+        "Founded year",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "State license numbers/statuses",
+        "State-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Promise Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Licensed 503A semaglutide compounding for weight loss clinics, telehealth platforms, and medical practices.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://promisepharmacy.com/providers/glp1/semaglutide/",
+          "value": "503A compounding"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Semaglutide injectable ... Semaglutide + Pyridoxine (Vitamin B6) ... Semaglutide troches ... Semaglutide + Pyridoxine troches",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://promisepharmacy.com/providers/glp1/semaglutide/",
+          "value": "Semaglutide injectable, semaglutide + pyridoxine, semaglutide troches, semaglutide + pyridoxine troches"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Promise Pharmacy compounds tirzepatide for subcutaneous injection, troches, and sublingual drops",
+          "field": "medications_offered",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://promisepharmacy.com/providers/glp1/tirzepatide/",
+          "value": "Tirzepatide for subcutaneous injection, troches, and sublingual drops"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Third-party potency testing ... Sterility testing (USP 71) ... Endotoxin testing (USP 85) ... Proper cold chain shipping with temperature monitoring",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://promisepharmacy.com/providers/glp1/semaglutide/",
+          "value": "Third-party testing and cold-chain shipping claimed"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Promise Pharmacy",
+      "unknown_no_source_fields": [
+        "Complete 42-state license list",
+        "Individual non-Florida license numbers/statuses",
+        "Current Florida license status text",
+        "Florida discipline/admin-action details",
+        "Florida public-complaint details",
+        "Current sterile-production status after 2022 referral"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "BPI Labs",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Specializing in the development and production of sterile injectables",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://bpi-labs.com/",
+          "value": "Manufactures sterile injectables"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "BPI Labs",
+      "unknown_no_source_fields": [
+        "Current FDA weekly 503B registration row/date",
+        "Complete states served",
+        "Current GLP-1 production status",
+        "FMD-145 letter terms"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "TX Performance Meds Pharmacy & Wellness",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "TX Performance Meds Pharmacy & Wellness",
+      "unknown_no_source_fields": [
+        "Corporate legal name",
+        "Current operational status",
+        "503A pathway",
+        "State license/status",
+        "Services",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Medivant Healthcare",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Medivant holds pharmacy licenses in over 40 U.S. states",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://medivanthealth.com/",
+          "value": "The pharmacy states that it holds licenses in over 40 U.S. states."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Medivant Healthcare distributes compounded drug products to licensed healthcare facilities and practitioners",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://medivanthealth.com/",
+          "value": "Distributes compounded drug products to licensed healthcare facilities and practitioners"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Medivant Healthcare",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Explicit semaglutide relevance",
+        "Explicit tirzepatide relevance",
+        "Current weekly 503B registration dates",
+        "Arizona state-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Foothills Professional Pharmacy",
+      "facts": [],
+      "raw_capture_file": null,
+      "research_status": "PRIMARY_SOURCE_RESEARCH_ATTEMPTED_NO_RETURN",
+      "resolved_categories": [],
+      "source_entity_name": "Foothills Professional Pharmacy",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "All-state license roster",
+        "Arizona board action following referral",
+        "FMD-145 terms"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "HealthWarehouse.com",
+      "facts": [],
+      "raw_capture_file": null,
+      "research_status": "PRIMARY_SOURCE_RESEARCH_ATTEMPTED_NO_RETURN",
+      "resolved_categories": [],
+      "source_entity_name": "HealthWarehouse.com",
+      "unknown_no_source_fields": [
+        "Regulator-verified legal name",
+        "503A pathway",
+        "Compounding services",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Individual state licenses",
+        "State-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Curexa Pharmacy",
+      "facts": [],
+      "raw_capture_file": null,
+      "research_status": "PRIMARY_SOURCE_RESEARCH_ATTEMPTED_NO_RETURN",
+      "resolved_categories": [],
+      "source_entity_name": "Curexa Pharmacy",
+      "unknown_no_source_fields": [
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Current post-warning corrective-action status",
+        "Individual state licenses outside New Jersey",
+        "State-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "The Pharmacy Hub",
+      "facts": [],
+      "raw_capture_file": null,
+      "research_status": "PRIMARY_SOURCE_RESEARCH_ATTEMPTED_NO_RETURN",
+      "resolved_categories": [],
+      "source_entity_name": "The Pharmacy Hub",
+      "unknown_no_source_fields": [
+        "Explicit 503A pathway",
+        "Founded year",
+        "Complete state-license footprint",
+        "Current state-by-state shipping eligibility",
+        "Legal relationship to The Pharmacy Hub 2 LLC"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "PQ Pharmacy",
+      "facts": [],
+      "raw_capture_file": null,
+      "research_status": "PRIMARY_SOURCE_RESEARCH_ATTEMPTED_NO_RETURN",
+      "resolved_categories": [],
+      "source_entity_name": "PQ Pharmacy",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Current FDA 503B registration",
+        "Complete state-license footprint",
+        "Current operational/product status after warning"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "ProRx Pharma",
+      "facts": [],
+      "raw_capture_file": null,
+      "research_status": "PRIMARY_SOURCE_RESEARCH_ATTEMPTED_NO_RETURN",
+      "resolved_categories": [],
+      "source_entity_name": "ProRx Pharma",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Current FDA 503B registration",
+        "Individual state license numbers/statuses",
+        "State-board actions",
+        "Current production status after 2026 warning"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Casa Pharma RX",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "503A Licensed Sterile Compounding Pharmacy | Next-Day Shipping",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://casapharmarx.com/",
+          "value": "503A licensed sterile compounding"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Get high-quality sterile compounded medications for your practice",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://casapharmarx.com/",
+          "value": "Sterile compounded medications for practices"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Casa Pharma RX",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Texas license number/status",
+        "Complete states served",
+        "Texas state-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "MedisourceRx",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "MedisourceRx",
+      "unknown_no_source_fields": [
+        "Corporate legal suffix",
+        "Official site URL",
+        "Founded year",
+        "Current FDA 503B registration",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "State licenses",
+        "Complete services"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "ReShape Rx",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Licensed 503A Sterile Compounding",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.reshapepharmacy.com/",
+          "value": "Licensed 503A sterile compounding"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We source and manufacture using only FDA green-listed raw APIs ... Each formulation undergoes third-party potency, sterility, and endotoxin testing",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "PHARMACY-OWNED PUBLISHED PAGE",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.reshapepharmacy.com/",
+          "value": "FDA green-listed raw APIs and third-party testing claimed"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f624-7726-a303-8c23c7b51ef7.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "ReShape Rx",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Complete states served",
+        "State license numbers/statuses",
+        "State-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Luxe Med Compounding Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We offer a wide variety of services including conventional prescription filling, compounding, medical equipment, medication adherence and much more.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.luxemedpharmacy.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Luxe Med Compounding Pharmacy",
+      "unknown_no_source_fields": [
+        "Explicit 503A pathway",
+        "Founded year",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "States served outside Texas",
+        "Current Texas license status"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Triad Rx",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Triad Rx, Inc. is an independent Community Pharmacy dedicated to meeting all of your local pharmacy needs.",
+          "field": "legal_identity",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.triadrx.us/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Medications are compounded and dispensed to patients only upon receipt of a valid patient-specific prescription.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.triadrx.us/pharmacy-services/compounding"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "legal_identity",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Triad Rx",
+      "unknown_no_source_fields": [
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Exact states licensed",
+        "Current Alabama license status",
+        "Alabama disposition after 2024 referral"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Lake Hills Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Texas-Licensed Pharmacy",
+          "field": "home_state_license",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.lakehillsrx.com/licence"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "An NABP-accredited 503A compounding pharmacy serving prescribers, patients, and senior-care facilities across Texas.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.lakehillsrx.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "**CarniSema**  Semaglutide  Rx · Requires a prescription",
+          "field": "medications_offered",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.lakehillsrx.com/products"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "custom sterile and non-sterile compounding",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.lakehillsrx.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "home_state_license",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Lake Hills Pharmacy",
+      "unknown_no_source_fields": [
+        "Individual multistate license numbers/statuses",
+        "Current Hawaii eligibility",
+        "Texas license number/status",
+        "State-board actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Concierge Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "WE ARE A HOSPICE ONLY SPECIALTY PHARMACY",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://conciergepharmacy.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Concierge Pharmacy",
+      "unknown_no_source_fields": [
+        "Explicit 503A pathway",
+        "Founded year",
+        "Current California license status",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Service states beyond Southern California"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Enovex Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Enovex Pharmacy",
+      "unknown_no_source_fields": [
+        "Official website",
+        "Section 503A status",
+        "Current 503B registration",
+        "Current pharmacy license status",
+        "States served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Comprehensive regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "EasyCare Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "EasyCare Pharmacy",
+      "unknown_no_source_fields": [
+        "Official website",
+        "Section 503A status",
+        "Current 503B registration",
+        "Current pharmacy license status",
+        "States served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Comprehensive regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "SMC Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "SMC Cares offer Free Next Business Day Delivery (*restrictions apply) throughout the Los Angeles area.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "http://mysmcpharmacy.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "SMC Pharmacy",
+      "unknown_no_source_fields": [
+        "Section 503A status",
+        "Current 503B registration",
+        "Current California pharmacy license status",
+        "States served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Comprehensive regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Oakdell Compounding Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Oakdell Compounding Pharmacy",
+      "unknown_no_source_fields": [
+        "Official website",
+        "Section 503A status",
+        "Current 503B registration",
+        "Current pharmacy license status",
+        "States served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Comprehensive regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Healthy Choice Compounding Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Healthy Choice Compounding Pharmacy",
+      "unknown_no_source_fields": [
+        "Official website",
+        "Current 503B registration",
+        "Current New York pharmacy license status",
+        "States served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Later FDA closeout status",
+        "Comprehensive state-board action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "SBH Medical",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "SBH Medical",
+      "unknown_no_source_fields": [
+        "Official website",
+        "Current 503B registration",
+        "Current Ohio pharmacy license status",
+        "States served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Ohio board follow-up disposition",
+        "Comprehensive regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Pro Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Pro Pharmacy",
+      "unknown_no_source_fields": [
+        "Exact entity identity",
+        "Legal name",
+        "Official website",
+        "Location",
+        "Section 503A status",
+        "Current 503B registration",
+        "Current pharmacy license status",
+        "States served",
+        "Services",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Firstcare Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Firstcare Pharmacy",
+      "unknown_no_source_fields": [
+        "Official website",
+        "Section 503A status",
+        "Current 503B registration",
+        "Current California pharmacy license status",
+        "States served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Comprehensive regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Primecare Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Primecare Pharmacy",
+      "unknown_no_source_fields": [
+        "Exact entity identity",
+        "Legal name",
+        "Official website",
+        "Confirmed location",
+        "Section 503A status",
+        "Current 503B registration",
+        "Current pharmacy license status",
+        "States served",
+        "Services",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Braun Pharma Care",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Braun Pharma Care",
+      "unknown_no_source_fields": [
+        "Legal name",
+        "Official website",
+        "Street address",
+        "Section 503A status",
+        "Current 503B registration",
+        "Current pharmacy license status",
+        "States served",
+        "Services",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Comprehensive regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Greenwich RX",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Greenwich is a 503A compounding pharmacy",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://greenwichrx.net/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We Offer High Quality Semaglutide & Tirzepatide",
+          "field": "medications_offered",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://greenwichrx.net/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "filling patient-specific prescriptions",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://greenwichrx.net/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Greenwich RX",
+      "unknown_no_source_fields": [
+        "Current Texas pharmacy license status",
+        "Full state-by-state license and shipping footprint",
+        "Current 503B registration",
+        "Founded year",
+        "Disposition after the California immediate protection order",
+        "Regulatory actions outside California"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Olympia Pharmaceuticals",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Olympia Pharmaceuticals is a 503B FDA-registered outsourcing facility",
+          "field": "503b_registration",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.olympiapharmacy.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "licensed to ship medications for office use nationwide.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.olympiapharmacy.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503b_registration",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Olympia Pharmaceuticals",
+      "unknown_no_source_fields": [
+        "Current corporate legal-name chain",
+        "Full state-by-state license footprint",
+        "Semaglutide product relevance",
+        "Tirzepatide product relevance",
+        "Founded year",
+        "Warning-letter or closeout status",
+        "Comprehensive state-board action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Olympia Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Olympia Pharmacy is a state-of-the-art 503A and 503B facility serving providers and patients nationwide.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.olympiapharmacy.com/about/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Through our FDA-registered 503B outsourcing facility, as well as our 503A pharmacy",
+          "field": "503b_registration",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.olympiapharmacy.com/about/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "providing prescription fulfillment—bringing our 503B medications directly to patients through their healthcare providers.",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.olympiapharmacy.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "503b_registration",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Olympia Pharmacy",
+      "unknown_no_source_fields": [
+        "Current corporate ownership and legal-name continuity",
+        "Current Florida pharmacy license status",
+        "Full state-by-state license and shipping footprint",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Exact legal entity responsible for the 2022 recall",
+        "Later action disposition and comprehensive state-board history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Striker Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Contact Us: Striker Pharmacy LLC",
+          "field": "legal_identity",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://strikerrx.com/contact-us/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Striker Pharmacy is a licensed sterile compounding 503A pharmacy specializing in weight loss and wellness.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://strikerrx.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Customized patient-specific compounds tailored for you!",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://strikerrx.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f740-741a-bfbb-fe06535a6a79.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "legal_identity",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Striker Pharmacy",
+      "unknown_no_source_fields": [
+        "Current state-board license details",
+        "Full states served",
+        "Founded year",
+        "Exact semaglutide relevance",
+        "Exact tirzepatide relevance",
+        "Categorical absence of any affiliated 503B entity",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Belmar Pharmacy / Belmar Pharma Solutions",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Belmar Pharmacy in Golden, Colorado, is licensed in all 50 U.S. states, Puerto Rico, and Washington, D.C.",
+          "fact": "The Golden facility states licensure in all 50 states, Puerto Rico and Washington, D.C.",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy facility page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.belmarpharmasolutions.com/discover/about-belmar/our-facilities/503a-colorado/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Belmar Pharma Solutions consists of six 503A pharmacies and two 503B outsourcing facilities.",
+          "fact": "Organization states it consists of 503B outsourcing facilities, but no registration number was found on inspected page.",
+          "field": "503b_registration",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy FAQ",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.belmarpharmasolutions.com/discover/about-belmar/our-facilities/503a-colorado/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Belmar’s 503A pharmacies ship to all 50 states, Washington, DC, Puerto Rico, and Guam. Belmar’s 503B Outsourcing Facilities ship to 48 states and Washington, DC.",
+          "fact": "Ships 503A medications nationwide and 503B to 48 states and Washington, DC.",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy FAQ",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.belmarpharmasolutions.com/discover/about-belmar/our-facilities/503a-colorado/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503b_registration",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Belmar Pharmacy / Belmar Pharma Solutions",
+      "unknown_no_source_fields": [
+        "Exact legal entities and facility mapping",
+        "FDA-verified current 503B facility row",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Current state-board disciplinary status"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Epiq Scripts",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "What states is Epiq Scripts licensed in? Alaska, Arkansas, Arizona, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Idaho, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Minnesota, Mississippi, Missouri, Montana, Michigan, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Puerto Rico, Rhode Island, South Dakota, South Carolina, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, Wyoming, District of Columbia Washington.",
+          "fact": "Texas appears in Epiq Scripts’ official licensed-state list.",
+          "field": "home_state_license",
+          "primary_source_type": "official pharmacy FAQ",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://epiqscripts.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Our online prescription fulfillment service is available across the US",
+          "fact": "Online prescription fulfillment is available across the US; controlled medication is not offered as an online pharmacy.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://epiqscripts.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "EpiqScripts will not fill or offer to fill controlled medication as an online pharmacy.",
+          "fact": "Does not fill or offer to fill controlled medication online.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy FAQ",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://epiqscripts.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "home_state_license",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Epiq Scripts",
+      "unknown_no_source_fields": [
+        "Section 503A classification",
+        "Categorical absence of an affiliated 503B entity",
+        "Current Texas pharmacy-license status",
+        "Full state-license roster",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "ShineRX",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "ShineRx partners only with licensed 503A and 503B pharmacies that meet rigorous quality and documentation standards.",
+          "fact": "ShineRx says it partners with licensed 503A pharmacies.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official company regulatory page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://shinerx.com/legal-regulatory-overview/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "ShineRx partners only with licensed 503A and 503B pharmacies that meet rigorous quality and documentation standards.",
+          "fact": "ShineRx says it partners with licensed 503B pharmacies; no facility or registration number identified.",
+          "field": "503b_registration",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official company regulatory page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://shinerx.com/legal-regulatory-overview/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "ShineRX only partners with U.S.-based, licensed facilities that provide lot testing, sterility reports, potency assays, and full traceability.",
+          "fact": "Claims U.S.-based licensed facilities provide lot testing, sterility reports, potency assays and traceability.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official company regulatory page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://shinerx.com/legal-regulatory-overview/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "503b_registration",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "ShineRX",
+      "unknown_no_source_fields": [
+        "Whether ShineRX is itself a licensed pharmacy",
+        "Exact legal entity",
+        "Partner-pharmacy roster",
+        "States served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Regulatory actions for unnamed partners"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Cypress Compounding Pharmacy",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Cypress Compounding Pharmacy",
+      "unknown_no_source_fields": [
+        "Legal name",
+        "Section 503A classification",
+        "Current state-board license",
+        "Full states served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Categorical absence of an affiliated 503B entity",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Valiant Compounding Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Valiant Compounding Pharmacy is licensed in the following states to provide care throughout the country. ... Also licensed in the Virgin Islands and Puerto Rico.",
+          "fact": "Official site provides an interactive licensed-state map and says it is also licensed in Virgin Islands and Puerto Rico.",
+          "field": "other_state_licenses",
+          "primary_source_type": "official pharmacy about page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://valiantrx.com/discover/about-valiant/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We are a 503A facility located in Ypsilanti, Michigan. A prescription from a licensed practitioner is required for compounded prescriptions.",
+          "fact": "Explicitly identifies itself as a 503A facility and requires a prescription.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy about page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://valiantrx.com/discover/about-valiant/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "competitive pricing, FedEx shipping, and fast turnaround time.",
+          "fact": "Offers FedEx shipping and fast turnaround.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy about page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://valiantrx.com/discover/about-valiant/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Valiant Compounding Pharmacy",
+      "unknown_no_source_fields": [
+        "Legal name",
+        "Locations",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Categorical absence of an affiliated 503B entity",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Pharmacy Innovations",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Through our nationwide network of compounding pharmacies ... Local pharmacy care with nationwide service and shipping options",
+          "fact": "Operates a nationwide network of compounding pharmacies and offers nationwide service/shipping options.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://pharmacyinnovations.net/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Pharmacy Innovations",
+      "unknown_no_source_fields": [
+        "Complete legal-entity map for network pharmacies",
+        "Current network license roster",
+        "Exact semaglutide relevance",
+        "Exact tirzepatide relevance",
+        "Founded year",
+        "Current warning-letter closeout status",
+        "Network-wide state-board disciplinary actions",
+        "Categorical absence of any affiliated 503B entity"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Optimal Balance Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Optimal Balance Pharmacy 503a Lab",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://obprx.com",
+          "value": "The homepage labels the operation a 503a lab"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "With each order, we provide vital supplies such as syringes, alcohol wipes, needles, and reconstitution kits if needed. Patients also receive complimentary medication administration instructions",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://obprx.com",
+          "value": "Provides delivery, supplies, and medication-administration instructions"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Optimal Balance Pharmacy",
+      "unknown_no_source_fields": [
+        "Legal name",
+        "Current state-board license details",
+        "Locations",
+        "Full states served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Categorical absence of an affiliated 503B entity",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "ExperienceCare Specialty Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Mail Order Services",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.ecspecialtyrx.com",
+          "value": "Mail order, timely refills and delivery"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Clinically Trained Pharmacy Personnel are available 24 hours a day, 7 days a week (including holidays and weekends)",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.ecspecialtyrx.com",
+          "value": "24/7/holiday clinical personnel availability for non-medical emergencies"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "ExperienceCare Specialty Pharmacy",
+      "unknown_no_source_fields": [
+        "Section 503A classification",
+        "Current Texas pharmacy-license status",
+        "Complete states served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Whether CMS Houston address remains operational",
+        "Categorical absence of an affiliated 503B entity",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "DCA Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Licensed in 48 states and growing because of our personal approach to attention & detail.",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://dcapharmacy.com",
+          "value": "Licensed in 48 states"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Custom compounding is the process of combining technical expertise and pure USP and FDA-approved ingredients ... All of our formulations whether sterile or non-sterile are routinely tested in-house and independently by Eagle Analytical Services.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://dcapharmacy.com",
+          "value": "Uses USP and FDA-approved ingredients and tests formulations in-house and independently"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "DCA Pharmacy",
+      "unknown_no_source_fields": [
+        "Current legal name",
+        "Section 503A classification",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Current Form 483 response or disposition",
+        "Categorical absence of an affiliated 503B entity",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "First Call I.V. Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We have access to qualified nursing agencies nationwide, along with fully accredited USP 797 pharmacy services.",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.firstcallpharmacy.net",
+          "value": "Fully accredited USP 797 pharmacy services"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "You’ll get your patients the in-home infusion treatment they need in 24 hours or less.",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.firstcallpharmacy.net",
+          "value": "Treatment in 24 hours or less"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "First Call I.V. Pharmacy",
+      "unknown_no_source_fields": [
+        "Current section 503A classification",
+        "Current Louisiana pharmacy-license status",
+        "Complete states served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Current Form 483 response or disposition",
+        "Categorical absence of an affiliated 503B entity",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "VialsRX",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "AI engine recommends patient-specific formulations in real time to the prescribing doctor",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://vials.ai",
+          "value": "AI insights recommend patient-specific formulations to prescribing doctors"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Licensed and aligned with the highest regulatory standards.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://vials.ai",
+          "value": "Claims licensed and aligned with regulatory standards"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "VialsRX",
+      "unknown_no_source_fields": [
+        "Legal name",
+        "Section 503A classification",
+        "Current Texas pharmacy-license status",
+        "Location",
+        "Full states served",
+        "Exact semaglutide relevance",
+        "Exact tirzepatide relevance",
+        "Founded year",
+        "Categorical absence of an affiliated 503B entity",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "VitalRx Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We provide customized pharmaceutical solutions with a focus on quality, precision, accessibility, and patient satisfaction.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.vitalrx.online",
+          "value": "Customized pharmaceutical solutions focused on quality, precision, accessibility, and patient satisfaction"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Prescription is processed by Pharmacy, and a payment link is sent to you ... Pay and prescription will be delivered to your doorstep",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.vitalrx.online",
+          "value": "Prescription workflow includes pharmacy processing, payment link, and delivery"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "VitalRx Pharmacy",
+      "unknown_no_source_fields": [
+        "Exact legal entity and relationship among similarly named operations",
+        "Section 503A classification",
+        "FDA-verified current 503B row",
+        "Current Texas pharmacy-license status",
+        "Complete locations",
+        "Full states served",
+        "Semaglutide relevance",
+        "Tirzepatide relevance",
+        "Founded year",
+        "Regulatory actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Precision Medicine",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We are licensed in 48 states and maintain a NABP accreditation and a LegitScript certification.",
+          "fact": "Licensed in 48 states (home state not identified)",
+          "field": "home_state_license",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://precisionmeds.com/faq/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We are licensed in 48 states and maintain a NABP accreditation and a LegitScript certification.",
+          "fact": "Licensed in 48 states (home state not identified)",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://precisionmeds.com/faq/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Precision is a 503A sterile and non-sterile compounding & fulfillment pharmacy.",
+          "fact": "503A sterile and non-sterile compounding pharmacy",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://precisionmeds.com/faq/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We seamlessly integrate with your virtual care platform to procure, manufacture, package, and ship sterile and non-sterile medications under your brand to your patients.",
+          "fact": "Procures, manufactures, packages, and ships medications under partner brands",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://precisionmeds.com/faq/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "home_state_license",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Precision Medicine",
+      "unknown_no_source_fields": [
+        "Specific semaglutide offering",
+        "Specific tirzepatide offering",
+        "Founded year",
+        "Current 503B registry status",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Grand Ave Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Compounded medication from our lab to your door for free all over Texas (Out of state shipping may appl)",
+          "fact": "Free delivery throughout Texas; out-of-state shipping may incur fee",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.grandavenuerx.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Grand Ave Pharmacy",
+      "unknown_no_source_fields": [
+        "Legal entity name",
+        "Explicit 503A classification",
+        "Current 503B registry status",
+        "Current Texas license status",
+        "Out-of-state license and shipping roster",
+        "Semaglutide offering",
+        "Tirzepatide offering",
+        "Founded year",
+        "Regulatory actions outside the verified Texas order"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Liferx",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Liferx",
+      "unknown_no_source_fields": [
+        "Exact identity binding between directory entry and LifeRx.md",
+        "Legal pharmacy entity",
+        "Official pharmacy site",
+        "503A classification of the exact pharmacy",
+        "503B status",
+        "Current pharmacy licenses",
+        "States served by the exact pharmacy",
+        "Semaglutide offering by the exact pharmacy",
+        "Tirzepatide offering by the exact pharmacy",
+        "Founded year",
+        "Regulatory actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Kaduceus",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "LegitScript Certified✓ Texas Licensed Pharmacy✓ cGMP Standards",
+          "fact": "Texas licensed pharmacy",
+          "field": "home_state_license",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://mykaduceus.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "My Kaduceus is a compounding pharmacy offering personalized weight loss medications, including semaglutide, tirzepatide, and B12 lipotropic injections.",
+          "fact": "Semaglutide, tirzepatide, B12 lipotropic injections",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://mykaduceus.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "My Kaduceus ships compounded medications to licensed healthcare providers across the continental United States. All orders undergo compliance review to verify state-specific licensure.",
+          "fact": "Ships to licensed healthcare providers across continental US with state-specific licensure review",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://mykaduceus.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "home_state_license",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Kaduceus",
+      "unknown_no_source_fields": [
+        "Legal entity name",
+        "Explicit 503A classification",
+        "Current 503B registry status",
+        "Current Texas pharmacy license record",
+        "Full state-by-state license roster",
+        "Founded year",
+        "Regulatory actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "VLS Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Our local delivery area for VLS Pharmacy is within a 2 mile radius of our Brooklyn location.",
+          "fact": "Complimentary local delivery within 2-mile radius",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://newdrugloft.com/about-vls-pharmacy/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "VLS Pharmacy",
+      "unknown_no_source_fields": [
+        "Legal entity name",
+        "Current New York pharmacy-license status",
+        "Full state-by-state license and shipping footprint",
+        "Current semaglutide offering",
+        "Current tirzepatide offering",
+        "Founded year",
+        "Current 503B registry status",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Drug Crafters",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We provide both sterile and non-sterile patient specific medications to providers, clinics, and patients nationwide.",
+          "fact": "Provides services to providers, clinics, and patients nationwide",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.drugcrafters.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f85b-76cf-8e3a-a4db74656f4b.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Drug Crafters",
+      "unknown_no_source_fields": [
+        "Current Texas pharmacy-license status",
+        "Complete state-by-state license and shipping footprint",
+        "Current semaglutide offering",
+        "Current tirzepatide offering",
+        "Current 503B registry status",
+        "Texas board disposition following FDA referral",
+        "Regulatory actions outside verified FDA records"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "OptioRx",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We’re licensed in most states and can dispense or ship medications to patients nearly anywhere in the country.",
+          "field": "other_state_licenses",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://optiorx.com/locations/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "all facets of 503A and 503B pharmaceutical compounding",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://optiorx.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "OptioRx, through its innovative care model services patients nationally, giving patients the option of receiving prescriptions and patient care face-to-face or at-home delivery.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://optiorx.com/about/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We’re licensed in most states and can dispense or ship medications to patients nearly anywhere in the country.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://optiorx.com/locations/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "OptioRx",
+      "unknown_no_source_fields": [
+        "Network legal entity name",
+        "Facility-level current 503B registry status",
+        "Current semaglutide offering",
+        "Current tirzepatide offering",
+        "Founded year",
+        "Facility-level regulatory actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Walgreens",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We offer basic medication compounding at all neighborhood Walgreens pharmacies. We also offer more complex and even hazardous drug compounding services at select pharmacies.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.walgreens.com/topic/pharmacy/compounding.jsp"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "All Walgreens locations can fill prescriptions that are considered \"simple compounds\" such as those requiring the addition of flavorings, or a combination of two or more liquid dosage forms.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.walgreens.com/topic/pharmacy/compounding.jsp"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Walgreens",
+      "unknown_no_source_fields": [
+        "Legal entity name for the directory record",
+        "Chain-wide 503A compounding classification",
+        "Current 503B registry status",
+        "Store-level license status across all locations",
+        "Nationwide regulator and state-board action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Align Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "503A Compounding Pharmacy",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://alignpharmacy.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We specialize in providing compounded medications for physicians and clinics.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://alignpharmacy.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "All batches are tested for sterility and potency, and test results are provided with each shipment.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://alignpharmacy.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Align Pharmacy",
+      "unknown_no_source_fields": [
+        "Legal entity name",
+        "Current state pharmacy-license standing",
+        "Complete 29-state license list and per-state regulator verification",
+        "Current semaglutide offering",
+        "Current tirzepatide offering",
+        "Founded year",
+        "Current FDA 503B registry status",
+        "Complete regulator-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "AGErite Pharmacy & Wellness Center",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "AGErite Pharmacy & currently provides pharmacy services in the following jurisdictions where the pharmacy is licensed and authorized to dispense:\n\n- Texas\n- New York\n- Colorado\n- Wisconsin\n- Missouri\n- New Jersey\n\nPharmacy services, including prescription fulfillment and shipment, are limited to these states and are conducted in accordance with each state’s applicable laws and regulations.",
+          "field": "other_state_licenses",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://ageritepharmacy.com/about/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Pharmacy services, including prescription fulfillment and shipment, are limited to these states and are conducted in accordance with each state’s applicable laws and regulations.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://ageritepharmacy.com/about/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "AGErite Pharmacy & Wellness Center",
+      "unknown_no_source_fields": [
+        "Legal entity name",
+        "Explicit section 503A status",
+        "Current FDA 503B registry status",
+        "Founded year",
+        "Complete regulator-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Apothecary Pharma",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Apothecary Pharma",
+      "unknown_no_source_fields": [
+        "Current state pharmacy-license standing and full interstate licenses",
+        "Current semaglutide and tirzepatide sale or availability",
+        "Founded year",
+        "Warning-letter closeout status",
+        "State-board actions beyond the bounded sources reviewed"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "PGRrx",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "503b Pharmaceutical Outsourcing Facility",
+          "field": "503b_registration",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://pgr-rx.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Utilizing a widespread network of supply chain, we are able to source active pharmaceutical ingredients (API) and supply both sterile and non-sterile products...",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://pgr-rx.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503b_registration",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "PGRrx",
+      "unknown_no_source_fields": [
+        "Street address and current Pennsylvania pharmacy-license standing",
+        "Full state shipping and license footprint",
+        "Current semaglutide offering",
+        "Current tirzepatide offering",
+        "Founded year",
+        "Current product catalog",
+        "Complete regulator-action history beyond the current FDA registry row"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Absolute Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Licensed for prescription fulfillment nationwide.",
+          "field": "other_state_licenses",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://absoluterx.com/",
+          "value": "Nationwide licensing is claimed, without a state-by-state license list on the reviewed page."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "503A Compounding Pharmacy",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://absoluterx.com/",
+          "value": "The pharmacy identifies itself as a 503A compounding pharmacy and describes compounding as patient-specific."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Semaglutide, Tirzepatide, MIC + B12, customized dosing & combinations",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://absoluterx.com/",
+          "value": "Semaglutide"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "503A patient-specific",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://absoluterx.com/",
+          "value": "Patient-specific compounding and prescription fulfillment are claimed."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "medications_offered",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Absolute Pharmacy",
+      "unknown_no_source_fields": [
+        "Current 503B registry status",
+        "State-board actions outside Florida"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Seven Cells Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "# Compounded Tirzepatide with B3",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.sevencellspharmacy.com/product-page/tirzepatide",
+          "value": "Tirzepatide with B3"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "# Compounded Semaglutide with B12",
+          "field": "medications_offered",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.sevencellspharmacy.com/product-page/semaglutide",
+          "value": "Semaglutide with B12"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "All active pharmaceutical ingredients are sourced exclusively from FDA-registered facilities",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.sevencellspharmacy.com/",
+          "value": "Active pharmaceutical ingredients are claimed to be sourced exclusively from FDA-registered facilities."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Seven Cells Pharmacy",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Complete current state license footprint",
+        "Current 503B status",
+        "State-board actions outside Florida"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Houston Rx",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "With multi-state licensure, reliable overnight delivery",
+          "field": "other_state_licenses",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://houston-rx.com/",
+          "value": "The pharmacy claims multi-state licensure and lists delivery states, but does not provide license numbers."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "A Licensed 503A Sterile Compounding Pharmacy Specializing in Longevity and Wellness Products",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://houston-rx.com/",
+          "value": "Licensed 503A sterile compounding pharmacy; patient-specific medications."
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "As a closed-door facility, we serve healthcare providers and patients across the United States with personalized, high-quality pharmaceutical solutions tailored to individual needs.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://houston-rx.com/",
+          "value": "Closed-door facility serving providers and patients across the United States with patient-specific medications; claims third-party testing and overnight/next-day shipping."
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Houston Rx",
+      "unknown_no_source_fields": [
+        "Legal entity name",
+        "Founded year",
+        "Explicit semaglutide relevance",
+        "Explicit tirzepatide relevance",
+        "Current 503B status",
+        "Regulatory actions outside Oklahoma"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "SmartPharmaRX",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "SmartPharmaRX is currently licensed to operate in 29 states, with additional state licensures actively in progress.",
+          "field": "home_state_license",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://smartpharmarx.com/licensing/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "SmartPharmaRX is currently licensed to operate in 29 states, with additional state licensures actively in progress.",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://smartpharmarx.com/licensing/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Under federal compounding regulations, pharmacies operating under Section 503A of the Federal Food, Drug, And Cosmetic Act generally compound medication only when there is a clinical need for a patient specific preparation that cannot be met by an FDA-approved product.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://smartpharmarx.com/services/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "### Tirzepatide",
+          "field": "medications_offered",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://smartpharmarx.com/services/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "### Semaglutide",
+          "field": "medications_offered",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://smartpharmarx.com/services/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We source active pharmaceutical ingredients (APIs) from verified and trusted suppliers and validate each batch for purity.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://smartpharmarx.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Active ingredients sourced from licensed suppliers and reviewed for purity",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://smartpharmarx.com/services/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "home_state_license",
+        "medications_offered",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "SmartPharmaRX",
+      "unknown_no_source_fields": [
+        "Legal entity name",
+        "Founded year",
+        "Facility address",
+        "Current 503B status",
+        "State-board licensure and disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "US Compounding Factory",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We use the highest-grade ingredients and advanced compounding techniques to ensure medication quality and consistency.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.uscompoundingfactory.com/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "US Compounding Factory",
+      "unknown_no_source_fields": [
+        "Explicit semaglutide relevance",
+        "Explicit tirzepatide relevance",
+        "Complete current state license footprint",
+        "Current 503B status",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Evoluciona Pharma",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Texas State Licensed, FDA-registered APIs",
+          "field": "home_state_license",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://evolucionapharma.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Evoluciona Pharma is a 503A state-licensed sterile compounding pharmacy preparing medications pursuant to patient-specific prescriptions for healthcare providers and clinics.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://evolucionapharma.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Batch-level testing & full traceability",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://evolucionapharma.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Yes, we ship to licensed practices across the United States.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://evolucionapharma.com/faqs/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "home_state_license",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Evoluciona Pharma",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Explicit semaglutide relevance",
+        "Explicit tirzepatide relevance",
+        "Complete current state license footprint",
+        "Current 503B status",
+        "Pharmacy-level Texas license detail and disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "FarmaKeio Pharmacy Network",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "FarmaKeio Custom Compounding is licensed in the following states:",
+          "field": "home_state_license",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.farmakeio.com/compounding-licensed-states/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "FarmaKeio Custom Compounding is licensed in the following states: Alabama Alaska Arizona Arkansas Colorado Connecticut Delaware District of Columbia (D.C.) Florida Georgia Hawaii Idaho Illinois Indiana Iowa Kansas Kentucky Louisiana Maine Maryland Massachusetts Michigan Minnesota Mississippi Missouri Montana Nevada Nebraska New Hampshire New Jersey New Mexico New York North Carolina North Dakota Ohio Oklahoma Oregon Pennsylvania Puerto Rico Rhode Island South Dakota South Carolina Tennessee Texas Utah Vermont Virginia Washington West Virginia Wisconsin Wyoming",
+          "field": "other_state_licenses",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.farmakeio.com/compounding-licensed-states/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "FarmaKeio Outsourcing is an FDA-registered 503B outsourcing facility that manufactures bioidentical hormone pellets in a sterile, controlled environment and delivers directly to eligible medical practices across the United States.",
+          "field": "503b_registration",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.farmakeio.com/503b-outsourcing/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "delivers directly to eligible medical practices across the United States.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.farmakeio.com/503b-outsourcing/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503b_registration",
+        "home_state_license",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "FarmaKeio Pharmacy Network",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Explicit semaglutide relevance",
+        "Explicit tirzepatide relevance",
+        "State-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "CVS Pharmacy",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Plus, we accept most insurance plans, to help you get the care you need from your neighborhood CVS Pharmacy®.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://www.cvs.com/pharmacy"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "CVS Pharmacy",
+      "unknown_no_source_fields": [
+        "Founded year",
+        "Complete state license footprint",
+        "Chain-wide 503A status",
+        "Any CVS 503B facility",
+        "Exhaustive federal and state regulatory-action history"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Trinity Meds",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Your assigned provider will be licensed in your state of residence.",
+          "field": "home_state_license",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://trinitymeds.com/contact"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "prepared by state-regulated 503A compounding pharmacies.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://trinitymeds.com/about"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Compounded Semaglutide",
+          "field": "medications_offered",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://trinitymeds.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Compounded Tirzepatide",
+          "field": "medications_offered",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://trinitymeds.com/"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "If the provider determines that treatment is appropriate, a prescription will be sent to a licensed pharmacy for fulfillment.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "pharmacy-owned page",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://trinitymeds.com/contact"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "home_state_license",
+        "medications_offered",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Trinity Meds",
+      "unknown_no_source_fields": [
+        "Legal entity name",
+        "Founded year",
+        "Corporate address",
+        "Provider licensure by state",
+        "Partner pharmacy licensure by state",
+        "Current 503B status",
+        "Regulatory actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Perfection Rx",
+      "facts": [],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [],
+      "source_entity_name": "Perfection Rx",
+      "unknown_no_source_fields": [
+        "Official website",
+        "Founded year",
+        "Section 503A classification",
+        "Explicit semaglutide relevance",
+        "Explicit tirzepatide relevance",
+        "Complete state license footprint",
+        "Current 503B status",
+        "Actions outside Florida"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "UNKNOWN_NO_SOURCE"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "Boudreaux's New Drug Store",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Using high-quality ingredients from FDA-inspected facilities, we prepare medications in our state-of-the-art compounding lab.",
+          "field": "sourcing_or_dispensing_claims",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://boudreauxsnewdrug.com/about/about-compounding/"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "Boudreaux's New Drug Store",
+      "unknown_no_source_fields": [
+        "Legal entity name",
+        "Section 503A classification",
+        "Explicit semaglutide relevance",
+        "Explicit tirzepatide relevance",
+        "Complete state license footprint",
+        "Current 503B status",
+        "Louisiana license number and disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    },
+    {
+      "capture_date": "2026-08-30",
+      "entity": "QuakerRx",
+      "facts": [
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "Quaker Community Pharmacy — operating as QuakerRx and NewLife Rx — is a state-licensed retail and mail-order dispensing pharmacy headquartered in Easton, Pennsylvania.",
+          "field": "home_state_license",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://quakerrx.com/medical-disclaimer"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "All compounded medications we dispense are prepared by independent, state-licensed 503A compounding pharmacies or FDA-registered 503B outsourcing facilities.",
+          "field": "other_state_licenses",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://quakerrx.com/medical-disclaimer"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "All compounded medications we dispense are prepared by independent, state-licensed 503A compounding pharmacies or FDA-registered 503B outsourcing facilities.",
+          "field": "503a_evidence",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://quakerrx.com/medical-disclaimer"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "All compounded medications we dispense are prepared by independent, state-licensed 503A compounding pharmacies or FDA-registered 503B outsourcing facilities.",
+          "field": "503b_registration",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://quakerrx.com/medical-disclaimer"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "compounded semaglutide and tirzepatide",
+          "field": "medications_offered",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://quakerrx.com/medical-disclaimer"
+        },
+        {
+          "capture_date": "2026-08-30",
+          "exact_quote": "We do not compound, formulate, or manufacture any medications. We dispense medications prepared by independent, FDA-registered 503A and 503B compounding pharmacies.",
+          "field": "sourcing_or_dispensing_claims",
+          "numeric_provenance": "SOURCE-REPORTED",
+          "primary_source_type": "official pharmacy website",
+          "provenance_tag": "SOURCE-REPORTED",
+          "source_url": "https://quakerrx.com/medical-disclaimer"
+        }
+      ],
+      "raw_capture_file": "/home/ubuntu/business/reports/glp-clinic-scout/research-backfill-20260830/firecrawl-raw/01a05479-f94d-732d-a6e9-54c410999018.json",
+      "research_status": "PRIMARY_SOURCE_RESEARCH_COMPLETE",
+      "resolved_categories": [
+        "503a_evidence",
+        "503b_registration",
+        "home_state_license",
+        "medications_offered",
+        "other_state_licenses",
+        "sourcing_or_dispensing_claims"
+      ],
+      "source_entity_name": "QuakerRx",
+      "unknown_no_source_fields": [
+        "Legal incorporation name beyond first-party operating-name statement",
+        "Partner pharmacy identities",
+        "Pennsylvania and other state-board disciplinary actions"
+      ],
+      "unknown_render_action": "OMIT",
+      "verification_status": "PRIMARY_SOURCE_PARTIAL"
+    }
+  ],
+  "policy": {
+    "asserted_fact_provenance": "SOURCE-REPORTED",
+    "numeric_fact_provenance_required": true,
+    "tracking_link_network_requests": 0,
+    "unknown_render_action": "OMIT",
+    "unknown_value": "UNKNOWN_NO_SOURCE"
+  },
+  "schema": "glp.pharmacy-research-backfill.v2"
+}

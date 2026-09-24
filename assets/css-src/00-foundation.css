@@ -1,0 +1,246 @@
+/* ============================================================================
+   CLINIC SCOUT — DESIGN SYSTEM FOUNDATION (ultracode redesign 2026-08-21)
+   Layer 00: fonts, tokens, reset, typography, motion system.
+   Authored by Fable. Source of record: assets/css-src/*.css, concatenated into
+   assets/site.css by artifacts/ultracode/tools/assemble-css.mjs.
+   Direction: artifacts/ultracode/DESIGN-DIRECTION.md — deep observatory canvas,
+   RELIT content layer (light interior surfaces ≥35% of page rhythm), aurora as
+   luminous media, one spectral evidence line, molecule veils.
+   ========================================================================== */
+
+/* ---- fonts (kept: proven self-hosted variable faces) --------------------- */
+/* Filenames corrected 2026-08-21 (renderer:shell): the only font files that
+   exist (and that the shared head preloads) are the -latin-var subsets in
+   assets/fonts/ — the un-suffixed names 404'd and dropped every page to
+   system fallbacks. */
+@font-face {
+  font-family: "Manrope";
+  src: url("/assets/fonts/manrope-latin-var.woff2") format("woff2-variations");
+  font-weight: 200 800;
+  /* Keep constrained mobile paints stable: if the self-hosted face misses the
+     short optional window, retain the metrically close system fallback rather
+     than repainting the page late and resetting LCP. */
+  font-display: optional;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/assets/fonts/source-sans-3-latin-var.woff2") format("woff2-variations");
+  font-weight: 200 900;
+  font-display: optional;
+}
+
+/* ---- tokens --------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+
+  /* canvas + dark surfaces */
+  --color-ink-950: #07100d;            /* observatory canvas */
+  --color-ink-800: #0c1815;
+  --cs-ground: var(--color-ink-950);
+  --cs-ground-raise: #0c1815;
+  --cs-ground-band: #0a1411;
+  --color-surface: #101d18;            /* dark card */
+  --color-surface-float: #15251f;
+
+  /* THE RELIGHT: light surfaces (new) */
+  --cs-paper-warm: #f7f5ee;            /* warm-paper section ground */
+  --cs-paper-card: #fffdf7;            /* card on paper */
+  --cs-sage-mist: #e9f1ea;             /* sage section ground */
+  --cs-blue-mist: #e8eff5;             /* blue-mist section ground */
+  --cs-ink-on-paper: #14201b;          /* primary text on light */
+  --cs-muted-on-paper: #51645c;        /* secondary text on light */
+  --cs-line-on-paper: rgba(20, 32, 27, 0.14);
+  --cs-card-shadow-paper: 0 1px 2px rgba(20, 32, 27, 0.06), 0 12px 32px -18px rgba(20, 32, 27, 0.25);
+
+  /* molecule veils (pastel treatment-card backdrops, per medication) */
+  --cs-veil-semaglutide: linear-gradient(155deg, #d9f4ea 0%, #eafaf3 55%, #f4fbf5 100%);
+  --cs-veil-tirzepatide: linear-gradient(155deg, #e6e2f7 0%, #f1edfb 55%, #f8f5fd 100%);
+  --cs-veil-oral:        linear-gradient(155deg, #f7ecd8 0%, #fbf3e4 55%, #fdf9f0 100%);
+  --cs-veil-brand:       linear-gradient(155deg, #dcebf7 0%, #eaf3fa 55%, #f4f9fd 100%);
+
+  /* type colors */
+  --color-paper-50: #f2f8f4;           /* bright type on dark */
+  --color-paper-100: #d9e8e0;
+  --color-ink-700: #a7bfb5;            /* muted on dark */
+  --text-primary: var(--color-paper-50);
+  --text-secondary: var(--color-ink-700);
+  --text-on-accent: #04120e;
+  --color-ink: var(--color-paper-50);
+  --color-muted: var(--color-ink-700);
+
+  /* hairlines */
+  --color-line: rgba(233, 247, 241, 0.13);
+  --color-line-soft: rgba(233, 247, 241, 0.08);
+  --color-line-strong: rgba(233, 247, 241, 0.24);
+
+  /* brand + status accents */
+  --color-evidence: #3fd9a4;           /* scout mint */
+  --color-interactive: #6fd8ff;        /* evidence cyan / links */
+  --color-focus: #7fe3ff;
+  --color-warning: #f0b23f;  --color-warning-bg: rgba(240, 178, 63, 0.14);
+  --color-danger: #ff8f7a;   --color-danger-bg: rgba(255, 143, 122, 0.13);
+  --color-held: #7d938c;     --color-held-bg: rgba(233, 247, 241, 0.07);
+  --action-primary: #46dcab;
+  --action-primary-hover: #63e8bd;
+  --action-secondary: var(--color-paper-50);
+  --color-accent: var(--color-evidence);
+  --color-accent-soft: rgba(70, 214, 162, 0.14);
+  --color-sage-100: rgba(70, 214, 162, 0.14);
+  --color-sage-200: rgba(70, 214, 162, 0.45);
+  --color-mist-100: rgba(233, 247, 241, 0.06);
+  --color-coral-500: #f0b23f; --color-coral-600: #e6a531; --color-coral-700: #f7c563;
+
+  /* aurora — widened spectral range (mint → cyan → violet), amber reserved for caution */
+  --cs-aurora-1: #0b6f68;
+  --cs-aurora-2: #17a87e;
+  --cs-aurora-3: #3fd9a4;
+  --cs-aurora-4: #6fc6ee;
+  --cs-aurora-5: #a99bf2;
+  --cs-accent-gradient: linear-gradient(104deg, var(--cs-aurora-2) 0%, var(--cs-aurora-3) 38%, var(--cs-aurora-4) 72%, var(--cs-aurora-5) 100%);
+  --cs-accent-gradient-soft: linear-gradient(104deg, rgba(23,168,126,.22), rgba(63,217,164,.20) 38%, rgba(111,198,238,.18) 72%, rgba(169,155,242,.20) 100%);
+  --cs-accent-solid: var(--color-evidence);
+  --cs-spectral-line: linear-gradient(90deg, var(--cs-aurora-1), var(--cs-aurora-3) 40%, var(--cs-aurora-4) 75%, var(--cs-aurora-5));
+
+  /* per-medication coding (kept, aligned to veils) */
+  --cs-drug-semaglutide: #46dcab;
+  --cs-drug-tirzepatide: #b3a4f5;
+  --cs-drug-oral: #f3bd5c;
+  --cs-drug-brand: #7cc9ff;
+  --cs-price-current: #5fe3ab;
+  --cs-price-anchor: #8ba49c;
+  --cs-warn: var(--color-warning); --cs-warn-bg: var(--color-warning-bg);
+  --cs-pill-positive: #5fe3ab; --cs-pill-positive-bg: rgba(95, 227, 171, 0.13);
+  --cs-pill-negative: #ff9a85; --cs-pill-negative-bg: rgba(255, 154, 133, 0.12);
+  --cs-star: #f0b23f;
+  --cs-ring: 0 0 0 1px rgba(70, 214, 162, 0.55), 0 0 24px -6px rgba(70, 214, 162, 0.45);
+  --cs-tile: 60px;
+
+  /* legacy gcs- slots (contract aliases) */
+  --gcs-line: var(--color-line);
+  --gcs-paper: var(--color-surface);
+  --gcs-ink: var(--color-paper-50);
+  --gcs-green: var(--color-evidence);
+  --gcs-amber: var(--color-warning);
+  --gcs-radius: 20px;
+
+  /* typography */
+  --font-display: "Manrope", "Avenir Next", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+
+  /* spacing / containers / radii */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 80px; --space-10: 112px;
+  --space-section: clamp(64px, 8vw, 116px);
+  --container-wide: 1280px;
+  --container-content: 1180px;
+  --container-reading: 720px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --radius-control: 12px;
+  --radius-card: 18px;
+  --radius-panel: 26px;
+  --radius-media: 28px;
+  --radius-pill: 999px;
+
+  /* elevation */
+  --shadow-card: inset 0 0 0 1px var(--color-line-soft), 0 18px 40px -28px rgba(0, 0, 0, 0.55);
+  --shadow-1: var(--shadow-card);
+  --shadow-float: inset 0 0 0 1px var(--color-line), 0 28px 64px -32px rgba(0, 0, 0, 0.65);
+  --shadow-glow: 0 0 42px -12px rgba(70, 214, 162, 0.35);
+
+  /* motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+  --cs-ease-entrance: cubic-bezier(0.22, 0.9, 0.24, 1);
+  --duration-instant: 90ms;
+  --duration-fast: 170ms;
+  --duration-base: 240ms;
+  --duration-slow: 360ms;
+}
+
+/* ---- reset + base --------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: auto; scroll-padding-top: 96px; }
+body {
+  margin: 0;
+  background: var(--cs-ground);
+  color: var(--text-primary);
+  font: 400 clamp(1.0625rem, 1rem + 0.2vw, 1.125rem) / 1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, picture, video, svg { max-width: 100%; height: auto; display: block; }
+button { font: inherit; }
+a { color: var(--color-interactive); text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; border-radius: 4px; }
+
+/* light-section context: children resolve text/lines against paper */
+.cs-on-paper, .cs-band--paper, .cs-band--sage, .cs-band--mist {
+  color: var(--cs-ink-on-paper);
+  --text-primary: var(--cs-ink-on-paper);
+  --text-secondary: var(--cs-muted-on-paper);
+  --color-ink: var(--cs-ink-on-paper);
+  --color-muted: var(--cs-muted-on-paper);
+  --color-line: var(--cs-line-on-paper);
+  --color-line-soft: rgba(20, 32, 27, 0.09);
+  --color-line-strong: rgba(20, 32, 27, 0.24);
+  --color-surface: var(--cs-paper-card);
+  --color-surface-float: #ffffff;
+  --shadow-card: var(--cs-card-shadow-paper);
+  --color-focus: #0e7d5c;
+  --color-interactive: #0b6fa8;
+  --color-mist-100: rgba(20, 32, 27, 0.05);
+}
+.cs-band--paper { background: var(--cs-paper-warm); }
+.cs-band--sage  { background: var(--cs-sage-mist); }
+.cs-band--mist  { background: var(--cs-blue-mist); }
+
+/* ---- typography scale ----------------------------------------------------- */
+h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-primary); text-wrap: balance; margin: 0 0 0.45em; }
+h1 { font-size: clamp(2.6rem, 5vw, 4.6rem); font-weight: 800; letter-spacing: -0.042em; line-height: 1.0; }
+h2 { font-size: clamp(1.9rem, 3vw, 3rem); font-weight: 760; letter-spacing: -0.03em; line-height: 1.06; }
+h3 { font-size: clamp(1.3rem, 1.9vw, 1.7rem); font-weight: 700; letter-spacing: -0.018em; line-height: 1.18; }
+h4 { font-size: clamp(1.08rem, 1.4vw, 1.2rem); font-weight: 680; line-height: 1.3; }
+p { margin: 0 0 1em; max-width: 72ch; }
+.cs-grad-words { background: var(--cs-accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.eyebrow, .cs-eyebrow {
+  font-family: var(--font-display); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-evidence);
+  display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px;
+}
+.cs-on-paper .eyebrow, .cs-band--paper .eyebrow { color: #0e7d5c; }
+
+/* ---- motion system --------------------------------------------------------
+   Static content is the default. State feedback uses the restrained tokens
+   above; the sole content entrance (the two H17 cards) is owned by motion.js. */
+.cs-entrance { animation: none; }
+
+/* Keyboard state changes are immediate. site.js stamps this modality before
+   control handlers run; pointer/wheel input restores the short pointer bands. */
+html[data-input-modality="keyboard"] *,
+html[data-input-modality="keyboard"] *::before,
+html[data-input-modality="keyboard"] *::after {
+  animation: none !important;
+  transition-duration: 0ms !important;
+  transition-delay: 0ms !important;
+}
+
+/* Frequently-updated decision state never interpolates, regardless of input
+   modality. Pointer hover affordances may still use the short feedback token. */
+:is([aria-pressed], [aria-selected], [aria-current], .progress > span) {
+  transition-duration: 0ms !important;
+  transition-delay: 0ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: 0ms !important;
+    transition-delay: 0ms !important;
+  }
+  .cs-aurora-field { display: none; }
+  .cs-aurora-static { display: block; }
+}

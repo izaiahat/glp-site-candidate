@@ -1,0 +1,121 @@
+{
+  "schema": "glp-clinic-scout-original-data-study-v2",
+  "study_id": "public-glp1-program-pricing-disclosure-sample-20260802",
+  "title": "Four-page GLP-1 program pricing disclosure sample",
+  "canonical_url": "https://glpclinicscout.com/research/original-data/public-glp-1-program-pricing-sample/",
+  "publication_state": "HELD_IZAIAH_EDITORIAL_REVIEW",
+  "as_of_utc": "2026-08-02T01:41:56.582193Z",
+  "source_ledger": {
+    "schema": "glp-wave4-firecrawl-source-capture-ledger-v1",
+    "ledger_payload_sha256": "ef4d6c369a4706103c98e59022580fa892d25d66238f3a48bcbddcbb8ad54d2a",
+    "generated_at_utc": "2026-08-02T01:41:56.582193Z"
+  },
+  "methodology": {
+    "collection_started_at": "2026-08-02T01:40:13.532Z",
+    "collection_ended_at": "2026-08-02T01:40:24.543Z",
+    "freshness_max_age_hours": 24,
+    "sample_size": 4,
+    "sampling_frame": "Four named U.S.-facing first-party program pages with ACCEPTED captures in the bounded Wave 4 source ledger; this purposive sample is neither random nor a market census.",
+    "inclusion_rule": "Include an ACCEPTED first-party capture only when its quoted page text explicitly states a numeric recurring program-membership amount or one-time initial-visit amount and explicitly states whether medication is included.",
+    "exclusion_rule": "Exclude rejected captures, product-only drug savings or cash-price pages, regulator policy pages, and pages without both a qualifying program or visit amount and explicit medication-inclusion language. A rejected 404 capture is not a source or row.",
+    "comparison_rule": "Keep recurring memberships separate from one-time initial visits. Report row counts and basis-specific displayed bounds only; do not calculate a combined price statistic across unlike bases.",
+    "limitations": "This small purposive disclosure sample describes captured page text at one time. Plan duration, introductory terms, visits, medication, labs, insurance, eligibility, and later page changes can alter cost. It supports no market-wide, clinical, quality, outcome, eligibility, or treatment inference.",
+    "contains_personal_health_data": false
+  },
+  "sources": [
+    {
+      "source_id": "ro-pricing",
+      "capture_id": "ro-weight-loss-pricing-20260802",
+      "scrape_id": "019fc020-f65c-771b-a062-2308edec20fa",
+      "requested_url": "https://ro.co/weight-loss/pricing/",
+      "first_party_url": "https://ro.co/weight-loss/pricing/",
+      "checked_at": "2026-08-02T01:40:13.532Z",
+      "disposition": "ACCEPTED",
+      "status_code": 200,
+      "exact_quote": "First month for $39\n\nAfter your first month, you’ll be charged $74-149/mo depending on the plan you choose.\n\nThe Ro Body membership costs $39 for the first month and as low as $74/month when you prepay for an annual plan.\n\nPlease note that the cost of GLP-1 medication is not included in the membership cost.",
+      "exact_quote_sha256": "5a5fe716e62ea4e88d16b58f6e0bf9f022b9a95bca09fc172ce7e42f38644022"
+    },
+    {
+      "source_id": "ww-pricing",
+      "capture_id": "weightwatchers-clinic-pricing-20260802",
+      "scrape_id": "019fc020-fe2a-7747-b317-2c15ba8985ff",
+      "requested_url": "https://www.weightwatchers.com/us/clinic/weight-loss-medication",
+      "first_party_url": "https://www.weightwatchers.com/us/weight-loss-medication",
+      "checked_at": "2026-08-02T01:40:15.530Z",
+      "disposition": "ACCEPTED",
+      "status_code": 200,
+      "exact_quote": "$74 $25/first month\n\nThen, $74/month. GLP-1 meds cost not included\n\n$25/month for your first month with a 12-month or 6-month plan. Cost of GLP-1 medications not included.",
+      "exact_quote_sha256": "21647b079c6ec9d811db86d952cf62088a9271395ae8cb65f9449a9cbe7ab251"
+    },
+    {
+      "source_id": "lifemd-pricing",
+      "capture_id": "lifemd-weight-management-20260802",
+      "scrape_id": "019fc021-0b6e-76c8-92bd-9935423835b8",
+      "requested_url": "https://lifemd.com/weight-management/",
+      "first_party_url": "https://lifemd.com/weight-management/",
+      "checked_at": "2026-08-02T01:40:18.926Z",
+      "disposition": "ACCEPTED",
+      "status_code": 200,
+      "exact_quote": "Our program starts as low as $39 for your first month, and just $149 a month thereafter with the flexibility to cancel anytime.\n\nMedication cost is not included and varies based on insurance coverage or self-pay options.",
+      "exact_quote_sha256": "013b98d6db18ca35a78c166548cd83cd37e89ec79e44b61939858581d025e3d1"
+    },
+    {
+      "source_id": "plushcare-pricing",
+      "capture_id": "plushcare-glp1-pricing-20260802",
+      "scrape_id": "019fc021-215f-728c-854a-b1f09ca8c764",
+      "requested_url": "https://plushcare.com/glp-1-prescription/",
+      "first_party_url": "https://plushcare.com/glp-1-prescription",
+      "checked_at": "2026-08-02T01:40:24.543Z",
+      "disposition": "ACCEPTED",
+      "status_code": 200,
+      "exact_quote": "$129\n\nInitial visits are $129.\n\nPlease note that any medication or lab work costs are not included.",
+      "exact_quote_sha256": "245f2f94013a8a529983d06d9d11f8ec6a4750ba50b514d9aadb3e54d5c6d203"
+    }
+  ],
+  "rows": [
+    {
+      "provider_id": "ro",
+      "provider_name": "Ro Body",
+      "price_basis": "recurring_membership",
+      "billing_period": "month",
+      "displayed_amount_min_usd": 74,
+      "displayed_amount_max_usd": 149,
+      "medication_included": false,
+      "source_id": "ro-pricing",
+      "qualifier": "First month for $39\n\nAfter your first month, you’ll be charged $74-149/mo depending on the plan you choose.\n\nThe Ro Body membership costs $39 for the first month and as low as $74/month when you prepay for an annual plan.\n\nPlease note that the cost of GLP-1 medication is not included in the membership cost."
+    },
+    {
+      "provider_id": "weightwatchers",
+      "provider_name": "WeightWatchers Clinic",
+      "price_basis": "recurring_membership",
+      "billing_period": "month",
+      "displayed_amount_min_usd": 74,
+      "displayed_amount_max_usd": 74,
+      "medication_included": false,
+      "source_id": "ww-pricing",
+      "qualifier": "$74 $25/first month\n\nThen, $74/month. GLP-1 meds cost not included\n\n$25/month for your first month with a 12-month or 6-month plan. Cost of GLP-1 medications not included."
+    },
+    {
+      "provider_id": "lifemd",
+      "provider_name": "LifeMD",
+      "price_basis": "recurring_membership",
+      "billing_period": "month",
+      "displayed_amount_min_usd": 149,
+      "displayed_amount_max_usd": 149,
+      "medication_included": false,
+      "source_id": "lifemd-pricing",
+      "qualifier": "Our program starts as low as $39 for your first month, and just $149 a month thereafter with the flexibility to cancel anytime.\n\nMedication cost is not included and varies based on insurance coverage or self-pay options."
+    },
+    {
+      "provider_id": "plushcare",
+      "provider_name": "PlushCare",
+      "price_basis": "one_time_initial_visit",
+      "billing_period": "visit",
+      "displayed_amount_min_usd": 129,
+      "displayed_amount_max_usd": 129,
+      "medication_included": false,
+      "source_id": "plushcare-pricing",
+      "qualifier": "$129\n\nInitial visits are $129.\n\nPlease note that any medication or lab work costs are not included."
+    }
+  ]
+}

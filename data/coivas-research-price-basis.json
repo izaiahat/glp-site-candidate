@@ -1,0 +1,67 @@
+{
+  "schema": "d2w-exact-coivas-research-price-basis-v1",
+  "integration": {
+    "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/D2w/RELEASE-1/CONTINUATION-1/COIVAS/INTEGRATION.json",
+    "sha256": "2862d82812d945907d052bd9d966a816774ce30fd2077cafb342a7528b88ed95"
+  },
+  "program_id": "awin-128761",
+  "field": "research_dynamic_profile",
+  "after": {
+    "calculator": {
+      "checked_as_of": "2026-09-10",
+      "evidence_gap_copy": "Enter the selected medication, actual quarterly checkout charge, and renewal charge manually. Monthly-equivalent promotional prices are not a monthly-billed first charge.",
+      "first_month_base_usd": null,
+      "mode": "manual",
+      "one_time_fee_usd": null,
+      "price_context": "Coivas publishes introductory monthly equivalents with quarterly billing and different prices by medication; do not autofill a monthly-billed plan from these figures.",
+      "recurring_month_base_usd": null,
+      "source_url": "https://www.coivas.com/treatments/weight-loss"
+    },
+    "evidence_bindings": [
+      {
+        "evidence_sha256": "aa51c76f180f4a51dbbaaf036e5f80a4f90d2d65a5106df5a0f4b024aaad9ef8",
+        "evidence_text": "The Challenge covers compounded semaglutide or compounded tirzepatide \u2014 both once-weekly GLP-1 injections prescribed by a licensed clinician based on your health history and goals. Brand-name medications like Ozempic, Wegovy, Mounjaro, and Zepbound are not included.",
+        "fields": [
+          "taxonomy.brand_name_tags",
+          "taxonomy.delivery_form_tags",
+          "taxonomy.molecule_tags",
+          "taxonomy.treatment_type_tags",
+          "verified_as_of"
+        ],
+        "source_url": "https://www.coivas.com/challenge",
+        "verified_as_of": "2026-09-10"
+      },
+      {
+        "evidence_sha256": "98a83addb7291c17f03f587bcb5d55c2a1b83e6713788271c00dbcee70f0ca6d",
+        "evidence_text": "$119/moIntro pricing\n\nFor new GLP-1 users \u00b7 billed $357 for your first 3 monthsSave $30 with quarterly plan\n\nThen renews at $149/mo ($447 every 3 months) unless canceled.",
+        "fields": [
+          "calculator.checked_as_of",
+          "calculator.evidence_gap_copy",
+          "calculator.first_month_base_usd",
+          "calculator.mode",
+          "calculator.one_time_fee_usd",
+          "calculator.price_context",
+          "calculator.recurring_month_base_usd",
+          "calculator.source_url"
+        ],
+        "source_url": "https://www.coivas.com/treatments/weight-loss",
+        "verified_as_of": "2026-09-10"
+      }
+    ],
+    "taxonomy": {
+      "brand_name_tags": [],
+      "delivery_form_tags": [],
+      "molecule_tags": [
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "treatment_type_tags": [
+        "compounded"
+      ]
+    },
+    "verified_as_of": "2026-09-10",
+    "version": 1
+  },
+  "before": null,
+  "before_present": false
+}

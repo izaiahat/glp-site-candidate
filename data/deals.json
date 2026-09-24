@@ -1,0 +1,229 @@
+{
+  "schema": "glp-clinic-scout-manufacturer-offer-evidence-v2",
+  "publication_state": "LINK_DARK_REVIEW_REQUIRED",
+  "ledger": {
+    "schema": "glp-wave4-firecrawl-source-capture-ledger-v1",
+    "generated_at": "2026-08-02T01:41:56.582193Z",
+    "payload_sha256": "ef4d6c369a4706103c98e59022580fa892d25d66238f3a48bcbddcbb8ad54d2a"
+  },
+  "offers": [
+    {
+      "id": "wegovy-commercial-covered-2026",
+      "offer_owner": "Novo Nordisk",
+      "offer_name": "Wegovy commercial-covered savings lane",
+      "product": "Wegovy",
+      "formulation": "not limited by the accepted capture",
+      "doses_mg": [],
+      "coverage_lane": "commercial_covered",
+      "eligibility": {
+        "prescription_required": true,
+        "insurance_requirement": "commercial non-government insurance",
+        "government_program_rule": "not eligible through government insurance",
+        "outside_insurance_required": false,
+        "reimbursement_prohibited": false,
+        "insurance_limit_application_prohibited": false,
+        "new_patient_requirement": null,
+        "fda_approved_use_required": false
+      },
+      "pricing": {
+        "current_terms": [
+          {
+            "label": "Wegovy with commercial insurance",
+            "amount_usd": 25,
+            "unit": "per month, as little as",
+            "valid_from": null,
+            "expires_at": null
+          }
+        ],
+        "transition_terms": [],
+        "post_offer_terms": [],
+        "max_savings_usd_per_month": 100
+      },
+      "fill_limit": null,
+      "expires_at": null,
+      "expiry_display": "No offer end date is stated in the accepted capture; freshness is mandatory.",
+      "checked_at": "2026-08-02T01:41:56.582193Z",
+      "source": {
+        "capture_id": "wegovy-savings-20260802",
+        "scrape_id": "019fc021-2897-712d-9095-6a0244b9d37c",
+        "url": "https://www.novocare.com/patient/medicines/wegovy/savings-offer.html",
+        "exact_quote": "With commercial insurance: pay as little as $25 per month, subject to a max savings of $100/month.\n\nSelf-pay pricing varies by dose. Patients pay $149 for each month of 1.5 mg and 4 mg. 4 mg offer only available until August 31, 2026, then $199 per month for 4 mg.\n\nPatients new to the Wegovy Savings offer or NovoCare Pharmacy pay $199 for each month of 0.25 mg and 0.5 mg. Offer for 2 monthly fills through December 31, 2026, then $349 per month for Wegovy 0.25 mg, 0.5 mg, 1 mg, 1.7 mg, or 2.4 mg and $399 per month for Wegovy HD 7.2 mg.\n\nSavings are available for people using commercial insurance or those who are uninsured/self-paying (not going through insurance) with a valid prescription. Government-insured patients may use this program if they self pay and process outside of their insurance.",
+        "exact_quote_sha256": "51375a466c3176daca317e26bc8e7b0d4597ef9a495cd9ae561f1babd1d7ee96"
+      },
+      "status": "VERIFIED"
+    },
+    {
+      "id": "wegovy-self-pay-dose-pricing-2026",
+      "offer_owner": "Novo Nordisk",
+      "offer_name": "Wegovy 1.5 mg and 4 mg self-pay pricing",
+      "product": "Wegovy",
+      "formulation": "dose form not stated in the accepted capture",
+      "doses_mg": [1.5, 4],
+      "coverage_lane": "self_pay_outside_insurance",
+      "eligibility": {
+        "prescription_required": true,
+        "insurance_requirement": "uninsured or self-paying outside insurance",
+        "government_program_rule": "government-insured patients permitted only outside insurance",
+        "outside_insurance_required": true,
+        "reimbursement_prohibited": false,
+        "insurance_limit_application_prohibited": false,
+        "new_patient_requirement": null,
+        "fda_approved_use_required": false
+      },
+      "pricing": {
+        "current_terms": [
+          {
+            "label": "Wegovy 1.5 mg",
+            "amount_usd": 149,
+            "unit": "per month",
+            "valid_from": null,
+            "expires_at": null
+          },
+          {
+            "label": "Wegovy 4 mg",
+            "amount_usd": 149,
+            "unit": "per month",
+            "valid_from": null,
+            "expires_at": "2026-09-01T00:00:00Z"
+          }
+        ],
+        "transition_terms": [
+          {
+            "label": "Wegovy 4 mg",
+            "amount_usd": 199,
+            "unit": "per month",
+            "valid_from": "2026-09-01T00:00:00Z",
+            "expires_at": null
+          }
+        ],
+        "post_offer_terms": [],
+        "max_savings_usd_per_month": null
+      },
+      "fill_limit": null,
+      "expires_at": null,
+      "expiry_display": "The 4 mg $149 price is available through August 31, 2026; the accepted capture states $199 per month after that date.",
+      "checked_at": "2026-08-02T01:41:56.582193Z",
+      "source": {
+        "capture_id": "wegovy-savings-20260802",
+        "scrape_id": "019fc021-2897-712d-9095-6a0244b9d37c",
+        "url": "https://www.novocare.com/patient/medicines/wegovy/savings-offer.html",
+        "exact_quote": "With commercial insurance: pay as little as $25 per month, subject to a max savings of $100/month.\n\nSelf-pay pricing varies by dose. Patients pay $149 for each month of 1.5 mg and 4 mg. 4 mg offer only available until August 31, 2026, then $199 per month for 4 mg.\n\nPatients new to the Wegovy Savings offer or NovoCare Pharmacy pay $199 for each month of 0.25 mg and 0.5 mg. Offer for 2 monthly fills through December 31, 2026, then $349 per month for Wegovy 0.25 mg, 0.5 mg, 1 mg, 1.7 mg, or 2.4 mg and $399 per month for Wegovy HD 7.2 mg.\n\nSavings are available for people using commercial insurance or those who are uninsured/self-paying (not going through insurance) with a valid prescription. Government-insured patients may use this program if they self pay and process outside of their insurance.",
+        "exact_quote_sha256": "51375a466c3176daca317e26bc8e7b0d4597ef9a495cd9ae561f1babd1d7ee96"
+      },
+      "status": "VERIFIED"
+    },
+    {
+      "id": "wegovy-new-patient-two-fill-2026",
+      "offer_owner": "Novo Nordisk",
+      "offer_name": "Wegovy new-patient 0.25 mg and 0.5 mg two-fill self-pay offer",
+      "product": "Wegovy",
+      "formulation": "dose presentation not stated in the accepted capture",
+      "doses_mg": [0.25, 0.5],
+      "coverage_lane": "self_pay_outside_insurance",
+      "eligibility": {
+        "prescription_required": true,
+        "insurance_requirement": "uninsured or self-paying outside insurance",
+        "government_program_rule": "government-insured patients permitted only outside insurance",
+        "outside_insurance_required": true,
+        "reimbursement_prohibited": false,
+        "insurance_limit_application_prohibited": false,
+        "new_patient_requirement": "new to the Wegovy Savings offer or NovoCare Pharmacy",
+        "fda_approved_use_required": false
+      },
+      "pricing": {
+        "current_terms": [
+          {
+            "label": "Wegovy 0.25 mg or 0.5 mg",
+            "amount_usd": 199,
+            "unit": "per monthly fill",
+            "valid_from": null,
+            "expires_at": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "transition_terms": [],
+        "post_offer_terms": [
+          {
+            "label": "Wegovy 0.25 mg, 0.5 mg, 1 mg, 1.7 mg, or 2.4 mg after the offer",
+            "amount_usd": 349,
+            "unit": "per month",
+            "valid_from": "2027-01-01T00:00:00Z",
+            "expires_at": null
+          },
+          {
+            "label": "Wegovy HD 7.2 mg after the offer",
+            "amount_usd": 399,
+            "unit": "per month",
+            "valid_from": "2027-01-01T00:00:00Z",
+            "expires_at": null
+          }
+        ],
+        "max_savings_usd_per_month": null
+      },
+      "fill_limit": {
+        "count": 2,
+        "period": "monthly fills",
+        "qualifier": "maximum during the offer period"
+      },
+      "expires_at": "2027-01-01T00:00:00Z",
+      "expiry_display": "Two monthly fills through December 31, 2026.",
+      "checked_at": "2026-08-02T01:41:56.582193Z",
+      "source": {
+        "capture_id": "wegovy-savings-20260802",
+        "scrape_id": "019fc021-2897-712d-9095-6a0244b9d37c",
+        "url": "https://www.novocare.com/patient/medicines/wegovy/savings-offer.html",
+        "exact_quote": "With commercial insurance: pay as little as $25 per month, subject to a max savings of $100/month.\n\nSelf-pay pricing varies by dose. Patients pay $149 for each month of 1.5 mg and 4 mg. 4 mg offer only available until August 31, 2026, then $199 per month for 4 mg.\n\nPatients new to the Wegovy Savings offer or NovoCare Pharmacy pay $199 for each month of 0.25 mg and 0.5 mg. Offer for 2 monthly fills through December 31, 2026, then $349 per month for Wegovy 0.25 mg, 0.5 mg, 1 mg, 1.7 mg, or 2.4 mg and $399 per month for Wegovy HD 7.2 mg.\n\nSavings are available for people using commercial insurance or those who are uninsured/self-paying (not going through insurance) with a valid prescription. Government-insured patients may use this program if they self pay and process outside of their insurance.",
+        "exact_quote_sha256": "51375a466c3176daca317e26bc8e7b0d4597ef9a495cd9ae561f1babd1d7ee96"
+      },
+      "status": "VERIFIED"
+    },
+    {
+      "id": "zepbound-commercially-uncovered-single-dose-pen-2026",
+      "offer_owner": "Eli Lilly",
+      "offer_name": "Zepbound commercially uncovered single-dose pen savings lane",
+      "product": "Zepbound",
+      "formulation": "single-dose pen",
+      "doses_mg": [],
+      "coverage_lane": "commercial_not_covered",
+      "eligibility": {
+        "prescription_required": true,
+        "insurance_requirement": "commercial drug insurance that does not cover Zepbound single-dose pen",
+        "government_program_rule": "commercial non-government insurance required",
+        "outside_insurance_required": false,
+        "reimbursement_prohibited": false,
+        "insurance_limit_application_prohibited": false,
+        "new_patient_requirement": null,
+        "fda_approved_use_required": true
+      },
+      "pricing": {
+        "current_terms": [
+          {
+            "label": "Zepbound single-dose pen one-month prescription fill",
+            "amount_usd": 499,
+            "unit": "as low as",
+            "valid_from": null,
+            "expires_at": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "transition_terms": [],
+        "post_offer_terms": [],
+        "max_savings_usd_per_month": null
+      },
+      "fill_limit": {
+        "count": 11,
+        "period": "prescription fills per calendar year",
+        "qualifier": "maximum of up to"
+      },
+      "expires_at": "2027-01-01T00:00:00Z",
+      "expiry_display": "Card expires and savings end on December 31, 2026.",
+      "checked_at": "2026-08-02T01:41:56.582193Z",
+      "source": {
+        "capture_id": "zepbound-savings-20260802",
+        "scrape_id": "019fc021-964c-72fd-9dbb-405c4d7ddc48",
+        "url": "https://zepbound.lilly.com/savings",
+        "exact_quote": "The $299 per month is for the Zepbound KwikPen or vial, not Zepbound single-dose Pen.\n\nFor patients who have been prescribed Zepbound single-dose pen and have commercial drug insurance that does not provide coverage for Zepbound single-dose pen: You must have commercial drug insurance that does not cover Zepbound single-dose pen and a prescription for an approved use consistent with FDA-approved product labeling to pay as low as $499 for your 1-month prescription fill of Zepbound single-dose pen.\n\nRegular price for a 1-month supply of Zepbound single-patient-use KwikPen is $299 for 2.5 mg, $399 for 5 mg, $499 for 7.5 mg, $699 for 10 mg, $699 for 12.5 mg, and $699 for 15 mg.\n\nCard may be used for a maximum of up to 11 prescription fills per calendar year. Card expires and savings end on 12/31/2026.",
+        "exact_quote_sha256": "12999960ffb0ed895f1b5986695e4d5745642e01b8b2edf70ec458bc864f8a2c"
+      },
+      "status": "VERIFIED"
+    }
+  ]
+}

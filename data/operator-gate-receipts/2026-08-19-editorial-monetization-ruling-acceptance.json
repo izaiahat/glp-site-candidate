@@ -1,0 +1,18 @@
+{
+  "schema": "glp.operator_gate_receipt.v1",
+  "kind": "editorial_monetization_ruling_acceptance",
+  "date_utc": "2026-08-20T00:55:00Z",
+  "ruling_spec": "reports/glp-clinic-scout/rebuild/SPEC-EDITORIAL-MONETIZATION-20260819.md",
+  "decision": "ACCEPTED - monetize 6 of 8 pages per spec; 2 pages stay citation-only per spec",
+  "authority_chain": {
+    "operator_delegation_verbatim": "It's your choice in the audit tmw regarding anytime we link a provider we're approved with... I lean toward yes",
+    "operator_delegation_date": "2026-08-18",
+    "accepted_by": "bridge seat (Fable) under the delegated task-61 ruling authority",
+    "session": "e6be5500-01cd-47d8-b774-01bfd006f8f6"
+  },
+  "constraints_preserved": [
+    "citations remain citations - the evidence layer is never converted to monetized links",
+    "FTC disclosure placement per spec on every flipped page",
+    "shedrx/serena-health internal-fallback constraint until B-40; measured stays link-dark"
+  ]
+}

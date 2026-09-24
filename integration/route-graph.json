@@ -1,0 +1,1079 @@
+{
+  "schema": "ws-t.integration-route-graph.v1",
+  "scope": "Static integration preparation for W9 plus W6-r2; not a generated full-site build report or acceptance record.",
+  "route_binding": "The existing scripts/build-staging.mjs paidQuiz writer owns /lp/quiz/ through src/paid-quiz.mjs -> src/paid-landing.mjs -> src/paid-landing/. No new owner, indexable phase3 route or duplicate quiz mount was added.",
+  "graph_role": "Aggregate review graph only. The existing builder is the executable route owner; this file is not imported by the runtime and is preserved outside artifacts/ops, which a full build clears.",
+  "approved_ad_destinations": [
+    "/lp/quiz/"
+  ],
+  "approval_basis": "WS-T-001 brief R5; no ad account changed or inspected.",
+  "nodes": [
+    {
+      "route": "/",
+      "file": "public/index.html",
+      "owner": "scripts/build-staging.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/glp-1-price-index/",
+      "file": "public/glp-1-price-index/index.html",
+      "owner": "scripts/build-staging.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/how-we-make-money/",
+      "file": "public/how-we-make-money/index.html",
+      "owner": "scripts/build-staging.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/how-we-rate/",
+      "file": "public/how-we-rate/index.html",
+      "owner": "scripts/build-staging.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/lp/quiz/",
+      "file": "public/lp/quiz/index.html",
+      "owner": "src/paid-landing.mjs + scripts/build-staging.mjs",
+      "verification": "Source renderer and existing emitted route checked offline; not deployed."
+    },
+    {
+      "route": "/pharmacies/",
+      "file": "public/pharmacies/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/absolute-pharmacy/",
+      "file": "public/pharmacies/absolute-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/aequita/",
+      "file": "public/pharmacies/aequita/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/agerite/",
+      "file": "public/pharmacies/agerite/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/align-pharmacy/",
+      "file": "public/pharmacies/align-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/anazao-health/",
+      "file": "public/pharmacies/anazao-health/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/apothecary-pharma/",
+      "file": "public/pharmacies/apothecary-pharma/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/beaker/",
+      "file": "public/pharmacies/beaker/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/belmar/",
+      "file": "public/pharmacies/belmar/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/boothwyn/",
+      "file": "public/pharmacies/boothwyn/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/boudreaux-s-new-drug-store/",
+      "file": "public/pharmacies/boudreaux-s-new-drug-store/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/bpi-labs/",
+      "file": "public/pharmacies/bpi-labs/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/braun-pharma-care/",
+      "file": "public/pharmacies/braun-pharma-care/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/casa-pharma-rx/",
+      "file": "public/pharmacies/casa-pharma-rx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/concierge-pharmacy/",
+      "file": "public/pharmacies/concierge-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/curexa/",
+      "file": "public/pharmacies/curexa/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/cvs/",
+      "file": "public/pharmacies/cvs/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/cypress-compounding-pharmacy/",
+      "file": "public/pharmacies/cypress-compounding-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/dca-pharmacy/",
+      "file": "public/pharmacies/dca-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/designer-drugs/",
+      "file": "public/pharmacies/designer-drugs/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/drug-crafters/",
+      "file": "public/pharmacies/drug-crafters/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/easycare-pharmacy/",
+      "file": "public/pharmacies/easycare-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/empower/",
+      "file": "public/pharmacies/empower/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/enovex-pharmacy/",
+      "file": "public/pharmacies/enovex-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/epiq-scripts/",
+      "file": "public/pharmacies/epiq-scripts/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/evoluciona-pharma/",
+      "file": "public/pharmacies/evoluciona-pharma/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/experiencecare-specialty-pharmacy/",
+      "file": "public/pharmacies/experiencecare-specialty-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/farmakeio/",
+      "file": "public/pharmacies/farmakeio/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/first-call-pharmacy/",
+      "file": "public/pharmacies/first-call-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/firstcare-pharmacy/",
+      "file": "public/pharmacies/firstcare-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/foothills/",
+      "file": "public/pharmacies/foothills/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/grand-ave-pharmacy/",
+      "file": "public/pharmacies/grand-ave-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/greenwich-rx/",
+      "file": "public/pharmacies/greenwich-rx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/hallandale/",
+      "file": "public/pharmacies/hallandale/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/healthwarehouse/",
+      "file": "public/pharmacies/healthwarehouse/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/healthy-choice-compounding-pharmacy/",
+      "file": "public/pharmacies/healthy-choice-compounding-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/houston-rx/",
+      "file": "public/pharmacies/houston-rx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/kaduceus/",
+      "file": "public/pharmacies/kaduceus/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/lake-hills-pharmacy/",
+      "file": "public/pharmacies/lake-hills-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/liferx/",
+      "file": "public/pharmacies/liferx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/link-pharmacy/",
+      "file": "public/pharmacies/link-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/luxe-med/",
+      "file": "public/pharmacies/luxe-med/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/medisourcerx/",
+      "file": "public/pharmacies/medisourcerx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/medivant-healthcare/",
+      "file": "public/pharmacies/medivant-healthcare/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/midtown-express/",
+      "file": "public/pharmacies/midtown-express/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/nova/",
+      "file": "public/pharmacies/nova/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/oakdell-compounding-pharmacy/",
+      "file": "public/pharmacies/oakdell-compounding-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/olympia-pharmaceuticals/",
+      "file": "public/pharmacies/olympia-pharmaceuticals/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/olympia-pharmacy/",
+      "file": "public/pharmacies/olympia-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/optimal-balance-pharmacy/",
+      "file": "public/pharmacies/optimal-balance-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/optiorx/",
+      "file": "public/pharmacies/optiorx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/ousia/",
+      "file": "public/pharmacies/ousia/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/perfection-rx/",
+      "file": "public/pharmacies/perfection-rx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/pgrrx/",
+      "file": "public/pharmacies/pgrrx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/pharmacy-innovations/",
+      "file": "public/pharmacies/pharmacy-innovations/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/pq-pharmacy/",
+      "file": "public/pharmacies/pq-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/precision-medicine/",
+      "file": "public/pharmacies/precision-medicine/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/precision-pharmacy/",
+      "file": "public/pharmacies/precision-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/primecare-pharmacy/",
+      "file": "public/pharmacies/primecare-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/pro-pharmacy/",
+      "file": "public/pharmacies/pro-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/promise-pharmacy/",
+      "file": "public/pharmacies/promise-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/prorx/",
+      "file": "public/pharmacies/prorx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/quakerrx/",
+      "file": "public/pharmacies/quakerrx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/red-rock/",
+      "file": "public/pharmacies/red-rock/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/reshape-rx/",
+      "file": "public/pharmacies/reshape-rx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/revive-rx/",
+      "file": "public/pharmacies/revive-rx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/rx-compound-store/",
+      "file": "public/pharmacies/rx-compound-store/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/sbh-medical/",
+      "file": "public/pharmacies/sbh-medical/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/seven-cells/",
+      "file": "public/pharmacies/seven-cells/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/shields/",
+      "file": "public/pharmacies/shields/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/shinerx/",
+      "file": "public/pharmacies/shinerx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/smartpharmarx/",
+      "file": "public/pharmacies/smartpharmarx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/smc-pharmacy/",
+      "file": "public/pharmacies/smc-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/south-lake/",
+      "file": "public/pharmacies/south-lake/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/southend/",
+      "file": "public/pharmacies/southend/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/striker-pharmacy/",
+      "file": "public/pharmacies/striker-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/strive/",
+      "file": "public/pharmacies/strive/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/strive/compare-providers/",
+      "file": "public/pharmacies/strive/compare-providers/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/tailor-made/",
+      "file": "public/pharmacies/tailor-made/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/the-pharmacy-hub/",
+      "file": "public/pharmacies/the-pharmacy-hub/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/the-pharmacy-hub/compare-providers/",
+      "file": "public/pharmacies/the-pharmacy-hub/compare-providers/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/triadrx/",
+      "file": "public/pharmacies/triadrx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/trinity-meds/",
+      "file": "public/pharmacies/trinity-meds/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/tx-performance-meds/",
+      "file": "public/pharmacies/tx-performance-meds/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/tx-promed/",
+      "file": "public/pharmacies/tx-promed/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/us-compounding-factory/",
+      "file": "public/pharmacies/us-compounding-factory/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/valiant-compounding-pharmacy/",
+      "file": "public/pharmacies/valiant-compounding-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/vialsrx/",
+      "file": "public/pharmacies/vialsrx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/vitalrx-pharmacy/",
+      "file": "public/pharmacies/vitalrx-pharmacy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/vls/",
+      "file": "public/pharmacies/vls/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/walgreens/",
+      "file": "public/pharmacies/walgreens/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/wells/",
+      "file": "public/pharmacies/wells/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/pharmacies/westchester/",
+      "file": "public/pharmacies/westchester/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/privacy/",
+      "file": "public/privacy/index.html",
+      "owner": "scripts/build-staging.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/privacy/cookies/",
+      "file": "public/privacy/cookies/index.html",
+      "owner": "scripts/build-staging.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/",
+      "file": "public/providers/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/altrx-glp1-us-cps/",
+      "file": "public/providers/altrx-glp1-us-cps/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/awin-128761/",
+      "file": "public/providers/awin-128761/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/biltrx/",
+      "file": "public/providers/biltrx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/bodybuilding-com-glp-1-longevity-review/",
+      "file": "public/providers/bodybuilding-com-glp-1-longevity-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/breeze-meds-review/",
+      "file": "public/providers/breeze-meds-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/care-bare-rx-glp1-review/",
+      "file": "public/providers/care-bare-rx-glp1-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/coreage-rx-glp-1-1632/",
+      "file": "public/providers/coreage-rx-glp-1-1632/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/curex-glp-1/",
+      "file": "public/providers/curex-glp-1/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/drhouse/",
+      "file": "public/providers/drhouse/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/dudemeds-review/",
+      "file": "public/providers/dudemeds-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/eden-xentraffic-offer-3051/",
+      "file": "public/providers/eden-xentraffic-offer-3051/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/enhance-md/",
+      "file": "public/providers/enhance-md/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/enhanced-tirzepatide-funnel-b/",
+      "file": "public/providers/enhanced-tirzepatide-funnel-b/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/found-health/",
+      "file": "public/providers/found-health/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/futurhealth-wegovy-pillform/",
+      "file": "public/providers/futurhealth-wegovy-pillform/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/g-plan/",
+      "file": "public/providers/g-plan/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/gala-health/",
+      "file": "public/providers/gala-health/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/gobymeds/",
+      "file": "public/providers/gobymeds/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/healthrx/",
+      "file": "public/providers/healthrx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/humecare-data-driven-glp-1-weight-loss-system/",
+      "file": "public/providers/humecare-data-driven-glp-1-weight-loss-system/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/joinskinny-semaglutide-glp-1-us/",
+      "file": "public/providers/joinskinny-semaglutide-glp-1-us/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/jrnys-review/",
+      "file": "public/providers/jrnys-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/katalys-1286/",
+      "file": "public/providers/katalys-1286/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/katalys-1304/",
+      "file": "public/providers/katalys-1304/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/katalys-1516/",
+      "file": "public/providers/katalys-1516/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/katalys-647/",
+      "file": "public/providers/katalys-647/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/levelsrx-extra-cpa-home-page/",
+      "file": "public/providers/levelsrx-extra-cpa-home-page/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/live-vital-launch/",
+      "file": "public/providers/live-vital-launch/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/longevity-meds-glp-1-review/",
+      "file": "public/providers/longevity-meds-glp-1-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/lttl-glp-landing-page-2/",
+      "file": "public/providers/lttl-glp-landing-page-2/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/mademed/",
+      "file": "public/providers/mademed/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/measured/",
+      "file": "public/providers/measured/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/medvi-review/",
+      "file": "public/providers/medvi-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/mydrhank/",
+      "file": "public/providers/mydrhank/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/novi-weight-loss-glp-1/",
+      "file": "public/providers/novi-weight-loss-glp-1/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/nu-image-medical-review/",
+      "file": "public/providers/nu-image-medical-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/oak-weight-loss-program/",
+      "file": "public/providers/oak-weight-loss-program/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/orderlymeds/",
+      "file": "public/providers/orderlymeds/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/pallas-health-review/",
+      "file": "public/providers/pallas-health-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/refills/",
+      "file": "public/providers/refills/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/ro-wegovy-glp1-quiz-us-cpl/",
+      "file": "public/providers/ro-wegovy-glp1-quiz-us-cpl/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/rxspan-md-telehealth-program-review/",
+      "file": "public/providers/rxspan-md-telehealth-program-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/serena-health/",
+      "file": "public/providers/serena-health/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/shedrx/",
+      "file": "public/providers/shedrx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/skinnyrx-1-glp-weight-loss-provider-review/",
+      "file": "public/providers/skinnyrx-1-glp-weight-loss-provider-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/snagrx/",
+      "file": "public/providers/snagrx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/strut-health/",
+      "file": "public/providers/strut-health/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/sunlight-glp1/",
+      "file": "public/providers/sunlight-glp1/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/synergy-rx-review/",
+      "file": "public/providers/synergy-rx-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/telos-rx/",
+      "file": "public/providers/telos-rx/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/tmates-xentraffic-offer-3154/",
+      "file": "public/providers/tmates-xentraffic-offer-3154/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/trimi-glp-1/",
+      "file": "public/providers/trimi-glp-1/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/trimrx-xentraffic-offer-3014/",
+      "file": "public/providers/trimrx-xentraffic-offer-3014/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/trt-nation/",
+      "file": "public/providers/trt-nation/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/try-ageless/",
+      "file": "public/providers/try-ageless/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/wellmedr-review/",
+      "file": "public/providers/wellmedr-review/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/wellorithm/",
+      "file": "public/providers/wellorithm/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/yourera-program/",
+      "file": "public/providers/yourera-program/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/providers/yucca-health-xentraffic-offer-3117/",
+      "file": "public/providers/yucca-health-xentraffic-offer-3117/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/quiz/provider-fit/",
+      "file": "public/quiz/provider-fit/index.html",
+      "owner": "src/quiz.mjs + scripts/build-staging.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/terms/",
+      "file": "public/terms/index.html",
+      "owner": "scripts/build-staging.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    },
+    {
+      "route": "/wegovy/",
+      "file": "public/wegovy/index.html",
+      "owner": "src/phase3-page-graph.mjs",
+      "verification": "Inherited prebuilt route exists; full rebuild/WS-V required."
+    }
+  ],
+  "edges": [
+    {
+      "from": "ad-ingress",
+      "to": "/lp/quiz/",
+      "kind": "sole-approved-destination",
+      "implemented_by": "Existing site route; ad activation is outside scope."
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/quiz/provider-fit/",
+      "kind": "primary-quiz-link"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/how-we-make-money/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/providers/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/quiz/provider-fit/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/providers/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/glp-1-price-index/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/how-we-rate/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/how-we-make-money/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/quiz/provider-fit/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/privacy/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/terms/",
+      "kind": "local-navigation"
+    },
+    {
+      "from": "/lp/quiz/",
+      "to": "/privacy/cookies/#do-not-sell-or-share",
+      "kind": "local-navigation"
+    }
+  ],
+  "landing_contract": {
+    "index_policy": "noindex, follow",
+    "quiz_destination": "/quiz/provider-fit/",
+    "quiz_mount": false,
+    "quiz_fragments": false,
+    "headline_variants": [
+      "fit",
+      "cost",
+      "state",
+      "publisher"
+    ],
+    "provider_inventory_total_shown": false,
+    "global_provider_count_source": "Existing build token {{LIVE_PROVIDER_COUNT}} and live registry derivation; no hardcoded total introduced.",
+    "tracking": "Inherited candidate export hold and consent runtime retained; data-lp-event markers remain inert.",
+    "public_state": "All public/ bytes remain the copied baseline. W9 source edits are not reflected in the prebuilt public tree; glp-design must run the complete build."
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "clinic-scout-visual-system-v1",
+  "authority": "Addendum D; Fable final design pass required",
+  "brand_essence": "calm clarity",
+  "visual_tension": "clinical-grade evidence with human warmth",
+  "signature_moment": "quietly premium verdict card floating into an evidence-led comparison rail",
+  "palette": {
+    "ink": "#10233B",
+    "ink_soft": "#42536A",
+    "paper": "#F7F5EF",
+    "surface": "#FFFFFF",
+    "blue_mist": "#DCECF3",
+    "sage": "#D7E9DE",
+    "deep_green": "#0B644D",
+    "cta_coral": "#D94F35",
+    "line": "#CCD7DF",
+    "focus": "#1D64D8"
+  },
+  "typography": {
+    "display": "Manrope, clean geometric sans fallback",
+    "body": "Source Sans 3, clean humanist sans fallback",
+    "fallback": "ui-sans-serif, system-ui, sans-serif",
+    "body_min_px": 17,
+    "body_line_height": 1.65,
+    "display_tracking_em": -0.045
+  },
+  "spacing": {
+    "unit_px": 8,
+    "content_max_px": 1180,
+    "reading_max_ch": 70,
+    "section_block_min_px": 72
+  },
+  "image_contract": {
+    "hero_aspect_ratio": "16:9",
+    "hero_intrinsic": [1600, 900],
+    "formats": ["avif", "webp", "jpeg"],
+    "hero_loading": "eager",
+    "hero_fetchpriority": "high",
+    "below_fold_loading": "lazy",
+    "alt_required": true,
+    "generated_lifestyle_label": "AI-generated brand/lifestyle illustration; not a real patient or testimonial",
+    "prohibited": ["real-patient claim", "testimonial", "before/after", "medical outcome", "fabricated clinician", "scary clinical imagery", "stock-cliche handshake"]
+  },
+  "motion": {
+    "default_easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "critical_content_animated": false,
+    "respects_prefers_reduced_motion": true,
+    "external_motion_library": false
+  },
+  "performance": {
+    "lcp_target_ms": 2500,
+    "cls_target": 0.05,
+    "third_party_font_requests": 0,
+    "third_party_script_requests": 0,
+    "hero_preload": true,
+    "reserved_aspect_ratio": true
+  },
+  "reuse_slots": ["money-page-hero", "quiz-hero", "directory-hero", "editorial-evidence-hero", "wordmark", "favicon", "icon-set", "og-card"],
+  "release": "STAGING_LINK_DARK_FABLE_DESIGN_PASS_REQUIRED"
+}

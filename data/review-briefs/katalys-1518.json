@@ -1,0 +1,66 @@
+{
+  "approved_denominator": {
+    "enumeration_class": "provider_joined_or_approved_exact_id",
+    "included": true,
+    "mixed_semantics_disclosure": "Provider approval and a provider-issued URL do not independently authorize claims, publication, or deployment."
+  },
+  "candidate_id": "glp-approved53-ready6-brand-slug-successor-20260802-r3",
+  "coverage_gate": {
+    "bridge_review_state": "PENDING",
+    "deployment_authority": false,
+    "editorial_approval_state": "READY_EDITORIAL_PRODUCTION_REVIEW",
+    "publication_state": "INDEXABLE_CANDIDATE_PENDING_BRIDGE_NO_DEPLOYMENT",
+    "scaffold_complete": true,
+    "tracking_gate_state": "PASS_PROVIDER_ISSUED_NONCLICK_VERIFIED",
+    "indexable": true,
+    "sitemap_included": true
+  },
+  "cta": {
+    "enabled": true,
+    "link_click_qa_performed": false,
+    "provider_issued_url_present": true,
+    "public_go_surface": false,
+    "tracking_registry_state": "candidate_registry_wired_provider_issued",
+    "candidate_local_transparent_direct": true,
+    "public_affiliate_surface": false
+  },
+  "editorial": {
+    "approved_claims": [],
+    "forbidden_without_evidence": [
+      "medical efficacy claims",
+      "guaranteed outcomes",
+      "unsupported price or savings claims",
+      "unsupported GLP-1 fit",
+      "unsupported provider relationship semantics"
+    ],
+    "sections": {
+      "commercial_terms": "source_cited_with_gaps",
+      "comparison_and_recommendation_basis": "not_scored_evidence_gaps",
+      "geography_and_eligibility": "explicitly_unverified",
+      "identity_and_offer_scope": "source_cited",
+      "pricing_and_cadence": "qualified_volatile_with_gaps",
+      "regulatory_and_claim_review": "fda_cited_conservative_boundary"
+    },
+    "state": "ready6_production_review_indexable_source_cited_candidate",
+    "source_contract_sha256": "093e1e3c6b3d57c62b652a0cea5ecba736455b999b426be27de8491eb589959b",
+    "evidence_bound_claims": [
+      "BreezeMeds merchant statements are explicitly attributed and separated from independent evidence.",
+      "Pricing cadence, inclusions, total-cost, eligibility, and terms gaps remain explicit.",
+      "The clinician/prescription boundary and FDA compounded-drug caution are visible before the sole direct CTA."
+    ]
+  },
+  "exact_identity": {
+    "display_name": "Breeze Meds",
+    "network": "Katalys",
+    "provider_program_id": "1518",
+    "source_refs": [
+      "04-katalys-graphql-inventory.json#offerId=1518;relationship=Approved",
+      "12-sheet-provider-diff-post-apply.json#/all_rows/row=104"
+    ]
+  },
+  "existing_release_alias": null,
+  "program_key": "Katalys:1518",
+  "proposed_review_path": "/reviews/breezemeds/",
+  "registry_id": "katalys-1518",
+  "schema": "approved-program-review-brief-scaffold-v1"
+}

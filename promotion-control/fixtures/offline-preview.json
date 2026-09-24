@@ -1,0 +1,14 @@
+{
+  "deployment": {
+    "deployment_id": "fixture-preview-0001",
+    "preview_url": "https://fixture.glp-clinic-scout.pages.dev",
+    "project": "glp-clinic-scout",
+    "branch": "glp-go1-20260724",
+    "environment": "preview"
+  },
+  "production_baseline_unchanged": true,
+  "responses": {
+    "/": {"status": 200, "headers": {"x-robots-tag": "noindex, nofollow, noarchive, nosnippet"}, "body_utf8": "fixture-home"},
+    "/best/online-glp-1-providers/": {"status": 200, "headers": {"x-robots-tag": "noindex, nofollow, noarchive, nosnippet", "cache-control": "no-store"}, "body_utf8": "fixture-canary"}
+  }
+}

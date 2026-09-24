@@ -1,0 +1,174 @@
+![MadeMed Oral Semaglutide sublingual tablets](https://mademed.com/product-oral-semaglutide.webp)
+
+[![LegitScript Certified](https://mademed.com/legitscript-certified.webp)LegitScript Verified](https://www.legitscript.com/websites/?checker_keywords=mademed.com)
+
+GLP-1 + B6: Daily Sublingual Tablet
+
+# Oral Semaglutide
+
+The same proven GLP-1 medication, now enhanced with B6 in a daily sublingual tablet. No needles required. From $179/mo.
+
+-28.9/5
+
+![MadeMed Oral Semaglutide sublingual tablets](https://mademed.com/product-oral-semaglutide.webp)
+
+All doses, same price:
+
+1mg
+
+$219/mo
+
+2mg
+
+$219/mo
+
+3mg
+
+$219/mo
+
+6mg
+
+$219/mo
+
+One flat price at every dose, no upcharge as you titrate up. [Why?](https://mademed.com/rx/oral-semaglutide/#flat-pricing)
+
+New patients start at 1mg. Your doctor adjusts your dose gradually based on your response.
+
+Quarterly
+6-monthSave $40/mo
+Most Popular
+
+$219/month
+
+60 tablets shipped every 2 months. Your dose only changes when you request it, no automatic increases. Billed $657 every 3 months.
+
+[Get Started - $219/mo](https://mademed.com/rx/oral-semaglutide/questions/?dose=1mg&plan=quarterly)
+
+What's Included:
+
+- 60 sublingual tablets with B6, titrated 1mg → 6mg (2-month supply)
+- Board-certified physician consultation
+- Free discreet shipping
+- 30-day supply
+- Made in US pharmacy
+
+Prescription products require an online consultation with a healthcare provider who will determine if a prescription is appropriate. If not prescribed, you'll receive a full refund minus a $39 doctor visit fee.
+
+Questions? [Call +1 (800) 582-1428](tel:+18005821428)
+
+## How It Works
+
+1
+
+Answer a few questions(5 minutes)
+
+2
+
+Doctor reviews & prescribes(Within 24 hours)
+
+3
+
+Medication ships to your door(Everything included)
+
+4
+
+Take daily tablet & track progress(Under your tongue)
+
+## Frequently Asked Questions
+
+Everything you need to know about Oral Semaglutide treatment
+
+What states is Oral Semaglutide available in?
+
+What is Oral Semaglutide and how is it different from the injectable?
+
+How do I take the oral tablet?
+
+Is the oral version as effective as the injectable?
+
+Why do you charge one flat price across all doses?
+
+How does the dosing titration work?
+
+I'm already taking semaglutide (oral or injectable) from another telehealth or clinic. Can I switch to MadeMed and continue?
+
+How fast can I get my first shipment if I'm switching providers?
+
+Do I have to send my old prescription or medical records?
+
+Will I be charged without warning?
+
+How do I cancel my subscription?
+
+What happens when I pause my subscription?
+
+Do you offer free shipping?
+
+Can I talk to a real person if I have questions?
+
+Do you offer meal plans or exercise programs?
+
+How long does it take to see results?
+
+What are the common side effects?
+
+What happens if I stop taking Oral Semaglutide?
+
+Am I a good candidate for Oral Semaglutide?
+
+Does insurance cover your Oral Semaglutide?
+
+How long will I need to take Oral Semaglutide?
+
+Still have questions?
+
+[Call +1 (800) 582-1428](tel:+18005821428)
+
+[Contact our support team](mailto:support@mademed.com)
+
+## Important Safety Information
+
+Read More
+
+Your health and safety are our top priorities. This medication is not suitable for everyone. It is essential to provide a complete and accurate medical history during your online consultation for our physicians to determine if this treatment is appropriate for you.
+
+Boxed Warning:
+
+In animal studies, semaglutide caused thyroid tumors or thyroid cancer. It is not known if this may occur in people. You should not use this medication if you or any of your family have ever had a type of thyroid cancer called medullary thyroid carcinoma (MTC) or if you have an endocrine system condition called Multiple Endocrine Neoplasia syndrome type 2 (MEN 2). Call your doctor at once if you notice signs of a thyroid tumor, such as a lump or swelling in your neck, trouble swallowing, a hoarse voice, or shortness of breath.
+
+Do NOT take Oral Semaglutide if you:
+
+- Have a personal or family history of MTC or MEN 2.
+- Have a known allergy to semaglutide or any of its ingredients.
+- Have diabetic ketoacidosis.
+
+Before taking this medication, tell your provider about all of your medical conditions, especially if you have or have had:
+
+- A history of pancreatitis.
+- Stomach, intestinal, or kidney problems.
+- A history of diabetic retinopathy (eye problems).
+- You are pregnant, breastfeeding, or plan to become pregnant.
+
+What are the possible side effects?
+
+The most common side effects are generally mild and temporary. They may include:
+
+- Nausea, vomiting, diarrhea, or constipation
+- Stomach pain, bloating, heartburn, or gas
+- Headache, dizziness, or tiredness
+
+* * *
+
+**Disclaimer:** This is a compounded medication that has not been approved by the FDA. It is prepared by a licensed US pharmacy. The information provided here is for educational purposes and is not a substitute for professional medical advice, diagnosis, or treatment.
+
+chat.mademed.com
+
+# chat.mademed.com is blocked
+
+**chat.mademed.com** refused to connect.
+
+ERR\_BLOCKED\_BY\_RESPONSE
+
+**chat.mademed.com** refused to connect.
+
+![](<Base64-Image-Removed>)![](<Base64-Image-Removed>)

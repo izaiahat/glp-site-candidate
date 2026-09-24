@@ -1,0 +1,19 @@
+{
+  "schema": "glp-provider-cta-identity-v2",
+  "metadata_only": true,
+  "baseline_contract_sha256": "6f64b4de008cfd9808f1007d9eb80a64f5eb7b6c7444b5ea2de2eaaff777db55",
+  "programs": {
+    "jrnys-review": {
+      "network": "Affiliati",
+      "provider_offer_id": "42896",
+      "creative_id": "177612",
+      "publisher_id": "15309"
+    },
+    "medvi-review": {
+      "network": "Affiliati",
+      "provider_offer_id": "43194",
+      "creative_id": "178786",
+      "publisher_id": "15309"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "author": {
+    "accountable_legal_entity": "Tilton Group LLC",
+    "authority_basis": "Operator-owned first-party GLP Clinic Scout publication identity",
+    "bio_path": "/authors/clinic-scout-editorial-team/",
+    "clinical_credentials_claimed": false,
+    "credentials": [],
+    "display_name": "Clinic Scout Editorial Team",
+    "expertise": [
+      "primary-source research",
+      "telehealth program comparison",
+      "patient-community coverage"
+    ],
+    "id": "clinic-scout-editorial-team",
+    "identity_verified_as_of": "2026-07-23",
+    "role": "Research and comparison desk",
+    "status": "verified_organization"
+  },
+  "clinical_reviewer": {
+    "reason": "Addendum A no-clinician risk-tiered authority",
+    "required": false,
+    "status": "not_claimed"
+  },
+  "evidence_review": {
+    "display": "Reviewed against cited first-party and primary sources",
+    "never_display": "Medically reviewed by",
+    "status": "required_per_page"
+  },
+  "publication_gate": "RISK_TIER_AND_SOURCE_REVIEW",
+  "schema": "glp-clinic-scout-identity-registry-v2",
+  "schema_person_nodes_enabled": false
+}

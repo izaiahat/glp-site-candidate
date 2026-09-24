@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glp-p1-preview-deploy-authorization-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "authorized", "command", "project", "branch", "candidate_root", "candidate_tree_sha256", "release_manifest_sha256", "expires_at_utc", "consumed"],
+  "properties": {
+    "schema": {"const": "glp-p1-preview-deploy-authorization-v1"},
+    "authorized": {"const": true},
+    "command": {"type": "string", "pattern": "^DEPLOY GLP-P1 PREVIEW [0-9a-f]{64}$"},
+    "project": {"const": "glp-clinic-scout"},
+    "branch": {"const": "glp-go1-20260724"},
+    "candidate_root": {"const": "/home/ubuntu/business/site-system/flagship-v2/staging/glp-consumer-national-wow-p1-promotion-candidate-20260724"},
+    "candidate_tree_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "release_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "expires_at_utc": {"type": "string", "format": "date-time"},
+    "consumed": {"const": false}
+  }
+}

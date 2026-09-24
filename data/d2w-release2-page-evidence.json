@@ -1,0 +1,263 @@
+{
+  "schema": "d2w-release2-page-evidence-v1",
+  "source_release": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-d2w-release1-lineage-20260910T165211Z",
+  "coivas": {
+    "route": "/reviews/coivas/",
+    "score_change": {
+      "from": 7.6,
+      "to": 8.3,
+      "disclosure": "The evidence-backed merit score changed from 7.6 to 8.3 after refreshed Coivas research in release1. Release2 preserves the scoring owner and does not edit score or criteria fields. This is an editorial evidence-completeness score, not clinical efficacy or a patient outcome."
+    },
+    "packet": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/coivas.json",
+      "sha256": "12c749c6c501ee107537c56cc242cab4af79d791f3b4799cad105209c15c6b93",
+      "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/coivas.json",
+      "snapshot_sha256": "0658906ad2966ba32498a6c0c5c7ea73e9c95089dc04a268609141ca27dea0c2",
+      "captured_at": "2026-09-10T09:51:12.189255+00:00",
+      "age_days": 0.11802757516203705
+    }
+  },
+  "bodybuilding": {
+    "route": "/reviews/bodybuilding-com-glp-1-longevity-review/",
+    "pricing_fields": {
+      "research_first_month_price": {
+        "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S29-research-packet-bodybuilding-com-glp-1-longevity-review/authoring/bodybuilding-com-glp-1-longevity-review-c1/captures/bodybuilding-com-glp-1-longevity-review-captures.json",
+        "capture_sha256": "f8e628f2822dae4e3273ffc9d174794a9aa83ce55ae614f242b722bf9ff23ba0",
+        "quote": "Compounded Tirzepatide\n\n117 reviews\n\nPOPULAR\n\nBundle Options:\n\n1 Month\n$209/mo\n3 MonthsPopular\n$179/moSAVE $90\n6 Months\n$174.67/moSAVE $206\n12 MonthsBest Value\n$187.33/moSAVE $260\n\n![Compounded Tirzepatide](https://bbhealthplus.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcompound-tirzepatide.06419473.png&w=1080&q=75&dpl=dpl_8TDNUBJ3S8xKvagjTDqFBpRpBanh)\n\n- Enhanced metabolic optimization\n- Appetite and portion control support\n- Long-term, results-driven care\n\n[I'm ready to get started!](https://start.bbhealthplus.com/?productId=compounded-tirzepatide)\n\nCompounded Semaglutide\n\n146 reviews\n\nBundle Options:\n\n1 Month\n$179/mo\n3 MonthsPopular\n$159.33/moSAVE $59\n6 Months\n$158/moSAVE $126\n12 MonthsBest Value\n$141.50/moSAVE $450",
+        "source_url": "https://bbhealthplus.com/",
+        "value": "UNKNOWN exact first checkout charge or all-in first-month cost. Reported 1-month bundle rates are compounded tirzepatide $209/mo and compounded semaglutide $179/mo. The 3-, 6- and 12-month bundle figures are advertised monthly equivalents, not established first-charge amounts. Multi-month commitment length is displayed, but the captured public pages do not establish when the bundle total is charged, whether prepayment is required, or the renewal billing schedule. Do not infer checkout charges by multiplying rounded monthly equivalents.",
+        "verified_as_of": "2026-09-10"
+      }
+    },
+    "rule": "Only attested pricing-field dates are refreshed; unrelated historical capture dates remain historical."
+  },
+  "rebase_decisions": [
+    {
+      "id": "a2d5314bc0c5ac36ff37",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/12/page_copy/bottom_line",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": "Bundle pricing declines with longer commitments. Compare total commitment cost and cancellation terms, not only the lowest displayed monthly figure.",
+      "release1_value": "Bundle pricing changes with commitment length and does not always fall with a longer term. Compare total commitment cost and cancellation terms, not only the lowest displayed monthly figure.",
+      "proposed_value": "Reported bundle-specific monthly equivalents for 1/3/6/12 months: compounded tirzepatide $209/$179/$174.67/$187.33 per month; compounded semaglutide $179/$159.33/$158/$141.50 per month. These are displayed rates for different bundle lengths, not one recurring monthly-billed offer. Exact recurring cash charge, prepayment timing, renewal price and all-in fees are UNKNOWN. Preserve the displayed tirzepatide 12-month rate even though it exceeds the displayed 6-month rate; do not replace it with a guessed discount.",
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "disposition": "REBASED_STRONGER_PACKET_LIMITATIONS",
+      "reason": "Packet preserves all release1 corrected bundle rates and nonmonotonic terms while clarifying unknown checkout/prepayment and consultation amounts."
+    },
+    {
+      "id": "295812138474d59cf9cd",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/12/page_copy/pricing",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": "Published bundle pricing varies by commitment: tirzepatide $209, $179, $169, or $159; semaglutide $179, $159, $149, or $139.",
+      "release1_value": "Published bundle pricing varies by commitment length: compounded tirzepatide is reported at $209 for 1 month, with $179, $174.67 and $187.33 per month on the longer bundles; compounded semaglutide at $179 for 1 month, with $159.33, $158 and $141.50 per month on the longer bundles.",
+      "proposed_value": "UNKNOWN exact first checkout charge or all-in first-month cost. Reported 1-month bundle rates are compounded tirzepatide $209/mo and compounded semaglutide $179/mo. The 3-, 6- and 12-month bundle figures are advertised monthly equivalents, not established first-charge amounts. Multi-month commitment length is displayed, but the captured public pages do not establish when the bundle total is charged, whether prepayment is required, or the renewal billing schedule. Do not infer checkout charges by multiplying rounded monthly equivalents.\n\nReported bundle-specific monthly equivalents for 1/3/6/12 months: compounded tirzepatide $209/$179/$174.67/$187.33 per month; compounded semaglutide $179/$159.33/$158/$141.50 per month. These are displayed rates for different bundle lengths, not one recurring monthly-billed offer. Exact recurring cash charge, prepayment timing, renewal price and all-in fees are UNKNOWN. Preserve the displayed tirzepatide 12-month rate even though it exceeds the displayed 6-month rate; do not replace it with a guessed discount.\n\nUNKNOWN consultation-fee amount and whether it is included in a selected bundle. The Terms mention nonrefundable medical consult fees but publish no fee amount in the captured pages. The homepage's No Hidden Fees and No Monthly Membership statements do not establish a zero consultation fee.",
+      "program_id": "bodybuilding-com-glp-1-longevity-review",
+      "disposition": "REBASED_STRONGER_PACKET_LIMITATIONS",
+      "reason": "Packet preserves all release1 corrected bundle rates and nonmonotonic terms while clarifying unknown checkout/prepayment and consultation amounts."
+    },
+    {
+      "id": "e3d2d0557d49d6392a09",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/15/research_cancellation",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": {
+        "quote": "You may cancel your subscription at any time through your account settings or by contacting support. All fees are in U.S. dollars and are non-refundable except as required by law or as expressly state",
+        "source_url": "https://www.coivas.com/terms",
+        "value": "Cancel anytime through account settings or support; prices may change on 30 days' notice. All fees are non-refundable except as required by law or under the published Refund Policy. The separate 'Coivas Challenge' money-back guarantee requires completing a full 3/6/12-month subscription warranty period, continuous enrollment, adherence and a claim within 40 days of the final shipment; it is not prorated and any cancellation or pause voids it.",
+        "verified_as_of": "2026-08-06"
+      },
+      "release1_value": {
+        "quote": "Some Services are offered on a subscription basis. By enrolling in a subscription, you authorize us to charge your payment method on a recurring basis at the then-current rate. Prices are subject to c",
+        "source_url": "https://www.coivas.com/terms",
+        "value": "Some Services are offered on a subscription basis. By enrolling in a subscription, you authorize us to charge your payment method on a recurring basis at the then-current rate. Prices are subject to change with 30 days' notice. You may cancel your subscription at any time through your account settings or by contacting support.\n\nAll fees are in U.S. dollars and are non-refundable except as required by law or as expressly stated in our Refund Policy. We do not currently accept insurance; you are responsible for all charges.",
+        "verified_as_of": "2026-09-10"
+      },
+      "proposed_value": {
+        "quote": "Some Services are offered on a subscription basis. By enrolling in a subscription, you authorize us to charge your payment method on a recurring basis at the then-current rate. Prices are subject to change with 30 days' notice. You may cancel your subscription at any time through your account settings or by contacting support.\n\nAll fees are in U.S. dollars and are non-refundable except as required by law or as expressly stated in our Refund Policy. We do not currently accept insurance; you are responsible for all charges.",
+        "source_url": "https://www.coivas.com/terms",
+        "value": "Some Services are offered on a subscription basis. By enrolling in a subscription, you authorize us to charge your payment method on a recurring basis at the then-current rate. Prices are subject to change with 30 days' notice. You may cancel your subscription at any time through your account settings or by contacting support.\n\nAll fees are in U.S. dollars and are non-refundable except as required by law or as expressly stated in our Refund Policy. We do not currently accept insurance; you are responsible for all charges.",
+        "verified_as_of": "2026-09-10"
+      },
+      "program_id": "coivas",
+      "disposition": "REBASED_EQUIVALENT_WITH_COMPLETE_QUOTE",
+      "reason": "Release1 value, URL and date exactly match packet; complete quote and supplied capture descriptor retained."
+    },
+    {
+      "id": "36fd2150e073ba8713d3",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/15/research_consultation_fee",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": {
+        "quote": "we operate on a simple self-pay model with transparent, all-inclusive pricing which includes your medical evaluation, ongoing provider support, secure messaging through the Coivas portal, and medicati",
+        "source_url": "https://www.coivas.com/",
+        "value": "No separate consultation fee: the medical evaluation, prescription, medication, free shipping and ongoing provider support are stated as included in one monthly price. Insurance is not accepted; the model is self-pay.",
+        "verified_as_of": "2026-08-06"
+      },
+      "release1_value": {
+        "quote": "Your plan price includes everything: a clinician review, medication if prescribed, ongoing check-ins and dose adjustments, care-team messaging, and free, discreet shipping from a U.S.-licensed pharmac",
+        "source_url": "https://www.coivas.com/treatments/weight-loss",
+        "value": "Coivas reports clinician review included and no separate membership or per-visit fees.",
+        "verified_as_of": "2026-09-10"
+      },
+      "proposed_value": {
+        "quote": "Your plan price includes everything: a clinician review, medication if prescribed, ongoing check-ins and dose adjustments, care-team messaging, and free, discreet shipping from a U.S.-licensed pharmacy. There are no separate membership or per-visit fees.",
+        "source_url": "https://www.coivas.com/treatments/weight-loss",
+        "value": "Coivas reports clinician review included and no separate membership or per-visit fees.",
+        "verified_as_of": "2026-09-10"
+      },
+      "program_id": "coivas",
+      "disposition": "REBASED_EQUIVALENT_WITH_COMPLETE_QUOTE",
+      "reason": "Release1 value, URL and date exactly match packet; complete quote and supplied capture descriptor retained."
+    },
+    {
+      "id": "41cd949a4863d856305a",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/15/research_first_month_price",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": {
+        "quote": "Compounded semaglutide ... From $119 \u00b7 Monthly ... Compounded tirzepatide ... From $199 \u00b7 Monthly",
+        "source_url": "https://www.coivas.com/",
+        "value": "All-inclusive self-pay from $119/month for compounded semaglutide and from $199/month for compounded tirzepatide; the homepage plan card shows $149/mo all-in. Price varies by medication, dosage and titration and is reviewed and approved before charge. No separate first-month promotional rate is published.",
+        "verified_as_of": "2026-08-06"
+      },
+      "release1_value": {
+        "quote": "$119/moIntro pricing\n\nFor new GLP-1 users \u00b7 billed $357 for your first 3 monthsSave $30 with quarterly plan\n\nThen renews at $149/mo ($447 every 3 months) unless canceled.",
+        "source_url": "https://www.coivas.com/treatments/weight-loss",
+        "value": "Reported introductory monthly equivalent: $119/mo for new GLP-1 users, billed $357 for the first 3 months; not a $119 first checkout charge. The captured selector joins medication names, so use the Challenge page for medication-specific context.",
+        "verified_as_of": "2026-09-10"
+      },
+      "proposed_value": {
+        "capture_path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/research-autowire-ra-f71c93bbe7ad53204de54/authoring/coivas-c1/captures/coivas-captures.json",
+        "capture_sha256": "1fd153ba83164beaa000d4473611ab34db3fc3d825a1bd40067710d27ec76e48",
+        "quote": "$119/moIntro pricing\n\nFor new GLP-1 users \u00b7 billed $357 for your first 3 monthsSave $30 with quarterly plan\n\nThen renews at $149/mo ($447 every 3 months) unless canceled.",
+        "source_url": "https://www.coivas.com/treatments/weight-loss",
+        "value": "Reported introductory monthly equivalent: $119/mo for new GLP-1 users, billed $357 for the first 3 months; not a $119 first checkout charge. The captured selector joins medication names, so use the Challenge page for medication-specific context.",
+        "verified_as_of": "2026-09-10"
+      },
+      "program_id": "coivas",
+      "disposition": "REBASED_EQUIVALENT_WITH_COMPLETE_QUOTE",
+      "reason": "Release1 value, URL and date exactly match packet; complete quote and supplied capture descriptor retained."
+    },
+    {
+      "id": "29d21f54ff48374a0877",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/21/cons/2",
+      "status": "TARGET_ABSENT_REQUIRES_RECONCILIATION",
+      "before": "Delivery in as little as 1 hour is advertised but is ZIP-code dependent, falling back to pharmacy pickup",
+      "release1_value": null,
+      "proposed_value": "Reported fulfillment through participating pharmacies or a selected outside pharmacy. Specific dispensing pharmacy identity and 503A/503B classification are UNKNOWN; this is not a claim of compounding or independently verified licensure.",
+      "program_id": "drhouse",
+      "disposition": "PRESERVED_RELEASE1_REMOVAL",
+      "reason": "Release1 removed the obsolete one-hour-delivery con; do not reintroduce the array member."
+    },
+    {
+      "id": "e240149991fc59e90ec8",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/21/cons/2",
+      "status": "TARGET_ABSENT_REQUIRES_RECONCILIATION",
+      "before": "Delivery in as little as 1 hour is advertised but is ZIP-code dependent, falling back to pharmacy pickup",
+      "release1_value": null,
+      "proposed_value": "Reported fulfillment through participating pharmacies or a selected outside pharmacy. Specific dispensing pharmacy identity and 503A/503B classification are UNKNOWN; this is not a claim of compounding or independently verified licensure.",
+      "program_id": "drhouse",
+      "disposition": "PRESERVED_RELEASE1_REMOVAL",
+      "reason": "Release1 removed the obsolete one-hour-delivery con; do not reintroduce the array member."
+    },
+    {
+      "id": "1088794c18c57e691190",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/21/cons/2",
+      "status": "TARGET_ABSENT_REQUIRES_RECONCILIATION",
+      "before": "Delivery in as little as 1 hour is advertised but is ZIP-code dependent, falling back to pharmacy pickup",
+      "release1_value": null,
+      "proposed_value": "Reported fulfillment through participating pharmacies or a selected outside pharmacy. Specific dispensing pharmacy identity and 503A/503B classification are UNKNOWN; this is not a claim of compounding or independently verified licensure.",
+      "program_id": "drhouse",
+      "disposition": "PRESERVED_RELEASE1_REMOVAL",
+      "reason": "Release1 removed the obsolete one-hour-delivery con; do not reintroduce the array member."
+    },
+    {
+      "id": "3adefd24b8260aa644de",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/6/row_contract/cons/2",
+      "status": "TARGET_ABSENT_REQUIRES_RECONCILIATION",
+      "before": "Delivery in as little as 1 hour is advertised but is ZIP-code dependent, falling back to pharmacy pickup",
+      "release1_value": null,
+      "proposed_value": "Reported fulfillment through participating pharmacies or a selected outside pharmacy. Specific dispensing pharmacy identity and 503A/503B classification are UNKNOWN; this is not a claim of compounding or independently verified licensure.",
+      "program_id": "drhouse",
+      "disposition": "PRESERVED_RELEASE1_REMOVAL",
+      "reason": "Release1 removed the obsolete one-hour-delivery con; do not reintroduce the array member."
+    },
+    {
+      "id": "2d73841234fd4038d20b",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/0/page_copy/pricing",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": "Reported information from MadeMed's product pages: injectable semaglutide is displayed at $239/month equivalent, billed $717 every 3 months; injectable tirzepatide at $399/month equivalent, billed $1197 every 3 months; and oral tirzepatide at $299/month equivalent, billed $897 every 3 months. These are quarterly billing options, not monthly payments or first-month charges. Lower advertised starting figures refer to different displayed plan options whose complete six-month billing terms are not established here. Current oral semaglutide pricing remains unknown from the captures reviewed. The injectable semaglutide plan lists consultation as included and says a $39 doctor visit fee is retained if no prescription is issued; this is not an extra fee on every prescribed order.",
+      "release1_value": "Reported information: MadeMed's injectable semaglutide quarterly plan is $239/month equivalent, billed $717 every 3 months\u2014not monthly payments or a standalone first-month charge. The plan includes physician consultation; a $39 doctor visit fee is retained if no prescription is issued, not charged on every prescribed order. Complete six-month billing terms, other formulation prices, and any standalone consultation price remain unknown in this review.",
+      "proposed_value": "",
+      "program_id": "mademed",
+      "disposition": "PRESERVED_NEWER_RELEASE1_FIX",
+      "reason": "Do not erase release1 formulation-specific pricing limits, the retained Strut FDA warning, or already qualified injectable-only copy with old S30 preimages."
+    },
+    {
+      "id": "23e484c24d8d9b0eaa72",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/0/row_contract/pros/0",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": "The captured injectable and oral tirzepatide options state their quarterly billed amounts",
+      "release1_value": "The captured injectable semaglutide option states its quarterly billed amount",
+      "proposed_value": "",
+      "program_id": "mademed",
+      "disposition": "PRESERVED_NEWER_RELEASE1_FIX",
+      "reason": "Do not erase release1 formulation-specific pricing limits, the retained Strut FDA warning, or already qualified injectable-only copy with old S30 preimages."
+    },
+    {
+      "id": "9da51ff084e436cb61c7",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/0/row_contract/starting_price",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": "Reported quarterly options: injectable semaglutide $239/month equivalent billed $717 every 3 months; injectable tirzepatide $399/month equivalent billed $1197 every 3 months; oral tirzepatide $299/month equivalent billed $897 every 3 months. Current oral semaglutide pricing is unknown.",
+      "release1_value": "Reported injectable semaglutide: $239/month equivalent, billed $717 every 3 months; other formulation prices and complete six-month terms remain unknown.",
+      "proposed_value": "",
+      "program_id": "mademed",
+      "disposition": "PRESERVED_NEWER_RELEASE1_FIX",
+      "reason": "Do not erase release1 formulation-specific pricing limits, the retained Strut FDA warning, or already qualified injectable-only copy with old S30 preimages."
+    },
+    {
+      "id": "d6e1e447808d3b8137f3",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/3/page_copy/bottom_line",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": "Strut's current semaglutide pages list an injectable monthly vial at $129 and oral buccal lozenges at $199 per 30-day supply. Final pricing follows consultation. Injection processing can take up to 7 business days after approval before 2-Day delivery service. Read FDA's February 20, 2026 warning letter to Strut before deciding.",
+      "release1_value": "Strut's injectable semaglutide page lists a monthly vial at $129; other formulation prices remain unknown in this review. Final pricing follows consultation. Injection processing can take up to 7 business days after approval before 2-Day delivery service. Read FDA's February 20, 2026 warning letter to Strut before deciding.",
+      "proposed_value": "Reported injectable semaglutide price: $129 for a monthly vial, with physician consultations and shipping included. This figure is specific to the injectable semaglutide page, not oral semaglutide or tirzepatide; exact patient-specific renewal pricing remains UNKNOWN.",
+      "program_id": "strut-health",
+      "disposition": "PRESERVED_NEWER_RELEASE1_FIX",
+      "reason": "Do not erase release1 formulation-specific pricing limits, the retained Strut FDA warning, or already qualified injectable-only copy with old S30 preimages."
+    },
+    {
+      "id": "362938e81217ddaa34ce",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/3/page_copy/pricing",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": "Reported information from Strut's semaglutide pages: the injectable monthly vial is $129, while oral semaglutide is listed at $199 for a 30-day supply of buccal lozenges. These are different formulations, not interchangeable price points. The injectable page states that physician consultations and shipping are included, and that final pricing is determined after a valid, complete online consultation. An exact first charge or patient-specific renewal total is not established here.",
+      "release1_value": "Reported information: Strut's injectable semaglutide monthly vial is $129, including physician consultations and shipping. This price does not establish oral semaglutide or tirzepatide pricing. Final pricing follows a valid, complete consultation; the exact first charge and patient-specific renewal total remain unknown. Medication is paid for only if the physician determines treatment is appropriate.",
+      "proposed_value": "UNKNOWN exact first charge. The provider states that final pricing is determined following a valid and complete online consultation; a published starting monthly figure is not an independently confirmed checkout total.\n\nReported injectable semaglutide price: $129 for a monthly vial, with physician consultations and shipping included. This figure is specific to the injectable semaglutide page, not oral semaglutide or tirzepatide; exact patient-specific renewal pricing remains UNKNOWN.\n\nThe injectable semaglutide page reports that the initial online consultation is included with the subscription, and medication is paid for only if the physician determines treatment is appropriate.",
+      "program_id": "strut-health",
+      "disposition": "PRESERVED_NEWER_RELEASE1_FIX",
+      "reason": "Do not erase release1 formulation-specific pricing limits, the retained Strut FDA warning, or already qualified injectable-only copy with old S30 preimages."
+    },
+    {
+      "id": "cd2e3e141ea7a80e580b",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/3/row_contract/starting_price",
+      "status": "CONFLICTING_SOURCE_VALUE",
+      "before": "Injectable semaglutide monthly vial $129; oral semaglutide buccal lozenges $199 per 30-day supply. Final pricing follows consultation.",
+      "release1_value": "Reported injectable semaglutide monthly vial: $129, including consultations and shipping; exact first charge and patient-specific renewal total remain unknown.",
+      "proposed_value": "UNKNOWN exact first charge. The provider states that final pricing is determined following a valid and complete online consultation; a published starting monthly figure is not an independently confirmed checkout total.\n\nReported injectable semaglutide price: $129 for a monthly vial, with physician consultations and shipping included. This figure is specific to the injectable semaglutide page, not oral semaglutide or tirzepatide; exact patient-specific renewal pricing remains UNKNOWN.\n\nThe injectable semaglutide page reports that the initial online consultation is included with the subscription, and medication is paid for only if the physician determines treatment is appropriate.",
+      "program_id": "strut-health",
+      "disposition": "PRESERVED_NEWER_RELEASE1_FIX",
+      "reason": "Do not erase release1 formulation-specific pricing limits, the retained Strut FDA warning, or already qualified injectable-only copy with old S30 preimages."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "d2w-exact-held-surface-price-basis-v1",
+  "program_id": "longevity-meds-glp-1-review",
+  "selection_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
+  "reason": "Existing HOLD disclosure only; no price, identity, commercial-state, route or active-link changes. Frozen pricing document remains the final oracle.",
+  "before_profile": {
+    "data_profile": {
+      "has_price": false,
+      "has_review_facts": true
+    },
+    "exceptions": {},
+    "surfaces": {
+      "calculator": true,
+      "compare": true,
+      "go": true,
+      "quiz": true,
+      "review": true,
+      "sitemap": true
+    },
+    "vertical_fit": true,
+    "wired": true
+  },
+  "after_profile": {
+    "data_profile": {
+      "has_price": false,
+      "has_review_facts": true
+    },
+    "exceptions": {
+      "go": {
+        "enabled": true,
+        "reason": "Editorial link-dark under the exact existing D2s selection HOLD: Exact publisher creative/content approval required, not merely issued tracking link. Required artifact: Dated in-portal approval by XenTraffic/Longevity for offer3277 and the exact GLP Clinic Scout creative/landing-page URLs and revision/hash. No direct affiliate link or redirector activation is authorized.",
+        "authority_path": "data/go-selection-receipt.json",
+        "authority_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
+        "surface_restriction_basis": "existing_selection_hold_exact_creative_approval_required"
+      }
+    },
+    "surfaces": {
+      "calculator": true,
+      "compare": true,
+      "go": false,
+      "quiz": true,
+      "review": true,
+      "sitemap": true
+    },
+    "vertical_fit": true,
+    "wired": true
+  }
+}

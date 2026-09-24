@@ -1,0 +1,24 @@
+{
+  "schema": "glp-posthog-runtime-v1",
+  "enabled": true,
+  "project_id": "508172",
+  "host": "https://us.i.posthog.com",
+  "api_key": "phc_z6A6VUr9XTjwEwmybusgwsHyYK3tMAB6YyaBmWHj7Xmi",
+  "operator_gate": "operator-approved:analytics-default-on-20260801",
+  "privacy_contract": {
+    "autocapture": false,
+    "capture_pageview": true,
+    "disable_session_recording": true,
+    "mask_all_text": true,
+    "mask_all_element_attributes": true,
+    "person_profiles": "identified_only",
+    "note": "Health vertical (CRO D8): no answer values, no free text, no replay. The banner line 'Health quiz answers are never sent to analytics' must stay literally true."
+  },
+  "transport_origins": {
+    "note": "CSP must name these in script-src AND connect-src or PostHog records nothing (ANALYTICS-TRUTH 2026-08-20; re-declared 2026-08-27 after the live-head config merge dropped the field).",
+    "origins": [
+      "https://us.i.posthog.com",
+      "https://us-assets.i.posthog.com"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "D2l-TEST-ONLY-promotion-fixture",
+  "notice": "Synthetic unit/browser fixture. Not actual promotion or release authority. Never copied into data/ or runtime manifests.",
+  "programs": {
+    "biltrx": {"status":"VERIFIED","promotion_authorized":true,"constructor_verified":true,"redirector_tos_verified":true},
+    "trt-nation": {"status":"VERIFIED","promotion_authorized":true,"constructor_verified":true,"redirector_tos_verified":true},
+    "orderlymeds": {"status":"VERIFIED","promotion_authorized":true,"constructor_verified":true,"redirector_tos_verified":true},
+    "direct-meds": {"status":"VERIFIED","promotion_authorized":true,"constructor_verified":true,"redirector_tos_verified":true},
+    "fixture-routed": {"status":"VERIFIED","promotion_authorized":true,"constructor_verified":true,"redirector_tos_verified":true}
+  }
+}

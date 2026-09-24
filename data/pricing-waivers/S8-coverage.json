@@ -1,0 +1,29 @@
+{
+  "schema": "glp-pricing-coverage-waiver-v1",
+  "waiver_for": "release-train-1",
+  "baseline": {
+    "providers_with_evidenced_pricing": 41,
+    "medication_rows": 118,
+    "release": "09-03",
+    "release_root": "releases/glp-b2-wire-backlog-2026-09-03-20260903T155242Z"
+  },
+  "accepted": {
+    "providers_with_evidenced_pricing": 18,
+    "medication_rows": 48
+  },
+  "reason": "UNSUPPORTED_TYPED_PRICE_SCHEDULE + OLD_OFFER_ABSENT_OR_CHANGED per RULINGS.json",
+  "rulings_sha256": "0c6c6def50149868f37955aebe292fde1bc0f9333267c0ab2111e7bcf018cd3c",
+  "issued_by": "glp-scout evidence owner",
+  "issued_at_utc": "2026-09-09T01:22:04.251523+00:00",
+  "expires": "first accepted release after this train",
+  "baseline_reset": "The floor baseline then resets to the deployed matrix.",
+  "owner": "glp-scout",
+  "status": "APPROVED",
+  "baseline_matrix_sha256": "270a6a8c0a5d7eb35eed313f995d42d982968e1e79e9ee1f4bd29a6fb3aeef39",
+  "candidate_matrix_sha256": "de48bc1b68e8946c7b144d355b598cd039a12b2626616fbab414851edd6e9731",
+  "coverage": {
+    "providers_with_evidenced_pricing": 18,
+    "medication_rows": 48
+  },
+  "scope": "Coverage-floor waiver for release-train-1 only. No price, quote, evidence rule, clinical/commercial hold, or independent release-acceptance changes. Does not waive future coverage losses."
+}

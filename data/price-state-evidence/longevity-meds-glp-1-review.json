@@ -1,0 +1,1664 @@
+{
+  "schema": "s30.provider_patch.v1",
+  "program_id": "longevity-meds-glp-1-review",
+  "provider": "Longevity Meds",
+  "routes": [
+    "/reviews/longevity-meds-glp-1-review/",
+    "/providers/longevity-meds-glp-1-review/"
+  ],
+  "packet": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/longevity-meds-glp-1-review.json",
+    "sha256": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7",
+    "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/longevity-meds-glp-1-review.json",
+    "snapshot_sha256": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7",
+    "captured_at": "2026-09-01T08:13:25.098509+00:00",
+    "age_days": 9.18593400471065,
+    "current_original_path_sha256_at_audit_end": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7"
+  },
+  "holds_preserved": [
+    {
+      "registry_program_id": "longevity-meds-glp-1-review",
+      "commercial_state": "live",
+      "suppression_reason": null,
+      "status": null
+    }
+  ],
+  "records": [
+    {
+      "id": "longevity-meds-glp-1-review:first_month_price",
+      "program_id": "longevity-meds-glp-1-review",
+      "field": "first_month_price",
+      "verdict": "PAGE_OVERSTATES",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/longevity-meds-glp-1-review.json",
+        "sha256": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/longevity-meds-glp-1-review.json",
+        "snapshot_sha256": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7",
+        "captured_at": "2026-09-01T08:13:25.098509+00:00",
+        "age_days": 9.18593400471065,
+        "current_original_path_sha256_at_audit_end": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "required_change": "Replace sibling exact first-month amounts with UNKNOWN: no separate first-month rate; mandatory three-month supply/commitment.",
+      "audited_repetitions": [
+        {
+          "field": "first_month_price",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: article .d3-price-box; https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: h3; https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Treatments :: article .d3-price-box; https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Treatments :: h3",
+          "current_text": "First month",
+          "replacement": "Exact first-month charge not published; three-month term required",
+          "reason": "Source states starting amount and mandatory full three-month commitment.",
+          "affected_price_components": [
+            {
+              "text": "First month $84.99 Reported information · Checked 2026-09-01 · Source Price source $84.99",
+              "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: article .d3-price-box"
+            },
+            {
+              "text": "First month $114.99 Reported information · Checked 2026-09-01 · Source Price source $114.99",
+              "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Treatments :: article .d3-price-box"
+            }
+          ],
+          "rendering_operation": "Replace heading AND adjacent .d3-price-value with Not stated; remove recurring suffix when cadence is unestablished. Retain dated source quote only as supporting evidence, not a current quote."
+        }
+      ],
+      "audit_page_claims": [
+        {
+          "text": "Longevity Meds offers online provider review for compounded semaglutide and tirzepatide, publishes starting monthly prices, includes the doctor visit and shipping, and provides ongoing care-team access. Review the mandatory term and conflicting cancellation language before enrolling. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Bottom line :: p"
+        },
+        {
+          "text": "Published price",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Bottom line :: dt"
+        },
+        {
+          "text": "$84.99/month starting price; mandatory three-month term 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Pricing breakdown",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Bottom line :: h2"
+        },
+        {
+          "text": "Longevity Meds publishes starting monthly prices of $84.99 for semaglutide and $114.99 for tirzepatide. Its formal policy requires a three-month term and says the full supply is provided up front. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Pricing breakdown :: p"
+        },
+        {
+          "text": "Longevity Meds' formal policy requires a three-month term, says the full supply is provided up front, and says early cancellation results in a fee. Its homepage separately says a subscription can be paused or canceled with a prorated refund and a $50 fee. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Shipping :: p"
+        },
+        {
+          "text": "Price transparency · 30% 7.5/10",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Evidence criteria :: li"
+        },
+        {
+          "text": "Considering Longevity Meds? Review published pricing, program terms and documented evidence gaps. Confirm current costs and eligibility directly with the provider. That sentence is the scope of this review, not a promise about Longevity Meds. The evidence set was current through 2026-09-02 and is limited to the sources already identified on this page. Public pages can change after capture, so every amount, policy, availability statement, and workflow detail remains a dated record rather than a quote. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: What the Longevity Meds record establishes—and what it does not :: p"
+        },
+        {
+          "text": "Published price wording",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: dt"
+        },
+        {
+          "text": "$84.99/month starting price; mandatory three-month term",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: dd"
+        },
+        {
+          "text": "Published price $84.99/month starting price; mandatory three-month term 2026-09-02",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: tr"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For Longevity Meds, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: p"
+        },
+        {
+          "text": "Readers should compare the snapshot with the source page before payment. Ask whether the wording still appears, whether a new condition or footnote has been added, and whether the amount applies to the exact product, dose, route, plan, or service being discussed. If checkout or intake contradicts this dated record, the current written term controls the transaction; the discrepancy should also be submitted through Clinic Scout's correction channel. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: p"
+        },
+        {
+          "text": "How to read Longevity Meds pricing without inventing a total",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: h3"
+        },
+        {
+          "text": "The captured price evidence for Longevity Meds is: “$84.99/month starting price; mandatory three-month term” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: How to read Longevity Meds pricing without inventing a total :: p"
+        },
+        {
+          "text": "A practical written quote should identify the first charge, every recurring charge, the billing cadence, the amount of product or service attached to each charge, the minimum commitment, renewal behavior, cancellation deadline, refund terms, and any charge that can change with dose or state. Keep a copy of that quote and the checkout terms. This is purchasing discipline, not a prediction that Longevity Meds will impose any particular charge. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: How to read Longevity Meds pricing without inventing a total :: p"
+        },
+        {
+          "text": "The captured workflow language for Longevity Meds is: “Longevity Meds' FAQ says orders typically ship within 3–5 business days after approval with temperature-controlled cold shipping.” This is not expanded into an end-to-end timeline unless the source defines the starting event and each stage. Intake completion, clinician review, prescription decision, pharmacy processing, carrier pickup, laboratory processing, manufacturing, and final delivery can describe different clocks. A single speed phrase cannot safely represent all of them, and no timeline establishes eligibility or an outcome. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Eligibility, review, and fulfillment boundaries :: p"
+        },
+        {
+          "text": "For Longevity Meds, request the cash price and any insurance-dependent price separately. Confirm whether payment is collected before eligibility or professional review, what happens after denial, whether reimbursement paperwork is supplied, and whether cancellation or refund terms differ after a service begins. This checklist does not imply that Longevity Meds offers each payment path; it identifies the missing facts a reader needs before treating a headline amount as the final obligation. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "Published starting monthly prices with no membership costs 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "Doctor visit and shipping included in the published starting prices 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "The evidence-navigation fit recorded for this page is: “Adults comparing online provider review for compounded semaglutide or tirzepatide with published starting prices and included doctor visit and shipping” That is a description of the research task, not a clinical-fit recommendation. A reader who values visible sources and explicit unknowns may use the page to prepare questions. Someone who requires a verified all-in amount, a confirmed delivery date, an independent outcome dataset, or a guaranteed eligibility decision should not treat this page alone as sufficient. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Who may find this Longevity Meds review useful :: p"
+        },
+        {
+          "text": "Save the page date, URL, screenshots, and any checkout or intake terms that affect cost or eligibility.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: A source-first verification sequence for Longevity Meds :: li"
+        },
+        {
+          "text": "If a reader proceeds with Longevity Meds, the evidence task continues after checkout. Retain receipts, consent forms, product or service descriptions, fulfillment records, cancellation instructions, privacy notices, and the contact route for problems. Check whether the delivered or scheduled item matches the written order. Record any changed price or term with its date and source so that a concern can be investigated without relying on memory. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "Lttl review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "MadeMed review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "MangoRx review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "The captured wording is “$84.99/month starting price; mandatory three-month term” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Frequently asked questions about the Longevity Meds evidence :: p"
+        },
+        {
+          "text": "Use the Longevity Meds review as a documented starting point. Recheck the direct source, obtain the exact current terms, and stop when an important answer remains unclear. Clear unknowns are more useful than confident estimates: they tell the reader what must be verified before cost, access, timing, product, or support can be compared responsibly. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Editorial conclusion for the captured Longevity Meds record :: p"
+        },
+        {
+          "text": "Open another provider or cost comparison to check price, inclusions, and unresolved terms side by side.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: p"
+        },
+        {
+          "text": "Provider evidence review Lttl review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MadeMed review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MangoRx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Measured review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MEDVI review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MyDrHank review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Novi review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Nu Image Medical review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Oak Longevity review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review OrderlyMeds review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Pallas Health – GLP-1 Weight Loss & NAD review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Refills review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Ro review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review RxSpan MD Telehealth Program review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Serena Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Adults comparing online provider review for compounded semaglutide or tirzepatide with published starting prices and included doctor visit and shipping",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First month $84.99 Reported information · Checked 2026-09-01 · Source Price source $84.99",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: article .d3-price-box"
+        },
+        {
+          "text": "First month",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: h3"
+        },
+        {
+          "text": "Thereafter $84.99 / month The homepage publishes $84.99 as the semaglutide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front. Reported information · Checked 2026-09-01 · Source Price source $84.99",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "The homepage publishes $84.99 as the semaglutide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Medication and plan pricing",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Dates, quotes, and source links stay attached to every displayed amount. Exact dose tiers appear only when the provider publishes source-reported per-dose pricing; otherwise the dose grid is omitted.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Treatments :: p"
+        },
+        {
+          "text": "First month $114.99 Reported information · Checked 2026-09-01 · Source Price source $114.99",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Treatments :: article .d3-price-box"
+        },
+        {
+          "text": "First month",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Treatments :: h3"
+        },
+        {
+          "text": "Thereafter $114.99 / month The homepage publishes $114.99 as the tirzepatide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front. Reported information · Checked 2026-09-01 · Source Price source $114.99",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "The homepage publishes $114.99 as the tirzepatide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "The published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: At a glance :: p"
+        },
+        {
+          "text": "Longevity Meds' formal policy requires a three-month term for weight-loss programs, says the full supply is provided up front, and says early cancellation results in a fee. The homepage separately says a subscription can be paused or canceled with a prorated refund and a $50 fee, so the first-party cancellation language conflicts.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: At a glance :: p"
+        },
+        {
+          "text": "Useful for comparing: Adults comparing online provider review for compounded semaglutide or tirzepatide with published starting prices and included doctor visit and shipping",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Editorial tradeoffs :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists; this is not a medical recommendation.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Related provider records :: p"
+        },
+        {
+          "text": "Provider names and links come from our reviewed provider list. Prices come from our dated price records; each price links to the source it was taken from, with the date we checked it. Program facts come from our reviewed notes on those dated sources. Clinic Scout does not infer availability, medical fit, ratings, or review counts.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Price rows checked 2026-09-01 · 2 source-dated rows",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Related providers :: p"
+        }
+      ],
+      "operation_ids": [
+        "49250ac504d911080fe0",
+        "0359899f04bd821a642c",
+        "f58639f9927d019e5dcf",
+        "bb8d9c1ff47c4f1c0b7a",
+        "75f2342b54ecf4c44c6f",
+        "f986aa519c5489b0ed48",
+        "ca69884c2357fda1448b",
+        "8a447a00f310297d8d76",
+        "27f75a35415963546a20",
+        "251732b481ada18634e5",
+        "f9265190bdb00ff5aedd",
+        "2b2f04575399e0ef0447",
+        "976c75ef42ab906e52d7",
+        "7f99bbf23c52bb952030",
+        "7f0cdb4f01a83d06a852",
+        "83261615c84b0e2c8ca9",
+        "cf1ab774a2baf0585091"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Published starting monthly prices with no membership costs"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(1) > li:nth-of-type(2)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Doctor visit and shipping included in the published starting prices"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "$84.99/month starting price; mandatory three-month term"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Longevity Meds evidence snapshot",
+          "tag": "dd",
+          "text": "$84.99/month starting price; mandatory three-month term"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "Longevity Meds evidence snapshot",
+          "tag": "tr",
+          "text": "Published price $84.99/month starting price; mandatory three-month term 2026-09-02"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read Longevity Meds pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for Longevity Meds is: “$84.99/month starting price; mandatory three-month term” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the Longevity Meds evidence",
+          "tag": "p",
+          "text": "The captured wording is “$84.99/month starting price; mandatory three-month term” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "Longevity Meds · Compounded semaglutide (injection)",
+          "tag": "p",
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Longevity Meds · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "The homepage publishes $84.99 as the semaglutide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front."
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "Longevity Meds · Compounded semaglutide (injection)"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Longevity Meds · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "Longevity Meds · Compounded tirzepatide (injection)"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Longevity Meds · Compounded tirzepatide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "The homepage publishes $114.99 as the tirzepatide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front."
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "Longevity Meds publishes starting monthly prices of $84.99 for semaglutide and $114.99 for tirzepatide. Its formal policy requires a three-month term and says the full supply is provided up front."
+        }
+      ],
+      "disposition": "PATCH_READY"
+    },
+    {
+      "id": "longevity-meds-glp-1-review:monthly_price",
+      "program_id": "longevity-meds-glp-1-review",
+      "field": "monthly_price",
+      "verdict": "PAGE_OVERSTATES",
+      "packet": {
+        "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/longevity-meds-glp-1-review.json",
+        "sha256": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7",
+        "snapshot": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S29/packets/longevity-meds-glp-1-review.json",
+        "snapshot_sha256": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7",
+        "captured_at": "2026-09-01T08:13:25.098509+00:00",
+        "age_days": 9.18593400471065,
+        "current_original_path_sha256_at_audit_end": "5c1dd269b7bf3f84fc985e850cbe63ff5e92258a9c1cc1c7bc378fd31bc5abc7"
+      },
+      "attested_values": [
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "required_change": "Retain product-specific starting prices only; no exact recurring/monthly billing inference.",
+      "audited_repetitions": [
+        {
+          "field": "monthly_price",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: First month :: article .d3-price-box",
+          "current_text": "Thereafter",
+          "replacement": "Reported starting price; exact recurring charge not established",
+          "reason": "Starting rate must not become an automatic-renewal payment.",
+          "affected_price_components": [
+            {
+              "text": "Thereafter $84.99 / month The homepage publishes $84.99 as the semaglutide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front. Reported information · Checked 2026-09-01 · Source Price source $84.99",
+              "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: First month :: article .d3-price-box"
+            },
+            {
+              "text": "Thereafter $114.99 / month The homepage publishes $114.99 as the tirzepatide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front. Reported information · Checked 2026-09-01 · Source Price source $114.99",
+              "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: First month :: article .d3-price-box"
+            }
+          ],
+          "rendering_operation": "Replace heading AND adjacent .d3-price-value with Not stated; remove recurring suffix when cadence is unestablished. Retain dated source quote only as supporting evidence, not a current quote."
+        }
+      ],
+      "audit_page_claims": [
+        {
+          "text": "Longevity Meds offers online provider review for compounded semaglutide and tirzepatide, publishes starting monthly prices, includes the doctor visit and shipping, and provides ongoing care-team access. Review the mandatory term and conflicting cancellation language before enrolling. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Bottom line :: p"
+        },
+        {
+          "text": "Published price",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Bottom line :: dt"
+        },
+        {
+          "text": "$84.99/month starting price; mandatory three-month term 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Bottom line :: dd"
+        },
+        {
+          "text": "Pricing breakdown",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Bottom line :: h2"
+        },
+        {
+          "text": "Longevity Meds publishes starting monthly prices of $84.99 for semaglutide and $114.99 for tirzepatide. Its formal policy requires a three-month term and says the full supply is provided up front. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Pricing breakdown :: p"
+        },
+        {
+          "text": "Longevity Meds' formal policy requires a three-month term, says the full supply is provided up front, and says early cancellation results in a fee. Its homepage separately says a subscription can be paused or canceled with a prorated refund and a $50 fee. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Shipping :: p"
+        },
+        {
+          "text": "Price transparency · 30% 7.5/10",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Evidence criteria :: li"
+        },
+        {
+          "text": "Considering Longevity Meds? Review published pricing, program terms and documented evidence gaps. Confirm current costs and eligibility directly with the provider. That sentence is the scope of this review, not a promise about Longevity Meds. The evidence set was current through 2026-09-02 and is limited to the sources already identified on this page. Public pages can change after capture, so every amount, policy, availability statement, and workflow detail remains a dated record rather than a quote. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: What the Longevity Meds record establishes—and what it does not :: p"
+        },
+        {
+          "text": "Published price wording",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: dt"
+        },
+        {
+          "text": "$84.99/month starting price; mandatory three-month term",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: dd"
+        },
+        {
+          "text": "Published price $84.99/month starting price; mandatory three-month term 2026-09-02",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: tr"
+        },
+        {
+          "text": "The snapshot above is deliberately literal. For Longevity Meds, a published starting figure is not automatically a monthly total, a product mention is not proof of eligibility, and a shipping phrase is not the same as a complete timeline. The review therefore carries the exact captured language forward and treats cadence, supply period, included services, later charges, and destination-specific availability as unknown unless the cited record states them. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: p"
+        },
+        {
+          "text": "How to read Longevity Meds pricing without inventing a total",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Longevity Meds evidence snapshot :: h3"
+        },
+        {
+          "text": "The captured price evidence for Longevity Meds is: “$84.99/month starting price; mandatory three-month term” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: How to read Longevity Meds pricing without inventing a total :: p"
+        },
+        {
+          "text": "A practical written quote should identify the first charge, every recurring charge, the billing cadence, the amount of product or service attached to each charge, the minimum commitment, renewal behavior, cancellation deadline, refund terms, and any charge that can change with dose or state. Keep a copy of that quote and the checkout terms. This is purchasing discipline, not a prediction that Longevity Meds will impose any particular charge. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: How to read Longevity Meds pricing without inventing a total :: p"
+        },
+        {
+          "text": "For Longevity Meds, request the cash price and any insurance-dependent price separately. Confirm whether payment is collected before eligibility or professional review, what happens after denial, whether reimbursement paperwork is supplied, and whether cancellation or refund terms differ after a service begins. This checklist does not imply that Longevity Meds offers each payment path; it identifies the missing facts a reader needs before treating a headline amount as the final obligation. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Coverage and payment questions :: p"
+        },
+        {
+          "text": "Published starting monthly prices with no membership costs 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "Doctor visit and shipping included in the published starting prices 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Documented strengths and tradeoffs :: li"
+        },
+        {
+          "text": "The evidence-navigation fit recorded for this page is: “Adults comparing online provider review for compounded semaglutide or tirzepatide with published starting prices and included doctor visit and shipping” That is a description of the research task, not a clinical-fit recommendation. A reader who values visible sources and explicit unknowns may use the page to prepare questions. Someone who requires a verified all-in amount, a confirmed delivery date, an independent outcome dataset, or a guaranteed eligibility decision should not treat this page alone as sufficient. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Who may find this Longevity Meds review useful :: p"
+        },
+        {
+          "text": "If a reader proceeds with Longevity Meds, the evidence task continues after checkout. Retain receipts, consent forms, product or service descriptions, fulfillment records, cancellation instructions, privacy notices, and the contact route for problems. Check whether the delivered or scheduled item matches the written order. Record any changed price or term with its date and source so that a concern can be investigated without relying on memory. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "For recurring arrangements, confirm the next billing date, refill or reorder trigger, dose or specification changes, required follow-up, pause options, cancellation cutoff, and the consequences of a failed payment or missed step. These are general recordkeeping questions, not claims about Longevity Meds's actual policy. The provider's current written terms and applicable law determine the answer. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Questions to retain after enrollment or purchase :: p"
+        },
+        {
+          "text": "Lttl review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "MadeMed review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "MangoRx review: pricing and terms Open the dated evidence record and compare the same pricing, terms, and unknown-field rules.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Alternative evidence records :: tr"
+        },
+        {
+          "text": "The captured wording is “$84.99/month starting price; mandatory three-month term” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Frequently asked questions about the Longevity Meds evidence :: p"
+        },
+        {
+          "text": "Compare the same evidence fields: first and recurring charges, cadence, inclusions, commitment, cancellation, shipping, and source date. An unknown field should remain unknown rather than receive a favorable score. 1 Source 1 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 2 Source 2 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close 3 Source 3 Longevity Meds current as of 2026-09-01 Longevity Meds ↗ Close",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Frequently asked questions about the Longevity Meds evidence :: p"
+        },
+        {
+          "text": "Open another provider or cost comparison to check price, inclusions, and unresolved terms side by side.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: p"
+        },
+        {
+          "text": "Provider evidence review Lttl review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MadeMed review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MangoRx review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Measured review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MEDVI review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review MyDrHank review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Novi review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Nu Image Medical review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Oak Longevity review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review OrderlyMeds review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Pallas Health – GLP-1 Weight Loss & NAD review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Refills review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Ro review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review RxSpan MD Telehealth Program review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Provider evidence review Serena Health review: pricing and terms Open the dated evidence, stated limits, and next verification questions.",
+          "location": "https://glpclinicscout.com/reviews/longevity-meds-glp-1-review/ :: Keep narrowing the shortlist :: li"
+        },
+        {
+          "text": "Adults comparing online provider review for compounded semaglutide or tirzepatide with published starting prices and included doctor visit and shipping",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: p"
+        },
+        {
+          "text": "First month $84.99 Reported information · Checked 2026-09-01 · Source Price source $84.99",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Longevity Meds · Compounded semaglutide (injection) :: article .d3-price-box"
+        },
+        {
+          "text": "Thereafter $84.99 / month The homepage publishes $84.99 as the semaglutide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front. Reported information · Checked 2026-09-01 · Source Price source $84.99",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "The homepage publishes $84.99 as the semaglutide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Medication and plan pricing",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Dates, quotes, and source links stay attached to every displayed amount. Exact dose tiers appear only when the provider publishes source-reported per-dose pricing; otherwise the dose grid is omitted.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Treatments :: p"
+        },
+        {
+          "text": "First month $114.99 Reported information · Checked 2026-09-01 · Source Price source $114.99",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Treatments :: article .d3-price-box"
+        },
+        {
+          "text": "Thereafter $114.99 / month The homepage publishes $114.99 as the tirzepatide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front. Reported information · Checked 2026-09-01 · Source Price source $114.99",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: First month :: article .d3-price-box"
+        },
+        {
+          "text": "The homepage publishes $114.99 as the tirzepatide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Thereafter :: p"
+        },
+        {
+          "text": "Consultation or membership",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: At a glance :: p"
+        },
+        {
+          "text": "The published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: At a glance :: p"
+        },
+        {
+          "text": "Longevity Meds' formal policy requires a three-month term for weight-loss programs, says the full supply is provided up front, and says early cancellation results in a fee. The homepage separately says a subscription can be paused or canceled with a prorated refund and a $50 fee, so the first-party cancellation language conflicts.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: At a glance :: p"
+        },
+        {
+          "text": "Useful for comparing: Adults comparing online provider review for compounded semaglutide or tirzepatide with published starting prices and included doctor visit and shipping",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Editorial tradeoffs :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists; this is not a medical recommendation.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Related provider records :: p"
+        },
+        {
+          "text": "Provider names and links come from our reviewed provider list. Prices come from our dated price records; each price links to the source it was taken from, with the date we checked it. Program facts come from our reviewed notes on those dated sources. Clinic Scout does not infer availability, medical fit, ratings, or review counts.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Price rows checked 2026-09-01 · 2 source-dated rows",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Methodology and evidence boundary :: p"
+        },
+        {
+          "text": "Shown only when a shared source-priced medication row exists.",
+          "location": "https://glpclinicscout.com/providers/longevity-meds-glp-1-review/ :: Related providers :: p"
+        }
+      ],
+      "operation_ids": [
+        "49250ac504d911080fe0",
+        "0359899f04bd821a642c",
+        "f58639f9927d019e5dcf",
+        "bb8d9c1ff47c4f1c0b7a",
+        "75f2342b54ecf4c44c6f",
+        "f986aa519c5489b0ed48",
+        "ca69884c2357fda1448b",
+        "8a447a00f310297d8d76",
+        "27f75a35415963546a20",
+        "f9265190bdb00ff5aedd",
+        "2b2f04575399e0ef0447",
+        "976c75ef42ab906e52d7",
+        "7f99bbf23c52bb952030",
+        "7f0cdb4f01a83d06a852",
+        "83261615c84b0e2c8ca9",
+        "cf1ab774a2baf0585091"
+      ],
+      "target_receipts": [],
+      "current_repetitions": [
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(1) > li:nth-of-type(1)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Published starting monthly prices with no membership costs"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > ul:nth-of-type(1) > li:nth-of-type(2)",
+          "heading": "Documented strengths and tradeoffs",
+          "tag": "li",
+          "text": "Doctor visit and shipping included in the published starting prices"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Bottom line",
+          "tag": "dd",
+          "text": "$84.99/month starting price; mandatory three-month term"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > dl:nth-of-type(1) > div:nth-of-type(1) > dd:nth-of-type(1)",
+          "heading": "Longevity Meds evidence snapshot",
+          "tag": "dd",
+          "text": "$84.99/month starting price; mandatory three-month term"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1)",
+          "heading": "Longevity Meds evidence snapshot",
+          "tag": "tr",
+          "text": "Published price $84.99/month starting price; mandatory three-month term 2026-09-02"
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > p:nth-of-type(6)",
+          "heading": "How to read Longevity Meds pricing without inventing a total",
+          "tag": "p",
+          "text": "The captured price evidence for Longevity Meds is: “$84.99/month starting price; mandatory three-month term” This review does not convert that wording into a recurring estimate when frequency, supply duration, inclusions, dose rules, or later-period pricing are absent. It also does not assume that consultation, laboratory work, supplies, shipping, membership, taxes, or follow-up are included. Each of those items is a separate verification question because combining them without direct evidence would create a price claim the source did not make."
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"main\"] > section:nth-of-type(9) > div:nth-of-type(3) > details:nth-of-type(1) > p:nth-of-type(1)",
+          "heading": "Frequently asked questions about the Longevity Meds evidence",
+          "tag": "p",
+          "text": "The captured wording is “$84.99/month starting price; mandatory three-month term” It is a dated source record, not a final quote; cadence, supply, inclusions, and later charges remain unknown unless stated."
+        },
+        {
+          "route": "/reviews/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html",
+          "sha256": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+          "selector": "[id=\"pricing\"] > p:nth-of-type(1)",
+          "heading": "Pricing breakdown",
+          "tag": "p",
+          "text": "Longevity Meds publishes starting monthly prices of $84.99 for semaglutide and $114.99 for tirzepatide. Its formal policy requires a three-month term and says the full supply is provided up front."
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > p:nth-of-type(1)",
+          "heading": "Longevity Meds · Compounded semaglutide (injection)",
+          "tag": "p",
+          "text": "First source-listed plan: Compounded semaglutide (injection). Other published plans appear below; this is not a lowest-price ranking."
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Longevity Meds · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "The homepage publishes $84.99 as the semaglutide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front."
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"provider-reported-prices\"] > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-0\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Treatments",
+          "tag": "h3",
+          "text": "Longevity Meds · Compounded semaglutide (injection)"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > header:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Longevity Meds · Compounded semaglutide (injection)",
+          "tag": "h3",
+          "text": "Longevity Meds · Compounded tirzepatide (injection)"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > h3:nth-of-type(1)",
+          "heading": "Longevity Meds · Compounded tirzepatide (injection)",
+          "tag": "h3",
+          "text": "First month"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(1) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "summary",
+          "text": "Price source"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > h3:nth-of-type(1)",
+          "heading": "First month",
+          "tag": "h3",
+          "text": "Thereafter"
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > p:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "p",
+          "text": "The homepage publishes $114.99 as the tirzepatide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front."
+        },
+        {
+          "route": "/providers/longevity-meds-glp-1-review/",
+          "file": "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html",
+          "sha256": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c",
+          "selector": "[id=\"plan-longevity-meds-glp-1-review-1\"] > div:nth-of-type(1) > div:nth-of-type(1) > article:nth-of-type(2) > details:nth-of-type(1) > summary:nth-of-type(1)",
+          "heading": "Thereafter",
+          "tag": "summary",
+          "text": "Price source"
+        }
+      ],
+      "disposition": "PATCH_READY"
+    }
+  ],
+  "operations": [
+    {
+      "id": "49250ac504d911080fe0",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/53/pros/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Published starting monthly prices with no membership costs",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "0359899f04bd821a642c",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/53/pros/1",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Doctor visit and shipping included in the published starting prices",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "f58639f9927d019e5dcf",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/0/rows/53/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "$84.99/month starting price; mandatory three-month term",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.\n\nThe published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "The published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "bb8d9c1ff47c4f1c0b7a",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/53/pros/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Published starting monthly prices with no membership costs",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "75f2342b54ecf4c44c6f",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/53/pros/1",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Doctor visit and shipping included in the published starting prices",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "f986aa519c5489b0ed48",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/1/rows/53/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "$84.99/month starting price; mandatory three-month term",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.\n\nThe published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "The published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "ca69884c2357fda1448b",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/53/pros/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Published starting monthly prices with no membership costs",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "8a447a00f310297d8d76",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/53/pros/1",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Doctor visit and shipping included in the published starting prices",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "27f75a35415963546a20",
+      "file": "data/money-page-specs.json",
+      "pointer": "/pages/3/rows/53/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "$84.99/month starting price; mandatory three-month term",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.\n\nThe published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "The published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "cee0e64b9dd4dc6d8178a1ce0b5f51bd69e33dfb8368112c5de8c0c65e02d819"
+    },
+    {
+      "id": "251732b481ada18634e5",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/53/research_first_month_price",
+      "fields": [
+        "first_month_price"
+      ],
+      "notes": [
+        "Whole evidence-field replacement: value, quote and source date travel together."
+      ],
+      "op": "replace",
+      "before": {
+        "quote": "**Required Commitment for Weight Loss Programs:** Programs involving medications like Tirzepatide or Semaglutide include a mandatory three-month term, as the full supply is provided up front. You are ",
+        "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+        "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+        "verified_as_of": "2026-09-01"
+      },
+      "value": {
+        "quote": "**Required Commitment for Weight Loss Programs:** Programs involving medications like Tirzepatide or Semaglutide include a mandatory three-month term, as the full supply is provided up front. You are required to complete this entire period regardless of your selected billing option. Canceling early will result in an early termination fee.",
+        "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+        "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+        "verified_as_of": "2026-09-01"
+      },
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price",
+          "value": {
+            "quote": "**Required Commitment for Weight Loss Programs:** Programs involving medications like Tirzepatide or Semaglutide include a mandatory three-month term, as the full supply is provided up front. You are required to complete this entire period regardless of your selected billing option. Canceling early will result in an early termination fee.",
+            "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+            "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+            "verified_as_of": "2026-09-01"
+          }
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "f9265190bdb00ff5aedd",
+      "file": "data/program-content-ledger.json",
+      "pointer": "/programs/53/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "$84.99/month starting price; mandatory three-month term",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.\n\nThe published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "The published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830"
+    },
+    {
+      "id": "2b2f04575399e0ef0447",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/37/page_copy/pricing",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Longevity Meds publishes starting monthly prices of $84.99 for semaglutide and $114.99 for tirzepatide. Its formal policy requires a three-month term and says the full supply is provided up front.",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.\n\nThe published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "The published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "976c75ef42ab906e52d7",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/37/row_contract/pros/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Published starting monthly prices with no membership costs",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "7f99bbf23c52bb952030",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/37/row_contract/pros/1",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "Doctor visit and shipping included in the published starting prices",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "7f0cdb4f01a83d06a852",
+      "file": "data/provider-page-contracts.json",
+      "pointer": "/providers/37/row_contract/starting_price",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Exact packet values; no invented totals or unit conversions."
+      ],
+      "op": "replace",
+      "before": "$84.99/month starting price; mandatory three-month term",
+      "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.\n\nPublished starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.\n\nThe published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+      "source_refs": [
+        {
+          "pointer": "/fields/first_month_price/value",
+          "value": "No separate first-month price is published. The formal policy requires a three-month term and says the full supply is provided up front regardless of the selected billing option.",
+          "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/monthly_price/value",
+          "value": "Published starting monthly prices are $84.99 for semaglutide and $114.99 for tirzepatide, with no membership fee; the formal policy separately requires a three-month term and says the full supply is provided up front.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        },
+        {
+          "pointer": "/fields/consultation_fee/value",
+          "value": "The published starting prices include the doctor visit and shipping; no separate consultation price is published on the captured pages.",
+          "source_url": "https://www.longevitymeds.com/",
+          "verified_as_of": "2026-09-01",
+          "capture_path": null,
+          "capture_sha256": null
+        }
+      ],
+      "file_sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
+    },
+    {
+      "id": "83261615c84b0e2c8ca9",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/longevity-meds-glp-1-review/medications/0",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "1a80f687e3bc737daaf010f76ea400a9fccd8f61c449e7be67d73117857eef3f",
+        "captured_on": "2026-09-01",
+        "label": "Compounded semaglutide (injection)",
+        "medication_id": "compounded-semaglutide-injection",
+        "month_1_basis": "same_as_ongoing",
+        "month_1_usd": 84.99,
+        "notes": "The homepage publishes $84.99 as the semaglutide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front.",
+        "ongoing_usd": 84.99,
+        "quote": "$84.99",
+        "source_url": "https://www.longevitymeds.com/"
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    },
+    {
+      "id": "cf1ab774a2baf0585091",
+      "file": "data/provider-pricing-matrix.json",
+      "pointer": "/providers/longevity-meds-glp-1-review/medications/1",
+      "fields": [
+        "first_month_price",
+        "monthly_price"
+      ],
+      "notes": [
+        "Drop legacy asserted cash-pair/plan row. Packet prose is not a typed numeric offer. Keep packet/immutable quote evidence; successor may adopt separately governed typed rows."
+      ],
+      "op": "remove",
+      "before": {
+        "cadence": "month",
+        "capture_sha256": "1a80f687e3bc737daaf010f76ea400a9fccd8f61c449e7be67d73117857eef3f",
+        "captured_on": "2026-09-01",
+        "label": "Compounded tirzepatide (injection)",
+        "medication_id": "compounded-tirzepatide-injection",
+        "month_1_basis": "same_as_ongoing",
+        "month_1_usd": 114.99,
+        "notes": "The homepage publishes $114.99 as the tirzepatide starting amount and says it is one transparent monthly price with the same price across dosages. The formal policy requires a three-month term and says the full supply is provided up front.",
+        "ongoing_usd": 114.99,
+        "quote": "$114.99",
+        "source_url": "https://www.longevitymeds.com/"
+      },
+      "value": null,
+      "source_refs": [],
+      "file_sha256": "18c8a56f0c2d67bae0f491aefc55b74928ad6b543047a21fdb196e30a5993818"
+    }
+  ],
+  "current_page_files": {
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/reviews/longevity-meds-glp-1-review/index.html": "cc9ca8a86b146fb50bdd4ce7e2bf51c2c697cc6963869afaa7bf8d828ba648a8",
+    "/home/ubuntu/business/site-system/flagship-v2/releases/sealed-train4-final-20260910T063057Z/public/providers/longevity-meds-glp-1-review/index.html": "0dab709e398c7ca62049a3021709e688e4119ca6be734354e77475b4f5832a0c"
+  },
+  "scope": "Data proposal only. No identity, hold, link, score, or release changes."
+}

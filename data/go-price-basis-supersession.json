@@ -1,0 +1,126 @@
+{
+  "schema": "d2s-exact-go-only-price-basis-v1",
+  "selection_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
+  "entries": [
+    {
+      "program_id": "awin-128761",
+      "before_go": {
+        "entry_state": "held",
+        "route": "/go/coivas"
+      },
+      "before_profile": {
+        "data_profile": {
+          "has_price": false,
+          "has_review_facts": true
+        },
+        "exceptions": {
+          "go": {
+            "enabled": true,
+            "reason": "Production authority approved the transparent-direct review CTA; opaque /go routing remains intentionally disabled.",
+            "surface_restriction_basis": "operator_terms_transparent_direct_only"
+          }
+        },
+        "surfaces": {
+          "calculator": true,
+          "compare": true,
+          "go": false,
+          "quiz": true,
+          "review": true,
+          "sitemap": true
+        },
+        "vertical_fit": true,
+        "wired": true
+      }
+    },
+    {
+      "program_id": "katalys-1286",
+      "before_go": {
+        "entry_state": "held",
+        "route": "/go/sprout-health"
+      },
+      "before_profile": {
+        "data_profile": {
+          "has_price": true,
+          "has_review_facts": true
+        },
+        "exceptions": {
+          "go": {
+            "enabled": true,
+            "reason": "Production authority approved the transparent-direct review CTA; opaque /go routing remains intentionally disabled.",
+            "surface_restriction_basis": "operator_terms_transparent_direct_only"
+          }
+        },
+        "surfaces": {
+          "calculator": true,
+          "compare": true,
+          "go": false,
+          "quiz": true,
+          "review": true,
+          "sitemap": true
+        },
+        "vertical_fit": true,
+        "wired": true
+      }
+    },
+    {
+      "program_id": "katalys-647",
+      "before_go": {
+        "entry_state": "held",
+        "route": "/go/mangorx"
+      },
+      "before_profile": {
+        "data_profile": {
+          "has_price": false,
+          "has_review_facts": true
+        },
+        "exceptions": {
+          "go": {
+            "enabled": true,
+            "reason": "Production authority approved the transparent-direct review CTA; opaque /go routing remains intentionally disabled.",
+            "surface_restriction_basis": "operator_terms_transparent_direct_only"
+          }
+        },
+        "surfaces": {
+          "calculator": true,
+          "compare": true,
+          "go": false,
+          "quiz": true,
+          "review": true,
+          "sitemap": true
+        },
+        "vertical_fit": true,
+        "wired": true
+      }
+    },
+    {
+      "program_id": "katalys-1304",
+      "before_go": {
+        "entry_state": "held",
+        "route": "/go/direct-meds"
+      },
+      "before_profile": {
+        "data_profile": {
+          "has_price": false,
+          "has_review_facts": true
+        },
+        "exceptions": {
+          "go": {
+            "enabled": true,
+            "reason": "Production authority approved the transparent-direct review CTA; opaque /go routing remains intentionally disabled.",
+            "surface_restriction_basis": "operator_terms_transparent_direct_only"
+          }
+        },
+        "surfaces": {
+          "calculator": true,
+          "compare": true,
+          "go": false,
+          "quiz": true,
+          "review": true,
+          "sitemap": true
+        },
+        "vertical_fit": true,
+        "wired": true
+      }
+    }
+  ]
+}

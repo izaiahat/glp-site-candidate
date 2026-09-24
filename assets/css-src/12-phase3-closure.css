@@ -1,0 +1,17 @@
+/* Pass 3 desktop closure: related product cards must own a zero-minimum grid
+   track. The shared product figure has a desktop hero width and the browser's
+   default figure margins; neither may establish an intrinsic 520px card track. */
+.p3-product-related-card {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.p3-product-related-card > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.p3-product-related-card > .p3-product-visual {
+  width: 100%;
+  margin: 0;
+  justify-self: stretch;
+}
