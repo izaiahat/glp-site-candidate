@@ -211,11 +211,12 @@
       url.searchParams.set("cs_click_id", clickId);
       return url.toString();
     }
-    const params = NETWORK_PARAMS[anchor.dataset.network] || NETWORK_PARAMS.Katalys;
+    const codec = anchor.dataset.subidCodec || anchor.dataset.network;
+    const params = NETWORK_PARAMS[codec] || NETWORK_PARAMS.Katalys;
     // Advertising click IDs belong only to the governed /go receiver, never
     // browser analytics or arbitrary direct-network decoration.
     // Affiliati uses s1 as the primary owned click id and duplicates it into s2.
-    const values = anchor.dataset.network === "Affiliati"
+    const values = codec === "Affiliati"
       ? [clickId, clickId]
       : [anchor.dataset.sub1, anchor.dataset.sub2, clickId];
     params.forEach((name, index) => {
@@ -224,7 +225,7 @@
       // A param the approved artifact already baked into the href (e.g. Awin
       // clickref campaign refs) is authoritative — slots 1/2 never overwrite it.
       // Slots 3/4 are per-visitor and can only exist here, so they always write.
-      if (index < 2 && anchor.dataset.network !== "Affiliati" && url.searchParams.get(name)) return;
+      if (index < 2 && codec !== "Affiliati" && url.searchParams.get(name)) return;
       url.searchParams.set(name, value);
     });
     // Preserve sub1..sub4 as placement/reporting slots. Katalys' specialized

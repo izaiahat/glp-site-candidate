@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3828,
+  "tracked_file_count": 3830,
   "files": [
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
@@ -3482,6 +3482,7 @@
     "src/robots.mjs",
     "src/schema.mjs",
     "src/selected-family-styles.mjs",
+    "src/served-affiliate-identity.mjs",
     "src/site-capture-consent-sources.mjs",
     "src/sitemap.mjs",
     "src/standalone-dark-theme.mjs",
@@ -3717,6 +3718,7 @@
     "tests/nowrite-proxy.test.mjs",
     "tests/original-data.test.mjs",
     "tests/p04-money-legal.test.mjs",
+    "tests/p04b-rail-identity.test.mjs",
     "tests/p21-producer-fixes.test.mjs",
     "tests/p27-consent-region.test.mjs",
     "tests/p27-posthog-binding.test.mjs",

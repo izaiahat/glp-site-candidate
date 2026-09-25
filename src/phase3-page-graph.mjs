@@ -392,7 +392,7 @@ function compactProviderCard(entry, registry, doseCapture, logoManifest, { coupo
   const affiliate = COMPARE_AFFILIATE_MAP[entry.program_id];
   const goPageSlug = goSurface ? String(goSurface.route || "/providers/").replace(/^\/+|\/+$/g, "").replaceAll("/", "-") || "providers" : "provider-listing";
   const goPosition = goSurface?.position || "pricing";
-  const affiliateAttrs = subidAttributes({ network: affiliate?.network, href: affiliate?.affiliate_href, renderedHref: affiliate?.affiliate_href, position: goPosition, rankPosition, pageSlug: goPageSlug, pageType: goSurface ? "funnel-v2-comparison" : "provider-listing", providerSlug: entry.program_id });
+  const affiliateAttrs = affiliate?.live ? subidAttributes({ programId: entry.program_id, network: affiliate.network, href: affiliate.affiliate_href, renderedHref: affiliate.affiliate_href, position: goPosition, rankPosition, pageSlug: goPageSlug, pageType: goSurface ? "funnel-v2-comparison" : "provider-listing", providerSlug: entry.program_id }) : "";
   const outbound = goSurface ? resolveCardOutbound({program:record,affiliate,promotionAuthority:goSurface.authority ?? GO_AUTHORITY,pageSlug:goPageSlug,position:goPosition,rankPosition}) : null;
   const cardHref = goSurface ? outbound.href : affiliate?.affiliate_href;
   const getStarted = stateUnverified ? '<p class="p3-unavailable-action">State availability not established. Check directly with the provider before considering enrollment.</p>' : affiliate?.live && cardHref
@@ -1034,7 +1034,7 @@ function renderProviderDetailComplete(program, pricingMatrix, registry, coupons,
   const reviewPath = canonicalReviewPath(program, registry);
   const affiliate = COMPARE_AFFILIATE_MAP[program.program_id];
   const selected = selectedGoOutbound(program, 'providers.rv1');
-  const affiliateAttrs = subidAttributes({ network: affiliate?.network, href: affiliate?.affiliate_href, position: "intro", rankPosition: 0, pageSlug: `provider-${program.program_id}`, pageType: "provider-detail", providerSlug: program.program_id });
+  const affiliateAttrs = affiliate?.live ? subidAttributes({ programId: program.program_id, network: affiliate.network, href: affiliate.affiliate_href, position: "intro", rankPosition: 0, pageSlug: `provider-${program.program_id}`, pageType: "provider-detail", providerSlug: program.program_id }) : "";
   const getStarted = affiliate?.live && affiliate.affiliate_href
     ? `<a class="cs-btn cs-palette-action" href="${esc(selected?.href || affiliate.affiliate_href)}" rel="sponsored noopener nofollow" data-analytics-event="affiliate_click" data-program="${esc(program.program_id)}" ${selected?.href ? 'data-link-mode="server-redirect" data-funnel-v2-go data-subid="providers.rv1" data-variant="a"' : 'data-link-mode="transparent-direct"'} ${affiliateAttrs}>Get started</a>`
     : '<p class="p3-unavailable-action" data-affiliate-unavailable><strong>Enrollment link pending verification</strong><span>No destination appears until Clinic Scout verifies it.</span></p>';
@@ -1779,7 +1779,7 @@ export function approvedDirectoryLinks() {
       : (approved.allowed_provider_tracking_hosts?.[row.network] || []).includes(host);
   }).map((row) => {
     const href = row.tracking.provider_issued_url;
-    const attrs = subidAttributes({ network: row.network, position: 'provider-card', pageSlug: 'providers', pageType: 'provider-directory', providerSlug: row.registry_id, href, renderedHref: href });
+    const attrs = subidAttributes({ programId: row.registry_id, network: row.network, position: 'provider-card', pageSlug: 'providers', pageType: 'provider-directory', providerSlug: row.registry_id, href, renderedHref: href });
     return `<section class="p3-provider-section" data-approved-directory-provider="${esc(row.registry_id)}"><h2>More GLP-1 providers</h2><h3>${esc(row.display_name)}</h3><p>Confirm current program details and eligibility with the provider. No price or comparative rating is published here.</p><p class="affiliate-note">We may earn a commission if you use this link, at no extra cost to you.</p><a class="cta secondary" href="${esc(href)}" target="_blank" rel="sponsored nofollow noopener noreferrer" data-program="${esc(row.registry_id)}" data-affiliate-state="active" ${attrs} data-analytics-event="affiliate_click">Visit ${esc(row.display_name)}</a></section>`;
   }).join('');
 }

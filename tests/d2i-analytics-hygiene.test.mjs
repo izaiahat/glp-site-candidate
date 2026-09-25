@@ -26,6 +26,28 @@ for(const suffix of ['/?utm_source=CANARY&gclid=CANARY#CANARY','/quiz/provider-f
 });
 for(const [label,args]of [['candidate',{stage:'candidate'}],['GPC',{gpc:true}],['automation',{webdriver:true}],['local',{url:'http://127.0.0.1/'}],['intake',{url:'https://glpclinicscout.com/intake/'}],['results',{url:'https://glpclinicscout.com/results/'}]])test('mock negative gate '+label,()=>{const f=fixture(args);f.grant();assert.equal(f.window.GCSConsent.allowsExports(),false);assert.equal(f.scripts.length,0);assert.equal(f.window.GCSAnalytics.event('quiz_start'),false);assert.equal(f.window.GCSAnalytics.clickIdFor('TEST'),null);const a={href:'https://merchant.invalid/?x=1'};assert.equal(f.window.GCSAnalytics.decorateOutbound(a,'mock-id'),a.href)});
 test('legacy grant is not explicit and all four defaults denied',()=>{const f=fixture({saved:{version:'gcs-cookie-v2-default-on',analytics:'granted'}});assert.equal(f.window.GCSConsent.effective(),'denied');assert.equal(f.scripts.length,0);assert.deepEqual(Object.values(f.window.dataLayer[0][2]),['denied','denied','denied','denied']);});
+test('outbound decoration is allowed before denial on US default-on, suppressed after denial', () => {
+ const f=fixture();
+ assert.equal(f.window.GCSConsent.read().analytics_basis,'us_default');
+ assert.equal(f.window.GCSConsent.allowsExports(),true);
+ for (const [href,network,subidCodec,key] of [
+  ['https://glpclinicscout.com/go/trt-nation?s=reviews.rv2&v=a','CJ Affiliate','CJ','cs_click_id'],
+  ['https://merchant.invalid/?x=1','CJ Affiliate','CJ','sid3'],
+ ]) {
+  const anchor={href,dataset:{network,subidCodec,sub1:'1R',sub2:'review-test'}};
+  const decorated=f.window.GCSAnalytics.decorateOutbound(anchor,'fixture-click');
+  assert.equal(new URL(decorated).searchParams.get(key),'fixture-click');
+  assert.equal(anchor.href,href,'decorator does not mutate the passed anchor');
+ }
+ f.window.GCSConsent.apply('denied');
+ assert.equal(f.window.GCSConsent.allowsExports(),false);
+ // Throwing dataset proves denial precedes metadata inspection or URL parsing.
+ for(const href of ['https://glpclinicscout.com/go/trt-nation?s=reviews.rv2&v=a','https://merchant.invalid/?x=1']) {
+  const anchor={href,get dataset(){throw new Error('denied metadata read')}};
+  assert.equal(f.window.GCSAnalytics.decorateOutbound(anchor,'fixture-click'),href);
+ }
+});
+
 test('pending mock SDK revocation clears historical queue; delayed load cannot initialize denied',()=>{
  const f=fixture();assert.equal(f.window.GCSConsent.read().analytics_basis,'us_default');f.window.GCSAnalytics.event('quiz_start');assert.equal(f.window.posthog.__queue.length,1);f.window.GCSConsent.apply('denied');assert.equal(f.window.posthog.__queue.length,0);let initialized=false;f.window.posthog.init=()=>{initialized=true};f.scripts.find(s=>s.src.includes('array.js')).listeners.load();assert.equal(initialized,false);assert.equal(f.window.GCS_POSTHOG_LOADED,false);
 });

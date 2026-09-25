@@ -147,12 +147,10 @@ export function normalizeNetwork(label, href) {
   return "direct";
 }
 
-/** Rail identity is not the subid codec. Preserve issuer rails with no codec
- * without changing normalizeNetwork/subidParamsFor's parameter fallback. */
-export function affiliateNetworkIdentity(label, href) {
-  const identities = new Map([['trackdesk', 'Trackdesk'], ['partnerize', 'Partnerize'], ['clickdealer', 'ClickDealer']]);
-  return identities.get(String(label || "").trim().toLowerCase()) || normalizeNetwork(label, href);
-}
+/** Rail identity comes only from this program's bound authority, never a codec
+ * or hostname guess. Unknown programs and mismatched labels fail the build. */
+export { trackingNetworkIdentity as affiliateNetworkIdentity } from './tracking-allowed-hosts.mjs';
+import { trackingNetworkIdentity } from './tracking-allowed-hosts.mjs';
 
 /** Classifies the rendered destination; does not grant outbound authority. */
 export function affiliateLinkMode(href) {
@@ -162,13 +160,14 @@ export function affiliateLinkMode(href) {
 }
 
 /** The build-time attribute block every live affiliate anchor carries. */
-export function subidAttributes({ network, position, rankPosition, pageSlug, pageType, providerSlug, href, renderedHref }) {
+export function subidAttributes({ programId, network, position, rankPosition, pageSlug, pageType, providerSlug, href, renderedHref }) {
   const esc = (value) => String(value ?? "").replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
   return [
     // No rendered affiliate href (held / unavailable provider: the card links to its review page) => not an affiliate
     // CTA, so no link-mode attribute. Only a present href is classified (build 3 refused on a null href, 2026-09-18).
     ...(renderedHref == null || !String(renderedHref).trim() ? [] : [`data-link-mode="${affiliateLinkMode(renderedHref)}"`]),
-    `data-network="${esc(affiliateNetworkIdentity(network, href))}"`,
+    `data-network="${esc(trackingNetworkIdentity(programId, network))}"`,
+    `data-subid-codec="${esc(normalizeNetwork(network, href))}"`,
     `data-provider-slug="${esc(providerSlug)}"`,
     `data-element-code="${esc(elementCodeFor(position))}"`,
     `data-rank-position="${Number.isFinite(rankPosition) ? Math.trunc(rankPosition) : 0}"`,

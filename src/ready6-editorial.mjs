@@ -252,7 +252,7 @@ function renderReady6ReviewPageWithCopy(model, unavailableRoutes, options, seo) 
   const reviewSections = model.page.review_sections.map((section, index) => `<section class="panel" id="review-section-${index + 1}"><h2>${esc(section.heading)}</h2><p>${esc(section.body)}</p></section>`).join("");
   const pageSlug = model.route.replace(/^\/reviews\/|\/$/g, "");
   const subid = selected?.surfaceCode || `review-${model.registry_id}-conclusion-${READY6_DATE_MODIFIED.slice(0, 7).replace("-", "")}`;
-  const subids = subidAttributes({ network: model.network, position: "review-closing", rankPosition: 1, pageSlug: `review-${pageSlug}`, pageType: "review", providerSlug: pageSlug });
+  const subids = subidAttributes({ programId: model.registry_id, network: selected?.network || model.network, position: "review-closing", rankPosition: 1, pageSlug: `review-${pageSlug}`, pageType: "review", providerSlug: pageSlug });
   const stylesheetLinks = sharedInteractiveShell ? "" : `<link rel="stylesheet" href="/assets/site-review.css"><link rel="stylesheet" href="/assets/site-editorial.css">`;
   const bodyAttributes = sharedInteractiveShell ? "" : ' data-cs-template="review"';
   const shellNav = sharedInteractiveShell ? "" : ready6ShellNav();

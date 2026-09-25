@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { affiliateLinkMode, subidAttributes } from "../src/affiliate-subid.mjs";
 
-const assignment = { network: "direct", position: "provider-card", rankPosition: 1, pageSlug: "providers", pageType: "provider-listing", providerSlug: "example" };
+const assignment = { programId: "gobymeds", network: "direct", position: "provider-card", rankPosition: 1, pageSlug: "providers", pageType: "provider-listing", providerSlug: "example" };
 
 test("rendered destination determines the mode, not a /go/ substring", () => {
   assert.equal(affiliateLinkMode("/go/example?s=providers.pc1&v=a"), "server-redirect");

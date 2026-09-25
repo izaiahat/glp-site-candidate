@@ -227,13 +227,14 @@ function affiliateReviewCta(row) {
   const live = selected ? !selected.held : row.live_link_allowed === true && row.promotion_authorized === true;
   if (!live) return `<a class="cta secondary" href="/best/online-glp-1-providers/" data-affiliate-state="unavailable">See ${esc(row.provider)} in comparison</a>`;
   if (row.affiliate_link_mode !== "transparent_direct" || !row.affiliate_href) throw new Error(`review_direct_link_contract_invalid:${row.program_id}`);
-  const url = new URL(row.affiliate_href);
-  const allowedHosts = trackingAllowedHosts(row.program_id, row.affiliate_network);
+  const url = new URL(selected?.issuedHref || row.affiliate_href);
+  const allowedHosts = trackingAllowedHosts(row.program_id, selected?.network || row.affiliate_network);
   if (url.protocol !== "https:" || !allowedHosts.has(url.hostname.toLowerCase())) throw new Error(`review_direct_link_host_invalid:${row.program_id}`);
   const attributionMonth = String(row.activation_at_utc || row.review_date_modified || "").slice(0, 7).replace("-", "");
   if (!/^\d{6}$/.test(attributionMonth)) throw new Error(`review_affiliate_subid_month_invalid:${row.program_id}`);
   const subid = selected?.surfaceCode || `review-${row.program_id}-conclusion-${attributionMonth}`;
   const subids = subidAttributes({
+    programId: row.program_id,
     network: selected?.network || row.affiliate_network,
     position: "review-closing",
     rankPosition: 1,

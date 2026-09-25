@@ -2714,6 +2714,10 @@ async function main() {
   execFileSync('python3', ['-B', path.join(ROOT, 'scripts/validate-data-attributes.py'), '--root', PUBLIC, '--receipt', path.join(OPS, 'data-attribute-invariants.json')], { stdio: 'inherit' });
   buildReport.data_attribute_invariants = { status: 'PASS', receipt: 'data-attribute-invariants.json' };
   execFileSync('python3', ['-B', path.join(ROOT, 'scripts/emit-tracking-allowed-hosts.py'), '--root', ROOT, '--check'], { stdio: 'inherit' });
+  const { assertServedGoIdentity } = await import('../src/served-affiliate-identity.mjs');
+  const railDocument = JSON.parse(await readFile(path.join(ROOT, 'data/tracking-allowed-hosts.json'), 'utf8'));
+  const railCensus = assertServedGoIdentity(PUBLIC, railDocument.programs);
+  buildReport.affiliate_rail_identity = { status: 'PASS', html_files: railCensus.htmlFiles, json_files: railCensus.jsonFiles, go_anchors: railCensus.anchors.length };
   buildReport.tracking_allowed_hosts = { status: 'PASS', source: 'data/tracking-allowed-hosts.json', derived_and_checked_in_this_stage: true };
   buildReport.lastmod_emission = await captureLastmodEmission(ROOT, indexableRoutes);
   buildReport.release_stage = releaseExportPolicy().stage;

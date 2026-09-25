@@ -14,7 +14,7 @@ for (const [id, network, file] of [
   ['nu-image-medical-review', 'Trackdesk', 'public/reviews/nu-image-medical-review/index.html'],
   ['partnerize-1011l6645', 'Partnerize', 'public/providers/index.html'],
 ]) test(`A rail identity and served authority agree: ${id}`, () => {
-  assert.match(subidAttributes({ network, position: 'review' }), new RegExp(`data-network="${network}"`));
+  assert.match(subidAttributes({ programId: id, network, position: 'review' }), new RegExp(`data-network="${network}"`));
   assert.equal(normalizeNetwork(network), 'direct', 'subid codec fallback is not a rail grant');
   assert.deepEqual(subidParamsFor(network), subidParamsFor('Katalys'));
   const anchors = [];

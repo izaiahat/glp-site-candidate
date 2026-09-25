@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
-import { isAllowedTrackingHost } from "../../src/tracking-allowed-hosts.mjs";
+import { isAllowedTrackingHost, trackingNetworkIdentity } from "../../src/tracking-allowed-hosts.mjs";
 
 // Operator directive 2026-07-30: every affiliate CTA must be genuinely tappable on
 // mobile and desktop — no fixed overlay (exit-capture trigger, sticky bar, consent
@@ -56,6 +56,8 @@ async function expectPaidRail(anchor) {
     `PAID_LINK_MODE: ${JSON.stringify(mode)} on href ${JSON.stringify(href)} is not one of ${[...PAID_LINK_MODES].join(" | ")}`).toBeTruthy();
   if (mode === "server-redirect") {
     expect(href, "PAID_RAIL_GO").toMatch(/^\/go\/[a-z0-9][a-z0-9-]*(?:\?[^#\s]*)?$/);
+    const program = await anchor.getAttribute("data-program");
+    await expect(anchor, "PAID_RAIL_GO_NETWORK").toHaveAttribute("data-network", trackingNetworkIdentity(program));
     return;
   }
   const program = await anchor.getAttribute("data-program");

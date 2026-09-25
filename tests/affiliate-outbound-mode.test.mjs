@@ -52,8 +52,8 @@ test("commercial and surface holds cannot be cleared by runtime permissions", ()
  p.profiles['glp-clinic-scout'].exceptions={go:{enabled:true,surface_restriction_basis:'operator_terms_transparent_direct_only'}};
  assert.equal(affiliateOutboundMode(p,link,verified),'transparent_direct');
 });
-test("XenTraffic label remains its own network and unknown labels remain direct", () => {
+test("XenTraffic identity is authority-bound; unknown label is only a codec fallback", () => {
  assert.equal(normalizeNetwork('XenTraffic'), 'XenTraffic');
  assert.equal(normalizeNetwork('unknown-network'), 'direct');
- assert.match(subidAttributes({network:'XenTraffic',position:'review-closing',rankPosition:1,pageSlug:'review-example',pageType:'review',providerSlug:'example'}),/data-network="XenTraffic"/);
+ assert.match(subidAttributes({programId:'levelsrx-extra-cpa-home-page',network:'XenTraffic',position:'review-closing',rankPosition:1,pageSlug:'review-example',pageType:'review',providerSlug:'example'}),/data-network="XenTraffic"/);
 });

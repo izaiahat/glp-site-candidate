@@ -267,6 +267,7 @@ export function affiliateCta(spec, program, position, copy = "visit", variant = 
   // CR-5 / B-01: rank + element + page identity ride the anchor so the runtime
   // can build sub1..sub4 and fire one canonical event to GA4 and PostHog.
   const subids = subidAttributes({
+    programId,
     network: selected?.network || program.affiliate_network,
     position,
     rankPosition: rankPositionOf(spec, program),

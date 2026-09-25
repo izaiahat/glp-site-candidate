@@ -19,7 +19,7 @@ node --test --test-concurrency=1 \
   tests/withheld-promotion-anchors.test.mjs tests/go-runtime-manifest.test.mjs \
   tests/go-link-rel-sponsored.test.mjs tests/trt-nation-link-dark.test.mjs \
   tests/d2w-release2-price-state.test.mjs tests/d2w-held-surface-price-basis.test.mjs \
-  tests/mounjaro-coupon-recovery.test.mjs tests/p04-money-legal.test.mjs || status=1
+  tests/mounjaro-coupon-recovery.test.mjs tests/p04-money-legal.test.mjs tests/p04b-rail-identity.test.mjs || status=1
 node scripts/validate-provider-pricing-matrix.mjs || status=1
 node scripts/validate-approved-provider-link-monetization.mjs || status=1
 node scripts/ci-link-census.mjs || status=1
