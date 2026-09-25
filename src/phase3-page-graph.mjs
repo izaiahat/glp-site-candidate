@@ -380,14 +380,14 @@ function compactProviderCard(entry, registry, doseCapture, logoManifest, { coupo
     : sourceMeta(row, options);
   const factSources = (rows, options = {}) => {
     const markup = rows.map((row) => factSourceMeta(row, options)).join("");
-    return hubFactSources ? `<details><summary>Sources and checked dates</summary>${markup}</details>` : markup;
+    return hubFactSources && !options.visible ? `<details><summary>Sources and checked dates</summary>${markup}</details>` : markup;
   };
   const identitySource = { capture_date: contract.research.capture_date, source_url: contract.ledger.source_url };
   const medicationEvidence = contract.ledger.meds_offered_evidence;
   const medicationSourceMeta = medicationEvidence?.schema === "s10-field-evidence-v1"
     ? factSources(medicationEvidence.sources.map((source) => ({ capture_date: source.checked_date, source_url: source.source_url })))
     : factSources([identitySource]);
-  const factRow = (label, value, source, options = {}) => `<div><dt>${esc(label)}</dt><dd><span>${esc(value)}</span>${factSources([source], options)}</dd></div>`;
+  const factRow = (label, value, source, options = {}) => `<div><dt>${esc(label)}</dt><dd><span>${esc(value)}</span>${factSources([source], { ...options, visible: hubFactSources && label === "Total monthly cost" })}</dd></div>`;
   const cardFacts = `<dl class="p3-card-ledger p3-card-contract" data-provider-card-contract="option-c"><div><dt>Medications offered</dt><dd><span>${esc(contract.ledger.meds_offered)}</span>${medicationSourceMeta}</dd></div>${factRow("Total monthly cost", priceStateText(entry) || contract.cost.value, contract.cost, { numeric: Boolean(entry.medications?.length) })}${factRow("Cancellation", contract.cancellation.value, contract.cancellation)}</dl>`;
   const affiliate = COMPARE_AFFILIATE_MAP[entry.program_id];
   const goPageSlug = goSurface ? String(goSurface.route || "/providers/").replace(/^\/+|\/+$/g, "").replaceAll("/", "-") || "providers" : "provider-listing";
@@ -867,6 +867,12 @@ function liveCanonicalProviderPrograms(registry) {
         && !aliasIds.has(program.program_id);
     })
     .sort((left, right) => left.display_name.localeCompare(right.display_name));
+}
+
+export function providerComparisonCardCount(registry) {
+  return liveCanonicalProviderPrograms(registry).filter((program) =>
+    providerCardEligible(program.review_slug || program.program_id)
+      || providerCardEligible(program.program_id)).length;
 }
 
 function providerHubControls(entries, doseCapture) {
@@ -1485,7 +1491,7 @@ const LISTING_CONFIG = Object.freeze({
   E: Object.freeze({ mode: "provider", support: "Compare published medications, monthly cost and cancellation terms." }),
 });
 
-function listingDocument({ archetype, route, title, description, heading, support, count, controls, cards, panel = "", resultTail = "", afterGrid = "", runtime = "", schema, initialVisible = null, profileCount = null, hasNonpriced = false }) {
+function listingDocument({ archetype, route, title, description, heading, support, count, controls, cards, panel = "", atfPreview = "", resultTail = "", afterGrid = "", runtime = "", schema, initialVisible = null, profileCount = null, hasNonpriced = false }) {
   const pharmacy = archetype === "D";
   if (!LISTING_CONFIG[archetype] || (archetype !== "B" && panel)) throw new Error("listing_configuration_invalid");
   const statusHook = pharmacy ? "data-pharmacy-result" : "data-filter-result";
@@ -1494,12 +1500,20 @@ function listingDocument({ archetype, route, title, description, heading, suppor
   const registryScope = route === "/providers/" ? `<p data-provider-registry-scope>We track <span data-live-provider-count>{{LIVE_PROVIDER_COUNT}}</span> providers in total. ${count} meet the comparison-card evidence rules; ${profileCount - count} additional provider profiles have their own first-party pages outside this comparison. The count covers our live registry, not a claim of availability in your state.</p>` : "";
   const stateMarkup = archetype === "C" ? stateFilterControl() : archetype === "E" ? providerHubStateControl() : "";
   if (stateMarkup && controls.split(stateMarkup).length !== 2) throw new Error("listing_state_control_source_missing_or_duplicate");
-  const filterControls = stateMarkup ? controls.replace(stateMarkup, "") : controls;
+  const inlineControls = stateMarkup ? controls.replace(stateMarkup, "") : controls;
+  // Native details remains usable if enhancement fails, while the parser-time
+  // close reserves the same mobile footprint as the enhanced filter trigger.
+  const filterControls = pharmacy
+    ? `<details open data-native-pharmacy-filters><summary class="cs-mobile-filter-trigger"><span>Pharmacy filters</span><span aria-hidden="true">Tune filters&nbsp;↗</span></summary>${inlineControls}</details><script>(()=>{const shell=document.currentScript.previousElementSibling;if(matchMedia('(max-width:760px)').matches)shell.open=false;})();</script>`
+    : inlineControls;
   const leadDisclosure = pharmacy ? "" : `<div class="table-disclosure p3-source-disclosure affiliate-note"><p class="listing__disclosure-lead affiliate-note">We may earn a commission from sponsored links.</p>${route === "/providers/" ? "<p>That never changes a score.</p>" : ""}<p>Price-source links go directly to the provider page Clinic Scout checked, not through an affiliate redirect.</p></div>`;
-  const emptyCopy = archetype === "A" && hasNonpriced
-    ? "No comparable price matches those filters. Records without a comparable price are listed separately below. This is not a medical or availability conclusion."
+  const numericListing = ["A", "B", "C"].includes(archetype);
+  const emptyCopy = numericListing
+    ? hasNonpriced
+      ? "No comparable price matches those filters. Records without a comparable price are listed separately below. This is not a medical or availability conclusion."
+      : "No source-backed record matches those filters. An empty result is not a medical or availability conclusion."
     : "No source-backed record matches those filters. An empty result is not a medical or availability conclusion.";
-  const body = `<header class="listing__intro${stateMarkup ? " listing__intro--state" : ""}">${stateMarkup}<h1${archetype === "E" || archetype === "C" ? ' data-state-heading data-state-title-template="Compare weight loss providers in {state}"' : ""}>${esc(heading)}</h1><p class="listing__support">${esc(support)} <span class="listing__count" ${statusHook} aria-live="polite" aria-atomic="true">${count} ${archetype === "A" ? "comparable price results" : pharmacy ? "pharmacy records" : "provider records"}</span></p>${registryScope}${leadDisclosure}</header>${filterControls}${panel}<section id="provider-results" class="listing-results p3-provider-section" data-three-column-results${initialVisible ? ` data-initial-visible="${initialVisible}"` : ""} aria-labelledby="listing-results-heading"><h2 id="listing-results-heading" class="sr-only">Results</h2><div class="listing-grid ${pharmacy ? "p3-pharmacy-grid" : "p3-provider-grid"}" ${gridHook}>${cards || (pharmacy ? '<p class="p3-empty">No source-backed row is published for this selection. An evidence gap is not proof that no provider exists.</p>' : "")}</div>${resultTail}<div class="p3-filter-empty" ${emptyHook}${count || pharmacy ? " hidden" : ""}><p>${esc(emptyCopy)}</p>${pharmacy ? "" : '<p data-active-filter-label>Active filters: none.</p><button type="button" data-filter-reset>Reset filters</button>'}</div></section>${pharmacy ? "" : sourceDisclosure()}${afterGrid}${runtime}`;
+  const body = `<header class="listing__intro${stateMarkup ? " listing__intro--state" : ""}">${stateMarkup}<h1${archetype === "E" || archetype === "C" ? ' data-state-heading data-state-title-template="Compare weight loss providers in {state}"' : ""}>${esc(heading)}</h1><p class="listing__support">${esc(support)} <span class="listing__count" ${statusHook} aria-live="polite" aria-atomic="true">${count} ${numericListing ? "comparable price results" : pharmacy ? "pharmacy records" : "provider records"}</span></p>${registryScope}${leadDisclosure}${atfPreview}</header>${filterControls}${panel}<section id="provider-results" class="listing-results p3-provider-section" data-three-column-results${initialVisible ? ` data-initial-visible="${initialVisible}"` : ""} aria-labelledby="listing-results-heading"><h2 id="listing-results-heading" class="sr-only">Results</h2><div class="listing-grid ${pharmacy ? "p3-pharmacy-grid" : "p3-provider-grid"}" ${gridHook}>${cards || (pharmacy ? '<p class="p3-empty">No source-backed row is published for this selection. An evidence gap is not proof that no provider exists.</p>' : "")}</div>${resultTail}<div class="p3-filter-empty" ${emptyHook}${count || pharmacy ? " hidden" : ""}><p>${esc(emptyCopy)}</p>${pharmacy ? "" : '<p data-active-filter-label>Active filters: none.</p><button type="button" data-filter-reset>Reset filters</button>'}</div></section>${pharmacy ? "" : sourceDisclosure()}${afterGrid}${runtime}`;
   return pageDocument({ route, title, description, body: '<noscript><style data-preserve>main.listing [data-provider-lazy-index]{display:none!important}</style></noscript>' + body, schema, listingArchetype: archetype,
     mainClass: `p3-page listing${pharmacy ? " p3-pharm-hub" : ""}`,
     ...(archetype === "C" ? { robots: "noindex,nofollow,noarchive,nosnippet,max-image-preview:large" } : {}),
@@ -1547,6 +1561,7 @@ function renderConfiguredListing(archetype, page, { graph, pharmacyInput, pricin
   let payload = [];
   let resultTail = "";
   let below = "";
+  let atfPreview = "";
   let hasNonpriced = false;
   let count;
   let panel = { html: "", schema: null };
@@ -1681,6 +1696,14 @@ const main=root.closest("main");for(const event of ["click","input","change"])ma
       goSurface: { route, position: "provider-card", authority: goAuthority }, rankPosition: index + 1,
       initialHidden: archetype === "E" && index >= initialVisible,
     }));
+    if ((route === "/providers/" || /^\/lp\/best-providers\/compounded-(?:semaglutide|tirzepatide)\/$/.test(route)) && providers.length) {
+      const first = providers[0];
+      const cost = providerCardContract(first.program_id)?.cost;
+      const action = cardBodies[0].match(/<a class="cs-btn cs-palette-action"[^>]*>Get started<\/a>/)?.[0];
+      if (cost && action && /\$\s?\d/.test(cost.value)) {
+        atfPreview = `<section class="p3-atf-price" data-atf-result aria-label="First source-backed comparison result"><p>First comparison card, not a treatment recommendation or a claim of state availability.</p><strong>${esc(first.provider)}</strong><p data-atf-price>${esc(cost.value)}</p><small>Checked <time datetime="${esc(cost.capture_date)}">${esc(cost.capture_date)}</time> · ${renderCitationAnchor({ url: cost.source_url, label: "Provider terms", reason: CITATION_REASONS.INLINE_FACT_SOURCE, rel: "noopener noreferrer" })}</small>${action}</section>`;
+      }
+    }
     if (stateUnknownProviders.length) below += `<section class="p3-provider-section" data-state-unverified-remainder aria-labelledby="state-unverified-title"><h2 id="state-unverified-title">State availability not established</h2><p>These source-backed records have not established state availability. A published price is not confirmation of access or treatment eligibility; check directly with the provider.</p><div class="p3-provider-grid">${stateUnknownProviders.map((entry) => compactProviderCard(entry, registry, doseCapture, logoManifest, { mode: config.mode, stateUnverified: true })).join("")}</div></section>`;
     // Operator 2026-09-18: payout order on the PAID landing pages only (OPERATOR-DECISION-20260918-paid-page-payout-order).
     if (["/lp/best-providers/compounded-semaglutide/", "/lp/best-providers/compounded-tirzepatide/"].includes(route)) below += p19RestoredFunnel("R11", false);
@@ -1730,13 +1753,33 @@ const main=root.closest("main");for(const event of ["click","input","change"])ma
     !pharmacy ? providerItemListSchema(route, route === "/providers/" ? "GLP-1 provider comparison" : heading, providers, registry) : null,
   );
   const seo = route === "/providers/" ? pageSeoCopy(route) : null;
-  return listingDocument({ archetype, route, title: seo?.title ?? `${heading} · Clinic Scout`, description: seo?.meta ?? support, heading, support, count, controls, cards,
-    panel: panel.html, afterGrid: below + reverseIndex, schema, initialVisible: archetype === "E" ? 12 : null,
+  return listingDocument({ archetype, route, title: seo?.title ?? `${heading} · Clinic Scout`, description: seo?.meta ?? support, heading, support, count, controls, cards, atfPreview,
+    panel: panel.html, afterGrid: below + reverseIndex + (route === '/providers/' ? approvedDirectoryLinks() : ''), schema, initialVisible: archetype === "E" ? 12 : null,
     profileCount: route === "/providers/" ? livePrograms.length : null,
     hasNonpriced,
     resultTail: `${resultTail}${payload.length ? `<script type="application/json" data-provider-card-payloads>${JSON.stringify(payload).replaceAll("<", "\\u003c")}</script>` : ""}`,
     runtime: pharmacy ? "" : doseSelectionRuntime(),
   });
+}
+
+export function approvedDirectoryLinks() {
+  const approved = JSON.parse(readFileSync(new URL('../data/approved-program-registry.json', import.meta.url), 'utf8'));
+  const authority = loadGoPromotionAuthority().programs || {};
+  const emed = approved.programs.find((item) => item.registry_id === 'partnerize-1011l6645');
+  return [emed, ...(approved.approved_directory_programs || [])].filter((row) => {
+    if (row?.canonical_vertical !== 'glp1-weightloss' || row.enumeration_class !== 'provider_joined_or_approved_exact_id'
+        || authority[row.registry_id]?.status !== 'VERIFIED' || authority[row.registry_id]?.promotion_authorized !== true) return false;
+    const href = row.tracking?.provider_issued_url;
+    if (!href) return false;
+    const host = new URL(href).hostname;
+    return row.directory_only
+      ? row.network === 'ClickDealer' && row.tracking.tracking_host === host && authority[row.registry_id].issued_link_sha256 === row.tracking.issued_link_sha256
+      : (approved.allowed_provider_tracking_hosts?.[row.network] || []).includes(host);
+  }).map((row) => {
+    const href = row.tracking.provider_issued_url;
+    const attrs = row.directory_only ? 'data-network="ClickDealer"' : subidAttributes({ network: row.network, position: 'provider-card', pageSlug: 'providers', pageType: 'provider-directory', providerSlug: row.registry_id, href, renderedHref: href });
+    return `<section class="p3-provider-section" data-approved-directory-provider="${esc(row.registry_id)}"><h2>More GLP-1 providers</h2><h3>${esc(row.display_name)}</h3><p>Confirm current program details and eligibility with the provider. No price or comparative rating is published here.</p><p class="affiliate-note">We may earn a commission if you use this link, at no extra cost to you.</p><a class="cta secondary" href="${esc(href)}" target="_blank" rel="sponsored noopener noreferrer" data-program="${esc(row.registry_id)}" data-affiliate-state="active" ${attrs} data-analytics-event="affiliate_click">Visit ${esc(row.display_name)}</a></section>`;
+  }).join('');
 }
 
 function renderComparisonPreset(page, { pricingMatrix, registry, logoManifest, coupons, goAuthority }) {

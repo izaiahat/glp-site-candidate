@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
+import { governedProviderIds } from './governed-cohort.mjs';
 
 const moneyRoutes = [
   '/best/online-glp-1-providers/',
@@ -29,8 +30,10 @@ async function text(page, route) {
 test('homepage exposes evidence metrics, not affiliate workflow state', async ({ page }) => {
   const body = await text(page, '/');
   expect(body).not.toMatch(forbidden);
-  expect(body).toContain('Cash price, checked and cited.');
-  expect(body).toContain('Why trust Clinic Scout');
+  // Option C A3.2: evidence-qualified card count replaces the retired cash-price hero.
+  expect(body).toContain(`Compare ${governedProviderIds().length} evidence-qualified cards`);
+  await expect(page.getByRole('heading', { level: 2, name: 'Six checks before you pay.' })).toBeVisible();
+  await expect(page.locator('a[href="/review-standards/"]').first()).toHaveAttribute('href', '/review-standards/');
 });
 
 test('directory index stays retired and exposes no stale consumer directory', async ({ page }) => {

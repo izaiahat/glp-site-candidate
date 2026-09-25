@@ -134,19 +134,17 @@ test("homepage leads into the usable private fit funnel", async () => {
   assert.ok(!home.includes('href="/directory/"'));
   assert.ok(!home.includes("City pages"));
   assert.ok(!home.includes("Look for local care evidence"));
-  // The homepage tile is derived from the live provider count at build time,
-  // so this asserts against the governed selection artifact rather than a
-  // literal that every wire-in would invalidate.
-  // MERCHANTS, not rows. affiliate_activation_selection.live_program_count is the
-  // direct-affiliate ROW count (one per affiliate relationship, aliases included).
-  // The two were both 33 until the 2026-08-18 TRT lift made the row count 34, and
-  // reading the wrong one here would have made the homepage claim a provider that
-  // is the same merchant twice. "Providers compared" counts merchants.
-  const liveProviderCount = JSON.parse(
+  // The trust tile distinguishes all tracked programs from the evidence-qualified
+  // comparison cards. Both counts come from the build's governed derivations.
+  const buildReport = JSON.parse(
     await readFile(path.join(ROOT, "artifacts", "ops", "build-report.json"), "utf8"),
-  ).live_programs;
+  );
+  const liveProviderCount = buildReport.live_programs;
+  const comparisonCount = buildReport.surface_derivations.price_state_tallies.COMPARISON_CARD_COUNT;
   assert.ok(Number.isInteger(liveProviderCount) && liveProviderCount > 0);
-  assert.match(home, new RegExp(`Providers compared[\\s\\S]*?<dd>${liveProviderCount}</dd>`));
+  assert.ok(Number.isInteger(comparisonCount) && comparisonCount > 0 && comparisonCount <= liveProviderCount);
+  assert.match(home, new RegExp(`Programs with comparison cards</dt><dd>${comparisonCount}</dd>`));
+  assert.match(home, new RegExp(`${liveProviderCount}</strong><span>programs tracked, ${comparisonCount} with comparison cards`));
   assert.match(home, /Open the free cost calculator/);
   const quiz = await read("quiz/provider-fit/index.html");
   assert.match(quiz, /data-release="release-ready"/);
@@ -174,7 +172,7 @@ test("calculator and GLP guides expose working internal conversion paths", async
   for (const route of ["/tools/glp-1-cost-calculator/", "/providers/", "/quiz/provider-fit/"]) assert.ok(guide.includes(`href="${route}"`));
 });
 
-test("affiliate join fields and organic capture remain while candidate remote analytics is held", async () => {
+test("affiliate join fields and organic capture remain while remote analytics matches the declared stage", async () => {
   const html = await read("reviews/trt-nation/index.html");
   const anchors = [...html.matchAll(/<a[^>]+data-analytics-event="affiliate_click"[^>]*>/g)].map((match) => match[0]);
   assert.ok(anchors.length > 0);
@@ -188,10 +186,25 @@ test("affiliate join fields and organic capture remain while candidate remote an
   const runtime = await read("assets/analytics.js");
   for (const event of ["affiliate_click", "comparison_table_view", "cost_calculator_used", "cost_calculator_complete", "quiz_complete", "provider_finder_complete", "scroll_75"]) assert.ok(runtime.includes(event));
   assert.ok(runtime.includes("subid"));
-  assert.deepEqual(candidateExportShellFindings(html), []);
+  // An independently declared run stage is the oracle; neither the page nor
+  // the build's self-reported stage can select its own expected policy.
+  const expectedStage = process.env.GCS_RELEASE_STAGE;
+  assert.ok(["candidate", "production-seal"].includes(expectedStage), "set GCS_RELEASE_STAGE explicitly for this authorized test run");
+  const reportBytes = await readFile(path.join(OPS, "build-report.json"));
+  const reportSha256 = createHash("sha256").update(reportBytes).digest("hex");
+  if (process.env.GCS_BUILD_REPORT_SHA256) assert.equal(reportSha256, process.env.GCS_BUILD_REPORT_SHA256, "declared exact build-report bytes");
+  const report = JSON.parse(reportBytes);
+  assert.equal(report.release_stage, expectedStage, `build-report ${reportSha256}: declared run stage mismatch`);
+  const providersBytes = await readFile(path.join(PUBLIC, "providers/index.html"));
+  assert.match(report.export_policy_surface_sha256, /^[a-f0-9]{64}$/);
+  assert.equal(createHash("sha256").update(providersBytes).digest("hex"), report.export_policy_surface_sha256, `build-report ${reportSha256}: emitted providers bytes mismatch`);
+  assert.deepEqual(candidateExportShellFindings(html, {stage: expectedStage}), []);
   const wrongAnalyticsStage = html.replace(/GCS_ANALYTICS=\{enabled:(true|false),consent:'unknown'/, (_, flag) => `GCS_ANALYTICS={enabled:${flag === 'true' ? 'false' : 'true'},consent:'unknown'`);
-  assert.notEqual(wrongAnalyticsStage, html, 'negative control must mutate real bytes in either release stage');
-  assert.ok(candidateExportShellFindings(wrongAnalyticsStage).includes("analytics_wrong_stage"));
+  assert.notEqual(wrongAnalyticsStage, html, 'negative control must mutate real bytes in the declared stage');
+  assert.ok(candidateExportShellFindings(wrongAnalyticsStage, {stage: expectedStage}).includes("analytics_wrong_stage"));
+  const wrongPolicy = html.replace(/("stage":")(candidate|production-seal)(")/, (_, a, stage, b) => `${a}${stage === "candidate" ? "production-seal" : "candidate"}${b}`);
+  assert.notEqual(wrongPolicy, html, 'negative control must mutate the exact policy stamp');
+  assert.ok(candidateExportShellFindings(wrongPolicy, {stage: expectedStage}).includes("explicit_policy_missing_or_duplicate_or_wrong_stage"));
   // O28 removed the explicit checkbox. Money-page forms now bind consent to a
   // clear pre-submit note while retaining the exact hidden consent version.
   const captureForms = html.match(/<form[^>]+action="\/api\/content-upgrade"[\s\S]*?<\/form>/g) || [];
@@ -281,7 +294,7 @@ test("internal ops receipts stay outside the public deploy closure", async () =>
     "approved-53-coverage-gate.json",
     "paid-quiz-build.json", // W3/W4 local seam receipt: still forbidden in PUBLIC.
     "lastmod-runtime-predecessor.json", // Registered provenance input; never public.
-    "approved-provider-link-monetization.json", "build-report.json", "batch-gate.json", "blog-system.json", "email-system.json", "g9-route-retirement.json", "indexnow-manifest.json", "network-verification-manifest.json", "phase3-page-graph.json", "price-index-manifest.json", "resend-email-machine.json", "review-depth-manifest.json", "review-intake-finalization.json", "sticky-cta-follow.json", "wave4-deal-ingestion-manifest.json", "wave4-mystery-shop-manifest.json", "wave4-original-data-manifest.json", "wave4-price-tracker-manifest.json", "worker-manifest.staging.json"];
+    "approved-provider-link-monetization.json", "build-report.json", "batch-gate.json", "blog-system.json", "carrier-article-stage-manifest.json", "email-system.json", "g9-route-retirement.json", "indexnow-manifest.json", "network-verification-manifest.json", "phase3-page-graph.json", "price-index-manifest.json", "resend-email-machine.json", "review-depth-manifest.json", "review-intake-finalization.json", "sticky-cta-follow.json", "wave4-deal-ingestion-manifest.json", "wave4-mystery-shop-manifest.json", "wave4-original-data-manifest.json", "wave4-price-tracker-manifest.json", "worker-manifest.staging.json"];
   const publicFiles = await readdir(PUBLIC);
   assert.deepEqual(publicFiles.filter((name) => internalOps.includes(name)), []);
   // The build wipes and re-emits artifacts/ops, so this is an exact inventory of what

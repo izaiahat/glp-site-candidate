@@ -65,7 +65,7 @@ import { assertTalliesDerived, isTallyGatedRoute, redriveTallies, TALLY_TOKENS }
 
 import { leanLegalPages } from "../src/legal-pages.mjs";
 import { buildRobotsTxt } from "../src/robots.mjs";
-import { buildPhase3PageGraph, upgradeInsightsArticle , PHASE3_INSIGHTS_EXCLUSIONS } from "../src/phase3-page-graph.mjs";
+import { buildPhase3PageGraph, upgradeInsightsArticle , PHASE3_INSIGHTS_EXCLUSIONS, providerComparisonCardCount } from "../src/phase3-page-graph.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = path.join(ROOT, "data");
@@ -763,7 +763,7 @@ function renderHomePage({ blogCount, comparisonCount, programCount, updatedLabel
       <h1 id="home-title" data-split="lines">Find a GLP-1 plan that fits.</h1>
       <p class="cs-home2-cycle" aria-live="polite"><span data-home-value>Compare real monthly costs.</span></p>
       <ul class="cs-home2-quick" aria-label="Explore popular medications">${quickLinks}</ul>
-      <div class="gcs-home-actions"><a class="cs-btn cs-btn--animated cs-palette-action cs-btn--orbit" href="/quiz/provider-fit/">See your matches<span class="cs-btn__arrow" aria-hidden="true">→</span><svg class="cs-btn__orbit" viewBox="0 0 220 60" preserveAspectRatio="none" aria-hidden="true"><rect class="cs-btn__orbit-track" x="2" y="2" width="216" height="56" rx="28" pathLength="100"/></svg></a><a class="cs-btn cs-btn--quiet" href="${PASS5_MEDICATION_DESTINATIONS.allProviders}">Compare all ${programCount} programs</a></div>
+      <div class="gcs-home-actions"><a class="cs-btn cs-btn--animated cs-palette-action cs-btn--orbit" href="/quiz/provider-fit/">See your matches<span class="cs-btn__arrow" aria-hidden="true">→</span><svg class="cs-btn__orbit" viewBox="0 0 220 60" preserveAspectRatio="none" aria-hidden="true"><rect class="cs-btn__orbit-track" x="2" y="2" width="216" height="56" rx="28" pathLength="100"/></svg></a><a class="cs-btn cs-btn--quiet" href="${PASS5_MEDICATION_DESTINATIONS.allProviders}">Compare ${comparisonCount} evidence-qualified cards</a></div>
     </div>
     <div class="cs-home2-cluster" aria-label="Original unbranded wellness product photography" data-motion="scale" data-motion-once="true">
       ${picture("home-hero-fruit", "An unbranded amber bottle beside blood oranges under teal light", "cs-home2-cluster__main", [640, 1024], "eager")}
@@ -775,7 +775,7 @@ function renderHomePage({ blogCount, comparisonCount, programCount, updatedLabel
   const marqueeItems = verdictCards.slice(0, 6).map((card) => `<a href="${card.href}"><span>${escHtml(card.provider)}</span><small>Read our review</small></a>`).join("");
   const marquee = `<section class="cs-home2-marquee" aria-label="Programs compared by Clinic Scout" data-motion-loop data-motion="fade" data-motion-once="true"><p>Popular program reviews</p><div class="cs-home2-marquee__window"><div class="cs-home2-marquee__track">${marqueeItems}${marqueeItems}</div></div></section>`;
 
-  const trust = `<section class="cs-home2-trust" data-motion="fade" data-motion-once="true"><dl class="cs-sr-only"><dt>Providers compared</dt><dd>${programCount}</dd></dl><div><strong data-counter data-counter-to="${programCount}">${programCount}</strong><span>programs tracked</span></div><div><strong>0</strong><span>paid placements</span></div><p>Nobody can buy a rank or a score.</p></section>`;
+  const trust = `<section class="cs-home2-trust" data-motion="fade" data-motion-once="true"><dl class="cs-sr-only"><dt>Programs with comparison cards</dt><dd>${comparisonCount}</dd></dl><div><strong data-counter data-counter-to="${programCount}">${programCount}</strong><span>programs tracked, ${comparisonCount} with comparison cards</span></div><div><strong>0</strong><span>paid placements in organic rankings</span></div><p>On our organic comparisons, compensation never changes a score. Paid landing pages disclose their separate commercial order.</p></section>`;
 
   // Design pass 2026-08-26 (home spec fix #1): one-viewport overlay pattern.
   // Text sits ON the art — title top-left over a dark scrim (AA on the pixels
@@ -857,7 +857,7 @@ function renderHomePage({ blogCount, comparisonCount, programCount, updatedLabel
   const verdicts = `<section class="cs-home2-section cs-home2-verdicts" aria-labelledby="verdict-title" data-motion-loop><div class="cs-home2-heading" data-motion="rise" data-motion-once="true"><div><p class="gcs-kicker">Our verdicts</p><h2 id="verdict-title">The short answer on every program.</h2></div></div><div class="cs-home2-verdict-window"><div class="cs-home2-verdict-track">${verdictItems}${verdictItems}</div></div><p class="cs-home2-centered"><a class="cs-btn cs-palette-action" href="/reviews/">Read every verdict</a></p></section>`;
 
   const picks = topPicks.map((pick, index) => `<a class="cs-home2-pick" href="${pick.reviewPath}">${providerMark(pick)}<small>0${index + 1}</small><h3>${escHtml(pick.provider)}</h3><p>${Number.isFinite(pick.price) ? `${money(pick.price)}/month starting price` : "See current options"}</p><span>Read our review →</span></a>`).join("");
-  const strongest = `<section class="cs-home2-section cs-home2-strongest" aria-labelledby="strongest-title"><div class="cs-home2-heading" data-motion="rise" data-motion-once="true"><div><p class="gcs-kicker">Strongest right now</p><h2 id="strongest-title">Three programs worth a closer look.</h2></div></div><div class="cs-home2-pickgrid" data-motion-group="rise" data-motion-stagger="0.1" data-motion-once="true">${picks}</div><p class="cs-home2-centered"><a class="cs-btn cs-palette-action" href="/providers/">See all ${programCount} programs</a></p></section>`;
+  const strongest = `<section class="cs-home2-section cs-home2-strongest" aria-labelledby="strongest-title"><div class="cs-home2-heading" data-motion="rise" data-motion-once="true"><div><p class="gcs-kicker">Strongest right now</p><h2 id="strongest-title">Three programs worth a closer look.</h2></div></div><div class="cs-home2-pickgrid" data-motion-group="rise" data-motion-stagger="0.1" data-motion-once="true">${picks}</div><p class="cs-home2-centered"><a class="cs-btn cs-palette-action" href="/providers/">See all ${comparisonCount} evidence-qualified cards</a></p></section>`;
 
   // Design pass 2026-08-26 (home spec fix #8): the review-wall module, fed ONLY
   // by approved first-party reader reviews (the same held-then-approved
@@ -1640,6 +1640,7 @@ async function main() {
   const directAffiliateRowCount = directAffiliateRegistryRows.length;
   buildDerivations.live_provider_count = liveProgramCount;
   derivedTallies.LIVE_PROVIDER_COUNT = liveProgramCount;
+  derivedTallies.COMPARISON_CARD_COUNT = providerComparisonCardCount(programRegistry);
   const livePriceIds=new Set(liveRegistryRows.filter(p=>!providerIdentity.aliasIds.has(p.program_id)).map(p=>String(p.review_slug || p.program_id)));
   const matrixEntries=Object.entries(providerPricingMatrix.providers);
   const pricingBaseline=resolveDeployedPricingBaseline(await readJson('pricing-coverage-baseline.json'));
@@ -1975,7 +1976,12 @@ async function main() {
   for (const article of allArticles) {
     // R2 target release: render Mounjaro from the refreshed catalog row.
     const key = `guide-${routeSlug(article.canonical_path)}`;
-    const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, resolveBlogComparisonSpec(article, contentLedger.programs), resolveArticleAuthor(article), contentLedger.programs), article, resolveArticleAuthor(article)), key, article.images?.[0]?.alt || `Guide overview for ${article.h1}`), key), key, article.h1);
+    // ORCHESTRATOR-DISPOSITION (glp41-image-review-20260925): descriptive
+    // correction only; immutable generation receipts and image bytes stay put.
+    const heroAlt = article.canonical_path === "/guides/best-company-to-get-glp-1/"
+      ? "Editorial illustration of paperwork and a magnifying glass on a dark desk."
+      : article.images?.[0]?.alt || `Guide overview for ${article.h1}`;
+    const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, resolveBlogComparisonSpec(article, contentLedger.programs), resolveArticleAuthor(article), contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
     const articleGraph = addArticleShareControls(articleVertical(article) === "GLP-1" ? upgradeInsightsArticle(articleBase, article, glpGuideArticles.filter((item) => item.canonical_path !== article.canonical_path && path.join(item.canonical_path.replace(/^\//, ""), "index.html") !== MOUNJARO_COUPON_ROUTE_FILE)) : articleBase);
     const rendered = addSharedRuntime(articleGraph);
     await write(path.join(article.canonical_path.replace(/^\//, ""), "index.html"), articleVertical(article) === "GLP-1" ? markReleaseReady(article.suppress_cta ? rendered : addGuideFunnel(rendered)) : rendered);
@@ -2151,7 +2157,7 @@ async function main() {
     const wallData = await readJson("approved-reader-reviews.json");
     approvedReaderReviews = (wallData.reviews || []).filter((review) => review.status === "approved" && review.entity && review.body);
   } catch {}
-  const homepage = renderHomePage({ blogCount: glpGuideArticles.filter((article) => !PHASE3_INSIGHTS_EXCLUSIONS.has(article.canonical_path)).length, comparisonCount: augmented.length, programCount: liveProgramCount, updatedLabel, topPicks, cheapest, railMeds, verdictCards, receiptCards, readerReviews: approvedReaderReviews, reviewPrograms: programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id)), reviewPharmacies: phase3PharmacyInput });
+  const homepage = renderHomePage({ blogCount: glpGuideArticles.filter((article) => !PHASE3_INSIGHTS_EXCLUSIONS.has(article.canonical_path)).length, comparisonCount: derivedTallies.COMPARISON_CARD_COUNT, programCount: liveProgramCount, updatedLabel, topPicks, cheapest, railMeds, verdictCards, receiptCards, readerReviews: approvedReaderReviews, reviewPrograms: programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id)), reviewPharmacies: phase3PharmacyInput });
   await write("index.html", markReleaseReady(addSharedRuntime(addOg(homepage, "home-evidence", "Clinic Scout · Compare what matters before you commit"))));
   const phase3Build = buildPhase3PageGraph({
     graph: phase3GraphConfig,
@@ -2698,6 +2704,9 @@ async function main() {
   execFileSync('python3', ['-B', path.join(ROOT, 'scripts/emit-tracking-allowed-hosts.py'), '--root', ROOT, '--check'], { stdio: 'inherit' });
   buildReport.tracking_allowed_hosts = { status: 'PASS', source: 'data/tracking-allowed-hosts.json', derived_and_checked_in_this_stage: true };
   buildReport.lastmod_emission = await captureLastmodEmission(ROOT, indexableRoutes);
+  buildReport.release_stage = releaseExportPolicy().stage;
+  buildReport.export_policy_surface_sha256 = createHash('sha256')
+    .update(await readFile(path.join(PUBLIC, 'providers/index.html'))).digest('hex');
   await writeOps("carrier-article-stage-manifest.json", JSON.stringify({
     schema: "glp-carrier-article-stage-manifest-v1",
     stage: releaseExportPolicy().stage,

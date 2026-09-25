@@ -119,10 +119,11 @@ test("a non-https href on an allowed host is still refused", () => {
   assert.throws(() => renderProviderReviewPage(insecure, identity), /review_direct_link_host_invalid:orderlymeds/);
 });
 
-test("a program the derivation does not cover throws instead of rendering a link", () => {
+test("an underived program fails the host resolver and cannot render an unsealed link", () => {
   const orderly = byId.get("orderlymeds");
   const unknown = { ...orderly, row: { ...orderly.row, program_id: "not-a-derived-program" } };
-  assert.throws(() => renderProviderReviewPage(unknown, identity), /tracking_allowed_hosts_underived:not-a-derived-program/);
+  assert.throws(() => trackingAllowedHosts("not-a-derived-program", orderly.row.affiliate_network), /tracking_allowed_hosts_underived:not-a-derived-program/);
+  assert.ok(!/rel="sponsored/.test(renderProviderReviewPage(unknown, identity)), "authority-absent program must not render a commercial anchor");
 });
 
 test("a program whose rail changed under a stale document throws rather than using the old rail's hosts", () => {
@@ -174,7 +175,7 @@ test("a Trackdesk program resolves its host through the canonical rails module",
   assert.equal(entry.resolution, "official_url_derived");
 });
 
-test("a Trackdesk provider renders a monetized rel=sponsored CTA on its resolved host", () => {
+test("a Trackdesk host resolves, but a provider without sealed authority stays link-dark", () => {
   const { output, document } = deriveTrackdeskDocument();
   const host = document.programs["trackdesk-fixture"].allowed_hosts[0];
   const template = byId.get("orderlymeds");
@@ -192,21 +193,15 @@ test("a Trackdesk provider renders a monetized rel=sponsored CTA on its resolved
   process.env.GLP_TRACKING_ALLOWED_HOSTS_DOCUMENT = output;
   resetTrackingAllowedHostsCache();
   try {
-    // Before the fix this threw review_direct_link_host_invalid because
-    // DIRECT_TRACKING_HOSTS had no "Trackdesk" key at all.
+    // The host resolver knows Trackdesk; the separate promotion gate has no
+    // authority row for this synthetic identity and must not monetize it.
+    assert.ok(trackingAllowedHosts("trackdesk-fixture", "Trackdesk").has(host));
     const html = renderProviderReviewPage(review, identity);
-    const match = html.match(/<a class="cta primary affiliate" href="([^"]+)"[^>]*rel="sponsored nofollow noopener"/);
-    assert.ok(match, "no monetized CTA rendered for the Trackdesk provider");
-    const url = new URL(match[1].replaceAll("&amp;", "&"));
-    assert.equal(url.hostname, host);
-    assert.equal(url.searchParams.get("tenantId"), "nu-image-medical");
-    assert.equal(url.searchParams.get("sourceId"), "glp-clinic-scout");
-    assert.match(html, /data-link-mode="transparent-direct"/);
-    assert.match(html, /data-affiliate-state="active"/);
-
-    // and the gate is still a gate on this rail
+    assert.ok(!/rel="sponsored|data-analytics-event="affiliate_click"/.test(html), "unsealed Trackdesk fixture must stay link-dark");
+    // The per-program host gate still rejects another domain independently.
     const rogue = { ...review, row: { ...review.row, affiliate_href: "https://nuimagemedical.example.com/?tenantId=nu-image-medical" } };
-    assert.throws(() => renderProviderReviewPage(rogue, identity), /review_direct_link_host_invalid:trackdesk-fixture/);
+    assert.equal(trackingAllowedHosts("trackdesk-fixture", "Trackdesk").has(new URL(rogue.row.affiliate_href).hostname), false);
+    assert.ok(!/rel="sponsored/.test(renderProviderReviewPage(rogue, identity)), "rogue host must not bypass promotion authority");
   } finally {
     delete process.env.GLP_TRACKING_ALLOWED_HOSTS_DOCUMENT;
     resetTrackingAllowedHostsCache();
@@ -234,4 +229,19 @@ test("a declared tracking host outside the advertiser's own domain is refused by
     path.join(ROOT, "scripts/emit-tracking-allowed-hosts.py"),
     "--root", scratch, "--output", path.join(scratch, "doc.json"),
   ], { cwd: ROOT, encoding: "utf8", stdio: "pipe" }), /declared_tracking_host_off_official_domain/);
+});
+
+test("Nu Image host derivation uses the currently approved Trackdesk rail", async () => {
+  const approvals = await readJson("../data/affiliate-wire-in-approvals.json");
+  const issued = approvals.programs.find(row => row.existing_release_alias === "nu-image-medical-review");
+  assert.equal(issued.approval_state, "approved_active");
+  assert.equal(issued.network, "Trackdesk");
+  assert.ok(trackingAllowedHosts("nu-image-medical-review", issued.network).has(new URL(issued.tracking.provider_issued_url).hostname));
+});
+
+test("approved eMed directory anchors use the canonical Partnerize host derivation", async () => {
+  const approved = await readJson("../data/approved-program-registry.json");
+  const issued = approved.programs.find(row => row.registry_id === "partnerize-1011l6645");
+  assert.equal(issued.enumeration_class, "provider_joined_or_approved_exact_id");
+  assert.ok(trackingAllowedHosts(issued.registry_id, issued.network).has(new URL(issued.tracking.provider_issued_url).hostname));
 });

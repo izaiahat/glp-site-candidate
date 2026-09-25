@@ -204,13 +204,19 @@ test.describe("pointer-mode adoption behavior", () => {
 
     // Hold the search index on the wire BEFORE the panel opens (open prefetches
     // it) so the searching skeleton state below stays observable.
+    let releaseIndex;
+    let interceptedIndex = false;
+    const heldIndex = new Promise((resolve) => { releaseIndex = resolve; });
     await page.route("**/assets/search-index.json", async (route) => {
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      interceptedIndex = true;
+      await heldIndex;
       await route.continue();
     });
 
+    try {
     // Pointer-open the search: quick-links render staggers 20ms per row.
     await page.locator(".cs-search-toggle").click();
+    await expect.poll(() => interceptedIndex).toBe(true);
     await expect(page.locator(".cs-search-panel.is-open")).toBeVisible();
     const rows = page.locator(".cs-search-hit--enter");
     expect(await rows.count()).toBeGreaterThanOrEqual(5);
@@ -239,6 +245,9 @@ test.describe("pointer-mode adoption behavior", () => {
         .filter((a) => a.playState === "running" && Number(a.effect?.getTiming?.().duration || 0) > 0).length;
     });
     expect(runningDuringType).toBe(0);
+    } finally {
+      releaseIndex();
+    }
     await expect(page.locator(".cs-search-hit").first()).toBeVisible({ timeout: 4000 });
     await page.keyboard.press("Escape");
 

@@ -17,7 +17,10 @@ import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
 // that protects THAT is retained verbatim below and applies to more surfaces
 // than before. What changed is only the posture the network itself authorised: a
 // deep-link-enabled EvergreenLink now points at the reviewed weight-loss page,
-// and a real, receipted, attributing click proved it.
+// and a real, receipted, attributing click proved it. The 2026-09-24
+// operator decision (OPERATOR-DECISION-20260924-all-approved-providers-live.md)
+// requires approved GLP-1 providers live despite missing internal promotion rows
+// or unverified redirector terms; historical content-fit evidence still matters.
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readdir, readFile } from "node:fs/promises";
@@ -158,7 +161,7 @@ test("the link-click QA was really performed, really attributed, and really land
   assert.equal(qaReceipt.honesty.superseded_creative.url_sha256, contract.finding.tracking_hash);
 });
 
-test("every TRT source authority now carries the verified weight-loss deep link and only that", async () => {
+test("TRT retains the verified GLP-1 destination and is live under the 2026-09-24 operator decision", async () => {
   const inputs = await sourceInputs();
   const falseUrl = inputs.evidenceSnapshot.tracking_by_program["CJ Affiliate:7538517"].provider_issued_url;
   const falseUrlHash = sha256(Buffer.from(falseUrl, "utf8"));
@@ -268,10 +271,22 @@ test("every TRT source authority now carries the verified weight-loss deep link 
   assert.equal(inputs.reviewBrief.coverage_gate.deployment_authority, true);
   assert.equal(inputs.reviewBrief.coverage_gate.bridge_review_state, RULING);
 
+  const decision = await readFile(new URL("../../../../ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md", root), "utf8");
+  assert.match(decision, /trt nation and shed are both approved to deploy if they do glp-1s/i);
+  assert.match(providerContract.row_contract.medications, /compounded tirzepatide for weight loss/i);
+  const selectionReceipt = await readJson("data/go-selection-receipt.json");
+  const selectedTrt = selectionReceipt.programs.find((row) => row.program_id === "trt-nation");
+  assert.equal(selectedTrt.disposition, "ADOPT");
+  const promotion = loadGoPromotionAuthority(root).programs["trt-nation"];
+  assert.equal(promotion.status, "VERIFIED", "approved GLP-1 partner remains live under operator ruling");
+  assert.equal(promotion.promotion_authorized, true);
+  assert.equal(loadGoSelection(root).programs["trt-nation"].issued_link, DEEP_LINK);
   const extraAuthorities = {
     providerContracts: inputs.providerContracts,
     providerFastpath: inputs.providerFastpath,
     approvedRegistry: inputs.approvedRegistry,
+    goSelection: loadGoSelection(root),
+    promotionAuthority: loadGoPromotionAuthority(root),
   };
   for (const surface of ["compare", "calculator", "quiz", "review"]) {
     const linkMap = buildAffiliateLinkMap(
@@ -320,7 +335,7 @@ test("every TRT source authority now carries the verified weight-loss deep link 
   }
 });
 
-test("the generated candidate ships the weight-loss CTA and no testosterone carrier anywhere", async () => {
+test("generated candidate has the approved TRT GLP-1 CTA and no testosterone carrier", async () => {
   const { evidenceSnapshot } = await sourceInputs();
   const falseUrl = evidenceSnapshot.tracking_by_program["CJ Affiliate:7538517"].provider_issued_url;
   const publicRoot = path.join(rootPath, "public");
@@ -339,15 +354,24 @@ test("the generated candidate ships the weight-loss CTA and no testosterone carr
   assert.match(review, /data-link-mode="server-redirect"/);
   assert.match(review, /TRT Nation/);
   assert.match(review, /compounded tirzepatide/i);
-  assert.doesNotMatch(review, /Partner link unavailable/);
-  // The reader-visible CTA points at the weight-loss deep link, never the raw
-  // /go carrier and never a testosterone page.
-  const selected=loadGoSelection(root).programs['trt-nation'];assert.equal(selected.status,'VERIFIED');
-  assert.equal(GO_RUNTIME_MANIFEST.programs['trt-nation'].tracking.base_url,DEEP_LINK);
-  assert.equal(selected.issued_link,DEEP_LINK);
-  assert.match(review, /weight-loss-therapy/);
+  const selected = loadGoSelection(root).programs["trt-nation"];
+  assert.equal(selected.status, "VERIFIED");
+  assert.equal(selected.issued_link, DEEP_LINK);
+  assert.equal(GO_RUNTIME_MANIFEST.programs["trt-nation"].tracking.base_url, DEEP_LINK);
   assert.match(review, /href="\/go\/trt-nation\?s=reviews\.rv2&amp;v=a"/);
   assert.ok(review.indexOf("This page contains one active affiliate link") < review.indexOf('data-affiliate-state="active"'));
+  let sponsoredTrtAnchors = 0;
+  for (const filename of publicFiles.filter((name) => name.endsWith(".html"))) {
+    const html = await readFile(filename, "utf8");
+    for (const anchor of html.matchAll(/<a\b[^>]*>/g)) {
+      if (anchor[0].includes('data-program="trt-nation"') && /\brel="[^"]*\bsponsored\b/.test(anchor[0])) {
+        sponsoredTrtAnchors += 1;
+        assert.match(anchor[0], /href="\/go\/trt-nation\?/,
+          `${path.relative(publicRoot, filename)} has a TRT anchor with the wrong route`);
+      }
+    }
+  }
+  assert.ok(sponsoredTrtAnchors > 0, "approved TRT must ship a sponsored anchor");
 
   const provider = await readFile(new URL("public/providers/trt-nation/index.html", root), "utf8");
   const quiz = await readFile(new URL("public/quiz/provider-fit/index.html", root), "utf8");
@@ -355,27 +379,17 @@ test("the generated candidate ships the weight-loss CTA and no testosterone carr
   assert.match(provider, /href="\/reviews\/trt-nation\/"/, "provider detail lost its governed editorial path");
   assert.doesNotMatch(provider, /17100444|testosterone-replacement-therapy/, "provider detail regained a forbidden TRT carrier");
   assert.match(provider, /href="\/go\/trt-nation\?/);
-  // The quiz is a conversion pool and equals the live-eligible set exactly, so
-  // the now-live program must appear in it.
-  assert.match(quiz, /trt-nation|TRT Nation/, "quiz must offer the live-eligible program");
+  assert.match(quiz, /trt-nation|TRT Nation/, "quiz must retain the approved GLP-1 program");
 
   const workerManifest = await readJson("artifacts/ops/worker-manifest.staging.json");
   assert.equal(workerManifest.programs.some((item) => item.program_id === "trt-nation"), true);
   const generatedGo = await readFile(new URL("functions/go/program-manifest.js", root), "utf8");
   assert.match(generatedGo, /trt-nation/);
   assert.doesNotMatch(generatedGo, /17100444|dpbolvw/);
-
-  // The /go carrier is a REGISTERED but attribution-gated route: with no valid
-  // assignment it bounces every program, live ones included, to the comparison
-  // page. What distinguishes a registered program from a removed one is the
-  // reason header - `assignment-not-allowlisted` vs `unknown-program`. So the
-  // real assertion is that TRT Nation now behaves exactly like a live program,
-  // and specifically no longer like a program the manifest has never heard of.
   const { onRequest } = await import("../functions/go/[program].js");
   const call = (program) => onRequest({
     request: new Request(`https://glpclinicscout.com/go/${program}?s=provider-fit.result&v=a`, { method: "GET" }),
-    params: { program },
-    env: {},
+    params: { program }, env: {},
   });
   const trtGo = await call("trt-nation");
   const liveGo = await call("drhouse");

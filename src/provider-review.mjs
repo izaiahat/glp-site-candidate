@@ -165,7 +165,13 @@ function reviewSceneImage(review) {
 function providerEditorialScene(review) {
   const identity = { program_id: review.program_id, display_name: review.provider };
   const visual = providerVisualKind(identity);
-  const picture = renderProviderEvidencePicture(identity, { className: "cs-review-scene-picture" });
+  const picture = renderProviderEvidencePicture(identity, {
+    className: "cs-review-scene-picture",
+    ...(review.program_id === "orderlymeds" ? {
+      sizes: "(max-width:760px) calc(100vw - 32px), 920px",
+      alt: "Editorial evidence desk for the OrderlyMeds review with a blank research dossier and comparison materials",
+    } : {}),
+  });
   const caption = visual.kind === "editorial-scene"
     ? "Original editorial research scene. Provider identity and evidence appear separately in accessible page content."
     : "First-party provider logo fallback. No original editorial scene is available; provider evidence appears in accessible page content.";

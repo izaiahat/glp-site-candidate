@@ -1987,6 +1987,16 @@ main.guide-shell section.guide-hero--cinema p.guide-byline a {
   main.guide-shell > section.guide-hero--cinema { min-height: clamp(300px, 52vh, 460px); }
   main.guide-shell > section.guide-hero--cinema img { aspect-ratio: auto; }
 }
+@media (min-width: 701px) {
+  body[data-cs-template="guide"]:not([data-cs-template="home"]):not([data-cs-template="calculator"]) > main.guide-shell { padding-top: 18px !important; }
+  main.guide-shell > section.guide-hero--cinema { padding-block-start: 22px; }
+}
+@media (max-width: 700px) {
+  body[data-cs-template="guide"]:not([data-cs-template="home"]):not([data-cs-template="calculator"]) > main.guide-shell { padding-top: 0 !important; }
+  main.guide-shell > nav.breadcrumbs { margin-block-end: 0; }
+  main.guide-shell > section.guide-hero--cinema { padding-block-start: 4px; }
+  main.guide-shell section.guide-hero--cinema .kicker { letter-spacing: 0; margin-block-end: 6px; }
+}
 
 /* --- share row: quiet strip under the hero, not a pill card -------------- */
 main.guide-shell nav.p3-article-share {

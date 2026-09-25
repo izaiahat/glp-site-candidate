@@ -374,6 +374,16 @@ body.cs-search-open .gcs-brand, body.cs-search-open .gcs-links { opacity: 0; poi
   body main.p3-page > .p3-product-hero { min-height: 520px; }
   body[data-cs-template="review"] > header.ready6-review-hero { padding-top: 40px; }
 }
+body[data-cs-template="review"] > header.ready6-review-hero {
+  position: relative;
+  padding-top: 0;
+}
+body[data-cs-template="review"] > header.ready6-review-hero > .ready6-provider-mark {
+  position: absolute;
+  top: 48px;
+  right: 16px;
+}
+body[data-cs-template="review"] > header.ready6-review-hero h1 { padding-inline-end: min(72px, 20vw); }
 
 /* Pharmacy warning panels retain their dark palette with readable text. */
 body .p3-pharm-detail .p3-unknowns,
@@ -631,7 +641,8 @@ body.cs-subscribe-open { overflow: hidden; }
     display: grid; grid-template-rows: 72px minmax(0, 1fr);
     background: rgba(7, 16, 13, 0.98); opacity: 0;
     transform: translateY(100%); transform-origin: center bottom;
-    transition: opacity 180ms ease, transform 240ms cubic-bezier(0.32, 0.72, 0, 1);
+    /* Keep the full-height mobile geometry, but inherit selection #3's
+       140ms/160ms close and 160ms/200ms open from above. */
   }
   .cs-search-panel.is-open { opacity: 1; transform: none; }
   .cs-search-box {

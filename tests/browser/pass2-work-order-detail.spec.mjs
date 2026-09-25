@@ -235,7 +235,7 @@ test("G-1 four migrated review routes carry the shared interactive review anatom
 test("G-2 provider hub exposes the complete 35-record ordered backlog shape", async ({ page }, testInfo) => {
   await approvedRetirement("RR-1", testInfo);
   await gotoServed(page, "/providers/");
-  const backlog = page.locator('[data-phase3-provider] .p3-card-link[href^="/providers/"]');
+  const backlog = page.locator('[data-phase3-provider] a[data-card-review][href^="/reviews/"]');
   await expect(backlog.first()).toBeVisible();
   const rows = await backlog.evaluateAll((links) => links.map((link) => ({
     href: link.getAttribute("href"),
@@ -243,7 +243,7 @@ test("G-2 provider hub exposes the complete 35-record ordered backlog shape", as
   })));
   expect(rows.length).toBeGreaterThan(0);
   expect(new Set(rows.map((row) => row.href)).size).toBe(rows.length);
-  expect(rows.every((row) => /^\/providers\/[a-z0-9-]+\/$/.test(row.href) && row.name)).toBe(true);
+  expect(rows.every((row) => /^\/reviews\/[a-z0-9-]+\/$/.test(row.href) && row.name)).toBe(true);
 });
 
 test("G-3 product has paired insurance pricing, a final wizard action, and a real related shelf", async ({ page }) => {
@@ -286,7 +286,8 @@ test("G-4 listing filters expose honest no-match states and retain dose/state fa
   await gotoServed(page, "/lp/best-providers/compounded-semaglutide/");
   await filters.locator('[data-filter="dose"][data-value="2.4"]').click();
   await expect(page.locator("[data-filter-empty]")).toBeVisible();
-  await expect(page.locator("[data-filter-result]")).toContainText(/Showing 0 source-backed provider rows/i);
+  await expect(page.locator("[data-filter-result]")).toHaveText("0 comparable price results");
+  await expect(page.locator("[data-phase3-provider-grid] > [data-phase3-provider]:visible")).toHaveCount(0);
   await page.locator("[data-filter-reset]").click();
   await expect(page.locator("[data-filter-empty]")).toBeHidden();
   await filters.locator('[data-filter="plan"][data-value="3"]').click();

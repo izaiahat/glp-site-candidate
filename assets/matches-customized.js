@@ -163,7 +163,7 @@
     return `/providers/?${query.toString()}`;
   }
 
-  function renderResults(drug, goal = "medication-form") {
+  function renderResults(drug, goal = "medication-form", animate = true) {
     const ids = data.result_sets[`${drug}|${state.value}|${goal}`] || [];
     cards.replaceChildren();
     for (const [index, id] of ids.entries()) {
@@ -181,9 +181,15 @@
     form.hidden = true;
     results.hidden = false;
     results.append(fullQuiz);
-    results.classList.add("is-new");
-    results.addEventListener("animationend", () => results.classList.remove("is-new"), { once: true });
-    results.querySelector("h2")?.focus({ preventScroll: true });
+    if (animate) {
+      results.classList.add("is-new");
+      results.addEventListener("animationend", () => results.classList.remove("is-new"), { once: true });
+    }
+    const heading = results.querySelector("h2");
+    if (heading) {
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    }
     results.scrollIntoView?.({ block: "start" });
   }
 
@@ -271,7 +277,7 @@
     state.value = jurisdiction.code;
     setDoseOptions();
     if ([...dose.options].some((item) => item.value === query.get("dose"))) dose.value = query.get("dose");
-    renderResults(option.family, selectedGoal);
+    renderResults(option.family, selectedGoal, false);
     if (query.get("source") === "survey") {
       let acknowledgement = null;
       try {

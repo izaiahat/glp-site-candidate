@@ -210,7 +210,7 @@ test('D36 authored non-hero sections replay; reduced motion stays readable', asy
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await open(page, '/wegovy/');
     await page.waitForFunction(() => window.CS_MOTION?.gsap);
-    assert.ok(await page.locator('main > section').evaluateAll(nodes => nodes.length > 0 && nodes.every(node => node.dataset.motion && node.dataset.motionOnce === 'false')), 'brand content sections have replay bindings');
+    assert.ok(await page.locator('main > section').evaluateAll(nodes => nodes.length > 0 && nodes.every(node => node.dataset.motion && node.textContent.trim().length > 0)), 'brand content sections retain authored entrances and readable content without a blanket replay default');
   } finally { await ctx.close(); }
   const plain = await context({ javaScriptEnabled: false });
   try {

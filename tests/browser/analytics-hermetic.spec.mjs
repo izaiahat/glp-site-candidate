@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { createHash } from "node:crypto";
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -7,8 +8,20 @@ import { parseRedirects, redirectLocation } from "../../scripts/review-redirects
 import { onRequestGet as resolveConsentRegion } from "../../functions/api/geo-state.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const PUBLIC = path.join(ROOT, "public");
+const PUBLIC = process.env.GLP_REVIEW_PUBLIC_ROOT || path.join(ROOT, "public");
 const PRODUCTION_ORIGIN = "https://glpclinicscout.com";
+// The registered build binds the stage to the served snapshot, not to a page flag.
+const BUILD_REPORT = JSON.parse(await readFile(path.join(ROOT, "artifacts/ops/build-report.json"), "utf8"));
+const BUILD_STAGE = BUILD_REPORT.release_stage;
+if (!["candidate", "production-seal"].includes(BUILD_STAGE)) throw new Error(`invalid GCS_RELEASE_STAGE: ${BUILD_STAGE}`);
+if (process.env.GCS_RELEASE_STAGE && process.env.GCS_RELEASE_STAGE !== BUILD_STAGE)
+  throw new Error("hermetic_stage_build_input_mismatch");
+const EMITTED_POLICY = {
+  schema: "glp-release-export-policy-v2",
+  stage: BUILD_STAGE,
+  third_party_exports: BUILD_STAGE === "production-seal",
+  reason: BUILD_STAGE === "production-seal" ? "explicit-consent-production-seal" : "local-candidate-export-hold",
+};
 const ANALYTICS_HOST = /(?:^|\.)(?:posthog\.com|googletagmanager\.com|google-analytics\.com|clarity\.ms)$/i;
 const POSTHOG_INGEST = /\/i\/v\d+\/e\/?$|\/e\/?$|\/batch\/?$/;
 const AFFILIATE_ALLOWLIST = new Set([
@@ -123,30 +136,32 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
     expect(connectSrc, `connect-src must allow ${destination}`).toContain(destination);
   }
 
-  // P5: a page-local production-seal stand-in, never a candidate/build override.
-  // Retain the emitted assignment as evidence rather than letting it overwrite the fixture.
-  await page.addInitScript(function hermeticProductionSealStandIn(origin) {
+  // Candidate builds stay held in their emitted bytes. Only the candidate branch uses a
+  // page-local positive-path stand-in; production-seal must run its real emitted policy.
+  await page.addInitScript(function hermeticProductionSealStandIn({ origin, candidate }) {
     if (window !== window.top || location.origin !== origin || location.pathname !== "/providers/") return;
-    const inputs = [];
-    const policy = Object.freeze({
-      schema: "glp-release-export-policy-v2",
-      stage: "production-seal",
-      third_party_exports: true,
-      reason: "hermetic-test-only-production-seal-stand-in",
-    });
-    Object.defineProperty(window, "GCS_HERMETIC_POLICY_INPUTS", { value: inputs });
-    Object.defineProperty(window, "GCS_EXPORT_POLICY", {
-      configurable: false,
-      get: () => policy,
-      set: (value) => inputs.push(value),
-    });
+    if (candidate) {
+      const inputs = [];
+      const policy = Object.freeze({
+        schema: "glp-release-export-policy-v2",
+        stage: "production-seal",
+        third_party_exports: true,
+        reason: "hermetic-test-only-production-seal-stand-in",
+      });
+      Object.defineProperty(window, "GCS_HERMETIC_POLICY_INPUTS", { value: inputs });
+      Object.defineProperty(window, "GCS_EXPORT_POLICY", {
+        configurable: false,
+        get: () => policy,
+        set: (value) => inputs.push(value),
+      });
+    }
     Object.defineProperty(navigator, "webdriver", { get: () => false, configurable: true });
     const plugins = [{ name: "PDF Viewer" }, { name: "Chrome PDF Viewer" }, { name: "Chromium PDF Viewer" }];
     plugins.item = (index) => plugins[index];
     plugins.namedItem = (name) => plugins.find((plugin) => plugin.name === name);
     plugins.refresh = () => {};
     Object.defineProperty(navigator, "plugins", { get: () => plugins, configurable: true });
-  }, PRODUCTION_ORIGIN);
+  }, { origin: PRODUCTION_ORIGIN, candidate: BUILD_STAGE === "candidate" });
 
   const intercepted = [];
   const unexpected = [];
@@ -154,6 +169,17 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
   const fulfilledRequests = new Set();
   context.on("request", (request) => {
     if (["http:", "https:"].includes(new URL(request.url()).protocol)) observedRequests.add(request);
+  });
+  // WebKit speculative fonts can bypass route.fulfill but travel through the
+  // exact-target loopback TLS proxy. Count them only after verifying actual bytes.
+  context.on("response", async (response) => {
+    const url = new URL(response.url());
+    if (url.origin !== PRODUCTION_ORIGIN || !url.pathname.startsWith("/assets/fonts/") || response.status() !== 200) return;
+    try {
+      const local = await localAsset(url.pathname);
+      if (local && (await response.body()).equals(local.body)
+          && response.headers()["content-security-policy"] === csp) fulfilledRequests.add(response.request());
+    } catch { /* Missing or unreadable bytes stay unaccounted and fail below. */ }
   });
   async function fulfillLocally(route, response) {
     await route.fulfill(response);
@@ -210,38 +236,53 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
     return route.abort("blockedbyclient");
   });
 
+
   // The retired comparison URL resolves (asserted above via the Function) to /providers/; land there.
-  const landing = await page.goto(`${PRODUCTION_ORIGIN}/providers/`, { waitUntil: "domcontentloaded" });
-  expect(landing?.status(), "providers landing response").toBe(200);
   const localLanding = await localAsset("/providers/");
   expect(localLanding, "candidate providers HTML exists").toBeTruthy();
+  expect(createHash("sha256").update(localLanding.body).digest("hex"), "served snapshot matches the build-stage receipt")
+    .toBe(BUILD_REPORT.export_policy_surface_sha256);
+  const landing = await page.goto(`${PRODUCTION_ORIGIN}/providers/`, { waitUntil: "domcontentloaded" });
+  expect(landing?.status(), "providers landing response").toBe(200);
   expect(landing.request().redirectedFrom(), "hermetic landing must not follow a network redirect").toBeNull();
   expect(await landing.body(), "landing is the unmodified local candidate HTML").toEqual(localLanding.body);
   expect(landing.headers()["content-security-policy"]).toBe(csp);
   expect(new URL(page.url()).pathname).toBe("/providers/");
   expect(await page.evaluate(() => location.origin)).toBe(PRODUCTION_ORIGIN);
+  const forbiddenConnect = "https://blocked-csp-canary.invalid/analytics-probe";
+  await page.evaluate(async (url) => {
+    window.__gcsCspCanary = [];
+    document.addEventListener("securitypolicyviolation", (event) => {
+      if (event.blockedURI.includes("blocked-csp-canary.invalid")) window.__gcsCspCanary.push(event.violatedDirective);
+    });
+    try { await fetch(url, { mode: "no-cors" }); } catch { /* CSP rejection is expected */ }
+  }, forbiddenConnect);
+  await expect.poll(() => page.evaluate(() => window.__gcsCspCanary.length)).toBeGreaterThan(0);
+  expect(unexpected.filter((entry) => entry.url === forbiddenConnect).length, "forbidden connect must not reach interception").toBe(0);
   expect(await page.evaluate(() => window.GCS_ANALYTICS_SUPPRESSED)).toBeFalsy();
   await page.waitForFunction(() => Boolean(window.GCSConsent));
 
-  expect(await page.evaluate(() => window.GCS_HERMETIC_POLICY_INPUTS), "candidate policy was emitted exactly once").toEqual([{
-    schema: "glp-release-export-policy-v2",
-    stage: "candidate",
-    third_party_exports: false,
-    reason: "local-candidate-export-hold",
-  }]);
-  expect(await page.evaluate(() => window.GCS_EXPORT_POLICY)).toEqual({
-    schema: "glp-release-export-policy-v2",
-    stage: "production-seal",
-    third_party_exports: true,
-    reason: "hermetic-test-only-production-seal-stand-in",
-  });
+  expect(await page.locator("script[data-candidate-export-policy]")).toHaveCount(1);
+  if (BUILD_STAGE === "candidate") {
+    expect(await page.evaluate(() => window.GCS_HERMETIC_POLICY_INPUTS), "candidate policy was emitted exactly once").toEqual([EMITTED_POLICY]);
+    expect(await page.evaluate(() => window.GCS_EXPORT_POLICY)).toEqual({
+      schema: "glp-release-export-policy-v2",
+      stage: "production-seal",
+      third_party_exports: true,
+      reason: "hermetic-test-only-production-seal-stand-in",
+    });
+  } else {
+    expect(await page.evaluate(() => window.GCS_HERMETIC_POLICY_INPUTS)).toBeUndefined();
+    expect(await page.evaluate(() => window.GCS_EXPORT_POLICY)).toEqual(EMITTED_POLICY);
+  }
   expect(await page.evaluate(() => ({
     analytics: window.GCS_ANALYTICS.enabled,
     posthog: window.GCS_POSTHOG.enabled,
     clarity: window.GCS_CLARITY.enabled,
     consent: window.GCS_ANALYTICS.consent,
-  })), "candidate consumer configuration remains held before the explicit fixture step").toEqual({
-    analytics: false, posthog: false, clarity: false, consent: "denied",
+  })), "consumer configuration follows the declared build stage").toEqual({
+    analytics: EMITTED_POLICY.third_party_exports, posthog: EMITTED_POLICY.third_party_exports,
+    clarity: false, consent: BUILD_STAGE === "candidate" ? "denied" : "granted",
   });
   // The US preference is produced by the real regional bootstrap, not an acknowledgment
   // or a fixture-written record. Candidate consumer flags still prevent SDK requests.
@@ -250,18 +291,22 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
     analytics: "granted", advertising: "denied", analytics_basis: "us_default", notice_acknowledged: false,
   });
   expect(await page.evaluate(() => window.GCSConsent.allowsExports("analytics"))).toBe(true);
-  expect(await page.evaluate(() => typeof window.posthog)).toBe("undefined");
-  expect(intercepted, "held consumer configuration must not load a vendor SDK").toEqual([]);
+  if (BUILD_STAGE === "candidate") {
+    expect(await page.evaluate(() => typeof window.posthog)).toBe("undefined");
+    expect(intercepted, "held consumer configuration must not load a vendor SDK").toEqual([]);
+  }
   await expect(page.locator("#gcs-consent input")).toHaveCount(0);
   await expect(page.locator("#gcs-consent button")).toHaveCount(1);
   await expect(page.locator('[data-consent="acknowledge"]')).toHaveText("Got it");
   // These two stage flags are independent of the policy. Refresh the existing default
   // without manufacturing consent, identifiers, SDK readiness or captures.
-  await page.evaluate(function enableHermeticProductionSealConsumers() {
-    window.GCS_ANALYTICS.enabled = true;
-    window.GCS_POSTHOG.enabled = true;
-    window.GCSConsent.refresh();
-  });
+  if (BUILD_STAGE === "candidate") {
+    await page.evaluate(function enableHermeticProductionSealConsumers() {
+      window.GCS_ANALYTICS.enabled = true;
+      window.GCS_POSTHOG.enabled = true;
+      window.GCSConsent.refresh();
+    });
+  }
   if (process.env.GLP_HERMETIC_DEBUG) {
     await page.waitForTimeout(3000);
     console.log("hermetic debug:", JSON.stringify(await page.evaluate(() => ({ loaded: window.GCS_POSTHOG_LOADED, posthog: typeof window.posthog, cfg: window.GCS_ANALYTICS, policy: window.GCS_EXPORT_POLICY, consent: localStorage.getItem("gcs_tracking_consent_v1"), suppressed: window.GCS_ANALYTICS_SUPPRESSED, scripts: [...document.scripts].map((s) => s.src).filter(Boolean).slice(0, 12) }))), JSON.stringify(intercepted.map((e) => [e.url, e.disposition]).slice(0, 20)));

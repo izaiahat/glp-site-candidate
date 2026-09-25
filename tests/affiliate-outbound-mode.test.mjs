@@ -10,14 +10,31 @@ const read = (name) => JSON.parse(readFileSync(new URL(`../data/${name}.json`, i
 const registry = read("program-registry");
 const promotions = loadGoPromotionAuthority().programs;
 const links = loadAffiliateLinkMap("compare");
-const ids = ["gobymeds", "orderlymeds", "nu-image-medical-review", "levelsrx-extra-cpa-home-page", "yucca-health-xentraffic-offer-3117"];
-for (const id of ids) test(`selected ${id} follows current adoption or explicit hold`, () => {
+const modes = new Map([
+  ["gobymeds", "go"], ["orderlymeds", "go"],
+  // Network-approved Nu Image is live under the 2026-09-24 decision, but its
+  // missing redirector permissions still forbid a /go hop.
+  ["nu-image-medical-review", "transparent_direct"],
+  ["levelsrx-extra-cpa-home-page", "go"], ["yucca-health-xentraffic-offer-3117", "go"],
+]);
+for (const [id, mode] of modes) test(`selected ${id} follows current adoption or explicit hold`, () => {
   const program = registry.programs.find((p) => p.program_id === id || p.review_slug === id);
-  const held = id === "nu-image-medical-review";
-  assert.equal(promotions[id].status, held ? "WITHHELD" : "VERIFIED");
-  assert.equal(links[id].live, !held);
-  assert.equal(affiliateOutboundMode(program, links[id], promotions[id]), held ? "held" : "go");
+  assert.equal(promotions[id].status, "VERIFIED");
+  assert.equal(links[id].live, true);
+  if (id === "nu-image-medical-review") {
+    assert.equal(promotions[id].reason, "operator_approved_glp_live");
+    assert.equal(promotions[id].constructor_verified, false);
+    assert.equal(promotions[id].redirector_tos_verified, false);
+  }
+  assert.equal(affiliateOutboundMode(program, links[id], promotions[id]), mode);
   assert.equal(affiliateOutboundMode(program, {...links[id], live:false}, promotions[id]), "held");
+});
+test("network-paused Ageless offer 1538 remains link-dark despite stale Sheet selection", () => {
+  const program = registry.programs.find((row) => row.program_id === "try-ageless");
+  assert.equal(promotions["try-ageless"].status, "WITHHELD");
+  assert.equal(promotions["try-ageless"].reason, "network_paused_katalys_offer_1538");
+  assert.equal(links["try-ageless"].live, false);
+  assert.equal(affiliateOutboundMode(program, links["try-ageless"], promotions["try-ageless"]), "held");
 });
 const fixture = () => ({program_id:'fixture-routed',commercial_state:"live",go:{entry_state:"transparent_direct"},profiles:{"glp-clinic-scout":{vertical_fit:true,wired:true,surfaces:{compare:true,go:true}}}});
 const link={live:true,affiliate_href:"https://example.invalid/issued",network:"Katalys"};

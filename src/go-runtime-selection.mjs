@@ -45,11 +45,15 @@ export function loadGoPromotionAuthority(root = DEFAULT_ROOT) {
   try { legacy = JSON.parse(readFileSync(path.join(root, "data/go-runtime-promotion-authority.json"))); }
   catch (error) { if (error.code !== "ENOENT") throw error; }
   const current = loadGoSelection(root);
-  return { ...legacy, ...(current ? { selection_sha256: current.selection_sha256 } : {}),
-    programs: { ...legacy.programs, ...current?.programs } };
+  const programs = { ...legacy.programs, ...current?.programs };
+  for (const [id, row] of Object.entries(current?.programs || {})) {
+    if (row.status === "WITHHELD" && legacy.programs?.[id]?.status === "VERIFIED"
+        && legacy.programs[id].operator_approved_live_decision) programs[id] = legacy.programs[id];
+  }
+  return { ...legacy, ...(current ? { selection_sha256: current.selection_sha256 } : {}), programs };
 }
 
-export function applyGoSelectionToLinkMap(links, registry, surface, profileId, current) {
+export function applyGoSelectionToLinkMap(links, registry, surface, profileId, current, promotionAuthority = null) {
   if (!current) return links;
   for (const row of Object.values(current.programs)) {
     const program = registry.programs.find(p => p.program_id === row.program_id);
@@ -57,6 +61,8 @@ export function applyGoSelectionToLinkMap(links, registry, surface, profileId, c
     if (!program || renderId !== row.render_id) throw new Error(`go_selection_registry_identity:${row.program_id}`);
     const profile = program.profiles?.[profileId];
     if (row.disposition === "HOLD") {
+      const direct = promotionAuthority?.programs?.[row.program_id];
+      if (direct?.status === "VERIFIED" && direct.operator_approved_live_decision && links[renderId]?.live === true) continue;
       links[renderId] = { program_id: renderId, merchant: program.display_name, review_path: program.review_path, affiliate_href: null, live: false };
       continue;
     }

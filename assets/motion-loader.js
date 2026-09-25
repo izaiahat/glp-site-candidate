@@ -16,8 +16,7 @@
   var sources = [
     "/assets/vendor/gsap/gsap.min.js",
     "/assets/vendor/gsap/ScrollTrigger.min.js",
-    "/assets/vendor/gsap/SplitText.min.js",
-    "/assets/vendor/gsap/Flip.min.js",
+
     "/assets/vendor/lenis/lenis.min.js",
     "/assets/motion.js"
   ];

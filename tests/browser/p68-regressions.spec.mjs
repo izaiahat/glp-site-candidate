@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { governedBulkCohorts } from "./governed-cohort.mjs";
 
 test.beforeEach(async ({ page, baseURL }) => {
   const origin = new URL(baseURL).origin;
@@ -89,9 +90,49 @@ test("P68 bulk status announces the selected molecule", async ({ page }) => {
       await openPage(page, `/${duration}/?drug=${drug}`);
       const treatment = page.locator(`[data-provider-filters] [data-filter="treatment"][data-value="${drug}"]`);
       await expect(treatment).toHaveAttribute("aria-selected", "true");
-      await expect(page.locator("[data-filter-result]")).toContainText(/Showing \d+ source-backed/i);
-      await expect(page.locator("[data-filter-result]")).toContainText(`Treatment: ${drug}.`);
-      await expect(page.locator("[data-phase3-provider]:visible")).not.toHaveCount(0);
+      // KAEL-DECISION-20260923-optionc-governing-mappings.md A2.2–A2.3.
+      const expected = governedBulkCohorts(drug, duration === "3-month" ? 3 : 6);
+      const numeric = page.locator('#provider-results [data-phase3-provider-grid] > [data-phase3-provider]');
+      expect(await numeric.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expected.numeric].sort());
+      await expect(page.locator("[data-filter-result]")).toContainText(`${expected.numeric.length} comparable price results`);
+      await expect(page.locator("[data-filter-result]")).toContainText(`Treatment: ${drug[0]}${drug.slice(1).toLowerCase()}.`);
+      const unpriced = page.locator('[data-unpublished-provider-section] [data-phase3-provider]');
+      expect(await unpriced.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expected.unpriced].sort());
+      if (expected.unpriced.length) await expect(page.locator('[data-unpublished-provider-section]')).toBeVisible();
+      else await expect(unpriced).toHaveCount(0);
+      // A contrary plan/dose tuple must empty only the numeric cohort; source-
+      // backed non-priced records remain separate, and reset restores selection.
+      const plan = page.locator('[data-provider-filters] [data-filter="plan"][data-value="1"]');
+      // Bulk controls are emitted with the route's semaglutide default dose set;
+      // the molecule URL changes the cohort, not the static available controls.
+      const adverseDose = '2.4';
+      const dose = page.locator(`[data-provider-filters] [data-filter="dose"][data-value="${adverseDose}"]`);
+      await plan.click();
+      await dose.click();
+      const empty = page.locator('[data-filter-empty]');
+      await expect(numeric.locator(':visible')).toHaveCount(0);
+      await expect(page.locator('[data-filter-result]')).toContainText('0 comparable price results');
+      await expect(empty).toBeVisible();
+      await expect(empty.locator('p').first()).toHaveText(expected.unpriced.length
+        ? 'No comparable price matches those filters. Records without a comparable price are listed separately below. This is not a medical or availability conclusion.'
+        : 'No source-backed record matches those filters. An empty result is not a medical or availability conclusion.');
+      await expect(empty.locator('[data-active-filter-label]')).toContainText('Plan: 1 month');
+      await expect(empty.locator('[data-active-filter-label]')).toContainText(`Dose: ${adverseDose} mg/week`);
+      await expect(plan).toHaveAttribute('aria-selected', 'true');
+      await expect(dose).toHaveAttribute('aria-selected', 'true');
+      expect(await unpriced.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expected.unpriced].sort());
+      await empty.locator('[data-filter-reset]').click();
+      await expect(empty.locator('[data-active-filter-label]')).toHaveText('Active filters: none.');
+      await expect(plan).toHaveAttribute('aria-selected', 'false');
+      await expect(dose).toHaveAttribute('aria-selected', 'false');
+      const resetCohort = governedBulkCohorts('SEMAGLUTIDE', duration === '3-month' ? 3 : 6);
+      if (resetCohort.numeric.length === 0) await expect(empty).toBeVisible();
+      else await expect(empty).toBeHidden();
+      await expect(page.locator('[data-filter-result]')).toContainText(`${resetCohort.numeric.length} comparable price results`);
+      await expect(page.locator('[data-provider-filters] [data-filter="treatment"][data-value="SEMAGLUTIDE"]')).toHaveAttribute('aria-selected', 'true');
+      await expect(page.locator('[data-provider-filters] [data-filter="treatment"][data-value="TIRZEPATIDE"]')).toHaveAttribute('aria-selected', 'false');
+      expect(await numeric.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...resetCohort.numeric].sort());
+      expect(await unpriced.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...resetCohort.unpriced].sort());
     }
   }
 });

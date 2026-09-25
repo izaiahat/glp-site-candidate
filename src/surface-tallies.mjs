@@ -19,6 +19,7 @@
 
 export const TALLY_TOKENS = Object.freeze([
   "LIVE_PROVIDER_COUNT",     // distinct live merchants, after identity dedup
+  "COMPARISON_CARD_COUNT",  // evidence-qualified cards on /providers/
   "PRICED_PROVIDER_COUNT",
   "CALCULATOR_COMPARABLE_PROVIDER_COUNT",
   "CURRENT_PRICE_ROW_COUNT",
@@ -68,14 +69,14 @@ function classify(noun) {
  * Values each tally class may legitimately state on THIS page: the site-wide
  * derivation, plus whatever this page itself rendered.
  */
-export function allowedTallies(html, derived) {
+export function allowedTallies(html, derived, relative = "") {
   const rows = new Set([...html.matchAll(/data-program="([a-z0-9-]+)"/g)].map((match) => match[1])).size;
   const options = [...html.matchAll(/<option value="[a-z0-9-]+"/g)].length;
   // Responsive table/card twins count as one canonical category profile.
   const categoryRows = new Set([...html.matchAll(/data-g08-provider-id="([a-z0-9-]+)"/g)].map(match => match[1])).size;
   const guides = new Set([...html.matchAll(/href="(\/guides\/[a-z0-9-]+\/)"/g)].map((match) => match[1])).size;
   return {
-    provider: new Set([derived.LIVE_PROVIDER_COUNT, rows || null, options || null, categoryRows || null].filter((value) => value !== null)),
+    provider: new Set([derived.LIVE_PROVIDER_COUNT, relative === "index.html" ? derived.COMPARISON_CARD_COUNT : null, rows || null, options || null, categoryRows || null].filter((value) => value != null)),
     comparison: new Set([derived.COMPARISON_PAGE_COUNT]),
     guide: new Set([derived.RESEARCH_GUIDE_COUNT, guides || null].filter((value) => value !== null)),
   };
@@ -94,7 +95,7 @@ export function allowedTallies(html, derived) {
  * report. Anything the rewrite cannot reach still fails the gate below.
  */
 export function redriveTallies(relative, html, derived) {
-  const allowed = allowedTallies(html, derived);
+  const allowed = allowedTallies(html, derived, relative);
   const target = { provider: derived.LIVE_PROVIDER_COUNT, comparison: derived.COMPARISON_PAGE_COUNT, guide: derived.RESEARCH_GUIDE_COUNT };
   const rewrites = [];
   const updated = html.replace(new RegExp(TALLY_COPY.source, "gi"), (match, number, modifiers, noun) => {
@@ -111,7 +112,7 @@ export function redriveTallies(relative, html, derived) {
  * reproduce, in prose or in a labelled metric tile.
  */
 export function assertTalliesDerived(relative, html, derived) {
-  const allowed = allowedTallies(html, derived);
+  const allowed = allowedTallies(html, derived, relative);
   const fail = (phrase, klass, value) => {
     throw new Error(`surface_tally_not_derived:${relative}:${phrase.replace(/\s+/g, "_")}:${klass}:${value}:allowed:${[...allowed[klass]].sort().join("|")}`);
   };

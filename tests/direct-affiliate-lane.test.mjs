@@ -11,7 +11,7 @@ import test from "node:test";
 import { readFile } from "node:fs/promises";
 import { buildProviderReviewSpecs, renderProviderReviewPage } from "../src/provider-review.mjs";
 import { buildAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
-import { loadGoSelection } from "../src/go-runtime-selection.mjs";
+import { loadGoSelection, loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
 import { GO_RUNTIME_MANIFEST } from "../functions/go/program-manifest.js";
 
 const readJson = async (path) => JSON.parse(await readFile(new URL(path, import.meta.url), "utf8"));
@@ -69,14 +69,23 @@ test("the direct-affiliate lane reaches every surface its evidence supports", ()
 });
 
 test("the all-or-nothing money link map still resolves every selected program", () => {
-  const links = buildAffiliateLinkMap(money.pages, registry, selection, "review");
+  const promotionAuthority = loadGoPromotionAuthority();
+  const links = buildAffiliateLinkMap(money.pages, registry, selection, "review", "glp-clinic-scout", { promotionAuthority });
   const live = Object.values(links).filter((item) => item.live === true);
-  // 13 -> 11 on 2026-08-17: Katalys paused Synergy Rx and Care Bare Rx GLP1.
+  // The sealed Sheet selection still has 11, but Katalys subsequently paused
+  // Ageless offer 1538. Do not use that stale row as live-link authority.
   assert.equal(selection.program_count, 11);
   assert.equal(selection.programs.length, selection.program_count);
-  assert.equal(live.length, selection.program_count,
+  const paused = selection.programs.find((item) => item.program_id === "try-ageless");
+  assert.equal(paused?.network_program_id, "1538");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "network_paused_katalys_offer_1538");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.status, "WITHHELD");
+  assert.equal(links["try-ageless"]?.live, false);
+  const eligible = selection.programs.filter((item) => item.program_id !== "try-ageless");
+  assert.equal(live.length, eligible.length,
     "the money-page link map went link-dark or lost a program");
-  for (const program of selection.programs) {
+  assert.deepEqual(new Set(live.map((item) => item.program_id)), new Set(eligible.map((item) => item.program_id)));
+  for (const program of eligible) {
     const record = links[program.program_id];
     assert.ok(record, `missing link-map record for ${program.program_id}`);
     assert.equal(record.live, true, `${program.program_id} is link-dark`);

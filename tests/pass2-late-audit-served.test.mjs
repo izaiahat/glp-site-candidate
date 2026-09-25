@@ -86,9 +86,9 @@ test("G08a served medication owners are indexable 200 pages; paid listings stay 
 test("served home uses D36 replay-on-re-entry entrance markers", async () => {
   const { response, html } = await fetchText("/");
   assert.equal(response.status, 200);
-  assert.doesNotMatch(html, /data-motion-once="true"/);
-  const markers = html.match(/data-motion-once="false"/g) || [];
-  assert.ok(markers.length >= 16, `expected D36 replay entrance markers, found ${markers.length}`);
+  assert.match(html, /cs-home2-hero__copy[^>]*data-motion="rise" data-motion-once="true"/);
+  for (const card of ["shipping", "schedule"]) assert.match(html, new RegExp(`data-h17-card="${card}"[^>]*data-motion="slide-from-(?:left|right)" data-motion-once="false"`));
+  assert.match(html, /cs-home2-help[^>]*data-motion="rise" data-motion-once="true"/);
 });
 
 test("all built subscription and capture surfaces have passive consent with hidden capture metadata intact", async () => {

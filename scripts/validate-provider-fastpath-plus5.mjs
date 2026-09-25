@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { loadGoSelection } from "../src/go-runtime-selection.mjs";
+import { loadGoSelection, loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
 import { GO_RUNTIME_MANIFEST } from "../functions/go/program-manifest.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -18,6 +18,7 @@ const fastpath = await readJson("data/provider-fastpath-contract.json");
 const money = await readJson("data/money-page-specs.json");
 const programRegistry = await readJson("data/program-registry.json");
 const currentSelection = loadGoSelection(root);
+const promotionAuthority = loadGoPromotionAuthority(root).programs;
 const approvedRegistry = await readJson("data/approved-program-registry.json");
 // Programs wired after the frozen approved-53 wave carry their corroborating
 // approval + provider-issued tracking record here instead. Same strictness.
@@ -131,7 +132,9 @@ for (const provider of fastpath.providers) {
     && provider.affiliate_cta_state === "ACTIVE_PROVIDER_ISSUED_DIRECT"
     && contract.network_contract.activation_blocker === null
     && contract.row_contract.live_link_allowed === true
-    && contract.row_contract.promotion_authorized === true;
+    && contract.row_contract.promotion_authorized === true
+    && promotionAuthority[provider.program_id]?.status === "VERIFIED"
+    && promotionAuthority[provider.program_id]?.promotion_authorized === true;
   const selected = currentSelection?.programs?.[provider.program_id];
   if (selected?.status === 'VERIFIED') {
     const entry = GO_RUNTIME_MANIFEST.programs[selected.render_id];
@@ -144,7 +147,8 @@ for (const provider of fastpath.providers) {
     assert.ok(html.includes(`href="${selected.route}?s=reviews.rv2&amp;v=a"`), `selected-review-route:${provider.program_id}`);
     assert.ok(html.indexOf("This page contains one active affiliate link") < html.indexOf('data-affiliate-state="active"'));
     activeAffiliateCtas += 1;
-  } else if (selected?.disposition === 'HOLD') {
+  } else if (selected?.disposition === 'HOLD'
+      && promotionAuthority[provider.program_id]?.reason !== 'operator_approved_glp_live') {
     assert.match(html, /data-link-dark="true"/);
     assert.match(html, /data-affiliate-state="held"/);
     assert.doesNotMatch(html, /data-affiliate-state="active"|href="\/go\//);
@@ -163,7 +167,9 @@ for (const provider of fastpath.providers) {
     assert.ok(html.indexOf("This page contains one active affiliate link") < html.indexOf('data-affiliate-state="active"'));
     assert.doesNotMatch(html, /href="\/go\//);
     activeAffiliateCtas += 1;
-  } else if ((((await readJson("data/go-runtime-promotion-authority.json")).programs || {})[provider.program_id] || {}).promotion_authorized === true) {
+  } else if (liveProgram?.profiles?.["glp-clinic-scout"]?.surfaces?.go === true
+      && liveProgram.go.entry_state === "instrumented_redirect_candidate"
+      && promotionAuthority[provider.program_id]?.promotion_authorized === true) {
     // FORM 1 - governed /go promotion. RULING 2026-09-03: a route is active
     // only under a verified promotion authority, and then the page must carry
     // the queried anchor the cs_click_id join needs.
@@ -176,21 +182,22 @@ for (const provider of fastpath.providers) {
     assert.equal((html.match(/data-affiliate-state="active"/g) || []).length, 1);
     activeAffiliateCtas += 1;
   } else if (provider.route_state === "LIVE_EDITORIAL_AFFILIATE_ACTIVE") {
-    // FORM 2 - held /go authority, live on the provider-issued DIRECT link.
-    // This is Measured: its terms hold was rescinded so the row is live, but
-    // its /go authority is WITHHELD, so /go/<slug> stays held and the direct
-    // Awin href is the correct monetized form - the same form every other live
-    // provider uses today. entry_state is derived from the authority, so a
-    // withheld authority reads "held" here even though the route is registered.
-    // liveProgram is found on commercial_state live + wired, NOT on
-    // surfaces.go - Measured carries surfaces.go false after its rescission,
-    // which is exactly why it matched neither original branch.
     assert.ok(liveProgram, `live-registry-row-missing:${provider.program_id}`);
-    assert.equal(String((liveProgram.go || {}).entry_state || ""), "held");
+    assert.ok(["held", "transparent_direct"].includes(String((liveProgram.go || {}).entry_state || "")),
+      `non_go_entry_state_required:${provider.program_id}`);
     assert.doesNotMatch(html, /href="\/go\//);
-    assert.equal((html.match(/data-link-mode="transparent-direct"/g) || []).length, 1);
-    assert.equal((html.match(/data-affiliate-state="active"/g) || []).length, 1);
-    activeAffiliateCtas += 1;
+    if (promotionAuthority[provider.program_id]?.status === "VERIFIED"
+        && promotionAuthority[provider.program_id]?.promotion_authorized === true) {
+      assert.equal((html.match(/data-link-mode="transparent-direct"/g) || []).length, 1);
+      assert.equal((html.match(/data-affiliate-state="active"/g) || []).length, 1);
+      activeAffiliateCtas += 1;
+    } else {
+      // A live editorial contract is not itself a sealed promotion row.
+      assert.ok(html.includes('data-link-dark="true"') && html.includes('data-affiliate-state="held"'),
+        `sealed_promotion_hold_missing:${provider.program_id}`);
+      assert.ok(!/data-link-mode="transparent-direct"|data-affiliate-state="active"|data-analytics-event="affiliate_click"|rel="sponsored/.test(html),
+        `unauthorized_review_anchor:${provider.program_id}`);
+    }
   } else {
     // held-by-default, unchanged: no governed promotion authority and not live.
     assert.equal(provider.route_state, "READY_EDITORIAL_LINK_DARK");

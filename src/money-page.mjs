@@ -463,7 +463,12 @@ function datedPriceLine(spec, row, tag = "p") {
   const price = String(row?.starting_price || "").trim();
   const figure = price.match(/\$[\d,]+(?:\.\d{2})?(?:\s*\/\s*(?:mo|month))?/i)?.[0];
   if (!figure) return "";
-  return `<${tag} class="verdict-price" data-top-match-price><strong class="verdict-price-figure">Starting at ${esc(figure.replace(/\s+/g, ""))}</strong><span class="verdict-price-basis">published starting price</span></${tag}>`;
+  const checked = row.price_checked_on;
+  const source = (spec.sources || []).find((item) => item.source_id === row.citation_source_id
+    && item.url === row.source_url && item.verified_as_of === checked);
+  const dateChip = source && /^\d{4}-\d{2}-\d{2}$/.test(checked || "")
+    ? `<span class="price-checked-chip">Checked <time datetime="${esc(checked)}">${esc(checked)}</time></span>` : "";
+  return `<${tag} class="verdict-price" data-top-match-price><strong class="verdict-price-figure">Starting at ${esc(figure.replace(/\s+/g, ""))}</strong><span class="verdict-price-basis">published starting price</span>${dateChip}</${tag}>`;
 }
 
 // MOAT INVARIANT (non-regressable): "disclosure above results".

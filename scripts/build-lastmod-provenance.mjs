@@ -142,6 +142,12 @@ async function main() {
     });
     if (result.error) throw result.error;
     process.exitCode = result.status ?? 1;
+    if (result.status === 0) {
+      const reportPath = path.join(ROOT, 'artifacts/ops/build-report.json');
+      const report = JSON.parse(await readFile(reportPath, 'utf8'));
+      report.export_policy_surface_sha256 = sha(await readFile(path.join(ROOT, 'public/providers/index.html')));
+      await writeFile(reportPath, JSON.stringify(report, null, 2) + '\n');
+    }
   } finally { await input.close(); }
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

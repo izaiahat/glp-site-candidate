@@ -130,11 +130,18 @@ for (const route of ROUTES) {
       }
 
       if (route.key === "library") {
-        const index = page.locator('.library-index[aria-label="Research library sections"]');
-        await expect(index).toBeVisible();
-        await expect(index.locator('a[href^="#guides-"]')).toHaveCount(1);
-        await expect(page.locator("#guides-glp-1")).toHaveText("GLP-1");
-        await expect(page.locator("#guides-wellness")).toHaveCount(0);
+        // /guides/ now retires to the paginated /insights/ listing, not the old anchor index.
+        await expect(page.locator("main .p3-insights-hero h1")).toHaveText("Insights");
+        const features = page.locator('main [data-insight-cycle] a[data-insights-feature]');
+        expect(await features.count()).toBeGreaterThan(0);
+        const feature = features.first();
+        await expect(feature).toBeVisible();
+        await expect(feature).toHaveAttribute("href", /^\/guides\/[a-z0-9-]+\/$/);
+        await expect(feature.locator("h2")).toHaveText(/\S/);
+        const pagination = page.getByRole("navigation", { name: "Insights pages" });
+        await expect(pagination).toBeVisible();
+        await expect(pagination.getByRole("link", { name: "Insights page 2" })).toHaveAttribute("href", "/insights/page/2/");
+        await expect(pagination.locator('[aria-current="page"]')).toHaveText("1");
       }
 
       if (width === 390) {

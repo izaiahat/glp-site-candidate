@@ -137,11 +137,28 @@ test("money page renders all P1 upgrades with internal review fallbacks and no f
   // price takes the first viewport and the methodology block follows it. The
   // assertion still pins a strict order, just the specified one.
   assert.ok(html.indexOf('id="quick-answer"') < html.indexOf('id="methodology"'));
-  assert.match(html, /class="verdict-price"[\s\S]*?price-checked-chip/);
+  // This fixture has a synthetic $199 but no price-specific check date. A
+  // dated source in the page ledger is not proof that the price was checked.
+  assert.match(html, /class="verdict-price"[\s\S]*?Starting at \$199/);
+  assert.doesNotMatch(html, /price-checked-chip/);
   assert.doesNotMatch(html, /href="\/go\/|data-held-route|data-proof-status="not-verified-comparable"|data-promo-status="not-verified"|0\/100|No verified promo code|Stronger published .* evidence in this comparison/); assert.doesNotMatch(html, /AggregateRating|Medically reviewed by|medical reviewer/i);
   // CRO overhaul adds an inline lead-magnet + explicit-button exit-capture form; both must keep sends staged and never collect health data.
   assert.match(html, /data-content-upgrade-form/); assert.match(html, /consent_version" value="glp-content-upgrade-v1-20260724"/); assert.doesNotMatch(html, /name="(?:bmi|weight|current_med\w*|diagnosis|medical_history|quiz_answers)"/i);
   assert.match(renderBestForBox(moneyBase), /best-for-grid/); assert.match(renderProviderCards(moneyBase), /How Alpha scored/);
+});
+test("a source-dated synthetic price retains its checked-date verdict provenance", () => {
+  const dated = structuredClone(moneyBase);
+  // Explicit test evidence for the synthetic price, not a date borrowed from
+  // the unrelated FDA source or a claim about any live provider.
+  dated.rows[0].price_checked_on = "2026-07-23";
+  dated.rows[0].source_url = "https://alpha.example/pricing";
+  dated.rows[0].citation_source_id = "source-2";
+  dated.sources.push({ source_id: "source-2", publisher: "Alpha synthetic pricing fixture", url: dated.rows[0].source_url, verified_as_of: "2026-07-23", claim_ids: ["fixture-price-alpha"] });
+  const html = renderMoneyPage(dated, identity);
+  const verdict = html.match(/<section id="quick-answer"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(verdict, 'verdict renders for a source-dated synthetic price');
+  assert.match(verdict, /class="verdict-price"[\s\S]*?Starting at \$199/);
+  assert.match(verdict, /price-checked-chip[^>]*>[\s\S]*?2026-07-23/);
 });
 test("source-labeled social proof renders only from complete verified evidence and rejects partial ratings", () => {
   const verified = structuredClone(moneyBase); verified.verdict = { label: "Our Pick", provider: "Alpha", one_line: "Verified fixture.", program_id: "alpha" }; verified.rows[0].social_proof = { status: "VERIFIED", label: "Trustpilot", rating: 4.7, review_count: 1234, source_name: "Trustpilot", source_url: "https://www.trustpilot.com/review/example.test", verified_as_of: "2026-07-23" };
@@ -280,10 +297,12 @@ test("content-upgrade storage failure is fail-closed", async () => {
 
 const passBrief = { risk_tier: "LOW", word_count: 1600, sources: [source, { ...source, source_id: "ftc", publisher: "FTC", url: "https://www.ftc.gov/example", claim_ids: ["claim-2"] }], evidence_review: { status: "PASS", reviewed_at: "2026-07-23T00:00:00Z", content_sha256: "c".repeat(64) }, has_affiliate_cta: true, inline_ftc_disclosure: true };
 test("provider review root is link-dark unless both promotion and live-link authority are true", () => {
-  assert.equal(providerLinkDark({ live_link_allowed: false, promotion_authorized: false }), true);
-  assert.equal(providerLinkDark({ live_link_allowed: true, promotion_authorized: false }), true);
-  assert.equal(providerLinkDark({ live_link_allowed: false, promotion_authorized: true }), true);
-  assert.equal(providerLinkDark({ live_link_allowed: true, promotion_authorized: true }), false);
+  const approved = { program_id: "mademed", live_link_allowed: true, promotion_authorized: true };
+  assert.equal(providerLinkDark({ ...approved, live_link_allowed: false, promotion_authorized: false }), true);
+  assert.equal(providerLinkDark({ ...approved, promotion_authorized: false }), true);
+  assert.equal(providerLinkDark({ ...approved, live_link_allowed: false }), true);
+  assert.equal(providerLinkDark({ ...approved, program_id: "not-a-network-approved-program" }), true);
+  assert.equal(providerLinkDark(approved), false);
 });
 test("keyword collisions, HIGH-risk advice, and incomplete evidence fail", () => { assert.throws(() => validateKeywordOwnership([{ primary_keyword: "A", url: "/a" }, { primary_keyword: "a", url: "/b" }]), /collision/); assert.equal(reviewBrief({ ...passBrief, risk_tier: "HIGH" }, identity.author).status, "BLOCKED"); assert.equal(reviewBrief({ ...passBrief, evidence_review: { status: "HELD" } }, identity.author).status, "HELD"); });
 test("LOW-risk evidence-complete no-clinician brief passes", () => { assert.equal(reviewBrief(passBrief, identity.author).status, "PASS"); assert.equal(blogPolicy.clinicianRequired, false); });

@@ -123,8 +123,11 @@ test("mobile header and consent controls keep touch targets clear of the paid-LP
   assert.match(shell, /\.cs-search-back\s*\{\s*inline-size:\s*44px;\s*block-size:\s*44px/);
   assert.match(shell, /\.cs-menu-toggle\s*\{[\s\S]*?block-size:\s*44px/);
   assert.match(shell, /section#gcs-consent \.gcs-consent-actions button \{ min-height: 44px/);
-  assert.match(quiz, /body\[data-page="quiz-provider-fit"\] main#main\.qz-shell \{[\s\S]*?min-height:\s*100dvh;[\s\S]*?padding-block:\s*95px 48px !important/);
+  assert.match(quiz, /body\[data-page="quiz-provider-fit"\] main#main\.qz-shell \{[\s\S]*?min-height:\s*100dvh;[\s\S]*?padding-block:\s*95px calc\(48px \+ var\(--consent-clearance, 0px\)\) !important/);
   assert.match(consent, /bottom:calc\(20px \+ var\(--sticky-clearance,0px\)\)/);
+  assert.match(consent, /const reserved=height===null\?320:Math\.ceil\(height\+bottom\+8\)/);
+  assert.match(consent, /window\.innerWidth<=920\|\|document\.body\?\.dataset\?\.page==='quiz-provider-fit'/);
+  assert.match(consent, /entry\?\.borderBoxSize/);
   assert.match(landing, /body:has\(\.sticky\)\{--sticky-clearance:96px\}/);
 });
 
@@ -139,8 +142,8 @@ test("Insights-reference route families render the clean-room template anatomy",
   const representatives = [
     ["insights", /p3-insights-hero|cs-ins-index/],
     ["bulk", /p3-index-hero/],
-    ["3-month", /p3-bulk-hero/],
-    ["6-month", /p3-bulk-hero/],
+    ["3-month", /listing__intro--bulk-visual[^>]*>[\s\S]*?data-product-visual="bulk-/],
+    ["6-month", /listing__intro--bulk-visual[^>]*>[\s\S]*?data-product-visual="bulk-/],
     ["mounjaro", /p3-product-hero/],
     ["wegovy", /p3-product-hero/],
     ["wegovy-pill", /p3-product-hero/],

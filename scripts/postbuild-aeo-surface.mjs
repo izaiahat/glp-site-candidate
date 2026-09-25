@@ -411,7 +411,7 @@ async function main() {
     });
     const materialDate = materialDates.get(route) || inheritedDisclosureDates(route, articles.get(route))?.lastmod || CARRIER_ACCEPTED_MATERIAL_DATES[route] || null;
     const ownedDate = resolveCatalogDate(route, articles.get(route), declaredDateModified(html), resolved, materialDate, releaseDate);
-    const { lastmod, action } = resolveMaterialDate(route, materialDate, ownedDate, releaseDate);
+    const { lastmod, action } = frozen ? resolved : resolveMaterialDate(route, materialDate, ownedDate, releaseDate);
     if (action === "declared_material_page_edit") materialReconciled.push(route);
     if (articles.has(route) && recorded?.lastmod !== lastmod) catalogReconciled.push(route);
     if (resolved.action === LASTMOD_ACTIONS.RUNTIME_ONLY) runtimeOnlyPreserved.push(runtimeProof);

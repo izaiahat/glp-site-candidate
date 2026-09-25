@@ -80,7 +80,13 @@ function approvedSurface(spec) {
 function expectQuizNetworkContract(outbound) {
   expect(outbound.filter((request) => /google-analytics|googletagmanager|clarity\.ms/i.test(request.url))).toEqual([]);
   expect(outbound.filter((request) => /\/api\/leads/i.test(request.url))).toEqual([]);
-  expect(JSON.stringify(outbound)).not.toMatch(/bmi_range|current_meds|insurance|state|timeline|quiz_answers|diagnosis|medical_history/i);
+  // /api/geo-state?purpose=consent is a permitted region-model GET, not a quiz answer.
+  // Examine query parameters and request bodies so sensitive values cannot leave in either.
+  for (const request of outbound) {
+    const target = new URL(request.url);
+    const auditedPath = target.pathname === "/api/geo-state" ? "/api/geo-region" : target.pathname;
+    expect(`${auditedPath}${target.search}\n${request.body || ""}`).not.toMatch(/bmi_range|current_meds|insurance|state|timeline|quiz_answers|diagnosis|medical_history/i);
+  }
 }
 
 async function completeProviderFitQuiz(page) {

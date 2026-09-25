@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Live Firecrawl re-verification of reviewed taxonomy assertions; never infer tags.
 
-Default: the five named GLP-38 programs. --program selects one. Captures and
+Default: the reviewed GLP-38 programs. --program selects one. Captures and
 findings survive refusals. Only a complete validated registry is atomically saved.
 """
 import argparse
@@ -74,6 +74,14 @@ POLICIES = {
         'url': 'https://nuimagemedical.com/weight-loss-medications',
         'quotes': {'molecule_tags': {'semaglutide': 'Semaglutide Injection', 'tirzepatide': 'Tirzepatide Injection'},
                    'delivery_form_tags': {'injectable': 'Tirzepatide Injection'}},
+    },
+    'synergy-rx-review': {
+        'url': 'https://www.synergyrx.co/',
+        'quotes': {'molecule_tags': {'semaglutide': 'Our licensed healthcare providers may prescribe semaglutide or tirzepatide',
+                                    'tirzepatide': 'Our licensed healthcare providers may prescribe semaglutide or tirzepatide'},
+                   'brand_name_tags': {'mounjaro': 'Mounjaro®', 'wegovy': 'Wegovy®'},
+                   'treatment_type_tags': {'brand_name': 'FDA-approved brand name medications',
+                                           'compounded': 'compounded GLP-1 formulations'}},
     },
 }
 
@@ -197,10 +205,14 @@ def main():
     try:
         if not proposals:
             raise ValueError('no_supported_programs')
-        acquired_run = subprocess.run([sys.executable, str(lock), 'acquire', '--seat', 'glp-scout', '--reason', 'taxonomy refresh'], capture_output=True, text=True)
+        acquired_run = subprocess.run([sys.executable, str(lock), 'acquire', '--seat', 'glp-design', '--reason', 'taxonomy refresh'], capture_output=True, text=True)
         result['lock_acquire'] = {'exit_code': acquired_run.returncode, 'output': acquired_run.stdout}
         if acquired_run.returncode:
             raise ValueError('candidate_lock_unavailable')
+        # The fleet lock treats a second same-seat process as ALREADY_YOURS.
+        # This scheduled writer must never borrow Design's active edit/build lock.
+        if json.loads(acquired_run.stdout.splitlines()[-1])['status'] != 'ACQUIRED':
+            raise ValueError('candidate_lock_already_held_by_design')
         acquired = True
         original = REGISTRY.read_bytes()
         current = json.loads(original)
@@ -235,7 +247,7 @@ def main():
         result['condition'] = str(exc)
     finally:
         if acquired:
-            released = subprocess.run([sys.executable, str(lock), 'release', '--seat', 'glp-scout'], capture_output=True, text=True)
+            released = subprocess.run([sys.executable, str(lock), 'release', '--seat', 'glp-design'], capture_output=True, text=True)
             result['lock_release'] = {'exit_code': released.returncode, 'output': released.stdout}
         (run / 'RESULT.json').write_bytes(encoded(result))
         print(json.dumps({'status': result['status'], 'receipt': str(run / 'RESULT.json'), 'written': result['written'], 'findings': findings, 'condition': result.get('condition')}))

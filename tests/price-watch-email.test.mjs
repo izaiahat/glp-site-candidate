@@ -13,6 +13,7 @@ import { normalizePriceIndexSourceHashes } from "../src/price-index.mjs";
 import { frozenPriceLedger } from "../src/price-index-nonprice-binding.mjs";
 import { buildMessage, emailRuntimeGate, isWeeklyPriceWatchSubscriber, resendMachinePolicy, runWeeklyPriceWatch, sendWithResend } from "../src/resend-email-machine.mjs";
 import { CONTENT_UPGRADE_TERMS_CAPTURE_SOURCES, COST_CALCULATOR_CAPTURE } from "../src/site-capture-consent-sources.mjs";
+import { COST_AFFILIATE_EMAIL_MANIFEST } from "../src/cost-affiliate-email-manifest.generated.mjs";
 
 const DATA = new URL("../data/", import.meta.url);
 const ROOT = path.resolve(fileURLToPath(new URL("../", import.meta.url)));
@@ -297,11 +298,31 @@ test("content-upgrade provenance inventory includes the exact authoritative stag
   assert.equal((await matchesResponse.json()).status, "match_checklist_source_invalid");
   assert.equal(writes.length, 0);
   const quizCapture = captures.find(capture => capture.source === "quiz-provider-fit");
-  const response = await handleContentUpgradeRequest(new Request("https://example.test/api/content-upgrade", {
+  // Card identities are source-bound, not recipients. Ageless was paused and
+  // is absent from the governed email manifest: retain its refusal witness.
+  const governedIds = new Set(COST_AFFILIATE_EMAIL_MANIFEST.programs.map(row => row.program_id));
+  const cardIds = ["healthrx", "wellorithm", "gobymeds"];
+  const quizHtml = await readFile(path.join(ROOT, 'public/quiz/provider-fit/index.html'), 'utf8');
+  const quizIds = new Set(JSON.parse(quizHtml.match(/id="candidate-data">([\s\S]*?)<\/script>/)[1]).map(row => row.program_id));
+  for (const id of cardIds) {
+    assert.ok(governedIds.has(id), `${id}: governed email offer required`);
+    assert.ok(quizIds.has(id), `${id}: current quiz identity required`);
+  }
+  assert.equal(governedIds.has("try-ageless"), false, "paused Ageless cannot enter the email cohort");
+  const pausedResponse = await handleContentUpgradeRequest(new Request("https://example.test/api/content-upgrade", {
     method: "POST", headers: {"content-type":"application/json"},
     body: JSON.stringify({ source_page: quizCapture.source, lead_magnet_key: quizCapture.lead,
       consent_version: quizCapture.consentVersion, email: "reader@example.test", email_consent: true,
       company: "", match_program_ids: "healthrx,try-ageless,wellorithm" }),
+  }), { CONTENT_UPGRADE_CAPTURE_MODE: "local_test", GLP_DB: captureDb }, noTransport);
+  assert.equal(pausedResponse.status, 400);
+  assert.equal((await pausedResponse.json()).status, "match_program_not_governed");
+  assert.equal(writes.length, 0);
+  const response = await handleContentUpgradeRequest(new Request("https://example.test/api/content-upgrade", {
+    method: "POST", headers: {"content-type":"application/json"},
+    body: JSON.stringify({ source_page: quizCapture.source, lead_magnet_key: quizCapture.lead,
+      consent_version: quizCapture.consentVersion, email: "reader@example.test", email_consent: true,
+      company: "", match_program_ids: cardIds.join(",") }),
   }), { CONTENT_UPGRADE_CAPTURE_MODE: "local_test", GLP_DB: captureDb }, noTransport);
   assert.equal(response.status, 202, await response.clone().text());
   assert.equal((await response.json()).status, "CAPTURED_SENDS_HELD");
@@ -309,7 +330,7 @@ test("content-upgrade provenance inventory includes the exact authoritative stag
     typeof value === "string" && value.includes('"match_program_ids"'));
   assert.ok(producerSerialized, "observe actual producer serialization, not a guessed terms key");
   assert.deepEqual(JSON.parse(producerSerialized), {source_page: quizCapture.source, lead_magnet_key: quizCapture.lead,
-    match_program_ids: ["healthrx", "try-ageless", "wellorithm"]});
+    match_program_ids: cardIds});
   // Hostile persisted-row fixture: producer JSON shape with the real matches
   // form's identifiers. This is not a successful matches capture/enrollment.
   const serialized = JSON.stringify({...JSON.parse(producerSerialized), source_page: matches.source, lead_magnet_key: matches.lead});

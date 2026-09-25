@@ -81,14 +81,18 @@ a[data-citation],
 .cta:hover .cs-arrow { transform: translateX(3px); }
 /* ADOPTED (design pass 2026-08-27, Phase-2 selection #4): ui-skills.com
    "Add scale feedback to pressed buttons" recipe (ibelick/ui-skills, MIT) —
-   CSS-only :active scale(0.98) at the 90ms instant tier across the whole
-   .cta/.cs-btn family, complementing the shipped hover sweep. The second rule
+   CSS-only :active scale(0.98) across the .cta/.cs-btn family with a 90ms
+   release/return transition, complementing the shipped hover sweep. The second rule
    out-specifies the palette-action :hover transform so the press cue survives
    on primary CTAs. Keyboard-modality + reduced-motion kills live in
-   00-foundation. */
+   00-foundation. WebKit can defer the transform transition's first frame until
+   after a held press is sampled; snap the pressed palette transform while
+   retaining the 90ms return and the other palette transitions. */
 .cta:active, .cs-btn:active { transform: translateY(0) scale(0.98); }
 :is(.cs-palette-action, .cta.primary, .cta.affiliate, .cs-btn--primary, .cs-btn--gradient, .cs-btn--animated):hover:active {
   transform: translateY(0) scale(0.98);
+  transition: background-position var(--duration-base) var(--ease-out-expo),
+              transform 0ms, box-shadow var(--duration-fast) ease;
 }
 .cta[aria-disabled="true"], .cs-btn[disabled] {
   background: var(--color-held-bg); color: var(--color-held);

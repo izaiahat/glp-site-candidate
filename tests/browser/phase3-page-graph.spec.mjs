@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { approvedRetirement } from "./retirement-support.mjs";
 import { pageSeoCopy } from "../../src/page-seo-copy.mjs";
 import { loadGoSelection } from "../../src/go-runtime-selection.mjs";
+import { governedBulkCohorts, governedCompoundedUnknownIds, governedPaidPrimaryIds, governedUnpricedIds } from "./governed-cohort.mjs";
 
 const SITE_JS_PATH = fileURLToPath(new URL("../../assets/site.js", import.meta.url));
 
@@ -53,7 +54,7 @@ const REPRESENTATIVE_ROUTES = [
     family: "provider-detail",
     path: "/providers/trimi-glp-1/",
     marker: ".p3-index-hero",
-    heading: "Trimi",
+    heading: "Trimi · Compounded semaglutide (injection)",
   },
   {
     family: "pharmacy-hub",
@@ -348,9 +349,25 @@ test("listing controls canonicalize product, molecule, form, plan, dose, sort, a
   });
   await expect(filters.locator('[data-filter-group="dose"] [aria-selected="true"]')).toHaveCount(1);
   await expect(filters.locator('[data-filter="dose"][data-value="2.4"]')).toHaveAttribute("aria-selected", "true");
-  const visible = await page.locator("[data-phase3-provider]:visible").count();
-  await expect(page.locator("[data-filter-result]")).toContainText(`Showing ${visible} source-backed provider row`);
-  if (visible === 0) await expect(page.locator("[data-filter-empty]")).toBeVisible();
+  // KAEL-DECISION-20260923-optionc-governing-mappings.md A2.1: the
+  // unknown-state remainder is not an Oregon-verified match.
+  const remainder = page.locator('[data-state-unverified-remainder]');
+  await expect(page.locator("[data-filter-result]")).toContainText('0 requiring direct state verification');
+  await expect(remainder).toBeHidden();
+  await filters.locator('[data-filter="dose"][data-value="all"]').click();
+  await filters.locator('[data-filter="plan"][data-value="both"]').click();
+  const expectedVerified = governedPaidPrimaryIds("SEMAGLUTIDE").sort();
+  const expectedUnknown = governedCompoundedUnknownIds("SEMAGLUTIDE");
+  expect(expectedUnknown.length).toBeGreaterThan(0);
+  const verifiedCards = page.locator('#provider-results [data-phase3-provider][data-filter-match="true"][data-selected-state-status="verified"]');
+  const unknownCards = remainder.locator('[data-phase3-provider][data-state-mode="unknown"][data-filter-match="true"][data-selected-state-status="unverified"]');
+  await expect.poll(() => verifiedCards.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual(expectedVerified);
+  await expect.poll(() => unknownCards.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual(expectedUnknown);
+  await expect(remainder).toBeVisible();
+  expect(await remainder.locator('[data-phase3-provider][data-filter-match="true"]').count()).toBe(expectedUnknown.length);
+  await expect(page.locator("[data-filter-result]")).toContainText(`${expectedVerified.length} with explicit state evidence`);
+  await expect(page.locator("[data-filter-result]")).toContainText(`${expectedUnknown.length} requiring direct state verification`);
+  if (expectedVerified.length === 0) await expect(page.locator("[data-filter-empty]")).toBeVisible();
   else await expect(page.locator("[data-filter-empty]")).toBeHidden();
   expect(errors).toEqual([]);
 });
@@ -367,9 +384,12 @@ test("brand and compounded controls cross-route within the matching molecule fam
   await expect(page.locator('[data-filter-group="plan"]:visible, [data-filter-group="duration"]:visible')).toHaveCount(0);
   await page.locator('[data-provider-filters] [data-filter="type"][data-value="compounded"]').click();
   await page.waitForURL(/\/lp\/best-providers\/compounded-semaglutide\//);
+  // The compounded route selects Both by default; wait for its own runtime
+  // canonicalization rather than reading the incoming link before hydration.
+  await expect(page.locator('[data-provider-filters]')).toHaveAttribute('data-phase3-route-ready', 'true');
   await expectUrlState(page, {
     path: "/lp/best-providers/compounded-semaglutide/",
-    search: { state: "OR", drug: "SEMAGLUTIDE", form: "COMPOUNDED", sort: "cheapest" },
+    search: { state: "OR", drug: "SEMAGLUTIDE", form: "COMPOUNDED", plan: "both", sort: "cheapest" },
   });
 
   await page.locator('a[data-filter-route][data-route-family="brand-product"][href^="/ozempic/"]').click();
@@ -515,8 +535,15 @@ test("bulk molecule state is canonical and provider details stay separate from c
   await expect(bulk.locator('[aria-selected="true"]')).toHaveCount(1);
   await expect(bulk.locator('[data-value="TIRZEPATIDE"]')).toHaveAttribute("aria-selected", "true");
   expect((await readUrlState(page)).search.drug).toBe("TIRZEPATIDE");
-  const bulkVisible = await page.locator("[data-phase3-provider-grid] [data-phase3-provider]:visible").count();
-  await expect(page.locator("[data-filter-result]")).toContainText(new RegExp(`Showing ${bulkVisible} source-backed provider row`));
+  // KAEL-DECISION-20260923-optionc-governing-mappings.md A2.2–A2.3.
+  const expectedBulk = governedBulkCohorts("TIRZEPATIDE", 6);
+  const numeric = page.locator('#provider-results [data-phase3-provider-grid] [data-phase3-provider]');
+  expect(await numeric.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expectedBulk.numeric].sort());
+  await expect(page.locator("[data-filter-result]")).toContainText(`${expectedBulk.numeric.length} comparable price results`);
+  const unpriced = page.locator('[data-unpublished-provider-section] [data-phase3-provider]');
+  expect(await unpriced.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expectedBulk.unpriced].sort());
+  if (expectedBulk.unpriced.length) await expect(page.locator('[data-unpublished-provider-section]')).toBeVisible();
+  else await expect(page.locator('[data-unpublished-provider-section]')).toHaveCount(0);
   await expect(page.locator("[data-filter-result]")).toContainText("Tirzepatide");
 
   await gotoPhase3(page, "/providers/");
@@ -766,10 +793,14 @@ for (const viewport of VIEWPORTS) {
     const filters = page.locator("[data-provider-filters]");
     const cards = page.locator("[data-phase3-provider]");
     const empty = page.locator("[data-filter-empty]");
+    const activeLabel = empty.locator("[data-active-filter-label]");
     const result = page.locator("[data-filter-result]");
     await expect(filters).toBeVisible();
-    const initialVisible = await page.locator("[data-phase3-provider]:visible").count();
+    const expectedUnpriced = governedUnpricedIds("SEMAGLUTIDE");
+    const unpriced = page.locator('[data-unpublished-provider-section] [data-phase3-provider]');
+    const initialVisible = await page.locator("#provider-results [data-phase3-provider]:visible").count();
     expect(initialVisible).toBeGreaterThan(0);
+    expect(await unpriced.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expectedUnpriced].sort());
     await expect(filters.locator('[data-filter-group="treatment"] button')).toHaveCount(2);
     await expect(filters.locator('[data-filter-group="type"] button')).toHaveCount(3);
     await expect(filters.locator('[data-filter-group="plan"] button')).toHaveCount(4);
@@ -787,13 +818,31 @@ for (const viewport of VIEWPORTS) {
     await expect(unsupportedDose).toHaveAttribute("role", "tab");
     await expect(unsupportedDose).toHaveAttribute("aria-selected", "true");
     await expect(unsupportedDose).toHaveAttribute("tabindex", "0");
-    await expect(page.locator("[data-phase3-provider]:visible")).toHaveCount(0);
+    // KAEL-DECISION-20260923-optionc-governing-mappings.md A2.2/A2.4:
+    // no numeric match must not suppress separate source-backed records.
+    await expect(page.locator('#provider-results [data-phase3-provider-grid] [data-phase3-provider]:visible')).toHaveCount(0);
+    expect(await unpriced.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expectedUnpriced].sort());
     await expect(empty).toBeVisible();
-    await expect(empty).toContainText("No source-backed record matches those filters.");
-    await expect(empty).toContainText("An empty result is not a medical or availability conclusion.");
-    await expect(result).toContainText(/0|No/i);
-    await empty.locator("[data-filter-reset]").click();
-    await expect.poll(() => page.locator("[data-phase3-provider]:visible").count()).toBe(initialVisible);
+    const emptyCopy = await empty.locator("p").first().innerText();
+    const emptyCount = await result.innerText();
+    await expect(activeLabel).toHaveText("Active filters: Plan: 1 month, Dose: 2.4 mg/week.");
+    await expect(oneMonth).toHaveAttribute("aria-selected", "true");
+    await expect(unsupportedDose).toHaveAttribute("aria-selected", "true");
+    const reset = empty.getByRole("button", { name: "Reset filters" });
+    await reset.focus();
+    await expect(reset).toBeFocused();
+    await reset.press("Enter");
+    await expect.poll(() => page.locator("#provider-results [data-phase3-provider]:visible").count()).toBe(initialVisible);
+    expect(await unpriced.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expectedUnpriced].sort());
+    await expect(empty).toBeHidden();
+    await expect(activeLabel).toHaveText("Active filters: none.");
+    await expect(oneMonth).toHaveAttribute("aria-selected", "false");
+    await expect(unsupportedDose).toHaveAttribute("aria-selected", "false");
+    await expect(filters.locator('[data-filter-group="plan"] [aria-selected="true"]')).toHaveCount(1);
+    await expect(filters.locator('[data-filter-group="dose"] [aria-selected="true"]')).toHaveCount(1);
+    await expect(filters.locator('[data-filter="plan"][data-value="both"]')).toHaveAttribute("aria-selected", "true");
+    await expect(filters.locator('[data-filter="dose"][data-value="all"]')).toHaveAttribute("aria-selected", "true");
+    await expectUrlState(page, { path: "/lp/best-providers/compounded-semaglutide/", search: { drug: "SEMAGLUTIDE", form: "COMPOUNDED", plan: "both", sort: "cheapest" } });
 
     const stateControl = page.locator("main.listing .listing__intro .p3-state-control");
     await expect(stateControl).toHaveCount(1);
@@ -803,23 +852,31 @@ for (const viewport of VIEWPORTS) {
     await expect(stateButton).toHaveAttribute("aria-expanded", "true");
     await expect(statePopover).toBeVisible();
     await expect(statePopover.getByRole("option")).toHaveCount(51);
+    const stateSearch = statePopover.locator("[data-state-search]");
+    await expect(stateSearch).toBeFocused();
     if (viewport.name === "mobile") {
       await expectInsideViewport(statePopover);
-      const bodyOverflow = await page.locator("body").evaluate((body) => getComputedStyle(body).overflow);
-      expect(bodyOverflow).toBe("hidden");
+      await expectNoHorizontalOverflow(page);
     }
-    await statePopover.locator("[data-state-search]").fill("Oregon");
+    await stateSearch.fill("Oregon");
     const oregon = statePopover.getByRole("option", { name: "Oregon", exact: true });
     await expect(oregon).toBeVisible();
-    await oregon.click();
+    await stateSearch.press("ArrowDown");
+    await expect(oregon).toBeFocused();
+    await oregon.press("Enter");
     await expect(stateButton.locator("[data-state-label]")).toHaveText("Oregon");
     await expect(statePopover).toBeHidden();
-    await expect.poll(() => page.locator("[data-phase3-provider]:visible").count()).toBe(initialVisible);
+    await expect.poll(() => page.locator("#provider-results [data-phase3-provider]:visible").count()).toBe(initialVisible);
+    expect(await unpriced.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expectedUnpriced].sort());
     if (viewport.name === "mobile") {
       await expect(stateButton).toBeFocused();
     }
 
-    await expect(cards.first().locator('a[data-card-review][href^="/providers/"]')).toHaveCount(1);
+    expect(emptyCopy).toContain("No comparable price matches those filters.");
+    expect(emptyCopy).toContain("This is not a medical or availability conclusion.");
+    expect(emptyCount).toContain("0 comparable price results");
+
+    await expect(cards.first().locator('a[data-card-review][href^="/reviews/"]')).toHaveCount(1);
     await expect(cards.first().locator('a[data-analytics-event="affiliate_click"]')).toHaveCount(1);
     await expectNoHorizontalOverflow(page);
     expect(errors).toEqual([]);
@@ -872,18 +929,23 @@ for (const viewport of VIEWPORTS) {
 
     await expect(page.locator('main.listing[data-listing-archetype="A"] .p3-evidence-boundary')).toContainText("A lower per-month figure can require a larger upfront payment or longer commitment.");
     await expect(page.locator('main.listing[data-listing-archetype="A"] .p3-evidence-boundary')).toContainText("The cited provider wording controls; Clinic Scout does not invent bundle math.");
-    const cards = page.locator('[data-phase3-provider][data-bulk-duration="3-month"]');
+    // A2.2: numeric and non-priced cohorts stay physically separate.
+    const expectedBulk = governedBulkCohorts("SEMAGLUTIDE", 3);
+    const numeric = page.locator('#provider-results [data-phase3-provider-grid] [data-phase3-provider]');
+    expect(await numeric.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expectedBulk.numeric].sort());
+    await expect(page.locator('[data-filter-result]')).toContainText(`${expectedBulk.numeric.length} comparable price results`);
+    const cards = page.locator('[data-unpublished-provider-section] [data-phase3-provider]');
     const cardCount = await cards.count();
-    expect(cardCount).toBeGreaterThan(0);
-    await expect(page.locator("[data-filter-result]")).toContainText(`Showing ${cardCount} source-backed provider row`);
+    expect(cardCount).toBe(expectedBulk.unpriced.length);
+    expect(await cards.evaluateAll((nodes) => nodes.map((node) => node.dataset.program).sort())).toEqual([...expectedBulk.unpriced].sort());
     for (let index = 0; index < await cards.count(); index += 1) {
       const card = cards.nth(index);
-      const source = card.locator(".p3-source-price details a").first();
+      await expect(card).toContainText('No comparable published price.');
+      await expect(card).toHaveAttribute("data-duration", /\b3\b/);
+      const source = card.locator('a[data-citation="inline_fact_source"]').first();
       await expect(source).toHaveAttribute("href", /^https:\/\//);
       await expect(source).toHaveAttribute("rel", /noopener/);
-      await expect(source).toHaveAttribute("data-citation", "first_party_price_evidence");
-      await expect(card.locator('.p3-card-link[href^="/providers/"]')).toHaveCount(1);
-      await expect(card.locator('a[data-analytics-event="affiliate_click"]')).toHaveCount(1);
+      await expect(card.locator('a[data-card-review]')).toHaveCount(1);
     }
 
     const firstBulkCard = cards.first();
@@ -1076,7 +1138,7 @@ test("canonical provider detail keeps its mobile action bar fixed through conten
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
   await page.waitForTimeout(100);
   const released = await geometry();
-  expect(released.position).toBe("absolute");
+  expect(released.position, `footer geometry: ${JSON.stringify(released)}`).toBe("absolute");
   expect(released.released).toBe(true);
   expect(released.footerTop).not.toBeNull();
   expect(Math.abs(released.stickyBottom - released.footerTop)).toBeLessThanOrEqual(1);
@@ -1084,7 +1146,7 @@ test("canonical provider detail keeps its mobile action bar fixed through conten
   await page.evaluate(() => window.scrollTo(0, 450));
   await page.waitForTimeout(100);
   const restored = await geometry();
-  expect(restored.position).toBe("fixed");
+  expect(restored.position, `return-to-content geometry: ${JSON.stringify(restored)}`).toBe("fixed");
   expect(restored.released).toBe(false);
   expect(Math.abs(restored.bottom)).toBeLessThanOrEqual(1);
 
