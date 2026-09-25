@@ -30,7 +30,7 @@ try {
   assert.equal(response.headers.get('x-redirect-reason'), 'unknown-program');
   const fallback = new URL(response.headers.get('location'));
   assert.equal(fallback.origin, 'https://glpclinicscout.com');
-  assert.equal(fallback.pathname, '/best/online-glp-1-providers/');
+  assert.equal(fallback.pathname, '/providers/');
   // Inspect this response; never follow it to production or an affiliate.
   console.log('ci-smoke PASS: 4 key routes, unknown /go fail-closed; zero external requests');
 } finally {

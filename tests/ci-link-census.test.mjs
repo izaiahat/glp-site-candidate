@@ -26,6 +26,12 @@ test('redirect cycle is a real failure', () => fixture(({publicRoot, functionsRo
   put('public/index.html', '<a href="/a/">Cycle</a>'); put('public/_redirects', '/a/ /b/ 301\n/b/ /a/ 301\n');
   assert.equal(auditLinks(publicRoot, functionsRoot).unresolved_count, 1);
 }));
+test('HTML attributes only: script, style and comment strings are not rendered links', () => fixture(({publicRoot, functionsRoot, put}) => {
+  put('public/index.html', '<script>const html = \'<a href="/not-a-dom-link/">x</a>\'; location.href=url.pathname;</script><style>/* href="/not-css-link/" */</style><!-- <a href="/comment/"> --><a href="/">Home</a>');
+  const result = auditLinks(publicRoot, functionsRoot);
+  assert.equal(result.href_count, 1);
+  assert.equal(result.unresolved_count, 0);
+}));
 test('empty HTML denominator remains visible', () => fixture(({publicRoot, functionsRoot}) => {
   assert.equal(auditLinks(publicRoot, functionsRoot).html_count, 0);
 }));

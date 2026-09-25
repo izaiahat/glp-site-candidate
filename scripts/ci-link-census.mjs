@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parse } from 'parse5';
 import { parseRedirects } from './review-redirects.mjs';
 
 function* files(root) {
@@ -10,8 +11,10 @@ function* files(root) {
     else if (item.isFile()) yield file;
   }
 }
-const decode = value => value.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
-  .replace(/&#(x[0-9a-f]+|[0-9]+);/gi, (_, n) => String.fromCodePoint(n[0].toLowerCase() === 'x' ? parseInt(n.slice(1), 16) : Number(n)));
+function* hrefs(node) {
+  for (const attr of node.attrs || []) if (attr.name === 'href') yield attr.value;
+  for (const child of node.childNodes || []) yield* hrefs(child);
+}
 
 export function auditLinks(publicRoot, functionsRoot) {
   publicRoot = path.resolve(publicRoot);
@@ -45,9 +48,9 @@ export function auditLinks(publicRoot, functionsRoot) {
     htmlCount++;
     const route = '/' + path.relative(publicRoot, file).split(path.sep).join('/').replace(/index\.html$/, '');
     const html = readFileSync(file, 'utf8');
-    for (const match of html.matchAll(/\bhref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi)) {
+    // parse5 parses HTML only: no JS execution, resource loading or network I/O.
+    for (const href of hrefs(parse(html))) {
       hrefCount++;
-      const href = decode(match[1] ?? match[2] ?? match[3]);
       let url;
       try { url = new URL(href, 'https://glpclinicscout.com' + route); } catch { missing.set('invalid-url', file); continue; }
       if (!['http:', 'https:'].includes(url.protocol) || !['glpclinicscout.com', 'www.glpclinicscout.com'].includes(url.hostname)) continue;
