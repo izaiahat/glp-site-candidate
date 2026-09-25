@@ -26,8 +26,12 @@ try {
   }
   // Do not follow redirects, especially affiliate destinations.
   const response = await fetch(base + '/go/ci-nonexistent-program', { redirect: 'manual' });
-  assert.ok([400, 404, 410].includes(response.status), 'unknown /go must refuse');
-  assert.equal(response.headers.get('location'), null, 'unknown /go never redirects');
+  assert.equal(response.status, 307, 'unknown /go uses the registered first-party fallback');
+  assert.equal(response.headers.get('x-redirect-reason'), 'unknown-program');
+  const fallback = new URL(response.headers.get('location'));
+  assert.equal(fallback.origin, 'https://glpclinicscout.com');
+  assert.equal(fallback.pathname, '/best/online-glp-1-providers/');
+  // Inspect this response; never follow it to production or an affiliate.
   console.log('ci-smoke PASS: 4 key routes, unknown /go fail-closed; zero external requests');
 } finally {
   server.kill('SIGTERM');

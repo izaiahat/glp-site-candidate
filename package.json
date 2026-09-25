@@ -73,6 +73,7 @@
   "devDependencies": {
     "@playwright/test": "^1.61.1",
     "axe-core": "^4.13.0",
+    "jsdom": "26.1.0",
     "lighthouse": "^13.4.1"
   }
 }
