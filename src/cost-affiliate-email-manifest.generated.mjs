@@ -3,14 +3,6 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
   "schema": "glp-cost-affiliate-email-manifest-v1",
   "programs": [
     {
-      "program_id": "altrx-glp1-us-cps",
-      "merchant": "altRx",
-      "affiliate_href": "https://www.xfnjwej33dd.com/841W6MT/6KS2D4R/",
-      "tracking_host": "www.xfnjwej33dd.com",
-      "review_path": "/reviews/altrx-glp1-us-cps/",
-      "network": "XenTraffic"
-    },
-    {
       "program_id": "biltrx",
       "merchant": "BiltRx",
       "affiliate_href": "https://www.awin1.com/cread.php?awinmid=115383&awinaffid=2979387&clickref=glp-scout-115383&ued=https%3A%2F%2Fbiltrx.com%2F",
@@ -123,14 +115,6 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "network": "Katalys"
     },
     {
-      "program_id": "futurhealth-wegovy-pillform",
-      "merchant": "FuturHealth",
-      "affiliate_href": "https://www.xfnjwej33dd.com/841W6MT/6LHGQF9/",
-      "tracking_host": "www.xfnjwej33dd.com",
-      "review_path": "/reviews/futurhealth-wegovy-pillform/",
-      "network": "XenTraffic"
-    },
-    {
       "program_id": "g-plan",
       "merchant": "G-Plans",
       "affiliate_href": "https://www.xfnjwej33dd.com/841W6MT/6D5PN7K/",
@@ -203,6 +187,14 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "network": "Katalys"
     },
     {
+      "program_id": "longevity-meds-glp-1-review",
+      "merchant": "Longevity Meds",
+      "affiliate_href": "https://www.xfnjwej33dd.com/841W6MT/6RHPZQL/",
+      "tracking_host": "www.xfnjwej33dd.com",
+      "review_path": "/reviews/longevity-meds-glp-1-review/",
+      "network": "XenTraffic"
+    },
+    {
       "program_id": "lttl-glp-landing-page-2",
       "merchant": "Lttl",
       "affiliate_href": "https://www.xfnjwej33dd.com/841W6MT/6Q91WCF/",
@@ -249,6 +241,14 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "tracking_host": "www.xfnjwej33dd.com",
       "review_path": "/reviews/novi-weight-loss-glp-1/",
       "network": "XenTraffic"
+    },
+    {
+      "program_id": "nu-image-medical-review",
+      "merchant": "Nu Image Medical",
+      "affiliate_href": "https://nuimagemedical.com/?linkId=lp_716390&sourceId=glp-clinic-scout&tenantId=nu-image-medical",
+      "tracking_host": "nuimagemedical.com",
+      "review_path": "/reviews/nu-image-medical-review/",
+      "network": "Trackdesk"
     },
     {
       "program_id": "oak-weight-loss-program",
@@ -393,14 +393,6 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "tracking_host": "www.tkqlhce.com",
       "review_path": "/reviews/trt-nation/",
       "network": "cj"
-    },
-    {
-      "program_id": "try-ageless",
-      "merchant": "AgelessRx",
-      "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=1538&aff_id=13031",
-      "tracking_host": "track.revoffers.com",
-      "review_path": "/reviews/try-ageless/",
-      "network": "Katalys"
     },
     {
       "program_id": "wellmedr-review",
