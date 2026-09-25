@@ -44,6 +44,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
@@ -189,6 +190,25 @@ def build_document(root: Path, rails_path: Path) -> dict:
                 "declared_tracking_host" if spec.get("tracking_host") else "official_url_derived"
             ),
         }
+    # Directory-only ClickDealer captures have no generic constructor rail.
+    # Reuse the renderer's exact capture + promotion verifier; never infer a
+    # network-wide allowlist, mutate issuer URLs, or print private links.
+    if os.environ.get("GLP_PRIVATE_APPROVED_REGISTRY"):
+        projection = subprocess.run([
+            "node", "--input-type=module", "-e",
+            "import {loadApprovedDirectoryRegistry} from './src/private-approved-directory.mjs';"
+            "console.log(JSON.stringify(loadApprovedDirectoryRegistry().approved_directory_programs.map(r=>({"
+            "id:r.registry_id,network:r.network,host:new URL(r.tracking.provider_issued_url).hostname,"
+            "sha256:r.tracking.issued_link_sha256}))));"
+        ], cwd=root, check=True, capture_output=True, text=True)
+        for row in json.loads(projection.stdout):
+            if row["id"] in resolved:
+                raise SystemExit(f"directory_rail_identity_collision:{row['id']}")
+            resolved[row["id"]] = {
+                "allowed_hosts": [row["host"]], "network": row["network"],
+                "host_class": "tracking_domain", "resolution": "exact_issuer_capture",
+                "issued_link_sha256": row["sha256"],
+            }
     return {
         "generated_by": "scripts/emit-tracking-allowed-hosts.py",
         "inputs": ["data/provider-page-contracts.json", "data/money-page-specs.json", "data/affiliate-wire-in-approvals.json", "data/approved-program-registry.json"],
@@ -198,6 +218,11 @@ def build_document(root: Path, rails_path: Path) -> dict:
         "program_count": len(resolved),
         "programs": resolved,
         "rails_module": {"path": str(rails_path), "sha256": sha_file(rails_path)},
+        "directory_capture_validator": ({
+            "path": "src/private-approved-directory.mjs",
+            "sha256": sha_file(root / "src/private-approved-directory.mjs"),
+            "scope": "four exact captured directory links; no constructor or network-wide grant",
+        } if os.environ.get("GLP_PRIVATE_APPROVED_REGISTRY") else None),
         "schema": SCHEMA,
     }
 

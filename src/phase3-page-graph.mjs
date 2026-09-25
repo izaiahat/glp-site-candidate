@@ -1762,8 +1762,10 @@ const main=root.closest("main");for(const event of ["click","input","change"])ma
   });
 }
 
+import { loadApprovedDirectoryRegistry } from './private-approved-directory.mjs';
+
 export function approvedDirectoryLinks() {
-  const approved = JSON.parse(readFileSync(new URL('../data/approved-program-registry.json', import.meta.url), 'utf8'));
+  const approved = loadApprovedDirectoryRegistry();
   const authority = loadGoPromotionAuthority().programs || {};
   const emed = approved.programs.find((item) => item.registry_id === 'partnerize-1011l6645');
   return [emed, ...(approved.approved_directory_programs || [])].filter((row) => {
@@ -1777,8 +1779,8 @@ export function approvedDirectoryLinks() {
       : (approved.allowed_provider_tracking_hosts?.[row.network] || []).includes(host);
   }).map((row) => {
     const href = row.tracking.provider_issued_url;
-    const attrs = row.directory_only ? 'data-network="ClickDealer"' : subidAttributes({ network: row.network, position: 'provider-card', pageSlug: 'providers', pageType: 'provider-directory', providerSlug: row.registry_id, href, renderedHref: href });
-    return `<section class="p3-provider-section" data-approved-directory-provider="${esc(row.registry_id)}"><h2>More GLP-1 providers</h2><h3>${esc(row.display_name)}</h3><p>Confirm current program details and eligibility with the provider. No price or comparative rating is published here.</p><p class="affiliate-note">We may earn a commission if you use this link, at no extra cost to you.</p><a class="cta secondary" href="${esc(href)}" target="_blank" rel="sponsored noopener noreferrer" data-program="${esc(row.registry_id)}" data-affiliate-state="active" ${attrs} data-analytics-event="affiliate_click">Visit ${esc(row.display_name)}</a></section>`;
+    const attrs = subidAttributes({ network: row.network, position: 'provider-card', pageSlug: 'providers', pageType: 'provider-directory', providerSlug: row.registry_id, href, renderedHref: href });
+    return `<section class="p3-provider-section" data-approved-directory-provider="${esc(row.registry_id)}"><h2>More GLP-1 providers</h2><h3>${esc(row.display_name)}</h3><p>Confirm current program details and eligibility with the provider. No price or comparative rating is published here.</p><p class="affiliate-note">We may earn a commission if you use this link, at no extra cost to you.</p><a class="cta secondary" href="${esc(href)}" target="_blank" rel="sponsored nofollow noopener noreferrer" data-program="${esc(row.registry_id)}" data-affiliate-state="active" ${attrs} data-analytics-event="affiliate_click">Visit ${esc(row.display_name)}</a></section>`;
   }).join('');
 }
 

@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3825,
+  "tracked_file_count": 3828,
   "files": [
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
@@ -3224,6 +3224,7 @@
     "ops/evidence-freshness/adoptions.jsonl",
     "ops/evidence-freshness/material-acceptances.jsonl",
     "ops/evidence-freshness/routine-refresh-standing-acceptance.json",
+    "ops/private-host-gate-inputs.md",
     "ops/source-input-manifest.json",
     "package-lock.json",
     "package.json",
@@ -3457,6 +3458,7 @@
     "src/price-watch-email.mjs",
     "src/pricing-coverage-floor.mjs",
     "src/pricing-evidence-v2.mjs",
+    "src/private-approved-directory.mjs",
     "src/program-content-ledger.json",
     "src/program-page-eligibility.json",
     "src/program-registry.mjs",
@@ -3714,6 +3716,7 @@
     "tests/newsletter-subscribe.test.mjs",
     "tests/nowrite-proxy.test.mjs",
     "tests/original-data.test.mjs",
+    "tests/p04-money-legal.test.mjs",
     "tests/p21-producer-fixes.test.mjs",
     "tests/p27-consent-region.test.mjs",
     "tests/p27-posthog-binding.test.mjs",

@@ -1812,6 +1812,18 @@ async function main() {
     suggestion_ids: suggestionIds,
   };
   const augmented = therapeuticSurfaces.pages.map((spec) => {
+    // D3 removes paused offers from selection, not their historical source rows.
+    // Project that exclusion before the unchanged authorization guard. A row
+    // can be suppressed only with a matching current WITHHELD authority.
+    const excluded = new Set(activationSelection.excluded_network_paused_programs || []);
+    const promotion = loadGoPromotionAuthority(ROOT).programs;
+    for (const id of excluded) {
+      if (sheetAuthorizedIds.has(id) || promotion[id]?.status !== 'WITHHELD')
+        throw new Error(`paused_activation_authority_mismatch:${id}`);
+    }
+    spec = { ...spec, rows: spec.rows.map(row => excluded.has(row.program_id)
+      ? { ...row, live_link_allowed: false, promotion_authorized: false, affiliate_href: null }
+      : row) };
     const liveRows = spec.rows.filter((row) => row.live_link_allowed || row.promotion_authorized);
     if (liveRows.some((row) => !authorizedLiveProgramIds.has(row.program_id) || !programMap.has(row.program_id))) throw new Error(`money_page_unauthorized_live_row:${spec.page_id}`);
     const shouldBeLive = liveRows.length > 0;

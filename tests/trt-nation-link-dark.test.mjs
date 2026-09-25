@@ -32,17 +32,20 @@ import { buildAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
 
 const root = new URL("../", import.meta.url);
 const rootPath = fileURLToPath(root);
+const evidenceRoot = process.env.GLP_PRIVATE_EVIDENCE_ROOT;
+if (!evidenceRoot) throw new Error('GLP_PRIVATE_EVIDENCE_ROOT_required_for_TRT_historical_receipts');
+const evidenceUrl = new URL(`file://${path.resolve(evidenceRoot)}/`);
 const contractUrl = new URL(
-  "../../../../reports/glp-clinic-scout/affiliate-reconciliation-20260808/trt-nation-content-fit-repair-contract-20260808.json",
-  root,
+  "reports/glp-clinic-scout/affiliate-reconciliation-20260808/trt-nation-content-fit-repair-contract-20260808.json",
+  evidenceUrl,
 );
 const amendmentUrl = new URL(
-  "../../../../reports/glp-clinic-scout/affiliate-reconciliation-20260808/trt-nation-content-fit-repair-contract-amendment-20260818.json",
-  root,
+  "reports/glp-clinic-scout/affiliate-reconciliation-20260808/trt-nation-content-fit-repair-contract-amendment-20260818.json",
+  evidenceUrl,
 );
 const qaReceiptUrl = new URL(
-  "../../../../reports/glp-clinic-scout/affiliate-machine/trt-nation-content-fit-lift-20260818/link-click-qa-20260818.json",
-  root,
+  "reports/glp-clinic-scout/affiliate-machine/trt-nation-content-fit-lift-20260818/link-click-qa-20260818.json",
+  evidenceUrl,
 );
 // The 2026-08-08 contract is SUPERSEDED, never edited. Pinning its original hash
 // is how we prove the incident record was not quietly rewritten to fit the lift.
@@ -88,8 +91,14 @@ async function sourceInputs() {
     reviewBrief,
   ] = await Promise.all([
     readFile(contractUrl),
-    readFile(amendmentUrl, "utf8").then(JSON.parse),
-    readFile(qaReceiptUrl, "utf8").then(JSON.parse),
+    readFile(amendmentUrl).then(bytes => {
+      assert.equal(sha256(bytes), '185b8477c292fdcfc439d13a51fafd66476cb39996c47ce98340a265b42807f4');
+      return JSON.parse(bytes);
+    }),
+    readFile(qaReceiptUrl).then(bytes => {
+      assert.equal(sha256(bytes), 'cfe4f57315153b60dd3a8bf8fc7781d077efe591ff9250ad9148790e16d162cc');
+      return JSON.parse(bytes);
+    }),
     readJson("data/program-registry.json"),
     readJson("data/provider-page-contracts.json"),
     readJson("data/provider-fastpath-contract.json"),
@@ -271,7 +280,7 @@ test("TRT retains the verified GLP-1 destination and is live under the 2026-09-2
   assert.equal(inputs.reviewBrief.coverage_gate.deployment_authority, true);
   assert.equal(inputs.reviewBrief.coverage_gate.bridge_review_state, RULING);
 
-  const decision = await readFile(new URL("../../../../ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md", root), "utf8");
+  const decision = await readFile(new URL("ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md", evidenceUrl), "utf8");
   assert.match(decision, /trt nation and shed are both approved to deploy if they do glp-1s/i);
   assert.match(providerContract.row_contract.medications, /compounded tirzepatide for weight loss/i);
   const selectionReceipt = await readJson("data/go-selection-receipt.json");

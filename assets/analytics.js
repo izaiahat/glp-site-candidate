@@ -203,8 +203,8 @@
   function decorateOutbound(anchor, clickId) {
     // ClickDealer default issuer links have no established browser-owned slot.
     // Do not inherit the Katalys fallback or even normalize their URL bytes.
-    if (anchor.dataset.network === "ClickDealer") return anchor.href;
     if (!consented() || suppressed() || !clickId) return anchor.href;
+    if (anchor.dataset?.network === "ClickDealer") return anchor.href;
     let url;
     try { url = new URL(anchor.href); } catch { return anchor.href; }
     if (url.origin === window.location.origin && /^\/go\/[a-z0-9][a-z0-9-]{1,79}$/.test(url.pathname.replace(/\/$/, ""))) {

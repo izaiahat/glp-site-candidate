@@ -40,10 +40,11 @@ test('R2 altered evidence snapshot fails its pinned source hash',()=>{
  const workspace=fs.mkdtempSync(path.join(work,'r2-price-state-'));
  const temp=path.join(workspace,'candidates/fixture');try{
   fs.mkdirSync(temp,{recursive:true});
-  const historical=path.resolve(temp,'../../releases/glp-price-index-weekly-20260910t190246z/data/provider-pricing-matrix.json');
+  // P1.1 portable custody: preserve the historical bytes and every hash check.
+  const historical=path.join(temp,'data/predecessors/glp-price-index-weekly-20260910t190246z/provider-pricing-matrix.json');
   fs.mkdirSync(path.dirname(historical),{recursive:true});
   fs.copyFileSync(validate(matrix).baseline_matrix_path,historical);
-  fs.mkdirSync(path.join(temp,'data'));fs.copyFileSync(path.join(root,'data/price-state-retention.json'),path.join(temp,'data/price-state-retention.json'));
+  fs.mkdirSync(path.join(temp,'data'),{recursive:true});fs.copyFileSync(path.join(root,'data/price-state-retention.json'),path.join(temp,'data/price-state-retention.json'));
   fs.copyFileSync(path.join(root,'data/price-state-retention-v3.json'),path.join(temp,'data/price-state-retention-v3.json'));
   fs.cpSync(path.join(root,'data/price-state-evidence'),path.join(temp,'data/price-state-evidence'),{recursive:true});
   assert.doesNotThrow(()=>validateAttestedRetention(temp,matrix,baseline));

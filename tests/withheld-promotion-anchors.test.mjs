@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 import { createHash } from "node:crypto";
 import { loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
+import { loadApprovedDirectoryRegistry } from '../src/private-approved-directory.mjs';
 import { approvedDirectoryLinks } from "../src/phase3-page-graph.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
@@ -75,7 +76,7 @@ test("four issuer-bound ClickDealer directory links render without promoting pau
     ["clickdealer-176223-249142", ["Zevay", "c11c7303c8ebad842d8521139a78567e847b83c6c3f851c4b4165c743029f4a1"]],
     ["clickdealer-181731-255455", ["AbundRX", "79e5645e0c121f24b25d2c3b1d7365e1f3e64473aba2c1ba505980b6a3f67138"]],
   ]);
-  const approved = JSON.parse(readFileSync(path.join(root, "data/approved-program-registry.json"), "utf8"));
+  const approved = loadApprovedDirectoryRegistry();
   const authority = loadGoPromotionAuthority().programs;
   const html = approvedDirectoryLinks(); // Source renderer; no full-site build or network request.
   assert.equal(approved.programs.length, 53, "frozen approved cohort unchanged");
@@ -92,7 +93,8 @@ test("four issuer-bound ClickDealer directory links render without promoting pau
     assert.equal(authority[row.registry_id]?.status, "VERIFIED");
     const section = html.match(new RegExp(`<section[^>]+data-approved-directory-provider="${row.registry_id}"[\\s\\S]*?<\\/section>`))?.[0];
     assert.ok(section?.includes(`href="${row.tracking.provider_issued_url.replaceAll("&", "&amp;")}"`), `${name}: exact issuer href`);
-    assert.match(section, /rel="sponsored noopener noreferrer"/);
+    assert.match(section, /rel="sponsored nofollow noopener noreferrer"/);
+    assert.match(section, /data-link-mode="transparent-direct"/);
     assert.match(section, /data-network="ClickDealer"/);
     assert.doesNotMatch(section, /\$\d|data-go-promoted|ratingValue|data-comparison-card|data-card-review/);
   }

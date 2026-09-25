@@ -65,7 +65,7 @@ test("Mounjaro coupon route has one source-bound editorial date and material sit
     readJson("data/blog/content-batch.json"),
     readJson("data/page-content-provenance.json"),
     readJson("artifacts/ops/aeo-surface-stage.json"),
-    readJson("../../../../reports/glp-clinic-scout/seo-machine/current-content-base.json"),
+    readJson("data/predecessors/content-base/current-content-base.json"),
   ]);
   const article = batch.articles.find((item) => item.canonical_path === ROUTE);
   assert.ok(article, "Mounjaro coupon source record missing");
@@ -80,7 +80,9 @@ test("Mounjaro coupon route has one source-bound editorial date and material sit
   // receives a separate editorial dateline stamp. Do not equate those bytes.
   // Editorial freshness remains the catalog's 08-29; the later sitemap date
   // is the registered material-page reconciliation of different output bytes.
-  const manifestBytes = await readFile(pointer.manifest.path);
+  assert.equal(sha256(await readFile(new URL('data/predecessors/content-base/current-content-base.json', ROOT))),
+    'f2ff608d5c1d885cd48f861ed636c64e9324cdf91e9131448388575026499aee');
+  const manifestBytes = await readFile(new URL('data/predecessors/content-base/deployment-manifest.json', ROOT));
   assert.equal(sha256(manifestBytes), pointer.manifest.sha256);
   const predecessorRows = JSON.parse(manifestBytes).release_rows;
   const projectionBytes = Buffer.from(JSON.stringify(predecessorRows) + '\n');
@@ -88,7 +90,7 @@ test("Mounjaro coupon route has one source-bound editorial date and material sit
   const relative = `public/${ROUTE.slice(1)}index.html`;
   const row = predecessorRows.find(item => item.path === relative);
   assert.ok(row, "verified predecessor page missing");
-  const predecessor = await readFile(new URL(`${pointer.release_root}/${relative}`, 'file://'));
+  const predecessor = await readFile(new URL(`data/predecessors/content-base/release/${relative}`, ROOT));
   assert.equal(sha256(predecessor), row.sha256);
   const materialText = bytes => {
     const body = bytes.toString().match(/<body\b[^>]*>([\s\S]*?)<\/body>/)?.[1];
