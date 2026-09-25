@@ -34,8 +34,9 @@ test("PASS 2 phase3 surfaces consume the single atlas instead of per-card image 
   assert.match(source, /provider-logo--sprite/);
   assert.match(source, /pass2-lp-atlas\.json/);
   assert.match(css, /pass2-lp-atlas\.webp/);
-  assert.deepEqual(pkg.scripts.build.split(" && ").slice(0, 2), [
-    'python3 /home/ubuntu/business/scripts/candidate_build_lock.py require-held --seat "${CANDIDATE_BUILD_SEAT:?export CANDIDATE_BUILD_SEAT=<the seat that acquired the build lock>}"',
+  assert.equal(pkg.scripts.build, "python3 scripts/mirror-build.py");
+  assert.deepEqual(pkg.scripts["build:validated"].split(" && ").slice(0, 2), [
     "npm run generate:provider-logo-atlas",
+    "npm run generate:home-imagery",
   ]);
 });

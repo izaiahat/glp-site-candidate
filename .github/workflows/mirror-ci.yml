@@ -1,0 +1,27 @@
+name: Private mirror build and tests
+
+# Deliberately manual until the operator verifies included GitHub Actions
+# capacity for this private repository. No PR/push event consumes paid minutes.
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      - name: Build with source and evidence validators
+        run: npm run build
+      - name: Existing Node test suite (only after a successful build)
+        run: npm test
