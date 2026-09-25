@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { applyStandaloneDarkTheme } from "./standalone-dark-theme.mjs";
 import { fileURLToPath } from "node:url";
-import { loadEvidenceInputs, materialOffersFor } from "../../../../../scripts/glp_evidence_ledger.mjs";
+import { loadEvidenceInputs, materialOffersFor } from "../scripts/glp_evidence_ledger.mjs";
 const derivedAuthorities = new WeakMap();
 const evaluationClockAuthorities = new WeakMap();
 

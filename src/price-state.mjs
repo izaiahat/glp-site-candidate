@@ -27,7 +27,7 @@ export function validateAttestedRetention(root, matrix, baseline) {
   // subsequently deployed matrix. Never advance the attestation to that matrix.
   const historicalMatrixPath=baseline.matrix_sha256===contract.baseline_matrix_sha256
     ? baseline.source.matrix_path
-    : path.resolve(root,'../../releases/glp-price-index-weekly-20260910t190246z/data/provider-pricing-matrix.json');
+    : path.join(root,'data/predecessors/glp-price-index-weekly-20260910t190246z/provider-pricing-matrix.json');
   const bytes=readFileSync(historicalMatrixPath);
   if (sha256(bytes)!==contract.baseline_matrix_sha256) fail('historical_baseline_hash');
   const old=JSON.parse(bytes), expected=structuredClone(old.providers);

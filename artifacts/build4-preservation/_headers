@@ -1,0 +1,86 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://glpclinicscout.com/app.js https://glpclinicscout.com/meta-pixel.js https://glpclinicscout.com/meta-lead.js https://glpclinicscout.com/assets/ https://glpclinicscout.com/cdn-cgi/scripts/ https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://connect.facebook.net https://www.clarity.ms https://*.clarity.ms https://us.i.posthog.com https://us-assets.i.posthog.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://googleads.g.doubleclick.net https://ad.doubleclick.net https://www.google.com https://www.googleadservices.com https://www.facebook.com https://connect.facebook.net https://www.clarity.ms https://*.clarity.ms https://us.i.posthog.com https://us-assets.i.posthog.com; img-src 'self' data: https://glpclinicscout.com https://www.glpclinicscout.com https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://googleads.g.doubleclick.net https://ad.doubleclick.net https://www.google.com https://www.googleadservices.com https://www.facebook.com https://www.clarity.ms https://*.clarity.ms https://c.bing.com; frame-src https://td.doubleclick.net; style-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self' https://buy.stripe.com https://mail.google.com mailto:; frame-ancestors 'none'
+
+/clinics/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+/privacy/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+/cookies/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+/lead-capture/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+/terms/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+# GLP Google OAuth app path — 2026-07-28
+/google-ads-api/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'self'; img-src 'self'; style-src 'self'; font-src 'self'; script-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cache-Control: public, max-age=300
+
+# Wave 4 price tracker: link-dark, non-interactive, zero runtime network
+/tools/glp-1-price-tracker/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Referrer-Policy: no-referrer
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'none'; script-src 'none'; connect-src 'none'; img-src 'none'; font-src 'none'; style-src 'sha256-//JX3159yh79kR+3CLPJAnz4IE/MjF9tIP9EMGnQwSM='; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Cache-Control: no-store
+
+# Weekly Price Watch feed: machine-readable, same-release, never cached
+/data/price-watch-issue.json
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Content-Type: application/json; charset=utf-8
+
+# Wave 4 manufacturer-offer route: link-dark, non-interactive, zero runtime network
+/tools/glp-1-savings-offer-monitor/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Referrer-Policy: no-referrer
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'none'; script-src 'none'; connect-src 'none'; img-src 'none'; font-src 'none'; style-src 'sha256-ACzOxZF5E3T6n88MJotG89rM1lc+Ux1t6yncT9lpo1E='; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Cache-Control: no-store
+
+# Round-2 versioned static assets
+/assets/site.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/site-*.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/site.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/consent.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/analytics.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/images/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/assets/provider-logos/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# Wave 4 clean-room public evidence route
+/research/public-funnel-evidence/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: no-store
+  Content-Security-Policy: default-src 'none'; script-src 'none'; connect-src 'none'; img-src 'none'; font-src 'none'; style-src 'sha256-NuAFwrQL8ExFGlDspmB1iQE/0oi1sVLUNBn661ELqQw='; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+
+# Held Wave 4 descriptive dataset: static and network-dark
+/research/original-data/public-glp-1-program-pricing-sample/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Content-Security-Policy: default-src 'none'; script-src 'none'; connect-src 'none'; img-src 'none'; font-src 'none'; style-src 'sha256-AhPAmjl06orMznlyHCd6DPQsFTWUOd6yawYGxfpDajA='; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+
+# Affiliate-network ownership verification endpoints: machine-fetched, never indexed
+/linkconnector.htm
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet

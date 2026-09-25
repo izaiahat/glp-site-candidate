@@ -48,9 +48,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+# The original canonical resolver is snapshotted byte-for-byte into the mirror.
+# An explicitly supplied module still wins for the host's registered build lane.
 DEFAULT_RAILS = Path(
     os.environ.get("GLP_AFFILIATE_RAILS_MODULE",
-                   "/home/ubuntu/business/scripts/glp_affiliate_link_rails.py")
+                   str(ROOT / "scripts/glp_affiliate_link_rails.py"))
 )
 OUTPUT = ROOT / "data/tracking-allowed-hosts.json"
 SCHEMA = "glp.tracking_allowed_hosts.v1"

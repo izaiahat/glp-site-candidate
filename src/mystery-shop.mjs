@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { applyStandaloneDarkTheme } from "./standalone-dark-theme.mjs";
-import { authorityFor, materialQualificationsFor } from "/home/ubuntu/business/scripts/glp_evidence_ledger.mjs";
-export { loadEvidenceInputs } from "/home/ubuntu/business/scripts/glp_evidence_ledger.mjs";
+import { authorityFor, materialQualificationsFor } from "../scripts/glp_evidence_ledger.mjs";
+export { loadEvidenceInputs } from "../scripts/glp_evidence_ledger.mjs";
 
 export const EVIDENCE_SCHEMA = "glp-clinic-scout-public-funnel-evidence-v2";
 export const LEDGER_SCHEMA = "glp-wave4-firecrawl-source-capture-ledger-v1";

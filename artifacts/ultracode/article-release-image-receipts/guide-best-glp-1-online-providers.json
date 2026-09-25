@@ -1,0 +1,142 @@
+{
+  "alt": "Editorial illustration for Best GLP-1 Online Providers: Source Verification Guide: a checklist and magnifying lens",
+  "cache_hit": true,
+  "candidates": [
+    {
+      "index": 0,
+      "metrics": {
+        "detail": 12.1894,
+        "efficiency": 1.0,
+        "lcp_avif_bytes": 61605.0,
+        "score": 12.1894
+      },
+      "sha256": "4be1298c78f80cc831cb453e4c27bc110eb6bb0e4a90afd62fe7f571aad537c7"
+    },
+    {
+      "index": 1,
+      "metrics": {
+        "detail": 13.8415,
+        "efficiency": 1.0,
+        "lcp_avif_bytes": 96795.0,
+        "score": 13.8415
+      },
+      "sha256": "d73a5cfdd6229a96c70522021202bd576d1dbb20e002232f900ec8574398118a"
+    }
+  ],
+  "credits_spent": 0,
+  "elapsed_s": 4.1,
+  "files": [
+    {
+      "budget_bytes": 55000,
+      "bytes": 25989,
+      "encoder": "AVIF",
+      "floor_bytes": 5500,
+      "height": 450,
+      "name": "guide-best-glp-1-online-providers-800.avif",
+      "quality": 70,
+      "sha256": "a0cc0a5324c3c24cb9a9c0734fa4428de9033d2a7e1a605dc139a54565b3757c",
+      "suffix": "-800.avif",
+      "width": 800
+    },
+    {
+      "budget_bytes": 150000,
+      "bytes": 96795,
+      "encoder": "AVIF",
+      "floor_bytes": 9000,
+      "height": 900,
+      "name": "guide-best-glp-1-online-providers-1600.avif",
+      "quality": 70,
+      "sha256": "1f0c37276e13aca0fc97d4abd2450027b9e5dd7730bb13f1b706f6d863692d38",
+      "suffix": "-1600.avif",
+      "width": 1600
+    },
+    {
+      "budget_bytes": 70000,
+      "bytes": 29406,
+      "encoder": "WEBP",
+      "floor_bytes": 5500,
+      "height": 450,
+      "name": "guide-best-glp-1-online-providers-800.webp",
+      "quality": 82,
+      "sha256": "b1f832f778a3d6d42bc74e2dbfe36abbc744e1399778a5771b5741dd1717e24f",
+      "suffix": "-800.webp",
+      "width": 800
+    },
+    {
+      "budget_bytes": 200000,
+      "bytes": 104446,
+      "encoder": "WEBP",
+      "floor_bytes": 18000,
+      "height": 900,
+      "name": "guide-best-glp-1-online-providers-1600.webp",
+      "quality": 82,
+      "sha256": "8837df3b9dbceb18d156f00174d4174ecbe45c987b4b1b3a04a0788b61198fe1",
+      "suffix": "-1600.webp",
+      "width": 1600
+    },
+    {
+      "budget_bytes": 120000,
+      "bytes": 73241,
+      "encoder": "JPEG",
+      "floor_bytes": 18000,
+      "height": 450,
+      "name": "guide-best-glp-1-online-providers-800.jpg",
+      "quality": 88,
+      "sha256": "54d9aff9275a2b4c635eb7794fc89112ed2d0f72e8d392f443f7a353174cf651",
+      "suffix": "-800.jpg",
+      "width": 800
+    },
+    {
+      "budget_bytes": 340000,
+      "bytes": 258730,
+      "encoder": "JPEG",
+      "floor_bytes": 55000,
+      "height": 900,
+      "name": "guide-best-glp-1-online-providers-1600.jpg",
+      "quality": 88,
+      "sha256": "1fce90cfd71a7815b80fe289df2b958fb07b25e188810887a185a3684ae30e93",
+      "suffix": "-1600.jpg",
+      "width": 1600
+    },
+    {
+      "budget_bytes": 220000,
+      "bytes": 141362,
+      "encoder": "JPEG",
+      "floor_bytes": 16000,
+      "height": 630,
+      "name": "guide-best-glp-1-online-providers-og.jpg",
+      "quality": 88,
+      "sha256": "dd3a3f7aafea5b6abbc09f84be44caa6f7b3e62b58708d1562847611c5974b2c",
+      "suffix": "-og.jpg",
+      "width": 1200
+    }
+  ],
+  "h1": "Best GLP-1 Online Providers: Source Verification Guide",
+  "model": "gpt_image_2",
+  "motif": "verification",
+  "prepared_at_utc": "2026-08-31T19:23:26Z",
+  "prompt_sha256": "a0faaf0f0f2931cf931128ea2c5b8ac3aa69709cddc81e91cb8fabcbe42ce770",
+  "reason": null,
+  "reference_used": null,
+  "route": "/guides/best-glp-1-online-providers/",
+  "schema": "glp-article-hero-image-v1",
+  "selected_candidate": {
+    "index": 1,
+    "metrics": {
+      "detail": 13.8415,
+      "efficiency": 1.0,
+      "lcp_avif_bytes": 96795.0,
+      "score": 13.8415
+    },
+    "sha256": "d73a5cfdd6229a96c70522021202bd576d1dbb20e002232f900ec8574398118a",
+    "source": {
+      "bytes": 11283738,
+      "height": 2160,
+      "sha256": "d73a5cfdd6229a96c70522021202bd576d1dbb20e002232f900ec8574398118a",
+      "width": 3840
+    }
+  },
+  "staged_dir": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-images/guide-best-glp-1-online-providers/a0faaf0f0f2931cf/family",
+  "status": "GENERATED",
+  "visual_key": "guide-best-glp-1-online-providers"
+}

@@ -37,7 +37,7 @@ const PRODUCT_MANUFACTURER_URLS = Object.freeze({
   mounjaro: "https://mounjaro.lilly.com/",
   zepbound: "https://zepbound.lilly.com/",
 });
-const DOSE_CAPTURE_URL = new URL("../../../../../reports/glp-clinic-scout/pricing/DOSE-CAPTURE-20260824/provider-dose-pricing.json", import.meta.url);
+const DOSE_CAPTURE_URL = new URL("../data/predecessors/provider-dose-pricing-20260824.json", import.meta.url);
 const PROVIDER_LOGO_MANIFEST_URL = new URL("../assets/provider-logos/manifest.json", import.meta.url);
 const PROVIDER_LOGO_ATLAS_URL = new URL("../assets/provider-logos/pass2-lp-atlas.json", import.meta.url);
 const PROGRAM_LEDGER_URL = new URL("../data/program-content-ledger.json", import.meta.url);

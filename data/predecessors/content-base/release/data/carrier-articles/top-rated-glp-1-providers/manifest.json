@@ -1,0 +1,89 @@
+{
+  "schema": "d2s-exact-live-article-v1",
+  "route": "/guides/top-rated-glp-1-providers/",
+  "relative": "guides/top-rated-glp-1-providers/index.html",
+  "snapshot": "data/carrier-articles/top-rated-glp-1-providers/index.html",
+  "html_sha256": "6d90845431fc618e3e2ce313e9426e5be7121b0dcd93e334c0c465ba7ba53879",
+  "carrier_deployment_id": "204de1b1-ce3a-4313-bb95-8fbedc95db18",
+  "carrier_manifest_sha256": "1531e3f902deb4ce6d05290e0d3304acc0653a1e18c65f6692346fbf1e14c62a",
+  "bindings": [
+    {
+      "path": "data/blog/content-batch.json",
+      "key": "articles",
+      "identity": "canonical_path",
+      "sha256": "14ebacbf9b484ab9a9d7f5ba4836d35444d6dc104157daa381814b3784f0bbb4"
+    },
+    {
+      "path": "data/blog/keyword-ownership-map.json",
+      "key": "entries",
+      "identity": "url",
+      "sha256": "aec2f75fe9f81c679eec1f34cba88538f846fb8a7007e3feaa4a63e80da87d1b"
+    },
+    {
+      "path": "artifacts/ultracode/article-image-manifest.json",
+      "key": "records",
+      "identity": "route",
+      "sha256": "a34990f7421504a1d6650f156e47ed60ba09aac0169a3333e0fe22fd1afa701c"
+    },
+    {
+      "path": "artifacts/ultracode/article-route-master-state.json",
+      "key": "records",
+      "identity": null,
+      "sha256": "09c04e130564cf2e8efff47d0bb492199759770d49261fd47a845cef871e2ca4"
+    },
+    {
+      "path": "data/page-content-provenance.json",
+      "key": "pages",
+      "identity": null,
+      "sha256": "cf08d304494939913c67d2e776f783225b1525bbf8de0d2871eee6a9debfd7cc"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 290288,
+      "path": "assets/source/article-masters-pass2/guide-top-rated-glp-1-providers.webp",
+      "sha256": "81cd38a342c8f6b2a8bcaf10c61d82385b3865b135acd499cba9eda226c6590f"
+    },
+    {
+      "bytes": 4159,
+      "path": "artifacts/ultracode/article-release-image-receipts/guide-top-rated-glp-1-providers.json",
+      "sha256": "a5d05d0f90ed2e05c4f782f257862543ac8d6c5424d1e46d03028241a02dfd6b"
+    },
+    {
+      "bytes": 31922,
+      "path": "assets/derivatives/guide-top-rated-glp-1-providers-800.avif",
+      "sha256": "21db7a8dea79c4c024d19bfd43cb3f2088e54132949dce5c1a0fd590e838625c"
+    },
+    {
+      "bytes": 92504,
+      "path": "assets/derivatives/guide-top-rated-glp-1-providers-1600.avif",
+      "sha256": "44ab8a2035e08ae7daa963a6aec0bda78ac099048a7c515bb770962e0102ebc1"
+    },
+    {
+      "bytes": 35696,
+      "path": "assets/derivatives/guide-top-rated-glp-1-providers-800.webp",
+      "sha256": "7b7751767569467def033514ffeda705a17ea4b26d8fc4f302d4472f5ea50040"
+    },
+    {
+      "bytes": 113536,
+      "path": "assets/derivatives/guide-top-rated-glp-1-providers-1600.webp",
+      "sha256": "8c160b87987876ea2b2c4fac8ed081c562aac7d17102b6df37b97ee60622558c"
+    },
+    {
+      "bytes": 78549,
+      "path": "assets/derivatives/guide-top-rated-glp-1-providers-800.jpg",
+      "sha256": "66b724630accaebb908578bd4234924178a54a62289dad6ed6d907acda187372"
+    },
+    {
+      "bytes": 264547,
+      "path": "assets/derivatives/guide-top-rated-glp-1-providers-1600.jpg",
+      "sha256": "75533761f71d6c0898c5e2981407f217bae5b9dbdea68b28900cdba2b627ab84"
+    },
+    {
+      "bytes": 157641,
+      "path": "assets/derivatives/guide-top-rated-glp-1-providers-og.jpg",
+      "sha256": "bb810aae8383daebc99e0e3a93a97be17486b7e2287db783a2ffd37047352662"
+    }
+  ],
+  "sitemap_entry": "<url><loc>https://glpclinicscout.com/guides/top-rated-glp-1-providers/</loc><lastmod>2026-09-09</lastmod></url>"
+}
