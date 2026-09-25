@@ -15,7 +15,7 @@ For the browser runner, install Chromium as needed (`npx playwright install chro
 
 ## Contributing
 
-D4 designates this private repository as the reviewable source for candidate code. Submit changes as pull requests, reviewed by the coordinator. Do not edit the legacy live candidate directly. Private runtime inputs remain separately governed: the four newly issued ClickDealer URLs and their generated registry/authority delta are deliberately NOT imported into Git. Their source renderer and unchanged regression tests are retained; a failing private-input test is not waived or green. This checkout is a reproducible code/build baseline, not proof of complete private runtime parity.
+D4 designates this private repository as the reviewable source for candidate code. Submit changes as pull requests, reviewed by the coordinator. Do not edit the legacy live candidate directly. Private runtime inputs remain separately governed: the four newly issued ClickDealer URLs and their private registry delta are deliberately NOT imported into Git. The registered hash-only authority and generated runtime source modules are imported byte-for-byte from the candidate, not hand-regenerated. Their source renderer and unchanged regression tests are retained; a failing private-input test is not waived or green. This checkout is a reproducible code/build baseline, not proof of complete private runtime parity.
 
 `ops/source-input-manifest.json` enumerates the curated index, including authenticated historical predecessor inputs. Never stage with `git add .`; append exact reviewed paths and refresh the manifest. Preserve existing historical provenance files byte-for-byte.
 

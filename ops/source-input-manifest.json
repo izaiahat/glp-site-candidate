@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3823,
+  "tracked_file_count": 3825,
   "files": [
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
@@ -3281,6 +3281,7 @@
     "scripts/capture-design-pass-evidence.mjs",
     "scripts/census-design-pass.mjs",
     "scripts/ci-bootstrap-gate.sh",
+    "scripts/ci-link-census.mjs",
     "scripts/ci-smoke.mjs",
     "scripts/codemod-aeo-citation-schema.mjs",
     "scripts/emit-tracking-allowed-hosts.py",
@@ -3602,6 +3603,7 @@
     "tests/browser/wegovy-pills-guide.spec.mjs.orig",
     "tests/build-lastmod-provenance.test.mjs",
     "tests/candidate-export-policy.test.mjs",
+    "tests/ci-link-census.test.mjs",
     "tests/clocks-adoption-regression.test.mjs",
     "tests/content-upgrade-contract.test.mjs",
     "tests/cost-calculator-design.test.mjs",

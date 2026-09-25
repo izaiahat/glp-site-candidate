@@ -22,6 +22,7 @@ node --test --test-concurrency=1 \
   tests/mounjaro-coupon-recovery.test.mjs || status=1
 node scripts/validate-provider-pricing-matrix.mjs || status=1
 node scripts/validate-approved-provider-link-monetization.mjs || status=1
+node scripts/ci-link-census.mjs || status=1
 node scripts/ci-smoke.mjs || status=1
 printf 'ci-release-gate required_exit=%s (P1.3 browser-effect harness still required before release)\n' "$status"
 exit "$status"
