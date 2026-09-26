@@ -126,8 +126,14 @@ test('R2 current holds beat conflicting legacy approvals and block link-map resu
       write('go-runtime-promotion-authority.json', legacy);
     };
     persist();
-    // The historical internal holds really were superseded by the later ruling.
-    for (const row of held) assert.equal(loadGoPromotionAuthority(temp).programs[row.program_id].scoped_direct_supersession, true);
+    // Raw exact-offer creative-approval HOLDs are unresolved. The old blanket
+    // ruling is retained evidence, not permission to override these rows.
+    for (const row of held) {
+      assert.equal(row.promotion_authorized, false);
+      assert.match(row.required_artifact, /approval.*(?:3277|5141d0e3)/i);
+      assert.equal(loadGoPromotionAuthority(temp).programs[row.program_id].status, 'WITHHELD');
+      assert.equal(loadGoPromotionAuthority(temp).programs[row.program_id].promotion_authorized, false);
+    }
     for (const row of held) row.hold_reason = 'CURRENT network pause: not approved for promotion';
     selection.at_utc = '2026-09-26T00:00:00Z';
     persist();
