@@ -135,7 +135,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1 };
+      const requiredNodeCounts = { 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -158,6 +158,7 @@ async function main() {
       execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
       result.build_lock_released = true;
     }
+    await command('release-export-artifact', process.execPath, ['--test', 'tests/release-export-artifact.test.mjs']);
     await command('public-name-regression', process.execPath, ['--test', 'tests/skinnyrx-public-name.test.mjs'], { GLP_PUBLIC_NAME_TEST_ROOT: path.join(ROOT, 'public') });
     await command('harness-negatives', process.execPath, ['--test', 'tests/release-gate-harness.test.mjs']);
     await command('go-destination-contracts', process.execPath, ['--test', '--test-concurrency=1', '--test-name-pattern=^(D2s |/go |network constructor |every go manifest |unadopted go |Direct Meds review go |browser instrumentation )', 'tests/funnel-v2-instrumentation.test.mjs', 'tests/d2s-generator-worker-contract.test.mjs']);

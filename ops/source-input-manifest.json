@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3841,
+  "tracked_file_count": 3842,
   "files": [
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
@@ -3790,6 +3790,7 @@
     "tests/r11-paid-funnel-profit-order.test.mjs",
     "tests/ready6-detail-return.test.mjs",
     "tests/ready6-editorial.test.mjs",
+    "tests/release-export-artifact.test.mjs",
     "tests/release-gate-harness.test.mjs",
     "tests/retirement-support.test.mjs",
     "tests/review-capture.test.mjs",

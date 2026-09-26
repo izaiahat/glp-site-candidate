@@ -8,6 +8,9 @@ import { loadGoSelection } from '../../src/go-runtime-selection.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const PUBLIC = process.env.GLP_REVIEW_PUBLIC_ROOT || path.join(ROOT, 'public');
+const BUILD_STAGE = JSON.parse(readFileSync(path.join(ROOT, 'artifacts/ops/build-report.json'), 'utf8')).release_stage;
+if (!['candidate','production-seal'].includes(BUILD_STAGE) || (process.env.GCS_RELEASE_STAGE && process.env.GCS_RELEASE_STAGE !== BUILD_STAGE)) throw new Error('release_consent_build_stage_mismatch');
+const PRODUCTION_SEAL = BUILD_STAGE === 'production-seal';
 const ROUTES = ['/', '/providers/', '/tools/glp-1-cost-calculator/', '/lp/quiz/', '/quiz/provider-fit/', '/reviews/nu-image-medical-review/', '/reviews/mydrhank/'];
 const sha = value => createHash('sha256').update(value).digest('hex');
 const read = relative => readFileSync(path.join(PUBLIC, relative));
@@ -31,7 +34,7 @@ function sourceInventory(route) {
   expect(configMatch, `${route}: source-bound PostHog config`).toBeTruthy();
   const config = JSON.parse(configMatch[1]);
   expect(config.host).toBe('https://us.i.posthog.com');
-  expect(config.enabled).toBe(false);
+  expect(config.enabled).toBe(PRODUCTION_SEAL);
   const scripts = [], affiliates = [];
   function walk(node) {
     const attrs = Object.fromEntries((node.attrs || []).map(a => [a.name, a.value]));
@@ -188,8 +191,9 @@ async function openChoices(page) {
   await expect(page.locator('[data-consent="denied"]')).toBeVisible();
 }
 
-// No candidate policy/config/SDK/geography/synthetic overrides. A grant changes
-// preferences, not this candidate's export hold. Enabled effects are separate.
+// No policy/config/SDK/geography/synthetic overrides. The emitted stage is bound
+// to the build receipt; local/synthetic execution stays no-egress in both stages.
+// A positive grant proof is separate and runs the emitted production policy.
 for (const route of ROUTES) {
   test(`D1 candidate UI no-egress and preference transitions ${route}`, async ({page,context,baseURL},info) => {
     const inventory=sourceInventory(route), audit=await observe(context,new URL(baseURL).origin);
@@ -201,7 +205,7 @@ for (const route of ROUTES) {
       expect(JSON.parse(sample.storage.local.gcs_tracking_consent_v1)).toMatchObject({analytics:choice,advertising:'denied',record_type:'preference_only'});
       expect(state.purposes).toEqual({analytics:choice,advertising:'denied'});
       expect(state.exports).toBe(false);
-      expect(state.policy).toMatchObject({stage:'candidate',third_party_exports:false});
+      expect(state.policy).toMatchObject({stage:BUILD_STAGE,third_party_exports:PRODUCTION_SEAL});
       for(const cookie of sample.cookies.filter(c=>c.name==='gcs_analytics_consent')) expect(cookie.value).toBe(choice);
       phases.push(state); audit.assertClean();
     };
