@@ -7,6 +7,11 @@ import {loadCarrierArticles, assertCarrierArticleOutput} from '../src/carrier-ar
 import {loadAffiliateLinkMap} from '../src/affiliate-link-map.mjs';
 import {COST_AFFILIATE_EMAIL_MANIFEST} from '../src/cost-affiliate-email-manifest.generated.mjs';
 import {checkDispositions} from '../scripts/ci-release-gate.mjs';
+import {JSDOM} from 'jsdom';
+import {mkdtempSync, mkdirSync, writeFileSync, rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {loadGoPromotionAuthority, loadGoSelection, applyGoSelectionToLinkMap} from '../src/go-runtime-selection.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = path => readFileSync(new URL('../'+path, import.meta.url));
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -59,4 +64,94 @@ test('F35 generated email manifest includes every approved link independently of
   for (const row of expected) assert.equal(actual.find(item => item.program_id === row.program_id).affiliate_href, row.affiliate_href);
   const matrix = JSON.parse(read('data/provider-pricing-matrix.json')).providers;
   assert.ok(expected.some(row => !matrix[row.program_id]?.medications.some(price => Number.isFinite(price.month_1_usd) && Number.isFinite(price.ongoing_usd))), 'approved display-only or unpriced links cannot be omitted from email manifest');
+});
+
+function assertCashLabels(document) {
+  const matrix = JSON.parse(read('data/provider-pricing-matrix.json')).providers;
+  const cards = [...document.querySelectorAll('#provider-results article[data-program]')];
+  let multi = 0;
+  for (const card of cards) {
+    const prices = [...card.querySelectorAll('.p3-source-price')];
+    if (prices.length > 1) multi++;
+    for (const price of prices) {
+      const rows = matrix[card.dataset.program].medications.filter(row => row.medication_id === price.dataset.medication);
+      assert.ok(rows.length > 0, 'cash_medication_missing');
+      assert.ok(rows.some(row => price.querySelector('.p3-price-medication')?.textContent === (row.display_label || row.label)
+        && price.querySelector('strong')?.textContent === '$'+row.ongoing_usd.toLocaleString('en-US')), 'cash_label_amount_mismatch');
+    }
+  }
+  assert.ok(multi > 0, 'multi_medication_cohort_empty');
+}
+test('F25 directory cash labels bind every amount to medication; unlabeled negative fails', () => {
+  const dom = new JSDOM(read('public/providers/index.html'));
+  assertCashLabels(dom.window.document);
+  const snag = dom.window.document.querySelector('article[data-program="snagrx"]');
+  assert.ok(snag);
+  snag.querySelector('.p3-price-medication').remove();
+  assert.throws(() => assertCashLabels(dom.window.document), /cash_label_amount_mismatch/);
+  dom.window.close();
+});
+
+test('R1 native matcher form never serializes email alongside health filters', () => {
+  const dom = new JSDOM(read('public/matches/customized/index.html'));
+  const form = dom.window.document.querySelector('[data-matches-form]');
+  const email = form.querySelector('[data-matches-email]');
+  email.value = 'synthetic@example.invalid';
+  form.querySelector('[data-matches-state]').value = 'CA';
+  const check = () => {
+    const params = new URLSearchParams(new dom.window.FormData(form));
+    assert.equal(params.has('email'), false, 'email_in_health_query');
+    assert.equal(params.get('state'), 'CA');
+  };
+  check(); email.name = 'email';
+  assert.throws(check, /email_in_health_query/);
+  dom.window.close();
+});
+
+test('R2 current holds beat conflicting legacy approvals and block link-map resurrection', () => {
+  const temp = mkdtempSync(join(tmpdir(), 'glp41-authority-'));
+  const write = (name, value) => writeFileSync(join(temp, 'data', name), JSON.stringify(value));
+  try {
+    mkdirSync(join(temp, 'data'));
+    const selection = JSON.parse(read('data/go-selection-receipt.json'));
+    const legacy = JSON.parse(read('data/go-runtime-promotion-authority.json'));
+    const terms = JSON.parse(read('data/go-terms-review-ledger.json'));
+    const held = selection.programs.filter(p => p.disposition === 'HOLD');
+    const persist = () => {
+      write('go-selection-receipt.json', selection);
+      terms.selection_sha256 = sha(readFileSync(join(temp, 'data/go-selection-receipt.json')));
+      // Isolated fixture only: keep the internally linked selection/terms proof coherent.
+      for (const risk of Object.values(terms.programs)) risk.operator_selection_receipt_sha256 = terms.selection_sha256;
+      write('go-terms-review-ledger.json', terms);
+      write('go-runtime-promotion-authority.json', legacy);
+    };
+    persist();
+    // The historical internal holds really were superseded by the later ruling.
+    for (const row of held) assert.equal(loadGoPromotionAuthority(temp).programs[row.program_id].scoped_direct_supersession, true);
+    for (const row of held) row.hold_reason = 'CURRENT network pause: not approved for promotion';
+    selection.at_utc = '2026-09-26T00:00:00Z';
+    persist();
+    const authority = loadGoPromotionAuthority(temp);
+    for (const row of held) {
+      assert.ok(legacy.programs[row.program_id].operator_approved_live_decision);
+      assert.equal(authority.programs[row.program_id].status, 'WITHHELD');
+      assert.equal(authority.programs[row.program_id].promotion_authorized, false);
+    }
+    const registry = JSON.parse(read('data/program-registry.json'));
+    const links = Object.fromEntries(held.map(row => [row.render_id, {live:true, affiliate_href:'https://example.invalid'}]));
+    applyGoSelectionToLinkMap(links, registry, 'compare', 'glp-clinic-scout', loadGoSelection(temp), authority);
+    for (const row of held) assert.equal(links[row.render_id].live, false);
+  } finally { rmSync(temp, {recursive:true, force:true}); }
+});
+
+test('R2 Fella Telos and network-paused offers remain nonpromotable', () => {
+  const programs = loadGoPromotionAuthority().programs;
+  const links = loadAffiliateLinkMap('compare');
+  for (const id of ['fella-health','telos','try-ageless','altrx-glp1-us-cps','futurhealth-wegovy-pillform']) {
+    assert.notEqual(programs[id]?.promotion_authorized, true, id);
+    assert.notEqual(links[id]?.live, true, id);
+  }
+  const paused = Object.entries(programs).filter(([id]) => /ageless|altrx|futurhealth.*(?:oral|pill)/i.test(id));
+  assert.equal(paused.length, 3);
+  for (const [id, row] of paused) assert.equal(row.status, 'WITHHELD', id);
 });

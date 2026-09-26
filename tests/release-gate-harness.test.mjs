@@ -6,6 +6,7 @@ import path from 'node:path';
 import { randomBytes } from 'node:crypto';
 import { chromium } from '@playwright/test';
 import { startDenyProxy } from '../artifacts/ultracode/tools/qa-common.mjs';
+import {assertServedGoIdentity} from '../src/served-affiliate-identity.mjs';
 import { noEgress, publishedSecrets, checkAnchorMarkup, checkBrowser } from '../scripts/ci-release-gate.mjs';
 
 const authority = { approved: { status: 'VERIFIED', promotion_authorized: true }, held: { status: 'WITHHELD', promotion_authorized: false } };
@@ -26,6 +27,27 @@ test('negative: a denied vendor request makes the actual egress gate fail', asyn
     assert.ok(proxy.attempts.length > 0, 'real browser request reached default-deny proxy');
     assert.throws(() => noEgress(proxy.attempts), /D1_egress_attempt/);
   } finally { await browser?.close(); await proxy.close(); }
+});
+test('negative: approved same-network program crosswires fail HTML and lazy JSON gates', () => {
+  const authority = {a:{status:'VERIFIED',promotion_authorized:true}, b:{status:'VERIFIED',promotion_authorized:true}};
+  const runtime = {a:{live_link_allowed:true,promotion_authorized:true}, b:{live_link_allowed:true,promotion_authorized:true}, aliasA:{live_link_allowed:true,promotion_authorized:true}};
+  const programs = {a:{network:'Katalys',program_id:'a'}, b:{network:'Katalys',program_id:'b'}, aliasA:{network:'Katalys',program_id:'a'}};
+  const healthy = '<a href="/go/aliasA" data-program="a" data-network="Katalys" rel="sponsored nofollow">Visit A</a>';
+  const crosswire = healthy.replace('/go/aliasA', '/go/b');
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'glp41-crosswire-'));
+  try {
+    for (const file of ['index.html','cards.json']) {
+      const serialize = text => file.endsWith('.json') ? JSON.stringify([text]) : text;
+      const check = text => checkAnchorMarkup([{file,text:serialize(text)}], authority, {aliasA:'a'}, runtime, ['a']);
+      check(healthy);
+      assert.throws(() => check(crosswire), /crosswired_go:b:a/);
+      writeFileSync(path.join(dir,file), serialize(healthy));
+      assertServedGoIdentity(dir, programs);
+      writeFileSync(path.join(dir,file), serialize(crosswire));
+      assert.throws(() => assertServedGoIdentity(dir,programs), /crosswired_go/);
+      rmSync(path.join(dir,file));
+    }
+  } finally { rmSync(dir,{recursive:true,force:true}); }
 });
 test('negative: held /go is rejected even without sponsored metadata', () => {
   audit(healthy);

@@ -16,7 +16,7 @@ export function selectedGoOutbound(row, surfaceCode) {
   const selected = Object.values(selection?.programs || {}).find(p => p.program_id === id || p.render_id === id);
   if (!selected) return null;
   const link = links[selected.render_id];
-  if (selected.disposition === 'HOLD' && promotion.operator_approved_live_decision && link?.live === true) return null;
+  if (selected.disposition === 'HOLD' && promotion.scoped_direct_supersession === true && link?.live === true) return null;
   if (selected.disposition === 'HOLD' || link?.live !== true) return { held: true };
   if (!/^[a-z0-9][a-z0-9-]{0,79}\.[a-z0-9][a-z0-9-]{0,11}$/.test(surfaceCode)) throw new Error('selected_go_assignment_invalid');
   return { held: false, network: selected.network, issuedHref: selected.issued_link,

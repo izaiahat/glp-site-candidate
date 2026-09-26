@@ -36,7 +36,25 @@ export function loadGoSelection(root = DEFAULT_ROOT) {
       throw new Error(`go_selection_row_invalid:${row.program_id}`);
     programs[row.program_id] = promotion;
   }
-  return { selection_sha256: hash(bytes), programs };
+  return { selection_sha256: hash(bytes), selected_at: selection.at_utc, programs };
+}
+
+// The September 24 ruling supersedes only these exact September 10 internal
+// approval holds for direct links. It explicitly excludes network pauses and
+// operator holds. A changed/current hold is NOT a generic override opportunity.
+const DIRECT_SUPERSEDED_HOLDS = {
+  'longevity-meds-glp-1-review': '37d916f7872428f9e5c84870b45aec0dfdc05332f5570633bcaedc8042d50ccc',
+  'nu-image-medical-review': '22bb5c546dd2f1b2857a0813b592c0001a7667b4098010ed806a23abb2d677e9',
+};
+const DIRECT_DECISION_SHA256 = '8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5';
+export function scopedDirectSupersession(id, current, legacy) {
+  const { status, ...heldRow } = current || {};
+  const decision = legacy?.operator_approved_live_decision;
+  if (status !== 'WITHHELD' || legacy?.status !== 'VERIFIED' || legacy.promotion_authorized !== true
+      || hash(JSON.stringify(heldRow)) !== DIRECT_SUPERSEDED_HOLDS[id]
+      || decision?.sha256 !== DIRECT_DECISION_SHA256) return false;
+  try { return hash(readFileSync(decision.path)) === DIRECT_DECISION_SHA256; }
+  catch { return false; }
 }
 
 export function loadGoPromotionAuthority(root = DEFAULT_ROOT) {
@@ -47,8 +65,9 @@ export function loadGoPromotionAuthority(root = DEFAULT_ROOT) {
   const current = loadGoSelection(root);
   const programs = { ...legacy.programs, ...current?.programs };
   for (const [id, row] of Object.entries(current?.programs || {})) {
-    if (row.status === "WITHHELD" && legacy.programs?.[id]?.status === "VERIFIED"
-        && legacy.programs[id].operator_approved_live_decision) programs[id] = legacy.programs[id];
+    if (current.selected_at === '2026-09-10T02:36:01.129338+00:00' && scopedDirectSupersession(id, row, legacy.programs?.[id])) {
+      programs[id] = { ...legacy.programs[id], scoped_direct_supersession: true };
+    }
   }
   return { ...legacy, ...(current ? { selection_sha256: current.selection_sha256 } : {}), programs };
 }
@@ -62,7 +81,7 @@ export function applyGoSelectionToLinkMap(links, registry, surface, profileId, c
     const profile = program.profiles?.[profileId];
     if (row.disposition === "HOLD") {
       const direct = promotionAuthority?.programs?.[row.program_id];
-      if (direct?.status === "VERIFIED" && direct.operator_approved_live_decision && links[renderId]?.live === true) continue;
+      if (direct?.status === "VERIFIED" && direct.scoped_direct_supersession === true && links[renderId]?.live === true) continue;
       links[renderId] = { program_id: renderId, merchant: program.display_name, review_path: program.review_path, affiliate_href: null, live: false };
       continue;
     }

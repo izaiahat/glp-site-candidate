@@ -279,7 +279,7 @@ export function renderPhase3TypedOffers({ pricingMatrix, registry, medicationIds
 
 function sourcePrice(row, prefix, { showDate = false } = {}) {
   if (isTypedPrice(row)) return renderTypedPrice(row, { showDate });
-  return `<div class="p3-source-price" data-source-checked="${esc(row.captured_on)}"><strong>${usd(row.ongoing_usd)}</strong><span>/${esc(row.cadence || "month")}</span><details><summary>Price source</summary><blockquote>${esc(row.quote)}</blockquote>${showDate ? `<time datetime="${esc(row.captured_on)}">${esc(row.captured_on)}</time> · ` : ''}${renderCitationAnchor({ url: row.source_url, label: "Open the provider page", reason: CITATION_REASONS.FIRST_PARTY_PRICE_EVIDENCE, rel: "noopener noreferrer" })}</details></div>`;
+  return `<div class="p3-source-price" data-medication="${esc(row.medication_id)}" data-source-checked="${esc(row.captured_on)}"><span class="p3-price-medication">${esc(row.display_label || row.label)}</span> <strong>${usd(row.ongoing_usd)}</strong><span>/${esc(row.cadence || "month")}</span><details><summary>Price source</summary><blockquote>${esc(row.quote)}</blockquote>${showDate ? `<time datetime="${esc(row.captured_on)}">${esc(row.captured_on)}</time> · ` : ''}${renderCitationAnchor({ url: row.source_url, label: "Open the provider page", reason: CITATION_REASONS.FIRST_PARTY_PRICE_EVIDENCE, rel: "noopener noreferrer" })}</details></div>`;
 }
 
 function providerLogoMark(entry, logoManifest) {
@@ -1703,10 +1703,9 @@ const main=root.closest("main");for(const event of ["click","input","change"])ma
     }));
     if ((route === "/providers/" || /^\/lp\/best-providers\/compounded-(?:semaglutide|tirzepatide)\/$/.test(route)) && providers.length) {
       const first = providers[0];
-      const cost = providerCardContract(first.program_id)?.cost;
       const action = cardBodies[0].match(/<a class="cs-btn cs-palette-action"[^>]*>Get started<\/a>/)?.[0];
-      if (cost && action && /\$\s?\d/.test(cost.value)) {
-        atfPreview = `<section class="p3-atf-price" data-atf-result aria-label="First source-backed comparison result"><p>First comparison card, not a treatment recommendation or a claim of state availability.</p><strong>${esc(first.provider)}</strong><p data-atf-price>${esc(cost.value)}</p><small>Checked <time datetime="${esc(cost.capture_date)}">${esc(cost.capture_date)}</time> · ${renderCitationAnchor({ url: cost.source_url, label: "Provider terms", reason: CITATION_REASONS.INLINE_FACT_SOURCE, rel: "noopener noreferrer" })}</small>${action}</section>`;
+      if (first.medications.length && action) {
+        atfPreview = `<section class="p3-atf-price" data-atf-result data-atf-program="${esc(first.program_id)}" aria-label="First source-backed comparison result"><p>First comparison card, not a treatment recommendation or a claim of state availability.</p><strong>${esc(first.provider)}</strong><div data-atf-price>${first.medications.map(row => sourcePrice(row, 'preview', { showDate: true })).join('')}</div>${action}</section>`;
       }
     }
     if (stateUnknownProviders.length) below += `<section class="p3-provider-section" data-state-unverified-remainder aria-labelledby="state-unverified-title"><h2 id="state-unverified-title">State availability not established</h2><p>These source-backed records have not established state availability. A published price is not confirmation of access or treatment eligibility; check directly with the provider.</p><div class="p3-provider-grid">${stateUnknownProviders.map((entry) => compactProviderCard(entry, registry, doseCapture, logoManifest, { mode: config.mode, stateUnverified: true })).join("")}</div></section>`;

@@ -125,7 +125,7 @@
     {
       "id": "F16",
       "classification": "D1_PRESENTATION_EMULATION_ONLY",
-      "reason": "Old commercial-table cardinality requires five versus the current three comparable rows. Table composition/counts are outside D1; no new paid eligibility or economic-order authority is created.",
+      "reason": "Five-ID reconciliation: Wellmedr (floor_from), Trimi (monthly_equivalent_of_billing_period) and Shed (floor_from) have matching typed semaglutide offers, not comparable cash rows. Bodybuilding and Sprout lack matching current pricing rows in this table; their approved links remain elsewhere. Only old cardinality is diagnostic; no new paid eligibility or economic-order authority is created.",
       "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
     },
     {
@@ -149,7 +149,7 @@
     {
       "id": "F30",
       "classification": "D1_PRESENTATION_EMULATION_ONLY",
-      "reason": "The old settle predicate requires a whole long provider card inside one mobile viewport. Whole-card containment is presentation, not a demonstrated failed action; current individual price/source and affiliate targets remain required.",
+      "reason": "Raw failure targets the mobile navigation drawer: expectInsideViewport -> openAndCloseMobileDrawer, phase3-page-graph.spec.mjs:253/287, not a provider card. Independent review at 4a7ecaad6495fea44146cbbbe3ed8f55da678e13 passed 22/22 drawer keyboard open/close/focus and viewport checks (11 routes, Chromium/WebKit, 390x844); review2-nav-readback.json. Historical geometry failure is stale, with no current accessibility blockage observed; no accessibility contract is waived.",
       "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
     },
     {

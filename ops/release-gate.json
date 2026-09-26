@@ -16,6 +16,9 @@
       "webkit"
     ],
     "cases": [
+      {"file":"tests/browser/glp41-d1-material.spec.mjs","title":"F25 multi-medication directory and previews bind visible price labels to matrix rows","requirement":"F25/R3"},
+      {"file":"tests/browser/glp41-d1-material.spec.mjs","title":"R1 no-JS matcher submits filters without email or identity in the URL","requirement":"R1"},
+      {"file":"tests/browser/glp41-d1-material.spec.mjs","title":"R3 edited calculator prices and saved overrides are labeled user-entered","requirement":"R3"},
       {
         "file": "tests/browser/affiliate-tap-integrity.spec.mjs",
         "title": "affiliate CTAs tappable \u00b7 desktop \u00b7 /reviews/nu-image-medical-review/",

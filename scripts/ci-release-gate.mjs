@@ -43,6 +43,8 @@ export function checkAnchorMarkup(documents, authority, aliases, runtime, requir
         if (go) {
           const slug = decodeURIComponent(url.pathname.split('/')[2] || '');
           const row = runtime[slug];
+          const id = a['data-program'];
+          if (!id || (aliases[slug] || slug) !== (aliases[id] || id)) failures.push(`${file}:crosswired_go:${slug}:${id || 'missing'}`);
           if (!row || row.live_link_allowed !== true || row.promotion_authorized !== true) failures.push(`${file}:held_go:${slug}`);
         }
         if (go || a['data-analytics-event'] === 'affiliate_click' || /\bsponsored\b/.test(a.rel || '')) {
@@ -133,7 +135,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'host-bootstrap': 241, 'material-contracts': 39, 'harness-negatives': 8, 'go-destination-contracts': 43 };
+      const requiredNodeCounts = { 'host-bootstrap': 241, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));

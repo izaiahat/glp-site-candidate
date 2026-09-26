@@ -15,6 +15,11 @@ export function servedGoIdentityCensus(root, programs) {
         if (url.origin === 'https://glpclinicscout.com' && url.pathname.startsWith('/go/')) {
           const program = attrs['data-program'], network = attrs['data-network'];
           anchors.push({ file, program, network });
+          const slug = decodeURIComponent(url.pathname.split('/')[2] || '');
+          const routeProgram = programs[slug];
+          if (!routeProgram || !programs[program] || (slug !== program && (!routeProgram.program_id || routeProgram.program_id !== programs[program].program_id))) {
+            findings.push({ file, program, slug, reason: 'crosswired_go' });
+          }
           if (!programs[program]?.network || network !== programs[program].network) {
             findings.push({ file, program, network, expected: programs[program]?.network ?? null });
           }

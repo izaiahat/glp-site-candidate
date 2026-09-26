@@ -69,6 +69,90 @@ test('F25 each comparable card exposes its current price quote and capture date'
   }
 });
 
+test('F25 multi-medication directory and previews bind visible price labels to matrix rows', async ({page}) => {
+  for (const route of ['/providers/', '/lp/best-providers/compounded-semaglutide/', '/lp/best-providers/compounded-tirzepatide/']) {
+    await page.goto(route);
+    const more = page.locator('[data-provider-load-more]');
+    while (await more.isVisible()) await more.click();
+    let multi = 0;
+    for (const card of await page.locator('#provider-results article[data-program]').all()) {
+      const id = await card.getAttribute('data-program');
+      const prices = card.locator('.p3-source-price');
+      if (await prices.count() > 1) multi++;
+      for (const price of await prices.all()) {
+        const medication = await price.getAttribute('data-medication');
+        const amount = await price.locator('strong').textContent();
+        const row = matrix[id].medications.find(row => row.medication_id === medication && '$'+row.ongoing_usd?.toLocaleString('en-US') === amount);
+        expect(row, `${id}:${medication}:${amount}`).toBeTruthy();
+        await price.scrollIntoViewIfNeeded();
+        await expect(price.locator('.p3-price-medication')).toBeVisible();
+        await expect(price.locator('.p3-price-medication')).toHaveText(row.display_label || row.label);
+      }
+    }
+    if (route === '/providers/') expect(multi).toBeGreaterThan(0);
+    const preview = page.locator('[data-atf-result]');
+    await expect(preview).toHaveCount(1);
+    const id = await preview.getAttribute('data-atf-program');
+    const card = page.locator(`#provider-results article[data-program="${id}"]`);
+    const cash = preview.locator('.p3-source-price');
+    expect(await cash.count()).toBeGreaterThan(0);
+    for (const price of await cash.all()) {
+      const med = await price.getAttribute('data-medication');
+      const row = matrix[id].medications.find(row => row.medication_id === med);
+      await expect(price.locator('.p3-price-medication')).toHaveText(row.display_label || row.label);
+      await expect(price.locator('strong')).toHaveText('$'+row.ongoing_usd.toLocaleString('en-US'));
+      await expect(price.locator('time')).toHaveAttribute('datetime', row.captured_on);
+      await expect(price.locator('blockquote')).toHaveText(row.quote);
+      expect(await price.innerHTML()).toBe(await card.locator(`.p3-source-price[data-medication="${med}"]`).innerHTML());
+    }
+  }
+});
+
+test('R1 no-JS matcher submits filters without email or identity in the URL', async ({browser, baseURL}) => {
+  const context = await browser.newContext({javaScriptEnabled:false, serviceWorkers:'block'});
+  const requests = [];
+  try {
+    await context.route('**/*', route => {
+      const url = new URL(route.request().url());
+      requests.push(url.href);
+      return url.origin === new URL(baseURL).origin && !url.pathname.startsWith('/go/') ? route.continue() : route.abort();
+    });
+    const page = await context.newPage();
+    await page.goto(baseURL+'/matches/customized/');
+    await page.locator('[data-matches-email]').fill('synthetic@example.invalid');
+    await page.locator('[data-matches-state]').selectOption('CA');
+    const med = await page.locator('[data-matches-medication] option').nth(1).getAttribute('value');
+    await page.locator('[data-matches-medication]').selectOption(med);
+    await page.getByRole('button', {name:'Search providers', exact:true}).click();
+    await expect(page).toHaveURL(/\/providers\/\?/);
+    const url = new URL(page.url());
+    expect(url.searchParams.get('state')).toBe('CA');
+    expect(url.searchParams.get('drug')).toBe(med);
+    expect(url.searchParams.has('email')).toBe(false);
+    expect(requests.some(url => /synthetic|example.invalid|email=/i.test(url))).toBe(false);
+  } finally { await context.close(); }
+});
+
+test('R3 edited calculator prices and saved overrides are labeled user-entered', async ({page}) => {
+  await page.goto('/tools/glp-1-cost-calculator/');
+  await page.locator('#provider').selectOption('snagrx');
+  await page.getByRole('button', {name:'Calculate estimate', exact:true}).click();
+  await expect(page.locator('#result-medication')).toContainText('published price captured');
+  await page.getByRole('button', {name:'Edit prices', exact:true}).click();
+  await page.locator('#first-base').fill('321');
+  await page.locator('#recurring-base').fill('432');
+  await page.getByRole('button', {name:'Calculate estimate', exact:true}).click();
+  await expect(page.locator('#result-medication')).toHaveText('User-entered estimate — not a source-reported price');
+  await expect(page.locator('#result-recurring')).toHaveText('$432');
+  await expect(page.locator('.cost-price-note-text')).toContainText('User-entered');
+  await page.reload();
+  await expect(page.locator('#result-medication')).toHaveText('User-entered estimate — not a source-reported price');
+  await expect(page.locator('#result-recurring')).toHaveText('$432');
+  await page.getByRole('button', {name:'Use published prices', exact:true}).click();
+  await page.getByRole('button', {name:'Calculate estimate', exact:true}).click();
+  await expect(page.locator('#result-medication')).toContainText('published price captured');
+});
+
 test('F09 home price choices settle at the source amount in both motion modes', async ({page}) => {
   await page.goto('/');
   const amounts = new Set(Object.values(matrix).flatMap(provider => provider.medications).map(row => row.ongoing_usd).filter(Number.isFinite));
