@@ -6,7 +6,7 @@ const choice={analytics:'granted',advertising:'granted'},key='gcs_tracking_conse
 test('A11 unbound generic GTM stays unloaded even with analytics and TEST advertising consent',async()=>{
  const f=boot({adapter:fixtureAdapter()});f.window.GCS_ANALYTICS.gtm_containment_verified=true;f.c.apply(choice);await f.c.whenSettled();
  assert.equal(f.scripts.filter(x=>x.src?.includes('googletagmanager')).length,0);assert.equal(f.scripts.filter(x=>x.src?.includes('array.js')).length,1);
- assert.equal(f.window['ga-disable-G-MOCK'],true);f.window.GCSAnalytics.event('quiz_complete');assert.equal(f.order.filter(x=>x[0]==='event'&&x[1]==='quiz_complete').length,0,'no UI event forwarded to uncontained GTM');
+ assert.equal(f.window['ga-disable-G-MOCK'],true);f.window.GCSAnalytics.event('comparison_sort_change');assert.equal(f.order.filter(x=>x[0]==='event'&&x[1]==='comparison_sort_change').length,0,'no UI event forwarded to uncontained GTM');
 });
 test('dynamic GPC checked at event gate clears pending SDK work synchronously',()=>{
  const f=boot();assert.equal(f.c.effective(),'granted');f.window.GCSAnalytics.event('comparison_sort_change');f.navigator.globalPrivacyControl=true;

@@ -270,7 +270,7 @@ test("analytics stays held in the candidate, suppresses synthetic runs, and pers
     const calls = [];
     window.gtag = (...args) => calls.push(args);
     window.GCS_ANALYTICS = { ...window.GCS_ANALYTICS, enabled: true, consent: "granted" };
-    const allowed = window.GCSAnalytics.event("quiz_complete", {
+    const allowed = window.GCSAnalytics.event("comparison_sort_change", {
       page_slug: "/quiz/provider-fit/",
       email: "must-not-pass@example.com",
       quiz_answers: "must-not-pass",
