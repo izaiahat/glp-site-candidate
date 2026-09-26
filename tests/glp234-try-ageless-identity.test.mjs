@@ -6,6 +6,79 @@ import { normalizedProfileSha256 } from '../src/provider-dynamic-profiles.mjs';
 import { normalizedTaxonomySha256 } from '../src/therapeutic-taxonomy.mjs';
 import { projectProviderDisplayFacts, projectProviderDisplayLedger } from '../src/provider-display-evidence.mjs';
 import { reviewBrief } from '../src/blog-system.mjs';
+import { projectQuizFromRegistry } from '../src/program-registry.mjs';
+import { historicalPriceIndexRegistry } from '../src/price-index-historical-registry.mjs';
+import { readFileSync } from 'node:fs';
+
+test('GLP-234 F3 exact identity successor reconstructs only the historical price label', async () => {
+  const registry = await load('program-registry.json');
+  const ledger = await load('price-index-frozen-content-ledger.json');
+  const before = structuredClone({registry, ledger});
+  const historical = historicalPriceIndexRegistry(registry, ledger);
+  const target = r => r.programs.find(row => row.program_id === 'try-ageless');
+  assert.equal(target(historical).display_name, 'AgelessRx');
+  assert.equal(target(registry).display_name, 'Try Ageless');
+  assert.deepEqual({registry, ledger}, before);
+  const retained = structuredClone(registry);
+  target(retained).display_name = 'AgelessRx';
+  assert.deepEqual(historical, historicalPriceIndexRegistry(retained, ledger));
+  // The full historical oracle remains exact, including every other row/field.
+  for (const edit of [
+    r => { target(r).display_name = 'Unapproved alias'; },
+    r => { target(r).go.route = '/go/unapproved'; },
+    r => { target(r).profiles['glp-clinic-scout'].surfaces.go = false; },
+    r => { target(r).extra_fact = 'invented'; },
+    r => { r.programs.push(structuredClone(target(r))); },
+    r => { r.programs = r.programs.filter(row => row.program_id !== 'try-ageless'); },
+    r => { r.programs.find(row => row.program_id === 'found-health').display_name = 'Changed'; },
+  ]) {
+    const invalid = structuredClone(registry);
+    edit(invalid);
+    assert.throws(() => historicalPriceIndexRegistry(invalid, ledger), /price_index_historical_(identity|registry)_drift/);
+  }
+  const wrongOracle = structuredClone(registry);
+  wrongOracle.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256 = '0'.repeat(64);
+  assert.throws(() => historicalPriceIndexRegistry(wrongOracle, ledger), /price_index_historical_oracle_invalid/);
+  const wrongLedger = structuredClone(ledger);
+  wrongLedger.programs[0].display_name = 'Changed';
+  assert.throws(() => historicalPriceIndexRegistry(registry, wrongLedger), /price_index_historical_ledger_drift/);
+  assert.throws(() => historicalPriceIndexRegistry(registry, ledger, file =>
+    String(file).endsWith('d2w-s9-final-decision.md') ? Buffer.from('forged') : readFileSync(file)), /price_index_historical_alias_authority_hash_mismatch/);
+});
+
+// Execute the maintained build input block and quiz call, not a copied caller.
+// This is bounded caller-chain coverage: no build outputs or article admission.
+async function buildQuizInputs(ledger) {
+  const source = await readFile(new URL('../scripts/build-staging.mjs', import.meta.url), 'utf8');
+  const start = source.indexOf('  const [identity, eligibility,');
+  const end = source.indexOf('  const [phase3GraphConfig,', start);
+  const call = source.match(/^  const canonicalQuiz = projectQuizFromRegistry\([^\n]+$/m)?.[0];
+  assert.ok(start >= 0 && end > start && call, 'maintained build/quiz seams must be present');
+  const execute = new Function('readJson', 'projectProviderDisplayLedger', 'projectQuizFromRegistry', 'programRegistry', 'SITE_PROFILE',
+    `return (async () => {${source.slice(start, end)}\n${call}\nreturn {contentLedger, canonicalQuiz};})()`);
+  return execute(name => name === 'program-content-ledger.json' ? ledger : load(name),
+    projectProviderDisplayLedger, projectQuizFromRegistry, await load('program-registry.json'), 'glp-clinic-scout');
+}
+
+test('GLP-234 F1 actual build-to-quiz projection owns raw input without weakening source guards', async () => {
+  const ledger = await load('program-content-ledger.json');
+  const before = structuredClone(ledger);
+  const {contentLedger, canonicalQuiz} = await buildQuizInputs(ledger);
+  assert.deepEqual(ledger, before, 'build consumer view must not replace raw ledger rows');
+  const target = contentLedger.programs.find(row => row.program_id === 'try-ageless');
+  assert.equal(target.display_name, 'Try Ageless');
+  assert.equal(target.research_backfill_20260830, undefined);
+  assert.deepEqual(canonicalQuiz, projectQuizFromRegistry(await load('program-registry.json'), 'glp-clinic-scout', await load('quiz-config.json'), before));
+  for (const edit of [
+    row => { delete row.research_backfill_20260830; },
+    row => { row.research_backfill_20260830.facts.shipping.source_url = 'https://unrelated.example/'; },
+    row => { row.research_shipping_wait.source_url = 'https://agelessrx.com/'; },
+  ]) {
+    const invalid = structuredClone(before);
+    edit(invalid.programs.find(row => row.program_id === 'try-ageless'));
+    await assert.rejects(buildQuizInputs(invalid), /try_ageless_historical_backfill_unexpected|try_ageless_cross_business_fact/);
+  }
+});
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/${name}`, import.meta.url)));
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');

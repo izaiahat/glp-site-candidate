@@ -7,6 +7,43 @@ import {deriveGoEntriesFromRegistry} from '../src/program-registry.mjs';
 import {renderGoRuntimeManifestModule} from '../src/go-runtime-manifest.mjs';
 import {loadAffiliateLinkMap} from '../src/affiliate-link-map.mjs';
 import {loadGoPromotionAuthority} from '../src/go-runtime-selection.mjs';
+import {projectProviderDisplayLedger} from '../src/provider-display-evidence.mjs';
+import {GO_RUNTIME_MANIFEST} from '../functions/go/program-manifest.js';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+// Execute each maintained label initializer and GO call with identical authority
+// inputs. Do not import these effectful scripts or run their output writers.
+async function producerEntries(file, registry, ledger, links, authority) {
+  const source = readFileSync(new URL('../scripts/' + file, import.meta.url), 'utf8');
+  const initializer = source.match(/^\s*const commercialLabels = .+;$/m)?.[0] || '';
+  const call = source.match(/programs: (deriveGoEntriesFromRegistry\([^\n]+\))[, ]/)?.[1];
+  assert.ok(call, file + ': maintained GO call must be present');
+  const root = fileURLToPath(new URL('../', import.meta.url));
+  const execute = new Function('deriveGoEntriesFromRegistry', 'goCommercialLabels', 'readJson', 'readFile', 'path', 'ROOT', 'registry', 'programRegistry', 'ledger', 'contentLedger', 'SITE_PROFILE', 'loadAffiliateLinkMap', 'goPromotionAuthority',
+    `return (async () => {${initializer}\nreturn ${call};})()`);
+  return execute(deriveGoEntriesFromRegistry, goCommercialLabels, name => read('data/' + name),
+    async file => readFileSync(file, 'utf8'), path, root, registry, registry, ledger,
+    {...ledger, programs: ledger.programs.map(row => projectProviderDisplayLedger(row))},
+    'glp-clinic-scout', () => links, authority);
+}
+
+test('GLP-234 F2 maintained build and regeneration GO callers use the same commercial labels', async () => {
+  const registry = read('data/program-registry.json'), ledger = read('data/program-content-ledger.json');
+  const before = structuredClone({registry, ledger});
+  const links = loadAffiliateLinkMap('compare'), authority = loadGoPromotionAuthority();
+  const build = await producerEntries('build-staging.mjs', registry, ledger, links, authority);
+  const regeneration = await producerEntries('regenerate-go-runtime-manifest.mjs', registry, ledger, links, authority);
+  assert.deepEqual(build, regeneration);
+  const manifest = programs => renderGoRuntimeManifestModule({schema:'affiliate-worker-staging-v3-registry', program_registry_schema:registry.schema, site_profile:'glp-clinic-scout', internal_fallback:'https://glpclinicscout.com/providers/', programs});
+  assert.equal(manifest(build), manifest(regeneration));
+  assert.deepEqual(build.find(row => row.program_id === 'try-ageless'), GO_RUNTIME_MANIFEST.programs['try-ageless']);
+  assert.equal(build.find(row => row.program_id === 'try-ageless').live_link_allowed, false);
+  assert.deepEqual({registry, ledger}, before);
+  for (const file of ['build-staging.mjs', 'regenerate-go-runtime-manifest.mjs']) {
+    assert.match(readFileSync(new URL('../scripts/' + file, import.meta.url), 'utf8'), /import \{ goCommercialLabels \} from "\.\.\/src\/go-commercial-labels\.mjs"/);
+  }
+});
 const read = file => JSON.parse(readFileSync(new URL('../'+file, import.meta.url)));
 const sha = text => createHash('sha256').update(text).digest('hex');
 

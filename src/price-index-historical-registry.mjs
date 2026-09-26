@@ -42,6 +42,21 @@ export function historicalPriceIndexRegistry(registry, contentLedger, readBytes 
       || taxonomy?.price_index_registry_programs_semantic_basis_sha256 !== wholeHistoricalPriceBody)
     throw Error('price_index_historical_oracle_invalid');
   const restored = projectGoOnlyPriceBasis(projectCoivasResearchPriceBasis(registry,'registry',readBytes));
+  // GLP-234: the exact consumer-identity successor in program-registry.json at
+  // b9266928639796c5ecd838fe3d8de8255b734873. Its first-party brand is Try Ageless
+  // (https://tryageless.com/faq/, https://tryageless.com/terms/), not an AgelessRx
+  // alias. Authenticate the complete successor row, then restore ONLY the label
+  // used by the frozen price oracle. No generic name stripping or repinning:
+  // the complete historical body below still has to match its ORIGINAL digest.
+  // This copy is price-history-only; never feed it to display or GO producers.
+  const identityRows = restored.programs.filter(p => p.program_id === 'try-ageless');
+  if (identityRows.length !== 1) throw Error('price_index_historical_identity_drift');
+  const identity = identityRows[0];
+  if (identity.display_name === 'Try Ageless') {
+    if (sha(canonical(identity)) !== '0edc2bea93e337d5bdcf271a76b7c0db10e6d4297f24b58f8b8b1bf79ba47531')
+      throw Error('price_index_historical_identity_drift');
+    identity.display_name = 'AgelessRx';
+  }
   const body = structuredClone(restored);
   delete body.therapeutic_taxonomy;
   delete body.provider_dynamic_profiles;

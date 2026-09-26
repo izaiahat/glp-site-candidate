@@ -3,6 +3,7 @@ import { captureLastmodEmission } from "./build-lastmod-provenance.mjs";
 import { resetTrackingAllowedHostsCache } from "../src/tracking-allowed-hosts.mjs";
 import { eligibilityCensus } from "../src/held-eligibility-census.mjs";
 import { projectProviderDisplayLedger } from "../src/provider-display-evidence.mjs";
+import { goCommercialLabels } from "../src/go-commercial-labels.mjs";
 import { execFileSync } from "node:child_process";
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
@@ -1588,12 +1589,12 @@ async function main() {
     rm(PUBLIC, { recursive: true, force: true }),
     rm(OPS, { recursive: true, force: true }),
   ]);
-  const [identity, eligibility, contentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, activationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
+  const [identity, eligibility, rawContentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, activationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
     readJson("identity-registry.json"), readJson("program-page-eligibility.json"), readJson("program-content-ledger.json"), readJson("money-page-specs.json"), readJson("quiz-config.json"), readJson("directory/npi-city-batch.json"), readJson("visual-system.json"), readJson("email-system.json"), readJson("resend-email-machine.json"), readJson("blog/keyword-ownership-map.json"), readJson("blog/content-batch.json"), readJson("blog/content-national-wow-additions.json"), readJson("blog/author-registry.json"), readJson("affiliate-activation-selection.json"), readJson("cost-calculator.json"), readJson("provider-page-contracts.json"), readJson("provider-fastpath-contract.json"), readJson("provider-pricing-matrix.json"), readJson("medication-direct-pricing.json"), readJson("coupon-offers.json"),
   ]);
-  // Keep the hash-pinned price-index ledger untouched; only consumer copies
-  // receive first-party Try Ageless identity and source-safe fact projection.
-  contentLedger.programs = contentLedger.programs.map((row) => projectProviderDisplayLedger(row));
+  // Keep the hash-pinned price-index ledger untouched, including its in-memory
+  // rows. Renderers use this consumer copy; quiz owns its projection from raw.
+  const contentLedger = { ...rawContentLedger, programs: rawContentLedger.programs.map((row) => projectProviderDisplayLedger(row)) };
   const [phase3GraphConfig, phase3PharmacyInput] = await Promise.all([readJson("phase3-page-graph.json"), readJson("phase3-pharmacy-render-input.json")]);
   reconcileTherapeuticTaxonomyWireIn({
     registry: programRegistry,
@@ -1787,7 +1788,7 @@ async function main() {
   const fullGoLiveReceipt = activationSelection.operator_gate_receipt_sha256;
   if (!/^[a-f0-9]{64}$/.test(fullGoLiveReceipt)) throw new Error("affiliate_activation_receipt_invalid");
   const canonicalAugmented = projectMoneyPagesFromRegistry(programRegistry, SITE_PROFILE, moneySpecs.pages, contentLedger.programs);
-  const canonicalQuiz = projectQuizFromRegistry(programRegistry, SITE_PROFILE, quizConfig, contentLedger);
+  const canonicalQuiz = projectQuizFromRegistry(programRegistry, SITE_PROFILE, quizConfig, rawContentLedger);
   const therapeuticSurfaces = projectTherapeuticSurfaces({
     registry: programRegistry,
     profileId: SITE_PROFILE,
@@ -2672,7 +2673,8 @@ async function main() {
   const activeGoAnchors = await countPublicGoAnchors(PUBLIC);
   // GO_RUNTIME_PROMOTION_AUTHORITY_V1: missing authority means every route stays held.
   const goPromotionAuthority = loadGoPromotionAuthority(ROOT);
-  const goRuntimeManifest = { schema: "affiliate-worker-staging-v3-registry", program_registry_schema: programRegistry.schema, site_profile: SITE_PROFILE, internal_fallback: "https://glpclinicscout.com/providers/", programs: deriveGoEntriesFromRegistry(programRegistry, SITE_PROFILE, contentLedger.programs, loadAffiliateLinkMap("compare"), goPromotionAuthority) };
+  const commercialLabels = goCommercialLabels(await readJson("affiliate-held-link-manifest.json"));
+  const goRuntimeManifest = { schema: "affiliate-worker-staging-v3-registry", program_registry_schema: programRegistry.schema, site_profile: SITE_PROFILE, internal_fallback: "https://glpclinicscout.com/providers/", programs: deriveGoEntriesFromRegistry(programRegistry, SITE_PROFILE, contentLedger.programs, loadAffiliateLinkMap("compare"), goPromotionAuthority, commercialLabels) };
   await writeOps("worker-manifest.staging.json", manifestJsonText(goRuntimeManifest));
   const frozenGoRuntimePath = path.join(ROOT, "functions", "go", "program-manifest.js");
   const expectedGoRuntime = renderGoRuntimeManifestModule(goRuntimeManifest);
