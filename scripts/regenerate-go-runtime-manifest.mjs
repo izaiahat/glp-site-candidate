@@ -4,6 +4,7 @@ import path from "node:path";
 import { loadAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
 import { loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
 import { deriveGoEntriesFromRegistry } from "../src/program-registry.mjs";
+import { goCommercialLabels } from "../src/go-commercial-labels.mjs";
 import { manifestJsonText, renderGoRuntimeManifestModule, assertCurrentHoldGoSuccessor } from "../src/go-runtime-manifest.mjs";
 import { loadGoSelection } from '../src/go-runtime-selection.mjs';
 const holdsOnly = process.argv.includes('--current-holds-only');
@@ -11,6 +12,7 @@ const holdsOnly = process.argv.includes('--current-holds-only');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const registry = JSON.parse(await readFile(path.join(ROOT, "data", "program-registry.json"), "utf8"));
 const ledger = JSON.parse(await readFile(path.join(ROOT, "data", "program-content-ledger.json"), "utf8"));
+const commercialLabels = goCommercialLabels(JSON.parse(await readFile(path.join(ROOT, "data", "affiliate-held-link-manifest.json"), "utf8")));
 // GO_RUNTIME_PROMOTION_AUTHORITY_V1: missing authority means every route stays held.
 const goPromotionAuthority = loadGoPromotionAuthority(ROOT);
 // Materialize the same complete receipts for legacy raw-JSON refresh readers.
@@ -27,7 +29,7 @@ const manifest = {
   program_registry_schema: registry.schema,
   site_profile: "glp-clinic-scout",
   internal_fallback: "https://glpclinicscout.com/providers/",
-  programs: deriveGoEntriesFromRegistry(registry, "glp-clinic-scout", ledger.programs, loadAffiliateLinkMap("compare"), goPromotionAuthority),
+  programs: deriveGoEntriesFromRegistry(registry, "glp-clinic-scout", ledger.programs, loadAffiliateLinkMap("compare"), goPromotionAuthority, commercialLabels),
 };
 if (holdsOnly) {
   const {GO_RUNTIME_MANIFEST: before} = await import('../functions/go/program-manifest.js');
