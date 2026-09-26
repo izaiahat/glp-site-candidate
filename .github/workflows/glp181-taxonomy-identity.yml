@@ -1,0 +1,20 @@
+name: GLP-181 taxonomy identity
+on:
+  pull_request:
+    paths:
+      - 'src/therapeutic-taxonomy.mjs'
+      - 'tests/glp181-taxonomy-identity.test.mjs'
+      - '.github/workflows/glp181-taxonomy-identity.yml'
+  push:
+    branches:
+      - 'fix/glp181-taxonomy-canonical-alias'
+jobs:
+  taxonomy-identity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check src/therapeutic-taxonomy.mjs
+      - run: node --test tests/glp181-taxonomy-identity.test.mjs
