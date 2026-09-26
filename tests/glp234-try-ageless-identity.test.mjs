@@ -150,6 +150,27 @@ test('GLP-234 held article uses current product-specific billing and preserves i
   assert.deepEqual(reviewBrief(article, article.author), { status: 'HELD', reason: 'evidence_review_receipt_missing' });
 });
 
+test('GLP-234 actual paragraph length and cancellation explanation retain first-party provenance', async () => {
+  const article = (await load('blog/content-batch.json')).articles.find((a) => a.article_id === 'phase2-batch2-low-healthrx-vs-agelessrx-20260723');
+  const paragraphs = article.sections.flatMap((s) => s.paragraphs);
+  const actualWords = paragraphs.join(' ').match(/\b[\w'-]+\b/g).length;
+  assert.ok(actualWords >= 1500 && actualWords <= 3600, `Actual paragraph words: ${actualWords}`);
+  assert.equal(article.word_count, actualWords);
+  const explanation = "Early cancellation also raises a different price question from the next renewal: what rate applies to benefits already received? Try Ageless's terms point to the shorter-duration pricing available when the plan was purchased, not a newly advertised rate. Keep that original pricing with the terms; the yearly monthly equivalent alone cannot establish the amount retained after cancellation.";
+  assert.ok(article.sections.find((s) => s.heading === 'Read commitment and cancellation together').paragraphs.includes(explanation));
+  const terms = article.sources.find((s) => s.source_id === 'try-ageless-terms');
+  assert.equal(terms.url, 'https://tryageless.com/terms/');
+  assert.ok(terms.claim_ids.includes('ageless-rate'));
+  assert.ok(article.claims.find((c) => c.claim_id === 'ageless-rate').source_ids.includes(terms.source_id));
+  // Existing brief has no seo-phase1-v1 contract: do not silently apply or
+  // claim its stricter 50–60 / 150–160 / 40–60 title/meta/answer limits pass.
+  assert.equal(article.editorial_contract_version, undefined);
+  assert.equal(article.title.length, 81);
+  assert.equal(article.description.length, 137);
+  assert.equal(article.direct_answer.trim().split(/\s+/).length, 73);
+  assert.deepEqual(reviewBrief(article, article.author), { status: 'HELD', reason: 'evidence_review_receipt_missing' });
+});
+
 test('GLP-234 annual-plan billing prose in both maintained money-spec copies', async (t) => {
   for (const file of ['../data/money-page-specs.json', '../src/money-page-specs.json']) {
     await t.test(file, async () => {
