@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3839,
+  "tracked_file_count": 3841,
   "files": [
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
@@ -3224,6 +3224,7 @@
     "ops/evidence-freshness/adoptions.jsonl",
     "ops/evidence-freshness/material-acceptances.jsonl",
     "ops/evidence-freshness/routine-refresh-standing-acceptance.json",
+    "ops/glp75-source-bounded-seo.md",
     "ops/private-host-gate-inputs.md",
     "ops/release-dispositions.json",
     "ops/release-gate.json",
@@ -3706,6 +3707,7 @@
     "tests/glp34-step8-provider-copy.test.mjs",
     "tests/glp38-runtime.test.mjs",
     "tests/glp41-material-contracts.test.mjs",
+    "tests/glp75-source-bounded-seo.test.mjs",
     "tests/go-link-rel-sponsored.test.mjs",
     "tests/go-runtime-manifest.test.mjs",
     "tests/helpers/a17-issuer-fixture.mjs",

@@ -1508,8 +1508,12 @@ function listingDocument({ archetype, route, title, description, heading, suppor
   const inlineControls = stateMarkup ? controls.replace(stateMarkup, "") : controls;
   // Native details remains usable if enhancement fails, while the parser-time
   // close reserves the same mobile footprint as the enhanced filter trigger.
+  // GLP-75: source-coverage eligibility is not regulatory or stock evidence.
+  // Dated support: data/blog/content-batch.json, verify-online-glp-1-pharmacy
+  // (2026-07-23); grid inclusion: pharmacyCardEligible above.
+  const pharmacyScope = '<aside class="p3-evidence-boundary" data-pharmacy-evidence-scope role="note" aria-label="How to read this directory"><p><strong>Reported information — how to read this directory.</strong> This grid is a source-coverage subset, not a current licensure or availability list. Directory inclusion alone does not establish current licensure, stock or product approval. Open each profile’s dated sources and keep state licensure, NPI identity, facility registration and product regulatory status as separate checks.</p></aside>';
   const filterControls = pharmacy
-    ? `<details open data-native-pharmacy-filters><summary class="cs-mobile-filter-trigger"><span>Pharmacy filters</span><span aria-hidden="true">Tune filters&nbsp;↗</span></summary>${inlineControls}</details><script>(()=>{const shell=document.currentScript.previousElementSibling;if(matchMedia('(max-width:760px)').matches)shell.open=false;})();</script>`
+    ? `${pharmacyScope}<details open data-native-pharmacy-filters><summary class="cs-mobile-filter-trigger"><span>Pharmacy filters</span><span aria-hidden="true">Tune filters&nbsp;↗</span></summary>${inlineControls}</details><script>(()=>{const shell=document.currentScript.previousElementSibling;if(matchMedia('(max-width:760px)').matches)shell.open=false;})();</script>`
     : inlineControls;
   const leadDisclosure = pharmacy ? "" : `<div class="table-disclosure p3-source-disclosure affiliate-note"><p class="listing__disclosure-lead affiliate-note">We may earn a commission from sponsored links.</p>${route === "/providers/" ? "<p>That never changes a score.</p>" : ""}<p>Price-source links go directly to the provider page Clinic Scout checked, not through an affiliate redirect.</p></div>`;
   const numericListing = ["A", "B", "C"].includes(archetype);
@@ -1549,7 +1553,7 @@ function listingUnknownCard(program, entry, registry, logoManifest) {
   return `<article class="p3-provider-card cs-card" data-phase3-provider data-price-state-provider="${esc(id)}" data-program="${esc(id)}" data-price="" data-price-map="" data-state-mode="unknown" data-drugs="" data-forms="" data-duration="unknown" data-dose="unknown"><header class="p3-card-header">${providerIdentity({ program_id: id, provider: program.display_name }, logoManifest)}</header><p>${esc(priceStateText(entry) || 'Reported pricing is available in the provider review. Floors, bundles and starting prices are not exact monthly cash schedules.')}</p><p>Review medication options, coverage and program terms independently of price.</p><div class="p3-card-actions"><a class="cs-btn cs-btn--quiet" href="${esc(review || `/providers/${program.program_id}/`)}"${review ? " data-card-review" : ""}>${review ? `Read ${esc(program.display_name)} review` : `Open ${esc(program.display_name)} details`}</a></div></article>`;
 }
 
-function renderConfiguredListing(archetype, page, { graph, pharmacyInput, pricingMatrix, registry, coupons, doseCapture, logoManifest, articles, goAuthority }) {
+export function renderConfiguredListing(archetype, page, { graph, pharmacyInput, pricingMatrix, registry, coupons, doseCapture, logoManifest, articles, goAuthority }) {
   const config = LISTING_CONFIG[archetype];
   const route = page.route;
   const pharmacy = archetype === "D";
