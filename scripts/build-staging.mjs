@@ -2,6 +2,7 @@ import { selectedFamilyStyles } from "../src/selected-family-styles.mjs";
 import { captureLastmodEmission } from "./build-lastmod-provenance.mjs";
 import { resetTrackingAllowedHostsCache } from "../src/tracking-allowed-hosts.mjs";
 import { eligibilityCensus } from "../src/held-eligibility-census.mjs";
+import { projectProviderDisplayLedger } from "../src/provider-display-evidence.mjs";
 import { execFileSync } from "node:child_process";
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
@@ -1590,6 +1591,9 @@ async function main() {
   const [identity, eligibility, contentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, activationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
     readJson("identity-registry.json"), readJson("program-page-eligibility.json"), readJson("program-content-ledger.json"), readJson("money-page-specs.json"), readJson("quiz-config.json"), readJson("directory/npi-city-batch.json"), readJson("visual-system.json"), readJson("email-system.json"), readJson("resend-email-machine.json"), readJson("blog/keyword-ownership-map.json"), readJson("blog/content-batch.json"), readJson("blog/content-national-wow-additions.json"), readJson("blog/author-registry.json"), readJson("affiliate-activation-selection.json"), readJson("cost-calculator.json"), readJson("provider-page-contracts.json"), readJson("provider-fastpath-contract.json"), readJson("provider-pricing-matrix.json"), readJson("medication-direct-pricing.json"), readJson("coupon-offers.json"),
   ]);
+  // Keep the hash-pinned price-index ledger untouched; only consumer copies
+  // receive first-party Try Ageless identity and source-safe fact projection.
+  contentLedger.programs = contentLedger.programs.map((row) => projectProviderDisplayLedger(row));
   const [phase3GraphConfig, phase3PharmacyInput] = await Promise.all([readJson("phase3-page-graph.json"), readJson("phase3-pharmacy-render-input.json")]);
   reconcileTherapeuticTaxonomyWireIn({
     registry: programRegistry,

@@ -4,6 +4,8 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { normalizedProfileSha256 } from '../src/provider-dynamic-profiles.mjs';
 import { normalizedTaxonomySha256 } from '../src/therapeutic-taxonomy.mjs';
+import { projectProviderDisplayFacts, projectProviderDisplayLedger } from '../src/provider-display-evidence.mjs';
+import { reviewBrief } from '../src/blog-system.mjs';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/${name}`, import.meta.url)));
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -44,4 +46,70 @@ test('GLP-234 registry projections name the first-party brand without altering r
   ]) assert.equal(sha(await readFile(new URL(`../data/${name}`, import.meta.url))), expected, name);
   assert.equal(sha(await readFile(new URL('../functions/go/program-manifest.js', import.meta.url))),
     'cab1f5b4a8437080c09f580daf7be19bb4b9a177673150ba1f1e8f9abe113f7a');
+
+  // Current editorial projections must not import the distinct AgelessRx firm's
+  // dated facts. Historical raw evidence and all commercial gates stay intact.
+  const rawLedger = (await load('program-content-ledger.json')).programs.find((r) => r.program_id === 'try-ageless');
+  assert.equal(rawLedger.display_name, 'AgelessRx'); // Hash-pinned price-index history.
+  assert.equal(rawLedger.research_backfill_20260830.facts.shipping.source_url, 'https://agelessrx.com/');
+  const ledger = projectProviderDisplayLedger(rawLedger);
+  assert.equal(ledger.display_name, 'Try Ageless');
+  assert.equal(ledger.research_backfill_20260830, undefined);
+  const crossBusiness = structuredClone(rawLedger);
+  crossBusiness.research_shipping_wait.source_url = 'https://agelessrx.com/faq/';
+  assert.throws(() => projectProviderDisplayLedger(crossBusiness), /try_ageless_cross_business_fact/);
+  for (const [key, fact] of Object.entries(ledger)) {
+    if (!key.startsWith('research_') || !fact?.source_url) continue;
+    assert.match(fact.source_url, /^https:\/\/tryageless\.com\//, key);
+  }
+  assert.match(ledger.research_first_month_price.value, /UNKNOWN|yearly|annual/i);
+  assert.match(ledger.research_cancellation.value, /\$40|prepaid/i);
+  const historical = (await load('provider-facts-backfill-20260830.json')).programs.find((r) => r.program_id === 'try-ageless');
+  assert.equal(historical.display_name, 'AgelessRx');
+  assert.equal(historical.facts.shipping.source_url, 'https://agelessrx.com/');
+  const projected = projectProviderDisplayFacts(historical);
+  assert.equal(projected.display_name, 'Try Ageless');
+  for (const fact of Object.values(projected.facts)) {
+    assert.match(fact.source_url, /^https:\/\/tryageless\.com\//);
+    assert.doesNotMatch(JSON.stringify(fact), /agelessrx\.com|AgelessRx/i);
+  }
+  for (const [name, expected] of [
+    ['program-page-eligibility.json', '751f063a70d26ab8f2b420f9d4f433fb7786cbfc59db82e7a3d21c1d03fc9d8b'],
+    ['provider-facts-backfill-20260830.json', 'e08a533653dd20f8400ad35d4562ec21478704a4d6c5758d61e85f83c1b97f3f'],
+    ['price-index-frozen-content-ledger.json', '374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830'],
+  ]) assert.equal(sha(await readFile(new URL(`../data/${name}`, import.meta.url))), expected, name);
+
+  const quiz = (await load('quiz-config.json')).candidates.find((r) => r.program_id === 'try-ageless');
+  assert.equal(quiz.display_name, 'Try Ageless');
+  assert.match(quiz.research_fact_ref, /^program-content-ledger\.json#/);
+  const seo = (await load('page-seo-copy.json')).routes['/reviews/try-ageless/'];
+  assert.match(seo.title, /^Try Ageless/);
+  assert.doesNotMatch(JSON.stringify(seo), /AgelessRx/);
+  const logo = (await load('provider-logo-sources.json')).programs.find((r) => r.program_id === 'try-ageless');
+  assert.equal(logo.provider, 'Try Ageless');
+  assert.equal((await load('provider-pricing-matrix.json')).providers['try-ageless'].provider, 'Try Ageless');
+  for (const medication of ['semaglutide', 'tirzepatide']) {
+    const packet = await load(`compounded-category-evidence/${medication}/PACKET.json`);
+    assert.equal(packet.providers.find((r) => r.program_id === 'try-ageless').display_name, 'Try Ageless');
+  }
+  for (const file of ['../data/money-page-specs.json', '../src/money-page-specs.json']) {
+    const specs = JSON.parse(await readFile(new URL(file, import.meta.url)));
+    for (const page of specs.pages.filter((p) => p.rows.some((r) => r.program_id === 'try-ageless'))) {
+      assert.doesNotMatch(JSON.stringify(page).replaceAll('agelessrx', ''), /AgelessRx/);
+      const consumer = page.rows.find((r) => r.program_id === 'try-ageless');
+      assert.equal(consumer.display_name, 'Try Ageless');
+      assert.ok(page.sources.some((s) => s.source_id === consumer.citation_source_id && s.url.startsWith('https://tryageless.com/')));
+      assert.equal(consumer.review_path, '/reviews/try-ageless/');
+    }
+  }
+  const article = (await load('blog/content-batch.json')).articles.find((a) => a.canonical_path === '/guides/healthrx-vs-agelessrx/');
+  assert.match(article.title, /Try Ageless/);
+  assert.match(article.direct_answer, /\$1,908 prepaid yearly tirzepatide sublingual oral-drops/);
+  assert.equal(article.status, 'HELD_SOURCE_REVIEW_IDENTITY_CORRECTION');
+  assert.ok(article.sources.some((s) => s.url === 'https://tryageless.com/terms/'));
+  assert.deepEqual(reviewBrief(article, { status: 'verified_organization', clinical_credentials_claimed: false }),
+    { status: 'HELD', reason: 'evidence_review_receipt_missing' });
+  const blogOwner = (await load('blog/keyword-ownership-map.json')).entries.find((e) => e.url === article.canonical_path);
+  assert.equal(blogOwner.primary_keyword, 'HealthRX vs Try Ageless cost and terms');
+  assert.equal(blogOwner.status, article.status);
 });
