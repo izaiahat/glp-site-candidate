@@ -113,3 +113,19 @@ test('GLP-234 registry projections name the first-party brand without altering r
   assert.equal(blogOwner.primary_keyword, 'HealthRX vs Try Ageless cost and terms');
   assert.equal(blogOwner.status, article.status);
 });
+
+test('GLP-234 annual-plan billing prose in both maintained money-spec copies', async (t) => {
+  for (const file of ['../data/money-page-specs.json', '../src/money-page-specs.json']) {
+    await t.test(file, async () => {
+      const specs = JSON.parse(await readFile(new URL(file, import.meta.url)));
+      const page = specs.pages.find((row) => row.path === '/compare/found-vs-yourera/');
+      assert.ok(page, file);
+      const prose = page.intro.join(' ');
+      assert.match(prose, /compounded semaglutide plus B12 injection at \$2,388 prepaid yearly \(\$199 per month equivalent\)/);
+      assert.match(prose, /compounded tirzepatide plus B12 injection at \$2,988 prepaid yearly \(\$249 per month equivalent\)/);
+      assert.match(prose, /tirzepatide sublingual oral drops at \$1,908 prepaid yearly \(\$159 per month equivalent\)/);
+      assert.match(prose, /annual-plan monthly equivalents, not month-to-month billing; the selected initial debit remains unknown/);
+      assert.doesNotMatch(prose, /\$199 per month for compounded semaglutide|\$249 per month for compounded tirzepatide/);
+    });
+  }
+});
