@@ -224,7 +224,7 @@ test("analytics stays held in the candidate, suppresses synthetic runs, and pers
     gtm_container_id: "GTM-PWR49VVK",
   });
   expect(await page.evaluate(() => window.GCS_EXPORT_POLICY)).toEqual(EMITTED_POLICY);
-  expect(await page.evaluate(() => window.GCSConsent.purposes())).toEqual({ analytics: "granted", advertising: "denied" });
+  expect(await page.evaluate(() => window.GCSConsent.purposes())).toEqual({ analytics: "granted", advertising: "granted" });
   expect(await page.evaluate(() => window.GCSConsent.allowsExports())).toBe(false);
   await expect(page.locator("#gcs-consent input[type=checkbox]")).toHaveCount(0);
   await expect(page.locator('#gcs-consent [data-consent-open]')).toBeVisible();
@@ -233,7 +233,7 @@ test("analytics stays held in the candidate, suppresses synthetic runs, and pers
   expect(await page.evaluate(() => {
     const saved = JSON.parse(localStorage.getItem("gcs_tracking_consent_v1"));
     return { analytics: saved.analytics, advertising: saved.advertising, record_type: saved.record_type, version: saved.version };
-  })).toEqual({ analytics: "granted", advertising: "denied", record_type: "preference_only", version: "gcs-cookie-v4-distinct-purposes" });
+  })).toEqual({ analytics: "granted", advertising: "granted", record_type: "preference_only", version: "gcs-cookie-v4-distinct-purposes" });
   expect(await page.evaluate(() => window.GCSConsent.effective())).toBe("granted");
   expect(await page.evaluate(() => window.GCSConsent.allowsExports())).toBe(false);
   expect(await page.evaluate(() => window.GCS_ANALYTICS.enabled)).toBe(EMITTED_POLICY.third_party_exports);

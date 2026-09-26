@@ -81,7 +81,13 @@
   function loadPostHog() {
     const config = window.GCS_POSTHOG || {};
     if (!consented() || !config.enabled || !config.api_key || !config.host) return;
-    if (window.GCS_POSTHOG_LOADED) { window.posthog?.opt_in_capturing?.({captureEvent:false}); return; }
+    if (window.GCS_POSTHOG_LOADED) {
+      // Acknowledge/focus notifications are not new visits. The SDK emits another
+      // pageview on opt_in_capturing, so only call it after an actual withdrawal.
+      if (posthogInitialized && window.posthog?.has_opted_out_capturing?.() === true)
+        window.posthog.opt_in_capturing({captureEventName:false});
+      return;
+    }
     window.GCS_POSTHOG_LOADED = true;
     const queue = pendingQueue = [], generation = ++loadGeneration;
     // `_i: []` is load-bearing, not decoration. The tail of PostHog's array.js reads
@@ -105,6 +111,7 @@
       if (!consented() || typeof window.posthog?.init !== "function") { window.GCS_POSTHOG_LOADED = false; queue.length = 0; return; }
       window.posthog.init(config.api_key, {
         api_host: config.host,
+        fetch_options: { referrerPolicy: 'no-referrer' },
         autocapture: false,
         capture_pageview: true,
         capture_pageleave: false,
