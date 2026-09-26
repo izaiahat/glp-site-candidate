@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3839,
+  "tracked_file_count": 3840,
   "files": [
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
@@ -3703,6 +3703,7 @@
     "tests/g08a-compounded-category-integration.test.mjs",
     "tests/g08b-design-pass.test.mjs",
     "tests/glp215-price-state-preservation.test.mjs",
+    "tests/glp234-try-ageless-identity.test.mjs",
     "tests/glp34-step8-provider-copy.test.mjs",
     "tests/glp38-runtime.test.mjs",
     "tests/glp41-material-contracts.test.mjs",
