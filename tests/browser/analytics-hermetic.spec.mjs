@@ -101,7 +101,7 @@ const POSTHOG_STUB = `(() => {
       const payload = JSON.stringify({ api_key: options.api_key, event, properties, options: captureOptions || null });
       const endpoint = String(options.api_host || "https://us.i.posthog.com").replace(/\\/$/, "") + "/i/v0/e/";
       if (captureOptions && captureOptions.transport === "sendBeacon" && navigator.sendBeacon) navigator.sendBeacon(endpoint, payload);
-      else fetch(endpoint, { method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true });
+      else fetch(endpoint, { ...options.fetch_options, method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true });
     },
     set_config(next) { options = { ...options, ...next }; },
   };

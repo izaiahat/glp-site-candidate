@@ -249,7 +249,10 @@ for (const route of ROUTES) {
 
 // Deliberately ungated transport adapter: it always attempts capture when called.
 // Thus a shipped emit() consent bug cannot be hidden by a second mock SDK gate.
-const LOCAL_SDK = `window.posthog={init(key,options){window.__d1SdkOptions=options;},opt_in_capturing(){},opt_out_capturing(){window.__d1OptOuts=(window.__d1OptOuts||0)+1;},capture(event,properties){fetch('/__d1_sink/capture',{method:'POST',body:JSON.stringify({event,properties}),referrerPolicy:'no-referrer'});}};`;
+// Preserve a pre-runtime fetch reference only in this isolated fixture: the
+// new production transport barrier must not mask an emitter regression here.
+// Real-SDK transport containment is independently exercised in the strict suite.
+const LOCAL_SDK = `window.posthog={init(key,options){window.__d1SdkOptions=options;},opt_in_capturing(){},opt_out_capturing(){window.__d1OptOuts=(window.__d1OptOuts||0)+1;},capture(event,properties){window.__d1UngatedFetch('/__d1_sink/capture',{method:'POST',body:JSON.stringify({event,properties}),referrerPolicy:'no-referrer'});}};`;
 
 test('D1 isolated enabled consumer permits analytics grant and blocks fresh post-revoke attempts',async({page,context},info)=>{
   const origin='https://glpclinicscout.com', inventory=sourceInventory('/');
@@ -261,7 +264,7 @@ window.GCS_EXPORT_POLICY={schema:'glp-release-export-policy-v2',stage:'productio
 window.GCS_ANALYTICS={enabled:true,consent:'unknown',measurement_id:'G-D1-FIXTURE',gtm_container_id:'GTM-D1-FIXTURE'};
 window.GCS_POSTHOG={enabled:true,api_key:'D1_LOCAL_NON_CREDENTIAL',host:'${origin}/__d1_sink'};
 </script><script defer src="${inventory.consent.src}"></script><script defer src="${inventory.analytics.src}"></script><script defer src="/meta-pixel.js"></script></head><body><h1>Isolated consent consumer fixture</h1><footer><a href="/privacy/cookies/">Cookie choices</a></footer></body></html>`;
-  await context.addInitScript(()=>Object.defineProperty(navigator,'webdriver',{configurable:true,get:()=>false}));
+  await context.addInitScript(()=>{Object.defineProperty(navigator,'webdriver',{configurable:true,get:()=>false});window.__d1UngatedFetch=window.fetch.bind(window);});
   const audit=await observe(context,origin,{fixture:true,fulfill:async(interception,row)=>{
     const url=new URL(interception.request().url());
     if(url.origin!==origin)return false;

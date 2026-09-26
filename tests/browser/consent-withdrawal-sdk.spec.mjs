@@ -24,7 +24,8 @@ const sdkSha='7b7e12b4a9459669f311e0b8e63f44e905eba385401f70dcabfe9b011e3dcd86';
 const origin='https://glpclinicscout.com',host='https://posthog-fixture.invalid',original='https://affiliate-fixture.invalid/?s1=placement';
 async function harness(browser,info,{hold=false,saved=null}={}){
  expect(sha(sdk)).toBe(sdkSha);
- const context=await browser.newContext({...(process.env.PLAYWRIGHT_NOWRITE_PROXY?{proxy:{server:process.env.PLAYWRIGHT_NOWRITE_PROXY}}:{}),serviceWorkers:'block',userAgent:'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36'});
+ const {viewport,isMobile,hasTouch,deviceScaleFactor}=info.project.use;
+ const context=await browser.newContext({viewport,isMobile,hasTouch,deviceScaleFactor,...(process.env.PLAYWRIGHT_NOWRITE_PROXY?{proxy:{server:process.env.PLAYWRIGHT_NOWRITE_PROXY}}:{}),serviceWorkers:'block',userAgent:'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36'});
  await context.addInitScript(saved=>{Object.defineProperty(navigator,'webdriver',{get:()=>false});Object.defineProperty(navigator,'userAgentData',{get:()=>undefined});if(saved)localStorage.setItem('gcs_tracking_consent_v1',JSON.stringify({version:'gcs-cookie-v4-distinct-purposes',record_type:'preference_only',...saved}));document.addEventListener('click',e=>{if(e.target.closest('#affiliate'))e.preventDefault()},true)},saved);
  const attempts=[],unknown=[];let held,phase='before-withdraw';
  const fixture=`<!doctype html><script>window.GCS_EXPORT_POLICY={schema:'glp-release-export-policy-v2',stage:'production-seal',third_party_exports:true};window.GCS_ANALYTICS={enabled:true,measurement_id:'G-FIXTURE'};window.GCS_POSTHOG={enabled:true,api_key:'TEST_PUBLIC_PROJECT_TOKEN_NOT_A_CREDENTIAL',host:'${host}'};</script><script defer src='/consent.js'></script><script defer src='/analytics.js'></script><h1>Isolated contract</h1><a id='affiliate' href='${original}' data-network='Affiliati' data-program='TEST' data-analytics-event='affiliate_click'>Fixture provider</a><footer><a href='/privacy/cookies/'>Cookie choices</a></footer>`;
@@ -48,8 +49,9 @@ test('D1 real SDK held pageview cannot retry for 65 seconds after native withdra
  await expect.poll(()=>h.attempts.length,{timeout:15000}).toBe(1);
  expect(await h.page.evaluate(()=>posthog.__loaded)).toBe(true);
  const initial=events(h.attempts[0]);expect(initial).toHaveLength(1);expect(initial[0].event).toBe('$pageview');expect(initial[0].uuid).toBeTruthy();expect(initial[0].properties.distinct_id).toBeTruthy();
- await h.withdraw();expect(await h.page.evaluate(()=>posthog.has_opted_out_capturing())).toBe(true);
- const count=h.attempts.length;await h.failHeld();await h.page.waitForTimeout(65000);
+ const count=h.attempts.length;
+ await h.withdraw();expect(await h.page.evaluate(()=>posthog.has_opted_out_capturing())).toBe(true);expect(h.attempts).toHaveLength(count);
+ await h.failHeld();await h.page.waitForTimeout(65000);
  expect(h.attempts.slice(count)).toEqual([]);
  await h.page.evaluate(()=>{window.dispatchEvent(new Event('online'));window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:false}))});await h.page.waitForTimeout(1000);
  expect(h.attempts).toHaveLength(count);expect(h.unknown).toEqual([]);
