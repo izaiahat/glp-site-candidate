@@ -11,6 +11,7 @@ npm run build
 gitleaks dir --redact --no-banner --config .gitleaks.toml public
 status=0
 node --test --test-concurrency=1 \
+  tests/carrier-image-rebind-retention.test.mjs tests/d2s-carrier-article-retention.test.mjs \
   tests/d2f-consent-defaults.test.mjs tests/d2o-consent-ui.test.mjs \
   tests/d2o-consent-purposes.test.mjs tests/d2o-server-consent.test.mjs \
   tests/d2o-consent-lifecycle.test.mjs tests/d2o-consent-races.test.mjs \
