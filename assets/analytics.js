@@ -14,11 +14,9 @@
     $pageview: [],
     affiliate_click: [], comparison_table_view: [],
     cost_calculator_used: [], calculator_submit: [],
-    quiz_complete: [], quiz_start: [], quiz_step_complete: [],
     content_upgrade_view: [], content_upgrade_submit: [],
     content_upgrade_success: [], content_upgrade_complete: [], scroll_75: [],
-    scorecard_start: [], scorecard_step_view: [], scorecard_step_complete: [],
-    scorecard_abandon: [], scorecard_complete: [], sticky_cta_click: [],
+    sticky_cta_click: [],
     comparison_sort_change: [],
   });
   function reviewed(name) { return typeof name === 'string' && Object.hasOwn(allowed, name); }
@@ -35,6 +33,9 @@
     const properties = event.properties || {};
     const url = new URL(location.href);
     url.search = ''; url.hash = ''; url.username = ''; url.password = '';
+    // Only neutral static paths are reportable. Health-specific and unknown
+    // URLs remain absent, not renamed to a misleading homepage visit.
+    const reportRoute = ['/', '/providers/', '/compare/', '/privacy/', '/privacy/cookies/', '/terms/', '/about/'].includes(url.pathname);
     return {
       event: event.event,
       ...(event.uuid !== undefined ? { uuid: event.uuid } : {}),
@@ -43,9 +44,8 @@
         token: properties.token,
         distinct_id: window.posthog?.get_distinct_id?.(),
         $process_person_profile: false,
-        $current_url: url.href,
         $host: url.host,
-        $pathname: url.pathname,
+        ...(reportRoute ? { $current_url: url.href, $pathname: url.pathname } : {}),
       },
     };
   }
@@ -297,22 +297,9 @@
     if (anchor.dataset.elementCode === "F") emit("sticky_cta_click", { page_slug: anchor.dataset.pageSlug, provider_slug: providerSlug });
   });
 
-  // ---- quiz step telemetry (CRO P0-4) -------------------------------------
-  // Non-answer metadata ONLY: step id, ordinal, and index. No answer value, no
-  // health datum, ever - which is why `allowed` has no property to carry one.
-  window.addEventListener("gcs:quiz", (event) => {
-    const detail = event.detail || {};
-    if (!detail.name) return;
-    emit(detail.name, {
-      page_slug: window.location.pathname,
-      step_id: detail.step_id,
-      step_number: detail.step_number,
-      question_index: detail.question_index,
-      last_step: detail.last_step,
-      steps_completed: detail.steps_completed,
-      result_count: detail.result_count,
-    });
-  });
+  // Quiz/scorecard progression is local-only. Do not translate gcs:quiz
+  // into a generic allowed event: branches and timing can reveal health context.
+
 
   let sentScroll75 = false;
   window.addEventListener("scroll", () => {

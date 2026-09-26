@@ -16,7 +16,7 @@ for(const country of ['US','GB','DE','FR','IE','NO','CH','CA',''])test('P27 worl
 });
 test('P27 exported runtime has one model and no geographic or window-config bypass',()=>{assert.equal(consentRuntimeSource,createConsentRuntimeSource());assert.doesNotMatch(consentRuntimeSource,/window\.GCS_CONSENT_MODEL|fetch\(|prior-opt-in|us-default-on/)});
 test('P27 served GPC first load and dynamic GPC both persist denial',async()=>{
- for(const initial of [true,false]){const f=boot({model:null,gpc:initial});const previous=f.scripts.length;assert.equal(previous,initial?0:1);f.navigator.globalPrivacyControl=true;f.event('focus');await f.whenReady();assert.equal(JSON.parse(f.storage.get(key)).analytics,'denied');assert.equal(f.c.effective(),'denied');assert.equal(f.c.purposes().advertising,'denied');assert.equal(f.scripts.length,previous);assert.equal(f.window.GCSAnalytics.event('quiz_start'),false);assert.equal(f.c.allowsExports('advertising'),false)}
+ for(const initial of [true,false]){const f=boot({model:null,gpc:initial});const previous=f.scripts.length;assert.equal(previous,initial?0:1);f.navigator.globalPrivacyControl=true;f.event('focus');await f.whenReady();assert.equal(JSON.parse(f.storage.get(key)).analytics,'denied');assert.equal(f.c.effective(),'denied');assert.equal(f.c.purposes().advertising,'denied');assert.equal(f.scripts.length,previous);assert.equal(f.window.GCSAnalytics.event('comparison_sort_change'),false);assert.equal(f.c.allowsExports('advertising'),false)}
 });
 for(const [label,regionFetch]of [
  ['network error',async()=>{throw Error('offline')}],
@@ -25,7 +25,7 @@ for(const [label,regionFetch]of [
  ['wrong schema',async()=>({ok:true,json:async()=>({schema:'other'})})],
  ['unknown model',async()=>({ok:true,json:async()=>({schema:'glp-consent-region-v1',model:'unknown'})})],
  ['null response',async()=>({ok:true,json:async()=>null})],
-])test('P27 geography is not requested and cannot disable worldwide defaults: '+label,async()=>{let calls=0;const f=boot({model:null,regionFetch:(...args)=>{calls++;return regionFetch(...args)}});await f.whenReady();assert.equal(calls,0);assert.equal(f.c.model(),'global-default-on');assert.equal(f.c.read().analytics,'granted');assert.equal(f.c.purposes().advertising,'granted');assert.equal(f.scripts.length,1);assert.equal(f.window.GCSAnalytics.event('quiz_start'),true)});
+])test('P27 geography is not requested and cannot disable worldwide defaults: '+label,async()=>{let calls=0;const f=boot({model:null,regionFetch:(...args)=>{calls++;return regionFetch(...args)}});await f.whenReady();assert.equal(calls,0);assert.equal(f.c.model(),'global-default-on');assert.equal(f.c.read().analytics,'granted');assert.equal(f.c.purposes().advertising,'granted');assert.equal(f.scripts.length,1);assert.equal(f.window.GCSAnalytics.event('comparison_sort_change'),true)});
 test('P27 state endpoint response is unchanged outside the consent query',async()=>{
  const r=new Request('https://glpclinicscout.com/api/geo-state',{headers:{'cf-ipcountry':'US','cf-region-code':'CA'}});assert.deepEqual(await (await onRequestGet({request:r})).json(),{schema:'glp-geo-state-v1',available:true,state:'CA'});
  Object.defineProperty(r,'cf',{value:{country:'GB',regionCode:'ENG'}});assert.equal(detectConsentModel(r),'global-default-on');assert.deepEqual(await (await onRequestGet({request:r})).json(),{schema:'glp-geo-state-v1',available:false,state:null});

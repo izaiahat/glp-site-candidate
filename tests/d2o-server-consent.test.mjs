@@ -15,7 +15,7 @@ for(const analytics of ['denied','granted'])for(const advertising of ['denied','
  assert.equal(adapter.calls.filter(x=>x[0]==='choose').length,advertising==='granted'?1:0);
  const update=f.order.filter(x=>x[0]==='consent'&&x[1]==='update').at(-1)[2];
  assert.equal(update.ad_storage,advertising);assert.equal(update.ad_user_data,advertising);assert.equal(update.ad_personalization,'denied');assert.equal(update.analytics_storage,analytics);
- assert.equal(f.scripts.some(x=>x.src?.includes('array.js')),true,'default-on requests SDK before subsequent preference');assert.equal(f.window.GCSAnalytics.event('quiz_start'),analytics==='granted');
+ assert.equal(f.scripts.some(x=>x.src?.includes('array.js')),true,'default-on requests SDK before subsequent preference');assert.equal(f.window.GCSAnalytics.event('comparison_sort_change'),analytics==='granted');
  assert.equal(f.c.allowsExports('ad_measurement'),advertising==='granted','measurement permission follows effective purpose; vendor holds stay separate');
  console.log('D2O_RUNTIME_PROOF '+JSON.stringify({test_only:true,requested:{analytics,advertising},effective:f.c.purposes(),consent_mode:update,issuer_choose_calls:adapter.calls.filter(x=>x[0]==='choose').length,receipt_projection_present:!!adapter.receipt(),sdk_sources:f.scripts.filter(x=>x.src).map(x=>x.src),advertising_export:false}));
 });

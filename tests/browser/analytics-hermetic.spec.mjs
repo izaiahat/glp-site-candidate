@@ -320,13 +320,13 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
   const poisonResult = await page.evaluate(() => {
     const properties = { quiz_answers: { medication: "P27_ANSWER_CANARY" }, email: "P27_ANSWER_CANARY", step_number: 99 };
     return {
-      accepted: window.GCSAnalytics.event("quiz_complete", properties),
-      scrubbed: window.posthog.__config.before_send({ event: "quiz_complete", properties, distinct_id: "P27_ANSWER_CANARY" }),
+      accepted: window.GCSAnalytics.event("comparison_sort_change", properties),
+      scrubbed: window.posthog.__config.before_send({ event: "comparison_sort_change", properties, distinct_id: "P27_ANSWER_CANARY" }),
     };
   });
-  expect(poisonResult).toEqual({ accepted: true, scrubbed: { event: "quiz_complete", properties: { $process_person_profile: false, $current_url: 'https://glpclinicscout.com/providers/', $host: 'glpclinicscout.com', $pathname: '/providers/' } } });
+  expect(poisonResult).toEqual({ accepted: true, scrubbed: { event: "comparison_sort_change", properties: { $process_person_profile: false, $current_url: 'https://glpclinicscout.com/providers/', $host: 'glpclinicscout.com', $pathname: '/providers/' } } });
   await expect.poll(() => intercepted.some((entry) => {
-    try { return JSON.parse(entry.body)?.event === "quiz_complete"; } catch { return false; }
+    try { return JSON.parse(entry.body)?.event === "comparison_sort_change"; } catch { return false; }
   })).toBe(true);
   await page.locator('[data-consent="acknowledge"]').click();
   await expect(page.locator("#gcs-consent")).toHaveCount(0);
@@ -410,8 +410,8 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
   await page.locator('[data-consent="denied"]').click();
   expect(await page.evaluate(() => ({
     record: window.GCSConsent.read(), allowed: window.GCSConsent.allowsExports(),
-    accepted: window.GCSAnalytics.event("quiz_complete", { quiz_answers: "P27_ANSWER_CANARY" }),
-    beforeSend: window.posthog.__config.before_send({ event: "quiz_complete", properties: {} }),
+    accepted: window.GCSAnalytics.event("comparison_sort_change", { quiz_answers: "P27_ANSWER_CANARY" }),
+    beforeSend: window.posthog.__config.before_send({ event: "comparison_sort_change", properties: {} }),
     optedOut: window.posthog.__optOuts > 0, captures: window.posthog.__captures.length,
   }))).toMatchObject({ record: { analytics: "denied", advertising: "denied" }, allowed: false, accepted: false, beforeSend: null, optedOut: true, captures: capturedBeforeWithdrawal });
 
@@ -433,7 +433,7 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
   await page.locator('footer a[href^="/privacy/cookies/"]').first().click();
   await expect(page.locator('[data-consent="granted"]')).toBeDisabled();
   expect(await page.evaluate(() => window.GCSConsent.apply("granted").analytics)).toBe("denied");
-  expect(await page.evaluate(() => window.GCSAnalytics.event("quiz_complete", { quiz_answers: "P27_ANSWER_CANARY" }))).toBe(false);
+  expect(await page.evaluate(() => window.GCSAnalytics.event("comparison_sort_change", { quiz_answers: "P27_ANSWER_CANARY" }))).toBe(false);
   expect(await page.evaluate(() => typeof window.posthog)).toBe("undefined");
   expect(intercepted.filter((entry) => new URL(entry.url).pathname === "/static/array.js")).toHaveLength(loadersBeforeGpc);
   expect(await page.evaluate(() => window.dataLayer.filter((entry) => entry[0] === "consent").every((entry) => Object.values(entry[2]).every((value) => value === "denied")))).toBe(true);

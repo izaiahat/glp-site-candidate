@@ -21,7 +21,7 @@ for(const [label,choice,gpc,expected]of [['absent',null,false,'granted'],['denie
  else {const record=JSON.parse(raw);assert.notEqual(raw,f.saved);assert.equal(record.analytics,expected);assert.equal(record.advertising,expected);assert.equal(record.version,'gcs-cookie-v4-distinct-purposes');assert.equal(record.record_type,'preference_only');assert.equal(record.analytics_basis,'global_default');assert.equal(record.notice_acknowledged,false);assert.ok(Number.isFinite(Date.parse(record.saved_at)));}
  assert.equal(f.window.GCSConsent.purposes().advertising,expected);assert.equal(f.window.GCSConsent.allowsExports('ad_measurement'),false);
  for(const entry of f.window.dataLayer)if(entry[0]==='consent')assert.deepEqual(Object.values(entry[2]),['denied','denied','denied','denied']);
- assert.equal(f.window.GCSAnalytics.event('quiz_complete',{result_count:3}),false);assert.equal(f.window.GCSAnalytics.clickIdFor('TEST'),null);assert.equal(f.window.GCSAnalytics.decorateOutbound({href:'https://merchant.invalid/?a=1'}),'https://merchant.invalid/?a=1');assert.deepEqual(f.effects,[]);
+ assert.equal(f.window.GCSAnalytics.event('comparison_sort_change',{result_count:3}),false);assert.equal(f.window.GCSAnalytics.clickIdFor('TEST'),null);assert.equal(f.window.GCSAnalytics.decorateOutbound({href:'https://merchant.invalid/?a=1'}),'https://merchant.invalid/?a=1');assert.deepEqual(f.effects,[]);
  assert.equal(f.window.posthog,undefined);
 });
 test('explicit user choice remains writable without enabling exports; GPC wins',async()=>{

@@ -12,7 +12,6 @@ const asset=home.match(/src="(\/assets\/analytics(?:\.[a-f0-9]+)?\.js(?:\?[^\"]*
 const analytics=readFileSync(path.join(PUBLIC,new URL(asset,'https://glpclinicscout.com').pathname),'utf8');
 const oldHook="function beforeSend(event) { if (!consented() || !reviewed(event?.event)) return null; return {event: event.event, properties: cleanProperties(event.event, {})}; }\n\n  ";
 const origin='https://glpclinicscout.com',host='https://posthog-fixture.invalid';
-const route='/guides/semaglutide/';
 const key='TEST_PUBLIC_PROJECT_TOKEN_NOT_A_CREDENTIAL';
 
 // Actual SDK, locally fulfilled bytes; no live ingestion or external forwarding.
@@ -21,14 +20,16 @@ const key='TEST_PUBLIC_PROJECT_TOKEN_NOT_A_CREDENTIAL';
 test('D1 real PostHog SDK preserves protocol and pageviews without sensitive payloads',async({browser},info)=>{
  expect(sha(sdk)).toBe(SDK_SHA);
  const receipts=[];
- for(const variant of ['unchanged-sanitizer','fixed']) {
+ for(const variant of ['unchanged-sanitizer','fixed','fixed-health-route']) {
+  const fixed=variant!=='unchanged-sanitizer';
+  const route=variant==='fixed-health-route'?'/guides/semaglutide/':'/providers/';
   const context=await browser.newContext({serviceWorkers:'block',userAgent:'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36'});
   // The real SDK also rejects Chromium's HeadlessChrome UA-data brand.
   // Test-only ordinary-browser branch; all requests remain locally intercepted.
   await context.addInitScript(()=>{Object.defineProperty(navigator,'webdriver',{get:()=>false});Object.defineProperty(navigator,'userAgentData',{get:()=>undefined});});
   const attempts=[],unknown=[];
-  const source=variant==='fixed'?analytics:analytics.replace(/function beforeSend\(event\) \{[\s\S]*?\n  function emit/,oldHook+'function emit');
-  expect(source===analytics).toBe(variant==='fixed');
+  const source=fixed?analytics:analytics.replace(/function beforeSend\(event\) \{[\s\S]*?\n  function emit/,oldHook+'function emit');
+  expect(source===analytics).toBe(fixed);
   const fixture=`<!doctype html><meta name="referrer" content="no-referrer"><script>
 window.GCS_EXPORT_POLICY={schema:'glp-release-export-policy-v2',stage:'production-seal',third_party_exports:true};
 window.GCS_ANALYTICS={enabled:true,measurement_id:'G-LOCAL-FIXTURE',gtm_container_id:'GTM-LOCAL-FIXTURE'};window.GCS_POSTHOG={enabled:true,api_key:'${key}',host:'${host}'};
@@ -53,18 +54,20 @@ window.GCS_ANALYTICS={enabled:true,measurement_id:'G-LOCAL-FIXTURE',gtm_containe
    await page.waitForTimeout(600);
    await info.attach('sdk-diagnostic-'+variant,{contentType:'application/json',body:JSON.stringify({attempts,unknown,state:await page.evaluate(()=>({events:window.__sdkEvents,options:window.__sdkOptions,consent:window.GCSConsent.purposes(),exports:window.GCSConsent.allowsExports(),optedOut:window.posthog.has_opted_out_capturing(),ua:navigator.userAgent,id:window.posthog.get_distinct_id()}))})});
    expect(await page.evaluate(()=>window.__sdkOptions)).toEqual({capture_pageview:true,person_profiles:'never',persistence:'memory',disable_persistence:true});
-   expect(attempts.length).toBe(variant==='fixed'?1:0);
+   expect(attempts.length).toBe(fixed?1:0);
    const initialAttempts=attempts.length;
-   if(variant==='fixed'){
+   if(fixed){
     function decode(row){let v;try{v=JSON.parse(row.body)}catch{v=JSON.parse(Buffer.from(new URLSearchParams(row.body).get('data'),'base64').toString())}return Array.isArray(v)?v:(Array.isArray(v.batch)?v.batch:[v]);}
     const events=decode(attempts[0]);expect(events).toHaveLength(1);
     const event=events[0];expect(event.event).toBe('$pageview');expect(event.uuid).toBeTruthy();expect(event.timestamp).toBeTruthy();
     const id=await page.evaluate(()=>window.posthog.get_distinct_id());expect(id).toBeTruthy();
-    expect(event.properties).toEqual({token:key,distinct_id:id,$process_person_profile:false,$current_url:origin+route,$host:'glpclinicscout.com',$pathname:route});
+    expect(event.properties).toEqual({token:key,distinct_id:id,$process_person_profile:false,$host:'glpclinicscout.com',...(variant==='fixed-health-route'?{}:{$current_url:origin+route,$pathname:route})});
+    expect(await page.evaluate(()=>['quiz_start','quiz_step_complete','quiz_complete','scorecard_start','scorecard_complete'].map(name=>window.GCSAnalytics.event(name,{result_count:3})))).toEqual([false,false,false,false,false]);
+    if(variant==='fixed-health-route')expect(JSON.stringify(event)).not.toMatch(/semaglutide|\/guides\/|\$current_url|\$pathname/);
     expect(attempts[0].referrer).toBe('');
-    expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_complete',{quiz_answers:'CANARY_ANSWER',health_condition:'CANARY_CONDITION',form_contents:'CANARY_FORM',email:'CANARY_EMAIL'}))).toBe(true);
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{quiz_answers:'CANARY_ANSWER',health_condition:'CANARY_CONDITION',form_contents:'CANARY_FORM',email:'CANARY_EMAIL'}))).toBe(true);
     await expect.poll(()=>attempts.length).toBe(2);
-    const manual=decode(attempts[1])[0];expect(manual.event).toBe('quiz_complete');expect(manual.properties).toEqual(event.properties);
+    const manual=decode(attempts[1])[0];expect(manual.event).toBe('comparison_sort_change');expect(manual.properties).toEqual(event.properties);
     expect(JSON.stringify(attempts.map(decode))).not.toMatch(/CANARY|quiz_answers|health_condition|form_contents|\$set|\$identify|\$referrer/);
     await page.getByRole('button',{name:'Got it',exact:true}).click();
     expect(await page.evaluate(()=>window.GCSConsent.purposes())).toEqual({analytics:'granted',advertising:'granted'});

@@ -17,11 +17,11 @@ export function boot({storage=new Map(),gpc=false,failRead=false,failWrite=false
  return {get c(){return window.GCSConsent},window,navigator,storage,order,scripts,document,ready:()=>ready(),whenReady:()=>window.GCSConsentReady,choose(value){const root=document.querySelector('#gcs-consent'),button=root?.querySelector('[data-consent="'+value+'"]');assert.ok(button,'rendered consent action '+value);root.click({target:{closest:()=>button}})},documentEvent(type,event){for(const f of listeners['document:'+type]||[])f(event)},event:(type,extra={})=>window.dispatchEvent({type,...extra}),failWrites:()=>{failWrite=true}};
 }
 test('cross-tab withdrawal synchronously clears queued work before consent event returns',()=>{
- const f=boot();assert.equal(f.c.effective(),'granted');f.window.GCSAnalytics.event('quiz_start');assert.equal(f.window.posthog.__queue.length,1);
+ const f=boot();assert.equal(f.c.effective(),'granted');f.window.GCSAnalytics.event('comparison_sort_change');assert.equal(f.window.posthog.__queue.length,1);
  f.storage.delete(key);f.event('storage',{key});assert.equal(f.window.posthog.__queue.length,0);assert.equal(f.window.GCS_ANALYTICS.consent,'denied');
 });
 test('dynamic GPC refresh clears pending work and cannot auto-restore prior grant',()=>{
- const f=boot();assert.equal(f.c.effective(),'granted');f.window.GCSAnalytics.event('quiz_start');f.navigator.globalPrivacyControl=true;f.event('focus');
+ const f=boot();assert.equal(f.c.effective(),'granted');f.window.GCSAnalytics.event('comparison_sort_change');f.navigator.globalPrivacyControl=true;f.event('focus');
  assert.equal(f.window.posthog.__queue.length,0);assert.equal(f.c.effective(),'denied');f.navigator.globalPrivacyControl=false;f.event('focus');assert.equal(f.c.effective(),'denied');
 });
 test('failed persistence cannot prevent revocation or revive old grant in this document',()=>{
@@ -56,18 +56,18 @@ test('P27 GPC first load stores denied and never loads PostHog',()=>{
  for(const x of f.order.filter(x=>x[0]==='consent'))assert.deepEqual(Object.values(x[2]),['denied','denied','denied','denied']);
 });
 test('P27 opt-out clears default-on queue before click returns',()=>{
- const f=boot();assert.equal(f.c.read().analytics_basis,'global_default');assert.equal(f.window.GCSAnalytics.event('quiz_start'),true);const queue=f.window.posthog.__queue,script=f.scripts[0];assert.equal(queue.length,1);
- f.c.open();f.choose('denied');assert.equal(queue.length,0,'opt-out cleared pending queue synchronously');assert.equal(f.c.read().analytics,'denied');assert.equal(f.window.GCS_ANALYTICS.consent,'denied');assert.equal(f.window.GCSAnalytics.event('quiz_start'),false);
+ const f=boot();assert.equal(f.c.read().analytics_basis,'global_default');assert.equal(f.window.GCSAnalytics.event('comparison_sort_change'),true);const queue=f.window.posthog.__queue,script=f.scripts[0];assert.equal(queue.length,1);
+ f.c.open();f.choose('denied');assert.equal(queue.length,0,'opt-out cleared pending queue synchronously');assert.equal(f.c.read().analytics,'denied');assert.equal(f.window.GCS_ANALYTICS.consent,'denied');assert.equal(f.window.GCSAnalytics.event('comparison_sort_change'),false);
  let initialized=0;f.window.posthog.init=()=>{initialized++};script.load();assert.equal(initialized,0);assert.equal(f.window.GCS_POSTHOG_LOADED,false);
 });
 test('P27 storage failures never authorize default-on',()=>{
- for(const options of [{failRead:true},{failWrite:true},{failRead:true,failWrite:true}]){const f=boot(options);assert.equal(f.c.effective(),'denied');assert.equal(f.c.persistenceStatus(),'failed');assert.equal(f.scripts.length,0);assert.equal(f.window.GCSAnalytics.event('quiz_start'),false)}
+ for(const options of [{failRead:true},{failWrite:true},{failRead:true,failWrite:true}]){const f=boot(options);assert.equal(f.c.effective(),'denied');assert.equal(f.c.persistenceStatus(),'failed');assert.equal(f.scripts.length,0);assert.equal(f.window.GCSAnalytics.event('comparison_sort_change'),false)}
 });
 test('P27 unacknowledged notice survives reload; saved withdrawal never becomes a default grant',()=>{
  const f=boot(),again=boot({storage:f.storage});again.ready();assert.ok(again.document.querySelector('#gcs-consent'));f.c.apply('denied');const denied=boot({storage:f.storage});denied.ready();assert.equal(denied.c.effective(),'denied');assert.equal(denied.scripts.length,0);assert.equal(denied.document.querySelector('#gcs-consent'),null);
 });
 test('P27 legacy regional input still gets one worldwide acknowledgment without checkboxes',()=>{
- const f=boot({model:'prior-opt-in'});assert.equal(f.c.effective(),'granted');assert.equal(f.c.purposes().advertising,'granted');assert.equal(f.scripts.length,1);assert.equal(f.window.GCSAnalytics.event('quiz_start'),true);f.ready();const html=f.document.querySelector('#gcs-consent').innerHTML;
+ const f=boot({model:'prior-opt-in'});assert.equal(f.c.effective(),'granted');assert.equal(f.c.purposes().advertising,'granted');assert.equal(f.scripts.length,1);assert.equal(f.window.GCSAnalytics.event('comparison_sort_change'),true);f.ready();const html=f.document.querySelector('#gcs-consent').innerHTML;
  assert.doesNotMatch(html,/<input| checked|data-consent="(?:granted|denied)"/);assert.equal((html.match(/<button /g)||[]).length,1);assert.match(html,/data-consent="acknowledge"/);
  const style=f.document.querySelector('#gcs-consent-style').textContent;assert.match(style,/button\[data-consent\]\{flex:1;min-height:44px/);assert.deepEqual(Object.values(f.order.find(x=>x[0]==='consent'&&x[1]==='default')[2]),['granted','granted','granted','denied']);
  f.choose('acknowledge');assert.equal(f.c.effective(),'granted');assert.equal(f.c.read().analytics_basis,'global_default');assert.equal(f.c.purposes().advertising,'granted');assert.equal(f.scripts.length,2);assert.equal(f.scripts.filter(x=>x.src).length,1);

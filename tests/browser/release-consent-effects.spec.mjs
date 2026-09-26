@@ -220,7 +220,7 @@ for (const route of ROUTES) {
       await openChoices(page); audit.setPhase('denied');
       await page.getByRole('button',{name:'Turn off tracking',exact:true}).click(); await check('denied');
       audit.setPhase('denied-reload'); await page.reload({waitUntil:'networkidle'}); await page.evaluate(()=>window.GCSConsentReady); await check('denied');
-      expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_complete',{quiz_answers:'D1_SYNTHETIC_CANARY',email:'d1@example.invalid'}))).toBe(false);
+      expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{quiz_answers:'D1_SYNTHETIC_CANARY',email:'d1@example.invalid'}))).toBe(false);
       if(route === '/reviews/nu-image-medical-review/') {
         const held = selections.find(row => row.program_id === 'nu-image-medical-review');
         expect(held.disposition).toBe('HOLD');
@@ -241,7 +241,7 @@ for (const route of ROUTES) {
       await openChoices(page); audit.setPhase('revoked');
       await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();
       if(new URL(page.url()).pathname!==route) {await page.goto(route,{waitUntil:'networkidle'});await page.evaluate(()=>window.GCSConsentReady);}
-      expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{}))).toBe(false); await check('denied');
+      expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{}))).toBe(false); await check('denied');
       expect(audit.attempts.every(r=>r.disposition!=='pending')).toBe(true);
     } finally { await info.attach('D1-candidate-privacy-observation',{body:JSON.stringify({inventory,phases,...audit.receipt()}),contentType:'application/json'}); }
   });
@@ -287,23 +287,23 @@ window.GCS_POSTHOG={enabled:true,api_key:'D1_LOCAL_NON_CREDENTIAL',host:'${origi
     await check('granted');
     await expect(page.locator('#gcs-consent button')).toHaveCount(1);
     await expect(page.locator('#gcs-consent input')).toHaveCount(0);
-    expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{quiz_answers:'D1_DEFAULT_CANARY',health_condition:'D1_DEFAULT_CANARY',page_url:'/guides/diabetes/?D1_DEFAULT_CANARY'}))).toBe(true);
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{quiz_answers:'D1_DEFAULT_CANARY',health_condition:'D1_DEFAULT_CANARY',page_url:'/guides/diabetes/?D1_DEFAULT_CANARY'}))).toBe(true);
     await expect.poll(()=>captures.length).toBe(1);
-    expect(captures).toEqual([{phase:'default-granted',event:'quiz_start',properties:{}}]);
+    expect(captures).toEqual([{phase:'default-granted',event:'comparison_sort_change',properties:{}}]);
     await page.getByRole('button',{name:'Got it',exact:true}).click();await check('granted');
     await expect(page.locator('#gcs-consent')).toHaveCount(0);
     await openChoices(page);audit.setPhase('denied');await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();
-    expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{}))).toBe(false); await check('denied'); expect(captures.length).toBe(1);
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{}))).toBe(false); await check('denied'); expect(captures.length).toBe(1);
     await openChoices(page); audit.setPhase('analytics-granted');await page.getByRole('button',{name:'Turn on tracking',exact:true}).click();
     await page.waitForFunction(()=>!!window.__d1SdkOptions);
     expect(await page.evaluate(()=>window.GCSConsent.allowsExports('analytics'))).toBe(true);
-    expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{email:'D1_CANARY',quiz_answers:'D1_CANARY',health_condition:'D1_CANARY',page_url:'/guides/diabetes/?D1_CANARY'}))).toBe(true);
-    await expect.poll(()=>captures.length).toBe(2);expect(captures).toEqual([{phase:'default-granted',event:'quiz_start',properties:{}},{phase:'analytics-granted',event:'quiz_start',properties:{}}]);await check('granted');
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{email:'D1_CANARY',quiz_answers:'D1_CANARY',health_condition:'D1_CANARY',page_url:'/guides/diabetes/?D1_CANARY'}))).toBe(true);
+    await expect.poll(()=>captures.length).toBe(2);expect(captures).toEqual([{phase:'default-granted',event:'comparison_sort_change',properties:{}},{phase:'analytics-granted',event:'comparison_sort_change',properties:{}}]);await check('granted');
     expect(await page.evaluate(()=>({advertising:window.GCSConsent.allowsExports('ad_measurement'),meta:window.glpMetaTrackLead({quiz_answers:'D1_AD_CANARY',health_condition:'D1_AD_CANARY',page_url:'/guides/diabetes/?D1_AD_CANARY'}),googleHeld:window.GCS_GTM_HELD}))).toEqual({advertising:true,meta:'',googleHeld:'A11 containment unbound'});
     expect(await page.evaluate(()=>JSON.stringify(window.dataLayer))).not.toMatch(/D1_.*CANARY|quiz_answers|health_condition|\/guides\/diabetes/);
     await openChoices(page); audit.setPhase('revoked');await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();
     const before=captures.length;
-    expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{email:'D1_NEW_POST_REVOKE_CANARY'}))).toBe(false);
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{email:'D1_NEW_POST_REVOKE_CANARY'}))).toBe(false);
     await check('denied');expect(captures.length).toBe(before);
     expect(audit.attempts.filter(r=>r.phase==='revoked' && r.category.startsWith('analytics'))).toEqual([]);
     expect(await page.evaluate(()=>window.__d1OptOuts)).toBeGreaterThan(0);
@@ -313,7 +313,7 @@ window.GCS_POSTHOG={enabled:true,api_key:'D1_LOCAL_NON_CREDENTIAL',host:'${origi
     await page.reload();await page.evaluate(()=>window.GCSConsentReady);
     await check('denied');
     await page.getByRole('button',{name:'Got it',exact:true}).click();await check('denied');
-    expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{}))).toBe(false);
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{}))).toBe(false);
     expect(captures.length).toBe(before);
     expect(audit.attempts.filter(r=>r.phase==='gpc'&&r.category.startsWith('analytics'))).toEqual([]);
     expect(audit.attempts.every(r=>r.disposition==='fulfilled-local')).toBe(true);
