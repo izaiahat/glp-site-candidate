@@ -4,7 +4,9 @@ import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {projectMoneyPagesFromRegistry,projectQuizFromRegistry,deriveProfileSurfaceSets} from '../src/program-registry.mjs';
-import {projectTherapeuticSurfaces} from '../src/therapeutic-taxonomy.mjs';
+import {projectTherapeuticSurfaces,stableSha256} from '../src/therapeutic-taxonomy.mjs';
+import {restoreGoOnlyPriceBasis} from '../src/go-runtime-selection.mjs';
+import {fileURLToPath} from 'node:url';
 import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
 import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
 import {buildPriceIndexArtifacts,buildPriceIndexDistribution,renderPriceIndex,normalizePriceIndexSourceHashes,validatePriceIndexInputs} from '../src/price-index.mjs';
@@ -131,9 +133,17 @@ test('GLP-234 F3-R1 supported caller forms preserve full validation, artifacts a
 });
 
 test('GLP-234 F3-R1 maintained build and observer caller seams accept authenticated repeats',()=>{
- // Execute maintained input/call expressions only. No output writer, observer
- // CLI, build preflight, decoration, publication or article admission is run.
+ // Execute maintained preflight and input/call expressions only. No output
+ // writer, observer CLI, decoration, publication or article admission is run.
  const build=readFileSync(new URL('scripts/build-staging.mjs',root),'utf8');
+ // The previous seam began AFTER this independent guard and missed the real
+ // build failure: current consumer identity is not the frozen price identity.
+ const preflightStart=build.indexOf('  let priceIndexRegistrySourceSha256 =');
+ const preflightEnd=build.indexOf('  const priceLedger =',preflightStart);
+ assert.ok(preflightStart>=0&&preflightEnd>preflightStart);
+ const preflight=new Function('programRegistry','programRegistryBytes','priceTrackerConfig','createHash','stableSha256','restoreGoOnlyPriceBasis','ROOT','historicalPriceIndexRegistry',
+  build.slice(preflightStart,preflightEnd)+'\nreturn priceIndexRegistrySourceSha256;');
+ const callPreflight=(r,tracker,reader=historicalPriceIndexRegistry)=>preflight(r,bytes('program-registry.json'),tracker,createHash,stableSha256,restoreGoOnlyPriceBasis,fileURLToPath(root),reader);
  const buildStart=build.indexOf('  const priceIndexInput = {');
  const buildEnd=build.indexOf('  const priceIndexRefresh =',buildStart);
  assert.ok(buildStart>=0&&buildEnd>buildStart);
@@ -151,10 +161,14 @@ test('GLP-234 F3-R1 maintained build and observer caller seams accept authentica
  const expected=buildPriceIndexArtifacts(input,{now}),validated=validatePriceIndexInputs(input,{now});
  const historical=historicalPriceIndexRegistry(registry,frozen.ledger);
  for(const programRegistry of [registry,historical]){
-  const callBuild=()=>buildCall(input.tracker,input.study,programRegistry,frozen,bytes('original-data-study.json'),input.sourceHashes.program_registry_sha256,createHash,
+  const callBuild=()=>buildCall(input.tracker,input.study,programRegistry,frozen,bytes('original-data-study.json'),callPreflight(programRegistry,input.tracker),createHash,
    (candidate,options)=>buildPriceIndexArtifacts(candidate,{...options,now}),html=>html,html=>html,html=>html,'glp-1-price-index/index.html');
   const callObserve=()=>observeCall({...input,programRegistry},{study:bytes('original-data-study.json'),programRegistry:bytes('program-registry.json')},frozen,sha,normalizePriceIndexSourceHashes,validatePriceIndexInputs,latest);
   assert.deepEqual(callBuild(),expected);assert.deepEqual(callObserve(),validated);
+  const wrongTracker=structuredClone(input.tracker);
+  wrongTracker.price_index.observations.at(-1).source_files.program_registry_sha256='0'.repeat(64);
+  assert.throws(()=>callPreflight(programRegistry,wrongTracker),{message:'price_index_registry_frozen_source_lineage_mismatch'});
+  assert.throws(()=>callPreflight(programRegistry,input.tracker,(r)=>historicalPriceIndexRegistry(r,undefined,()=>{throw Error('unavailable');})),{message:'price_index_historical_authority_unreadable'});
   if(programRegistry===historical){
    programRegistry.programs.find(p=>p.program_id==='try-ageless').display_name='Forged';
    assert.throws(callBuild,{message:'price_index_historical_registry_drift'});

@@ -39,6 +39,7 @@ import { refreshPriceTracker } from "./refresh-price-tracker.mjs";
 import { buildPriceIndexArtifacts, PRICE_INDEX_ROUTE, rebindPriceIndexShippedHtml } from "../src/price-index.mjs";
 import { readPriceIndexPredecessor } from "../src/price-index-predecessor.mjs";
 import { frozenPriceLedger } from "../src/price-index-nonprice-binding.mjs";
+import { historicalPriceIndexRegistry } from "../src/price-index-historical-registry.mjs";
 import { composePriceWatchIssue, validatePublishedPriceWatchIssue } from "../src/price-watch-email.mjs";
 import { buildMysteryShopArtifacts, loadEvidenceInputs, evidenceLedgerAuthority } from "../src/mystery-shop.mjs";
 import { buildDealArtifacts, resolveDealEvaluationClocks } from "../src/deal-ingestion.mjs";
@@ -2352,7 +2353,10 @@ async function main() {
   await writeOps("wave4-price-tracker-manifest.json", JSON.stringify(wave4PriceTracker.manifest, null, 2) + "\n");
   let priceIndexRegistrySourceSha256 = createHash("sha256").update(programRegistryBytes).digest("hex");
   if (programRegistry.therapeutic_taxonomy) {
-    const priceIndexRegistryBasis = structuredClone(programRegistry);
+    // Authenticate the same historical view as the price-index consumer before
+    // checking its frozen body. Keep current identity/authority out of this
+    // price-only copy and leave programRegistry unchanged for public surfaces.
+    const priceIndexRegistryBasis = historicalPriceIndexRegistry(programRegistry);
     delete priceIndexRegistryBasis.therapeutic_taxonomy;
     delete priceIndexRegistryBasis.provider_dynamic_profiles;
     delete priceIndexRegistryBasis.consumer_therapeutic_authorities;
