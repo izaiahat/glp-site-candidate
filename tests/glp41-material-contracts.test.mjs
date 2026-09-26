@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {loadCarrierArticles, assertCarrierArticleOutput} from '../src/carrier-article-retention.mjs';
 import {loadAffiliateLinkMap} from '../src/affiliate-link-map.mjs';
+import {assertCurrentHoldManifestSuccessor} from '../src/cost-calculator-affiliate.mjs';
 import {COST_AFFILIATE_EMAIL_MANIFEST} from '../src/cost-affiliate-email-manifest.generated.mjs';
 import {checkDispositions} from '../scripts/ci-release-gate.mjs';
 import {JSDOM} from 'jsdom';
@@ -59,6 +60,20 @@ test('F34 final emitted carrier articles retain the exact authenticated body and
 test('F35 generated email manifest includes every approved link independently of calculator price eligibility', () => {
   const expected = Object.values(loadAffiliateLinkMap('calculator')).filter(row => row.live && row.affiliate_href);
   const actual = COST_AFFILIATE_EMAIL_MANIFEST.programs;
+  const held = new Set(JSON.parse(read('data/go-selection-receipt.json')).programs.filter(row => row.disposition === 'HOLD').map(row => row.render_id));
+  assert.ok(actual.every(row => !held.has(row.program_id)), 'email manifest must not resurrect a raw HOLD');
+  // Isolated predecessor fixture: only the named current HOLD may be removed.
+  const after = COST_AFFILIATE_EMAIL_MANIFEST;
+  const before = {...after, programs:[...actual, {...actual[0], program_id:[...held][0]}]};
+  assertCurrentHoldManifestSuccessor(before, after, held);
+  for (const mutate of [
+    value => value.programs.pop(),
+    value => value.programs.push({...value.programs[0], program_id:'unapproved-fixture'}),
+    value => { value.programs[0].affiliate_href = 'https://changed.invalid/'; },
+  ]) {
+    const changed = structuredClone(after); mutate(changed);
+    assert.throws(() => assertCurrentHoldManifestSuccessor(before, changed, held), /cost_email_non_hold_manifest_drift/);
+  }
   assert.ok(expected.length > 0);
   assert.deepEqual(actual.map(row => row.program_id).sort(), expected.map(row => row.program_id).sort());
   for (const row of expected) assert.equal(actual.find(item => item.program_id === row.program_id).affiliate_href, row.affiliate_href);

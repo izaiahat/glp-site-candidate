@@ -41,6 +41,11 @@ export function costAffiliateEmailManifest(links) {
   };
 }
 
+export function assertCurrentHoldManifestSuccessor(before, after, heldRenderIds) {
+  const expected = {...before, programs:before.programs.filter(row => !heldRenderIds.has(row.program_id))};
+  if (JSON.stringify(after) !== JSON.stringify(expected)) throw new Error('cost_email_non_hold_manifest_drift');
+}
+
 export function renderCostAffiliateEmailManifestModule(links) {
   return `// Generated from the fail-closed calculator affiliate resolver. Do not edit by hand.\nexport const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze(${JSON.stringify(costAffiliateEmailManifest(links), null, 2)});\n`;
 }
