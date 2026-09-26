@@ -12,6 +12,7 @@ import {JSDOM} from 'jsdom';
 import {mkdtempSync, mkdirSync, writeFileSync, rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
+import {assertCurrentHoldGoSuccessor} from '../src/go-runtime-manifest.mjs';
 import {loadGoPromotionAuthority, loadGoSelection, applyGoSelectionToLinkMap} from '../src/go-runtime-selection.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = path => readFileSync(new URL('../'+path, import.meta.url));
@@ -162,6 +163,18 @@ test('R2 current holds beat conflicting legacy approvals and block link-map resu
     const links = Object.fromEntries(held.map(row => [row.render_id, {live:true, affiliate_href:'https://example.invalid'}]));
     applyGoSelectionToLinkMap(links, registry, 'compare', 'glp-clinic-scout', loadGoSelection(temp), authority);
     for (const row of held) assert.equal(links[row.render_id].live, false);
+    const predecessor = {schema:'fixture', programs:{held:{program_id:'held', display_name:'Held', route:'/go/held', entry_state:'transparent_direct', commercial_state:'live', tracking:{base_url:'https://fixture.invalid'}}}};
+    const successor = {schema:'fixture', programs:[{program_id:'held', display_name:'Held', route:'/go/held', entry_state:'transparent_direct', commercial_state:'live', live_link_allowed:false, promotion_authorized:false, candidate_gate:'No complete live attribution and promotion receipt; entry remains held.'}]};
+    assertCurrentHoldGoSuccessor(predecessor, successor, new Set(['held']));
+    assert.throws(() => assertCurrentHoldGoSuccessor(predecessor, successor, new Set()), /go_non_hold_manifest_drift/);
+    for (const mutate of [
+      row => { row.live_link_allowed = true; },
+      row => { row.tracking = {base_url:'https://fixture.invalid'}; },
+      row => { row.route = '/go/other'; },
+    ]) {
+      const changed = structuredClone(successor); mutate(changed.programs[0]);
+      assert.throws(() => assertCurrentHoldGoSuccessor(predecessor, changed, new Set(['held'])), /go_non_hold_manifest_drift/);
+    }
   } finally { rmSync(temp, {recursive:true, force:true}); }
 });
 

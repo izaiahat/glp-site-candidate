@@ -4,7 +4,9 @@ import path from "node:path";
 import { loadAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
 import { loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
 import { deriveGoEntriesFromRegistry } from "../src/program-registry.mjs";
-import { manifestJsonText, renderGoRuntimeManifestModule } from "../src/go-runtime-manifest.mjs";
+import { manifestJsonText, renderGoRuntimeManifestModule, assertCurrentHoldGoSuccessor } from "../src/go-runtime-manifest.mjs";
+import { loadGoSelection } from '../src/go-runtime-selection.mjs';
+const holdsOnly = process.argv.includes('--current-holds-only');
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const registry = JSON.parse(await readFile(path.join(ROOT, "data", "program-registry.json"), "utf8"));
@@ -15,7 +17,7 @@ const goPromotionAuthority = loadGoPromotionAuthority(ROOT);
 // Otherwise the next governed wire-in refresh would silently withdraw this cohort.
 const authorityPath = path.join(ROOT, 'data/go-runtime-promotion-authority.json');
 const authorityText = JSON.stringify(goPromotionAuthority, null, 2) + '\n';
-if (await readFile(authorityPath, 'utf8') !== authorityText) {
+if (!holdsOnly && await readFile(authorityPath, 'utf8') !== authorityText) {
   const temporary = `${authorityPath}.tmp-${process.pid}`;
   await writeFile(temporary, authorityText, { mode: 0o644 });
   await rename(temporary, authorityPath);
@@ -27,6 +29,11 @@ const manifest = {
   internal_fallback: "https://glpclinicscout.com/providers/",
   programs: deriveGoEntriesFromRegistry(registry, "glp-clinic-scout", ledger.programs, loadAffiliateLinkMap("compare"), goPromotionAuthority),
 };
+if (holdsOnly) {
+  const {GO_RUNTIME_MANIFEST: before} = await import('../functions/go/program-manifest.js');
+  const held = new Set(Object.values(loadGoSelection(ROOT).programs).filter(row => row.disposition === 'HOLD').map(row => row.program_id));
+  assertCurrentHoldGoSuccessor(before, manifest, held);
+}
 await writeFile(path.join(ROOT, "functions", "go", "program-manifest.js"), renderGoRuntimeManifestModule(manifest));
-await writeFile(path.join(ROOT, "artifacts", "ops", "worker-manifest.staging.json"), manifestJsonText(manifest));
+if (!holdsOnly) await writeFile(path.join(ROOT, "artifacts", "ops", "worker-manifest.staging.json"), manifestJsonText(manifest));
 console.log(JSON.stringify({ status: "PASS", programs: manifest.programs.length, verified_candidates: manifest.programs.filter((program) => program.status === "live_operator_approved").length }));

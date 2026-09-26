@@ -21,11 +21,13 @@ def main() -> int:
         # Refresh the existing registered email-link producer before the build
         # imports its generated module. Raw current HOLD changes must reach this
         # consumer too; build-staging still enforces full manifest equality.
-        generated = subprocess.run(
-            ["node", "scripts/migrate-cost-affiliate-email-manifest.mjs", "--current-holds-only"], cwd=ROOT,
-            pass_fds=(lock.fileno(),), check=False)
-        if generated.returncode:
-            return generated.returncode
+        for producer in ("migrate-cost-affiliate-email-manifest.mjs",
+                         "regenerate-go-runtime-manifest.mjs"):
+            generated = subprocess.run(
+                ["node", "scripts/" + producer, "--current-holds-only"], cwd=ROOT,
+                pass_fds=(lock.fileno(),), check=False)
+            if generated.returncode:
+                return generated.returncode
         return subprocess.run(["npm", "run", "build:validated"], cwd=ROOT,
                               pass_fds=(lock.fileno(),), check=False).returncode
 
