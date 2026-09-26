@@ -32,6 +32,16 @@ is inside `loadCarrierArticle`, mandatory through `loadCarrierArticles` in
 `build-staging.mjs` before emission; it cannot be skipped by disabling a later
 imagery check. Existing asset lengths/hashes and snapshot/output checks remain.
 
+The registered lastmod comparison also loads an authenticated **historical**
+release that predates the rebind. It now uses `loadHistoricalCarrierArticles`,
+a comparison-only entry retaining the original **whole-record** hash with no
+exclusions or new binding requirement. It rejects the rebound records. The
+current build loader remains mandatory-bound and rejects removal of all six
+fields; there is no auto-detection or fallback to the historical contract.
+Frozen predecessor bytes are not rewritten. The first full-gate attempt exposed
+this historical/current integration distinction after successful page emission;
+its failed receipt is retained rather than relabeled.
+
 ## Generation-baseline equivalence (executed before adopting this anchor)
 
 The existing preimage raw SHA-256 is

@@ -79,6 +79,9 @@ function validateCarrierImageInputs(read, manifest, binding, record, imageBytes)
   for (const source of receipt.after_source_files) if (sha(read(source.path)) !== source.sha256) fail('current_source');
 }
 export function loadCarrierArticle(root, manifestPath = MANIFEST, manifestSha256 = MANIFEST_SHA256) {
+  return loadCarrierArticleContract(root, manifestPath, manifestSha256, true);
+}
+function loadCarrierArticleContract(root, manifestPath, manifestSha256, requireRebind) {
   function read(relative) {
     if (!relative || path.isAbsolute(relative) || relative.split('/').some(x => !x || x === '.' || x === '..')) throw new Error('carrier_article_path');
     const parts = relative.split('/');
@@ -92,7 +95,7 @@ export function loadCarrierArticle(root, manifestPath = MANIFEST, manifestSha256
     const bindingBytes = read(binding.path);
     const data = JSON.parse(bindingBytes)[binding.key];
     const matches = binding.identity ? data.filter(x => x[binding.identity] === manifest.route) : [data[manifest.route]];
-    const splitInputs = binding.path === IMAGE_MANIFEST && binding.key === 'records' && binding.identity === 'route' &&
+    const splitInputs = requireRebind && binding.path === IMAGE_MANIFEST && binding.key === 'records' && binding.identity === 'route' &&
       REBIND_CARRIERS.some(([p, h, route]) => p === manifestPath && h === manifestSha256 && route === manifest.route);
     if (matches.length !== 1 || !matches[0] || sha(canonical(splitInputs ? historicalImageRecord(matches[0]) : matches[0])) !== binding.sha256) throw new Error(`carrier_article_metadata_drift:${binding.path}`);
     if (splitInputs) validateCarrierImageInputs(read, manifest, binding, matches[0], bindingBytes);
@@ -105,6 +108,13 @@ export function loadCarrierArticle(root, manifestPath = MANIFEST, manifestSha256
   const retained = { manifest, manifest_sha256: manifestSha256, bytes };
   assertCarrierArticleBytes(retained, bytes);
   return retained;
+}
+// Comparison-only entry for authenticated, pre-rebind predecessor releases.
+// It uses the unchanged WHOLE-record historical hash: no field exclusion, no
+// receipt successor, no caller-selected pins. Never use for current emission.
+export function loadHistoricalCarrierArticles(root) {
+  const retained = REBIND_CARRIERS.map(([p, h]) => loadCarrierArticleContract(root, p, h, false));
+  return new Map(retained.map(row => [row.manifest.relative, row]));
 }
 export function loadCarrierArticles(root) {
   const retained = [loadCarrierArticle(root), loadCarrierArticle(root,

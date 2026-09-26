@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadCarrierArticle, loadCarrierArticles, assertCarrierArticleOutput } from '../src/carrier-article-retention.mjs';
+import * as retention from '../src/carrier-article-retention.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const imagePath = 'artifacts/ultracode/article-image-manifest.json';
 const beforePath = 'artifacts/ultracode/article-image-manifest-before-abfcc41435f896df48c68452c59c797c430841a2154149d673b5097e3f6b9af5.json';
@@ -148,6 +149,24 @@ test('all 75 other image records retain whole-record hashing (positive controls 
     save(dir, manifestPath, manifest);
     assert.throws(load, /carrier_article_metadata_drift/, `${record.route}: exclusion forbidden`);
   }
+}));
+test('historical comparison keeps the original whole-record contract; current build cannot downgrade to it', () => fixture(dir => {
+  // Reconstruct only a historical fixture from the authenticated preimage.
+  // No producer, current input rebinding or stored predecessor edits occur.
+  copyFileSync(path.join(dir, beforePath), path.join(dir, imagePath));
+  assert.equal(retention.loadHistoricalCarrierArticles(dir).size, 2);
+  assert.throws(() => loadCarrierArticles(dir), /carrier_article_image_binding_unauthenticated/);
+  for (const slug of slugs) {
+    for (const key of keys) {
+      const old = json(dir, beforePath);
+      old.records.find(r => r.route === `/guides/${slug}/`)[key] = key === 'inputs_stale' ? false : {};
+      save(dir, imagePath, old);
+      assert.throws(() => retention.loadHistoricalCarrierArticles(dir), /carrier_article_metadata_drift/);
+    }
+  }
+}));
+test('historical comparison cannot accept the current six-field projection', () => fixture(dir => {
+  assert.throws(() => retention.loadHistoricalCarrierArticles(dir), /carrier_article_metadata_drift/);
 }));
 test('even a matching route cannot obtain the exemption under a different carrier authority/path', () => fixture(dir => {
   const manifest = json(dir, 'data/carrier-articles/ezra-glp-1-reviews/manifest.json');
