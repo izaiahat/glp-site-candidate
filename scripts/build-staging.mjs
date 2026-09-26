@@ -1571,6 +1571,9 @@ async function main() {
   // bytes. Snapshot them from the actual predecessor tree before clearing the
   // candidate, rather than reaching back to a retired historical release.
   let preservedHeaders = (await readDurablePredecessorFile(path.join(PUBLIC, "_headers"), "_headers")).toString("utf8").split("\n# Wave 4 price tracker:")[0].trimEnd();
+  // General document policy also covers transports (such as beacons) that do
+  // not accept per-request referrer options. Leave OAuth-specific blocks intact.
+  preservedHeaders = preservedHeaders.replace(/^(\/\*\n[\s\S]*?Referrer-Policy: )[^\n]+/, '$1no-referrer');
   // The predecessor header is carried forward as source truth, but analytics
   // transport origins are data-driven and must not remain stale forever. Reconcile
   // both CSP directives before the clear so the rebuilt public/_headers is wired.

@@ -138,7 +138,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'ga4-contracts': 6, 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46 };
+      const requiredNodeCounts = { 'ga4-contracts': 6, 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 12 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -159,6 +159,7 @@ async function main() {
     await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
     await command('ga4-contracts', process.execPath, ['--test', 'tests/glp44-ga4-default-on.test.mjs']);
     await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
+    await command('consent-attribution-withdrawal', process.execPath, ['--test', 'tests/consent-attribution-withdrawal.test.mjs']);
     await command('affiliati-postback-contract', process.execPath, ['--test', '--test-concurrency=1', 'tests/affiliati-postback-contract.test.mjs']);
     await command('release-export-artifact', process.execPath, ['--test', 'tests/release-export-artifact.test.mjs']);
     await command('public-name-regression', process.execPath, ['--test', 'tests/skinnyrx-public-name.test.mjs'], { GLP_PUBLIC_NAME_TEST_ROOT: path.join(ROOT, 'public') });

@@ -8,6 +8,7 @@ const sdk=readFileSync(path.join(ROOT,'tests/fixtures/posthog/array.js'),'utf8')
 const SDK_SHA='7b7e12b4a9459669f311e0b8e63f44e905eba385401f70dcabfe9b011e3dcd86';
 const consent=readFileSync(path.join(PUBLIC,'assets/consent.js'),'utf8');
 const home=readFileSync(path.join(PUBLIC,'index.html'),'utf8');
+const referrerPolicy=readFileSync(path.join(PUBLIC,'_headers'),'utf8').split(/\n(?=\/)/)[0].match(/Referrer-Policy:\s*([^\n]+)/i)[1].trim();
 const asset=home.match(/src="(\/assets\/analytics(?:\.[a-f0-9]+)?\.js(?:\?[^\"]*)?)"/)[1];
 const analytics=readFileSync(path.join(PUBLIC,new URL(asset,'https://glpclinicscout.com').pathname),'utf8');
 const oldHook="function beforeSend(event) { if (!consented() || !reviewed(event?.event)) return null; return {event: event.event, properties: cleanProperties(event.event, {})}; }\n\n  ";
@@ -30,14 +31,14 @@ test('D1 real PostHog SDK preserves protocol and pageviews without sensitive pay
   const attempts=[],unknown=[];
   const source=fixed?analytics:analytics.replace(/function beforeSend\(event\) \{[\s\S]*?\n  function emit/,oldHook+'function emit');
   expect(source===analytics).toBe(fixed);
-  const fixture=`<!doctype html><meta name="referrer" content="no-referrer"><script>
+  const fixture=`<!doctype html><script>
 window.GCS_EXPORT_POLICY={schema:'glp-release-export-policy-v2',stage:'production-seal',third_party_exports:true};
 window.GCS_ANALYTICS={enabled:true,measurement_id:'G-LOCAL-FIXTURE',gtm_container_id:'GTM-LOCAL-FIXTURE'};window.GCS_POSTHOG={enabled:true,api_key:'${key}',host:'${host}'};
 </script><script defer src="/consent.js"></script><script defer src="/analytics.js"></script><h1>Local SDK contract</h1><form><input name="health_condition" value="CANARY_FORM"></form><footer><a href="/privacy/cookies/">Cookie choices</a></footer>`;
   const inspectSdk=`\n;(()=>{const init=window.posthog.init.bind(window.posthog);window.__sdkEvents=[];window.posthog.init=(key,o)=>{window.__sdkOptions={capture_pageview:o.capture_pageview,person_profiles:o.person_profiles,persistence:o.persistence,disable_persistence:o.disable_persistence};const before=o.before_send;return init(key,{...o,request_batching:false,disable_compression:true,before_send:e=>{const result=before(e);window.__sdkEvents.push({input:e,result});return result;}});};})();`;
   await context.route('**/*',async r=>{
    const request=r.request(),url=new URL(request.url());
-   if(url.origin===origin&&url.pathname===route)return r.fulfill({contentType:'text/html',body:fixture});
+   if(url.origin===origin&&url.pathname===route)return r.fulfill({contentType:'text/html',headers:{'Referrer-Policy':referrerPolicy},body:fixture});
    if(url.origin===origin&&url.pathname==='/consent.js')return r.fulfill({contentType:'text/javascript',body:consent});
    if(url.origin===origin&&url.pathname==='/analytics.js')return r.fulfill({contentType:'text/javascript',body:source});
    if(url.origin===host&&url.pathname==='/static/array.js')return r.fulfill({contentType:'text/javascript',body:sdk+inspectSdk});
