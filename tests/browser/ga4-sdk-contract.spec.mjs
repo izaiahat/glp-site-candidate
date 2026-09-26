@@ -27,7 +27,9 @@ function safe(rows,pagePath){
   expect(['page_view','scroll','click','file_download','user_engagement']).toContain(event.en);
   expect(event.dl).toBe(origin+pagePath);expect(event.dt).toBe('Clinic Scout');expect(event.dr||'').toBe('');expect(event.npa).toBe('1');
   for(const [key,value] of Object.entries(event).filter(([key])=>key.startsWith('ep.ae_block_')))expect(value).toBe('true');
-  expect(Object.keys(event).filter(k=>!k.startsWith('ep.ae_block_')&&/form|search_term|user_data|email|quiz|condition|medication|link_url|link_text|file_name/i.test(k))).toEqual([]);
+  const custom=['ep.ads_data_redaction','ep.url_passthrough','ep.ae_block_form','ep.ae_block_history','ep.ae_block_video','ep.ae_block_scroll','ep.ae_block_outbound_click','ep.ae_block_downloads','ep.outbound','epn.percent_scrolled'];
+  expect(Object.keys(event).filter(k=>/^(?:ep\.|epn\.|up\.|upn\.)/.test(k)&&!custom.includes(k))).toEqual([]);
+  expect(Object.keys(event).filter(k=>!k.startsWith('ep.ae_block_')&&/form|search_term|user_data|user_id|email|quiz|condition|medication|link_url|link_text|file_name|cs_click_id|provider_slug|program|merchant|subid|sub1|sub2/i.test(k))).toEqual([]);
  }
  expect(decodeURIComponent(JSON.stringify(rows))).not.toMatch(/PRIVATE_CANARY|gclid=|quiz_answers|health_condition|form_contents|medication_selection/);
 }
@@ -54,7 +56,7 @@ async function fixture(browser,info,{gpc=false,pending=false}={}){
  await context.routeWebSocket('**/*',ws=>{unknown.push({websocket:ws.url()});ws.close()});
  const page=await context.newPage();page.on('pageerror',e=>errors.push(String(e)));
  return {context,page,rows,unknown,release,phase:v=>phase=v,
-  async load(route='/about/') {await page.goto(origin+route+'?q='+encodeURIComponent(canary)+'&gclid='+canary+'#'+canary);await page.evaluate(()=>window.GCSConsentReady);},
+  async load(route='/about/',referer='https://search.invalid/?q='+canary) {await page.goto(origin+route+'?q='+encodeURIComponent(canary)+'&gclid='+canary+'&utm_campaign='+canary+'&utm_source='+canary+'&cs_click_id='+canary+'#'+canary,{referer});await page.evaluate(()=>window.GCSConsentReady);},
   async loaded(){await expect.poll(()=>decode(rows).filter(e=>e.en==='page_view').length).toBe(1)},
   async revoke(){await page.getByRole('link',{name:'Cookie choices',exact:true}).click();phase='withdrawn';await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();expect(await page.evaluate(()=>window['ga-disable-G-2WQ42JY0WK'])).toBe(true);expect(await page.evaluate(()=>Array.from(window.gcsGa4Layer).filter(x=>x[0]==='consent').at(-1)[2])).toEqual({analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});},
   async close(){release();await info.attach('ga4-contained-wire',{body:JSON.stringify({sdk_sha256:SHA,consent_sha256:createHash('sha256').update(consent).digest('hex'),source_only_diagnostic:process.env.GLP44_SOURCE_TEST==='1',rows,unknown,errors}),contentType:'application/json'});expect(unknown).toEqual([]);expect(errors).toEqual([]);expect(await page.evaluate(()=>window.__violations)).toEqual([]);await context.close();}
@@ -78,12 +80,17 @@ test('GLP44 default-on actual GA SDK minimizes page and enhanced events',async({
   await f.page.locator('#out').click();await f.page.waitForTimeout(1500);
   expect(await f.page.evaluate(()=>window['ga-disable-G-2WQ42JY0WK'])).toBe(true);
   expect(decode(f.rows)).toHaveLength(count);safe(f.rows,'/about/');
+  // Counterexamples exercise this same rejecting wire oracle, not SDK traffic.
+  for(const field of ['email','quiz_answers','health_condition','medication_selection','form_contents','search_term','cs_click_id','provider_slug','sub1','unknown_property']){
+   const mutant=structuredClone(f.rows),row=mutant.find(r=>r.collect),url=new URL(row.url);url.searchParams.set('ep.'+field,canary);row.url=url.href;
+   expect(()=>safe(mutant,'/about/')).toThrow();
+  }
  }finally{await f.close()}
 });
 test('GLP44 individualized and unclassified routes never load GA or export input events',async({browser},info)=>{
- for(const route of ['/quiz/provider-fit/','/matches/','/lp/quiz/','/results/','/providers/','/guides/semaglutide/']){
+ for(const route of ['/quiz/provider-fit/','/matches/','/lp/quiz/','/results/','/providers/','/guides/semaglutide/','/about/']){
   const f=await fixture(browser,info);try{
-   await f.load(route);await f.page.getByRole('textbox',{name:'Private value'}).fill(canary);await f.page.getByRole('button',{name:'Submit private form'}).click();await f.page.locator('#out').click();await f.page.locator('#file').click();await f.page.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));await f.page.waitForTimeout(300);
+   await f.load(route,route==='/about/'?origin+'/matches/?email='+canary:undefined);await f.page.getByRole('textbox',{name:'Private value'}).fill(canary);await f.page.getByRole('button',{name:'Submit private form'}).click();await f.page.locator('#out').click();await f.page.locator('#file').click();await f.page.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));await f.page.waitForTimeout(300);
    expect(f.rows).toEqual([]);expect(await f.page.evaluate(()=>window['ga-disable-G-2WQ42JY0WK'])).toBe(true);
   }finally{await f.close()}
  }

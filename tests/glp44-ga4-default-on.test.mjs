@@ -33,6 +33,7 @@ test('GA4 history barrier disables before native URL mutation and cannot restart
 });
 test('GA4 unknown origins, routes and components are held pending exact-context review',()=>{
  for(const url of ['https://preview.invalid/','https://glpclinicscout.com/providers/','https://glpclinicscout.com/guides/semaglutide/','https://glpclinicscout.com/person%40example.invalid/','https://glpclinicscout.com/mary-smith/']){const f=boot({url});f.runtime.load();assert.equal(f.scripts.length,0);}
+ const fromQuiz=boot();fromQuiz.document.referrer='https://glpclinicscout.com/matches/?email=PRIVATE';fromQuiz.runtime.load();assert.equal(fromQuiz.scripts.length,0);
  const f=boot();f.runtime.load();f.scripts[0].load();f.click('https://provider.invalid/',{kind:null});f.click('https://provider.invalid/',{kind:'affiliate'});assert.equal(f.commands().filter(c=>c[0]==='event').length,1);
  f.handlers.input();f.handlers.scroll();assert.equal(f.window['ga-disable-G-2WQ42JY0WK'],true);assert.equal(f.commands().filter(c=>c[0]==='event').length,0);
 });

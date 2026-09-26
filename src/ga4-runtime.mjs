@@ -20,7 +20,8 @@ export function ga4Transport(allowed) {
     // These per-page SDK controls are covered by the hash-pinned actual SDK test.
     ae_block_form:true,ae_block_history:true,ae_block_video:true,
     ae_block_scroll:true,ae_block_outbound_click:true,ae_block_downloads:true});
-  function context(){const c=window.GCS_ANALYTICS||{};return allowed()&&c.enabled===true&&c.measurement_id===ID&&location.origin===ORIGIN&&pagePath()!==null}
+  function priorContext(){if(!document.referrer)return true;try{const u=new URL(document.referrer);return u.origin!==ORIGIN||ordinaryPaths.includes(u.pathname)}catch{return false}}
+  function context(){const c=window.GCS_ANALYTICS||{};return allowed()&&c.enabled===true&&c.measurement_id===ID&&location.origin===ORIGIN&&pagePath()!==null&&priorContext()}
   function clearCookies(){
     for(const name of ['_ga','_ga_'+ID.slice(2).replace(/-/g,'_')])
       for(const domain of ['', '; Domain=glpclinicscout.com', '; Domain=.glpclinicscout.com'])
