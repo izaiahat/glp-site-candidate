@@ -42,9 +42,9 @@ test('negative: approved same-network program crosswires fail HTML and lazy JSON
       check(healthy);
       assert.throws(() => check(crosswire), /crosswired_go:b:a/);
       writeFileSync(path.join(dir,file), serialize(healthy));
-      assertServedGoIdentity(dir, programs);
+      assertServedGoIdentity(dir, programs, {aliasA:'a'});
       writeFileSync(path.join(dir,file), serialize(crosswire));
-      assert.throws(() => assertServedGoIdentity(dir,programs), /crosswired_go/);
+      assert.throws(() => assertServedGoIdentity(dir,programs,{aliasA:'a'}), /crosswired_go/);
       rmSync(path.join(dir,file));
     }
   } finally { rmSync(dir,{recursive:true,force:true}); }

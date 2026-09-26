@@ -4,7 +4,10 @@ import { parse } from 'parse5';
 
 // Offline, non-executing census, including lazy-card HTML in served JSON and
 // template contents. No URL is requested, and no private href is reported.
-export function servedGoIdentityCensus(root, programs) {
+const registry = JSON.parse(readFileSync(new URL('../data/program-registry.json', import.meta.url)));
+const registryAliases = Object.fromEntries(registry.programs.map(p => [p.review_slug || p.program_id, p.program_id]));
+
+export function servedGoIdentityCensus(root, programs, aliases = registryAliases) {
   const anchors = [], findings = [];
   let htmlFiles = 0, jsonFiles = 0;
   function markup(text, file) {
@@ -17,7 +20,7 @@ export function servedGoIdentityCensus(root, programs) {
           anchors.push({ file, program, network });
           const slug = decodeURIComponent(url.pathname.split('/')[2] || '');
           const routeProgram = programs[slug];
-          if (!routeProgram || !programs[program] || (slug !== program && (!routeProgram.program_id || routeProgram.program_id !== programs[program].program_id))) {
+          if (!routeProgram || !programs[program] || (aliases[slug] || slug) !== (aliases[program] || program)) {
             findings.push({ file, program, slug, reason: 'crosswired_go' });
           }
           if (!programs[program]?.network || network !== programs[program].network) {
@@ -46,8 +49,8 @@ export function servedGoIdentityCensus(root, programs) {
   return { htmlFiles, jsonFiles, anchors, findings };
 }
 
-export function assertServedGoIdentity(root, programs) {
-  const census = servedGoIdentityCensus(root, programs);
+export function assertServedGoIdentity(root, programs, aliases = registryAliases) {
+  const census = servedGoIdentityCensus(root, programs, aliases);
   if (!census.anchors.length) throw new Error('served_go_identity_empty');
   if (census.findings.length) throw new Error(`served_go_identity_mismatch:${JSON.stringify(census.findings)}`);
   return census;
