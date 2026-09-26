@@ -4,6 +4,7 @@ import { PROVIDER_REVEAL_BATCH_SIZE } from './surface-tallies.mjs';
 import { finalsCss, renderPricePair, renderDirectoryFinal, renderProgramCardCount } from "./directory-detail-finals.mjs";
 import { selectedFamilyStyles } from "./selected-family-styles.mjs";
 import { deriveMoneyPageFreshness } from "./freshness.mjs";
+import { publicProviderName } from "./public-provider-names.mjs";
 import { pageSeoCopy } from "./page-seo-copy.mjs";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
@@ -916,7 +917,7 @@ function renderProviderListingHub(graph, pricingMatrix, registry, coupons, doseC
       return {
         ...(priced || {}),
         program_id: research.program_id,
-        provider: research.display_name,
+        provider: publicProviderName(research.display_name),
         medications: (priced?.medications || []).filter((row) => isTypedPrice(row) || Number.isFinite(row.ongoing_usd)),
       };
     })

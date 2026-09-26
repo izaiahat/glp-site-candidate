@@ -2542,7 +2542,7 @@ async function main() {
   await applyWave2Repairs({
     publicDir: PUBLIC,
     indexableRoutes: indexableRoutes.filter((route) => !ready6RouteSet.has(route)),
-    providerReviews,
+    providerReviews: reader.providerReviews,
     // READY6 pages are reasserted from clean-room bytes below, so they are link
     // targets only - but they must BE targets, or the class ships orphaned (G5).
     linkTargetRoutes: [...ready6RouteSet].filter((route) => !aliasReviewRoutes.has(route)),

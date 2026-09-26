@@ -2,7 +2,7 @@
 // GLP-233 authorizes only this unsupported superlative's removal. Never normalize
 // IDs, slugs, URLs, quotes, hashes, permissions, prices or arbitrary body copy.
 const LEGACY_SKINNYRX_NAME = 'SkinnyRx - #1 GLP Weight Loss Provider';
-const LABEL_FIELDS = new Set(['display_name', 'provider', 'publisher', 'merchant', 'entity', 'label', 'alt']);
+const LABEL_FIELDS = new Set(['display_name', 'render_display_name', 'provider', 'publisher', 'merchant', 'entity', 'label', 'alt']);
 
 export function publicProviderName(value) {
   return value === LEGACY_SKINNYRX_NAME ? 'SkinnyRx' : value;
