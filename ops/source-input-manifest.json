@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3844,
+  "tracked_file_count": 3850,
   "files": [
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
@@ -3846,6 +3846,12 @@
     "workers/email-scheduler.mjs",
     "workers/price-watch-scheduler.mjs",
     "workers/price-watch/wrangler.toml",
+    "ops/linear/approvals/OPERATOR-DECISION-20260926-ga4-on.md",
+    "src/ga4-runtime.mjs",
+    "tests/browser/ga4-sdk-contract.spec.mjs",
+    "tests/fixtures/ga4/README.md",
+    "tests/fixtures/ga4/gtag.js",
+    "tests/glp44-ga4-default-on.test.mjs",
     "wrangler.toml"
   ],
   "exclusions": [

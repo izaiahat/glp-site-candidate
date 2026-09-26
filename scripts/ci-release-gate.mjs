@@ -138,7 +138,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46 };
+      const requiredNodeCounts = { 'ga4-contracts': 6, 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -151,11 +151,13 @@ async function main() {
     delete process.env.NODE_ENV;
     delete process.env.PLAYWRIGHT_BASE_URL;
     delete process.env.GLP_REVIEW_PUBLIC_ROOT;
+    delete process.env.GLP44_SOURCE_TEST;
     execFileSync('python3', [buildLock, 'acquire', '--seat', seat], {stdio: 'pipe'});
     buildLockHeld = true;
     // The host admits one heavy build/browser lane. Keep the same reservation
     // across generation, artifact verification and browser execution.
     await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
+    await command('ga4-contracts', process.execPath, ['--test', 'tests/glp44-ga4-default-on.test.mjs']);
     await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
     await command('affiliati-postback-contract', process.execPath, ['--test', '--test-concurrency=1', 'tests/affiliati-postback-contract.test.mjs']);
     await command('release-export-artifact', process.execPath, ['--test', 'tests/release-export-artifact.test.mjs']);

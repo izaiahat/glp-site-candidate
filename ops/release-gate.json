@@ -16,6 +16,10 @@
       "webkit"
     ],
     "cases": [
+      {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 default-on actual GA SDK minimizes page and enhanced events","requirement":"GLP44-default-on-safe-enhanced"},
+      {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 quiz and matches send neutral page views without input or search events","requirement":"GLP44-sensitive-exclusion"},
+      {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 GPC prevents GA load and collection on initial and later pages","requirement":"GLP44-GPC"},
+      {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 withdrawal stops NEW loads and events on subsequent navigation; in-flight retry accepted","requirement":"GLP44-operator-accepted-withdrawal"},
       {"file":"tests/browser/posthog-sdk-contract.spec.mjs","title":"D1 real PostHog SDK preserves protocol and pageviews without sensitive payloads","requirement":"GLP42-PostHog-protocol-regression"},
       {"file":"tests/browser/affiliate-tap-integrity.spec.mjs","title":"current HOLD reviews remain informational and link-dark · desktop","requirement":"R2-raw-HOLD"},
       {"file":"tests/browser/affiliate-tap-integrity.spec.mjs","title":"current HOLD reviews remain informational and link-dark · mobile","requirement":"R2-raw-HOLD"},

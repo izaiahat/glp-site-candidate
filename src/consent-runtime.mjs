@@ -1,3 +1,4 @@
+import {ga4Transport} from './ga4-runtime.mjs';
 // Pure preference reducer: eligibility is an input, NOT server authority.
 // The default served runtime has no adapter; isolated TEST adapters exercise
 // the real readiness/receipt branch without creating a browser authority lane.
@@ -70,17 +71,15 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   function localHost(){const h=(location.hostname||'').toLowerCase();return ['','localhost','127.0.0.1','0.0.0.0','::1','[::1]'].includes(h)||h.endsWith('.localhost')||h.endsWith('.local')||h.endsWith('.test')||h.endsWith('.internal')||location.protocol==='file:'}
   function synthetic(){return localHost()||navigator.webdriver===true||/HeadlessChrome|Headless|Playwright|Puppeteer|Lighthouse|Google-InspectionTool|synthetic|bot|crawler|spider/i.test(navigator.userAgent||'')}
   function activeId(c){return localHost()?(c.debug_measurement_id||null):c.measurement_id}
-  /* A12b / A11: the published GTM container is not proven contained here.
-     No GTM/gtag.js loader, Google UI events or GA enablement are permitted.
-     The gtag shim carries ordered consent state only. PostHog remains an
-     independently consented, restricted analytics consumer in analytics.js.
-     Neither a config boolean nor advertising consent clears this hold. */
-  function loadAnalytics(){const c=window.GCS_ANALYTICS||{};const id=activeId(c);if(!exportsAllowed()||!c.enabled||!id){c.consent='denied';return}c.consent='granted';c.active_measurement_id=id;window['ga-disable-'+id]=true;window.gtag('set',{page_location:'https://glpclinicscout.com/',page_referrer:'',page_title:'Clinic Scout',send_page_view:false,allow_google_signals:false,allow_ad_personalization_signals:false});window.GCS_GTM_HELD='A11 containment unbound';}
+  // GA4 has a separate sitewide, minimized page-view gate. This does not widen
+  // PostHog/UI/advertising route eligibility or release the GTM container hold.
+  const ga4=(${ga4Transport.toString()})(()=>{if(navigator.globalPrivacyControl===true&&!gpcLatched){gpcLatched=true;refresh()}const p=window.GCS_EXPORT_POLICY;return effective()==='granted'&&p?.schema==='glp-release-export-policy-v2'&&p.stage==='production-seal'&&p.third_party_exports===true&&!synthetic()});
+  function loadAnalytics(){const c=window.GCS_ANALYTICS||{};const id=activeId(c);if(!exportsAllowed()||!c.enabled||!id){c.consent='denied';return}c.consent='granted';c.active_measurement_id=id;if(id!=='G-2WQ42JY0WK')window['ga-disable-'+id]=true;window.GCS_GTM_HELD='A11 containment unbound';}
   // Clarity is unbound; replay is not authorized by a generic UI-event grant.
   function loadClarity(){return;}
-  function stopAnalytics(){const c=window.GCS_ANALYTICS||{};c.consent='denied';for(const id of [c.measurement_id,c.debug_measurement_id].filter(Boolean))window['ga-disable-'+id]=true;window.posthog?.opt_out_capturing?.();}
+  function stopAnalytics(){const c=window.GCS_ANALYTICS||{};c.consent='denied';for(const id of [c.measurement_id,c.debug_measurement_id].filter(id=>id&&id!=='G-2WQ42JY0WK'))window['ga-disable-'+id]=true;window.posthog?.opt_out_capturing?.();}
   function consentUpdate(){const advertising=exportsAllowed('advertising')?'granted':'denied';window.gtag('consent','update',{analytics_storage:exportsAllowed()?'granted':'denied',ad_storage:advertising,ad_user_data:advertising,ad_personalization:'denied'})}
-  function sync(){const analytics=effective();cookie(analytics);consentUpdate();if(exportsAllowed()){loadAnalytics();loadClarity()}else{stopAnalytics()}return analytics}
+  function sync(){const analytics=effective();cookie(analytics);consentUpdate();ga4.load();if(exportsAllowed()){loadAnalytics();loadClarity()}else{stopAnalytics()}return analytics}
   function notify(){window.dispatchEvent(new CustomEvent('gcs:consent',{detail:{...purposes(),record_type:'preference_only',persistence,server_revocation:serverRevocation}}))}
   function revokeAdvertising(){adsBlocked=true;serverRevocation=advertisingAdapter?'pending':'not_implemented';if(!advertisingAdapter)return Promise.resolve();return Promise.resolve().then(()=>advertisingAdapter.revoke()).then(r=>{if(serverRevocation!=='reconcile')serverRevocation=r?.acknowledged===true?'acknowledged':'reconcile'},()=>{serverRevocation='reconcile'})}
   let cleanupBanner=()=>{},returnFocus=null;
