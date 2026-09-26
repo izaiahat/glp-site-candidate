@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { approvedRetirement } from "./retirement-support.mjs";
+import { readFileSync } from 'node:fs';
 
 const ANALYTICS = /https:\/\/(?:www\.)?(?:googletagmanager\.com|google-analytics\.com|clarity\.ms|i\.posthog\.com)\//i;
 const LEGACY_REVIEWS = ["coivas", "direct-meds", "mangorx", "sprout-health"];
@@ -70,26 +71,27 @@ test("O-15 dose UI appears only on the exact source-reported provider detail", a
   await page.setViewportSize({ width: 1440, height: 900 });
   await gotoServed(page, "/providers/mademed/");
 
-  const doseBlocks = page.locator(".p3-dose-grid[data-dose-model]");
-  await expect(doseBlocks).toHaveCount(2);
-  await expect(doseBlocks.locator("[data-dose-row]")).toHaveCount(11);
-  const models = await doseBlocks.evaluateAll((nodes) => [...new Set(nodes.map((node) => node.dataset.doseModel))]);
-  expect(models).toEqual(["source-reported-per-dose"]);
-
-  for (let index = 0; index < await doseBlocks.count(); index += 1) {
-    const block = doseBlocks.nth(index);
-    await expect(block.locator(".p3-dose-definition")).not.toHaveText("");
-    await expect(block.locator("time")).toHaveAttribute("datetime", /^2026-08-/);
-    await expect(block.locator('a[href^="https://"]')).toHaveCount(1);
-
-    const rows = block.locator("[data-dose-row]");
-    expect(await rows.count()).toBeGreaterThan(0);
-    for (let rowIndex = 0; rowIndex < await rows.count(); rowIndex += 1) {
-      const row = rows.nth(rowIndex);
-      expect((await row.getAttribute("data-dose-row")) || "").toMatch(/^\d+(?:\.\d+)?$/);
-      expect((await row.textContent()) || "").toMatch(/mg\/week.*\$[\d,]+\/month/s);
-    }
-    await expect(block).not.toContainText(/Not published|UNKNOWN_NO_SOURCE/);
+  // F22: the accepted current MadeMed rows are quarterly oral plans, not the
+  // historical injection dose ladders. Do not revive removed dose/price claims.
+  const rows = JSON.parse(readFileSync(new URL('../../data/provider-pricing-matrix.json', import.meta.url))).providers.mademed.medications;
+  expect(rows).toHaveLength(2);
+  expect(rows.every(row => row.price_kind === 'monthly_equivalent_of_billing_period' && row.calculator_eligibility === 'display_only')).toBe(true);
+  await expect(page.locator('.p3-dose-grid[data-dose-model]')).toHaveCount(0);
+  for (const row of rows) {
+    const plan = page.locator(`[data-price-row-id="${row.row_id}"]`).first();
+    await expect(plan).toBeVisible();
+    await expect(plan.locator('.typed-price-line')).toContainText(`$${row.facts.amount_usd.value}`);
+    await expect(plan.locator('.typed-price-line')).toContainText(row.facts.billing_period.value);
+    // Public quote sanitization retains the economic clauses, not unrelated
+    // promotional copy in the captured page. Assert each retained amount/term.
+    const billing = `Billed $${row.facts.amount_usd.value} ${row.facts.billing_period.value}.`;
+    const quote = plan.locator('details').filter({hasText:billing}).first();
+    await quote.locator('summary').click({timeout:8000});
+    await expect(quote.locator('blockquote')).toContainText(billing);
+    await expect(quote.locator('blockquote')).toContainText(`$${row.facts.equivalent_usd.value}/month`);
+    await expect(quote.locator('blockquote')).toBeVisible();
+    await expect(quote.locator('..')).toHaveAttribute('data-source-checked', row.evidence[0].captured_at_utc.slice(0,10));
+    await expect(quote.locator('..').locator('a')).toHaveAttribute('href', row.evidence[0].source_url);
   }
 });
 

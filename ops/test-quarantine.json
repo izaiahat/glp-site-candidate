@@ -73,7 +73,97 @@
       "title": "Provider sticky remains fixed after footer release point",
       "classification": "B",
       "reason": "The actual geometry shows fixed with released=false after the footer passed the viewport; the test expected the footer-release state. Treat as an observed nonblocking sticky/occlusion UX defect, not as evidence of an unapproved link. Fix attribution requires the sticky observer timeline, not a baseline change."
+    },
+    {
+      "id": "F02",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The historical failure scans dollar leaves of the first canonical grid card above the fold, not incorrect pricing. Fold position is outside D1. Current matrix price/quote/date truth is independently required by F25.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F03",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "History snapshot compares the visible pagination window rather than a fully hydrated cohort. Card-window/history presentation is outside D1; full hydration and current rail integrity remain required, not quarantined.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F06",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Historical INP proxy failed to observe its click; this is timing instrumentation, not an observed consent grant/deny failure. Existing privacy-category assertions are unchanged; real deny/reload/regrant tests remain required.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F07",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Fixed category/bulk card counts mix comparable, state-unknown and unpriced sections. Cardinality/emulation is outside D1; source-price and all affiliate authorization checks stay required.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F09",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The historical failure records 147 while targeting 149 during the price-roll check; its timing cause is not independently established. New required tests verify final text AND data-price-numeric against current source amounts in both motion modes. Only animation timing is non-blocking; a wrong settled amount still fails D1.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F10",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Old load-more timing/window count is presentation. Current complete hydration reaches 50 comparison cards, including both named later money targets; their exact authorized hrefs are checked without navigation.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F11",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "A globally visible supplemental card and an empty primary numeric grid are compatible states. The historical assertion conflates section ownership; empty-state composition is outside D1, not a waiver of pricing truth.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F15",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "P19 helper requires the retired listing anatomy before color/geometry assertions. The D1 decision makes this presentation/emulation precondition diagnostic; existing legal disclosure and link authority gates are retained.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F16",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Old commercial-table cardinality requires five versus the current three comparable rows. Table composition/counts are outside D1; no new paid eligibility or economic-order authority is created.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F19",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The failed assertion is document scrollY after focus, not consent storage or network effects. Scroll placement is outside D1. No privacy-category assertion is edited or suppressed; C01 source scheduling and original real consent tests remain required.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F28",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The old bounded Tab walk searches desktop .cs-navgroup menus in mobile presentation rather than opening the supported mobile menu toggle. Nav presentation/emulation is outside D1; no keyboard/consent oracle is changed.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F29",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The old predicate rejects any scrollHeight/clientHeight excess without identifying hidden content. Card geometry/decorative overflow is outside D1; open price quotations and visible affiliate actions remain required by F25/F14.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F30",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The old settle predicate requires a whole long provider card inside one mobile viewport. Whole-card containment is presentation, not a demonstrated failed action; current individual price/source and affiliate targets remain required.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F31",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Extra plan=both is the explicit all-plan navigation state understood by the filter, not health data export or a changed price. Visual navigation/query normalization equality is outside D1.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F32",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Missing preference-match indicator hook after reload is a personalization/UI indicator requirement, not source medication/price truth or a consent grant. Park the indicator work without changing stored preferences or facts.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
     }
   ],
-  "policy": "Only listed cosmetic/frozen-presentation groups are diagnostics. Mixed files are not blanket-quarantined. C and F are NOT waived. Legacy npm test and full no-write wrapper remain available; not rerun by this narrow gate. Material unknowns remain required blockers in release-gate.json."
+  "policy": "Only the explicitly listed presentation/emulation predicates are non-blocking warnings under D1. No mixed-file blanket waiver. All original privacy/consent oracles remain unchanged. Current price, claim, approved-link and actual consent-effect checks remain required; see release-dispositions.json for the exact 26-row accounting."
 }

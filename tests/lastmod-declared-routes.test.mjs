@@ -25,7 +25,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { loadCarrierArticles } from "../src/carrier-article-retention.mjs";
+import { loadCarrierArticles, renderedCarrierArticle } from "../src/carrier-article-retention.mjs";
 import { prepareLastmod, openComparisonInput } from "../scripts/build-lastmod-provenance.mjs";
 import {
   DECLARED_ROUTES_SCHEMA,
@@ -145,7 +145,7 @@ test("a declaration FILE must carry the right schema, and env+file together is r
 
 const PROBE_ROUTE = "/how-we-rate/";
 const UNTOUCHED_ROUTE = "/reviews/orderlymeds/";
-const BASE_POINTER = path.resolve(ROOT, "../../../../reports/glp-clinic-scout/seo-machine/current-content-base.json");
+const BASE_POINTER = path.join(ROOT, 'data/predecessors/content-base/current-content-base.json');
 const sha256 = bytes => createHash("sha256").update(bytes).digest("hex");
 
 async function fixture() {
@@ -165,7 +165,13 @@ async function fixture() {
     recursive: true,
     filter: (source) => !source.startsWith(path.join(ROOT, "public", "assets")),
   });
-  for (const { manifest } of loadCarrierArticles(ROOT).values()) {
+  for (const article of loadCarrierArticles(ROOT).values()) {
+    const { manifest } = article;
+    // This isolated fixture executes the production-seal postbuild stage.
+    // Materialize its article shell with the real stage-aware renderer rather
+    // than feeding candidate bytes to a production retention oracle. Body and
+    // manifest assertions remain exact; the source/public tree is not changed.
+    await writeFile(path.join(root, 'public', manifest.relative), renderedCarrierArticle(article, 'production-seal'));
     for (const relative of [manifest.snapshot, ...manifest.bindings.map(binding => binding.path), ...manifest.files.map(file => file.path)]) {
       await mkdir(path.dirname(path.join(root, relative)), { recursive: true });
       await cp(path.join(ROOT, relative), path.join(root, relative), { recursive: true });
@@ -175,12 +181,14 @@ async function fixture() {
   // relabelled with a fictional historical date. prepareLastmod verifies the
   // receipt, manifest and provenance again before every comparison.
   const pointer = JSON.parse(await readFile(BASE_POINTER, "utf8"));
-  const manifestBytes = await readFile(pointer.manifest.path);
+  // Mirror portability: these are the vendored, manifest-authenticated bytes
+  // of the same predecessor. Do not resolve its historical absolute host paths.
+  const manifestBytes = await readFile(path.join(ROOT, 'data/predecessors/content-base/deployment-manifest.json'));
   assert.equal(sha256(manifestBytes), pointer.manifest.sha256);
   const rows = new Map(JSON.parse(manifestBytes).release_rows.map(row => [row.path, row.sha256]));
   for (const route of [PROBE_ROUTE, UNTOUCHED_ROUTE]) {
     const relative = `public/${route.slice(1)}index.html`;
-    const bytes = await readFile(path.join(pointer.release_root, relative));
+    const bytes = await readFile(path.join(ROOT, 'data/predecessors/content-base/release', relative));
     assert.equal(sha256(bytes), rows.get(relative), `unauthenticated predecessor: ${route}`);
     await writeFile(path.join(root, relative), bytes);
   }

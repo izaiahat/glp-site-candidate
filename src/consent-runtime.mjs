@@ -171,10 +171,13 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   // replaces the initial allowance with the actual border-box measurement.
   // Quiz controls need an unobscured scroll target on desktop as well as mobile.
   updateControls(root,true);
-  let height=null;
-  const clearance=()=>{if(root.isConnected){const sticky=Number.parseFloat(document.documentElement.style.getPropertyValue?.('--sticky-clearance'))||0;const bottom=window.innerWidth<=768?8+sticky:20;const reserved=height===null?320:Math.ceil(height+bottom+8);document.documentElement.style.setProperty('--consent-clearance',(window.innerWidth<=920||document.body?.dataset?.page==='quiz-provider-fit')?reserved+'px':'0px')}};
+  let height=null,clearanceFrame=null;
+  const clearance=()=>{if(root.isConnected){const sticky=Number.parseFloat(document.documentElement.style.getPropertyValue?.('--sticky-clearance'))||0;const bottom=window.innerWidth<=768?8+sticky:20;const reserved=height===null?320:Math.ceil(height+bottom+8);const value=(window.innerWidth<=920||document.body?.dataset?.page==='quiz-provider-fit')?reserved+'px':'0px';if(document.documentElement.style.getPropertyValue?.('--consent-clearance')!==value)document.documentElement.style.setProperty('--consent-clearance',value)}};
   clearance();
-  const observer=typeof ResizeObserver==='function'?new ResizeObserver(entries=>{const entry=entries.find(e=>e.target===root),box=entry?.borderBoxSize;if(box){const size=Array.isArray(box)?box[0]:box;if(Number.isFinite(size?.blockSize)){height=Math.ceil(size.blockSize);clearance()}}}):null;observer?.observe(root,{box:'border-box'});
+  // An ancestor CSS variable changes quiz geometry. Writing it during observer
+  // delivery can resize the observed notice again in WebKit's same layout pass.
+  // Measure here; coalesce the write into the next frame (never suppress errors).
+  const observer=typeof ResizeObserver==='function'?new ResizeObserver(entries=>{const entry=entries.find(e=>e.target===root),box=entry?.borderBoxSize;if(box){const size=Array.isArray(box)?box[0]:box;if(Number.isFinite(size?.blockSize)){const next=Math.ceil(size.blockSize);if(next===height)return;height=next;if(clearanceFrame===null)clearanceFrame=window.requestAnimationFrame(()=>{clearanceFrame=null;clearance()})}}}):null;observer?.observe(root,{box:'border-box'});
   // Native WebKit focus scrolling can leave the field edge behind the notice.
   // Correct only real user focus on the affected listing/matcher surfaces;
   // keep the notice and consent defaults intact, with no bootstrap layout read.
@@ -190,7 +193,7 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
     });
   };
   document.addEventListener('focusin',focusClearance);
-  window.addEventListener('resize',clearance,{passive:true});cleanupBanner=()=>{observer?.disconnect();window.removeEventListener?.('resize',clearance);document.removeEventListener?.('focusin',focusClearance);if(focusFrame!==null)window.cancelAnimationFrame(focusFrame)};
+  window.addEventListener('resize',clearance,{passive:true});cleanupBanner=()=>{observer?.disconnect();if(clearanceFrame!==null)window.cancelAnimationFrame(clearanceFrame);window.removeEventListener?.('resize',clearance);document.removeEventListener?.('focusin',focusClearance);if(focusFrame!==null)window.cancelAnimationFrame(focusFrame)};
   root.addEventListener('click',e=>{const b=e.target.closest('[data-consent]');if(!b||b.disabled)return;const result=b.dataset.consent==='acknowledge'?acknowledge():apply(b.dataset.consent==='granted'?'granted':'denied');if(result.persistence==='failed'){updateControls(root);const status=root.querySelector('#gcs-consent-status');if(status)status.textContent='Tracking is off for this page. Your browser could not save the choice; it may not persist on another visit.'}})}
   window.GCSConsent={apply,acknowledge,read,effective,purposes,model:()=>consentModel,advertisingStatus,whenSettled:()=>settled,allowsExports:exportsAllowed,refresh,open,persistenceStatus:()=>persistence};
   window.addEventListener?.('storage',e=>{if(e.key===STORAGE||e.key===null){sequence++;adsBlocked=true;refresh()}});

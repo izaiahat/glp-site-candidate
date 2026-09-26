@@ -89,6 +89,24 @@ export function checkBrowser(report, selection) {
   return actual;
 }
 
+export function checkDispositions(manifest, quarantine) {
+  const buckets = {
+    a: ['C01','F25'],
+    b: ['C03','F14','F17','F22','F26','F34','F35','F36','F37'],
+    c: ['F02','F03','F06','F07','F09','F10','F11','F15','F16','F19','F28','F29','F30','F31','F32'],
+  };
+  const expected = Object.entries(buckets).flatMap(([bucket, ids]) => ids.map(id => [id,bucket]));
+  ensure(manifest.schema === 'glp41-d1-dispositions-v1' && manifest.rows?.length === 26, 'D1_disposition_denominator');
+  ensure(new Set(manifest.rows.map(row => row.id)).size === 26, 'D1_disposition_duplicate');
+  for (const [id,bucket] of expected) {
+    const row = manifest.rows.find(row => row.id === id);
+    ensure(row?.bucket === bucket && row.evidence?.length > 40 && row.verification?.length > 5, `D1_disposition_missing_or_changed:${id}`);
+    const warnings = quarantine.diagnostics.filter(item => item.id === id);
+    ensure(bucket === 'c' ? warnings.length === 1 && warnings[0].reason === row.evidence : warnings.length === 0, `D1_material_quarantine:${id}`);
+  }
+  return { rows: 26, fixed: buckets.a, stale: buckets.b, nonblocking: buckets.c };
+}
+
 async function main() {
   ensure(process.argv.length === 4 && process.argv[2] === '--out', 'usage: node scripts/ci-release-gate.mjs --out <new external directory>');
   ensure(path.resolve(process.cwd()) === path.resolve(ROOT), 'D1_wrong_cwd');
@@ -106,6 +124,8 @@ async function main() {
   try {
     ensure(git('status', '--porcelain', '--untracked-files=all') === '', 'D1_clean_head_required');
     const config = readJson(path.join(ROOT, 'ops/release-gate.json'));
+    await step('disposition-contract', () => checkDispositions(readJson(path.join(ROOT, 'ops/release-dispositions.json')), readJson(path.join(ROOT, 'ops/test-quarantine.json'))));
+    result.nonblocking_diagnostics = readJson(path.join(ROOT, 'ops/test-quarantine.json')).diagnostics;
     result.selection_sha256 = sha(readFileSync(path.join(ROOT, 'ops/release-gate.json')));
     ensure(config.browser.cases.length > 0 && config.browser.projects.length > 0, 'D1_browser_selection_empty');
     result.required_cases = config.browser.cases.length * config.browser.projects.length;
@@ -113,7 +133,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'host-bootstrap': 241, 'harness-negatives': 8, 'go-destination-contracts': 43 };
+      const requiredNodeCounts = { 'host-bootstrap': 241, 'material-contracts': 39, 'harness-negatives': 8, 'go-destination-contracts': 43 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -131,6 +151,7 @@ async function main() {
     execFileSync('python3', [buildLock, 'acquire', '--seat', seat], {stdio: 'pipe'});
     try {
       await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
+      await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
     } finally {
       execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
       result.build_lock_released = true;

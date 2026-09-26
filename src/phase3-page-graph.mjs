@@ -277,9 +277,9 @@ export function renderPhase3TypedOffers({ pricingMatrix, registry, medicationIds
   return `<section data-phase3-typed-offers><h2>Reported plan information</h2><p>These are separately labeled offers, not comparable monthly cash charges. They do not enter price sorting, dose filters, savings or calculator autofill.${bulk ? ' Billing and supply periods are quoted below; inclusion here does not establish the duration selected in a bulk filter.' : ''}</p>${entries.map(entry => `<article data-typed-provider="${esc(entry.program_id)}"><h3>${esc(entry.provider)}</h3>${entry.medications.map(row => renderTypedPrice(row)).join('')}</article>`).join('')}</section>`;
 }
 
-function sourcePrice(row, prefix) {
-  if (isTypedPrice(row)) return renderTypedPrice(row, { showDate: false });
-  return `<div class="p3-source-price" data-source-checked="${esc(row.captured_on)}"><strong>${usd(row.ongoing_usd)}</strong><span>/${esc(row.cadence || "month")}</span><details><summary>Price source</summary><blockquote>${esc(row.quote)}</blockquote>${renderCitationAnchor({ url: row.source_url, label: "Open the provider page", reason: CITATION_REASONS.FIRST_PARTY_PRICE_EVIDENCE, rel: "noopener noreferrer" })}</details></div>`;
+function sourcePrice(row, prefix, { showDate = false } = {}) {
+  if (isTypedPrice(row)) return renderTypedPrice(row, { showDate });
+  return `<div class="p3-source-price" data-source-checked="${esc(row.captured_on)}"><strong>${usd(row.ongoing_usd)}</strong><span>/${esc(row.cadence || "month")}</span><details><summary>Price source</summary><blockquote>${esc(row.quote)}</blockquote>${showDate ? `<time datetime="${esc(row.captured_on)}">${esc(row.captured_on)}</time> · ` : ''}${renderCitationAnchor({ url: row.source_url, label: "Open the provider page", reason: CITATION_REASONS.FIRST_PARTY_PRICE_EVIDENCE, rel: "noopener noreferrer" })}</details></div>`;
 }
 
 function providerLogoMark(entry, logoManifest) {
@@ -388,7 +388,12 @@ function compactProviderCard(entry, registry, doseCapture, logoManifest, { coupo
     ? factSources(medicationEvidence.sources.map((source) => ({ capture_date: source.checked_date, source_url: source.source_url })))
     : factSources([identitySource]);
   const factRow = (label, value, source, options = {}) => `<div><dt>${esc(label)}</dt><dd><span>${esc(value)}</span>${factSources([source], { ...options, visible: hubFactSources && label === "Total monthly cost" })}</dd></div>`;
-  const cardFacts = `<dl class="p3-card-ledger p3-card-contract" data-provider-card-contract="option-c"><div><dt>Medications offered</dt><dd><span>${esc(contract.ledger.meds_offered)}</span>${medicationSourceMeta}</dd></div>${factRow("Total monthly cost", priceStateText(entry) || contract.cost.value, contract.cost, { numeric: Boolean(entry.medications?.length) })}${factRow("Cancellation", contract.cancellation.value, contract.cancellation)}</dl>`;
+  // Current matrix evidence owns price copy as well as sorting. The legacy
+  // research summary can describe a different plan or a superseded price.
+  const costFact = medications.length
+    ? `<div><dt>Total monthly cost</dt><dd>${medications.map(row => sourcePrice(row, 'card', { showDate: true })).join('')}</dd></div>`
+    : factRow("Total monthly cost", priceStateText(entry) || contract.cost.value, contract.cost);
+  const cardFacts = `<dl class="p3-card-ledger p3-card-contract" data-provider-card-contract="option-c"><div><dt>Medications offered</dt><dd><span>${esc(contract.ledger.meds_offered)}</span>${medicationSourceMeta}</dd></div>${costFact}${factRow("Cancellation", contract.cancellation.value, contract.cancellation)}</dl>`;
   const affiliate = COMPARE_AFFILIATE_MAP[entry.program_id];
   const goPageSlug = goSurface ? String(goSurface.route || "/providers/").replace(/^\/+|\/+$/g, "").replaceAll("/", "-") || "providers" : "provider-listing";
   const goPosition = goSurface?.position || "pricing";
