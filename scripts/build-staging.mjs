@@ -126,6 +126,7 @@ const ASSET_VERSION = createHash("sha256").update(Buffer.concat([
   Buffer.from(consentRuntimeSource),
   Buffer.from(candidateExportPolicyMarkup),
 ])).digest("hex").slice(0, 16);
+import { publicProviderNames } from "../src/public-provider-names.mjs";
 const readJson = async (relative) => relative === "provider-page-contracts.json"
   ? loadProviderPageContracts(path.dirname(DATA))
   : JSON.parse(await readFile(path.join(DATA, relative), "utf8"));
@@ -1846,7 +1847,7 @@ async function main() {
   for (const spec of augmented) spec.coupon_offers_by_program = couponOffersByProgram;
   buildDerivations.coupon_offers = { schema: couponFeed.schema, total: couponFeed.offers.length, active: Object.keys(couponOffersByProgram).length };
   await write("data/coupon-offers.json", JSON.stringify(couponFeed, null, 2) + "\n");
-  const providerLogoManifest = JSON.parse(await readFile(path.join(ROOT, "assets/provider-logos/manifest.json"), "utf8"));
+  const providerLogoManifest = publicProviderNames(JSON.parse(await readFile(path.join(ROOT, "assets/provider-logos/manifest.json"), "utf8")));
   const wordmarkFontMetrics = await readJson("wordmark-font-metrics.json");
   buildDerivations.provider_chip_treatment = decorateProviderChips([...canonicalAugmented, ...therapeuticSurfaces.pages], providerLogoManifest, wordmarkFontMetrics);
   for (const spec of augmented) Object.assign(spec, deriveMoneyPageFreshness(spec));
@@ -1950,9 +1951,12 @@ async function main() {
   if (JSON.stringify(COST_AFFILIATE_EMAIL_MANIFEST) !== JSON.stringify(expectedCostAffiliateEmailManifest)) {
     throw new Error("frozen_cost_affiliate_email_manifest_drift");
   }
-  await write("data/therapeutic-taxonomy.json", JSON.stringify(programRegistry.therapeutic_taxonomy, null, 2) + "\n");
-  for (const spec of augmented) { const key = `money-${routeSlug(spec.path)}`; await write(path.join(spec.path.replace(/^\//, ""), "index.html"), addSharedRuntime(addOg(pageHero(addPriceIndexMoneyLink(addMoneyHero(setRobots(renderMoneyPage(spec, { ...identity, author: editorialAuthor }), "index,follow,max-image-preview:large"))), key, `Comparison overview for ${spec.h1}`), key, spec.h1))); }
-  for (const review of providerReviews) { const key = review.fastpath_contract ? "editorial-evidence-hero" : `review-${routeSlug(review.path)}`; await write(path.join(review.path.replace(/^\//, ""), "index.html"), markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)))); }
+  // Public views are separate from the raw records used by frozen manifests,
+  // semantic hashes and commercial guards. No source evidence is rewritten.
+  const reader = publicProviderNames({ programRegistry, contentLedger, providerPricingMatrix, augmented, projectedQuiz, providerReviews, costCalculator });
+  await write("data/therapeutic-taxonomy.json", JSON.stringify(reader.programRegistry.therapeutic_taxonomy, null, 2) + "\n");
+  for (const spec of reader.augmented) { const key = `money-${routeSlug(spec.path)}`; await write(path.join(spec.path.replace(/^\//, ""), "index.html"), addSharedRuntime(addOg(pageHero(addPriceIndexMoneyLink(addMoneyHero(setRobots(renderMoneyPage(spec, { ...identity, author: editorialAuthor }), "index,follow,max-image-preview:large"))), key, `Comparison overview for ${spec.h1}`), key, spec.h1))); }
+  for (const review of reader.providerReviews) { const key = review.fastpath_contract ? "editorial-evidence-hero" : `review-${routeSlug(review.path)}`; await write(path.join(review.path.replace(/^\//, ""), "index.html"), markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)))); }
   const ready6WithDetailReturns = ready6Editorial.pages.map(page => {
     const record = programRegistry.programs.find(program => program.review_path === page.route);
     const alias = record?.profiles?.['glp-clinic-scout']?.canonical_identity;
@@ -1972,10 +1976,10 @@ async function main() {
   // DESIGN WAVE 2026-08-06: the quiz result cards reuse the compare-tab logo rows,
   // so a logo can never diverge between the two surfaces.
   const quizProviderLogos = {};
-  for (const spec of augmented) for (const row of spec.rows) if (row.logo && !quizProviderLogos[row.program_id]) quizProviderLogos[row.program_id] = row.logo;
-  const quizProviderWordmarks = wordmarkFitsFor(projectedQuiz.candidates, providerLogoManifest, wordmarkFontMetrics);
-  await write("matches/customized/index.html", addSharedRuntime(addOg(renderMatchesCustomized(projectedQuiz, programRegistry, SITE_PROFILE, quizProviderLogos), "quiz-hero", "Customized provider matches · Clinic Scout")));
-  await write("quiz/provider-fit/index.html", addQuizBreadcrumbSchema(addSharedRuntime(addOg(responsiveHero(renderQuiz({ ...projectedQuiz, states: ["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"] }, programRegistry, SITE_PROFILE, quizProviderLogos, quizProviderWordmarks), "quiz-hero"), "quiz-hero", projectedQuiz.h1))));
+  for (const spec of reader.augmented) for (const row of spec.rows) if (row.logo && !quizProviderLogos[row.program_id]) quizProviderLogos[row.program_id] = row.logo;
+  const quizProviderWordmarks = wordmarkFitsFor(reader.projectedQuiz.candidates, providerLogoManifest, wordmarkFontMetrics);
+  await write("matches/customized/index.html", addSharedRuntime(addOg(renderMatchesCustomized(reader.projectedQuiz, reader.programRegistry, SITE_PROFILE, quizProviderLogos), "quiz-hero", "Customized provider matches · Clinic Scout")));
+  await write("quiz/provider-fit/index.html", addQuizBreadcrumbSchema(addSharedRuntime(addOg(responsiveHero(renderQuiz({ ...reader.projectedQuiz, states: ["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"] }, reader.programRegistry, SITE_PROFILE, quizProviderLogos, quizProviderWordmarks), "quiz-hero"), "quiz-hero", projectedQuiz.h1))));
   // Bind the entrance receipt to the organic document just emitted above,
   // including its existing all-state projection, not a second raw quiz render.
   const paidQuiz = renderPaidQuiz(await readFile(path.join(PUBLIC, "quiz/provider-fit/index.html"), "utf8"), ASSET_VERSION);
@@ -1983,7 +1987,7 @@ async function main() {
   for (const asset of paidQuiz.assets) await writeCleanRoom(asset.file, asset.body);
   for (const fragment of paidQuiz.fragments) await writeCleanRoom(fragment.file, fragment.html);
 
-  const costCalculatorHtml = directCalculatorWorkspace(decorateCostCalculatorAffiliateSurface(renderCostCalculator(costCalculator), costCalculator, augmented, programRegistry, activationSelection, SITE_PROFILE));
+  const costCalculatorHtml = directCalculatorWorkspace(decorateCostCalculatorAffiliateSurface(renderCostCalculator(reader.costCalculator), reader.costCalculator, reader.augmented, reader.programRegistry, activationSelection, SITE_PROFILE));
   await write("tools/glp-1-cost-calculator/index.html", addSharedRuntime(addOg(costCalculatorHtml, "money-online-glp-1-programs", costCalculator.h1)));
   for (const article of allArticles) {
     // R2 target release: render Mounjaro from the refreshed catalog row.
@@ -1993,7 +1997,7 @@ async function main() {
     const heroAlt = article.canonical_path === "/guides/best-company-to-get-glp-1/"
       ? "Editorial illustration of paperwork and a magnifying glass on a dark desk."
       : article.images?.[0]?.alt || `Guide overview for ${article.h1}`;
-    const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, resolveBlogComparisonSpec(article, contentLedger.programs), resolveArticleAuthor(article), contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
+    const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, resolveBlogComparisonSpec(article, reader.contentLedger.programs), resolveArticleAuthor(article), reader.contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
     const articleGraph = addArticleShareControls(articleVertical(article) === "GLP-1" ? upgradeInsightsArticle(articleBase, article, glpGuideArticles.filter((item) => item.canonical_path !== article.canonical_path && path.join(item.canonical_path.replace(/^\//, ""), "index.html") !== MOUNJARO_COUPON_ROUTE_FILE)) : articleBase);
     const rendered = addSharedRuntime(articleGraph);
     await write(path.join(article.canonical_path.replace(/^\//, ""), "index.html"), articleVertical(article) === "GLP-1" ? markReleaseReady(article.suppress_cta ? rendered : addGuideFunnel(rendered)) : rendered);
@@ -2020,7 +2024,7 @@ async function main() {
   // REBUILD homepage (LAY T1): the ranked strip and the price band are DERIVED
   // from the same ranked comparison and the same machine-written pricing capture
   // the hub renders. Nothing on the homepage is a number somebody typed.
-  const homeSpec = augmented.find((spec) => spec.path === "/best/online-glp-1-providers/") || augmented[0];
+  const homeSpec = reader.augmented.find((spec) => spec.path === "/best/online-glp-1-providers/") || reader.augmented[0];
   const homeMatrixKey = (row) => String(row.review_path || "").replace(/^\/reviews\//, "").replace(/\/$/, "") || row.program_id;
   const homeCheapestOf = (row) => {
     const entry = providerPricingMatrix.providers?.[homeMatrixKey(row)];
@@ -2169,13 +2173,13 @@ async function main() {
     const wallData = await readJson("approved-reader-reviews.json");
     approvedReaderReviews = (wallData.reviews || []).filter((review) => review.status === "approved" && review.entity && review.body);
   } catch {}
-  const homepage = renderHomePage({ blogCount: glpGuideArticles.filter((article) => !PHASE3_INSIGHTS_EXCLUSIONS.has(article.canonical_path)).length, comparisonCount: derivedTallies.COMPARISON_CARD_COUNT, programCount: liveProgramCount, updatedLabel, topPicks, cheapest, railMeds, verdictCards, receiptCards, readerReviews: approvedReaderReviews, reviewPrograms: programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id)), reviewPharmacies: phase3PharmacyInput });
+  const homepage = renderHomePage({ blogCount: glpGuideArticles.filter((article) => !PHASE3_INSIGHTS_EXCLUSIONS.has(article.canonical_path)).length, comparisonCount: derivedTallies.COMPARISON_CARD_COUNT, programCount: liveProgramCount, updatedLabel, topPicks, cheapest, railMeds, verdictCards, receiptCards, readerReviews: approvedReaderReviews, reviewPrograms: reader.programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id)), reviewPharmacies: phase3PharmacyInput });
   await write("index.html", markReleaseReady(addSharedRuntime(addOg(homepage, "home-evidence", "Clinic Scout · Compare what matters before you commit"))));
   const phase3Build = buildPhase3PageGraph({
     graph: phase3GraphConfig,
     pharmacyInput: phase3PharmacyInput,
-    pricingMatrix: providerPricingMatrix,
-    programRegistry,
+    pricingMatrix: reader.providerPricingMatrix,
+    programRegistry: reader.programRegistry,
     homeSpec,
     articles: glpGuideArticles,
     couponOffersByProgram,
@@ -2194,7 +2198,7 @@ async function main() {
       await write(`assets/${payloadFilename}`, payloadText);
       phase3Html = phase3Html.replace(payloadPattern, `<script type="application/json" data-provider-card-payloads data-src="/assets/${payloadFilename}">[]</script>`);
     }
-    const visualPage = upgradePhase3PageVisuals(phase3Html, { family: page.family, route: page.route, graph: phase3GraphConfig, registry: programRegistry });
+    const visualPage = upgradePhase3PageVisuals(phase3Html, { family: page.family, route: page.route, graph: phase3GraphConfig, registry: reader.programRegistry });
     let html = addSharedRuntime(visualPage);
     if (ADS_LP_ROUTE_FILES.has(page.file)) {
       html = optimizePaidLandingPage(html);
@@ -2205,7 +2209,7 @@ async function main() {
     await write(page.file, html);
   }
   const {renderPriceStateComparison}=await import('../src/price-state.mjs');
-  const comparisonStates=renderPriceStateComparison(liveRegistryRows.filter(p=>!providerIdentity.aliasIds.has(p.program_id)).map(p=>{const id=String(p.review_slug||p.program_id),entry=providerPricingMatrix.providers[id];return {id,label:entry?.provider||p.name||p.display_name||id,review_path:p.review_path||`/reviews/${id}/`,entry};}));
+  const comparisonStates=renderPriceStateComparison(publicProviderNames(liveRegistryRows.filter(p=>!providerIdentity.aliasIds.has(p.program_id)).map(p=>{const id=String(p.review_slug||p.program_id),entry=providerPricingMatrix.providers[id];return {id,label:entry?.provider||p.name||p.display_name||id,review_path:p.review_path||`/reviews/${id}/`,entry};})));
   await write("compare/index.html", markReleaseReady(addSharedRuntime(renderPass5ComparisonHub(providerDataAsOf).replace('</main>',comparisonStates+'</main>'))));
   const reviewLogoByProgram = Object.fromEntries((providerLogoManifest.logos || []).map((logo) => [logo.program_id, {
     path: logo.public_path,
@@ -2216,7 +2220,7 @@ async function main() {
     // the white logo tile (measured logo_luminance in the manifest).
     treatment: logo.logo_treatment || "light-chip",
   }]));
-  const reviewHubPrograms = programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id));
+  const reviewHubPrograms = reader.programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id));
   const reviewHubEvidenceDates = [...JSON.stringify({ programs: reviewHubPrograms, pharmacies: phase3PharmacyInput }).matchAll(/\d{4}-\d{2}-\d{2}/g)].map((match) => match[0]);
   // P22 R01 (Fable 2026-09-18): the registry JSON also carries FUTURE dates (a 2028 credential expiry); a modification
   // date can never be later than the data-as-of date, so only dates at or before providerDataAsOf count as evidence.
@@ -2310,7 +2314,16 @@ async function main() {
   await cp(path.join(ROOT, "assets/vendor"), path.join(PUBLIC, "assets/vendor"), { recursive: true });
   await mkdir(path.join(PUBLIC, "assets/fonts"), { recursive: true });
   await cp(path.join(ROOT, "assets/fonts"), path.join(PUBLIC, "assets/fonts"), { recursive: true });
-  await cp(path.join(ROOT, "assets/provider-logos"), path.join(PUBLIC, "assets/provider-logos"), { recursive: true });
+  // Copy image bytes unchanged; serialize only the public label views of the
+  // two JSON assets. Their private/source manifests retain original evidence.
+  const logoJsonNames = new Set(['manifest.json', 'pass2-lp-atlas.json']);
+  await cp(path.join(ROOT, "assets/provider-logos"), path.join(PUBLIC, "assets/provider-logos"), {
+    recursive: true, filter: source => !logoJsonNames.has(path.basename(source)),
+  });
+  for (const name of logoJsonNames) {
+    const source = JSON.parse(await readFile(path.join(ROOT, 'assets/provider-logos', name), 'utf8'));
+    await write(`assets/provider-logos/${name}`, JSON.stringify(publicProviderNames(source), null, 2) + '\n');
+  }
   await cp(path.join(ROOT, "assets/authors"), path.join(PUBLIC, "assets/authors"), { recursive: true });
   // META_PIXEL_RESTORE_V1: root-level static passthrough files. They had no
   // writer at all, so every full rebuild's rm(PUBLIC) dropped them. They are
@@ -2653,9 +2666,9 @@ async function main() {
   // routes this build actually produced. It adds no HTML anchors and changes
   // no page's index/noindex intent.
   await write("assets/search-index.json", buildSearchIndex({
-    augmented,
-    providerReviews,
-    programRegistry,
+    augmented: reader.augmented,
+    providerReviews: reader.providerReviews,
+    programRegistry: reader.programRegistry,
     aliasReviewRoutes,
     glpArticles,
     projectedQuiz,

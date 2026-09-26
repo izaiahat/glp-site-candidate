@@ -1,3 +1,4 @@
+import { publicProviderName } from "./public-provider-names.mjs";
 import programRegistry from "../data/program-registry.json" with { type: "json" };
 import pharmacyRegistry from "../data/phase3-pharmacy-render-input.json" with { type: "json" };
 import { canonicalContactStatements } from "./canonical-contact.mjs";
@@ -85,7 +86,7 @@ const REVIEW_VERIFICATION_COPY_SHA256 = "bf7427bcea387ffec2765338234e37305ff22a2
 const SUBJECT_ENTITIES = new Map();
 for (const row of programRegistry.programs || []) {
   const isAlias = row?.profiles?.["glp-clinic-scout"]?.canonical_identity?.role === "alias";
-  if (!isAlias && /^\/reviews\/[a-z0-9-]+\/$/.test(row?.review_path || "")) SUBJECT_ENTITIES.set(row.display_name, "provider");
+  if (!isAlias && /^\/reviews\/[a-z0-9-]+\/$/.test(row?.review_path || "")) SUBJECT_ENTITIES.set(publicProviderName(row.display_name), "provider");
 }
 for (const row of pharmacyRegistry.entries || []) {
   if (SUBJECT_ENTITIES.has(row.display_name) && SUBJECT_ENTITIES.get(row.display_name) !== "pharmacy") throw new Error(`review_entity_name_ambiguous:${row.display_name}`);

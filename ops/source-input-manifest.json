@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3839,
+  "tracked_file_count": 3841,
   "files": [
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
@@ -3475,6 +3475,7 @@
     "src/provider-identity.mjs",
     "src/provider-review.mjs",
     "src/provider-wordmark.mjs",
+    "src/public-provider-names.mjs",
     "src/quiz-copy-boundary.mjs",
     "src/quiz-ranking.mjs",
     "src/quiz.mjs",
@@ -3795,6 +3796,7 @@
     "tests/review-server.test.mjs",
     "tests/s32-successor.test.mjs",
     "tests/served-output-freshness.test.mjs",
+    "tests/skinnyrx-public-name.test.mjs",
     "tests/stripe-webhook.test.mjs",
     "tests/suite07-repairs.test.mjs",
     "tests/test_article_image_rebind.py",
