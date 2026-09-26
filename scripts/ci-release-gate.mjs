@@ -123,6 +123,9 @@ async function main() {
     catch (error) { result.steps.push({ id, status: 'FAIL', error: String(error.message) }); }
     save();
   };
+  const buildLock = path.join(process.env.GLP_PRIVATE_EVIDENCE_ROOT || '', 'scripts/candidate_build_lock.py');
+  const seat = 'rebuild-p13-release';
+  let buildLockHeld = false;
   try {
     ensure(git('status', '--porcelain', '--untracked-files=all') === '', 'D1_clean_head_required');
     const config = readJson(path.join(ROOT, 'ops/release-gate.json'));
@@ -148,16 +151,12 @@ async function main() {
     delete process.env.NODE_ENV;
     delete process.env.PLAYWRIGHT_BASE_URL;
     delete process.env.GLP_REVIEW_PUBLIC_ROOT;
-    const buildLock = path.join(process.env.GLP_PRIVATE_EVIDENCE_ROOT || '', 'scripts/candidate_build_lock.py');
-    const seat = 'rebuild-p13-release';
     execFileSync('python3', [buildLock, 'acquire', '--seat', seat], {stdio: 'pipe'});
-    try {
-      await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
-      await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
-    } finally {
-      execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
-      result.build_lock_released = true;
-    }
+    buildLockHeld = true;
+    // The host admits one heavy build/browser lane. Keep the same reservation
+    // across generation, artifact verification and browser execution.
+    await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
+    await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
     await command('release-export-artifact', process.execPath, ['--test', 'tests/release-export-artifact.test.mjs']);
     await command('public-name-regression', process.execPath, ['--test', 'tests/skinnyrx-public-name.test.mjs'], { GLP_PUBLIC_NAME_TEST_ROOT: path.join(ROOT, 'public') });
     await command('harness-negatives', process.execPath, ['--test', 'tests/release-gate-harness.test.mjs']);
@@ -181,6 +180,8 @@ async function main() {
       const raw_held = assertRawHeldOutput(rawHeldOutputCensus(documents, rawHeldInputs(ROOT), GO_RUNTIME_MANIFEST.programs));
       return { ...census, go_identity_anchors: identity.anchors.length, raw_held };
     });
+    const browserLock = JSON.parse(execFileSync('python3', [buildLock, 'require-held', '--seat', seat], {encoding: 'utf8'}));
+    result.steps.push({id:'browser-lock-held',status:'PASS',evidence:browserLock}); save();
     await command('browser', process.execPath, ['artifacts/ultracode/tools/test-browser-nowrite.mjs'], {
       GLP_RELEASE_SELECTION: path.join(ROOT, 'ops/release-gate.json'), PLAYWRIGHT_WORKERS: '1',
       PLAYWRIGHT_PORT: '4296', PLAYWRIGHT_SCRATCH_ROOT: path.join(out, 'browser-scratch'),
@@ -213,6 +214,14 @@ async function main() {
     result.generated_diff_sha256 = sha(execFileSync('git', ['diff', '--binary'], { cwd: ROOT, maxBuffer: 64 * 1024 * 1024 }));
     result.authority_files = ['data/go-runtime-selection.json', 'data/go-runtime-promotion-authority.json', 'data/tracking-allowed-hosts.json', 'artifacts/ops/build-report.json'].filter(f => existsSync(path.join(ROOT, f))).map(file => ({ file, sha256: sha(readFileSync(path.join(ROOT, file))) }));
   } catch (error) { result.steps.push({ id: 'gate-precondition', status: 'FAIL', error: String(error.message) }); }
+  finally {
+    if (buildLockHeld) {
+      try {
+        execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
+        result.build_lock_released = true;
+      } catch (error) { result.steps.push({id:'build-lock-release',status:'FAIL',error:String(error.message)}); }
+    }
+  }
   result.status = result.steps.length > 0 && result.steps.every(s => s.status === 'PASS') ? 'PASS' : 'FAIL';
   result.finished_at = new Date().toISOString(); save();
   console.log(JSON.stringify({ head: result.head, status: result.status, failed_requirements: result.steps.filter(s => s.status !== 'PASS').map(s => ({ id: s.id, error: s.error })), receipt: path.join(out, 'gate.json') }, null, 2));
