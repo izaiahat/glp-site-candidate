@@ -82,21 +82,6 @@
         "requirement": "A02"
       },
       {
-        "file": "tests/browser/release-consent-effects.spec.mjs",
-        "title": "D1 real consent deny reload regrant /",
-        "requirement": "D1-real-consent"
-      },
-      {
-        "file": "tests/browser/release-consent-effects.spec.mjs",
-        "title": "D1 real consent deny reload regrant /providers/",
-        "requirement": "D1-real-consent"
-      },
-      {
-        "file": "tests/browser/release-consent-effects.spec.mjs",
-        "title": "D1 real consent deny reload regrant /tools/glp-1-cost-calculator/",
-        "requirement": "D1-real-consent"
-      },
-      {
         "file": "tests/browser/glp41-d1-material.spec.mjs",
         "title": "C01 quiz clearance never mutates layout during ResizeObserver delivery",
         "requirement": "C01"
@@ -125,6 +110,46 @@
         "file": "tests/browser/pass2-work-order-detail.spec.mjs",
         "title": "O-15 dose UI appears only on the exact source-reported provider detail",
         "requirement": "F22"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 candidate UI no-egress and preference transitions /",
+        "requirement": "D1-candidate-preferences-no-egress"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 candidate UI no-egress and preference transitions /providers/",
+        "requirement": "D1-candidate-preferences-no-egress"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 candidate UI no-egress and preference transitions /tools/glp-1-cost-calculator/",
+        "requirement": "D1-candidate-preferences-no-egress"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 candidate UI no-egress and preference transitions /lp/quiz/",
+        "requirement": "D1-candidate-preferences-no-egress"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 candidate UI no-egress and preference transitions /quiz/provider-fit/",
+        "requirement": "D1-candidate-preferences-no-egress"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 candidate UI no-egress and preference transitions /reviews/nu-image-medical-review/",
+        "requirement": "D1-candidate-preferences-no-egress"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 isolated enabled consumer permits analytics grant and blocks fresh post-revoke attempts",
+        "requirement": "D1-enabled-fixture"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 privacy oracle rejects injected first-party tracking and transient storage writes",
+        "requirement": "D1-privacy-negative-control"
       }
     ]
   },
