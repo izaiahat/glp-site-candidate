@@ -1,8 +1,10 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3844,
+  "tracked_file_count": 3846,
   "files": [
+    "tests/consent-attribution-withdrawal.test.mjs",
+    "tests/browser/consent-withdrawal-sdk.spec.mjs",
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
     ".gitignore",
