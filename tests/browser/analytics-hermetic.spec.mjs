@@ -288,7 +288,7 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
   // or a fixture-written record. Candidate consumer flags still prevent SDK requests.
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem("gcs_tracking_consent_v1")))).toMatchObject({
     version: "gcs-cookie-v4-distinct-purposes", record_type: "preference_only",
-    analytics: "granted", advertising: "denied", analytics_basis: "us_default", notice_acknowledged: false,
+    analytics: "granted", advertising: "granted", analytics_basis: "global_default", notice_acknowledged: false,
   });
   expect(await page.evaluate(() => window.GCSConsent.allowsExports("analytics"))).toBe(true);
   if (BUILD_STAGE === "candidate") {
@@ -324,13 +324,13 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
       scrubbed: window.posthog.__config.before_send({ event: "quiz_complete", properties, distinct_id: "P27_ANSWER_CANARY" }),
     };
   });
-  expect(poisonResult).toEqual({ accepted: true, scrubbed: { event: "quiz_complete", properties: {} } });
+  expect(poisonResult).toEqual({ accepted: true, scrubbed: { event: "quiz_complete", properties: { $process_person_profile: false, $current_url: 'https://glpclinicscout.com/providers/', $host: 'glpclinicscout.com', $pathname: '/providers/' } } });
   await expect.poll(() => intercepted.some((entry) => {
     try { return JSON.parse(entry.body)?.event === "quiz_complete"; } catch { return false; }
   })).toBe(true);
   await page.locator('[data-consent="acknowledge"]').click();
   await expect(page.locator("#gcs-consent")).toHaveCount(0);
-  expect(await page.evaluate(() => window.GCSConsent.read()), "P27 acknowledgment retains US-default basis").toMatchObject({ analytics: "granted", advertising: "denied", analytics_basis: "us_default", notice_acknowledged: true });
+  expect(await page.evaluate(() => window.GCSConsent.read()), "P27 acknowledgment retains US-default basis").toMatchObject({ analytics: "granted", advertising: "granted", analytics_basis: "global_default", notice_acknowledged: true });
 
   await page.evaluate(() => window.addEventListener("click", (event) => event.preventDefault(), false));
   const anchor = page.locator('a[data-analytics-event="affiliate_click"]').first();

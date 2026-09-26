@@ -50,7 +50,7 @@ for(const libraryArrived of [false,true])test('late pre-withdrawal SDK callback 
 });
 test('server scope and receipt validity remain independent from browser preference on every read',async()=>{
  const adapter=fixtureAdapter(),f=boot({adapter});f.c.apply(choice);await f.c.whenSettled();
- assert.equal(boot({adapter,storage:f.storage}).c.purposes().advertising,'granted');assert.equal(boot({storage:f.storage}).c.purposes().advertising,'denied');
+ assert.equal(boot({adapter,storage:f.storage}).c.purposes().advertising,'granted');assert.equal(boot({storage:f.storage}).c.purposes().advertising,'granted','served browser preference is not a server receipt');
  const r=adapter.receipt();for(const [field,value] of [['scope_id','OTHER'],['scope_revision',2],['notice_version','OTHER'],['withdrawn',true],['gpc',true],['ad_personalization','granted'],['expires_at_ms',0]]){const old=r[field];r[field]=value;assert.equal(f.c.purposes().advertising,'denied',field);r[field]=old}
  for(const field of ['containment','notice_approved','retention_approved','eligible']){adapter.scope[field]=false;assert.equal(f.c.advertisingStatus().available,false,field);assert.equal(f.c.purposes().advertising,'denied');adapter.scope[field]=true}
 });
@@ -58,9 +58,8 @@ test('throwing or empty issuer read denies instead of trusting choose return pay
  const adapter=fixtureAdapter();adapter.choose=async()=>({ad_storage:'granted'});const f=boot({adapter});f.c.apply(choice);await f.c.whenSettled();assert.equal(f.c.purposes().advertising,'denied');
  adapter.readCurrent=()=>{throw Error('unavailable')};assert.equal(f.c.advertisingStatus().available,false);
 });
-test('P27 late regional lookup respects a withdrawal written before bootstrap',async()=>{
- let respond;const f=boot({model:null,regionFetch:()=>new Promise(resolve=>{respond=resolve})});assert.equal(f.c,undefined);assert.equal(f.window.GCSAnalytics.event('quiz_start'),false);await Promise.resolve();
- const other=boot();other.c.apply('denied');f.storage.set(key,other.storage.get(key));respond({ok:true,json:async()=>({schema:'glp-consent-region-v1',model:'us-default-on'})});await f.whenReady();assert.equal(f.c.effective(),'denied');assert.equal(f.scripts.length,0);
+test('P27 no regional wait can override a saved withdrawal at bootstrap',async()=>{
+ const other=boot();other.c.apply('denied');let calls=0;const f=boot({storage:other.storage,model:null,regionFetch:()=>{calls++;return new Promise(()=>{})}});assert.equal(f.c.effective(),'denied');assert.equal(f.window.GCSAnalytics.event('quiz_start'),false);await f.whenReady();assert.equal(calls,0);assert.equal(f.c.purposes().advertising,'denied');assert.equal(f.scripts.length,0);
 });
 test('P27 acknowledgment cannot revive a cross-tab withdrawal or dynamic GPC',()=>{
  for(const gpc of [false,true]){const f=boot();f.window.GCSAnalytics.event('quiz_start');const queue=f.window.posthog.__queue;if(gpc)f.navigator.globalPrivacyControl=true;else{f.storage.delete(key);f.event('storage',{key})}f.c.acknowledge();assert.equal(queue.length,0);assert.equal(f.c.read().analytics,'denied');assert.equal(f.c.effective(),'denied')}

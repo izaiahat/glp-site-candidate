@@ -1,21 +1,21 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import vm from 'node:vm';
-import {readFileSync} from 'node:fs';
-import * as runtime from '../src/consent-runtime.mjs';
-import {fixture} from './d2i-analytics-hygiene.test.mjs';
-test('US default-on and explicit independent preference record; no server permission means ads unavailable',()=>{
+import {fixture,routeProperties} from './d2i-analytics-hygiene.test.mjs';
+test('worldwide default-on independent preferences preserve payload hygiene and vendor holds',()=>{
  const f=fixture(); const c=f.window.GCSConsent;
  assert.equal(typeof c.purposes,'function');
- assert.deepEqual(JSON.parse(JSON.stringify(c.purposes())),{analytics:'granted',advertising:'denied'});
- assert.equal(c.read().analytics_basis,'us_default');assert.equal(c.read().notice_acknowledged,false);assert.equal(c.read().record_type,'preference_only');assert.equal(f.scripts.length,1);
- const options=f.mockLoad(),poison={answer:'P29_CANARY',quiz_answers:{dose:'P29_CANARY'},email:'P29_CANARY',distinct_id:'P29_CANARY',page_url:'https://unsafe.invalid/?answer=P29_CANARY',result_count:3};
- assert.equal(c.allowsExports(),true);assert.equal(f.window.GCSAnalytics.event('quiz_complete',poison),true);assert.equal(f.captures.length,1);assert.deepEqual(JSON.parse(JSON.stringify(f.captures[0][1])),{});
- assert.deepEqual(JSON.parse(JSON.stringify(options.before_send({event:'quiz_complete',properties:poison,distinct_id:'P29_CANARY'}))),{event:'quiz_complete',properties:{}});assert.doesNotMatch(JSON.stringify(f.captures),/P29_CANARY|quiz_answers|result_count|unsafe\.invalid/);
+ assert.deepEqual(JSON.parse(JSON.stringify(c.purposes())),{analytics:'granted',advertising:'granted'});
+ assert.equal(c.read().analytics_basis,'global_default');assert.equal(c.read().notice_acknowledged,false);assert.equal(c.read().record_type,'preference_only');assert.equal(f.scripts.length,1);
+ const options=f.mockLoad(),poison={answer:'P29_CANARY',quiz_answers:{dose:'P29_CANARY'},health_condition:'P29_CANARY',email:'P29_CANARY',distinct_id:'P29_CANARY',page_url:'https://unsafe.invalid/health/?answer=P29_CANARY',result_count:3};
+ assert.equal(c.allowsExports(),true);assert.equal(c.allowsExports('ad_measurement'),true);assert.equal(f.window.GCSAnalytics.event('quiz_complete',poison),true);assert.equal(f.captures.length,1);assert.deepEqual(JSON.parse(JSON.stringify(f.captures[0][1])),{});
+ assert.deepEqual(JSON.parse(JSON.stringify(options.before_send({event:'quiz_complete',properties:poison,distinct_id:'P29_CANARY'}))),{event:'quiz_complete',properties:routeProperties(f)});assert.doesNotMatch(JSON.stringify(f.captures),/P29_CANARY|quiz_answers|result_count|unsafe\.invalid/);
  c.apply({analytics:'granted',advertising:'denied'});
  assert.equal(c.effective(),'granted');assert.equal(c.allowsExports('ad_measurement'),false);
  assert.equal(c.read().advertising,'denied');assert.equal(c.read().record_type,'preference_only');
- assert.equal(c.advertisingStatus().available,false);
+ assert.equal(c.advertisingStatus().server_revocation,'not_implemented','no fabricated server receipt');
  c.apply({analytics:'denied',advertising:'granted'});
- assert.equal(c.purposes().advertising,'denied');assert.equal(c.read().advertising,'denied');assert.equal(c.effective(),'denied');assert.equal(c.read().analytics_basis,'explicit');assert.equal(c.allowsExports(),false);assert.equal(f.window.GCSAnalytics.event('quiz_complete',poison),false);assert.equal(options.before_send({event:'quiz_complete',properties:poison}),null);
+ assert.equal(c.purposes().advertising,'granted');assert.equal(c.read().advertising,'granted');assert.equal(c.effective(),'denied');assert.equal(c.read().analytics_basis,'explicit');assert.equal(c.allowsExports(),false);assert.equal(f.window.GCSAnalytics.event('quiz_complete',poison),false);assert.equal(options.before_send({event:'quiz_complete',properties:poison}),null);
+ assert.equal(f.scripts.some(s=>/googletagmanager|clarity|facebook/.test(s.src)),false);
+ assert.doesNotMatch(JSON.stringify(f.window.dataLayer),/P29_CANARY|quiz_answers|health_condition|unsafe\.invalid/);
+ c.apply('denied');assert.equal(c.allowsExports('ad_measurement'),false);
 });

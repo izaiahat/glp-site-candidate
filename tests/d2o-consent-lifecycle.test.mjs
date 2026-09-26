@@ -30,9 +30,9 @@ test('failed persistence cannot prevent revocation or revive old grant in this d
 test('default-on record before default, update before consent event and its PostHog loader (GTM held)',()=>{
  const f=boot(),saved=f.order.findIndex(x=>x[0]==='storage'),first=f.order.findIndex(x=>x[0]==='consent'&&x[1]==='default');
  assert.ok(saved>=0&&saved<first);assert.equal(f.order[saved][2].analytics,'granted');
- assert.deepEqual(JSON.parse(JSON.stringify(f.order[first])),['consent','default',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'}]);assert.equal(f.scripts.length,1);
+ assert.deepEqual(JSON.parse(JSON.stringify(f.order[first])),['consent','default',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'denied'}]);assert.equal(f.scripts.length,1);
  const update=f.order.findIndex(x=>x[0]==='consent'&&x[1]==='update'&&x[2].analytics_storage==='granted');const script=f.order.findIndex(x=>x[0]==='script');assert.ok(first<update);assert.ok(update<script);const event=f.order.findIndex(x=>x[0]==='event'&&x[1]==='gcs:consent');assert.ok(update<event);assert.ok(event<script);
- for(const x of f.order.filter(x=>x[0]==='consent'))for(const purpose of ['ad_storage','ad_user_data','ad_personalization'])assert.equal(x[2][purpose],'denied');
+ for(const x of f.order.filter(x=>x[0]==='consent')){assert.equal(x[2].ad_storage,'granted');assert.equal(x[2].ad_user_data,'granted');assert.equal(x[2].ad_personalization,'denied');}
 });
 test('valid reload restores analytics only; unknown and malformed records fail closed',()=>{
  const f=boot();f.c.apply('granted');assert.equal(boot({storage:f.storage}).c.effective(),'granted');
@@ -45,9 +45,9 @@ test('known v3 explicit opt-in migrates analytics only, never advertising',()=>{
 });
 test('banner has no checkbox, one acknowledgment and the existing cookie-choices link reopens management',()=>{
  const f=boot();f.ready();const root=f.document.querySelector('#gcs-consent'),html=root.innerHTML;
- assert.doesNotMatch(html,/type="checkbox"|<input| checked|gcs-consent-advertising/);assert.equal((html.match(/<button /g)||[]).length,1);assert.match(html,/data-consent="acknowledge">Got it/);assert.match(html,/href="\/privacy\/cookies\/" data-consent-open>Opt out \/ manage/);assert.match(html,/role="status"/);
- assert.match(root.querySelector('#gcs-consent-copy').textContent,/Analytics is on to improve comparisons/);
- f.choose('acknowledge');assert.equal(f.document.querySelector('#gcs-consent'),null);assert.equal(f.c.effective(),'granted');assert.equal(f.c.read().analytics_basis,'us_default');assert.equal(f.c.read().notice_acknowledged,true);
+ assert.doesNotMatch(html,/type="checkbox"|<input| checked|gcs-consent-advertising/);assert.equal((html.match(/<button /g)||[]).length,1);assert.match(html,/data-consent="acknowledge">Got it/);assert.match(html,/href="\/privacy\/cookies\/" data-consent-open>Manage \/ opt out/);assert.match(html,/role="status"/);
+ assert.match(root.querySelector('#gcs-consent-copy').textContent,/Analytics and advertising\/conversion measurement are on/);
+ f.choose('acknowledge');assert.equal(f.document.querySelector('#gcs-consent'),null);assert.equal(f.c.effective(),'granted');assert.equal(f.c.read().analytics_basis,'global_default');assert.equal(f.c.read().notice_acknowledged,true);
  let prevented=false;f.documentEvent('click',{target:{closest:s=>s.includes('footer a[href^="/privacy/cookies/"]')?{}:null},preventDefault(){prevented=true}});assert.equal(prevented,true);assert.ok(f.document.querySelector('#gcs-consent'));f.choose('denied');assert.equal(f.c.effective(),'denied');
 });
 test('P27 GPC first load stores denied and never loads PostHog',()=>{
@@ -56,7 +56,7 @@ test('P27 GPC first load stores denied and never loads PostHog',()=>{
  for(const x of f.order.filter(x=>x[0]==='consent'))assert.deepEqual(Object.values(x[2]),['denied','denied','denied','denied']);
 });
 test('P27 opt-out clears default-on queue before click returns',()=>{
- const f=boot();assert.equal(f.c.read().analytics_basis,'us_default');assert.equal(f.window.GCSAnalytics.event('quiz_start'),true);const queue=f.window.posthog.__queue,script=f.scripts[0];assert.equal(queue.length,1);
+ const f=boot();assert.equal(f.c.read().analytics_basis,'global_default');assert.equal(f.window.GCSAnalytics.event('quiz_start'),true);const queue=f.window.posthog.__queue,script=f.scripts[0];assert.equal(queue.length,1);
  f.c.open();f.choose('denied');assert.equal(queue.length,0,'opt-out cleared pending queue synchronously');assert.equal(f.c.read().analytics,'denied');assert.equal(f.window.GCS_ANALYTICS.consent,'denied');assert.equal(f.window.GCSAnalytics.event('quiz_start'),false);
  let initialized=0;f.window.posthog.init=()=>{initialized++};script.load();assert.equal(initialized,0);assert.equal(f.window.GCS_POSTHOG_LOADED,false);
 });
@@ -66,14 +66,14 @@ test('P27 storage failures never authorize default-on',()=>{
 test('P27 unacknowledged notice survives reload; saved withdrawal never becomes a default grant',()=>{
  const f=boot(),again=boot({storage:f.storage});again.ready();assert.ok(again.document.querySelector('#gcs-consent'));f.c.apply('denied');const denied=boot({storage:f.storage});denied.ready();assert.equal(denied.c.effective(),'denied');assert.equal(denied.scripts.length,0);assert.equal(denied.document.querySelector('#gcs-consent'),null);
 });
-test('P27 prior opt-in retains no pregrant loader and equal single-click choices without checkboxes',()=>{
- const f=boot({model:'prior-opt-in'});assert.equal(f.c.effective(),'denied');assert.equal(f.scripts.length,0);assert.equal(f.window.GCSAnalytics.event('quiz_start'),false);f.ready();const html=f.document.querySelector('#gcs-consent').innerHTML;
- assert.doesNotMatch(html,/<input| checked/);assert.equal((html.match(/<button /g)||[]).length,2);for(const choice of ['denied','granted'])assert.match(html,new RegExp('type="button" data-consent="'+choice+'"'));
- const style=f.document.querySelector('#gcs-consent-style').textContent;assert.match(style,/button\[data-consent\]\{flex:1;min-height:44px/);assert.deepEqual(Object.values(f.order.find(x=>x[0]==='consent'&&x[1]==='default')[2]),['denied','denied','denied','denied']);
- f.choose('granted');assert.equal(f.c.effective(),'granted');assert.equal(f.c.read().analytics_basis,'explicit');assert.equal(f.scripts.length,2);assert.equal(f.scripts.filter(x=>x.src).length,1);
+test('P27 legacy regional input still gets one worldwide acknowledgment without checkboxes',()=>{
+ const f=boot({model:'prior-opt-in'});assert.equal(f.c.effective(),'granted');assert.equal(f.c.purposes().advertising,'granted');assert.equal(f.scripts.length,1);assert.equal(f.window.GCSAnalytics.event('quiz_start'),true);f.ready();const html=f.document.querySelector('#gcs-consent').innerHTML;
+ assert.doesNotMatch(html,/<input| checked|data-consent="(?:granted|denied)"/);assert.equal((html.match(/<button /g)||[]).length,1);assert.match(html,/data-consent="acknowledge"/);
+ const style=f.document.querySelector('#gcs-consent-style').textContent;assert.match(style,/button\[data-consent\]\{flex:1;min-height:44px/);assert.deepEqual(Object.values(f.order.find(x=>x[0]==='consent'&&x[1]==='default')[2]),['granted','granted','granted','denied']);
+ f.choose('acknowledge');assert.equal(f.c.effective(),'granted');assert.equal(f.c.read().analytics_basis,'global_default');assert.equal(f.c.purposes().advertising,'granted');assert.equal(f.scripts.length,2);assert.equal(f.scripts.filter(x=>x.src).length,1);
 });
-test('P27 acknowledgment is not prior opt-in proof after a region change',()=>{
- const f=boot();f.c.acknowledge();const eu=boot({storage:f.storage,model:'prior-opt-in'});assert.equal(eu.c.effective(),'denied');assert.equal(eu.scripts.length,0);eu.ready();assert.ok(eu.document.querySelector('#gcs-consent'));eu.choose('granted');assert.equal(eu.c.effective(),'granted');assert.equal(eu.c.read().analytics_basis,'explicit');
+test('P27 region changes do not change acknowledgment or opt-out preferences',()=>{
+ const f=boot();f.c.acknowledge();const eu=boot({storage:f.storage,model:'prior-opt-in'});assert.equal(eu.c.effective(),'granted');assert.equal(eu.c.purposes().advertising,'granted');assert.equal(eu.scripts.length,1);eu.ready();assert.equal(eu.document.querySelector('#gcs-consent'),null);eu.c.open();eu.choose('denied');assert.equal(eu.c.effective(),'denied');assert.equal(eu.c.read().analytics_basis,'explicit');assert.equal(boot({storage:f.storage}).c.purposes().advertising,'denied');
 });
 // Offline preference reducer proof, not runtime eligibility or an A12 receipt.
 for(const analytics of ['denied','granted'])for(const advertising of ['denied','granted'])test('isolated eligible TEST preference '+analytics+'/'+advertising,()=>{

@@ -43,7 +43,7 @@ async function context(options = {}) {
 async function open(page, route) {
   const response = await page.goto(origin + route);
   assert.equal(response.status(), 200, 'actual document serves successfully');
-  const reject = page.getByRole('button', { name: /^(Reject optional|Turn off analytics)$/ });
+  const reject = page.getByRole('button', { name: /^(Reject optional|Turn off tracking)$/ });
   if (await reject.isVisible()) await reject.click();
 }
 

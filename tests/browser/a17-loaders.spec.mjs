@@ -22,7 +22,7 @@ for(const platform of ['meta','microsoft'])for(const state of negatives)test(`${
 });
 for(const platform of ['meta','microsoft'])test(`${platform}: regrant requires fresh server permission revision and explicit choice`,async({context},info)=>{
  const h=await harness(context,{platform,state:'granted'});await expect.poll(()=>h.page.locator('iframe').count()).toBe(1);
- await h.page.getByRole('button',{name:'Cookie choices',exact:true}).click();await h.page.getByRole('button',{name:'Turn off analytics'}).click();await h.page.evaluate(()=>window.GCSConsent.whenSettled());
+ await h.page.getByRole('button',{name:'Cookie choices',exact:true}).click();await h.page.getByRole('button',{name:'Turn off tracking'}).click();await h.page.evaluate(()=>window.GCSConsent.whenSettled());
  const boundary=h.requests.length;await h.page.reload();await h.page.waitForFunction(()=>window.harnessReady);
  expect(await h.page.locator('iframe').count()).toBe(0);expect(h.requests.slice(boundary).filter(r=>r.category!=='local')).toEqual([]);
  await h.freshScope();await h.page.reload();await h.page.waitForFunction(()=>window.harnessReady);await h.page.getByRole('button',{name:'Cookie choices',exact:true}).click();
@@ -47,7 +47,7 @@ for(const platform of ['meta','microsoft'])test(`${platform}: expiry tears down 
 for(const platform of ['meta','microsoft'])test(`${platform}: cross-tab withdrawal and reload cannot restore prior permission`,async({context},info)=>{
  const h=await harness(context,{platform,state:'granted'});await expect.poll(()=>h.page.locator('iframe').count()).toBe(1);
  const second=await context.newPage();await second.goto(h.origin+'/test/administrative/');await second.waitForFunction(()=>window.harnessReady);await expect.poll(()=>second.locator('iframe').count()).toBe(1);
- await second.getByRole('button',{name:'Cookie choices',exact:true}).click();await second.getByRole('button',{name:'Turn off analytics'}).click();
+ await second.getByRole('button',{name:'Cookie choices',exact:true}).click();await second.getByRole('button',{name:'Turn off tracking'}).click();
  await expect.poll(()=>h.page.locator('iframe').count()).toBe(0);const boundary=h.requests.length;
  await h.page.reload();await h.page.waitForFunction(()=>window.harnessReady);await h.page.waitForTimeout(120);
  expect(await h.page.locator('iframe').count()).toBe(0);
@@ -65,7 +65,7 @@ for(const platform of ['meta','microsoft'])for(const delayed of [false,true])tes
  const h=await harness(context,{platform,state:'granted',slowSDK:delayed});
  await expect.poll(async()=>(await snapshot(h)).sdk).toBe(1);
  if(!delayed)await expect.poll(()=>h.page.locator('iframe').count()).toBe(1);
- await h.page.getByRole('button',{name:'Cookie choices',exact:true}).click();await h.page.getByRole('button',{name:'Turn off analytics'}).click();
+ await h.page.getByRole('button',{name:'Cookie choices',exact:true}).click();await h.page.getByRole('button',{name:'Turn off tracking'}).click();
  const boundary=h.requests.length;h.release();await h.page.waitForTimeout(160);
  expect(await h.page.locator('iframe').count()).toBe(0);
  expect(await h.page.evaluate(()=>window.GCSConsent.purposes().advertising)).toBe('denied');

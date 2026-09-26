@@ -178,11 +178,10 @@ for (const spec of pages) {
         expect(new URL(page.url()).pathname).toBe(surfaceContract.route);
         expect(new URL(page.url()).origin).toBe(new URL(redirectedFrom.url()).origin);
       }
-      await expect.poll(() => page.evaluate(() => window.GCSConsent?.model())).toMatch(/^(?:us-default-on|prior-opt-in)$/);
-      const consentModel = await page.evaluate(() => window.GCSConsent.model());
-      const consent = page.locator(consentModel === "us-default-on"
-        ? '#gcs-consent [data-consent="acknowledge"]'
-        : '#gcs-consent [data-consent="denied"]');
+      await expect.poll(() => page.evaluate(() => window.GCSConsent?.model())).toBe('global-default-on');
+      const consent = page.locator('#gcs-consent [data-consent="acknowledge"]');
+      await expect(page.locator('#gcs-consent button')).toHaveCount(1);
+      await expect(page.locator('#gcs-consent input')).toHaveCount(0);
       await expect(consent).toBeVisible();
       let inpProxy = 0;
       await consent.evaluate((element) => {

@@ -7,14 +7,11 @@
     return;
   }
 
-  // D2i reviewed manual UI-operation schema. Empty lists are intentional: not
-  // even ordinals/step IDs, result counts, provider choices, paths or click IDs
-  // are exported. Generic names do NOT sanitize result/answer-derived triggers:
-  // results_view, calculator_result_view, provider_finder_complete and
-  // comparison_facets_changed remain forbidden, not renamed into UI events.
-  // cost_calculator_complete also runs on query-restored calculation; instead
-  // observe trusted form submission independently of values/results below.
+  // Manual events carry no caller-provided properties. PostHog's last-mile
+  // hook separately preserves its protocol envelope and anonymous visit/route
+  // fields. This analytics permission never feeds the advertising lanes.
   const allowed = Object.freeze({
+    $pageview: [],
     affiliate_click: [], comparison_table_view: [],
     cost_calculator_used: [], calculator_submit: [],
     quiz_complete: [], quiz_start: [], quiz_step_complete: [],
@@ -30,11 +27,27 @@
     for (const key of allowed[name]) if (params[key] !== undefined) clean[key] = params[key];
     return clean;
   }
-  // Last-mile SDK hook replaces automatic URL/referrer/title/identity enrichment.
-  // Never forward SDK-generated events, profiles or unreviewed properties.
+  // Keep only the SDK protocol fields and the approved anonymous route
+  // dimensions. Never spread caller properties, profiles, referrers or forms.
+  // Removing token makes the real PostHog SDK drop the event before transport.
   function beforeSend(event) {
     if (!consented() || !reviewed(event?.event)) return null;
-    return {event: event.event, properties: cleanProperties(event.event, {})};
+    const properties = event.properties || {};
+    const url = new URL(location.href);
+    url.search = ''; url.hash = ''; url.username = ''; url.password = '';
+    return {
+      event: event.event,
+      ...(event.uuid !== undefined ? { uuid: event.uuid } : {}),
+      ...(event.timestamp !== undefined ? { timestamp: event.timestamp } : {}),
+      properties: {
+        token: properties.token,
+        distinct_id: window.posthog?.get_distinct_id?.(),
+        $process_person_profile: false,
+        $current_url: url.href,
+        $host: url.host,
+        $pathname: url.pathname,
+      },
+    };
   }
 
   function emit(name, params = {}) {
@@ -93,7 +106,7 @@
       window.posthog.init(config.api_key, {
         api_host: config.host,
         autocapture: false,
-        capture_pageview: false,
+        capture_pageview: true,
         capture_pageleave: false,
         capture_performance: false,
         disable_session_recording: true,
@@ -108,7 +121,7 @@
         capture_exceptions: false,
         capture_heatmaps: false,
         before_send: beforeSend,
-        property_denylist: ["$initial_referrer", "$referrer", "$current_url", "$pathname", "$host", "$title", "$initial_current_url", "$device_id", "$user_id"],
+        property_denylist: ["$initial_referrer", "$referrer", "$title", "$initial_current_url", "$device_id", "$user_id"],
       });
       posthogInitialized = true;
       for (const args of queue) if (consented()) window.posthog.capture(...args);
