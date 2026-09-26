@@ -74,15 +74,54 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   function localHost(){const h=(location.hostname||'').toLowerCase();return ['','localhost','127.0.0.1','0.0.0.0','::1','[::1]'].includes(h)||h.endsWith('.localhost')||h.endsWith('.local')||h.endsWith('.test')||h.endsWith('.internal')||location.protocol==='file:'}
   function synthetic(){return localHost()||navigator.webdriver===true||/HeadlessChrome|Headless|Playwright|Puppeteer|Lighthouse|Google-InspectionTool|synthetic|bot|crawler|spider/i.test(navigator.userAgent||'')}
   function activeId(c){return localHost()?(c.debug_measurement_id||null):c.measurement_id}
-  /* A12b / A11: the published GTM container is not proven contained here.
-     No GTM/gtag.js loader, Google UI events or GA enablement are permitted.
-     The gtag shim carries ordered consent state only. PostHog remains an
-     independently consented, restricted analytics consumer in analytics.js.
-     Neither a config boolean nor advertising consent clears this hold. */
-  function loadAnalytics(){const c=window.GCS_ANALYTICS||{};const id=activeId(c);if(!exportsAllowed()||!c.enabled||!id){c.consent='denied';return}c.consent='granted';c.active_measurement_id=id;window['ga-disable-'+id]=true;window.gtag('set',{page_location:'https://glpclinicscout.com/',page_referrer:'',page_title:'Clinic Scout',send_page_view:false,allow_google_signals:false,allow_ad_personalization_signals:false});window.GCS_GTM_HELD='A11 containment unbound';}
+  /* A11: never load the unreviewed GTM container or forward UI events. This
+     independent GA4 page_view is intentionally root-only, not site-wide. No
+     sensitive pathname, title, query, referrer or shared dataLayer history may
+     reach Google. Native SDK/property behavior still needs privacy review. */
+  const GA4_ID='G-2WQ42JY0WK',GA4_ROOT='https://glpclinicscout.com/';
+  let ga4Script=null,ga4Epoch=0,ga4Sent=false;
+  function ga4Context(){
+    const c=window.GCS_ANALYTICS||{};
+    return exportsAllowed()&&window.GCSConsent?.read?.()?.analytics_basis==='explicit'&&
+      c.enabled===true&&c.measurement_id===GA4_ID&&activeId(c)===GA4_ID&&
+      c.gtm_container_id==='GTM-PWR49VVK'&&location.origin==='https://glpclinicscout.com'&&
+      location.pathname==='/'&&!location.search&&!location.hash&&
+      (!document.referrer||document.referrer===GA4_ROOT);
+  }
+  function ga4Command(){window.gcsGa4Layer.push(arguments)}
+  function loadAnalytics(){
+    const c=window.GCS_ANALYTICS||{},id=activeId(c);
+    if(!ga4Context()){
+      c.consent=exportsAllowed()?'granted':'denied';if(id)window['ga-disable-'+id]=true;
+      window.GCS_GTM_HELD='A11 containment unbound';return;
+    }
+    c.consent='granted';c.active_measurement_id=GA4_ID;
+    if(ga4Script||ga4Sent)return;
+    const epoch=++ga4Epoch;
+    window['ga-disable-'+GA4_ID]=true;
+    // Private command layer: neither legacy gtag nor GTM can replay into it.
+    window.gcsGa4Layer=[];
+    ga4Command('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+    ga4Command('js',new Date());
+    ga4Command('consent','update',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+    const script=document.createElement('script');ga4Script=script;
+    script.async=true;script.referrerPolicy='no-referrer';
+    script.src='https://www.googletagmanager.com/gtag/js?id='+GA4_ID+'&l=gcsGa4Layer';
+    script.addEventListener('load',()=>{
+      if(epoch!==ga4Epoch||!ga4Context()||ga4Sent)return;
+      window['ga-disable-'+GA4_ID]=false;
+      const fields={page_location:GA4_ROOT,page_title:'Clinic Scout',page_referrer:'',ignore_referrer:true,
+        anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false,allow_enhanced_conversions:false};
+      ga4Command('config',GA4_ID,{...fields,send_page_view:false});
+      if(!ga4Context()){stopAnalytics();return}
+      ga4Sent=true;ga4Command('event','page_view',{...fields,send_to:GA4_ID});
+    });
+    script.addEventListener('error',()=>{if(epoch===ga4Epoch){window['ga-disable-'+GA4_ID]=true;ga4Script=null;window.gcsGa4Layer.length=0}});
+    document.head.appendChild(script);
+  }
   // Clarity is unbound; replay is not authorized by a generic UI-event grant.
   function loadClarity(){return;}
-  function stopAnalytics(){const c=window.GCS_ANALYTICS||{};c.consent='denied';for(const id of [c.measurement_id,c.debug_measurement_id].filter(Boolean))window['ga-disable-'+id]=true;window.posthog?.opt_out_capturing?.();}
+  function stopAnalytics(){const c=window.GCS_ANALYTICS||{};c.consent='denied';ga4Epoch++;if(ga4Script){ga4Script.remove?.();ga4Script=null;ga4Sent=true}for(const id of [c.measurement_id,c.debug_measurement_id].filter(Boolean))window['ga-disable-'+id]=true;if(window.gcsGa4Layer){window.gcsGa4Layer.length=0;ga4Command('consent','update',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'})}window.posthog?.opt_out_capturing?.();}
   function consentUpdate(){const p=purposes();window.gtag('consent','update',{analytics_storage:exportsAllowed()?'granted':'denied',ad_storage:p.advertising,ad_user_data:p.advertising,ad_personalization:'denied'})}
   function sync(){const analytics=effective();cookie(analytics);consentUpdate();if(exportsAllowed()){loadAnalytics();loadClarity()}else{stopAnalytics()}return analytics}
   function notify(){window.dispatchEvent(new CustomEvent('gcs:consent',{detail:{...purposes(),record_type:'preference_only',persistence,server_revocation:serverRevocation}}))}
