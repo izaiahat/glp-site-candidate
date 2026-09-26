@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3841,
+  "tracked_file_count": 3842,
   "files": [
     ".github/workflows/ci-release-gate.yml",
     ".github/workflows/mirror-ci.yml",
@@ -3557,6 +3557,7 @@
     "tests/browser/glp37-outside-focus.regression.mjs",
     "tests/browser/glp41-d1-material.spec.mjs",
     "tests/browser/governed-cohort.mjs",
+    "tests/browser/header-cta-contrast.spec.mjs",
     "tests/browser/matches-hydration-regression.spec.mjs",
     "tests/browser/motion-mobile-contracts-regression.spec.mjs",
     "tests/browser/mustfix-opus-final.spec.mjs",

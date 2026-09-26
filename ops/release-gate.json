@@ -16,6 +16,7 @@
       "webkit"
     ],
     "cases": [
+      {"file":"tests/browser/header-cta-contrast.spec.mjs","title":"GLP-200 home header CTA keeps 4.5 contrast in every interaction state","requirement":"GLP-200"},
       {"file":"tests/browser/affiliate-tap-integrity.spec.mjs","title":"current HOLD reviews remain informational and link-dark · desktop","requirement":"R2-raw-HOLD"},
       {"file":"tests/browser/affiliate-tap-integrity.spec.mjs","title":"current HOLD reviews remain informational and link-dark · mobile","requirement":"R2-raw-HOLD"},
       {"file":"tests/browser/release-consent-effects.spec.mjs","title":"D1 candidate UI no-egress and preference transitions /reviews/nu-image-medical-review/","requirement":"D1-candidate-preferences-no-egress"},
