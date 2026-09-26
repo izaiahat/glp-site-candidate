@@ -28,10 +28,13 @@ export function ga4Transport(allowed) {
         document.cookie=name+'=; Max-Age=0; Path=/; SameSite=Lax; Secure'+domain;
   }
   function stop(){
+    const hadLane=!!(script||sent||window.gcsGa4Layer);
     window['ga-disable-'+ID]=true;epoch++;
     if(script){script.remove?.();script=null;stopped=true}
     if(window.gcsGa4Layer){window.gcsGa4Layer.length=0;command('consent','update',denied)}
-    clearCookies();
+    // A cold held/candidate document must not attempt unrelated cookie writes.
+    // Still remove residual GA cookies on a returning GPC/opted-out visit.
+    if(hadLane||/(?:^|;\s*)_ga(?:_[^=;]+)?=/.test(document.cookie||''))clearCookies();
   }
   function emit(name,extra={}){
     if(!context()){stop();return false}

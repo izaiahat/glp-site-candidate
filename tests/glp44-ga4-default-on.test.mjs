@@ -25,7 +25,7 @@ test('GA4 enhanced events never read link text, form values, filenames or destin
  assert.deepEqual(f.commands().filter(c=>c[0]==='event').map(c=>c[1]),['page_view','scroll','click','file_download']);assert.doesNotMatch(JSON.stringify(f.commands()),/PRIVATE|condition|link_url|file_name|form_start|form_submit|search_term/);
 });
 test('GA4 denied gate refuses loads; withdrawal invalidates pending SDK callback and regrant',()=>{
- const denied=boot({allowed:false});denied.runtime.load();assert.equal(denied.scripts.length,0);assert.equal(denied.window['ga-disable-G-2WQ42JY0WK'],true);
+ const denied=boot({allowed:false});denied.runtime.load();assert.equal(denied.scripts.length,0);assert.equal(denied.window['ga-disable-G-2WQ42JY0WK'],true);assert.deepEqual(denied.cookies,[],'cold held lane makes no cookie writes');
  const f=boot();f.runtime.load();f.deny();f.scripts[0].load();f.handlers.scroll();f.click('https://external.invalid/');assert.equal(f.window['ga-disable-G-2WQ42JY0WK'],true);assert.deepEqual(f.commands().map(c=>c[0]+':'+c[1]),['consent:update']);assert.equal(f.commands()[0][2].analytics_storage,'denied');assert.ok(f.cookies.some(c=>c.startsWith('_ga=; Max-Age=0')));
 });
 test('GA4 history barrier disables before native URL mutation and cannot restart SDK',()=>{
