@@ -114,6 +114,42 @@ test('GLP-234 registry projections name the first-party brand without altering r
   assert.equal(blogOwner.status, article.status);
 });
 
+test('GLP-234 held article uses current product-specific billing and preserves its review boundary', async () => {
+  const article = (await load('blog/content-batch.json')).articles.find((a) => a.canonical_path === '/guides/healthrx-vs-agelessrx/');
+  const prose = JSON.stringify([article.claims, article.direct_answer, article.sections, article.pros, article.cons, article.conclusion]);
+  assert.doesNotMatch(prose, /\$133|\$99|one click|HealthRX.{0,80}(?:12-month|12 months|lower price)/);
+  assert.match(article.direct_answer, /semaglutide at \$149 for the first month, then \$165\/month/);
+  assert.match(article.direct_answer, /tirzepatide at \$193 for the first month, then \$214\/month/);
+  assert.match(article.direct_answer, /\$199 every month/);
+  assert.match(article.direct_answer, /selected first debit remains unknown/);
+  assert.match(prose, /cancel by emailing support@healthrx\.com/);
+  assert.match(prose, /\$40 non-TRT consultation fee/);
+  assert.match(prose, /non-returned payment processing costs/);
+  assert.match(prose, /prepaid-plan repricing/);
+  assert.match(prose, /not a one-month charge/);
+  assert.doesNotMatch(prose, /HealthRX publishes more detail/);
+  assert.equal(article.source_checked_through, '2026-09-26');
+  const paragraphWords = article.sections.flatMap((s) => s.paragraphs).join(' ').match(/\b[\w'-]+\b/g).length;
+  assert.equal(article.word_count, paragraphWords); // Do not preserve the legacy inflated count.
+  for (const id of ['healthrx', 'try-ageless', 'try-ageless-terms', 'fda-compounding-risks']) {
+    assert.equal(article.sources.find((s) => s.source_id === id)?.verified_as_of, '2026-09-26');
+  }
+  const rate = article.claims.find((c) => c.claim_id === 'ageless-rate');
+  assert.ok(rate.source_ids.includes('try-ageless-terms'));
+  assert.deepEqual(article.evidence_review, {
+    content_sha256: '639c0d8ae24b6fe25d42718881dcc75346a4f2e842f1cfa6cd4159b6c15b51af',
+    reviewed_at: '2026-07-23T09:00:00Z', status: 'STALE_AFTER_IDENTITY_CORRECTION_REVIEW_REQUIRED',
+  });
+  assert.equal(article.article_id, 'phase2-batch2-low-healthrx-vs-agelessrx-20260723');
+  assert.equal(article.brief_id, article.article_id);
+  assert.equal(article.comparison_spec.page_slug, 'healthrx-vs-agelessrx');
+  assert.equal(article.comparison_spec.live_link_allowed, false);
+  assert.equal(article.comparison_spec.operator_gate_receipt, null);
+  assert.equal(article.operator_release_receipt, null);
+  assert.equal(article.batch_gate_passed, false);
+  assert.deepEqual(reviewBrief(article, article.author), { status: 'HELD', reason: 'evidence_review_receipt_missing' });
+});
+
 test('GLP-234 annual-plan billing prose in both maintained money-spec copies', async (t) => {
   for (const file of ['../data/money-page-specs.json', '../src/money-page-specs.json']) {
     await t.test(file, async () => {
