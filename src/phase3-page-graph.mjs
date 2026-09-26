@@ -98,7 +98,9 @@ function loadProviderFacts() {
   if (input?.schema !== "glp.provider-facts-backfill.v2" || !Array.isArray(input.programs) || input.programs.length < 38) {
     throw new Error("phase3_provider_facts_invalid");
   }
-  return new Map(input.programs.map((entry) => [entry.program_id, projectProviderDisplayFacts(entry)]));
+  return new Map(input.programs.map((entry) => [entry.program_id, {
+    ...projectProviderDisplayFacts(entry), display_name: publicProviderName(entry.display_name),
+  }]));
 }
 
 function providerStateCoverage(ledgerEntry) {
@@ -917,7 +919,7 @@ function renderProviderListingHub(graph, pricingMatrix, registry, coupons, doseC
       return {
         ...(priced || {}),
         program_id: research.program_id,
-        provider: publicProviderName(research.display_name),
+        provider: research.display_name,
         medications: (priced?.medications || []).filter((row) => isTypedPrice(row) || Number.isFinite(row.ongoing_usd)),
       };
     })
