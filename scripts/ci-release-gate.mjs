@@ -124,7 +124,9 @@ async function main() {
     save();
   };
   const buildLock = path.join(process.env.GLP_PRIVATE_EVIDENCE_ROOT || '', 'scripts/candidate_build_lock.py');
-  const seat = 'rebuild-p13-release';
+  // A concurrent PR gate must not be mistaken for this process by the lock's
+  // ALREADY_YOURS path. Admission/release still use the ordinary shared helper.
+  const seat = `rebuild-p13-release-${process.pid}`;
   let buildLockHeld = false;
   try {
     ensure(git('status', '--porcelain', '--untracked-files=all') === '', 'D1_clean_head_required');
