@@ -1,0 +1,55 @@
+name: ci-release-gate (portable checks only)
+
+# GLP-42 registration of the workflow from PR #8 at
+# 2927c1ea184d2ed23aa2dd448c8fc0d04df8c37d, scoped to portable checks.
+# NOT the full release gate: no build, private evidence/approved registry,
+# approved imagery, published-output secret scan, artifact/affiliate census,
+# pricing/monetization validators, full npm test, or Playwright diagnostics.
+# Those original jobs cannot run on hosted runners without omitted inputs;
+# their maintained scripts and assertions are unchanged. Green is not release approval.
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact same-repository commit to check (empty means workflow ref)
+        required: false
+        type: string
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: ci-release-gate-${{ github.event.pull_request.number || inputs.source_sha || github.ref }}
+  cancel-in-progress: true
+jobs:
+  portable-consent-contracts:
+    name: Portable consent contracts (NOT release acceptance)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_SHA: ${{ github.event.pull_request.head.sha || inputs.source_sha || github.sha }}
+    steps:
+      - name: Require exact commit
+        run: '[[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]'
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.EXPECTED_SHA }}
+          persist-credentials: false
+      - name: Verify checkout identity
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          printf 'checked_head=%s\n' "$(git rev-parse HEAD)"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Existing portable consent tests (no build or credentials)
+        run: |
+          node --test --test-concurrency=1 \
+            tests/d2o-consent-purposes.test.mjs \
+            tests/d2o-server-consent.test.mjs \
+            tests/d2o-consent-lifecycle.test.mjs \
+            tests/d2o-consent-races.test.mjs
+      - name: Record limited scope
+        if: always()
+        run: |
+          printf '%s\n' 'Portable source/VM consent tests only; full release gate, build, private-input validation, output scans, census and browser checks NOT RUN. No release authority.' >> "$GITHUB_STEP_SUMMARY"
