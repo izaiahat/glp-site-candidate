@@ -1726,10 +1726,16 @@ async function main() {
   ) throw new Error("national_content_release_gate_invalid");
   const nationalArticles = nationalContent.articles.map((article) => ({ ...article, sections: article.sections.map((section) => ({ ...section, heading: section.heading || section.h2 })) }));
   const commercialGuideRoutes = new Set(["/guides/cheapest-glp1/", "/guides/zepbound-coupon/"]);
-  const allArticles = [...blogBatch.articles, ...nationalArticles].map((article) => ({
-    ...article,
-    surface_taxonomy: commercialGuideRoutes.has(article.canonical_path) ? "commercial" : (article.surface_taxonomy || "medical"),
-  }));
+  // Apply the existing consolidation exclusion before review/render, not only
+  // at sitemap emission and shadow-file removal. Retired sources stay in the
+  // evidence/imagery catalogs, but cannot block or enter public article output,
+  // author lists or search. Every non-consolidated article still fails closed.
+  const allArticles = [...blogBatch.articles, ...nationalArticles]
+    .filter((article) => !CONSOLIDATED_SOURCE_ROUTES.has(article.canonical_path))
+    .map((article) => ({
+      ...article,
+      surface_taxonomy: commercialGuideRoutes.has(article.canonical_path) ? "commercial" : (article.surface_taxonomy || "medical"),
+    }));
   const glpArticles = allArticles.filter((article) => articleVertical(article) === "GLP-1");
   const glpGuideArticles = glpArticles.filter((article) => article.canonical_path.startsWith("/guides/"));
   const allOwnership = [...keywordMap.entries];

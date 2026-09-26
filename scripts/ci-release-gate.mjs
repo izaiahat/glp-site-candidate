@@ -135,7 +135,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43 };
+      const requiredNodeCounts = { 'host-bootstrap': 250, 'material-contracts': 44, 'harness-negatives': 9, 'go-destination-contracts': 43 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -153,11 +153,9 @@ async function main() {
     execFileSync('python3', [buildLock, 'acquire', '--seat', seat], {stdio: 'pipe'});
     try {
       await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
-      await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
-    } finally {
-      execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
-      result.build_lock_released = true;
-    }
+      await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/glp234-held-article-output.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
+    // Keep the same reservation through Node negatives and browser readback.
+    // Releasing after build allows another heavy lane to overlap Chromium.
     await command('harness-negatives', process.execPath, ['--test', 'tests/release-gate-harness.test.mjs']);
     await command('go-destination-contracts', process.execPath, ['--test', '--test-concurrency=1', '--test-name-pattern=^(D2s |/go |network constructor |every go manifest |unadopted go |Direct Meds review go |browser instrumentation )', 'tests/funnel-v2-instrumentation.test.mjs', 'tests/d2s-generator-worker-contract.test.mjs']);
     const publicRoot = path.join(ROOT, 'public');
@@ -210,6 +208,10 @@ async function main() {
     result.generated_diff_paths = git('diff', '--name-only').split('\n').filter(Boolean);
     result.generated_diff_sha256 = sha(execFileSync('git', ['diff', '--binary'], { cwd: ROOT, maxBuffer: 64 * 1024 * 1024 }));
     result.authority_files = ['data/go-runtime-selection.json', 'data/go-runtime-promotion-authority.json', 'data/tracking-allowed-hosts.json', 'artifacts/ops/build-report.json'].filter(f => existsSync(path.join(ROOT, f))).map(file => ({ file, sha256: sha(readFileSync(path.join(ROOT, file))) }));
+    } finally {
+      execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
+      result.build_lock_released = true;
+    }
   } catch (error) { result.steps.push({ id: 'gate-precondition', status: 'FAIL', error: String(error.message) }); }
   result.status = result.steps.length > 0 && result.steps.every(s => s.status === 'PASS') ? 'PASS' : 'FAIL';
   result.finished_at = new Date().toISOString(); save();
