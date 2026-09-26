@@ -5,7 +5,8 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, lstatSync, mkdirSync, writeFileSync, copyFileSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
-import { parse } from 'parse5';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -30,6 +31,7 @@ export function treeFiles(root) {
   return { sha256: sha(JSON.stringify(rows)), files: rows };
 }
 export function checkAnchorMarkup(documents, authority, aliases, runtime, required) {
+  const { parse } = require('parse5');
   ensure(documents.length > 0 && required.length > 0, 'D1_anchor_selection_empty');
   const counts = {}, failures = [];
   function markup(text, file) {
@@ -111,6 +113,13 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
+      const requiredNodeCounts = { 'host-bootstrap': 241, 'harness-negatives': 8, 'go-destination-contracts': 43 };
+      if (requiredNodeCounts[id]) {
+        const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
+        const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
+        receipt.node_counts = counts;
+        if (counts.tests !== requiredNodeCounts[id] || counts.pass !== counts.tests || counts.fail !== 0 || counts.skipped !== 0) receipt.exit = receipt.exit || 1;
+      }
       result.steps.push({ id, status: receipt.exit === 0 ? 'PASS' : 'FAIL', ...receipt }); save();
     };
     // NODE_ENV=production silently omits the test dependencies on this host.
@@ -127,8 +136,11 @@ async function main() {
       result.build_lock_released = true;
     }
     await command('harness-negatives', process.execPath, ['--test', 'tests/release-gate-harness.test.mjs']);
-    await command('go-destination-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/funnel-v2-instrumentation.test.mjs', 'tests/d2s-generator-worker-contract.test.mjs']);
+    await command('go-destination-contracts', process.execPath, ['--test', '--test-concurrency=1', '--test-name-pattern=^(D2s |/go |network constructor |every go manifest |unadopted go |Direct Meds review go |browser instrumentation )', 'tests/funnel-v2-instrumentation.test.mjs', 'tests/d2s-generator-worker-contract.test.mjs']);
     const publicRoot = path.join(ROOT, 'public');
+    const trackedDigest = () => sha(JSON.stringify(git('ls-files').split('\n').map(file => [file, sha(readFileSync(path.join(ROOT, file)))])));
+    result.built_source_sha256 = trackedDigest();
+    result.private_registry_sha256 = sha(readFileSync(process.env.GLP_PRIVATE_APPROVED_REGISTRY));
     result.output_before = treeFiles(publicRoot); save();
     await step('published-secrets', () => { publishedSecrets(publicRoot); return { scanner: 'gitleaks', findings: 0 }; });
     await step('affiliate-census', async () => {
@@ -149,7 +161,12 @@ async function main() {
       PLAYWRIGHT_OUTPUT_DIR: path.join(out, 'traces'), GLP_BROWSER_REPORT_PATH: path.join(out, 'browser.json'),
       GLP_LOCAL_REVIEW_DB: path.join(out, 'local-review.sqlite3'),
     });
-    await step('browser-required-effects', () => checkBrowser(readJson(path.join(out, 'browser.json')), config.browser));
+    await step('browser-required-effects', () => {
+      const report = readJson(path.join(out, 'browser.json'));
+      result.browser_cases = browserCases(report);
+      result.browser_stats = report.stats;
+      return checkBrowser(report, config.browser);
+    });
     await step('no-egress', () => {
       const receiptPath = path.join(ROOT, 'artifacts/ultracode/browser-nowrite-report.json');
       copyFileSync(receiptPath, path.join(out, 'browser-nowrite-report.json'));
@@ -161,11 +178,13 @@ async function main() {
       result.output_after = treeFiles(publicRoot);
       ensure(result.output_before.sha256 === result.output_after.sha256, 'D1_artifact_changed_during_readback');
       ensure(git('rev-parse', 'HEAD') === result.head, 'D1_head_changed');
+      ensure(trackedDigest() === result.built_source_sha256, 'D1_source_changed_during_readback');
+      ensure(sha(readFileSync(process.env.GLP_PRIVATE_APPROVED_REGISTRY)) === result.private_registry_sha256, 'D1_private_registry_changed');
       return { unchanged: true };
     });
     for (const row of config.unresolved_material_requirements) result.steps.push({ id: `${row.owner}:${row.id}`, status: 'FAIL', error: row.requirement, disposition: row.status });
     result.generated_diff_paths = git('diff', '--name-only').split('\n').filter(Boolean);
-    result.generated_diff_sha256 = sha(execFileSync('git', ['diff', '--binary'], { cwd: ROOT }));
+    result.generated_diff_sha256 = sha(execFileSync('git', ['diff', '--binary'], { cwd: ROOT, maxBuffer: 64 * 1024 * 1024 }));
     result.authority_files = ['data/go-runtime-selection.json', 'data/go-runtime-promotion-authority.json', 'data/tracking-allowed-hosts.json', 'artifacts/ops/build-report.json'].filter(f => existsSync(path.join(ROOT, f))).map(file => ({ file, sha256: sha(readFileSync(path.join(ROOT, file))) }));
   } catch (error) { result.steps.push({ id: 'gate-precondition', status: 'FAIL', error: String(error.message) }); }
   result.status = result.steps.length > 0 && result.steps.every(s => s.status === 'PASS') ? 'PASS' : 'FAIL';
