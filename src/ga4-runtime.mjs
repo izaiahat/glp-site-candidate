@@ -8,24 +8,19 @@ export function ga4Transport(allowed) {
   let script=null,epoch=0,sent=false,stopped=false,scrolled=false;
   const denied={analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'};
   const command=function(){window.gcsGa4Layer.push(arguments)};
-  function sensitive(){return /^\/(?:lp\/quiz|quiz|matches|results|intake|scorecard|tools|search)(?:\/|$)/.test(location.pathname)}
-  function pagePath(){
-    const p=location.pathname;
-    if(sensitive())return '/private/';
-    // Only the publisher's static canonical route may become a dimension. A
-    // guessed/404 path can contain a visitor's identity even without ? or #.
-    // Forms/quiz routes are neutralized above regardless of their canonical.
-    if(p==='/')return '/';
-    let canonical;try{canonical=new URL(document.querySelector('link[rel="canonical"]')?.href)}catch{return '/page/'}
-    return canonical.origin===ORIGIN&&canonical.pathname===p&&!canonical.search&&!canonical.hash&&/^\/(?:[a-z0-9-]+\/)*$/.test(p)?p:'/page/';
-  }
+  // Engineering allowlist, NOT legal/vendor clearance. Later eligibility advisory
+  // excludes individualized flows outright; unclassified editorial routes wait
+  // for exact-context review, not because public reading is automatically PHI.
+  // reports/ops/pro-consent-eligibility-20260926/NON-STATE-ASSESSMENT.md
+  const ordinaryPaths=['/','/about/','/privacy/','/privacy/cookies/','/terms/'];
+  const pagePath=()=>ordinaryPaths.includes(location.pathname)?location.pathname:null;
   const fields=()=>({page_location:ORIGIN+pagePath(),page_title:'Clinic Scout',page_referrer:'',ignore_referrer:true,
     allow_google_signals:false,allow_ad_personalization_signals:false,allow_enhanced_conversions:false,
     ads_data_redaction:true,url_passthrough:false,
     // These per-page SDK controls are covered by the hash-pinned actual SDK test.
     ae_block_form:true,ae_block_history:true,ae_block_video:true,
     ae_block_scroll:true,ae_block_outbound_click:true,ae_block_downloads:true});
-  function context(){const c=window.GCS_ANALYTICS||{};return allowed()&&c.enabled===true&&c.measurement_id===ID&&location.origin===ORIGIN}
+  function context(){const c=window.GCS_ANALYTICS||{};return allowed()&&c.enabled===true&&c.measurement_id===ID&&location.origin===ORIGIN&&pagePath()!==null}
   function clearCookies(){
     for(const name of ['_ga','_ga_'+ID.slice(2).replace(/-/g,'_')])
       for(const domain of ['', '; Domain=glpclinicscout.com', '; Domain=.glpclinicscout.com'])
@@ -39,7 +34,7 @@ export function ga4Transport(allowed) {
   }
   function emit(name,extra={}){
     if(!context()){stop();return false}
-    if(!sent||stopped||window['ga-disable-'+ID]||sensitive())return false;
+    if(!sent||stopped||window['ga-disable-'+ID]||!pagePath())return false;
     command('event',name,{...fields(),...extra,send_to:ID});return true;
   }
   // Preserve PR3's before-mutation history barrier. No automatic history views or
@@ -51,20 +46,28 @@ export function ga4Transport(allowed) {
   window.addEventListener?.('popstate',()=>{if(script)stop()});
   window.addEventListener?.('hashchange',()=>{if(script)stop()});
   window.addEventListener?.('scroll',()=>{
-    if(scrolled||sensitive())return;
+    if(scrolled||!pagePath())return;
     const height=document.documentElement.scrollHeight;
     if(height>window.innerHeight&&(window.scrollY+window.innerHeight)/height>=0.9)
       scrolled=emit('scroll',{percent_scrolled:90});
   },{passive:true});
+  // Do not carry ordinary-page analytics into an individualized embedded flow.
+  // Capture-phase shutdown runs before any SDK DOM listener can observe inputs.
+  for(const event of ['input','change','submit'])document.addEventListener(event,()=>stop(),true);
   document.addEventListener('click',event=>{
-    if(sensitive())return;
+    if(!pagePath())return;
     const anchor=event.target.closest?.('a[href]');if(!anchor||anchor.closest?.('form'))return;
+    // Unclassified affiliate, provider, lead and download components are NOT
+    // ordinary merely because they sit on an allowlisted route. Only a reviewed
+    // component's exact static classification may activate these two counters.
+    const kind=anchor.getAttribute('data-ga4-ordinary');
+    if(!['outbound','download'].includes(kind))return;
     let url;try{url=new URL(anchor.href,location.href)}catch{return}
     if(!['http:','https:'].includes(url.protocol))return;
     // Do not export href/domain/filename/anchor text: all can contain PII or
     // personalized treatment selections, including affiliate sub-IDs.
-    if(/\.(?:pdf|csv|txt|docx?|xlsx?|pptx?|zip)$/i.test(url.pathname)||anchor.hasAttribute('download'))emit('file_download');
-    else if(url.origin!==location.origin)emit('click',{outbound:true});
+    if(kind==='download'&&(/\.(?:pdf|csv|txt|docx?|xlsx?|pptx?|zip)$/i.test(url.pathname)||anchor.hasAttribute('download')))emit('file_download');
+    else if(kind==='outbound'&&url.origin!==location.origin)emit('click',{outbound:true});
   });
   function load(){
     window.GCS_GTM_HELD='A11 containment unbound';

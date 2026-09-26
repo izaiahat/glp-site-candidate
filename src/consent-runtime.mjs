@@ -71,7 +71,7 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   function localHost(){const h=(location.hostname||'').toLowerCase();return ['','localhost','127.0.0.1','0.0.0.0','::1','[::1]'].includes(h)||h.endsWith('.localhost')||h.endsWith('.local')||h.endsWith('.test')||h.endsWith('.internal')||location.protocol==='file:'}
   function synthetic(){return localHost()||navigator.webdriver===true||/HeadlessChrome|Headless|Playwright|Puppeteer|Lighthouse|Google-InspectionTool|synthetic|bot|crawler|spider/i.test(navigator.userAgent||'')}
   function activeId(c){return localHost()?(c.debug_measurement_id||null):c.measurement_id}
-  // GA4 has a separate sitewide, minimized page-view gate. This does not widen
+  // GA4 has a separate exact ordinary-route, minimized page-view gate. This does not widen
   // PostHog/UI/advertising route eligibility or release the GTM container hold.
   const ga4=(${ga4Transport.toString()})(()=>{if(navigator.globalPrivacyControl===true&&!gpcLatched){gpcLatched=true;refresh()}const p=window.GCS_EXPORT_POLICY;return effective()==='granted'&&p?.schema==='glp-release-export-policy-v2'&&p.stage==='production-seal'&&p.third_party_exports===true&&!synthetic()});
   function loadAnalytics(){const c=window.GCS_ANALYTICS||{};const id=activeId(c);if(!exportsAllowed()||!c.enabled||!id){c.consent='denied';return}c.consent='granted';c.active_measurement_id=id;if(id!=='G-2WQ42JY0WK')window['ga-disable-'+id]=true;window.GCS_GTM_HELD='A11 containment unbound';}
