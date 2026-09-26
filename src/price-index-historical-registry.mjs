@@ -15,9 +15,9 @@ const wholeHistoricalPriceBody = 'f9a8ce57165d5a014fe623c820a4ab90313d4c5679c4d0
 // bytes, complete restored registry body and complete frozen ledger are required.
 // The three separately governed evidence attachments are not price-body fields.
 export function historicalPriceIndexRegistry(registry, contentLedger, readBytes = readFileSync) {
-  const telos = registry?.programs?.find(p => p.program_id === 'telos-rx');
-  const alias = registry?.programs?.some(p => p.program_id === 'telos-rx-review');
-  if (telos?.commercial_state !== 'held' && !alias) return registry;
+  // Already-projected input has a live Telos row and no alias too. Shape is
+  // not authority: every return must authenticate evidence, taxonomy pins,
+  // the complete historical body and any supplied ledger, then return a copy.
   const read = (ref, local = false) => {
     let bytes;
     try { bytes = readBytes(local ? new URL('../'+ref.path,import.meta.url) : ref.path); }

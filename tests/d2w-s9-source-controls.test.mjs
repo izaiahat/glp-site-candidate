@@ -7,7 +7,8 @@ import {projectMoneyPagesFromRegistry,projectQuizFromRegistry,deriveProfileSurfa
 import {projectTherapeuticSurfaces} from '../src/therapeutic-taxonomy.mjs';
 import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
 import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
-import {buildPriceIndexArtifacts,normalizePriceIndexSourceHashes} from '../src/price-index.mjs';
+import {buildPriceIndexArtifacts,buildPriceIndexDistribution,renderPriceIndex,normalizePriceIndexSourceHashes,validatePriceIndexInputs} from '../src/price-index.mjs';
+import {composePriceWatchIssue} from '../src/price-watch-email.mjs';
 import {assertTalliesDerived,isTallyGatedRoute} from '../src/surface-tallies.mjs';
 import {inheritedDisclosureDates} from '../src/inherited-disclosure-dates.mjs';
 import {resolveCatalogDate,resolveMaterialDate,resolveRouteLastmod} from '../scripts/postbuild-aeo-surface.mjs';
@@ -67,6 +68,166 @@ test('S9-7 alias declares no page; exact price reconstruction preserves complete
  const before=structuredClone(registry),historical=historicalPriceIndexRegistry(registry,frozen.ledger);assert.deepEqual(registry,before);assert.ok(!historical.programs.some(p=>p.program_id===a.program_id));assert.equal(historical.programs.find(p=>p.program_id==='telos-rx').commercial_state,'live');
 });
 for(const [name,edit] of [['live',a=>a.commercial_state='live'],['wired',a=>a.profiles[profile].wired=true],['review surface',a=>a.profiles[profile].surfaces.review=true],['wrong path',a=>a.review_path='/reviews/forged/'],['identity',a=>a.display_name='Forged'],['go',a=>a.go.entry_state='server_redirect']])test('S9-7 alias descendant refuses '+name,()=>{const r=structuredClone(registry);edit(r.programs.find(p=>p.program_id==='telos-rx-review'));assert.throws(()=>historicalPriceIndexRegistry(r,frozen.ledger));});
+// Regression derived from the independent F3-R1 early-return-bypass.mjs:
+// reuse a legitimate normalized tuple, not a new hash that invokes fallback.
+test('GLP-234 F3-R1 reviewer bypass is refused by reader, validator and artifact builder', async t => {
+ const input=priceInput(),before=structuredClone(input),now=latest+'T23:59:59Z';
+ const damaged=historicalPriceIndexRegistry(input.programRegistry,input.contentLedger);
+ assert.equal(damaged.programs.find(p=>p.program_id==='telos-rx').commercial_state,'live');
+ assert.equal(damaged.programs.some(p=>p.program_id==='telos-rx-review'),false);
+ damaged.programs.find(p=>p.program_id==='try-ageless').display_name='Forged';
+ delete damaged.therapeutic_taxonomy;
+ const wrongLedger=structuredClone(input.contentLedger);
+ wrongLedger.programs.find(p=>p.program_id==='try-ageless').display_name='Forged ledger';
+ const invalid={...input,programRegistry:damaged,contentLedger:wrongLedger};
+ const invalidBefore=structuredClone(invalid);
+ await t.test('reader authenticates evidence even after projection',()=>{
+  let reads=0;
+  assert.throws(()=>historicalPriceIndexRegistry(damaged,wrongLedger,()=>{reads++;throw Error('authority unavailable');}),{message:'price_index_historical_authority_unreadable'});
+  assert.ok(reads>0);
+ });
+ for(const [name,consume] of [['validator',validatePriceIndexInputs],['artifact builder',buildPriceIndexArtifacts]]){
+  await t.test(name+' rejects the normalized-tuple bypass',()=>{
+   assert.throws(()=>consume(invalid,{now}),{message:'price_index_historical_oracle_invalid'});
+  });
+ }
+ assert.deepEqual(input,before);assert.deepEqual(invalid,invalidBefore);
+});
+
+test('GLP-234 F3-R1 supported caller forms preserve full validation, artifacts and isolated copies',()=>{
+ const input=priceInput(),before=structuredClone(input),now=latest+'T23:59:59Z';
+ const files=['program-registry.json','program-content-ledger.json','price-index-frozen-content-ledger.json','price-index-nonprice-binding.json','price-tracker.json','original-data-study.json'];
+ const hashes=files.map(n=>sha(bytes(n)));
+ const rawHashes={...input.sourceHashes,program_registry_sha256:sha(bytes('program-registry.json'))};
+ const rawBefore=structuredClone(rawHashes);
+ const retained=structuredClone(registry);
+ retained.programs.find(p=>p.program_id==='try-ageless').display_name='AgelessRx';
+ const historical=historicalPriceIndexRegistry(registry,frozen.ledger);
+ const historicalBefore=structuredClone(historical),second=historicalPriceIndexRegistry(historical,frozen.ledger);
+ assert.deepEqual(second,historical);assert.notEqual(second,historical);
+ second.programs[0].display_name='Isolated';second.therapeutic_taxonomy.sealed_as_of='2099-01-01';
+ assert.deepEqual(historical,historicalBefore);
+ const expected=validatePriceIndexInputs(input,{now}),artifacts=buildPriceIndexArtifacts(input,{now});
+ const config=read('resend-email-machine.json');
+ const issue=composePriceWatchIssue({config,priceIndexInput:input,now});
+ assert.equal(issue.send_authorized,false);
+ for(const programRegistry of [registry,retained,historical]){
+  const registryBefore=structuredClone(programRegistry);
+  assert.deepEqual(historicalPriceIndexRegistry(programRegistry,frozen.ledger),historical);
+  for(const sourceHashes of [rawHashes,input.sourceHashes]){
+   assert.deepEqual(normalizePriceIndexSourceHashes(programRegistry,sourceHashes),input.sourceHashes);
+   const candidate={...input,programRegistry,sourceHashes};
+   assert.deepEqual(validatePriceIndexInputs(candidate,{now}),expected); // includes Maps
+   assert.deepEqual(buildPriceIndexArtifacts(candidate,{now}),artifacts); // HTML/CSV/JSON/manifest
+   assert.equal(renderPriceIndex(candidate,{now}),artifacts.html);
+   assert.deepEqual(buildPriceIndexDistribution(candidate,{now}),artifacts.distribution);
+   assert.deepEqual(composePriceWatchIssue({config,priceIndexInput:candidate,now}),issue);
+  }
+  assert.deepEqual(programRegistry,registryBefore);
+ }
+ assert.deepEqual(input,before);assert.deepEqual(rawHashes,rawBefore);
+ assert.deepEqual(files.map(n=>sha(bytes(n))),hashes);
+ assert.equal(frozen.frozen_sha256,'374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830');
+});
+
+test('GLP-234 F3-R1 maintained build and observer caller seams accept authenticated repeats',()=>{
+ // Execute maintained input/call expressions only. No output writer, observer
+ // CLI, build preflight, decoration, publication or article admission is run.
+ const build=readFileSync(new URL('scripts/build-staging.mjs',root),'utf8');
+ const buildStart=build.indexOf('  const priceIndexInput = {');
+ const buildEnd=build.indexOf('  const priceIndexRefresh =',buildStart);
+ assert.ok(buildStart>=0&&buildEnd>buildStart);
+ const buildCall=new Function('priceTrackerConfig','originalDataStudy','programRegistry','priceLedger','originalDataStudyBytes','priceIndexRegistrySourceSha256','createHash','buildPriceIndexArtifacts','applyWave2P1Surfaces','markReleaseReady','addByteFrozenSharedRuntime','PRICE_INDEX_ROUTE_FILE',
+  build.slice(buildStart,buildEnd)+'\nreturn priceIndex;');
+ const observer=readFileSync(new URL('scripts/update-price-index.mjs',root),'utf8');
+ const normalizeStart=observer.indexOf('const sourceHashes = normalizePriceIndexSourceHashes(');
+ const normalizeEnd=observer.indexOf('const migration =',normalizeStart);
+ const validateStart=observer.indexOf('const result = validatePriceIndexInputs(');
+ const validateEnd=observer.indexOf('console.log(',validateStart);
+ assert.ok(normalizeStart>=0&&normalizeEnd>normalizeStart&&validateStart>normalizeEnd&&validateEnd>validateStart);
+ const observeCall=new Function('parsed','bytes','priceLedger','sha256','normalizePriceIndexSourceHashes','validatePriceIndexInputs','observedOn',
+  observer.slice(normalizeStart,normalizeEnd)+observer.slice(validateStart,validateEnd)+'\nreturn result;');
+ const input=priceInput(),now=latest+'T23:59:59Z',before=structuredClone(input);
+ const expected=buildPriceIndexArtifacts(input,{now}),validated=validatePriceIndexInputs(input,{now});
+ const historical=historicalPriceIndexRegistry(registry,frozen.ledger);
+ for(const programRegistry of [registry,historical]){
+  const callBuild=()=>buildCall(input.tracker,input.study,programRegistry,frozen,bytes('original-data-study.json'),input.sourceHashes.program_registry_sha256,createHash,
+   (candidate,options)=>buildPriceIndexArtifacts(candidate,{...options,now}),html=>html,html=>html,html=>html,'glp-1-price-index/index.html');
+  const callObserve=()=>observeCall({...input,programRegistry},{study:bytes('original-data-study.json'),programRegistry:bytes('program-registry.json')},frozen,sha,normalizePriceIndexSourceHashes,validatePriceIndexInputs,latest);
+  assert.deepEqual(callBuild(),expected);assert.deepEqual(callObserve(),validated);
+  if(programRegistry===historical){
+   programRegistry.programs.find(p=>p.program_id==='try-ageless').display_name='Forged';
+   assert.throws(callBuild,{message:'price_index_historical_registry_drift'});
+   assert.throws(callObserve,{message:'price_index_historical_registry_drift'});
+  }
+ }
+ assert.deepEqual(input,before);
+});
+
+test('GLP-234 F3-R1 repeated inputs retain identity, body, taxonomy and ledger refusal',async t=>{
+ const input=priceInput(),historical=historicalPriceIndexRegistry(registry,frozen.ledger),now=latest+'T23:59:59Z';
+ const target=r=>r.programs.find(p=>p.program_id==='try-ageless');
+ const mutations=[
+  ['forged name',r=>target(r).display_name='Forged','registry_drift'],
+  ['missing name',r=>delete target(r).display_name,'registry_drift'],
+  ['missing identity',r=>r.programs=r.programs.filter(p=>p.program_id!=='try-ageless'),'identity_drift'],
+  ['duplicate identity',r=>r.programs.push({...structuredClone(target(r)),review_path:'/reviews/forged/'}),'identity_drift'],
+  ['review route',r=>target(r).review_path='/reviews/forged/','registry_drift'],
+  ['go route',r=>target(r).go.route='/go/forged','registry_drift'],
+  ['price presence',r=>target(r).profiles[profile].data_profile.has_price=false,'registry_drift'],
+  ['extra price',r=>target(r).amount_usd=1,'registry_drift'],
+  ['commercial state',r=>target(r).commercial_state='held','registry_drift'],
+  ['other provider',r=>r.programs.find(p=>p.program_id==='wellorithm').display_name='Forged','registry_drift'],
+  ['root field',r=>r.unreviewed=true,'registry_drift'],
+  ['missing taxonomy',r=>delete r.therapeutic_taxonomy,'oracle_invalid'],
+  ...['price_index_registry_frozen_source_sha256','price_index_registry_programs_semantic_basis_sha256'].map(k=>[k,r=>r.therapeutic_taxonomy[k]='0'.repeat(64),'oracle_invalid']),
+ ];
+ const rawHashes={...input.sourceHashes,program_registry_sha256:sha(bytes('program-registry.json'))};
+ for(const [name,edit,code] of mutations)await t.test(name,()=>{
+  const damaged=structuredClone(historical);edit(damaged);const before=structuredClone(damaged);
+  const error={message:'price_index_historical_'+code};
+  assert.throws(()=>historicalPriceIndexRegistry(damaged,frozen.ledger),error);
+  for(const sourceHashes of [rawHashes,input.sourceHashes]){
+   assert.throws(()=>normalizePriceIndexSourceHashes(damaged,sourceHashes),error);
+   const invalid={...input,programRegistry:damaged,sourceHashes};
+   assert.throws(()=>validatePriceIndexInputs(invalid,{now}),error);
+   assert.throws(()=>buildPriceIndexArtifacts(invalid,{now}),error);
+  }
+  assert.deepEqual(damaged,before);
+ });
+ await t.test('supplied ledger is authenticated even with normalized source hashes',()=>{
+  const wrongLedger=structuredClone(frozen.ledger);target(wrongLedger).display_name='Forged ledger';
+  const before=structuredClone(wrongLedger),error={message:'price_index_historical_ledger_drift'};
+  assert.throws(()=>historicalPriceIndexRegistry(historical,wrongLedger),error);
+  for(const sourceHashes of [rawHashes,input.sourceHashes]){
+   const invalid={...input,programRegistry:historical,contentLedger:wrongLedger,sourceHashes};
+   for(const consume of [validatePriceIndexInputs,renderPriceIndex,buildPriceIndexDistribution,buildPriceIndexArtifacts])assert.throws(()=>consume(invalid,{now}),error);
+   assert.throws(()=>composePriceWatchIssue({config:read('resend-email-machine.json'),priceIndexInput:invalid,now}),error);
+  }
+  assert.deepEqual(wrongLedger,before);
+ });
+});
+
+test('GLP-234 F3-R1 repeats authenticate every original authority read and return fresh copies',()=>{
+ const firstReads=new Map(),repeatReads=new Map();
+ const capture=map=>file=>{const b=readFileSync(file);map.set(String(file),sha(b));return b;};
+ const historical=historicalPriceIndexRegistry(registry,frozen.ledger,capture(firstReads));
+ const second=historicalPriceIndexRegistry(historical,frozen.ledger,capture(repeatReads));
+ assert.deepEqual(second,historical);assert.notEqual(second,historical);
+ assert.equal(firstReads.size,21);assert.deepEqual(repeatReads,firstReads);
+ const before=structuredClone({registry,historical,ledger:frozen.ledger});
+ for(const file of firstReads.keys()){
+  const prefix=file.endsWith('d2w-s9-final-decision.md')?'price_index_historical_alias_authority':
+   file.includes('/COIVAS/')||file.includes('/Q57/')||file.includes('coivas')||file.endsWith('affiliate_merge_deep_research.py')?'price_coivas_receipt':'price_index_historical_authority';
+  for(const mode of ['unreadable','hash_mismatch']){
+   const transport=p=>{if(String(p)!==file)return readFileSync(p);if(mode==='unreadable')throw Error('unavailable');return Buffer.from('{');};
+   assert.throws(()=>historicalPriceIndexRegistry(historical,frozen.ledger,transport),{message:prefix+'_'+mode},file+':'+mode);
+  }
+ }
+ assert.deepEqual({registry,historical,ledger:frozen.ledger},before);
+ assert.deepEqual(new Map([...firstReads].map(([file])=>[file,sha(readFileSync(new URL(file.startsWith('file:')?file:'file://'+file)))])),firstReads);
+});
+
 test('S9-3 actual observer is same-day idempotent with the authenticated frozen ledger',()=>{
  const files=['price-tracker.json','program-content-ledger.json','price-index-frozen-content-ledger.json','price-index-nonprice-binding.json'],before=files.map(n=>sha(bytes(n)));
  const run=spawnSync(process.execPath,['scripts/update-price-index.mjs','--observed-on',latest],{cwd:root,encoding:'utf8'});assert.equal(run.status,0,run.stderr);const r=JSON.parse(run.stdout);assert.equal(r.status,'UNCHANGED_ALREADY_OBSERVED');assert.equal(r.source_files.program_content_ledger_sha256,frozen.frozen_sha256);assert.deepEqual(files.map(n=>sha(bytes(n))),before);
