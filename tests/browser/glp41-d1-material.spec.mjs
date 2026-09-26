@@ -123,7 +123,7 @@ test('R1 no-JS matcher submits filters without email or identity in the URL', as
     await page.locator('[data-matches-state]').selectOption('CA');
     const med = await page.locator('[data-matches-medication] option').nth(1).getAttribute('value');
     await page.locator('[data-matches-medication]').selectOption(med);
-    await page.getByRole('button', {name:'Search providers', exact:true}).click();
+    await page.locator('[data-matches-form]').getByRole('button', {name:'Search providers', exact:true}).click();
     await expect(page).toHaveURL(/\/providers\/\?/);
     const url = new URL(page.url());
     expect(url.searchParams.get('state')).toBe('CA');
