@@ -7,6 +7,9 @@ import { createHash } from "node:crypto";
 import { loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
 import { loadApprovedDirectoryRegistry } from '../src/private-approved-directory.mjs';
 import { approvedDirectoryLinks } from "../src/phase3-page-graph.mjs";
+import { rawHeldInputs, rawHeldOutputCensus, assertRawHeldOutput } from '../src/served-affiliate-identity.mjs';
+import { treeFiles } from '../scripts/ci-release-gate.mjs';
+import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const publicRoot = path.join(root, "public");
@@ -50,7 +53,7 @@ test("network-approved GLP providers have sponsored anchors while explicit exclu
     assert.equal(authority[program]?.status, "WITHHELD", `${program}: paused offer stays held`);
     assert.equal(byProgram.get(program) || 0, 0, `${program}: paused offer has no sponsored anchor`);
   }
-  for (const program of ["trt-nation", "shedrx", "measured", "mydrhank", "nu-image-medical-review", "longevity-meds-glp-1-review"]) {
+  for (const program of ["trt-nation", "shedrx", "measured", "mydrhank"]) {
     assert.equal(authority[program]?.status, "VERIFIED", `${program}: approved GLP source needs registered promotion authority`);
     assert.ok((byProgram.get(program) || 0) > 0, `${program}: network-approved GLP provider needs a sponsored anchor`);
   }
@@ -67,6 +70,41 @@ test("network-approved GLP providers have sponsored anchors while explicit exclu
   assert.equal(byProgram.get("fella-health") || 0, 0, "permanently excluded Fella stays dark");
   const detail = readFileSync(path.join(publicRoot, "providers/altrx-glp1-us-cps/index.html"), "utf8");
   assert.match(detail, /href="\/reviews\/altrx-glp1-us-cps\/"/, "held provider retains first-party editorial review access");
+});
+
+test('raw current holds stay dark in every emitted HTML, lazy JSON and GO route', async t => {
+  const inputs = rawHeldInputs(root); // No derived VERIFIED map participates.
+  const ids = inputs.held.map(row => row.id);
+  assert.ok(ids.includes('longevity-meds-glp-1-review'));
+  assert.ok(ids.includes('nu-image-medical-review'));
+  const documents = treeFiles(publicRoot).files.filter(row => /\.(html|json)$/.test(row.file))
+    .map(row => ({file:row.file, text:readFileSync(path.join(publicRoot, row.file), 'utf8')}));
+  const census = rawHeldOutputCensus(documents, inputs, GO_RUNTIME_MANIFEST.programs);
+  assert.equal(census.documents, documents.length);
+  for (const id of ids) await t.test(id, () => {
+    assertRawHeldOutput(census, id);
+    // The same oracle rejects both direct and redirect CTAs, even inside
+    // templates/nested lazy JSON; fake VERIFIED metadata grants nothing.
+    const direct = `<a href="https://fixture.invalid/issued" data-program="${id}" rel="sponsored" data-status="VERIFIED">Start</a>`;
+    const go = `<a href="/go/${id}">Start</a>`;
+    for (const markup of [direct, go]) for (const file of ['injected.html', 'injected.json']) {
+      const text = file.endsWith('.json') ? JSON.stringify({cards:[`<template>${markup}</template>`]}) : markup;
+      const fixture = [{file:'healthy.html', text:'<p>Informational profile</p>'}, {file:'healthy.json', text:'[]'}, {file, text}];
+      assert.throws(() => assertRawHeldOutput(rawHeldOutputCensus(fixture, inputs, {}), id), /raw_held_output_live/);
+    }
+    const healthy = [{file:'healthy.html', text:`<a href="/reviews/${id}/">Read review</a>`}, {file:'healthy.json', text:'[]'}];
+    assertRawHeldOutput(rawHeldOutputCensus(healthy, inputs, {}), id);
+    assert.throws(() => assertRawHeldOutput(rawHeldOutputCensus(healthy, inputs, {[id]:{program_id:id, live_link_allowed:true}}), id), /raw_held_output_live/);
+    for (const issued of inputs.issued.filter(row => row.id === id)) {
+      const href = issued.href.replaceAll('&', '&amp;');
+      const fixture = [...healthy, {file:'unlabelled.json', text:JSON.stringify([`<a href="${href}">Start</a>`])}];
+      assert.throws(() => assertRawHeldOutput(rawHeldOutputCensus(fixture, inputs, {}), id), /raw_held_output_live/);
+    }
+  });
+  // Darkness must not be achieved by withdrawing either informational profile.
+  for (const id of ['longevity-meds-glp-1-review', 'nu-image-medical-review']) {
+    for (const family of ['providers', 'reviews']) assert.match(readFileSync(path.join(publicRoot, family, id, 'index.html'), 'utf8'), /<h1\b/);
+  }
 });
 
 test("four issuer-bound ClickDealer directory links render without promoting paused or unsourced profiles", () => {

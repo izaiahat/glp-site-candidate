@@ -24,6 +24,14 @@ for (const [id, network, file] of [
     for (const child of node.childNodes || []) visit(child);
   };
   visit(parse(read(file)));
+  if (id === 'nu-image-medical-review') {
+    const raw = json('data/go-selection-receipt.json').programs.find(row => row.program_id === id);
+    assert.equal(raw.disposition, 'HOLD');
+    assert.equal(raw.promotion_authorized, false);
+    assert.equal(loadGoPromotionAuthority().programs[id].status, 'WITHHELD');
+    assert.equal(anchors.length, 0, 'Trackdesk identity does not clear exact creative HOLD');
+    return;
+  }
   assert.ok(anchors.length > 0);
   for (const a of anchors) {
     assert.equal(a['data-network'], network);

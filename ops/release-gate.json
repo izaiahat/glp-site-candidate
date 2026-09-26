@@ -16,17 +16,20 @@
       "webkit"
     ],
     "cases": [
+      {"file":"tests/browser/affiliate-tap-integrity.spec.mjs","title":"current HOLD reviews remain informational and link-dark · desktop","requirement":"R2-raw-HOLD"},
+      {"file":"tests/browser/affiliate-tap-integrity.spec.mjs","title":"current HOLD reviews remain informational and link-dark · mobile","requirement":"R2-raw-HOLD"},
+      {"file":"tests/browser/release-consent-effects.spec.mjs","title":"D1 candidate UI no-egress and preference transitions /reviews/nu-image-medical-review/","requirement":"D1-candidate-preferences-no-egress"},
       {"file":"tests/browser/glp41-d1-material.spec.mjs","title":"F25 multi-medication directory and previews bind visible price labels to matrix rows","requirement":"F25/R3"},
       {"file":"tests/browser/glp41-d1-material.spec.mjs","title":"R1 no-JS matcher submits filters without email or identity in the URL","requirement":"R1"},
       {"file":"tests/browser/glp41-d1-material.spec.mjs","title":"R3 edited calculator prices and saved overrides are labeled user-entered","requirement":"R3"},
       {
         "file": "tests/browser/affiliate-tap-integrity.spec.mjs",
-        "title": "affiliate CTAs tappable \u00b7 desktop \u00b7 /reviews/nu-image-medical-review/",
+        "title": "affiliate CTAs tappable \u00b7 desktop \u00b7 /reviews/mydrhank/",
         "requirement": "A01"
       },
       {
         "file": "tests/browser/affiliate-tap-integrity.spec.mjs",
-        "title": "affiliate CTAs tappable \u00b7 mobile \u00b7 /reviews/nu-image-medical-review/",
+        "title": "affiliate CTAs tappable \u00b7 mobile \u00b7 /reviews/mydrhank/",
         "requirement": "A01"
       },
       {
@@ -141,7 +144,7 @@
       },
       {
         "file": "tests/browser/release-consent-effects.spec.mjs",
-        "title": "D1 candidate UI no-egress and preference transitions /reviews/nu-image-medical-review/",
+        "title": "D1 candidate UI no-egress and preference transitions /reviews/mydrhank/",
         "requirement": "D1-candidate-preferences-no-egress"
       },
       {

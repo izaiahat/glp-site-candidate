@@ -69,6 +69,24 @@ async function expectPaidRail(anchor) {
 }
 
 for (const vp of VIEWPORTS) {
+  test(`current HOLD reviews remain informational and link-dark · ${vp.name}`, async ({page}, testInfo) => {
+    const raw = JSON.parse(readFileSync(new URL('../../data/go-selection-receipt.json', import.meta.url))).programs;
+    const origin = new URL(testInfo.project.use.baseURL).origin;
+    const external = [];
+    await page.context().route('**/*', route => {
+      if (new URL(route.request().url()).origin !== origin) { external.push(route.request().url()); return route.abort(); }
+      return route.continue();
+    });
+    await page.setViewportSize({width:vp.width, height:vp.height});
+    for (const id of ['nu-image-medical-review', 'longevity-meds-glp-1-review']) {
+      expect(raw.find(row => row.program_id === id)).toMatchObject({disposition:'HOLD', promotion_authorized:false});
+      const response = await page.goto(`/reviews/${id}/`, {waitUntil:'networkidle'});
+      expect(response.status()).toBe(200);
+      await expect(page.locator('h1')).toBeVisible();
+      await expect(page.locator('a[data-analytics-event="affiliate_click"], a[rel~="sponsored"], a[href^="/go/"]')).toHaveCount(0);
+    }
+    expect(external).toEqual([]);
+  });
   for (const path of PAGES) {
     test(`affiliate CTAs tappable · ${vp.name} · ${path}`, async ({ page }, testInfo) => {
       const pageOrigin = new URL(path, testInfo.project.use.baseURL).origin;

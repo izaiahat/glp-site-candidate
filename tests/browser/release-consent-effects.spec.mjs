@@ -8,7 +8,7 @@ import { loadGoSelection } from '../../src/go-runtime-selection.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const PUBLIC = process.env.GLP_REVIEW_PUBLIC_ROOT || path.join(ROOT, 'public');
-const ROUTES = ['/', '/providers/', '/tools/glp-1-cost-calculator/', '/lp/quiz/', '/quiz/provider-fit/', '/reviews/nu-image-medical-review/'];
+const ROUTES = ['/', '/providers/', '/tools/glp-1-cost-calculator/', '/lp/quiz/', '/quiz/provider-fit/', '/reviews/nu-image-medical-review/', '/reviews/mydrhank/'];
 const sha = value => createHash('sha256').update(value).digest('hex');
 const read = relative => readFileSync(path.join(PUBLIC, relative));
 const SETTLE_MS = 300; // Bounded observation window, not a retry or a latency claim.
@@ -213,7 +213,12 @@ for (const route of ROUTES) {
       await page.getByRole('button',{name:'Turn off analytics',exact:true}).click(); await check('denied');
       audit.setPhase('denied-reload'); await page.reload({waitUntil:'networkidle'}); await page.evaluate(()=>window.GCSConsentReady); await check('denied');
       expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_complete',{quiz_answers:'D1_SYNTHETIC_CANARY',email:'d1@example.invalid'}))).toBe(false);
-      if(route.startsWith('/reviews/')) {
+      if(route === '/reviews/nu-image-medical-review/') {
+        const held = selections.find(row => row.program_id === 'nu-image-medical-review');
+        expect(held.disposition).toBe('HOLD');
+        expect(held.promotion_authorized).toBe(false);
+        await expect(page.locator('a[data-analytics-event="affiliate_click"], a[rel~="sponsored"], a[href^="/go/"]')).toHaveCount(0);
+      } else if(route.startsWith('/reviews/')) {
         const anchor=page.locator('a[data-analytics-event="affiliate_click"]').first();
         const before=await anchor.getAttribute('href');
         await page.evaluate(()=>{window.__d1Cta=[];document.addEventListener('click',event=>{const link=event.target.closest('a[data-analytics-event="affiliate_click"]');if(link){event.preventDefault();window.__d1Cta.push({trusted:event.isTrusted,program:link.dataset.program});}},true);});

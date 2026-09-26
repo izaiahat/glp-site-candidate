@@ -5,12 +5,14 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {loadCarrierArticles, assertCarrierArticleOutput} from '../src/carrier-article-retention.mjs';
 import {loadAffiliateLinkMap} from '../src/affiliate-link-map.mjs';
+import {assertCurrentHoldManifestSuccessor} from '../src/cost-calculator-affiliate.mjs';
 import {COST_AFFILIATE_EMAIL_MANIFEST} from '../src/cost-affiliate-email-manifest.generated.mjs';
 import {checkDispositions} from '../scripts/ci-release-gate.mjs';
 import {JSDOM} from 'jsdom';
 import {mkdtempSync, mkdirSync, writeFileSync, rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
+import {assertCurrentHoldGoSuccessor} from '../src/go-runtime-manifest.mjs';
 import {loadGoPromotionAuthority, loadGoSelection, applyGoSelectionToLinkMap} from '../src/go-runtime-selection.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = path => readFileSync(new URL('../'+path, import.meta.url));
@@ -59,6 +61,20 @@ test('F34 final emitted carrier articles retain the exact authenticated body and
 test('F35 generated email manifest includes every approved link independently of calculator price eligibility', () => {
   const expected = Object.values(loadAffiliateLinkMap('calculator')).filter(row => row.live && row.affiliate_href);
   const actual = COST_AFFILIATE_EMAIL_MANIFEST.programs;
+  const held = new Set(JSON.parse(read('data/go-selection-receipt.json')).programs.filter(row => row.disposition === 'HOLD').map(row => row.render_id));
+  assert.ok(actual.every(row => !held.has(row.program_id)), 'email manifest must not resurrect a raw HOLD');
+  // Isolated predecessor fixture: only the named current HOLD may be removed.
+  const after = COST_AFFILIATE_EMAIL_MANIFEST;
+  const before = {...after, programs:[...actual, {...actual[0], program_id:[...held][0]}]};
+  assertCurrentHoldManifestSuccessor(before, after, held);
+  for (const mutate of [
+    value => value.programs.pop(),
+    value => value.programs.push({...value.programs[0], program_id:'unapproved-fixture'}),
+    value => { value.programs[0].affiliate_href = 'https://changed.invalid/'; },
+  ]) {
+    const changed = structuredClone(after); mutate(changed);
+    assert.throws(() => assertCurrentHoldManifestSuccessor(before, changed, held), /cost_email_non_hold_manifest_drift/);
+  }
   assert.ok(expected.length > 0);
   assert.deepEqual(actual.map(row => row.program_id).sort(), expected.map(row => row.program_id).sort());
   for (const row of expected) assert.equal(actual.find(item => item.program_id === row.program_id).affiliate_href, row.affiliate_href);
@@ -126,8 +142,14 @@ test('R2 current holds beat conflicting legacy approvals and block link-map resu
       write('go-runtime-promotion-authority.json', legacy);
     };
     persist();
-    // The historical internal holds really were superseded by the later ruling.
-    for (const row of held) assert.equal(loadGoPromotionAuthority(temp).programs[row.program_id].scoped_direct_supersession, true);
+    // Raw exact-offer creative-approval HOLDs are unresolved. The old blanket
+    // ruling is retained evidence, not permission to override these rows.
+    for (const row of held) {
+      assert.equal(row.promotion_authorized, false);
+      assert.match(row.required_artifact, /approval.*(?:3277|5141d0e3)/i);
+      assert.equal(loadGoPromotionAuthority(temp).programs[row.program_id].status, 'WITHHELD');
+      assert.equal(loadGoPromotionAuthority(temp).programs[row.program_id].promotion_authorized, false);
+    }
     for (const row of held) row.hold_reason = 'CURRENT network pause: not approved for promotion';
     selection.at_utc = '2026-09-26T00:00:00Z';
     persist();
@@ -141,6 +163,18 @@ test('R2 current holds beat conflicting legacy approvals and block link-map resu
     const links = Object.fromEntries(held.map(row => [row.render_id, {live:true, affiliate_href:'https://example.invalid'}]));
     applyGoSelectionToLinkMap(links, registry, 'compare', 'glp-clinic-scout', loadGoSelection(temp), authority);
     for (const row of held) assert.equal(links[row.render_id].live, false);
+    const predecessor = {schema:'fixture', programs:{held:{program_id:'held', display_name:'Held', route:'/go/held', entry_state:'transparent_direct', commercial_state:'live', tracking:{base_url:'https://fixture.invalid'}}}};
+    const successor = {schema:'fixture', programs:[{program_id:'held', display_name:'Held', route:'/go/held', entry_state:'transparent_direct', commercial_state:'live', live_link_allowed:false, promotion_authorized:false, candidate_gate:'No complete live attribution and promotion receipt; entry remains held.'}]};
+    assertCurrentHoldGoSuccessor(predecessor, successor, new Set(['held']));
+    assert.throws(() => assertCurrentHoldGoSuccessor(predecessor, successor, new Set()), /go_non_hold_manifest_drift/);
+    for (const mutate of [
+      row => { row.live_link_allowed = true; },
+      row => { row.tracking = {base_url:'https://fixture.invalid'}; },
+      row => { row.route = '/go/other'; },
+    ]) {
+      const changed = structuredClone(successor); mutate(changed.programs[0]);
+      assert.throws(() => assertCurrentHoldGoSuccessor(predecessor, changed, new Set(['held'])), /go_non_hold_manifest_drift/);
+    }
   } finally { rmSync(temp, {recursive:true, force:true}); }
 });
 

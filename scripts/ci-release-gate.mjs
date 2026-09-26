@@ -135,7 +135,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'host-bootstrap': 241, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43 };
+      const requiredNodeCounts = { 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -169,14 +169,15 @@ async function main() {
     await step('affiliate-census', async () => {
       const { loadGoPromotionAuthority, loadGoSelection } = await import('../src/go-runtime-selection.mjs');
       const { GO_RUNTIME_MANIFEST } = await import('../functions/go/program-manifest.js');
-      const { assertServedGoIdentity } = await import('../src/served-affiliate-identity.mjs');
+      const { assertServedGoIdentity, rawHeldInputs, rawHeldOutputCensus, assertRawHeldOutput } = await import('../src/served-affiliate-identity.mjs');
       const registry = readJson(path.join(ROOT, 'data/program-registry.json'));
       const aliases = Object.fromEntries(registry.programs.map(p => [p.review_slug || p.program_id, p.program_id]));
       const required = Object.values(loadGoSelection().programs).filter(p => p.status === 'VERIFIED').map(p => p.render_id);
       const documents = result.output_before.files.filter(p => /\.(html|json)$/.test(p.file)).map(p => ({ file: p.file, text: readFileSync(path.join(publicRoot, p.file), 'utf8') }));
       const census = checkAnchorMarkup(documents, loadGoPromotionAuthority().programs, aliases, GO_RUNTIME_MANIFEST.programs, required);
       const identity = assertServedGoIdentity(publicRoot, readJson(path.join(ROOT, 'data/tracking-allowed-hosts.json')).programs);
-      return { ...census, go_identity_anchors: identity.anchors.length };
+      const raw_held = assertRawHeldOutput(rawHeldOutputCensus(documents, rawHeldInputs(ROOT), GO_RUNTIME_MANIFEST.programs));
+      return { ...census, go_identity_anchors: identity.anchors.length, raw_held };
     });
     await command('browser', process.execPath, ['artifacts/ultracode/tools/test-browser-nowrite.mjs'], {
       GLP_RELEASE_SELECTION: path.join(ROOT, 'ops/release-gate.json'), PLAYWRIGHT_WORKERS: '1',

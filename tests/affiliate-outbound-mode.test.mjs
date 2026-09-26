@@ -12,19 +12,18 @@ const promotions = loadGoPromotionAuthority().programs;
 const links = loadAffiliateLinkMap("compare");
 const modes = new Map([
   ["gobymeds", "go"], ["orderlymeds", "go"],
-  // Network-approved Nu Image is live under the 2026-09-24 decision, but its
-  // missing redirector permissions still forbid a /go hop.
-  ["nu-image-medical-review", "transparent_direct"],
+  // The exact current creative-approval HOLD wins over the blanket ruling.
+  ["nu-image-medical-review", "held"],
   ["levelsrx-extra-cpa-home-page", "go"], ["yucca-health-xentraffic-offer-3117", "go"],
 ]);
 for (const [id, mode] of modes) test(`selected ${id} follows current adoption or explicit hold`, () => {
   const program = registry.programs.find((p) => p.program_id === id || p.review_slug === id);
-  assert.equal(promotions[id].status, "VERIFIED");
-  assert.equal(links[id].live, true);
-  if (id === "nu-image-medical-review") {
-    assert.equal(promotions[id].reason, "operator_approved_glp_live");
-    assert.equal(promotions[id].constructor_verified, false);
-    assert.equal(promotions[id].redirector_tos_verified, false);
+  assert.equal(promotions[id].status, mode === 'held' ? 'WITHHELD' : 'VERIFIED');
+  assert.equal(links[id].live, mode !== 'held');
+  if (mode === 'held') {
+    const raw = read('go-selection-receipt').programs.find(row => row.program_id === id);
+    assert.equal(raw.disposition, 'HOLD');
+    assert.equal(promotions[id].promotion_authorized, false);
   }
   assert.equal(affiliateOutboundMode(program, links[id], promotions[id]), mode);
   assert.equal(affiliateOutboundMode(program, {...links[id], live:false}, promotions[id]), "held");

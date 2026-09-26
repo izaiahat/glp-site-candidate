@@ -10,7 +10,7 @@ const expected=registry.therapeutic_taxonomy.price_index_registry_programs_seman
 const basis=structuredClone(registry);
 const read = name => JSON.parse(readFileSync(new URL('../data/'+name,import.meta.url)));
 const escapeHtml = text => String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
-test('actual review renderer consumes repaired copy and binds Longevity live anchor to operator authority',()=>{
+test('actual review renderer preserves repaired copy and the exact Longevity HOLD',()=>{
  const contracts=read('provider-page-contracts.json');
  const reviews=buildProviderReviewSpecs(read('money-page-specs.json').pages,contracts,read('provider-fastpath-contract.json'),registry,'glp-clinic-scout',read('program-content-ledger.json').programs);
  for(const id of ['mademed','strut-health','trt-nation','drhouse','longevity-meds-glp-1-review']){
@@ -32,15 +32,20 @@ test('actual review renderer consumes repaired copy and binds Longevity live anc
   }
   if(id==='longevity-meds-glp-1-review'){
    const authority=loadGoPromotionAuthority().programs[id];
-   assert.equal(authority.status,'VERIFIED');
-   assert.match(authority.operator_approved_live_decision?.path||'',/OPERATOR-DECISION-20260924-all-approved-providers-live\.md$/);
-   assert.equal(createHash('sha256').update(readFileSync(authority.operator_approved_live_decision.path)).digest('hex'),authority.operator_approved_live_decision.sha256);
+   const raw=read('go-selection-receipt.json').programs.find(p=>p.program_id===id);
+   assert.equal(raw.disposition,'HOLD');
+   assert.equal(raw.promotion_authorized,false);
+   assert.equal(authority.status,'WITHHELD');
+   assert.equal(authority.promotion_authorized,false);
+   // Historical decision bytes remain authentic, but cannot waive this exact
+   // unresolved creative approval. Preserve the evidence, not its old grant.
+   const legacy=read('go-runtime-promotion-authority.json').programs[id];
+   assert.equal(createHash('sha256').update(readFileSync(legacy.operator_approved_live_decision.path)).digest('hex'),legacy.operator_approved_live_decision.sha256);
    const issued=read('affiliate-wire-in-approvals.json').programs.find(p=>p.existing_release_alias===id)?.tracking?.provider_issued_url;
    assert.equal(issued,'https://www.xfnjwej33dd.com/841W6MT/6RHPZQL/');
-   const anchor=html.match(/<a\b[^>]*data-analytics-event="affiliate_click"[^>]*data-program="longevity-meds-glp-1-review"[^>]*>/)?.[0];
-   assert.ok(anchor, 'Longevity rendered conversion missing');
-   assert.ok(anchor.includes(`href="${issued}" rel="sponsored nofollow noopener"`), 'Longevity rendered conversion must use the exact provider-issued URL');
-   assert.doesNotMatch(html,/href="\/go\/longevity/); // No mintable /go route is claimed by this direct-link authority.
+   assert.ok(!html.includes(`href="${issued}"`), 'held issued link must not render');
+   assert.doesNotMatch(html,/<a\b[^>]*data-analytics-event="affiliate_click"[^>]*data-program="longevity-meds-glp-1-review"/);
+   assert.doesNotMatch(html,/href="\/go\/longevity/);
   }
  }
 });
