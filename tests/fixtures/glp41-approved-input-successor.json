@@ -1,12 +1,13 @@
 {
   "schema": "glp41-approved-input-successor-v1",
-  "authority": "GLP-41 operator assignment: reconcile approved Sep-16 evidence refresh and Sep-24 all network-approved providers live; D1/D3 approved 2026-09-25",
-  "source_head": "f3e907606a3d37850d492b1a9aa1f718d926dda8",
+  "status": "PROPOSED_PENDING_INDEPENDENT_REVIEW",
+  "authority": "Coordinator proposal scope only: ops/linear/approvals/COORDINATOR-DISPOSITION-20260926-glp234-f17-successor.md; not operator approval, independent acceptance or release authority",
+  "source_head": "992bd3e23b036bd05d27ad991da0eb7261f9d7ad",
   "inputs": {
     "data/program-registry.json": {
       "before_sha256": "bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6",
-      "after_sha256": "b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b",
-      "reason": "The old K10 listing pin predates the accepted registry/evidence refresh and operator-approved live cohort. These are the exact unchanged PR-head registry bytes, not a renderer-derived cohort or newly minted evidence date. Commercial eligibility still requires current promotion authority; no historical ledger or external pin is edited."
+      "after_sha256": "836bba4cd1cee5afe637ac0a727a65ee539361295a615e2767cc8d5b923a74e4",
+      "reason": "Candidate-only successor to approved b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b, retained with its prior fixture in Git history. Exactly seven GLP-234 identity leaves: program display name, profile provider, identity evidence text and digest, profile normalized digest, taxonomy provider and normalized digest. Existing first-party Try Ageless FAQ evidence is retained in reports/ops/orchestration-restore-20260907/PLAN/GLP-208/A/coverage/identity-correction.json; existing registry profile/taxonomy bindings retain https://tryageless.com/affiliate-weight-plans/ and https://tryageless.com/terms/. Complete byte/leaf basis: reports/ops/glp234-semantic-basis-20260926/independent-evidence/f17-independent-bytes.json. No new evidence, dates, price/history, eligibility or commercial authority. Immutable K10 before pin and Node/browser exact-byte guards stay unchanged. Independent changed-oracle review, complete output-absence/link census and full gate remain required; candidate test PASS is not acceptance."
     }
   }
 }

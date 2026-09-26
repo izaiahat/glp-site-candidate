@@ -83,6 +83,72 @@ test('GLP-234 F1 actual build-to-quiz projection owns raw input without weakenin
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/${name}`, import.meta.url)));
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
+// Candidate-oracle regression only: executing these pure maintained guards does
+// not supply independent acceptance, run a browser, or authorize publication.
+test('GLP-234 F17 proposal binds only the exact identity successor and refuses unintended leaves', async () => {
+  const read = (path) => readFileSync(new URL('../' + path, import.meta.url));
+  const pins = JSON.parse(read('tests/fixtures/glp41-approved-input-successor.json'));
+  const input = 'data/program-registry.json';
+  const bytes = read(input);
+  const immutable = {data: {[input]: 'bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6'}};
+  assert.equal(pins.inputs[input].after_sha256, '836bba4cd1cee5afe637ac0a727a65ee539361295a615e2767cc8d5b923a74e4');
+  assert.equal(pins.status, 'PROPOSED_PENDING_INDEPENDENT_REVIEW');
+  assert.match(pins.authority, /COORDINATOR-DISPOSITION-20260926-glp234-f17-successor\.md/);
+
+  // Run the existing Node test body unchanged with in-memory input substitutions.
+  const nodeSource = read('tests/glp41-material-contracts.test.mjs').toString();
+  const nodeStart = nodeSource.indexOf("test('F17 approved registry successor binds exact prior and current bytes'");
+  const nodeEnd = nodeSource.indexOf("\ntest('F34", nodeStart);
+  assert.ok(nodeStart >= 0 && nodeEnd > nodeStart);
+  const nodeGuard = new Function('test', 'assert', 'read', 'sha', nodeSource.slice(nodeStart, nodeEnd));
+  const runNode = (candidate, fixture = pins) => {
+    let calls = 0;
+    nodeGuard((_name, check) => { calls++; check(); }, assert,
+      path => path === input ? candidate : path === 'tests/fixtures/glp41-approved-input-successor.json'
+        ? Buffer.from(JSON.stringify(fixture)) : assert.fail('unexpected Node input: ' + path), sha);
+    assert.equal(calls, 1);
+  };
+
+  // Exercise only the browser consumer's pure input function with the frozen
+  // K10 hash supplied in memory, not its external manifest or actual browser.
+  const browserSource = read('tests/browser/glp34-listing-handler.mjs').toString();
+  const browserStart = browserSource.indexOf(' const boundInput=relative=>{');
+  const browserEnd = browserSource.indexOf(' const registrySource=boundInput(', browserStart);
+  assert.ok(browserStart >= 0 && browserEnd > browserStart);
+  const browserGuard = new Function('fs', 'root', 'successor', 'immutable', 'assert', 'sha',
+    browserSource.slice(browserStart, browserEnd) + '\nreturn boundInput;');
+  const runBrowserInput = (candidate, fixture = pins) => browserGuard({readFileSync: url => {
+    assert.equal(url.href, new URL('../' + input, import.meta.url).href);
+    return candidate;
+  }}, new URL('../', import.meta.url), fixture, immutable, assert, sha)(input);
+  runNode(bytes);
+  assert.deepEqual(runBrowserInput(bytes), JSON.parse(bytes));
+
+  const registry = JSON.parse(bytes);
+  assert.equal(JSON.stringify(registry, null, 2) + '\n', bytes.toString(), 'mutation serialization must preserve otherwise exact bytes');
+  for (const edit of [
+    value => { value.programs.find(row => row.program_id === 'try-ageless').display_name = 'Unapproved alias'; },
+    value => { value.programs.find(row => row.program_id === 'found-health').display_name = 'Unintended change'; },
+    value => { value.programs.find(row => row.program_id === 'try-ageless').go.route = '/go/unapproved'; },
+  ]) {
+    const invalid = structuredClone(registry); edit(invalid);
+    const changed = Buffer.from(JSON.stringify(invalid, null, 2) + '\n');
+    assert.throws(() => runNode(changed), {code: 'ERR_ASSERTION'});
+    assert.throws(() => runBrowserInput(changed), /immutable listing oracle/);
+  }
+  const appended = Buffer.concat([bytes, Buffer.from(' ')]);
+  assert.throws(() => runNode(appended), {code: 'ERR_ASSERTION'});
+  assert.throws(() => runBrowserInput(appended), /immutable listing oracle/);
+  const prior = structuredClone(pins);
+  prior.inputs[input].after_sha256 = 'b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b';
+  assert.throws(() => runNode(bytes, prior), {code: 'ERR_ASSERTION'});
+  assert.throws(() => runBrowserInput(bytes, prior), /immutable listing oracle/);
+  const wrongBefore = structuredClone(pins);
+  wrongBefore.inputs[input].before_sha256 = prior.inputs[input].after_sha256;
+  assert.throws(() => runNode(bytes, wrongBefore), {code: 'ERR_ASSERTION'});
+  assert.throws(() => runBrowserInput(bytes, wrongBefore), /approved successor must bind the old input/);
+});
+
 test('GLP-234 registry projections name the first-party brand without altering routing or held commercial custody', async () => {
   const registry = await load('program-registry.json');
   const program = registry.programs.find((row) => row.program_id === 'try-ageless');
