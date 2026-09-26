@@ -41,7 +41,9 @@ test('GLP-233 all emitted public names omit the unsupported SkinnyRx superlative
     const relative = path.relative(root, file);
     if (file.endsWith('.html')) html.push(relative);
     if (file.endsWith('.json')) json.push(relative);
-    if (!/\.(?:html|json|js|mjs|svg|xml|txt|css|webmanifest)$/.test(file)) continue;
+    // Scan every emitted file, including extensionless and unfamiliar payloads.
+    // Binary bytes are decoded only for a literal UTF-8 claim search; images
+    // are not OCR evidence. JSON additionally exposes escaped string values.
     const raw = readFileSync(file, 'utf8');
     const text = file.endsWith('.json') ? strings(JSON.parse(raw)).join('\n') : raw;
     const occurrences = [...decode(text).matchAll(claim)].length;
