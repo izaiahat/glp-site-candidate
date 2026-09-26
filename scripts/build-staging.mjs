@@ -1595,7 +1595,7 @@ async function main() {
   ]);
   // Keep the hash-pinned price-index ledger untouched, including its in-memory
   // rows. Renderers use this consumer copy; quiz owns its projection from raw.
-  const contentLedger = { ...rawContentLedger, programs: rawContentLedger.programs.map((row) => projectProviderDisplayLedger(row)) };
+  const contentLedger = { ...rawContentLedger, programs: structuredClone(rawContentLedger.programs).map((row) => projectProviderDisplayLedger(row)) };
   const [phase3GraphConfig, phase3PharmacyInput] = await Promise.all([readJson("phase3-page-graph.json"), readJson("phase3-pharmacy-render-input.json")]);
   reconcileTherapeuticTaxonomyWireIn({
     registry: programRegistry,
@@ -1684,8 +1684,16 @@ async function main() {
     const comparablePriceIds = comparablePriceProviderIds(programRegistry, SITE_PROFILE, {
       asOf: new Date(`${programRegistry.provider_dynamic_profiles.sealed_as_of}T12:00:00Z`),
     });
-    const derivedFor = applyMeritScores(contentLedger.programs, { comparablePriceIds });
+    // Display evidence is not a scoring-input migration. Derive from an isolated
+    // raw-ledger copy, as before GLP-234, and carry only score fields to renderers.
+    const scoringPrograms = structuredClone(rawContentLedger.programs);
+    const derivedFor = applyMeritScores(scoringPrograms, { comparablePriceIds });
+    const scoringById = new Map(scoringPrograms.map((program) => [program.program_id, program]));
     for (const program of contentLedger.programs) {
+      const scored = scoringById.get(program.program_id);
+      for (const key of ['criteria_scores', 'score_basis', 'score_evidence_earned']) {
+        if (Object.hasOwn(scored, key)) program[key] = scored[key];
+      }
       const score = meritScore(program);
       if (score === null) throw new Error(`merit_score_underivable:${program.program_id}`);
       program.score = score;

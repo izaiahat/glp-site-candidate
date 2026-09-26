@@ -7,6 +7,8 @@ import { normalizedTaxonomySha256 } from '../src/therapeutic-taxonomy.mjs';
 import { projectProviderDisplayFacts, projectProviderDisplayLedger } from '../src/provider-display-evidence.mjs';
 import { reviewBrief } from '../src/blog-system.mjs';
 import { projectQuizFromRegistry } from '../src/program-registry.mjs';
+import { applyMeritScores, meritScore } from '../src/merit-ranking.mjs';
+import { comparablePriceProviderIds } from '../src/provider-dynamic-profiles.mjs';
 import { historicalPriceIndexRegistry } from '../src/price-index-historical-registry.mjs';
 import { readFileSync } from 'node:fs';
 
@@ -54,10 +56,13 @@ async function buildQuizInputs(ledger) {
   const end = source.indexOf('  const [phase3GraphConfig,', start);
   const call = source.match(/^  const canonicalQuiz = projectQuizFromRegistry\([^\n]+$/m)?.[0];
   assert.ok(start >= 0 && end > start && call, 'maintained build/quiz seams must be present');
-  const execute = new Function('readJson', 'projectProviderDisplayLedger', 'projectQuizFromRegistry', 'programRegistry', 'SITE_PROFILE',
-    `return (async () => {${source.slice(start, end)}\n${call}\nreturn {contentLedger, canonicalQuiz};})()`);
+  const scoreStart = source.indexOf('    const comparablePriceIds = comparablePriceProviderIds(');
+  const scoreEnd = source.indexOf('    const ledgerById = new Map(', scoreStart);
+  assert.ok(scoreStart >= 0 && scoreEnd > scoreStart, 'maintained scoring seam must be present');
+  const execute = new Function('readJson', 'projectProviderDisplayLedger', 'projectQuizFromRegistry', 'programRegistry', 'SITE_PROFILE', 'comparablePriceProviderIds', 'applyMeritScores', 'meritScore',
+    `return (async () => {${source.slice(start, end)}\n${source.slice(scoreStart, scoreEnd)}\n${call}\nreturn {contentLedger, canonicalQuiz};})()`);
   return execute(name => name === 'program-content-ledger.json' ? ledger : load(name),
-    projectProviderDisplayLedger, projectQuizFromRegistry, await load('program-registry.json'), 'glp-clinic-scout');
+    projectProviderDisplayLedger, projectQuizFromRegistry, await load('program-registry.json'), 'glp-clinic-scout', comparablePriceProviderIds, applyMeritScores, meritScore);
 }
 
 test('GLP-234 F1 actual build-to-quiz projection owns raw input without weakening source guards', async () => {
@@ -65,6 +70,19 @@ test('GLP-234 F1 actual build-to-quiz projection owns raw input without weakenin
   const before = structuredClone(ledger);
   const {contentLedger, canonicalQuiz} = await buildQuizInputs(ledger);
   assert.deepEqual(ledger, before, 'build consumer view must not replace raw ledger rows');
+  const registry = await load('program-registry.json');
+  const rawScored = structuredClone(before.programs);
+  applyMeritScores(rawScored, { comparablePriceIds: comparablePriceProviderIds(registry, 'glp-clinic-scout', {
+    asOf: new Date(`${registry.provider_dynamic_profiles.sealed_as_of}T12:00:00Z`),
+  }) });
+  const scoreFields = row => ({program_id: row.program_id, criteria_scores: row.criteria_scores,
+    score_basis: row.score_basis, score_evidence_earned: row.score_evidence_earned, score: meritScore(row)});
+  assert.deepEqual(contentLedger.programs.map(scoreFields), rawScored.map(scoreFields),
+    'display-only research projection must not change any provider scoring input');
+  const body = contentLedger.programs.find(row => row.program_id === 'bodybuilding-com-glp-1-longevity-review');
+  assert.ok(body.research_cancellation.value, 'retain source-backed cancellation display');
+  assert.equal(before.programs.find(row => row.program_id === body.program_id).research_cancellation.value, '');
+  assert.equal(body.criteria_scores.price_transparency, 65);
   const target = contentLedger.programs.find(row => row.program_id === 'try-ageless');
   assert.equal(target.display_name, 'Try Ageless');
   assert.equal(target.research_backfill_20260830, undefined);
