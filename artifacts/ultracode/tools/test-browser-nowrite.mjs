@@ -14,6 +14,16 @@ import {
 
 assertCandidateRoot();
 
+// Optional D1 selection; the legacy full-suite command remains unchanged.
+const selection = process.env.GLP_RELEASE_SELECTION
+  ? JSON.parse(readFileSync(process.env.GLP_RELEASE_SELECTION, "utf8")).browser : null;
+if (selection) ensure(Array.isArray(selection.cases) && selection.cases.length > 0, "release_selection_empty");
+const selectionArgs = selection ? [
+  ...new Set(selection.cases.map(row => row.file)),
+  "--grep", selection.cases.map(row => `(?:${row.title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})$`).join("|"),
+  "--retries=0", "--trace=on",
+] : [];
+
 const truthSpec = path.join(ROOT, "tests", "browser", "analytics-truth.spec.mjs");
 const truthSource = readFileSync(truthSpec, "utf8");
 const titleMatch = truthSource.match(/test\(["']([^"']*BOTH sinks through the production CSP)["']/);
@@ -67,7 +77,7 @@ const scratch = path.join(os.tmpdir(), `glp-ultracode-browser-nowrite-${process.
 const jsonOutput = path.join(scratch, "playwright.json");
 const log = path.join(LOGS, "browser-nowrite.log");
 const discoveryOutput = path.join(scratch, "discovery.json");
-const discovery = await spawnLogged("npx", ["playwright", "test", "--list", "--reporter=json", "--update-snapshots=none"], {
+const discovery = await spawnLogged("npx", ["playwright", "test", ...selectionArgs, "--list", "--reporter=json", "--update-snapshots=none"], {
   cwd: ROOT,
   log: path.join(LOGS, "browser-nowrite-discovery.log"),
   tee: false,
@@ -83,7 +93,7 @@ if (discovery.exit !== 0 || !existsSync(discoveryOutput)) {
   throw new Error("browser_full_denominator_discovery_failed");
 }
 const discoveredReport = JSON.parse(readFileSync(discoveryOutput, "utf8"));
-const command = await spawnLogged("npx", ["playwright", "test", "--workers", process.env.PLAYWRIGHT_WORKERS || "6", "--update-snapshots=none", "--grep-invert", heldTitle], {
+const command = await spawnLogged("npx", ["playwright", "test", ...selectionArgs, "--workers", process.env.PLAYWRIGHT_WORKERS || "6", "--update-snapshots=none", "--grep-invert", heldTitle], {
   cwd: ROOT,
   log,
   env: {
@@ -137,7 +147,7 @@ const actualKeys = new Set(actualCases.map(row => row.key));
 const expectedKeys = new Set(expectedCases.map(row => row.key));
 const missingCases = expectedCases.filter(row => !actualKeys.has(row.key));
 const unexpectedCases = actualCases.filter(row => !expectedKeys.has(row.key));
-const denominatorIntact = declaredHeldCases.length > 0 && missingCases.length === 0 && unexpectedCases.length === 0
+const denominatorIntact = (selection ? allCases.length > 0 : declaredHeldCases.length > 0) && missingCases.length === 0 && unexpectedCases.length === 0
   && actualCases.length === expectedCases.length && actualKeys.size === actualCases.length;
 const snapshotWritesDisabled = playwrightReport?.config?.updateSnapshots === "none";
 if (existsSync(jsonOutput) && process.env.GLP_BROWSER_REPORT_PATH) copyFileSync(jsonOutput, process.env.GLP_BROWSER_REPORT_PATH);

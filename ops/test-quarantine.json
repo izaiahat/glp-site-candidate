@@ -1,0 +1,79 @@
+{
+  "schema": "glp-d1-diagnostics-v1",
+  "authority": "D1 operator decision 20260925",
+  "diagnostics": [
+    {
+      "id": "D01",
+      "title": "Old money-template intent grid replaced by active GLP-34 listing",
+      "classification": "D",
+      "reason": "The retired money URL now resolves to the provider comparison composition; its old #best-for .intent-cards anatomy is not the active listing. Source explicitly declares older page functions migration references, not graph output."
+    },
+    {
+      "id": "D02",
+      "title": "Bulk listing now has an explicit bound product visual",
+      "classification": "D",
+      "reason": "The old callback check pins zero product visuals. The active GLP-34 bulk listing visual upgrader explicitly inserts a product-comparison picture inside listing__intro; the former zero-visual presentation is replaced."
+    },
+    {
+      "id": "D03",
+      "title": "Insurance shortcut removed from replacement compact-card composition",
+      "classification": "D",
+      "reason": "Current GLP-34 option-C cards contain fact ledger plus get-started and editorial review/detail actions; they do not emit data-insurance-provider. The insurance wizard remains a separate below-grid section. The failure is an old anatomy hook lookup, not a demonstrated wrong estimate."
+    },
+    {
+      "id": "D04",
+      "title": "Legacy guide library replaced by Insights index",
+      "classification": "D",
+      "reason": "The fixture visits the retired guide library and asks for its library-index element. Build route replacements send /guides/ to /insights/; the retained legacy render function is not evidence that the served Insights page should reproduce its old index."
+    },
+    {
+      "id": "D05",
+      "title": "Hidden Pass-2 quiz audit markup superseded by Phase-4 quiz",
+      "classification": "D",
+      "reason": "The raw timeout shows a matching option exists but is hidden, not absent. Source explicitly wraps legacy Pass-2 sections in hidden/aria-hidden audit markup and labels Phase 4 as the successor. Do not expose old questionnaire elements to satisfy the click."
+    },
+    {
+      "id": "D06",
+      "title": "In-place three-card quiz result animation replaced by customized-results handoff",
+      "classification": "D",
+      "reason": "Current finish navigates to /matches/customized/. That page renders every governed result ID and a separate is-new transition, not the old three-card is-computing skeleton. R3 observed 47 cards on the new destination. Do not truncate the governed results merely to match the retired in-place presentation."
+    },
+    {
+      "id": "D07",
+      "title": "Old category/product hero markers replaced by GLP-34 listing shell",
+      "classification": "D",
+      "reason": "These failures pin old emulated hero/category template markers or hero-scoped figure placement. The active graph uses listingDocument and listingDrugPanel; source explicitly retires older page functions. This does not waive image decoding, medication labeling or responsive bounds on the new shell."
+    },
+    {
+      "id": "D08",
+      "title": "Provider detail plan/rail composition replaced embedded listing card",
+      "classification": "D",
+      "reason": "The test opens OrderlyMeds detail and requires a listing p3-provider-card. Current detail source emits a D3 profile hero, plan cards, evidence/action rail and sticky control, not an embedded listing card. Price/source checks must target the plan records instead."
+    },
+    {
+      "id": "D09",
+      "title": "Paid quiz entrance Fable r2 architecture pin replaced by v5",
+      "classification": "D",
+      "reason": "The current renderer explicitly loads v5-fable.html and reports fable-v5-link-to-unchanged-organic-quiz. The failed architecture literal still requires r2. The organic quiz isolation and consent-runtime assertions remain necessary."
+    },
+    {
+      "id": "B01",
+      "title": "Filter reset did not clear selected state",
+      "classification": "B",
+      "reason": "R3 observes state still present after Reset. The current reset implementation explicitly clears selectedState, applies persisted groups, then clears shared CS_STATE. That is a real failed user-visible reset effect, not a superseded text or layout requirement. Exact winning race is not isolated; no erroneous medical claim is established."
+    },
+    {
+      "id": "B02",
+      "title": "Copay selection did not populate monthly out-of-pocket",
+      "classification": "B",
+      "reason": "R3 clicked a copay but the input stayed empty instead of 75. The supported handler explicitly assigns the clicked data-copay to monthlyInput.value before paint. This is a broken input interaction, not proof of a false quoted price; the failed estimate is not promoted to a legal claim."
+    },
+    {
+      "id": "B03",
+      "title": "Provider sticky remains fixed after footer release point",
+      "classification": "B",
+      "reason": "The actual geometry shows fixed with released=false after the footer passed the viewport; the test expected the footer-release state. Treat as an observed nonblocking sticky/occlusion UX defect, not as evidence of an unapproved link. Fix attribution requires the sticky observer timeline, not a baseline change."
+    }
+  ],
+  "policy": "Only listed cosmetic/frozen-presentation groups are diagnostics. Mixed files are not blanket-quarantined. C and F are NOT waived. Legacy npm test and full no-write wrapper remain available; not rerun by this narrow gate. Material unknowns remain required blockers in release-gate.json."
+}

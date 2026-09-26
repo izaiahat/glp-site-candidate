@@ -1,0 +1,247 @@
+{
+  "schema": "glp-d1-release-gate-v1",
+  "scope": "D1 short gate; never deployment authority",
+  "requirements": [
+    "consent/privacy blocks trackers after deny",
+    "all affiliate links approved/correct; paused/held/Fella absent",
+    "prices and claims match sources",
+    "published files contain no secrets",
+    "key pages load; go destinations match authority"
+  ],
+  "browser": {
+    "projects": [
+      "chromium",
+      "chromium-mobile",
+      "webkit-mobile",
+      "webkit"
+    ],
+    "cases": [
+      {
+        "file": "tests/browser/affiliate-tap-integrity.spec.mjs",
+        "title": "affiliate CTAs tappable \u00b7 desktop \u00b7 /reviews/nu-image-medical-review/",
+        "requirement": "A01"
+      },
+      {
+        "file": "tests/browser/affiliate-tap-integrity.spec.mjs",
+        "title": "affiliate CTAs tappable \u00b7 mobile \u00b7 /reviews/nu-image-medical-review/",
+        "requirement": "A01"
+      },
+      {
+        "file": "tests/browser/analytics-hermetic.spec.mjs",
+        "title": "hermetic analytics captures allow-listed affiliate payload with zero external bytes",
+        "requirement": "D1-hermetic-supplement"
+      },
+      {
+        "file": "tests/browser/calculator-affiliate-matrix.spec.mjs",
+        "title": "every calculator program computes and every authority-backed offer preserves exact attribution without provider navigation",
+        "requirement": "C03"
+      },
+      {
+        "file": "tests/browser/cross-device.spec.mjs",
+        "title": "health quiz answers remain local in requests and browser storage",
+        "requirement": "C01"
+      },
+      {
+        "file": "tests/browser/cross-device.spec.mjs",
+        "title": "quiz 1280px has no global overflow and preserves interaction",
+        "requirement": "C01"
+      },
+      {
+        "file": "tests/browser/cross-device.spec.mjs",
+        "title": "quiz 1440px has no global overflow and preserves interaction",
+        "requirement": "C01"
+      },
+      {
+        "file": "tests/browser/cross-device.spec.mjs",
+        "title": "quiz 375px has no global overflow and preserves interaction",
+        "requirement": "C01"
+      },
+      {
+        "file": "tests/browser/cross-device.spec.mjs",
+        "title": "quiz 390px has no global overflow and preserves interaction",
+        "requirement": "C01"
+      },
+      {
+        "file": "tests/browser/cross-device.spec.mjs",
+        "title": "quiz 768px has no global overflow and preserves interaction",
+        "requirement": "C01"
+      },
+      {
+        "file": "tests/browser/flagship-design.spec.mjs",
+        "title": "analytics stays held in the candidate, suppresses synthetic runs, and persists opt-out",
+        "requirement": "F39"
+      },
+      {
+        "file": "tests/browser/flagship-design.spec.mjs",
+        "title": "money 1440px satisfies the shared flagship shell",
+        "requirement": "A02"
+      },
+      {
+        "file": "tests/browser/flagship-design.spec.mjs",
+        "title": "money 390px satisfies the shared flagship shell",
+        "requirement": "A02"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 real consent deny reload regrant /",
+        "requirement": "D1-real-consent"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 real consent deny reload regrant /providers/",
+        "requirement": "D1-real-consent"
+      },
+      {
+        "file": "tests/browser/release-consent-effects.spec.mjs",
+        "title": "D1 real consent deny reload regrant /tools/glp-1-cost-calculator/",
+        "requirement": "D1-real-consent"
+      }
+    ]
+  },
+  "unresolved_material_requirements": [
+    {
+      "id": "F02",
+      "requirement": "No first canonical-result price detected above the fold",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F03",
+      "requirement": "History restores a different final provider identity",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F06",
+      "requirement": "Consent INP proxy did not observe the click it was meant to measure",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F07",
+      "requirement": "Fixed category/bulk populations disagree with current eligible cohort",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F09",
+      "requirement": "Price-roll ends with a different value than test target",
+      "owner": "P2.4",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F10",
+      "requirement": "Load-more action leaves only the first 12 visible cards",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F11",
+      "requirement": "Global visible card versus owned-grid empty state",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F14",
+      "requirement": "Wellmedr GO / Sprout direct-terms hooks missing on canonical cards",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F15",
+      "requirement": "P19 retirement-support precondition fails before final presentation check",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F16",
+      "requirement": "Paid commercial funnel shows 3 instead of 5",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F17",
+      "requirement": "Frozen registry input hash mismatch without accepted replacement pin",
+      "owner": "P2.4",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F19",
+      "requirement": "Consent drawer scrolling differs from expected bounded position",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F22",
+      "requirement": "Source-reported dose grids absent on provider detail",
+      "owner": "P2.4",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F25",
+      "requirement": "Captured-price wording disclosure summaries absent",
+      "owner": "P2.4",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F26",
+      "requirement": "No-JS Wegovy cohort 4 vs frozen 7",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F28",
+      "requirement": "Keyboard tab walk finds no expanded nav menu in mobile projects",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F29",
+      "requirement": "18px card scroll-height excess without proved content clipping",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F30",
+      "requirement": "Mobile card fails fully-inside-viewport settle predicate",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F31",
+      "requirement": "Route transition retains extra plan=both query parameter",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F32",
+      "requirement": "SnagRx preference-match hook absent after reload",
+      "owner": "P2.3",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F34",
+      "requirement": "Retained carrier article differs from exact retained bytes",
+      "owner": "P2.4",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F35",
+      "requirement": "Governed match-email IDs absent from generated affiliate manifest in R3",
+      "owner": "P2.4",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F36",
+      "requirement": "Lastmod fixtures fail catalog-render date provenance preconditions",
+      "owner": "P2.4",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    },
+    {
+      "id": "F37",
+      "requirement": "Mounjaro coupon retained-date marker expectation fails",
+      "owner": "P2.4",
+      "status": "UNRESOLVED_RELEASE_BLOCKER"
+    }
+  ]
+}
