@@ -18,8 +18,9 @@ test('explicit root grant loads only private GA4 layer; minimized page event aft
   assert.equal(google(f).length,1);assert.equal(f.window['ga-disable-G-2WQ42JY0WK'],true);
   const script=google(f)[0];assert.equal(script.referrerPolicy,'no-referrer');
   assert.equal(script.src,'https://www.googletagmanager.com/gtag/js?id=G-2WQ42JY0WK&l=gcsGa4Layer');
-  assert.deepEqual(commands(f).map(c=>c[0]+':'+c[1]),['consent:default','js:'+commands(f)[1][1],'consent:update']);
-  assert.equal(commands(f)[0][2].analytics_storage,'denied');assert.equal(commands(f)[2][2].analytics_storage,'granted');
+  assert.deepEqual(commands(f).map(c=>c[0]),['consent','config','js','consent']);
+  assert.equal(commands(f)[0][2].analytics_storage,'denied');assert.equal(commands(f)[3][2].analytics_storage,'granted');
+  assert.equal(commands(f)[1][2].send_page_view,false);
   assert.equal(f.order.filter(c=>c[0]==='event'&&c[1]==='page_view').length,0);
   f.document.title='A medication and email@example.org';
   script.load();script.load();f.c.refresh();
@@ -51,6 +52,18 @@ test('revocation after page event disables transport; GPC and storage withdrawal
     assert.equal(commands(f).filter(c=>c[0]==='event').length,0);
     assert.equal(commands(f)[0][2].analytics_storage,'denied');script.load();
     assert.equal(commands(f).filter(c=>c[0]==='event').length,0);
+  }
+});
+
+test('history change disables loaded SDK before sensitive URL is visible and clears cookies',()=>{
+  for(const method of ['pushState','replaceState']){
+    const f=open();f.c.apply('granted');google(f)[0].load();
+    f.window.history[method]({},'', '/quiz/provider-fit/?email=canary%40example.invalid#dose');
+    assert.equal(f.order.findLast(x=>x[0]==='history')[1],true,'disabled before native history mutation');
+    assert.equal(f.window['ga-disable-G-2WQ42JY0WK'],true);
+    assert.equal(commands(f).filter(x=>x[0]==='event').length,0);
+    assert.ok(f.order.some(x=>x[0]==='cookie'&&x[1].startsWith('_ga=; Max-Age=0')));
+    assert.ok(f.order.some(x=>x[0]==='cookie'&&x[1].startsWith('_ga_2WQ42JY0WK=; Max-Age=0')));
   }
 });
 

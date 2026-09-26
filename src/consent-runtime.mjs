@@ -80,6 +80,21 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
      reach Google. Native SDK/property behavior still needs privacy review. */
   const GA4_ID='G-2WQ42JY0WK',GA4_ROOT='https://glpclinicscout.com/';
   let ga4Script=null,ga4Epoch=0,ga4Sent=false;
+  // Install a fail-closed history guard before loading the SDK. The disable flag
+  // changes before pushState/replaceState can expose a sensitive URL to gtag.
+  function guardHistory(method){const original=window.history?.[method];if(typeof original!=='function')return;
+    window.history[method]=function(...args){
+      if(ga4Script&&args.length>2&&args[2]!=null){
+        try{const next=new URL(String(args[2]),location.href);
+          if(next.href!==GA4_ROOT)stopAnalytics();
+        }catch{stopAnalytics()}
+      }
+      return original.apply(this,args);
+    };
+  }
+  guardHistory('pushState');guardHistory('replaceState');
+  window.addEventListener?.('popstate',()=>{if(ga4Script&&!ga4Context())stopAnalytics()});
+  window.addEventListener?.('hashchange',()=>{if(ga4Script&&!ga4Context())stopAnalytics()});
   function ga4Context(){
     const c=window.GCS_ANALYTICS||{};
     return exportsAllowed()&&window.GCSConsent?.read?.()?.analytics_basis==='explicit'&&
@@ -102,6 +117,11 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
     // Private command layer: neither legacy gtag nor GTM can replay into it.
     window.gcsGa4Layer=[];
     ga4Command('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+    const fields={page_location:GA4_ROOT,page_title:'Clinic Scout',page_referrer:'',ignore_referrer:true,
+      anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false,allow_enhanced_conversions:false};
+    // Queue sanitized config before the remote SDK executes. Automatic
+    // page_view is disabled even if the SDK runs before its load callback.
+    ga4Command('config',GA4_ID,{...fields,send_page_view:false});
     ga4Command('js',new Date());
     ga4Command('consent','update',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
     const script=document.createElement('script');ga4Script=script;
@@ -110,9 +130,6 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
     script.addEventListener('load',()=>{
       if(epoch!==ga4Epoch||!ga4Context()||ga4Sent)return;
       window['ga-disable-'+GA4_ID]=false;
-      const fields={page_location:GA4_ROOT,page_title:'Clinic Scout',page_referrer:'',ignore_referrer:true,
-        anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false,allow_enhanced_conversions:false};
-      ga4Command('config',GA4_ID,{...fields,send_page_view:false});
       if(!ga4Context()){stopAnalytics();return}
       ga4Sent=true;ga4Command('event','page_view',{...fields,send_to:GA4_ID});
     });
@@ -121,7 +138,15 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   }
   // Clarity is unbound; replay is not authorized by a generic UI-event grant.
   function loadClarity(){return;}
-  function stopAnalytics(){const c=window.GCS_ANALYTICS||{};c.consent='denied';ga4Epoch++;if(ga4Script){ga4Script.remove?.();ga4Script=null;ga4Sent=true}for(const id of [c.measurement_id,c.debug_measurement_id].filter(Boolean))window['ga-disable-'+id]=true;if(window.gcsGa4Layer){window.gcsGa4Layer.length=0;ga4Command('consent','update',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'})}window.posthog?.opt_out_capturing?.();}
+  function clearGa4Cookies(){
+    // GA cookies are client-visible, but browsers can scope them to either
+    // host or parent domain. Expire both scopes and the ordinary root path.
+    for(const name of ['_ga','_ga_'+GA4_ID.slice(2).replace(/-/g,'_')]){
+      for(const domain of ['', '; Domain=glpclinicscout.com', '; Domain=.glpclinicscout.com'])
+        document.cookie=name+'=; Max-Age=0; Path=/; SameSite=Lax; Secure'+domain;
+    }
+  }
+  function stopAnalytics(){const c=window.GCS_ANALYTICS||{};c.consent='denied';ga4Epoch++;if(ga4Script){ga4Script.remove?.();ga4Script=null;ga4Sent=true}for(const id of [c.measurement_id,c.debug_measurement_id].filter(Boolean))window['ga-disable-'+id]=true;if(window.gcsGa4Layer){window.gcsGa4Layer.length=0;ga4Command('consent','update',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'})}clearGa4Cookies();window.posthog?.opt_out_capturing?.();}
   function consentUpdate(){const p=purposes();window.gtag('consent','update',{analytics_storage:exportsAllowed()?'granted':'denied',ad_storage:p.advertising,ad_user_data:p.advertising,ad_personalization:'denied'})}
   function sync(){const analytics=effective();cookie(analytics);consentUpdate();if(exportsAllowed()){loadAnalytics();loadClarity()}else{stopAnalytics()}return analytics}
   function notify(){window.dispatchEvent(new CustomEvent('gcs:consent',{detail:{...purposes(),record_type:'preference_only',persistence,server_revocation:serverRevocation}}))}
