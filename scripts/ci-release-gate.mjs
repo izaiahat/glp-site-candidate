@@ -82,15 +82,45 @@ export function browserCases(report) {
   for (const suite of report?.suites || []) visit(suite);
   return result;
 }
-export function checkBrowser(report, selection) {
+export function requiredBrowserCases(selection) {
   ensure(selection?.cases?.length > 0 && selection?.projects?.length > 0, 'D1_browser_selection_empty');
-  const expected = selection.cases.flatMap(c => selection.projects.map(project => ({ file: c.file, title: c.title, project })));
+  return selection.cases.flatMap(c => {
+    const projects = c.projects ?? selection.projects;
+    if (c.projects !== undefined) ensure(Array.isArray(projects) && projects.length > 0 &&
+      new Set(projects).size === projects.length && projects.every(p => selection.projects.includes(p)) &&
+      typeof c.applicability === 'string' && c.applicability.length > 0, 'D1_browser_applicability_invalid');
+    return projects.map(project => ({ file: c.file, title: c.title, project }));
+  });
+}
+export function checkBrowser(report, selection) {
+  const expected = requiredBrowserCases(selection);
   const key = row => JSON.stringify([row.file, row.title, row.project]);
   const actual = browserCases(report), wanted = expected.map(key).sort(), got = actual.map(key).sort();
   ensure(new Set(wanted).size === wanted.length && JSON.stringify(wanted) === JSON.stringify(got), 'D1_browser_denominator_mismatch');
   ensure(!report.errors?.length && report.config?.updateSnapshots === 'none', 'D1_browser_report_invalid');
   ensure(actual.every(r => r.expectedStatus === 'passed' && r.status === 'expected' && r.results.length === 1 && r.results[0] === 'passed'), 'D1_required_browser_failure_or_skip');
   return actual;
+}
+
+export function checkSampledDiagnosticProvenance(report, inventory) {
+  const receipts = [], hashes = new Map(inventory.files.map(r => [r.file, r.sha256]));
+  function visit(suite) {
+    for (const spec of suite.specs || []) if (spec.file === 'ga4-diagnostic-containment.spec.mjs') {
+      for (const test of spec.tests || []) {
+        const attachments = (test.results || []).flatMap(r => r.attachments || []).filter(a => a.name === 'ga4-sampled-diagnostic-containment');
+        ensure(attachments.length === 1, 'D1_sampled_receipt_count');
+        const a = attachments[0], receipt = JSON.parse(a.path ? readFileSync(a.path, 'utf8') : Buffer.from(a.body, 'base64').toString());
+        for (const [kind, file] of [['consent', 'assets/consent.js'], ['headers', '_headers']]) {
+          ensure(hashes.has(file) && receipt[kind + '_sha256'] === hashes.get(file), 'D1_sampled_emitted_hash:' + kind);
+        }
+        receipts.push({ project: test.projectName, consent_sha256: receipt.consent_sha256, headers_sha256: receipt.headers_sha256 });
+      }
+    }
+    for (const child of suite.suites || []) visit(child);
+  }
+  for (const suite of report.suites || []) visit(suite);
+  ensure(receipts.length === 1 && receipts[0].project === 'chromium', 'D1_sampled_subject_count');
+  return receipts;
 }
 
 export function checkDispositions(manifest, quarantine) {
@@ -137,12 +167,12 @@ async function main() {
     result.nonblocking_diagnostics = readJson(path.join(ROOT, 'ops/test-quarantine.json')).diagnostics;
     result.selection_sha256 = sha(readFileSync(path.join(ROOT, 'ops/release-gate.json')));
     ensure(config.browser.cases.length > 0 && config.browser.projects.length > 0, 'D1_browser_selection_empty');
-    result.required_cases = config.browser.cases.length * config.browser.projects.length;
+    result.required_cases = requiredBrowserCases(config.browser).length;
     const { spawnLogged } = await import('../artifacts/ultracode/tools/qa-common.mjs');
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'ga4-contracts': 23, 'host-bootstrap': 382, 'material-contracts': 44, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 12 };
+      const requiredNodeCounts = { 'ga4-contracts': 28, 'host-bootstrap': 382, 'material-contracts': 44, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 12 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -163,7 +193,7 @@ async function main() {
     // The host admits one heavy build/browser lane. Keep the same reservation
     // across generation, artifact verification and browser execution.
     await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
-    await command('ga4-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp44-ga4-default-on.test.mjs', 'tests/glp44-ga4-r1.test.mjs', 'tests/glp44-ga4-oracles.test.mjs']);
+    await command('ga4-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp44-ga4-default-on.test.mjs', 'tests/glp44-ga4-r1.test.mjs', 'tests/glp44-ga4-oracles.test.mjs', 'tests/ga4-diagnostic-containment.test.mjs', 'tests/glp44-combined-registration.test.mjs']);
     await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/glp234-held-article-output.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
     await command('consent-attribution-withdrawal', process.execPath, ['--test', 'tests/consent-attribution-withdrawal.test.mjs']);
     await command('affiliati-postback-contract', process.execPath, ['--test', '--test-concurrency=1', 'tests/affiliati-postback-contract.test.mjs']);
@@ -206,6 +236,7 @@ async function main() {
       return checkBrowser(report, config.browser);
     });
     await step('executed-emitted-provenance', () => checkExecutedProvenance(readJson(path.join(out, 'browser.json')),result.output_before));
+    await step('sampled-diagnostic-emitted-provenance', () => checkSampledDiagnosticProvenance(readJson(path.join(out, 'browser.json')), result.output_before));
     await step('no-egress', () => {
       const receiptPath = path.join(ROOT, 'artifacts/ultracode/browser-nowrite-report.json');
       copyFileSync(receiptPath, path.join(out, 'browser-nowrite-report.json'));

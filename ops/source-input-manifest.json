@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3881,
+  "tracked_file_count": 3882,
   "files": [
     "tests/browser/ga4-diagnostic-containment.spec.mjs",
     "tests/ga4-diagnostic-containment.test.mjs",
@@ -3883,7 +3883,8 @@
     "tests/glp234-held-article-output.test.mjs",
     "tests/glp234-try-ageless-identity.test.mjs",
     "tests/glp75-source-bounded-seo.test.mjs",
-    "tests/browser/header-cta-contrast.spec.mjs"
+    "tests/browser/header-cta-contrast.spec.mjs",
+    "tests/glp44-combined-registration.test.mjs"
   ],
   "exclusions": [
     "new private ClickDealer issued URLs and registry/authority outputs",
