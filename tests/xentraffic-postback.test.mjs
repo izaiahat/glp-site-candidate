@@ -87,9 +87,12 @@ test('GLP90 regression: actual XenTraffic click writer stores exact account line
     assert.equal(row.network_account_ref, ACCOUNT);
     assert.equal(row.program_id, PROGRAM);
     assert.equal(row.network_offer_id, OFFER);
-    assert.equal(new URL(r.headers.get('location')).searchParams.get('sub1'), row.click_token);
+    const returnedSub1 = new URL(r.headers.get('location')).searchParams.get('sub1');
+    assert.equal(returnedSub1, row.click_token);
     if (click) assert.equal(row.click_token, click);
     else assert.match(row.click_token, /^c1-[a-f0-9]{24}$/);
+    assert.equal((await invoke(f, { sub1: returnedSub1, transaction_id: `synthetic-writer-${f.clicks().length}` })).body.status, 'RECORDED');
+    assert.equal(f.rows().at(-1).cs_click_id, row.click_token, 'actual stored click joins through unchanged outbound sub1');
   }
   for (const change of [{ network: 'everflow' }, { program_id: 'unknown' }, { network_offer_id: '99999' },
     { tracking: { ...p.tracking, base_url: 'https://other.invalid/841W6MT/6D9WBFD/' } }]) {
