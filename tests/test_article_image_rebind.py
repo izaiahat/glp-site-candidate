@@ -4,6 +4,7 @@ import importlib.util
 import json
 from pathlib import Path
 import shutil
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -114,15 +115,52 @@ class SourceRebindTests(unittest.TestCase):
         self.assert_media_unchanged()
 
     def test_missing_or_tampered_baseline_does_not_self_certify(self):
-        self.edit(h1='changed')
+        # First binding needs an UNBOUND generation record, not records[0]
+        # from the already-bound current manifest used by the repeat/WARN tests.
+        preimage_sha = 'abfcc41435f896df48c68452c59c797c430841a2154149d673b5097e3f6b9af5'
+        preimage = SOURCE / f'artifacts/ultracode/article-image-manifest-before-{preimage_sha}.json'
+        self.assertEqual(M.sha_file(preimage), preimage_sha)
+        manifest = json.loads(preimage.read_text())
+        unbound = next(r for r in manifest['records'] if r['route'] == '/guides/ezra-glp-1-reviews/')
+        fields = ('image_inputs', 'image_inputs_sha256', 'current_image_inputs',
+                  'current_image_inputs_sha256', 'image_input_diff', 'inputs_stale')
+        self.assertTrue(all(key not in unbound for key in fields))
+        files = []
+        for pin in manifest['source_files']:
+            original = subprocess.check_output(
+                ['git', 'show', f"e52b7cb903ceaa77ff8d16f958a986398cf3abda:{pin['path']}"], cwd=SOURCE)
+            self.assertEqual(M.sha_bytes(original), pin['sha256'])
+            historical = self.baseline / pin['path']
+            current = self.root / pin['path']
+            historical.parent.mkdir(parents=True, exist_ok=True)
+            current.parent.mkdir(parents=True, exist_ok=True)
+            historical.write_bytes(original)
+            current.write_bytes(original)
+            files.append(current)
+        changed = json.loads(files[0].read_text())
+        article = next(a for a in changed['articles'] if a['canonical_path'] == unbound['route'])
+        self.assertEqual(M.sha_bytes(article['h1'].encode()), unbound['title_sha256'])
+        article['h1'] = 'changed'
+        files[0].write_text(json.dumps(changed))
+        self.manifest.write_bytes(preimage.read_bytes())
         before = self.manifest.read_bytes()
+        snapshot = lambda: {str(p.relative_to(self.root)): M.sha_file(p)
+                            for p in self.root.rglob('*') if p.is_file()}
         self.assertTrue(callable(getattr(M, 'rebind_sources', None)))
-        with self.assertRaisesRegex(RuntimeError, 'baseline'):
-            M.rebind_sources(None)
-        (self.baseline / self.content.relative_to(self.root)).write_text('{}')
-        with self.assertRaisesRegex(RuntimeError, 'baseline'):
-            M.rebind_sources(self.baseline)
+        with patch.object(M, 'CONTENT_FILES', tuple(files)):
+            untouched = snapshot()
+            with self.assertRaisesRegex(RuntimeError, 'baseline'):
+                M.rebind_sources(None)
+            self.assertEqual(snapshot(), untouched, 'missing baseline: no manifest, receipt or media writes')
+            self.assertEqual(self.manifest.read_bytes(), before)
+            self.assert_media_unchanged()
+            (self.baseline / manifest['source_files'][0]['path']).write_text('{}')
+            untouched = snapshot()
+            with self.assertRaisesRegex(RuntimeError, 'baseline'):
+                M.rebind_sources(self.baseline)
+            self.assertEqual(snapshot(), untouched, 'tampered baseline: no manifest, receipt or media writes')
         self.assertEqual(self.manifest.read_bytes(), before)
+        self.assert_media_unchanged()
 
     def test_corrupt_asset_still_fails_without_rebinding_manifest(self):
         file = self.root / 'assets/derivatives' / self.record['outputs'][0]['name']

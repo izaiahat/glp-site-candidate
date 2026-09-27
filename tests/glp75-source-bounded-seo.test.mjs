@@ -6,17 +6,32 @@ import { renderBlogPost } from '../src/blog-system.mjs';
 import { renderConfiguredListing } from '../src/phase3-page-graph.mjs';
 import { createHash } from 'node:crypto';
 
-// GLP-75 operator assignment: new additive tests only; existing oracles unchanged.
+// GLP-75 standalone fixtures remain frozen. GLP-234 composes only the
+// independently adjudicated PR4 catalog keys and seven registry paths.
 const BASE = 'e52b7cb903ceaa77ff8d16f958a986398cf3abda';
+const PR4 = '752572dc8bfa64e5cea2c8da7de6181dade5fbdd';
+const PR6 = 'e62afa5e91afe5338f5d364413c4f2d6cde77c85';
 const root = new URL('../', import.meta.url);
 const read = file => JSON.parse(readFileSync(new URL(file, root), 'utf8'));
-const base = file => JSON.parse(execFileSync('git', ['show', `${BASE}:${file}`], { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }));
+const frozen = (ref, file) => execFileSync('git', ['show', `${ref}:${file}`], { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+const base = file => JSON.parse(frozen(BASE, file));
+const hash = value => createHash('sha256').update(value).digest('hex');
+const pinned = (ref, file, sha256) => {
+  const bytes = frozen(ref, file);
+  assert.equal(hash(bytes), sha256, `frozen fixture ${ref}:${file}`);
+  return JSON.parse(bytes);
+};
 const route = '/guides/wegovy-pills-oral-semaglutide-cost/';
 const description = 'Reported oral/tablet Wegovy information dated August 2, 2026. Current prices and terms are unconfirmed; recheck sources before relying on an offer.';
 
+const pr4ArticleKeys = {
+  '/guides/healthrx-vs-agelessrx/': ['claims', 'conclusion', 'cons', 'date_modified', 'description', 'direct_answer', 'evidence_review', 'h1', 'owner_key', 'primary_keyword', 'pros', 'sections', 'source_checked_through', 'sources', 'status', 'target_query', 'title', 'updated_at', 'word_count'],
+  '/guides/glp-1-hsa-fsa-reimbursement-evidence/': ['sections', 'sources'],
+};
+
 test('oral guide renders only a dated description successor, without a price or approval assertion', () => {
   const current = read('data/blog/content-batch.json');
-  const previous = base('data/blog/content-batch.json');
+  const previous = pinned(BASE, 'data/blog/content-batch.json', '8d9643a68b158b3f44e967dd742fa10e9b83d51191204abd5b1e55b661e7ec24');
   const article = current.articles.find(a => a.canonical_path === route);
   const old = previous.articles.find(a => a.canonical_path === route);
   assert.equal(article.description, description);
@@ -26,8 +41,47 @@ test('oral guide renders only a dated description successor, without a price or 
   assert.ok(html.includes(`<meta name="description" content="${description}">`));
   const oldHtml = renderBlogPost(old, null, old.author);
   assert.equal(html, oldHtml.replaceAll(old.description, description), 'no body, title, source date, link, hold or authority changes');
-  article.description = old.description;
-  assert.deepEqual(current, previous, 'exactly one maintained description field changes');
+  // Frozen standalone PR6 still permits exactly the one description edit.
+  const standalone = pinned(PR6, 'data/blog/content-batch.json', '09cfdbefe66a926f912db321e49d0c4086c427f9f00c458cf8cab3239319643e');
+  const standaloneArticle = standalone.articles.find(a => a.canonical_path === route);
+  assert.equal(standaloneArticle.description, description);
+  standaloneArticle.description = old.description;
+  assert.deepEqual(standalone, previous, 'standalone PR6: exactly one maintained description field changes');
+
+  // Reconstruct from authenticated parent values, never from current articles.
+  const pr4 = pinned(PR4, 'data/blog/content-batch.json', '538ef84f014a816ddfe2a706ba11c1354e16f547412da402b911ebb33783c316');
+  const expected = structuredClone(previous);
+  for (const [path, keys] of Object.entries(pr4ArticleKeys)) {
+    const target = expected.articles.find(a => a.canonical_path === path);
+    const source = pr4.articles.find(a => a.canonical_path === path);
+    for (const key of keys) {
+      assert.notDeepEqual(source[key], target[key], `${path}:${key} is a real PR4 delta`);
+      target[key] = structuredClone(source[key]);
+    }
+  }
+  assert.deepEqual(expected, pr4, 'PR4 contains only the named 19-key and two-key deltas');
+  expected.articles.find(a => a.canonical_path === route).description = description;
+  const exactCatalog = value => assert.deepEqual(value, expected, 'exact PR4 + PR6 composition; all metadata, routes, order and other fields retained');
+  exactCatalog(current);
+  for (const mutate of [
+    value => { value.articles[0].title += ' unapproved'; },
+    value => { value.articles.find(a => a.canonical_path === route).sections = []; },
+    value => { value.articles.find(a => a.canonical_path === '/guides/healthrx-vs-agelessrx/').status = 'APPROVED'; },
+    value => { value.articles.find(a => a.canonical_path === '/guides/glp-1-hsa-fsa-reimbursement-evidence/').sources = []; },
+    value => { value.unapproved_metadata = true; },
+    value => { value.articles.reverse(); },
+    value => { value.articles.pop(); },
+    value => { value.articles.push(structuredClone(value.articles[0])); },
+  ]) {
+    const mutant = structuredClone(current);
+    mutate(mutant);
+    assert.throws(() => exactCatalog(mutant), { code: 'ERR_ASSERTION' }, 'unapproved catalog edits must fail');
+  }
+  const unchangedCatalog = 'data/blog/content-national-wow-additions.json';
+  for (const ref of [BASE, PR4, PR6]) {
+    pinned(ref, unchangedCatalog, 'a94d52663b17c9f69b2e059b82602cabc6812dd666abcffff670274c0e29622a');
+  }
+  assert.equal(readFileSync(new URL(unchangedCatalog, root), 'utf8'), frozen(BASE, unchangedCatalog));
 });
 
 test('pharmacy scope note renders once before filters, without changing the grid or asserting approval', () => {
@@ -55,7 +109,46 @@ test('Wellmedr already consolidates unknown charges and policy conflict; protect
   assert.match(wellmedr.page_copy.bottom_line, /UNKNOWN exact first-month charge and initial checkout total/);
   assert.match(wellmedr.page_copy.bottom_line, /UNKNOWN exact recurring charge for a selected treatment and plan/);
   assert.match(wellmedr.page_copy.bottom_line, /Terms-of-use wording about intake-stage consultation refunds conflicts and is retained separately, not resolved here/);
-  for (const file of ['data/provider-page-contracts.json', 'data/phase3-pharmacy-render-input.json', 'data/program-registry.json', 'data/affiliate-activation-selection.json', 'data/go-runtime-promotion-authority.json']) {
-    assert.deepEqual(read(file), base(file), `GLP-75 must not rewrite ${file}`);
+  const registryFile = 'data/program-registry.json';
+  const original = pinned(BASE, registryFile, 'b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b');
+  const pr4 = pinned(PR4, registryFile, '836bba4cd1cee5afe637ac0a727a65ee539361295a615e2767cc8d5b923a74e4');
+  const registryPaths = [
+    'programs/7/display_name',
+    'provider_dynamic_profiles/profiles/try-ageless/evidence_bindings/0/evidence_sha256',
+    'provider_dynamic_profiles/profiles/try-ageless/evidence_bindings/0/evidence_text',
+    'provider_dynamic_profiles/profiles/try-ageless/normalized_sha256',
+    'provider_dynamic_profiles/profiles/try-ageless/provider',
+    'therapeutic_taxonomy/programs/try-ageless/normalized_sha256',
+    'therapeutic_taxonomy/programs/try-ageless/provider',
+  ];
+  const expected = structuredClone(original);
+  for (const path of registryPaths) {
+    const keys = path.split('/');
+    const key = keys.pop();
+    const target = keys.reduce((value, part) => value[part], expected);
+    const source = keys.reduce((value, part) => value[part], pr4);
+    assert.notDeepEqual(source[key], target[key], `real PR4 registry delta: ${path}`);
+    target[key] = structuredClone(source[key]);
+  }
+  assert.deepEqual(expected, pr4, 'exactly seven paths; all identities, holds and selection fields unchanged');
+  const exactRegistry = value => assert.deepEqual(value, expected, 'only exact PR4 registry composition is permitted');
+  exactRegistry(read(registryFile));
+  assert.equal(readFileSync(new URL(registryFile, root), 'utf8'), frozen(PR4, registryFile), 'combined registry bytes equal frozen PR4');
+  for (const path of [...registryPaths, 'programs/7/program_id', 'programs/7/commercial_state', 'programs/7/go/entry_state', 'programs/7/go/route']) {
+    const mutant = structuredClone(expected);
+    const keys = path.split('/');
+    const key = keys.pop();
+    keys.reduce((value, part) => value[part], mutant)[key] += ' unapproved';
+    assert.throws(() => exactRegistry(mutant), { code: 'ERR_ASSERTION' }, `reject registry mutation: ${path}`);
+  }
+  for (const file of ['data/provider-page-contracts.json', 'data/phase3-pharmacy-render-input.json', registryFile, 'data/affiliate-activation-selection.json', 'data/go-runtime-promotion-authority.json']) {
+    const baselineBytes = frozen(BASE, file);
+    const standaloneBytes = frozen(PR6, file);
+    assert.equal(standaloneBytes, baselineBytes, `standalone PR6 must not rewrite ${file}`);
+    assert.deepEqual(JSON.parse(standaloneBytes), base(file), `GLP-75 must not rewrite ${file}`);
+    if (file === registryFile) continue; // the sole seven-path composition above
+    const unchanged = bytes => assert.equal(bytes, baselineBytes, `combined must not rewrite ${file}`);
+    unchanged(readFileSync(new URL(file, root), 'utf8'));
+    assert.throws(() => unchanged(`${baselineBytes} `), { code: 'ERR_ASSERTION' }, `even serialization drift is forbidden: ${file}`);
   }
 });
