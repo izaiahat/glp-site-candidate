@@ -103,15 +103,21 @@ const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
 // Candidate-oracle regression only: executing these pure maintained guards does
 // not supply independent acceptance, run a browser, or authorize publication.
-test('GLP-234 F17 proposal binds only the exact identity successor and refuses unintended leaves', async () => {
+test('GLP-234 F17 proposal binds only the exact identity plus Breeze union and refuses unintended leaves', async () => {
   const read = (path) => readFileSync(new URL('../' + path, import.meta.url));
   const pins = JSON.parse(read('tests/fixtures/glp41-approved-input-successor.json'));
   const input = 'data/program-registry.json';
   const bytes = read(input);
   const immutable = {data: {[input]: 'bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6'}};
-  assert.equal(pins.inputs[input].after_sha256, '836bba4cd1cee5afe637ac0a727a65ee539361295a615e2767cc8d5b923a74e4');
+  assert.equal(pins.inputs[input].after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
   assert.equal(pins.status, 'PROPOSED_PENDING_INDEPENDENT_REVIEW');
-  assert.match(pins.authority, /COORDINATOR-DISPOSITION-20260926-glp234-f17-successor\.md/);
+  assert.match(pins.authority, /glp234-breeze-integration-20260927\/AUTHORIZATION\.md/);
+  assert.equal(pins.provenance.combined_input_review_status, 'PENDING_REVIEW');
+  assert.equal(pins.source_head, 'fc647dc91582f9bb7d0b5321d432480ca16bef1f');
+  assert.equal(pins.provenance.integration_parent, 'b42a4983f1cea415328473d93b6bf57aa063532a');
+  // Fixed parent hashes are provenance, not inherited approval of this union.
+  assert.equal(pins.provenance.immediate_predecessor_sha256, '836bba4cd1cee5afe637ac0a727a65ee539361295a615e2767cc8d5b923a74e4');
+  assert.equal(pins.provenance.breeze_parent_registry_sha256, '139ead035992abe19e0e5c99830869c72274931ca4d7280dd65c3f1e6e241f86');
 
   // Run the existing Node test body unchanged with in-memory input substitutions.
   const nodeSource = read('tests/glp41-material-contracts.test.mjs').toString();
@@ -148,6 +154,9 @@ test('GLP-234 F17 proposal binds only the exact identity successor and refuses u
     value => { value.programs.find(row => row.program_id === 'try-ageless').display_name = 'Unapproved alias'; },
     value => { value.programs.find(row => row.program_id === 'found-health').display_name = 'Unintended change'; },
     value => { value.programs.find(row => row.program_id === 'try-ageless').go.route = '/go/unapproved'; },
+    value => { value.therapeutic_taxonomy.programs['breeze-meds-review'].verified_as_of = '2026-09-28'; },
+    value => { value.therapeutic_taxonomy.programs['breeze-meds-review'].evidence_bindings[0].evidence_sha256 = '0'.repeat(64); },
+    value => { value.provider_dynamic_profiles.sealed_as_of = '2026-09-27'; },
   ]) {
     const invalid = structuredClone(registry); edit(invalid);
     const changed = Buffer.from(JSON.stringify(invalid, null, 2) + '\n');
@@ -161,6 +170,15 @@ test('GLP-234 F17 proposal binds only the exact identity successor and refuses u
   prior.inputs[input].after_sha256 = 'b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b';
   assert.throws(() => runNode(bytes, prior), {code: 'ERR_ASSERTION'});
   assert.throws(() => runBrowserInput(bytes, prior), /immutable listing oracle/);
+  for (const parentHash of [
+    '836bba4cd1cee5afe637ac0a727a65ee539361295a615e2767cc8d5b923a74e4',
+    '139ead035992abe19e0e5c99830869c72274931ca4d7280dd65c3f1e6e241f86',
+  ]) {
+    const parent = structuredClone(pins);
+    parent.inputs[input].after_sha256 = parentHash;
+    assert.throws(() => runNode(bytes, parent), {code: 'ERR_ASSERTION'});
+    assert.throws(() => runBrowserInput(bytes, parent), /immutable listing oracle/);
+  }
   const wrongBefore = structuredClone(pins);
   wrongBefore.inputs[input].before_sha256 = prior.inputs[input].after_sha256;
   assert.throws(() => runNode(bytes, wrongBefore), {code: 'ERR_ASSERTION'});

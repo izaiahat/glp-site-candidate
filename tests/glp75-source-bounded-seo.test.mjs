@@ -7,7 +7,9 @@ import { renderConfiguredListing } from '../src/phase3-page-graph.mjs';
 import { createHash } from 'node:crypto';
 
 // GLP-75 standalone fixtures remain frozen. GLP-234 composes only the
-// independently adjudicated PR4 catalog keys and seven registry paths.
+// independently adjudicated PR4 catalog keys and seven registry paths, plus
+// exactly five Breeze groups from merged PR12 in fixed PR8. This combined
+// expectation is a PENDING_REVIEW proposal, not independent acceptance.
 const BASE = 'e52b7cb903ceaa77ff8d16f958a986398cf3abda';
 const PR4 = '752572dc8bfa64e5cea2c8da7de6181dade5fbdd';
 const PR6 = 'e62afa5e91afe5338f5d364413c4f2d6cde77c85';
@@ -131,10 +133,36 @@ test('Wellmedr already consolidates unknown charges and policy conflict; protect
     target[key] = structuredClone(source[key]);
   }
   assert.deepEqual(expected, pr4, 'exactly seven paths; all identities, holds and selection fields unchanged');
-  const exactRegistry = value => assert.deepEqual(value, expected, 'only exact PR4 registry composition is permitted');
+  // The immutable PR4 expectation above still stands on its frozen parent.
+  // Reconstruct PR8 independently, then transplant only its five named groups.
+  const pr8 = pinned('b42a4983f1cea415328473d93b6bf57aa063532a', registryFile, '139ead035992abe19e0e5c99830869c72274931ca4d7280dd65c3f1e6e241f86');
+  const breezePaths = [
+    'therapeutic_taxonomy/authorities/taxonomy_refresh_breeze_meds_review_run-20260927T005531350729Z',
+    'therapeutic_taxonomy/programs/breeze-meds-review/evidence_bindings',
+    'therapeutic_taxonomy/programs/breeze-meds-review/normalized_sha256',
+    'therapeutic_taxonomy/programs/breeze-meds-review/verified_as_of',
+    'therapeutic_taxonomy/sealed_as_of',
+  ];
+  const standaloneBreeze = structuredClone(original);
+  for (const path of breezePaths) {
+    const keys = path.split('/');
+    const key = keys.pop();
+    const source = keys.reduce((value, part) => value[part], pr8);
+    for (const targetRoot of [standaloneBreeze, expected]) {
+      const target = keys.reduce((value, part) => value[part], targetRoot);
+      assert.notDeepEqual(source[key], target[key], `real Breeze delta: ${path}`);
+      target[key] = structuredClone(source[key]);
+    }
+  }
+  assert.deepEqual(standaloneBreeze, pr8, 'PR8 changes only the five exact Breeze groups from original registry');
+  const exactRegistry = value => assert.deepEqual(value, expected, 'only exact PR4 seven-path + PR8 five-group union is permitted');
   exactRegistry(read(registryFile));
-  assert.equal(readFileSync(new URL(registryFile, root), 'utf8'), frozen(PR4, registryFile), 'combined registry bytes equal frozen PR4');
-  for (const path of [...registryPaths, 'programs/7/program_id', 'programs/7/commercial_state', 'programs/7/go/entry_state', 'programs/7/go/route']) {
+  const expectedBytes = JSON.stringify(expected, null, 2) + '\n';
+  assert.equal(hash(expectedBytes), '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d', 'fixed combined bytes reconstructed exclusively from authenticated parent values');
+  const exactRegistryBytes = bytes => assert.equal(bytes, expectedBytes, 'combined registry bytes equal independently reconstructed union');
+  exactRegistryBytes(readFileSync(new URL(registryFile, root), 'utf8'));
+  assert.throws(() => exactRegistryBytes(`${expectedBytes} `), { code: 'ERR_ASSERTION' });
+  for (const path of [...registryPaths, ...breezePaths, 'programs/7/program_id', 'programs/7/commercial_state', 'programs/7/go/entry_state', 'programs/7/go/route', 'provider_dynamic_profiles/sealed_as_of', 'therapeutic_taxonomy/programs/breeze-meds-review/molecule_tags']) {
     const mutant = structuredClone(expected);
     const keys = path.split('/');
     const key = keys.pop();
@@ -146,7 +174,7 @@ test('Wellmedr already consolidates unknown charges and policy conflict; protect
     const standaloneBytes = frozen(PR6, file);
     assert.equal(standaloneBytes, baselineBytes, `standalone PR6 must not rewrite ${file}`);
     assert.deepEqual(JSON.parse(standaloneBytes), base(file), `GLP-75 must not rewrite ${file}`);
-    if (file === registryFile) continue; // the sole seven-path composition above
+    if (file === registryFile) continue; // the sole exact seven + five group union above
     const unchanged = bytes => assert.equal(bytes, baselineBytes, `combined must not rewrite ${file}`);
     unchanged(readFileSync(new URL(file, root), 'utf8'));
     assert.throws(() => unchanged(`${baselineBytes} `), { code: 'ERR_ASSERTION' }, `even serialization drift is forbidden: ${file}`);
