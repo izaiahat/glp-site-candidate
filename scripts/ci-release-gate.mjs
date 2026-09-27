@@ -5,7 +5,8 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, lstatSync, mkdirSync, writeFileSync, copyFileSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
-import { createRequire } from 'node:module';
+import {createRequire} from 'node:module';
+import {rejectDiagnosticFlags,checkExecutedProvenance} from './release-executed-provenance.mjs';
 const require = createRequire(import.meta.url);
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -140,7 +141,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'ga4-contracts': 6, 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 12 };
+      const requiredNodeCounts = { 'ga4-contracts': 19, 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 12 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -153,13 +154,15 @@ async function main() {
     delete process.env.NODE_ENV;
     delete process.env.PLAYWRIGHT_BASE_URL;
     delete process.env.GLP_REVIEW_PUBLIC_ROOT;
+    rejectDiagnosticFlags(process.env);
     delete process.env.GLP44_SOURCE_TEST;
+    delete process.env.GLP_CONSENT_SOURCE_PROBE;
     execFileSync('python3', [buildLock, 'acquire', '--seat', seat], {stdio: 'pipe'});
     buildLockHeld = true;
     // The host admits one heavy build/browser lane. Keep the same reservation
     // across generation, artifact verification and browser execution.
     await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
-    await command('ga4-contracts', process.execPath, ['--test', 'tests/glp44-ga4-default-on.test.mjs']);
+    await command('ga4-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp44-ga4-default-on.test.mjs', 'tests/glp44-ga4-r1.test.mjs', 'tests/glp44-ga4-oracles.test.mjs']);
     await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
     await command('consent-attribution-withdrawal', process.execPath, ['--test', 'tests/consent-attribution-withdrawal.test.mjs']);
     await command('affiliati-postback-contract', process.execPath, ['--test', '--test-concurrency=1', 'tests/affiliati-postback-contract.test.mjs']);
@@ -200,6 +203,7 @@ async function main() {
       result.browser_stats = report.stats;
       return checkBrowser(report, config.browser);
     });
+    await step('executed-emitted-provenance', () => checkExecutedProvenance(readJson(path.join(out, 'browser.json')),result.output_before));
     await step('no-egress', () => {
       const receiptPath = path.join(ROOT, 'artifacts/ultracode/browser-nowrite-report.json');
       copyFileSync(receiptPath, path.join(out, 'browser-nowrite-report.json'));

@@ -1,8 +1,14 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3852,
+  "tracked_file_count": 3858,
   "files": [
+    "ops/glp44-r1-contract.md",
+    "scripts/release-executed-provenance.mjs",
+    "tests/glp44-ga4-oracles.test.mjs",
+    "tests/glp44-ga4-r1.test.mjs",
+    "tests/helpers/ga4-semantic-contract.mjs",
+    "tests/helpers/ga4-wire-oracle.mjs",
     "tests/consent-attribution-withdrawal.test.mjs",
     "tests/browser/consent-withdrawal-sdk.spec.mjs",
     ".github/workflows/ci-release-gate.yml",
