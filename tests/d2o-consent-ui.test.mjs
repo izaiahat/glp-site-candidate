@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {boot} from './d2o-consent-lifecycle.test.mjs';
 import {fixtureAdapter} from './d2o-server-consent.test.mjs';
 import {leanLegalPages} from '../src/legal-pages.mjs';
+import {ga4Transport} from '../src/ga4-runtime.mjs';
 const press=(root,choice)=>{const button=root.querySelector('[data-consent="'+choice+'"]');assert.ok(button,'rendered consent action '+choice);root.click({target:{closest:()=>button}})};
 const noCheckbox=root=>{for(const id of ['#gcs-advertising-purpose','#gcs-advertising-reason','#gcs-consent-advertising'])assert.equal(root.querySelector(id),null);assert.doesNotMatch(root.innerHTML,/<input|type="checkbox"| checked|gcs-advertising-purpose|gcs-advertising-reason|gcs-consent-advertising/)};
 for(const analytics of ['denied','granted'])for(const advertising of ['denied','granted'])test('worldwide notice acknowledges both defaults; manage preserves purposes '+analytics+'/'+advertising,()=>{
@@ -64,10 +65,22 @@ test('generated privacy and cookie copy matches worldwide defaults, controls and
   assert.match(html,/quiz answers, health details, email, phone,? and form entries are not analytics properties\./i);
   assert.doesNotMatch(html,/advertising measurement stays off|region requires opt-in|region is unknown, it stays off|control remains disabled/i);
   assert.doesNotMatch(html,/run by default|honored on every later visit|clear this site's storage/i);
+  assert.match(html,/PostHog/);assert.match(html,/Google Analytics 4 \(GA4\)/);
+  assert.match(html,/anonymous in-memory identifier/);assert.match(html,/_ga and _ga_2WQ42JY0WK cookies/);
+  assert.match(html,/\/, \/about\/, \/privacy\/, \/privacy\/cookies\/ and \/terms\//);
+  assert.match(html,/already-started permitted (?:GA4 )?request may complete or retry/);
+  assert.doesNotMatch(html,/Google Analytics, Google Tag Manager|Withdrawal stops new analytics requests and retries/i);
  }
+ // Keep the public GA route disclosure tied to the maintained allowlist.
+ const runtimeRoutes=ga4Transport.toString().match(/const ordinaryPaths=(\[[^;]+\]);/);
+ assert.ok(runtimeRoutes,'GA4 ordinary-route allowlist');
+ assert.deepEqual(JSON.parse(runtimeRoutes[1].replaceAll("'",'"')),['/','/about/','/privacy/','/privacy/cookies/','/terms/']);
+ assert.match(ga4Transport.toString(),/const ID='G-2WQ42JY0WK'/);
  assert.match(pages['privacy/index.html'],/href="\/privacy\/cookies\/"/);
  assert.doesNotMatch(pages['privacy/index.html'],/agree before those questions appear/i);
  const cookies=pages['privacy/cookies/index.html'];
- assert.match(cookies,/data-consent-open/);assert.match(cookies,/do not lift existing Google Analytics, Google Tag Manager or Clarity configuration holds/);
+ assert.match(cookies,/data-consent-open/);assert.match(cookies,/do not lift existing Google Tag Manager container or Clarity configuration holds/);
+ assert.match(cookies,/Withdrawal stops new PostHog requests and retries from this page and aborts its pending PostHog analytics fetches/);
+ assert.match(cookies,/For GA4, opting out stops new loads and events and later-page collection/);
  assert.match(cookies,/<noscript>/);assert.match(cookies,/id="do-not-sell-or-share"/);
 });
