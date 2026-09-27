@@ -1,8 +1,10 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3883,
+  "tracked_file_count": 3885,
   "files": [
+    "scripts/therapeutic-taxonomy-refresh-policies.json",
+    "tests/care-bare-novi-source-followup.test.mjs",
     "tests/browser/consent-click-observer.mjs",
     "tests/browser/ga4-diagnostic-containment.spec.mjs",
     "tests/ga4-diagnostic-containment.test.mjs",
