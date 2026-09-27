@@ -30,6 +30,22 @@ test('Care Bare corrects only active brand projections and does not erase histor
   assert.deepEqual(policies[id].sources.flatMap(source => Object.keys(source.quotes.brand_name_tags || {})), []);
 });
 
+test('Care Bare active medication summaries omit the brand association without changing source quotations', () => {
+  const corrected = 'Semaglutide and tirzepatide; injectable and oral options are described, including compounded options';
+  const ledger = JSON.parse(read('data/program-content-ledger.json'));
+  const money = JSON.parse(read('data/money-page-specs.json'));
+  const contract = JSON.parse(read('data/provider-page-contracts.json'));
+  assert.equal(ledger.programs.find(row => row.program_id === id).meds_offered, corrected);
+  const rows = money.pages.flatMap(page => page.rows.filter(row => row.program_id === id));
+  assert.equal(rows.length, 3);
+  assert.ok(rows.every(row => row.meds_offered === corrected));
+  assert.equal(contract.providers.find(row => row.program_id === id).row_contract.medications, corrected);
+  assert.ok(registry.provider_dynamic_profiles.profiles[id].evidence_bindings.some(binding => binding.evidence_text?.includes('(Mounjaro®) in stock')));
+  for (const path of ['data/s32-predecessor-content-ledger.json', 'data/d2w-release2-price-predecessor-ledger.json', 'data/price-index-frozen-content-ledger.json']) {
+    assert.match(read(path).toString(), /Mounjaro by name/);
+  }
+});
+
 test('Novi changes only the five approved image extensions, not its tags or offer context', () => {
   const quotes = policies['novi-weight-loss-glp-1'].quotes;
   const all = Object.values(quotes).flatMap(value => Object.values(value));
