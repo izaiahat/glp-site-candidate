@@ -21,7 +21,10 @@ const save = (dir, rel, data) => writeFileSync(path.join(dir, rel), JSON.stringi
 function fixture(fn) {
   const dir = mkdtempSync(path.join(tmpdir(), 'carrier-image-rebind-'));
   try {
-    const files = new Set([beforePath, receiptPath, ...json(root, receiptPath).after_source_files.map(x => x.path)]);
+    const files = new Set([beforePath, receiptPath,
+      'artifacts/ultracode/article-image-REBIND-7f3b9b7eca877071-12aa0e7c539a090e.json',
+      'artifacts/ultracode/article-image-manifest-before-7f3b9b7eca877071039a48caeedcf9fb7778478f38956976300a4f35560f8663.json',
+      ...json(root, receiptPath).after_source_files.map(x => x.path)]);
     for (const slug of slugs) {
       const rel = `data/carrier-articles/${slug}/manifest.json`;
       const m = json(root, rel);

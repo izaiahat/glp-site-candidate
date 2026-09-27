@@ -1,8 +1,13 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3856,
+  "tracked_file_count": 3861,
   "files": [
+    "artifacts/ultracode/article-image-REBIND-7f3b9b7eca877071-12aa0e7c539a090e.json",
+    "artifacts/ultracode/article-image-manifest-before-7f3b9b7eca877071039a48caeedcf9fb7778478f38956976300a4f35560f8663.json",
+    "ops/glp234-combined-imagery-successor.md",
+    "tests/glp234-carrier-successor.test.mjs",
+    "tests/test_glp234_combined_imagery.py",
     "tests/consent-attribution-withdrawal.test.mjs",
     "tests/browser/consent-withdrawal-sdk.spec.mjs",
     ".github/workflows/ci-release-gate.yml",

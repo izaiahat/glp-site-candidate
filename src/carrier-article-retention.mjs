@@ -32,6 +32,11 @@ const IMAGE_MANIFEST = 'artifacts/ultracode/article-image-manifest.json';
 const INPUT_KEYS = ['image_inputs', 'image_inputs_sha256', 'current_image_inputs', 'current_image_inputs_sha256', 'image_input_diff', 'inputs_stale'];
 const REBIND_RECEIPT = 'artifacts/ultracode/article-image-REBIND-abfcc41435f896df-7f3b9b7eca877071.json';
 const REBIND_RECEIPT_SHA256 = '0f6d74cbc966525b4a6d4cfffd4868b6e4d90ac95a104da81828d189d3963241';
+// GLP-234 candidate-only additive successor, pending independent exact-byte
+// review (ops/glp234-combined-imagery-successor.md). Not future-rebind authority.
+const SUCCESSOR_MANIFEST_SHA256 = '12aa0e7c539a090ebc18482990f8c6e61b0be90a7b1adadca21980711f4599c2';
+const SUCCESSOR_RECEIPT = 'artifacts/ultracode/article-image-REBIND-7f3b9b7eca877071-12aa0e7c539a090e.json';
+const SUCCESSOR_RECEIPT_SHA256 = '3ae3640fe5f767e7ee335f75719b3dbe8995dfe71012eea1cf6725b62de8027c';
 const REBIND_CARRIERS = [
   [MANIFEST, MANIFEST_SHA256, '/guides/ezra-glp-1-reviews/'],
   ['data/carrier-articles/top-rated-glp-1-providers/manifest.json', 'b8e75f38ad9ddddcefbf85b8e9a7256b71db3b075ceddf87c838ad0f37d67960', '/guides/top-rated-glp-1-providers/'],
@@ -65,7 +70,25 @@ function validateCarrierImageInputs(read, manifest, binding, record, imageBytes)
   if (sha(receiptBytes) !== REBIND_RECEIPT_SHA256) fail('receipt_drift');
   const receipt = JSON.parse(receiptBytes);
   const beforeBytes = read(`artifacts/ultracode/article-image-manifest-before-${receipt.before_manifest_sha256}.json`);
-  if (sha(beforeBytes) !== receipt.before_manifest_sha256 || sha(imageBytes) !== receipt.after_manifest_sha256) fail('manifest_lineage');
+  if (sha(beforeBytes) !== receipt.before_manifest_sha256) fail('manifest_lineage');
+  let currentReceipt = receipt;
+  if (sha(imageBytes) !== receipt.after_manifest_sha256) {
+    // Exact current digest selects one explicit chain, never historical fallback
+    // or an arbitrary caller-supplied receipt. Old receipt/preimage stay required.
+    if (sha(imageBytes) !== SUCCESSOR_MANIFEST_SHA256) fail('manifest_lineage');
+    const successorBytes = read(SUCCESSOR_RECEIPT);
+    if (sha(successorBytes) !== SUCCESSOR_RECEIPT_SHA256) fail('successor_receipt_drift');
+    currentReceipt = JSON.parse(successorBytes);
+    const intermediateBytes = read(`artifacts/ultracode/article-image-manifest-before-${currentReceipt.before_manifest_sha256}.json`);
+    if (currentReceipt.before_manifest_sha256 !== receipt.after_manifest_sha256 ||
+        sha(intermediateBytes) !== receipt.after_manifest_sha256 ||
+        currentReceipt.after_manifest_sha256 !== sha(imageBytes)) fail('successor_manifest_lineage');
+    const intermediate = JSON.parse(intermediateBytes);
+    const intermediateRecords = intermediate.records.filter(r => r.route === manifest.route);
+    if (intermediateRecords.length !== 1 || canonical(intermediateRecords[0]) !== canonical(record)) fail('successor_record');
+    if (canonical(currentReceipt.before_source_files) !== canonical(receipt.after_source_files) ||
+        canonical(intermediate.source_files) !== canonical(receipt.after_source_files)) fail('successor_source_lineage');
+  }
   const before = JSON.parse(beforeBytes);
   const originals = before.records.filter(r => r.route === manifest.route);
   if (originals.length !== 1 || sha(canonical(originals[0])) !== binding.sha256 ||
@@ -74,9 +97,11 @@ function validateCarrierImageInputs(read, manifest, binding, record, imageBytes)
   const expectedEntry = {route: manifest.route, before_input_sha256: expected.image_inputs_sha256,
     after_input_sha256: expected.current_image_inputs_sha256, inputs_stale: false, diff: {}};
   if (entries.length !== 1 || canonical(entries[0]) !== canonical(expectedEntry)) fail('receipt_inputs');
+  const currentEntries = currentReceipt.records.filter(r => r.route === manifest.route);
+  if (currentEntries.length !== 1 || canonical(currentEntries[0]) !== canonical(expectedEntry)) fail('successor_receipt_inputs');
   if (canonical(before.source_files) !== canonical(receipt.before_source_files) ||
-      canonical(JSON.parse(imageBytes).source_files) !== canonical(receipt.after_source_files)) fail('source_lineage');
-  for (const source of receipt.after_source_files) if (sha(read(source.path)) !== source.sha256) fail('current_source');
+      canonical(JSON.parse(imageBytes).source_files) !== canonical(currentReceipt.after_source_files)) fail('source_lineage');
+  for (const source of currentReceipt.after_source_files) if (sha(read(source.path)) !== source.sha256) fail('current_source');
 }
 export function loadCarrierArticle(root, manifestPath = MANIFEST, manifestSha256 = MANIFEST_SHA256) {
   return loadCarrierArticleContract(root, manifestPath, manifestSha256, true);

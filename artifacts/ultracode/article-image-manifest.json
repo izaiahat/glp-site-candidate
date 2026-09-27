@@ -2096,20 +2096,29 @@
       "category": "compare",
       "current_image_inputs": {
         "canonical_path": "/guides/healthrx-vs-agelessrx/",
-        "h1": "HealthRX vs AgelessRx: the useful comparison starts with billing terms",
-        "primary_keyword": "HealthRX vs AgelessRx cost and terms"
+        "h1": "HealthRX vs Try Ageless: the useful comparison starts with billing terms",
+        "primary_keyword": "HealthRX vs Try Ageless cost and terms"
       },
-      "current_image_inputs_sha256": "76a623c8e0572b444a6cf5dcb533b0d958e65e3f7d0b4915a52132c95f85aa21",
+      "current_image_inputs_sha256": "1307ec7ec401208590af183764ee553b7b190e1334c6ed5f2de79947121d7fd3",
       "disposition": "generated_from_gpt_image_2_route_master",
       "generation_model": "gpt_image_2",
-      "image_input_diff": {},
+      "image_input_diff": {
+        "h1": {
+          "after": "HealthRX vs Try Ageless: the useful comparison starts with billing terms",
+          "before": "HealthRX vs AgelessRx: the useful comparison starts with billing terms"
+        },
+        "primary_keyword": {
+          "after": "HealthRX vs Try Ageless cost and terms",
+          "before": "HealthRX vs AgelessRx cost and terms"
+        }
+      },
       "image_inputs": {
         "canonical_path": "/guides/healthrx-vs-agelessrx/",
         "h1": "HealthRX vs AgelessRx: the useful comparison starts with billing terms",
         "primary_keyword": "HealthRX vs AgelessRx cost and terms"
       },
       "image_inputs_sha256": "76a623c8e0572b444a6cf5dcb533b0d958e65e3f7d0b4915a52132c95f85aa21",
-      "inputs_stale": false,
+      "inputs_stale": true,
       "master_path": "assets/source/article-masters-pass2/guide-healthrx-vs-agelessrx.webp",
       "master_sha256": "52306676db1e798be50475d50cfff3e65e972408240864f3320cf7007fe9c378",
       "outputs": [
@@ -6181,7 +6190,7 @@
   "source_files": [
     {
       "path": "data/blog/content-batch.json",
-      "sha256": "09cfdbefe66a926f912db321e49d0c4086c427f9f00c458cf8cab3239319643e"
+      "sha256": "477d46570c8d27d236813bd0a404d19e21863dbe8d28082b0070c0de0f5a4018"
     },
     {
       "path": "data/blog/content-national-wow-additions.json",
