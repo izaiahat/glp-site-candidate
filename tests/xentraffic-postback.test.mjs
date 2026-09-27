@@ -153,7 +153,7 @@ test('GLP90 acceptance 2: durable transaction dedupe', async t => {
   const f = fixture(t); f.seed();
   assert.equal((await invoke(f)).body.status, 'RECORDED');
   const original = f.rows();
-  f.reopen(); // Real on-disk SQLite connection/process-state boundary, no in-memory dedupe.
+  f.reopen(); // Reopen the real on-disk SQLite connection; not a Node process restart.
   assert.deepEqual(await invoke(f), { code: 200, body: { status: 'DUPLICATE', inserted: 0 } });
   assert.deepEqual(f.rows(), original);
   const raced = await Promise.all([invoke(f, { transaction_id: 'synthetic-race' }), invoke(f, { transaction_id: 'synthetic-race' })]);
