@@ -16,6 +16,7 @@
       "webkit"
     ],
     "cases": [
+      {"file":"tests/browser/header-cta-contrast.spec.mjs","title":"GLP-200 home header CTA keeps 4.5 contrast in every interaction state","requirement":"GLP-200"},
       {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 default-on actual GA SDK minimizes page and enhanced events","requirement":"GLP44-default-on-safe-enhanced"},
       {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 individualized and unclassified routes never load GA or export input events","requirement":"GLP44-sensitive-exclusion"},
       {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 GPC prevents GA load and collection on initial and later pages","requirement":"GLP44-GPC"},
