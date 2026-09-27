@@ -240,7 +240,7 @@ export function projectQuizFromRegistry(registry, profileId, quiz, contentLedger
 import { goPromotionReceiptComplete } from './go-promotion-contract.mjs';
 
 // GO_RUNTIME_PROMOTION_AUTHORITY_V2: project complete, exact-bound receipts.
-export function deriveGoEntriesFromRegistry(registry, profileId, ledgerPrograms = [], affiliateMap = {}, goPromotionAuthority = {}) {
+export function deriveGoEntriesFromRegistry(registry, profileId, ledgerPrograms = [], affiliateMap = {}, goPromotionAuthority = {}, commercialLabels = {}) {
   const allowed = deriveProfileSurfaceSets(registry, profileId, ledgerPrograms).go;
   const ledgerById = new Map(ledgerPrograms.map((program) => [program.program_id, program]));
   // PASS 7 ALLOWLIST 2026-09-03. Pass 7 emits landing-page, self-pay and review
@@ -263,7 +263,7 @@ export function deriveGoEntriesFromRegistry(registry, profileId, ledgerPrograms 
     const renderId = program.review_slug || program.program_id;
     const base = {
       program_id: program.program_id,
-      display_name: program.display_name,
+      display_name: commercialLabels[program.program_id] ?? program.display_name,
       route: program.go.route,
       ...(program.review_slug ? { route_slug: program.review_slug } : {}),
       entry_state: program.go.entry_state,

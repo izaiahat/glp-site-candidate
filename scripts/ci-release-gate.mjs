@@ -138,7 +138,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 12 };
+      const requiredNodeCounts = { 'host-bootstrap': 250, 'material-contracts': 44, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 12 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -156,7 +156,7 @@ async function main() {
     // The host admits one heavy build/browser lane. Keep the same reservation
     // across generation, artifact verification and browser execution.
     await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
-    await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
+    await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/glp234-held-article-output.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
     await command('consent-attribution-withdrawal', process.execPath, ['--test', 'tests/consent-attribution-withdrawal.test.mjs']);
     await command('affiliati-postback-contract', process.execPath, ['--test', '--test-concurrency=1', 'tests/affiliati-postback-contract.test.mjs']);
     await command('release-export-artifact', process.execPath, ['--test', 'tests/release-export-artifact.test.mjs']);
@@ -215,6 +215,10 @@ async function main() {
     result.generated_diff_paths = git('diff', '--name-only').split('\n').filter(Boolean);
     result.generated_diff_sha256 = sha(execFileSync('git', ['diff', '--binary'], { cwd: ROOT, maxBuffer: 64 * 1024 * 1024 }));
     result.authority_files = ['data/go-runtime-selection.json', 'data/go-runtime-promotion-authority.json', 'data/tracking-allowed-hosts.json', 'artifacts/ops/build-report.json'].filter(f => existsSync(path.join(ROOT, f))).map(file => ({ file, sha256: sha(readFileSync(path.join(ROOT, file))) }));
+    } finally {
+      execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
+      result.build_lock_released = true;
+    }
   } catch (error) { result.steps.push({ id: 'gate-precondition', status: 'FAIL', error: String(error.message) }); }
   finally {
     if (buildLockHeld) {

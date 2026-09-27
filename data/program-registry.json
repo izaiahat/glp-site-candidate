@@ -291,7 +291,7 @@
     },
     {
       "commercial_state": "live",
-      "display_name": "AgelessRx",
+      "display_name": "Try Ageless",
       "go": {
         "entry_state": "transparent_direct",
         "route": "/go/try-ageless"
@@ -9551,8 +9551,8 @@
         "evidence_bindings": [
           {
             "evidence_kind": "registry_identity_projection",
-            "evidence_sha256": "044fb9697ef29a218aad7c86c769695e6d70a78456d81c7a6ac12e3485eb40b6",
-            "evidence_text": "{\"aliases\":[],\"program_id\":\"try-ageless\",\"provider\":\"AgelessRx\",\"registry_program_ids\":[\"try-ageless\"],\"source_urls\":[\"https://tryageless.com/\",\"https://tryageless.com/affiliate-weight-plans/\",\"https://tryageless.com/all-treatments/\",\"https://tryageless.com/ol-glp1/\",\"https://tryageless.com/product-category/weight-loss/\",\"https://tryageless.com/product/semaglutide-b12-injection/\",\"https://tryageless.com/product/semaglutide-odt/\",\"https://tryageless.com/product/semaglutide-oral-drop/\",\"https://tryageless.com/product/semaglutide-troche/\",\"https://tryageless.com/product/tirzepatide-b12-injection/\",\"https://tryageless.com/product/tirzepatide-odt/\",\"https://tryageless.com/product/tirzepatide-oral-drop/\",\"https://tryageless.com/terms/\",\"https://tryageless.com/weight-loss-treatments/\",\"https://tryageless.com/weight-loss/semaglutide/\",\"https://tryageless.com/weight-loss/tirzepatide/\"]}",
+            "evidence_sha256": "629ffa772628bc88646f8596b972023a7405774b44dd5e9605295d24bee1e010",
+            "evidence_text": "{\"aliases\":[],\"program_id\":\"try-ageless\",\"provider\":\"Try Ageless\",\"registry_program_ids\":[\"try-ageless\"],\"source_urls\":[\"https://tryageless.com/\",\"https://tryageless.com/affiliate-weight-plans/\",\"https://tryageless.com/all-treatments/\",\"https://tryageless.com/ol-glp1/\",\"https://tryageless.com/product-category/weight-loss/\",\"https://tryageless.com/product/semaglutide-b12-injection/\",\"https://tryageless.com/product/semaglutide-odt/\",\"https://tryageless.com/product/semaglutide-oral-drop/\",\"https://tryageless.com/product/semaglutide-troche/\",\"https://tryageless.com/product/tirzepatide-b12-injection/\",\"https://tryageless.com/product/tirzepatide-odt/\",\"https://tryageless.com/product/tirzepatide-oral-drop/\",\"https://tryageless.com/terms/\",\"https://tryageless.com/weight-loss-treatments/\",\"https://tryageless.com/weight-loss/semaglutide/\",\"https://tryageless.com/weight-loss/tirzepatide/\"]}",
             "fields": [
               "aliases",
               "program_id",
@@ -9604,9 +9604,9 @@
             "verified_as_of": "2026-09-08"
           }
         ],
-        "normalized_sha256": "31916b599c035ed8e8c7d96a5615f909bf062516d58499490881328c376421cc",
+        "normalized_sha256": "a6e47bc7b5951aaa5ce86c5c073f0c0027061ac304cc57a676d157832c1a316c",
         "program_id": "try-ageless",
-        "provider": "AgelessRx",
+        "provider": "Try Ageless",
         "registry_program_ids": [
           "try-ageless"
         ],
@@ -15036,9 +15036,9 @@
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "6c80206a3776d7ac3e82e9d63337d8445385180777b1ed36de52ec9d3e6fe9c8",
+        "normalized_sha256": "b05e828fb7049589e380b9ce460623a380fe6216587bfbd665b58038d63fe5f8",
         "program_id": "try-ageless",
-        "provider": "AgelessRx",
+        "provider": "Try Ageless",
         "registry_program_id": "try-ageless",
         "render_label": null,
         "source_urls": [

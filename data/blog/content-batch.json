@@ -1572,14 +1572,22 @@
           "source_ids": [
             "healthrx"
           ],
-          "statement": "HealthRX states a $133 monthly starting point and separately references $99/month on a 12-month plan."
+          "statement": "HealthRX advertises compounded semaglutide at $149 for the first month, then $165/month, and compounded tirzepatide at $193 for the first month, then $214/month until canceled. Its homepage says to cancel by emailing support@healthrx.com."
         },
         {
           "claim_id": "ageless-rate",
           "source_ids": [
-            "try-ageless"
+            "try-ageless",
+            "try-ageless-terms"
           ],
-          "statement": "AgelessRx states a $159/month starting point, no long-term contract, no cancellation fee, and 3\u20135-business-day shipping."
+          "statement": "Try Ageless advertises $159/month equivalent on a $1,908 prepaid yearly tirzepatide sublingual oral-drops plan, versus $199 every month for its monthly drops plan. Its terms qualify campaign cancellation language with a $40 non-TRT consultation fee, non-returned payment processing costs, fulfillment and other incurred costs, and early prepaid-plan repricing. The selected first debit remains unknown."
+        },
+        {
+          "claim_id": "compounded-status",
+          "source_ids": [
+            "fda-compounding-risks"
+          ],
+          "statement": "FDA states that compounded drugs are not FDA-approved and that it does not review their safety, effectiveness or quality before marketing."
         }
       ],
       "comparison_required": true,
@@ -1597,32 +1605,32 @@
         "schema": "blog-comparison-spec-v1",
         "selection_note": "Rows selected from the frozen Batch 2 evidence ledger; unsupported fields remain Not stated."
       },
-      "conclusion": "Compare HealthRX\u2019s current 12-month and standard terms with AgelessRx\u2019s current recurring and cancellation terms over the same period. Confirm what each price includes and when each shipping clock starts. Medical eligibility and product choice require a qualified healthcare professional.",
+      "conclusion": "Compare HealthRX's product-specific first-month and renewal prices with Try Ageless's monthly and prepaid yearly oral-drops terms. Confirm what each price includes and when each shipping clock starts. Medical eligibility and product choice require a qualified healthcare professional.",
       "cons": [
-        "HealthRX\u2019s lowest displayed figure carries a 12-month condition.",
+        "Try Ageless's $159 monthly equivalent requires a $1,908 prepaid yearly oral-drops plan; it is not monthly billing.",
         "The two shipping statements may start at different milestones and cannot be ranked as one common clock.",
         "Neither comparison determines eligibility, prescribing, or medical fit."
       ],
-      "date_modified": "2026-07-23",
-      "description": "A careful comparison of HealthRX and AgelessRx pricing, commitment, clinician-review language, payment methods, and shipping timelines.",
-      "direct_answer": "HealthRX published a $133 monthly starting point and a separate $99-per-month figure for a 12-month plan. AgelessRx published a $159 monthly starting point, no long-term contract or cancellation fee, and a 3-5-business-day shipping statement. Those facts support a comparison of commitment and timing, but not a simple $60 savings claim or an intake-to-door guarantee.",
+      "date_modified": "2026-09-26",
+      "description": "A careful comparison of HealthRX and Try Ageless pricing, commitment, clinician-review language, payment methods, and shipping timelines.",
+      "direct_answer": "HealthRX advertises compounded semaglutide at $149 for the first month, then $165/month, and compounded tirzepatide at $193 for the first month, then $214/month. Try Ageless advertises $159/month equivalent for a $1,908 prepaid yearly tirzepatide sublingual oral-drops plan, not a one-month charge; its monthly drops plan is advertised at $199 every month. The selected first debit remains unknown: no checkout was performed. Different products and billing periods do not establish a simple savings comparison.",
       "evidence_review": {
         "content_sha256": "639c0d8ae24b6fe25d42718881dcc75346a4f2e842f1cfa6cd4159b6c15b51af",
         "reviewed_at": "2026-07-23T09:00:00Z",
-        "status": "PASS"
+        "status": "STALE_AFTER_IDENTITY_CORRECTION_REVIEW_REQUIRED"
       },
-      "h1": "HealthRX vs AgelessRx: the useful comparison starts with billing terms",
+      "h1": "HealthRX vs Try Ageless: the useful comparison starts with billing terms",
       "has_affiliate_cta": true,
       "inline_ftc_disclosure": true,
       "inline_ftc_disclosure_text": "We may earn compensation if a held link is later approved and used; compensation does not change the evidence rubric.",
       "intent": "commercial_comparison",
       "medical_advice_disclaimer": "General consumer information only; not medical advice, diagnosis, dosing, or treatment selection.",
       "operator_release_receipt": null,
-      "owner_key": "HealthRX vs AgelessRx",
-      "primary_keyword": "HealthRX vs AgelessRx cost and terms",
+      "owner_key": "HealthRX vs Try Ageless",
+      "primary_keyword": "HealthRX vs Try Ageless cost and terms",
       "pros": [
-        "HealthRX publishes both a monthly starting figure and a lower 12-month-plan figure.",
-        "AgelessRx states no long-term contract, no cancellation fee, and a shipping window.",
+        "HealthRX publishes separate first-month and renewal figures for compounded semaglutide and tirzepatide.",
+        "Try Ageless publishes a shipping window and campaign cancellation language, qualified by its current fee, refund and prepaid-plan terms.",
         "Both pages describe clinician involvement without supporting an outcome comparison."
       ],
       "risk_tier": "LOW",
@@ -1630,25 +1638,26 @@
       "search_intent": "commercial_comparison",
       "sections": [
         {
-          "heading": "Why $99, $133, and $159 are not directly comparable",
+          "heading": "Why first-month prices and annual equivalents are not directly comparable",
           "paragraphs": [
-            "HealthRX and AgelessRx cannot be reduced to $99 versus $159. HealthRX also publishes a $133 monthly starting point, while its $99 figure is tied to a 12-month plan. AgelessRx publishes a $159 starting point and states that there is no long-term contract or cancellation fee. Commitment changes the meaning of the prices before any arithmetic begins.",
+            "Reported information checked on September 26, 2026: HealthRX advertises compounded semaglutide at $149 for the first month and then $165/month, and compounded tirzepatide at $193 for the first month and then $214/month until canceled. Try Ageless advertises $159/month equivalent for a $1,908 prepaid yearly tirzepatide sublingual oral-drops plan, not a one-month charge. Its monthly oral-drops option is $199 every month. The drops price is not an injection price, and these figures do not establish equivalent products or medical outcomes.",
             "The price question needs at least three columns: the amount due first, the recurring amount, and the minimum duration. Add separate rows for medication, clinician services, supplies, laboratory costs, and shipping. A starting figure can be accurate while leaving one or more of those rows unresolved. If a row is not answered by the current page or checkout, mark it \"not stated\" rather than assuming it is included."
           ]
         },
         {
           "heading": "Compare the commitment over the same period",
           "paragraphs": [
-            "The 12-month condition is commercially important even when billing occurs monthly. Ask whether the lower rate depends on completing the period, what happens to future charges if the plan ends early, and whether any prepaid amount can be returned. The reviewed evidence does not supply those contract details, so it cannot support a full annual-cost or cancellation calculation on its own.",
-            "AgelessRx\u2019s $159 starting point belongs in the same checklist, not in a quick subtraction. Its no-long-term-contract and no-cancellation-fee statements describe flexibility, but they do not prove that every later price, product, or service remains unchanged. Capture the current quote and terms before relying on either company\u2019s displayed amount.",
-            "Run the comparison over the same horizon even if one program does not require that horizon. A one-month view shows immediate cash need; a 12-month view shows what the HealthRX price condition means in dollars and gives the AgelessRx quote the same calendar frame. Leave any future amount uncalculated when the current terms do not support it."
+            "A monthly subscription and a prepaid yearly plan have different cash-flow requirements. HealthRX lists separate first-month and renewal prices and mentions separate prepaid plans, but this comparison does not assign those prepaid plans an unobserved price or commitment. Ask what is due at purchase, what renews later, and which terms apply to the exact plan selected.",
+            "Try Ageless's $1,908 yearly oral-drops price divided by 12 is a $159 monthly equivalent, not monthly billing. Its campaign separately advertises $199 every month for the monthly drops plan. The current terms qualify the campaign cancellation language with a $40 non-TRT consultation fee once review begins, non-returned payment processing costs, fulfillment and other incurred costs, and early prepaid-plan repricing. Capture the current quote and terms before relying on either company's displayed amount.",
+            "No checkout was performed, so the exact selected first debit remains unknown. Do not assume how a promotional code, taxes or other checkout adjustments affect the amount due. Compare the same calendar period only after the product, billing cadence and renewal terms are confirmed; leave future amounts uncalculated when the current evidence does not support them."
           ]
         },
         {
           "heading": "Read commitment and cancellation together",
           "paragraphs": [
-            "AgelessRx states that there is no long-term contract and no cancellation fee. HealthRX states that cancellation is available in one click while also displaying a lower rate tied to 12 months. Those statements address different questions. A cancellation method explains how to request an end to the program; a price condition explains what produced the rate. Neither statement, by itself, explains every charge after cancellation.",
-            "Ask for the cancellation deadline, the effective date, treatment of prepaid amounts, renewal date, and the point at which pharmacy processing affects refunds. Also ask whether ending before 12 months changes HealthRX\u2019s lower price. Save the answer with the terms that were in effect when the quote was generated. A support summary is most useful when it names the controlling written term.",
+            "Try Ageless's campaign says no contracts or cancellation fees, while its current terms specify consultation fees, refund deductions and prepaid-plan repricing. HealthRX's homepage says to cancel by emailing support@healthrx.com and says it refunds unshipped doses. These are reported website statements, not an observed cancellation or refund. A cancellation method explains how to request an end to the program; it does not, by itself, establish every resulting charge or refund.",
+            "Ask for the cancellation deadline, effective date, treatment of prepaid amounts, renewal date, and the point at which pharmacy processing affects refunds. Try Ageless's terms require a request before the next renewal charge and before the next order enters clinical or pharmacy fulfillment. They say medication and related fulfillment charges become non-refundable once an order is submitted to a pharmacy, preparation begins, or it ships. Save the applicable terms and written confirmation.",
+            "Early cancellation also raises a different price question from the next renewal: what rate applies to benefits already received? Try Ageless's terms point to the shorter-duration pricing available when the plan was purchased, not a newly advertised rate. Keep that original pricing with the terms; the yearly monthly equivalent alone cannot establish the amount retained after cancellation.",
             "Flexibility also has a time dimension. A program can have no long-term contract while still processing a pending order, or it can offer an easy cancellation route while applying a promotional condition to the current rate. Read checkout, cancellation, renewal, and refund language together. If they appear to conflict, pause and request a written explanation before paying."
           ]
         },
@@ -1656,7 +1665,7 @@
           "heading": "Clinician review has its own clock",
           "paragraphs": [
             "The reviewed HealthRX page says an independent U.S. board-certified physician reviews the file within 24 hours and prescribes only when clinically appropriate. That describes a review stage, not a guaranteed prescription. The starting event for the 24-hour statement matters: account creation, completed intake, receipt of requested information, or another event can produce different consumer expectations.",
-            "AgelessRx describes licensed U.S. clinicians and unlimited messaging for dose questions and side effects. This supports a process comparison, not a finding that one company has better clinical care. Ask when messaging begins, which questions the channel covers, whether scheduled contacts are included, and what happens when a clinician needs more information. This article does not advise how to respond to symptoms or change treatment.",
+            "Try Ageless describes licensed U.S. clinicians and unlimited messaging for dose questions and side effects. This supports a process comparison, not a finding that one company has better clinical care. Ask when messaging begins, which questions the channel covers, whether scheduled contacts are included, and what happens when a clinician needs more information. This article does not advise how to respond to symptoms or change treatment.",
             "Keep review speed apart from every later step. A favorable review, if one occurs, still precedes prescription routing, pharmacy acceptance, processing, carrier handoff, and delivery. Neither the 24-hour review language nor a shipping statement should be presented as an intake-to-door estimate. Ask for the current stage-by-stage timeline if timing would affect the decision.",
             "The same separation applies to support. Unlimited messaging describes access to a channel, while a stated file-review window describes one event. Neither phrase establishes how often scheduled follow-up occurs, how quickly every message is answered, or which contacts are included in the starting price. Ask for those details without turning them into an outcome claim."
           ]
@@ -1664,7 +1673,7 @@
         {
           "heading": "Shipping language does not start at intake",
           "paragraphs": [
-            "HealthRX states free overnight shipping. AgelessRx states free discreet shipping and a 3-5-business-day shipping period. The words are not a common performance metric because the reviewed extracts do not establish that both clocks start at the same milestone. \"Overnight\" may describe the carrier service after fulfillment, while a business-day window may describe another part of the shipment path.",
+            "HealthRX states free overnight shipping. Try Ageless states free discreet shipping and a 3-5-business-day shipping period. The words are not a common performance metric because the reviewed extracts do not establish that both clocks start at the same milestone. \"Overnight\" may describe the carrier service after fulfillment, while a business-day window may describe another part of the shipment path.",
             "Before comparing speed, ask when the pharmacy receives the prescription, what event starts the published window, whether weekends count, when tracking is issued, and who handles a delayed or damaged package. Free shipping answers a fee question. It does not establish immediate dispatch, successful delivery, or a prescription decision.",
             "Write the answer as a sequence rather than one number: clinician review, prescription transmission, pharmacy processing, carrier pickup, and delivery. If one company cannot define a stage, leave it unresolved. A precise gap is more useful than declaring a speed winner from two phrases that may measure different intervals."
           ]
@@ -1672,7 +1681,7 @@
         {
           "heading": "HSA and FSA wording answers a payment question",
           "paragraphs": [
-            "HealthRX says insurance is not needed and that HSA/FSA funds are eligible. AgelessRx says it accepts major cards plus HSA and FSA cards. These statements document payment language on the reviewed pages. They do not guarantee reimbursement for a specific person, expense, or plan.",
+            "HealthRX says insurance is not needed and that HSA/FSA funds are eligible. Try Ageless says it accepts major cards plus HSA and FSA cards. These statements document payment language on the reviewed pages. They do not guarantee reimbursement for a specific person, expense, or plan.",
             "Ask both companies for an itemized invoice showing the billed entity and each component of the charge. Then ask the plan administrator about the actual expense instead of the broad program category. Card acceptance, account eligibility, insurance coverage, and final reimbursement are separate facts, even when they appear together during checkout.",
             "Do not subtract a possible tax-advantaged-account payment from the price as if it were an automatic discount. The consumer still needs the complete cash obligation, including any commitment. If reimbursement is important to affordability and remains unconfirmed, the safer budget treats it as unavailable until the applicable source provides an answer."
           ]
@@ -1688,14 +1697,14 @@
         {
           "heading": "The quote to request from both programs",
           "paragraphs": [
-            "Ask HealthRX and AgelessRx for the same written fields: exact product, first charge, recurring charge, minimum duration, amount due over that period, included clinician contacts, separate services, supplies, shipping, cancellation deadline, renewal, and refund boundary. Add the date and state because availability and terms can change.",
-            "For HealthRX, make the relationship among $133, $99, and the 12-month condition explicit. For AgelessRx, confirm what the $159 starting point includes and how the no-contract and no-cancellation-fee language applies to an order already in review or processing. Do not compare one complete quote with the most favorable number from the other page.",
-            "The supported tradeoff is modest. HealthRX publishes more detail about its physician-review and overnight-shipping sequence, while AgelessRx publishes clearer no-long-term-contract language and a 3-5-business-day shipping statement. Those are evidence differences, not a medical-quality verdict. Choose only after the unresolved commercial terms are answered in writing.",
+            "Ask HealthRX and Try Ageless for the same written fields: exact product, first charge, recurring charge, minimum duration, amount due over that period, included clinician contacts, separate services, supplies, shipping, cancellation deadline, renewal, and refund boundary. Add the date and state because availability and terms can change.",
+            "For HealthRX, confirm the selected medication and the transition from the advertised first-month price to its renewal price. For Try Ageless, compare the $199 monthly oral-drops option with the $1,908 prepaid yearly option, and confirm how consultation-fee, cancellation and refund terms apply to an order already in review or processing. Do not compare one complete quote with the most favorable number from the other page.",
+            "Both companies publish clinician-review and shipping statements, but these are not independent service measurements or a medical-quality verdict. Try Ageless's terms identify it as a brand of Lovely Ageless Group; this article does not treat AgelessRx as an alias or import that separate site's facts. The retained legacy URL is not evidence of shared identity. Resolve the commercial questions in writing without treating any price as a recommendation for a particular product.",
             "After the first charge, compare the invoice with the saved quote. Note whether each line was expected, variable under a disclosed term, or unexplained. If a charge or timing statement differs, ask which current term controls and keep the written response. One invoice cannot establish company-wide quality, but it can show whether the individual transaction matches its documentation. Recheck the comparison whenever the price, product, state, pharmacy, or commitment changes."
           ]
         }
       ],
-      "source_checked_through": "2026-07-23",
+      "source_checked_through": "2026-09-26",
       "sources": [
         {
           "claim_ids": [
@@ -1704,51 +1713,41 @@
           "publisher": "HealthRX",
           "source_id": "healthrx",
           "url": "https://healthrx.com/",
-          "verified_as_of": "2026-07-23"
+          "verified_as_of": "2026-09-26"
         },
         {
           "claim_ids": [
             "ageless-rate"
           ],
-          "publisher": "AgelessRx",
+          "publisher": "Try Ageless",
           "source_id": "try-ageless",
           "url": "https://tryageless.com/affiliate-weight-plans/",
-          "verified_as_of": "2026-07-23"
+          "verified_as_of": "2026-09-26"
         },
         {
-          "claim_ids": [],
-          "publisher": "Wellorithm",
-          "source_id": "wellorithm",
-          "url": "https://wellorithm.com/campaign-7",
-          "verified_as_of": "2026-07-23"
-        },
-        {
-          "claim_ids": [],
-          "publisher": "Enhance.MD",
-          "source_id": "enhance-md",
-          "url": "https://enhance.md/",
-          "verified_as_of": "2026-07-23"
-        },
-        {
-          "claim_ids": [],
+          "claim_ids": [
+            "compounded-status"
+          ],
           "publisher": "FDA",
-          "source_id": "fda-concerns",
-          "url": "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
-          "verified_as_of": "2026-07-23"
+          "source_id": "fda-compounding-risks",
+          "url": "https://www.fda.gov/drugs/human-drug-compounding/understanding-risks-compounded-drugs",
+          "verified_as_of": "2026-09-26"
         },
         {
-          "claim_ids": [],
-          "publisher": "FTC",
-          "source_id": "ftc",
-          "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
-          "verified_as_of": "2026-07-23"
+          "claim_ids": [
+            "ageless-rate"
+          ],
+          "publisher": "Try Ageless",
+          "source_id": "try-ageless-terms",
+          "url": "https://tryageless.com/terms/",
+          "verified_as_of": "2026-09-26"
         }
       ],
-      "status": "PASS_EVIDENCE_REVIEW_HELD_RELEASE",
-      "target_query": "HealthRX vs AgelessRx",
-      "title": "HealthRX vs AgelessRx: compare the first charge, commitment, and shipping clock",
-      "updated_at": "2026-07-23",
-      "word_count": 1600
+      "status": "HELD_SOURCE_REVIEW_IDENTITY_CORRECTION",
+      "target_query": "HealthRX vs Try Ageless",
+      "title": "HealthRX vs Try Ageless: compare the first charge, commitment, and shipping clock",
+      "updated_at": "2026-09-26",
+      "word_count": 1524
     },
     {
       "ai_assistance_disclosure": "site-editorial-policy",
@@ -2272,7 +2271,7 @@
         {
           "h2": "Provider wording varies in important ways",
           "paragraphs": [
-            "The reviewed sources describe HSA/FSA language for several programs, but the wording does not carry the same scope. HealthRX, AgelessRx, Wellorithm, Enhance.MD, CareBareRX, and Serena Health each publish some form of HSA/FSA or self-pay language in the captured evidence. Synergy RX\u2019s checked GLP-1 page left the payment path unstated. These statements support a disclosure comparison; they do not authorize a reimbursement ranking.",
+            "The reviewed sources describe HSA/FSA language for several programs, but the wording does not carry the same scope. HealthRX, Try Ageless, Wellorithm, Enhance.MD, CareBareRX, and Serena Health each publish some form of HSA/FSA or self-pay language in the captured evidence. Synergy RX\u2019s checked GLP-1 page left the payment path unstated. These statements support a disclosure comparison; they do not authorize a reimbursement ranking.",
             "A provider\u2019s clear acceptance wording can reduce checkout ambiguity. It is not proof that a medication, membership, or mixed charge qualifies under a particular plan. Preserve the provider statement, obtain the itemized charge description, consult current plan materials or the administrator, and retain the written response. The consumer, provider, and plan handle any actual claim."
           ]
         },
@@ -2344,7 +2343,7 @@
           "claim_ids": [
             "hsa-provider-language-boundary"
           ],
-          "publisher": "AgelessRx",
+          "publisher": "Try Ageless",
           "source_id": "try-ageless",
           "url": "https://tryageless.com/affiliate-weight-plans/",
           "verified_as_of": "2026-07-23"
