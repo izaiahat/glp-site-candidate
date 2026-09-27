@@ -40,7 +40,7 @@ export function assertHeld(f,label='held') {
 // This semantic check replaces the obsolete comment assertion on emitted bytes.
 // D1's actual browser network/storage detector remains separate and unchanged.
 export function assertEmittedLoaderSemantics(source) {
- assertPrivateLoader(integrated(source),'/about/');
+ for(const route of ORDINARY)assertPrivateLoader(integrated(source,{url:ORIGIN+route+'?PRIVATE_CANARY#PRIVATE_CANARY'}),route);
  assertHeld(integrated(source,{config:{measurement_id:'G-D1-FIXTURE'}}),'wrong ID/right path');
  assertHeld(integrated(source,{url:ORIGIN+'/__d1_enabled_fixture__/'}),'right ID/excluded path');
  assertHeld(integrated(source,{webdriver:true}),'synthetic D1');
