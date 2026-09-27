@@ -29,6 +29,36 @@ test('owned SDK transport rejects missing authority and preserves unrelated fetc
  f.w.GCSConsent.apply('denied');const unrelated=f.w.fetch('https://glpclinicscout.com/local-resource',{});f.finish();assert.equal((await unrelated).status,200);assert.equal(f.requests.length,1);
  }finally{f.dom.window.close()}
 });
+test('owned transport classifies string, URL and Request across withdrawal and regrant',async()=>{
+ const f=transportFixture();try{
+ const shapes=[url=>url,url=>new f.w.URL(url),url=>new Request(url)];
+ const original=f.options().fetch_options;
+ for(const shape of shapes){
+  const input=shape('https://posthog-fixture.invalid/e/');
+  const pending=f.w.fetch(input,original);f.finish();assert.equal((await pending).status,200);
+  assert.equal(f.requests.at(-1).input,input);
+  assert.equal(f.requests.at(-1).init.signal,original.signal);
+  assert.equal(f.requests.at(-1).init.referrerPolicy,'no-referrer');
+  assert.equal(f.requests.at(-1).init.credentials,'omit');
+ }
+ f.w.GCSConsent.apply('denied');
+ for(const phase of ['withdrawn','regranted']){
+  if(phase==='regranted')f.w.GCSConsent.apply('granted');
+  for(const shape of shapes){
+   const count=f.requests.length,pending=f.w.fetch(shape('https://posthog-fixture.invalid/e/'),original);
+   assert.equal(f.requests.length,count,`${phase}: stale request must not reach underlying fetch`);
+   assert.equal((await pending).status,400);
+   const unrelated=shape('https://glpclinicscout.com/local-resource');
+   const pass=f.w.fetch(unrelated,{});f.finish();assert.equal((await pass).status,200);
+   assert.equal(f.requests.at(-1).input,unrelated);
+   if(phase==='regranted'){
+    const fresh=f.w.fetch(shape('https://posthog-fixture.invalid/e/'),f.options().fetch_options);
+    f.finish();assert.equal((await fresh).status,200);
+   }
+  }
+ }
+ }finally{f.dom.window.close()}
+});
 test('SDK transport requires fetch capability instead of falling back to an unowned transport',()=>{
  const f=transportFixture({unsupported:true});try{assert.equal(f.w.document.querySelector('script'),null);assert.equal(f.requests.length,0)}finally{f.dom.window.close()}
 });

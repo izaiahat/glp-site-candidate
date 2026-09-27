@@ -5,6 +5,16 @@ import {readFileSync} from 'node:fs';
 import {createConsentRuntimeSource} from '../src/consent-runtime.mjs';
 import {releaseExportPolicy,candidateSharedRuntime,candidateExportShellFindings} from '../src/candidate-export-policy.mjs';
 export function routeProperties(f){const u=new URL(f.window.location.href);u.search='';u.hash='';const neutral=['/','/providers/','/compare/','/privacy/','/privacy/cookies/','/terms/','/about/'].includes(u.pathname);return {distinct_id:'TEST_ANONYMOUS',$process_person_profile:false,$host:u.host,...(neutral?{$current_url:u.href,$pathname:u.pathname}:{})};}
+function assertFetchOptions(options) {
+ assert.deepEqual(Object.keys(options).sort(),['referrerPolicy','signal']);
+ assert.equal(options.referrerPolicy,'no-referrer');
+ assert.equal(options.signal.aborted,false);
+}
+test('fetch options oracle rejects unexpected options while retaining AbortSignal',()=>{
+ const f=fixture(),options=f.mockLoad().fetch_options;
+ assertFetchOptions(options);
+ assert.throws(()=>assertFetchOptions({...options,headers:{'X-Unexpected':'CANARY'}}),assert.AssertionError);
+});
 const analytics=readFileSync(new URL('../assets/analytics.js',import.meta.url),'utf8');
 // MOCK SDK sinks only. No browser, network, grants outside this isolated context.
 export function fixture({url='https://glpclinicscout.com/',gpc=false,webdriver=false,stage='production-seal',saved=null,model='us-default-on'}={}) {
@@ -20,7 +30,7 @@ for(const suffix of ['/?utm_source=CANARY&gclid=CANARY#CANARY','/quiz/provider-f
  const f=fixture({url:'https://glpclinicscout.com'+suffix});assert.equal(f.scripts.length,1);assert.equal(f.window.GCSConsent.read().analytics_basis,'global_default');assert.equal(f.window.GCSConsent.allowsExports(),true);const options=f.mockLoad();
  for(const name of ['comparison_sort_change','comparison_table_view','cost_calculator_used','calculator_submit']) {assert.equal(f.window.GCSAnalytics.event(name,{page_slug:'CANARY',answer:'CANARY',result_count:4,step_id:'dose',step_number:2,treatment:'CANARY',provider:'CANARY'}),true,name);assert.deepEqual(JSON.parse(JSON.stringify(f.captures.at(-1)[1])),{});}
  for(const name of ['quiz_start','quiz_step_complete','quiz_complete','scorecard_start','scorecard_step_view','scorecard_step_complete','scorecard_abandon','scorecard_complete','results_view','calculator_result_view','cost_calculator_complete','cost_calculator_medication_selected','provider_finder_complete','comparison_facets_changed','dose_selected','__proto__','constructor'])assert.equal(f.window.GCSAnalytics.event(name,{treatment:'CANARY'}),false,name);
- assert.equal(options.autocapture,false);assert.equal(options.fetch_options.referrerPolicy,'no-referrer');assert.equal(options.fetch_options.signal.aborted,false);assert.equal(options.api_transport,'fetch');assert.equal(options.disable_beacon,true);assert.equal(options.capture_pageview,true);assert.equal(options.capture_pageleave,false);assert.equal(options.disable_session_recording,true);assert.equal(options.person_profiles,'never');assert.equal(options.persistence,'memory');
+ assert.equal(options.autocapture,false);assertFetchOptions(options.fetch_options);assert.equal(options.api_transport,'fetch');assert.equal(options.disable_beacon,true);assert.equal(options.capture_pageview,true);assert.equal(options.capture_pageleave,false);assert.equal(options.disable_session_recording,true);assert.equal(options.person_profiles,'never');assert.equal(options.persistence,'memory');
  const event=options.before_send({event:'comparison_sort_change',uuid:'TEST_UUID',timestamp:'2026-09-26T00:00:00Z',properties:{token:'TEST_PROJECT',distinct_id:'TEST_ANONYMOUS',$current_url:'CANARY',$referrer:'CANARY',answer:'CANARY'}});assert.deepEqual(JSON.parse(JSON.stringify(event)),{event:'comparison_sort_change',uuid:'TEST_UUID',timestamp:'2026-09-26T00:00:00Z',properties:{token:'TEST_PROJECT',distinct_id:'TEST_ANONYMOUS',...routeProperties(f)}});assert.equal(options.before_send({event:'$pageview',properties:{}}).event,'$pageview');assert.doesNotMatch(JSON.stringify(event),/CANARY/);
  assert.doesNotMatch(JSON.stringify(f.captures),/CANARY|dose|treatment|result_count/);for(const s of f.scripts)assert.equal(s.referrerPolicy,'no-referrer');
  f.window.GCSConsent.apply('denied');assert.equal(f.window.GCSAnalytics.event('comparison_sort_change'),false);assert.equal(options.before_send({event:'comparison_sort_change',properties:{}}),null);f.grant();assert.equal(f.window.GCSAnalytics.event('comparison_sort_change'),true);

@@ -90,7 +90,7 @@
       const fetch = window.fetch.bind(window);
       window.fetch = (input, options = {}) => {
         let target;
-        try { target = new URL(typeof input === 'string' ? input : input.url, location.href); } catch { return fetch(input, options); }
+        try { target = new URL(typeof input === 'string' ? input : (input.url ?? input), location.href); } catch { return fetch(input, options); }
         if (target.origin !== transportHost) return fetch(input, options);
         const signal = options.signal;
         const permitted = () => consented() && signal === transportController?.signal && signal?.aborted === false;
