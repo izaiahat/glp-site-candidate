@@ -215,10 +215,6 @@ async function main() {
     result.generated_diff_paths = git('diff', '--name-only').split('\n').filter(Boolean);
     result.generated_diff_sha256 = sha(execFileSync('git', ['diff', '--binary'], { cwd: ROOT, maxBuffer: 64 * 1024 * 1024 }));
     result.authority_files = ['data/go-runtime-selection.json', 'data/go-runtime-promotion-authority.json', 'data/tracking-allowed-hosts.json', 'artifacts/ops/build-report.json'].filter(f => existsSync(path.join(ROOT, f))).map(file => ({ file, sha256: sha(readFileSync(path.join(ROOT, file))) }));
-    } finally {
-      execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
-      result.build_lock_released = true;
-    }
   } catch (error) { result.steps.push({ id: 'gate-precondition', status: 'FAIL', error: String(error.message) }); }
   finally {
     if (buildLockHeld) {

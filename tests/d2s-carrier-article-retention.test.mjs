@@ -33,7 +33,11 @@ test('production seal re-seals only the consent shells of both pinned articles',
 function fixture(fn) {
   const dir = mkdtempSync(path.join(tmpdir(), 'd2s-carrier-'));
   try {
-    for (const rel of new Set([manifestPath, manifest.snapshot, ...manifest.files.map(x => x.path), ...manifest.bindings.map(x => x.path)])) {
+    // The mandatory registered rebind proof is an input too, not a mocked pass.
+    const rebindPath = 'artifacts/ultracode/article-image-REBIND-abfcc41435f896df-7f3b9b7eca877071.json';
+    const rebind = JSON.parse(readFileSync(path.join(root, rebindPath)));
+    const preimagePath = `artifacts/ultracode/article-image-manifest-before-${rebind.before_manifest_sha256}.json`;
+    for (const rel of new Set([manifestPath, manifest.snapshot, ...manifest.files.map(x => x.path), ...manifest.bindings.map(x => x.path), rebindPath, preimagePath, ...rebind.after_source_files.map(x => x.path)])) {
       mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true });
       copyFileSync(path.join(root, rel), path.join(dir, rel));
       // A sealed input is read-only. Only the independent temporary fixture
