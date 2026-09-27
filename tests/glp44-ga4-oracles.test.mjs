@@ -34,6 +34,14 @@ test('R1 positive SDK storage oracle rejects unknown and transient owners withou
  const duplicate=structuredClone(healthy);duplicate.cookie.push({name:'_ga'});assert.throws(()=>assertGAPositiveStorage(duplicate,[]));
 });
 const healthy=()=>({method:'POST',type:'fetch',url:'https://www.google-analytics.com/g/collect?'+new URLSearchParams({v:'2',tid:'G-2WQ42JY0WK',en:'page_view',dl:origin+'/about/',dt:'Clinic Scout',npa:'1'}),body:'',headers:{},collect:true,forwarded:false});
+test('R1 fixed-device uam and uapv permit only absent or empty fields',()=>{
+ safe([healthy()],'/about/');
+ const blank=healthy();blank.url+='&uam=&uapv=';safe([blank],'/about/');
+ for(const key of ['uam','uapv']){
+  for(const value of ['Pixel','15.0.0','PRIVATE_CANARY']){const r=healthy();r.url+='&'+key+'='+value;assert.throws(()=>safe([r],'/about/'),/fixed-fixture device field/)}
+  const duplicate=healthy();duplicate.url+='&'+key+'=&'+key+'=';assert.throws(()=>safe([duplicate],'/about/'),/duplicate protocol field/);
+ }
+});
 test('R1 duplicate dl regression preserves raw URL/body and refuses query, body and cross-boundary duplicates',()=>{
  safe([healthy()],'/about/');
  for(const make of [r=>r.url=r.url.replace('?', '?dl=https%3A%2F%2Fexample.invalid%2Fsensitive&'),r=>r.body='dl='+encodeURIComponent(origin+'/about/'),r=>{r.url=r.url.replace(/&dl=[^&]*/,'');r.body='dl='+encodeURIComponent(origin+'/private/')+'&dl='+encodeURIComponent(origin+'/about/')}]){

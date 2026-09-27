@@ -26,8 +26,17 @@ async function fixture(browser,info,{gpc=false,pending=false}={}){
  expect(createHash('sha256').update(sdk).digest('hex')).toBe(SHA);
  const device=Object.fromEntries(['viewport','screen','isMobile','hasTouch','deviceScaleFactor'].filter(k=>info.project.use[k]!==undefined).map(k=>[k,info.project.use[k]]));
  const context=await browser.newContext({...device,proxy:{server:`http://127.0.0.1:${proxy.address().port}`,bypass:'<-loopback>'},serviceWorkers:'block',userAgent:'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36'});
- await context.addInitScript(({gpc})=>{Object.defineProperty(navigator,'webdriver',{get:()=>false});Object.defineProperty(navigator,'globalPrivacyControl',{configurable:true,get:()=>gpc});window.__violations=[];document.addEventListener('securitypolicyviolation',e=>window.__violations.push(e.blockedURI));},{gpc});
- const rows=[],requests=[],unknown=[],errors=[],storageWrites=[],storageSnapshots=[];let phase='initial',release,documentUrl;
+ await context.addInitScript(({gpc})=>{
+  Object.defineProperty(navigator,'webdriver',{get:()=>false});
+  Object.defineProperty(navigator,'globalPrivacyControl',{configurable:true,get:()=>gpc});
+  window.__violations=[];
+  document.addEventListener('securitypolicyviolation',e=>{
+   window.__violations.push(e.blockedURI);
+   void window.__gaCspViolation({blockedURI:e.blockedURI,directive:e.violatedDirective,document_url:location.href,time_origin:performance.timeOrigin,at:performance.now(),gpc:navigator.globalPrivacyControl===true,ga_disabled:window['ga-disable-G-2WQ42JY0WK']===true});
+  });
+ },{gpc});
+ const rows=[],requests=[],unknown=[],errors=[],storageWrites=[],storageSnapshots=[],contextViolations=[];let phase='initial',release,documentUrl;
+ await context.exposeBinding('__gaCspViolation',(_,row)=>contextViolations.push({phase,...row}));
  await context.exposeBinding('__gaStorageWrite',(_,row)=>storageWrites.push({phase,...row}));
  await context.addInitScript(installGAStorageObserver);
  const barrier=new Promise(r=>release=r);
@@ -52,8 +61,8 @@ async function fixture(browser,info,{gpc=false,pending=false}={}){
   async revoke(){await page.getByRole('link',{name:'Cookie choices',exact:true}).click();expect(await page.evaluate(()=>Array.from(window.gcsGa4Layer).filter(x=>x[0]==='event').map(x=>x[1]))).toEqual(['page_view']);phase='withdrawn';await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();expect(await page.evaluate(()=>window['ga-disable-G-2WQ42JY0WK'])).toBe(true);expect(await page.evaluate(()=>Array.from(window.gcsGa4Layer).filter(x=>x[0]==='consent').at(-1)[2])).toEqual({analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});},
   async close(primaryError){
    if(this.closed)return;this.closed=true;release();let teardownError,violations;
-   try{violations=await page.evaluate(()=>window.__violations);expect(unknown).toEqual([]);expect(errors).toEqual([]);expect(violations).toEqual([])}catch(error){teardownError=error}
-   try{await info.attach('ga4-contained-wire',{body:JSON.stringify({sdk_sha256:SHA,consent_file:'assets/consent.js',consent_sha256:createHash('sha256').update(consent).digest('hex'),headers_file:'_headers',headers_sha256:createHash('sha256').update(policyText).digest('hex'),source_only_diagnostic:process.env.GLP44_SOURCE_TEST==='1',probe:process.env.GLP_CONSENT_SOURCE_PROBE==='1',requests,rows,unknown,errors,violations,storageWrites,storageSnapshots,teardown_error:teardownError?String(teardownError):null}),contentType:'application/json'})}catch(error){teardownError||=error}finally{await context.close().catch(error=>{teardownError||=error})}
+   try{violations=await page.evaluate(()=>window.__violations);expect(unknown).toEqual([]);expect(errors).toEqual([]);expect(violations).toEqual([]);expect(contextViolations).toEqual([])}catch(error){teardownError=error}
+   try{await info.attach('ga4-contained-wire',{body:JSON.stringify({sdk_sha256:SHA,consent_file:'assets/consent.js',consent_sha256:createHash('sha256').update(consent).digest('hex'),headers_file:'_headers',headers_sha256:createHash('sha256').update(policyText).digest('hex'),source_only_diagnostic:process.env.GLP44_SOURCE_TEST==='1',probe:process.env.GLP_CONSENT_SOURCE_PROBE==='1',requests,rows,unknown,errors,violations,contextViolations,storageWrites,storageSnapshots,teardown_error:teardownError?String(teardownError):null}),contentType:'application/json'})}catch(error){teardownError||=error}finally{await context.close().catch(error=>{teardownError||=error})}
    if(teardownError&&!primaryError)throw teardownError;
   }
  };
@@ -113,11 +122,11 @@ test('GLP44 GPC prevents GA load and collection on initial and later pages',asyn
  for(const initialGpc of [true,false]){
   const f=await fixture(browser,info,{gpc:initialGpc});try{
    await f.load();
-   if(!initialGpc){await f.loaded();await f.page.evaluate(()=>{Object.defineProperty(navigator,'globalPrivacyControl',{get:()=>true});window.dispatchEvent(new Event('focus'))});}
+   if(!initialGpc){await f.loaded();f.phase('gpc-update');await f.page.evaluate(()=>{Object.defineProperty(navigator,'globalPrivacyControl',{get:()=>true});window.dispatchEvent(new Event('focus'))});}
    const before=f.rows.length;
    expect(await f.page.evaluate(()=>window['ga-disable-G-2WQ42JY0WK'])).toBe(true);
    expect(await f.page.evaluate(()=>window.GCSConsent.effective())).toBe('denied');
-   for(const route of ['/about/','/quiz/provider-fit/','/matches/']){await f.load(route);await f.page.waitForTimeout(300);expect(f.rows).toHaveLength(before);expect(await f.page.evaluate(()=>window['ga-disable-G-2WQ42JY0WK'])).toBe(true);expect(await f.page.evaluate(()=>window.GCSConsent.effective())).toBe('denied');}
+   for(const route of ['/about/','/quiz/provider-fit/','/matches/']){f.phase('post-gpc-navigation:'+route);await f.load(route);await f.page.waitForTimeout(300);expect(f.rows).toHaveLength(before);expect(await f.page.evaluate(()=>window['ga-disable-G-2WQ42JY0WK'])).toBe(true);expect(await f.page.evaluate(()=>window.GCSConsent.effective())).toBe('denied');}
    if(initialGpc)expect(before).toBe(0);
    expect((await f.context.cookies()).filter(c=>c.name.startsWith('_ga'))).toEqual([]);
   }catch(error){await f.close(error);throw error}finally{await f.close()}
