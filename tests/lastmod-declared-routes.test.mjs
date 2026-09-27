@@ -177,6 +177,24 @@ async function fixture() {
       await cp(path.join(ROOT, relative), path.join(root, relative), { recursive: true });
     }
   }
+  // The carrier loader also authenticates the complete image-rebind lineage,
+  // beyond the legacy manifest bindings above. Copy the real receipts, their
+  // preimages and source inputs; never mint replacement evidence or change pins.
+  for (const receiptPath of [
+    'artifacts/ultracode/article-image-REBIND-abfcc41435f896df-7f3b9b7eca877071.json',
+    'artifacts/ultracode/article-image-REBIND-7f3b9b7eca877071-12aa0e7c539a090e.json',
+  ]) {
+    const receipt = JSON.parse(await readFile(path.join(ROOT, receiptPath), 'utf8'));
+    for (const relative of [receiptPath,
+      `artifacts/ultracode/article-image-manifest-before-${receipt.before_manifest_sha256}.json`,
+      ...receipt.after_source_files.map(source => source.path),
+    ]) {
+      await mkdir(path.dirname(path.join(root, relative)), { recursive: true });
+      await cp(path.join(ROOT, relative), path.join(root, relative));
+    }
+  }
+  // Re-run the unchanged mandatory loader on the isolated closure itself.
+  loadCarrierArticles(root);
   // Use manifest-authenticated predecessor page bytes, not a current tree
   // relabelled with a fictional historical date. prepareLastmod verifies the
   // receipt, manifest and provenance again before every comparison.
