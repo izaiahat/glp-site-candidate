@@ -2284,9 +2284,7 @@
           }
         ],
         "taxonomy": {
-          "brand_name_tags": [
-            "mounjaro"
-          ],
+          "brand_name_tags": [],
           "delivery_form_tags": [
             "injectable",
             "oral"
@@ -4846,9 +4844,7 @@
             "semaglutide",
             "tirzepatide"
           ],
-          "brand_name_tags": [
-            "mounjaro"
-          ],
+          "brand_name_tags": [],
           "delivery_form_tags": [
             "injectable",
             "oral"
@@ -4888,7 +4884,6 @@
             "evidence_sha256": "68baad60813dacfd9096bd4c5adf49da9fd6d6432d0d2405733af032a890793d",
             "evidence_text": "Starting at **$199** \\- compounded **Semaglutide** (Ozempic®) & **Tirzepatide** (Mounjaro®) in stock",
             "fields": [
-              "taxonomy.brand_name_tags",
               "verified_as_of"
             ],
             "source_url": "https://www.carebarerx.com/home2",
@@ -10568,7 +10563,7 @@
       "retatrutide": 0,
       "wegovy": 17,
       "zepbound": 15,
-      "mounjaro": 8,
+      "mounjaro": 7,
       "oral": 22,
       "injectable": 31,
       "compounded": 43,
@@ -10829,9 +10824,7 @@
         "verified_as_of": "2026-09-27"
       },
       "care-bare-rx-glp1-review": {
-        "brand_name_tags": [
-          "mounjaro"
-        ],
+        "brand_name_tags": [],
         "classification_state": "B2_STAGE5_EXACT_EVIDENCE",
         "commercial_link_state": {
           "compare": "live",
@@ -10842,13 +10835,6 @@
           "oral"
         ],
         "evidence_bindings": [
-          {
-            "authority": "b2_stage5_care_bare_rx_glp1_review",
-            "authority_sha256": "278b94be8688718d8df352932b0a6ca2f7faefb4743ec63adee0645523bf5bf7",
-            "evidence_sha256": "68baad60813dacfd9096bd4c5adf49da9fd6d6432d0d2405733af032a890793d",
-            "source_url": "https://www.carebarerx.com/home2",
-            "verified_as_of": "2026-08-30"
-          },
           {
             "authority": "b2_stage5_care_bare_rx_glp1_review",
             "authority_sha256": "278b94be8688718d8df352932b0a6ca2f7faefb4743ec63adee0645523bf5bf7",
@@ -10868,7 +10854,7 @@
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "138248347c223a857b257a520572ef930083284270810d11cd4cc598fd00c176",
+        "normalized_sha256": "20417ba0146317d23b4e1c2b7e9b3d039cc1e54f4842b2dff40053ade326312d",
         "program_id": "care-bare-rx-glp1-review",
         "provider": "Care Bare Rx GLP1",
         "registry_program_id": "care-bare-rx-glp1-review",
