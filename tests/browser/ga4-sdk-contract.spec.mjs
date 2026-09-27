@@ -120,6 +120,8 @@ test('GLP44 withdrawal stops NEW loads and events on subsequent navigation; in-f
   await f.page.locator('#out').click();await f.page.locator('#file').click();await f.page.evaluate(()=>window.scrollTo(0,3200));
   await f.page.waitForTimeout(65000);
   expect(decode(f.rows).every(e=>e.en==='page_view')).toBe(true);
+  const identities=decode(f.rows).map(e=>JSON.stringify([e.en,e._p,e._s,e.cid,e.sid,e.dl]));
+  expect(new Set(identities).size).toBe(1); // Same held event, not newly created views.
   safe(f.rows,'/about/');
   f.phase('later-page');
   for(const route of ['/about/','/quiz/provider-fit/','/matches/']){await f.load(route);await f.page.waitForTimeout(400);expect(f.rows.filter(r=>r.phase==='later-page')).toEqual([]);expect(await f.page.evaluate(()=>window['ga-disable-G-2WQ42JY0WK'])).toBe(true);}
