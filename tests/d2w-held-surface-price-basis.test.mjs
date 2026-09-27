@@ -4,6 +4,7 @@ import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {loadGoPromotionAuthority,restoreGoOnlyPriceBasis} from '../src/go-runtime-selection.mjs';
 import {stableSha256} from '../src/therapeutic-taxonomy.mjs';
+import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
 import {buildProviderReviewSpecs,renderProviderReviewPage} from '../src/provider-review.mjs';
 const registry=JSON.parse(readFileSync(new URL('../data/program-registry.json',import.meta.url)));
 const expected=registry.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256;
@@ -50,7 +51,14 @@ test('actual review renderer preserves repaired copy and the exact Longevity HOL
  }
 });
 delete basis.therapeutic_taxonomy;delete basis.provider_dynamic_profiles;delete basis.consumer_therapeutic_authorities;
-test('existing HOLD declaration preserves the exact frozen pricing oracle',()=>assert.equal(stableSha256(restoreGoOnlyPriceBasis(basis)),expected));
+test('existing HOLD declaration preserves the exact frozen pricing oracle',()=>{
+ // Use the authenticated historical reader, not a hand-written label rewrite.
+ const historical=historicalPriceIndexRegistry(registry);
+ delete historical.therapeutic_taxonomy;delete historical.provider_dynamic_profiles;delete historical.consumer_therapeutic_authorities;
+ assert.equal(expected,'f9a8ce57165d5a014fe623c820a4ab90313d4c5679c4d079e6703a7e2df8f234');
+ assert.equal(stableSha256(restoreGoOnlyPriceBasis(historical)),expected);
+ assert.equal(registry.programs.find(p=>p.program_id==='try-ageless').display_name,'Try Ageless');
+});
 for(const [name,edit] of [
  ['price',p=>p.profiles['glp-clinic-scout'].data_profile.has_price=true],
  ['exception',p=>p.profiles['glp-clinic-scout'].exceptions.go.reason='invented'],
@@ -60,6 +68,8 @@ for(const [name,edit] of [
  ['commercial',p=>p.commercial_state='held'],
  ['route',p=>p.go.route='/go/different'],
 ])test(`held projection refuses unrelated ${name} drift`,()=>{
+ const current=structuredClone(registry);edit(current.programs.find(p=>p.program_id==='longevity-meds-glp-1-review'));
+ assert.throws(()=>historicalPriceIndexRegistry(current), /go_price_basis_held_scope_drift|price_index_historical_registry_drift/);
  const b=structuredClone(basis);edit(b.programs.find(p=>p.program_id==='longevity-meds-glp-1-review'));
  try{assert.notEqual(stableSha256(restoreGoOnlyPriceBasis(b)),expected);}catch(error){if(error.code==='ERR_ASSERTION')throw error;assert.match(error.message,/go_price_basis_/);}
 });

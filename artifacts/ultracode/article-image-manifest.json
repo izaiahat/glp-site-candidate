@@ -1134,8 +1134,22 @@
     {
       "art_direction": "premium route-specific GPT Image 2 editorial still life generated from the article subject; no burned-in text, logos, labels, product claims, testimonials, or competitor assets",
       "category": "evidence",
+      "current_image_inputs": {
+        "canonical_path": "/guides/ezra-glp-1-reviews/",
+        "h1": "Ezra GLP-1 Reviews: Identity, Terms, and FDA Record",
+        "primary_keyword": "ezra glp 1 reviews"
+      },
+      "current_image_inputs_sha256": "22a4cb8694ab77635f615453e30ca2798c5fdd0a33c808f31b83e8df32eeab6d",
       "disposition": "generated_from_gpt_image_2_route_master",
       "generation_model": "gpt_image_2",
+      "image_input_diff": {},
+      "image_inputs": {
+        "canonical_path": "/guides/ezra-glp-1-reviews/",
+        "h1": "Ezra GLP-1 Reviews: Identity, Terms, and FDA Record",
+        "primary_keyword": "ezra glp 1 reviews"
+      },
+      "image_inputs_sha256": "22a4cb8694ab77635f615453e30ca2798c5fdd0a33c808f31b83e8df32eeab6d",
+      "inputs_stale": false,
       "master_path": "assets/source/article-masters-pass2/guide-ezra-glp-1-reviews.webp",
       "master_sha256": "1acee5b4b8029b69b6cdc481092130c9a6d227bb72db11123ea0c7fd3f3b462f",
       "outputs": [
@@ -2082,20 +2096,29 @@
       "category": "compare",
       "current_image_inputs": {
         "canonical_path": "/guides/healthrx-vs-agelessrx/",
-        "h1": "HealthRX vs AgelessRx: the useful comparison starts with billing terms",
-        "primary_keyword": "HealthRX vs AgelessRx cost and terms"
+        "h1": "HealthRX vs Try Ageless: the useful comparison starts with billing terms",
+        "primary_keyword": "HealthRX vs Try Ageless cost and terms"
       },
-      "current_image_inputs_sha256": "76a623c8e0572b444a6cf5dcb533b0d958e65e3f7d0b4915a52132c95f85aa21",
+      "current_image_inputs_sha256": "1307ec7ec401208590af183764ee553b7b190e1334c6ed5f2de79947121d7fd3",
       "disposition": "generated_from_gpt_image_2_route_master",
       "generation_model": "gpt_image_2",
-      "image_input_diff": {},
+      "image_input_diff": {
+        "h1": {
+          "after": "HealthRX vs Try Ageless: the useful comparison starts with billing terms",
+          "before": "HealthRX vs AgelessRx: the useful comparison starts with billing terms"
+        },
+        "primary_keyword": {
+          "after": "HealthRX vs Try Ageless cost and terms",
+          "before": "HealthRX vs AgelessRx cost and terms"
+        }
+      },
       "image_inputs": {
         "canonical_path": "/guides/healthrx-vs-agelessrx/",
         "h1": "HealthRX vs AgelessRx: the useful comparison starts with billing terms",
         "primary_keyword": "HealthRX vs AgelessRx cost and terms"
       },
       "image_inputs_sha256": "76a623c8e0572b444a6cf5dcb533b0d958e65e3f7d0b4915a52132c95f85aa21",
-      "inputs_stale": false,
+      "inputs_stale": true,
       "master_path": "assets/source/article-masters-pass2/guide-healthrx-vs-agelessrx.webp",
       "master_sha256": "52306676db1e798be50475d50cfff3e65e972408240864f3320cf7007fe9c378",
       "outputs": [
@@ -4880,8 +4903,22 @@
     {
       "art_direction": "premium route-specific GPT Image 2 editorial still life generated from the article subject; no burned-in text, logos, labels, product claims, testimonials, or competitor assets",
       "category": "evidence",
+      "current_image_inputs": {
+        "canonical_path": "/guides/top-rated-glp-1-providers/",
+        "h1": "Top Rated GLP-1 Providers: How to Audit Lists (2026)",
+        "primary_keyword": "top rated glp-1 providers"
+      },
+      "current_image_inputs_sha256": "245ecd9dd4c5f16baa0b5e2255817401136c789ff899a870c04b43114e724080",
       "disposition": "generated_from_gpt_image_2_route_master",
       "generation_model": "gpt_image_2",
+      "image_input_diff": {},
+      "image_inputs": {
+        "canonical_path": "/guides/top-rated-glp-1-providers/",
+        "h1": "Top Rated GLP-1 Providers: How to Audit Lists (2026)",
+        "primary_keyword": "top rated glp-1 providers"
+      },
+      "image_inputs_sha256": "245ecd9dd4c5f16baa0b5e2255817401136c789ff899a870c04b43114e724080",
+      "inputs_stale": false,
       "master_path": "assets/source/article-masters-pass2/guide-top-rated-glp-1-providers.webp",
       "master_sha256": "81cd38a342c8f6b2a8bcaf10c61d82385b3865b135acd499cba9eda226c6590f",
       "outputs": [
@@ -6153,7 +6190,7 @@
   "source_files": [
     {
       "path": "data/blog/content-batch.json",
-      "sha256": "8d9643a68b158b3f44e967dd742fa10e9b83d51191204abd5b1e55b661e7ec24"
+      "sha256": "477d46570c8d27d236813bd0a404d19e21863dbe8d28082b0070c0de0f5a4018"
     },
     {
       "path": "data/blog/content-national-wow-additions.json",

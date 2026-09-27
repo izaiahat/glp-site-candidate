@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizedHash, loadRuntimePredecessor } from './postbuild-aeo-surface.mjs';
-import { loadCarrierArticles, assertCarrierArticleOutput } from '../src/carrier-article-retention.mjs';
+import { loadHistoricalCarrierArticles, assertCarrierArticleOutput } from '../src/carrier-article-retention.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE_DIR = path.join(ROOT, 'data/predecessors/content-base');
@@ -65,7 +65,9 @@ export async function prepareLastmod(root = ROOT, { readPredecessor = readFile }
   const predecessor = await loadRuntimePredecessor(env, async file =>
     (await (file.startsWith(releaseRoot + path.sep) ? readPredecessor(file) : readFile(file))).toString('utf8'));
   const files = new Set(entries.map(row => row.path));
-  const carriers = loadCarrierArticles(releaseRoot);
+  // The verified predecessor predates the six-field rebind. Keep its original
+  // whole-record contract; current emission still requires authenticated inputs.
+  const carriers = loadHistoricalCarrierArticles(releaseRoot);
   // Reconstruct the detector's cache from verified final predecessor bytes.
   // Neither the candidate cache nor a legacy stage6 hash is rendered-output evidence.
   const provenance = { ...predecessor.provenance, pages: { ...predecessor.provenance.pages } };

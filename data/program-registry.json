@@ -291,7 +291,7 @@
     },
     {
       "commercial_state": "live",
-      "display_name": "AgelessRx",
+      "display_name": "Try Ageless",
       "go": {
         "entry_state": "transparent_direct",
         "route": "/go/try-ageless"
@@ -9551,8 +9551,8 @@
         "evidence_bindings": [
           {
             "evidence_kind": "registry_identity_projection",
-            "evidence_sha256": "044fb9697ef29a218aad7c86c769695e6d70a78456d81c7a6ac12e3485eb40b6",
-            "evidence_text": "{\"aliases\":[],\"program_id\":\"try-ageless\",\"provider\":\"AgelessRx\",\"registry_program_ids\":[\"try-ageless\"],\"source_urls\":[\"https://tryageless.com/\",\"https://tryageless.com/affiliate-weight-plans/\",\"https://tryageless.com/all-treatments/\",\"https://tryageless.com/ol-glp1/\",\"https://tryageless.com/product-category/weight-loss/\",\"https://tryageless.com/product/semaglutide-b12-injection/\",\"https://tryageless.com/product/semaglutide-odt/\",\"https://tryageless.com/product/semaglutide-oral-drop/\",\"https://tryageless.com/product/semaglutide-troche/\",\"https://tryageless.com/product/tirzepatide-b12-injection/\",\"https://tryageless.com/product/tirzepatide-odt/\",\"https://tryageless.com/product/tirzepatide-oral-drop/\",\"https://tryageless.com/terms/\",\"https://tryageless.com/weight-loss-treatments/\",\"https://tryageless.com/weight-loss/semaglutide/\",\"https://tryageless.com/weight-loss/tirzepatide/\"]}",
+            "evidence_sha256": "629ffa772628bc88646f8596b972023a7405774b44dd5e9605295d24bee1e010",
+            "evidence_text": "{\"aliases\":[],\"program_id\":\"try-ageless\",\"provider\":\"Try Ageless\",\"registry_program_ids\":[\"try-ageless\"],\"source_urls\":[\"https://tryageless.com/\",\"https://tryageless.com/affiliate-weight-plans/\",\"https://tryageless.com/all-treatments/\",\"https://tryageless.com/ol-glp1/\",\"https://tryageless.com/product-category/weight-loss/\",\"https://tryageless.com/product/semaglutide-b12-injection/\",\"https://tryageless.com/product/semaglutide-odt/\",\"https://tryageless.com/product/semaglutide-oral-drop/\",\"https://tryageless.com/product/semaglutide-troche/\",\"https://tryageless.com/product/tirzepatide-b12-injection/\",\"https://tryageless.com/product/tirzepatide-odt/\",\"https://tryageless.com/product/tirzepatide-oral-drop/\",\"https://tryageless.com/terms/\",\"https://tryageless.com/weight-loss-treatments/\",\"https://tryageless.com/weight-loss/semaglutide/\",\"https://tryageless.com/weight-loss/tirzepatide/\"]}",
             "fields": [
               "aliases",
               "program_id",
@@ -9604,9 +9604,9 @@
             "verified_as_of": "2026-09-08"
           }
         ],
-        "normalized_sha256": "31916b599c035ed8e8c7d96a5615f909bf062516d58499490881328c376421cc",
+        "normalized_sha256": "a6e47bc7b5951aaa5ce86c5c073f0c0027061ac304cc57a676d157832c1a316c",
         "program_id": "try-ageless",
-        "provider": "AgelessRx",
+        "provider": "Try Ageless",
         "registry_program_ids": [
           "try-ageless"
         ],
@@ -10554,6 +10554,10 @@
       "taxonomy_refresh_synergy_rx_review_run-20260924T030807583246Z": {
         "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260924T030807583246Z/synergy-rx-review-verification.json",
         "sha256": "e2ffca15c1741194e5a24a8bf5b68a80b919d5cbd3fb5d03316d23a8fb9071b9"
+      },
+      "taxonomy_refresh_breeze_meds_review_run-20260927T005531350729Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260927T005531350729Z/breeze-meds-review-verification.json",
+        "sha256": "f5fc1071458aa7dc5876c0df4c03f2a29bd592a45cfc73aa232b7e4c9305a6a5"
       }
     },
     "derivation": "Set-union projection from the sealed base map, corrected Firecrawl refresh, and brand/form addendum. Tags are accepted only when an authority row explicitly records them; missing tags remain unknown and are never inferred from prose.",
@@ -10801,25 +10805,18 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_breeze_meds_review",
-            "authority_sha256": "057fa7316f9ce5f4fce2d806f9b6b07e200697ff07f5aeee3b4eb7c35b3b3be5",
-            "evidence_sha256": "17642675f00ee6d25cf0397ba69eaf3a683e773ec1f289ad3279c769664b6ecb",
+            "authority": "taxonomy_refresh_breeze_meds_review_run-20260927T005531350729Z",
+            "authority_sha256": "f5fc1071458aa7dc5876c0df4c03f2a29bd592a45cfc73aa232b7e4c9305a6a5",
             "source_url": "https://www.breezemeds.com/",
-            "verified_as_of": "2026-08-29"
-          },
-          {
-            "authority": "b2_stage5_breeze_meds_review",
-            "authority_sha256": "057fa7316f9ce5f4fce2d806f9b6b07e200697ff07f5aeee3b4eb7c35b3b3be5",
-            "evidence_sha256": "ac2b1184c221e1dd7dee04170f01445764f0bb94c865b6258c3c48be6e85b047",
-            "source_url": "https://www.breezemeds.com/",
-            "verified_as_of": "2026-08-29"
+            "verified_as_of": "2026-09-27",
+            "evidence_sha256": "c6144129f16915432141baf4dc5bbd4fb1452f53461179e923d5c478743aac40"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "e957471c22e634a30924f64e4929c591a1badf8c0badcfb5783c23d4c62c071c",
+        "normalized_sha256": "0dd0d73f56003838f54cb7309f87903c3c2e684af84cb3fed6531e8c8eb2cfe2",
         "program_id": "breeze-meds-review",
         "provider": "Breeze Meds",
         "registry_program_id": "breeze-meds-review",
@@ -10829,7 +10826,7 @@
         ],
         "treatment_type_state": "not_verified",
         "treatment_type_tags": [],
-        "verified_as_of": "2026-08-29"
+        "verified_as_of": "2026-09-27"
       },
       "care-bare-rx-glp1-review": {
         "brand_name_tags": [
@@ -15036,9 +15033,9 @@
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "6c80206a3776d7ac3e82e9d63337d8445385180777b1ed36de52ec9d3e6fe9c8",
+        "normalized_sha256": "b05e828fb7049589e380b9ce460623a380fe6216587bfbd665b58038d63fe5f8",
         "program_id": "try-ageless",
-        "provider": "AgelessRx",
+        "provider": "Try Ageless",
         "registry_program_id": "try-ageless",
         "render_label": null,
         "source_urls": [
@@ -15337,7 +15334,7 @@
       "/best/expanded-curated-glp-1-programs/"
     ],
     "schema": "glp-therapeutic-taxonomy-v1",
-    "sealed_as_of": "2026-09-24"
+    "sealed_as_of": "2026-09-27"
   },
   "updated_at": "2026-08-18"
 }

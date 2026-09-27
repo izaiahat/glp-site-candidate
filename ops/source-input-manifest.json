@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3865,
+  "tracked_file_count": 3880,
   "files": [
     "tests/browser/ga4-diagnostic-containment.spec.mjs",
     "tests/ga4-diagnostic-containment.test.mjs",
@@ -3867,7 +3867,22 @@
     "tests/fixtures/consent-binding/playwright.config.mjs",
     "tests/fixtures/consent-binding/transform.spec.mjs",
     "tests/helpers/ga4-storage-oracle.mjs",
-    "tests/helpers/ga4-vm-capabilities.mjs"
+    "tests/helpers/ga4-vm-capabilities.mjs",
+    "artifacts/ultracode/article-image-REBIND-7f3b9b7eca877071-12aa0e7c539a090e.json",
+    "artifacts/ultracode/article-image-manifest-before-7f3b9b7eca877071039a48caeedcf9fb7778478f38956976300a4f35560f8663.json",
+    "ops/glp234-combined-imagery-successor.md",
+    "tests/glp234-carrier-successor.test.mjs",
+    "tests/test_glp234_combined_imagery.py",
+    "artifacts/ultracode/article-image-REBIND-abfcc41435f896df-7f3b9b7eca877071.json",
+    "artifacts/ultracode/article-image-manifest-before-abfcc41435f896df48c68452c59c797c430841a2154149d673b5097e3f6b9af5.json",
+    "ops/glp75-carrier-image-rebind.md",
+    "ops/glp75-source-bounded-seo.md",
+    "src/go-commercial-labels.mjs",
+    "tests/carrier-image-rebind-retention.test.mjs",
+    "tests/glp234-go-label.test.mjs",
+    "tests/glp234-held-article-output.test.mjs",
+    "tests/glp234-try-ageless-identity.test.mjs",
+    "tests/glp75-source-bounded-seo.test.mjs"
   ],
   "exclusions": [
     "new private ClickDealer issued URLs and registry/authority outputs",
