@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {join} from 'node:path';
+import { bindCareFastpath } from '../scripts/bind-care-fastpath-contract.mjs';
 import { createHash } from 'node:crypto';
 import { normalizedTaxonomySha256, reconcileTherapeuticTaxonomyWireIn } from '../src/therapeutic-taxonomy.mjs';
 
@@ -46,6 +48,36 @@ test('Care Bare active medication summaries omit the brand association without c
   }
 });
 
+test('Care fastpath paired binding changes only the contract digest and refuses wrong contract bytes', () => {
+  const old='6f64b4de008cfd9808f1007d9eb80a64f5eb7b6c7444b5ea2de2eaaff777db55';
+  const accepted='edcbabb72522b0884f6d6ac97a813b6bf7afc2bb63bf4302c42162a0d03ffef6';
+  const contract=read('data/provider-page-contracts.json');
+  const final=read('data/provider-fastpath-contract.json');
+  assert.equal(sha(contract), accepted);
+  assert.equal(JSON.parse(final).current_contract_sha256,sha(contract)); // native validator line 100
+  const prior=final.toString().replace(`"current_contract_sha256": "${accepted}"`,`"current_contract_sha256": "${old}"`);
+  assert.notEqual(prior,final.toString());
+  const scratchRoot=process.env.TMPDIR || new URL('../artifacts/test-work/',import.meta.url).pathname;
+  fs.mkdirSync(scratchRoot,{recursive:true});
+  const scratch=fs.mkdtempSync(join(scratchRoot,'care-fastpath-'));
+  const data=join(scratch,'data');fs.mkdirSync(data);
+  const contractPath=join(data,'provider-page-contracts.json');
+  const fastpathPath=join(data,'provider-fastpath-contract.json');
+  try {
+    fs.writeFileSync(contractPath,contract);
+    fs.writeFileSync(fastpathPath,prior);
+    const receipt=bindCareFastpath(scratch);
+    assert.deepEqual([receipt.status,receipt.from,receipt.to],['BOUND',old,accepted]);
+    assert.deepEqual(fs.readFileSync(fastpathPath),final);
+    assert.deepEqual(fs.readFileSync(contractPath),contract);
+    assert.equal(bindCareFastpath(scratch).status,'ALREADY_BOUND');
+    fs.writeFileSync(fastpathPath,prior);
+    fs.appendFileSync(contractPath,' ');
+    assert.throws(()=>bindCareFastpath(scratch),/care_fastpath_contract_not_accepted/);
+    assert.equal(fs.readFileSync(fastpathPath,'utf8'),prior);
+  } finally {fs.rmSync(scratch,{recursive:true,force:true});}
+});
+
 test('Novi changes only the five approved image extensions, not its tags or offer context', () => {
   const quotes = policies['novi-weight-loss-glp-1'].quotes;
   const all = Object.values(quotes).flatMap(value => Object.values(value));
@@ -67,7 +99,7 @@ test('unchanged native structural reconciler accepts registry at original dates 
     registry.provider_dynamic_profiles.profiles[id].verified_as_of], dates);
 });
 
-test('frozen F17 input pin still refuses this unaccepted registry byte sequence', () => {
+test('F17 adopts accepted Care registry and refuses preserved predecessor and unapproved bytes', () => {
   const fixture = JSON.parse(read('tests/fixtures/glp41-approved-input-successor.json'));
   const input = 'data/program-registry.json';
   const nodeSource = read('tests/glp41-material-contracts.test.mjs').toString();
@@ -75,7 +107,14 @@ test('frozen F17 input pin still refuses this unaccepted registry byte sequence'
   const end = nodeSource.indexOf("\ntest('F34", start);
   assert.ok(start >= 0 && end > start);
   const guard = new Function('test', 'assert', 'read', 'sha', nodeSource.slice(start, end));
-  assert.equal(fixture.inputs[input].after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
-  assert.notEqual(sha(read(input)), fixture.inputs[input].after_sha256);
-  assert.throws(() => guard((_name, check) => check(), assert, path => read(path), sha), { code: 'ERR_ASSERTION' });
+  const run = (candidate, pins) => guard((_name, check) => check(), assert,
+    path => path === input ? candidate : path === 'tests/fixtures/glp41-approved-input-successor.json'
+      ? Buffer.from(JSON.stringify(pins)) : assert.fail(path), sha);
+  assert.equal(fixture.inputs[input].after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
+  assert.doesNotThrow(() => run(read(input), fixture));
+  const predecessor = structuredClone(fixture);
+  predecessor.inputs[input].after_sha256 = fixture.provenance.prior_care_after_sha256;
+  assert.equal(predecessor.inputs[input].after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
+  assert.throws(() => run(read(input), predecessor), { code: 'ERR_ASSERTION' });
+  assert.throws(() => run(Buffer.concat([read(input), Buffer.from(' ')]), fixture), { code: 'ERR_ASSERTION' });
 });

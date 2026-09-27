@@ -14,7 +14,8 @@ export function release2PriceLedgerBasis(bytes,readBytes=readFileSync){
  if(sha(oldBytes)!==proof.predecessor.sha256)throw Error('release2_price_basis_predecessor_drift');
  // Only the exact attested S32 successor uses its additional proof. Other
  // inputs still face the original whole-document R2 projection below.
- if(sha(bytes)==='88f1ec3e3d8c543e64caaa83ef5baab517e410cd180ee54ca2263eb2b1bbc95d'){
+ if(['88f1ec3e3d8c543e64caaa83ef5baab517e410cd180ee54ca2263eb2b1bbc95d',
+     'e298a9d9a81313d8b05536c903776dbca24511463f80b265d486b5a14c80fd72'].includes(sha(bytes))){
   const binding=JSON.parse(readBytes(new URL('../data/price-index-nonprice-binding.json',import.meta.url)));
   bytes=s32LedgerPredecessor(bytes,binding,readBytes).bytes;
  }

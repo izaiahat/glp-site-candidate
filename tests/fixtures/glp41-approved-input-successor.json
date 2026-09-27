@@ -1,7 +1,7 @@
 {
   "schema": "glp41-approved-input-successor-v1",
-  "status": "PROPOSED_PENDING_INDEPENDENT_REVIEW",
-  "authority": "Current coordinator delegated combined-input proposal scope only, recorded in reports/ops/glp234-breeze-integration-20260927/AUTHORIZATION.md. Not operator approval, independent acceptance, installation or release authority. Earlier COORDINATOR-DISPOSITION-20260926-glp234-f17-successor.md and Breeze adoption/review receipts remain historical and do not approve these combined bytes.",
+  "status": "ACCEPTED_EXACT_DATA_SOURCE_ADOPTION_ONLY",
+  "authority": "Coordinator source-only grant reports/ops/care-successor-source-adoption-authorization-20260927/RESULT.json (sha256 4c16c5924ad1ed4aaa515f3dc6ed0ca608e79e35ed18377caa181d33c5fc30c2) follows independent exact-data ACCEPT at reports/ops/glp42-care-ga-exact-data-review-20260927/INDEPENDENT-REVIEW.json (sha256 46214dae14f320eaf3f3e51dc1db408311060ddc556d86926c3d6449d19b50c6), reviewed head 74d4c6b93c86e10d56aeed6f008dc7fb695bc3ec. Not operator release authority, merge approval or permission to change other inputs. Earlier combined and Breeze receipts are historical lineage only.",
   "source_head": "fc647dc91582f9bb7d0b5321d432480ca16bef1f",
   "provenance": {
     "source_head_role": "PR14 immediate source predecessor, not the assembled head; exact combined registry is bound by inputs.after_sha256",
@@ -19,14 +19,19 @@
     "historical_breeze_data_review_sha256": "69f9cb9313589f4daa89fb311b52020a18e51641bf2c5ed4713c993a4584f89d",
     "historical_breeze_final_review": "reports/ops/glp270-breeze-final-fixture-review-20260927/INDEPENDENT-REVIEW.json",
     "historical_breeze_final_review_sha256": "751eed1f050da8966cbb583f68bd70ab2f8eb0304b1767458be407163da3c761",
-    "combined_input_review_status": "PENDING_REVIEW",
-    "review_scope": "Prior Breeze receipts apply only to their exact 139ead registry and PR12 heads. They are lineage evidence, not acceptance of the combined 612814 registry. The assembled input, proposal fixture/F17 evidence and changed test oracles require new independent review. Existing guards enforce exact bytes, not authenticity or approval status; candidate PASS is not acceptance."
+    "combined_input_review_status": "ACCEPTED_EXACT_DATA_AT_REVIEWED_HEAD_SOURCE_ADOPTION_ONLY",
+    "prior_care_fixture_git_ref": "74d4c6b93c86e10d56aeed6f008dc7fb695bc3ec:tests/fixtures/glp41-approved-input-successor.json",
+    "prior_care_fixture_sha256": "b4581d7aea1309b88e267a0a6aac26ad72d4de157cda83ffaf98bc135ed4b462",
+    "prior_care_after_sha256": "612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d",
+    "accepted_data_review_sha256": "46214dae14f320eaf3f3e51dc1db408311060ddc556d86926c3d6449d19b50c6",
+    "source_adoption_grant_sha256": "4c16c5924ad1ed4aaa515f3dc6ed0ca608e79e35ed18377caa181d33c5fc30c2",
+    "review_scope": "Prior Breeze and combined-proposal receipts remain historical lineage, not approval of Care successor bytes. Independent exact-data review accepts only the reviewed head 74d4c6b and registry e463477e; the coordinator grant authorizes source adoption only. Changed source/oracles require independent code review and a future full gate. Exact-byte PASS is not release authority."
   },
   "inputs": {
     "data/program-registry.json": {
       "before_sha256": "bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6",
-      "after_sha256": "612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d",
-      "reason": "PENDING_REVIEW proposal: exact seven Try Ageless identity leaves from PR14 plus exact five Breeze taxonomy groups from merged PR12 in PR8. Those groups are the retained authority descriptor, Breeze evidence_bindings, normalized_sha256, verified_as_of and taxonomy sealed_as_of. All other registry bytes, clocks, claims, holds and commercial fields are unchanged. Both parent fixtures remain in Git history. Immutable K10 before anchor, pharmacy/fact pins, historical receipts and unchanged Node/browser exact-byte guards remain mandatory. No independent combined-input acceptance, fresh research, future repin, activation or release approval is supplied."
+      "after_sha256": "e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e",
+      "reason": "Source-only adoption of independently accepted Care Bare exact registry at reviewed PR18 head 74d4c6b: removes unsupported Mounjaro brand-tag association while preserving supported molecule/form/treatment tags and historical quotation. No additional registry change beyond accepted exact-data review. Prior combined 612814 fixture survives at provenance.prior_care_fixture_git_ref and prior Breeze/PR14 provenance remains historical. Immutable K10 before anchor, original guard, pharmacy/fact pins and holds stay required. Independent code/oracle review and a later full gate and release approval remain outstanding."
     }
   }
 }

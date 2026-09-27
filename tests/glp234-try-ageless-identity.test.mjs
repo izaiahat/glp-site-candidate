@@ -103,16 +103,17 @@ const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
 // Candidate-oracle regression only: executing these pure maintained guards does
 // not supply independent acceptance, run a browser, or authorize publication.
-test('GLP-234 F17 proposal binds only the exact identity plus Breeze union and refuses unintended leaves', async () => {
+test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and refuses unintended leaves', async () => {
   const read = (path) => readFileSync(new URL('../' + path, import.meta.url));
   const pins = JSON.parse(read('tests/fixtures/glp41-approved-input-successor.json'));
   const input = 'data/program-registry.json';
   const bytes = read(input);
   const immutable = {data: {[input]: 'bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6'}};
-  assert.equal(pins.inputs[input].after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
-  assert.equal(pins.status, 'PROPOSED_PENDING_INDEPENDENT_REVIEW');
-  assert.match(pins.authority, /glp234-breeze-integration-20260927\/AUTHORIZATION\.md/);
-  assert.equal(pins.provenance.combined_input_review_status, 'PENDING_REVIEW');
+  assert.equal(pins.inputs[input].after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
+  assert.equal(pins.status, 'ACCEPTED_EXACT_DATA_SOURCE_ADOPTION_ONLY');
+  assert.match(pins.authority, /care-successor-source-adoption-authorization-20260927\/RESULT\.json/);
+  assert.equal(pins.provenance.combined_input_review_status, 'ACCEPTED_EXACT_DATA_AT_REVIEWED_HEAD_SOURCE_ADOPTION_ONLY');
+  assert.equal(pins.provenance.prior_care_after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
   assert.equal(pins.source_head, 'fc647dc91582f9bb7d0b5321d432480ca16bef1f');
   assert.equal(pins.provenance.integration_parent, 'b42a4983f1cea415328473d93b6bf57aa063532a');
   // Fixed parent hashes are provenance, not inherited approval of this union.
@@ -166,6 +167,10 @@ test('GLP-234 F17 proposal binds only the exact identity plus Breeze union and r
   const appended = Buffer.concat([bytes, Buffer.from(' ')]);
   assert.throws(() => runNode(appended), {code: 'ERR_ASSERTION'});
   assert.throws(() => runBrowserInput(appended), /immutable listing oracle/);
+  const priorCare = structuredClone(pins);
+  priorCare.inputs[input].after_sha256 = pins.provenance.prior_care_after_sha256;
+  assert.throws(() => runNode(bytes, priorCare), {code: 'ERR_ASSERTION'});
+  assert.throws(() => runBrowserInput(bytes, priorCare), /immutable listing oracle/);
   const prior = structuredClone(pins);
   prior.inputs[input].after_sha256 = 'b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b';
   assert.throws(() => runNode(bytes, prior), {code: 'ERR_ASSERTION'});
