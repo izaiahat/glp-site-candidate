@@ -4,8 +4,60 @@
 // unsafe here. Emit only the three approved enhanced-measurement event names
 // ourselves, with constant/minimized fields; never read form values or link text.
 export function ga4Transport(allowed) {
+  'use strict'; // The emitted Function.toString() body must fail closed too.
   const ID='G-2WQ42JY0WK',ORIGIN='https://glpclinicscout.com';
-  let script=null,epoch=0,sent=false,stopped=false,scrolled=false;
+  let script=null,epoch=0,sent=false,stopped=false,scrolled=false,transportReady=false;
+  // Like the existing PostHog adapter, install before the SDK can retain native
+  // transports, and forward unrelated calls unchanged. These exact Google tag
+  // diagnostics are NOT measurement events or accepted in-flight GA retries.
+  // ga-disable does not govern their independent pagehide listener. Keep these
+  // barriers for this realm's entire lifetime, including stop/GPC and unload.
+  function prepareTransport(){
+    if(transportReady)return true;
+    const image=window.HTMLImageElement?.prototype,tag=window.HTMLScriptElement?.prototype;
+    const element=window.Element?.prototype;
+    const imageSrc=image&&Object.getOwnPropertyDescriptor(image,'src');
+    const scriptSrc=tag&&Object.getOwnPropertyDescriptor(tag,'src');
+    if(typeof window.fetch!=='function'||!imageSrc?.configurable||!imageSrc.set||
+      !scriptSrc?.configurable||!scriptSrc.set||typeof element?.setAttribute!=='function')return false;
+    function diagnostic(input){
+      let url;try{url=new URL(typeof input==='string'?input:input?.url??String(input),location.href)}catch{return null}
+      if(url.origin!=='https://www.googletagmanager.com')return null;
+      return url.pathname==='/td'||(url.pathname==='/gtag/js'&&url.searchParams.has('is_td'))?url.pathname:null;
+    }
+    function blocked(input,transport){
+      const endpoint=diagnostic(input);if(!endpoint)return false;
+      // Local observation only; never retain/export the query, payload or page.
+      // Do not forge CSP violations or report a successful vendor ingestion.
+      window.dispatchEvent(new CustomEvent('gcs:ga4-diagnostic-blocked',{detail:{transport,endpoint}}));
+      return true;
+    }
+    try{
+      const fetch=window.fetch;
+      window.fetch=function(input,...args){
+        if(blocked(input,'fetch'))return Promise.reject(new TypeError('GA diagnostic transport denied'));
+        return fetch.call(this,input,...args);
+      };
+      const beacon=window.navigator.sendBeacon;
+      if(typeof beacon==='function')window.navigator.sendBeacon=function(input,...args){
+        if(blocked(input,'beacon'))return false;
+        return beacon.call(this,input,...args);
+      };
+      for(const [prototype,descriptor,kind] of [[image,imageSrc,'image'],[tag,scriptSrc,'script']]){
+        Object.defineProperty(prototype,'src',{...descriptor,set(value){
+          if(blocked(value,kind))return;
+          return descriptor.set.call(this,value);
+        }});
+      }
+      const setAttribute=element.setAttribute;
+      element.setAttribute=function(name,value){
+        if(String(name).toLowerCase()==='src'&&(this instanceof window.HTMLImageElement||this instanceof window.HTMLScriptElement)&&
+          blocked(value,this instanceof window.HTMLImageElement?'image':'script'))return;
+        return setAttribute.apply(this,arguments);
+      };
+      transportReady=true;return true;
+    }catch{return false} // No SDK initialization without ownership of every path.
+  }
   const denied={analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'};
   const command=function(){window.gcsGa4Layer.push(arguments)};
   // Engineering allowlist, NOT legal/vendor clearance. Later eligibility advisory
@@ -77,6 +129,7 @@ export function ga4Transport(allowed) {
     window.GCS_GTM_HELD='A11 containment unbound';
     if(!context()){stop();return}
     if(script||sent||stopped)return;
+    if(!prepareTransport()){stop();return}
     const ticket=++epoch;
     window['ga-disable-'+ID]=true;
     window.gcsGa4Layer=[];

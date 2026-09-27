@@ -1,8 +1,10 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3858,
+  "tracked_file_count": 3860,
   "files": [
+    "tests/browser/ga4-diagnostic-containment.spec.mjs",
+    "tests/ga4-diagnostic-containment.test.mjs",
     "ops/glp44-r1-contract.md",
     "scripts/release-executed-provenance.mjs",
     "tests/glp44-ga4-oracles.test.mjs",
