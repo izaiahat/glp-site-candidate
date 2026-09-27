@@ -2,6 +2,8 @@ import { selectedFamilyStyles } from "../src/selected-family-styles.mjs";
 import { captureLastmodEmission } from "./build-lastmod-provenance.mjs";
 import { resetTrackingAllowedHostsCache } from "../src/tracking-allowed-hosts.mjs";
 import { eligibilityCensus } from "../src/held-eligibility-census.mjs";
+import { projectProviderDisplayLedger } from "../src/provider-display-evidence.mjs";
+import { goCommercialLabels } from "../src/go-commercial-labels.mjs";
 import { execFileSync } from "node:child_process";
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
@@ -37,6 +39,7 @@ import { refreshPriceTracker } from "./refresh-price-tracker.mjs";
 import { buildPriceIndexArtifacts, PRICE_INDEX_ROUTE, rebindPriceIndexShippedHtml } from "../src/price-index.mjs";
 import { readPriceIndexPredecessor } from "../src/price-index-predecessor.mjs";
 import { frozenPriceLedger } from "../src/price-index-nonprice-binding.mjs";
+import { historicalPriceIndexRegistry } from "../src/price-index-historical-registry.mjs";
 import { composePriceWatchIssue, validatePublishedPriceWatchIssue } from "../src/price-watch-email.mjs";
 import { buildMysteryShopArtifacts, loadEvidenceInputs, evidenceLedgerAuthority } from "../src/mystery-shop.mjs";
 import { buildDealArtifacts, resolveDealEvaluationClocks } from "../src/deal-ingestion.mjs";
@@ -1591,9 +1594,12 @@ async function main() {
     rm(PUBLIC, { recursive: true, force: true }),
     rm(OPS, { recursive: true, force: true }),
   ]);
-  const [identity, eligibility, contentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, activationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
+  const [identity, eligibility, rawContentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, activationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
     readJson("identity-registry.json"), readJson("program-page-eligibility.json"), readJson("program-content-ledger.json"), readJson("money-page-specs.json"), readJson("quiz-config.json"), readJson("directory/npi-city-batch.json"), readJson("visual-system.json"), readJson("email-system.json"), readJson("resend-email-machine.json"), readJson("blog/keyword-ownership-map.json"), readJson("blog/content-batch.json"), readJson("blog/content-national-wow-additions.json"), readJson("blog/author-registry.json"), readJson("affiliate-activation-selection.json"), readJson("cost-calculator.json"), readJson("provider-page-contracts.json"), readJson("provider-fastpath-contract.json"), readJson("provider-pricing-matrix.json"), readJson("medication-direct-pricing.json"), readJson("coupon-offers.json"),
   ]);
+  // Keep the hash-pinned price-index ledger untouched, including its in-memory
+  // rows. Renderers use this consumer copy; quiz owns its projection from raw.
+  const contentLedger = { ...rawContentLedger, programs: structuredClone(rawContentLedger.programs).map((row) => projectProviderDisplayLedger(row)) };
   const [phase3GraphConfig, phase3PharmacyInput] = await Promise.all([readJson("phase3-page-graph.json"), readJson("phase3-pharmacy-render-input.json")]);
   reconcileTherapeuticTaxonomyWireIn({
     registry: programRegistry,
@@ -1682,8 +1688,16 @@ async function main() {
     const comparablePriceIds = comparablePriceProviderIds(programRegistry, SITE_PROFILE, {
       asOf: new Date(`${programRegistry.provider_dynamic_profiles.sealed_as_of}T12:00:00Z`),
     });
-    const derivedFor = applyMeritScores(contentLedger.programs, { comparablePriceIds });
+    // Display evidence is not a scoring-input migration. Derive from an isolated
+    // raw-ledger copy, as before GLP-234, and carry only score fields to renderers.
+    const scoringPrograms = structuredClone(rawContentLedger.programs);
+    const derivedFor = applyMeritScores(scoringPrograms, { comparablePriceIds });
+    const scoringById = new Map(scoringPrograms.map((program) => [program.program_id, program]));
     for (const program of contentLedger.programs) {
+      const scored = scoringById.get(program.program_id);
+      for (const key of ['criteria_scores', 'score_basis', 'score_evidence_earned']) {
+        if (Object.hasOwn(scored, key)) program[key] = scored[key];
+      }
       const score = meritScore(program);
       if (score === null) throw new Error(`merit_score_underivable:${program.program_id}`);
       program.score = score;
@@ -1725,10 +1739,16 @@ async function main() {
   ) throw new Error("national_content_release_gate_invalid");
   const nationalArticles = nationalContent.articles.map((article) => ({ ...article, sections: article.sections.map((section) => ({ ...section, heading: section.heading || section.h2 })) }));
   const commercialGuideRoutes = new Set(["/guides/cheapest-glp1/", "/guides/zepbound-coupon/"]);
-  const allArticles = [...blogBatch.articles, ...nationalArticles].map((article) => ({
-    ...article,
-    surface_taxonomy: commercialGuideRoutes.has(article.canonical_path) ? "commercial" : (article.surface_taxonomy || "medical"),
-  }));
+  // Apply the existing consolidation exclusion before review/render, not only
+  // at sitemap emission and shadow-file removal. Retired sources stay in the
+  // evidence/imagery catalogs, but cannot block or enter public article output,
+  // author lists or search. Every non-consolidated article still fails closed.
+  const allArticles = [...blogBatch.articles, ...nationalArticles]
+    .filter((article) => !CONSOLIDATED_SOURCE_ROUTES.has(article.canonical_path))
+    .map((article) => ({
+      ...article,
+      surface_taxonomy: commercialGuideRoutes.has(article.canonical_path) ? "commercial" : (article.surface_taxonomy || "medical"),
+    }));
   const glpArticles = allArticles.filter((article) => articleVertical(article) === "GLP-1");
   const glpGuideArticles = glpArticles.filter((article) => article.canonical_path.startsWith("/guides/"));
   const allOwnership = [...keywordMap.entries];
@@ -1787,7 +1807,7 @@ async function main() {
   const fullGoLiveReceipt = activationSelection.operator_gate_receipt_sha256;
   if (!/^[a-f0-9]{64}$/.test(fullGoLiveReceipt)) throw new Error("affiliate_activation_receipt_invalid");
   const canonicalAugmented = projectMoneyPagesFromRegistry(programRegistry, SITE_PROFILE, moneySpecs.pages, contentLedger.programs);
-  const canonicalQuiz = projectQuizFromRegistry(programRegistry, SITE_PROFILE, quizConfig, contentLedger);
+  const canonicalQuiz = projectQuizFromRegistry(programRegistry, SITE_PROFILE, quizConfig, rawContentLedger);
   const therapeuticSurfaces = projectTherapeuticSurfaces({
     registry: programRegistry,
     profileId: SITE_PROFILE,
@@ -2357,7 +2377,10 @@ async function main() {
   await writeOps("wave4-price-tracker-manifest.json", JSON.stringify(wave4PriceTracker.manifest, null, 2) + "\n");
   let priceIndexRegistrySourceSha256 = createHash("sha256").update(programRegistryBytes).digest("hex");
   if (programRegistry.therapeutic_taxonomy) {
-    const priceIndexRegistryBasis = structuredClone(programRegistry);
+    // Authenticate the same historical view as the price-index consumer before
+    // checking its frozen body. Keep current identity/authority out of this
+    // price-only copy and leave programRegistry unchanged for public surfaces.
+    const priceIndexRegistryBasis = historicalPriceIndexRegistry(programRegistry);
     delete priceIndexRegistryBasis.therapeutic_taxonomy;
     delete priceIndexRegistryBasis.provider_dynamic_profiles;
     delete priceIndexRegistryBasis.consumer_therapeutic_authorities;
@@ -2684,7 +2707,8 @@ async function main() {
   const activeGoAnchors = await countPublicGoAnchors(PUBLIC);
   // GO_RUNTIME_PROMOTION_AUTHORITY_V1: missing authority means every route stays held.
   const goPromotionAuthority = loadGoPromotionAuthority(ROOT);
-  const goRuntimeManifest = { schema: "affiliate-worker-staging-v3-registry", program_registry_schema: programRegistry.schema, site_profile: SITE_PROFILE, internal_fallback: "https://glpclinicscout.com/providers/", programs: deriveGoEntriesFromRegistry(programRegistry, SITE_PROFILE, contentLedger.programs, loadAffiliateLinkMap("compare"), goPromotionAuthority) };
+  const commercialLabels = goCommercialLabels(await readJson("affiliate-held-link-manifest.json"));
+  const goRuntimeManifest = { schema: "affiliate-worker-staging-v3-registry", program_registry_schema: programRegistry.schema, site_profile: SITE_PROFILE, internal_fallback: "https://glpclinicscout.com/providers/", programs: deriveGoEntriesFromRegistry(programRegistry, SITE_PROFILE, contentLedger.programs, loadAffiliateLinkMap("compare"), goPromotionAuthority, commercialLabels) };
   await writeOps("worker-manifest.staging.json", manifestJsonText(goRuntimeManifest));
   const frozenGoRuntimePath = path.join(ROOT, "functions", "go", "program-manifest.js");
   const expectedGoRuntime = renderGoRuntimeManifestModule(goRuntimeManifest);
