@@ -1,3 +1,4 @@
+import {transportCapabilities} from './helpers/ga4-vm-capabilities.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
@@ -5,6 +6,7 @@ import {ga4Transport} from '../src/ga4-runtime.mjs';
 function boot({url='https://glpclinicscout.com/about/?email=PRIVATE#dose',allowed=true}={}){
  const handlers={},scripts=[],cookies=[],window={GCS_ANALYTICS:{enabled:true,measurement_id:'G-2WQ42JY0WK'},innerHeight:500,scrollY:500,history:{pushState(){},replaceState(){}},addEventListener(n,f){handlers[n]=f}};
  const document={querySelector:()=>({href:'https://glpclinicscout.com/about/'}),documentElement:{scrollHeight:1000},addEventListener(n,f){handlers[n]=f},createElement(){return {addEventListener(n,f){this[n]=f},remove(){this.removed=true}}},head:{appendChild(s){scripts.push(s)}},set cookie(v){cookies.push(v)}};
+ transportCapabilities(window);
  const runtime=vm.runInNewContext(`(${ga4Transport.toString()})(()=>permitted.value)`,{window,document,location:new URL(url),URL,permitted:{get value(){return allowed}}});
  const commands=()=>Array.from(window.gcsGa4Layer||[],a=>Array.from(a));
  return {window,document,runtime,scripts,cookies,handlers,commands,deny(){allowed=false;runtime.load()},click(href,{form=false,download=false,kind=/\.pdf/.test(href)?'download':'outbound'}={}){handlers.click({target:{closest:()=>({href,closest:()=>form,hasAttribute:()=>download,getAttribute:()=>kind})}})}};

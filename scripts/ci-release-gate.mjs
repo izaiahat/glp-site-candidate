@@ -7,6 +7,7 @@ import path from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import {createRequire} from 'node:module';
 import {rejectDiagnosticFlags,checkExecutedProvenance} from './release-executed-provenance.mjs';
+import {bindEmittedConsent} from './consent-emitted-binding.mjs';
 const require = createRequire(import.meta.url);
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -141,7 +142,7 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'ga4-contracts': 19, 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 12 };
+      const requiredNodeCounts = { 'ga4-contracts': 23, 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 12 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -175,6 +176,7 @@ async function main() {
     result.built_source_sha256 = trackedDigest();
     result.private_registry_sha256 = sha(readFileSync(process.env.GLP_PRIVATE_APPROVED_REGISTRY));
     result.output_before = treeFiles(publicRoot); save();
+    await step('node-consent-emitted-binding',()=>bindEmittedConsent(ROOT,publicRoot,readFileSync(path.join(publicRoot,'assets/consent.js'))));
     await step('published-secrets', () => { publishedSecrets(publicRoot); return { scanner: 'gitleaks', findings: 0 }; });
     await step('affiliate-census', async () => {
       const { loadGoPromotionAuthority, loadGoSelection } = await import('../src/go-runtime-selection.mjs');

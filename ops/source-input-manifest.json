@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3860,
+  "tracked_file_count": 3865,
   "files": [
     "tests/browser/ga4-diagnostic-containment.spec.mjs",
     "tests/ga4-diagnostic-containment.test.mjs",
@@ -3862,7 +3862,12 @@
     "tests/fixtures/ga4/README.md",
     "tests/fixtures/ga4/gtag.js",
     "tests/glp44-ga4-default-on.test.mjs",
-    "wrangler.toml"
+    "wrangler.toml",
+    "scripts/consent-emitted-binding.mjs",
+    "tests/fixtures/consent-binding/playwright.config.mjs",
+    "tests/fixtures/consent-binding/transform.spec.mjs",
+    "tests/helpers/ga4-storage-oracle.mjs",
+    "tests/helpers/ga4-vm-capabilities.mjs"
   ],
   "exclusions": [
     "new private ClickDealer issued URLs and registry/authority outputs",

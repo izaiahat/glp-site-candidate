@@ -1,9 +1,47 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,mkdtempSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import {createRequire} from 'node:module';
+import os from 'node:os';
+import path from 'node:path';
+import {consentRuntimeSource} from '../src/consent-runtime.mjs';
+test('R1 Node emitted binding survives the real Playwright transform without a browser',()=>{
+ const scratch=mkdtempSync(path.join(os.tmpdir(),'glp-consent-binding-'));
+ try{
+  mkdirSync(path.join(scratch,'public/assets'),{recursive:true});
+  writeFileSync(path.join(scratch,'public/assets/consent.js'),consentRuntimeSource);
+  const cli=createRequire(import.meta.url).resolve('@playwright/test/cli');
+  const result=spawnSync(process.execPath,[cli,'test','--config','tests/fixtures/consent-binding/playwright.config.mjs'],{encoding:'utf8',env:{...process.env,GLP_BINDING_FIXTURE_PUBLIC:path.join(scratch,'public'),GLP_BINDING_FIXTURE_RESULTS:path.join(scratch,'results')}});
+  assert.equal(result.status,0,result.stdout+'\n'+result.stderr);
+  writeFileSync(path.join(scratch,'public/assets/consent.js'),consentRuntimeSource+'\n');
+  const stale=spawnSync(process.execPath,['scripts/consent-emitted-binding.mjs','--public',path.join(scratch,'public')],{encoding:'utf8'});
+  assert.equal(stale.status,1);assert.match(stale.stderr,/emitted bytes differ from registered Node producer/);
+ }finally{rmSync(scratch,{recursive:true,force:true})}
+});
 import {safe,decode,recordGARequest,origin,sdkUrl} from './helpers/ga4-wire-oracle.mjs';
 import {rejectDiagnosticFlags,checkExecutedProvenance} from '../scripts/release-executed-provenance.mjs';
+import {assertGAPositiveStorage} from './helpers/ga4-storage-oracle.mjs';
+test('R1 positive SDK storage oracle rejects unknown and transient owners without filtering',()=>{
+ const healthy={cookie:['_ga','_ga_2WQ42JY0WK','gcs_analytics_consent'].map(name=>({name})),local:[{key:'gcs_tracking_consent_v1'}],session:[]};
+ assertGAPositiveStorage(healthy,[]);
+ for(const area of ['cookie','local','session']){
+  const extra=structuredClone(healthy);extra[area].push(area==='cookie'?{name:'unapproved_ga_side_cookie'}:{key:'unapproved_storage'});
+  const before=JSON.stringify(extra);assert.throws(()=>assertGAPositiveStorage(extra,[]));assert.equal(JSON.stringify(extra),before);
+  assert.throws(()=>assertGAPositiveStorage(healthy,[{area,key:'transient_unknown',operation:'set'}]),/unapproved storage write/);
+ }
+ const missing=structuredClone(healthy);missing.cookie.pop();assert.throws(()=>assertGAPositiveStorage(missing,[]));
+ const duplicate=structuredClone(healthy);duplicate.cookie.push({name:'_ga'});assert.throws(()=>assertGAPositiveStorage(duplicate,[]));
+});
 const healthy=()=>({method:'POST',type:'fetch',url:'https://www.google-analytics.com/g/collect?'+new URLSearchParams({v:'2',tid:'G-2WQ42JY0WK',en:'page_view',dl:origin+'/about/',dt:'Clinic Scout',npa:'1'}),body:'',headers:{},collect:true,forwarded:false});
+test('R1 fixed-device uam and uapv permit only absent or empty fields',()=>{
+ safe([healthy()],'/about/');
+ const blank=healthy();blank.url+='&uam=&uapv=';safe([blank],'/about/');
+ for(const key of ['uam','uapv']){
+  for(const value of ['Pixel','15.0.0','PRIVATE_CANARY']){const r=healthy();r.url+='&'+key+'='+value;assert.throws(()=>safe([r],'/about/'),/fixed-fixture device field/)}
+  const duplicate=healthy();duplicate.url+='&'+key+'=&'+key+'=';assert.throws(()=>safe([duplicate],'/about/'),/duplicate protocol field/);
+ }
+});
 test('R1 duplicate dl regression preserves raw URL/body and refuses query, body and cross-boundary duplicates',()=>{
  safe([healthy()],'/about/');
  for(const make of [r=>r.url=r.url.replace('?', '?dl=https%3A%2F%2Fexample.invalid%2Fsensitive&'),r=>r.body='dl='+encodeURIComponent(origin+'/about/'),r=>{r.url=r.url.replace(/&dl=[^&]*/,'');r.body='dl='+encodeURIComponent(origin+'/private/')+'&dl='+encodeURIComponent(origin+'/about/')}]){

@@ -4,7 +4,7 @@ export const origin='https://glpclinicscout.com';
 export const sdkUrl='https://www.googletagmanager.com/gtag/js?id=G-2WQ42JY0WK&l=gcsGa4Layer';
 // Existing retained pinned-SDK request fields (PR11/PR13); identifiers here are
 // protocol evidence, not anonymity or permission for receiver uses.
-const protocol=new Set('v tid gtm _p gcs gcd npa dma dma_cps cid ul sr uaa uab uafvl uamb uap uaw are frm pscdl _eu _s tag_exp sid sct seg dl dt dr en _fv _nsi _ss _ee _et _tu gaf ir ngs rcb tfd tt'.split(' '));
+const protocol=new Set('v tid gtm _p gcs gcd npa dma dma_cps cid ul sr uam uapv uaa uab uafvl uamb uap uaw are frm pscdl _eu _s tag_exp sid sct seg dl dt dr en _fv _nsi _ss _ee _et _tu gaf ir ngs rcb tfd tt'.split(' '));
 const custom=new Set('ep.ads_data_redaction ep.url_passthrough ep.ae_block_form ep.ae_block_history ep.ae_block_video ep.ae_block_scroll ep.ae_block_outbound_click ep.ae_block_downloads ep.outbound epn.percent_scrolled'.split(' '));
 export function classifyGARequest(row,documentUrl) {
  const u=new URL(row.url);
@@ -39,6 +39,8 @@ export function safe(rows,pagePath) {
  const events=decode(rows);assert.ok(events.length>0,'GA positive event required');
  for(const e of events){
   for(const key of Object.keys(e))assert.ok(protocol.has(key)||custom.has(key),'GA unapproved field: '+key);
+  // Reviewed fixed Chromium fixture: device model and OS version are blank UA-CH values.
+  for(const key of ['uam','uapv'])if(Object.hasOwn(e,key))assert.equal(e[key],'','GA fixed-fixture device field: '+key);
   assert.ok(['page_view','scroll','click','file_download','user_engagement'].includes(e.en),'GA event');
   assert.equal(e.v,'2');assert.equal(e.tid,'G-2WQ42JY0WK');assert.equal(e.dl,origin+pagePath);assert.equal(e.dt,'Clinic Scout');assert.equal(e.dr||'','');assert.equal(e.npa,'1');
   for(const [k,v] of Object.entries(e).filter(([k])=>k.startsWith('ep.ae_block_')))assert.equal(v,'true',k);
