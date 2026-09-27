@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { loadAffiliateLinkMap } from "../../src/affiliate-link-map.mjs";
 import { approvedRetirement } from "./retirement-support.mjs";
 import { expectSurveyHandoff, retakeSurvey, quizAudit } from "./round5-quiz-contract.mjs";
+import { armConsentClickPaintProxy } from "./consent-click-observer.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const BROWSER_ARTIFACTS = path.join(process.env.PLAYWRIGHT_SCRATCH_ROOT || path.join(ROOT, "artifacts", "ultracode"), "browser-existing");
@@ -183,20 +184,40 @@ for (const spec of pages) {
       await expect(page.locator('#gcs-consent button')).toHaveCount(1);
       await expect(page.locator('#gcs-consent input')).toHaveCount(0);
       await expect(consent).toBeVisible();
-      let inpProxy = 0;
-      await consent.evaluate((element) => {
-        window.__gcsInpProxyPromise = new Promise((resolve, reject) => {
-          let started = performance.now();
-          const timer = setTimeout(() => reject(new Error("consent INP proxy did not observe a click within 5s")), 5_000);
-          element.addEventListener("pointerdown", () => { started = performance.now(); }, { once: true });
-          element.addEventListener("click", () => requestAnimationFrame(() => {
-            clearTimeout(timer);
-            resolve(performance.now() - started);
-          }), { once: true });
-        });
-      });
+      // INP proxy starts on pointerdown, not while the native click awaits actionability.
+      await consent.evaluate(armConsentClickPaintProxy);
       await consent.click();
-      inpProxy = await page.evaluate(() => window.__gcsInpProxyPromise);
+      const inpProxy = await page.evaluate(() => window.__gcsInpProxyPromise);
+      if (spec.quiz && width === 1280 && test.info().project.name === "chromium-mobile") {
+        // Regression: an enabled/stable wait longer than the five-second
+        // interaction deadline must not expire the observer before dispatch.
+        const fixture = page.locator("#consent-observer-actionability-regression");
+        await page.evaluate(() => {
+          const button = document.createElement("button");
+          button.id = "consent-observer-actionability-regression";
+          button.type = "button";
+          button.textContent = "Observer actionability regression";
+          button.disabled = true;
+          button.style.cssText = "position:fixed;top:12px;left:12px;z-index:2147483647";
+          button.addEventListener("click", (event) => { button.dataset.nativeClick = String(event.isTrusted); });
+          document.body.appendChild(button);
+        });
+        await fixture.evaluate(armConsentClickPaintProxy);
+        const armedAt = await fixture.evaluate((button) => {
+          setTimeout(() => { button.disabled = false; }, 5_500);
+          return performance.now();
+        });
+        await fixture.click();
+        const observed = await page.evaluate(async () => ({
+          elapsed: performance.now(),
+          inp: await window.__gcsInpProxyPromise,
+        }));
+        expect(observed.elapsed - armedAt).toBeGreaterThan(5_000);
+        expect(observed.inp).toBeGreaterThan(0);
+        expect(observed.inp).toBeLessThan(200);
+        await expect(fixture).toHaveAttribute("data-native-click", "true");
+        await fixture.evaluate((button) => button.remove());
+      }
       await expect(page.locator("html")).toHaveAttribute("data-release", /held|release-ready|staging|live/).catch(async () => {
         await expect(page.locator("meta[name=robots]")).toHaveAttribute("content", /(?:noindex|index)/);
       });
