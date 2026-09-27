@@ -61,4 +61,44 @@ test('GA diagnostics cannot use fetch/image/script after stop; collection and un
   assert.equal(w['ga-disable-G-2WQ42JY0WK'],true);
   denied.window.close();
  }
-});
+ });
+
+ test('GA tag timing /a image diagnostic is denied before native transport without blocking GA',async()=>{
+ const dom=new JSDOM('<head></head><body></body>',{url:'https://glpclinicscout.com/about/',runScripts:'outside-only'});
+ const w=dom.window,native=[],blocked=[];
+ w.fetch=(...args)=>{native.push({kind:'fetch',args});return Promise.resolve({ok:true})};
+ w.navigator.sendBeacon=(...args)=>{native.push({kind:'beacon',args});return true};
+ for(const Constructor of [w.HTMLImageElement,w.HTMLScriptElement]){
+ const descriptor=Object.getOwnPropertyDescriptor(Constructor.prototype,'src');
+ Object.defineProperty(Constructor.prototype,'src',{...descriptor,set(value){native.push({kind:this.tagName,value});descriptor.set.call(this,value)}});
+ }
+ w.GCS_ANALYTICS={enabled:true,measurement_id:'G-2WQ42JY0WK'};
+ w.addEventListener('gcs:ga4-diagnostic-blocked',event=>blocked.push(event.detail));
+ const runtime=w.eval(`(${ga4Transport.toString()})(()=>true)`);
+ try{
+ runtime.load();const sdk=w.document.querySelector('script');
+ assert.equal(sdk.src,'https://www.googletagmanager.com/gtag/js?id=G-2WQ42JY0WK&l=gcsGa4Layer');
+ sdk.dispatchEvent(new w.Event('load'));
+ assert.equal(Array.from(w.gcsGa4Layer).filter(a=>a[0]==='event'&&a[1]==='page_view').length,1);
+ runtime.stop();
+ const diagnostic='https://www.googletagmanager.com/a?v=3&t=l&pid=469033750&cid=G-2WQ42JY0WK&l=L86~GA127';
+ const before=native.length;
+ for(const input of [diagnostic,new w.URL(diagnostic),{url:diagnostic}])await assert.rejects(w.fetch(input),/diagnostic/);
+ assert.equal(w.navigator.sendBeacon(diagnostic,'tag timing'),false);
+ new w.Image(1,1).src=diagnostic;
+ const image=w.document.createElement('img');image.setAttribute('src',diagnostic);
+ const script=w.document.createElement('script');script.src=diagnostic;
+ script.setAttribute('SRC',diagnostic);
+ assert.equal(native.length,before,'no diagnostic reached a native transport/CSP');
+ assert.equal(image.hasAttribute('src'),false);assert.equal(script.hasAttribute('src'),false);
+ assert.equal(blocked.length,8);assert.ok(blocked.every(e=>e.endpoint==='/a'&&Object.keys(e).sort().join(',')==='endpoint,transport'));
+ // Same host/path with a non-timing selector and the real collection lane remain available.
+ const control='https://www.googletagmanager.com/a?v=3&t=other';
+ new w.Image().src=control;
+ assert.equal(native.at(-1).value,control);
+ const collect='https://www.google-analytics.com/g/collect?en=page_view';
+ const options={method:'POST',keepalive:true,body:'original-held-event'};
+ assert.equal((await w.fetch(collect,options)).ok,true);
+ assert.deepEqual(native.at(-1).args,[collect,options]);
+ }finally{dom.window.close()}
+ });

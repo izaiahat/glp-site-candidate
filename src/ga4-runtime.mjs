@@ -23,7 +23,10 @@ export function ga4Transport(allowed) {
     function diagnostic(input){
       let url;try{url=new URL(typeof input==='string'?input:input?.url??String(input),location.href)}catch{return null}
       if(url.origin!=='https://www.googletagmanager.com')return null;
-      return url.pathname==='/td'||(url.pathname==='/gtag/js'&&url.searchParams.has('is_td'))?url.pathname:null;
+      // Pinned SDK's sampled tag-timing telemetry uses /a?v=3&t=l via an
+      // image (and may use another transport); it is not GA /g/collect.
+      return url.pathname==='/td'||(url.pathname==='/gtag/js'&&url.searchParams.has('is_td'))||
+        (url.pathname==='/a'&&url.searchParams.get('t')==='l')?url.pathname:null;
     }
     function blocked(input,transport){
       const endpoint=diagnostic(input);if(!endpoint)return false;
