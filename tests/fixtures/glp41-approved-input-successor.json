@@ -1,12 +1,21 @@
 {
   "schema": "glp41-approved-input-successor-v1",
-  "authority": "GLP-41 operator assignment: reconcile approved Sep-16 evidence refresh and Sep-24 all network-approved providers live; D1/D3 approved 2026-09-25",
-  "source_head": "f3e907606a3d37850d492b1a9aa1f718d926dda8",
+  "authority": "Current coordinator exact-source-adoption grant: reports/ops/glp270-breeze-adoption-authorization-20260927/RESULT.json (SHA-256 898665af6a2cfe2f1ea0ce816ac72d6d231a4230f894cb26780983228acde9ae). This is not an operator signature, standing repin permission or release approval.",
+  "source_head": "852d420e1d31569acb84d5e3f8eff68e550c6224",
+  "provenance": {
+    "immediate_predecessor_sha256": "b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b",
+    "prior_fixture_git_ref": "852d420e1d31569acb84d5e3f8eff68e550c6224:tests/fixtures/glp41-approved-input-successor.json",
+    "prior_fixture_sha256": "cf69c4a669062ff57f78d25094315f65295c50e72d6707ee8cd284e853c0de86",
+    "independent_data_review": "reports/ops/glp270-breeze-candidate-review-20260927/INDEPENDENT-REVIEW.json",
+    "independent_data_review_sha256": "69f9cb9313589f4daa89fb311b52020a18e51641bf2c5ed4713c993a4584f89d",
+    "independent_data_verdict": "APPROVE_EXACT_INPUT_REVIEW_ONLY",
+    "review_scope": "Exact five-leaf Breeze registry transition at source_head only; the separate coordinator grant authorizes this fixture/disposition update. Final fixture/disposition review remains required before merge; no external review or final composition acceptance is claimed."
+  },
   "inputs": {
     "data/program-registry.json": {
       "before_sha256": "bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6",
-      "after_sha256": "b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b",
-      "reason": "The old K10 listing pin predates the accepted registry/evidence refresh and operator-approved live cohort. These are the exact unchanged PR-head registry bytes, not a renderer-derived cohort or newly minted evidence date. Commercial eligibility still requires current promotion authority; no historical ledger or external pin is edited."
+      "after_sha256": "139ead035992abe19e0e5c99830869c72274931ca4d7280dd65c3f1e6e241f86",
+      "reason": "Adopt only the independently reviewed Breeze taxonomy successor from the immediate predecessor recorded above, under the new coordinator grant. The immutable K10 before hash remains unchanged; the prior fixture and its historical authority remain in Git, not copied as approval of these later bytes. Registry bytes equal the reviewed source head. Pharmacy/fact pins, guard code, historical receipts and provider holds are unchanged. No commercial activation, other evidence-clock renewal, general future repin, final composition or release approval is supplied."
     }
   }
 }
