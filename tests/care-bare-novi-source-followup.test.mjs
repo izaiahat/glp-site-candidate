@@ -5,6 +5,7 @@ import {join} from 'node:path';
 import { bindCareFastpath } from '../scripts/bind-care-fastpath-contract.mjs';
 import { createHash } from 'node:crypto';
 import { normalizedTaxonomySha256, reconcileTherapeuticTaxonomyWireIn } from '../src/therapeutic-taxonomy.mjs';
+import { normalizedProfileSha256, validateProviderDynamicProfiles, deriveDynamicFacetCounts } from '../src/provider-dynamic-profiles.mjs';
 
 const read = path => fs.readFileSync(new URL('../' + path, import.meta.url));
 const registry = JSON.parse(read('data/program-registry.json'));
@@ -22,7 +23,18 @@ test('Care Bare corrects only active brand projections and does not erase histor
     assert.deepEqual(tags.delivery_form_tags, ['injectable', 'oral']);
     assert.deepEqual(tags.treatment_type_tags, ['compounded']);
   }
-  assert.ok(!profile.evidence_bindings.some(binding => binding.fields?.includes('taxonomy.brand_name_tags')));
+  const assessment = profile.evidence_bindings[1];
+  assert.deepEqual(assessment.fields, ['taxonomy.brand_name_tags', 'verified_as_of']);
+  assert.deepEqual(program.research_dynamic_profile.evidence_bindings[0].fields.includes('taxonomy.brand_name_tags'), true);
+  assert.equal(profile.normalized_sha256, normalizedProfileSha256(profile));
+  assert.equal(profile.normalized_sha256, '0332df9dbd6a0443ea4c01bf4508fa2fc0292d8de01dbd82e58a84eb1628288a');
+  const validated = validateProviderDynamicProfiles(registry, 'glp-clinic-scout', {asOf: new Date('2026-09-27T12:00:00Z')});
+  assert.equal(validated.profiles.size, 57);
+  assert.deepEqual(validated.counts, deriveDynamicFacetCounts(validated.profiles));
+  assert.equal(validated.counts.mounjaro, 7);
+  // The old parenthetical quote is history, not an affirmative current offering.
+  assert.ok(assessment.evidence_text.includes('(Mounjaro®) in stock'));
+  assert.deepEqual(profile.taxonomy.brand_name_tags, []);
   assert.ok(!taxonomy.evidence_bindings.some(binding => binding.evidence_sha256 === '68baad60813dacfd9096bd4c5adf49da9fd6d6432d0d2405733af032a890793d'));
   assert.ok(profile.evidence_bindings.some(binding => binding.evidence_text?.includes('(Mounjaro®) in stock')));
   assert.deepEqual(Object.keys(policies[id]), ['sources']);
@@ -110,8 +122,12 @@ test('F17 adopts accepted Care registry and refuses preserved predecessor and un
   const run = (candidate, pins) => guard((_name, check) => check(), assert,
     path => path === input ? candidate : path === 'tests/fixtures/glp41-approved-input-successor.json'
       ? Buffer.from(JSON.stringify(pins)) : assert.fail(path), sha);
-  assert.equal(fixture.inputs[input].after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
+  assert.equal(fixture.inputs[input].after_sha256, 'd0bc5c1f702731b2b4fe3450884cf93310e88dcb1f7e7d6e4b33d96f4a3db644');
+  assert.equal(fixture.provenance.previous_care_after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
   assert.doesNotThrow(() => run(read(input), fixture));
+  const stale = structuredClone(fixture);
+  stale.inputs[input].after_sha256 = fixture.provenance.previous_care_after_sha256;
+  assert.throws(() => run(read(input), stale), { code: 'ERR_ASSERTION' });
   const predecessor = structuredClone(fixture);
   predecessor.inputs[input].after_sha256 = fixture.provenance.prior_care_after_sha256;
   assert.equal(predecessor.inputs[input].after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');

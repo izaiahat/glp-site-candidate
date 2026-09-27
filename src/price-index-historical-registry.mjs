@@ -57,6 +57,20 @@ export function historicalPriceIndexRegistry(registry, contentLedger, readBytes 
       throw Error('price_index_historical_identity_drift');
     identity.display_name = 'AgelessRx';
   }
+  // The accepted Care empty brand assessment is current-facing. Restore the
+  // single historical research tag only in this authenticated price-only copy;
+  // top-level evidence attachments and current display tags are untouched.
+  const careRows = restored.programs.filter(p => p.program_id === 'care-bare-rx-glp1-review');
+  if (careRows.length !== 1) throw Error('price_index_historical_care_drift');
+  const care = careRows[0];
+  const careHash = sha(canonical(care));
+  if (careHash === '5d7e8837f04455dc08241b806e8503ffc2a85b5176c6e806b41c168d3eaae71c') {
+    care.research_dynamic_profile.taxonomy.brand_name_tags = ['mounjaro'];
+  } else if (careHash !== '69675f975e3a24197cca38b162955da64952ccf565bdf05c842263e9d724508b') {
+    throw Error('price_index_historical_care_drift');
+  }
+  if (sha(canonical(care)) !== '69675f975e3a24197cca38b162955da64952ccf565bdf05c842263e9d724508b')
+    throw Error('price_index_historical_care_drift');
   const body = structuredClone(restored);
   delete body.therapeutic_taxonomy;
   delete body.provider_dynamic_profiles;

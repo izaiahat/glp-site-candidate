@@ -21,6 +21,18 @@ test('GLP-234 F3 exact identity successor reconstructs only the historical price
   assert.equal(target(historical).display_name, 'AgelessRx');
   assert.equal(target(registry).display_name, 'Try Ageless');
   assert.deepEqual({registry, ledger}, before);
+  const care = r => r.programs.find(row => row.program_id === 'care-bare-rx-glp1-review');
+  assert.deepEqual(care(registry).research_dynamic_profile.taxonomy.brand_name_tags, []);
+  assert.deepEqual(care(historical).research_dynamic_profile.taxonomy.brand_name_tags, ['mounjaro']);
+  assert.deepEqual(registry.provider_dynamic_profiles.profiles['care-bare-rx-glp1-review'].taxonomy.brand_name_tags, []);
+  assert.deepEqual(registry.therapeutic_taxonomy.programs['care-bare-rx-glp1-review'].brand_name_tags, []);
+  const priceBody = structuredClone(historical);
+  for (const key of ['therapeutic_taxonomy', 'provider_dynamic_profiles', 'consumer_therapeutic_authorities']) delete priceBody[key];
+  const canonical = value => Array.isArray(value) ? `[${value.map(canonical).join(',')}]`
+    : value && typeof value === 'object' ? `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${canonical(value[key])}`).join(',')}}`
+    : JSON.stringify(value);
+  assert.equal(sha(canonical(priceBody)), 'f9a8ce57165d5a014fe623c820a4ab90313d4c5679c4d079e6703a7e2df8f234');
+  assert.deepEqual(historical, historicalPriceIndexRegistry(historical, ledger));
   const retained = structuredClone(registry);
   target(retained).display_name = 'AgelessRx';
   assert.deepEqual(historical, historicalPriceIndexRegistry(retained, ledger));
@@ -38,6 +50,17 @@ test('GLP-234 F3 exact identity successor reconstructs only the historical price
     edit(invalid);
     assert.throws(() => historicalPriceIndexRegistry(invalid, ledger), /price_index_historical_(identity|registry)_drift/);
   }
+  for (const edit of [
+    r => { care(r).display_name = 'Unapproved Care identity'; },
+    r => { care(r).research_dynamic_profile.taxonomy.brand_name_tags = ['wegovy']; },
+    r => { care(r).research_dynamic_profile.evidence_bindings[0].evidence_text += ' unapproved'; },
+  ]) {
+    const invalid = structuredClone(registry); edit(invalid);
+    assert.throws(() => historicalPriceIndexRegistry(invalid, ledger), /price_index_historical_care_drift/);
+  }
+  const changedHistorical = structuredClone(historical);
+  care(changedHistorical).research_dynamic_profile.taxonomy.brand_name_tags = ['wegovy'];
+  assert.throws(() => historicalPriceIndexRegistry(changedHistorical, ledger), /price_index_historical_care_drift/);
   const wrongOracle = structuredClone(registry);
   wrongOracle.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256 = '0'.repeat(64);
   assert.throws(() => historicalPriceIndexRegistry(wrongOracle, ledger), /price_index_historical_oracle_invalid/);
@@ -109,9 +132,13 @@ test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and
   const input = 'data/program-registry.json';
   const bytes = read(input);
   const immutable = {data: {[input]: 'bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6'}};
-  assert.equal(pins.inputs[input].after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
+  assert.equal(pins.inputs[input].after_sha256, 'd0bc5c1f702731b2b4fe3450884cf93310e88dcb1f7e7d6e4b33d96f4a3db644');
+  assert.equal(pins.provenance.previous_care_after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
+  assert.equal(pins.provenance.previous_care_fixture_git_ref, 'aa13b69fcbff4f9990b7043702da2fa37756390a:tests/fixtures/glp41-approved-input-successor.json');
+  assert.match(pins.authority, /care-metadata-source-repair-authorization-20260927\/RESULT\.json/);
   assert.equal(pins.status, 'ACCEPTED_EXACT_DATA_SOURCE_ADOPTION_ONLY');
-  assert.match(pins.authority, /care-successor-source-adoption-authorization-20260927\/RESULT\.json/);
+  assert.equal(pins.provenance.source_adoption_grant_sha256, '4c16c5924ad1ed4aaa515f3dc6ed0ca608e79e35ed18377caa181d33c5fc30c2');
+  assert.equal(pins.provenance.metadata_source_grant_sha256, '7bb6931e5ac1ee6e9c9c0b7ed171dc12c56d1fbe1bc8ff2ddbb8a3a644be4f6a');
   assert.equal(pins.provenance.combined_input_review_status, 'ACCEPTED_EXACT_DATA_AT_REVIEWED_HEAD_SOURCE_ADOPTION_ONLY');
   assert.equal(pins.provenance.prior_care_after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
   assert.equal(pins.source_head, 'fc647dc91582f9bb7d0b5321d432480ca16bef1f');
@@ -167,6 +194,10 @@ test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and
   const appended = Buffer.concat([bytes, Buffer.from(' ')]);
   assert.throws(() => runNode(appended), {code: 'ERR_ASSERTION'});
   assert.throws(() => runBrowserInput(appended), /immutable listing oracle/);
+  const staleCare = structuredClone(pins);
+  staleCare.inputs[input].after_sha256 = pins.provenance.previous_care_after_sha256;
+  assert.throws(() => runNode(bytes, staleCare), {code: 'ERR_ASSERTION'});
+  assert.throws(() => runBrowserInput(bytes, staleCare), /immutable listing oracle/);
   const priorCare = structuredClone(pins);
   priorCare.inputs[input].after_sha256 = pins.provenance.prior_care_after_sha256;
   assert.throws(() => runNode(bytes, priorCare), {code: 'ERR_ASSERTION'});

@@ -4463,7 +4463,7 @@
       "retatrutide": 0,
       "wegovy": 16,
       "zepbound": 14,
-      "mounjaro": 8,
+      "mounjaro": 7,
       "oral": 21,
       "injectable": 31,
       "compounded": 42,
@@ -4884,6 +4884,7 @@
             "evidence_sha256": "68baad60813dacfd9096bd4c5adf49da9fd6d6432d0d2405733af032a890793d",
             "evidence_text": "Starting at **$199** \\- compounded **Semaglutide** (Ozempic®) & **Tirzepatide** (Mounjaro®) in stock",
             "fields": [
+              "taxonomy.brand_name_tags",
               "verified_as_of"
             ],
             "source_url": "https://www.carebarerx.com/home2",
@@ -4921,7 +4922,7 @@
             "treatment_type_state": "verified"
           }
         ],
-        "normalized_sha256": "f6dd5c534f1b76e0d2d5f5ab7cc00f045fcc9eb2d41343766f6e3b8ae5826f07"
+        "normalized_sha256": "0332df9dbd6a0443ea4c01bf4508fa2fc0292d8de01dbd82e58a84eb1628288a"
       },
       "coivas": {
         "program_id": "coivas",
