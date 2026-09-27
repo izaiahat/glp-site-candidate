@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'parse5';
 import { loadGoSelection } from '../../src/go-runtime-selection.mjs';
-import {consentRuntimeSource} from '../../src/consent-runtime.mjs';
+import {bindEmittedConsent} from '../../scripts/consent-emitted-binding.mjs';
 import {assertEmittedLoaderSemantics} from '../helpers/ga4-semantic-contract.mjs';
 const semanticReceipts = new Map();
 
@@ -59,9 +59,11 @@ function sourceInventory(route) {
   const bound = src => ({src, sha256: sha(read(new URL(src, 'https://glpclinicscout.com').pathname.slice(1)))});
   expect(read('meta-pixel.js').toString()).toContain('disabled pending governed release integration');
   const emittedConsent=read(new URL(consent, 'https://glpclinicscout.com').pathname.slice(1)).toString();
-  expect(emittedConsent, 'executed emitted consent matches maintained producer').toBe(consentRuntimeSource);
   const digest=sha(emittedConsent);
-  if(!semanticReceipts.has(digest))semanticReceipts.set(digest,assertEmittedLoaderSemantics(emittedConsent));
+  if(!semanticReceipts.has(digest)){
+    const binding=bindEmittedConsent(ROOT,PUBLIC,emittedConsent);
+    semanticReceipts.set(digest,{...assertEmittedLoaderSemantics(emittedConsent),binding});
+  }
   expect(scripts.filter(src=>new URL(src,'https://glpclinicscout.com').hostname==='www.googletagmanager.com')).toEqual([]);
   return {route, html_sha256:sha(bytes), posthog_host:config.host, posthog_enabled:config.enabled,
     google:semanticReceipts.get(digest), meta:'disabled shipped compatibility stub',

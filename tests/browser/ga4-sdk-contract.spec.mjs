@@ -21,12 +21,15 @@ const policyText=readFileSync(process.env.GLP44_SOURCE_TEST==='1'?path.join(ROOT
 const csp=policyText.split('\n').find(l=>l.trim().startsWith('Content-Security-Policy:')).trim().replace(/^Content-Security-Policy:\s*/,'');
 const referrerPolicy=policyText.split('\n').find(l=>l.trim().startsWith('Referrer-Policy:')).trim().replace(/^Referrer-Policy:\s*/,'');
 import {decode,safe,recordGARequest} from '../helpers/ga4-wire-oracle.mjs';
+import {assertGAPositiveStorage,installGAStorageObserver,readGAStorage} from '../helpers/ga4-storage-oracle.mjs';
 async function fixture(browser,info,{gpc=false,pending=false}={}){
  expect(createHash('sha256').update(sdk).digest('hex')).toBe(SHA);
  const device=Object.fromEntries(['viewport','screen','isMobile','hasTouch','deviceScaleFactor'].filter(k=>info.project.use[k]!==undefined).map(k=>[k,info.project.use[k]]));
  const context=await browser.newContext({...device,proxy:{server:`http://127.0.0.1:${proxy.address().port}`,bypass:'<-loopback>'},serviceWorkers:'block',userAgent:'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36'});
  await context.addInitScript(({gpc})=>{Object.defineProperty(navigator,'webdriver',{get:()=>false});Object.defineProperty(navigator,'globalPrivacyControl',{configurable:true,get:()=>gpc});window.__violations=[];document.addEventListener('securitypolicyviolation',e=>window.__violations.push(e.blockedURI));},{gpc});
- const rows=[],requests=[],unknown=[],errors=[];let phase='initial',release,documentUrl;
+ const rows=[],requests=[],unknown=[],errors=[],storageWrites=[],storageSnapshots=[];let phase='initial',release,documentUrl;
+ await context.exposeBinding('__gaStorageWrite',(_,row)=>storageWrites.push({phase,...row}));
+ await context.addInitScript(installGAStorageObserver);
  const barrier=new Promise(r=>release=r);
  // Context-wide routes precede all documents, including popups. Never continue,
  // fetch or forward: public Google bytes are hash-pinned and served from disk.
@@ -42,14 +45,15 @@ async function fixture(browser,info,{gpc=false,pending=false}={}){
  });
  await context.routeWebSocket('**/*',ws=>{unknown.push({websocket:ws.url()});ws.close()});
  const page=await context.newPage();page.on('pageerror',e=>errors.push(String(e)));
- return {context,page,rows,unknown,release,phase:v=>phase=v,
+ return {context,page,rows,unknown,release,storageWrites,phase:v=>phase=v,
+  async storage(label){const snapshot=await readGAStorage(context,page,label);storageSnapshots.push(snapshot);return snapshot},
   async load(route='/about/',referer='https://search.invalid/?q='+canary) {const target=new URL(origin+route+'?q='+encodeURIComponent(canary)+'&gclid='+canary+'&utm_campaign='+canary+'&utm_source='+canary+'&cs_click_id='+canary+'#'+canary);documentUrl=target.origin+target.pathname+target.search;await page.goto(target.href,{referer});await page.evaluate(()=>window.GCSConsentReady);},
   async loaded(){await expect.poll(()=>decode(rows).filter(e=>e.en==='page_view').length).toBe(1)},
   async revoke(){await page.getByRole('link',{name:'Cookie choices',exact:true}).click();expect(await page.evaluate(()=>Array.from(window.gcsGa4Layer).filter(x=>x[0]==='event').map(x=>x[1]))).toEqual(['page_view']);phase='withdrawn';await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();expect(await page.evaluate(()=>window['ga-disable-G-2WQ42JY0WK'])).toBe(true);expect(await page.evaluate(()=>Array.from(window.gcsGa4Layer).filter(x=>x[0]==='consent').at(-1)[2])).toEqual({analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});},
   async close(primaryError){
    if(this.closed)return;this.closed=true;release();let teardownError,violations;
    try{violations=await page.evaluate(()=>window.__violations);expect(unknown).toEqual([]);expect(errors).toEqual([]);expect(violations).toEqual([])}catch(error){teardownError=error}
-   try{await info.attach('ga4-contained-wire',{body:JSON.stringify({sdk_sha256:SHA,consent_file:'assets/consent.js',consent_sha256:createHash('sha256').update(consent).digest('hex'),headers_file:'_headers',headers_sha256:createHash('sha256').update(policyText).digest('hex'),source_only_diagnostic:process.env.GLP44_SOURCE_TEST==='1',probe:process.env.GLP_CONSENT_SOURCE_PROBE==='1',requests,rows,unknown,errors,violations,teardown_error:teardownError?String(teardownError):null}),contentType:'application/json'})}catch(error){teardownError||=error}finally{await context.close().catch(error=>{teardownError||=error})}
+   try{await info.attach('ga4-contained-wire',{body:JSON.stringify({sdk_sha256:SHA,consent_file:'assets/consent.js',consent_sha256:createHash('sha256').update(consent).digest('hex'),headers_file:'_headers',headers_sha256:createHash('sha256').update(policyText).digest('hex'),source_only_diagnostic:process.env.GLP44_SOURCE_TEST==='1',probe:process.env.GLP_CONSENT_SOURCE_PROBE==='1',requests,rows,unknown,errors,violations,storageWrites,storageSnapshots,teardown_error:teardownError?String(teardownError):null}),contentType:'application/json'})}catch(error){teardownError||=error}finally{await context.close().catch(error=>{teardownError||=error})}
    if(teardownError&&!primaryError)throw teardownError;
   }
  };
@@ -57,6 +61,7 @@ async function fixture(browser,info,{gpc=false,pending=false}={}){
 test('GLP44 default-on actual GA SDK minimizes page and enhanced events',async({browser},info)=>{
  const f=await fixture(browser,info);try{
   await f.load();await f.loaded();expect(await f.page.evaluate(()=>window.GCSConsent.read().analytics_basis)).toBe('global_default');
+  assertGAPositiveStorage(await f.storage('positive-pageview'),f.storageWrites);
   await f.page.locator('form a').click();
   await f.page.locator('#out').click();await f.page.locator('#file').click();
   await f.page.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));
@@ -67,6 +72,7 @@ test('GLP44 default-on actual GA SDK minimizes page and enhanced events',async({
   expect(config).toMatchObject({allow_google_signals:false,allow_ad_personalization_signals:false,allow_enhanced_conversions:false,ae_block_form:true,send_page_view:false});
   expect(decode(f.rows).filter(e=>e.en==='page_view')).toHaveLength(1);
   const count=decode(f.rows).length;
+  assertGAPositiveStorage(await f.storage('positive-enhanced-events'),f.storageWrites);
   await f.page.getByRole('textbox',{name:'Private value'}).fill(canary);
   await f.page.getByRole('button',{name:'Submit private form'}).click();
   await f.page.locator('#out').click();await f.page.waitForTimeout(1500);
@@ -81,7 +87,18 @@ test('GLP44 default-on actual GA SDK minimizes page and enhanced events',async({
  // Four additional isolated harness invocations; original /about/ actions above
  // remain intact. Same registered case, all five exact emitted-runtime positives.
  for(const route of ['/','/privacy/','/privacy/cookies/','/terms/']){
-  const f=await fixture(browser,info);try{await f.load(route);await f.loaded();safe(f.rows,route);expect(decode(f.rows).filter(e=>e.en==='page_view')).toHaveLength(1)}catch(error){await f.close(error);throw error}finally{await f.close()}
+  const f=await fixture(browser,info);try{
+   await f.load(route);await f.loaded();assertGAPositiveStorage(await f.storage('positive-pageview'),f.storageWrites);safe(f.rows,route);expect(decode(f.rows).filter(e=>e.en==='page_view')).toHaveLength(1);
+   if(route==='/terms/'){
+    // Actual browser cookie, not a handcrafted snapshot. Keep it in the jar
+    // through teardown; the same positive oracle must reject the extra owner.
+    await f.page.evaluate(()=>{document.cookie='unapproved_ga_side_cookie=1; Path=/; Secure; SameSite=Lax'});
+    const negative=await f.storage('counterexample-undeclared-cookie');
+    expect(negative.cookie.map(c=>c.name)).toContain('unapproved_ga_side_cookie');
+    expect(f.storageWrites.some(r=>r.area==='cookie'&&r.key==='unapproved_ga_side_cookie')).toBe(true);
+    expect(()=>assertGAPositiveStorage(negative,f.storageWrites)).toThrow(/unapproved_ga_side_cookie/);
+   }
+  }catch(error){await f.close(error);throw error}finally{await f.close()}
  }
 });
 test('GLP44 individualized and unclassified routes never load GA or export input events',async({browser},info)=>{

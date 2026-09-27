@@ -2,6 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {consentRuntimeSource as source} from '../src/consent-runtime.mjs';
 import {integrated,assertPrivateLoader,assertHeld,assertEmittedLoaderSemantics,ORIGIN,ID,ORDINARY} from './helpers/ga4-semantic-contract.mjs';
+test('R1 positive producer rejects an actual undeclared-cookie side effect',()=>{
+ const seam="command('event','page_view',{...fields(),send_to:ID});";
+ assert.equal(source.split(seam).length,2,'unique real producer seam');
+ const mutant=source.replace(seam,seam+"document.cookie='unapproved_ga_side_cookie=1; Path=/; Secure; SameSite=Lax';");
+ assertPrivateLoader(integrated(source),'/about/');
+ assert.throws(()=>assertPrivateLoader(integrated(mutant),'/about/'),/unapproved_ga_side_cookie/);
+});
 const saved=(changes={})=>JSON.stringify({version:'gcs-cookie-v4-distinct-purposes',record_type:'preference_only',analytics:'granted',advertising:'granted',...changes});
 for(const route of ORDINARY)test('R1 integrated exact ordinary route '+route,()=>assertPrivateLoader(integrated(source,{url:ORIGIN+route+'?PRIVATE_CANARY#PRIVATE_CANARY'}),route));
 test('R1 each nonredundant eligibility guard independently refuses an otherwise eligible lane',()=>{
