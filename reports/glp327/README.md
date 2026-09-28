@@ -13,6 +13,11 @@ The panel explicitly says **Advertisement · paid placement** and explains that 
 ```sh
 node scripts/glp327-preview.mjs /home/ubuntu/business/reports/ops/glp125-sponsorship-research-20260928/providers.html reports/glp327/preview.html
 node --test tests/sponsor-placement-candidate.test.mjs
+# Under normal browser/heavy admission, capture the two view-only frames and run
+# the source-bound currency-line and screenshot-pixel card-paint regressions:
+node scripts/glp327-capture.mjs /path/to/isolated-report-directory
 ```
+
+The preview-only CSS uses two columns for its two cards rather than inheriting the directory's higher-specificity three-column rule; the excerpt's cards paint eagerly for full-page capture. Neither rule changes `assets/site-p3.css` or production card performance behavior. Keep the original failed screenshots as negative evidence and review the fresh PNGs as well as the measured glyph ranges/pixel regions; a DOM card rectangle alone is insufficient.
 
 The captured `snagrx` then `yucca-health-xentraffic-offer-3117` order is a **capture observation**, not a promise of current rank or availability. Neither the preview nor its screenshots verify complete private-input assembly, live delivery/impressions, advertiser reporting, filtering runtime, mobile production behavior, or sponsor suitability. Independent Fable outward-design acceptance remains open. No deployment or sponsor communication is authorized here.
