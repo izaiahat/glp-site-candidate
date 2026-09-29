@@ -5,6 +5,7 @@ import { renderSponsorPlacementCandidate, SPONSOR_CANDIDATE_ROUTE, SPONSOR_CANDI
 
 const graph = readFileSync(new URL("../src/phase3-page-graph.mjs", import.meta.url), "utf8");
 const preview = readFileSync(new URL("../reports/glp327/preview.html", import.meta.url), "utf8");
+const previewProducer = readFileSync(new URL("../scripts/glp327-preview.mjs", import.meta.url), "utf8");
 test("nonproduction /providers/ slot is opt-in and separate from organic results", () => {
   assert.equal(SPONSOR_CANDIDATE_ROUTE, "/providers/");
   assert.equal(SPONSOR_CANDIDATE_SLOT, "after provider filters, before organic results");
@@ -27,4 +28,12 @@ test("view-only exhibit keeps captured organic card order outside sponsor", () =
   assert.match(preview, /Sources and checked dates/);
   assert.match(preview, /Not a full directory or launch preview/);
   assert.doesNotMatch(preview, /<a\b|<button\b|<form\b|<script\b|<iframe\b|<input\b/i);
+});
+test("mobile excerpt reserves currency width in maintained producer and output", () => {
+  // Shared listing CSS permits arbitrary wraps; the $146 cadence squeezed the
+  // currency to $14 / 6 at 390px. Both the producer and exhibit need the fix.
+  for (const html of [previewProducer, preview]) {
+    assert.match(html, /\.glp327-preview-grid \.p3-source-price\{grid-template-columns:max-content minmax\(0,1fr\)\}/);
+    assert.match(html, /\.glp327-preview-grid \.p3-source-price>strong\{white-space:nowrap;overflow-wrap:normal\}/);
+  }
 });
