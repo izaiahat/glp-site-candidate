@@ -3917,6 +3917,16 @@ main.guide-shell .p3-article-faq .gcs-kicker {
   overflow-wrap: anywhere;
 }
 
+.p3-page .p3-source-price > .p3-price-medication {
+  /* The label must not consume the amount's track in narrow cards. */
+  grid-column: 1 / -1;
+}
+
+.p3-page .p3-source-price > strong {
+  /* Currency and digits are one amount, even in narrow provider-card tracks. */
+  white-space: nowrap;
+}
+
 .p3-page .p3-card-actions {
   min-width: 0;
   max-width: 100%;
