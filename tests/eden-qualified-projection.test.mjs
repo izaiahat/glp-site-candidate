@@ -8,6 +8,7 @@ import {renderComparisonTable, renderProviderCards, renderBestForBox} from '../s
 import {buildPhase4PageData} from '../src/quiz.mjs';
 import {renderMatchesCustomized} from '../src/matches-customized.mjs';
 import {JSDOM} from 'jsdom';
+import {resolveBlogComparisonSpec} from '../src/blog-system.mjs';
 
 const json = relative => JSON.parse(readFileSync(new URL(relative, import.meta.url)));
 const fixture = json('./fixtures/eden-qualified-closure.json');
@@ -109,6 +110,65 @@ test('shared blog/compare table variants display adjacent escaped note only on a
     assert.ok(escaped.includes('Text &amp; &quot;quote&quot; &lt;not-markup&gt;'));
     assert.ok(!escaped.includes('<not-markup>'));
   }
+});
+
+test('registered build blog callers retain canonical qualification on the held reviewer reproduction', () => {
+  const ledger = json('../data/program-content-ledger.json');
+  const before = structuredClone(ledger);
+  // Exact reviewer F1 brief and untouched ledger; no note added to a ledger row.
+  const brief = {comparison_required:true,canonical_path:'/insights/offline-eden-qualification-probe/',
+    comparison_spec:{schema:'blog-comparison-spec-v1',live_link_allowed:false,operator_gate_receipt:null,
+      row_program_ids:[pid,'found-health','yourera-program','trimi-glp-1']}};
+  const build = readFileSync(new URL('../scripts/build-staging.mjs',import.meta.url),'utf8');
+  // Exercise the maintained input block and BOTH real resolver call expressions,
+  // without importing the effectful builder or running any output writers.
+  const start = build.indexOf('  const therapeuticSurfaces = projectTherapeuticSurfaces({');
+  const end = build.indexOf('  const therapeuticProgramIds =',start);
+  assert.ok(start >= 0 && end > start);
+  const calls = [...build.matchAll(/resolveBlogComparisonSpec\(article, [^)]*\)/g)];
+  assert.equal(calls.length,2);
+  const invoke = (input,call) => new Function('projectTherapeuticSurfaces','resolveBlogComparisonSpec',
+    'programRegistry','SITE_PROFILE','canonicalAugmented','canonicalQuiz','contentLedger','article',
+    `${build.slice(start,end)}\nreturn {comparison:${call},programs:therapeuticSurfaces.programs};`)(
+      value => projectTherapeuticSurfaces({...value,asOf}),resolveBlogComparisonSpec,
+      input.registry,profileId,input.pages,input.quizConfig,ledger,brief);
+  const canonical = project(setup()).pages[0].rows.find(row => row.program_id === pid).therapeutic_taxonomy;
+  for (const call of calls) {
+    assert.ok(call.index > end,'resolver dependency must be initialized before its caller');
+    const {comparison:resolved,programs} = invoke(setup(),call[0]);
+    for (const program of programs) {
+      const raw = ledger.programs.find(row => row.program_id === program.program_id);
+      if (program.program_id !== pid) assert.deepEqual(program,raw);
+      else {
+        const {therapeutic_taxonomy,...unchanged} = program;
+        assert.deepEqual(unchanged,raw);
+        assert.deepEqual(therapeutic_taxonomy,canonical);
+      }
+    }
+    const eden = resolved.rows.find(row => row.program_id === pid);
+    assert.deepEqual(eden.therapeutic_taxonomy,canonical);
+    assert.equal(eden.therapeutic_taxonomy.claim_qualification,note);
+    assert.deepEqual(eden.therapeutic_taxonomy.source_urls,fixture.row.source_urls);
+    assert.equal(eden.live_link_allowed,false);
+    assert.equal(eden.promotion_authorized,false);
+    assert.equal(eden.affiliate_href,undefined);
+    for (const control of resolved.rows.filter(row => row.program_id !== pid)) {
+      const raw = ledger.programs.find(row => row.program_id === control.program_id);
+      assert.equal(control.meds_offered,raw.meds_offered);
+      assert.equal(control.therapeutic_taxonomy,undefined);
+    }
+    const dom = new JSDOM(renderComparisonTable(resolved));
+    const row = dom.window.document.querySelector(`tr[data-program="${pid}"]`);
+    const cell = row.querySelector('td[data-label="Medications offered"]');
+    assert.ok(cell.textContent.includes(note));
+    assert.equal(dom.window.document.querySelectorAll('.therapeutic-summary__qualification').length,1);
+    assert.equal(row.querySelector('a[rel*="sponsored"]'),null);
+    dom.window.close();
+    const corrupt = setup();
+    corrupt.registry.therapeutic_taxonomy.programs[pid].claim_qualification += ' altered';
+    assert.throws(() => invoke(corrupt,call[0]),/normalized_hash_mismatch/);
+  }
+  assert.deepEqual(ledger,before);
 });
 
 test('actual Phase4 dataset carries qualification and four-source membership', () => {

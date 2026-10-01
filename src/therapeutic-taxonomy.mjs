@@ -625,7 +625,7 @@ export function therapeuticTokens(row) {
   ])].sort();
 }
 
-export function projectTherapeuticSurfaces({ registry, profileId, pages, quizConfig, asOf = new Date() }) {
+export function projectTherapeuticSurfaces({ registry, profileId, pages, quizConfig, programs = [], asOf = new Date() }) {
   const validated = validateTherapeuticTaxonomy(registry, profileId, { asOf });
   const rawCanonical = canonicalTherapeuticPrograms(registry, profileId, validated.programs);
   const dynamic = validateProviderDynamicProfiles(registry, profileId, { asOf });
@@ -726,6 +726,12 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
   }));
   assertSameSet(surfaceScopedIds(exactIds(candidates, "quiz"), scopedOffIds), quizScopedIds, "quiz");
   return Object.freeze({
+    // Blog ledger records share the SAME validated canonical public taxonomy as
+    // comparison rows; ledger identity, prose, clocks and link flags stay intact.
+    programs: programs.map((program) => {
+      const taxonomy = projectedPrograms.get(String(program.program_id));
+      return taxonomy ? { ...program, therapeutic_taxonomy: publicTaxonomy(taxonomy) } : { ...program };
+    }),
     pages: projectedPages,
     quizConfig: {
       ...quizConfig,
