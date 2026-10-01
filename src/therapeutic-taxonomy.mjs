@@ -107,6 +107,7 @@ export function taxonomyDigestBasis(row) {
     treatment_type_state: row.treatment_type_state,
     commercial_link_state: row.commercial_link_state,
     evidence_bindings: row.evidence_bindings,
+    ...(Object.hasOwn(row, "claim_qualification") ? { claim_qualification: row.claim_qualification } : {}),
   };
 }
 
@@ -498,6 +499,11 @@ export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Da
       fail("registry_binding_mismatch", pid);
     }
     if (typeof row.provider !== "string" || !row.provider.trim()) fail("provider_missing", pid);
+    if (Object.hasOwn(row, "claim_qualification") && (typeof row.claim_qualification !== "string"
+        || row.claim_qualification !== row.claim_qualification.trim() || !row.claim_qualification
+        || row.claim_qualification.length > 2000 || /[<>\u0000-\u001f\u007f]/.test(row.claim_qualification))) {
+      fail("claim_qualification_invalid", pid);
+    }
     for (const field of TAG_FIELDS) sortedUniqueStrings(row[field], ALLOWED[field], field, pid);
     if (row.treatment_type_state !== ((row.treatment_type_tags || []).length ? "verified" : "not_verified")) {
       fail("treatment_type_state_mismatch", pid);
@@ -563,8 +569,11 @@ function canonicalTherapeuticPrograms(registry, profileId, validatedPrograms) {
     const canonicalTaxonomy = validatedPrograms.get(canonicalId);
     if (!canonicalTaxonomy) fail("canonical_projection_taxonomy_missing", canonicalId);
     const merge = (field) => [...new Set(rows.flatMap((row) => row[field] || []))].sort();
+    const qualifications = [...new Set(rows.map(row => row.claim_qualification).filter(Boolean))];
+    if (qualifications.length > 1) fail("canonical_qualification_conflict", canonicalId);
     const projected = {
       ...canonicalTaxonomy,
+      ...(qualifications.length ? {claim_qualification: qualifications[0], source_urls: merge("source_urls")} : {}),
       molecule_tags: merge("molecule_tags"),
       brand_name_tags: merge("brand_name_tags"),
       delivery_form_tags: merge("delivery_form_tags"),
@@ -605,6 +614,7 @@ function publicTaxonomy(row) {
     treatment_type_tags: row.treatment_type_tags,
     treatment_type_state: row.treatment_type_state,
     verified_as_of: row.verified_as_of,
+    ...(row.claim_qualification ? { claim_qualification: row.claim_qualification, source_urls: row.source_urls } : {}),
     normalized_sha256: row.normalized_sha256,
   });
 }
@@ -631,7 +641,9 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
       provider: profile.provider,
       render_label: null,
       verified_as_of: profile.verified_as_of,
-      normalized_sha256: profile.normalized_sha256,
+      normalized_sha256: raw.claim_qualification
+        ? stableSha256({taxonomy_sha256:raw.normalized_sha256, dynamic_profile_sha256:profile.normalized_sha256})
+        : profile.normalized_sha256,
     })];
   }));
   const expectedIds = new Set(projectedPrograms.keys());
