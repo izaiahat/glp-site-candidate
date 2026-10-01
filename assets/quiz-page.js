@@ -311,6 +311,7 @@
     identity.append(logo);
     appendText(identity, "h3", "qz-card-name", record.display_name);
     card.append(identity);
+    if (record.claim_qualification) appendText(card, "p", "qz-card-qualification", record.claim_qualification);
 
     const dose = selectedDoseFor(drug);
     if (dose) appendText(card, "p", "qz-card-context", `Your selected dose: ${dose}${/^\d/.test(dose) ? " mg/week" : ""}.`);

@@ -1,0 +1,31 @@
+name: glp80-qualified-projection
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  focused-exact-head:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Native offline projection and local DOM fixture
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          npm install --no-save --package-lock=false --omit=dev --ignore-scripts --no-audit --no-fund jsdom@26.1.0
+          # Unchanged transitive native-oracle evidence; CI filesystem only.
+          target=/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/D2/D2f/fresh-authority
+          sudo mkdir -p "$target"
+          sudo cp tests/fixtures/eden-consumer-authority/research.md "$target/research.md"
+          sudo cp tests/fixtures/eden-consumer-authority/audit-summary.json "$target/audit-summary.json"
+          node --test tests/eden-qualified-projection.test.mjs
+          git diff --exit-code
