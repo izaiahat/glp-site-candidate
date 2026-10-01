@@ -1,4 +1,9 @@
 {
+  "required_surface_paths": [
+    "/best/online-glp-1-providers/",
+    "/cost/online-glp-1-programs/",
+    "/best/expanded-curated-glp-1-programs/"
+  ],
   "fixture_kind": "offline authentic source replay + synthetic dynamic/price fixture; NOT registry adoption",
   "previous_row": {
     "brand_name_tags": [

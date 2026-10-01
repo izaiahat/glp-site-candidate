@@ -39,7 +39,7 @@ function setup() {
   const registry = {programs:[{program_id:pid,display_name:'Eden',commercial_state:'live',
     profiles:{[profileId]:{vertical_fit:true,wired:true,surfaces:{review:true,compare:true,quiz:true,calculator:true}}}}],
     therapeutic_taxonomy:{schema:'glp-therapeutic-taxonomy-v1',sealed_as_of:date,freshness_max_days:31,
-      required_surface_paths:json('../data/program-registry.json').therapeutic_taxonomy.required_surface_paths,
+      required_surface_paths:fixture.required_surface_paths,
       authorities:fixture.authorities,
       programs:{[pid]:row},expected_counts:deriveFacetCounts({[pid]:row})},
     provider_dynamic_profiles:{schema:'glp-provider-dynamic-profiles-v1',version:1,sealed_as_of:date,
