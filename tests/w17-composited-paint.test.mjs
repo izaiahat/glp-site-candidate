@@ -65,3 +65,34 @@ test('W17 native compositing TEST controls retain original refusal and reject ho
     await browser.close();
   }
 });
+
+test('W17 scrolled native TEST measurement preserves unrelated inputs', async () => {
+  const browser = await chromium.launch();
+  try {
+    const page = await browser.newPage({ viewport: { width: 800, height: 400 }, deviceScaleFactor: 1 });
+    await page.route('**/*', r => r.abort());
+    await page.setContent('<style>body{margin:0;background:black;color:white;font:700 24px Arial}#target{display:block;margin-top:1600px;width:300px;padding:15px}input{display:block}</style><input value="unrelated"><a id="target">Start a provider search</a>');
+    const target = page.locator('#target');
+    await target.scrollIntoViewIfNeeded();
+    assert.ok(await page.evaluate(() => scrollY > 1000));
+    const before = await page.content();
+    const observed = await observeW17CompositedPaint(target);
+    assert.equal(observed.status, 'measured-composited-paint', JSON.stringify(observed));
+    assert.ok(observed.ratio >= 20);
+    assert.equal(await page.content(), before);
+    assert.equal(await page.evaluate(() => CSS.highlights.size), 0);
+    assert.equal(await page.evaluate(() => document.adoptedStyleSheets.length), 0);
+    // Native Range edges can be fractional even at deviceScaleFactor 1.
+    await page.setContent('<style>body{margin:0;background:black;color:white;font:700 32px Arial,sans-serif}#target{display:block;margin-left:30.46875px;width:225px}</style><span id="target">What remains unverified</span>');
+    const fractional = await observeW17CompositedPaint(page.locator('#target'));
+    assert.equal(fractional.status, 'measured-composited-paint', JSON.stringify(fractional));
+    assert.ok(fractional.ratio >= 20);
+    // A different serif font overhangs the actual Range, not merely a
+    // fractional boundary pixel. Its unprobed ink must still fail closed.
+    await page.addStyleTag({ content: 'body{font-family:Georgia,serif}' });
+    const overhang = await observeW17CompositedPaint(page.locator('#target'));
+    assert.equal(overhang.status, 'unsupported-paint');
+    assert.equal(overhang.ratio, null);
+    assert.ok(overhang.unsupported.some(reason => reason.includes('outside sampled text rectangles')));
+  } finally { await browser.close(); }
+});

@@ -5,7 +5,8 @@ import { waitW17Readiness } from './w17-readiness.mjs';
 // probes in the original stacking context using a native Range highlight:
 //   B: transparent glyphs/background; F: transparent glyphs + foreground fill.
 // No element color, visibility, opacity, pseudo, layout or animation is edited.
-// Every complete pixel in the text rectangles contributes to the minimum.
+// Every complete pixel in the text rectangles and every qualified
+// glyph-bearing fractional boundary pixel contributes to the minimum.
 // This is a conservative text-rectangle bound, NOT an exact glyph minimum.
 // https://www.w3.org/TR/css-pseudo-4/#highlight-painting
 export async function observeW17CompositedPaint(target, { capture = async () => {} } = {}) {
@@ -64,10 +65,10 @@ export async function observeW17CompositedPaint(target, { capture = async () => 
       observer.observe(doc, { subtree: true, childList: true, attributes: true, characterData: true });
       return {
         unsupported, color: s.color, rects,
-        clip: { x: Math.floor(Math.min(...rects.map(r => r.left)) + scrollX), y: Math.floor(Math.min(...rects.map(r => r.top)) + scrollY),
-          width: Math.ceil(Math.max(...rects.map(r => r.right)) + scrollX) - Math.floor(Math.min(...rects.map(r => r.left)) + scrollX),
-          height: Math.ceil(Math.max(...rects.map(r => r.bottom)) + scrollY) - Math.floor(Math.min(...rects.map(r => r.top)) + scrollY) },
-        offset: { x: scrollX, y: scrollY },
+        // page.screenshot without fullPage clips in VIEWPORT coordinates.
+        clip: { x: Math.floor(Math.min(...rects.map(r => r.left))), y: Math.floor(Math.min(...rects.map(r => r.top))),
+          width: Math.ceil(Math.max(...rects.map(r => r.right))) - Math.floor(Math.min(...rects.map(r => r.left))),
+          height: Math.ceil(Math.max(...rects.map(r => r.bottom))) - Math.floor(Math.min(...rects.map(r => r.top))) },
         async set(mode) {
           if (mode === 'original') {
             CSS.highlights.delete(name); doc.adoptedStyleSheets = originalSheets;
@@ -87,24 +88,24 @@ export async function observeW17CompositedPaint(target, { capture = async () => 
         restore() { CSS.highlights?.delete(name); doc.adoptedStyleSheets = originalSheets; observer.disconnect(); },
       };
     }, name);
-    const info = await probe.evaluate(p => ({ unsupported: p.unsupported, color: p.color, rects: p.rects, clip: p.clip, offset: p.offset }));
+    const info = await probe.evaluate(p => ({ unsupported: p.unsupported, color: p.color, rects: p.rects, clip: p.clip }));
     result.color = info.color;
     if (info.unsupported.length) { result.unsupported = info.unsupported; return result; }
     // Materialize Chromium's highlight/compositing paint path once before
     // measuring. On a retained blurred pseudo the first foreground highlight
-    // changes raster allocation/rounding even after removal; native captures
+    // changes background rounding even after removal; native captures
     // show subsequent complete cycles are byte-stable. This is a fixed setup
     // sequence, never a retry-until-equal or a pixel-difference tolerance.
     // Keep all style/geometry/mutation guards active and retain setup captures.
     for (const mode of ['foreground', 'background', 'original']) {
       await probe.evaluate((p, mode) => p.set(mode), mode);
-      const bytes = await target.page().screenshot({ clip: info.clip, scale: 'css', animations: 'allow', type: 'png' });
+      const bytes = await target.page().screenshot({ clip: info.clip, scale: 'css', caret: 'initial', animations: 'allow', type: 'png' });
       await capture(`setup-${mode}`, bytes);
     }
     const images = {};
     for (const [label, mode] of [['original', 'original'], ['background', 'background'], ['foreground', 'foreground'], ['foregroundRepeat', 'foreground'], ['backgroundRepeat', 'background'], ['restored', 'original']]) {
       await probe.evaluate((p, mode) => p.set(mode), mode);
-      const bytes = await target.page().screenshot({ clip: info.clip, scale: 'css', animations: 'allow', type: 'png' });
+      const bytes = await target.page().screenshot({ clip: info.clip, scale: 'css', caret: 'initial', animations: 'allow', type: 'png' });
       await capture(label, bytes);
       images[label] = bytes.toString('base64');
     }
@@ -126,12 +127,20 @@ export async function observeW17CompositedPaint(target, { capture = async () => 
       const contrast = (a, b) => { const [al, ah] = interval(a), [bl, bh] = interval(b); return al > bh ? (al + .05) / (bh + .05) : bl > ah ? (bl + .05) / (ah + .05) : 1; };
       let pixels = 0, glyphPixels = 0, solidGlyphPixels = 0, ratio = Infinity, worst = null;
       for (let y = 0; y < info.clip.height; y++) for (let x = 0; x < info.clip.width; x++) {
-        const i = (y * info.clip.width + x) * 4, vx = x + info.clip.x - info.offset.x, vy = y + info.clip.y - info.offset.y;
+        const i = (y * info.clip.width + x) * 4, vx = x + info.clip.x, vy = y + info.clip.y;
         const inside = info.rects.some(r => vx >= r.left && vx + 1 <= r.right && vy >= r.top && vy + 1 <= r.bottom);
         const fg = Array.from(f.slice(i, i + 3)), bg = Array.from(b.slice(i, i + 3)), ink = Array.from(o.slice(i, i + 3));
         if ([f[i + 3], b[i + 3], o[i + 3]].some(v => v !== 255)) throw new Error('unresolved raster alpha');
         const changed = ink.some((v, c) => v !== bg[c]);
-        if (!inside) { if (changed) throw new Error('glyph or coupled paint outside sampled text rectangles'); continue; }
+        // Range metrics can bisect a pixel whose glyph AND highlight fill
+        // Chromium paints (observed at the left edge of a heading W). Include
+        // those glyph-bearing boundary pixels in both the contrast minimum
+        // and the strict endpoint check; never discard their contrast or add
+        // a positional tolerance. Blank fractional fringe isn't a full probe.
+        if (!inside) {
+          if (!changed) continue;
+          if (!info.rects.some(r => vx < r.right && vx + 1 > r.left && vy < r.bottom && vy + 1 > r.top)) throw new Error('glyph or coupled paint outside sampled text rectangles');
+        }
         pixels++;
         const q = contrast(fg, bg);
         if (q < ratio) { ratio = q; worst = { x: vx, y: vy, foreground: fg, background: bg }; }
