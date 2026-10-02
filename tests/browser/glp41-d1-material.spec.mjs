@@ -63,7 +63,9 @@ test('F25 each comparable card exposes its current price quote and capture date'
       await evidence.locator('summary').click();
       await expect(evidence.locator('blockquote')).toHaveText(row.quote);
       await expect(evidence.locator('blockquote')).toBeVisible();
-      await expect(evidence.locator('time')).toHaveAttribute('datetime', row.captured_on);
+      // D35: LP dates stay exact machine-readable provenance; the visible
+      // freshness window belongs to the route, not every card.
+      await expect(evidence.locator('..')).toHaveAttribute('data-source-checked', row.captured_on);
       await expect(evidence.locator('a')).toHaveAttribute('href', row.source_url);
     }
   }
@@ -101,7 +103,8 @@ test('F25 multi-medication directory and previews bind visible price labels to m
       const row = matrix[id].medications.find(row => row.medication_id === med);
       await expect(price.locator('.p3-price-medication')).toHaveText(row.display_label || row.label);
       await expect(price.locator('strong')).toHaveText('$'+row.ongoing_usd.toLocaleString('en-US'));
-      await expect(price.locator('time')).toHaveAttribute('datetime', row.captured_on);
+      if (route === '/providers/') await expect(price.locator('time')).toHaveAttribute('datetime', row.captured_on);
+      else await expect(price).toHaveAttribute('data-source-checked', row.captured_on);
       await expect(price.locator('blockquote')).toHaveText(row.quote);
       expect(await price.innerHTML()).toBe(await card.locator(`.p3-source-price[data-medication="${med}"]`).innerHTML());
     }

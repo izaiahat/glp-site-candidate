@@ -12,7 +12,7 @@ const slice = source.slice(source.indexOf("async function captureNewsletter()"),
 const sha = x => createHash("sha256").update(x).digest("hex");
 test("final link-through receipt binds all four organic islands without duplicate LP fragments",async()=>{
  const receipt=JSON.parse(await readFile(new URL("../artifacts/ops/paid-quiz-build.json",import.meta.url),"utf8"));
- assert.equal(receipt.architecture,"fable-r2-link-to-unchanged-organic-quiz");
+ assert.equal(receipt.architecture,"fable-v5-link-to-unchanged-organic-quiz");
  assert.deepEqual(receipt.fragment_sha256,{});
  assert.equal(Object.keys(receipt.organic_data_sha256).length,4);
  const built=await readFile(new URL('../public/quiz/provider-fit/index.html',import.meta.url),'utf8');

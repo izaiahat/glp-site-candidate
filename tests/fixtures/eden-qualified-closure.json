@@ -1,0 +1,218 @@
+{
+  "required_surface_paths": [
+    "/best/online-glp-1-providers/",
+    "/cost/online-glp-1-programs/",
+    "/best/expanded-curated-glp-1-programs/"
+  ],
+  "fixture_kind": "offline authentic source replay + synthetic dynamic/price fixture; NOT registry adoption",
+  "previous_row": {
+    "brand_name_tags": [
+      "mounjaro",
+      "wegovy",
+      "zepbound"
+    ],
+    "classification_state": "B2_STAGE5_EXACT_EVIDENCE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "b2_stage5_eden_xentraffic_offer_3051",
+        "authority_sha256": "049cc529f5684355427d643285a3750e40948ab38ce8e7e1f2805a630bb45181",
+        "evidence_sha256": "58ecdf273b1ead4649671d231254729626fc20886f5a94d0b381a8014cabb15a",
+        "source_url": "https://www.eden.health/policies/terms-of-service",
+        "verified_as_of": "2026-08-31"
+      },
+      {
+        "authority": "b2_stage5_eden_xentraffic_offer_3051",
+        "authority_sha256": "049cc529f5684355427d643285a3750e40948ab38ce8e7e1f2805a630bb45181",
+        "evidence_sha256": "1c346558b25431f13f1903c1202948e6332e651c5bcd7729eff943e654ab682e",
+        "source_url": "https://www.eden.health/weight-loss",
+        "verified_as_of": "2026-08-31"
+      },
+      {
+        "authority": "b2_stage5_eden_xentraffic_offer_3051",
+        "authority_sha256": "049cc529f5684355427d643285a3750e40948ab38ce8e7e1f2805a630bb45181",
+        "evidence_sha256": "c898fd98135baf1525c065ad5541c397a82f9e14912f52cb0408a7a1d70dd339",
+        "source_url": "https://www.eden.health/treatment/glp-1-treatments",
+        "verified_as_of": "2026-08-31"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "2bbb5f61de2c364e3ccfa94f3cef31fae895671c903b1ab3d86c5a929dac6db8",
+    "program_id": "eden-xentraffic-offer-3051",
+    "provider": "Eden",
+    "registry_program_id": "eden-xentraffic-offer-3051",
+    "render_label": null,
+    "source_urls": [
+      "https://www.eden.health/policies/terms-of-service",
+      "https://www.eden.health/treatment/glp-1-treatments",
+      "https://www.eden.health/weight-loss"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-08-31"
+  },
+  "row": {
+    "brand_name_tags": [
+      "mounjaro",
+      "wegovy",
+      "zepbound"
+    ],
+    "classification_state": "B2_STAGE5_EXACT_EVIDENCE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "fixture_0",
+        "authority_sha256": "9be5f5513193d2d3dbea35cbaa75afd385f4e083361cf4034b4c56125bd31014",
+        "source_url": "https://www.eden.health/treatment/glp-1-treatments",
+        "verified_as_of": "2026-10-01",
+        "evidence_sha256": "9be5f5513193d2d3dbea35cbaa75afd385f4e083361cf4034b4c56125bd31014"
+      },
+      {
+        "authority": "fixture_1",
+        "authority_sha256": "e220c71723c8b1878da1c8ced8e5801bc17f891bea47a483717563b271ac9ca8",
+        "source_url": "https://www.eden.health/treatment/mounjaro",
+        "verified_as_of": "2026-10-01",
+        "evidence_sha256": "e220c71723c8b1878da1c8ced8e5801bc17f891bea47a483717563b271ac9ca8"
+      },
+      {
+        "authority": "fixture_2",
+        "authority_sha256": "ebdeaf86b6b59c8884f5818d60e1efa522aa4c7b298f8cdd8a5ca5aed4662e70",
+        "source_url": "https://www.eden.health/treatment/wegovy",
+        "verified_as_of": "2026-10-01",
+        "evidence_sha256": "ebdeaf86b6b59c8884f5818d60e1efa522aa4c7b298f8cdd8a5ca5aed4662e70"
+      },
+      {
+        "authority": "fixture_3",
+        "authority_sha256": "f90af2d6ed6b770c3a8ef2c4af3b34e9ad311d20e7309c787410674d9228c2ca",
+        "source_url": "https://www.eden.health/treatment/zepbound",
+        "verified_as_of": "2026-10-01",
+        "evidence_sha256": "f90af2d6ed6b770c3a8ef2c4af3b34e9ad311d20e7309c787410674d9228c2ca"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "2bbb5f61de2c364e3ccfa94f3cef31fae895671c903b1ab3d86c5a929dac6db8",
+    "program_id": "eden-xentraffic-offer-3051",
+    "provider": "Eden",
+    "registry_program_id": "eden-xentraffic-offer-3051",
+    "render_label": null,
+    "source_urls": [
+      "https://www.eden.health/treatment/glp-1-treatments",
+      "https://www.eden.health/treatment/mounjaro",
+      "https://www.eden.health/treatment/wegovy",
+      "https://www.eden.health/treatment/zepbound"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-10-01",
+    "claim_qualification": "Reported information: Eden advertises a conditional Zepbound-labelled offering. Its explanatory paragraph names Mounjaro; the medication actually prescribed or supplied has not been verified."
+  },
+  "authorities": {
+    "fixture_0": {
+      "path": "reports/offline-eden/0.json",
+      "sha256": "9be5f5513193d2d3dbea35cbaa75afd385f4e083361cf4034b4c56125bd31014"
+    },
+    "fixture_1": {
+      "path": "reports/offline-eden/1.json",
+      "sha256": "e220c71723c8b1878da1c8ced8e5801bc17f891bea47a483717563b271ac9ca8"
+    },
+    "fixture_2": {
+      "path": "reports/offline-eden/2.json",
+      "sha256": "ebdeaf86b6b59c8884f5818d60e1efa522aa4c7b298f8cdd8a5ca5aed4662e70"
+    },
+    "fixture_3": {
+      "path": "reports/offline-eden/3.json",
+      "sha256": "f90af2d6ed6b770c3a8ef2c4af3b34e9ad311d20e7309c787410674d9228c2ca"
+    }
+  },
+  "consumer_authorities": {
+    "freshness_max_days": 30,
+    "molecules": {
+      "retatrutide": {
+        "gate": "positive_provider_evidence_and_all_current_lawful_regulatory_authorities",
+        "local_capture_authority": {
+          "audit_summary": {
+            "audited_at": "2026-09-09T02:48:58.211798",
+            "firecrawl_job_id": "01a0840e-3dfc-76f6-a5e9-93c324ee574f",
+            "path": "reports/ops/orchestration-restore-20260907/PLAN/D2/D2f/fresh-authority/audit-summary.json",
+            "sha256": "77a54ee02361130524bb07b6940c3c75e96af634eaf7bbe2acb3e90bbf51f84a",
+            "status": "RESEARCH_COMPLETE_REQUIRES_EXACT_RECONCILIATION"
+          },
+          "authorities": [
+            {
+              "authority": "fda",
+              "authority_class": "official_federal_regulator",
+              "host": "www.fda.gov",
+              "source_url": "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+            },
+            {
+              "authority": "lilly",
+              "authority_class": "official_developer_first_party",
+              "host": "www.lilly.com",
+              "source_url": "https://www.lilly.com/news/stories/what-to-know-about-retatrutide"
+            }
+          ],
+          "research": {
+            "path": "reports/ops/orchestration-restore-20260907/PLAN/D2/D2f/fresh-authority/research.md",
+            "sha256": "aca5d53141a5e516c94ef621d95d5ffeaa309f4b0a4551327d92c1a16ce2153c"
+          },
+          "schema": "glp-retatrutide-local-capture-authority-v1"
+        },
+        "official_evidence": [
+          {
+            "authority": "fda",
+            "authority_class": "official_federal_regulator",
+            "capture_path": "reports/ops/orchestration-restore-20260907/PLAN/D2/D2f/fresh-authority/audit-summary.json",
+            "capture_sha256": "77a54ee02361130524bb07b6940c3c75e96af634eaf7bbe2acb3e90bbf51f84a",
+            "capture_status": "RESEARCH_COMPLETE_REQUIRES_EXACT_RECONCILIATION",
+            "captured_at": "2026-09-09T02:48:58.211798",
+            "consumer_availability": false,
+            "evidence_sha256": "2db4cda6e4047b3d1f288125c243e98a3345f25ab6fc427c3cfc4d607b3c4d3b",
+            "evidence_text": "Retatrutide cannot be used in compounding under federal law; it is not a component of an FDA-approved drug and has not been found safe and effective for any condition.",
+            "source_host": "www.fda.gov",
+            "source_url": "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+            "verified_as_of": "2026-09-09"
+          },
+          {
+            "authority": "lilly",
+            "authority_class": "official_developer_first_party",
+            "capture_path": "reports/ops/orchestration-restore-20260907/PLAN/D2/D2f/fresh-authority/audit-summary.json",
+            "capture_sha256": "77a54ee02361130524bb07b6940c3c75e96af634eaf7bbe2acb3e90bbf51f84a",
+            "capture_status": "RESEARCH_COMPLETE_REQUIRES_EXACT_RECONCILIATION",
+            "captured_at": "2026-09-09T02:48:58.211798",
+            "consumer_availability": false,
+            "evidence_sha256": "ee5df51e5fe1e65effc3b196c106eb6f2226104ecb4d3fff41e4b7033a273417",
+            "evidence_text": "Retatrutide is investigational, not approved, and legally available only through Lilly-sponsored clinical trials.",
+            "source_host": "www.lilly.com",
+            "source_url": "https://www.lilly.com/news/stories/what-to-know-about-retatrutide",
+            "verified_as_of": "2026-09-09"
+          }
+        ]
+      }
+    },
+    "schema": "glp-consumer-therapeutic-authority-v1",
+    "sealed_as_of": "2026-09-09",
+    "version": 1
+  }
+}

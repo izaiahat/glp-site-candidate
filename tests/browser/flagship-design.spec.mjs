@@ -1,6 +1,11 @@
 import { test, expect } from "@playwright/test";
 import { loadGoSelection } from "../../src/go-runtime-selection.mjs";
 import { isAllowedTrackingHost } from "../../src/tracking-allowed-hosts.mjs";
+import { readFileSync } from 'node:fs';
+import { releaseExportPolicy } from '../../src/candidate-export-policy.mjs';
+const BUILD_STAGE = JSON.parse(readFileSync(new URL('../../artifacts/ops/build-report.json', import.meta.url),'utf8')).release_stage;
+if (!['candidate','production-seal'].includes(BUILD_STAGE) || (process.env.GCS_RELEASE_STAGE && process.env.GCS_RELEASE_STAGE !== BUILD_STAGE)) throw new Error('flagship_build_stage_mismatch');
+const EMITTED_POLICY = releaseExportPolicy(BUILD_STAGE);
 
 const ROUTES = [
   { key: "home", path: "/", surface: ".cs-home2-hero", image: ".cs-home2-cluster__main img", stylesheet: "site-home.css" },
@@ -211,20 +216,15 @@ test("analytics stays held in the candidate, suppresses synthetic runs, and pers
   await page.goto("/", { waitUntil: "networkidle" });
   await page.evaluate(() => window.GCSConsentReady);
   expect(await page.evaluate(() => window.GCS_ANALYTICS)).toEqual({
-    enabled: false,
+    enabled: EMITTED_POLICY.third_party_exports,
     consent: "denied",
     measurement_id: "G-2WQ42JY0WK",
     debug_measurement_id: "G-PY9P5CW2EM",
     operator_gate: "explicit-consent-v3",
     gtm_container_id: "GTM-PWR49VVK",
   });
-  expect(await page.evaluate(() => window.GCS_EXPORT_POLICY)).toEqual({
-    schema: "glp-release-export-policy-v2",
-    stage: "candidate",
-    third_party_exports: false,
-    reason: "local-candidate-export-hold",
-  });
-  expect(await page.evaluate(() => window.GCSConsent.purposes())).toEqual({ analytics: "granted", advertising: "denied" });
+  expect(await page.evaluate(() => window.GCS_EXPORT_POLICY)).toEqual(EMITTED_POLICY);
+  expect(await page.evaluate(() => window.GCSConsent.purposes())).toEqual({ analytics: "granted", advertising: "granted" });
   expect(await page.evaluate(() => window.GCSConsent.allowsExports())).toBe(false);
   await expect(page.locator("#gcs-consent input[type=checkbox]")).toHaveCount(0);
   await expect(page.locator('#gcs-consent [data-consent-open]')).toBeVisible();
@@ -233,10 +233,10 @@ test("analytics stays held in the candidate, suppresses synthetic runs, and pers
   expect(await page.evaluate(() => {
     const saved = JSON.parse(localStorage.getItem("gcs_tracking_consent_v1"));
     return { analytics: saved.analytics, advertising: saved.advertising, record_type: saved.record_type, version: saved.version };
-  })).toEqual({ analytics: "granted", advertising: "denied", record_type: "preference_only", version: "gcs-cookie-v4-distinct-purposes" });
+  })).toEqual({ analytics: "granted", advertising: "granted", record_type: "preference_only", version: "gcs-cookie-v4-distinct-purposes" });
   expect(await page.evaluate(() => window.GCSConsent.effective())).toBe("granted");
   expect(await page.evaluate(() => window.GCSConsent.allowsExports())).toBe(false);
-  expect(await page.evaluate(() => window.GCS_ANALYTICS.enabled)).toBe(false);
+  expect(await page.evaluate(() => window.GCS_ANALYTICS.enabled)).toBe(EMITTED_POLICY.third_party_exports);
   expect(await page.evaluate(() => window.GCS_ANALYTICS.consent)).toBe("denied");
   expect(vendorRequests).toEqual([]);
   await page.reload({ waitUntil: "networkidle" });
@@ -270,7 +270,7 @@ test("analytics stays held in the candidate, suppresses synthetic runs, and pers
     const calls = [];
     window.gtag = (...args) => calls.push(args);
     window.GCS_ANALYTICS = { ...window.GCS_ANALYTICS, enabled: true, consent: "granted" };
-    const allowed = window.GCSAnalytics.event("quiz_complete", {
+    const allowed = window.GCSAnalytics.event("comparison_sort_change", {
       page_slug: "/quiz/provider-fit/",
       email: "must-not-pass@example.com",
       quiz_answers: "must-not-pass",

@@ -5,7 +5,9 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, lstatSync, mkdirSync, writeFileSync, copyFileSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
-import { createRequire } from 'node:module';
+import {createRequire} from 'node:module';
+import {rejectDiagnosticFlags,checkExecutedProvenance} from './release-executed-provenance.mjs';
+import {bindEmittedConsent} from './consent-emitted-binding.mjs';
 const require = createRequire(import.meta.url);
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -80,15 +82,45 @@ export function browserCases(report) {
   for (const suite of report?.suites || []) visit(suite);
   return result;
 }
-export function checkBrowser(report, selection) {
+export function requiredBrowserCases(selection) {
   ensure(selection?.cases?.length > 0 && selection?.projects?.length > 0, 'D1_browser_selection_empty');
-  const expected = selection.cases.flatMap(c => selection.projects.map(project => ({ file: c.file, title: c.title, project })));
+  return selection.cases.flatMap(c => {
+    const projects = c.projects ?? selection.projects;
+    if (c.projects !== undefined) ensure(Array.isArray(projects) && projects.length > 0 &&
+      new Set(projects).size === projects.length && projects.every(p => selection.projects.includes(p)) &&
+      typeof c.applicability === 'string' && c.applicability.length > 0, 'D1_browser_applicability_invalid');
+    return projects.map(project => ({ file: c.file, title: c.title, project }));
+  });
+}
+export function checkBrowser(report, selection) {
+  const expected = requiredBrowserCases(selection);
   const key = row => JSON.stringify([row.file, row.title, row.project]);
   const actual = browserCases(report), wanted = expected.map(key).sort(), got = actual.map(key).sort();
   ensure(new Set(wanted).size === wanted.length && JSON.stringify(wanted) === JSON.stringify(got), 'D1_browser_denominator_mismatch');
   ensure(!report.errors?.length && report.config?.updateSnapshots === 'none', 'D1_browser_report_invalid');
   ensure(actual.every(r => r.expectedStatus === 'passed' && r.status === 'expected' && r.results.length === 1 && r.results[0] === 'passed'), 'D1_required_browser_failure_or_skip');
   return actual;
+}
+
+export function checkSampledDiagnosticProvenance(report, inventory) {
+  const receipts = [], hashes = new Map(inventory.files.map(r => [r.file, r.sha256]));
+  function visit(suite) {
+    for (const spec of suite.specs || []) if (spec.file === 'ga4-diagnostic-containment.spec.mjs') {
+      for (const test of spec.tests || []) {
+        const attachments = (test.results || []).flatMap(r => r.attachments || []).filter(a => a.name === 'ga4-sampled-diagnostic-containment');
+        ensure(attachments.length === 1, 'D1_sampled_receipt_count');
+        const a = attachments[0], receipt = JSON.parse(a.path ? readFileSync(a.path, 'utf8') : Buffer.from(a.body, 'base64').toString());
+        for (const [kind, file] of [['consent', 'assets/consent.js'], ['headers', '_headers']]) {
+          ensure(hashes.has(file) && receipt[kind + '_sha256'] === hashes.get(file), 'D1_sampled_emitted_hash:' + kind);
+        }
+        receipts.push({ project: test.projectName, consent_sha256: receipt.consent_sha256, headers_sha256: receipt.headers_sha256 });
+      }
+    }
+    for (const child of suite.suites || []) visit(child);
+  }
+  for (const suite of report.suites || []) visit(suite);
+  ensure(receipts.length === 1 && receipts[0].project === 'chromium', 'D1_sampled_subject_count');
+  return receipts;
 }
 
 export function checkDispositions(manifest, quarantine) {
@@ -123,6 +155,11 @@ async function main() {
     catch (error) { result.steps.push({ id, status: 'FAIL', error: String(error.message) }); }
     save();
   };
+  const buildLock = path.join(process.env.GLP_PRIVATE_EVIDENCE_ROOT || '', 'scripts/candidate_build_lock.py');
+  // A concurrent PR gate must not be mistaken for this process by the lock's
+  // ALREADY_YOURS path. Admission/release still use the ordinary shared helper.
+  const seat = `rebuild-p13-release-${process.pid}`;
+  let buildLockHeld = false;
   try {
     ensure(git('status', '--porcelain', '--untracked-files=all') === '', 'D1_clean_head_required');
     const config = readJson(path.join(ROOT, 'ops/release-gate.json'));
@@ -130,12 +167,12 @@ async function main() {
     result.nonblocking_diagnostics = readJson(path.join(ROOT, 'ops/test-quarantine.json')).diagnostics;
     result.selection_sha256 = sha(readFileSync(path.join(ROOT, 'ops/release-gate.json')));
     ensure(config.browser.cases.length > 0 && config.browser.projects.length > 0, 'D1_browser_selection_empty');
-    result.required_cases = config.browser.cases.length * config.browser.projects.length;
+    result.required_cases = requiredBrowserCases(config.browser).length;
     const { spawnLogged } = await import('../artifacts/ultracode/tools/qa-common.mjs');
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'host-bootstrap': 250, 'material-contracts': 43, 'harness-negatives': 9, 'go-destination-contracts': 43 };
+      const requiredNodeCounts = { 'care-source-contracts': 9, 'ga4-contracts': 29, 'host-bootstrap': 383, 'material-contracts': 44, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 13 };
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
@@ -148,16 +185,21 @@ async function main() {
     delete process.env.NODE_ENV;
     delete process.env.PLAYWRIGHT_BASE_URL;
     delete process.env.GLP_REVIEW_PUBLIC_ROOT;
-    const buildLock = path.join(process.env.GLP_PRIVATE_EVIDENCE_ROOT || '', 'scripts/candidate_build_lock.py');
-    const seat = 'rebuild-p13-release';
+    rejectDiagnosticFlags(process.env);
+    delete process.env.GLP44_SOURCE_TEST;
+    delete process.env.GLP_CONSENT_SOURCE_PROBE;
     execFileSync('python3', [buildLock, 'acquire', '--seat', seat], {stdio: 'pipe'});
-    try {
-      await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
-      await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
-    } finally {
-      execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
-      result.build_lock_released = true;
-    }
+    buildLockHeld = true;
+    // The host admits one heavy build/browser lane. Keep the same reservation
+    // across generation, artifact verification and browser execution.
+    await command('host-bootstrap', 'bash', ['scripts/ci-bootstrap-gate.sh']);
+    await command('ga4-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp44-ga4-default-on.test.mjs', 'tests/glp44-ga4-r1.test.mjs', 'tests/glp44-ga4-oracles.test.mjs', 'tests/ga4-diagnostic-containment.test.mjs', 'tests/glp44-combined-registration.test.mjs']);
+    await command('care-source-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/care-bare-novi-source-followup.test.mjs', 'tests/s32-successor.test.mjs']);
+    await command('material-contracts', process.execPath, ['--test', '--test-concurrency=1', 'tests/glp41-material-contracts.test.mjs', 'tests/glp234-held-article-output.test.mjs', 'tests/lastmod-declared-routes.test.mjs', 'tests/d2s-carrier-article-retention.test.mjs', 'tests/content-upgrade.test.mjs', 'tests/price-watch-email.test.mjs']);
+    await command('consent-attribution-withdrawal', process.execPath, ['--test', 'tests/consent-attribution-withdrawal.test.mjs']);
+    await command('affiliati-postback-contract', process.execPath, ['--test', '--test-concurrency=1', 'tests/affiliati-postback-contract.test.mjs']);
+    await command('release-export-artifact', process.execPath, ['--test', 'tests/release-export-artifact.test.mjs']);
+    await command('public-name-regression', process.execPath, ['--test', 'tests/skinnyrx-public-name.test.mjs'], { GLP_PUBLIC_NAME_TEST_ROOT: path.join(ROOT, 'public') });
     await command('harness-negatives', process.execPath, ['--test', 'tests/release-gate-harness.test.mjs']);
     await command('go-destination-contracts', process.execPath, ['--test', '--test-concurrency=1', '--test-name-pattern=^(D2s |/go |network constructor |every go manifest |unadopted go |Direct Meds review go |browser instrumentation )', 'tests/funnel-v2-instrumentation.test.mjs', 'tests/d2s-generator-worker-contract.test.mjs']);
     const publicRoot = path.join(ROOT, 'public');
@@ -165,6 +207,7 @@ async function main() {
     result.built_source_sha256 = trackedDigest();
     result.private_registry_sha256 = sha(readFileSync(process.env.GLP_PRIVATE_APPROVED_REGISTRY));
     result.output_before = treeFiles(publicRoot); save();
+    await step('node-consent-emitted-binding',()=>bindEmittedConsent(ROOT,publicRoot,readFileSync(path.join(publicRoot,'assets/consent.js'))));
     await step('published-secrets', () => { publishedSecrets(publicRoot); return { scanner: 'gitleaks', findings: 0 }; });
     await step('affiliate-census', async () => {
       const { loadGoPromotionAuthority, loadGoSelection } = await import('../src/go-runtime-selection.mjs');
@@ -179,6 +222,8 @@ async function main() {
       const raw_held = assertRawHeldOutput(rawHeldOutputCensus(documents, rawHeldInputs(ROOT), GO_RUNTIME_MANIFEST.programs));
       return { ...census, go_identity_anchors: identity.anchors.length, raw_held };
     });
+    const browserLock = JSON.parse(execFileSync('python3', [buildLock, 'require-held', '--seat', seat], {encoding: 'utf8'}));
+    result.steps.push({id:'browser-lock-held',status:'PASS',evidence:browserLock}); save();
     await command('browser', process.execPath, ['artifacts/ultracode/tools/test-browser-nowrite.mjs'], {
       GLP_RELEASE_SELECTION: path.join(ROOT, 'ops/release-gate.json'), PLAYWRIGHT_WORKERS: '1',
       PLAYWRIGHT_PORT: '4296', PLAYWRIGHT_SCRATCH_ROOT: path.join(out, 'browser-scratch'),
@@ -191,6 +236,8 @@ async function main() {
       result.browser_stats = report.stats;
       return checkBrowser(report, config.browser);
     });
+    await step('executed-emitted-provenance', () => checkExecutedProvenance(readJson(path.join(out, 'browser.json')),result.output_before));
+    await step('sampled-diagnostic-emitted-provenance', () => checkSampledDiagnosticProvenance(readJson(path.join(out, 'browser.json')), result.output_before));
     await step('no-egress', () => {
       const receiptPath = path.join(ROOT, 'artifacts/ultracode/browser-nowrite-report.json');
       copyFileSync(receiptPath, path.join(out, 'browser-nowrite-report.json'));
@@ -211,6 +258,14 @@ async function main() {
     result.generated_diff_sha256 = sha(execFileSync('git', ['diff', '--binary'], { cwd: ROOT, maxBuffer: 64 * 1024 * 1024 }));
     result.authority_files = ['data/go-runtime-selection.json', 'data/go-runtime-promotion-authority.json', 'data/tracking-allowed-hosts.json', 'artifacts/ops/build-report.json'].filter(f => existsSync(path.join(ROOT, f))).map(file => ({ file, sha256: sha(readFileSync(path.join(ROOT, file))) }));
   } catch (error) { result.steps.push({ id: 'gate-precondition', status: 'FAIL', error: String(error.message) }); }
+  finally {
+    if (buildLockHeld) {
+      try {
+        execFileSync('python3', [buildLock, 'release', '--seat', seat], {stdio: 'pipe'});
+        result.build_lock_released = true;
+      } catch (error) { result.steps.push({id:'build-lock-release',status:'FAIL',error:String(error.message)}); }
+    }
+  }
   result.status = result.steps.length > 0 && result.steps.every(s => s.status === 'PASS') ? 'PASS' : 'FAIL';
   result.finished_at = new Date().toISOString(); save();
   console.log(JSON.stringify({ head: result.head, status: result.status, failed_requirements: result.steps.filter(s => s.status !== 'PASS').map(s => ({ id: s.id, error: s.error })), receipt: path.join(out, 'gate.json') }, null, 2));

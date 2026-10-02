@@ -2,6 +2,8 @@ import { selectedFamilyStyles } from "../src/selected-family-styles.mjs";
 import { captureLastmodEmission } from "./build-lastmod-provenance.mjs";
 import { resetTrackingAllowedHostsCache } from "../src/tracking-allowed-hosts.mjs";
 import { eligibilityCensus } from "../src/held-eligibility-census.mjs";
+import { projectProviderDisplayLedger } from "../src/provider-display-evidence.mjs";
+import { goCommercialLabels } from "../src/go-commercial-labels.mjs";
 import { execFileSync } from "node:child_process";
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
@@ -37,6 +39,7 @@ import { refreshPriceTracker } from "./refresh-price-tracker.mjs";
 import { buildPriceIndexArtifacts, PRICE_INDEX_ROUTE, rebindPriceIndexShippedHtml } from "../src/price-index.mjs";
 import { readPriceIndexPredecessor } from "../src/price-index-predecessor.mjs";
 import { frozenPriceLedger } from "../src/price-index-nonprice-binding.mjs";
+import { historicalPriceIndexRegistry } from "../src/price-index-historical-registry.mjs";
 import { composePriceWatchIssue, validatePublishedPriceWatchIssue } from "../src/price-watch-email.mjs";
 import { buildMysteryShopArtifacts, loadEvidenceInputs, evidenceLedgerAuthority } from "../src/mystery-shop.mjs";
 import { buildDealArtifacts, resolveDealEvaluationClocks } from "../src/deal-ingestion.mjs";
@@ -126,6 +129,7 @@ const ASSET_VERSION = createHash("sha256").update(Buffer.concat([
   Buffer.from(consentRuntimeSource),
   Buffer.from(candidateExportPolicyMarkup),
 ])).digest("hex").slice(0, 16);
+import { publicProviderNames } from "../src/public-provider-names.mjs";
 const readJson = async (relative) => relative === "provider-page-contracts.json"
   ? loadProviderPageContracts(path.dirname(DATA))
   : JSON.parse(await readFile(path.join(DATA, relative), "utf8"));
@@ -1570,6 +1574,9 @@ async function main() {
   // bytes. Snapshot them from the actual predecessor tree before clearing the
   // candidate, rather than reaching back to a retired historical release.
   let preservedHeaders = (await readDurablePredecessorFile(path.join(PUBLIC, "_headers"), "_headers")).toString("utf8").split("\n# Wave 4 price tracker:")[0].trimEnd();
+  // General document policy also covers transports (such as beacons) that do
+  // not accept per-request referrer options. Leave OAuth-specific blocks intact.
+  preservedHeaders = preservedHeaders.replace(/^(\/\*\n[\s\S]*?Referrer-Policy: )[^\n]+/, '$1no-referrer');
   // The predecessor header is carried forward as source truth, but analytics
   // transport origins are data-driven and must not remain stale forever. Reconcile
   // both CSP directives before the clear so the rebuilt public/_headers is wired.
@@ -1587,9 +1594,12 @@ async function main() {
     rm(PUBLIC, { recursive: true, force: true }),
     rm(OPS, { recursive: true, force: true }),
   ]);
-  const [identity, eligibility, contentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, activationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
+  const [identity, eligibility, rawContentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, activationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
     readJson("identity-registry.json"), readJson("program-page-eligibility.json"), readJson("program-content-ledger.json"), readJson("money-page-specs.json"), readJson("quiz-config.json"), readJson("directory/npi-city-batch.json"), readJson("visual-system.json"), readJson("email-system.json"), readJson("resend-email-machine.json"), readJson("blog/keyword-ownership-map.json"), readJson("blog/content-batch.json"), readJson("blog/content-national-wow-additions.json"), readJson("blog/author-registry.json"), readJson("affiliate-activation-selection.json"), readJson("cost-calculator.json"), readJson("provider-page-contracts.json"), readJson("provider-fastpath-contract.json"), readJson("provider-pricing-matrix.json"), readJson("medication-direct-pricing.json"), readJson("coupon-offers.json"),
   ]);
+  // Keep the hash-pinned price-index ledger untouched, including its in-memory
+  // rows. Renderers use this consumer copy; quiz owns its projection from raw.
+  const contentLedger = { ...rawContentLedger, programs: structuredClone(rawContentLedger.programs).map((row) => projectProviderDisplayLedger(row)) };
   const [phase3GraphConfig, phase3PharmacyInput] = await Promise.all([readJson("phase3-page-graph.json"), readJson("phase3-pharmacy-render-input.json")]);
   reconcileTherapeuticTaxonomyWireIn({
     registry: programRegistry,
@@ -1678,8 +1688,16 @@ async function main() {
     const comparablePriceIds = comparablePriceProviderIds(programRegistry, SITE_PROFILE, {
       asOf: new Date(`${programRegistry.provider_dynamic_profiles.sealed_as_of}T12:00:00Z`),
     });
-    const derivedFor = applyMeritScores(contentLedger.programs, { comparablePriceIds });
+    // Display evidence is not a scoring-input migration. Derive from an isolated
+    // raw-ledger copy, as before GLP-234, and carry only score fields to renderers.
+    const scoringPrograms = structuredClone(rawContentLedger.programs);
+    const derivedFor = applyMeritScores(scoringPrograms, { comparablePriceIds });
+    const scoringById = new Map(scoringPrograms.map((program) => [program.program_id, program]));
     for (const program of contentLedger.programs) {
+      const scored = scoringById.get(program.program_id);
+      for (const key of ['criteria_scores', 'score_basis', 'score_evidence_earned']) {
+        if (Object.hasOwn(scored, key)) program[key] = scored[key];
+      }
       const score = meritScore(program);
       if (score === null) throw new Error(`merit_score_underivable:${program.program_id}`);
       program.score = score;
@@ -1721,10 +1739,16 @@ async function main() {
   ) throw new Error("national_content_release_gate_invalid");
   const nationalArticles = nationalContent.articles.map((article) => ({ ...article, sections: article.sections.map((section) => ({ ...section, heading: section.heading || section.h2 })) }));
   const commercialGuideRoutes = new Set(["/guides/cheapest-glp1/", "/guides/zepbound-coupon/"]);
-  const allArticles = [...blogBatch.articles, ...nationalArticles].map((article) => ({
-    ...article,
-    surface_taxonomy: commercialGuideRoutes.has(article.canonical_path) ? "commercial" : (article.surface_taxonomy || "medical"),
-  }));
+  // Apply the existing consolidation exclusion before review/render, not only
+  // at sitemap emission and shadow-file removal. Retired sources stay in the
+  // evidence/imagery catalogs, but cannot block or enter public article output,
+  // author lists or search. Every non-consolidated article still fails closed.
+  const allArticles = [...blogBatch.articles, ...nationalArticles]
+    .filter((article) => !CONSOLIDATED_SOURCE_ROUTES.has(article.canonical_path))
+    .map((article) => ({
+      ...article,
+      surface_taxonomy: commercialGuideRoutes.has(article.canonical_path) ? "commercial" : (article.surface_taxonomy || "medical"),
+    }));
   const glpArticles = allArticles.filter((article) => articleVertical(article) === "GLP-1");
   const glpGuideArticles = glpArticles.filter((article) => article.canonical_path.startsWith("/guides/"));
   const allOwnership = [...keywordMap.entries];
@@ -1744,15 +1768,6 @@ async function main() {
   if (!editorialAuthor) throw new Error("editorial_team_author_missing");
   const resolveArticleAuthor = () => editorialAuthor;
   const programMap = new Map(contentLedger.programs.map((item) => [item.program_id, item]));
-  for (const article of allArticles) {
-    const owner = allOwnership.find((item) => item.primary_keyword === article.primary_keyword && item.url === article.canonical_path);
-    const comparison = resolveBlogComparisonSpec(article, contentLedger.programs);
-    if (!owner) throw new Error(`blog_article_owner_missing:${article.article_id}`);
-    if (owner.risk_tier !== article.risk_tier) throw new Error(`blog_article_owner_risk_mismatch:${article.article_id}`);
-    const articleReview = reviewBrief(article, resolveArticleAuthor(article));
-    if (articleReview.status !== "PASS") throw new Error(`blog_article_gate:${article.article_id}:${articleReview.reason}`);
-    if (article.comparison_required && !comparison) throw new Error(`blog_article_comparison_missing:${article.article_id}`);
-  }
   if (activationSelection.status !== "APPROVED_FOR_TRANSPARENT_DIRECT_BUILD" || activationSelection.go_route_program_count !== 0 || !Array.isArray(activationSelection.programs) || activationSelection.program_count !== activationSelection.programs.length) throw new Error("affiliate_activation_selection_invalid");
   const sheetAuthorizedIds = new Set(activationSelection.programs.map((program) => program.program_id));
   if (sheetAuthorizedIds.size !== activationSelection.program_count) throw new Error("affiliate_activation_selection_duplicate");
@@ -1783,14 +1798,24 @@ async function main() {
   const fullGoLiveReceipt = activationSelection.operator_gate_receipt_sha256;
   if (!/^[a-f0-9]{64}$/.test(fullGoLiveReceipt)) throw new Error("affiliate_activation_receipt_invalid");
   const canonicalAugmented = projectMoneyPagesFromRegistry(programRegistry, SITE_PROFILE, moneySpecs.pages, contentLedger.programs);
-  const canonicalQuiz = projectQuizFromRegistry(programRegistry, SITE_PROFILE, quizConfig, contentLedger);
+  const canonicalQuiz = projectQuizFromRegistry(programRegistry, SITE_PROFILE, quizConfig, rawContentLedger);
   const therapeuticSurfaces = projectTherapeuticSurfaces({
     registry: programRegistry,
     profileId: SITE_PROFILE,
     pages: canonicalAugmented,
     quizConfig: canonicalQuiz,
+    programs: contentLedger.programs,
   });
   const therapeuticProgramIds = [...therapeuticSurfaces.validated.programs.keys()];
+  for (const article of allArticles) {
+    const owner = allOwnership.find((item) => item.primary_keyword === article.primary_keyword && item.url === article.canonical_path);
+    const comparison = resolveBlogComparisonSpec(article, therapeuticSurfaces.programs);
+    if (!owner) throw new Error(`blog_article_owner_missing:${article.article_id}`);
+    if (owner.risk_tier !== article.risk_tier) throw new Error(`blog_article_owner_risk_mismatch:${article.article_id}`);
+    const articleReview = reviewBrief(article, resolveArticleAuthor(article));
+    if (articleReview.status !== "PASS") throw new Error(`blog_article_gate:${article.article_id}:${articleReview.reason}`);
+    if (article.comparison_required && !comparison) throw new Error(`blog_article_comparison_missing:${article.article_id}`);
+  }
   const suggestions = providerSuggestions(programRegistry, SITE_PROFILE, {
     asOf: new Date(`${programRegistry.provider_dynamic_profiles.sealed_as_of}T12:00:00Z`),
   });
@@ -1846,7 +1871,7 @@ async function main() {
   for (const spec of augmented) spec.coupon_offers_by_program = couponOffersByProgram;
   buildDerivations.coupon_offers = { schema: couponFeed.schema, total: couponFeed.offers.length, active: Object.keys(couponOffersByProgram).length };
   await write("data/coupon-offers.json", JSON.stringify(couponFeed, null, 2) + "\n");
-  const providerLogoManifest = JSON.parse(await readFile(path.join(ROOT, "assets/provider-logos/manifest.json"), "utf8"));
+  const providerLogoManifest = publicProviderNames(JSON.parse(await readFile(path.join(ROOT, "assets/provider-logos/manifest.json"), "utf8")));
   const wordmarkFontMetrics = await readJson("wordmark-font-metrics.json");
   buildDerivations.provider_chip_treatment = decorateProviderChips([...canonicalAugmented, ...therapeuticSurfaces.pages], providerLogoManifest, wordmarkFontMetrics);
   for (const spec of augmented) Object.assign(spec, deriveMoneyPageFreshness(spec));
@@ -1950,9 +1975,12 @@ async function main() {
   if (JSON.stringify(COST_AFFILIATE_EMAIL_MANIFEST) !== JSON.stringify(expectedCostAffiliateEmailManifest)) {
     throw new Error("frozen_cost_affiliate_email_manifest_drift");
   }
-  await write("data/therapeutic-taxonomy.json", JSON.stringify(programRegistry.therapeutic_taxonomy, null, 2) + "\n");
-  for (const spec of augmented) { const key = `money-${routeSlug(spec.path)}`; await write(path.join(spec.path.replace(/^\//, ""), "index.html"), addSharedRuntime(addOg(pageHero(addPriceIndexMoneyLink(addMoneyHero(setRobots(renderMoneyPage(spec, { ...identity, author: editorialAuthor }), "index,follow,max-image-preview:large"))), key, `Comparison overview for ${spec.h1}`), key, spec.h1))); }
-  for (const review of providerReviews) { const key = review.fastpath_contract ? "editorial-evidence-hero" : `review-${routeSlug(review.path)}`; await write(path.join(review.path.replace(/^\//, ""), "index.html"), markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)))); }
+  // Public views are separate from the raw records used by frozen manifests,
+  // semantic hashes and commercial guards. No source evidence is rewritten.
+  const reader = publicProviderNames({ programRegistry, contentLedger, providerPricingMatrix, augmented, projectedQuiz, providerReviews, costCalculator });
+  await write("data/therapeutic-taxonomy.json", JSON.stringify(reader.programRegistry.therapeutic_taxonomy, null, 2) + "\n");
+  for (const spec of reader.augmented) { const key = `money-${routeSlug(spec.path)}`; await write(path.join(spec.path.replace(/^\//, ""), "index.html"), addSharedRuntime(addOg(pageHero(addPriceIndexMoneyLink(addMoneyHero(setRobots(renderMoneyPage(spec, { ...identity, author: editorialAuthor }), "index,follow,max-image-preview:large"))), key, `Comparison overview for ${spec.h1}`), key, spec.h1))); }
+  for (const review of reader.providerReviews) { const key = review.fastpath_contract ? "editorial-evidence-hero" : `review-${routeSlug(review.path)}`; await write(path.join(review.path.replace(/^\//, ""), "index.html"), markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)))); }
   const ready6WithDetailReturns = ready6Editorial.pages.map(page => {
     const record = programRegistry.programs.find(program => program.review_path === page.route);
     const alias = record?.profiles?.['glp-clinic-scout']?.canonical_identity;
@@ -1972,10 +2000,10 @@ async function main() {
   // DESIGN WAVE 2026-08-06: the quiz result cards reuse the compare-tab logo rows,
   // so a logo can never diverge between the two surfaces.
   const quizProviderLogos = {};
-  for (const spec of augmented) for (const row of spec.rows) if (row.logo && !quizProviderLogos[row.program_id]) quizProviderLogos[row.program_id] = row.logo;
-  const quizProviderWordmarks = wordmarkFitsFor(projectedQuiz.candidates, providerLogoManifest, wordmarkFontMetrics);
-  await write("matches/customized/index.html", addSharedRuntime(addOg(renderMatchesCustomized(projectedQuiz, programRegistry, SITE_PROFILE, quizProviderLogos), "quiz-hero", "Customized provider matches · Clinic Scout")));
-  await write("quiz/provider-fit/index.html", addQuizBreadcrumbSchema(addSharedRuntime(addOg(responsiveHero(renderQuiz({ ...projectedQuiz, states: ["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"] }, programRegistry, SITE_PROFILE, quizProviderLogos, quizProviderWordmarks), "quiz-hero"), "quiz-hero", projectedQuiz.h1))));
+  for (const spec of reader.augmented) for (const row of spec.rows) if (row.logo && !quizProviderLogos[row.program_id]) quizProviderLogos[row.program_id] = row.logo;
+  const quizProviderWordmarks = wordmarkFitsFor(reader.projectedQuiz.candidates, providerLogoManifest, wordmarkFontMetrics);
+  await write("matches/customized/index.html", addSharedRuntime(addOg(renderMatchesCustomized(reader.projectedQuiz, reader.programRegistry, SITE_PROFILE, quizProviderLogos), "quiz-hero", "Customized provider matches · Clinic Scout")));
+  await write("quiz/provider-fit/index.html", addQuizBreadcrumbSchema(addSharedRuntime(addOg(responsiveHero(renderQuiz({ ...reader.projectedQuiz, states: ["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"] }, reader.programRegistry, SITE_PROFILE, quizProviderLogos, quizProviderWordmarks), "quiz-hero"), "quiz-hero", projectedQuiz.h1))));
   // Bind the entrance receipt to the organic document just emitted above,
   // including its existing all-state projection, not a second raw quiz render.
   const paidQuiz = renderPaidQuiz(await readFile(path.join(PUBLIC, "quiz/provider-fit/index.html"), "utf8"), ASSET_VERSION);
@@ -1983,7 +2011,7 @@ async function main() {
   for (const asset of paidQuiz.assets) await writeCleanRoom(asset.file, asset.body);
   for (const fragment of paidQuiz.fragments) await writeCleanRoom(fragment.file, fragment.html);
 
-  const costCalculatorHtml = directCalculatorWorkspace(decorateCostCalculatorAffiliateSurface(renderCostCalculator(costCalculator), costCalculator, augmented, programRegistry, activationSelection, SITE_PROFILE));
+  const costCalculatorHtml = directCalculatorWorkspace(decorateCostCalculatorAffiliateSurface(renderCostCalculator(reader.costCalculator), reader.costCalculator, reader.augmented, reader.programRegistry, activationSelection, SITE_PROFILE));
   await write("tools/glp-1-cost-calculator/index.html", addSharedRuntime(addOg(costCalculatorHtml, "money-online-glp-1-programs", costCalculator.h1)));
   for (const article of allArticles) {
     // R2 target release: render Mounjaro from the refreshed catalog row.
@@ -1993,7 +2021,7 @@ async function main() {
     const heroAlt = article.canonical_path === "/guides/best-company-to-get-glp-1/"
       ? "Editorial illustration of paperwork and a magnifying glass on a dark desk."
       : article.images?.[0]?.alt || `Guide overview for ${article.h1}`;
-    const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, resolveBlogComparisonSpec(article, contentLedger.programs), resolveArticleAuthor(article), contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
+    const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, publicProviderNames(resolveBlogComparisonSpec(article, therapeuticSurfaces.programs)), resolveArticleAuthor(article), reader.contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
     const articleGraph = addArticleShareControls(articleVertical(article) === "GLP-1" ? upgradeInsightsArticle(articleBase, article, glpGuideArticles.filter((item) => item.canonical_path !== article.canonical_path && path.join(item.canonical_path.replace(/^\//, ""), "index.html") !== MOUNJARO_COUPON_ROUTE_FILE)) : articleBase);
     const rendered = addSharedRuntime(articleGraph);
     await write(path.join(article.canonical_path.replace(/^\//, ""), "index.html"), articleVertical(article) === "GLP-1" ? markReleaseReady(article.suppress_cta ? rendered : addGuideFunnel(rendered)) : rendered);
@@ -2020,7 +2048,7 @@ async function main() {
   // REBUILD homepage (LAY T1): the ranked strip and the price band are DERIVED
   // from the same ranked comparison and the same machine-written pricing capture
   // the hub renders. Nothing on the homepage is a number somebody typed.
-  const homeSpec = augmented.find((spec) => spec.path === "/best/online-glp-1-providers/") || augmented[0];
+  const homeSpec = reader.augmented.find((spec) => spec.path === "/best/online-glp-1-providers/") || reader.augmented[0];
   const homeMatrixKey = (row) => String(row.review_path || "").replace(/^\/reviews\//, "").replace(/\/$/, "") || row.program_id;
   const homeCheapestOf = (row) => {
     const entry = providerPricingMatrix.providers?.[homeMatrixKey(row)];
@@ -2169,13 +2197,13 @@ async function main() {
     const wallData = await readJson("approved-reader-reviews.json");
     approvedReaderReviews = (wallData.reviews || []).filter((review) => review.status === "approved" && review.entity && review.body);
   } catch {}
-  const homepage = renderHomePage({ blogCount: glpGuideArticles.filter((article) => !PHASE3_INSIGHTS_EXCLUSIONS.has(article.canonical_path)).length, comparisonCount: derivedTallies.COMPARISON_CARD_COUNT, programCount: liveProgramCount, updatedLabel, topPicks, cheapest, railMeds, verdictCards, receiptCards, readerReviews: approvedReaderReviews, reviewPrograms: programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id)), reviewPharmacies: phase3PharmacyInput });
+  const homepage = renderHomePage({ blogCount: glpGuideArticles.filter((article) => !PHASE3_INSIGHTS_EXCLUSIONS.has(article.canonical_path)).length, comparisonCount: derivedTallies.COMPARISON_CARD_COUNT, programCount: liveProgramCount, updatedLabel, topPicks, cheapest, railMeds, verdictCards, receiptCards, readerReviews: approvedReaderReviews, reviewPrograms: reader.programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id)), reviewPharmacies: phase3PharmacyInput });
   await write("index.html", markReleaseReady(addSharedRuntime(addOg(homepage, "home-evidence", "Clinic Scout · Compare what matters before you commit"))));
   const phase3Build = buildPhase3PageGraph({
     graph: phase3GraphConfig,
     pharmacyInput: phase3PharmacyInput,
-    pricingMatrix: providerPricingMatrix,
-    programRegistry,
+    pricingMatrix: reader.providerPricingMatrix,
+    programRegistry: reader.programRegistry,
     homeSpec,
     articles: glpGuideArticles,
     couponOffersByProgram,
@@ -2194,7 +2222,7 @@ async function main() {
       await write(`assets/${payloadFilename}`, payloadText);
       phase3Html = phase3Html.replace(payloadPattern, `<script type="application/json" data-provider-card-payloads data-src="/assets/${payloadFilename}">[]</script>`);
     }
-    const visualPage = upgradePhase3PageVisuals(phase3Html, { family: page.family, route: page.route, graph: phase3GraphConfig, registry: programRegistry });
+    const visualPage = upgradePhase3PageVisuals(phase3Html, { family: page.family, route: page.route, graph: phase3GraphConfig, registry: reader.programRegistry });
     let html = addSharedRuntime(visualPage);
     if (ADS_LP_ROUTE_FILES.has(page.file)) {
       html = optimizePaidLandingPage(html);
@@ -2205,7 +2233,7 @@ async function main() {
     await write(page.file, html);
   }
   const {renderPriceStateComparison}=await import('../src/price-state.mjs');
-  const comparisonStates=renderPriceStateComparison(liveRegistryRows.filter(p=>!providerIdentity.aliasIds.has(p.program_id)).map(p=>{const id=String(p.review_slug||p.program_id),entry=providerPricingMatrix.providers[id];return {id,label:entry?.provider||p.name||p.display_name||id,review_path:p.review_path||`/reviews/${id}/`,entry};}));
+  const comparisonStates=renderPriceStateComparison(publicProviderNames(liveRegistryRows.filter(p=>!providerIdentity.aliasIds.has(p.program_id)).map(p=>{const id=String(p.review_slug||p.program_id),entry=providerPricingMatrix.providers[id];return {id,label:entry?.provider||p.name||p.display_name||id,review_path:p.review_path||`/reviews/${id}/`,entry};})));
   await write("compare/index.html", markReleaseReady(addSharedRuntime(renderPass5ComparisonHub(providerDataAsOf).replace('</main>',comparisonStates+'</main>'))));
   const reviewLogoByProgram = Object.fromEntries((providerLogoManifest.logos || []).map((logo) => [logo.program_id, {
     path: logo.public_path,
@@ -2216,7 +2244,7 @@ async function main() {
     // the white logo tile (measured logo_luminance in the manifest).
     treatment: logo.logo_treatment || "light-chip",
   }]));
-  const reviewHubPrograms = programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id));
+  const reviewHubPrograms = reader.programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id));
   const reviewHubEvidenceDates = [...JSON.stringify({ programs: reviewHubPrograms, pharmacies: phase3PharmacyInput }).matchAll(/\d{4}-\d{2}-\d{2}/g)].map((match) => match[0]);
   // P22 R01 (Fable 2026-09-18): the registry JSON also carries FUTURE dates (a 2028 credential expiry); a modification
   // date can never be later than the data-as-of date, so only dates at or before providerDataAsOf count as evidence.
@@ -2310,7 +2338,16 @@ async function main() {
   await cp(path.join(ROOT, "assets/vendor"), path.join(PUBLIC, "assets/vendor"), { recursive: true });
   await mkdir(path.join(PUBLIC, "assets/fonts"), { recursive: true });
   await cp(path.join(ROOT, "assets/fonts"), path.join(PUBLIC, "assets/fonts"), { recursive: true });
-  await cp(path.join(ROOT, "assets/provider-logos"), path.join(PUBLIC, "assets/provider-logos"), { recursive: true });
+  // Copy image bytes unchanged; serialize only the public label views of the
+  // two JSON assets. Their private/source manifests retain original evidence.
+  const logoJsonNames = new Set(['manifest.json', 'pass2-lp-atlas.json']);
+  await cp(path.join(ROOT, "assets/provider-logos"), path.join(PUBLIC, "assets/provider-logos"), {
+    recursive: true, filter: source => !logoJsonNames.has(path.basename(source)),
+  });
+  for (const name of logoJsonNames) {
+    const source = JSON.parse(await readFile(path.join(ROOT, 'assets/provider-logos', name), 'utf8'));
+    await write(`assets/provider-logos/${name}`, JSON.stringify(publicProviderNames(source), null, 2) + '\n');
+  }
   await cp(path.join(ROOT, "assets/authors"), path.join(PUBLIC, "assets/authors"), { recursive: true });
   // META_PIXEL_RESTORE_V1: root-level static passthrough files. They had no
   // writer at all, so every full rebuild's rm(PUBLIC) dropped them. They are
@@ -2341,7 +2378,10 @@ async function main() {
   await writeOps("wave4-price-tracker-manifest.json", JSON.stringify(wave4PriceTracker.manifest, null, 2) + "\n");
   let priceIndexRegistrySourceSha256 = createHash("sha256").update(programRegistryBytes).digest("hex");
   if (programRegistry.therapeutic_taxonomy) {
-    const priceIndexRegistryBasis = structuredClone(programRegistry);
+    // Authenticate the same historical view as the price-index consumer before
+    // checking its frozen body. Keep current identity/authority out of this
+    // price-only copy and leave programRegistry unchanged for public surfaces.
+    const priceIndexRegistryBasis = historicalPriceIndexRegistry(programRegistry);
     delete priceIndexRegistryBasis.therapeutic_taxonomy;
     delete priceIndexRegistryBasis.provider_dynamic_profiles;
     delete priceIndexRegistryBasis.consumer_therapeutic_authorities;
@@ -2529,7 +2569,7 @@ async function main() {
   await applyWave2Repairs({
     publicDir: PUBLIC,
     indexableRoutes: indexableRoutes.filter((route) => !ready6RouteSet.has(route)),
-    providerReviews,
+    providerReviews: reader.providerReviews,
     // READY6 pages are reasserted from clean-room bytes below, so they are link
     // targets only - but they must BE targets, or the class ships orphaned (G5).
     linkTargetRoutes: [...ready6RouteSet].filter((route) => !aliasReviewRoutes.has(route)),
@@ -2653,9 +2693,9 @@ async function main() {
   // routes this build actually produced. It adds no HTML anchors and changes
   // no page's index/noindex intent.
   await write("assets/search-index.json", buildSearchIndex({
-    augmented,
-    providerReviews,
-    programRegistry,
+    augmented: reader.augmented,
+    providerReviews: reader.providerReviews,
+    programRegistry: reader.programRegistry,
     aliasReviewRoutes,
     glpArticles,
     projectedQuiz,
@@ -2668,7 +2708,8 @@ async function main() {
   const activeGoAnchors = await countPublicGoAnchors(PUBLIC);
   // GO_RUNTIME_PROMOTION_AUTHORITY_V1: missing authority means every route stays held.
   const goPromotionAuthority = loadGoPromotionAuthority(ROOT);
-  const goRuntimeManifest = { schema: "affiliate-worker-staging-v3-registry", program_registry_schema: programRegistry.schema, site_profile: SITE_PROFILE, internal_fallback: "https://glpclinicscout.com/providers/", programs: deriveGoEntriesFromRegistry(programRegistry, SITE_PROFILE, contentLedger.programs, loadAffiliateLinkMap("compare"), goPromotionAuthority) };
+  const commercialLabels = goCommercialLabels(await readJson("affiliate-held-link-manifest.json"));
+  const goRuntimeManifest = { schema: "affiliate-worker-staging-v3-registry", program_registry_schema: programRegistry.schema, site_profile: SITE_PROFILE, internal_fallback: "https://glpclinicscout.com/providers/", programs: deriveGoEntriesFromRegistry(programRegistry, SITE_PROFILE, contentLedger.programs, loadAffiliateLinkMap("compare"), goPromotionAuthority, commercialLabels) };
   await writeOps("worker-manifest.staging.json", manifestJsonText(goRuntimeManifest));
   const frozenGoRuntimePath = path.join(ROOT, "functions", "go", "program-manifest.js");
   const expectedGoRuntime = renderGoRuntimeManifestModule(goRuntimeManifest);

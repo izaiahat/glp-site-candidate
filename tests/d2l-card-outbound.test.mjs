@@ -1,11 +1,19 @@
-import test from 'node:test';
+import test, {after} from 'node:test';
+import {deriveTrackingFixture} from './helpers/derive-tracking-fixture.mjs';
+import {resetTrackingAllowedHostsCache} from '../src/tracking-allowed-hosts.mjs';
 import assert from 'node:assert/strict';
 import { completeGoAuthority } from './fixtures/complete-go-authority.mjs';
 import {resolveCardOutbound} from '../src/card-outbound.mjs';
 import {parseGoQuery} from '../src/worker.mjs';
 
 const program=id=>({program_id:id,commercial_state:'live',go:{entry_state:'transparent_direct',route:'/go/'+id},profiles:{'glp-clinic-scout':{vertical_fit:true,wired:true,surfaces:{compare:true,go:true}}}});
-const link={live:true,affiliate_href:'https://tracking.invalid/exact?opaque=CaseSensitive%2FToken',network:'CJ'};
+const rail=deriveTrackingFixture(['trt-nation','orderlymeds','direct-meds','fixture-routed','network-123']);
+const priorDocument=process.env.GLP_TRACKING_ALLOWED_HOSTS_DOCUMENT;
+process.env.GLP_TRACKING_ALLOWED_HOSTS_DOCUMENT=rail.output;
+resetTrackingAllowedHostsCache();
+after(()=>{if(priorDocument===undefined)delete process.env.GLP_TRACKING_ALLOWED_HOSTS_DOCUMENT;else process.env.GLP_TRACKING_ALLOWED_HOSTS_DOCUMENT=priorDocument;resetTrackingAllowedHostsCache();rail.cleanup();});
+const link={live:true,affiliate_href:`https://${rail.document.programs['fixture-routed'].allowed_hosts[0]}/exact?opaque=CaseSensitive%2FToken`,network:'CJ'};
+const originalHref=link.affiliate_href;
 const fixture={programs:Object.fromEntries(['trt-nation','orderlymeds','direct-meds','fixture-routed','network-123'].map(id=>[id,completeGoAuthority(program(id),link)]))};
 const input=id=>({program:program(id),affiliate:link,promotionAuthority:fixture,pageSlug:'mounjaro',position:'provider-card',rankPosition:2});
 for(const id of ['trt-nation','orderlymeds','direct-meds','fixture-routed'])test(`D2l TEST-only ${id} authorization state controls routing; no identity allowlist`,()=>{
@@ -15,7 +23,7 @@ for(const id of ['trt-nation','orderlymeds','direct-meds','fixture-routed'])test
  for(const authority of [{programs:{}},{programs:{[id]:{...fixture.programs[id],status:'WITHHELD'}}},...['promotion_authorized','constructor_verified','redirector_tos_verified'].map(key=>({programs:{[id]:{...fixture.programs[id],[key]:false}}}))]){
   const direct=resolveCardOutbound({...args,promotionAuthority:authority});assert.equal(direct.mode,'transparent_direct');assert.equal(direct.href,link.affiliate_href);
  }
- assert.equal(link.affiliate_href,'https://tracking.invalid/exact?opaque=CaseSensitive%2FToken');
+ assert.equal(link.affiliate_href,originalHref);
 });
 test('D2l exact canonical identity and route, with canonical-key precedence',()=>{
  const p={...program('network-123'),review_slug:'fixture-routed',go:{entry_state:'transparent_direct',route:'/go/fixture-routed'}};

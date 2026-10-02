@@ -7,17 +7,33 @@ import path from 'node:path';
 import test from 'node:test';
 import { captureLastmodEmission, prepareLastmod, openComparisonInput } from '../scripts/build-lastmod-provenance.mjs';
 import { normalizedHash, resolveRouteLastmod, resolveMaterialDate } from '../scripts/postbuild-aeo-surface.mjs';
+import { loadHistoricalCarrierArticles, renderedCarrierArticle } from '../src/carrier-article-retention.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const pointer = JSON.parse(await readFile('/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/current-content-base.json', 'utf8'));
 const manifestBytes = await readFile(pointer.manifest.path);
 assert.equal(sha(manifestBytes), pointer.manifest.sha256);
 const files = new Map(JSON.parse(manifestBytes).release_rows.map(row => [row.path, row.sha256]));
+const constructorSource = await readFile(new URL('../scripts/build-lastmod-provenance.mjs',import.meta.url),'utf8');
+const localHistoricalBase = constructorSource.includes("const BASE_DIR = path.join(ROOT, 'data/predecessors/content-base');");
+let fixtureReleaseRoot = pointer.release_root, fixtureFiles = files;
+if (localHistoricalBase) {
+  const prefix = 'data/predecessors/content-base/';
+  const historicalPointerBytes = await readFile(path.join(pointer.release_root,prefix,'current-content-base.json'));
+  assert.equal(sha(historicalPointerBytes),files.get(prefix + 'current-content-base.json'));
+  const historicalPointer = JSON.parse(historicalPointerBytes);
+  const historicalManifestBytes = await readFile(path.join(pointer.release_root,prefix,'deployment-manifest.json'));
+  assert.equal(sha(historicalManifestBytes),files.get(prefix + 'deployment-manifest.json'));
+  assert.equal(sha(historicalManifestBytes),historicalPointer.manifest.sha256);
+  fixtureReleaseRoot = historicalPointer.release_root;
+  fixtureFiles = new Map(JSON.parse(historicalManifestBytes).release_rows.map(row => [row.path,row.sha256]));
+}
 const route = '/quiz/provider-fit/';
 const relative = 'public/quiz/provider-fit/index.html';
 async function predecessor(file) {
-  const bytes = await readFile(path.join(pointer.release_root, file));
-  assert.equal(sha(bytes), files.get(file));
+  const control = file.startsWith('data/predecessors/content-base/');
+  const bytes = await readFile(path.join(control ? pointer.release_root : fixtureReleaseRoot, file));
+  assert.equal(sha(bytes), (control ? files : fixtureFiles).get(file));
   return bytes;
 }
 async function fixture(t) {
@@ -28,6 +44,37 @@ async function fixture(t) {
   const source = await readFile(new URL('../scripts/build-lastmod-provenance.mjs', import.meta.url), 'utf8');
   const sources = [...source.match(/const SOURCES = \[([\s\S]*?)\];/)[1].matchAll(/'([^']+)'/g)].map(match => match[1]);
   for (const file of [...sources, 'data/blog/content-batch.json']) await write(file, await predecessor(file));
+  // The retained constructor reads its authenticated predecessor under the
+  // fixture root. Materialize that finite loader closure, not an invented receipt
+  // or a bypass of its mandatory carrier/runtime checks.
+  const prefix = 'data/predecessors/content-base/';
+  const historicalPointerBytes = await predecessor(prefix + 'current-content-base.json');
+  const historicalPointer = JSON.parse(historicalPointerBytes);
+  const historicalManifestBytes = await predecessor(prefix + 'deployment-manifest.json');
+  const historicalReceiptBytes = await predecessor(prefix + 'final-receipt.json');
+  assert.equal(sha(historicalManifestBytes),historicalPointer.manifest.sha256);
+  assert.equal(sha(historicalReceiptBytes),historicalPointer.final_receipt.sha256);
+  const historicalFiles = new Map(JSON.parse(historicalManifestBytes).release_rows.map(row => [row.path,row.sha256]));
+  for (const [name, bytes] of [['current-content-base.json',historicalPointerBytes],
+    ['deployment-manifest.json',historicalManifestBytes],['final-receipt.json',historicalReceiptBytes]]) {
+    await write(prefix + name,bytes);
+  }
+  const closure = new Set(['scripts/postbuild-aeo-surface.mjs','data/page-content-provenance.json',relative,
+    'public/best/ozempic-alternatives/index.html']);
+  for (const carrier of ['ezra-glp-1-reviews','top-rated-glp-1-providers']) {
+    const carrierPath = `data/carrier-articles/${carrier}/manifest.json`;
+    const carrierBytes = await predecessor(prefix + 'release/' + carrierPath);
+    assert.equal(sha(carrierBytes),historicalFiles.get(carrierPath));
+    const carrierManifest = JSON.parse(carrierBytes);
+    for (const file of [carrierPath,carrierManifest.snapshot,...carrierManifest.bindings.map(x => x.path),
+      ...carrierManifest.files.map(x => x.path),'public/' + carrierManifest.relative]) closure.add(file);
+  }
+  for (const file of closure) {
+    assert.ok(file && !path.isAbsolute(file) && !file.split('/').includes('..'));
+    const bytes = await predecessor(prefix + 'release/' + file);
+    assert.equal(sha(bytes),historicalFiles.get(file));
+    await write(prefix + 'release/' + file,bytes);
+  }
   const before = (await predecessor(relative)).toString();
   const html = before.replace('</body>', '<p>Material fixture change</p></body>');
   assert.notEqual(html, before);
@@ -53,7 +100,8 @@ async function fixture(t) {
       declared: doc.routes.includes(route), releaseDate: result.env.GLP_RELEASE_DATE });
     return resolveMaterialDate(route, doc.material_dates?.[route], resolved, result.env.GLP_RELEASE_DATE);
   };
-  return { root, temp, write, before, html, prepare, resolve, recorded, provenance };
+  return { root, temp, write, before, html, prepare, resolve, recorded, provenance,
+    runtimeRoot: localHistoricalBase ? path.join(root,'data/predecessors/content-base/release') : pointer.release_root };
 }
 
 test('LM-1: inert source comment with identical rendered output advances no route', async t => {
@@ -98,7 +146,7 @@ test('LM-3: forged journal, declaration, environment and provenance cannot mint 
   assert.equal(result.env.GLP_LASTMOD_DECLARED_ROUTES, undefined);
   assert.equal(result.env.GLP_LASTMOD_PROVENANCE_REFRESH, undefined);
   assert.equal(result.env.GLP_LASTMOD_DECLARED_ROUTES_FILE, '/dev/stdin');
-  assert.equal(result.env.GLP_LASTMOD_RUNTIME_PREDECESSOR_ROOT, pointer.release_root);
+  assert.equal(result.env.GLP_LASTMOD_RUNTIME_PREDECESSOR_ROOT, f.runtimeRoot);
   assert.notEqual(result.env.GLP_RELEASE_DATE, '2099-01-01');
   assert.equal(f.resolve(result).lastmod, f.recorded.lastmod);
   // The candidate's recorded lastmod is also an untrusted build input.
@@ -128,13 +176,13 @@ test('R36-5: missing, unreadable or incoherent predecessor output never defaults
   await f.write(relative, f.html);
   for (const code of ['ENOENT', 'EACCES']) {
     await assert.rejects(f.prepare({ readPredecessor: async file => {
-      if (file === path.join(pointer.release_root, relative)) throw Object.assign(new Error(code), { code });
+      if (file === path.join(f.runtimeRoot, relative)) throw Object.assign(new Error(code), { code });
       return readFile(file);
     } }), new RegExp(`lastmod_predecessor_unavailable:.*${code}`));
   }
   await assert.rejects(f.prepare({ readPredecessor: async file => {
     const bytes = await readFile(file);
-    return file === path.join(pointer.release_root, relative) ? Buffer.concat([bytes, Buffer.from('drift')]) : bytes;
+    return file === path.join(f.runtimeRoot, relative) ? Buffer.concat([bytes, Buffer.from('drift')]) : bytes;
   } }), /lastmod_predecessor_file_drift/);
   // Incoherent predecessor state is still refused -- by a STRONGER guard than the one people expect.
   // build-lastmod-provenance.mjs:68-70 blocks a route the provenance knows whose file the manifest
@@ -150,7 +198,7 @@ test('R36-5: missing, unreadable or incoherent predecessor output never defaults
   await f.write(`public/${incoherent.slice(1)}index.html`, f.html);
   await assert.rejects(f.prepare({ readPredecessor: async file => {
     const bytes = await readFile(file);
-    if (file !== path.join(pointer.release_root, 'data/page-content-provenance.json')) return bytes;
+    if (file !== path.join(f.runtimeRoot, 'data/page-content-provenance.json')) return bytes;
     const doc = JSON.parse(bytes);
     doc.pages[incoherent] = { ...f.recorded };
     return Buffer.from(JSON.stringify(doc));
@@ -201,13 +249,24 @@ test('regression: verified final HTML, not legacy stage hashes or the candidate 
 test('regression: frozen carrier keeps its exact authenticated provenance record', async t => {
   const f = await fixture(t), carrierRoute = '/guides/ezra-glp-1-reviews/';
   const file = `public/${carrierRoute.slice(1)}index.html`, html = await predecessor(file);
-  await f.write(file, html);
-  await f.write('public/sitemap.xml', `<urlset><url><loc>https://glpclinicscout.com${carrierRoute}</loc></url></urlset>`);
-  const result = await f.prepare();
-  assert.deepEqual(result.provenance.pages[carrierRoute], f.provenance.pages[carrierRoute]);
-  assert.deepEqual(JSON.parse(result.input).routes, []);
-  await f.write(file, Buffer.concat([html, Buffer.from('<p>Unapproved carrier edit</p>')]));
-  await assert.rejects(f.prepare(), /carrier_article_output_drift/);
+  const retained = loadHistoricalCarrierArticles(path.join(f.root, 'data/predecessors/content-base/release')).get(file.slice('public/'.length));
+  assert.deepEqual(retained.bytes, html, 'authentic predecessor bytes, not a new fixture capture');
+  const priorStage=process.env.GCS_RELEASE_STAGE;
+  try {
+    for (const stage of ['candidate','production-seal']) {
+      process.env.GCS_RELEASE_STAGE=stage;
+      const emitted=renderedCarrierArticle(retained,stage);
+      await f.write(file,emitted);
+      await f.write('public/sitemap.xml', `<urlset><url><loc>https://glpclinicscout.com${carrierRoute}</loc></url></urlset>`);
+      const result = await f.prepare();
+      assert.deepEqual(result.provenance.pages[carrierRoute], f.provenance.pages[carrierRoute]);
+      assert.deepEqual(JSON.parse(result.input).routes, stage==='candidate'?[]:[carrierRoute]);
+      await f.write(file, Buffer.concat([emitted, Buffer.from('<p>Unapproved carrier edit</p>')]));
+      await assert.rejects(f.prepare(), /carrier_article_output_drift/);
+    }
+  } finally {
+    if(priorStage===undefined)delete process.env.GCS_RELEASE_STAGE;else process.env.GCS_RELEASE_STAGE=priorStage;
+  }
 });
 
 test('regression: the real detector reads checker-owned stdin without a named declaration file', async t => {

@@ -96,7 +96,9 @@ for (const model of ["us-default-on", "prior-opt-in"]) {
         body: JSON.stringify({ schema: "glp-consent-region-v1", model }),
       }));
       await page.goto("/quiz/provider-fit/", { waitUntil: "domcontentloaded" });
-      await expect.poll(() => page.evaluate(() => window.GCSConsent?.model())).toBe(model);
+      await expect.poll(() => page.evaluate(() => window.GCSConsent?.model())).toBe('global-default-on');
+      await expect(page.locator('#gcs-consent button')).toHaveCount(1);
+      await expect(page.locator('#gcs-consent [data-consent="acknowledge"]')).toHaveText('Got it');
       const notice = page.locator("#gcs-consent");
       await expect(notice).toBeVisible();
       await page.locator('[data-multi="intents"][data-value="SEMAGLUTIDE"]').click();

@@ -239,6 +239,12 @@ main.p3-page.cs-ins-index .inline-capture .cta.lead:is(:hover, :focus-visible) {
   color: #f2f8f4 !important;
 }
 
+/* The shared interaction face is light; keep the resting dark-face label,
+   but use the existing ink-on-accent token when that face changes. */
+.p3-pharm-detail .p3-provider-search-shelf .cs-btn.cs-palette-action:is(:hover, :focus-visible) {
+  color: var(--text-on-accent) !important;
+}
+
 /* Preserve the 44px measured target floor after fractional layout in WebKit. */
 main[data-phase3-route="/providers/"] [data-phase3-provider] a[data-analytics-event="affiliate_click"] {
   min-block-size: 45px;

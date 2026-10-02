@@ -5,6 +5,12 @@ import test from "node:test";
 import { access, readFile } from "node:fs/promises";
 import { READY6_KEYS, READY6_REL, READY6_ROUTES, buildReady6ReviewModels, loadReady6EditorialInputs, renderReady6ReviewPage } from "../src/ready6-editorial.mjs";
 const root=new URL("../",import.meta.url);
+function currentModels(models) {
+ assert.deepEqual(models.map(model=>model.registry_id).sort(), ['awin-128761','katalys-1286','katalys-1304','katalys-1516','katalys-1518','katalys-647'].sort());
+ const retired=models.find(model=>model.registry_id==='katalys-1518');
+ assert.throws(()=>renderReady6ReviewPage(retired), /ready6_current_commercial_hold:katalys-1518/);
+ return models.filter(model=>model!==retired);
+}
 const clone=(inputs)=>({...inputs,contract:structuredClone(inputs.contract),approvedRegistry:structuredClone(inputs.approvedRegistry),sourceBytes:inputs.sourceBytes});
 const visibleWords=(html)=>html.replace(/<script\b[\s\S]*?<\/script>/gi," ").replace(/<style\b[\s\S]*?<\/style>/gi," ").replace(/<[^>]+>/g," ").replace(/&(?:[a-z]+|#\d+);/gi," ").toLowerCase().match(/[a-z0-9$]+(?:-[a-z0-9]+)*/g)||[];
 const editorialWords=(html)=>{const body=html.match(/<main\b[^>]*\bid="main"[^>]*>([\s\S]*?)<\/main>/i);assert.ok(body,"READY6 review must expose a main editorial body");return visibleWords(body[1]);};
@@ -46,12 +52,19 @@ test("silent deindexing, sitemap omission, missing FDA caution, or false deploym
  const deploy=clone(inputs); deploy.contract.publication_policy.deployed=true; assert.throws(()=>buildReady6ReviewModels(deploy),/ready6_publication_policy_invalid/);
 });
 
+test('current commercial denial blocks a historical READY6 model before attribution rendering', async () => {
+ const models=buildReady6ReviewModels(await loadReady6EditorialInputs(root));
+ const retired=models.find(model=>model.registry_id==='katalys-1518');
+ assert.equal(retired.cta.active,true,'historical adjudication remains immutable');
+ assert.throws(()=>renderReady6ReviewPage(retired), /ready6_current_commercial_hold:katalys-1518/);
+});
+
 test("rendered visitor bytes are indexable, attributable, and contain no governance-only candidate semantics",async()=>{
- for(const model of buildReady6ReviewModels(await loadReady6EditorialInputs(root))){ const html=renderReady6ReviewPage(model); assert.match(html,/<meta name="robots" content="index,follow,max-image-preview:large">/); assert.equal((html.match(/data-affiliate-state="active"/g)||[]).length,1); assert.match(html,/data-analytics-event="affiliate_click"/); assert.match(html,/data-page-type="review"/); assert.match(html,/data-link-position="conclusion"/); assert.match(html,/data-sub1="1R"/); assert.match(html,/data-sub2="review-[^"]+"/); const selected=loadGoSelection(root).programs[model.registry_id]; if(selected?.status==='VERIFIED'){assert.match(html,/data-funnel-v2-go/);assert.ok(html.includes(selected.route+'?s=reviews.rv2&amp;v=a'));assert.equal(GO_RUNTIME_MANIFEST.programs[selected.render_id].tracking.base_url,selected.issued_link);}else assert.match(html,/data-subid="review-[^"]+-conclusion-202608"/); for(const phrase of ["offline candidate","bridge review pending","not deployed","noindex","review-only"]) assert.equal(html.toLowerCase().includes(phrase),false,`${model.registry_id}:${phrase}`); }
+ for(const model of currentModels(buildReady6ReviewModels(await loadReady6EditorialInputs(root)))){ const html=renderReady6ReviewPage(model); assert.match(html,/<meta name="robots" content="index,follow,max-image-preview:large">/); assert.equal((html.match(/data-affiliate-state="active"/g)||[]).length,1); assert.match(html,/data-analytics-event="affiliate_click"/); assert.match(html,/data-page-type="review"/); assert.match(html,/data-link-position="conclusion"/); assert.match(html,/data-sub1="1R"/); assert.match(html,/data-sub2="review-[^"]+"/); const selected=loadGoSelection(root).programs[model.registry_id]; if(selected?.status==='VERIFIED'){assert.match(html,/data-funnel-v2-go/);assert.ok(html.includes(selected.route+'?s=reviews.rv2&amp;v=a'));assert.equal(GO_RUNTIME_MANIFEST.programs[selected.render_id].tracking.base_url,selected.issued_link);}else assert.match(html,/data-subid="review-[^"]+-conclusion-202608"/); for(const phrase of ["offline candidate","bridge review pending","not deployed","noindex","review-only"]) assert.equal(html.toLowerCase().includes(phrase),false,`${model.registry_id}:${phrase}`); }
 });
 
 test("indexable READY6 reviews are substantive and not doorway-band near-duplicates",async()=>{
- const pages=buildReady6ReviewModels(await loadReady6EditorialInputs(root)).map((model)=>({id:model.registry_id,words:editorialWords(renderReady6ReviewPage(model))}));
+ const pages=currentModels(buildReady6ReviewModels(await loadReady6EditorialInputs(root))).map((model)=>({id:model.registry_id,words:editorialWords(renderReady6ReviewPage(model))}));
  for(const page of pages) assert.ok(page.words.length>=950,`${page.id}:thin:${page.words.length}`);
  for(let left=0;left<pages.length;left+=1) for(let right=left+1;right<pages.length;right+=1){const overlap=jaccard(pages[left].words,pages[right].words);assert.ok(overlap<0.5,`${pages[left].id}:${pages[right].id}:jaccard:${overlap.toFixed(3)}`);}
 });

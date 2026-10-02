@@ -25,9 +25,9 @@ const {governedEmailAffiliateLinks}=await import('../src/cost-calculator-affilia
 const links = governedEmailAffiliateLinks(money.pages, registry, selection);
 if (process.argv.includes('--current-holds-only')) {
   const {COST_AFFILIATE_EMAIL_MANIFEST: before} = await import('../src/cost-affiliate-email-manifest.generated.mjs');
-  const {loadGoSelection} = await import('../src/go-runtime-selection.mjs');
-  const held = new Set(Object.values(loadGoSelection().programs).filter(row => row.disposition === 'HOLD').map(row => row.render_id));
-  // This build hook permits removal of current raw HOLDs only. Adding a link,
+  const {loadGoSelection, loadGoPromotionAuthority} = await import('../src/go-runtime-selection.mjs');
+  const held = new Set([...Object.values(loadGoSelection().programs).filter(row => row.disposition === 'HOLD').map(row => row.render_id), ...Object.entries(loadGoPromotionAuthority().programs).filter(([, row]) => row.status === 'WITHHELD').map(([id]) => id)]);
+  // This build hook permits removal of current raw or effective HOLDs only. Adding a link,
   // changing its fields or removing an unrelated offer still fails closed.
   assertCurrentHoldManifestSuccessor(before, costAffiliateEmailManifest(links), held);
 }

@@ -57,9 +57,13 @@ async function main() {
   if (anchors === 0) findings.push("no live affiliate anchors found at all");
 
   const analytics = await readFile(path.join(ROOT, "assets", "analytics.js"), "utf8");
-  for (const required of ["cs_click_id", "uuidv7", "decorateOutbound", "loadPostHog", "scorecard_step_view", "affiliate_click"]) {
+  for (const required of ["cs_click_id", "uuidv7", "decorateOutbound", "loadPostHog", "comparison_sort_change", "affiliate_click"]) {
     if (!analytics.includes(required)) findings.push(`analytics runtime missing ${required}`);
   }
+  // Later privacy instruction: quiz-derived progression stays local, not merely
+  // answer-free. Require the real allowlist and reject any quiz/scorecard entry.
+  const allowedEvents = analytics.match(/const allowed = Object\.freeze\(\{([\s\S]*?)\}\);/)?.[1];
+  if (!allowedEvents || /(?:quiz|scorecard)_[a-z_]*\s*:/.test(allowedEvents)) findings.push("quiz-derived event is exportable or event allowlist is missing");
   // Health-vertical privacy contract (CRO D8): these are what keep the site's own
   // "Health quiz answers are never sent to analytics" line literally true.
   for (const required of ["autocapture: false", "disable_session_recording: true", "mask_all_text: true", "mask_all_element_attributes: true"]) {

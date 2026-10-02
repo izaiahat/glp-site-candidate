@@ -1,6 +1,7 @@
 import { constructNetworkUrl } from "./network-constructors.mjs";
 import { loadPlatformContext } from "./platform-click-context.mjs";
 import { redirectorTermsAllowed } from "./go-redirector-authority.mjs";
+import { xentrafficAccountRef } from "./xentraffic-attribution.mjs";
 
 const SAFE_PAGE = /^[a-z0-9][a-z0-9-]{0,79}$/;
 const SAFE_POSITION = /^[a-z0-9][a-z0-9-]{0,11}$/;
@@ -151,6 +152,7 @@ export function networkOfferId(program) {
 }
 
 export function networkAccountRef(program) {
+  if (program.network === "xentraffic") return xentrafficAccountRef(program);
   if (program.network !== "affiliati") return null;
   try {
     const tracking = new URL(program.tracking.base_url);
@@ -250,6 +252,9 @@ export async function handleGoRequest(request, env, programId) {
       || event.network_offer_id !== String(program.network_offer_id)
     )
   ) return redirect(fallback, "affiliati-click-identity-held", "not-mapped");
+  if (event.network === "xentraffic" && !event.network_account_ref) {
+    return redirect(fallback, "xentraffic-account-identity-held", "not-mapped");
+  }
   let destination;
   try { /* AFFILIATI_S1_S2_CONTRACT_V1 */ destination = constructNetworkUrl(program, clickToken, `${pageSlug}.${linkPosition}`); } catch { return redirect(fallback, "constructor-failed", "not-mapped"); }
   // Registered TEST capture attaches by CAS to an independently existing click;

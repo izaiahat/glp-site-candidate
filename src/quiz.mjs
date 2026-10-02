@@ -250,6 +250,10 @@ export function buildPhase4PageData(config, registry = null, profileId = "glp-cl
     records[candidate.program_id] = {
       program_id: candidate.program_id,
       display_name: candidate.render_display_name || candidate.display_name || program?.display_name || candidate.program_id,
+      ...(candidate.therapeutic_taxonomy?.claim_qualification ? {
+        claim_qualification: candidate.therapeutic_taxonomy.claim_qualification,
+        claim_source_urls: candidate.therapeutic_taxonomy.source_urls,
+      } : {}),
       why_match: (candidate.why_match || "This record survives the selected published commercial rules.") + (candidate.pricing_reason ? ' Price not attested for cost comparison. '+candidate.pricing_reason : ''),
       review_path: program?.review_path || affiliate?.review_path || `/reviews/${candidate.program_id}/`,
       has_live_link: Boolean(affiliate?.live && affiliate.affiliate_href),

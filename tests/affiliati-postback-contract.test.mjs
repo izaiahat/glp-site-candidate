@@ -233,6 +233,23 @@ test("all three offers preserve outbound s1 placement/s2 click and registered in
   assert.equal(contract.tracking_links_clicked, 0);
 
   const analytics = await readFile(new URL("../assets/analytics.js", import.meta.url), "utf8");
-  assert.match(analytics, /\? \[clickId, clickId\]/);
+  assert.doesNotMatch(analytics, /\? \[clickId, clickId\]/);
   assert.match(analytics, /anchor\.dataset\.network !== "Affiliati"/);
+  const {default:vm}=await import('node:vm');
+  let permitted=true;
+  const location=new URL('https://glpclinicscout.com/providers/');
+  const window={location,GCS_EXPORT_POLICY:{third_party_exports:true},GCS_ANALYTICS:{enabled:false},GCSConsent:{allowsExports:()=>permitted},addEventListener(){}};
+  const context=vm.createContext({window,location,navigator:{webdriver:false,userAgent:'Mozilla/5.0'},URL,URLSearchParams,document:{addEventListener(){},querySelectorAll(){return []}}});
+  vm.runInContext(analytics,context);
+  for(const creative of ['177612','178786','169817'])for(const boundPlacement of [false,true])for(const dataset of [{network:'Affiliati'},{network:'fixture-alias',subidCodec:'Affiliati'}]){
+    const href=`https://tracking.example.invalid/?a=15309&c=${creative}`+(boundPlacement?'&s1=providers.rv1':'');
+    const anchor={href,dataset:{...dataset,sub1:'fallback.placement',sub2:'NOT_AN_ID'}};
+    const decorated=new URL(window.GCSAnalytics.decorateOutbound(anchor,CLICK_ID));
+    assert.equal(decorated.searchParams.get('a'),'15309');assert.equal(decorated.searchParams.get('c'),creative);
+    assert.equal(decorated.searchParams.get('s1'),boundPlacement?'providers.rv1':'fallback.placement');
+    assert.equal(decorated.searchParams.get('s2'),CLICK_ID);assert.equal(decorated.searchParams.has('s3'),false);
+    assert.equal([...decorated.searchParams.values()].filter(v=>v===CLICK_ID).length,1);
+    assert.equal(anchor.href,href,'pure URL construction, no tracking visit');
+    permitted=false;assert.equal(window.GCSAnalytics.decorateOutbound(anchor,CLICK_ID),href);permitted=true;
+  }
 });

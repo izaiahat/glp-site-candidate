@@ -1,12 +1,51 @@
 {
   "schema": "glp41-approved-input-successor-v1",
-  "authority": "GLP-41 operator assignment: reconcile approved Sep-16 evidence refresh and Sep-24 all network-approved providers live; D1/D3 approved 2026-09-25",
-  "source_head": "f3e907606a3d37850d492b1a9aa1f718d926dda8",
+  "status": "ACCEPTED_EXACT_DATA_SOURCE_ADOPTION_ONLY",
+  "authority": "Exact source/data independent acceptance and coordinator isolated adoption: reports/ops/f04-f06-taxonomy-independent-review-20261002/DISPOSITION.md sha256 f81ca3f8fae24e7c7ba10e652c8b7f8ed197c8ad71bacd73b65d1c8e1ffab405; reports/ops/f06-held-authority-review-20261002/RESULT.json sha256 f81f55201959240c10b08811ae1aaee8f7ddbd4d2f67b1d8299df1614e9c937b; reports/ops/f04-f06-taxonomy-successor-20261002/successor/SOURCE-OVERLAY.json sha256 1658c5c69a43d1510d36adf9f9da09fefb31653d5168552e71fb1dd7a05f4fc2; reports/ops/f06-held-authority-20261002/SOURCE-OVERLAY.json sha256 2e597b2d0a8c2eab5f401e1b5b2f798a3bc31f958453cae135b34f522ee14565; reports/ops/f06-held-authority-review-20261002/COORDINATOR-ADOPTION.json sha256 84c4a8e4613071d454e048c6ff33a72c9bf02bb27cc61b1bf30752273aa4bbd2. No public release, installation or activation authority. Historical lineage only; not acceptance of this successor: Coordinator source-only grant reports/ops/care-metadata-source-repair-authorization-20260927/RESULT.json (sha256 7bb6931e5ac1ee6e9c9c0b7ed171dc12c56d1fbe1bc8ff2ddbb8a3a644be4f6a) follows independent source diagnosis reports/ops/glp42-care-successor-adoption-review-20260927/INDEPENDENT-REVIEW.json (sha256 70aedc346f0f0eb69f193db0073f29b7f59ef1c6b15addedd06a1353a2ef97ad) at head aa13b69fcbff4f9990b7043702da2fa37756390a. Previous Care exact-data review and adoption grant remain historical provenance, not acceptance of this metadata successor. Source-only custody is not operator release authority, merge approval or a full build acceptance.",
+  "source_head": "fc647dc91582f9bb7d0b5321d432480ca16bef1f",
+  "provenance": {
+    "source_head_role": "PR14 immediate source predecessor, not the assembled head; exact combined registry is bound by inputs.after_sha256",
+    "integration_parent": "b42a4983f1cea415328473d93b6bf57aa063532a",
+    "common_registry_predecessor_sha256": "b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b",
+    "immediate_predecessor_sha256": "836bba4cd1cee5afe637ac0a727a65ee539361295a615e2767cc8d5b923a74e4",
+    "breeze_parent_registry_sha256": "139ead035992abe19e0e5c99830869c72274931ca4d7280dd65c3f1e6e241f86",
+    "prior_fixture_git_ref": "fc647dc91582f9bb7d0b5321d432480ca16bef1f:tests/fixtures/glp41-approved-input-successor.json",
+    "prior_fixture_sha256": "8b89159412b5607cd2c9b6e61d716663fdd107579b83bb1517d727cd00b902a6",
+    "breeze_fixture_git_ref": "b42a4983f1cea415328473d93b6bf57aa063532a:tests/fixtures/glp41-approved-input-successor.json",
+    "breeze_fixture_sha256": "8fb4874be3c4c57333408bbba8a283b2c149d476231969d208aa74a88bf80f02",
+    "historical_breeze_grant": "reports/ops/glp270-breeze-adoption-authorization-20260927/RESULT.json",
+    "historical_breeze_grant_sha256": "898665af6a2cfe2f1ea0ce816ac72d6d231a4230f894cb26780983228acde9ae",
+    "historical_breeze_data_review": "reports/ops/glp270-breeze-candidate-review-20260927/INDEPENDENT-REVIEW.json",
+    "historical_breeze_data_review_sha256": "69f9cb9313589f4daa89fb311b52020a18e51641bf2c5ed4713c993a4584f89d",
+    "historical_breeze_final_review": "reports/ops/glp270-breeze-final-fixture-review-20260927/INDEPENDENT-REVIEW.json",
+    "historical_breeze_final_review_sha256": "751eed1f050da8966cbb583f68bd70ab2f8eb0304b1767458be407163da3c761",
+    "combined_input_review_status": "ACCEPTED_EXACT_DATA_AT_REVIEWED_HEAD_SOURCE_ADOPTION_ONLY",
+    "prior_care_fixture_git_ref": "74d4c6b93c86e10d56aeed6f008dc7fb695bc3ec:tests/fixtures/glp41-approved-input-successor.json",
+    "prior_care_fixture_sha256": "b4581d7aea1309b88e267a0a6aac26ad72d4de157cda83ffaf98bc135ed4b462",
+    "prior_care_after_sha256": "612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d",
+    "accepted_data_review_sha256": "46214dae14f320eaf3f3e51dc1db408311060ddc556d86926c3d6449d19b50c6",
+    "source_adoption_grant_sha256": "4c16c5924ad1ed4aaa515f3dc6ed0ca608e79e35ed18377caa181d33c5fc30c2",
+    "review_scope": "Earlier Breeze, combined and Care exact-data receipts remain historical lineage, not independent acceptance of the metadata successor. The independent source diagnosis at aa13b69 and new coordinator source-only grant authorize only the three native metadata leaves and exact historical price projection, with F17 custody of d0bc5c1f. Immutable K10 before anchor, other input pins, original guards and later independent code review/full gate remain required.",
+    "previous_care_fixture_git_ref": "aa13b69fcbff4f9990b7043702da2fa37756390a:tests/fixtures/glp41-approved-input-successor.json",
+    "previous_care_after_sha256": "e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e",
+    "metadata_source_review_sha256": "70aedc346f0f0eb69f193db0073f29b7f59ef1c6b15addedd06a1353a2ef97ad",
+    "metadata_source_grant_sha256": "7bb6931e5ac1ee6e9c9c0b7ed171dc12c56d1fbe1bc8ff2ddbb8a3a644be4f6a",
+    "previous_f06_after_sha256": "d0bc5c1f702731b2b4fe3450884cf93310e88dcb1f7e7d6e4b33d96f4a3db644",
+    "previous_f06_fixture_sha256": "99049dc82982dd5beb2af626f79b17a52a6a3ecf912bbbee86c71d6a2ea41fe7",
+    "f04_successor_review": "ACCEPTED: reports/ops/f04-f06-taxonomy-independent-review-20261002/DISPOSITION.md sha256 f81ca3f8fae24e7c7ba10e652c8b7f8ed197c8ad71bacd73b65d1c8e1ffab405",
+    "f06_current_adoption_bindings": {
+      "reports/ops/f04-f06-taxonomy-independent-review-20261002/DISPOSITION.md": "f81ca3f8fae24e7c7ba10e652c8b7f8ed197c8ad71bacd73b65d1c8e1ffab405",
+      "reports/ops/f06-held-authority-review-20261002/RESULT.json": "f81f55201959240c10b08811ae1aaee8f7ddbd4d2f67b1d8299df1614e9c937b",
+      "reports/ops/f04-f06-taxonomy-successor-20261002/successor/SOURCE-OVERLAY.json": "1658c5c69a43d1510d36adf9f9da09fefb31653d5168552e71fb1dd7a05f4fc2",
+      "reports/ops/f06-held-authority-20261002/SOURCE-OVERLAY.json": "2e597b2d0a8c2eab5f401e1b5b2f798a3bc31f958453cae135b34f522ee14565",
+      "reports/ops/f06-held-authority-review-20261002/COORDINATOR-ADOPTION.json": "84c4a8e4613071d454e048c6ff33a72c9bf02bb27cc61b1bf30752273aa4bbd2"
+    }
+  },
   "inputs": {
     "data/program-registry.json": {
       "before_sha256": "bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6",
-      "after_sha256": "b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b",
-      "reason": "The old K10 listing pin predates the accepted registry/evidence refresh and operator-approved live cohort. These are the exact unchanged PR-head registry bytes, not a renderer-derived cohort or newly minted evidence date. Commercial eligibility still requires current promotion authority; no historical ledger or external pin is edited."
+      "after_sha256": "385a0f30f0ca6f72d9d83d8e0cab173f9c66191d4ea7b2fb6bd51c0a34d35ce5",
+      "reason": "Exact metadata-only successor independently approved in reports/ops/f06-accepted-candidate-run-20261002/continuation/METADATA-INDEPENDENT-RESULT.json sha256 ca73756f4d7c721dc9f8c819430a918612f069449d4422adddcca1a7f6ffd027; native probe receipt sha256 18b16066675e01291a04923069cc9677fbbb5bfca89b00ac43f901569499a741. Parent direct GLP98 continuing-owner task grant authorizes candidate-only adoption and coupled pins through the existing producer. Immediate predecessor 0e5483bb42df81a6d03be465ed98318bc454288cca39562839a10f92fa5a4c5b; prior fixture retained at 8cc4a4d70199b6d2604b89ca59123d0b484bda18. No new facts, clocks, prices, hold release, publication or final acceptance."
     }
   }
 }

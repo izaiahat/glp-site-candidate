@@ -14,7 +14,7 @@ const modes = new Map([
   ["gobymeds", "go"], ["orderlymeds", "go"],
   // The exact current creative-approval HOLD wins over the blanket ruling.
   ["nu-image-medical-review", "held"],
-  ["levelsrx-extra-cpa-home-page", "go"], ["yucca-health-xentraffic-offer-3117", "go"],
+  ["levelsrx-extra-cpa-home-page", "held"], ["yucca-health-xentraffic-offer-3117", "held"],
 ]);
 for (const [id, mode] of modes) test(`selected ${id} follows current adoption or explicit hold`, () => {
   const program = registry.programs.find((p) => p.program_id === id || p.review_slug === id);
@@ -22,7 +22,12 @@ for (const [id, mode] of modes) test(`selected ${id} follows current adoption or
   assert.equal(links[id].live, mode !== 'held');
   if (mode === 'held') {
     const raw = read('go-selection-receipt').programs.find(row => row.program_id === id);
-    assert.equal(raw.disposition, 'HOLD');
+    if (id === 'nu-image-medical-review') assert.equal(raw.disposition, 'HOLD');
+    else {
+      assert.equal(raw.disposition, 'ADOPT', 'retained historical grant is not rewritten');
+      assert.equal(raw.network.toLowerCase(), 'xentraffic');
+      assert.equal(promotions[id].current_hold_decision.sha256, '147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad');
+    }
     assert.equal(promotions[id].promotion_authorized, false);
   }
   assert.equal(affiliateOutboundMode(program, links[id], promotions[id]), mode);

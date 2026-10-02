@@ -39,9 +39,13 @@ test("calculator and quiz share one fail-closed transparent-direct resolver", as
   const liveCalculator = Object.values(calculator).filter((item) => item.live);
   const liveQuiz = Object.values(quiz).filter((item) => item.live);
 
-  // The Sheet selection is sealed at 11; its Ageless row is now network-paused.
-  // Pin the exact source reason, then require every other selected identity.
-  assert.equal(selection.programs.find((item) => item.program_id === "try-ageless")?.network_program_id, "1538");
+  // D3 removes the paused offer from activation while retaining its exact
+  // historical row separately; history must not be required as live selection.
+  assert.ok(selection.excluded_network_paused_programs.includes('try-ageless'));
+  assert.equal(selection.programs.some(item => item.program_id === 'try-ageless'), false);
+  const historical = selection.excluded_selection_evidence.find(item => item.program_id === 'try-ageless');
+  assert.equal(historical.disposition, 'historical_snapshot_only_not_activation_authority');
+  assert.equal(historical.network_program_id, '1538');
   assert.equal(promotionAuthority.programs["try-ageless"]?.status, "WITHHELD");
   assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "network_paused_katalys_offer_1538");
   const eligibleIds = new Set(selection.programs.filter((item) => item.program_id !== "try-ageless").map((item) => item.program_id));

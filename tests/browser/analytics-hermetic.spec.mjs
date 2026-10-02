@@ -101,7 +101,7 @@ const POSTHOG_STUB = `(() => {
       const payload = JSON.stringify({ api_key: options.api_key, event, properties, options: captureOptions || null });
       const endpoint = String(options.api_host || "https://us.i.posthog.com").replace(/\\/$/, "") + "/i/v0/e/";
       if (captureOptions && captureOptions.transport === "sendBeacon" && navigator.sendBeacon) navigator.sendBeacon(endpoint, payload);
-      else fetch(endpoint, { method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true });
+      else fetch(endpoint, { ...options.fetch_options, method: "POST", headers: { "content-type": "application/json" }, body: payload, keepalive: true });
     },
     set_config(next) { options = { ...options, ...next }; },
   };
@@ -288,7 +288,7 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
   // or a fixture-written record. Candidate consumer flags still prevent SDK requests.
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem("gcs_tracking_consent_v1")))).toMatchObject({
     version: "gcs-cookie-v4-distinct-purposes", record_type: "preference_only",
-    analytics: "granted", advertising: "denied", analytics_basis: "us_default", notice_acknowledged: false,
+    analytics: "granted", advertising: "granted", analytics_basis: "global_default", notice_acknowledged: false,
   });
   expect(await page.evaluate(() => window.GCSConsent.allowsExports("analytics"))).toBe(true);
   if (BUILD_STAGE === "candidate") {
@@ -320,17 +320,17 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
   const poisonResult = await page.evaluate(() => {
     const properties = { quiz_answers: { medication: "P27_ANSWER_CANARY" }, email: "P27_ANSWER_CANARY", step_number: 99 };
     return {
-      accepted: window.GCSAnalytics.event("quiz_complete", properties),
-      scrubbed: window.posthog.__config.before_send({ event: "quiz_complete", properties, distinct_id: "P27_ANSWER_CANARY" }),
+      accepted: window.GCSAnalytics.event("comparison_sort_change", properties),
+      scrubbed: window.posthog.__config.before_send({ event: "comparison_sort_change", properties, distinct_id: "P27_ANSWER_CANARY" }),
     };
   });
-  expect(poisonResult).toEqual({ accepted: true, scrubbed: { event: "quiz_complete", properties: {} } });
+  expect(poisonResult).toEqual({ accepted: true, scrubbed: { event: "comparison_sort_change", properties: { $process_person_profile: false, $current_url: 'https://glpclinicscout.com/providers/', $host: 'glpclinicscout.com', $pathname: '/providers/' } } });
   await expect.poll(() => intercepted.some((entry) => {
-    try { return JSON.parse(entry.body)?.event === "quiz_complete"; } catch { return false; }
+    try { return JSON.parse(entry.body)?.event === "comparison_sort_change"; } catch { return false; }
   })).toBe(true);
   await page.locator('[data-consent="acknowledge"]').click();
   await expect(page.locator("#gcs-consent")).toHaveCount(0);
-  expect(await page.evaluate(() => window.GCSConsent.read()), "P27 acknowledgment retains US-default basis").toMatchObject({ analytics: "granted", advertising: "denied", analytics_basis: "us_default", notice_acknowledged: true });
+  expect(await page.evaluate(() => window.GCSConsent.read()), "P27 acknowledgment retains US-default basis").toMatchObject({ analytics: "granted", advertising: "granted", analytics_basis: "global_default", notice_acknowledged: true });
 
   await page.evaluate(() => window.addEventListener("click", (event) => event.preventDefault(), false));
   const anchor = page.locator('a[data-analytics-event="affiliate_click"]').first();
@@ -410,8 +410,8 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
   await page.locator('[data-consent="denied"]').click();
   expect(await page.evaluate(() => ({
     record: window.GCSConsent.read(), allowed: window.GCSConsent.allowsExports(),
-    accepted: window.GCSAnalytics.event("quiz_complete", { quiz_answers: "P27_ANSWER_CANARY" }),
-    beforeSend: window.posthog.__config.before_send({ event: "quiz_complete", properties: {} }),
+    accepted: window.GCSAnalytics.event("comparison_sort_change", { quiz_answers: "P27_ANSWER_CANARY" }),
+    beforeSend: window.posthog.__config.before_send({ event: "comparison_sort_change", properties: {} }),
     optedOut: window.posthog.__optOuts > 0, captures: window.posthog.__captures.length,
   }))).toMatchObject({ record: { analytics: "denied", advertising: "denied" }, allowed: false, accepted: false, beforeSend: null, optedOut: true, captures: capturedBeforeWithdrawal });
 
@@ -433,7 +433,7 @@ test("hermetic analytics captures allow-listed affiliate payload with zero exter
   await page.locator('footer a[href^="/privacy/cookies/"]').first().click();
   await expect(page.locator('[data-consent="granted"]')).toBeDisabled();
   expect(await page.evaluate(() => window.GCSConsent.apply("granted").analytics)).toBe("denied");
-  expect(await page.evaluate(() => window.GCSAnalytics.event("quiz_complete", { quiz_answers: "P27_ANSWER_CANARY" }))).toBe(false);
+  expect(await page.evaluate(() => window.GCSAnalytics.event("comparison_sort_change", { quiz_answers: "P27_ANSWER_CANARY" }))).toBe(false);
   expect(await page.evaluate(() => typeof window.posthog)).toBe("undefined");
   expect(intercepted.filter((entry) => new URL(entry.url).pathname === "/static/array.js")).toHaveLength(loadersBeforeGpc);
   expect(await page.evaluate(() => window.dataLayer.filter((entry) => entry[0] === "consent").every((entry) => Object.values(entry[2]).every((value) => value === "denied")))).toBe(true);

@@ -54,7 +54,7 @@
       "id": "D09",
       "title": "Paid quiz entrance Fable r2 architecture pin replaced by v5",
       "classification": "D",
-      "reason": "The current renderer explicitly loads v5-fable.html and reports fable-v5-link-to-unchanged-organic-quiz. The failed architecture literal still requires r2. The organic quiz isolation and consent-runtime assertions remain necessary."
+      "reason": "Operator decision OPERATOR-DECISION-20261002-approve-everything-ship.md approves the current v5 paid entrance and substitutes independent Astra review. The current renderer loads v5-fable.html and reports fable-v5-link-to-unchanged-organic-quiz; ID37 now asserts that exact v5 architecture. All organic-island hash, corruption, isolation, no-hidden-contact and newsletter-runtime assertions remain unchanged; this row records the supersession, not a skipped test."
     },
     {
       "id": "B01",

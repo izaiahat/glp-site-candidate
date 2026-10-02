@@ -5,9 +5,15 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'parse5';
 import { loadGoSelection } from '../../src/go-runtime-selection.mjs';
+import {bindEmittedConsent} from '../../scripts/consent-emitted-binding.mjs';
+import {assertEmittedLoaderSemantics} from '../helpers/ga4-semantic-contract.mjs';
+const semanticReceipts = new Map();
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const PUBLIC = process.env.GLP_REVIEW_PUBLIC_ROOT || path.join(ROOT, 'public');
+const BUILD_STAGE = JSON.parse(readFileSync(path.join(ROOT, 'artifacts/ops/build-report.json'), 'utf8')).release_stage;
+if (!['candidate','production-seal'].includes(BUILD_STAGE) || (process.env.GCS_RELEASE_STAGE && process.env.GCS_RELEASE_STAGE !== BUILD_STAGE)) throw new Error('release_consent_build_stage_mismatch');
+const PRODUCTION_SEAL = BUILD_STAGE === 'production-seal';
 const ROUTES = ['/', '/providers/', '/tools/glp-1-cost-calculator/', '/lp/quiz/', '/quiz/provider-fit/', '/reviews/nu-image-medical-review/', '/reviews/mydrhank/'];
 const sha = value => createHash('sha256').update(value).digest('hex');
 const read = relative => readFileSync(path.join(PUBLIC, relative));
@@ -31,7 +37,7 @@ function sourceInventory(route) {
   expect(configMatch, `${route}: source-bound PostHog config`).toBeTruthy();
   const config = JSON.parse(configMatch[1]);
   expect(config.host).toBe('https://us.i.posthog.com');
-  expect(config.enabled).toBe(false);
+  expect(config.enabled).toBe(PRODUCTION_SEAL);
   const scripts = [], affiliates = [];
   function walk(node) {
     const attrs = Object.fromEntries((node.attrs || []).map(a => [a.name, a.value]));
@@ -52,9 +58,15 @@ function sourceInventory(route) {
   expect(consent).toBeTruthy(); expect(analytics).toBeTruthy();
   const bound = src => ({src, sha256: sha(read(new URL(src, 'https://glpclinicscout.com').pathname.slice(1)))});
   expect(read('meta-pixel.js').toString()).toContain('disabled pending governed release integration');
-  expect(read(new URL(consent, 'https://glpclinicscout.com').pathname.slice(1)).toString()).toContain('No GTM/gtag.js loader');
+  const emittedConsent=read(new URL(consent, 'https://glpclinicscout.com').pathname.slice(1)).toString();
+  const digest=sha(emittedConsent);
+  if(!semanticReceipts.has(digest)){
+    const binding=bindEmittedConsent(ROOT,PUBLIC,emittedConsent);
+    semanticReceipts.set(digest,{...assertEmittedLoaderSemantics(emittedConsent),binding});
+  }
+  expect(scripts.filter(src=>new URL(src,'https://glpclinicscout.com').hostname==='www.googletagmanager.com')).toEqual([]);
   return {route, html_sha256:sha(bytes), posthog_host:config.host, posthog_enabled:config.enabled,
-    google:'held by shipped consent loader', meta:'disabled shipped compatibility stub',
+    google:semanticReceipts.get(digest), meta:'disabled shipped compatibility stub',
     consent:bound(consent), analytics:bound(analytics), affiliates};
 }
 
@@ -157,7 +169,7 @@ async function observe(context, origin, {fixture=false, fulfill=null}={}) {
   function violations() {
     return [
       ...attempts.filter(r=>r.referrer_category==='unapproved-origin-or-query').map(r=>'referrer:'+r.path),
-      ...attempts.filter(r => !r.category.startsWith('essential-') && !(fixture && r.phase==='analytics-granted' && ['analytics-sdk','analytics-sink'].includes(r.category))).map(r=>'request:'+r.category+':'+r.path),
+      ...attempts.filter(r => !r.category.startsWith('essential-') && !(fixture && ['default-granted','analytics-granted'].includes(r.phase) && ['analytics-sdk','analytics-sink'].includes(r.category))).map(r=>'request:'+r.category+':'+r.path),
       ...writes.filter(r=>r.operation==='set' && !ALLOW[r.area].includes(r.key)).map(r=>'write:'+r.area+':'+r.key),
       ...snapshots.flatMap(s=>[...s.local.filter(k=>!ALLOW.local.includes(k)).map(k=>'stored:local:'+k),...s.session.filter(k=>!ALLOW.session.includes(k)).map(k=>'stored:session:'+k),...s.cookies.filter(c=>!ALLOW.cookie.includes(c.name)).map(c=>'cookie:'+c.name)]),
     ];
@@ -188,8 +200,9 @@ async function openChoices(page) {
   await expect(page.locator('[data-consent="denied"]')).toBeVisible();
 }
 
-// No candidate policy/config/SDK/geography/synthetic overrides. A grant changes
-// preferences, not this candidate's export hold. Enabled effects are separate.
+// No policy/config/SDK/geography/synthetic overrides. The emitted stage is bound
+// to the build receipt; local/synthetic execution stays no-egress in both stages.
+// A positive grant proof is separate and runs the emitted production policy.
 for (const route of ROUTES) {
   test(`D1 candidate UI no-egress and preference transitions ${route}`, async ({page,context,baseURL},info) => {
     const inventory=sourceInventory(route), audit=await observe(context,new URL(baseURL).origin);
@@ -198,10 +211,10 @@ for (const route of ROUTES) {
       await expect.poll(()=>page.evaluate(()=>window.GCSConsent.effective())).toBe(choice);
       const sample=await audit.snapshot(page);
       const state=await page.evaluate(()=>({effective:window.GCSConsent.effective(),purposes:window.GCSConsent.purposes(),exports:window.GCSConsent.allowsExports(),policy:window.GCS_EXPORT_POLICY}));
-      expect(JSON.parse(sample.storage.local.gcs_tracking_consent_v1)).toMatchObject({analytics:choice,advertising:'denied',record_type:'preference_only'});
-      expect(state.purposes).toEqual({analytics:choice,advertising:'denied'});
+      expect(JSON.parse(sample.storage.local.gcs_tracking_consent_v1)).toMatchObject({analytics:choice,advertising:choice,record_type:'preference_only'});
+      expect(state.purposes).toEqual({analytics:choice,advertising:choice});
       expect(state.exports).toBe(false);
-      expect(state.policy).toMatchObject({stage:'candidate',third_party_exports:false});
+      expect(state.policy).toMatchObject({stage:BUILD_STAGE,third_party_exports:PRODUCTION_SEAL});
       for(const cookie of sample.cookies.filter(c=>c.name==='gcs_analytics_consent')) expect(cookie.value).toBe(choice);
       phases.push(state); audit.assertClean();
     };
@@ -209,10 +222,14 @@ for (const route of ROUTES) {
       const response=await page.goto(route,{waitUntil:'networkidle'});
       expect(response.status()).toBe(200); expect(sha(await response.body())).toBe(inventory.html_sha256);
       await page.evaluate(()=>window.GCSConsentReady); await audit.snapshot(page); audit.assertClean();
+      await check('granted');
+      await expect(page.locator('#gcs-consent button')).toHaveCount(1);
+      await expect(page.locator('#gcs-consent input')).toHaveCount(0);
+      await page.getByRole('button',{name:'Got it',exact:true}).click();await check('granted');
       await openChoices(page); audit.setPhase('denied');
-      await page.getByRole('button',{name:'Turn off analytics',exact:true}).click(); await check('denied');
+      await page.getByRole('button',{name:'Turn off tracking',exact:true}).click(); await check('denied');
       audit.setPhase('denied-reload'); await page.reload({waitUntil:'networkidle'}); await page.evaluate(()=>window.GCSConsentReady); await check('denied');
-      expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_complete',{quiz_answers:'D1_SYNTHETIC_CANARY',email:'d1@example.invalid'}))).toBe(false);
+      expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{quiz_answers:'D1_SYNTHETIC_CANARY',email:'d1@example.invalid'}))).toBe(false);
       if(route === '/reviews/nu-image-medical-review/') {
         const held = selections.find(row => row.program_id === 'nu-image-medical-review');
         expect(held.disposition).toBe('HOLD');
@@ -226,14 +243,14 @@ for (const route of ROUTES) {
         expect(await anchor.getAttribute('href')).toBe(before); await check('denied');
       }
       await openChoices(page); audit.setPhase('regranted');
-      await page.getByRole('button',{name:'Turn on analytics',exact:true}).click();
+      await page.getByRole('button',{name:'Turn on tracking',exact:true}).click();
       if(new URL(page.url()).pathname!==route) {await page.goto(route,{waitUntil:'networkidle'});await page.evaluate(()=>window.GCSConsentReady);}
       await check('granted');
       audit.setPhase('regranted-reload'); await page.goto(route,{waitUntil:'networkidle'}); await page.evaluate(()=>window.GCSConsentReady); await check('granted');
       await openChoices(page); audit.setPhase('revoked');
-      await page.getByRole('button',{name:'Turn off analytics',exact:true}).click();
+      await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();
       if(new URL(page.url()).pathname!==route) {await page.goto(route,{waitUntil:'networkidle'});await page.evaluate(()=>window.GCSConsentReady);}
-      expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{}))).toBe(false); await check('denied');
+      expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{}))).toBe(false); await check('denied');
       expect(audit.attempts.every(r=>r.disposition!=='pending')).toBe(true);
     } finally { await info.attach('D1-candidate-privacy-observation',{body:JSON.stringify({inventory,phases,...audit.receipt()}),contentType:'application/json'}); }
   });
@@ -241,7 +258,10 @@ for (const route of ROUTES) {
 
 // Deliberately ungated transport adapter: it always attempts capture when called.
 // Thus a shipped emit() consent bug cannot be hidden by a second mock SDK gate.
-const LOCAL_SDK = `window.posthog={init(key,options){window.__d1SdkOptions=options;},opt_in_capturing(){},opt_out_capturing(){window.__d1OptOuts=(window.__d1OptOuts||0)+1;},capture(event,properties){fetch('/__d1_sink/capture',{method:'POST',body:JSON.stringify({event,properties}),referrerPolicy:'no-referrer'});}};`;
+// Preserve a pre-runtime fetch reference only in this isolated fixture: the
+// new production transport barrier must not mask an emitter regression here.
+// Real-SDK transport containment is independently exercised in the strict suite.
+const LOCAL_SDK = `window.posthog={init(key,options){window.__d1SdkOptions=options;},opt_in_capturing(){},opt_out_capturing(){window.__d1OptOuts=(window.__d1OptOuts||0)+1;},capture(event,properties){window.__d1UngatedFetch('/__d1_sink/capture',{method:'POST',body:JSON.stringify({event,properties}),referrerPolicy:'no-referrer'});}};`;
 
 test('D1 isolated enabled consumer permits analytics grant and blocks fresh post-revoke attempts',async({page,context},info)=>{
   const origin='https://glpclinicscout.com', inventory=sourceInventory('/');
@@ -253,7 +273,7 @@ window.GCS_EXPORT_POLICY={schema:'glp-release-export-policy-v2',stage:'productio
 window.GCS_ANALYTICS={enabled:true,consent:'unknown',measurement_id:'G-D1-FIXTURE',gtm_container_id:'GTM-D1-FIXTURE'};
 window.GCS_POSTHOG={enabled:true,api_key:'D1_LOCAL_NON_CREDENTIAL',host:'${origin}/__d1_sink'};
 </script><script defer src="${inventory.consent.src}"></script><script defer src="${inventory.analytics.src}"></script><script defer src="/meta-pixel.js"></script></head><body><h1>Isolated consent consumer fixture</h1><footer><a href="/privacy/cookies/">Cookie choices</a></footer></body></html>`;
-  await context.addInitScript(()=>Object.defineProperty(navigator,'webdriver',{configurable:true,get:()=>false}));
+  await context.addInitScript(()=>{Object.defineProperty(navigator,'webdriver',{configurable:true,get:()=>false});window.__d1UngatedFetch=window.fetch.bind(window);});
   const audit=await observe(context,origin,{fixture:true,fulfill:async(interception,row)=>{
     const url=new URL(interception.request().url());
     if(url.origin!==origin)return false;
@@ -266,28 +286,48 @@ window.GCS_POSTHOG={enabled:true,api_key:'D1_LOCAL_NON_CREDENTIAL',host:'${origi
   }});
   const check=async choice=>{
     const sample=await audit.snapshot(page);
-    expect(JSON.parse(sample.storage.local.gcs_tracking_consent_v1)).toMatchObject({analytics:choice,advertising:'denied'});
+    expect(JSON.parse(sample.storage.local.gcs_tracking_consent_v1)).toMatchObject({analytics:choice,advertising:choice});
     expect(sample.cookies.map(c=>[c.name,c.value])).toEqual([['gcs_analytics_consent',choice]]);
-    expect(await page.evaluate(()=>window.GCSConsent.purposes())).toEqual({analytics:choice,advertising:'denied'});
-    expect(await page.evaluate(()=>window.GCSConsent.allowsExports('advertising'))).toBe(false);
+    expect(await page.evaluate(()=>window.GCSConsent.purposes())).toEqual({analytics:choice,advertising:choice});
+    expect(await page.evaluate(()=>window.GCSConsent.allowsExports('advertising'))).toBe(choice==='granted');
     audit.assertClean();
   };
   try {
+    audit.setPhase('default-granted');
     await page.goto(origin+'/__d1_enabled_fixture__/');await page.evaluate(()=>window.GCSConsentReady);
-    audit.setPhase('denied');await page.getByRole('button',{name:'Turn off analytics',exact:true}).click();
-    expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{}))).toBe(false); await check('denied'); expect(captures).toEqual([]);
-    await openChoices(page); audit.setPhase('analytics-granted');await page.getByRole('button',{name:'Turn on analytics',exact:true}).click();
+    await page.waitForFunction(()=>!!window.__d1SdkOptions);
+    await check('granted');
+    await expect(page.locator('#gcs-consent button')).toHaveCount(1);
+    await expect(page.locator('#gcs-consent input')).toHaveCount(0);
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{quiz_answers:'D1_DEFAULT_CANARY',health_condition:'D1_DEFAULT_CANARY',page_url:'/guides/diabetes/?D1_DEFAULT_CANARY'}))).toBe(true);
+    await expect.poll(()=>captures.length).toBe(1);
+    expect(captures).toEqual([{phase:'default-granted',event:'comparison_sort_change',properties:{}}]);
+    await page.getByRole('button',{name:'Got it',exact:true}).click();await check('granted');
+    await expect(page.locator('#gcs-consent')).toHaveCount(0);
+    await openChoices(page);audit.setPhase('denied');await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{}))).toBe(false); await check('denied'); expect(captures.length).toBe(1);
+    await openChoices(page); audit.setPhase('analytics-granted');await page.getByRole('button',{name:'Turn on tracking',exact:true}).click();
     await page.waitForFunction(()=>!!window.__d1SdkOptions);
     expect(await page.evaluate(()=>window.GCSConsent.allowsExports('analytics'))).toBe(true);
-    expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{email:'D1_CANARY',quiz_answers:'D1_CANARY'}))).toBe(true);
-    await expect.poll(()=>captures.length).toBe(1);expect(captures).toEqual([{phase:'analytics-granted',event:'quiz_start',properties:{}}]);await check('granted');
-    expect(await page.evaluate(()=>({advertising:window.GCSConsent.allowsExports('ad_measurement'),meta:window.glpMetaTrackLead(),googleHeld:window.GCS_GTM_HELD}))).toEqual({advertising:false,meta:'',googleHeld:'A11 containment unbound'});
-    await openChoices(page); audit.setPhase('revoked');await page.getByRole('button',{name:'Turn off analytics',exact:true}).click();
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{email:'D1_CANARY',quiz_answers:'D1_CANARY',health_condition:'D1_CANARY',page_url:'/guides/diabetes/?D1_CANARY'}))).toBe(true);
+    await expect.poll(()=>captures.length).toBe(2);expect(captures).toEqual([{phase:'default-granted',event:'comparison_sort_change',properties:{}},{phase:'analytics-granted',event:'comparison_sort_change',properties:{}}]);await check('granted');
+    expect(await page.evaluate(()=>({advertising:window.GCSConsent.allowsExports('ad_measurement'),meta:window.glpMetaTrackLead({quiz_answers:'D1_AD_CANARY',health_condition:'D1_AD_CANARY',page_url:'/guides/diabetes/?D1_AD_CANARY'}),googleHeld:window.GCS_GTM_HELD}))).toEqual({advertising:true,meta:'',googleHeld:'A11 containment unbound'});
+    expect(await page.evaluate(()=>JSON.stringify(window.dataLayer))).not.toMatch(/D1_.*CANARY|quiz_answers|health_condition|\/guides\/diabetes/);
+    await openChoices(page); audit.setPhase('revoked');await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();
     const before=captures.length;
-    expect(await page.evaluate(()=>window.GCSAnalytics.event('quiz_start',{email:'D1_NEW_POST_REVOKE_CANARY'}))).toBe(false);
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{email:'D1_NEW_POST_REVOKE_CANARY'}))).toBe(false);
     await check('denied');expect(captures.length).toBe(before);
     expect(audit.attempts.filter(r=>r.phase==='revoked' && r.category.startsWith('analytics'))).toEqual([]);
     expect(await page.evaluate(()=>window.__d1OptOuts)).toBeGreaterThan(0);
+    audit.setPhase('gpc');
+    await context.addInitScript(()=>Object.defineProperty(navigator,'globalPrivacyControl',{configurable:true,get:()=>true}));
+    await page.evaluate(()=>localStorage.removeItem('gcs_tracking_consent_v1'));
+    await page.reload();await page.evaluate(()=>window.GCSConsentReady);
+    await check('denied');
+    await page.getByRole('button',{name:'Got it',exact:true}).click();await check('denied');
+    expect(await page.evaluate(()=>window.GCSAnalytics.event('comparison_sort_change',{}))).toBe(false);
+    expect(captures.length).toBe(before);
+    expect(audit.attempts.filter(r=>r.phase==='gpc'&&r.category.startsWith('analytics'))).toEqual([]);
     expect(audit.attempts.every(r=>r.disposition==='fulfilled-local')).toBe(true);
   } finally {await info.attach('D1-enabled-consumer-fixture',{body:JSON.stringify({inventory,captures,fixture_sha256:sha(fixture),adapter_sha256:sha(LOCAL_SDK),synthetic_override:'webdriver false in isolated fixture only',...audit.receipt()}),contentType:'application/json'});}
 });
@@ -295,7 +335,7 @@ window.GCS_POSTHOG={enabled:true,api_key:'D1_LOCAL_NON_CREDENTIAL',host:'${origi
 test('D1 privacy oracle rejects injected first-party tracking and transient storage writes',async({page,context,baseURL},info)=>{
   const audit=await observe(context,new URL(baseURL).origin);
   try {
-    await page.goto('/');await page.evaluate(()=>window.GCSConsentReady);await openChoices(page);audit.setPhase('denied');await page.getByRole('button',{name:'Turn off analytics',exact:true}).click();await audit.snapshot(page);audit.assertClean();
+    await page.goto('/');await page.evaluate(()=>window.GCSConsentReady);await openChoices(page);audit.setPhase('denied');await page.getByRole('button',{name:'Turn off tracking',exact:true}).click();await audit.snapshot(page);audit.assertClean();
     await page.evaluate(()=>{
       void fetch('/__d1_tracking.gif?canary=D1_NEGATIVE',{method:'HEAD'}).catch(()=>{});
       navigator.sendBeacon('/__d1_beacon?canary=D1_NEGATIVE','D1_NEGATIVE');

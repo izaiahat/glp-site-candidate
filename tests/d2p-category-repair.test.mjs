@@ -30,14 +30,14 @@ for(const medication of ['semaglutide','tirzepatide'])test(medication+': train 4
   const href=primary[0][0].match(/href="([^"]+)"/)[1];
   const program=programs.find(p=>p.program_id===id);
   const selection=loadGoSelection().programs[id];
-  if(selection?.status==='VERIFIED'){
+  if(selection?.status==='VERIFIED' && loadGoPromotionAuthority().programs[id]?.status==='VERIFIED'){
    const url=new URL(href.replaceAll('&amp;','&'),'https://site.invalid');
    assert.equal(url.pathname,selection.route);assert.match(primary[0][0],/data-funnel-v2-go/);
    const runtime=GO_RUNTIME_MANIFEST.programs[selection.render_id];assert.equal(runtime.tracking.base_url,selection.issued_link);assert.equal(runtime.live_link_allowed,true);
   }else assert.equal(href,program.review_path);
  }
  const tracked=[...html.matchAll(/<a\b[^>]*data-funnel-v2-go[^>]*>/g)];
- assert.equal(tracked.length,expected.filter(p=>loadGoSelection().programs[p.program_id]?.status==='VERIFIED').length*2);
+ assert.equal(tracked.length,expected.filter(p=>loadGoSelection().programs[p.program_id]?.status==='VERIFIED' && loadGoPromotionAuthority().programs[p.program_id]?.status==='VERIFIED').length*2);
  const citations=[...html.matchAll(/<a\b[^>]*data-citation=[^>]*>/g)];assert(citations.length>0);
  for(const [anchor] of citations){assert.doesNotMatch(anchor,/href="\/go\/|data-analytics-event="affiliate_click"|data-funnel-v2-go/);}
 });

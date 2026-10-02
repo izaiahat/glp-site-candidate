@@ -16,6 +16,33 @@
       "webkit"
     ],
     "cases": [
+      {"file":"tests/browser/ga4-diagnostic-containment.spec.mjs","title":"GLP44 sampled diagnostics remain contained through GPC pagehide","requirement":"GLP44-sampled-diagnostic-containment","projects":["chromium"],"applicability":"Required Chromium desktop affected-cell regression: pinned SDK stack-line sampling uses V8 stack syntax and a fixed desktop context. Not WebKit/mobile coverage; the original four-project GA SDK cases remain mandatory."},
+      {"file":"tests/browser/header-cta-contrast.spec.mjs","title":"GLP-200 home header CTA keeps 4.5 contrast in every interaction state","requirement":"GLP-200"},
+      {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 default-on actual GA SDK minimizes page and enhanced events","requirement":"GLP44-default-on-safe-enhanced"},
+      {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 individualized and unclassified routes never load GA or export input events","requirement":"GLP44-sensitive-exclusion"},
+      {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 GPC prevents GA load and collection on initial and later pages","requirement":"GLP44-GPC"},
+      {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 withdrawal stops NEW loads and events on subsequent navigation; in-flight retry accepted","requirement":"GLP44-operator-accepted-withdrawal"},
+      {
+        "file": "tests/browser/consent-withdrawal-sdk.spec.mjs",
+        "title": "D1 real SDK held pageview cannot retry for 65 seconds after native withdrawal",
+        "requirement": "GLP42-IR1"
+      },
+      {
+        "file": "tests/browser/consent-withdrawal-sdk.spec.mjs",
+        "title": "D1 native outbound transport has no Referer under emitted document headers",
+        "requirement": "GLP42-IR3"
+      },
+      {
+        "file": "tests/browser/consent-withdrawal-sdk.spec.mjs",
+        "title": "D1 native decorated destinations and owned storage clear on withdrawal and GPC",
+        "requirement": "GLP42-IR4"
+      },
+      {
+        "file": "tests/browser/consent-withdrawal-sdk.spec.mjs",
+        "title": "D1 stored purpose matrix gates native conversion clicks on advertising not analytics",
+        "requirement": "GLP42-IR6"
+      },
+      {"file":"tests/browser/posthog-sdk-contract.spec.mjs","title":"D1 real PostHog SDK preserves protocol and pageviews without sensitive payloads","requirement":"GLP42-PostHog-protocol-regression"},
       {"file":"tests/browser/affiliate-tap-integrity.spec.mjs","title":"current HOLD reviews remain informational and link-dark · desktop","requirement":"R2-raw-HOLD"},
       {"file":"tests/browser/affiliate-tap-integrity.spec.mjs","title":"current HOLD reviews remain informational and link-dark · mobile","requirement":"R2-raw-HOLD"},
       {"file":"tests/browser/release-consent-effects.spec.mjs","title":"D1 candidate UI no-egress and preference transitions /reviews/nu-image-medical-review/","requirement":"D1-candidate-preferences-no-egress"},

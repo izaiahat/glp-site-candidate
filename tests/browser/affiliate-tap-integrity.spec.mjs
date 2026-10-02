@@ -107,8 +107,9 @@ for (const vp of VIEWPORTS) {
       await page.setViewportSize({ width: vp.width, height: vp.height });
       await page.goto(path, { waitUntil: "networkidle" });
       // dismiss the consent banner if present so it cannot shadow CTAs mid-test
-      const consentOk = page.locator('[data-consent="denied"], [data-consent-accept], [data-consent-ok]').first();
-      if (await consentOk.isVisible().catch(() => false)) await consentOk.click();
+      await page.evaluate(()=>window.GCSConsentReady);
+      const consentOk = page.locator('[data-consent="acknowledge"], [data-consent="denied"], [data-consent-accept], [data-consent-ok]').first();
+      if (await consentOk.isVisible().catch(() => false)) {await consentOk.click();await expect(page.locator('#gcs-consent')).toHaveCount(0);}
       const anchors = page.locator('a[data-analytics-event="affiliate_click"], a[href^="/go/"], a[rel~="sponsored"]');
       const count = await anchors.count();
       expect(count).toBeGreaterThan(0);

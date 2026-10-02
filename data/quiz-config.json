@@ -135,14 +135,14 @@
       "why_match": "Published pricing, physician-review workflow, and HSA/FSA terms align with self-pay research; the lowest cited rate is tied to a 12-month plan."
     },
     {
-      "display_name": "AgelessRx",
+      "display_name": "Try Ageless",
       "held_route": "/go/try-ageless?s=provider-fit.result&v=a",
       "live_link_allowed": false,
       "priority_score": 81,
       "program_id": "try-ageless",
       "promotion_authorized": false,
-      "research_fact_ref": "provider-facts-backfill-20260830.json#/programs/try-ageless",
-      "research_fact_status": "GOVERNED_PRIMARY_SOURCE_NORMALIZED",
+      "research_fact_ref": "program-content-ledger.json#/programs/try-ageless",
+      "research_fact_status": "SOURCE_REPORTED_TRYAGELESS_ONLY",
       "rules": {
         "goal": [
           "price",
@@ -157,7 +157,7 @@
       "source_clearance": true,
       "staging_eligible": true,
       "unknown_render_action": "OMIT",
-      "why_match": "Published $159/month starting price and delivery-window details align with price-focused self-pay research; compounded drugs are not FDA-approved."
+      "why_match": "The Try Ageless campaign publishes product- and term-specific self-pay prices; $159/month is a $1,908 annual-plan equivalent for tirzepatide sublingual oral drops, not a monthly checkout total. Compounded drugs are not FDA-approved."
     },
     {
       "display_name": "Wellorithm",
