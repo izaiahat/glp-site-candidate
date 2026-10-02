@@ -5,7 +5,9 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { handleGoRequest, networkAccountRef } from '../src/worker.mjs';
-import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
+import { GO_RUNTIME_MANIFEST as CURRENT_GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
+import { GO_RUNTIME_MANIFEST } from './fixtures/f06-historical-source/program-manifest.js';
+import { createHash } from 'node:crypto';
 import { XENTRAFFIC_BINDINGS } from '../src/xentraffic-attribution.mjs';
 
 // Offline synthetic fixtures only. No HTTP client or tracking navigation.
@@ -73,6 +75,28 @@ function candidate(program) {
 
 test('GLP90 regression: actual XenTraffic click writer stores exact account lineage and unchanged sub1', async t => {
   const f = fixture(t);
+  // Historical positive control stays byte-pinned; current denied rows cannot
+  // provide tracking/account fields and must remain unusable by the writer.
+  assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/f06-historical-source/program-manifest.js', import.meta.url))).digest('hex'),
+    'cab1f5b4a8437080c09f580daf7be19bb4b9a177673150ba1f1e8f9abe113f7a');
+  const currentPrograms = Array.isArray(CURRENT_GO_RUNTIME_MANIFEST.programs)
+    ? CURRENT_GO_RUNTIME_MANIFEST.programs : Object.values(CURRENT_GO_RUNTIME_MANIFEST.programs);
+  for (const binding of XENTRAFFIC_BINDINGS) {
+    const current = currentPrograms.find(row => row.program_id === binding.programId);
+    assert.ok(current, binding.programId);
+    assert.equal(current.live_link_allowed, false, binding.programId);
+    assert.equal(current.promotion_authorized, false, binding.programId);
+    assert.equal(current.tracking, undefined, binding.programId);
+    assert.equal(networkAccountRef(current), null, binding.programId);
+    const heldResponse = await handleGoRequest(new Request(`https://site.invalid/go/${binding.programId}?s=providers.fv2s1&v=a`, {
+      headers: { 'user-agent': 'Offline Browser Fixture' },
+    }), { GLP_DB: f.db, PROGRAM_MANIFEST: { programs: [current] }, AFFILIATE_RUNTIME_MODE: 'production',
+      AFFILIATE_LIVE_GATE: 'operator-approved:synthetic-no-authority',
+      CLICK_RATE_LIMITER: { limit: async () => ({ success: true }) } }, binding.programId);
+    assert.notEqual(heldResponse.headers.get('X-Attribution-Log'), 'mapped');
+    assert.ok(!String(heldResponse.headers.get('location')).includes('xfnjwej33dd.com'));
+  }
+  assert.deepEqual(f.clicks(), [], 'current held rows never write click lineage');
   const p = candidate(programs.find(p => p.program_id === PROGRAM));
   assert.equal(networkAccountRef(p), ACCOUNT); // Reproduced predecessor defect: NULL.
   const env = { GLP_DB: f.db, PROGRAM_MANIFEST: { programs: [p] }, AFFILIATE_RUNTIME_MODE: 'production',
