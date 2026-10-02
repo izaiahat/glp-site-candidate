@@ -1,48 +1,55 @@
-name: ci-release-gate
+name: ci-release-gate (portable checks only)
 
-# Billing minutes were unavailable (HTTP 404, missing user scope). Keep manual:
-# no PR/push trigger, no paid dispatch, no self-hosted runner registration.
-on: workflow_dispatch
+# GLP-42 registration of the workflow from PR #8 at
+# 2927c1ea184d2ed23aa2dd448c8fc0d04df8c37d, scoped to portable checks.
+# NOT the full release gate: no build, private evidence/approved registry,
+# approved imagery, published-output secret scan, artifact/affiliate census,
+# pricing/monetization validators, full npm test, or Playwright diagnostics.
+# Those original jobs cannot run on hosted runners without omitted inputs;
+# their maintained scripts and assertions are unchanged. Green is not release approval.
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact same-repository commit to check (empty means workflow ref)
+        required: false
+        type: string
+        default: ''
 permissions:
   contents: read
 concurrency:
-  group: ci-release-gate-${{ github.ref }}
+  group: ci-release-gate-${{ github.event.pull_request.number || inputs.source_sha || github.ref }}
   cancel-in-progress: true
 jobs:
-  short-gate:
+  portable-consent-contracts:
+    name: Portable consent contracts (NOT release acceptance)
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 5
+    env:
+      EXPECTED_SHA: ${{ github.event.pull_request.head.sha || inputs.source_sha || github.sha }}
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Require exact commit
+        run: '[[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]'
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          ref: ${{ env.EXPECTED_SHA }}
           persist-credentials: false
-          fetch-depth: 0
+      - name: Verify checkout identity
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          printf 'checked_head=%s\n' "$(git rev-parse HEAD)"
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-          cache: npm
-      - name: Python build dependencies
-        run: python3 -m pip install Pillow==12.3.0
-      - name: Secret scanner
+      - name: Existing portable consent tests (no build or credentials)
         run: |
-          set -euo pipefail
-          version=8.30.1
-          curl -fsSLO "https://github.com/gitleaks/gitleaks/releases/download/v${version}/gitleaks_${version}_linux_x64.tar.gz"
-          curl -fsSLO "https://github.com/gitleaks/gitleaks/releases/download/v${version}/gitleaks_${version}_checksums.txt"
-          python3 -c 'import hashlib,pathlib; p=pathlib.Path("gitleaks_8.30.1_linux_x64.tar.gz"); rows=pathlib.Path("gitleaks_8.30.1_checksums.txt").read_text().splitlines(); expected=next(x.split()[0] for x in rows if x.split()[-1]==p.name); assert hashlib.sha256(p.read_bytes()).hexdigest()==expected'
-          tar -xzf "gitleaks_${version}_linux_x64.tar.gz" gitleaks
-          mkdir -p "$HOME/.local/bin"
-          mv gitleaks "$HOME/.local/bin/gitleaks"
-          printf '%s\n' "$HOME/.local/bin" >> "$GITHUB_PATH"
-      - name: D1 short gate (same command on the host)
-        run: bash scripts/ci-bootstrap-gate.sh
-      - name: Frozen-byte Node diagnostics (not release authority)
+          node --test --test-concurrency=1 \
+            tests/d2o-consent-purposes.test.mjs \
+            tests/d2o-server-consent.test.mjs \
+            tests/d2o-consent-lifecycle.test.mjs \
+            tests/d2o-consent-races.test.mjs
+      - name: Record limited scope
         if: always()
-        continue-on-error: true
-        run: npm test
-      - name: Emulation diagnostics (default-deny, nonblocking)
-        if: always()
-        continue-on-error: true
         run: |
-          npx playwright install --with-deps chromium webkit
-          PLAYWRIGHT_WORKERS=1 npm run test:browser-nowrite
+          printf '%s\n' 'Portable source/VM consent tests only; full release gate, build, private-input validation, output scans, census and browser checks NOT RUN. No release authority.' >> "$GITHUB_STEP_SUMMARY"

@@ -164,7 +164,8 @@ export function resolveRouteLastmod({ route, hash, recorded, frozenDate = null, 
 // report-derived list reviewed by the integrating owner, never a blanket refresh.
 export function resolveMaterialDate(route, materialDate, resolved, releaseDate) {
   if (!materialDate) return resolved;
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(materialDate) || materialDate > releaseDate) throw new Error(`lastmod_material_date_future_or_invalid:${route}`);
+  const materialTimestamp = Date.parse(materialDate + "T00:00:00Z");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(materialDate) || !Number.isFinite(materialTimestamp) || new Date(materialTimestamp).toISOString().slice(0, 10) !== materialDate || materialDate > releaseDate) throw new Error(`lastmod_material_date_future_or_invalid:${route}`);
   if (materialDate <= resolved.lastmod) return resolved;
   return { lastmod: materialDate, action: "declared_material_page_edit" };
 }

@@ -444,6 +444,26 @@ export function commercialLinkState(entity, surface = "compare") {
   return "live";
 }
 
+// A repeated visible name is safe only when both registry rows are explicitly
+// the same canonical provider. Distinct offers must retain the uniqueness gate.
+export function sameCanonicalRegistryIdentity(registryByRenderId, profileId, left, right) {
+  const resolve = (id) => {
+    const program = registryByRenderId.get(id);
+    if (!program) return null;
+    const identity = program.profiles?.[profileId]?.canonical_identity;
+    if (identity?.role === "alias") {
+      const target = String(identity.canonical_program_id || "");
+      const canonicalProgram = registryByRenderId.get(target);
+      if (!canonicalProgram || canonicalProgram.profiles?.[profileId]?.canonical_identity?.role === "alias") return null;
+      return target;
+    }
+    return id;
+  };
+  const leftCanonical = resolve(left);
+  return leftCanonical !== null && leftCanonical === resolve(right) && left !== right
+    && [left, right].some((id) => registryByRenderId.get(id)?.profiles?.[profileId]?.canonical_identity?.role === "alias");
+}
+
 export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Date() } = {}) {
   const document = registry?.therapeutic_taxonomy;
   if (!document || document.schema !== "glp-therapeutic-taxonomy-v1") fail("schema_invalid");
@@ -517,7 +537,10 @@ export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Da
     }
     const rendered = row.render_label || row.provider;
     const key = identityKey(rendered);
-    if (!key || renderIdentities.has(key)) fail("render_identity_duplicate", `${pid}:${renderIdentities.get(key) || ""}`);
+    const previous = renderIdentities.get(key);
+    if (!key || (previous && !sameCanonicalRegistryIdentity(registryByRenderId, profileId, pid, previous))) {
+      fail("render_identity_duplicate", `${pid}:${previous || ""}`);
+    }
     renderIdentities.set(key, pid);
     programs.set(pid, Object.freeze({ ...row }));
   }
