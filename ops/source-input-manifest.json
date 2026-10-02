@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3886,
+  "tracked_file_count": 3888,
   "files": [
     "scripts/bind-care-fastpath-contract.mjs",
     "scripts/therapeutic-taxonomy-refresh-policies.json",
@@ -3888,7 +3888,9 @@
     "tests/glp234-try-ageless-identity.test.mjs",
     "tests/glp75-source-bounded-seo.test.mjs",
     "tests/browser/header-cta-contrast.spec.mjs",
-    "tests/glp44-combined-registration.test.mjs"
+    "tests/glp44-combined-registration.test.mjs",
+    "tests/w17-composited-paint.mjs",
+    "tests/w17-composited-paint.test.mjs"
   ],
   "exclusions": [
     "new private ClickDealer issued URLs and registry/authority outputs",

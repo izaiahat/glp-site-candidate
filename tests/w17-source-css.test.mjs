@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
+import { observeW17CompositedPaint } from './w17-composited-paint.mjs';
 
 // Deliberately narrow solid-paint oracle, shared by the report-only emitted test.
 // Unsupported paint is an explicit failure, NEVER a backgroundColor-only PASS.
@@ -177,7 +178,7 @@ export async function runW17(t, { sourceCss }) {
               for (let x = e; x; x = x.parentElement) animations.push(...x.getAnimations());
               await Promise.all(animations.filter(a => a.effect?.getComputedTiming().iterations !== Infinity).map(a => a.finished.catch(() => {})));
             });
-            const observation = await target.evaluate(observeW17Paint);
+            const observation = await observeW17CompositedPaint(target);
             const stateMatches = await target.evaluate((e, state) => state === 'rest' ? !e.matches(':hover,:focus') : e.matches(':' + state), state);
             if (!stateMatches) { observation.status = 'unsupported-paint'; observation.ratio = null; observation.unsupported.push(`requested state not established: ${state}`); }
             rec.contrast.push({ ...observation, state, kind: isCta ? 'cta' : 'heading' });
@@ -208,7 +209,7 @@ export async function runW17(t, { sourceCss }) {
     for (const state of states) {
       const samples = records.flatMap(r => r.contrast.filter(x => x.kind === kind && x.text === text && x.state === state).map(x => ({ route: r.route, mobile: r.mobile, ...x })));
       assert.equal(samples.length, 180, `${kind}/${state} denominator`);
-      const failures = samples.filter(x => x.status !== 'measured-solid-paint' || !(x.ratio >= 4.5));
+      const failures = samples.filter(x => x.status !== 'measured-composited-paint' || !(x.ratio >= 4.5));
       assert.deepEqual(failures, [], `${kind}/${state}: ${JSON.stringify(failures)}`);
     }
   };
