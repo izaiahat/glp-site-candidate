@@ -6,10 +6,12 @@ import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizedHash, loadRuntimePredecessor } from './postbuild-aeo-surface.mjs';
-import { loadCarrierArticles, assertCarrierArticleOutput } from '../src/carrier-article-retention.mjs';
+import { loadHistoricalCarrierArticles, assertCarrierArticleOutput } from '../src/carrier-article-retention.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const BASE_POINTER = '/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/current-content-base.json';
+const BASE_DIR = path.join(ROOT, 'data/predecessors/content-base');
+const BASE_POINTER = path.join(BASE_DIR, 'current-content-base.json');
+const BASE_POINTER_SHA256 = 'f2ff608d5c1d885cd48f861ed636c64e9324cdf91e9131448388575026499aee';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const SOURCES = ['scripts/build-staging.mjs', 'src/phase3-page-graph.mjs',
@@ -27,19 +29,20 @@ export async function captureLastmodEmission(root, routes) {
 }
 
 export async function prepareLastmod(root = ROOT, { readPredecessor = readFile } = {}) {
-  const pointer = JSON.parse(await readFile(BASE_POINTER, 'utf8'));
-  // A stale or rolled-back base pointer used to be silent here: every route added since that base
-  // reads as a first publication and takes today's lastmod, which publishes a false freshness date to
-  // search engines. Nothing downstream could tell that apart from a genuine new page. So the base is
-  // authenticated before it is trusted -- this only ever REFUSES, it never relaxes an existing check.
-  const receiptBytes = await readFile(pointer.final_receipt.path);
+  const pointerBytes = await readFile(BASE_POINTER);
+  if (sha(pointerBytes) !== BASE_POINTER_SHA256) throw new Error('lastmod_base_pointer_drift');
+  const pointer = JSON.parse(pointerBytes);
+  const releaseRoot = path.join(root, 'data/predecessors/content-base/release');
+  // The historical pointer and deployment manifest are retained byte-for-byte.
+  // Only their access paths are local; their release identity and SHA pins stay intact.
+  const receiptBytes = await readFile(path.join(BASE_DIR, 'final-receipt.json'));
   if (sha(receiptBytes) !== pointer.final_receipt.sha256) throw new Error('lastmod_base_receipt_drift');
   const receipt = JSON.parse(receiptBytes);
   if (receipt.status !== 'PASS_PRODUCTION_TERMINAL') throw new Error(`lastmod_base_receipt_not_terminal:${receipt.status}`);
   // The id is nested under `deployment`, not top-level; a top-level read is undefined and would
   // refuse every build.
   if (receipt.deployment?.deployment_id !== pointer.deployment_id) throw new Error('lastmod_base_receipt_deployment_mismatch');
-  const manifestBytes = await readFile(pointer.manifest.path);
+  const manifestBytes = await readFile(path.join(BASE_DIR, 'deployment-manifest.json'));
   if (sha(manifestBytes) !== pointer.manifest.sha256) throw new Error('lastmod_source_manifest_drift');
   const manifest = JSON.parse(manifestBytes);
   if (manifest.release_root !== pointer.release_root) throw new Error('lastmod_source_root_mismatch');
@@ -55,14 +58,16 @@ export async function prepareLastmod(root = ROOT, { readPredecessor = readFile }
     !key.startsWith('GLP_LASTMOD_') && key !== 'GLP_RELEASE_DATE'));
   Object.assign(env, {
     GLP_RELEASE_DATE: new Date().toISOString().slice(0, 10),
-    GLP_LASTMOD_RUNTIME_PREDECESSOR_ROOT: pointer.release_root,
+    GLP_LASTMOD_RUNTIME_PREDECESSOR_ROOT: releaseRoot,
     GLP_LASTMOD_RUNTIME_PREDECESSOR_MANIFEST: runtimeFile,
     GLP_LASTMOD_RUNTIME_PREDECESSOR_MANIFEST_SHA256: sha(runtimeBytes),
   });
   const predecessor = await loadRuntimePredecessor(env, async file =>
-    (await (file.startsWith(pointer.release_root + path.sep) ? readPredecessor(file) : readFile(file))).toString('utf8'));
+    (await (file.startsWith(releaseRoot + path.sep) ? readPredecessor(file) : readFile(file))).toString('utf8'));
   const files = new Set(entries.map(row => row.path));
-  const carriers = loadCarrierArticles(pointer.release_root);
+  // The verified predecessor predates the six-field rebind. Keep its original
+  // whole-record contract; current emission still requires authenticated inputs.
+  const carriers = loadHistoricalCarrierArticles(releaseRoot);
   // Reconstruct the detector's cache from verified final predecessor bytes.
   // Neither the candidate cache nor a legacy stage6 hash is rendered-output evidence.
   const provenance = { ...predecessor.provenance, pages: { ...predecessor.provenance.pages } };
@@ -139,6 +144,12 @@ async function main() {
     });
     if (result.error) throw result.error;
     process.exitCode = result.status ?? 1;
+    if (result.status === 0) {
+      const reportPath = path.join(ROOT, 'artifacts/ops/build-report.json');
+      const report = JSON.parse(await readFile(reportPath, 'utf8'));
+      report.export_policy_surface_sha256 = sha(await readFile(path.join(ROOT, 'public/providers/index.html')));
+      await writeFile(reportPath, JSON.stringify(report, null, 2) + '\n');
+    }
   } finally { await input.close(); }
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

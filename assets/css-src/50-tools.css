@@ -448,19 +448,24 @@ body:has(#cost-form) .gcs-lede {
 }
 body:has(#cost-form) .gcs-note { font-size: 0.9rem; color: var(--text-secondary); }
 
-/* split geometry: headline over estimate on the left, the form card right */
-body:has(#cost-form) .calc-layout { display: grid; gap: 26px; align-items: start; }
+/* Mobile reading order starts with the real heading and form. The full
+   description, dated price anchor, and manually typed offers follow the form;
+   desktop restores the split introduction/estimate beside the form. */
+body:has(#cost-form) .calc-layout { display: grid; gap: 16px; align-items: start; }
+body:has(#cost-form) .cost-description { margin: 0; }
 @media (min-width: 861px) {
   body:has(#cost-form) .calc-layout {
     grid-template-columns: minmax(0, 1.06fr) minmax(380px, 0.94fr);
-    grid-template-rows: auto 1fr; /* anchor hugs the headline; form spans both */
-    grid-template-areas: "intro form" "aside form";
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "intro form" "description form" "aside form";
     column-gap: clamp(36px, 4.5vw, 68px); row-gap: 10px;
   }
   body:has(#cost-form) .cost-intro { grid-area: intro; }
+  body:has(#cost-form) .cost-description { grid-area: description; }
   body:has(#cost-form) .cost-idle { grid-area: aside; align-self: start; }
   body:has(#cost-form) .cost-result { grid-area: aside; align-self: start; }
   body:has(#cost-form) .cost-form { grid-area: form; }
+  body:has(#cost-form) [data-calculator-typed-offers] { grid-column: 1 / -1; grid-row: 4; }
 }
 
 /* headline block: visible H1 in their hero scale, our type system */
@@ -885,8 +890,10 @@ body:has(.price-index-dataset-note) .inline-capture .gcs-note { font-size: 0.85r
 /* calculator small screens: their mobile order (headline, anchor, form) with
    the anchor scaled down and the form card full-bleed-ish */
 @media (max-width: 860px) {
-  body:has(#cost-form) .cost-intro { padding-top: 10px; }
-  body:has(#cost-form) .cost-intro h1 { font-size: clamp(2rem, 8.4vw, 2.6rem); }
+  body:has(#cost-form) .cost-workspace { padding-top: 8px; }
+  body:has(#cost-form) .calc-layout { gap: 8px; }
+  body:has(#cost-form) .cost-intro { padding-top: 0; }
+  body:has(#cost-form) .cost-intro h1 { font-size: clamp(2rem, 8.4vw, 2.6rem); margin-bottom: 0; }
   body:has(#cost-form) .cost-anchor-value { font-size: clamp(2.5rem, 12vw, 3.3rem); }
   body:has(#cost-form) .cost-intro-rule { margin: 2px 0 14px; }
 }

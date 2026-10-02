@@ -18,3 +18,30 @@ __pycache__/
 *.key
 *.p12
 *.pfx
+.mirror-build.lock
+
+# P1.1: explicit source-only QA exceptions, never generated reports.
+!/artifacts/
+/artifacts/*
+!/artifacts/ultracode/
+/artifacts/ultracode/*
+!/artifacts/ultracode/tools/
+/artifacts/ultracode/tools/*
+!/artifacts/ultracode/tools/test-browser-nowrite.mjs
+!/artifacts/ultracode/tools/qa-common.mjs
+# Existing tracked preservation inputs are immutable provenance, not new outputs.
+**/.hermes/
+**/.claude/
+**/.codex/
+**/secrets/
+**/credentials/
+**/portal-exports/
+**/raw-portal-exports/
+**/*.sqlite*
+**/*.db
+**/*.orig
+**/*.bak
+**/.worktrees/
+/reports/
+/gitleaks*
+!/scripts/gitleaks*

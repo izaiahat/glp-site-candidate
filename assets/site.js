@@ -1477,32 +1477,45 @@
   const counters = [...document.querySelectorAll('[data-counter-to]')];
   if (!counters.length) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const gsap = window.CS_MOTION?.gsap || window.gsap;
-  if (!gsap || !('IntersectionObserver' in window)) return;
-  const animate = (el) => {
-    const target = Number(el.getAttribute('data-counter-to'));
-    if (!Number.isFinite(target) || target <= 0) return;
-    const proxy = { value: 0 };
-    el.textContent = '0';
-    gsap.to(proxy, {
-      value: target,
-      duration: 0.6,
-      ease: 'power2.out',
-      snap: { value: 1 },
-      onUpdate: () => { el.textContent = Math.round(proxy.value).toLocaleString('en-US'); },
-      onComplete: () => { el.textContent = target.toLocaleString('en-US'); },
-    });
+  const bind = () => {
+    const gsap = window.CS_MOTION?.gsap || window.gsap;
+    if (!gsap || !('IntersectionObserver' in window)) return false;
+    const animate = (el) => {
+      const target = Number(el.getAttribute('data-counter-to'));
+      if (!Number.isFinite(target) || target <= 0) return;
+      const proxy = { value: 0 };
+      el.textContent = '0';
+      let tween;
+      let deadline;
+      const finish = () => {
+        clearTimeout(deadline);
+        tween?.kill();
+        el.textContent = target.toLocaleString('en-US');
+      };
+      tween = gsap.to(proxy, {
+        value: target,
+        duration: 0.6,
+        ease: 'power2.out',
+        snap: { value: 1 },
+        onUpdate: () => { el.textContent = Math.round(proxy.value).toLocaleString('en-US'); },
+        onComplete: finish,
+      });
+      // Frame throttling must not strand an intermediate displayed count.
+      deadline = setTimeout(finish, 600);
+    };
+    const seen = new WeakSet();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting || seen.has(entry.target)) continue;
+        seen.add(entry.target);
+        observer.unobserve(entry.target);
+        animate(entry.target);
+      }
+    }, { threshold: 0.6 });
+    counters.forEach((el) => observer.observe(el));
+    return true;
   };
-  const seen = new WeakSet();
-  const observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting || seen.has(entry.target)) continue;
-      seen.add(entry.target);
-      observer.unobserve(entry.target);
-      animate(entry.target);
-    }
-  }, { threshold: 0.6 });
-  counters.forEach((el) => observer.observe(el));
+  if (!bind()) window.addEventListener('gcs:motion-ready', bind, { once: true });
 })();
 
 /* ---- W5 / D17: one sitewide subscribe bottom sheet ---------------------- */
@@ -1646,7 +1659,30 @@
   toast.append(close);
   toast.classList.add('is-visible');
   document.body.append(toast);
+  // Consent has priority, but must not intercept the ordinary Continue link.
+  // Its height changes with preferences/viewport: reserve the actual banner
+  // bounds independently of the mobile-only page-content clearance.
+  const placeToast = () => {
+    const banner = document.querySelector('#gcs-consent');
+    const bounds = banner?.getBoundingClientRect();
+    const clearance = bounds?.height ? Math.max(0, innerHeight - bounds.top + 12) : 0;
+    toast.style.bottom = `max(18px, env(safe-area-inset-bottom), ${clearance}px)`;
+  };
+  const consentSize = new ResizeObserver(placeToast);
+  const watchConsent = () => {
+    consentSize.disconnect();
+    const banner = document.querySelector('#gcs-consent');
+    if (banner) consentSize.observe(banner);
+    placeToast();
+  };
+  const consentTree = new MutationObserver(watchConsent);
+  consentTree.observe(document.body, { childList: true });
+  addEventListener('resize', placeToast, { passive: true });
+  watchConsent();
   const hide = () => {
+    consentTree.disconnect();
+    consentSize.disconnect();
+    removeEventListener('resize', placeToast);
     toast.classList.remove('is-visible');
     if (document.documentElement.dataset.inputModality === 'keyboard') toast.remove();
     else setTimeout(() => toast.remove(), 240);
@@ -2854,7 +2890,7 @@
       let visible = 0;
       let stateVerified = 0;
       let stateUnknown = 0;
-      for (const card of cards) {
+      const classifyCard = (card, remainder = false) => {
         const durations = String(card.dataset.duration || 'unknown').split(/\s+/);
         const doses = String(card.dataset.doseValues || card.dataset.dose || 'unknown').split(/\s+/);
         const drugs = String(card.dataset.drugs || '').split(/\s+/);
@@ -2878,13 +2914,20 @@
         card.hidden = !show;
         card.dataset.selectedStateStatus = !selectedState ? 'not-selected' : !stateOk ? 'excluded' : stateMode === 'unknown' ? 'unverified' : 'verified';
         if (show) {
-          visible += 1;
+          if (!remainder) visible += 1;
           if (selectedState && stateMode === 'unknown') stateUnknown += 1;
-          else if (selectedState) stateVerified += 1;
+          else if (selectedState && !remainder) stateVerified += 1;
         }
         card.querySelectorAll('[data-medication]').forEach((row) => {
           row.hidden = !matchesDrug([medicationToken(row.dataset.medication)]);
         });
+      };
+      cards.forEach((card) => classifyCard(card));
+      const unverifiedSection = filters.closest('main')?.querySelector('[data-state-unverified-remainder]');
+      if (unverifiedSection) {
+        const remainderCards = [...unverifiedSection.querySelectorAll('[data-phase3-provider]')];
+        remainderCards.forEach((card) => classifyCard(card, true));
+        unverifiedSection.hidden = !remainderCards.some((card) => card.dataset.filterMatch === 'true');
       }
       /* Phase-4 gate remediation 2026-08-27 (GATES-PRELIM issue #2):
          re-appending every card forced a DOM mutation + reflow per card even
@@ -2953,7 +2996,8 @@
           ? ` for ${stateName(selectedState)}: ${stateVerified} with explicit state evidence, ${stateUnknown} requiring direct state verification.`
           : '';
         const ignoredSummary = ignoredState ? ` State code “${ignoredState}” was not recognized and was ignored.` : '';
-        const countLabel = ['/3-month/', '/6-month/'].includes(currentProductPath) ? 'comparable price result'
+        const countLabel = (['/3-month/', '/6-month/'].includes(currentProductPath)
+          || ['B', 'C'].includes(filters.closest('main')?.dataset.listingArchetype)) ? 'comparable price result'
           : currentProductPath === '/providers/' ? 'program card' : 'source-backed provider row';
         const treatmentSummary = ['/3-month/', '/6-month/'].includes(currentProductPath)
           && ['SEMAGLUTIDE', 'TIRZEPATIDE'].includes(drug) ? ` Treatment: ${drug === 'SEMAGLUTIDE' ? 'Semaglutide' : 'Tirzepatide'}.` : '';
@@ -3396,7 +3440,7 @@
       closeRegion();
     }));
     popover?.addEventListener('keydown', event => {
-      if (event.key === 'Escape') { event.preventDefault(); closeRegion(); }
+      if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); closeRegion(); }
       if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
         event.preventDefault();
         const options = stateChoices.filter(choice => !choice.hidden);
@@ -3481,6 +3525,7 @@
   const setupFilterSheet = (filters, label) => {
     if (!filters || filters.dataset.mobileFilterReady === 'true') return;
     if (filters.closest('main.listing[data-listing-archetype]:not([data-listing-archetype="D"])')) return;
+    const nativeShell = filters.closest('[data-native-pharmacy-filters]');
     filters.dataset.mobileFilterReady = 'true';
     filterSheetNumber += 1;
     const id = filters.id || `cs-mobile-filters-${filterSheetNumber}`;
@@ -3560,6 +3605,7 @@
     });
     mobile.addEventListener('change', sync);
     sync();
+    nativeShell?.replaceWith(trigger, filters);
   };
   document.querySelectorAll('[data-provider-filters]').forEach((filters) => {
     // The provider directory and Wegovy product route are the two W18 surfaces
@@ -3597,7 +3643,10 @@
       if (stickyFrame) return;
       stickyFrame = window.requestAnimationFrame(syncProviderSticky);
     };
-    window.addEventListener('scroll', queueProviderStickySync, { passive: true });
+    // Scroll already runs after geometry changes; update immediately so a
+    // WebKit frame delayed at the footer cannot leave the prior mode visible.
+    // Keep resize/font/observer work coalesced through the animation frame.
+    window.addEventListener('scroll', syncProviderSticky, { passive: true });
     window.addEventListener('resize', queueProviderStickySync, { passive: true });
     mobile.addEventListener('change', queueProviderStickySync);
     if ('ResizeObserver' in window) {

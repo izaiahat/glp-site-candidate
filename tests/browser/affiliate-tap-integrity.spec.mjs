@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
-import { isAllowedTrackingHost } from "../../src/tracking-allowed-hosts.mjs";
+import { isAllowedTrackingHost, trackingNetworkIdentity } from "../../src/tracking-allowed-hosts.mjs";
 
 // Operator directive 2026-07-30: every affiliate CTA must be genuinely tappable on
 // mobile and desktop — no fixed overlay (exit-capture trigger, sticky bar, consent
@@ -56,6 +56,8 @@ async function expectPaidRail(anchor) {
     `PAID_LINK_MODE: ${JSON.stringify(mode)} on href ${JSON.stringify(href)} is not one of ${[...PAID_LINK_MODES].join(" | ")}`).toBeTruthy();
   if (mode === "server-redirect") {
     expect(href, "PAID_RAIL_GO").toMatch(/^\/go\/[a-z0-9][a-z0-9-]*(?:\?[^#\s]*)?$/);
+    const program = await anchor.getAttribute("data-program");
+    await expect(anchor, "PAID_RAIL_GO_NETWORK").toHaveAttribute("data-network", trackingNetworkIdentity(program));
     return;
   }
   const program = await anchor.getAttribute("data-program");
@@ -67,6 +69,24 @@ async function expectPaidRail(anchor) {
 }
 
 for (const vp of VIEWPORTS) {
+  test(`current HOLD reviews remain informational and link-dark · ${vp.name}`, async ({page}, testInfo) => {
+    const raw = JSON.parse(readFileSync(new URL('../../data/go-selection-receipt.json', import.meta.url))).programs;
+    const origin = new URL(testInfo.project.use.baseURL).origin;
+    const external = [];
+    await page.context().route('**/*', route => {
+      if (new URL(route.request().url()).origin !== origin) { external.push(route.request().url()); return route.abort(); }
+      return route.continue();
+    });
+    await page.setViewportSize({width:vp.width, height:vp.height});
+    for (const id of ['nu-image-medical-review', 'longevity-meds-glp-1-review']) {
+      expect(raw.find(row => row.program_id === id)).toMatchObject({disposition:'HOLD', promotion_authorized:false});
+      const response = await page.goto(`/reviews/${id}/`, {waitUntil:'networkidle'});
+      expect(response.status()).toBe(200);
+      await expect(page.locator('h1')).toBeVisible();
+      await expect(page.locator('a[data-analytics-event="affiliate_click"], a[rel~="sponsored"], a[href^="/go/"]')).toHaveCount(0);
+    }
+    expect(external).toEqual([]);
+  });
   for (const path of PAGES) {
     test(`affiliate CTAs tappable · ${vp.name} · ${path}`, async ({ page }, testInfo) => {
       const pageOrigin = new URL(path, testInfo.project.use.baseURL).origin;
@@ -87,8 +107,9 @@ for (const vp of VIEWPORTS) {
       await page.setViewportSize({ width: vp.width, height: vp.height });
       await page.goto(path, { waitUntil: "networkidle" });
       // dismiss the consent banner if present so it cannot shadow CTAs mid-test
-      const consentOk = page.locator('[data-consent="denied"], [data-consent-accept], [data-consent-ok]').first();
-      if (await consentOk.isVisible().catch(() => false)) await consentOk.click();
+      await page.evaluate(()=>window.GCSConsentReady);
+      const consentOk = page.locator('[data-consent="acknowledge"], [data-consent="denied"], [data-consent-accept], [data-consent-ok]').first();
+      if (await consentOk.isVisible().catch(() => false)) {await consentOk.click();await expect(page.locator('#gcs-consent')).toHaveCount(0);}
       const anchors = page.locator('a[data-analytics-event="affiliate_click"], a[href^="/go/"], a[rel~="sponsored"]');
       const count = await anchors.count();
       expect(count).toBeGreaterThan(0);

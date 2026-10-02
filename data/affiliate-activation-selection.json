@@ -31,7 +31,16 @@
     }
   ],
   "operator_gate_receipt_sha256": "119eb0772c7f40047a5890324e41c7f5ecc543932ac5291ccff9fc2181b288d5",
-  "program_count": 11,
+  "program_count": 10,
+  "selection_amendment": "OPERATOR-DECISION-20260925-rebuild-D1-D7 D3: network-paused offers 1538, 3162 and 3176 are excluded; their source evidence is retained.",
+  "excluded_network_paused_programs": ["try-ageless", "altrx-glp1-us-cps", "futurhealth-wegovy-pillform"],
+  "excluded_selection_evidence": [{
+    "display_name": "AgelessRx", "link_mode": "transparent_direct", "network": "Katalys",
+    "network_program_id": "1538", "program_id": "try-ageless", "sheet_row": 94,
+    "sheet_status": "approved_active_tracking_ready", "tracking_host": "track.revoffers.com",
+    "tracking_link_sha256": "f160cdd13074620be4ba6fac5258d2480ae1dcb45327a9b11e0e49cc3e4ed650",
+    "disposition": "historical_snapshot_only_not_activation_authority"
+  }],
   "programs": [
     {
       "display_name": "Enhance.MD",
@@ -120,17 +129,6 @@
       "sheet_status": "approved_active_tracking_ready",
       "tracking_host": "track.revoffers.com",
       "tracking_link_sha256": "317c2db7493e9cf2e0e1917fb6edef35bf0f64fe5b4225e022fd4d9d0b1df618"
-    },
-    {
-      "display_name": "AgelessRx",
-      "link_mode": "transparent_direct",
-      "network": "Katalys",
-      "network_program_id": "1538",
-      "program_id": "try-ageless",
-      "sheet_row": 94,
-      "sheet_status": "approved_active_tracking_ready",
-      "tracking_host": "track.revoffers.com",
-      "tracking_link_sha256": "f160cdd13074620be4ba6fac5258d2480ae1dcb45327a9b11e0e49cc3e4ed650"
     },
     {
       "display_name": "Wellorithm",

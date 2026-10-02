@@ -83,6 +83,7 @@ test("G08a source contract refuses organic medication alias collisions and retai
   assert.doesNotMatch(build, /redirectMap\.set\("\/(?:semaglutide|tirzepatide)\/"/);
   assert.match(build, /organic_category_redirect_collision/);
   assert.match(build, /shell: "shared-interactive"/);
-  assert.match(build, /\.replaceAll\('data-motion-once="true"', 'data-motion-once="false"'\)/);
-  assert.ok((build.match(/data-motion-once="true"/g) || []).length >= 16);
+  assert.doesNotMatch(build, /\.replaceAll\('data-motion-once="true"', 'data-motion-once="false"'\)/);
+  for (const card of ["shipping", "schedule"]) assert.match(build, new RegExp(`data-h17-card="${card}"[^>]*data-motion="slide-from-(?:left|right)" data-motion-once="false"`));
+  assert.match(build, /cs-home2-hero__copy[^>]*data-motion="rise" data-motion-once="true"/);
 });

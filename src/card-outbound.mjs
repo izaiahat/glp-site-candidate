@@ -14,7 +14,7 @@ export function resolveCardOutbound({program, affiliate, promotionAuthority, pag
   const route = program?.go?.route;
   if (mode === 'go' && (!/^[a-z0-9][a-z0-9-]{1,79}$/.test(renderId || '') || route !== `/go/${renderId}`)) throw new Error('card_outbound_route_identity_invalid');
   const href = mode === 'go' ? `${route}?s=${encodeURIComponent(f08Key)}&v=a` : affiliate.affiliate_href;
-  const attributes = subidAttributes({network:affiliate.network,href:affiliate.affiliate_href,renderedHref:href,position,rankPosition,pageSlug,pageType:'funnel-v2-comparison',providerSlug:renderId})
+  const attributes = subidAttributes({programId:renderId,network:affiliate.network,href:affiliate.affiliate_href,renderedHref:href,position,rankPosition,pageSlug,pageType:'funnel-v2-comparison',providerSlug:renderId})
     + ` data-page-slug="${pageSlug}" data-subid="${f08Key}" data-variant="a"`
     + (mode === 'go' ? ' data-funnel-v2-go' : ' data-transparent-direct-terms="true"');
   return {mode,href,attributes,f08Key};

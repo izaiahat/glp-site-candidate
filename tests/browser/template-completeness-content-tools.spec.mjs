@@ -213,7 +213,7 @@ for (const viewport of VIEWPORTS) {
     const manageChoices = page.locator('#gcs-consent [data-consent-open]');
     await expect(manageChoices).toBeVisible();
     await manageChoices.click();
-    await page.getByRole("button", { name: "Turn off analytics", exact: true }).click();
+    await page.getByRole("button", { name: "Turn off tracking", exact: true }).click();
     await expect(page.locator("#gcs-consent")).toHaveCount(0);
     await expect.poll(() => page.evaluate(() => {
       const saved = JSON.parse(localStorage.getItem("gcs_tracking_consent_v1") || "null");

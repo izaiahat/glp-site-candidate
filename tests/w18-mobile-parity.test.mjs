@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
+import { assertCompoundedListing } from './helpers/compounded-listing-contract.mjs';
 
 const ROOT = new URL("../", import.meta.url);
 const read = (relative) => readFile(new URL(relative, ROOT), "utf8");
@@ -10,8 +11,8 @@ const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const ROUTES = [
   ["home", "public/index.html", /cs-home2-hero/],
   ["brand product", "public/ozempic/index.html", /p3-product-hero/],
-  ["compounded category", "public/lp/best-providers/compounded-semaglutide/index.html", /p3-category-hero/],
-  ["bulk", "public/3-month/index.html", /p3-bulk-hero/],
+  ["compounded category", "public/lp/best-providers/compounded-semaglutide/index.html", /data-listing-archetype="C"/],
+  ["bulk", "public/3-month/index.html", /data-listing-archetype="A"/],
   ["insights index", "public/insights/index.html", /p3-insights-hero/],
   ["insights article", "public/guides/what-is-glp-1/index.html", /guide-shell/],
   ["pharmacies", "public/pharmacies/index.html", /data-pharmacy-filters/],
@@ -25,6 +26,22 @@ test("W18 served route matrix covers every standing mobile template", async () =
   for (const [family, relative, marker] of ROUTES) {
     const html = await read(relative);
     assert.match(html, marker, `${family} missing its served template marker`);
+    if (family === 'compounded category') assertCompoundedListing(html);
+    if (family === 'bulk') {
+      // Same recovered listing spec, row02: old A hero is superseded too.
+      // This is a real empty comparable cohort, not permission to invent cards.
+      const contract = page => {
+        assert.match(page, /data-listing-archetype="A"/);
+        assert.match(page, /listing__intro--bulk-visual/);
+        assert.match(page, /data-filter-result[\s\S]*?data-provider-filters[\s\S]*?data-phase3-provider-grid/);
+        assert.match(page, /data-filter-reset/);
+        assert.match(page, /data-card-review/);
+      };
+      contract(html);
+      for (const token of ['data-phase3-provider-grid', 'data-provider-filters', 'data-filter-result', 'data-card-review']) {
+        assert.throws(() => contract(html.replaceAll(token, 'removed-contract-hook')));
+      }
+    }
     assert.match(html, /\/assets\/site\.js/, `${family} missing the shared served runtime`);
     assert.match(html, /\/assets\/site(?:-[a-z0-9-]+)?\.css/, `${family} missing a served stylesheet`);
   }

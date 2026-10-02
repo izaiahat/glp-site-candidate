@@ -385,7 +385,9 @@
       start.dataset.analyticsEvent = "affiliate_click";
       start.dataset.providerSlug = record.program_id;
       start.dataset.merchant = record.display_name;
-      start.dataset.network = record.network || "direct";
+      if (!record.network) throw new Error(`quiz_affiliate_network_missing:${record.program_id}`);
+      start.dataset.network = record.network;
+      start.dataset.subidCodec = record.subid_codec;
       start.dataset.elementCode = "Q";
       start.dataset.rankPosition = String(index + 1);
       start.dataset.pageType = "quiz-results";

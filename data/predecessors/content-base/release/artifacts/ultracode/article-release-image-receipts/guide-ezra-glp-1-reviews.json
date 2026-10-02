@@ -1,0 +1,140 @@
+{
+  "alt": "Editorial illustration for Ezra GLP-1 Reviews: Identity, Terms, and FDA Record: layered research documents and evidence cards",
+  "cache_hit": true,
+  "candidates": [
+    {
+      "index": 0,
+      "metrics": {
+        "detail": 14.9249,
+        "efficiency": 1.0,
+        "lcp_avif_bytes": 111428.0,
+        "score": 14.9249
+      },
+      "sha256": "60bf2254bca44bc3ad72faa71cde27827e2400b871be51f41f9d4176643fafe4"
+    }
+  ],
+  "credits_spent": 0,
+  "elapsed_s": 1.3,
+  "files": [
+    {
+      "budget_bytes": 55000,
+      "bytes": 30510,
+      "encoder": "AVIF",
+      "floor_bytes": 5500,
+      "height": 450,
+      "name": "guide-ezra-glp-1-reviews-800.avif",
+      "quality": 70,
+      "sha256": "c1ea0cf88e541f9ecb440864fb473cba9c506a9c1c4c3438f30f8b783bedd265",
+      "suffix": "-800.avif",
+      "width": 800
+    },
+    {
+      "budget_bytes": 150000,
+      "bytes": 111130,
+      "encoder": "AVIF",
+      "floor_bytes": 9000,
+      "height": 900,
+      "name": "guide-ezra-glp-1-reviews-1600.avif",
+      "quality": 70,
+      "sha256": "43a22dee61e885a3df09e0863cef5264d64d879076d364b6637a2b00bf803081",
+      "suffix": "-1600.avif",
+      "width": 1600
+    },
+    {
+      "budget_bytes": 70000,
+      "bytes": 32722,
+      "encoder": "WEBP",
+      "floor_bytes": 5500,
+      "height": 450,
+      "name": "guide-ezra-glp-1-reviews-800.webp",
+      "quality": 82,
+      "sha256": "6c2d9c93ab49fbe7e91026f423f6baa2f3c996f085daca5a5605b836fcc793f3",
+      "suffix": "-800.webp",
+      "width": 800
+    },
+    {
+      "budget_bytes": 200000,
+      "bytes": 116616,
+      "encoder": "WEBP",
+      "floor_bytes": 18000,
+      "height": 900,
+      "name": "guide-ezra-glp-1-reviews-1600.webp",
+      "quality": 82,
+      "sha256": "c41fec2f6a442476f103d357ff19ce549017410201a1d58c61154babfd6ea0b5",
+      "suffix": "-1600.webp",
+      "width": 1600
+    },
+    {
+      "budget_bytes": 120000,
+      "bytes": 72529,
+      "encoder": "JPEG",
+      "floor_bytes": 18000,
+      "height": 450,
+      "name": "guide-ezra-glp-1-reviews-800.jpg",
+      "quality": 88,
+      "sha256": "fc86c35c49eac71cdbf3473e3181c61dcc59af6b85afc247e691824dfaab8b4d",
+      "suffix": "-800.jpg",
+      "width": 800
+    },
+    {
+      "budget_bytes": 340000,
+      "bytes": 281031,
+      "encoder": "JPEG",
+      "floor_bytes": 55000,
+      "height": 900,
+      "name": "guide-ezra-glp-1-reviews-1600.jpg",
+      "quality": 88,
+      "sha256": "eedc239b794256a6050178844ba9f14e1afd605b14f7d539dc710530ca928067",
+      "suffix": "-1600.jpg",
+      "width": 1600
+    },
+    {
+      "budget_bytes": 220000,
+      "bytes": 152350,
+      "encoder": "JPEG",
+      "floor_bytes": 16000,
+      "height": 630,
+      "name": "guide-ezra-glp-1-reviews-og.jpg",
+      "quality": 88,
+      "sha256": "04d7871f2211f4ac848cb6a65d3f8014f8d77590d121284047dd019f3da44fd8",
+      "suffix": "-og.jpg",
+      "width": 1200
+    }
+  ],
+  "h1": "Ezra GLP-1 Reviews: Identity, Terms, and FDA Record",
+  "model": "gpt-image-2",
+  "motif": "evidence",
+  "prepared_at_utc": "2026-09-10T03:45:45Z",
+  "prompt_sha256": "f4b34865aadc769bc3cd7b06be7c20241ee57a21f7cfdb8974068e310e1f5365",
+  "provider": "gpt_image_2_native",
+  "provider_chain_attempted": [
+    {
+      "provider": "gpt_image_2_native",
+      "reason": null,
+      "status": "GENERATED"
+    }
+  ],
+  "reason": null,
+  "reference_used": null,
+  "route": "/guides/ezra-glp-1-reviews/",
+  "schema": "glp-article-hero-image-v1",
+  "selected_candidate": {
+    "index": 0,
+    "metrics": {
+      "detail": 14.9249,
+      "efficiency": 1.0,
+      "lcp_avif_bytes": 111428.0,
+      "score": 14.9249
+    },
+    "sha256": "60bf2254bca44bc3ad72faa71cde27827e2400b871be51f41f9d4176643fafe4",
+    "source": {
+      "bytes": 2503273,
+      "height": 941,
+      "sha256": "60bf2254bca44bc3ad72faa71cde27827e2400b871be51f41f9d4176643fafe4",
+      "width": 1672
+    }
+  },
+  "staged_dir": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-images/guide-ezra-glp-1-reviews/gpt_image_2_native/f4b34865aadc769b/family",
+  "status": "GENERATED",
+  "visual_key": "guide-ezra-glp-1-reviews"
+}

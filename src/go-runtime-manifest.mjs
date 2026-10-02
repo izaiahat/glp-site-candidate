@@ -8,6 +8,23 @@ export function manifestSha256(manifest) {
   return createHash("sha256").update(manifestJsonText(manifest)).digest("hex");
 }
 
+export function assertCurrentHoldGoSuccessor(before, manifest, heldIds) {
+  for (const key of ['schema', 'program_registry_schema', 'site_profile', 'internal_fallback']) {
+    if (before[key] !== manifest[key]) throw new Error('go_non_hold_manifest_drift');
+  }
+  const after = Object.fromEntries(manifest.programs.map(row => [row.route_slug || row.program_id, row]));
+  if (JSON.stringify(Object.keys(before.programs)) !== JSON.stringify(Object.keys(after))) throw new Error('go_non_hold_manifest_drift');
+  for (const [slug, row] of Object.entries(after)) {
+    const prior = before.programs[slug];
+    if (JSON.stringify(prior) === JSON.stringify(row)) continue;
+    if (!heldIds.has(row.program_id)) throw new Error('go_non_hold_manifest_drift');
+    const expected = Object.fromEntries(['program_id', 'display_name', 'route', 'entry_state', 'commercial_state'].map(key => [key, prior[key]]));
+    Object.assign(expected, {live_link_allowed:false, promotion_authorized:false,
+      candidate_gate:'No complete live attribution and promotion receipt; entry remains held.'});
+    if (JSON.stringify(row) !== JSON.stringify(expected)) throw new Error('go_non_hold_manifest_drift');
+  }
+}
+
 export function renderGoRuntimeManifestModule(manifest) {
   const programs = Object.fromEntries((manifest.programs || []).map((entry) => [entry.route_slug || entry.program_id, entry]));
   const payload = {

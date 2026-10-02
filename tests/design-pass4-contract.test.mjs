@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
+import { assertCompoundedListing } from './helpers/compounded-listing-contract.mjs';
 
 const ROOT = process.cwd();
 const read = (relative) => readFileSync(path.join(ROOT, relative), "utf8");
@@ -123,8 +124,11 @@ test("mobile header and consent controls keep touch targets clear of the paid-LP
   assert.match(shell, /\.cs-search-back\s*\{\s*inline-size:\s*44px;\s*block-size:\s*44px/);
   assert.match(shell, /\.cs-menu-toggle\s*\{[\s\S]*?block-size:\s*44px/);
   assert.match(shell, /section#gcs-consent \.gcs-consent-actions button \{ min-height: 44px/);
-  assert.match(quiz, /body\[data-page="quiz-provider-fit"\] main#main\.qz-shell \{[\s\S]*?min-height:\s*100dvh;[\s\S]*?padding-block:\s*95px 48px !important/);
+  assert.match(quiz, /body\[data-page="quiz-provider-fit"\] main#main\.qz-shell \{[\s\S]*?min-height:\s*100dvh;[\s\S]*?padding-block:\s*95px calc\(48px \+ var\(--consent-clearance, 0px\)\) !important/);
   assert.match(consent, /bottom:calc\(20px \+ var\(--sticky-clearance,0px\)\)/);
+  assert.match(consent, /const reserved=height===null\?320:Math\.ceil\(height\+bottom\+8\)/);
+  assert.match(consent, /window\.innerWidth<=920\|\|document\.body\?\.dataset\?\.page==='quiz-provider-fit'/);
+  assert.match(consent, /entry\?\.borderBoxSize/);
   assert.match(landing, /body:has\(\.sticky\)\{--sticky-clearance:96px\}/);
 });
 
@@ -139,21 +143,28 @@ test("Insights-reference route families render the clean-room template anatomy",
   const representatives = [
     ["insights", /p3-insights-hero|cs-ins-index/],
     ["bulk", /p3-index-hero/],
-    ["3-month", /p3-bulk-hero/],
-    ["6-month", /p3-bulk-hero/],
+    ["3-month", /listing__intro--bulk-visual[^>]*>[\s\S]*?data-product-visual="bulk-/],
+    ["6-month", /listing__intro--bulk-visual[^>]*>[\s\S]*?data-product-visual="bulk-/],
     ["mounjaro", /p3-product-hero/],
     ["wegovy", /p3-product-hero/],
     ["wegovy-pill", /p3-product-hero/],
     ["zepbound", /p3-product-hero/],
     ["ozempic", /p3-product-hero/],
-    ["lp/best-providers/compounded-semaglutide", /p3-category-hero/],
-    ["lp/best-providers/compounded-tirzepatide", /p3-category-hero/],
+    ["lp/best-providers/compounded-semaglutide", /data-listing-archetype="C"/],
+    ["lp/best-providers/compounded-tirzepatide", /data-listing-archetype="C"/],
     ["providers", /p3-provider|p3-index-hero/],
     ["pharmacies", /p3-pharm/],
   ];
   for (const [route, marker] of representatives) {
     const page = html(route);
     assert.match(page, marker, `missing emulated anatomy on /${route}/`);
+    if (route.startsWith('lp/best-providers/compounded-')) {
+      assertCompoundedListing(page);
+      for (const token of ['data-phase3-provider-grid', 'data-provider-filters', 'data-filter-result', 'data-card-review']) {
+        assert.ok(page.includes(token));
+        assert.throws(() => assertCompoundedListing(page.replaceAll(token, 'removed-contract-hook')), undefined, token);
+      }
+    }
     assert.doesNotMatch(page, /glpwinner/i, `clean-room leak on /${route}/`);
   }
 });

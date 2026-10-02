@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { loadAffiliateLinkMap } from "./affiliate-link-map.mjs";
-import { normalizeNetwork } from "./affiliate-subid.mjs";
+import { affiliateNetworkIdentity, normalizeNetwork } from "./affiliate-subid.mjs";
 import { candidatesForMedicationPreference } from "./therapeutic-taxonomy.mjs";
 import { DEFAULT_PROFILE, GOAL_WEIGHT_PROFILES, orderCandidates } from "./quiz-ranking.mjs";
 
@@ -244,9 +244,8 @@ export function buildPhase4PageData(config, registry = null, profileId = "glp-cl
     const program = registryProgram(registry, candidate.program_id);
     const affiliate = affiliateMap[candidate.program_id] || null;
     // Network metadata is not the generic sub-ID parameter namespace.
-    const network = normalizeNetwork(affiliate?.network, affiliate?.affiliate_href);
-    const quizNetwork = network === "direct" && ["XenTraffic", "Trackdesk"].includes(affiliate?.network)
-      ? affiliate.network.toLowerCase() : network;
+    const quizNetwork = affiliate?.live && affiliate.affiliate_href
+      ? affiliateNetworkIdentity(candidate.program_id, affiliate.network) : null;
     const featureEvidence = Array.isArray(candidate.verified_features) ? candidate.verified_features.filter((value) => flow.features.some((feature) => feature.value === value)) : [];
     records[candidate.program_id] = {
       program_id: candidate.program_id,
@@ -259,6 +258,7 @@ export function buildPhase4PageData(config, registry = null, profileId = "glp-cl
       review_path: program?.review_path || affiliate?.review_path || `/reviews/${candidate.program_id}/`,
       has_live_link: Boolean(affiliate?.live && affiliate.affiliate_href),
       affiliate_href: affiliate?.live && affiliate.affiliate_href ? affiliate.affiliate_href : null,
+      subid_codec: affiliate?.live ? normalizeNetwork(affiliate.network, affiliate.affiliate_href) : null,
       network: affiliate?.live && affiliate.affiliate_href ? quizNetwork : null,
       logo: safeLogo(providerLogos?.[candidate.program_id]),
       verified_features: featureEvidence,

@@ -38,14 +38,14 @@ test("D26-D29 use honest linked review names, dynamic counts, and seven medicati
   assert.match(home, /Popular program reviews/);
   assert.match(home, /href=\"\$\{card\.href\}\"/);
   assert.match(home, /\$\{programCount\}<\/strong><span>programs tracked/);
-  assert.match(home, /Nobody can buy a rank or a score/);
+  assert.match(home, /On our organic comparisons, compensation never changes a score\. Paid landing pages disclose their separate commercial order\./);
   assert.equal((rail.match(/ key: /g) || []).length, 7);
   for (const name of ["Compounded semaglutide", "Compounded tirzepatide", "Wegovy pill", "Ozempic", "Wegovy", "Mounjaro", "Zepbound"]) assert.ok(rail.includes(`name: \"${name}\"`));
   assert.match(runtime, /window\.setInterval\(\(\) => move\(1\), 3000\)/);
   assert.match(runtime, /index = \(index \+ delta \+ cards\.length\) % cards\.length/);
   assert.match(servedHome, /Popular program reviews/);
   assert.match(servedHome, /data-counter-to=\"\d+\"/);
-  assert.match(servedHome, /Nobody can buy a rank or a score/);
+  assert.match(servedHome, /On our organic comparisons, compensation never changes a score\. Paid landing pages disclose their separate commercial order\./);
   assert.match(servedRuntime, /window\.setInterval\(\(\) => move\(1\), 3000\)/);
   for (const selector of [/\.cs-home2-marquee/, /\.cs-home-med/, /\.cs-home2-med-track/, /\.cs-home2-dots/]) assert.match(servedCss, selector);
 });
@@ -72,13 +72,21 @@ test("D31-D34 land lifestyle imagery, rolling price controls, simple trust cards
 });
 
 test("Motion v2 implements the data-motion vocabulary and H17 split entrance (operator 2026-08-26)", () => {
+  // Runtime H17 entry direction, aurora pause lifecycle and rail locality:
+  // browser/motion-mobile-contracts-regression.spec.mjs: "aurora explicit/offscreen/hidden/reduced lifecycle".
   assert.match(motion, /function initH17\(\)/);
   assert.match(motion, /function initVocabulary\(\)/);
   assert.match(motion, /defaults: \{ duration: 0\.7, ease: "power3\.out" \}/);
   assert.match(motion, /start: "top 80%"/);
   assert.match(motion, /once: true/);
+  assert.match(motion, /getAttribute\("data-motion-once"\) === "false"/);
+  assert.match(motion, /onEnter: play, onEnterBack: play/);
   assert.match(motion, /var CLEAR = "opacity,transform"/);
-  assert.doesNotMatch(motion, /toggleActions|repeat:\s*-1|data-motion-loop/);
+  assert.doesNotMatch(motion, /toggleActions|data-motion-loop/);
+  assert.match(motion, /var running = !reduced && !paused && !auroraUserPaused && !document\.hidden && item\.visible/);
+  assert.match(motion, /button\.dataset\.auroraPause = ""/);
+  assert.match(motion, /button\.setAttribute\("aria-pressed", String\(auroraUserPaused\)\)/);
+  assert.match(motion, /document\.addEventListener\("visibilitychange", syncAuroras\)/);
   assert.match(css, /@media\(prefers-reduced-motion:reduce\)/);
   assert.match(css, /animation:none!important/);
   assert.match(servedCss, /@media\(prefers-reduced-motion:reduce\)/);
@@ -90,8 +98,12 @@ test("Pass 3 retires decorative palette, orbit, arrow, and replay loops", () => 
     "cs-btn__orbit-track",
     "cs-btn__arrow",
     "data-motion-loop",
-    "repeat: -1",
   ]) assert.ok(!motion.includes(retired), `decorative motion still includes ${retired}`);
+  const aurora = motion.slice(motion.indexOf('function initAuroras()'), motion.indexOf('function teardown()'));
+  assert.match(aurora, /repeat: -1, yoyo: true[^\n]*paused: true/);
+  assert.match(motion, /if \(event\.matches\) teardown\(\)/);
+  assert.match(motion, /if \(auroraObserver\) \{ auroraObserver\.disconnect\(\); auroraObserver = null; \}/);
+  assert.equal((motion.match(/repeat:\s*-1/g) || []).length, 1, 'no other perpetual motion owner');
 });
 
 test("Pass 3 desktop rail, pricing, care, logo-band, and wide-grid visual contracts are explicit", () => {
@@ -109,6 +121,8 @@ test("Pass 3 desktop rail, pricing, care, logo-band, and wide-grid visual contra
 });
 
 test("Pass 4 keeps content visible while restoring the two intentional home rails", () => {
+  // CSS durations here; actual offscreen rail animation is exercised by
+  // browser/motion-mobile-contracts-regression.spec.mjs: "aurora explicit/offscreen/hidden/reduced lifecycle".
   assert.doesNotMatch(css, /contain-intrinsic-size|content-visibility:\s*auto/);
   assert.match(css, /\.cs-home2-marquee__track \{ animation: cs-home2-popular-loop 30s linear infinite; \}/);
   assert.match(css, /\.cs-home2-verdict-track \{ animation: cs-home2-verdict-loop 56s linear infinite; \}/);
@@ -119,7 +133,10 @@ test("Pass 4 keeps content visible while restoring the two intentional home rail
   const playStateRules = css.match(/[^{}]+\{[^{}]*animation-play-state[^{}]*\}/g) || [];
   assert.ok(playStateRules.length >= 1, "review wall hover pause missing");
   for (const rule of playStateRules) assert.match(rule, /cs-home2-(?:wall|marquee|verdict)/);
-  assert.doesNotMatch(motion, /IntersectionObserver|is-motion-visible/);
+  // Aurora's offscreen observer is permitted; the two rails remain CSS-only.
+  const observer = motion.slice(motion.indexOf('auroraObserver = new IntersectionObserver'), motion.indexOf('function teardown()'));
+  assert.match(observer, /item\.visible = entry\.isIntersecting/);
+  assert.doesNotMatch(observer, /cs-home2-(?:marquee|verdict)|is-motion-visible/);
   assert.doesNotMatch(css, /\[data-motion(?:=|\])[^,{]*\{[^}]*opacity:\s*0(?:\s*[;!])/s);
 });
 
@@ -161,7 +178,7 @@ test("D37-D44 include verdicts, dynamic top-three, calculator, honest review cap
   // Design pass 2026-08-26 (fix #5/#8/#11): the news band merged into the
   // editorial panel (cs-home2-newsgrid retired) and the review wall module
   // (cs-home2-wall) took the capture band's place.
-  for (const contract of ["Read every verdict", "See all ${programCount} programs", "Calculate your cost", "CAPTURED_HELD_MANUAL_REVIEW", "We do not sell medication", "cs-home2-articlegrid", "cs-home2-help", "cs-home2-wall", "data-newsletter-open"]) assert.ok(home.includes(contract) || runtime.includes(contract) || build.includes(contract) || reviewSource.includes(contract), `missing ${contract}`);
+  for (const contract of ["Read every verdict", "See all ${comparisonCount} evidence-qualified cards", "Calculate your cost", "CAPTURED_HELD_MANUAL_REVIEW", "We do not sell medication", "cs-home2-articlegrid", "cs-home2-help", "cs-home2-wall", "data-newsletter-open"]) assert.ok(home.includes(contract) || runtime.includes(contract) || build.includes(contract) || reviewSource.includes(contract), `missing ${contract}`);
   assert.match(home, /contact you to verify it before publication/);
   assert.doesNotMatch(home, /held for manual moderation/i);
   assert.doesNotMatch(home, /we have none|we will not invent/i);

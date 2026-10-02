@@ -1,0 +1,79 @@
+{
+  "schema": "wave4-manufacturer-offer-build-v2",
+  "status": "PASS_LOCAL_REVIEW_HELD",
+  "evaluated_at": "2026-08-08T23:52:45.888Z",
+  "evaluation_mode": "per_offer",
+  "offer_evaluation_clocks": {
+    "wegovy-commercial-covered-2026": {
+      "evaluated_at": "2026-08-08T23:52:45.888Z",
+      "basis": "preserved",
+      "acceptance": null
+    },
+    "wegovy-self-pay-dose-pricing-2026": {
+      "evaluated_at": "2026-08-08T23:52:45.888Z",
+      "basis": "preserved",
+      "acceptance": null
+    },
+    "wegovy-new-patient-two-fill-2026": {
+      "evaluated_at": "2026-08-08T23:52:45.888Z",
+      "basis": "preserved",
+      "acceptance": null
+    },
+    "zepbound-commercially-uncovered-single-dose-pen-2026": {
+      "evaluated_at": "2026-09-14T19:27:04.300Z",
+      "basis": "accepted_material",
+      "acceptance": {
+        "capture_id": "zepbound-savings-20260802",
+        "capture_sha256": "2a5f73e3ff60c9e4e9d6cdb0e20d442515eddb1583b1549f37ebe1e4ed19e8ab",
+        "content_sha256": "1127c087443e35e8d7b7530095be7883f01582b9e678fa0c5e92620efe2b7df9",
+        "parent_offer_sha256": "69ecd6b44f33757566755031c1a5b51037da765f3e573833aff9629107882b50",
+        "source_url": "https://zepbound.lilly.com/savings",
+        "scrape_id": "01a0a163-18f3-73b8-8114-d6bf20e54561"
+      }
+    }
+  },
+  "route": "/tools/glp-1-savings-offer-monitor/",
+  "publication_state": "LINK_DARK_REVIEW_REQUIRED",
+  "record_count": 4,
+  "active_record_count": 4,
+  "active_record_ids": [
+    "wegovy-commercial-covered-2026",
+    "wegovy-self-pay-dose-pricing-2026",
+    "wegovy-new-patient-two-fill-2026",
+    "zepbound-commercially-uncovered-single-dose-pen-2026"
+  ],
+  "source_count": 2,
+  "source_capture_ids": [
+    "wegovy-savings-20260802",
+    "zepbound-savings-20260802"
+  ],
+  "source_scrape_ids": [
+    "019fc021-2897-712d-9095-6a0244b9d37c",
+    "01a0a163-18f3-73b8-8114-d6bf20e54561"
+  ],
+  "source_quote_sha256": [
+    "3372281d3e8a6f89bd635995313f7ea16991642a541f1bf5a8d9fd4fb556b596",
+    "51375a466c3176daca317e26bc8e7b0d4597ef9a495cd9ae561f1babd1d7ee96"
+  ],
+  "source_ledger": {
+    "schema": "glp-wave4-firecrawl-source-capture-ledger-v1",
+    "generated_at": "2026-08-02T01:41:56.582193Z",
+    "payload_sha256": "ef4d6c369a4706103c98e59022580fa892d25d66238f3a48bcbddcbb8ad54d2a"
+  },
+  "html_facts": {
+    "action_links": 0,
+    "outbound_action_links": 0,
+    "forms": 0,
+    "scripts": 0,
+    "runtime_assets": 0,
+    "go_links": 0,
+    "checkout_links": 0
+  },
+  "effects": {
+    "provider_calls": 0,
+    "checkout_attempts": 0,
+    "deployments": 0,
+    "emails": 0,
+    "spend_usd": 0
+  }
+}

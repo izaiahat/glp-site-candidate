@@ -1,6 +1,11 @@
 import { expect, test } from "@playwright/test";
 import { calculatorProviderIds } from "./round3-source-expectations.mjs";
 import { loadAffiliateLinkMap } from "../../src/affiliate-link-map.mjs";
+import { loadGoSelection, loadGoPromotionAuthority } from "../../src/go-runtime-selection.mjs";
+// C03: the current receipt-backed GO selection supersedes the 202608 direct-only
+// surface. Derive expectations from authority, never the rendered CTA.
+const goSelection = Object.values(loadGoSelection().programs);
+const promotion = loadGoPromotionAuthority().programs;
 
 const expectedProviderIds = calculatorProviderIds;
 const expectedLinks = loadAffiliateLinkMap("calculator");
@@ -31,9 +36,12 @@ test("every calculator program computes and every authority-backed offer preserv
       await expect(panel).toBeVisible();
       await expect(cta).toHaveCount(1);
       await expect(cta).toHaveAttribute("data-program", programId);
-      await expect(cta).toHaveAttribute("data-link-mode", "transparent-direct");
-      await expect(cta).toHaveAttribute("data-subid", `calculator-${programId}-result-202608`);
-      await expect(cta).toHaveAttribute("href", authority.affiliate_href);
+      const selected = goSelection.find(row => row.render_id === programId || row.program_id === programId);
+      const go = selected?.disposition === 'ADOPT' && selected.status === 'VERIFIED'
+        && promotion[selected.program_id]?.promotion_authorized === true;
+      await expect(cta).toHaveAttribute("data-link-mode", go ? "server-redirect" : "transparent-direct");
+      await expect(cta).toHaveAttribute("data-subid", go ? 'calculator.pc1' : `calculator-${programId}-result-202608`);
+      await expect(cta).toHaveAttribute("href", go ? `${selected.route}?s=calculator.pc1&v=a` : authority.affiliate_href);
       expect(new Set((await cta.getAttribute("rel")).split(/\s+/))).toEqual(new Set(["sponsored", "nofollow", "noopener"]));
       await expect(cta).toHaveText(`Start with ${authority.merchant} →`);
       await expect(panel.locator(".cost-affiliate-disclosure")).toContainText("at no extra cost to you");

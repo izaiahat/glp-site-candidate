@@ -10,8 +10,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
 import { buildProviderReviewSpecs, renderProviderReviewPage } from "../src/provider-review.mjs";
+import * as reviewModule from '../src/provider-review.mjs';
 import { buildAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
-import { loadGoSelection } from "../src/go-runtime-selection.mjs";
+import { loadGoSelection, loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
 import { GO_RUNTIME_MANIFEST } from "../functions/go/program-manifest.js";
 
 const readJson = async (path) => JSON.parse(await readFile(new URL(path, import.meta.url), "utf8"));
@@ -25,6 +26,26 @@ const identity = await readJson("../data/identity-registry.json");
 const specs = buildProviderReviewSpecs(money.pages, providerPages, providerFastpath, registry, "glp-clinic-scout");
 const orderly = specs.find((spec) => spec.program_id === "orderlymeds");
 const goby = specs.find((spec) => spec.program_id === "gobymeds");
+
+// Exercise the exact renderer boundary with CURRENT authenticated rail inputs;
+// the frozen row's old rail is deliberately superseded, never used for output.
+function assertCurrentDestinationRefused(spec, href) {
+  const selected=loadGoSelection().programs[spec.program_id];
+  assert.equal(selected.status,'VERIFIED');
+  assert.equal(loadGoPromotionAuthority().programs[spec.program_id].status,'VERIFIED');
+  assert.equal(reviewModule.reviewAffiliateUrl(spec.program_id,selected.network,selected.issued_link).href,selected.issued_link);
+  assert.throws(()=>reviewModule.reviewAffiliateUrl(spec.program_id,selected.network,href),/review_direct_link_host_invalid/);
+  const html=renderProviderReviewPage({...spec,row:{...spec.row,affiliate_href:href}},identity);
+  assert.ok(html.includes(selected.route+'?s=reviews.rv2&amp;v=a'),'row substitution cannot replace receipted destination');
+  assert.ok(!html.includes(href),'untrusted row href never rendered');
+}
+
+test('active nonselected renderer refuses malformed destinations through the same host gate',()=>{
+ const active=specs.find(spec=>spec.program_id==='mademed');
+ assert.match(renderProviderReviewPage(active,identity), /data-affiliate-state="active"/);
+ for(const href of ['https://attacker.invalid/','http://track.revoffers.com/'])
+  assert.throws(()=>renderProviderReviewPage({...active,row:{...active.row,affiliate_href:href}},identity),/review_direct_link_host_invalid/);
+});
 
 test("the direct-affiliate program is present and carries the direct-affiliate network", () => {
   assert.ok(orderly, "orderlymeds review spec missing");
@@ -46,12 +67,11 @@ test("its rendered CTA is a sponsored selected go route bound to the adopted Ord
 
 test("an unlisted direct-affiliate host is refused rather than rendered", () => {
   const rogue = { ...orderly, row: { ...orderly.row, affiliate_href: "https://orderlymeds.example.com/?oid=2&affid=2608" } };
-  assert.throws(() => renderProviderReviewPage(rogue, identity), /review_direct_link_host_invalid/);
+  assertCurrentDestinationRefused(orderly, rogue.row.affiliate_href);
 });
 
 test("a non-https direct-affiliate href is refused", () => {
-  const insecure = { ...orderly, row: { ...orderly.row, affiliate_href: "http://orderlymeds.com/?oid=2&affid=2608" } };
-  assert.throws(() => renderProviderReviewPage(insecure, identity), /review_direct_link_host_invalid/);
+  assertCurrentDestinationRefused(orderly, loadGoSelection().programs.orderlymeds.issued_link.replace('https:', 'http:'));
 });
 
 // 2026-08-06 surface unification: the direct-affiliate lane no longer ships
@@ -69,14 +89,25 @@ test("the direct-affiliate lane reaches every surface its evidence supports", ()
 });
 
 test("the all-or-nothing money link map still resolves every selected program", () => {
-  const links = buildAffiliateLinkMap(money.pages, registry, selection, "review");
+  const promotionAuthority = loadGoPromotionAuthority();
+  const links = buildAffiliateLinkMap(money.pages, registry, selection, "review", "glp-clinic-scout", { promotionAuthority });
   const live = Object.values(links).filter((item) => item.live === true);
-  // 13 -> 11 on 2026-08-17: Katalys paused Synergy Rx and Care Bare Rx GLP1.
-  assert.equal(selection.program_count, 11);
+  // D3 excludes paused offer 1538 from current activation, preserving the
+  // authentic former selection row as historical-only evidence.
+  assert.equal(selection.program_count, 10);
   assert.equal(selection.programs.length, selection.program_count);
-  assert.equal(live.length, selection.program_count,
+  assert.ok(!selection.programs.some(item => item.program_id === 'try-ageless'));
+  const paused = selection.excluded_selection_evidence.find((item) => item.program_id === "try-ageless");
+  assert.equal(paused?.disposition, 'historical_snapshot_only_not_activation_authority');
+  assert.equal(paused?.network_program_id, "1538");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "network_paused_katalys_offer_1538");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.status, "WITHHELD");
+  assert.equal(links["try-ageless"]?.live, false);
+  const eligible = selection.programs.filter((item) => item.program_id !== "try-ageless");
+  assert.equal(live.length, eligible.length,
     "the money-page link map went link-dark or lost a program");
-  for (const program of selection.programs) {
+  assert.deepEqual(new Set(live.map((item) => item.program_id)), new Set(eligible.map((item) => item.program_id)));
+  for (const program of eligible) {
     const record = links[program.program_id];
     assert.ok(record, `missing link-map record for ${program.program_id}`);
     assert.equal(record.live, true, `${program.program_id} is link-dark`);
@@ -118,12 +149,11 @@ test("the path-referral-code program renders its CTA on the provider's issued ho
 
 test("an unlisted host on the path-referral-code lane is refused", () => {
   const rogue = { ...goby, row: { ...goby.row, affiliate_href: "https://my.gobymeds.example.com/s/vuMPMv" } };
-  assert.throws(() => renderProviderReviewPage(rogue, identity), /review_direct_link_host_invalid/);
+  assertCurrentDestinationRefused(goby, rogue.row.affiliate_href);
 });
 
 test("a non-https path-referral-code href is refused", () => {
-  const insecure = { ...goby, row: { ...goby.row, affiliate_href: "http://my.gobymeds.com/s/vuMPMv" } };
-  assert.throws(() => renderProviderReviewPage(insecure, identity), /review_direct_link_host_invalid/);
+  assertCurrentDestinationRefused(goby, loadGoSelection().programs.gobymeds.issued_link.replace('https:', 'http:'));
 });
 
 test("the path-referral-code program is compared and selectable in blank manual calculator mode", () => {

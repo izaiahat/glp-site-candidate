@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 import { buildCostCalculatorData, renderCostCalculator } from "../src/cost-calculator.mjs";
+import { PROVIDER_REVEAL_BATCH_SIZE } from "../src/surface-tallies.mjs";
 
 const readJson = async (relative) => JSON.parse(await readFile(new URL(`../data/${relative}`, import.meta.url), "utf8"));
 
@@ -46,17 +47,69 @@ test("brand-page insurance organizer keeps its server-rendered initial state off
 });
 
 test("consent clearance reserves the measured mobile slot without a forced layout read", async () => {
+  // Browser overlap, nonoverlap, zero/positive slot and focus-listener lifecycle:
+  // browser/motion-mobile-contracts-regression.spec.mjs: "quiz consent measures a real slot".
   const runtime = await readFile(new URL("../src/consent-runtime.mjs", import.meta.url), "utf8");
-  assert.match(runtime, /window\.innerWidth<=920\?height\+'px':'0px'/);
+  assert.match(runtime, /window\.innerWidth<=920\|\|document\.body\?\.dataset\?\.page==='quiz-provider-fit'/);
+  assert.match(runtime, /const reserved=height===null\?320:Math\.ceil\(height\+bottom\+8\)/);
   assert.match(runtime, /entry\?\.borderBoxSize/);
-  assert.doesNotMatch(runtime, /root\.(?:offsetHeight|offsetWidth|clientHeight|clientWidth|getBoundingClientRect)\b/);
+  const initialClearance = runtime.slice(runtime.indexOf('const clearance=()=>'), runtime.indexOf('const focusClearance='));
+  assert.ok(initialClearance.startsWith('const clearance=()=>'), 'initial clearance owner present');
+  assert.doesNotMatch(initialClearance, /root\.(?:offsetHeight|offsetWidth|clientHeight|clientWidth|getBoundingClientRect)\b/);
+  const focusCorrection = runtime.slice(runtime.indexOf('const focusClearance='), runtime.indexOf("document.addEventListener('focusin',focusClearance)"));
+  assert.match(focusCorrection, /window\.requestAnimationFrame\(\(\)=>\{/);
+  assert.match(focusCorrection, /target=node\.getBoundingClientRect\(\),notice=root\.getBoundingClientRect\(\)/);
+  assert.match(focusCorrection, /target\.right>notice\.left&&target\.left<notice\.right&&target\.top<notice\.bottom&&target\.bottom\+8>notice\.top/);
+  assert.match(focusCorrection, /window\.scrollBy\(\{top:target\.bottom\+8-notice\.top/);
+  assert.match(runtime, /observer\?\.disconnect\(\)[^\n]*removeEventListener\?\.\('resize',clearance\)[^\n]*removeEventListener\?\.\('focusin',focusClearance\)/);
+  const clearanceOwner = runtime.match(/const clearance=\(\)=>\{[^\n]*\};/)?.[0];
+  assert.ok(clearanceOwner, 'executable clearance owner present');
+  const clearanceFor = ({ width, page, height, sticky = 0, connected = true }) => {
+    let value;
+    const root = { isConnected: connected, getBoundingClientRect() { throw Error('initial root layout read'); } };
+    const document = { body: { dataset: { page } }, documentElement: { style: {
+      getPropertyValue: () => String(sticky),
+      setProperty: (name, next) => { assert.equal(name, '--consent-clearance'); value = next; },
+    } } };
+    new Function('root', 'document', 'window', 'height', `${clearanceOwner} clearance();`)(root, document, { innerWidth: width }, height);
+    return value;
+  };
+  assert.equal(clearanceFor({ width: 1200, page: 'home', height: 140 }), '0px');
+  assert.equal(clearanceFor({ width: 390, page: 'home', height: 140, sticky: 96 }), '252px');
+  assert.equal(clearanceFor({ width: 1200, page: 'quiz-provider-fit', height: 140 }), '168px');
+  assert.equal(clearanceFor({ width: 390, page: 'home', height: null }), '320px');
+  assert.equal(clearanceFor({ width: 390, page: 'home', height: 140, connected: false }), undefined);
 });
 
 test("route-default product filters preserve server DOM instead of forcing a critical-window grid repaint", async () => {
+  // Actual default/nondefault card effects: browser/motion-mobile-contracts-regression.spec.mjs:
+  // "product default leaves served cards alone". History/back/reset effects depend on
+  // browser/compare-facet-integrity.spec.mjs:167-241, not on the predicate below.
   const runtime = await readFile(new URL("../assets/site.js", import.meta.url), "utf8");
-  assert.match(runtime, /const serverMarkupMatchesQuery = !hasNonDefaultFilter/);
-  assert.match(runtime, /if \(serverMarkupMatchesQuery\) \{[\s\S]*?writeUrl\(\);[\s\S]*?return;/);
-  assert.match(runtime, /filterStateButtons\(\);\n\s*apply\(\{ persist: true \}\);/);
+  const initial = runtime.slice(runtime.indexOf('const serverMarkupMatchesQuery ='), runtime.indexOf('const hydrateFilterState ='));
+  assert.match(initial, /!searchForm && !isBrandPath\(\) && !hasNonDefaultFilter/);
+  assert.match(initial, /!requestedDrug \|\| medicationToken\(requestedDrug\) === routeDefaultDrug/);
+  assert.match(initial, /!requestedForm \|\| formToken\(requestedForm\) === routeDefaultForm/);
+  assert.match(initial, /requestedSort === 'cheapest'/);
+  assert.match(initial, /!serverMarkupNeedsProgressiveDisclosure/);
+  assert.match(initial, /!serverMarkupNeedsHydration/);
+  assert.match(initial, /if \(serverMarkupMatchesQuery\) \{[\s\S]*?writeUrl\(\);[\s\S]*?return;/);
+  assert.match(initial, /filterStateButtons\(\);\n\s*apply\(\{ persist: true, historyMode: 'replace' \}\);/);
+  const predicate = initial.match(/const serverMarkupMatchesQuery = ([\s\S]*?);\n/)?.[1];
+  assert.ok(predicate, 'route-default predicate present');
+  const matches = ({ search = false, brand = false, nondefault = false, drug = null, form = null, sort = 'cheapest', progressive = false, hydration = false } = {}) => {
+    const context = { searchForm: search, isBrandPath: () => brand, hasNonDefaultFilter: nondefault,
+      requestedDrug: drug, routeDefaultDrug: 'semaglutide', medicationToken: x => x,
+      requestedForm: form, routeDefaultForm: 'injection', formToken: x => x,
+      requestedSort: sort, serverMarkupNeedsProgressiveDisclosure: progressive, serverMarkupNeedsHydration: hydration };
+    return new Function('c', `with(c){return (${predicate});}`)(context);
+  };
+  assert.equal(matches(), true, 'true default leaves server DOM untouched');
+  assert.equal(matches({ drug: 'semaglutide', form: 'injection' }), true, 'route-default query restoration stays a no-op');
+  for (const variant of [{ nondefault: true }, { search: true }, { brand: true }, { drug: 'tirzepatide' },
+    { form: 'pill' }, { sort: 'newest' }, { progressive: true }, { hydration: true }]) {
+    assert.equal(matches(variant), false, `nondefault/progressive state must hydrate: ${JSON.stringify(variant)}`);
+  }
 });
 
 test("Phase 3 performance containment does not collapse whole sections over later controls", async () => {
@@ -74,20 +127,26 @@ test("Phase 3 performance containment does not collapse whole sections over late
   assert.match(funnelCss, /\.fv2-head \.gcs-kicker \{ color: #0e7d5c; \}/);
 });
 
-test("provider hub defers below-the-fold card bodies without losing filter shells", async () => {
-  const [providers, runtime, build] = await Promise.all([
+test("provider hub defers bodies after the source-derived initial cohort without losing filters or no-JS cards", async () => {
+  const [providers, runtime, build, renderer] = await Promise.all([
     readFile(new URL("../public/providers/index.html", import.meta.url), "utf8"),
     readFile(new URL("../assets/site.js", import.meta.url), "utf8"),
     readFile(new URL("../scripts/build-staging.mjs", import.meta.url), "utf8"),
+    readFile(new URL("../src/phase3-page-graph.mjs", import.meta.url), "utf8"),
   ]);
-  // Provider-card count is a monotonic floor: onboarding grows it. The lazy
-  // card count is derived from it (total minus the 4 eagerly-visible cards),
-  // not a second independent literal.
+  const initialVisible = Number(renderer.match(/const initialVisible = (\d+);/)?.[1]);
+  assert.equal(initialVisible, 12, 'governed initial directory cohort');
+  assert.equal(PROVIDER_REVEAL_BATCH_SIZE, 12, 'governed reveal batch');
   const providerCardTotal = (javascriptProviderMarkup(providers).match(/data-phase3-provider(?:\s|>)/g) || []).length;
   assert.ok(providerCardTotal >= 35, `expected at least 35 provider cards, saw ${providerCardTotal}`);
-  assert.match(providers, /class="p3-provider-section" data-initial-visible="4"/);
-  assert.equal((providers.match(/data-provider-lazy-index=/g) || []).length, providerCardTotal - 4);
-  assert.match(providers, />Show 12 more providers<\/button>/);
+  assert.ok(providerCardTotal > initialVisible, 'fixture exercises a deferred remainder');
+  assert.match(providers, new RegExp(`<section[^>]*class="listing-results p3-provider-section"[^>]*data-initial-visible="${initialVisible}"`));
+  const deferredCount = providerCardTotal - initialVisible;
+  assert.equal((providers.match(/data-provider-lazy-index=/g) || []).length, deferredCount);
+  assert.equal((providers.match(/data-provider-noscript-card/g) || []).length, deferredCount, 'every deferred card has a no-JS body');
+  assert.match(providers, new RegExp(`<span class="listing__count" data-filter-result[^>]*>${providerCardTotal} provider records<\\/span>`), 'live status uses complete eligible total, not page limit');
+  assert.ok(providers.includes(`>Show ${Math.min(PROVIDER_REVEAL_BATCH_SIZE, deferredCount)} more providers</button>`));
+  assert.match(providers, /data-provider-filters/);
   assert.match(providers, /type="application\/json" data-provider-card-payloads data-src="\/assets\/provider-card-payloads\.[a-f0-9]{16}\.json">\[\]<\/script>/);
   assert.match(runtime, /const hydrateCard = \(card\) =>/);
   assert.match(runtime, /const loadDeferredCardBodies = \(\) =>/);

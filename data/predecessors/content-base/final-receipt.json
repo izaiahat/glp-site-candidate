@@ -1,0 +1,16 @@
+{
+  "created_at_utc": "2026-09-11T15:58:04Z",
+  "deployment": {
+    "deployment_id": "ca0251a2-dd4e-469c-be3b-79ee8805c5f3"
+  },
+  "evidence_sha256": {
+    "01-deployment-manifest.json": "abd2f5560a33c48209b0df1d20f39714eacabaaf51a1b1d05b6f4b7665dd36d6"
+  },
+  "immutable_closure": {
+    "public_tree_sha256": "4d9358d552aba71cb352906bc31a58b02f6e376ec9c2afa744ea82286d504e97",
+    "release_tree_sha256": "a3ba2f1e91d390f57d84e4ae883b479b3309a0fd0ecd2c4bec0f6f8bc642f526"
+  },
+  "note": "terminal chain for release sealed-d2w-release2-current-20260911T152308Z @ deployment ca0251a2-dd4e-469c-be3b-79ee8805c5f3",
+  "schema": "glp-opus-production-terminal-receipt-v1",
+  "status": "PASS_PRODUCTION_TERMINAL"
+}

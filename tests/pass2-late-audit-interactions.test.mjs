@@ -10,7 +10,7 @@ const [quizConfig, quizHtml, providersHtml, enhanceHtml, heldHtml, reverseHtml, 
   readFile(new URL("../public/quiz/provider-fit/index.html", import.meta.url), "utf8"),
   readFile(new URL("../public/providers/index.html", import.meta.url), "utf8"),
   readFile(new URL("../public/providers/enhance-md/index.html", import.meta.url), "utf8"),
-  readFile(new URL("../public/providers/measured/index.html", import.meta.url), "utf8"), // 2026-08-27: nu-image went live; measured (operator-rejected terms) is the permanent held exemplar
+  readFile(new URL("../public/providers/measured/index.html", import.meta.url), "utf8"), // Approved direct anchor; /go remains unminted.
   readFile(new URL("../public/pharmacies/strive/compare-providers/index.html", import.meta.url), "utf8"),
   readFile(new URL("../public/_redirects", import.meta.url), "utf8"),
 ]);
@@ -36,12 +36,13 @@ test("late-audit provider listing is Option C, URL-addressable, state-aware, and
   }
   assert.match(html, /data-state-mode="(?:all|included|excluded|unknown)"/);
   assert.match(html, /data-filter-empty hidden/);
-  assert.match(html, /No evidence-qualified card matches those filters/);
+  assert.match(html, /<div class="p3-filter-empty" data-filter-empty hidden><p>No source-backed record matches those filters\. An empty result is not a medical or availability conclusion\.<\/p><p data-active-filter-label>Active filters: none\.<\/p><button type="button" data-filter-reset>Reset filters<\/button><\/div>/);
+  assert.doesNotMatch(html, /No evidence-qualified card matches those filters/); // Superseded by A2.4, not a second empty state.
   assert.doesNotMatch(redirects, /^\/(?:semaglutide|tirzepatide)\/\s/m);
   for (const medication of ["semaglutide", "tirzepatide"]) assert.ok(html.includes(`href="/${medication}/"`));
 });
 
-test("provider and pharmacy detail surfaces expose source-backed anatomy without invented CTAs", () => {
+test("provider and pharmacy detail surfaces expose source-backed anatomy without invented CTAs", async () => {
   const provider = enhanceHtml;
   assert.match(provider, /At a glance/);
   assert.match(provider, /Editorial tradeoffs/);
@@ -52,10 +53,26 @@ test("provider and pharmacy detail surfaces expose source-backed anatomy without
   assert.match(provider, /Related provider records/);
   assert.match(provider, /Methodology and evidence boundary/);
 
-  const held = heldHtml;
-  assert.match(held, /Enrollment link pending verification/);
-  assert.match(held, /No destination appears until Clinic Scout verifies it/);
-  assert.doesNotMatch(held, /data-program="measured"[^>]*>Get started</);
+  const measuredHtml = heldHtml;
+  const registry = await readJson("data/program-registry.json");
+  const measured = registry.programs.find(row => row.program_id === "measured");
+  assert.ok(measured, "Measured identity must remain in the registry");
+  assert.equal(measured.go.entry_state, "held");
+  assert.equal(measured.profiles["glp-clinic-scout"].surfaces.go, false);
+  assert.match(measured.profiles["glp-clinic-scout"].exceptions.go.reason, /Operator rejected Awin advertiser 126727/);
+  const approval = (await readJson('data/affiliate-wire-in-approvals.json')).programs.find(row => row.existing_release_alias === 'measured');
+  assert.equal(approval.approval_state, 'approved_active');
+  const authority = (await readJson('data/go-runtime-promotion-authority.json')).programs.measured;
+  assert.equal(authority.status, 'VERIFIED');
+  assert.equal(authority.reason, 'operator_approved_glp_live');
+  const anchors = measuredHtml.match(/<a\b[^>]*data-program="measured"[^>]*>Get started<\/a>/g) || [];
+  assert.ok(anchors.length > 0, 'operator-approved direct enrollment remains reachable');
+  for (const anchor of anchors) {
+    assert.equal(anchor.match(/href="([^"]+)"/)[1].replaceAll('&amp;', '&'), approval.tracking.provider_issued_url);
+    assert.match(anchor, /rel="[^"]*sponsored/);
+    assert.match(anchor, /data-link-mode="transparent-direct"/);
+  }
+  assert.doesNotMatch(measuredHtml, /href="\/go\/measured(?:[?"/])/);
 
   const reverse = reverseHtml;
   for (const name of ["state", "drug", "dose", "duration"]) assert.match(reverse, new RegExp(`name="${name}"`));

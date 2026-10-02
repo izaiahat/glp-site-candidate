@@ -38,6 +38,10 @@ const PROVIDER_SCENE_MANIFEST_PATH = path.join(CANDIDATE_ROOT, "artifacts/ultrac
 const PROVIDER_SCENE_STATE_PATH = path.join(REPORT_DIR, "pass2-provider-review-image-generation/state.json");
 const VISUAL_QA_PATH = path.join(REPORT_DIR, "pass2-image-generation/VISUAL-QA-20260825.json");
 const CONTACT_SHEET_MANIFEST_PATH = path.join(REPORT_DIR, "pass2-image-generation/contact-sheets/manifest.json");
+const TECHNICAL_REVIEW_PATH = path.join(BUSINESS_ROOT, "reports/ops/glp41-image-review-20260925/RESULT.json");
+const EDITORIAL_DISPOSITION_PATH = path.join(BUSINESS_ROOT, "reports/ops/glp41-image-review-20260925/ORCHESTRATOR-DISPOSITION.json");
+const FIRST_IMAGE_ROUTE = "/guides/best-company-to-get-glp-1/";
+const FIRST_IMAGE_ALT = "Editorial illustration of paperwork and a magnifying glass on a dark desk.";
 const ARTICLE_SOURCE_PATHS = [
   "data/blog/content-batch.json",
   "data/blog/content-national-wow-additions.json",
@@ -370,9 +374,9 @@ async function servedArticleCorpus(api, browser) {
 
   if (manifest.schema !== "glp-article-image-system-v3") manifestProblems.push(`schema:${manifest.schema}`);
   if (manifest.status !== "PASS") manifestProblems.push(`status:${manifest.status}`);
-  if (manifest.article_count !== 69 || manifest.route_master_count !== 69 || manifest.output_count !== 483) manifestProblems.push("manifest_counts");
-  if (manifest.generation_model !== "gpt_image_2" || manifest.external_generation_services_used !== 69 || manifest.competitor_assets_used !== 0) manifestProblems.push("generation_contract");
-  if (sourceArticles.length !== 69 || new Set(sourceRoutes).size !== 69 || !sameStringSet(routes, sourceRoutes)) manifestProblems.push("source_route_set");
+  if (manifest.article_count !== sourceArticles.length || manifest.route_master_count !== sourceArticles.length || manifest.output_count !== sourceArticles.length * 7) manifestProblems.push("manifest_counts");
+  if (manifest.generation_model !== "gpt_image_2" || manifest.external_generation_services_used !== sourceArticles.length || manifest.competitor_assets_used !== 0) manifestProblems.push("generation_contract");
+  if (sourceArticles.length !== 77 || new Set(sourceRoutes).size !== sourceArticles.length || !sameStringSet(routes, sourceRoutes)) manifestProblems.push("source_route_set");
   const sourceManifestRows = new Map((manifest.source_files || []).map((row) => [row.path, row]));
   for (const relative of ARTICLE_SOURCE_PATHS) {
     const row = sourceManifestRows.get(relative);
@@ -385,7 +389,7 @@ async function servedArticleCorpus(api, browser) {
     manifestProblems.push("route_master_state_hash");
   } else {
     state = readJsonFile(statePath);
-    if (state.schema !== "glp-pass2-route-image-generation-v1" || state.job_set_type !== "gpt_image_2" || Object.keys(state.records || {}).length !== 69) manifestProblems.push("route_master_state_contract");
+    if (state.schema !== "glp-pass2-route-image-generation-v1" || state.job_set_type !== "gpt_image_2" || !sameStringSet(Object.keys(state.records || {}), routes)) manifestProblems.push("route_master_state_contract");
   }
 
   const routeSetFields = {
@@ -395,13 +399,19 @@ async function servedArticleCorpus(api, browser) {
     masterHashes: contracts.map((record) => record.master_sha256),
   };
   for (const [field, values] of Object.entries(routeSetFields)) {
-    if (values.length !== 69 || values.some((value) => !value) || new Set(values).size !== 69) manifestProblems.push(`unique_${field}`);
+    if (values.length !== sourceArticles.length || values.some((value) => !value) || new Set(values).size !== sourceArticles.length) manifestProblems.push(`unique_${field}`);
   }
 
   const outputProblems = [];
   for (const record of contracts) {
     const expectedStem = `guide-${record.route.split("/").filter(Boolean).at(-1)}`;
     const stateRecord = state.records?.[record.route];
+    if (stateRecord?.generation_lane === "article_release_pipeline"
+      && (!stateRecord.release_pipeline_receipt?.path
+        || !existsSync(path.join(CANDIDATE_ROOT, stateRecord.release_pipeline_receipt.path))
+        || fileHash(path.join(CANDIDATE_ROOT, stateRecord.release_pipeline_receipt.path)) !== stateRecord.release_pipeline_receipt.sha256)) {
+      manifestProblems.push(`release_receipt_hash:${record.route}`);
+    }
     if (record.stem !== expectedStem
       || record.disposition !== "generated_from_gpt_image_2_route_master"
       || record.generation_model !== "gpt_image_2"
@@ -441,13 +451,33 @@ async function servedArticleCorpus(api, browser) {
     "malformed medical objects or hands",
     "professional editorial quality",
   ];
-  if (visualQa.schema !== "glp-pass2-route-image-visual-qa-v1" || visualQa.status !== "PASS" || visualQa.route_master_count !== 69 || visualQa.sheet_count !== 8 || visualQa.deploy_count !== 0) visualQaProblems.push("visual_qa_contract");
+  if (visualQa.schema !== "glp-pass2-route-image-visual-qa-v1" || visualQa.status !== "PASS" || visualQa.route_master_count !== 73 || visualQa.sheet_count !== 9 || visualQa.deploy_count !== 0) visualQaProblems.push("historical_visual_qa_contract");
   if (!sameStringSet(visualQa.criteria || [], requiredCriteria) || (visualQa.regeneration_required || []).length !== 0) visualQaProblems.push("visual_qa_criteria_or_regeneration");
   if (path.resolve(visualQa.contact_sheet_manifest || "") !== path.resolve(CONTACT_SHEET_MANIFEST_PATH)) visualQaProblems.push("visual_qa_manifest_binding");
-  if ((visualQa.sheets || []).length !== 8 || visualQa.sheets.some((row, index) => row.sheet !== index + 1 || row.status !== "PASS" || !row.note?.trim())) visualQaProblems.push("visual_qa_sheet_receipts");
-  if (contactSheets.schema !== "glp-pass2-route-image-contact-sheets-v1" || contactSheets.status !== "PASS" || contactSheets.route_master_count !== 69 || contactSheets.unique_route_master_hashes !== 69 || contactSheets.sheets?.length !== 8) visualQaProblems.push("contact_sheet_contract");
+  if ((visualQa.sheets || []).length !== 9 || visualQa.sheets.some((row, index) => row.sheet !== index + 1 || row.status !== "PASS" || !row.note?.trim())) visualQaProblems.push("visual_qa_sheet_receipts");
+  if (contactSheets.schema !== "glp-pass2-route-image-contact-sheets-v1" || contactSheets.status !== "PASS" || contactSheets.route_master_count !== 73 || contactSheets.unique_route_master_hashes !== 73 || contactSheets.sheets?.length !== 9) visualQaProblems.push("contact_sheet_contract");
   const contactRoutes = (contactSheets.sheets || []).flatMap((sheet) => sheet.routes || []);
-  if (contactRoutes.length !== 69 || new Set(contactRoutes).size !== 69 || !sameStringSet(contactRoutes, routes)) visualQaProblems.push("contact_sheet_route_union");
+  const releaseRoutes = routes.filter((route) => state.records?.[route]?.generation_lane === "article_release_pipeline");
+  const technicalReview = readJsonFile(TECHNICAL_REVIEW_PATH);
+  const editorialDisposition = readJsonFile(EDITORIAL_DISPOSITION_PATH);
+  if (technicalReview.status !== "TECHNICAL_REVIEW_COMPLETE_NOT_RELEASE_ACCEPTANCE"
+    || editorialDisposition.status !== "ORCHESTRATOR_EDITORIAL_DISPOSITION_NOT_RELEASE_ACCEPTANCE") visualQaProblems.push("release_review_acceptance_boundary");
+  const expectedReleaseRoutes = JSON.stringify([...releaseRoutes].sort());
+  if (JSON.stringify((technicalReview.images?.map(row => row.route) || []).sort()) !== expectedReleaseRoutes
+    || JSON.stringify((editorialDisposition.images?.map(row => row.route) || []).sort()) !== expectedReleaseRoutes) visualQaProblems.push("release_review_route_identity");
+  for (const route of releaseRoutes) {
+    const reviewed = technicalReview.images?.find((row) => row.route === route);
+    const disposition = editorialDisposition.images?.find((row) => row.route === route);
+    const master = contracts.find((row) => row.route === route);
+    if (!reviewed || !disposition || reviewed.sha256 !== master?.master_sha256 || disposition.sha256 !== reviewed.sha256
+      || !existsSync(path.join(CANDIDATE_ROOT, reviewed.release_receipt || ""))
+      || fileHash(path.join(CANDIDATE_ROOT, reviewed.release_receipt)) !== reviewed.release_receipt_sha256) {
+      visualQaProblems.push(`release_review_master_or_receipt_hash:${route}`);
+    }
+  }
+  if (contactRoutes.length !== 73 || new Set(contactRoutes).size !== 73 || releaseRoutes.length !== 4
+    || releaseRoutes.some((route) => contactRoutes.includes(route))
+    || !sameStringSet([...contactRoutes, ...releaseRoutes], routes)) visualQaProblems.push("historical_qa_and_release_route_partition");
   for (const sheet of contactSheets.sheets || []) {
     if (!existsSync(sheet.path) || fileHash(sheet.path) !== sheet.sha256) visualQaProblems.push(`contact_sheet_hash:${sheet.path}`);
   }
@@ -494,7 +524,7 @@ async function servedArticleCorpus(api, browser) {
     const expectedAlt = (() => {
       const article = articleByRoute.get(route) || {};
       const explicit = article.images?.[0]?.alt?.trim();
-      return explicit || `Guide overview for ${article.h1 || ""}`;
+      return route === FIRST_IMAGE_ROUTE ? FIRST_IMAGE_ALT : explicit || `Guide overview for ${article.h1 || ""}`;
     })();
     const assets = [];
     for (const output of contract.outputs || []) {
@@ -594,6 +624,8 @@ async function servedArticleCorpus(api, browser) {
     visualQaProblems,
     visualQa,
     contactSheets,
+    historicalQaRoutes: contactRoutes,
+    releaseTechnicalRoutes: releaseRoutes,
     sitemapStatus: sitemapResponse.status(),
     sitemapContentType: (sitemapResponse.headers()["content-type"] || "").split(";")[0].toLowerCase(),
     sitemapUrls,
@@ -827,6 +859,8 @@ const ITEMS = [
         regenerationRequired: corpus.visualQa.regeneration_required,
         problems: corpus.visualQaProblems,
       },
+      releaseTechnicalRoutes: corpus.releaseTechnicalRoutes,
+      historicalQaRouteCount: corpus.historicalQaRoutes.length,
       perceptual: {
         algorithm: "256-bit horizontal luminance dHash",
         minimumHammingDistance: MIN_ARTICLE_DHASH_DISTANCE,
@@ -841,28 +875,30 @@ const ITEMS = [
     check(
       observed.manifestSchema === "glp-article-image-system-v3"
         && observed.manifestStatus === "PASS"
-        && observed.contractRoutes === 69
-        && observed.activeArticlePages === 64
+        && observed.contractRoutes === 77
+        && observed.activeArticlePages === 72
         && observed.consolidatedRedirects === 5
-        && observed.uniqueRoutes === 69
-        && observed.uniqueStems === 69
-        && observed.uniqueSubjects === 69
-        && observed.uniqueMasterHashes === 69
+        && observed.uniqueRoutes === 77
+        && observed.uniqueStems === 77
+        && observed.uniqueSubjects === 77
+        && observed.uniqueMasterHashes === 77
         && observed.manifestProblems.length === 0
         && observed.outputProblems.length === 0
         && observed.visualQa.status === "PASS"
-        && observed.visualQa.routeMasterCount === 69
-        && observed.visualQa.sheetCount === 8
+        && observed.visualQa.routeMasterCount === 73
+        && observed.visualQa.sheetCount === 9
+        && observed.historicalQaRouteCount === 73
+        && observed.releaseTechnicalRoutes.length === 4
         && observed.visualQa.regenerationRequired.length === 0
         && observed.visualQa.problems.length === 0
-        && observed.perceptual.validHashCount === 69
+        && observed.perceptual.validHashCount === 77
         && observed.perceptual.closestPairDistance >= MIN_ARTICLE_DHASH_DISTANCE
         && observed.servedMasterHashProblems.length === 0
         && observed.altAuthorityProblems.length === 0
         && observed.redirectProblems.length === 0,
-      "O-34 exact v3 route/subject/master lineage, visual-QA coverage, canonical alts, and perceptual threshold",
+      "O-34 exact v3 route/subject/master lineage, 73 historical QA plus 4 technical release records (not visual acceptance), canonical alts, and perceptual threshold",
       observed,
-      { routes: 69, schema: "glp-article-image-system-v3", visualQaSheets: 8, minimumHammingDistance: MIN_ARTICLE_DHASH_DISTANCE, canonicalActiveAlts: 64 },
+      { routes: 77, schema: "glp-article-image-system-v3", historicalVisualQaRoutes: 73, releaseTechnicalRoutes: 4, visualQaSheets: 9, minimumHammingDistance: MIN_ARTICLE_DHASH_DISTANCE, canonicalActiveAlts: 72 },
       "browser_capture",
     );
   } },
@@ -927,16 +963,16 @@ const ITEMS = [
       redirected,
     };
     check(
-      observed.contractRoutes === 69
-        && observed.activeArticlePages === 64
+      observed.contractRoutes === 77
+        && observed.activeArticlePages === 72
         && observed.consolidatedRedirects === 5
-        && observed.servedAssetCount === 483
+        && observed.servedAssetCount === 539
         && observed.localOutputProblems.length === 0
         && observed.incomplete.length === 0
         && observed.redirected.length === 0,
       "O-35 exact bound picture plus all seven hash/MIME outputs and one-hop redirects",
       observed,
-      { contractRoutes: 69, activeArticlePages: 64, consolidatedRedirects: 5, servedAssets: 483, incomplete: [], redirected: [] },
+      { contractRoutes: 77, activeArticlePages: 72, consolidatedRedirects: 5, servedAssets: 539, incomplete: [], redirected: [] },
       "served_http",
     );
   } },
@@ -950,7 +986,7 @@ const ITEMS = [
     const orderlyScene = sceneManifest.records?.find((record) => record.program_id === "orderlymeds");
     const orderlySceneState = sceneState.records?.orderlymeds;
     const manifestProblems = [];
-    if (providerManifest.status !== "PASS" || providerManifest.runtime_remote_assets !== 0 || providerManifest.logos?.length !== 32) manifestProblems.push("provider_manifest_contract");
+    if (providerManifest.status !== "PASS" || providerManifest.runtime_remote_assets !== 0 || providerManifest.count !== 57 || providerManifest.logos?.length !== providerManifest.count) manifestProblems.push("provider_manifest_contract");
     if (!orderly
       || orderly.provider !== "OrderlyMeds"
       || orderly.logo_treatment !== "light-chip"
@@ -967,13 +1003,13 @@ const ITEMS = [
       || atlasManifest.atlas_sha256 !== fileHash(path.join(CANDIDATE_ROOT, "assets/provider-logos/pass2-lp-atlas.webp"))
       || atlasManifest.atlas_sha256 !== fileHash(path.join(CANDIDATE_ROOT, "public/assets/provider-logos/pass2-lp-atlas.webp"))
       || atlasManifest.display_atlas_width !== 768
-      || atlasManifest.display_atlas_height !== 184
-      || atlasManifest.entry_count !== 32) manifestProblems.push("atlas_manifest_lineage");
+      || atlasManifest.display_atlas_height !== 368
+      || atlasManifest.entry_count !== providerManifest.count) manifestProblems.push("atlas_manifest_lineage");
     if (!atlasEntry
       || atlasEntry.source_path !== "/assets/provider-logos/orderlymeds.webp"
       || atlasEntry.source_sha256 !== orderly?.output_sha256
-      || atlasEntry.display_x !== 96
-      || atlasEntry.display_y !== 92
+      || atlasEntry.display_x !== 192
+      || atlasEntry.display_y !== 184
       || atlasEntry.logo_treatment !== orderly?.logo_treatment) manifestProblems.push("orderly_atlas_entry_lineage");
     if (sceneManifest.schema !== "glp-pass2-provider-review-image-manifest-v1"
       || sceneManifest.status !== "PASS"
@@ -1090,9 +1126,9 @@ const ITEMS = [
           || identity.role !== "img"
           || identity.ariaLabel !== "OrderlyMeds logo"
           || identity.src !== "/assets/provider-logos/pass2-lp-atlas.webp"
-          || identity.backgroundPositionX !== "-96px"
-          || identity.backgroundPositionY !== "-92px"
-          || identity.backgroundSize !== "768px 184px"
+          || identity.backgroundPositionX !== `-${atlasEntry.display_x}px`
+          || identity.backgroundPositionY !== `-${atlasEntry.display_y}px`
+          || identity.backgroundSize !== `${atlasManifest.display_atlas_width}px ${atlasManifest.display_atlas_height}px`
           || !(identity.width > 0)
           || !(identity.height > 0));
         const asset = data.src ? await api.get(data.src, { maxRedirects: 0 }) : null;
@@ -1138,9 +1174,9 @@ const ITEMS = [
       && provider.role === "img"
       && provider.ariaLabel === "OrderlyMeds logo"
       && provider.src === "/assets/provider-logos/pass2-lp-atlas.webp"
-      && provider.backgroundPositionX === "-96px"
-      && provider.backgroundPositionY === "-92px"
-      && provider.backgroundSize === "768px 184px"
+      && provider.backgroundPositionX === `-${atlasEntry.display_x}px`
+      && provider.backgroundPositionY === `-${atlasEntry.display_y}px`
+      && provider.backgroundSize === `${atlasManifest.display_atlas_width}px ${atlasManifest.display_atlas_height}px`
       && provider.width > 0
       && provider.height > 0
       && provider.assetStatus === 200
@@ -1333,13 +1369,51 @@ const ITEMS = [
     const pass2Problems = [];
     if (pass2.schema !== "gcs.pass2.image-derivative-audit.v1" || pass2.audit_status !== "PASS" || pass2.release_readiness !== "PASS") pass2Problems.push("pass2_manifest_status");
     const summary = pass2.derivative_summary || {};
-    if (summary.article_output_count !== 621 || summary.product_output_count !== 30 || summary.total_output_count !== 651 || summary.public_mirror_count !== 651 || summary.public_mirror_mismatch_count !== 0) pass2Problems.push("pass2_derivative_counts");
+    if (summary.article_output_count !== articleManifest.records.length * 9 || summary.product_output_count !== 30 || summary.total_output_count !== 723 || summary.public_mirror_count !== 723 || summary.public_mirror_mismatch_count !== 0) pass2Problems.push("pass2_derivative_counts");
     const releaseBlockers = (pass2.gaps || []).filter((gap) => gap.severity === "release_blocker");
     const productOmissions = (pass2.gaps || []).filter((gap) => gap.reason === "omitted_no_upscale_source_master_is_1024px" && gap.requested_width === 1600 && gap.source_width === 1024);
     if (releaseBlockers.length !== 0 || productOmissions.length !== 5 || (pass2.gaps || []).length !== 5) pass2Problems.push("pass2_gap_disposition");
     for (const source of pass2.source_manifests || []) {
       const sourcePath = path.join(CANDIDATE_ROOT, source.path || "");
       if (!existsSync(sourcePath) || fileHash(sourcePath) !== source.sha256) pass2Problems.push(`pass2_source_hash:${source.path}`);
+    }
+    const auditArticleRows = pass2.inventory?.article?.records || [];
+    if (!sameStringSet(auditArticleRows.map((row) => row.route), articleManifest.records.map((row) => row.route))) pass2Problems.push("pass2_article_route_identity");
+    const sourceByRoute = new Map(articleManifest.records.map((row) => [row.route, row]));
+    for (const row of auditArticleRows) {
+      const source = sourceByRoute.get(row.route);
+      const routeOutput = source?.outputs?.find((output) => output.name === `${source.stem}-1600.jpg`);
+      if (!source || row.stem !== source.stem || row.underlying_original_sha256 !== source.master_sha256
+        || !existsSync(path.join(CANDIDATE_ROOT, row.underlying_original_path || ""))
+        || fileHash(path.join(CANDIDATE_ROOT, row.underlying_original_path)) !== source.master_sha256
+        || row.route_source?.sha256 !== routeOutput?.sha256
+        || !existsSync(path.join(CANDIDATE_ROOT, row.route_source?.path || ""))
+        || fileHash(path.join(CANDIDATE_ROOT, row.route_source.path)) !== routeOutput?.sha256
+        || row.derivatives?.length !== 9) {
+        pass2Problems.push(`pass2_article_master_identity:${row.route}`);
+        continue;
+      }
+      for (const derivative of row.derivatives) {
+        const local = path.join(CANDIDATE_ROOT, derivative.path || "");
+        const mirror = path.join(CANDIDATE_ROOT, derivative.public_path || "");
+        if (derivative.route !== row.route || derivative.source_sha256 !== row.route_source.sha256
+          || !existsSync(local) || !existsSync(mirror)
+          || fileHash(local) !== derivative.sha256 || fileHash(mirror) !== derivative.sha256) {
+          pass2Problems.push(`pass2_article_derivative_hash:${derivative.path}`);
+        }
+      }
+    }
+    const productDerivatives = (pass2.inventory?.product?.records || []).flatMap((row) => row.derivatives || []);
+    if (productDerivatives.length !== 30) pass2Problems.push("pass2_product_derivative_inventory");
+    for (const derivative of productDerivatives) {
+      const source = path.join(CANDIDATE_ROOT, derivative.source_path || "");
+      const local = path.join(CANDIDATE_ROOT, derivative.path || "");
+      const mirror = path.join(CANDIDATE_ROOT, derivative.public_path || "");
+      if (!existsSync(source) || !existsSync(local) || !existsSync(mirror)
+        || fileHash(source) !== derivative.source_sha256
+        || fileHash(local) !== derivative.sha256 || fileHash(mirror) !== derivative.sha256) {
+        pass2Problems.push(`pass2_product_derivative_hash:${derivative.path}`);
+      }
     }
 
     const productMarkup = [];
@@ -1391,11 +1465,11 @@ const ITEMS = [
     check(
       observed.sitemapStatus === 200
         && /xml/.test(observed.sitemapContentType)
-        && observed.sitemapUrlCount === 231
-        && observed.sitemapUniquePathCount === 231
+        && observed.sitemapUrlCount === 295
+        && observed.sitemapUniquePathCount === 295
         && !observed.sitemapHasInvalidUrls
-        && observed.imageContracts === 69
-        && observed.releaseReadyIndexablePages === 44
+        && observed.imageContracts === 77
+        && observed.releaseReadyIndexablePages === 52
         && observed.heldNoindexPages === 20
         && observed.consolidatedRedirects === 5
         && observed.seoProblems.length === 0
@@ -1404,7 +1478,7 @@ const ITEMS = [
         && observed.pipelineProblems.length === 0,
       "O-38 exact sitemap/disposition/canonical/social coverage and honest audit-only Pass-2 derivative lineage",
       observed,
-      { sitemapUrls: 231, releaseReady: 44, held: 20, redirects: 5, pass2UsageDisposition: "audit_only_unreferenced_by_served_article_and_product_markup" },
+      { sitemapUrls: 295, releaseReady: 52, held: 20, redirects: 5, pass2UsageDisposition: "audit_only_unreferenced_by_served_article_and_product_markup" },
       "served_http",
     );
   } },

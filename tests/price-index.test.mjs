@@ -147,7 +147,9 @@ test("each tracker amount is bound to dated first-party content-ledger evidence"
   const badSource = structuredClone(input);
   const provider = badSource.contentLedger.programs.find((row) => row.program_id === badSource.tracker.price_index.records[0].provider_id);
   provider.research_first_month_price.source_url = "https://www.awin1.com/fabricated";
-  assert.throws(() => validatePriceIndexInputs(badSource, { now: NOW }), /price_index_source_url_invalid/);
+  // Even an already-projected registry must authenticate the complete supplied
+  // frozen ledger before the downstream per-record source URL check.
+  assert.throws(() => validatePriceIndexInputs(badSource, { now: NOW }), { message: "price_index_historical_ledger_drift" });
 });
 
 test("rendered source template is exact-route, indexable, source-complete, and reviewer-claim free", async () => {

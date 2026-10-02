@@ -214,6 +214,9 @@ function renderReady6ReviewPageWithCopy(model, unavailableRoutes, options, seo) 
   // Keep the six historical adjudications immutable. Current scoped authority
   // supersedes only the outbound destination/network of this rendered view.
   const selected = selectedGoOutbound({ program_id: model.registry_id }, 'reviews.rv2');
+  // Historical adjudication is not present commercial authority. The builder
+  // suppresses retired models; direct callers must not resurrect their CTA.
+  if (selected?.held) fail('ready6_current_commercial_hold', model.registry_id);
   if (selected && !selected.held) model = { ...model, network: selected.network, cta: { ...model.cta, href: selected.href } };
   const canonical = `https://glpclinicscout.com${model.route}`;
   // AEO P0-C: one publisher entity, referenced by @id and defined once in the
@@ -252,7 +255,7 @@ function renderReady6ReviewPageWithCopy(model, unavailableRoutes, options, seo) 
   const reviewSections = model.page.review_sections.map((section, index) => `<section class="panel" id="review-section-${index + 1}"><h2>${esc(section.heading)}</h2><p>${esc(section.body)}</p></section>`).join("");
   const pageSlug = model.route.replace(/^\/reviews\/|\/$/g, "");
   const subid = selected?.surfaceCode || `review-${model.registry_id}-conclusion-${READY6_DATE_MODIFIED.slice(0, 7).replace("-", "")}`;
-  const subids = subidAttributes({ network: model.network, position: "review-closing", rankPosition: 1, pageSlug: `review-${pageSlug}`, pageType: "review", providerSlug: pageSlug });
+  const subids = subidAttributes({ programId: model.registry_id, network: selected?.network || model.network, position: "review-closing", rankPosition: 1, pageSlug: `review-${pageSlug}`, pageType: "review", providerSlug: pageSlug });
   const stylesheetLinks = sharedInteractiveShell ? "" : `<link rel="stylesheet" href="/assets/site-review.css"><link rel="stylesheet" href="/assets/site-editorial.css">`;
   const bodyAttributes = sharedInteractiveShell ? "" : ' data-cs-template="review"';
   const shellNav = sharedInteractiveShell ? "" : ready6ShellNav();

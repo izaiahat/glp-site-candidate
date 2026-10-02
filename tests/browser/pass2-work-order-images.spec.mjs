@@ -20,6 +20,10 @@ const PROVIDER_SCENE_MANIFEST_PATH = "artifacts/ultracode/pass2-provider-review-
 const PROVIDER_SCENE_STATE_PATH = "/home/ubuntu/business/reports/glp-clinic-scout/rebuild/pass2-provider-review-image-generation/state.json";
 const VISUAL_QA_PATH = "/home/ubuntu/business/reports/glp-clinic-scout/rebuild/pass2-image-generation/VISUAL-QA-20260825.json";
 const CONTACT_SHEET_MANIFEST_PATH = "/home/ubuntu/business/reports/glp-clinic-scout/rebuild/pass2-image-generation/contact-sheets/manifest.json";
+const TECHNICAL_REVIEW_PATH = "/home/ubuntu/business/reports/ops/glp41-image-review-20260925/RESULT.json";
+const EDITORIAL_DISPOSITION_PATH = "/home/ubuntu/business/reports/ops/glp41-image-review-20260925/ORCHESTRATOR-DISPOSITION.json";
+const FIRST_IMAGE_ROUTE = "/guides/best-company-to-get-glp-1/";
+const FIRST_IMAGE_ALT = "Editorial illustration of paperwork and a magnifying glass on a dark desk.";
 const MIN_ARTICLE_DHASH_DISTANCE = 64;
 const PRODUCT_SLUGS = ["wegovy-pill", "wegovy", "ozempic", "mounjaro", "zepbound"];
 const PRODUCT_DISPLAY_NAMES = new Map([
@@ -189,7 +193,7 @@ test("O-33 served home uses the local Clinic Scout image house style with distin
   expect(new Set(hashes).size).toBe(3);
 });
 
-test("O-34 every article route is bound to exact v3 route masters, visual QA, and a 64-bit dHash separation floor", async ({ page }) => {
+test("O-34 77 masters: 73 historical QA and four technical release records, with 256-bit dHash separation", async ({ page }) => {
   const manifest = readJson(ARTICLE_MANIFEST_PATH);
   const routes = corpusRoutes();
   const records = [...manifest.records].sort((left, right) => left.route.localeCompare(right.route));
@@ -200,18 +204,20 @@ test("O-34 every article route is bound to exact v3 route masters, visual QA, an
 
   expect(manifest.schema).toBe("glp-article-image-system-v3");
   expect(manifest.status).toBe("PASS");
-  expect([manifest.article_count, manifest.route_master_count, manifest.output_count]).toEqual([69, 69, 483]);
+  expect([manifest.article_count, manifest.route_master_count, manifest.output_count]).toEqual([routes.length, routes.length, routes.length * 7]);
+  expect(routes).toHaveLength(77);
   expect(manifest.generation_model).toBe("gpt_image_2");
-  expect(manifest.external_generation_services_used).toBe(69);
+  expect(manifest.external_generation_services_used).toBe(routes.length);
   expect(manifest.competitor_assets_used).toBe(0);
   expect(records.map((record) => record.route)).toEqual(routes);
-  expect(new Set(records.map((record) => record.stem)).size).toBe(69);
-  expect(new Set(records.map((record) => record.subject.trim())).size).toBe(69);
-  expect(new Set(records.map((record) => record.master_sha256)).size).toBe(69);
+  for (const source of manifest.source_files) expect(hashFile(source.path), source.path).toBe(source.sha256);
+  expect(new Set(records.map((record) => record.stem)).size).toBe(routes.length);
+  expect(new Set(records.map((record) => record.subject.trim())).size).toBe(routes.length);
+  expect(new Set(records.map((record) => record.master_sha256)).size).toBe(routes.length);
   expect(hashFile(statePath)).toBe(manifest.route_master_state.sha256);
   expect(state.schema).toBe("glp-pass2-route-image-generation-v1");
   expect(state.job_set_type).toBe("gpt_image_2");
-  expect(Object.keys(state.records)).toHaveLength(69);
+  expect(Object.keys(state.records).sort()).toEqual(routes);
 
   for (const record of records) {
     const generated = state.records[record.route];
@@ -223,33 +229,52 @@ test("O-34 every article route is bound to exact v3 route masters, visual QA, an
     expect(hashFile(record.master_path), record.route).toBe(record.master_sha256);
   }
 
+  // Historical QA belongs to its 73 listed routes, not the four later release masters.
   expect(visualQa).toMatchObject({
     schema: "glp-pass2-route-image-visual-qa-v1",
     status: "PASS",
-    route_master_count: 69,
-    sheet_count: 8,
+    route_master_count: 73,
+    sheet_count: 9,
     regeneration_required: [],
     deploy_count: 0,
   });
   expect(path.resolve(visualQa.contact_sheet_manifest)).toBe(path.resolve(CONTACT_SHEET_MANIFEST_PATH));
-  expect(visualQa.sheets).toHaveLength(8);
+  expect(visualQa.sheets).toHaveLength(9);
   expect(visualQa.sheets.every((row, index) => row.sheet === index + 1 && row.status === "PASS" && row.note.trim())).toBe(true);
   expect(sheets).toMatchObject({
     schema: "glp-pass2-route-image-contact-sheets-v1",
     status: "PASS",
-    route_master_count: 69,
-    unique_route_master_hashes: 69,
+    route_master_count: 73,
+    unique_route_master_hashes: 73,
   });
-  expect(sheets.sheets).toHaveLength(8);
+  expect(sheets.sheets).toHaveLength(9);
   const sheetRoutes = sheets.sheets.flatMap((sheet) => sheet.routes);
-  expect(sheetRoutes).toHaveLength(69);
-  expect(new Set(sheetRoutes).size).toBe(69);
-  expect([...sheetRoutes].sort()).toEqual(routes);
+  expect(sheetRoutes).toHaveLength(73);
+  expect(new Set(sheetRoutes).size).toBe(73);
+  expect(sheetRoutes.every((route) => state.records[route] && records.some((record) => record.route === route))).toBe(true);
+  const releaseRoutes = routes.filter((route) => state.records[route].generation_lane === "article_release_pipeline");
+  expect(releaseRoutes).toHaveLength(4);
+  expect(releaseRoutes.filter((route) => sheetRoutes.includes(route))).toEqual([]);
+  expect([...sheetRoutes, ...releaseRoutes].sort()).toEqual(routes);
+  const technicalReview = readJson(TECHNICAL_REVIEW_PATH);
+  const editorialDisposition = readJson(EDITORIAL_DISPOSITION_PATH);
+  expect(technicalReview.status).toBe("TECHNICAL_REVIEW_COMPLETE_NOT_RELEASE_ACCEPTANCE");
+  expect(editorialDisposition.status).toBe("ORCHESTRATOR_EDITORIAL_DISPOSITION_NOT_RELEASE_ACCEPTANCE");
+  expect(technicalReview.images.map((row) => row.route).sort()).toEqual(releaseRoutes);
+  expect(editorialDisposition.images.map((row) => row.route).sort()).toEqual(releaseRoutes);
+  for (const route of releaseRoutes) {
+    const release = state.records[route];
+    expect(hashFile(release.release_pipeline_receipt.path), route).toBe(release.release_pipeline_receipt.sha256);
+    const reviewed = technicalReview.images.find((row) => row.route === route);
+    expect(records.find((row) => row.route === route).master_sha256, route).toBe(reviewed.sha256);
+    expect(editorialDisposition.images.find((row) => row.route === route).sha256, route).toBe(reviewed.sha256);
+    expect(hashFile(reviewed.release_receipt), route).toBe(reviewed.release_receipt_sha256);
+  }
   for (const sheet of sheets.sheets) expect(hashFile(sheet.path), sheet.path).toBe(sheet.sha256);
 
   await page.goto("/", { waitUntil: "domcontentloaded" });
   const hashes = await servedDHashes(page, records.map((record) => `/assets/images/${record.stem}-1600.jpg`));
-  expect(hashes).toHaveLength(69);
+  expect(hashes).toHaveLength(routes.length);
   expect(hashes.every((digest) => /^[a-f0-9]{64}$/.test(digest))).toBe(true);
   let closest = 256;
   for (let left = 0; left < hashes.length; left += 1) for (let right = left + 1; right < hashes.length; right += 1) {
@@ -258,15 +283,15 @@ test("O-34 every article route is bound to exact v3 route masters, visual QA, an
   expect(closest, `closest 256-bit dHash pair must be >= ${MIN_ARTICLE_DHASH_DISTANCE} bits apart`).toBeGreaterThanOrEqual(MIN_ARTICLE_DHASH_DISTANCE);
 });
 
-test("O-35 all seven outputs and the exact bound hero picture are served for 64 pages; five redirects are exact one-hop 301s", async ({ page, request }) => {
+test("O-35 all seven outputs and the exact bound hero picture are served for 72 pages; five redirects are exact one-hop 301s", async ({ page, request }) => {
   const articleManifest = readJson(ARTICLE_MANIFEST_PATH);
   const records = new Map(articleManifest.records.map((record) => [record.route, record]));
   const articles = ["data/blog/content-batch.json", "data/blog/content-national-wow-additions.json"]
     .flatMap((source) => readJson(source).articles);
   const articleByRoute = new Map(articles.map((article) => [article.canonical_path, article]));
   const routes = [...records.keys()].sort();
-  expect(routes).toHaveLength(69);
-  expect(new Set(routes).size).toBe(69);
+  expect(routes).toHaveLength(77);
+  expect(new Set(routes).size).toBe(routes.length);
   const redirectRows = new Map(readText("public/_redirects").split(/\r?\n/).map((line) => line.trim().split(/\s+/)).filter((row) => row.length >= 3).map(([from, to, status]) => [from, { to, status: Number(status) }]));
   for (const route of CONSOLIDATED_ARTICLE_ROUTES) expect(redirectRows.get(route), route).toEqual({ to: "/providers/", status: 301 });
 
@@ -328,7 +353,7 @@ test("O-35 all seven outputs and the exact bound hero picture are served for 64 
     });
     const prefix = `/assets/images/${record.stem}`;
     const article = articleByRoute.get(route);
-    const expectedAlt = article.images?.[0]?.alt?.trim() || `Guide overview for ${article.h1}`;
+    const expectedAlt = route === FIRST_IMAGE_ROUTE ? FIRST_IMAGE_ALT : article.images?.[0]?.alt?.trim() || `Guide overview for ${article.h1}`;
     const expected = {
       imageSrc: `${prefix}-1600.jpg`,
       imageSrcset: `${prefix}-800.jpg 800w, ${prefix}-1600.jpg 1600w`,
@@ -341,7 +366,7 @@ test("O-35 all seven outputs and the exact bound hero picture are served for 64 
     for (const [field, value] of Object.entries(expected)) if (observed[field] !== value) problems.push(`${route}: ${field} mismatch`);
     if (!observed.imageSizes || observed.imageSizes !== observed.avifSizes || observed.imageSizes !== observed.webpSizes) problems.push(`${route}: sizes missing or split across exact picture`);
   }
-  expect({ activePages, redirects }).toEqual({ activePages: 64, redirects: 5 });
+  expect({ activePages, redirects }).toEqual({ activePages: routes.length - CONSOLIDATED_ARTICLE_ROUTES.size, redirects: CONSOLIDATED_ARTICLE_ROUTES.size });
   expect(problems).toEqual([]);
 });
 
@@ -355,7 +380,8 @@ test("O-36 exact Orderly sprite/review identity lineage and responsive on-theme 
   const orderlyScene = sceneManifest.records.find((record) => record.program_id === "orderlymeds");
   expect(manifest.status).toBe("PASS");
   expect(manifest.runtime_remote_assets).toBe(0);
-  expect(manifest.logos).toHaveLength(32);
+  expect(manifest.count).toBe(57);
+  expect(manifest.logos).toHaveLength(manifest.count);
   expect(orderly).toMatchObject({
     provider: "OrderlyMeds",
     logo_treatment: "light-chip",
@@ -371,8 +397,8 @@ test("O-36 exact Orderly sprite/review identity lineage and responsive on-theme 
     status: "PASS",
     public_path: "/assets/provider-logos/pass2-lp-atlas.webp",
     display_atlas_width: 768,
-    display_atlas_height: 184,
-    entry_count: 32,
+    display_atlas_height: 368,
+    entry_count: manifest.count,
   });
   expect(atlas.source_manifest_sha256).toBe(hashFile(PROVIDER_MANIFEST_PATH));
   expect(atlas.atlas_sha256).toBe(hashFile("assets/provider-logos/pass2-lp-atlas.webp"));
@@ -380,8 +406,8 @@ test("O-36 exact Orderly sprite/review identity lineage and responsive on-theme 
   expect(atlasEntry).toMatchObject({
     source_path: "/assets/provider-logos/orderlymeds.webp",
     source_sha256: orderly.output_sha256,
-    display_x: 96,
-    display_y: 92,
+    display_x: 192,
+    display_y: 184,
     logo_treatment: "light-chip",
   });
   expect(sceneManifest).toMatchObject({
@@ -479,9 +505,9 @@ test("O-36 exact Orderly sprite/review identity lineage and responsive on-theme 
           classes: ["provider-logo", "provider-logo--light", "provider-logo--sprite"],
           ariaLabel: "OrderlyMeds logo",
           src: "/assets/provider-logos/pass2-lp-atlas.webp",
-          x: "-96px",
-          y: "-92px",
-          size: "768px 184px",
+          x: `-${atlasEntry.display_x}px`,
+          y: `-${atlasEntry.display_y}px`,
+          size: `${atlas.display_atlas_width}px ${atlas.display_atlas_height}px`,
         });
       }
       expect(await servedHash(request, observedRows[0].src, "image/webp")).toBe(atlas.atlas_sha256);
@@ -589,12 +615,38 @@ test("O-38 sitemap, release disposition, canonical/social imagery, publish comma
     execution_mode: "candidate-local deterministic Pillow only; zero network/provider calls",
   });
   expect(pass2.derivative_summary).toMatchObject({
-    article_output_count: 621,
+    article_output_count: articleManifest.records.length * 9,
     product_output_count: 30,
-    total_output_count: 651,
-    public_mirror_count: 651,
+    total_output_count: articleManifest.records.length * 9 + 30,
+    public_mirror_count: articleManifest.records.length * 9 + 30,
     public_mirror_mismatch_count: 0,
   });
+  expect(pass2.derivative_summary.total_output_count).toBe(723);
+  const auditRows = pass2.inventory.article.records;
+  expect(auditRows.map((row) => row.route).sort()).toEqual(articleManifest.records.map((row) => row.route).sort());
+  const articleByRoute = new Map(articleManifest.records.map((row) => [row.route, row]));
+  for (const row of auditRows) {
+    const source = articleByRoute.get(row.route);
+    expect(row.stem, row.route).toBe(source.stem);
+    expect(row.underlying_original_sha256, row.route).toBe(source.master_sha256);
+    expect(hashFile(row.underlying_original_path), row.route).toBe(source.master_sha256);
+    expect(row.route_source.sha256, row.route).toBe(source.outputs.find((output) => output.name === `${source.stem}-1600.jpg`).sha256);
+    expect(hashFile(row.route_source.path), row.route).toBe(row.route_source.sha256);
+    expect(row.derivatives, row.route).toHaveLength(9);
+    for (const derivative of row.derivatives) {
+      expect(derivative.route, derivative.path).toBe(row.route);
+      expect(derivative.source_sha256, derivative.path).toBe(row.route_source.sha256);
+      expect(hashFile(derivative.path), derivative.path).toBe(derivative.sha256);
+      expect(hashFile(derivative.public_path), derivative.public_path).toBe(derivative.sha256);
+    }
+  }
+  const productDerivatives = pass2.inventory.product.records.flatMap((row) => row.derivatives);
+  expect(productDerivatives).toHaveLength(30);
+  for (const derivative of productDerivatives) {
+    expect(hashFile(derivative.source_path), derivative.path).toBe(derivative.source_sha256);
+    expect(hashFile(derivative.path), derivative.path).toBe(derivative.sha256);
+    expect(hashFile(derivative.public_path), derivative.public_path).toBe(derivative.sha256);
+  }
   expect(pass2.gaps).toHaveLength(5);
   expect(pass2.gaps.every((gap) => gap.reason === "omitted_no_upscale_source_master_is_1024px" && gap.requested_width === 1600 && gap.source_width === 1024 && gap.severity !== "release_blocker")).toBe(true);
   expect(pass2.source_manifests.every((row) => hashFile(row.path) === row.sha256)).toBe(true);
@@ -605,8 +657,8 @@ test("O-38 sitemap, release disposition, canonical/social imagery, publish comma
   expect((sitemap.headers()["content-type"] || "").split(";")[0]).toMatch(/xml/);
   const sitemapText = await sitemap.text();
   const urls = [...sitemapText.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-  expect(urls).toHaveLength(230);
-  expect(new Set(urls).size).toBe(230);
+  expect(urls).toHaveLength(295);
+  expect(new Set(urls).size).toBe(urls.length);
   const sitemapPaths = new Set(urls.map((value) => {
     const url = new URL(value);
     expect(url.origin).toBe("https://glpclinicscout.com");
@@ -653,7 +705,7 @@ test("O-38 sitemap, release disposition, canonical/social imagery, publish comma
     const response = await request.get(`/${slug}/`, { maxRedirects: 0 });
     pass2ReferenceCount += ((await response.text()).match(/\/assets\/images\/pass2\//g) || []).length;
   }
-  expect(disposition).toEqual({ releaseReady: 44, held: 20, redirects: 5 });
+  expect(disposition).toEqual({ releaseReady: articleManifest.records.length - 20 - CONSOLIDATED_ARTICLE_ROUTES.size, held: 20, redirects: CONSOLIDATED_ARTICLE_ROUTES.size });
   expect(problems).toEqual([]);
   expect(pass2ReferenceCount, "Pass-2 480/960/1600 derivatives are audit-only current bytes and must not be described as served").toBe(0);
 });

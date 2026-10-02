@@ -7,7 +7,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PUBLIC = path.join(ROOT, "public");
 const report = JSON.parse(await readFile(path.join(ROOT, "artifacts", "ops", "build-report.json"), "utf8"));
 const derivations = report.surface_derivations || {};
-const derived = { LIVE_PROVIDER_COUNT: derivations.live_provider_count, COMPARISON_PAGE_COUNT: derivations.comparison_page_count, RESEARCH_GUIDE_COUNT: derivations.research_guide_count };
+const derived = { LIVE_PROVIDER_COUNT: derivations.live_provider_count, COMPARISON_CARD_COUNT: derivations.price_state_tallies?.COMPARISON_CARD_COUNT, COMPARISON_PAGE_COUNT: derivations.comparison_page_count, RESEARCH_GUIDE_COUNT: derivations.research_guide_count };
 if (Object.values(derived).some((value) => !Number.isInteger(value) || value < 0)) throw new Error("program_count_derivation_missing");
 if (!Number.isInteger(derivations.token_substitutions?.LIVE_PROVIDER_COUNT) || derivations.token_substitutions.LIVE_PROVIDER_COUNT < 1) throw new Error("live_program_count_not_injected");
 const files = [];

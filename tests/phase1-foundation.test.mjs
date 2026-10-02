@@ -164,7 +164,9 @@ test("W4: hero CTA keeps a static perimeter line and arrow without decorative lo
   assert.doesNotMatch(servedMotion, /gatedLoop/);
 });
 
-test("motion runtime is conditionally loaded on fine-pointer desktop before site.js", () => {
+test("motion runtime admits non-reduced touch but Lenis owns only fine-pointer desktop scroll", () => {
+  // Source-shape guard only; actual desktop/touch scroll and keyboard/no-JS effects:
+  // browser/motion-mobile-contracts-regression.spec.mjs: "fine-pointer Lenis versus native touch scroll".
   // Phase-4 gate remediation 2026-08-27 (GATES-PRELIM issue #8): SplitText and
   // Flip were removed from the shared shell — loaded on ~249 pages, used by
   // nothing (12.7KB gz dead weight). The vendored files stay on disk for
@@ -182,7 +184,12 @@ test("motion runtime is conditionally loaded on fine-pointer desktop before site
     cursor = next;
   }
   assert.match(motionLoader, /prefers-reduced-motion: reduce/);
-  assert.match(motionLoader, /\(pointer: fine\) and \(min-width: 901px\)/);
+  assert.match(motionLoader, /if \(loaded \|\| preference\.matches\) return/);
+  assert.doesNotMatch(motionLoader, /\(pointer: fine\) and \(min-width: 901px\)/);
+  assert.match(motion, /smoothPointer = pointerPreference\.matches/);
+  assert.match(motion, /if \(!reduced && !lenis && smoothPointer && window\.Lenis && gsap && ST\)/);
+  assert.match(motion, /syncTouch: false/);
+  assert.match(motion, /if \(!smoothPointer \|\| reduced\) stopScroll\(\)/);
   assert.match(motionLoader, /script\.async = false/);
   assert.equal(servedMotionLoader, motionLoader);
   assert.doesNotMatch(servedHome, /<script src="\/assets\/vendor\/(?:gsap|lenis)\//);

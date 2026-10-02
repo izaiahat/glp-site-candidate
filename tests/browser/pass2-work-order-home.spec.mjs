@@ -62,7 +62,7 @@ async function imageFacts(locator) {
 async function centeredControlFacts(page) {
   const wrappers = page.locator(".cs-home2-centered");
   const facts = [];
-  for (const wrapper of [wrappers.filter({ hasText: /Read every verdict/i }), wrappers.filter({ hasText: /See all \d+ programs/i })]) {
+  for (const wrapper of [wrappers.filter({ hasText: /Read every verdict/i }), wrappers.filter({ hasText: /See all \d+ evidence-qualified cards/i })]) {
     await wrapper.evaluate((node) => node.scrollIntoView({ block: "center" }));
     facts.push(await wrapper.evaluate((node) => {
       const control = node.firstElementChild.getBoundingClientRect();
@@ -115,7 +115,7 @@ test.describe("PASS 2 home — desktop served acceptance", () => {
     for (const [name, pathname] of expectedQuickRoutes) {
       await expect(quickLinks.filter({ has: page.getByText(name, { exact: true }) })).toHaveAttribute("href", pathname);
     }
-    await expect(page.getByRole("link", { name: /Compare all \d+ programs/i }).first()).toHaveAttribute("href", "/providers/?sort=cheapest");
+    await expect(page.getByRole("link", { name: /Compare \d+ evidence-qualified cards/i }).first()).toHaveAttribute("href", "/providers/?sort=cheapest");
 
     const heroMetrics = await page.locator("main > .cs-home2-hero").evaluate((hero) => {
       const style = getComputedStyle(hero);
@@ -357,7 +357,7 @@ test.describe("PASS 2 home — desktop served acceptance", () => {
     const risk = page.locator("[data-risk-card]").first();
     await risk.scrollIntoViewIfNeeded();
     await page.waitForTimeout(700);
-    const riskBack = risk.locator(".cs-riskcard__back");
+    const riskBack = risk.locator('xpath=ancestor::article[contains(@class,"cs-riskcard")]').locator(".cs-riskcard__back");
     await expect(risk).toHaveAttribute("aria-pressed", "false");
     if (browserName === "webkit") {
       await risk.focus();
@@ -382,7 +382,7 @@ test.describe("PASS 2 home — desktop served acceptance", () => {
 
     const centered = await centeredControlFacts(page);
     expect(centered[0].text).toMatch(/Read every verdict/i);
-    expect(centered[1].text).toMatch(/See all \d+ programs/i);
+    expect(centered[1].text).toMatch(/See all \d+ evidence-qualified cards/i);
     expect.soft(centered[0].delta, "O-20 Read every verdict must be centered under the full verdict rail").toBeLessThanOrEqual(2);
     expect.soft(centered[1].delta, "O-21 See all programs must be centered under the full strongest-program section").toBeLessThanOrEqual(2);
   });
@@ -402,11 +402,14 @@ test.describe("PASS 2 home — desktop served acceptance", () => {
         open: sheet.classList.contains("is-open"),
         transform: getComputedStyle(panel).transform,
         width: panel.getBoundingClientRect().width,
+        cssWidth: getComputedStyle(panel).width,
+        viewport: { inner: innerWidth, visualWidth: visualViewport?.width, scale: visualViewport?.scale, dpr: devicePixelRatio },
+        animations: panel.getAnimations().map(animation => ({ state: animation.playState, time: animation.currentTime })),
       };
     });
     expect(openingStart.hidden).toBe(false);
     expect(openingStart.open).toBe(false);
-    expect(translateX(openingStart.transform)).toBeGreaterThan(openingStart.width * 0.9);
+    expect(translateX(openingStart.transform), JSON.stringify(openingStart)).toBeGreaterThan(openingStart.width * 0.9);
 
     const sheet = page.locator("[data-review-sheet]");
     const panel = sheet.locator(".cs-review-sheet__panel");
@@ -500,7 +503,11 @@ test.describe("PASS 2 home — 390x844 served acceptance", () => {
     await decodeImages(medImages);
     const medFacts = await imageFacts(medImages);
     expect(new Set(medFacts.map((image) => pathOf(image.src))).size).toBe(7);
-    expect(medFacts.every((image) => /-(?:640)\.avif$/.test(pathOf(image.src)))).toBe(true);
+    // High-DPR phones may select the larger advertised AVIF; bind each loaded image to its own picture.
+    const medAvifChoices = await medImages.evaluateAll((nodes) => nodes.map((image) =>
+      (image.closest("picture")?.querySelector('source[type="image/avif"]')?.srcset || "")
+        .split(",").map((candidate) => new URL(candidate.trim().split(/\s+/)[0], location.href).pathname)));
+    expect(medFacts.every((image, index) => medAvifChoices[index].includes(pathOf(image.src)))).toBe(true);
 
     const track = meds.locator("[data-med-track]");
     const beforeSwipe = translateX(await track.evaluate((node) => getComputedStyle(node).transform));
@@ -544,7 +551,7 @@ test.describe("PASS 2 home — 390x844 served acceptance", () => {
     await openHome(page);
     const centered = await centeredControlFacts(page);
     expect(centered[0].text).toMatch(/Read every verdict/i);
-    expect(centered[1].text).toMatch(/See all \d+ programs/i);
+    expect(centered[1].text).toMatch(/See all \d+ evidence-qualified cards/i);
     expect.soft(centered[0].delta, "O-20 mobile Read every verdict must be centered under the full verdict rail").toBeLessThanOrEqual(2);
     expect.soft(centered[1].delta, "O-21 mobile See all programs must be centered under the full strongest-program section").toBeLessThanOrEqual(2);
   });

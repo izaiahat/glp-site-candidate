@@ -7,6 +7,7 @@ import path from 'node:path';
 import test from 'node:test';
 import { captureLastmodEmission, prepareLastmod, openComparisonInput } from '../scripts/build-lastmod-provenance.mjs';
 import { normalizedHash, resolveRouteLastmod, resolveMaterialDate } from '../scripts/postbuild-aeo-surface.mjs';
+import { loadHistoricalCarrierArticles, renderedCarrierArticle } from '../src/carrier-article-retention.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const pointer = JSON.parse(await readFile('/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/current-content-base.json', 'utf8'));
@@ -248,13 +249,24 @@ test('regression: verified final HTML, not legacy stage hashes or the candidate 
 test('regression: frozen carrier keeps its exact authenticated provenance record', async t => {
   const f = await fixture(t), carrierRoute = '/guides/ezra-glp-1-reviews/';
   const file = `public/${carrierRoute.slice(1)}index.html`, html = await predecessor(file);
-  await f.write(file, html);
-  await f.write('public/sitemap.xml', `<urlset><url><loc>https://glpclinicscout.com${carrierRoute}</loc></url></urlset>`);
-  const result = await f.prepare();
-  assert.deepEqual(result.provenance.pages[carrierRoute], f.provenance.pages[carrierRoute]);
-  assert.deepEqual(JSON.parse(result.input).routes, []);
-  await f.write(file, Buffer.concat([html, Buffer.from('<p>Unapproved carrier edit</p>')]));
-  await assert.rejects(f.prepare(), /carrier_article_output_drift/);
+  const retained = loadHistoricalCarrierArticles(path.join(f.root, 'data/predecessors/content-base/release')).get(file.slice('public/'.length));
+  assert.deepEqual(retained.bytes, html, 'authentic predecessor bytes, not a new fixture capture');
+  const priorStage=process.env.GCS_RELEASE_STAGE;
+  try {
+    for (const stage of ['candidate','production-seal']) {
+      process.env.GCS_RELEASE_STAGE=stage;
+      const emitted=renderedCarrierArticle(retained,stage);
+      await f.write(file,emitted);
+      await f.write('public/sitemap.xml', `<urlset><url><loc>https://glpclinicscout.com${carrierRoute}</loc></url></urlset>`);
+      const result = await f.prepare();
+      assert.deepEqual(result.provenance.pages[carrierRoute], f.provenance.pages[carrierRoute]);
+      assert.deepEqual(JSON.parse(result.input).routes, stage==='candidate'?[]:[carrierRoute]);
+      await f.write(file, Buffer.concat([emitted, Buffer.from('<p>Unapproved carrier edit</p>')]));
+      await assert.rejects(f.prepare(), /carrier_article_output_drift/);
+    }
+  } finally {
+    if(priorStage===undefined)delete process.env.GCS_RELEASE_STAGE;else process.env.GCS_RELEASE_STAGE=priorStage;
+  }
 });
 
 test('regression: the real detector reads checker-owned stdin without a named declaration file', async t => {

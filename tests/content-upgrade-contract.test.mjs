@@ -59,7 +59,7 @@ function renderedMatchChecklistPayload() {
     email: "reader@example.test",
     email_consent: "true",
     company: "",
-    match_program_ids: "healthrx,try-ageless,wellorithm"
+    match_program_ids: "healthrx,enhance-md,wellorithm"
   };
 }
 
@@ -116,12 +116,16 @@ test("validator binds calculator breakdown fields and rejects incomplete or mism
 });
 
 test("validator binds exactly three governed quiz matches and rejects tampering", () => {
+  const governedIds = new Set(COST_AFFILIATE_EMAIL_MANIFEST.programs.map((row) => row.program_id));
+  for (const id of ["healthrx", "enhance-md", "wellorithm"]) assert.ok(governedIds.has(id), `${id}: governed offer missing`);
+  assert.equal(governedIds.has("try-ageless"), false, "network-paused offer must not regain email authority");
   const result = validateContentUpgrade(renderedMatchChecklistPayload());
-  assert.deepEqual(result.matchPrograms.map((match) => match.programId), ["healthrx", "try-ageless", "wellorithm"]);
-  assert.throws(() => validateContentUpgrade({ ...renderedMatchChecklistPayload(), match_program_ids: "healthrx,try-ageless" }), /match_program_ids_invalid/);
-  assert.throws(() => validateContentUpgrade({ ...renderedMatchChecklistPayload(), match_program_ids: "healthrx,try-ageless,healthrx" }), /match_program_ids_invalid/);
-  assert.throws(() => validateContentUpgrade({ ...renderedMatchChecklistPayload(), match_program_ids: "healthrx,try-ageless,not-governed" }), /match_program_not_governed/);
-  assert.throws(() => validateContentUpgrade({ ...renderedFormPayload(), match_program_ids: "healthrx,try-ageless,wellorithm" }), /match_program_ids_not_allowed/);
+  assert.deepEqual(result.matchPrograms.map((match) => match.programId), ["healthrx", "enhance-md", "wellorithm"]);
+  assert.throws(() => validateContentUpgrade({ ...renderedMatchChecklistPayload(), match_program_ids: "healthrx,enhance-md" }), /match_program_ids_invalid/);
+  assert.throws(() => validateContentUpgrade({ ...renderedMatchChecklistPayload(), match_program_ids: "healthrx,enhance-md,healthrx" }), /match_program_ids_invalid/);
+  assert.throws(() => validateContentUpgrade({ ...renderedMatchChecklistPayload(), match_program_ids: "healthrx,enhance-md,not-governed" }), /match_program_not_governed/);
+  assert.throws(() => validateContentUpgrade({ ...renderedMatchChecklistPayload(), match_program_ids: "healthrx,try-ageless,wellorithm" }), /match_program_not_governed/);
+  assert.throws(() => validateContentUpgrade({ ...renderedFormPayload(), match_program_ids: "healthrx,enhance-md,wellorithm" }), /match_program_ids_not_allowed/);
 });
 
 test("validator rejects an omitted (unchecked) consent — FormData drops unchecked boxes", () => {
@@ -215,7 +219,7 @@ test("match-checklist email reproduces the exact three governed matches through 
   const result = await deliverContentUpgrade({ env: { RESEND_ENABLED: "true", RESEND_API_KEY: "re_synthetic", GLP_DB: db }, capture, subscriberId: "s-match", unsubscribeToken: "tok-match" }, fetchImpl);
   assert.equal(result.status, "sent");
   assert.equal(body.subject, "Your three matched GLP-1 providers");
-  for (const [index, programId] of ["healthrx", "try-ageless", "wellorithm"].entries()) {
+  for (const [index, programId] of ["healthrx", "enhance-md", "wellorithm"].entries()) {
     assert.match(body.html, new RegExp(`Match ${index + 1}`));
     assert.ok(body.html.includes(`/go/${programId}?s=email-glp.match&amp;v=a`));
   }

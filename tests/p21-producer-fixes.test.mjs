@@ -181,6 +181,16 @@ for (const width of [1440, 390]) {
         const html = await readFile(path.join(publicRoot, route.slice(1), 'index.html'), 'utf8');
         assert.ok(!html.includes('No comparable price in our capture.'), `${route}: includes deferred payloads too`);
         await open(page, route);
+        if (route === '/6-month/') {
+          // Ageless is paused: the current six-month source-backed cohort is
+          // genuinely empty. Do not manufacture an unpublished card to keep
+          // the historical nonempty-population assertion green.
+          await expect(page.locator('[data-phase3-provider-grid] [data-program]')).toHaveCount(0);
+          await expect(page.locator('[data-unpublished-provider-section]')).toHaveCount(0);
+          await expect(page.locator('[data-filter-empty]')).toContainText('No source-backed record matches those filters. An empty result is not a medical or availability conclusion.');
+          await expect(page.locator('[data-filter-empty] [data-filter-reset]')).toHaveCount(1);
+          continue;
+        }
         const unpublished = page.locator('[data-unpublished-price-card]');
         assert.ok(await unpublished.count() > 0, `${route}: no silently empty population`);
         for (const card of await unpublished.all()) {
@@ -216,7 +226,14 @@ for (const width of [1440, 390]) {
         await expect(range).toBeVisible();
         await expect(range).toHaveText(/^\d{4}-\d{2}-\d{2} – \d{4}-\d{2}-\d{2}$/);
         assert.equal(await range.evaluate(node => Boolean(node.closest('.p3-provider-card'))), false);
-        if (route === '/lp/best-providers/compounded-tirzepatide/') await expect(range).toHaveText('2026-09-01 – 2026-09-09');
+        if (route === '/lp/best-providers/compounded-tirzepatide/') {
+          // The checked window covers all cards, including deferred payloads.
+          // The 08-06 source was omitted by the old literal 09-01 start.
+          const dates = [...html.matchAll(/data-source-checked=\\?"(\d{4}-\d{2}-\d{2})\\?"/g)].map(match => match[1]);
+          assert.ok(dates.includes('2026-08-06'), 'oldest source-backed card remains in the route payload');
+          assert.ok(dates.includes('2026-09-09'), 'newest source-backed card remains in the route payload');
+          await expect(range).toHaveText(`${dates.toSorted()[0]} – ${dates.toSorted().at(-1)}`);
+        }
       }
     });
   });
