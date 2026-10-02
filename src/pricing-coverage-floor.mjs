@@ -29,8 +29,14 @@ export function resolveDeployedPricingBaseline(historical, pointerPath = '/home/
       || receipt.evidence_sha256?.[path.basename(pointer.manifest.path)] !== pointer.manifest.sha256) fail('publication_chain_mismatch');
     const rows = manifest.release_rows?.filter(row => row.path === 'data/provider-pricing-matrix.json');
     if (rows?.length !== 1) fail('matrix_manifest_entry_invalid');
-    const matrixPath = path.join(pointer.release_root, rows[0].path), bytes = readFileSync(matrixPath);
-    if (bytes.length !== rows[0].bytes || sha256(bytes) !== rows[0].sha256) fail('matrix_hash_mismatch');
+    const row = rows[0];
+    // Accepted deployment-manifest v1 generations use size; older ones use bytes.
+    // Require exactly one integer length field, never a coercion or an unchecked alias.
+    const lengthFields = ['size', 'bytes'].filter(field => Object.hasOwn(row, field));
+    if (lengthFields.length !== 1 || !Number.isSafeInteger(row[lengthFields[0]])
+      || row[lengthFields[0]] < 0) fail('matrix_manifest_entry_invalid');
+    const matrixPath = path.join(pointer.release_root, row.path), bytes = readFileSync(matrixPath);
+    if (bytes.length !== row[lengthFields[0]] || sha256(bytes) !== row.sha256) fail('matrix_hash_mismatch');
     const matrix = JSON.parse(bytes);
     if (!['glp-provider-pricing-matrix-v1', 'glp-provider-pricing-matrix-v2'].includes(matrix.schema)
       || !matrix.providers || typeof matrix.providers !== 'object' || Array.isArray(matrix.providers)) fail('matrix_schema_invalid');
