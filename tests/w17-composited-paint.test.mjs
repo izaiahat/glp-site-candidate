@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { chromium } from 'playwright';
 import { observeW17Paint } from './w17-source-css.test.mjs';
@@ -64,6 +64,85 @@ test('W17 native compositing TEST controls retain original refusal and reject ho
     console.log(JSON.stringify({ synthetic_test_fixtures: true, controls: records.length, records }));
     await browser.close();
   }
+});
+
+test('W17 exact action filter native TEST positives and hostile controls', async () => {
+  const browser = await chromium.launch();
+  const records = [];
+  try {
+    const page = await browser.newPage({ viewport: { width: 800, height: 400 }, deviceScaleFactor: 1 });
+    await page.route('**/*', r => r.abort());
+    for (const fixture of [
+      { name: 'filtered-dark', color: '#14201b', pass: true, measured: true },
+      { name: 'filtered-light-defect', color: '#f2f8f4', pass: false, measured: true },
+      { name: 'filtered-pseudo-cover', color: '#14201b', css: '#target::after{content:"";position:absolute;inset:0;background:#14201b}', pass: false },
+      { name: 'filtered-blur', color: '#14201b', css: '#target{filter:saturate(1.16) brightness(1.04) blur(1px)}', pass: false, unknown: true },
+      { name: 'filtered-blend', color: '#14201b', css: '#target{mix-blend-mode:screen}', pass: false, unknown: true },
+    ]) {
+      await page.setContent(`<style>body{margin:0;background:black;padding:30px}#target{position:relative;display:block;width:300px;padding:15px;font:700 24px/1.3 Arial;color:${fixture.color};background:linear-gradient(100deg,#53dba5,#75c7ee 48%,#b5a6f4);filter:saturate(1.16) brightness(1.04)}${fixture.css || ''}</style><a id="target">Start a provider search</a>`);
+      const before = await page.content();
+      const observed = await observeW17CompositedPaint(page.locator('#target'));
+      records.push({ fixture: fixture.name, ...observed });
+      assert.equal(await page.content(), before);
+      assert.equal(await page.evaluate(() => CSS.highlights.size + document.adoptedStyleSheets.length), 0);
+      assert.equal(observed.status === 'measured-composited-paint' && observed.ratio >= 4.5, fixture.pass, JSON.stringify(observed));
+      if (fixture.measured) assert.equal(observed.status, 'measured-composited-paint', JSON.stringify(observed));
+      if (fixture.unknown) assert.equal(observed.ratio, null);
+    }
+  } finally { console.log(JSON.stringify({ filtered_native_controls: records })); await browser.close(); }
+});
+
+test('W17 opaque-face native TEST keeps real orbit running and refuses exposed motion', async () => {
+  const browser = await chromium.launch(); const records = [];
+  try {
+    const page = await browser.newPage({ viewport: { width: 800, height: 400 }, deviceScaleFactor: 1 });
+    await page.route('**/*', r => r.abort());
+    for (const fixture of [
+      { name: 'opaque-cover', pass: true, face: 'linear-gradient(100deg, #53dba5, #75c7ee 48%, #b5a6f4)' },
+      { name: 'transparent-cover', pass: false, face: 'linear-gradient(100deg, #53dba580, #75c7ee80 48%, #b5a6f480)' },
+      { name: 'extra-animated-property', pass: false, face: 'linear-gradient(100deg, #53dba5, #75c7ee 48%, #b5a6f4)', extra: 'color:white' },
+    ]) {
+      await page.setContent(`<style>@property --cs-button-aurora-angle{syntax:"<angle>";inherits:false;initial-value:0deg}@keyframes cs-button-aurora-orbit{to{--cs-button-aurora-angle:360deg;${fixture.extra || ''}}}body{margin:0;background:black;padding:30px}#target{position:relative;display:block;width:300px;padding:15px;border:2px solid transparent;border-radius:999px;font:700 24px/1.3 Arial;color:#04120e;background:${fixture.face} padding-box,conic-gradient(from var(--cs-button-aurora-angle),#6febb9 0deg,#6fc6ee 82deg,#c6b5ff 160deg,#ffad99 236deg,#6febb9 360deg) border-box;background-origin:border-box;animation:cs-button-aurora-orbit 5s linear infinite;filter:saturate(1.16) brightness(1.04)}</style><a id="target">Start a provider search</a>`);
+      const before = await page.content(), target = page.locator('#target');
+      const start = await target.evaluate(e => e.getAnimations()[0].currentTime);
+      const observed = await observeW17CompositedPaint(target);
+      records.push({ fixture: fixture.name, ...observed });
+      assert.equal(await page.content(), before);
+      assert.ok(await target.evaluate((e, start) => e.getAnimations()[0].playState === 'running' && e.getAnimations()[0].currentTime > start, start));
+      assert.equal(observed.status === 'measured-composited-paint' && observed.ratio >= 4.5, fixture.pass, JSON.stringify(observed));
+      if (!fixture.pass) assert.equal(observed.ratio, null);
+    }
+  } finally { console.log(JSON.stringify({ native_orbit_controls: records })); await browser.close(); }
+});
+
+test('W17 native TEST waits for pseudo opacity transition before probing', async () => {
+  const browser = await chromium.launch();
+  try {
+    const page = await browser.newPage({ viewport: { width: 800, height: 400 }, deviceScaleFactor: 1 });
+    await page.route('**/*', r => r.abort());
+    await page.setContent('<style>body{background:black}a{position:relative;isolation:isolate;display:block;margin:30px;padding:15px;width:300px;color:white;background:black;font:700 24px Arial}a::before{content:"";position:absolute;inset:0;background:#101a10;z-index:-1;opacity:0;transition:opacity .6s}a:hover::before{opacity:.85}</style><a>Start a provider search</a>');
+    const target = page.locator('a'); await target.hover();
+    const observed = await observeW17CompositedPaint(target);
+    assert.equal(observed.status, 'measured-composited-paint', JSON.stringify(observed));
+    assert.ok(observed.ratio >= 4.5);
+    assert.equal(await target.evaluate(e => getComputedStyle(e, '::before').opacity), '0.85');
+  } finally { await browser.close(); }
+});
+
+test('W17 native TEST waits for real Lenis native scroll cleanup', async () => {
+  const browser = await chromium.launch();
+  try {
+    const page = await browser.newPage({ viewport: { width: 800, height: 400 }, deviceScaleFactor: 1 });
+    await page.route('**/*', r => r.abort());
+    await page.setContent('<style>body{background:black;color:white;font:700 24px Arial;height:4000px}a{display:block;margin-top:2000px;width:300px}</style><a>Start a provider search</a>');
+    await page.addScriptTag({ content: await readFile(new URL('../assets/vendor/lenis/lenis.min.js', import.meta.url), 'utf8') });
+    await page.evaluate(() => { window.__gcsLenis = new Lenis({ autoRaf: true }); scrollTo(0,1900); });
+    await page.waitForFunction(() => window.__gcsLenis.isScrolling === 'native');
+    const observed = await observeW17CompositedPaint(page.locator('a'));
+    assert.equal(observed.status, 'measured-composited-paint', JSON.stringify(observed));
+    assert.ok(observed.ratio >= 4.5);
+    assert.equal(await page.evaluate(() => window.__gcsLenis.isScrolling), false);
+  } finally { await browser.close(); }
 });
 
 test('W17 scrolled native TEST measurement preserves unrelated inputs', async () => {
