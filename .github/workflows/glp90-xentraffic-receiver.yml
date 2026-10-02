@@ -1,0 +1,41 @@
+name: GLP90 XenTraffic receiver source checks
+
+on:
+  pull_request:
+    paths:
+      - 'functions/api/postback/xentraffic.js'
+      - 'src/xentraffic-attribution.mjs'
+      - 'src/worker.mjs'
+      - 'src/network-constructors.mjs'
+      - 'data/go-selection-receipt.json'
+      - 'functions/go/program-manifest.js'
+      - 'migrations/**'
+      - 'tests/xentraffic-postback.test.mjs'
+      - 'docs/xentraffic-postback-candidate.md'
+      - '.github/workflows/glp90-xentraffic-receiver.yml'
+permissions:
+  contents: read
+jobs:
+  receiver-source:
+    name: GLP90 six receiver behaviors and account-lineage regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.EXPECTED_SHA }}
+          persist-credentials: false
+      - name: Verify exact head
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          printf 'checked_head=%s\n' "$EXPECTED_SHA"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Offline synthetic SQLite checks only
+        run: node --test tests/xentraffic-postback.test.mjs
+      - name: Record limitations
+        if: always()
+        run: printf '%s\n' 'Source-only candidate checks. Reversals rejected, not ingested. No callbacks, tracking navigation, secrets, migrations, deployment, partner changes or money proof.' >> "$GITHUB_STEP_SUMMARY"

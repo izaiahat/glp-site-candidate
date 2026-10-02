@@ -107,6 +107,7 @@ export function taxonomyDigestBasis(row) {
     treatment_type_state: row.treatment_type_state,
     commercial_link_state: row.commercial_link_state,
     evidence_bindings: row.evidence_bindings,
+    ...(Object.hasOwn(row, "claim_qualification") ? { claim_qualification: row.claim_qualification } : {}),
   };
 }
 
@@ -443,6 +444,26 @@ export function commercialLinkState(entity, surface = "compare") {
   return "live";
 }
 
+// A repeated visible name is safe only when both registry rows are explicitly
+// the same canonical provider. Distinct offers must retain the uniqueness gate.
+export function sameCanonicalRegistryIdentity(registryByRenderId, profileId, left, right) {
+  const resolve = (id) => {
+    const program = registryByRenderId.get(id);
+    if (!program) return null;
+    const identity = program.profiles?.[profileId]?.canonical_identity;
+    if (identity?.role === "alias") {
+      const target = String(identity.canonical_program_id || "");
+      const canonicalProgram = registryByRenderId.get(target);
+      if (!canonicalProgram || canonicalProgram.profiles?.[profileId]?.canonical_identity?.role === "alias") return null;
+      return target;
+    }
+    return id;
+  };
+  const leftCanonical = resolve(left);
+  return leftCanonical !== null && leftCanonical === resolve(right) && left !== right
+    && [left, right].some((id) => registryByRenderId.get(id)?.profiles?.[profileId]?.canonical_identity?.role === "alias");
+}
+
 export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Date() } = {}) {
   const document = registry?.therapeutic_taxonomy;
   if (!document || document.schema !== "glp-therapeutic-taxonomy-v1") fail("schema_invalid");
@@ -478,6 +499,11 @@ export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Da
       fail("registry_binding_mismatch", pid);
     }
     if (typeof row.provider !== "string" || !row.provider.trim()) fail("provider_missing", pid);
+    if (Object.hasOwn(row, "claim_qualification") && (typeof row.claim_qualification !== "string"
+        || row.claim_qualification !== row.claim_qualification.trim() || !row.claim_qualification
+        || row.claim_qualification.length > 2000 || /[<>\u0000-\u001f\u007f]/.test(row.claim_qualification))) {
+      fail("claim_qualification_invalid", pid);
+    }
     for (const field of TAG_FIELDS) sortedUniqueStrings(row[field], ALLOWED[field], field, pid);
     if (row.treatment_type_state !== ((row.treatment_type_tags || []).length ? "verified" : "not_verified")) {
       fail("treatment_type_state_mismatch", pid);
@@ -511,7 +537,10 @@ export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Da
     }
     const rendered = row.render_label || row.provider;
     const key = identityKey(rendered);
-    if (!key || renderIdentities.has(key)) fail("render_identity_duplicate", `${pid}:${renderIdentities.get(key) || ""}`);
+    const previous = renderIdentities.get(key);
+    if (!key || (previous && !sameCanonicalRegistryIdentity(registryByRenderId, profileId, pid, previous))) {
+      fail("render_identity_duplicate", `${pid}:${previous || ""}`);
+    }
     renderIdentities.set(key, pid);
     programs.set(pid, Object.freeze({ ...row }));
   }
@@ -540,8 +569,11 @@ function canonicalTherapeuticPrograms(registry, profileId, validatedPrograms) {
     const canonicalTaxonomy = validatedPrograms.get(canonicalId);
     if (!canonicalTaxonomy) fail("canonical_projection_taxonomy_missing", canonicalId);
     const merge = (field) => [...new Set(rows.flatMap((row) => row[field] || []))].sort();
+    const qualifications = [...new Set(rows.map(row => row.claim_qualification).filter(Boolean))];
+    if (qualifications.length > 1) fail("canonical_qualification_conflict", canonicalId);
     const projected = {
       ...canonicalTaxonomy,
+      ...(qualifications.length ? {claim_qualification: qualifications[0], source_urls: merge("source_urls")} : {}),
       molecule_tags: merge("molecule_tags"),
       brand_name_tags: merge("brand_name_tags"),
       delivery_form_tags: merge("delivery_form_tags"),
@@ -582,6 +614,7 @@ function publicTaxonomy(row) {
     treatment_type_tags: row.treatment_type_tags,
     treatment_type_state: row.treatment_type_state,
     verified_as_of: row.verified_as_of,
+    ...(row.claim_qualification ? { claim_qualification: row.claim_qualification, source_urls: row.source_urls } : {}),
     normalized_sha256: row.normalized_sha256,
   });
 }
@@ -592,7 +625,7 @@ export function therapeuticTokens(row) {
   ])].sort();
 }
 
-export function projectTherapeuticSurfaces({ registry, profileId, pages, quizConfig, asOf = new Date() }) {
+export function projectTherapeuticSurfaces({ registry, profileId, pages, quizConfig, programs = [], asOf = new Date() }) {
   const validated = validateTherapeuticTaxonomy(registry, profileId, { asOf });
   const rawCanonical = canonicalTherapeuticPrograms(registry, profileId, validated.programs);
   const dynamic = validateProviderDynamicProfiles(registry, profileId, { asOf });
@@ -608,7 +641,9 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
       provider: profile.provider,
       render_label: null,
       verified_as_of: profile.verified_as_of,
-      normalized_sha256: profile.normalized_sha256,
+      normalized_sha256: raw.claim_qualification
+        ? stableSha256({taxonomy_sha256:raw.normalized_sha256, dynamic_profile_sha256:profile.normalized_sha256})
+        : profile.normalized_sha256,
     })];
   }));
   const expectedIds = new Set(projectedPrograms.keys());
@@ -691,6 +726,12 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
   }));
   assertSameSet(surfaceScopedIds(exactIds(candidates, "quiz"), scopedOffIds), quizScopedIds, "quiz");
   return Object.freeze({
+    // Blog ledger records share the SAME validated canonical public taxonomy as
+    // comparison rows; ledger identity, prose, clocks and link flags stay intact.
+    programs: programs.map((program) => {
+      const taxonomy = projectedPrograms.get(String(program.program_id));
+      return taxonomy ? { ...program, therapeutic_taxonomy: publicTaxonomy(taxonomy) } : { ...program };
+    }),
     pages: projectedPages,
     quizConfig: {
       ...quizConfig,

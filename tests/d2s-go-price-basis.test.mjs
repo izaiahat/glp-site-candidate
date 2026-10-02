@@ -2,10 +2,20 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { restoreGoOnlyPriceBasis } from '../src/go-runtime-selection.mjs';
+import { historicalPriceIndexRegistry } from '../src/price-index-historical-registry.mjs';
 import { stableSha256 } from '../src/therapeutic-taxonomy.mjs';
 const registry=JSON.parse(readFileSync(new URL('../data/program-registry.json',import.meta.url)));
 const expected=registry.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256;
-const basis=structuredClone(registry);
+// This test owns the four GO-only edits, not subsequent factual/name changes.
+// Authenticate the original whole price body via its native reader, then take
+// only the four actual current GO/profile pairs. No frozen digest is repinned.
+const basis=historicalPriceIndexRegistry(registry);
+for (const id of ['awin-128761','katalys-1286','katalys-1304','katalys-647']) {
+ const current=registry.programs.find(p=>p.program_id===id);
+ const historical=basis.programs.find(p=>p.program_id===id);
+ historical.go=structuredClone(current.go);
+ historical.profiles=structuredClone(current.profiles);
+}
 delete basis.therapeutic_taxonomy;delete basis.provider_dynamic_profiles;delete basis.consumer_therapeutic_authorities;
 test('four receipt-bound go-only changes preserve exact original price basis',()=>{
  assert.notEqual(stableSha256(basis),expected);

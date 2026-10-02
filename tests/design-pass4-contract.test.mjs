@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
+import { assertCompoundedListing } from './helpers/compounded-listing-contract.mjs';
 
 const ROOT = process.cwd();
 const read = (relative) => readFileSync(path.join(ROOT, relative), "utf8");
@@ -149,14 +150,21 @@ test("Insights-reference route families render the clean-room template anatomy",
     ["wegovy-pill", /p3-product-hero/],
     ["zepbound", /p3-product-hero/],
     ["ozempic", /p3-product-hero/],
-    ["lp/best-providers/compounded-semaglutide", /p3-category-hero/],
-    ["lp/best-providers/compounded-tirzepatide", /p3-category-hero/],
+    ["lp/best-providers/compounded-semaglutide", /data-listing-archetype="C"/],
+    ["lp/best-providers/compounded-tirzepatide", /data-listing-archetype="C"/],
     ["providers", /p3-provider|p3-index-hero/],
     ["pharmacies", /p3-pharm/],
   ];
   for (const [route, marker] of representatives) {
     const page = html(route);
     assert.match(page, marker, `missing emulated anatomy on /${route}/`);
+    if (route.startsWith('lp/best-providers/compounded-')) {
+      assertCompoundedListing(page);
+      for (const token of ['data-phase3-provider-grid', 'data-provider-filters', 'data-filter-result', 'data-card-review']) {
+        assert.ok(page.includes(token));
+        assert.throws(() => assertCompoundedListing(page.replaceAll(token, 'removed-contract-hook')), undefined, token);
+      }
+    }
     assert.doesNotMatch(page, /glpwinner/i, `clean-room leak on /${route}/`);
   }
 });

@@ -6,7 +6,6 @@ import { loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
 import { deriveGoEntriesFromRegistry } from "../src/program-registry.mjs";
 import { goCommercialLabels } from "../src/go-commercial-labels.mjs";
 import { manifestJsonText, renderGoRuntimeManifestModule, assertCurrentHoldGoSuccessor } from "../src/go-runtime-manifest.mjs";
-import { loadGoSelection } from '../src/go-runtime-selection.mjs';
 const holdsOnly = process.argv.includes('--current-holds-only');
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -33,7 +32,7 @@ const manifest = {
 };
 if (holdsOnly) {
   const {GO_RUNTIME_MANIFEST: before} = await import('../functions/go/program-manifest.js');
-  const held = new Set(Object.values(loadGoSelection(ROOT).programs).filter(row => row.disposition === 'HOLD').map(row => row.program_id));
+  const held = new Set(Object.entries(goPromotionAuthority.programs).filter(([, row]) => row.status === 'WITHHELD').map(([id]) => id));
   assertCurrentHoldGoSuccessor(before, manifest, held);
 }
 await writeFile(path.join(ROOT, "functions", "go", "program-manifest.js"), renderGoRuntimeManifestModule(manifest));

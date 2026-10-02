@@ -1,27 +1,48 @@
-name: Private mirror build and tests
+name: Private mirror portable checks (build excluded)
 
-# Deliberately manual until the operator verifies included GitHub Actions
-# capacity for this private repository. No PR/push event consumes paid minutes.
-on: workflow_dispatch
-
+# GLP-42 registration of mirror-ci.yml from PR #8 at
+# 2927c1ea184d2ed23aa2dd448c8fc0d04df8c37d, scoped to portable checks.
+# Excludes npm ci, npm run build and the post-build full npm test suite.
+# Approved imagery, private registry, predecessor/rail/lastmod evidence and
+# excluded owner/IndexNow keys are unavailable here. Never fabricate/upload them.
+# Existing build/test logic is untouched; this is NOT a build or release PASS.
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact same-repository commit to check (empty means workflow ref)
+        required: false
+        type: string
+        default: ''
 permissions:
   contents: read
-
 jobs:
-  build-and-test:
+  portable-export-contracts:
+    name: Portable export contracts (build NOT checked)
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 5
+    env:
+      EXPECTED_SHA: ${{ github.event.pull_request.head.sha || inputs.source_sha || github.sha }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Require exact commit
+        run: '[[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]'
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          ref: ${{ env.EXPECTED_SHA }}
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - name: Verify checkout identity
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          printf 'checked_head=%s\n' "$(git rev-parse HEAD)"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-          cache: npm
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
-      - name: Build with source and evidence validators
-        run: npm run build
-      - name: Existing Node test suite (only after a successful build)
-        run: npm test
+      - name: Existing portable candidate export tests
+        run: node --test tests/candidate-export-policy.test.mjs
+      - name: Pricing manifest schema and fail-closed coverage tests
+        run: node --test tests/pricing-deployed-row-schema.test.mjs tests/d2f-coverage-floor.test.mjs
+      - name: Record limited scope
+        if: always()
+        run: |
+          printf '%s\n' 'Portable source/VM export-policy tests only; build, private-input validators and post-build full suite NOT RUN. No release authority.' >> "$GITHUB_STEP_SUMMARY"

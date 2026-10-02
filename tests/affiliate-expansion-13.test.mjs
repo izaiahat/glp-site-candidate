@@ -42,7 +42,9 @@ const isApprovedShedOffer = (row) => [shedAlias.review_slug, shedCanonicalId].in
 const promotionId = (id) => registry.programs.find((item) => item.review_slug === id)?.program_id || id;
 const PAUSED_AGELESS = "try-ageless";
 function assertPausedAgeless() {
-  const selected = selection.programs.find((item) => item.program_id === PAUSED_AGELESS);
+  assert.ok(!selectedIds.has(PAUSED_AGELESS), 'paused offer is removed from current activation');
+  const selected = selection.excluded_selection_evidence.find((item) => item.program_id === PAUSED_AGELESS);
+  assert.equal(selected?.disposition, 'historical_snapshot_only_not_activation_authority');
   assert.equal(selected?.network, "Katalys");
   assert.equal(selected.network_program_id, "1538");
   assert.equal(promotion[PAUSED_AGELESS]?.status, "WITHHELD");
@@ -58,8 +60,9 @@ const authorizedNetworkAnchorIds = new Set([...networkAnchorIds].filter((id) =>
 // the Sheet-derived selection went 13 -> 11. The count is asserted against the
 // list it describes, and the two paused ids must be gone from both.
 const PAUSED_20260817 = ["synergy-rx", "care-bare-rx-glp1"];
-test("Sheet-derived selection has eleven unique transparent-direct programs and zero go routes", () => {
-  assert.equal(selection.program_count, 11);
+test("Sheet-derived selection excludes paused offer 1538 and has ten unique transparent-direct programs", () => {
+  assertPausedAgeless();
+  assert.equal(selection.program_count, 10);
   assert.equal(selection.programs.length, selection.program_count);
   for (const paused of PAUSED_20260817) assert.equal(selectedIds.has(paused), false, paused);
   assert.equal(selectedIds.size, selection.program_count);

@@ -1768,15 +1768,6 @@ async function main() {
   if (!editorialAuthor) throw new Error("editorial_team_author_missing");
   const resolveArticleAuthor = () => editorialAuthor;
   const programMap = new Map(contentLedger.programs.map((item) => [item.program_id, item]));
-  for (const article of allArticles) {
-    const owner = allOwnership.find((item) => item.primary_keyword === article.primary_keyword && item.url === article.canonical_path);
-    const comparison = resolveBlogComparisonSpec(article, contentLedger.programs);
-    if (!owner) throw new Error(`blog_article_owner_missing:${article.article_id}`);
-    if (owner.risk_tier !== article.risk_tier) throw new Error(`blog_article_owner_risk_mismatch:${article.article_id}`);
-    const articleReview = reviewBrief(article, resolveArticleAuthor(article));
-    if (articleReview.status !== "PASS") throw new Error(`blog_article_gate:${article.article_id}:${articleReview.reason}`);
-    if (article.comparison_required && !comparison) throw new Error(`blog_article_comparison_missing:${article.article_id}`);
-  }
   if (activationSelection.status !== "APPROVED_FOR_TRANSPARENT_DIRECT_BUILD" || activationSelection.go_route_program_count !== 0 || !Array.isArray(activationSelection.programs) || activationSelection.program_count !== activationSelection.programs.length) throw new Error("affiliate_activation_selection_invalid");
   const sheetAuthorizedIds = new Set(activationSelection.programs.map((program) => program.program_id));
   if (sheetAuthorizedIds.size !== activationSelection.program_count) throw new Error("affiliate_activation_selection_duplicate");
@@ -1813,8 +1804,18 @@ async function main() {
     profileId: SITE_PROFILE,
     pages: canonicalAugmented,
     quizConfig: canonicalQuiz,
+    programs: contentLedger.programs,
   });
   const therapeuticProgramIds = [...therapeuticSurfaces.validated.programs.keys()];
+  for (const article of allArticles) {
+    const owner = allOwnership.find((item) => item.primary_keyword === article.primary_keyword && item.url === article.canonical_path);
+    const comparison = resolveBlogComparisonSpec(article, therapeuticSurfaces.programs);
+    if (!owner) throw new Error(`blog_article_owner_missing:${article.article_id}`);
+    if (owner.risk_tier !== article.risk_tier) throw new Error(`blog_article_owner_risk_mismatch:${article.article_id}`);
+    const articleReview = reviewBrief(article, resolveArticleAuthor(article));
+    if (articleReview.status !== "PASS") throw new Error(`blog_article_gate:${article.article_id}:${articleReview.reason}`);
+    if (article.comparison_required && !comparison) throw new Error(`blog_article_comparison_missing:${article.article_id}`);
+  }
   const suggestions = providerSuggestions(programRegistry, SITE_PROFILE, {
     asOf: new Date(`${programRegistry.provider_dynamic_profiles.sealed_as_of}T12:00:00Z`),
   });
@@ -2020,7 +2021,7 @@ async function main() {
     const heroAlt = article.canonical_path === "/guides/best-company-to-get-glp-1/"
       ? "Editorial illustration of paperwork and a magnifying glass on a dark desk."
       : article.images?.[0]?.alt || `Guide overview for ${article.h1}`;
-    const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, resolveBlogComparisonSpec(article, reader.contentLedger.programs), resolveArticleAuthor(article), reader.contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
+    const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, publicProviderNames(resolveBlogComparisonSpec(article, therapeuticSurfaces.programs)), resolveArticleAuthor(article), reader.contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
     const articleGraph = addArticleShareControls(articleVertical(article) === "GLP-1" ? upgradeInsightsArticle(articleBase, article, glpGuideArticles.filter((item) => item.canonical_path !== article.canonical_path && path.join(item.canonical_path.replace(/^\//, ""), "index.html") !== MOUNJARO_COUPON_ROUTE_FILE)) : articleBase);
     const rendered = addSharedRuntime(articleGraph);
     await write(path.join(article.canonical_path.replace(/^\//, ""), "index.html"), articleVertical(article) === "GLP-1" ? markReleaseReady(article.suppress_cta ? rendered : addGuideFunnel(rendered)) : rendered);

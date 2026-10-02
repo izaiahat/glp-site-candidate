@@ -166,6 +166,13 @@ def monetized_programs(root: Path) -> dict[str, dict]:
     # The receipted /go successor supersedes frozen money-row rails. Consume
     # the SAME validating loader as the renderer (terms/hash/promotion checks),
     # not a second JSON reader that could accept a tampered selection.
+    # A contract-only root has no GO successor. Do not import a nonexistent
+    # renderer there. Presence of either successor input requires the native
+    # validating loader; a partial/corrupt successor must still fail closed.
+    successor_inputs = (root / "data/go-selection-receipt.json",
+                        root / "src/go-runtime-selection.mjs")
+    if not any(item.exists() for item in successor_inputs):
+        return programs
     projection = subprocess.run([
         "node", "--input-type=module", "-e",
         "import {loadGoSelection} from './src/go-runtime-selection.mjs';"

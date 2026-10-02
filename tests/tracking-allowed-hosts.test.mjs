@@ -24,7 +24,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { buildProviderReviewSpecs, renderProviderReviewPage } from "../src/provider-review.mjs";
+import { buildProviderReviewSpecs, renderProviderReviewPage, reviewAffiliateUrl } from "../src/provider-review.mjs";
 import {
   loadTrackingAllowedHosts,
   resetTrackingAllowedHostsCache,
@@ -33,6 +33,8 @@ import {
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
+// Contract-only fixtures do not consume the host's private directory overlay.
+const { GLP_PRIVATE_APPROVED_REGISTRY: _privateRegistry, ...fixtureEnv } = process.env;
 const readJson = async (relative) => JSON.parse(await readFile(new URL(relative, import.meta.url), "utf8"));
 
 const registry = await readJson("../data/program-registry.json");
@@ -91,8 +93,11 @@ for (const [programId, network, expectedHost] of LIVE_REGRESSION) {
     const url = new URL(selected ? GO_RUNTIME_MANIFEST.programs[programId].tracking.base_url : pointer);
     assert.equal(url.protocol, "https:");
     assert.equal(url.hostname, selected ? new URL(selected.issued_link).hostname : expectedHost);
-    // Raw input still passes its original per-program host validation before overlay.
-    assert.ok(trackingAllowedHosts(programId, network).has(expectedHost));
+    // The original row stays historical. A receipted successor validates on
+    // its current rail rather than widening the new allowlist to old hosts.
+    assert.ok(trackingAllowedHosts(programId, selected?.network || network).has(url.hostname));
+    if (selected && network !== selected.network && !loadTrackingAllowedHosts().programs[programId].network_aliases.includes(network))
+      assert.throws(()=>trackingAllowedHosts(programId,network),/network_drift/);
   });
 }
 
@@ -100,8 +105,8 @@ test("the allowlist is now per PROGRAM, not per network", () => {
   // Under the old literal both direct-affiliate providers shared one host set,
   // so orderlymeds' host authorized a link on any other direct program. It no
   // longer does.
-  assert.ok(!trackingAllowedHosts("gobymeds", "Direct website-publisher application / manual review").has("orderlymeds.com"));
-  assert.ok(!trackingAllowedHosts("orderlymeds", "Direct affiliate").has("my.gobymeds.com"));
+  assert.ok(!trackingAllowedHosts("gobymeds", loadGoSelection().programs.gobymeds.network).has("orderlymeds.com"));
+  assert.ok(!trackingAllowedHosts("orderlymeds", loadGoSelection().programs.orderlymeds.network).has("my.gobymeds.com"));
 });
 
 // --------------------------------------------------------------------------
@@ -110,13 +115,16 @@ test("the allowlist is now per PROGRAM, not per network", () => {
 test("a host the derivation does not name is refused, not rendered", () => {
   const orderly = byId.get("orderlymeds");
   const rogue = { ...orderly, row: { ...orderly.row, affiliate_href: "https://orderlymeds.example.com/?oid=2&affid=2608" } };
-  assert.throws(() => renderProviderReviewPage(rogue, identity), /review_direct_link_host_invalid:orderlymeds/);
+  const current=loadGoSelection().programs.orderlymeds;
+  assert.equal(loadGoPromotionAuthority().programs.orderlymeds.status,'VERIFIED');
+  assert.throws(() => reviewAffiliateUrl('orderlymeds', current.network, rogue.row.affiliate_href), /review_direct_link_host_invalid:orderlymeds/);
+  assert.ok(!renderProviderReviewPage(rogue,identity).includes(rogue.row.affiliate_href), 'frozen row cannot override selected destination');
 });
 
 test("a non-https href on an allowed host is still refused", () => {
-  const orderly = byId.get("orderlymeds");
-  const insecure = { ...orderly, row: { ...orderly.row, affiliate_href: "http://orderlymeds.com/?oid=2&affid=2608" } };
-  assert.throws(() => renderProviderReviewPage(insecure, identity), /review_direct_link_host_invalid:orderlymeds/);
+  const current=loadGoSelection().programs.orderlymeds;
+  assert.equal(reviewAffiliateUrl('orderlymeds',current.network,current.issued_link).protocol,'https:');
+  assert.throws(() => reviewAffiliateUrl('orderlymeds',current.network,current.issued_link.replace('https:','http:')), /review_direct_link_host_invalid:orderlymeds/);
 });
 
 test("an underived program fails the host resolver and cannot render an unsealed link", () => {
@@ -129,7 +137,9 @@ test("an underived program fails the host resolver and cannot render an unsealed
 test("a program whose rail changed under a stale document throws rather than using the old rail's hosts", () => {
   const orderly = byId.get("orderlymeds");
   const drifted = { ...orderly, row: { ...orderly.row, affiliate_network: "Katalys" } };
-  assert.throws(() => renderProviderReviewPage(drifted, identity), /tracking_allowed_hosts_network_drift:orderlymeds/);
+  const current=loadGoSelection().programs.orderlymeds;
+  assert.throws(() => reviewAffiliateUrl('orderlymeds',drifted.row.affiliate_network,current.issued_link), /tracking_allowed_hosts_network_drift:orderlymeds/);
+  assert.match(renderProviderReviewPage(drifted,identity), /data-network="Everflow"/, 'selected rail cannot be overwritten by a stale row label');
 });
 
 // --------------------------------------------------------------------------
@@ -156,13 +166,24 @@ function deriveTrackdeskDocument() {
     }],
   }));
   writeFileSync(path.join(scratch, "data/money-page-specs.json"), JSON.stringify({ pages: [] }));
+  writeFileSync(path.join(scratch, "data/program-registry.json"), JSON.stringify({ programs: [] }));
   const output = path.join(scratch, "tracking-allowed-hosts.json");
   execFileSync("python3", [
     path.join(ROOT, "scripts/emit-tracking-allowed-hosts.py"),
     "--root", scratch, "--output", output,
-  ], { cwd: ROOT, encoding: "utf8" });
+  ], { cwd: ROOT, encoding: "utf8", env: fixtureEnv });
   return { output, document: JSON.parse(readFileSync(output, "utf8")) };
 }
+
+test("a contract-only derivation refuses a partial GO successor instead of ignoring it", () => {
+  const { output } = deriveTrackdeskDocument();
+  const scratch = path.dirname(output);
+  const before = readFileSync(output);
+  writeFileSync(path.join(scratch, 'data/go-selection-receipt.json'), JSON.stringify({ programs: [] }));
+  assert.throws(() => execFileSync('python3', [path.join(ROOT, 'scripts/emit-tracking-allowed-hosts.py'), '--root', scratch, '--output', output],
+    { cwd: ROOT, env: fixtureEnv, encoding: 'utf8', stdio: 'pipe' }), /non-zero exit status|Command failed/);
+  assert.deepEqual(readFileSync(output), before, 'a failed native loader must not replace prior output');
+});
 
 test("a Trackdesk program resolves its host through the canonical rails module", () => {
   const { document } = deriveTrackdeskDocument();
@@ -225,6 +246,7 @@ test("a declared tracking host outside the advertiser's own domain is refused by
     }],
   }));
   writeFileSync(path.join(scratch, "data/money-page-specs.json"), JSON.stringify({ pages: [] }));
+  writeFileSync(path.join(scratch, "data/program-registry.json"), JSON.stringify({ programs: [] }));
   assert.throws(() => execFileSync("python3", [
     path.join(ROOT, "scripts/emit-tracking-allowed-hosts.py"),
     "--root", scratch, "--output", path.join(scratch, "doc.json"),

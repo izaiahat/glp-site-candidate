@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { detailPrograms, optionCProgramIds } from './helpers/d2w-s9-contracts.mjs';
 import { governedBulkCohorts } from './browser/governed-cohort.mjs';
 import { javascriptProviderMarkup } from './helpers/d2p-noscript.mjs';
+import { JSDOM } from 'jsdom';
+import { assertCurrentCardPrice } from './helpers/current-card-price.mjs';
 import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
@@ -633,6 +635,37 @@ test("D47 and D48 ship the insurance input contract, three FAQs, and related she
       const params = new URL(href, SITE).searchParams;
       assert.ok(params.get("drug") && params.get("form") && params.get("sort") === "cheapest", `${page.route}: sibling intent was not preserved`);
     }
+  }
+});
+
+test('F06 D35 current producer retains exact price witnesses without LP card dates', async () => {
+  const pricingMatrix = JSON.parse(await readFile(path.join(ROOT, 'data/provider-pricing-matrix.json'), 'utf8'));
+  const built = buildPhase3PageGraph({ graph, pharmacyInput, pricingMatrix, programRegistry: registry,
+    homeSpec: { rows: [] }, articles: carrierArticles, couponOffersByProgram: {} });
+  const assertDates = doc => {
+    const cards = [...doc.querySelectorAll('.p3-provider-card')];
+    assert.ok(cards.length);
+    for (const card of cards) assert.equal(card.querySelectorAll('time').length, 0, 'LP per-card checked dates forbidden by D35');
+    const dates = [...doc.querySelectorAll('[data-source-checked]')].map(e => e.dataset.sourceChecked).sort();
+    assert.ok(dates.length);
+    assert.equal(doc.querySelector('[data-prices-checked-date]')?.textContent, `${dates[0]} – ${dates.at(-1)}`, 'route window encompasses every source');
+  };
+  for (const config of graph.compounded_pages) {
+    const page = built.pages.find(p => p.route === config.route);
+    const dom = new JSDOM(javascriptProviderMarkup(page.html));
+    const doc = dom.window.document;
+    assertDates(doc);
+    for (const card of doc.querySelectorAll('.p3-provider-card:not([data-unpublished-price-card])')) {
+      const meds = card.dataset.medications.split(/\s+/);
+      const entry = Object.values(pricingMatrix.providers).find(e => e.program_id === card.dataset.program);
+      assert.ok(entry);
+      assert.equal(card.querySelector('.p3-provenance')?.textContent, 'Reported information', 'reported provenance remains explicit');
+      assertCurrentCardPrice(card.outerHTML, entry.medications.filter(r => meds.includes(r.medication_id)), { showDate: false });
+    }
+    const first = doc.querySelector('.p3-provider-card');
+    first.insertAdjacentHTML('beforeend', '<time datetime="2026-09-01">2026-09-01</time>');
+    assert.throws(() => assertDates(doc), /per-card checked dates/);
+    dom.window.close();
   }
 });
 

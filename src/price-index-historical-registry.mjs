@@ -71,6 +71,24 @@ export function historicalPriceIndexRegistry(registry, contentLedger, readBytes 
   }
   if (sha(canonical(care)) !== '69675f975e3a24197cca38b162955da64952ccf565bdf05c842263e9d724508b')
     throw Error('price_index_historical_care_drift');
+  // Exact negative factual successors, restored only inside this price-history
+  // copy. Full current/restored program hashes and the original whole-body
+  // oracle remain mandatory; empty tags are not proof of permanent absence.
+  for (const fix of [
+    {id:'refills',field:'molecule_tags',before:['semaglutide','tirzepatide'],
+     current:'fd5fb6a572dde800b409eb83c56b13d1401c6433dd3200bdc71508fbdcabf8e6',
+     historical:'a8686bcbf5afce201cc320a90893b4e6c052326f667c007df9b51e9ed9f96400'},
+    {id:'tmates-xentraffic-offer-3154',field:'brand_name_tags',before:['wegovy','zepbound'],
+     current:'8607d972612b8dcfe800fc4a65d3adaf69ba51dee4e1bb9882917aa186e8c5d2',
+     historical:'0320bb692983415950272972deb2885ec32aa582e3a72591fc6248162c2c3502'},
+  ]) {
+    const rows=restored.programs.filter(p=>p.program_id===fix.id);
+    if(rows.length!==1) throw Error('price_index_historical_negative_claim_drift:'+fix.id);
+    const row=rows[0],digest=sha(canonical(row));
+    if(digest===fix.current) row.research_dynamic_profile.taxonomy[fix.field]=[...fix.before];
+    else if(digest!==fix.historical) throw Error('price_index_historical_negative_claim_drift:'+fix.id);
+    if(sha(canonical(row))!==fix.historical) throw Error('price_index_historical_negative_claim_drift:'+fix.id);
+  }
   const body = structuredClone(restored);
   delete body.therapeutic_taxonomy;
   delete body.provider_dynamic_profiles;

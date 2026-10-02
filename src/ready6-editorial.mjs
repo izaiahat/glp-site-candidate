@@ -214,6 +214,9 @@ function renderReady6ReviewPageWithCopy(model, unavailableRoutes, options, seo) 
   // Keep the six historical adjudications immutable. Current scoped authority
   // supersedes only the outbound destination/network of this rendered view.
   const selected = selectedGoOutbound({ program_id: model.registry_id }, 'reviews.rv2');
+  // Historical adjudication is not present commercial authority. The builder
+  // suppresses retired models; direct callers must not resurrect their CTA.
+  if (selected?.held) fail('ready6_current_commercial_hold', model.registry_id);
   if (selected && !selected.held) model = { ...model, network: selected.network, cta: { ...model.cta, href: selected.href } };
   const canonical = `https://glpclinicscout.com${model.route}`;
   // AEO P0-C: one publisher entity, referenced by @id and defined once in the

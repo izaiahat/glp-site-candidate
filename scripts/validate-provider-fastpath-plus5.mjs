@@ -136,7 +136,19 @@ for (const provider of fastpath.providers) {
     && promotionAuthority[provider.program_id]?.status === "VERIFIED"
     && promotionAuthority[provider.program_id]?.promotion_authorized === true;
   const selected = currentSelection?.programs?.[provider.program_id];
-  if (selected?.status === 'VERIFIED') {
+  if (promotionAuthority[provider.program_id]?.status === 'WITHHELD') {
+    // Current denial outranks the immutable historical selection receipt.
+    assert.equal(promotionAuthority[provider.program_id].promotion_authorized, false);
+    assert.match(html, /data-link-dark="true"/);
+    assert.match(html, /data-affiliate-state="held"/);
+    assert.doesNotMatch(html, /data-affiliate-state="active"|href="\/go\/|data-analytics-event="affiliate_click"|rel="sponsored/);
+    const entry = GO_RUNTIME_MANIFEST.programs[selected?.render_id || provider.program_id];
+    if (entry) {
+      assert.equal(entry.live_link_allowed, false);
+      assert.equal(entry.promotion_authorized, false);
+      assert.equal(entry.tracking, undefined);
+    }
+  } else if (selected?.status === 'VERIFIED') {
     const entry = GO_RUNTIME_MANIFEST.programs[selected.render_id];
     assert.equal(entry?.status, 'live_operator_approved');
     assert.equal(entry.link_mode, 'server_redirect');

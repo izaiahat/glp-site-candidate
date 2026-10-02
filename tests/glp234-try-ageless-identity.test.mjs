@@ -11,6 +11,9 @@ import { applyMeritScores, meritScore } from '../src/merit-ranking.mjs';
 import { comparablePriceProviderIds } from '../src/provider-dynamic-profiles.mjs';
 import { historicalPriceIndexRegistry } from '../src/price-index-historical-registry.mjs';
 import { readFileSync } from 'node:fs';
+import { assertCurrentHoldGoSuccessor } from '../src/go-runtime-manifest.mjs';
+import { loadGoPromotionAuthority } from '../src/go-runtime-selection.mjs';
+import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
 
 test('GLP-234 F3 exact identity successor reconstructs only the historical price label', async () => {
   const registry = await load('program-registry.json');
@@ -132,7 +135,7 @@ test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and
   const input = 'data/program-registry.json';
   const bytes = read(input);
   const immutable = {data: {[input]: 'bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6'}};
-  assert.equal(pins.inputs[input].after_sha256, 'd0bc5c1f702731b2b4fe3450884cf93310e88dcb1f7e7d6e4b33d96f4a3db644');
+  assert.equal(pins.inputs[input].after_sha256, '385a0f30f0ca6f72d9d83d8e0cab173f9c66191d4ea7b2fb6bd51c0a34d35ce5');
   assert.equal(pins.provenance.previous_care_after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
   assert.equal(pins.provenance.previous_care_fixture_git_ref, 'aa13b69fcbff4f9990b7043702da2fa37756390a:tests/fixtures/glp41-approved-input-successor.json');
   assert.match(pins.authority, /care-metadata-source-repair-authorization-20260927\/RESULT\.json/);
@@ -255,8 +258,14 @@ test('GLP-234 registry projections name the first-party brand without altering r
     ['affiliate-held-link-manifest.json', '613ce4dcd21357466e11f9338c71c554d71c6feac71a57127c2059d0db153675'],
     ['go-runtime-promotion-authority.json', 'ed0060a986a5703829035c29ce23c252d1285083daa17a9ae778d5655e1b53f2'],
   ]) assert.equal(sha(await readFile(new URL(`../data/${name}`, import.meta.url))), expected, name);
-  assert.equal(sha(await readFile(new URL('../functions/go/program-manifest.js', import.meta.url))),
+  // Historical identity approval remains exact; the later accepted current
+  // denial may remove held tracking only, never alter non-held custody.
+  const historicalGo = new URL('./fixtures/f06-historical-source/program-manifest.js', import.meta.url);
+  assert.equal(sha(await readFile(historicalGo)),
     'cab1f5b4a8437080c09f580daf7be19bb4b9a177673150ba1f1e8f9abe113f7a');
+  const { GO_RUNTIME_MANIFEST: beforeGo } = await import(historicalGo.href);
+  const held = new Set(Object.entries(loadGoPromotionAuthority().programs).filter(([,row])=>row.status==='WITHHELD').map(([id])=>id));
+  assertCurrentHoldGoSuccessor(beforeGo, {...GO_RUNTIME_MANIFEST, programs:Object.values(GO_RUNTIME_MANIFEST.programs)}, held);
 
   // Current editorial projections must not import the distinct AgelessRx firm's
   // dated facts. Historical raw evidence and all commercial gates stay intact.

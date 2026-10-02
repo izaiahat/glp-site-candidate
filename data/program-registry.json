@@ -3434,8 +3434,7 @@
             "injectable"
           ],
           "molecule_tags": [
-            "semaglutide",
-            "tirzepatide"
+            "semaglutide"
           ],
           "treatment_type_tags": [
             "compounded"
@@ -3541,10 +3540,7 @@
           }
         ],
         "taxonomy": {
-          "brand_name_tags": [
-            "wegovy",
-            "zepbound"
-          ],
+          "brand_name_tags": [],
           "delivery_form_tags": [
             "injectable",
             "oral"
@@ -4459,10 +4455,10 @@
     "expected_counts": {
       "provider_identities": 57,
       "semaglutide": 52,
-      "tirzepatide": 48,
+      "tirzepatide": 47,
       "retatrutide": 0,
-      "wegovy": 16,
-      "zepbound": 14,
+      "wegovy": 15,
+      "zepbound": 13,
       "mounjaro": 7,
       "oral": 21,
       "injectable": 31,
@@ -5482,6 +5478,9 @@
         "source_urls": [
           "https://www.eden.health/policies/terms-of-service",
           "https://www.eden.health/treatment/glp-1-treatments",
+          "https://www.eden.health/treatment/mounjaro",
+          "https://www.eden.health/treatment/wegovy",
+          "https://www.eden.health/treatment/zepbound",
           "https://www.eden.health/weight-loss"
         ],
         "taxonomy": {
@@ -5525,8 +5524,8 @@
             "source_url": "https://www.eden.health/policies/terms-of-service",
             "verified_as_of": "2026-08-31",
             "evidence_kind": "registry_identity_projection",
-            "evidence_text": "{\"aliases\":[],\"program_id\":\"eden-xentraffic-offer-3051\",\"provider\":\"Eden\",\"registry_program_ids\":[\"eden-xentraffic-offer-3051\"],\"source_urls\":[\"https://www.eden.health/policies/terms-of-service\",\"https://www.eden.health/treatment/glp-1-treatments\",\"https://www.eden.health/weight-loss\"],\"verified_as_of\":\"2026-08-31\"}",
-            "evidence_sha256": "3bf534902415b7964f78f0db3450b6fa8eda3e5bd88a9751be764a8b009f9d13"
+            "evidence_text": "{\"aliases\":[],\"program_id\":\"eden-xentraffic-offer-3051\",\"provider\":\"Eden\",\"registry_program_ids\":[\"eden-xentraffic-offer-3051\"],\"source_urls\":[\"https://www.eden.health/policies/terms-of-service\",\"https://www.eden.health/treatment/glp-1-treatments\",\"https://www.eden.health/treatment/mounjaro\",\"https://www.eden.health/treatment/wegovy\",\"https://www.eden.health/treatment/zepbound\",\"https://www.eden.health/weight-loss\"],\"verified_as_of\":\"2026-08-31\"}",
+            "evidence_sha256": "83e4071694d04ec2cc4ae98e5aab5acaf5a480e42dcf083b122ff1dc7b80366d"
           },
           {
             "evidence_sha256": "58ecdf273b1ead4649671d231254729626fc20886f5a94d0b381a8014cabb15a",
@@ -5570,7 +5569,7 @@
             "treatment_type_state": "verified"
           }
         ],
-        "normalized_sha256": "2bd0daf40d02716b26d476c30488bb0496c2412a0810658c0e8e78dbdad36810"
+        "normalized_sha256": "dd784ada7942cef96d9d5a4995809de8aa8d3358430526ea38cdcf678b2c4f20"
       },
       "enhance-md": {
         "aliases": [],
@@ -6611,8 +6610,10 @@
         "source_urls": [
           "https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison",
           "https://jrnys.com/pricing/glp1",
+          "https://jrnys.com/weight-loss",
           "https://jrnys.com/weight-loss/product/compounded-semaglutide-2",
-          "https://jrnys.com/weight-loss/product/wegovvy"
+          "https://jrnys.com/weight-loss/product/wegovvy",
+          "https://jrnys.com/weight-loss/product/zepbound"
         ],
         "taxonomy": {
           "molecule_tags": [
@@ -6656,8 +6657,8 @@
             "source_url": "https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison",
             "verified_as_of": "2026-09-01",
             "evidence_kind": "registry_identity_projection",
-            "evidence_text": "{\"aliases\":[],\"program_id\":\"jrnys-review\",\"provider\":\"JRNYS\",\"registry_program_ids\":[\"jrnys-review\"],\"source_urls\":[\"https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison\",\"https://jrnys.com/pricing/glp1\",\"https://jrnys.com/weight-loss/product/compounded-semaglutide-2\",\"https://jrnys.com/weight-loss/product/wegovvy\"],\"verified_as_of\":\"2026-09-01\"}",
-            "evidence_sha256": "a8993d28310a8cb33ca848b8681cd8d44a99462d49ce94b65bbce31b656fa742"
+            "evidence_text": "{\"aliases\":[],\"program_id\":\"jrnys-review\",\"provider\":\"JRNYS\",\"registry_program_ids\":[\"jrnys-review\"],\"source_urls\":[\"https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison\",\"https://jrnys.com/pricing/glp1\",\"https://jrnys.com/weight-loss\",\"https://jrnys.com/weight-loss/product/compounded-semaglutide-2\",\"https://jrnys.com/weight-loss/product/wegovvy\",\"https://jrnys.com/weight-loss/product/zepbound\"],\"verified_as_of\":\"2026-09-01\"}",
+            "evidence_sha256": "67b6577d2f7fbfa2529970d3bd3e3a1e61c5d2f1c6ea91c4ba1c8e654856e1fe"
           },
           {
             "evidence_sha256": "2e9adac505b1cf349b724ee0fff1a6073cde7f4a02f5fd4be0ee7702bae67e93",
@@ -6710,7 +6711,7 @@
             "treatment_type_state": "verified"
           }
         ],
-        "normalized_sha256": "e6a74d713a2392fd18aeec86f636a5125c3ad6e45f5632c0f210a11361a833ad"
+        "normalized_sha256": "6efce6c8307b9d7b5674b96340c94bfa825dd5298ea8d2e9fe6986273467ee90"
       },
       "levelsrx-extra-cpa-home-page": {
         "program_id": "levelsrx-extra-cpa-home-page",
@@ -8066,8 +8067,7 @@
         ],
         "taxonomy": {
           "molecule_tags": [
-            "semaglutide",
-            "tirzepatide"
+            "semaglutide"
           ],
           "brand_name_tags": [],
           "delivery_form_tags": [
@@ -8155,7 +8155,7 @@
             "treatment_type_state": "verified"
           }
         ],
-        "normalized_sha256": "0f682570f3a2727d319d4c822295ebaf443f63ce254212fbd1faf0427cf0d5cc"
+        "normalized_sha256": "96eece26f093616b8dfe46531df88ae1d365bf2def4e4172d2efd948bb42d7d4"
       },
       "ro-wegovy-glp1-quiz-us-cpl": {
         "program_id": "ro-wegovy-glp1-quiz-us-cpl",
@@ -9093,10 +9093,7 @@
             "semaglutide",
             "tirzepatide"
           ],
-          "brand_name_tags": [
-            "wegovy",
-            "zepbound"
-          ],
+          "brand_name_tags": [],
           "delivery_form_tags": [
             "injectable",
             "oral"
@@ -9192,7 +9189,7 @@
             "treatment_type_state": "verified"
           }
         ],
-        "normalized_sha256": "0664da9139b13f6405220e48d7649c300fcd1ccfc88f2e580c61a4d9739cf98a"
+        "normalized_sha256": "5ebb3fca7e1a4e5333e0e82ec489a98312390bafe6adf5f5502e089c26c3a325"
       },
       "trimi-glp-1": {
         "aliases": [],
@@ -10554,16 +10551,104 @@
       "taxonomy_refresh_breeze_meds_review_run-20260927T005531350729Z": {
         "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260927T005531350729Z/breeze-meds-review-verification.json",
         "sha256": "f5fc1071458aa7dc5876c0df4c03f2a29bd592a45cfc73aa232b7e4c9305a6a5"
+      },
+      "taxonomy_refresh_altrx_glp1_us_cps_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/altrx-glp1-us-cps-verification.json",
+        "sha256": "575fdfcebad089e4088db269c282b4ecc84a2d6e1db694cbb58a6c3db8a62515"
+      },
+      "taxonomy_refresh_enhanced_tirzepatide_funnel_b_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/enhanced-tirzepatide-funnel-b-verification.json",
+        "sha256": "9e2b5d5ceb9915248fe3dc0753ce23a54f527bb61399a9bd1523e753f1b44eaf"
+      },
+      "taxonomy_refresh_futurhealth_wegovy_pillform_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/futurhealth-wegovy-pillform-verification.json",
+        "sha256": "daaaa6ecede365ef95304a5b031b7eeb8cd06c7547fd128a446dcb5406d446be"
+      },
+      "taxonomy_refresh_g_plan_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/g-plan-verification.json",
+        "sha256": "c25a78cc254dd93697501f3c734dd513e219422e12f3e623f881364ea19fe8a4"
+      },
+      "taxonomy_refresh_humecare_data_driven_glp_1_weight_loss_system_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/humecare-data-driven-glp-1-weight-loss-system-verification.json",
+        "sha256": "8f63924c56339665defed9056ab5f32e28d32c6f8c2edc9ed603babb16976f97"
+      },
+      "taxonomy_refresh_joinskinny_semaglutide_glp_1_us_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/joinskinny-semaglutide-glp-1-us-verification.json",
+        "sha256": "076b2466281435214e9bbeaef61d541515d4ce375b79bc0f7eb37c861c9b5f8b"
+      },
+      "taxonomy_refresh_longevity_meds_glp_1_review_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/longevity-meds-glp-1-review-verification.json",
+        "sha256": "3b50b982290470526265e4dd3fa50d3321a9ccbe93a62acffb563484f60163ca"
+      },
+      "taxonomy_refresh_lttl_glp_landing_page_2_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/lttl-glp-landing-page-2-verification.json",
+        "sha256": "2fc5fb00653e402beaf2dd8f5fc4c30d37ce839b355ccc94e94fcaf8c4a1c244"
+      },
+      "taxonomy_refresh_medvi_review_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/medvi-review-verification.json",
+        "sha256": "f9bd54289d180ceb6e37a4bde93d5e8047fd95fc58703702c5a8b8e5b1c75e15"
+      },
+      "taxonomy_refresh_ro_wegovy_glp1_quiz_us_cpl_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/ro-wegovy-glp1-quiz-us-cpl-verification.json",
+        "sha256": "46824b7cc80a9ee98f625b8c36733363d386bf9b7816a6af267d133b8c521c1b"
+      },
+      "taxonomy_refresh_snagrx_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/snagrx-verification.json",
+        "sha256": "58a369d19e9efc25a41e6b66fba5919debe88c067bea4937e87ca97648d78ce7"
+      },
+      "taxonomy_refresh_sunlight_glp1_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/sunlight-glp1-verification.json",
+        "sha256": "aefac5a3be5aef57453661912683240bbd798982a7bd0a5d5366c41d54bd7e47"
+      },
+      "taxonomy_refresh_trimrx_xentraffic_offer_3014_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/trimrx-xentraffic-offer-3014-verification.json",
+        "sha256": "1924e9eb64ae21a17762aee8eeb025a92ac0db36dc4ffaaa2a7c8dd4aba6dfc3"
+      },
+      "taxonomy_refresh_yucca_health_xentraffic_offer_3117_run-20260929T120024381077Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20260929T120024381077Z/yucca-health-xentraffic-offer-3117-verification.json",
+        "sha256": "095e45c2321fca4d797f1e3ed29c0200e6d87879ab1da9d612ce711509fb4810"
+      },
+      "f04_f06_proposed_care_bare_rx_glp1_review_20261002": {
+        "path": "reports/ops/f04-f06-taxonomy-successor-20261002/successor/care-bare-rx-glp1-review-verification.json",
+        "sha256": "475f8e46b15f5c5a5a9094e6f2574e7cbc0457a5cdb2db379dffecfa2dbe10f6"
+      },
+      "f04_f06_proposed_curex_glp_1_20261002": {
+        "path": "reports/ops/f04-f06-taxonomy-successor-20261002/successor/curex-glp-1-verification.json",
+        "sha256": "583270469797b4bcacccd527e56992f395a8fb5da48a4dfe7fff7379f7ff1427"
+      },
+      "f04_f06_proposed_novi_weight_loss_glp_1_20261002": {
+        "path": "reports/ops/f04-f06-taxonomy-successor-20261002/successor/novi-weight-loss-glp-1-verification.json",
+        "sha256": "6969a23d04370ab33f6124ade0db60aa66237323c0c76e7ecfd7bbf45000e656"
+      },
+      "f04_f06_proposed_jrnys_review_20261002": {
+        "path": "reports/ops/f04-f06-taxonomy-successor-20261002/successor/jrnys-review-verification.json",
+        "sha256": "05df700fcf982dc5055f9dd651f57b687bd3efab8330e94e81dacf97c270009b"
+      },
+      "f04_f06_proposed_eden_xentraffic_offer_3051_20261002": {
+        "path": "reports/ops/f04-f06-taxonomy-successor-20261002/successor/eden-xentraffic-offer-3051-verification.json",
+        "sha256": "457456dc8c07c0f42cde064f25e71f404d57781e139130ddc9c52a8427349a0b"
+      },
+      "f04_f06_proposed_levelsrx_extra_cpa_home_page_20261002": {
+        "path": "reports/ops/f04-f06-taxonomy-successor-20261002/successor/levelsrx-extra-cpa-home-page-verification.json",
+        "sha256": "630d83cabe23676c440ac6a0291de7b6f6ae4bb43574db05e9f594de2bdc0435"
+      },
+      "f04_f06_proposed_refills_20261002": {
+        "path": "reports/ops/f04-f06-taxonomy-successor-20261002/successor/refills-verification.json",
+        "sha256": "00650d0886f6223929e20d0fc4ee6268f977d9fbea231af09f0ab46f410431f7"
+      },
+      "f04_f06_proposed_tmates_xentraffic_offer_3154_20261002": {
+        "path": "reports/ops/f04-f06-taxonomy-successor-20261002/successor/tmates-xentraffic-offer-3154-verification.json",
+        "sha256": "8e6103a84487e54c78c3ec4587f24b3a7227ce945c7f5a59a44ce6488b8a8bf3"
       }
     },
     "derivation": "Set-union projection from the sealed base map, corrected Firecrawl refresh, and brand/form addendum. Tags are accepted only when an authority row explicitly records them; missing tags remain unknown and are never inferred from prose.",
     "expected_counts": {
       "provider_rows": 58,
       "semaglutide": 53,
-      "tirzepatide": 49,
+      "tirzepatide": 48,
       "retatrutide": 0,
-      "wegovy": 17,
-      "zepbound": 15,
+      "wegovy": 16,
+      "zepbound": 14,
       "mounjaro": 7,
       "oral": 22,
       "injectable": 31,
@@ -10595,25 +10680,18 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_altrx_glp1_us_cps",
-            "authority_sha256": "eb6e165e5701494217061a4b4832b82c38189cf3fb52e87db0d97d3c267ad51a",
-            "evidence_sha256": "777ad225ab1fcfb33e368898e9af01d6260e5800b59bdc2a7b61441d075d987c",
+            "authority": "taxonomy_refresh_altrx_glp1_us_cps_run-20260929T120024381077Z",
+            "authority_sha256": "575fdfcebad089e4088db269c282b4ecc84a2d6e1db694cbb58a6c3db8a62515",
             "source_url": "https://www.altrx.com/about",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_altrx_glp1_us_cps",
-            "authority_sha256": "eb6e165e5701494217061a4b4832b82c38189cf3fb52e87db0d97d3c267ad51a",
-            "evidence_sha256": "a25897d34334e7b5a4065ed13db33adb288290ac08559b0611c7bbc4832124cb",
-            "source_url": "https://www.altrx.com/products/compounded-semaglutide",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "f26ee3702f99dfddf0b8f8482871e7af1a06ba4713eeb7358bbd8d659582d234"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "d423b2c108ab0ace22ef6bb4f8cb713393851ea968acf237cdd8705932919ce3",
+        "normalized_sha256": "1e8c4b1dc917c055817c579084b9f85b3208c8da42580d26966e14105041e7ae",
         "program_id": "altrx-glp1-us-cps",
         "provider": "altRx",
         "registry_program_id": "altrx-glp1-us-cps",
@@ -10626,7 +10704,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "biltrx": {
         "brand_name_tags": [
@@ -10837,25 +10915,25 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_care_bare_rx_glp1_review",
-            "authority_sha256": "278b94be8688718d8df352932b0a6ca2f7faefb4743ec63adee0645523bf5bf7",
-            "evidence_sha256": "fb19340062dbc10791a239de5e0d2468b21750c72477552a637711e80dfa5f47",
+            "authority": "f04_f06_proposed_care_bare_rx_glp1_review_20261002",
+            "authority_sha256": "475f8e46b15f5c5a5a9094e6f2574e7cbc0457a5cdb2db379dffecfa2dbe10f6",
             "source_url": "https://www.carebarerx.com/products/weight-loss-medications",
-            "verified_as_of": "2026-08-30"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "4ab4ed58dfe21d072b582e2949bd7e6e19338a75249420de9923f26990445123"
           },
           {
-            "authority": "b2_stage5_care_bare_rx_glp1_review",
-            "authority_sha256": "278b94be8688718d8df352932b0a6ca2f7faefb4743ec63adee0645523bf5bf7",
-            "evidence_sha256": "035347697edc1a1cb2746a52cbe121ac946c18ea33d8d83bbfd8a924344b2a59",
+            "authority": "f04_f06_proposed_care_bare_rx_glp1_review_20261002",
+            "authority_sha256": "475f8e46b15f5c5a5a9094e6f2574e7cbc0457a5cdb2db379dffecfa2dbe10f6",
             "source_url": "https://www.carebarerx.com/home2",
-            "verified_as_of": "2026-08-30"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "7b1aaad325224056ee5d543764c0c7150a0f00a1672a24484410566cf2ff8c50"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "20417ba0146317d23b4e1c2b7e9b3d039cc1e54f4842b2dff40053ade326312d",
+        "normalized_sha256": "1902fe2cd33c7c1eda4df854525e205a00b438eceac42845c5760c4ac0c82c75",
         "program_id": "care-bare-rx-glp1-review",
         "provider": "Care Bare Rx GLP1",
         "registry_program_id": "care-bare-rx-glp1-review",
@@ -10868,7 +10946,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-08-30"
+        "verified_as_of": "2026-10-02"
       },
       "coivas": {
         "program_id": "coivas",
@@ -10953,25 +11031,18 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_curex_glp_1",
-            "authority_sha256": "817fd8543e28d20f68f5fd90b259267f21044fb8b5e894dc62b9979cc0960137",
-            "evidence_sha256": "807e1f0e938f82cda2f28a5c4f68f60c75e845ba4e31b8eb95e79079909c2b51",
+            "authority": "f04_f06_proposed_curex_glp_1_20261002",
+            "authority_sha256": "583270469797b4bcacccd527e56992f395a8fb5da48a4dfe7fff7379f7ff1427",
             "source_url": "https://getcurex.com/cl/glp",
-            "verified_as_of": "2026-08-31"
-          },
-          {
-            "authority": "b2_stage5_curex_glp_1",
-            "authority_sha256": "817fd8543e28d20f68f5fd90b259267f21044fb8b5e894dc62b9979cc0960137",
-            "evidence_sha256": "38c188c12036c9812ce915ea38e4fcb1d6d96e17b4fce7510a58c020bf32af28",
-            "source_url": "https://getcurex.com/cl/glp",
-            "verified_as_of": "2026-08-31"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "865db76606bdb816cc5791fb225c17f92b99908bb201190289d020640f63572f"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "6acb3841460bbd5f413953d9ffcdf5199864e1eab90938c7afedf3f62f9b191a",
+        "normalized_sha256": "757602651930bc3a8f7fe99b470740b0fa8f71934586c6f9f08f54898cdd82fe",
         "program_id": "curex-glp-1",
         "provider": "Curex",
         "registry_program_id": "curex-glp-1",
@@ -10983,7 +11054,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-08-31"
+        "verified_as_of": "2026-10-02"
       },
       "direct-meds": {
         "brand_name_tags": [],
@@ -11329,46 +11400,55 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_eden_xentraffic_offer_3051",
-            "authority_sha256": "049cc529f5684355427d643285a3750e40948ab38ce8e7e1f2805a630bb45181",
-            "evidence_sha256": "58ecdf273b1ead4649671d231254729626fc20886f5a94d0b381a8014cabb15a",
-            "source_url": "https://www.eden.health/policies/terms-of-service",
-            "verified_as_of": "2026-08-31"
-          },
-          {
-            "authority": "b2_stage5_eden_xentraffic_offer_3051",
-            "authority_sha256": "049cc529f5684355427d643285a3750e40948ab38ce8e7e1f2805a630bb45181",
-            "evidence_sha256": "1c346558b25431f13f1903c1202948e6332e651c5bcd7729eff943e654ab682e",
-            "source_url": "https://www.eden.health/weight-loss",
-            "verified_as_of": "2026-08-31"
-          },
-          {
-            "authority": "b2_stage5_eden_xentraffic_offer_3051",
-            "authority_sha256": "049cc529f5684355427d643285a3750e40948ab38ce8e7e1f2805a630bb45181",
-            "evidence_sha256": "c898fd98135baf1525c065ad5541c397a82f9e14912f52cb0408a7a1d70dd339",
+            "authority": "f04_f06_proposed_eden_xentraffic_offer_3051_20261002",
+            "authority_sha256": "457456dc8c07c0f42cde064f25e71f404d57781e139130ddc9c52a8427349a0b",
             "source_url": "https://www.eden.health/treatment/glp-1-treatments",
-            "verified_as_of": "2026-08-31"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "6b03c778999b0eac321db5a039e3346c530ec97d9e44c8fabe18db82da66e716"
+          },
+          {
+            "authority": "f04_f06_proposed_eden_xentraffic_offer_3051_20261002",
+            "authority_sha256": "457456dc8c07c0f42cde064f25e71f404d57781e139130ddc9c52a8427349a0b",
+            "source_url": "https://www.eden.health/treatment/mounjaro",
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "965f9f3db0c51e41bad6b0da428b74ce95694ebb03280a8b78fca3914ab15079"
+          },
+          {
+            "authority": "f04_f06_proposed_eden_xentraffic_offer_3051_20261002",
+            "authority_sha256": "457456dc8c07c0f42cde064f25e71f404d57781e139130ddc9c52a8427349a0b",
+            "source_url": "https://www.eden.health/treatment/wegovy",
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "cf3153190a09143aa81f4485ad9e2730b7526601aef523568ac74b15f7caadd1"
+          },
+          {
+            "authority": "f04_f06_proposed_eden_xentraffic_offer_3051_20261002",
+            "authority_sha256": "457456dc8c07c0f42cde064f25e71f404d57781e139130ddc9c52a8427349a0b",
+            "source_url": "https://www.eden.health/treatment/zepbound",
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "65c8f07c3d688a1e2f746cb385a939ae44c13d6a35256d4556494a0ce3de8b72"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "2bbb5f61de2c364e3ccfa94f3cef31fae895671c903b1ab3d86c5a929dac6db8",
+        "normalized_sha256": "ecf28ee81b48fcb00331e0be9768ab2190c3405ce1bafb8625bc3aa63a2a3684",
         "program_id": "eden-xentraffic-offer-3051",
         "provider": "Eden",
         "registry_program_id": "eden-xentraffic-offer-3051",
         "render_label": null,
         "source_urls": [
-          "https://www.eden.health/policies/terms-of-service",
           "https://www.eden.health/treatment/glp-1-treatments",
-          "https://www.eden.health/weight-loss"
+          "https://www.eden.health/treatment/mounjaro",
+          "https://www.eden.health/treatment/wegovy",
+          "https://www.eden.health/treatment/zepbound"
         ],
         "treatment_type_state": "verified",
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-08-31"
+        "verified_as_of": "2026-10-02",
+        "claim_qualification": "Reported information: Eden advertises a conditional Zepbound-labelled offering. Its explanatory paragraph names Mounjaro; the medication actually prescribed or supplied has not been verified."
       },
       "enhance-md": {
         "brand_name_tags": [],
@@ -11471,31 +11551,24 @@
         "delivery_form_tags": [],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_enhanced_tirzepatide_funnel_b",
-            "authority_sha256": "51e2fdc05fdd7c314831c02ea6b23ae313a95f9b514169aed0cf97559f9c3f99",
-            "evidence_sha256": "a67c2120797d8a1557388653ca0782988a0e360fd86f2c470643d8b60146c26f",
+            "authority": "taxonomy_refresh_enhanced_tirzepatide_funnel_b_run-20260929T120024381077Z",
+            "authority_sha256": "9e2b5d5ceb9915248fe3dc0753ce23a54f527bb61399a9bd1523e753f1b44eaf",
             "source_url": "https://www.enhanced.com/live-enhanced/products/tirzepatide",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "f8bb7c12487f29f7d32f1ff27a76c3fc4557bfef91b5e3fc4a9c3f52b56aef65"
           },
           {
-            "authority": "b2_stage5_enhanced_tirzepatide_funnel_b",
-            "authority_sha256": "51e2fdc05fdd7c314831c02ea6b23ae313a95f9b514169aed0cf97559f9c3f99",
-            "evidence_sha256": "80cc40ef73ac97e640006d0e8961b152aab2e03119357b5df342ccc73e5bc9b7",
+            "authority": "taxonomy_refresh_enhanced_tirzepatide_funnel_b_run-20260929T120024381077Z",
+            "authority_sha256": "9e2b5d5ceb9915248fe3dc0753ce23a54f527bb61399a9bd1523e753f1b44eaf",
             "source_url": "https://www.enhanced.com/live-enhanced/pathways/weight",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_enhanced_tirzepatide_funnel_b",
-            "authority_sha256": "51e2fdc05fdd7c314831c02ea6b23ae313a95f9b514169aed0cf97559f9c3f99",
-            "evidence_sha256": "2b11f5e8d98738d80932350fbb1a0c2b40f9da3e7561a6991c38ee06dea74906",
-            "source_url": "https://www.enhanced.com/live-enhanced/products/tirzepatide",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "7309320fbf38e9be84cb9450389974264c29ac8f549bfc4c1ec4378962f0f7c0"
           }
         ],
         "molecule_tags": [
           "tirzepatide"
         ],
-        "normalized_sha256": "648b7497995910496e873ff8aec569738137fa906fae34c2d7464da42ba82cf5",
+        "normalized_sha256": "59916ba8bbf46ee50b563bf3b67cd8a7e642380fb6afa9b080ad73370de61228",
         "program_id": "enhanced-tirzepatide-funnel-b",
         "provider": "Enhanced",
         "registry_program_id": "enhanced-tirzepatide-funnel-b",
@@ -11508,7 +11581,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "found-health": {
         "brand_name_tags": [
@@ -11767,31 +11840,24 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_futurhealth_wegovy_pillform",
-            "authority_sha256": "a8b508261b05f664809e2f29ee1ff61c3de042c10909d07ea5ebfe26ec657210",
-            "evidence_sha256": "332c7ae3e9c954282caae7af688495bf1bc47929a6c0218755816f86a2cfcb86",
+            "authority": "taxonomy_refresh_futurhealth_wegovy_pillform_run-20260929T120024381077Z",
+            "authority_sha256": "daaaa6ecede365ef95304a5b031b7eeb8cd06c7547fd128a446dcb5406d446be",
             "source_url": "https://landing.fh.co/",
-            "verified_as_of": "2026-08-31"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "396cef672826c73394114351d2f12ed285cd8802059209f417d3dc0f01fedc04"
           },
           {
-            "authority": "b2_stage5_futurhealth_wegovy_pillform",
-            "authority_sha256": "a8b508261b05f664809e2f29ee1ff61c3de042c10909d07ea5ebfe26ec657210",
-            "evidence_sha256": "b451c99b205a37751724a513591b2c446c6f04c5da36b3dca45f79b1239cf53e",
+            "authority": "taxonomy_refresh_futurhealth_wegovy_pillform_run-20260929T120024381077Z",
+            "authority_sha256": "daaaa6ecede365ef95304a5b031b7eeb8cd06c7547fd128a446dcb5406d446be",
             "source_url": "https://landing.fh.co/medication-wegovy-pillform5-discount",
-            "verified_as_of": "2026-08-31"
-          },
-          {
-            "authority": "b2_stage5_futurhealth_wegovy_pillform",
-            "authority_sha256": "a8b508261b05f664809e2f29ee1ff61c3de042c10909d07ea5ebfe26ec657210",
-            "evidence_sha256": "eed72eb81b72b03e8f14f691b4690723dd7a6a09618278d7925b78e925f66ef2",
-            "source_url": "https://landing.fh.co/medication-wegovy-pillform5-discount",
-            "verified_as_of": "2026-08-31"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "e842efe59427139a707037f0a54f801c887b4fe00392cf032a225e6740ae48f5"
           }
         ],
         "molecule_tags": [
           "semaglutide"
         ],
-        "normalized_sha256": "554921e6b2d342a5cee9803b28e5360788996c39d15721cb49f453818e22d0ec",
+        "normalized_sha256": "0940ce3ff66d0584b9c6c773b1646daaf0ab71e76c19bd4d239e4456add42c3f",
         "program_id": "futurhealth-wegovy-pillform",
         "provider": "FuturHealth",
         "registry_program_id": "futurhealth-wegovy-pillform",
@@ -11802,7 +11868,7 @@
         ],
         "treatment_type_state": "not_verified",
         "treatment_type_tags": [],
-        "verified_as_of": "2026-08-31"
+        "verified_as_of": "2026-09-29"
       },
       "g-plan": {
         "brand_name_tags": [
@@ -11816,29 +11882,22 @@
         "delivery_form_tags": [],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_g_plan",
-            "authority_sha256": "18f4163d73b3a26adb39da8bec218e6f9339f1aa8412368d0a1c3675a4306a08",
-            "evidence_sha256": "596d0c494286cc47d664fbdff0b6afd510bf685e696ec940e3d4eb1080a8623a",
+            "authority": "taxonomy_refresh_g_plan_run-20260929T120024381077Z",
+            "authority_sha256": "c25a78cc254dd93697501f3c734dd513e219422e12f3e623f881364ea19fe8a4",
             "source_url": "https://g-plans.com/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "ca1d32c592a53bd01a135a7c015e0f87a7f644e4ad14bafccb1f81196234a017"
           },
           {
-            "authority": "b2_stage5_g_plan",
-            "authority_sha256": "18f4163d73b3a26adb39da8bec218e6f9339f1aa8412368d0a1c3675a4306a08",
-            "evidence_sha256": "6a7cad56e516f172f2a4063cf0d7a63a0b8ea2eefad4adfadbbe54635b426e30",
+            "authority": "taxonomy_refresh_g_plan_run-20260929T120024381077Z",
+            "authority_sha256": "c25a78cc254dd93697501f3c734dd513e219422e12f3e623f881364ea19fe8a4",
             "source_url": "https://g-plans.com/pages/meds",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_g_plan",
-            "authority_sha256": "18f4163d73b3a26adb39da8bec218e6f9339f1aa8412368d0a1c3675a4306a08",
-            "evidence_sha256": "af0be5c1dd740bcc49ca3dd8ab6ec2a393b81c1b27f96a5832de75f613b1961d",
-            "source_url": "https://g-plans.com/medications",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "5e264f596ac9eef6fbbf9256316e6039b4587cdba339da7d33c1a4b085c231cb"
           }
         ],
         "molecule_tags": [],
-        "normalized_sha256": "a6345c6e677231189a7d3035ebda7f58731c7b4a3455a80e67716f1d5f0e614c",
+        "normalized_sha256": "b4e01fb8064b4ced69c7fd749fbb2649464319efa8ca17476152f077246e8030",
         "program_id": "g-plan",
         "provider": "G-Plans",
         "registry_program_id": "g-plan",
@@ -11852,7 +11911,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "gala-health": {
         "brand_name_tags": [],
@@ -12297,32 +12356,18 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_humecare_data_driven_glp_1_weight_loss_system",
-            "authority_sha256": "cef21289379d4c18792ccd55bd400ee0c2452cacaab487ffd6367534e392ea06",
-            "evidence_sha256": "e0160bd2a9c0e9759d859b13574e1846c5b97826e457cb90817f1495351376cf",
+            "authority": "taxonomy_refresh_humecare_data_driven_glp_1_weight_loss_system_run-20260929T120024381077Z",
+            "authority_sha256": "8f63924c56339665defed9056ab5f32e28d32c6f8c2edc9ed603babb16976f97",
             "source_url": "https://app.humecare.com/medications-safety",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_humecare_data_driven_glp_1_weight_loss_system",
-            "authority_sha256": "cef21289379d4c18792ccd55bd400ee0c2452cacaab487ffd6367534e392ea06",
-            "evidence_sha256": "d1db61964ae40648a322600864e2ff3b71ccd2bc66a90971e5ba46a41429567b",
-            "source_url": "https://app.humecare.com/medications-safety",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_humecare_data_driven_glp_1_weight_loss_system",
-            "authority_sha256": "cef21289379d4c18792ccd55bd400ee0c2452cacaab487ffd6367534e392ea06",
-            "evidence_sha256": "9d5605842c00371b733268f127e0342892f7cae93c1f580734cdf7de1d418c8e",
-            "source_url": "https://humecare.com/pages/gs-microdose-glp1-rx",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "862a2f2be97f99425797417107514abdc0414a8885eed3c6a4985309a1d844b4"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "5be16b2407c965d4903959d729646df0bbb2b4ce438b3f21807f0a02e181ab90",
+        "normalized_sha256": "e94921934ddabde3d76213c3c1cc0963985f9ade1645703f348ddd14c5e3a75f",
         "program_id": "humecare-data-driven-glp-1-weight-loss-system",
         "provider": "HumeCare+",
         "registry_program_id": "humecare-data-driven-glp-1-weight-loss-system",
@@ -12335,7 +12380,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "joinskinny-semaglutide-glp-1-us": {
         "brand_name_tags": [],
@@ -12350,32 +12395,18 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_joinskinny_semaglutide_glp_1_us",
-            "authority_sha256": "473c79732d72caf297201be211193ee0a7d3f6308996ffe9e30c55cdf8250058",
-            "evidence_sha256": "3e2d88f24f1b0c9b3508da79327ce2d9cfdd5738435c7178c26dad59ef011b35",
+            "authority": "taxonomy_refresh_joinskinny_semaglutide_glp_1_us_run-20260929T120024381077Z",
+            "authority_sha256": "076b2466281435214e9bbeaef61d541515d4ce375b79bc0f7eb37c861c9b5f8b",
             "source_url": "https://joinskinny.com/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_joinskinny_semaglutide_glp_1_us",
-            "authority_sha256": "473c79732d72caf297201be211193ee0a7d3f6308996ffe9e30c55cdf8250058",
-            "evidence_sha256": "7f3dc2be14c793e565f55238dc0e91aa3d19cf43c5b9f1d639aff6f4def72f52",
-            "source_url": "https://joinskinny.com/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_joinskinny_semaglutide_glp_1_us",
-            "authority_sha256": "473c79732d72caf297201be211193ee0a7d3f6308996ffe9e30c55cdf8250058",
-            "evidence_sha256": "59fa20267955df1dfe8da133beedcaf3d453d843ad89e9c1b3bd19231ee7b164",
-            "source_url": "https://joinskinny.com/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "d73d50e8b2eac745229158bf2204f39db8d3a9255eaa55afbd9559163647d992"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "69b50cd4e2fea988751084d567b7d359649a981d6bdb84f788052741fa1c79f3",
+        "normalized_sha256": "a8f89df43db5b20da9d457dd6923c9aa9e842b892b31b45a0c047c25418bf5a1",
         "program_id": "joinskinny-semaglutide-glp-1-us",
         "provider": "JoinSkinny",
         "registry_program_id": "joinskinny-semaglutide-glp-1-us",
@@ -12387,7 +12418,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "jrnys-review": {
         "brand_name_tags": [
@@ -12405,39 +12436,32 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_jrnys_review",
-            "authority_sha256": "655cd6646bba60d611be0d85b5382ce7d2a1824aa0752a1f8df56b1b429e626c",
-            "evidence_sha256": "2e9adac505b1cf349b724ee0fff1a6073cde7f4a02f5fd4be0ee7702bae67e93",
-            "source_url": "https://jrnys.com/weight-loss/product/wegovvy",
-            "verified_as_of": "2026-09-01"
+            "authority": "f04_f06_proposed_jrnys_review_20261002",
+            "authority_sha256": "05df700fcf982dc5055f9dd651f57b687bd3efab8330e94e81dacf97c270009b",
+            "source_url": "https://jrnys.com/weight-loss",
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "4eed69555530a5d47fee709f89e3c838b1d5aa910d403343aaa3a872bd0a68d9"
           },
           {
-            "authority": "b2_stage5_jrnys_review",
-            "authority_sha256": "655cd6646bba60d611be0d85b5382ce7d2a1824aa0752a1f8df56b1b429e626c",
-            "evidence_sha256": "33516203334408cb091f21b40cfa607547bf40b99cbba05fc1c0746c75bc64f0",
-            "source_url": "https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_jrnys_review",
-            "authority_sha256": "655cd6646bba60d611be0d85b5382ce7d2a1824aa0752a1f8df56b1b429e626c",
-            "evidence_sha256": "d4527d920103a5e6d4c25c28e2f3637c57efe1a85fce35a140318d7c40d5ab88",
+            "authority": "f04_f06_proposed_jrnys_review_20261002",
+            "authority_sha256": "05df700fcf982dc5055f9dd651f57b687bd3efab8330e94e81dacf97c270009b",
             "source_url": "https://jrnys.com/weight-loss/product/compounded-semaglutide-2",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "b6338ea6f0914164bd2f779329775ec2eae62a634e1351da7259ab071b8217fd"
           },
           {
-            "authority": "b2_stage5_jrnys_review",
-            "authority_sha256": "655cd6646bba60d611be0d85b5382ce7d2a1824aa0752a1f8df56b1b429e626c",
-            "evidence_sha256": "0b6bbb610470fd127e64149d4128f644d5655465d236dffb336ac2d7ebe3455c",
-            "source_url": "https://jrnys.com/pricing/glp1",
-            "verified_as_of": "2026-09-01"
+            "authority": "f04_f06_proposed_jrnys_review_20261002",
+            "authority_sha256": "05df700fcf982dc5055f9dd651f57b687bd3efab8330e94e81dacf97c270009b",
+            "source_url": "https://jrnys.com/weight-loss/product/zepbound",
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "3323e743e53775ada6af6a77a736a804a529e3dcef7e56835ec77aedc242a423"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "2d00221b1f34d871cdbbac79310835f308bff36647ec5528bc52f0e3aa18f5bb",
+        "normalized_sha256": "7c5a0cc862181fcc01837e81725c40287080aaf1d0532e1b1d37c93850b546a2",
         "program_id": "jrnys-review",
         "provider": "JRNYS",
         "registry_program_id": "jrnys-review",
@@ -12445,15 +12469,17 @@
         "source_urls": [
           "https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison",
           "https://jrnys.com/pricing/glp1",
+          "https://jrnys.com/weight-loss",
           "https://jrnys.com/weight-loss/product/compounded-semaglutide-2",
-          "https://jrnys.com/weight-loss/product/wegovvy"
+          "https://jrnys.com/weight-loss/product/wegovvy",
+          "https://jrnys.com/weight-loss/product/zepbound"
         ],
         "treatment_type_state": "verified",
         "treatment_type_tags": [
           "brand_name",
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-10-02"
       },
       "levelsrx-extra-cpa-home-page": {
         "brand_name_tags": [],
@@ -12467,25 +12493,18 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_levelsrx_extra_cpa_home_page",
-            "authority_sha256": "b7b64468b642ac84641a16ab82ba6eae6caeed7cddc2cd0b6433b2c23c66c904",
-            "evidence_sha256": "36dcb2ec2d7d568008ea6f0b4723982c39a41768ae97cc3289ee1ab368e0c93e",
+            "authority": "f04_f06_proposed_levelsrx_extra_cpa_home_page_20261002",
+            "authority_sha256": "630d83cabe23676c440ac6a0291de7b6f6ae4bb43574db05e9f594de2bdc0435",
             "source_url": "https://www.levelsrx.com/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_levelsrx_extra_cpa_home_page",
-            "authority_sha256": "b7b64468b642ac84641a16ab82ba6eae6caeed7cddc2cd0b6433b2c23c66c904",
-            "evidence_sha256": "36dcb2ec2d7d568008ea6f0b4723982c39a41768ae97cc3289ee1ab368e0c93e",
-            "source_url": "https://www.levelsrx.com/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "d17834fa55dfe2e83348636b22721de54a9cbcc53d100da6a90fb0a95567c4d1"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "56d01560c7324d291d52615374f6cb7bb35647535e382480fb6e9e660cee3b41",
+        "normalized_sha256": "d153b24f05b4ca9446915f77b189796123b97f198f8f17ae66784f3c81a1c089",
         "program_id": "levelsrx-extra-cpa-home-page",
         "provider": "LevelsRx",
         "registry_program_id": "levelsrx-extra-cpa-home-page",
@@ -12497,7 +12516,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-10-02"
       },
       "live-vital-launch": {
         "brand_name_tags": [],
@@ -12562,46 +12581,25 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_longevity_meds_glp_1_review",
-            "authority_sha256": "a30c3b823f8ecb158ec33aa55b30c48bac352b995c34938f38d07834df03c977",
-            "evidence_sha256": "a46d998b6d98dbbfc0438e9223fabc0460f60f62d0f70cd6d6e20e2ae220f7c7",
+            "authority": "taxonomy_refresh_longevity_meds_glp_1_review_run-20260929T120024381077Z",
+            "authority_sha256": "3b50b982290470526265e4dd3fa50d3321a9ccbe93a62acffb563484f60163ca",
             "source_url": "https://www.longevitymeds.com/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "1872483e8118f2914c5c165282573f954e4cedc542485dfb0bb2888c86cfed19"
           },
           {
-            "authority": "b2_stage5_longevity_meds_glp_1_review",
-            "authority_sha256": "a30c3b823f8ecb158ec33aa55b30c48bac352b995c34938f38d07834df03c977",
-            "evidence_sha256": "65abac5f6c438a342d5ff340483d725ddd49199c3da96158a740a174c7ea3322",
+            "authority": "taxonomy_refresh_longevity_meds_glp_1_review_run-20260929T120024381077Z",
+            "authority_sha256": "3b50b982290470526265e4dd3fa50d3321a9ccbe93a62acffb563484f60163ca",
             "source_url": "https://www.longevitymeds.com/legal/safety-information",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_longevity_meds_glp_1_review",
-            "authority_sha256": "a30c3b823f8ecb158ec33aa55b30c48bac352b995c34938f38d07834df03c977",
-            "evidence_sha256": "dd11b879d2353056f25667c74ba771536b85b752e09ff1161e5741f159d282c5",
-            "source_url": "https://www.longevitymeds.com/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_longevity_meds_glp_1_review",
-            "authority_sha256": "a30c3b823f8ecb158ec33aa55b30c48bac352b995c34938f38d07834df03c977",
-            "evidence_sha256": "65abac5f6c438a342d5ff340483d725ddd49199c3da96158a740a174c7ea3322",
-            "source_url": "https://www.longevitymeds.com/legal/safety-information",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_longevity_meds_glp_1_review",
-            "authority_sha256": "a30c3b823f8ecb158ec33aa55b30c48bac352b995c34938f38d07834df03c977",
-            "evidence_sha256": "d2bbac083e26b7a8ff052569dad810ba9e28670f222007afcc8903bf2a733115",
-            "source_url": "https://www.longevitymeds.com/legal/cancel-refund-payment",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "d3af9560c9b169263f1b3182038704130e2c4435955599bb377f65e7a86a45bb"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "7ef8251cef430d40b7d4b8300ee001eb0b0e312350e40d02904f16d72bb5b10e",
+        "normalized_sha256": "f67d3a9d355280ae9e74a6f7cd08f02dccd5666d862ae508f5afa13a7daac2b1",
         "program_id": "longevity-meds-glp-1-review",
         "provider": "Longevity Meds",
         "registry_program_id": "longevity-meds-glp-1-review",
@@ -12615,7 +12613,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "lttl-glp-landing-page-2": {
         "brand_name_tags": [],
@@ -12630,32 +12628,25 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_lttl_glp_landing_page_2",
-            "authority_sha256": "7b6c3ba6433ba009be5013b04c93568e02a09eb6df1b10457f50f4aabd8546ec",
-            "evidence_sha256": "b87a6e5295041acb9e1b174aa896b5120e8e63f97fdee9ca141f027361cb67e0",
+            "authority": "taxonomy_refresh_lttl_glp_landing_page_2_run-20260929T120024381077Z",
+            "authority_sha256": "2fc5fb00653e402beaf2dd8f5fc4c30d37ce839b355ccc94e94fcaf8c4a1c244",
             "source_url": "https://lttl.com/plans",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "4ebf11deb24c5e214d66c32ebf4d9578a076f538b38f728117815c8212973bd7"
           },
           {
-            "authority": "b2_stage5_lttl_glp_landing_page_2",
-            "authority_sha256": "7b6c3ba6433ba009be5013b04c93568e02a09eb6df1b10457f50f4aabd8546ec",
-            "evidence_sha256": "3be0f56c75a7af420dad31cc7e19708574937126d6af1b0bad704bafb10b03a7",
+            "authority": "taxonomy_refresh_lttl_glp_landing_page_2_run-20260929T120024381077Z",
+            "authority_sha256": "2fc5fb00653e402beaf2dd8f5fc4c30d37ce839b355ccc94e94fcaf8c4a1c244",
             "source_url": "https://lttl.com/terms-of-service",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_lttl_glp_landing_page_2",
-            "authority_sha256": "7b6c3ba6433ba009be5013b04c93568e02a09eb6df1b10457f50f4aabd8546ec",
-            "evidence_sha256": "90a171f99eb01ac151ef929c82f9c7c5128dd1cd50ed81616c5d29c32ac32ae9",
-            "source_url": "https://lttl.com/plans",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "66e73c1c8b60e96591e20cd4b54496c3c95dcc12bcf50f768d39ce056910e7a4"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "cd089473a30a3d93d04d119ae75a8dda12e84abae4cbaab883bf11a22464b3a5",
+        "normalized_sha256": "9bc25da3508f467db08315f899b0611ce300b7c87cfadb0ac1855ef777169bc6",
         "program_id": "lttl-glp-landing-page-2",
         "provider": "Lttl",
         "registry_program_id": "lttl-glp-landing-page-2",
@@ -12669,7 +12660,7 @@
           "brand_name",
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "mademed": {
         "brand_name_tags": [],
@@ -13012,45 +13003,17 @@
         "delivery_form_tags": [],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_medvi_review",
-            "authority_sha256": "98c1befb3324874c9baf3b154c4b3b90e426ff1becb77753bcfcac25ef53b621",
-            "evidence_sha256": "742c65a7ce6f413dd9ea6b121ed943eaca64108d86102081ff494bdc29d77769",
+            "authority": "taxonomy_refresh_medvi_review_run-20260929T120024381077Z",
+            "authority_sha256": "f9bd54289d180ceb6e37a4bde93d5e8047fd95fc58703702c5a8b8e5b1c75e15",
             "source_url": "https://glp1.medvi.org/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_medvi_review",
-            "authority_sha256": "98c1befb3324874c9baf3b154c4b3b90e426ff1becb77753bcfcac25ef53b621",
-            "evidence_sha256": "44c631f8f2b048820b68ccf81a47ca3af67f2a94fc6922be6440f6640c097aa3",
-            "source_url": "https://glp1.medvi.org/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_medvi_review",
-            "authority_sha256": "98c1befb3324874c9baf3b154c4b3b90e426ff1becb77753bcfcac25ef53b621",
-            "evidence_sha256": "f6a613b106147a3e73b35e4a001eca6c1a0507cdbfb900d7d69fe213a8527485",
-            "source_url": "https://glp1.medvi.org/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_medvi_review",
-            "authority_sha256": "98c1befb3324874c9baf3b154c4b3b90e426ff1becb77753bcfcac25ef53b621",
-            "evidence_sha256": "26fc955d6b366945e00453cab72a6031dc78294a09e72c1aca3aa10b43d3909a",
-            "source_url": "https://glp1.medvi.org/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_medvi_review",
-            "authority_sha256": "98c1befb3324874c9baf3b154c4b3b90e426ff1becb77753bcfcac25ef53b621",
-            "evidence_sha256": "742c65a7ce6f413dd9ea6b121ed943eaca64108d86102081ff494bdc29d77769",
-            "source_url": "https://glp1.medvi.org/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "f2639a5d6f6f266f5da23f17f3ee00e429fcf23ec5beb72f5d19a8255a3dcca5"
           }
         ],
         "molecule_tags": [
           "semaglutide"
         ],
-        "normalized_sha256": "a14cc35d57493ee1a7e33a6cc9d0cc09a9b7df0fe06649408067783e1c14424d",
+        "normalized_sha256": "67f2cb5d47511dd1dd9f8e5ae8f919b3cd03d898498defd33125bb43cc443c35",
         "program_id": "medvi-review",
         "provider": "MEDVI",
         "registry_program_id": "medvi-review",
@@ -13062,7 +13025,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "mydrhank": {
         "brand_name_tags": [],
@@ -13154,25 +13117,18 @@
         "delivery_form_tags": [],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_novi_weight_loss_glp_1",
-            "authority_sha256": "1a1641f72b07cc4d86a39bd9aa4b53af41f83d7e1e1ca3fa7ef1a32bf5a14932",
-            "evidence_sha256": "67e0f3bc44122d3f0a20f784a087ca5fe0b01f76e0e28771d4e134a8ecf97029",
-            "source_url": "https://www.joinnovi.com/begin",
-            "verified_as_of": "2026-08-30"
-          },
-          {
-            "authority": "b2_stage5_novi_weight_loss_glp_1",
-            "authority_sha256": "1a1641f72b07cc4d86a39bd9aa4b53af41f83d7e1e1ca3fa7ef1a32bf5a14932",
-            "evidence_sha256": "ac565bc5d5708fb86f416b522d6ba13582d8d15391b0b03d99ebd8a57ef6bae0",
+            "authority": "f04_f06_proposed_novi_weight_loss_glp_1_20261002",
+            "authority_sha256": "6969a23d04370ab33f6124ade0db60aa66237323c0c76e7ecfd7bbf45000e656",
             "source_url": "https://www.joinnovi.com/",
-            "verified_as_of": "2026-08-30"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "8b36b65846fc438ae140424efc6cfebea6d8807c121b56a905cf7061514fbcc5"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "1fae5102ec5ca085a750fb7d40ea36f3a11ccfd1f7cd8c6fcf72eae51f29779f",
+        "normalized_sha256": "facfa07f673ad9cbdc39f8b1e6da8750c4e873ef48cbf091afa10096add0e97b",
         "program_id": "novi-weight-loss-glp-1",
         "provider": "Novi",
         "registry_program_id": "novi-weight-loss-glp-1",
@@ -13183,7 +13139,7 @@
         ],
         "treatment_type_state": "not_verified",
         "treatment_type_tags": [],
-        "verified_as_of": "2026-08-30"
+        "verified_as_of": "2026-10-02"
       },
       "nu-image-medical-review": {
         "brand_name_tags": [],
@@ -13544,39 +13500,17 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_refills",
-            "authority_sha256": "28d7bcd40ab880ded0cf743fbf8df39b53cb8b61cf36fb6347b21d02f13623db",
-            "evidence_sha256": "88aa9323bd7bfb5690d4fe9e1ed2d0efd5602eb448605215925c24d0dd3e93d8",
-            "source_url": "https://www.refills.com/weight-loss",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_refills",
-            "authority_sha256": "28d7bcd40ab880ded0cf743fbf8df39b53cb8b61cf36fb6347b21d02f13623db",
-            "evidence_sha256": "2ebbcd17a8e64004c2e60ab119ebd8be06c39a7ffbf8f702722cd0274f15b918",
-            "source_url": "https://www.refills.com/weight-loss",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_refills",
-            "authority_sha256": "28d7bcd40ab880ded0cf743fbf8df39b53cb8b61cf36fb6347b21d02f13623db",
-            "evidence_sha256": "de06e49dfb9309c287f5a65b07bf7ec6ccc9cb463dde6fefcd96c9c25440fe3b",
+            "authority": "f04_f06_proposed_refills_20261002",
+            "authority_sha256": "00650d0886f6223929e20d0fc4ee6268f977d9fbea231af09f0ab46f410431f7",
             "source_url": "https://www.refills.com/weight-loss/personalized-glp-1-injection",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_refills",
-            "authority_sha256": "28d7bcd40ab880ded0cf743fbf8df39b53cb8b61cf36fb6347b21d02f13623db",
-            "evidence_sha256": "4d2f3c13d9b51269f118c5724d07d7dc4cdc9539fd9804b2ceac55fc0cb504f4",
-            "source_url": "https://www.refills.com/weight-loss/personalized-glp-1-injection",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "8c870e8107e2d627b60539921abeb659d6d14444b637fefbe89d43231a8f5c4e"
           }
         ],
         "molecule_tags": [
-          "semaglutide",
-          "tirzepatide"
+          "semaglutide"
         ],
-        "normalized_sha256": "7f94dedd14ca7b1f09bf0b076c388d57c45ab86a7ef389ba6afa6d7090dcabf3",
+        "normalized_sha256": "ca66e9d63e6236bf9abe15f0d08b3ae45142a74e2e2306b87e0a44440fbc4c50",
         "program_id": "refills",
         "provider": "Refills",
         "registry_program_id": "refills",
@@ -13589,7 +13523,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-10-02"
       },
       "ro-wegovy-glp1-quiz-us-cpl": {
         "brand_name_tags": [
@@ -13606,24 +13540,24 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_ro_wegovy_glp1_quiz_us_cpl",
-            "authority_sha256": "5f38ea97860645ad77fbe9cf5526ece7d4ff26d82fe519d2e89ce0111cf86b4b",
-            "evidence_sha256": "ab8481da13d43c2b84702c44d5f82d6b9b29a84ba9095b46497b28f3e02ea14f",
+            "authority": "taxonomy_refresh_ro_wegovy_glp1_quiz_us_cpl_run-20260929T120024381077Z",
+            "authority_sha256": "46824b7cc80a9ee98f625b8c36733363d386bf9b7816a6af267d133b8c521c1b",
             "source_url": "https://ro.co/weight-loss/oral-wegovy/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "daa85d21870863a43bc2e1105386f3ecc08e9d3a2574fb1fbd0f691d8b3edb36"
           },
           {
-            "authority": "b2_stage5_ro_wegovy_glp1_quiz_us_cpl",
-            "authority_sha256": "5f38ea97860645ad77fbe9cf5526ece7d4ff26d82fe519d2e89ce0111cf86b4b",
-            "evidence_sha256": "1a3df552bb284e8678238d7d914b90f018a82470491802f328f2892b3750b1cc",
+            "authority": "taxonomy_refresh_ro_wegovy_glp1_quiz_us_cpl_run-20260929T120024381077Z",
+            "authority_sha256": "46824b7cc80a9ee98f625b8c36733363d386bf9b7816a6af267d133b8c521c1b",
             "source_url": "https://ro.co/weight-loss/pricing/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "65942256296ec0b7b73868ef202be327f351d4fd9e1ab49cf6a7f983683682a2"
           }
         ],
         "molecule_tags": [
           "semaglutide"
         ],
-        "normalized_sha256": "c98a73c5af97c194fb218805dbbae11c97653a131a7f6650271797205e13e84f",
+        "normalized_sha256": "b6f18cb0ee7b9fe1ceda69c97c1a0e96ec809c03b0abf2f34f03e143724f3879",
         "program_id": "ro-wegovy-glp1-quiz-us-cpl",
         "provider": "Ro",
         "registry_program_id": "ro-wegovy-glp1-quiz-us-cpl",
@@ -13634,7 +13568,7 @@
         ],
         "treatment_type_state": "not_verified",
         "treatment_type_tags": [],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "rxspan-md-telehealth-program-review": {
         "brand_name_tags": [
@@ -14131,25 +14065,18 @@
         "delivery_form_tags": [],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_snagrx",
-            "authority_sha256": "41730bbc04fdf8eedbe9287123c3e834617f8c06f2582f74215c634e7877ffbb",
-            "evidence_sha256": "c3e6080f6160e36f9556f16a0b853161ad2fc0e18543105894bbc5b0ea3e1a03",
+            "authority": "taxonomy_refresh_snagrx_run-20260929T120024381077Z",
+            "authority_sha256": "58a369d19e9efc25a41e6b66fba5919debe88c067bea4937e87ca97648d78ce7",
             "source_url": "https://snagrx.com/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_snagrx",
-            "authority_sha256": "41730bbc04fdf8eedbe9287123c3e834617f8c06f2582f74215c634e7877ffbb",
-            "evidence_sha256": "b7b84720bde300720e4c3575762c7dce1b5c431cdfd9d536a1fcae08c64d7b92",
-            "source_url": "https://snagrx.com/terms-conditions",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "427ccd48f0113e6f988daa2b8965c00b3e19bea64aa5f026738ff52a52eab003"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "f26472c2dd9e08b0784221105b59f4cec9d6ce67b90455fc9eee88cc8c581b17",
+        "normalized_sha256": "6bb317f5f1fefd2cdcbb8bc8ad8ed3efad1f8be40074d72f8dac29e7d86ffa5b",
         "program_id": "snagrx",
         "provider": "SnagRX",
         "registry_program_id": "snagrx",
@@ -14162,7 +14089,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "sprout-health": {
         "brand_name_tags": [],
@@ -14367,32 +14294,18 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_sunlight_glp1",
-            "authority_sha256": "982d52f4e331ec17360a90abc8ea9fdf0f57916fedc6abf885583566892a5dc8",
-            "evidence_sha256": "48f5ab824bd7df45c3d16f9b08a0e5c4a450feee3ad01b785d4cf60f35be3e95",
+            "authority": "taxonomy_refresh_sunlight_glp1_run-20260929T120024381077Z",
+            "authority_sha256": "aefac5a3be5aef57453661912683240bbd798982a7bd0a5d5366c41d54bd7e47",
             "source_url": "https://www.sunlight.com/t3/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_sunlight_glp1",
-            "authority_sha256": "982d52f4e331ec17360a90abc8ea9fdf0f57916fedc6abf885583566892a5dc8",
-            "evidence_sha256": "99c128d1e3941cbe1b03d670b71dacf79e4edfac0c31c3a112380f07403ce0d0",
-            "source_url": "https://www.sunlight.com/t3/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_sunlight_glp1",
-            "authority_sha256": "982d52f4e331ec17360a90abc8ea9fdf0f57916fedc6abf885583566892a5dc8",
-            "evidence_sha256": "d3026a4b9ab3c9764008abce4a49ed7869c5542832150c4c860674600a7817a7",
-            "source_url": "https://www.sunlight.com/t3/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "81ce5131a3b33378dfd0731f2933c52c990621c813e53cfc3f3f05c7c2a7fdcb"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "43d51c5d441535e2249effa44187fc577890058c99c7a32efd23bc11649dd485",
+        "normalized_sha256": "831e7556825960e1927155223f689f2621d38fed19a89c2aaabf13ef2279a31e",
         "program_id": "sunlight-glp1",
         "provider": "Sunlight.com",
         "registry_program_id": "sunlight-glp1",
@@ -14404,7 +14317,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "synergy-rx-review": {
         "brand_name_tags": [
@@ -14446,10 +14359,7 @@
         "verified_as_of": "2026-09-24"
       },
       "tmates-xentraffic-offer-3154": {
-        "brand_name_tags": [
-          "wegovy",
-          "zepbound"
-        ],
+        "brand_name_tags": [],
         "classification_state": "B2_STAGE5_EXACT_EVIDENCE",
         "commercial_link_state": {
           "compare": "live",
@@ -14461,46 +14371,25 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_tmates_xentraffic_offer_3154",
-            "authority_sha256": "ee99126dcfb365e2ca87cb5107c9c5356e1d0ec646b481e2d2dfd2b6b5bba90c",
-            "evidence_sha256": "1386633016dd9240bc4717f2477fabfc2a56acaf0befb4501cd1b35c7c24ff64",
-            "source_url": "https://tmates.com/products/semaglutide",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_tmates_xentraffic_offer_3154",
-            "authority_sha256": "ee99126dcfb365e2ca87cb5107c9c5356e1d0ec646b481e2d2dfd2b6b5bba90c",
-            "evidence_sha256": "e5afdcd65659ff30f978020d05cd9e85c9554efe710513831c57aef977f1f7f6",
+            "authority": "f04_f06_proposed_tmates_xentraffic_offer_3154_20261002",
+            "authority_sha256": "8e6103a84487e54c78c3ec4587f24b3a7227ce945c7f5a59a44ce6488b8a8bf3",
             "source_url": "https://tmates.com/weight-loss",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "bd53265451e2df7287164d15936acd23a27436589b08c98a28177fe8f87bd2b2"
           },
           {
-            "authority": "b2_stage5_tmates_xentraffic_offer_3154",
-            "authority_sha256": "ee99126dcfb365e2ca87cb5107c9c5356e1d0ec646b481e2d2dfd2b6b5bba90c",
-            "evidence_sha256": "a848860b7a4ee6f9665f6f7f98e3be4b6abe677671d5904b90bdb3949ff286ee",
+            "authority": "f04_f06_proposed_tmates_xentraffic_offer_3154_20261002",
+            "authority_sha256": "8e6103a84487e54c78c3ec4587f24b3a7227ce945c7f5a59a44ce6488b8a8bf3",
             "source_url": "https://tmates.com/products/semaglutide",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_tmates_xentraffic_offer_3154",
-            "authority_sha256": "ee99126dcfb365e2ca87cb5107c9c5356e1d0ec646b481e2d2dfd2b6b5bba90c",
-            "evidence_sha256": "05616c421c8d497e473e7a61d01dabc7379d4ee48c1598eac0e89ca312ae598f",
-            "source_url": "https://tmates.com/weight-loss",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_tmates_xentraffic_offer_3154",
-            "authority_sha256": "ee99126dcfb365e2ca87cb5107c9c5356e1d0ec646b481e2d2dfd2b6b5bba90c",
-            "evidence_sha256": "8f49eb868c25f8c3790f686a1b9158e42e0fb21208e708bd4078e645f1d2b33e",
-            "source_url": "https://tmates.com/products/semaglutide",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-10-02",
+            "evidence_sha256": "34c76877be76fd1f68118bd4cbf92ec2d927158cafb4f88a5517794e9a3ef644"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "fc98180e057079317aef05087f137e32f1bf703d2e0f8e2c607d44561178b84a",
+        "normalized_sha256": "eb85e0437696e65f1dba53f6bf526723357fefce5402ebac6d5f9baae02ca5e6",
         "program_id": "tmates-xentraffic-offer-3154",
         "provider": "TMates",
         "registry_program_id": "tmates-xentraffic-offer-3154",
@@ -14513,7 +14402,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-10-02"
       },
       "trimi-glp-1": {
         "brand_name_tags": [],
@@ -14703,46 +14592,39 @@
         ],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_trimrx_xentraffic_offer_3014",
-            "authority_sha256": "8985d31a26afbc3295e62cdd9d39c55400e5ff4868d762213f81a16106c2a499",
-            "evidence_sha256": "1a768021c650dd31262e2fbc93428845cebb08f0c40c5fac136d0d19dd9d106a",
+            "authority": "taxonomy_refresh_trimrx_xentraffic_offer_3014_run-20260929T120024381077Z",
+            "authority_sha256": "1924e9eb64ae21a17762aee8eeb025a92ac0db36dc4ffaaa2a7c8dd4aba6dfc3",
             "source_url": "https://trimrx.com/blog/compounded-semaglutide-cost-complete-pricing-guide-2026/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "2cbdffd72c46df620d58bd1fed97ac1e1ab2c48c9c9ed90936205e1a778ed72d"
           },
           {
-            "authority": "b2_stage5_trimrx_xentraffic_offer_3014",
-            "authority_sha256": "8985d31a26afbc3295e62cdd9d39c55400e5ff4868d762213f81a16106c2a499",
-            "evidence_sha256": "2c2e74762773bf5fe45669ff1f75835f309b78550284d2a820b46b47f7697842",
+            "authority": "taxonomy_refresh_trimrx_xentraffic_offer_3014_run-20260929T120024381077Z",
+            "authority_sha256": "1924e9eb64ae21a17762aee8eeb025a92ac0db36dc4ffaaa2a7c8dd4aba6dfc3",
             "source_url": "https://trimrx.com/product/semaglutide",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "a1619e993a7dd9345f68272b9c0e0305c17f1e46f77cf4a56074d7870991dfa9"
           },
           {
-            "authority": "b2_stage5_trimrx_xentraffic_offer_3014",
-            "authority_sha256": "8985d31a26afbc3295e62cdd9d39c55400e5ff4868d762213f81a16106c2a499",
-            "evidence_sha256": "a23d2688841056a81e98cf3a9ec460a097c94d66796719e4d34d508668a4310e",
-            "source_url": "https://trimrx.com/",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_trimrx_xentraffic_offer_3014",
-            "authority_sha256": "8985d31a26afbc3295e62cdd9d39c55400e5ff4868d762213f81a16106c2a499",
-            "evidence_sha256": "dd993055c4acfcdd3997536ba7bd5d8669e44c4f4d6fa3931c0311a92644703e",
+            "authority": "taxonomy_refresh_trimrx_xentraffic_offer_3014_run-20260929T120024381077Z",
+            "authority_sha256": "1924e9eb64ae21a17762aee8eeb025a92ac0db36dc4ffaaa2a7c8dd4aba6dfc3",
             "source_url": "https://trimrx.com/terms-and-conditions",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "291cb3a88560b9d71c689bfdcdeb730e8f75c968898331fdd6019725bf819762"
           },
           {
-            "authority": "b2_stage5_trimrx_xentraffic_offer_3014",
-            "authority_sha256": "8985d31a26afbc3295e62cdd9d39c55400e5ff4868d762213f81a16106c2a499",
-            "evidence_sha256": "79c25f326ebe18e00cb13efc3cba4830ce2b9387fef8f3309bedb85339f8b09d",
+            "authority": "taxonomy_refresh_trimrx_xentraffic_offer_3014_run-20260929T120024381077Z",
+            "authority_sha256": "1924e9eb64ae21a17762aee8eeb025a92ac0db36dc4ffaaa2a7c8dd4aba6dfc3",
             "source_url": "https://trimrx.com/glp1/offer-v8-hero",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "11782732870c9d44048967241af0970148f1741b1aa1ee26249ac899fb475044"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "6e7ea424f8721c0e14816e0c3eb9ad4fe0a6dfa088c7092209aa3104c7f3bfe0",
+        "normalized_sha256": "9de3f149d56f970694738119a09615a5ce19732de35154e10261f033a959aa26",
         "program_id": "trimrx-xentraffic-offer-3014",
         "provider": "TrimRX",
         "registry_program_id": "trimrx-xentraffic-offer-3014",
@@ -14759,7 +14641,7 @@
           "brand_name",
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       },
       "trt-nation": {
         "brand_name_tags": [],
@@ -15279,25 +15161,18 @@
         "delivery_form_tags": [],
         "evidence_bindings": [
           {
-            "authority": "b2_stage5_yucca_health_xentraffic_offer_3117",
-            "authority_sha256": "4bb8176d8186b6b1912a780279a1b530b1d3a0bf969b05e7db79ac737ad19828",
-            "evidence_sha256": "3008c971d1a96e38d3eb012c7c80d9f2e047819a78c27f203f60c90f78256861",
+            "authority": "taxonomy_refresh_yucca_health_xentraffic_offer_3117_run-20260929T120024381077Z",
+            "authority_sha256": "095e45c2321fca4d797f1e3ed29c0200e6d87879ab1da9d612ce711509fb4810",
             "source_url": "https://tryyucca.com/treatments",
-            "verified_as_of": "2026-09-01"
-          },
-          {
-            "authority": "b2_stage5_yucca_health_xentraffic_offer_3117",
-            "authority_sha256": "4bb8176d8186b6b1912a780279a1b530b1d3a0bf969b05e7db79ac737ad19828",
-            "evidence_sha256": "65e2dbc8559197e4d950a85cfcc9d3cd3ce2ab3316f17506af8e92531121835b",
-            "source_url": "https://tryyucca.com/",
-            "verified_as_of": "2026-09-01"
+            "verified_as_of": "2026-09-29",
+            "evidence_sha256": "d2a30d097cd453e7a57cd4124cf9fda9b9e5cd65dc71a38a1a6ca47b0f69b822"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "df0a5d342e6162de5c408ac26dd0d8952083831cff49f4daaf219212e66c0acf",
+        "normalized_sha256": "cd26a56351b2f78bfe3d9e35ee6a0883746203c31c8eb9add5770ef230e54ce4",
         "program_id": "yucca-health-xentraffic-offer-3117",
         "provider": "Yucca Health",
         "registry_program_id": "yucca-health-xentraffic-offer-3117",
@@ -15310,7 +15185,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-01"
+        "verified_as_of": "2026-09-29"
       }
     },
     "projection_key": "program_id",
@@ -15321,7 +15196,7 @@
       "/best/expanded-curated-glp-1-programs/"
     ],
     "schema": "glp-therapeutic-taxonomy-v1",
-    "sealed_as_of": "2026-09-27"
+    "sealed_as_of": "2026-10-02"
   },
   "updated_at": "2026-08-18"
 }

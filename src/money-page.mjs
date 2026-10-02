@@ -138,8 +138,14 @@ function renderCitation(spec, row, label = "Source") {
   return `<sup class="inline-citation"><a href="#${esc(source.source_id)}" aria-label="${esc(label)} ${esc(number)}">${esc(number)}</a></sup>`;
 }
 
+function claimQualification(row, value) {
+  const note = row.therapeutic_taxonomy?.claim_qualification;
+  return note && /\b(?:zepbound|mounjaro|wegovy)\b/i.test(String(value))
+    ? `<span class="therapeutic-summary__qualification">${esc(note)}</span>` : "";
+}
+
 function citedFact(spec, row, value, label = "Source") {
-  return `${esc(value)}${renderCitation(spec, row, label)}`;
+  return `${esc(value)}${renderCitation(spec, row, label)}${label === "Service source" ? "" : claimQualification(row, value)}`;
 }
 
 function validatePromo(promo) {
@@ -154,8 +160,8 @@ function renderPromo(row, compact = false) {
   return "";
 }
 
-function listItems(items, className = "", citation = "") {
-  return items.map((item) => `<li${className ? ` class="${className}"` : ""}>${esc(item)}${citation}</li>`).join("");
+function listItems(items, className = "", citation = "", row = null) {
+  return items.map((item) => `<li${className ? ` class="${className}"` : ""}>${esc(item)}${citation}${row ? claimQualification(row, item) : ""}</li>`).join("");
 }
 
 function hasComparableReviewEvidence(row) {
@@ -336,7 +342,7 @@ function therapeuticMeta(row) {
     : "Treatment type not verified";
   return {
     attrs: ` data-therapeutic="${esc(tokens.join(" "))}" data-treatment="${esc(treatments.join(" "))}" data-treatment-verified="${taxonomy.treatment_type_state === "verified" ? "true" : "false"}" data-taxonomy-sha="${esc(taxonomy.normalized_sha256)}"`,
-    summary: `<span class="therapeutic-summary"><span class="therapeutic-summary__verified">Verified options: ${esc(labels.join(", "))}</span><span class="therapeutic-summary__treatment${treatments.length ? "" : " therapeutic-summary__treatment--unknown"}">${esc(treatmentLabel)}</span></span>`,
+    summary: `<span class="therapeutic-summary"><span class="therapeutic-summary__verified">${taxonomy.claim_qualification ? "Reported options (conditional advertisement)" : "Verified options"}: ${esc(labels.join(", "))}</span>${taxonomy.claim_qualification ? `<span class="therapeutic-summary__qualification">${esc(taxonomy.claim_qualification)}</span>` : ""}<span class="therapeutic-summary__treatment${treatments.length ? "" : " therapeutic-summary__treatment--unknown"}">${esc(treatmentLabel)}</span></span>`,
   };
 }
 
@@ -419,7 +425,7 @@ export function renderProviderCards(spec) {
     // re-parented into the disclosure body. No visitor copy is removed; it
     // moves from "always visible" to "visible by default on the top two,
     // one click/tap/Enter away on the rest" (GOAL:625-626).
-    const body = `<div class="cs-provider-deep__body">${renderSocialProof(row)}${renderPromo(row)}<div class="subscore-block"><h4>How ${esc(row.provider)} scored</h4><ul>${subscores}</ul></div><div class="pros-cons"><section><h4>Why we picked it</h4><ul>${listItems(row.pros, "", citation)}</ul></section><section><h4>Watch-outs</h4><ul>${listItems(row.cons, "", citation)}</ul></section></div><div class="bottom-line"><p class="eyebrow">Bottom line</p><p>${citedFact(spec, row, commercialSummary(row), "Bottom-line source")}</p></div><div class="triple-cta">${affiliateCta(spec, row, "pros", index === 0 ? "start" : "visit")}${leadCta(row, "provider-card")}${internalReviewCta(row)}</div></div>`;
+    const body = `<div class="cs-provider-deep__body">${renderSocialProof(row)}${renderPromo(row)}<div class="subscore-block"><h4>How ${esc(row.provider)} scored</h4><ul>${subscores}</ul></div><div class="pros-cons"><section><h4>Why we picked it</h4><ul>${listItems(row.pros, "", citation, row)}</ul></section><section><h4>Watch-outs</h4><ul>${listItems(row.cons, "", citation, row)}</ul></section></div><div class="bottom-line"><p class="eyebrow">Bottom line</p><p>${citedFact(spec, row, commercialSummary(row), "Bottom-line source")}</p></div><div class="triple-cta">${affiliateCta(spec, row, "pros", index === 0 ? "start" : "visit")}${leadCta(row, "provider-card")}${internalReviewCta(row)}</div></div>`;
     // First two cards open (top-pick context); id/data-rank/data-program stay
     // on the SAME element the sticky-CTA IntersectionObserver and jump-nav
     // anchors already target (`.provider-card[data-program]`,

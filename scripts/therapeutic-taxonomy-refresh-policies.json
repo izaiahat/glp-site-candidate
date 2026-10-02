@@ -81,7 +81,7 @@
         "injectable": "If you do choose the injectable format, we provide clear instructions and your care team is available to walk you through your first dose."
       },
       "treatment_type_tags": {
-        "compounded": "but we may prescribe treatments containing compounded semaglutide or tirzepatide, formulated specifically for you by a licensed pharmacy."
+        "compounded": "If medication is appropriate for you, options may include compounded semaglutide or tirzepatide"
       }
     }
   },
@@ -111,27 +111,48 @@
         "url": "https://www.eden.health/treatment/glp-1-treatments",
         "quotes": {
           "molecule_tags": {
-            "semaglutide": "Compounded Semaglutide\n\n$99/mo\n\n\\+ Eden Membership\\*",
-            "tirzepatide": "Compounded Tirzepatide\n\n$199/mo\n\n\\+ Eden Membership\\*"
+            "semaglutide": "If prescribed, your plan may include compounded semaglutide or tirzepatide, along with dosing guidance and ongoing support.",
+            "tirzepatide": "If prescribed, your plan may include compounded semaglutide or tirzepatide, along with dosing guidance and ongoing support."
           },
           "treatment_type_tags": {
-            "compounded": "Compounded Semaglutide\n\n$99/mo\n\n\\+ Eden Membership\\*"
+            "compounded": "If prescribed, your plan may include compounded semaglutide or tirzepatide, along with dosing guidance and ongoing support."
           },
           "delivery_form_tags": {
-            "injectable": "### Personalized GLP **‑** 1 Injections\n\n[See if you qualify](https://app.eden.health/intake/weightloss/welcome?coupon=GLP60)"
+            "injectable": "## A smoother dose, by design.\n\nEven the needle is considered, with details that help each injection feel softer, steadier, and easier to control.\n\n**Fine-gauge comfort**\n\nA 31-gauge design helps each injection feel small, steady, and controlled.\n\n**Low-friction glide**\n\nLubrication helps reduce drag, so each dose feels smoother going in.\n\n**Clear dose control**\n\nEasy-read markings and a steady grip help you inject with confidence.\n\n![Woman in green workout clothes injecting herself in the abdomen with a syringe.](https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a6e2eeb8fc171e8f2957dfc_By%20DesignBackground%20Image.png)\n\n[Start your personalized assessment](https://app.eden.health/intake/weightloss-v2)\n\nSemaglutide & Tirzepatide available now\n\n![Woman in green workout clothes injecting herself in the abdomen with a syringe.](https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a6e2eeb8fc171e8f2957dfc_By%20DesignBackground%20Image.png)"
           }
         }
       },
       {
-        "url": "https://www.eden.health/weight-loss",
+        "url": "https://www.eden.health/treatment/mounjaro",
         "quotes": {
           "brand_name_tags": {
-            "mounjaro": "### Mounjaro®\n\n### Personalized GLP-1 Treatments\n\n$1,399/mo\n\n[Get started](https://app.eden.health/intake/weightloss/welcome?coupon=GLP60)",
-            "wegovy": "### Wegovy®\n\n### Personalized GLP-1 Treatments\n\n$1,695/mo\n\n[Get started](https://app.eden.health/intake/weightloss/welcome?coupon=GLP60)",
-            "zepbound": "### Zepbound®\n\n### Personalized GLP-1 Treatments\n\n$1,399/mo\n\n[Get started](https://app.eden.health/intake/weightloss/welcome?coupon=GLP60)"
+            "mounjaro": "# Mounjaro®\n\n$1,399/month\n\n![](https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a0ccac3db38d1a0339ab69c_klarna.png)\n\n![](https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a0ccac3db38d1a0339ab69b_afterpay.png)\n\nFSA/HSA Eligible\n\n[See if you qualify](https://www.tryeden.com/intake/glp1-treatments)"
+          }
+        }
+      },
+      {
+        "url": "https://www.eden.health/treatment/wegovy",
+        "quotes": {
+          "brand_name_tags": {
+            "wegovy": "# Wegovy®\n\n$1,695/month\n\n![](https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a0ccac3db38d1a0339ab69c_klarna.png)\n\n![](https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a0ccac3db38d1a0339ab69b_afterpay.png)\n\nFSA/HSA Eligible\n\n[See if you qualify](https://www.tryeden.com/intake/glp1-treatments)"
+          }
+        }
+      },
+      {
+        "url": "https://www.eden.health/treatment/zepbound",
+        "quotes": {
+          "brand_name_tags": {
+            "zepbound": "# Zepbound®\n\n$1,399/month\n\n![](https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a0ccac3db38d1a0339ab69c_klarna.png)\n\n![](https://cdn.prod.website-files.com/6a0ccac3db38d1a0339ab050/6a0ccac3db38d1a0339ab69b_afterpay.png)\n\nFSA/HSA Eligible\n\n[See if you qualify](https://www.tryeden.com/intake/glp1-treatments)"
           }
         }
       }
+    ],
+    "finding": "Provider-reported conditional advertisements only: Eden advertises compounded semaglutide, compounded tirzepatide, Mounjaro, Wegovy and Zepbound; injectable is provider-level only. Availability depends on a clinician decision and a prescription after online consultation; membership does not guarantee a prescription. Compounded medications are not FDA-approved. No verified stock, actual supply, guaranteed eligibility, brand-specific compound identity or clean clinical identity is accepted. Reported information: Eden advertises a conditional Zepbound-labelled offering. Its explanatory paragraph names Mounjaro; the medication actually prescribed or supplied has not been verified. Public representation is an exact reviewed claim_qualification text carried by the paired glp-site-candidate renderer; no actual supply or clinical indication is accepted.",
+    "claim_qualification": "Reported information: Eden advertises a conditional Zepbound-labelled offering. Its explanatory paragraph names Mounjaro; the medication actually prescribed or supplied has not been verified.",
+    "previous_source_urls": [
+      "https://www.eden.health/policies/terms-of-service",
+      "https://www.eden.health/treatment/glp-1-treatments",
+      "https://www.eden.health/weight-loss"
     ]
   },
   "enhance-md": {
@@ -340,22 +361,64 @@
     }
   },
   "jrnys-review": {
-    "review_required": "Retained raw capture hash drift: needs source-bound evidence review before a refresh policy can be admitted. Retained Zepbound quote is a safety/off-label disclaimer rather than affirmative availability; the molecule/injectable quote is an educational comparison. Needs offering-specific assertions, not token matching."
+    "sources": [
+      {
+        "url": "https://jrnys.com/weight-loss",
+        "quotes": {
+          "molecule_tags": {
+            "semaglutide": "JRNYS providers prescribe various GLP-1 medications, including tirzepatide, semaglutide and liraglutide, which you might recognize as Wegovy®, Saxenda®, Ozempic®, or Mounjaro®.",
+            "tirzepatide": "JRNYS providers prescribe various GLP-1 medications, including tirzepatide, semaglutide and liraglutide, which you might recognize as Wegovy®, Saxenda®, Ozempic®, or Mounjaro®."
+          },
+          "brand_name_tags": {
+            "mounjaro": "Mounjaro®\n\n[Get Started](https://jrnys.com/quiz/mounjaro) [View Details](https://jrnys.com/weight-loss/product/mounjaro)",
+            "zepbound": "Zepbound™\n\n[Get Started](https://jrnys.com/quiz/zepbound) [View Details](https://jrnys.com/weight-loss/product/zepbound)",
+            "wegovy": "Wegovy®\n\nImportant safety information\n\n[Get started](https://jrnys.com/quiz/weight-loss) [View Details](https://jrnys.com/weight-loss/product/wegovvy)"
+          },
+          "treatment_type_tags": {
+            "brand_name": "Mounjaro®\n\n[Get Started](https://jrnys.com/quiz/mounjaro) [View Details](https://jrnys.com/weight-loss/product/mounjaro)"
+          }
+        }
+      },
+      {
+        "url": "https://jrnys.com/weight-loss/product/compounded-semaglutide-2",
+        "quotes": {
+          "treatment_type_tags": {
+            "compounded": "If deemed medically appropriate by your provider, you may receive a compounded version of semaglutide. Please note that compounded semaglutide has not been approved or evaluated for safety and effectiveness by the FDA."
+          }
+        }
+      },
+      {
+        "url": "https://jrnys.com/weight-loss/product/zepbound",
+        "quotes": {
+          "delivery_form_tags": {
+            "injectable": "Zepbound™, a tirzepatide injection, stands as the unique and pioneering treatment for obesity. It distinctively targets and activates the GIP (glucose-dependent insulinotropic polypeptide) and GLP-1 (glucagon-like peptide-1) hormone receptors, a first in its class.\n\n[Get Started](https://jrnys.com/quiz/zepbound)"
+          }
+        }
+      }
+    ],
+    "review_required": "F04/F06 offering-specific source/policy successor awaiting independent review; historical educational/safety-only policy remains inadmissible.",
+    "finding": "Conditional provider-reported offerings only. Brand cards bind product-specific Get Started/View Details links; molecule assertions name JRNYS providers prescribing them. The Zepbound paragraph plus its product CTA supports the injectable facet only; unique/pioneering/efficacy language is retained source context, NOT an adopted claim. Only available if prescribed after online consultation, and the provider determines suitability. Compounded semaglutide is not FDA-approved. No new tags, supply verification, clinical indication or efficacy acceptance."
   },
   "levelsrx-extra-cpa-home-page": {
-    "url": "https://www.levelsrx.com/",
-    "quotes": {
-      "molecule_tags": {
-        "semaglutide": "Compounded Semaglutide (GLP-1)",
-        "tirzepatide": "Compounded Tirzepatide (GLP-1/GIP)"
-      },
-      "delivery_form_tags": {
-        "oral": "Oral Compounded Semaglutide (GLP-1)"
-      },
-      "treatment_type_tags": {
-        "compounded": "Compounded Semaglutide (GLP-1)"
+    "sources": [
+      {
+        "url": "https://www.levelsrx.com/",
+        "quotes": {
+          "molecule_tags": {
+            "semaglutide": "Your provider will independently evaluate your health profile and determine whether treatment with Compounded Semaglutide, Compounded Tirzepatide, or any other medication is clinically appropriate for you. A prescription is never guaranteed as part of your LevelsRx membership.",
+            "tirzepatide": "Your provider will independently evaluate your health profile and determine whether treatment with Compounded Semaglutide, Compounded Tirzepatide, or any other medication is clinically appropriate for you. A prescription is never guaranteed as part of your LevelsRx membership."
+          },
+          "treatment_type_tags": {
+            "compounded": "Your provider will independently evaluate your health profile and determine whether treatment with Compounded Semaglutide, Compounded Tirzepatide, or any other medication is clinically appropriate for you. A prescription is never guaranteed as part of your LevelsRx membership."
+          },
+          "delivery_form_tags": {
+            "oral": "### Oral GLP-1\n\nOral liquid (dropper)\n\nIn Stock\n\n[Starting at $269/mo $108/mo](https://app.levelsrx.com/onboarding/funnel/measurements?variant=alternative-landing)"
+          }
+        }
       }
-    }
+    ],
+    "review_required": "F04/F06 exact successor proposal: independent source/policy and negative-claim correction review pending. Not installed or admitted for the live writer.",
+    "finding": "Conditional provider-reported compounded offerings; prescription not guaranteed. Oral is provider-level only, not oral tirzepatide or an FDA-approved oral formulation. No tag additions."
   },
   "live-vital-launch": {
     "sources": [
@@ -535,7 +598,24 @@
     }
   },
   "refills": {
-    "review_required": "Retained tirzepatide excerpt is an educational comparison, not affirmative offering evidence. The retained product source supports semaglutide but cannot renew the tirzepatide tag; needs source/claim review."
+    "sources": [
+      {
+        "url": "https://www.refills.com/weight-loss/personalized-glp-1-injection",
+        "quotes": {
+          "molecule_tags": {
+            "semaglutide": "## What is compounded semaglutide?\n\nCompounded semaglutide (also known as compounded GLP-1) is a weight loss medication.\n\n‍\n\nIt works by mimicking natural hormones that help regulate appetite and digestion.\n\n‍\n\nEach dose is tailored to the individual and compounded by a licensed pharmacy. After a consultation with one of Refills’ licensed healthcare providers, the medication is prescribed for self-injection once weekly."
+          },
+          "treatment_type_tags": {
+            "compounded": "## What is compounded semaglutide?\n\nCompounded semaglutide (also known as compounded GLP-1) is a weight loss medication.\n\n‍\n\nIt works by mimicking natural hormones that help regulate appetite and digestion.\n\n‍\n\nEach dose is tailored to the individual and compounded by a licensed pharmacy. After a consultation with one of Refills’ licensed healthcare providers, the medication is prescribed for self-injection once weekly."
+          },
+          "delivery_form_tags": {
+            "injectable": "## What is compounded semaglutide?\n\nCompounded semaglutide (also known as compounded GLP-1) is a weight loss medication.\n\n‍\n\nIt works by mimicking natural hormones that help regulate appetite and digestion.\n\n‍\n\nEach dose is tailored to the individual and compounded by a licensed pharmacy. After a consultation with one of Refills’ licensed healthcare providers, the medication is prescribed for self-injection once weekly."
+          }
+        }
+      }
+    ],
+    "review_required": "F04/F06 exact successor proposal: independent source/policy and negative-claim correction review pending. Not installed or admitted for the live writer.",
+    "finding": "Remove the unsupported positive tirzepatide tag from taxonomy, dynamic profile and embedded research. Generic GIP+GLP-1 naming and educational comparison do not identify an offered molecule. Retain semaglutide/injectable/compounded support. Empty or removed tags do not establish unavailability. Preserve historical calculator clocks and price evidence."
   },
   "ro-wegovy-glp1-quiz-us-cpl": {
     "sources": [
@@ -689,7 +769,31 @@
     }
   },
   "tmates-xentraffic-offer-3154": {
-    "review_required": "Retained Wegovy/Zepbound assertions are trademark non-affiliation disclaimers, not affirmative brand availability. Needs reviewed offering-specific brand assertions."
+    "sources": [
+      {
+        "url": "https://tmates.com/weight-loss",
+        "quotes": {
+          "molecule_tags": {
+            "semaglutide": "### Compounded Semaglutide\n\n$158/mo\\*\n\n[Get Started](https://app.tmates.com/overhaul)",
+            "tirzepatide": "### Compounded Tirzepatide\n\n$167/mo\\*\n\n[Get Started](https://app.tmates.com/overhaul)"
+          },
+          "treatment_type_tags": {
+            "compounded": "### Compounded Semaglutide\n\n$158/mo\\*\n\n[Get Started](https://app.tmates.com/overhaul)"
+          }
+        }
+      },
+      {
+        "url": "https://tmates.com/products/semaglutide",
+        "quotes": {
+          "delivery_form_tags": {
+            "injectable": "Treatment is taken as a once-weekly injection or oral option, depending on what your provider recommends. It's prescribed as part of a medically supervised program.",
+            "oral": "Treatment is taken as a once-weekly injection or oral option, depending on what your provider recommends. It's prescribed as part of a medically supervised program."
+          }
+        }
+      }
+    ],
+    "review_required": "F04/F06 exact successor proposal: independent source/policy and negative-claim correction review pending. Not installed or admitted for the live writer.",
+    "finding": "Remove unsupported positive Wegovy/Zepbound brand tags from taxonomy, dynamic profile and embedded research. Trademark/non-affiliation references are not brand offerings. Retain conditional compounded molecule and provider-level route assertions. Not a claim of permanent absence; XenTraffic hold and price clocks remain unchanged."
   },
   "trimi-glp-1": {
     "url": "https://trytrimi.com/",

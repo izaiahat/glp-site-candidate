@@ -10,6 +10,8 @@ import { GO_RUNTIME_MANIFEST } from "../functions/go/program-manifest.js";
 import { loadGoSelection, loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
 import { redirectorTermsAllowed } from "../src/go-redirector-authority.mjs";
 import { onRequest as onGoRequest } from "../functions/go/[program].js";
+import { loadAffiliateLinkMap } from '../src/affiliate-link-map.mjs';
+import { optionCProgramIds } from './helpers/d2w-s9-contracts.mjs';
 
 const ROOT = new URL("../", import.meta.url);
 const CLICK_ID = "01995a42-0a1b-7abc-8def-0123456789ab";
@@ -89,7 +91,9 @@ test("operator-approved R11 paid /lp/ routes order eligible source-backed EPC an
     const html = requireText(new URL(`public/${route}/index.html`, ROOT));
     assertCurrentResults(html, route, { paid: true });
     assert.match(html, /<meta name="robots" content="noindex/);
-    const funnel = html.match(/<section\b[^>]*\bdata-funnel-v2(?:\s|>)[\s\S]*?<\/section>/g) || [];
+    // Typed price rows contain nested <section>s. Stop at the closing disclosure,
+    // not the first child section; never silently erase genuine commercial rows.
+    const funnel = html.match(/<section\b[^>]*\bdata-funnel-v2(?:\s|>)[\s\S]*?data-funnel-v2-disclosure>[\s\S]*?<\/aside><\/section>/g) || [];
     assert.equal(funnel.length, 1, `${route}: exactly one paid shortlist`);
     const table = funnel[0].match(/<div class="fv2-table-shell">[\s\S]*?<\/table>/)?.[0] || "";
     const actual = [...table.matchAll(/<tr\b[^>]*data-funnel-v2-provider[^>]*>/g)].map(([tag]) => ({
@@ -97,10 +101,20 @@ test("operator-approved R11 paid /lp/ routes order eligible source-backed EPC an
       epc: Number(tag.match(/data-economic-epc="([^"]+)"/)?.[1]),
       rank: Number(tag.match(/data-economic-rank="([^"]+)"/)?.[1]),
     }));
-    const expected = eligible.filter(row => (priceById.get(row.program_id)?.medications || [])
-      .some(price => price.medication_id === medication && (Object.hasOwn(price, "price_kind") || Number.isFinite(price.ongoing_usd))));
-    assert.ok(expected.length >= 3, `${route}: evidence-backed paid cohort`);
-    assert.deepEqual(actual, expected.map(row => ({ id: row.program_id, epc: row.network_epc_usd, rank: eligible.indexOf(row) + 1 })), `${route}: descending reported EPC, never page-derived order`);
+    const currentCards = new Set(optionCProgramIds());
+    const currentLinks = loadAffiliateLinkMap('compare');
+    const authority = loadGoPromotionAuthority().programs;
+    const expected = eligible.filter(row => currentCards.has(row.program_id)
+      && currentLinks[row.program_id]?.live === true
+      && authority[row.program_id]?.status !== 'WITHHELD'
+      && (priceById.get(row.program_id)?.medications || [])
+        .some(price => price.medication_id === medication && (Object.hasOwn(price, "price_kind") || Number.isFinite(price.ongoing_usd))));
+    // A historical EPC row cannot create a current eligible offer or waive a
+    // hold. Exact cohort equality stands, including genuine absence.
+    const expectedOrder = expected.map(row => ({ id: row.program_id, epc: row.network_epc_usd, rank: eligible.indexOf(row) + 1 }));
+    assert.deepEqual(actual, expectedOrder, `${route}: descending reported EPC, never page-derived order`);
+    assert.throws(() => assert.deepEqual([...actual, {id:'synthetic-held-offer',epc:999,rank:0}], expectedOrder));
+    if (actual.length > 1) assert.throws(() => assert.deepEqual([...actual].reverse(), expectedOrder));
     assert.equal((funnel[0].match(/data-funnel-v2-disclosure/g) || []).length, 1);
     assert.ok(funnel[0].trimEnd().endsWith(`<aside class="fv2-disclosure" id="p19-R11-disclosure" data-funnel-v2-disclosure>${economics.public_disclosure}</aside></section>`), `${route}: sourced disclosure must close shortlist`);
   }
@@ -221,7 +235,13 @@ test("every go manifest entry is minted only by adopted selection or retained as
   assert.deepEqual(Object.values(selection.programs).filter((row) => row.status === "WITHHELD").map((row) => row.program_id).sort(), ["longevity-meds-glp-1-review", "nu-image-medical-review"]);
   assert.equal(selection.programs["longevity-meds-glp-1-review"].network_offer_id, "3277");
   assert.deepEqual(adopted.filter((row) => row.group === "supersession4").map((row) => row.program_id).sort(), ["awin-128761", "katalys-1286", "katalys-1304", "katalys-647"]);
-  assert.deepEqual(candidates.filter((row) => row.live_link_allowed === true).map((row) => row.program_id).sort(), adopted.map((row) => row.program_id).sort());
+  const eligible = adopted.filter(row => promotions[row.program_id]?.status === 'VERIFIED');
+  assert.equal(eligible.length, 10, 'seven historical XenTraffic ADOPTs now held');
+  for (const row of adopted.filter(row => !eligible.includes(row))) {
+    assert.equal(row.network.toLowerCase(), 'xentraffic');
+    assert.equal(promotions[row.program_id].current_hold_decision.sha256, '147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad');
+  }
+  assert.deepEqual(candidates.filter((row) => row.live_link_allowed === true).map((row) => row.program_id).sort(), eligible.map((row) => row.program_id).sort());
   for (const program of candidates) {
     const selected = selection.programs[program.program_id];
     if (program.live_link_allowed === true) {

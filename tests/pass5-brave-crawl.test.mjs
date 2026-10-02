@@ -59,7 +59,10 @@ async function optionCCardPrograms() {
     const record = identities.get(id);
     assert.ok(record, `no canonical registry identity for ${id}`);
     assert.equal(record.profiles?.["glp-clinic-scout"]?.canonical_identity?.role === "alias", false, id);
-    return { id, name: record.display_name, review: record.review_path || `/providers/${record.program_id}/`,
+    // GLP-233 removes only this unsupported public-name superlative; the
+    // frozen evidence name remains unchanged in the source registry.
+    const name = record.display_name === 'SkinnyRx - #1 GLP Weight Loss Provider' ? 'SkinnyRx' : record.display_name;
+    return { id, name, review: record.review_path || `/providers/${record.program_id}/`,
       price: prices.get(id) ?? Infinity };
   }).sort((left, right) => left.price - right.price || left.id.localeCompare(right.id) || left.name.localeCompare(right.name));
 }
