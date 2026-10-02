@@ -90,6 +90,17 @@ export async function observeW17CompositedPaint(target, { capture = async () => 
     const info = await probe.evaluate(p => ({ unsupported: p.unsupported, color: p.color, rects: p.rects, clip: p.clip, offset: p.offset }));
     result.color = info.color;
     if (info.unsupported.length) { result.unsupported = info.unsupported; return result; }
+    // Materialize Chromium's highlight/compositing paint path once before
+    // measuring. On a retained blurred pseudo the first foreground highlight
+    // changes raster allocation/rounding even after removal; native captures
+    // show subsequent complete cycles are byte-stable. This is a fixed setup
+    // sequence, never a retry-until-equal or a pixel-difference tolerance.
+    // Keep all style/geometry/mutation guards active and retain setup captures.
+    for (const mode of ['foreground', 'background', 'original']) {
+      await probe.evaluate((p, mode) => p.set(mode), mode);
+      const bytes = await target.page().screenshot({ clip: info.clip, scale: 'css', animations: 'allow', type: 'png' });
+      await capture(`setup-${mode}`, bytes);
+    }
     const images = {};
     for (const [label, mode] of [['original', 'original'], ['background', 'background'], ['foreground', 'foreground'], ['foregroundRepeat', 'foreground'], ['backgroundRepeat', 'background'], ['restored', 'original']]) {
       await probe.evaluate((p, mode) => p.set(mode), mode);
@@ -126,9 +137,12 @@ export async function observeW17CompositedPaint(target, { capture = async () => 
         if (q < ratio) { ratio = q; worst = { x: vx, y: vy, foreground: fg, background: bg }; }
         if (changed) {
           glyphPixels++;
-          const channel = [0, 1, 2].sort((a, c) => Math.abs(fg[c] - bg[c]) - Math.abs(fg[a] - bg[a]))[0];
-          const delta = fg[channel] - bg[channel], coverage = delta ? (ink[channel] - bg[channel]) / delta : NaN;
-          if (!Number.isFinite(coverage) || coverage < 0 || coverage > 1.02 || ink.some((v, c) => Math.abs(v - (bg[c] + coverage * (fg[c] - bg[c]))) > 2)) throw new Error('original glyphs inconsistent with composited probes');
+          // LCD antialiasing has independent R/G/B coverage: e.g. white
+          // Arial on black actually paints (15,55,135) at an edge. Requiring
+          // a single alpha rejects real glyphs. Each channel must instead
+          // lie strictly between its measured composited endpoints. No
+          // epsilon is added; equal endpoints must remain exactly equal.
+          if (ink.some((v, c) => v < Math.min(bg[c], fg[c]) || v > Math.max(bg[c], fg[c]))) throw new Error('original glyphs inconsistent with composited probes');
           if (ink.every((v, c) => Math.abs(v - fg[c]) <= 1)) solidGlyphPixels++;
         }
       }
