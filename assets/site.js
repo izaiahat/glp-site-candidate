@@ -1659,7 +1659,30 @@
   toast.append(close);
   toast.classList.add('is-visible');
   document.body.append(toast);
+  // Consent has priority, but must not intercept the ordinary Continue link.
+  // Its height changes with preferences/viewport: reserve the actual banner
+  // bounds independently of the mobile-only page-content clearance.
+  const placeToast = () => {
+    const banner = document.querySelector('#gcs-consent');
+    const bounds = banner?.getBoundingClientRect();
+    const clearance = bounds?.height ? Math.max(0, innerHeight - bounds.top + 12) : 0;
+    toast.style.bottom = `max(18px, env(safe-area-inset-bottom), ${clearance}px)`;
+  };
+  const consentSize = new ResizeObserver(placeToast);
+  const watchConsent = () => {
+    consentSize.disconnect();
+    const banner = document.querySelector('#gcs-consent');
+    if (banner) consentSize.observe(banner);
+    placeToast();
+  };
+  const consentTree = new MutationObserver(watchConsent);
+  consentTree.observe(document.body, { childList: true });
+  addEventListener('resize', placeToast, { passive: true });
+  watchConsent();
   const hide = () => {
+    consentTree.disconnect();
+    consentSize.disconnect();
+    removeEventListener('resize', placeToast);
     toast.classList.remove('is-visible');
     if (document.documentElement.dataset.inputModality === 'keyboard') toast.remove();
     else setTimeout(() => toast.remove(), 240);

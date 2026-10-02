@@ -135,7 +135,7 @@ test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and
   const input = 'data/program-registry.json';
   const bytes = read(input);
   const immutable = {data: {[input]: 'bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6'}};
-  assert.equal(pins.inputs[input].after_sha256, '0e5483bb42df81a6d03be465ed98318bc454288cca39562839a10f92fa5a4c5b');
+  assert.equal(pins.inputs[input].after_sha256, '385a0f30f0ca6f72d9d83d8e0cab173f9c66191d4ea7b2fb6bd51c0a34d35ce5');
   assert.equal(pins.provenance.previous_care_after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
   assert.equal(pins.provenance.previous_care_fixture_git_ref, 'aa13b69fcbff4f9990b7043702da2fa37756390a:tests/fixtures/glp41-approved-input-successor.json');
   assert.match(pins.authority, /care-metadata-source-repair-authorization-20260927\/RESULT\.json/);

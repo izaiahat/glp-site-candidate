@@ -5478,6 +5478,9 @@
         "source_urls": [
           "https://www.eden.health/policies/terms-of-service",
           "https://www.eden.health/treatment/glp-1-treatments",
+          "https://www.eden.health/treatment/mounjaro",
+          "https://www.eden.health/treatment/wegovy",
+          "https://www.eden.health/treatment/zepbound",
           "https://www.eden.health/weight-loss"
         ],
         "taxonomy": {
@@ -5521,8 +5524,8 @@
             "source_url": "https://www.eden.health/policies/terms-of-service",
             "verified_as_of": "2026-08-31",
             "evidence_kind": "registry_identity_projection",
-            "evidence_text": "{\"aliases\":[],\"program_id\":\"eden-xentraffic-offer-3051\",\"provider\":\"Eden\",\"registry_program_ids\":[\"eden-xentraffic-offer-3051\"],\"source_urls\":[\"https://www.eden.health/policies/terms-of-service\",\"https://www.eden.health/treatment/glp-1-treatments\",\"https://www.eden.health/weight-loss\"],\"verified_as_of\":\"2026-08-31\"}",
-            "evidence_sha256": "3bf534902415b7964f78f0db3450b6fa8eda3e5bd88a9751be764a8b009f9d13"
+            "evidence_text": "{\"aliases\":[],\"program_id\":\"eden-xentraffic-offer-3051\",\"provider\":\"Eden\",\"registry_program_ids\":[\"eden-xentraffic-offer-3051\"],\"source_urls\":[\"https://www.eden.health/policies/terms-of-service\",\"https://www.eden.health/treatment/glp-1-treatments\",\"https://www.eden.health/treatment/mounjaro\",\"https://www.eden.health/treatment/wegovy\",\"https://www.eden.health/treatment/zepbound\",\"https://www.eden.health/weight-loss\"],\"verified_as_of\":\"2026-08-31\"}",
+            "evidence_sha256": "83e4071694d04ec2cc4ae98e5aab5acaf5a480e42dcf083b122ff1dc7b80366d"
           },
           {
             "evidence_sha256": "58ecdf273b1ead4649671d231254729626fc20886f5a94d0b381a8014cabb15a",
@@ -5566,7 +5569,7 @@
             "treatment_type_state": "verified"
           }
         ],
-        "normalized_sha256": "2bd0daf40d02716b26d476c30488bb0496c2412a0810658c0e8e78dbdad36810"
+        "normalized_sha256": "dd784ada7942cef96d9d5a4995809de8aa8d3358430526ea38cdcf678b2c4f20"
       },
       "enhance-md": {
         "aliases": [],
@@ -6607,8 +6610,10 @@
         "source_urls": [
           "https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison",
           "https://jrnys.com/pricing/glp1",
+          "https://jrnys.com/weight-loss",
           "https://jrnys.com/weight-loss/product/compounded-semaglutide-2",
-          "https://jrnys.com/weight-loss/product/wegovvy"
+          "https://jrnys.com/weight-loss/product/wegovvy",
+          "https://jrnys.com/weight-loss/product/zepbound"
         ],
         "taxonomy": {
           "molecule_tags": [
@@ -6652,8 +6657,8 @@
             "source_url": "https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison",
             "verified_as_of": "2026-09-01",
             "evidence_kind": "registry_identity_projection",
-            "evidence_text": "{\"aliases\":[],\"program_id\":\"jrnys-review\",\"provider\":\"JRNYS\",\"registry_program_ids\":[\"jrnys-review\"],\"source_urls\":[\"https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison\",\"https://jrnys.com/pricing/glp1\",\"https://jrnys.com/weight-loss/product/compounded-semaglutide-2\",\"https://jrnys.com/weight-loss/product/wegovvy\"],\"verified_as_of\":\"2026-09-01\"}",
-            "evidence_sha256": "a8993d28310a8cb33ca848b8681cd8d44a99462d49ce94b65bbce31b656fa742"
+            "evidence_text": "{\"aliases\":[],\"program_id\":\"jrnys-review\",\"provider\":\"JRNYS\",\"registry_program_ids\":[\"jrnys-review\"],\"source_urls\":[\"https://jrnys.com/blog/tirzepatide-vs-semaglutide-a-comparison\",\"https://jrnys.com/pricing/glp1\",\"https://jrnys.com/weight-loss\",\"https://jrnys.com/weight-loss/product/compounded-semaglutide-2\",\"https://jrnys.com/weight-loss/product/wegovvy\",\"https://jrnys.com/weight-loss/product/zepbound\"],\"verified_as_of\":\"2026-09-01\"}",
+            "evidence_sha256": "67b6577d2f7fbfa2529970d3bd3e3a1e61c5d2f1c6ea91c4ba1c8e654856e1fe"
           },
           {
             "evidence_sha256": "2e9adac505b1cf349b724ee0fff1a6073cde7f4a02f5fd4be0ee7702bae67e93",
@@ -6706,7 +6711,7 @@
             "treatment_type_state": "verified"
           }
         ],
-        "normalized_sha256": "e6a74d713a2392fd18aeec86f636a5125c3ad6e45f5632c0f210a11361a833ad"
+        "normalized_sha256": "6efce6c8307b9d7b5674b96340c94bfa825dd5298ea8d2e9fe6986273467ee90"
       },
       "levelsrx-extra-cpa-home-page": {
         "program_id": "levelsrx-extra-cpa-home-page",

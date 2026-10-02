@@ -8,6 +8,7 @@ import {deriveIdentityGroups} from '../src/provider-identity.mjs';
 import {projectProviderDisplayFacts, projectProviderDisplayLedger} from '../src/provider-display-evidence.mjs';
 import {priceStateText} from '../src/price-state.mjs';
 import {isTypedPrice} from '../src/typed-price-labels.mjs';
+import {assertCurrentCardPrice} from './helpers/current-card-price.mjs';
 const read = name => JSON.parse(readFileSync(new URL('../data/'+name, import.meta.url)));
 const registry=read('program-registry.json'), matrix=read('provider-pricing-matrix.json');
 const ledger=read('program-content-ledger.json').programs.map(p=>projectProviderDisplayLedger(p));
@@ -41,7 +42,7 @@ before(async()=>{
   const slots=[...d.querySelectorAll('[data-provider-lazy-index]')];
   for(const n of slots){const body=payload[Number(n.dataset.providerLazyIndex)];if(typeof body!=='string')throw Error('missing deferred provider payload');n.innerHTML=body;}
   d.querySelectorAll('noscript,script,style').forEach(n=>n.remove());
-  return {text:d.body.textContent.replace(/\s+/g,' ').trim(),count:d.querySelector('[data-live-provider-count]')?.textContent,links:[...d.querySelectorAll('a[href]')].map(n=>n.getAttribute('href')),cards:[...d.querySelectorAll('[data-phase3-provider-grid] [data-phase3-provider]')].map(n=>({id:n.dataset.program,facts:[...n.querySelectorAll('dl[data-provider-card-contract]>div')].map(c=>({name:c.querySelector('dt')?.textContent,value:c.querySelector('dd>span')?.textContent,dates:[...c.querySelectorAll('time')].map(t=>t.getAttribute('datetime')),sources:[...c.querySelectorAll('small a')].map(a=>a.getAttribute('href'))}))}))};
+  return {text:d.body.textContent.replace(/\s+/g,' ').trim(),count:d.querySelector('[data-live-provider-count]')?.textContent,links:[...d.querySelectorAll('a[href]')].map(n=>n.getAttribute('href')),cards:[...d.querySelectorAll('[data-phase3-provider-grid] [data-phase3-provider]')].map(n=>({id:n.dataset.program,html:n.outerHTML,facts:[...n.querySelectorAll('dl[data-provider-card-contract]>div')].map(c=>({name:c.querySelector('dt')?.textContent,value:c.querySelector('dd>span')?.textContent,dates:[...c.querySelectorAll('time')].map(t=>t.getAttribute('datetime')),sources:[...c.querySelectorAll('small a')].map(a=>a.getAttribute('href'))}))}))};
  },{html:projectedHtml,externalPayload});await page.close();
 });
 after(async()=>{await browser?.close();});
@@ -63,7 +64,24 @@ test('RN-01878: first-party attribution and exact fact/source/date joins on ever
   const medicationSources=l.meds_offered_evidence?.schema==='s10-field-evidence-v1'?l.meds_offered_evidence.sources.map(s=>({source_url:s.source_url,capture_date:s.checked_date})):[{source_url:l.source_url,capture_date:f.capture_date}];
   const rawEntry=Object.values(matrix.providers).find(p=>p.program_id===id);
   const entry={...rawEntry,medications:(rawEntry?.medications||[]).filter(row=>isTypedPrice(row)||Number.isFinite(row.ongoing_usd))};
-  const rows=[['Medications offered',l.meds_offered,medicationSources],['Total monthly cost',priceStateText(entry)||f.facts.total_monthly_cost.value,[f.facts.total_monthly_cost]],['Cancellation',f.facts.cancellation.value,[f.facts.cancellation]]];
+  const rows=[['Medications offered',l.meds_offered,medicationSources],['Cancellation',f.facts.cancellation.value,[f.facts.cancellation]]];
+  if (entry.medications.length) {
+    assertCurrentCardPrice(card.html, entry.medications);
+    // Real-row negatives: changing a value, source, capture clock, or plan must
+    // fail even when the markup still looks like a plausible price card.
+    if (isTypedPrice(entry.medications[0])) {
+      for (const edit of [
+        r => { r.plan_label = 'Invented plan'; },
+        r => { r.evidence[0].source_url = 'https://invalid.example/not-evidence'; },
+        r => { r.evidence[0].captured_at_utc = '2000-01-01T00:00:00Z'; },
+        r => { const f = Object.keys(r.facts).find(k => k.endsWith('_usd') && typeof r.facts[k].value === 'number'); assert.ok(f); r.facts[f].value += 1; },
+      ]) {
+        const mutated = structuredClone(entry.medications); edit(mutated[0]);
+        assert.throws(() => assertCurrentCardPrice(card.html, mutated));
+      }
+    }
+  }
+  else rows.splice(1,0,['Total monthly cost',priceStateText(entry)||f.facts.total_monthly_cost.value,[f.facts.total_monthly_cost]]);
   for(const [name,value,sources] of rows){
    const cell=card.facts.find(x=>x.name===name);assert(cell,id+': missing '+name);assert.equal(cell.value,value,id+': '+name);
    assert(sources.length>0&&sources.every(s=>/^https?:\/\//.test(s.source_url)&&/^\d{4}-\d{2}-\d{2}$/.test(s.capture_date)),id+': source/date qualification');

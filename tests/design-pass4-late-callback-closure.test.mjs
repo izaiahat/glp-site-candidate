@@ -3,6 +3,9 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { optionCProgramIds } from './helpers/d2w-s9-contracts.mjs';
+import { assertCurrentCardPrice } from './helpers/current-card-price.mjs';
+import { readFileSync } from 'node:fs';
+const currentPricing = JSON.parse(readFileSync(new URL('../data/provider-pricing-matrix.json', import.meta.url))).providers;
 import { governedBulkCohorts, governedBrandCohorts, governedCardFacts, governedCompoundedUnknownIds, governedProviderIds } from './browser/governed-cohort.mjs';
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
@@ -11,14 +14,22 @@ const count = (text, pattern) => (text.match(pattern) || []).length;
 const escapeHtml = (text) => String(text).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const cardId = (card) => card.match(/data-program="([^"]+)"/)?.[1];
 function assertFactsAndActions(card, id, route, ledger, offers, content, issued, moneyRows, { priced }) {
-  const rows = [...card.matchAll(/<div><dt>([^<]+)<\/dt><dd><span>([\s\S]*?)<\/span>([\s\S]*?)<\/dd><\/div>/g)];
+  const rows = [...card.matchAll(/<div><dt>([^<]+)<\/dt><dd>([\s\S]*?)<\/dd><\/div>/g)].map(row => {
+    const plain = row[2].match(/^<span>([\s\S]*?)<\/span>([\s\S]*)$/);
+    return [row[0], row[1], plain?.[1] ?? row[2], plain?.[2] ?? ''];
+  });
   assert.deepEqual(rows.map((row) => row[1]), ['Medications offered', 'Total monthly cost', 'Cancellation'], `${route}/${id}: fact labels`);
   if (priced) {
     const facts = governedCardFacts(id);
-    assert.deepEqual(rows.map((row) => row[2]), [facts.medication, facts.cost, facts.cancellation].map(escapeHtml), `${route}/${id}: source-derived fact values`);
+    assert.deepEqual([rows[0][2], rows[2][2]], [facts.medication, facts.cancellation].map(escapeHtml), `${route}/${id}: source-derived non-price facts`);
+    const meds = card.match(/data-medications="([^"]*)"/)?.[1].split(/\s+/) || [];
+    const priceRows = Object.values(currentPricing).find(p => p.program_id === id)?.medications.filter(p => meds.includes(p.medication_id)) || [];
+    assert.ok(priceRows.length, `${route}/${id}: current price evidence required`);
+    assertCurrentCardPrice(card, priceRows);
     const source = content.find((row) => row.program_id === id);
     assert.ok(source?.source_url && source.research_cancellation?.source_url, `${route}/${id}: numeric citation inputs`);
     for (const [index, row] of rows.entries()) {
+      if (index === 1) continue; // independently joined to current matrix above
       const expectedUrl = index === 2 ? source.research_cancellation.source_url : source.source_url;
       const expectedDate = index === 2 ? source.research_cancellation.verified_as_of : source.research_first_month_price?.verified_as_of;
       assert.ok(expectedDate && row[3].includes(`data-source-checked="${expectedDate}"`), `${route}/${id}: wrong fact date`);
