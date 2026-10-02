@@ -49,6 +49,21 @@ export function loadGoPromotionAuthority(root = DEFAULT_ROOT) {
   catch (error) { if (error.code !== "ENOENT") throw error; }
   const current = loadGoSelection(root);
   const programs = { ...legacy.programs, ...current?.programs };
+  // The genuine 2026-10-01 operator decision retains the XenTraffic hold.
+  // Apply it after historical selection/approval merging, without rewriting
+  // either receipt or the frozen price basis. This is a denial, not a grant.
+  // Policy belongs to this source tree even when callers supply fixture roots.
+  const holdPath = 'data/OPERATOR-DECISION-20261001-all-pipelines-live.md';
+  const holdSha256 = '147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad';
+  if (hash(readFileSync(path.join(DEFAULT_ROOT, holdPath))) !== holdSha256)
+    throw new Error('go_current_hold_authority_invalid');
+  for (const [id, row] of Object.entries(programs)) {
+    if (![legacy.programs?.[id]?.network, current?.programs[id]?.network]
+        .some(network => String(network || '').toLowerCase() === 'xentraffic')) continue;
+    programs[id] = { ...row, status: 'WITHHELD', promotion_authorized: false,
+      current_hold_decision: { path: holdPath, sha256: holdSha256 },
+      reason: 'operator_current_xentraffic_hold' };
+  }
   return { ...legacy, ...(current ? { selection_sha256: current.selection_sha256 } : {}), programs };
 }
 

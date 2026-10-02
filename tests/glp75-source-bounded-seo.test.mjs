@@ -156,11 +156,18 @@ test('Wellmedr already consolidates unknown charges and policy conflict; protect
   }
   assert.deepEqual(standaloneBreeze, pr8, 'PR8 changes only the five exact Breeze groups from original registry');
   const exactRegistry = value => assert.deepEqual(value, expected, 'only exact PR4 seven-path + PR8 five-group union is permitted');
-  exactRegistry(read(registryFile));
+  const historicalRegistryBytes = readFileSync(new URL('tests/fixtures/f06-historical-source/program-registry.json',root),'utf8');
+  exactRegistry(JSON.parse(historicalRegistryBytes));
+  // The independently accepted factual successor is a separate input, not a
+  // claim that today's registry still equals the earlier PR4/PR8 composition.
+  const pins=read('tests/fixtures/glp41-approved-input-successor.json');
+  assert.equal(pins.provenance.prior_care_after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
+  assert.equal(pins.inputs[registryFile].after_sha256, '0e5483bb42df81a6d03be465ed98318bc454288cca39562839a10f92fa5a4c5b');
+  assert.equal(hash(readFileSync(new URL(registryFile,root))), pins.inputs[registryFile].after_sha256);
   const expectedBytes = JSON.stringify(expected, null, 2) + '\n';
   assert.equal(hash(expectedBytes), '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d', 'fixed combined bytes reconstructed exclusively from authenticated parent values');
   const exactRegistryBytes = bytes => assert.equal(bytes, expectedBytes, 'combined registry bytes equal independently reconstructed union');
-  exactRegistryBytes(readFileSync(new URL(registryFile, root), 'utf8'));
+  exactRegistryBytes(historicalRegistryBytes);
   assert.throws(() => exactRegistryBytes(`${expectedBytes} `), { code: 'ERR_ASSERTION' });
   for (const path of [...registryPaths, ...breezePaths, 'programs/7/program_id', 'programs/7/commercial_state', 'programs/7/go/entry_state', 'programs/7/go/route', 'provider_dynamic_profiles/sealed_as_of', 'therapeutic_taxonomy/programs/breeze-meds-review/molecule_tags']) {
     const mutant = structuredClone(expected);
@@ -175,8 +182,19 @@ test('Wellmedr already consolidates unknown charges and policy conflict; protect
     assert.equal(standaloneBytes, baselineBytes, `standalone PR6 must not rewrite ${file}`);
     assert.deepEqual(JSON.parse(standaloneBytes), base(file), `GLP-75 must not rewrite ${file}`);
     if (file === registryFile) continue; // the sole exact seven + five group union above
-    const unchanged = bytes => assert.equal(bytes, baselineBytes, `combined must not rewrite ${file}`);
-    unchanged(readFileSync(new URL(file, root), 'utf8'));
-    assert.throws(() => unchanged(`${baselineBytes} `), { code: 'ERR_ASSERTION' }, `even serialization drift is forbidden: ${file}`);
+    const acceptedSuccessors = {
+      // Care scoped negative factual repair + exact paired fastpath binding.
+      'data/provider-page-contracts.json': 'edcbabb72522b0884f6d6ac97a813b6bf7afc2bb63bf4302c42162a0d03ffef6',
+      // D3 paused-offer exclusion and retained commercial custody, already
+      // independently bound in the GLP-234 accepted identity contract.
+      'data/affiliate-activation-selection.json': '63586a11a80878a008c61b0825ff5344726906b0e7efece6811dd986f3db0de6',
+      'data/go-runtime-promotion-authority.json': 'ed0060a986a5703829035c29ce23c252d1285083daa17a9ae778d5655e1b53f2',
+    };
+    const unchanged = bytes => acceptedSuccessors[file]
+      ? assert.equal(hash(bytes), acceptedSuccessors[file], `separately accepted successor: ${file}`)
+      : assert.equal(bytes, baselineBytes, `combined must not rewrite ${file}`);
+    const currentBytes=readFileSync(new URL(file, root), 'utf8');
+    unchanged(currentBytes);
+    assert.throws(() => unchanged(`${currentBytes} `), { code: 'ERR_ASSERTION' }, `even serialization drift is forbidden: ${file}`);
   }
 });

@@ -9,7 +9,7 @@ import { candidateExportShellFindings } from "../src/candidate-export-policy.mjs
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PUBLIC = path.join(ROOT, "public");
 const OPS = path.join(ROOT, "artifacts", "ops");
-const contentBasePointer = JSON.parse(await readFile(path.resolve(ROOT, "../../../../reports/glp-clinic-scout/seo-machine/current-content-base.json"), "utf8"));
+const contentBasePointer = JSON.parse(await readFile('/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/current-content-base.json', "utf8"));
 const CUMULATIVE = path.join(contentBasePointer.release_root, "public");
 const INDEX = "index,follow,max-image-preview:large";
 // These five OAuth HTML files are byte-frozen to the deployed/cumulative app.
@@ -184,7 +184,10 @@ test("affiliate join fields and organic capture remain while remote analytics ma
     } else assert.match(anchor, /data-subid="[a-z0-9-]+-(?:intro|pros|pricing|conclusion)-\d{6}"/);
   }
   const runtime = await read("assets/analytics.js");
-  for (const event of ["affiliate_click", "comparison_table_view", "cost_calculator_used", "cost_calculator_complete", "quiz_complete", "provider_finder_complete", "scroll_75"]) assert.ok(runtime.includes(event));
+  for (const event of ["affiliate_click", "comparison_table_view", "cost_calculator_used", "calculator_submit", "scroll_75"]) assert.ok(runtime.includes(event), event);
+  // GLP-42 purpose minimization forbids health-result completion signals.
+  for (const event of ['cost_calculator_complete','quiz_complete','provider_finder_complete'])
+    assert.ok(!runtime.includes(event), `${event}: must not re-enter the analytics export allowlist`);
   assert.ok(runtime.includes("subid"));
   // An independently declared run stage is the oracle; neither the page nor
   // the build's self-reported stage can select its own expected policy.

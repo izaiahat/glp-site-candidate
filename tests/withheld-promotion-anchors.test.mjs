@@ -47,7 +47,9 @@ test("network-approved GLP providers have sponsored anchors while explicit exclu
   assert.deepEqual(unauthorized, [], "registered producer must materialize authority for each approved live anchor");
   for (const program of ["curex-glp-1", "enhanced-tirzepatide-funnel-b", "g-plan", "joinskinny-semaglutide-glp-1-us", "novi-weight-loss-glp-1", "refills", "trimrx-xentraffic-offer-3014"]) {
     assert.equal(authority[program]?.redirector_tos_basis, "operator_risk_acceptance", `${program}: operator receipt bound`);
-    assert.ok((byProgram.get(program) || 0) > 0, `${program}: approved XenTraffic anchor retained`);
+    assert.equal(authority[program]?.status, 'WITHHELD', `${program}: current XenTraffic hold`);
+    assert.equal(authority[program]?.current_hold_decision.sha256, '147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad');
+    assert.equal(byProgram.get(program) || 0, 0, `${program}: current hold overrides historical risk acceptance`);
   }
   for (const program of ["try-ageless", "altrx-glp1-us-cps", "futurhealth-wegovy-pillform"]) {
     assert.equal(authority[program]?.status, "WITHHELD", `${program}: paused offer stays held`);

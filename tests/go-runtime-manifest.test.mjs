@@ -39,8 +39,16 @@ test("every generated runtime entry is governed active or explicitly held", () =
   const selection=loadGoSelection(root);
   const selected=Object.values(selection.programs).filter(p=>p.status==='VERIFIED');
   assert.equal(selected.length,17);
-  assert.deepEqual(active.map(p=>p.program_id).sort(),selected.map(p=>p.program_id).sort());
-  for(const row of selected){const entry=GO_RUNTIME_MANIFEST.programs[row.render_id];assert.equal(entry.tracking.base_url,row.issued_link);assert.equal(entry.operator_selection_receipt_sha256,selection.selection_sha256);}
+  const effective = loadGoPromotionAuthority().programs;
+  const eligible = selected.filter(row => effective[row.program_id]?.status === 'VERIFIED');
+  assert.equal(eligible.length, 10, 'current XenTraffic hold removes seven historical ADOPTs');
+  assert.deepEqual(active.map(p=>p.program_id).sort(),eligible.map(p=>p.program_id).sort());
+  for(const row of eligible){const entry=GO_RUNTIME_MANIFEST.programs[row.render_id];assert.equal(entry.tracking.base_url,row.issued_link);assert.equal(entry.operator_selection_receipt_sha256,selection.selection_sha256);}
+  for (const row of selected.filter(row => !eligible.includes(row))) {
+    assert.equal(row.network.toLowerCase(), 'xentraffic');
+    assert.equal(effective[row.program_id].current_hold_decision.sha256, '147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad');
+    assert.equal(GO_RUNTIME_MANIFEST.programs[row.render_id].tracking, undefined);
+  }
   for (const entry of active) {
     assert.equal(entry.status, "live_operator_approved", entry.program_id);
     assert.equal(entry.link_mode, "server_redirect", entry.program_id);

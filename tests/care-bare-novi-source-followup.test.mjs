@@ -104,9 +104,16 @@ test('unchanged native structural reconciler accepts registry at original dates 
     registry.provider_dynamic_profiles.profiles[id].verified_as_of];
   assert.equal(registry.therapeutic_taxonomy.programs[id].normalized_sha256,
     normalizedTaxonomySha256(registry.therapeutic_taxonomy.programs[id]));
-  reconcileTherapeuticTaxonomyWireIn({ registry, profileId: 'glp-clinic-scout',
+  // The whole accepted registry now includes captures after the Care-only
+  // September 27 fixture. Bind its own immutable seal; do not refresh sources.
+  // The former fixture clock must still reject those future captures.
+  const inputs = { profileId: 'glp-clinic-scout',
     pages: JSON.parse(read('data/money-page-specs.json')).pages,
-    quizConfig: JSON.parse(read('data/quiz-config.json')), asOf: new Date('2026-09-27T12:00:00Z') });
+    quizConfig: JSON.parse(read('data/quiz-config.json')) };
+  assert.throws(() => reconcileTherapeuticTaxonomyWireIn({ ...inputs, registry: structuredClone(registry),
+    asOf: new Date('2026-09-27T12:00:00Z') }), /therapeutic_taxonomy_evidence_stale/);
+  reconcileTherapeuticTaxonomyWireIn({ ...inputs, registry,
+    asOf: new Date(registry.therapeutic_taxonomy.sealed_as_of + 'T12:00:00Z') });
   assert.deepEqual([registry.therapeutic_taxonomy.sealed_as_of, registry.therapeutic_taxonomy.programs[id].verified_as_of,
     registry.provider_dynamic_profiles.profiles[id].verified_as_of], dates);
 });
@@ -122,7 +129,7 @@ test('F17 adopts accepted Care registry and refuses preserved predecessor and un
   const run = (candidate, pins) => guard((_name, check) => check(), assert,
     path => path === input ? candidate : path === 'tests/fixtures/glp41-approved-input-successor.json'
       ? Buffer.from(JSON.stringify(pins)) : assert.fail(path), sha);
-  assert.equal(fixture.inputs[input].after_sha256, 'd0bc5c1f702731b2b4fe3450884cf93310e88dcb1f7e7d6e4b33d96f4a3db644');
+  assert.equal(fixture.inputs[input].after_sha256, '0e5483bb42df81a6d03be465ed98318bc454288cca39562839a10f92fa5a4c5b');
   assert.equal(fixture.provenance.previous_care_after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
   assert.doesNotThrow(() => run(read(input), fixture));
   const stale = structuredClone(fixture);

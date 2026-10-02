@@ -97,6 +97,7 @@
     identity.append(logo);
     appendText(identity, "h3", "qz-card-name", record.display_name);
     card.append(identity);
+    if (record.claim_qualification) appendText(card, "p", "qz-card-qualification", record.claim_qualification);
 
     appendText(card, "p", "qz-card-context", dose.value ? `Selected dose context: ${dose.value}${/^\d/.test(dose.value) ? " mg/week" : ""}.` : "Dose context was not provided for this comparison.");
     const price = record.pricing?.[drug];

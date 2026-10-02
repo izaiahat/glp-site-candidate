@@ -221,7 +221,13 @@ test("every go manifest entry is minted only by adopted selection or retained as
   assert.deepEqual(Object.values(selection.programs).filter((row) => row.status === "WITHHELD").map((row) => row.program_id).sort(), ["longevity-meds-glp-1-review", "nu-image-medical-review"]);
   assert.equal(selection.programs["longevity-meds-glp-1-review"].network_offer_id, "3277");
   assert.deepEqual(adopted.filter((row) => row.group === "supersession4").map((row) => row.program_id).sort(), ["awin-128761", "katalys-1286", "katalys-1304", "katalys-647"]);
-  assert.deepEqual(candidates.filter((row) => row.live_link_allowed === true).map((row) => row.program_id).sort(), adopted.map((row) => row.program_id).sort());
+  const eligible = adopted.filter(row => promotions[row.program_id]?.status === 'VERIFIED');
+  assert.equal(eligible.length, 10, 'seven historical XenTraffic ADOPTs now held');
+  for (const row of adopted.filter(row => !eligible.includes(row))) {
+    assert.equal(row.network.toLowerCase(), 'xentraffic');
+    assert.equal(promotions[row.program_id].current_hold_decision.sha256, '147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad');
+  }
+  assert.deepEqual(candidates.filter((row) => row.live_link_allowed === true).map((row) => row.program_id).sort(), eligible.map((row) => row.program_id).sort());
   for (const program of candidates) {
     const selected = selection.programs[program.program_id];
     if (program.live_link_allowed === true) {

@@ -6,13 +6,25 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assertServedGoIdentity } from '../src/served-affiliate-identity.mjs';
 import { affiliateNetworkIdentity, subidAttributes } from '../src/affiliate-subid.mjs';
-import { loadGoSelection } from '../src/go-runtime-selection.mjs';
+import { loadGoSelection, loadGoPromotionAuthority } from '../src/go-runtime-selection.mjs';
 const programs = JSON.parse(readFileSync(new URL('../data/tracking-allowed-hosts.json', import.meta.url))).programs;
 
 test('every served /go anchor matches its program-bound authority (HTML and lazy JSON)', t => {
   const result = assertServedGoIdentity(fileURLToPath(new URL('../public/', import.meta.url)), programs);
   assert.ok(result.htmlFiles >= 334);
-  assert.ok(result.anchors.length >= 141, 'the reviewed cohort must not disappear');
+  // The old 141-anchor floor included currently held XenTraffic offers.
+  // Require every eligible identity, not an output-derived smaller count.
+  const historical=Object.values(loadGoSelection().programs).filter(row=>row.status==='VERIFIED');
+  assert.equal(historical.length,17);
+  const authority=loadGoPromotionAuthority().programs;
+  const eligible=historical.filter(row=>authority[row.program_id]?.status==='VERIFIED');
+  assert.equal(eligible.length,10);
+  for (const row of historical.filter(row=>!eligible.includes(row))) {
+    assert.equal(row.network.toLowerCase(),'xentraffic');
+    assert.equal(authority[row.program_id].current_hold_decision.sha256,'147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad');
+  }
+  const canonical=id=>historical.find(row=>row.program_id===id||row.render_id===id)?.program_id || id;
+  assert.deepEqual([...new Set(result.anchors.map(row=>canonical(row.program)))].sort(),eligible.map(row=>row.program_id).sort(), 'no active identity may disappear and no held identity may render');
   assert.deepEqual(result.findings, []);
   t.diagnostic(JSON.stringify({ htmlFiles: result.htmlFiles, jsonFiles: result.jsonFiles, anchors: result.anchors.length }));
 });
