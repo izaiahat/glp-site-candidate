@@ -1,0 +1,25 @@
+name: Content-addressed asset contracts
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  asset-cache-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.EXPECTED_SHA }}
+          persist-credentials: false
+      - name: Exact checkout identity
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          printf 'checked_head=%s\n' "$(git rev-parse HEAD)"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Changed-byte consuming-URL regression (no build or credentials)
+        run: node --test tests/asset-cache-versioning.test.mjs

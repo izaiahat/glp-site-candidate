@@ -222,9 +222,10 @@ test("affiliate join fields and organic capture remain while remote analytics ma
 });
 
 test("OAuth app bytes and security headers stay exact while versioned assets gain durable caching", async () => {
-  // Preserved OAuth pages may differ from the predecessor only through two
-  // deliberate, deterministic rewrites: purpose-routed email aliases and the
-  // SITE-BUILD-SOP exact first-party legal entity stamp.
+  // Preserved OAuth pages may differ only through the existing alias/legal
+  // rewrites and the exact content-derived site.css URL (no reserialization).
+  const cssDigest = createHash('sha256').update(await readFile(path.join(ROOT, 'assets/site.css'))).digest('hex').slice(0,16);
+  const cssUrl = `/assets/cache/site.${cssDigest}.css`;
   const aliasMap = JSON.parse(await readFile(path.join(ROOT, "data/email-alias-map.json"), "utf8"));
   const aliasFor = (route) => aliasMap.route_purposes.find((rule) => new RegExp(rule.match).test(route)).allowed[0];
   const now = await treeHashes(path.join(PUBLIC, "google-ads-api"));
@@ -238,13 +239,14 @@ test("OAuth app bytes and security headers stay exact while versioned assets gai
     const nowText = await readFile(path.join(PUBLIC, "google-ads-api", relative), "utf8");
     const baseText = await readFile(path.join(CUMULATIVE, "google-ads-api", relative), "utf8");
     const expectedText = baseText
+      .replaceAll('/assets/site.css"', `${cssUrl}"`)
       .replaceAll(`ops@${aliasMap.domain}`, `${alias}@${aliasMap.domain}`)
       .replace(
         "<div>A first-party application operated by Tilton Group LLC.</div><div>2108 N St, Ste N, Sacramento, CA 95816</div>",
         "<div>Entity: Tilton Group LLC · California entity B20260317552 · Principal and mailing address: 2108 N St, Ste N, Sacramento, CA 95816.</div>",
       );
     assert.equal(nowText, expectedText,
-      `${relative}: changed by something other than the email-alias or legal-stamp rewrite`);
+      `${relative}: changed outside the exact asset-URL/email-alias/legal-stamp rewrites`);
     assert.doesNotMatch(nowText, /ops@glpclinicscout\.com/);
     rewritten.push(relative);
   }
@@ -263,8 +265,11 @@ test("OAuth app bytes and security headers stay exact while versioned assets gai
   const dimensionExceptions = [];
   for (const [relative, expectedHash] of Object.entries(OAUTH_FROZEN_IMAGE_DIMENSION_EXCEPTIONS)) {
     const bytes = await readFile(path.join(PUBLIC, relative));
-    assert.equal(createHash("sha256").update(bytes).digest("hex"), expectedHash, relative);
     const html = bytes.toString("utf8");
+    assert.equal(html.split(cssUrl).length, 2, `${relative}: one exact current stylesheet`);
+    // Reverse only the authenticated current stylesheet span; the original
+    // frozen hash still rejects every other byte change, including the favicon.
+    assert.equal(createHash("sha256").update(html.replace(cssUrl, '/assets/site.css')).digest("hex"), expectedHash, relative);
     const images = [...html.matchAll(/<img\b[^>]*>/gi)].map((match) => match[0]);
     const missingDimensions = images.filter((image) => !/\bwidth=/.test(image) || !/\bheight=/.test(image));
     assert.equal(images.length, 1, relative);
@@ -283,8 +288,11 @@ test("OAuth app bytes and security headers stay exact while versioned assets gai
   assert.equal(oauthBlock(headers), oauthBlock(preserved));
   for (const name of ["X-Frame-Options: DENY", "X-Content-Type-Options: nosniff", "Strict-Transport-Security:", "Content-Security-Policy:"]) assert.ok(headers.includes(name), name);
   for (const asset of ["/assets/site.css", "/assets/site-*.css", "/assets/site.js", "/assets/consent.js", "/assets/analytics.js"]) {
-    assert.ok(headers.includes(`${asset}\n  Cache-Control: public, max-age=31536000, immutable`), asset);
+    assert.ok(headers.includes(`${asset}\n  Cache-Control: public, max-age=0, must-revalidate`), asset);
+    assert.equal(headers.includes(`${asset}\n  Cache-Control: public, max-age=31536000, immutable`), false, asset);
   }
+  assert.ok(headers.includes('/assets/cache/*\n  Cache-Control: public, max-age=31536000, immutable'));
+  assert.ok(headers.includes('/assets/images/*\n  Cache-Control: public, max-age=0, must-revalidate'));
 });
 
 // 2026-08-18: sticky-cta-follow.json joins the pinned set. It is the receipt of

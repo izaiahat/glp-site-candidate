@@ -1,8 +1,11 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3890,
+  "tracked_file_count": 3893,
   "files": [
+    "src/asset-cache-versioning.mjs",
+    "tests/asset-cache-versioning.test.mjs",
+    ".github/workflows/asset-cache-contracts.yml",
     ".gitleaksignore",
     "tests/browser/quiz-consent-management.spec.mjs",
     "scripts/bind-care-fastpath-contract.mjs",

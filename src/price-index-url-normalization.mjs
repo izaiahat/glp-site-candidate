@@ -69,7 +69,8 @@ function splitBoundUrl(value, hasBase) {
 function versionedUrl(parts, role) {
   const {origin,pathname,query,fragment}=parts;
   const analytics=role==='script' && /^\/assets\/analytics(?:\.[a-f0-9]{16})?\.js$/.test(pathname);
-  if(!analytics && !(role==='script'?PRICE_INDEX_URL_CONTRACT.scripts:PRICE_INDEX_URL_CONTRACT.stylesheets).includes(pathname))return null;
+  const contentStylesheet=role==='stylesheet' && /^\/assets\/cache\/site\.[a-f0-9]{16}\.css$/.test(pathname);
+  if(!analytics && !contentStylesheet && !(role==='script'?PRICE_INDEX_URL_CONTRACT.scripts:PRICE_INDEX_URL_CONTRACT.stylesheets).includes(pathname))return null;
   if(/&(?!amp;)[A-Za-z]+;/.test(query))return null;
   const segments=query?query.slice(1).split(/(&amp;|&)/):[];
   const params=segments.filter((_,i)=>i%2===0).map(s=>s.split('='));
@@ -80,7 +81,7 @@ function versionedUrl(parts, role) {
   if(versions.length!==1)return null;
   // Extra-query analytics forms preserve the filename (no cross-form equivalence).
   const updated=segments.map((s,i)=>i%2===0&&s.startsWith('v=')?'v=ASSET_VERSION':s).join('');
-  return `${origin}${pathname}?${updated}${fragment}`;
+  return `${origin}${contentStylesheet ? '/assets/site.css' : pathname}?${updated}${fragment}`;
 }
 
 export function normalizePriceIndexUrls(html) {
