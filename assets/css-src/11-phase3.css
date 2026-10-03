@@ -4929,7 +4929,7 @@ main.guide-shell .p3-article-faq .gcs-kicker {
 .p3-page.listing [data-sponsor-preview-filters] > [data-sponsor-preview-more-filters] { flex: 1 1 150px; }
 .p3-page.listing [data-sponsor-preview-filters] > [data-sponsor-preview-more-filters] > summary { min-height: 44px; padding-block: var(--space-2); }
 .p3-page.listing [data-sponsor-preview-filters] > [data-sponsor-preview-more-filters][open] { flex-basis: 100%; }
-.p3-page.listing > aside[data-sponsored-placement] { margin-top: var(--space-3); margin-bottom: var(--space-5); }
+.p3-page.listing > aside[data-sponsored-placement] { row-gap: var(--space-2); margin-top: var(--space-3); margin-bottom: var(--space-5); }
 .p3-page.listing > aside[data-sponsored-placement] > .p3-hero-actions > .cs-btn { margin-top: 0; }
 .p3-page.listing > aside[data-sponsored-placement] .provider-logo.provider-logo--wordmark { width: 96px; min-width: 96px; height: 44px; min-height: 44px; }
 .p3-page.listing [data-sponsor-preview-results-lead] { display: grid; gap: var(--space-4); margin: 0 0 var(--space-5); }
