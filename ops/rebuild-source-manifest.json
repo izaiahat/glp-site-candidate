@@ -1,0 +1,43 @@
+{
+  "description": "GLP327 sponsor-copy source subset in the site mirror; not a complete release manifest or runtime deployment receipt.",
+  "files": {
+    "src/paid-promo.mjs": {
+      "kind": "site_source",
+      "callers": [
+        "scripts/build-staging.mjs",
+        "scripts/render-paid-promo.mjs"
+      ],
+      "sha256": "cb1be87a0e1ca7352347e290aad6ce27f487e8db2863a9ee13e69f5f987171d6"
+    },
+    "src/sponsor-placement-candidate.mjs": {
+      "kind": "site_source",
+      "callers": [
+        "src/phase3-page-graph.mjs",
+        "src/paid-promo.mjs"
+      ],
+      "sha256": "095a5f8225a489805ff97997ebfa981879dfc069a2956891464e8ca14dddc226"
+    },
+    "tests/paid-promo.test.mjs": {
+      "kind": "test",
+      "callers": [
+        "node --test"
+      ],
+      "sha256": "fe4fec918136436f220b622e67524f04ae5890c07c5d0d0f7fe1c7f70cc3293d"
+    },
+    "tests/sponsor-placement-candidate.test.mjs": {
+      "kind": "test",
+      "callers": [
+        "node --test"
+      ],
+      "sha256": "9c5ef02d5701e47532acf3a72a26bad1ed7367fa696432fa0e8d92710864cd93"
+    },
+    "tests/glp327-sponsor-layouts.test.mjs": {
+      "kind": "test",
+      "callers": [
+        "node --test"
+      ],
+      "sha256": "ce597ae6e0615206b76c57bfe7b1483c43aa52929d640d7776007e3159b5c0d3"
+    }
+  },
+  "tracked_count": 6
+}

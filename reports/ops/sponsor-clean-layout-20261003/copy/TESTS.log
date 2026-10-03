@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: site-p3.css is assembled from the layers this test checks
+ok 1 - site-p3.css is assembled from the layers this test checks
+  ---
+  duration_ms: 1.159022
+  type: 'test'
+  ...
+# Subtest: rate card: no standalone styling or new colour values
+ok 2 - rate card: no standalone styling or new colour values
+  ---
+  duration_ms: 0.570864
+  type: 'test'
+  ...
+# Subtest: rate card: every class is an existing shared site component
+ok 3 - rate card: every class is an existing shared site component
+  ---
+  duration_ms: 2.164699
+  type: 'test'
+  ...
+# Subtest: /providers/ panel: no standalone styling or new colour values
+ok 4 - /providers/ panel: no standalone styling or new colour values
+  ---
+  duration_ms: 0.170026
+  type: 'test'
+  ...
+# Subtest: /providers/ panel: every class is an existing shared site component
+ok 5 - /providers/ panel: every class is an existing shared site component
+  ---
+  duration_ms: 0.424453
+  type: 'test'
+  ...
+# Subtest: paid promo: no standalone styling or new colour values
+ok 6 - paid promo: no standalone styling or new colour values
+  ---
+  duration_ms: 0.142548
+  type: 'test'
+  ...
+# Subtest: paid promo: every class is an existing shared site component
+ok 7 - paid promo: every class is an existing shared site component
+  ---
+  duration_ms: 0.54782
+  type: 'test'
+  ...
+# Subtest: sponsor pages go through the site document renderer and shared shell with site-p3.css
+ok 8 - sponsor pages go through the site document renderer and shared shell with site-p3.css
+  ---
+  duration_ms: 4.171888
+  type: 'test'
+  ...
+# Subtest: GLP-327 composition CSS lives in the shared source, scoped to sponsor hooks and built from shared tokens
+ok 9 - GLP-327 composition CSS lives in the shared source, scoped to sponsor hooks and built from shared tokens
+  ---
+  duration_ms: 27.689389
+  type: 'test'
+  ...
+# Subtest: rate card: a short title, then price, terms, both deliverables, renewal, booking CTA and no-paid-ranking disclosure before any secondary terms
+ok 10 - rate card: a short title, then price, terms, both deliverables, renewal, booking CTA and no-paid-ranking disclosure before any secondary terms
+  ---
+  duration_ms: 3.749185
+  type: 'test'
+  ...
+# Subtest: paid promo: one provider identity, concise paid intro, primary action and ad disclosure lead; fact slots never carry facts
+ok 11 - paid promo: one provider identity, concise paid intro, primary action and ad disclosure lead; fact slots never carry facts
+  ---
+  duration_ms: 1.137371
+  type: 'test'
+  ...
+# Subtest: /providers/ preview: compact intro and collapsed extended filters put the slot before independent results; records, order and disclosures unchanged
+ok 12 - /providers/ preview: compact intro and collapsed extended filters put the slot before independent results; records, order and disclosures unchanged
+  ---
+  duration_ms: 844.434976
+  type: 'test'
+  ...
+# Subtest: clutter regression: one closed filter row and genuinely early commercial actions, not merely below 844px
+ok 13 - clutter regression: one closed filter row and genuinely early commercial actions, not merely below 844px
+  ---
+  duration_ms: 0.661008
+  type: 'test'
+  ...
+# Subtest: committed captures prove the fold, h1 limits and overflow for all six frames
+ok 14 - committed captures prove the fold, h1 limits and overflow for all six frames
+  ---
+  duration_ms: 2.263586
+  type: 'test'
+  ...
+# Subtest: plain sponsor copy keeps disclosures next to the decision and link
+ok 15 - plain sponsor copy keeps disclosures next to the decision and link
+  ---
+  duration_ms: 2.947563
+  type: 'test'
+  ...
+# Subtest: preview discloses sponsorship and never contains a live advertiser CTA
+ok 16 - preview discloses sponsorship and never contains a live advertiser CTA
+  ---
+  duration_ms: 0.469648
+  type: 'test'
+  ...
+# Subtest: live page fails closed without readiness and preserves rel sponsorship
+ok 17 - live page fails closed without readiness and preserves rel sponsorship
+  ---
+  duration_ms: 0.950173
+  type: 'test'
+  ...
+# Subtest: rate card preserves material prices, renewal, delivery and refund terms
+ok 18 - rate card preserves material prices, renewal, delivery and refund terms
+  ---
+  duration_ms: 2.834976
+  type: 'test'
+  ...
+# Subtest: /providers/ panel is a neutral example, not a client or program claim
+ok 19 - /providers/ panel is a neutral example, not a client or program claim
+  ---
+  duration_ms: 0.882839
+  type: 'test'
+  ...
+# Subtest: nonproduction /providers/ slot is opt-in and separate from organic results
+ok 20 - nonproduction /providers/ slot is opt-in and separate from organic results
+  ---
+  duration_ms: 1.78141
+  type: 'test'
+  ...
+# Subtest: sponsor pages are built only behind the preview switch, noindex, through the shared shell
+ok 21 - sponsor pages are built only behind the preview switch, noindex, through the shared shell
+  ---
+  duration_ms: 0.633715
+  type: 'test'
+  ...
+# Subtest: /providers/ captures finalize copy tokens through the build's registry-derived count path
+ok 22 - /providers/ captures finalize copy tokens through the build's registry-derived count path
+  ---
+  duration_ms: 1040.723281
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1435.667988
