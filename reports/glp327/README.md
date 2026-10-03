@@ -1,32 +1,56 @@
-# GLP-327 · sponsor rate card and placement examples, rebuilt in the site design system
+# GLP-327 · sponsor rate card, paid promo template and /providers/ Sponsored slot
 
-The operator rejected the earlier hand-built standalone HTML (own `<style>`, own palette, no site shell). All three surfaces are now **site pages**: rendered by the Phase 3 `pageDocument()` renderer, wrapped by the build's shared shell (`addSharedRuntime`: header, drawer, pre-footer, footer, fonts, consent/analytics runtime) and styled only by the shared `site-p3.css` bundle — the same bundle provider pages load. No surface emits a `<style>` block, inline style or colour value.
+All three surfaces are **site pages**: rendered by the Phase 3 `pageDocument()` renderer, wrapped by the build's shared shell (`addSharedRuntime`: header, drawer, pre-footer, footer, fonts, consent/analytics runtime) and styled by the shared `site-p3.css` bundle that provider pages load. They are built from existing components (`p3-rail-card--cta`, `cs-card`, `cs-btn`, `p3-chip`, `cs-price`, `cs-details`, `p3-detail-grid`, `p3-source-disclosure`, `provider-logo`). No surface emits a `<style>` block, inline style or colour value.
 
-| Surface | Route | Renderer | Components reused |
-| --- | --- | --- | --- |
-| Rate card | `/sponsors/rates/` (noindex) | `renderRateCard()` in `src/paid-promo.mjs` | breadcrumbs, `p3-index-hero`, `gcs-kicker`, `lede`, `p3-plans`/`p3-plan-grid`/`p3-plan-card`/`p3-plan-pill`, `cs-price cs-price--xl`, `p3-detail-grid`, `p3-source-disclosure` |
-| Sponsored panel | `/providers/`, after filters and before `#provider-results` | `renderSponsorPlacementCandidate()` → `renderSponsoredPanel()` in `src/sponsor-placement-candidate.mjs` | `p3-rail-card p3-rail-card--cta` (the provider rail CTA card), `p3-chip p3-chip--status` ("Sponsored"), wordmark `provider-logo`, `cs-btn cs-palette-action`, `p3-rail-note` |
-| Paid promo template | `/sponsors/{provider}/` (noindex), example `/sponsors/example-provider/` | `renderPromo()` in `src/paid-promo.mjs` | provider-detail layout: breadcrumbs, back link, `p3-index-hero` + provider identity, `p3-detail-layout`/`p3-detail-main`/`p3-detail-rail` with the same Sponsored panel in the rail |
+**Layout rework (operator rejection 2026-10-03).** The earlier pages matched the theme but wasted the first screen on giant headings and buried price, offer and CTA. Composition now lives in the shared CSS source: one block in `assets/css-src/11-phase3.css`, compiled into `site-p3.css` by the build's `assemble:css`. It is scoped to `data-sponsor-*` hooks that only the sponsor renderers emit. It uses grid, flex, spacing and type scale from the shared tokens, with no colour literals, font-family, visibility, opacity, shadow or animation declarations. `tests/glp327-sponsor-design-system.test.mjs` enforces that contract.
 
-The only CSS change is one spacing rule in the shared source `assets/css-src/11-phase3.css` (`.p3-page > [data-sponsored-placement] { margin-bottom: clamp(24px, 4vw, 42px); }`), because `.listing-results` resets the results section's top margin. It has no colour; `npm run build` (`assemble:css`) compiles it into `site-p3.css`. Generated bundles are not committed in this PR.
+| Surface | Route | First viewport (390x844 and 1440x1000) |
+| --- | --- | --- |
+| Rate card | `/sponsors/rates/` (noindex) | Short title ("Sponsor placements") and one-line explainer. Then one offer card: Initial 30-day pilot, **$200**, "$100 setup + $100 placement and reporting", the two labelled deliverables (directory placement, sponsor page), the $100 same-scope renewal with no automatic renewal, a **Discuss a placement** `mailto:partners@glpclinicscout.com` CTA, and the no-paid-ranking disclosure. On desktop the native Sponsored-panel example sits beside it. |
+| Paid promo template | `/sponsors/{provider}/` (noindex), example `/sponsors/example-provider/` | One lead card: Sponsored label, a single provider identity, the concise paid intro, the primary provider-information button (disabled in preview) and the ad/independence disclosure. A "Program at a glance" card shows the four slots an approved provider brief fills (summary, published price, eligibility/states, current offer). In preview each slot says it is reserved; no fact is supplied. |
+| Sponsored panel | `/providers/`, after the filters and before `#provider-results` | Sponsored label, identity and primary CTA within the first 844px on mobile; to the right of the copy on desktop. |
 
-**Gating.** Everything stays off by default. Only the explicit local build switch `GLP327_SPONSOR_PLACEMENT_PREVIEW=1` renders the `/providers/` panel and writes `sponsors/rates/` and `sponsors/example-provider/`. These pages are `noindex,nofollow,noarchive,nosnippet`, are absent from navigation, the sitemap and the search index, and the panel never enters, reorders or counts toward the results grid, ItemList schema or filters. The preview CTA is a disabled button; there is no destination or affiliate link. A live `/sponsors/{slug}/` page renders only through `renderPromo(order, { preview: false })`, which fails closed without operator, creative, payment, eligibility and inventory approval, a US provider, `held: false`, an https destination and an active 720-hour term, and always rejects Fella Health. That switch is not deploy, sale or booking approval.
+Below the fold, the rate card keeps every approved term:
+- remaining pilot items, renewal reporting and the "no guarantee" line;
+- booking, payment, tax and refund terms, which stay visible;
+- the audience and reporting note, as the only accordion.
+
+The promo continues with the "What to check" checklist, the independent comparison path and the publisher disclaimer. Sponsor pages end in a partner pre-footer ("Questions about a placement? Email partners@glpclinicscout.com."). They do not end in the reader price-alert band; the shared site footer is unchanged.
+
+**Email aliases.** Per the operator (2026-10-03), the PayPal remittance address (`ops@`) goes only in the order email. The public rate page says "PayPal payment details are supplied after a confirmed order. Contact: partners@glpclinicscout.com." Both sponsor pages pass the repo's `validate:email-aliases` audit (`auditPage`), which the capture runs on the exact captured bytes and fails on any finding.
+
+## /providers/ preview composition
+
+The composition applies only with `GLP327_SPONSOR_PLACEMENT_PREVIEW=1`. With the switch off, the `/providers/` listing renders the original composition byte for byte. The full shell output is identical apart from the shared `?v=` asset hash, which changes because `site-p3.css` gained the GLP-327 block.
+
+With the switch on, the same markup is reordered and compacted:
+1. **Intro.** Heading, prices-checked date, support line with the live count, and the commission disclosure, all compacted. The two state controls share one row.
+2. **Filter bar.** Search, sort and state stay visible. Medication, form, plan, longer plan and dose are the same chip groups and runtime hooks, placed behind a native `<details>` labelled "More filters". The filter runtime still applies them (smoke-tested: Tirzepatide + Search narrows 50 to 45 records).
+3. **Sponsored panel.**
+4. **Moved organic intro pieces.** The registry-scope note ("We track 57 providers…") and the organic first-card preview, unchanged, now directly above the results.
+5. **Results.** The independent results section, source disclosure and runtime, byte-identical to the switch-off render.
+
+No organic record, order, count, schema or disclosure is removed or changed. `tests/glp327-sponsor-layouts.test.mjs` asserts each of these.
 
 ## Captures
 
-`scripts/glp327-capture.mjs` captures desktop (1440px) and mobile (390px) PNGs of the three surfaces with an unauthenticated Chromium that blocks every non-local request, and records geometry/contract checks in `captures/CAPTURE.json` (site shell and `site-p3.css` loaded, exactly one Sponsored-labelled panel where expected, panel after filters / before and outside `#provider-results`, noindex, no horizontal overflow, no excluded provider name).
+`scripts/glp327-capture.mjs` loads each surface at 1440x1000 and 390x844 in unauthenticated Chromium, blocks every non-local request, and writes:
+- **`*-viewport.png`:** the unscrolled first viewport, accordions collapsed, exactly as rendered.
+- **`*-full.png`** (sponsor pages): the full page, with the secondary-terms accordion expanded for use as an attachment reference.
+- **`providers-sponsored-panel-*-page-through-first-results.png`:** `/providers/` renders every organic record and is about 74,000px tall on mobile. Its page image is top-anchored and ends after the first row of independent results. `--providers-full-page` writes the unbounded page.
+
+`CAPTURE.json` records, per frame:
+- the fold rects of the required elements, which must be fully inside the unscrolled viewport and not covered (checked with `elementFromPoint`);
+- `h1` font sizes, with limits of ≤48px desktop and ≤32px mobile;
+- horizontal overflow, noindex, the sponsor pre-footer and the directory controls;
+- the Axe WCAG A/AA serious/critical result, which must be zero;
+- external requests and the email-alias gate.
 
 ```sh
-GLP327_SPONSOR_PLACEMENT_PREVIEW=1 npm run build
-node scripts/glp327-capture.mjs            # from built public/
+GLP327_SPONSOR_PLACEMENT_PREVIEW=1 npm run build && node scripts/glp327-capture.mjs   # from built public/
+npm run assemble:css && node scripts/glp327-capture.mjs --scoped                       # mirror without host inputs
 ```
 
-**Captures in this PR were made with `--scoped`**, because the registered build cannot finish in this mirror: after imagery and CSS assembly, `build-staging.mjs` stops at `pricing_coverage_deployed_baseline:unreadable_or_malformed` (the host-only deployed release pointer under `/home/ubuntu/business/...` is absent; nothing was fabricated). `--scoped` first requires `npm run assemble:css` (the build's own CSS step), then renders the same routes with the same calls the build makes (`renderConfiguredListing` → `upgradePhase3PageVisuals` → `addSharedRuntime`; `renderRateCard`/`renderPromo` → `addSharedRuntime`). Copy tokens go through the build's own count finalization: `deriveLiveProviders()` (the identity-deduped live-merchant tally `main()` derives from `data/program-registry.json` and the projected content ledger) feeds `resolveDerivedCounts()`, which substitutes `{{LIVE_PROVIDER_COUNT}}` and runs the `assertTalliesDerived` gate on `providers/index.html`. No count is typed anywhere; `CAPTURE.json` records the derived value and fails any frame with an unresolved `{{TOKEN}}`. Other write-time finalizers are not applied. The `/providers/` frame is clipped after the first row of organic cards. Organic card order and content are whatever the repo data renders; they are not changed by this PR.
+**Captures in this PR were made with `--scoped`.** The registered build cannot finish in this mirror: `build-staging.mjs` stops at `pricing_coverage_deployed_baseline:unreadable_or_malformed` because the host-only deployed release pointer is absent, and nothing was fabricated. `--scoped` renders the same routes with the same calls the build makes: `renderConfiguredListing` → `upgradePhase3PageVisuals` → `addSharedRuntime` for `/providers/`, and `renderRateCard`/`renderPromo` → `addSharedRuntime` for the sponsor pages. It finalizes count tokens through `deriveLiveProviders()` → `resolveDerivedCounts()` (with the `assertTalliesDerived` gate) and serves the CSS assembled from the shared source. The build's other write-time finalizers are not applied. Host build verification is the parent's.
 
-| Surface | Desktop 1440 | Mobile 390 |
-| --- | --- | --- |
-| Rate card | `captures/rate-card-desktop-1440.png` | `captures/rate-card-mobile-390.png` |
-| `/providers/` Sponsored panel | `captures/providers-sponsored-panel-desktop-1440.png` | `captures/providers-sponsored-panel-mobile-390.png` |
-| Paid promo page | `captures/paid-promo-desktop-1440.png` | `captures/paid-promo-mobile-390.png` |
-
-No deployment, sponsor communication, real provider creative or affiliate link is part of this PR. Prices, terms and copy are the operator-approved GLP-327 copy; sponsorship remains subject to final operator approval.
+Nothing is deployed or sold, and no sponsor or email was contacted or sent. The panel and promo page stay off by default, noindex, and unlinked from navigation, the sitemap and the search index.

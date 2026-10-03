@@ -61,10 +61,31 @@ test("sponsor pages go through the site document renderer and shared shell with 
   }
 });
 
-test("the only GLP-327 CSS addition is panel spacing in the shared source, with no colour", () => {
+// The earlier "single spacing rule" assertion was a placeholder constraint;
+// the operator's 2026-10-03 layout rework needs real composition CSS. This is
+// the safety contract for it: shared source only, scoped to sponsor hooks,
+// shared tokens only, and nothing that can recolour, hide or restyle type.
+test("GLP-327 composition CSS lives in the shared source, scoped to sponsor hooks and built from shared tokens", () => {
   const phase3 = css("11-phase3.css");
-  const rules = phase3.match(/[^{}]*data-sponsored-placement[^{}]*\{[^}]*\}/g) || [];
-  assert.equal(rules.length, 1);
-  assert.match(rules[0], /\{\s*margin-bottom:\s*clamp\([^)]*\);\s*\}/);
-  assert.doesNotMatch(rules[0].replace(/\/\*[\s\S]*?\*\//g, ""), COLOUR);
+  const marker = "/* GLP-327 sponsor surfaces";
+  assert.equal(phase3.split(marker).length, 2, "one GLP-327 block in 11-phase3.css");
+  const block = phase3.slice(phase3.indexOf(marker)).replace(/\/\*[\s\S]*?\*\//g, "");
+  const otherLayers = SITE_P3_LAYERS.filter((file) => file !== "11-phase3.css").map(css).join("\n");
+  assert.ok(!otherLayers.includes("data-sponsor"), "no sponsor rules outside the GLP-327 block");
+  const rules = [...block.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(([, selector, body]) => ({ selector: selector.replace(/@media[^{]*$/, "").trim(), body }));
+  assert.ok(rules.length >= 10);
+  for (const { selector, body } of rules) {
+    for (const part of selector.split(/,(?![^(]*\))/)) assert.match(part, /\[data-sponsor(?:ed-placement|-[a-z-]+)\]/, `unscoped selector: ${part.trim()}`);
+    assert.doesNotMatch(body, COLOUR, `colour literal in ${selector}`);
+    assert.doesNotMatch(body, /!important|font-family|opacity|filter|mix-blend|visibility|display:\s*none|text-shadow|box-shadow|background|animation|transition/i, `non-composition declaration in ${selector}`);
+    for (const [, prop, value] of body.matchAll(/([a-z-]+)\s*:\s*([^;]+)/g)) {
+      if (/(^|-)color$/.test(prop) || prop === "border" || prop.startsWith("border-") && !/radius|width|style/.test(prop)) {
+        assert.match(value, /var\(--[a-z0-9-]+\)/, `${prop} must use a shared token in ${selector}`);
+      }
+      if (prop === "content") assert.equal(value.trim(), '" "');
+    }
+  }
+  for (const [, token] of block.matchAll(/var\((--[a-z0-9-]+)\)/g)) {
+    assert.ok(new RegExp(`${token}\\s*:`).test(otherLayers + phase3.slice(0, phase3.indexOf(marker))), `${token} is not a shared token`);
+  }
 });

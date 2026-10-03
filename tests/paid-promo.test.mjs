@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {renderPromo,renderRateCard,SPONSOR_ROBOTS} from '../src/paid-promo.mjs';
 import {renderSponsorPlacementCandidate} from '../src/sponsor-placement-candidate.mjs';
+import {auditPage} from '../scripts/validate-public-email-aliases.mjs';
+import {readFileSync} from 'node:fs';
 
 test('preview discloses sponsorship and never contains a live advertiser CTA',()=>{
  const html=renderPromo({provider:'Example <script>alert(1)</script>'});
@@ -22,9 +24,15 @@ test('live page fails closed without readiness and preserves rel sponsorship',()
 });
 test('rate card carries the approved prices, terms and disclaimers verbatim',()=>{
  const card=renderRateCard();
- for(const text of ['US-provider sponsorship','Visibility without buying a ranking.','Introduce your program in clearly labeled paid inventory on an independent GLP-1 provider comparison site.','Initial 30-day pilot','$200','$100 setup + $100 placement and reporting','720 consecutive hours from verified activation','Same-scope renewal','$100','Another 30 days, by affirmative order only.','No automatic renewal or recurring charge.','No traffic, leads, sales or SEO guarantee. Subject to available inventory and final review.','Sponsored placements never change our independent rankings.','No paid top rank, editorial score, favorable review or paid SEO backlink.','Unknown is not zero. Site visits are not ad impressions.','No patient information or health-derived audience is shared.','PayPal remittance: ops@glpclinicscout.com.','Full refund if no conforming placement launches; refund or mutually agreed equivalent extension for undelivered time.','GLP Clinic Scout is an independent comparison publisher, not a clinic, pharmacy or medical provider. This page is not medical advice.'])
+ for(const text of ['US-provider sponsorship','Visibility without buying a ranking.','Introduce your program in clearly labeled paid inventory on an independent GLP-1 provider comparison site.','Initial 30-day pilot','$200','$100 setup + $100 placement and reporting','720 consecutive hours from verified activation','Same-scope renewal','$100','Another 30 days, by affirmative order only.','No automatic renewal or recurring charge.','No traffic, leads, sales or SEO guarantee. Subject to available inventory and final review.','Sponsored placements never change our independent rankings.','No paid top rank, editorial score, favorable review or paid SEO backlink.','Unknown is not zero. Site visits are not ad impressions.','No patient information or health-derived audience is shared.','PayPal payment details are supplied after a confirmed order.','Full refund if no conforming placement launches; refund or mutually agreed equivalent extension for undelivered time.','GLP Clinic Scout is an independent comparison publisher, not a clinic, pharmacy or medical provider. This page is not medical advice.'])
   assert.ok(card.includes(text.replaceAll('&','&amp;').replace('/providers/','<strong>/providers/</strong>')),text);
  assert.match(card,/noindex/);
+ // Operator 2026-10-03: the ops@ remittance address goes in the order email only;
+ // the public page publishes the partner alias and passes validate:email-aliases.
+ assert.doesNotMatch(card,/ops@/);
+ assert.match(card,/mailto:partners@glpclinicscout\.com/);
+ const map=JSON.parse(readFileSync(new URL('../data/email-alias-map.json',import.meta.url),'utf8'));
+ for(const [route,html] of [['/sponsors/rates/',card],['/sponsors/example-provider/',renderPromo()]]) assert.deepEqual(auditPage(map,route,html).violations,[],route);
 });
 test('/providers/ panel uses the approved example copy and no real provider or claims',()=>{
  const panel=renderSponsorPlacementCandidate('/providers/',{preview:true});

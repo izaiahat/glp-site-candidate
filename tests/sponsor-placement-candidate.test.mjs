@@ -14,7 +14,11 @@ test("nonproduction /providers/ slot is opt-in and separate from organic results
   assert.match(section, /<span class="p3-chip p3-chip--status">Sponsored<\/span>/);
   assert.match(section, /Payment buys advertising space, not a recommendation or rank/);
   assert.doesNotMatch(section, /<a\b|href=|data-phase3-provider|data-program=|data-rank=|ItemList|\$\d+/);
-  assert.match(graph, /<\/header>\$\{filterControls\}\$\{renderSponsorPlacementCandidate\(route, \{ preview: process\.env\.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1" \}\)\}\$\{panel\}<section id="provider-results"/);
+  // Switch on: the preview composition. Switch off: the original composition.
+  assert.match(graph, /const sponsorSlot = renderSponsorPlacementCandidate\(route, \{ preview: process\.env\.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1" \}\);/);
+  assert.match(graph, /\? `<header class="\$\{introClass\}" data-sponsor-preview-intro>\$\{introHead\}\$\{leadDisclosure\}<\/header>\$\{filterControls\}\$\{sponsorSlot\}<div data-sponsor-preview-results-lead>\$\{registryScope\}\$\{atfPreview\}<\/div>\$\{panel\}\$\{results\}`/);
+  assert.match(graph, /: `<header class="\$\{introClass\}">\$\{introHead\}\$\{registryScope\}\$\{leadDisclosure\}\$\{atfPreview\}<\/header>\$\{filterControls\}\$\{panel\}\$\{results\}`;/);
+  assert.match(graph, /controls = providerHubControls\(providers, doseCapture, \{ compact: sponsorPreviewActive\(route\) \}\);/);
   assert.match(graph, /providers\.sort\(\(a, b\) => price\(a\) - price\(b\)/);
 });
 test("sponsor pages are built only behind the preview switch, noindex, through the shared shell", () => {
