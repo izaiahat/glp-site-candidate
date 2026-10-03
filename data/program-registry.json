@@ -388,7 +388,17 @@
       },
       "program_id": "try-ageless",
       "review_path": "/reviews/try-ageless/",
-      "source_kind": "money"
+      "source_kind": "money",
+      "affiliate_relationship_snapshot": {
+        "network": "katalys",
+        "network_program_id": "1538",
+        "sheet_row": 94,
+        "relationship_status": "paused_network_program_paused",
+        "source_checked_at": "2026-09-14T22:50:03Z",
+        "promotion_denied": true,
+        "lifecycle": "paused",
+        "reported_information": true
+      }
     },
     {
       "commercial_state": "live",
@@ -538,7 +548,17 @@
       },
       "program_id": "mademed",
       "review_path": "/reviews/mademed/",
-      "source_kind": "fastpath"
+      "source_kind": "fastpath",
+      "affiliate_relationship_snapshot": {
+        "network": "katalys",
+        "network_program_id": "1536",
+        "sheet_row": 92,
+        "relationship_status": "approved_active_wired_live",
+        "source_checked_at": "2026-08-06",
+        "promotion_denied": false,
+        "lifecycle": "reported",
+        "reported_information": true
+      }
     },
     {
       "commercial_state": "held",
@@ -606,7 +626,17 @@
         "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
       },
       "review_path": "/reviews/telos-rx/",
-      "source_kind": "fastpath"
+      "source_kind": "fastpath",
+      "affiliate_relationship_snapshot": {
+        "network": "katalys",
+        "network_program_id": "1612",
+        "sheet_row": 93,
+        "relationship_status": "paused_network_program_paused",
+        "source_checked_at": "2026-09-01T14:26:58Z",
+        "promotion_denied": true,
+        "lifecycle": "paused",
+        "reported_information": true
+      }
     },
     {
       "commercial_state": "live",
@@ -721,7 +751,17 @@
       },
       "program_id": "strut-health",
       "review_path": "/reviews/strut-health/",
-      "source_kind": "fastpath"
+      "source_kind": "fastpath",
+      "affiliate_relationship_snapshot": {
+        "network": "katalys",
+        "network_program_id": "384",
+        "sheet_row": 127,
+        "relationship_status": "approved_active_wired_live",
+        "source_checked_at": "2026-08-06",
+        "promotion_denied": false,
+        "lifecycle": "reported",
+        "reported_information": true
+      }
     },
     {
       "commercial_state": "live",
