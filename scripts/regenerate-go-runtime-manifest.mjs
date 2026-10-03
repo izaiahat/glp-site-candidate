@@ -8,8 +8,9 @@ import { goCommercialLabels } from "../src/go-commercial-labels.mjs";
 import { manifestJsonText, renderGoRuntimeManifestModule, assertCurrentHoldGoSuccessor } from "../src/go-runtime-manifest.mjs";
 const holdsOnly = process.argv.includes('--current-holds-only');
 
+import { effectiveAffiliateRegistry } from '../src/affiliate-relationship-sync.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const registry = JSON.parse(await readFile(path.join(ROOT, "data", "program-registry.json"), "utf8"));
+const registry = effectiveAffiliateRegistry(JSON.parse(await readFile(path.join(ROOT, "data", "program-registry.json"), "utf8")));
 const ledger = JSON.parse(await readFile(path.join(ROOT, "data", "program-content-ledger.json"), "utf8"));
 const commercialLabels = goCommercialLabels(JSON.parse(await readFile(path.join(ROOT, "data", "affiliate-held-link-manifest.json"), "utf8")));
 // GO_RUNTIME_PROMOTION_AUTHORITY_V1: missing authority means every route stays held.
@@ -33,7 +34,8 @@ const manifest = {
 if (holdsOnly) {
   const {GO_RUNTIME_MANIFEST: before} = await import('../functions/go/program-manifest.js');
   const held = new Set(Object.entries(goPromotionAuthority.programs).filter(([, row]) => row.status === 'WITHHELD').map(([id]) => id));
-  assertCurrentHoldGoSuccessor(before, manifest, held);
+  const withdrawn = new Set(registry.programs.filter(p => p.affiliate_relationship_snapshot?.lifecycle === 'withdrawn').map(p => p.program_id));
+  assertCurrentHoldGoSuccessor(before, manifest, held, withdrawn);
 }
 await writeFile(path.join(ROOT, "functions", "go", "program-manifest.js"), renderGoRuntimeManifestModule(manifest));
 if (!holdsOnly) await writeFile(path.join(ROOT, "artifacts", "ops", "worker-manifest.staging.json"), manifestJsonText(manifest));

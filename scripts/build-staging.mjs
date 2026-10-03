@@ -30,7 +30,7 @@ import { buildCostCalculatorData, renderCostCalculator } from "../src/cost-calcu
 import { costCalculatorDropdownProviders as costCalculatorDropdown } from "../src/cost-calculator.mjs";
 import { costAffiliateEmailManifest, costCalculatorAffiliateLinks, decorateCostCalculatorAffiliateSurface } from "../src/cost-calculator-affiliate.mjs";
 import { COST_AFFILIATE_EMAIL_MANIFEST } from "../src/cost-affiliate-email-manifest.generated.mjs";
-import { publicAffiliateTerms, renderAffiliateTerms } from "../src/affiliate-relationship-sync.mjs";
+import { effectiveAffiliateRegistry, historicalAffiliateRegistry, publicAffiliateTerms, renderAffiliateTerms } from "../src/affiliate-relationship-sync.mjs";
 import { assertLiveSurfaceParity, deriveGoEntriesFromRegistry, deriveReviewRoutesFromRegistry, projectMoneyPagesFromRegistry, projectQuizFromRegistry } from "../src/program-registry.mjs";
 import { applyWave2Repairs, finalizeReviewIntakeRoute } from "./wave2-repairs.mjs";
 import { applyWave2P1Surfaces } from "../src/wave2-p1-surfaces.mjs";
@@ -1543,7 +1543,8 @@ async function main() {
   execFileSync('python3', ['-B', path.join(ROOT, 'scripts/emit-tracking-allowed-hosts.py'), '--root', ROOT], { stdio: 'inherit' });
   resetTrackingAllowedHostsCache();
   retainedCarrierArticles = loadCarrierArticles(ROOT);
-  const programRegistry = await readJson("program-registry.json");
+  const rawProgramRegistry = await readJson("program-registry.json");
+  const programRegistry = effectiveAffiliateRegistry(rawProgramRegistry);
   const indexNow = validateIndexNowConfig(await readJson("indexnow.json"));
   // guides/tirzepatide-cost/index.html was carried here as preserved bytes because the
   // page had no content-batch entry to rebuild it from. Its entry was restored on
@@ -2382,7 +2383,7 @@ async function main() {
     // Authenticate the same historical view as the price-index consumer before
     // checking its frozen body. Keep current identity/authority out of this
     // price-only copy and leave programRegistry unchanged for public surfaces.
-    const priceIndexRegistryBasis = historicalPriceIndexRegistry(programRegistry);
+    const priceIndexRegistryBasis = historicalPriceIndexRegistry(historicalAffiliateRegistry(rawProgramRegistry));
     delete priceIndexRegistryBasis.therapeutic_taxonomy;
     delete priceIndexRegistryBasis.provider_dynamic_profiles;
     delete priceIndexRegistryBasis.consumer_therapeutic_authorities;
@@ -2401,7 +2402,7 @@ async function main() {
   const priceIndexInput = {
     tracker: priceTrackerConfig,
     study: originalDataStudy,
-    programRegistry,
+    programRegistry: historicalAffiliateRegistry(rawProgramRegistry),
     contentLedger: priceLedger.ledger,
     sourceHashes: {
       original_data_study_sha256: createHash("sha256").update(originalDataStudyBytes).digest("hex"),

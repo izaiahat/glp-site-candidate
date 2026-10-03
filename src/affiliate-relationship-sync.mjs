@@ -2,6 +2,31 @@
 // selects a different rail, changes patient prices or calculates earnings.
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
+export function historicalAffiliateRegistry(registry) {
+  const result = structuredClone(registry);
+  for (const p of result.programs || []) delete p.affiliate_relationship_snapshot;
+  return result;
+}
+
+export function effectiveAffiliateRegistry(registry) {
+  const result = structuredClone(registry);
+  for (const p of result.programs || []) {
+    if (p.affiliate_relationship_snapshot?.lifecycle !== 'withdrawn') continue;
+    p.commercial_state = 'held';
+    p.go = {...p.go, entry_state:'held'};
+    for (const profile of Object.values(p.profiles || {})) {
+      profile.wired = false;
+      for (const surface of ['compare','quiz','calculator','review','sitemap','go']) {
+        profile.surfaces[surface] = false;
+        (profile.exceptions ||= {})[surface] ||= {enabled:true,
+          reason:'Reported selected affiliate relationship withdrawn.',
+          surface_restriction_basis:'sole_writer_withdrawn_relationship'};
+      }
+    }
+  }
+  return result;
+}
+
 export function relationshipDenials(registry) {
   return (registry?.programs || []).filter(p => p.affiliate_relationship_snapshot?.promotion_denied === true)
     .map(p => ({program_id:p.program_id, render_id:p.review_slug || p.program_id, ...p.affiliate_relationship_snapshot}));
