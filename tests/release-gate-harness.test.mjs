@@ -7,7 +7,7 @@ import { randomBytes } from 'node:crypto';
 import { chromium } from '@playwright/test';
 import { startDenyProxy } from '../artifacts/ultracode/tools/qa-common.mjs';
 import {assertServedGoIdentity} from '../src/served-affiliate-identity.mjs';
-import { noEgress, publishedSecrets, checkAnchorMarkup, checkBrowser } from '../scripts/ci-release-gate.mjs';
+import { noEgress, publishedSecrets, checkAnchorMarkup, checkBrowser, requiredAffiliateAnchors } from '../scripts/ci-release-gate.mjs';
 
 const authority = { approved: { status: 'VERIFIED', promotion_authorized: true }, held: { status: 'WITHHELD', promotion_authorized: false } };
 const runtime = { approved: { live_link_allowed: true, promotion_authorized: true }, held: { live_link_allowed: false, promotion_authorized: false } };
@@ -56,6 +56,22 @@ test('negative: held /go is rejected even without sponsored metadata', () => {
 test('negative: missing authorized anchor fails nonempty artifact', () => {
   audit(healthy);
   assert.throws(() => audit('<h1>No provider action</h1>'), /missing_authorized_anchor:approved/);
+  // Historical ADOPT is not current permission. Explicit current denials are
+  // excluded from the positive denominator, but still fail the anchor census.
+  const selection = {programs:{approved:{program_id:'approved',render_id:'approved',status:'VERIFIED'},
+    held:{program_id:'held',render_id:'held',status:'VERIFIED'}}};
+  const required = requiredAffiliateAnchors(selection, authority);
+  assert.deepEqual(required, ['approved']);
+  for (const file of ['index.html','cards.json']) {
+    const check = text => checkAnchorMarkup([{file,text:file.endsWith('.json')?JSON.stringify([text]):text}], authority, {}, runtime, required);
+    check(healthy);
+    assert.throws(() => check('<h1>No provider action</h1>'), /missing_authorized_anchor:approved/);
+    assert.throws(() => check(healthy+'<a href="/go/held" data-program="held" rel="sponsored nofollow">bad</a>'), /held_go:held/);
+    assert.throws(() => check(healthy+'<a href="https://fixture.invalid/" data-program="held" rel="sponsored nofollow">bad</a>'), /unauthorized_anchor:held/);
+  }
+  // Missing, unknown or contradictory authority cannot silently shrink coverage.
+  for (const row of [undefined, {}, {status:'UNKNOWN'}, {status:'VERIFIED',promotion_authorized:false}, {status:'WITHHELD',promotion_authorized:true}])
+    assert.throws(() => requiredAffiliateAnchors(selection, {...authority,held:row}), /D1_selected_authority_invalid:held/);
 });
 test('negative: planted synthetic secret is rejected by real published scanner', () => {
   const dir = mkdtempSync(path.join(os.tmpdir(), 'd1-secret-negative-'));

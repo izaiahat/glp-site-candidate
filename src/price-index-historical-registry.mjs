@@ -2,6 +2,7 @@ import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {projectGoOnlyPriceBasis} from './go-price-basis.mjs';
 import {projectCoivasResearchPriceBasis} from './price-index-coivas-research-binding.mjs';
+import {historicalAffiliateRegistry} from './affiliate-relationship-sync.mjs';
 const sha = value => createHash('sha256').update(value).digest('hex');
 const canonical = value => Array.isArray(value) ? `[${value.map(canonical).join(',')}]` : value && typeof value === 'object' ? `{${Object.keys(value).sort().map(k => `${JSON.stringify(k)}:${canonical(value[k])}`).join(',')}}` : JSON.stringify(value);
 const descriptor = {path:'data/telos-held-price-basis.json',sha256:'0c8f55bfe93c0f8250f96d0e7f7ab7053e06634cd5e0e618914b8a6370f72f25'};
@@ -41,7 +42,10 @@ export function historicalPriceIndexRegistry(registry, contentLedger, readBytes 
   if (taxonomy?.price_index_registry_frozen_source_sha256 !== frozenRegistrySource
       || taxonomy?.price_index_registry_programs_semantic_basis_sha256 !== wholeHistoricalPriceBody)
     throw Error('price_index_historical_oracle_invalid');
-  const restored = projectGoOnlyPriceBasis(projectCoivasResearchPriceBasis(registry,'registry',readBytes));
+  // The registered build already excludes the non-price affiliate attachment.
+  // Apply that same copy-only boundary for every price reader (including email
+  // and repeat calls); raw commercial holds and the whole frozen SHA stay intact.
+  const restored = projectGoOnlyPriceBasis(projectCoivasResearchPriceBasis(historicalAffiliateRegistry(registry),'registry',readBytes));
   // GLP-234: the exact consumer-identity successor in program-registry.json at
   // b9266928639796c5ecd838fe3d8de8255b734873. Its first-party brand is Try Ageless
   // (https://tryageless.com/faq/, https://tryageless.com/terms/), not an AgelessRx
