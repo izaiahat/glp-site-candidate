@@ -1,8 +1,12 @@
 {
   "status": "PASS",
   "source": "scoped-render",
-  "head": "9e6a8aae30c35c982d94e7dfa35535668fbdce3f",
-  "scope": "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; build write-time finalizers not applied. Not a release build.",
+  "head": "8810d5d31d7c72623f65330f086a6225ec081c5b",
+  "scope": "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; copy tokens finalized through deriveLiveProviders + resolveDerivedCounts (with the assertTalliesDerived gate), other write-time finalizers not applied. Not a release build.",
+  "finalizedTallies": {
+    "LIVE_PROVIDER_COUNT": 57,
+    "derivation": "deriveLiveProviders(data/program-registry.json, projected data/program-content-ledger.json) -> resolveDerivedCounts"
+  },
   "checks": [
     {
       "surface": "rate-card",
@@ -28,7 +32,8 @@
         "panelAfterFilters": true,
         "panelLocalStyles": false,
         "scrollWidth": 1440,
-        "fella": false
+        "fella": false,
+        "unresolvedTokens": []
       },
       "a11y": [],
       "blockedOrigins": [],
@@ -58,7 +63,8 @@
         "panelAfterFilters": true,
         "panelLocalStyles": false,
         "scrollWidth": 390,
-        "fella": false
+        "fella": false,
+        "unresolvedTokens": []
       },
       "a11y": [],
       "blockedOrigins": [],
@@ -72,7 +78,7 @@
       "status": "PASS",
       "failures": [],
       "image": "reports/glp327/captures/providers-sponsored-panel-desktop-1440.png",
-      "imageSha256": "bec6b23d953806824260b44e6d63052aabae3075924e46d00f04706427d78790",
+      "imageSha256": "83be9281f144ec942de22fa28e07a13733f4f809156ee0a52017e13010eb979a",
       "dom": {
         "robots": "index,follow,max-image-preview:large",
         "stylesheets": [
@@ -88,7 +94,8 @@
         "panelAfterFilters": true,
         "panelLocalStyles": false,
         "scrollWidth": 1440,
-        "fella": false
+        "fella": false,
+        "unresolvedTokens": []
       },
       "a11y": [],
       "blockedOrigins": [],
@@ -102,7 +109,7 @@
       "status": "PASS",
       "failures": [],
       "image": "reports/glp327/captures/providers-sponsored-panel-mobile-390.png",
-      "imageSha256": "fff7d4504adab5cace8094e719e144ecc431932df2c1b25652505e51d9eae212",
+      "imageSha256": "f6855596c3f48e64a6426bd62edebb57299acc5dfd20c9695929660ef094bfeb",
       "dom": {
         "robots": "index,follow,max-image-preview:large",
         "stylesheets": [
@@ -118,7 +125,8 @@
         "panelAfterFilters": true,
         "panelLocalStyles": false,
         "scrollWidth": 390,
-        "fella": false
+        "fella": false,
+        "unresolvedTokens": []
       },
       "a11y": [],
       "blockedOrigins": [],
@@ -148,7 +156,8 @@
         "panelAfterFilters": true,
         "panelLocalStyles": false,
         "scrollWidth": 1440,
-        "fella": false
+        "fella": false,
+        "unresolvedTokens": []
       },
       "a11y": [],
       "blockedOrigins": [],
@@ -178,7 +187,8 @@
         "panelAfterFilters": true,
         "panelLocalStyles": false,
         "scrollWidth": 390,
-        "fella": false
+        "fella": false,
+        "unresolvedTokens": []
       },
       "a11y": [],
       "blockedOrigins": [],
