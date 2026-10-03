@@ -224,8 +224,10 @@ test("affiliate join fields and organic capture remain while remote analytics ma
 test("OAuth app bytes and security headers stay exact while versioned assets gain durable caching", async () => {
   // Preserved OAuth pages may differ only through the existing alias/legal
   // rewrites and the exact content-derived site.css URL (no reserialization).
-  const cssDigest = createHash('sha256').update(await readFile(path.join(ROOT, 'assets/site.css'))).digest('hex').slice(0,16);
-  const cssUrl = `/assets/cache/site.${cssDigest}.css`;
+  const cssBytes = await readFile(path.join(PUBLIC, 'google-ads-api/assets/site.css'));
+  const cssDigest = createHash('sha256').update(cssBytes).digest('hex').slice(0,16);
+  const cssUrl = `/assets/cache/google-ads-api/site.${cssDigest}.css`;
+  assert.deepEqual(await readFile(path.join(PUBLIC, cssUrl)), cssBytes, 'OAuth alias retains its own CSS, not the site bundle');
   const aliasMap = JSON.parse(await readFile(path.join(ROOT, "data/email-alias-map.json"), "utf8"));
   const aliasFor = (route) => aliasMap.route_purposes.find((rule) => new RegExp(rule.match).test(route)).allowed[0];
   const now = await treeHashes(path.join(PUBLIC, "google-ads-api"));
@@ -239,7 +241,7 @@ test("OAuth app bytes and security headers stay exact while versioned assets gai
     const nowText = await readFile(path.join(PUBLIC, "google-ads-api", relative), "utf8");
     const baseText = await readFile(path.join(CUMULATIVE, "google-ads-api", relative), "utf8");
     const expectedText = baseText
-      .replaceAll('/assets/site.css"', `${cssUrl}"`)
+      .replaceAll('/google-ads-api/assets/site.css"', `${cssUrl}"`)
       .replaceAll(`ops@${aliasMap.domain}`, `${alias}@${aliasMap.domain}`)
       .replace(
         "<div>A first-party application operated by Tilton Group LLC.</div><div>2108 N St, Ste N, Sacramento, CA 95816</div>",
@@ -269,7 +271,7 @@ test("OAuth app bytes and security headers stay exact while versioned assets gai
     assert.equal(html.split(cssUrl).length, 2, `${relative}: one exact current stylesheet`);
     // Reverse only the authenticated current stylesheet span; the original
     // frozen hash still rejects every other byte change, including the favicon.
-    assert.equal(createHash("sha256").update(html.replace(cssUrl, '/assets/site.css')).digest("hex"), expectedHash, relative);
+    assert.equal(createHash("sha256").update(html.replace(cssUrl, '/google-ads-api/assets/site.css')).digest("hex"), expectedHash, relative);
     const images = [...html.matchAll(/<img\b[^>]*>/gi)].map((match) => match[0]);
     const missingDimensions = images.filter((image) => !/\bwidth=/.test(image) || !/\bheight=/.test(image));
     assert.equal(images.length, 1, relative);

@@ -5,6 +5,14 @@ import path from 'node:path';
 // Extend the existing analytics content-filename convention to assembled CSS
 // and the maintained home/product derivative families. Frozen article assets
 // and their exact retained HTML are not reissued by this producer.
+export function contentAsset(url, bytes) {
+  const digest = createHash('sha256').update(bytes).digest('hex').slice(0, 16);
+  const relative = url.startsWith('/google-ads-api/')
+    ? 'google-ads-api/' + path.basename(url) : url.slice('/assets/'.length);
+  const extension = path.extname(relative);
+  return {url: `/assets/cache/${relative.slice(0, -extension.length)}.${digest}${extension}`, bytes};
+}
+
 export async function loadContentAssets(root, stylesheets) {
   const entries = stylesheets.map(name => [`/assets/${name}`, `assets/${name}`]);
   for (const name of (await readdir(path.join(root, 'assets/derivatives'))).sort()) {
@@ -12,11 +20,7 @@ export async function loadContentAssets(root, stylesheets) {
   }
   return new Map(await Promise.all(entries.map(async ([original, source]) => {
     const bytes = await readFile(path.join(root, source));
-    const digest = createHash('sha256').update(bytes).digest('hex').slice(0,16);
-    const relative = original.slice('/assets/'.length);
-    const ext = path.extname(relative);
-    const url = `/assets/cache/${relative.slice(0,-ext.length)}.${digest}${ext}`;
-    return [original, {url, bytes}];
+    return [original, contentAsset(original, bytes)];
   })));
 }
 
@@ -24,7 +28,7 @@ export function rewriteContentAssetUrls(html, assets) {
   // Quoted HTML attributes, srcset, CSS url(), and JSON-LD all use the same
   // root/canonical URL spellings. Replace exact paths only; never a foreign
   // origin, prefix match, query, clinical text, or unrelated preserved asset.
-  return html.replace(/(?<![A-Za-z0-9:/.-])(https:\/\/glpclinicscout\.com)?(\/assets\/[A-Za-z0-9_/.-]+)/g,
+  return html.replace(/(?<![A-Za-z0-9:/.-])(https:\/\/glpclinicscout\.com)?(\/(?:assets\/[A-Za-z0-9_/.-]+|google-ads-api\/assets\/site\.css))(?![A-Za-z0-9_/.-])/g,
     (whole, origin = '', original) => assets.has(original) ? origin + assets.get(original).url : whole);
 }
 

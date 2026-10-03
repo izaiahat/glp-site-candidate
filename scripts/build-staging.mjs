@@ -108,7 +108,7 @@ const ADS_LP_ROUTE_FILES = new Set(["lp/r/orderlymeds/index.html", ...PHASE3_PAI
 const WAVE4_FINALIZER_BYPASS = new Set([WAVE4_PRICE_ROUTE_FILE, PRICE_INDEX_ROUTE_FILE, WAVE4_OFFER_ROUTE_FILE, WAVE4_DATA_ROUTE_FILE, SEO_NO_CTA_ROUTE_FILE, ...ADS_LP_ROUTE_FILES]);
 const WAVE1_PUBLIC = path.resolve(ROOT, "../../releases/glp-wave1-20260725/public");
 const STYLESHEET_ASSETS = ["site.css", "site-home.css", "site-money.css", "site-review.css", "site-editorial.css", "site-tools.css", "site-trust.css", "site-p3.css"];
-import { loadContentAssets, rewriteContentAssetUrls, emitContentAssets } from '../src/asset-cache-versioning.mjs';
+import { loadContentAssets, rewriteContentAssetUrls, emitContentAssets, contentAsset } from '../src/asset-cache-versioning.mjs';
 const CONTENT_ASSETS = await loadContentAssets(ROOT, [...STYLESHEET_ASSETS, 'paid-quiz.css']);
 const ANALYTICS_ASSET_SOURCE = await readFile(path.join(ROOT, "assets", "analytics.js"));
 const ANALYTICS_ASSET_FILENAME = `analytics.${createHash("sha256").update(ANALYTICS_ASSET_SOURCE).digest("hex").slice(0, 16)}.js`;
@@ -1599,6 +1599,10 @@ async function main() {
     }
   }
   const preservedGoogleAdsApiBytes = await readDurablePredecessorTree(path.join(PUBLIC, "google-ads-api"), "google-ads-api");
+  // These five documents load their own frozen 5KB OAuth stylesheet, NOT
+  // the site's assembled bundle. Retain its exact bytes and only version its URL.
+  CONTENT_ASSETS.set('/google-ads-api/assets/site.css', contentAsset(
+    '/google-ads-api/assets/site.css', preservedGoogleAdsApiBytes.get('assets/site.css')));
   await Promise.all([
     rm(PUBLIC, { recursive: true, force: true }),
     rm(OPS, { recursive: true, force: true }),
