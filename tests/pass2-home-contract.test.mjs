@@ -12,9 +12,11 @@ test("PASS 2 home builder keeps the text wordmark and medication routes/art dist
   const home = between(source, "function renderHomePage(", "function renderHomePageLegacy(");
   assert.match(shell, /const brand = `<a class="gcs-brand"[^`]+<span>Clinic <span class="cs-grad-words">Scout/);
   assert.doesNotMatch(shell.match(/const brand = [^;]+;/)?.[0] || "", /<img/);
-  // D36 requires re-entry replay; keep the existing entrance-coverage floor.
-  assert.match(home, /\.replaceAll\('data-motion-once="true"', 'data-motion-once="false"'\)/);
-  assert.ok((home.match(/data-motion-once="true"/g) || []).length >= 16);
+  // Replay is opt-in per section. H17 is the required repeatable pair; the
+  // hero and other ordinary entrances must not be bulk-rewritten to replay.
+  assert.doesNotMatch(home, /\.replaceAll\('data-motion-once="true"', 'data-motion-once="false"'\)/);
+  assert.match(home, /cs-home2-hero__copy[^>]*data-motion="rise" data-motion-once="true"/);
+  for (const card of ['shipping', 'schedule']) assert.match(home, new RegExp(`data-h17-card="${card}"[^>]*data-motion="slide-from-(?:left|right)" data-motion-once="false"`));
   assert.doesNotMatch(home, /Tap to check/);
   // Design pass 2026-08-26 (home spec fix #7): the hero CTA routes to the
   // canonical quiz, not the compact matcher.

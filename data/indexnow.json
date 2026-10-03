@@ -1,0 +1,10 @@
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "host": "glpclinicscout.com",
+  "key": "a5d4602a52ca94d85b0d993f532fe74c",
+  "key_location": "https://glpclinicscout.com/a5d4602a52ca94d85b0d993f532fe74c.txt",
+  "notify_urls": [
+    "https://glpclinicscout.com/glp-1-price-index/"
+  ],
+  "schema": "glp-indexnow-v1"
+}

@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { governedProviderIds, governedReviewDirectoryCount, hydrateAllProviderCards } from "./governed-cohort.mjs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { isTypedPrice } from "../../src/typed-price-labels.mjs";
 
 const PROOF = "/home/ubuntu/business/reports/glp-clinic-scout/rebuild/pass5-screenshots-20260829";
 mkdirSync(PROOF, { recursive: true });
@@ -119,17 +121,58 @@ for (const viewport of VIEWPORTS) {
     evidence.surfaces.push({ route: "/compare/", pathColumns, medicationHrefs, ...check.close() });
 
     check = await open(page, "/providers/");
-    await expect(page.locator(".p3-registry-count")).toContainText("35 live canonical provider records");
-    const itemListCount = await page.locator('script[type="application/ld+json"]').evaluateAll((nodes) => {
+    // KAEL-DECISION-20260923-optionc-governing-mappings.md A2.3/A3.1:
+    // the status owns the full cohort count, while rendering batches remain 12.
+    const eligibleIds = governedProviderIds();
+    const renderedIds = (await page.locator('[data-canonical-provider-ids]').getAttribute('data-canonical-provider-ids')).split(',');
+    expect(new Set(renderedIds)).toEqual(new Set(eligibleIds));
+    expect(eligibleIds.length).toBeGreaterThan(12);
+    await expect(page.locator('[data-filter-result]')).toHaveText(`Showing ${eligibleIds.length} program cards`);
+    const itemLists = await page.locator('script[type="application/ld+json"]').evaluateAll((nodes) => {
       const documents = nodes.map((node) => { try { return JSON.parse(node.textContent); } catch { return null; } }).filter(Boolean);
       const flattened = documents.flatMap((document) => Array.isArray(document?.["@graph"]) ? document["@graph"] : [document]);
-      return flattened.find((node) => node?.["@type"] === "ItemList")?.itemListElement?.length || 0;
+      return flattened.filter((node) => node?.["@type"] === "ItemList");
     });
-    expect(itemListCount).toBe(37);
-    const loadMore = page.getByRole("button", { name: /Show 14 more providers/i });
+    expect(itemLists).toHaveLength(1);
+    const itemList = itemLists[0];
+    const itemListCount = itemList.itemListElement.length;
+    expect(itemListCount).toBe(eligibleIds.length);
+    expect(itemList.name).toBe('GLP-1 provider comparison');
+    expect(itemList.numberOfItems).toBe(eligibleIds.length);
+    // Source-derived name and full canonical URL, one-based ordered position:
+    // never validate a lossy URL slug against a card's self-reported ID alone.
+    const facts = JSON.parse(readFileSync(new URL('../../data/provider-facts-backfill-20260830.json', import.meta.url), 'utf8')).programs;
+    const registry = JSON.parse(readFileSync(new URL('../../data/program-registry.json', import.meta.url), 'utf8')).programs;
+    const byId = new Map(facts.map((row) => [row.program_id, row]));
+    const matrix = JSON.parse(readFileSync(new URL('../../data/provider-pricing-matrix.json', import.meta.url), 'utf8')).providers;
+    const sourcePrice = (id) => {
+      const record = registry.find((row) => row.program_id === id || row.review_slug === id);
+      const prices = (matrix[id]?.medications || matrix[record?.program_id]?.medications || [])
+        .filter((row) => isTypedPrice(row) || Number.isFinite(row.ongoing_usd))
+        .filter((row) => !isTypedPrice(row)).map((row) => row.ongoing_usd).filter(Number.isFinite);
+      return prices.length ? Math.min(...prices) : Infinity;
+    };
+    const orderedIds = [...eligibleIds].sort((left, right) => sourcePrice(left) - sourcePrice(right)
+      || left.localeCompare(right) || byId.get(left).display_name.localeCompare(byId.get(right).display_name));
+    const expectedItems = orderedIds.map((id, index) => {
+      const research = byId.get(id);
+      const record = registry.find((row) => row.program_id === id || row.review_slug === id);
+      expect(research, `research identity ${id}`).toBeTruthy();
+      expect(record, `registry identity ${id}`).toBeTruthy();
+      const identity = record.profiles?.['glp-clinic-scout']?.canonical_identity;
+      const canonical = identity?.role === 'alias' ? registry.find((row) => row.program_id === identity.canonical_program_id) : record;
+      expect(canonical?.review_path, `canonical review ${id}`).toMatch(/^\/reviews\/[a-z0-9-]+\/$/);
+      return { position: index + 1, item: { '@type': 'Thing', name: research.display_name, url: `https://glpclinicscout.com${canonical.review_path}` } };
+    });
+    expect(itemList.itemListElement).toEqual(expectedItems.map((row) => ({ '@type': 'ListItem', ...row })));
+    expect(orderedIds).toEqual(await page.locator('#provider-results [data-phase3-provider]').evaluateAll((nodes) => nodes.map((node) => node.dataset.program)));
+    const nextBatch = Math.min(12, eligibleIds.length - 12);
+    const loadMore = page.getByRole("button", { name: `Show ${nextBatch} more providers` });
     await expect(loadMore).toBeVisible();
     await expectTouchTargets(loadMore);
     await screenshot(page, `providers-${viewport.name}.png`);
+    const cards = await hydrateAllProviderCards(page);
+    await expect(cards.locator('[data-provider-card-contract="option-c"]')).toHaveCount(eligibleIds.length);
     evidence.surfaces.push({ route: "/providers/", itemListCount, ...check.close() });
 
     check = await open(page, "/guides/trimi-vs-yourera/");
@@ -154,7 +197,7 @@ for (const viewport of VIEWPORTS) {
     evidence.surfaces.push({ route: "/guides/trimi-vs-yourera/", tableMetrics, ...check.close() });
 
     check = await open(page, "/reviews/");
-    await expect(page.locator(".cs-revhub-card")).toHaveCount(125);
+    await expect(page.locator(".cs-revhub-card")).toHaveCount(governedReviewDirectoryCount());
     const reviewOrder = await page.evaluate(() => ({
       directory: document.querySelector(".cs-revhub-directory")?.offsetTop,
       submissionBand: document.querySelector(".cs-revhub-band")?.offsetTop,
@@ -186,7 +229,9 @@ for (const viewport of VIEWPORTS) {
     evidence.surfaces.push({ route: "/reviews/submit/", honeypotGeometry, listMetrics, ...check.close() });
 
     check = await open(page, "/tools/glp-1-cost-calculator/");
-    await page.locator("#provider").selectOption({ label: "BiltRx" });
+    const numericProvider = page.locator('#provider option[value]:not([value=""]):not([disabled])').first();
+    await expect(numericProvider).toHaveCount(1);
+    await page.locator("#provider").selectOption(await numericProvider.getAttribute("value"));
     await expect(page.locator("#medication")).toBeVisible();
     const selectStyles = await page.locator("#cost-form select:visible").evaluateAll((nodes) => nodes.map((node) => {
       const style = getComputedStyle(node);

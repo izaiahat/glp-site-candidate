@@ -1,0 +1,23 @@
+{
+  "schema": "glp-compare-facet-firecrawl-audit-summary-v1",
+  "status": "RESEARCH_COMPLETE_REQUIRES_EXACT_RECONCILIATION",
+  "firecrawl_job_id": "01a0840e-3dfc-76f6-a5e9-93c324ee574f",
+  "audited_at": "2026-09-09T02:48:58.211798",
+  "scope": "FDA/Lilly consumer-retatrutide authority only; no provider refresh",
+  "transport_note": "Legacy firecrawl_job_id field holds the actual FDA scrapeId, NOT an invented multi-page agent job. Two individual live scrape calls are listed below.",
+  "source_excerpts": {
+    "path": "reports/ops/orchestration-restore-20260907/PLAN/D2/D2f/fresh-authority/SOURCE-EXCERPTS.json",
+    "sha256": "9e6562f43387248dc42a40a4413935aeebfc9d1482e5ee8de9c09c5d5877272f"
+  },
+  "source_scrape_ids": {
+    "fda": "01a0840e-3dfc-76f6-a5e9-93c324ee574f",
+    "lilly": "01a0840e-46e4-74e8-ae64-d4ad8557f21e"
+  },
+  "retatrutide": {
+    "consumer_option_allowed": false,
+    "fda_source": "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+    "fda_finding": "Retatrutide cannot be used in compounding under federal law; it is not a component of an FDA-approved drug and has not been found safe and effective for any condition.",
+    "lilly_source": "https://www.lilly.com/news/stories/what-to-know-about-retatrutide",
+    "lilly_finding": "Retatrutide is investigational, not approved, and legally available only through Lilly-sponsored clinical trials."
+  }
+}

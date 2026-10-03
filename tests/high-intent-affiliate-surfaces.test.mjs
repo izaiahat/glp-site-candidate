@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 import { buildAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
 import { buildCostCalculatorData, renderCostCalculator } from "../src/cost-calculator.mjs";
 import { decorateCostCalculatorAffiliateSurface, costAffiliateEmailManifest } from "../src/cost-calculator-affiliate.mjs";
-import { loadGoSelection } from "../src/go-runtime-selection.mjs";
+import { loadGoSelection, loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
 
 const readJson = async (relative) => JSON.parse(await readFile(new URL(`../data/${relative}`, import.meta.url), "utf8"));
 const clone = (value) => structuredClone(value);
@@ -20,7 +20,8 @@ async function inputs() {
     readJson("program-registry.json"),
     readJson("affiliate-activation-selection.json"),
   ]);
-  return { config, money, providerPages, providerFastpath, approvedRegistry, wireApprovals, registry, selection };
+  return { config, money, providerPages, providerFastpath, approvedRegistry, wireApprovals, registry, selection,
+    promotionAuthority: loadGoPromotionAuthority() };
 }
 
 function mutateRows(money, programId, mutate) {
@@ -30,20 +31,28 @@ function mutateRows(money, programId, mutate) {
 }
 
 test("calculator and quiz share one fail-closed transparent-direct resolver", async () => {
-  const { money, registry, selection } = await inputs();
-  const calculator = buildAffiliateLinkMap(money.pages, registry, selection, "calculator");
-  const quiz = buildAffiliateLinkMap(money.pages, registry, selection, "quiz");
+  const { money, registry, selection, promotionAuthority } = await inputs();
+  const calculator = buildAffiliateLinkMap(money.pages, registry, selection, "calculator", "glp-clinic-scout", { promotionAuthority });
+  const quiz = buildAffiliateLinkMap(money.pages, registry, selection, "quiz", "glp-clinic-scout", { promotionAuthority });
+  assert.equal(buildAffiliateLinkMap(money.pages, registry, selection, "calculator")["enhance-md"].live, false,
+    "omitting sealed authority remains fail-closed");
   const liveCalculator = Object.values(calculator).filter((item) => item.live);
   const liveQuiz = Object.values(quiz).filter((item) => item.live);
 
-  // 13 -> 11 on 2026-08-17: Katalys paused Synergy Rx and Care Bare Rx GLP1, and
-  // neither may resolve to a live affiliate link on any high-intent surface.
-  // Live-surface counts are monotonic floors: activating more programs grows
-  // them; only a network pause should ever shrink them (handled below by name).
-  assert.ok(liveCalculator.length >= 11, `expected at least 11 live calculator programs, saw ${liveCalculator.length}`);
-  assert.ok(liveQuiz.length >= 11, `expected at least 11 live quiz programs, saw ${liveQuiz.length}`);
-  assert.deepEqual(new Set(liveQuiz.map((item) => item.program_id)), new Set(selection.programs.map((item) => item.program_id)));
-  for (const paused of ["synergy-rx", "care-bare-rx-glp1"]) {
+  // D3 removes the paused offer from activation while retaining its exact
+  // historical row separately; history must not be required as live selection.
+  assert.ok(selection.excluded_network_paused_programs.includes('try-ageless'));
+  assert.equal(selection.programs.some(item => item.program_id === 'try-ageless'), false);
+  const historical = selection.excluded_selection_evidence.find(item => item.program_id === 'try-ageless');
+  assert.equal(historical.disposition, 'historical_snapshot_only_not_activation_authority');
+  assert.equal(historical.network_program_id, '1538');
+  assert.equal(promotionAuthority.programs["try-ageless"]?.status, "WITHHELD");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "network_paused_katalys_offer_1538");
+  const eligibleIds = new Set(selection.programs.filter((item) => item.program_id !== "try-ageless").map((item) => item.program_id));
+  assert.equal(eligibleIds.size, 10);
+  assert.deepEqual(new Set(liveCalculator.map((item) => item.program_id)), eligibleIds);
+  assert.deepEqual(new Set(liveQuiz.map((item) => item.program_id)), eligibleIds);
+  for (const paused of ["synergy-rx", "care-bare-rx-glp1", "try-ageless"]) {
     assert.equal(liveCalculator.some((item) => item.program_id === paused), false, paused);
     assert.equal(liveQuiz.some((item) => item.program_id === paused), false, paused);
   }
@@ -54,31 +63,32 @@ test("calculator and quiz share one fail-closed transparent-direct resolver", as
 });
 
 test("calculator resolver keeps held, ineligible, malformed, and conflicting programs link-dark", async () => {
-  const { money, registry, selection } = await inputs();
+  const { money, registry, selection, promotionAuthority } = await inputs();
 
   const heldRegistry = clone(registry);
   heldRegistry.programs.find((item) => item.program_id === "enhance-md").commercial_state = "held";
-  assert.equal(buildAffiliateLinkMap(money.pages, heldRegistry, selection, "calculator")["enhance-md"].live, false);
+  assert.equal(buildAffiliateLinkMap(money.pages, heldRegistry, selection, "calculator", "glp-clinic-scout", { promotionAuthority })["enhance-md"].live, false);
 
   const ineligibleRegistry = clone(registry);
   ineligibleRegistry.programs.find((item) => item.program_id === "enhance-md").profiles["glp-clinic-scout"].surfaces.calculator = false;
-  assert.equal(buildAffiliateLinkMap(money.pages, ineligibleRegistry, selection, "calculator")["enhance-md"].live, false);
+  assert.equal(buildAffiliateLinkMap(money.pages, ineligibleRegistry, selection, "calculator", "glp-clinic-scout", { promotionAuthority })["enhance-md"].live, false);
 
   const malformedMoney = clone(money);
   mutateRows(malformedMoney, "enhance-md", (row) => { row.affiliate_href = "https://example.invalid/invented"; });
-  assert.equal(buildAffiliateLinkMap(malformedMoney.pages, registry, selection, "calculator")["enhance-md"].live, false);
+  assert.equal(buildAffiliateLinkMap(malformedMoney.pages, registry, selection, "calculator", "glp-clinic-scout", { promotionAuthority })["enhance-md"].live, false);
 
   const conflictingMoney = clone(money);
   let changed = false;
   mutateRows(conflictingMoney, "enhance-md", (row) => {
     if (!changed) { row.affiliate_href = "https://track.revoffers.com/conflicting-approved-host-path"; changed = true; }
   });
-  assert.equal(buildAffiliateLinkMap(conflictingMoney.pages, registry, selection, "calculator")["enhance-md"].live, false);
+  assert.equal(buildAffiliateLinkMap(conflictingMoney.pages, registry, selection, "calculator", "glp-clinic-scout", { promotionAuthority })["enhance-md"].live, false);
 });
 
 test("resolver rejects same-host URL drift and missing or mismatched activation authority", async () => {
-  const { money, registry, selection } = await inputs();
-  const enhanceLive = (pages, authority) => buildAffiliateLinkMap(pages, registry, authority, "calculator")["enhance-md"]?.live ?? false;
+  const { money, registry, selection, promotionAuthority } = await inputs();
+  const enhanceLive = (pages, authority) => buildAffiliateLinkMap(pages, registry, authority, "calculator", "glp-clinic-scout", { promotionAuthority })["enhance-md"]?.live ?? false;
+  assert.equal(enhanceLive(money.pages, selection), true, "positive control must be live before adverse mutations");
 
   const hostileSameHost = clone(money);
   mutateRows(hostileSameHost, "enhance-md", (row) => { row.affiliate_href = "https://track.revoffers.com/attacker-controlled?program=738"; });
@@ -146,12 +156,12 @@ test("calculator result decorator routes selected on-site links while preserving
   assert.equal((html.match(/data-cost-affiliate-runtime/g) || []).length, 1);
 });
 
-test("calculator authority carries four Awin Item 1 links plus the sole Katalys Shed route", async () => {
-  const { config, money, providerPages, providerFastpath, approvedRegistry, wireApprovals, registry, selection } = await inputs();
+test("calculator authority carries four Awin Item 1 links and approved Katalys Shed", async () => {
+  const { config, money, providerPages, providerFastpath, approvedRegistry, wireApprovals, registry, selection, promotionAuthority } = await inputs();
   const data = buildCostCalculatorData(config, money.pages, providerPages, providerFastpath, registry);
   const html = decorateCostCalculatorAffiliateSurface(
     renderCostCalculator(data), data, money.pages, registry, selection, "glp-clinic-scout",
-    { providerContracts: providerPages, providerFastpath, approvedRegistry, wireInApprovals: wireApprovals },
+    { providerContracts: providerPages, providerFastpath, approvedRegistry, wireInApprovals: wireApprovals, promotionAuthority },
   );
   const match = html.match(/const links=new Map\((\[.*?\])\.map\(link=>/s);
   assert.ok(match, "calculator runtime tracked-link map missing");
@@ -172,21 +182,21 @@ test("calculator authority carries four Awin Item 1 links plus the sole Katalys 
     assert.equal(url.searchParams.get("mid") || url.searchParams.get("awinmid"), required.get(row.program_id));
   }
   assert.equal(selected.some((row) => row.program_id === "measured"), false);
-  // 2026-08-26 best-terms: ShedRX left the Awin Item 1 rail for the $410 Katalys route.
+  assert.equal(promotionAuthority.programs["katalys-1516"]?.status, "VERIFIED", "approved GLP-1 offer 1516 has the operator decision receipt");
   const shed = links.find((row) => row.program_id === "shedrx");
-  assert.ok(shed, "Katalys Shed winner missing");
+  assert.ok(shed, "approved Shed offer must be live");
   const shedUrl = new URL(shed.affiliate_href);
   assert.equal(shedUrl.hostname, "track.revoffers.com");
   assert.equal(shedUrl.searchParams.get("offer_id"), "1516");
 });
 
 test("calculator Awin Item 1 authority fails closed on missing, stale, or broadened surface policy", async () => {
-  const { config, money, providerPages, providerFastpath, approvedRegistry, wireApprovals, registry, selection } = await inputs();
+  const { config, money, providerPages, providerFastpath, approvedRegistry, wireApprovals, registry, selection, promotionAuthority } = await inputs();
   const data = buildCostCalculatorData(config, money.pages, providerPages, providerFastpath, registry);
   const buildLinks = (authority) => {
     const html = decorateCostCalculatorAffiliateSurface(
       renderCostCalculator(data), data, money.pages, registry, selection, "glp-clinic-scout",
-      { providerContracts: providerPages, providerFastpath, approvedRegistry, wireInApprovals: authority },
+      { providerContracts: providerPages, providerFastpath, approvedRegistry, wireInApprovals: authority, promotionAuthority },
     );
     return JSON.parse(html.match(/const links=new Map\((\[.*?\])\.map\(link=>/s)[1]);
   };

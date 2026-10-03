@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { loadProviderPageContracts } from "./provider-cta-contract.mjs";
-import { loadGoSelection, applyGoSelectionToLinkMap } from "./go-runtime-selection.mjs";
+import { loadGoSelection, loadGoPromotionAuthority, applyGoSelectionToLinkMap } from "./go-runtime-selection.mjs";
 
 const TRACKING_HOST_BY_NETWORK = Object.freeze({
   Awin: "www.awin1.com",
@@ -175,6 +175,16 @@ function contractAuthorityMap(contracts, fastpath, approvedRegistry, slugByRegis
       expected_href: tracking.provider_issued_url,
     });
   }
+  for (const program of wireInApprovals?.programs || []) {
+    const slug = program.existing_release_alias;
+    const href = program.tracking?.provider_issued_url;
+    if (!slug || program.approval_state !== "approved_active" || program.wire_in_ready !== true || !href) continue;
+    try {
+      const url = new URL(href);
+      if (url.protocol !== "https:" || !awinItem1SurfaceAllowed(item1Authority, program.provider_program_id, surface)) continue;
+      rows.set(slug, { network: program.network, tracking_host: url.hostname, expected_href: href });
+    } catch { /* malformed approved-row href authorizes nothing */ }
+  }
   return rows;
 }
 
@@ -208,26 +218,33 @@ export function buildAffiliateLinkMap(pages, registry, selection, surface, profi
   const links = {};
   const liveHrefs = new Map();
   const conflicts = new Set();
+  const promotionRows = extraAuthorities.promotionAuthority?.programs || {};
   for (const page of pages) {
     for (const row of page.rows || []) {
       const programId = row.program_id;
       if (!programId) continue;
       if (!links[programId]) links[programId] = linkDarkRecord(programId, row.provider || programId, row.review_path || `/reviews/${programId}/`);
       if (conflicts.has(programId)) continue;
-      const claimsLive = row.affiliate_link_mode === "transparent_direct" && row.live_link_allowed === true && row.promotion_authorized === true;
-      if (!claimsLive || registryLive.get(programId) !== true) continue;
       const sheetAuthority = authorized.get(programId);
       const contract = contractAuthority.get(programId);
+      const registryProgram = registry.programs.find((program) => program.program_id === programId || program.review_slug === programId);
+      const promotion = registryProgram ? promotionRows[registryProgram.program_id] : null;
+      const operatorDirect = Boolean(contract && promotion?.status === "VERIFIED" && promotion.operator_approved_live_decision
+        && (!row.affiliate_href || row.affiliate_href === contract.expected_href));
+      const claimsLive = (row.affiliate_link_mode === "transparent_direct" && row.live_link_allowed === true
+        && row.promotion_authorized === true) || operatorDirect;
+      if (!claimsLive || registryLive.get(programId) !== true) continue;
       const item1AdvertiserId = item1IdByAlias.get(programId);
-      const explicitSurfaceAuthorityBoundary = Object.keys(extraAuthorities).length > 0;
+      const explicitSurfaceAuthorityBoundary = Object.keys(extraAuthorities).some((key) => key !== "promotionAuthority");
       const item1Allowed = !item1AdvertiserId || !explicitSurfaceAuthorityBoundary
         || awinItem1SurfaceAllowed(item1Authority, item1AdvertiserId, surface);
-      const hrefOk = typeof row.affiliate_href === "string" && Boolean(row.affiliate_href);
-      const receiptOk = row.operator_selection_receipt_sha256 === selection.operator_gate_receipt_sha256;
+      const candidateHref = row.affiliate_href || contract?.expected_href;
+      const hrefOk = typeof candidateHref === "string" && Boolean(candidateHref);
+      const receiptOk = operatorDirect || row.operator_selection_receipt_sha256 === selection.operator_gate_receipt_sha256;
       const sheetMatch = Boolean(item1Allowed && sheetAuthority && hrefOk && receiptOk && row.affiliate_network === sheetAuthority.network
-        && createHash("sha256").update(row.affiliate_href, "utf8").digest("hex") === sheetAuthority.tracking_link_sha256);
+        && createHash("sha256").update(candidateHref, "utf8").digest("hex") === sheetAuthority.tracking_link_sha256);
       const contractMatch = Boolean(contract && hrefOk && receiptOk && row.affiliate_network === contract.network
-        && row.affiliate_href === contract.expected_href);
+        && candidateHref === contract.expected_href);
       const authority = sheetMatch ? sheetAuthority : contractMatch ? contract : null;
       if (!authority) {
         conflicts.add(programId);
@@ -236,7 +253,7 @@ export function buildAffiliateLinkMap(pages, registry, selection, surface, profi
       }
 
       try {
-        const url = new URL(row.affiliate_href);
+        const url = new URL(candidateHref);
         // A network program pins to the network host; a provider-issued direct
         // link pins to the host its own approval artifact named.
         const allowedHost = TRACKING_HOST_BY_NETWORK[row.affiliate_network] || authority.tracking_host;
@@ -269,7 +286,16 @@ export function buildAffiliateLinkMap(pages, registry, selection, surface, profi
       }
     }
   }
-  return applyGoSelectionToLinkMap(links, registry, surface, profileId, extraAuthorities.goSelection);
+  const selected = applyGoSelectionToLinkMap(links, registry, surface, profileId, extraAuthorities.goSelection, extraAuthorities.promotionAuthority);
+  for (const [renderId, link] of Object.entries(selected)) {
+    if (!link.live) continue;
+    const program = registry.programs.find((row) => row.program_id === renderId || row.review_slug === renderId);
+    const promotion = program ? promotionRows[program.program_id] : null;
+    if (promotion?.status !== "VERIFIED" || promotion.promotion_authorized !== true) {
+      selected[renderId] = linkDarkRecord(renderId, link.merchant, link.review_path);
+    }
+  }
+  return selected;
 }
 
 export function loadAffiliateLinkMap(surface, profileId = "glp-clinic-scout") {
@@ -284,7 +310,7 @@ export function loadAffiliateLinkMap(surface, profileId = "glp-clinic-scout") {
     const approvedRegistry = JSON.parse(readFileSync(new URL("../data/approved-program-registry.json", import.meta.url), "utf8"));
     const wireInApprovals = JSON.parse(readFileSync(new URL("../data/affiliate-wire-in-approvals.json", import.meta.url), "utf8"));
     const goSelection = loadGoSelection();
-    const map = buildAffiliateLinkMap(specs.pages, registry, selection, surface, profileId, { providerContracts, providerFastpath, approvedRegistry, wireInApprovals, goSelection });
+    const map = buildAffiliateLinkMap(specs.pages, registry, selection, surface, profileId, { providerContracts, providerFastpath, approvedRegistry, wireInApprovals, goSelection, promotionAuthority: loadGoPromotionAuthority() });
     cache.set(key, map);
     return map;
   } catch {
@@ -298,6 +324,7 @@ export function loadAffiliateLinkMap(surface, profileId = "glp-clinic-scout") {
 export function loadAffiliateAuthorities() {
   return {
     goSelection: loadGoSelection(),
+    promotionAuthority: loadGoPromotionAuthority(),
     providerContracts: JSON.parse(readFileSync(new URL("../data/provider-page-contracts.json", import.meta.url), "utf8")),
     providerFastpath: JSON.parse(readFileSync(new URL("../data/provider-fastpath-contract.json", import.meta.url), "utf8")),
     approvedRegistry: JSON.parse(readFileSync(new URL("../data/approved-program-registry.json", import.meta.url), "utf8")),

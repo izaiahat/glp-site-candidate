@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { loadEvidenceInputs, validateMysteryShop, renderMysteryShop, computeEvidenceSha256 } from '../src/mystery-shop.mjs';
 import { buildAlertIntents, validatePriceTracker } from '../src/price-tracker.mjs';
@@ -81,13 +82,22 @@ test('per-offer clocks retain historical and accepted material identities and re
   assert.throws(() => buildDealArtifacts(deal, {evaluationClocks:structuredClone(clocks)}), /offer_evaluation_clocks_unauthenticated/);
 });
 
-test('remaining lastmod fixture clocks already cover the source catalog without rewriting evidence dates', () => {
+test('lastmod fixtures authenticate predecessor clocks rather than restamping the current catalog', () => {
   const source = readFileSync(new URL('./lastmod-declared-routes.test.mjs', import.meta.url), 'utf8');
-  const baseline = source.match(/const CARRIER_FIXTURE_BASELINE = "([0-9-]+)"/)[1];
-  const release = source.match(/const RELEASE = "([0-9-]+)"/)[1];
-  const latest = read('data/blog/content-batch.json').articles.map(row => row.updated_at).sort().at(-1);
-  assert.equal(baseline, latest);
-  assert.equal(release, shift(baseline + 'T00:00:00Z', 1).slice(0, 10));
+  // GLP73 replaced the fictional common-baseline fixture with the retained
+  // predecessor and native preparer. That fixture no longer has either a
+  // CARRIER_FIXTURE_BASELINE constant or an invented integration release date.
+  assert.match(source, /await prepareLastmod\(root\)/);
+  assert.match(source, /assert\.equal\(sha256\(manifestBytes\), pointer\.manifest\.sha256\)/);
+  assert.match(source, /assert\.equal\(sha256\(bytes\), rows\.get\(relative\)/);
+  assert.doesNotMatch(source, /const CARRIER_FIXTURE_BASELINE|GLP_RELEASE_DATE:\s*RELEASE/);
+  const prefix='data/predecessors/content-base/';
+  const pointer=read(prefix+'current-content-base.json');
+  const manifestBytes=readFileSync(new URL('../'+prefix+'deployment-manifest.json',import.meta.url));
+  assert.equal(createHash('sha256').update(manifestBytes).digest('hex'),pointer.manifest.sha256);
+  const manifest=JSON.parse(manifestBytes);
+  const provenance=readFileSync(new URL('../'+prefix+'release/data/page-content-provenance.json',import.meta.url));
+  assert.equal(createHash('sha256').update(provenance).digest('hex'),manifest.release_rows.find(row=>row.path==='data/page-content-provenance.json').sha256);
 });
 
 // This is an isolated pure-selector check, not authority minting: it evaluates the actual

@@ -1,0 +1,89 @@
+{
+  "schema": "d2s-exact-live-article-v1",
+  "route": "/guides/ezra-glp-1-reviews/",
+  "relative": "guides/ezra-glp-1-reviews/index.html",
+  "snapshot": "data/carrier-articles/ezra-glp-1-reviews/index.html",
+  "html_sha256": "ffe64c1b164f0dffdabca5d2f4acd9d13b1921932aa796c33d72c32a7e89579c",
+  "carrier_deployment_id": "e6655e54-1814-4d72-a327-7e5d5da95fc0",
+  "carrier_manifest_sha256": "8fae8fe26f258792af9e0b2373e023e8a1b30be5eb5187cf218d3c08af838cd1",
+  "bindings": [
+    {
+      "path": "data/blog/content-batch.json",
+      "key": "articles",
+      "identity": "canonical_path",
+      "sha256": "89bc11c88031e43eaaf9e708f718b76b27d1aa5a50b0008b9d2e7899fbd97f0d"
+    },
+    {
+      "path": "data/blog/keyword-ownership-map.json",
+      "key": "entries",
+      "identity": "url",
+      "sha256": "aab871e131dfb6292abe0286b49f6f3bfd1ec5f4e0ea09317663038f65b1905a"
+    },
+    {
+      "path": "artifacts/ultracode/article-image-manifest.json",
+      "key": "records",
+      "identity": "route",
+      "sha256": "6040e95e07c6f86459770f16e73d89170594e6f15739cf5e1f42c403aab4d4e3"
+    },
+    {
+      "path": "artifacts/ultracode/article-route-master-state.json",
+      "key": "records",
+      "identity": null,
+      "sha256": "0b7c9a72997edf9a3ee29552ace414f7caf58d56d7abee236b6de935635f5a6b"
+    },
+    {
+      "path": "data/page-content-provenance.json",
+      "key": "pages",
+      "identity": null,
+      "sha256": "9dc29abe023dbd01f67745ec1332324192aed4caf5794feddb91d3a1e2cd4632"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 4109,
+      "path": "artifacts/ultracode/article-release-image-receipts/guide-ezra-glp-1-reviews.json",
+      "sha256": "06761c6e7be8f3f996da78f1193c2ce5465180c5dd8070497ad2a448d9005f31"
+    },
+    {
+      "bytes": 111130,
+      "path": "assets/derivatives/guide-ezra-glp-1-reviews-1600.avif",
+      "sha256": "43a22dee61e885a3df09e0863cef5264d64d879076d364b6637a2b00bf803081"
+    },
+    {
+      "bytes": 281031,
+      "path": "assets/derivatives/guide-ezra-glp-1-reviews-1600.jpg",
+      "sha256": "eedc239b794256a6050178844ba9f14e1afd605b14f7d539dc710530ca928067"
+    },
+    {
+      "bytes": 116616,
+      "path": "assets/derivatives/guide-ezra-glp-1-reviews-1600.webp",
+      "sha256": "c41fec2f6a442476f103d357ff19ce549017410201a1d58c61154babfd6ea0b5"
+    },
+    {
+      "bytes": 30510,
+      "path": "assets/derivatives/guide-ezra-glp-1-reviews-800.avif",
+      "sha256": "c1ea0cf88e541f9ecb440864fb473cba9c506a9c1c4c3438f30f8b783bedd265"
+    },
+    {
+      "bytes": 72529,
+      "path": "assets/derivatives/guide-ezra-glp-1-reviews-800.jpg",
+      "sha256": "fc86c35c49eac71cdbf3473e3181c61dcc59af6b85afc247e691824dfaab8b4d"
+    },
+    {
+      "bytes": 32722,
+      "path": "assets/derivatives/guide-ezra-glp-1-reviews-800.webp",
+      "sha256": "6c2d9c93ab49fbe7e91026f423f6baa2f3c996f085daca5a5605b836fcc793f3"
+    },
+    {
+      "bytes": 152350,
+      "path": "assets/derivatives/guide-ezra-glp-1-reviews-og.jpg",
+      "sha256": "04d7871f2211f4ac848cb6a65d3f8014f8d77590d121284047dd019f3da44fd8"
+    },
+    {
+      "bytes": 396700,
+      "path": "assets/source/article-masters-pass2/guide-ezra-glp-1-reviews.webp",
+      "sha256": "1acee5b4b8029b69b6cdc481092130c9a6d227bb72db11123ea0c7fd3f3b462f"
+    }
+  ],
+  "sitemap_entry": "<url><loc>https://glpclinicscout.com/guides/ezra-glp-1-reviews/</loc><lastmod>2026-09-09</lastmod></url>"
+}

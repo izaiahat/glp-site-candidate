@@ -62,9 +62,12 @@ export default defineConfig({
     timeout: 30_000,
   },
   projects: [
+    // The sampled diagnostic fixture uses a V8 stack-line trigger and creates
+    // its own desktop context. Do not schedule it in inapplicable projects and
+    // then skip: the gate explicitly requires its one Chromium affected cell.
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "chromium-mobile", use: { ...devices["iPhone 13"], viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, browserName: "chromium" } },
-    { name: "webkit-mobile", use: { ...devices["iPhone 13"], viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, browserName: "webkit" } },
-    { name: "webkit", use: { ...devices["Desktop Safari"] } },
+    { name: "chromium-mobile", testIgnore: "**/ga4-diagnostic-containment.spec.mjs", use: { ...devices["iPhone 13"], viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, browserName: "chromium" } },
+    { name: "webkit-mobile", testIgnore: "**/ga4-diagnostic-containment.spec.mjs", use: { ...devices["iPhone 13"], viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, browserName: "webkit" } },
+    { name: "webkit", testIgnore: "**/ga4-diagnostic-containment.spec.mjs", use: { ...devices["Desktop Safari"] } },
   ],
 });

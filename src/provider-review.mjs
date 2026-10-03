@@ -165,7 +165,13 @@ function reviewSceneImage(review) {
 function providerEditorialScene(review) {
   const identity = { program_id: review.program_id, display_name: review.provider };
   const visual = providerVisualKind(identity);
-  const picture = renderProviderEvidencePicture(identity, { className: "cs-review-scene-picture" });
+  const picture = renderProviderEvidencePicture(identity, {
+    className: "cs-review-scene-picture",
+    ...(review.program_id === "orderlymeds" ? {
+      sizes: "(max-width:760px) calc(100vw - 32px), 920px",
+      alt: "Editorial evidence desk for the OrderlyMeds review with a blank research dossier and comparison materials",
+    } : {}),
+  });
   const caption = visual.kind === "editorial-scene"
     ? "Original editorial research scene. Provider identity and evidence appear separately in accessible page content."
     : "First-party provider logo fallback. No original editorial scene is available; provider evidence appears in accessible page content.";
@@ -216,18 +222,27 @@ function renderEvidenceSection(id, heading, bodyHtml, gistSource, position) {
   return `<details class="review-depth cs-details" id="${esc(id)}"><summary><span class="cs-details-label"><span class="cs-details-heading">${esc(heading)}</span>${gist ? `<span class="cs-details-gist">${esc(gist)}</span>` : ""}</span></summary><div class="cs-details-body">${bodyHtml}</div></details>`;
 }
 
+// Validate the destination actually selected for rendering, separately from
+// the immutable predecessor row which a receipted rail successor supersedes.
+export function reviewAffiliateUrl(programId, network, href) {
+  const allowedHosts = trackingAllowedHosts(programId, network);
+  let url;
+  try { url = new URL(href); } catch { throw new Error(`review_direct_link_host_invalid:${programId}`); }
+  if (url.protocol !== 'https:' || !allowedHosts.has(url.hostname.toLowerCase())) throw new Error(`review_direct_link_host_invalid:${programId}`);
+  return url;
+}
+
 function affiliateReviewCta(row) {
   const selected = selectedGoOutbound(row, 'reviews.rv2');
   const live = selected ? !selected.held : row.live_link_allowed === true && row.promotion_authorized === true;
   if (!live) return `<a class="cta secondary" href="/best/online-glp-1-providers/" data-affiliate-state="unavailable">See ${esc(row.provider)} in comparison</a>`;
   if (row.affiliate_link_mode !== "transparent_direct" || !row.affiliate_href) throw new Error(`review_direct_link_contract_invalid:${row.program_id}`);
-  const url = new URL(row.affiliate_href);
-  const allowedHosts = trackingAllowedHosts(row.program_id, row.affiliate_network);
-  if (url.protocol !== "https:" || !allowedHosts.has(url.hostname.toLowerCase())) throw new Error(`review_direct_link_host_invalid:${row.program_id}`);
+  const url = reviewAffiliateUrl(row.program_id, selected?.network || row.affiliate_network, selected?.issuedHref || row.affiliate_href);
   const attributionMonth = String(row.activation_at_utc || row.review_date_modified || "").slice(0, 7).replace("-", "");
   if (!/^\d{6}$/.test(attributionMonth)) throw new Error(`review_affiliate_subid_month_invalid:${row.program_id}`);
   const subid = selected?.surfaceCode || `review-${row.program_id}-conclusion-${attributionMonth}`;
   const subids = subidAttributes({
+    programId: row.program_id,
     network: selected?.network || row.affiliate_network,
     position: "review-closing",
     rankPosition: 1,

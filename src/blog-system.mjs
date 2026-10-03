@@ -1,6 +1,6 @@
 import { affiliateCta, renderComparisonTable } from "./money-page.mjs";
 import { collectEvidenceDates, deriveMoneyPageFreshness } from './freshness.mjs';
-import { affiliateLinkMode, normalizeNetwork } from "./affiliate-subid.mjs";
+import { affiliateLinkMode, affiliateNetworkIdentity, normalizeNetwork } from "./affiliate-subid.mjs";
 import { loadAffiliateLinkMap } from "./affiliate-link-map.mjs";
 import { readFileSync } from "node:fs";
 import { addP1ContentUpgradeSurface } from "./wave2-p1-surfaces.mjs";
@@ -43,7 +43,7 @@ const mdLinks = (value, affiliateUrls = new Set(), affiliateMeta = new Map(), pa
       const reviewPath = String(guideLink?.review_path || `/reviews/${meta.program_id}/`).replaceAll('"', "&quot;");
       return `<a href="${reviewPath}">${label}</a>`;
     }
-    const markers = ` data-analytics-event="affiliate_click" data-link-mode="${affiliateLinkMode(href)}" data-program="${meta.program_id.replaceAll('"', "&quot;")}" data-provider-slug="${meta.program_id.replaceAll('"', "&quot;")}" data-network="${normalizeNetwork(null, href).replaceAll('"', "&quot;")}" data-element-code="P" data-rank-position="0" data-page-type="guide" data-sub1="0P" data-sub2="${String(pageSlug).replaceAll('"', "&quot;")}"`;
+    const markers = ` data-analytics-event="affiliate_click" data-link-mode="${affiliateLinkMode(href)}" data-program="${meta.program_id.replaceAll('"', "&quot;")}" data-provider-slug="${meta.program_id.replaceAll('"', "&quot;")}" data-network="${esc(affiliateNetworkIdentity(meta.program_id, guideLink.network))}" data-subid-codec="${normalizeNetwork(guideLink.network, href).replaceAll('"', "&quot;")}" data-element-code="P" data-rank-position="0" data-page-type="guide" data-sub1="0P" data-sub2="${String(pageSlug).replaceAll('"', "&quot;")}"`;
     return `<a href="${safeHref}" rel="sponsored nofollow noopener"${markers}>${label}</a>`;
   }
   const citation = citationUrls.has(href) ? ` data-citation="${CITATION_REASONS.GUIDE_SOURCE_LEDGER}"` : "";

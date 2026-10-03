@@ -57,21 +57,58 @@ test("Pass 2 replaces the cloned Mounjaro family with its unique route master li
   }
 });
 
-// The refreshed catalog row owns the route's machine date. This still pins one
-// exact route and one exact date, so a missing, duplicate, or bulk-stamped row fails.
-test("Mounjaro coupon route has one truthful catalog-bound sitemap lastmod", async () => {
-  const [sitemap, batch] = await Promise.all([
+// The catalog owns the editorial dateline; rendered material provenance owns
+// sitemap freshness. Pin one route and bind its date to the registered receipt.
+test("Mounjaro coupon route has one source-bound editorial date and material sitemap lastmod", async () => {
+  const [sitemap, batch, provenance, stage, pointer] = await Promise.all([
     readFile(new URL("public/sitemap.xml", ROOT), "utf8"),
     readJson("data/blog/content-batch.json"),
+    readJson("data/page-content-provenance.json"),
+    readJson("artifacts/ops/aeo-surface-stage.json"),
+    readJson("data/predecessors/content-base/current-content-base.json"),
   ]);
   const article = batch.articles.find((item) => item.canonical_path === ROUTE);
   assert.ok(article, "Mounjaro coupon source record missing");
   assert.match(article.updated_at, /^\d{4}-\d{2}-\d{2}$/);
   // D2p ruling: shared disclosure advances sitemap freshness, not article freshness.
   assert.equal(article.updated_at, '2026-08-29');
-  const page = await readFile(new URL('public'+ROUTE+'index.html', ROOT), 'utf8');
-  assert.match(page, /Updated <time datetime="2026-08-29">August 29, 2026<\/time>/);
-  const exact = `<url><loc>https://glpclinicscout.com${ROUTE}</loc><lastmod>2026-09-09</lastmod></url>`;
+  const pageBytes = await readFile(new URL('public'+ROUTE+'index.html', ROOT));
+  assert.match(pageBytes.toString(), /Updated <time datetime="2026-08-29">August 29, 2026<\/time>/);
+  const record = provenance.pages[ROUTE];
+  assert.ok(record, "route provenance missing");
+  // The stage records its pre-stamp normalized hash; the shipped article then
+  // receives a separate editorial dateline stamp. Do not equate those bytes.
+  // Editorial freshness remains the catalog's 08-29; the later sitemap date
+  // is the registered material-page reconciliation of different output bytes.
+  assert.equal(sha256(await readFile(new URL('data/predecessors/content-base/current-content-base.json', ROOT))),
+    'f2ff608d5c1d885cd48f861ed636c64e9324cdf91e9131448388575026499aee');
+  const manifestBytes = await readFile(new URL('data/predecessors/content-base/deployment-manifest.json', ROOT));
+  assert.equal(sha256(manifestBytes), pointer.manifest.sha256);
+  const predecessorRows = JSON.parse(manifestBytes).release_rows;
+  const projectionBytes = Buffer.from(JSON.stringify(predecessorRows) + '\n');
+  assert.equal(stage.runtime_predecessor_manifest_sha256, sha256(projectionBytes));
+  const relative = `public/${ROUTE.slice(1)}index.html`;
+  const row = predecessorRows.find(item => item.path === relative);
+  assert.ok(row, "verified predecessor page missing");
+  const predecessor = await readFile(new URL(`data/predecessors/content-base/release/${relative}`, ROOT));
+  assert.equal(sha256(predecessor), row.sha256);
+  const materialText = bytes => {
+    const body = bytes.toString().match(/<body\b[^>]*>([\s\S]*?)<\/body>/)?.[1];
+    assert.ok(body, 'route body must exist in both authenticated outputs');
+    return body.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/g, '')
+      .replace(/<time\b[^>]*>[\s\S]*?<\/time>/g, ' DATE ')
+      .replace(/<span\b[^>]*data-prices-checked-date[^>]*>[\s\S]*?<\/span>/g, '')
+      .replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  };
+  const runtimeOnly = predecessor.toString().replace('</body>', '<script>window.__TEST_RUNTIME_ONLY__=true;</script></body>');
+  const datesOnly = predecessor.toString().replace(/<time\b[^>]*>[\s\S]*?<\/time>/g, '<time datetime="2030-01-01">January 1, 2030</time>');
+  assert.equal(materialText(runtimeOnly), materialText(predecessor));
+  assert.equal(materialText(datesOnly), materialText(predecessor));
+  assert.notEqual(materialText(pageBytes), materialText(predecessor), 'rendered route content, not just dates or runtime stamps, must differ');
+  assert.ok(stage.material_page_dates_reconciled.includes(ROUTE));
+  assert.equal(record.lastmod, stage.release_date);
+  assert.ok(record.lastmod > article.updated_at);
+  const exact = `<url><loc>https://glpclinicscout.com${ROUTE}</loc><lastmod>${record.lastmod}</lastmod></url>`;
   assert.equal(sitemap.split(`https://glpclinicscout.com${ROUTE}`).length - 1, 1);
   assert.equal(sitemap.split(exact).length - 1, 1);
 });

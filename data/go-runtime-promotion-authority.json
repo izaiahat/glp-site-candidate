@@ -14,16 +14,36 @@
     "altrx-glp1-us-cps": {
       "constructor_verified": false,
       "promotion_authorized": false,
-      "reason": "redirector_tos_unverified_for_network:xentraffic",
+      "reason": "xentraffic_offer_3162_paused_current_eligibility_unknown",
       "redirector_tos_verified": false,
       "status": "WITHHELD"
+    },
+    "awin-128761": {
+      "attribution_parameter_contract": "awin-dyn-params",
+      "constructor_verified": true,
+      "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
     },
     "biltrx": {
       "attribution_parameter_contract": "awin-dyn-params",
       "constructor_verified": true,
       "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -32,8 +52,13 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -42,8 +67,13 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -52,9 +82,105 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "clickdealer-176223-249142": {
+      "constructor_verified": false,
+      "directory_only": true,
+      "issued_link_sha256": "c11c7303c8ebad842d8521139a78567e847b83c6c3f851c4b4165c743029f4a1",
+      "network": "clickdealer",
+      "network_approval_source_refs": [
+        "reports/ops/glp41-clickdealer-link-recovery-20260925/RESULT.json#campaign_links[campaign_id=12094657,offer_id=176223,offer_contract_id=249142]",
+        "reports/ops/glp41-20260924/approved-provider-census/RESULT.json#176223:249142"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "clickdealer-178335-251864": {
+      "constructor_verified": false,
+      "directory_only": true,
+      "issued_link_sha256": "6d488c238b84b7d4d2073a19954507aec0a98e8231a8efac12106ccfa9136a6c",
+      "network": "clickdealer",
+      "network_approval_source_refs": [
+        "reports/ops/glp41-clickdealer-link-recovery-20260925/RESULT.json#campaign_links[campaign_id=12094630,offer_id=178335,offer_contract_id=251864]",
+        "reports/ops/glp41-20260924/approved-provider-census/RESULT.json#178335:251864"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "clickdealer-181687-255411": {
+      "constructor_verified": false,
+      "directory_only": true,
+      "issued_link_sha256": "0011b689116241f6f8aa9dbc3bb2a18882f42d612f41241667c70266c6a76eed",
+      "network": "clickdealer",
+      "network_approval_source_refs": [
+        "reports/ops/glp41-clickdealer-link-recovery-20260925/RESULT.json#campaign_links[campaign_id=12094632,offer_id=181687,offer_contract_id=255411]",
+        "reports/ops/glp41-20260924/approved-provider-census/RESULT.json#181687:255411"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "clickdealer-181731-255455": {
+      "constructor_verified": false,
+      "directory_only": true,
+      "issued_link_sha256": "79e5645e0c121f24b25d2c3b1d7365e1f3e64473aba2c1ba505980b6a3f67138",
+      "network": "clickdealer",
+      "network_approval_source_refs": [
+        "reports/ops/glp41-clickdealer-link-recovery-20260925/RESULT.json#campaign_links[campaign_id=12094787,offer_id=181731,offer_contract_id=255455]",
+        "reports/ops/glp41-20260924/approved-provider-census/RESULT.json#181731:255455"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "coivas": {
+      "attribution_parameter_contract": "awin-dyn-params",
+      "constructor_verified": true,
+      "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
@@ -62,25 +188,62 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "curex-glp-1": {
-      "constructor_verified": false,
-      "promotion_authorized": false,
-      "reason": "redirector_tos_unverified_for_network:xentraffic",
-      "redirector_tos_verified": false,
-      "status": "WITHHELD"
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "direct-meds": {
+      "attribution_parameter_contract": "affiliati-s1-s2",
+      "constructor_verified": true,
+      "network": "affiliati",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://affiliatinetwork.com/advertisers/publisher-terms-and-conditions/",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
     },
     "drhouse": {
       "attribution_parameter_contract": "awin-dyn-params",
       "constructor_verified": true,
       "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -89,82 +252,81 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "eden-xentraffic-offer-3051": {
-      "program_id": "eden-xentraffic-offer-3051",
-      "render_id": "eden-xentraffic-offer-3051",
-      "route": "/go/eden-xentraffic-offer-3051",
-      "network": "xentraffic",
-      "network_offer_id": "3051",
-      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6D9WBFD/",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliates/BEST-TERMS-MACHINE-20260825/switch-backlog.json",
-          "exists": true,
-          "sha256": "2c6570087799c684383605e2acba61bb5bb74fffa07c33568fff38d7910198f5"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/backrun-20260909T150051Z/sheet-full-row-export.json",
-          "exists": true,
-          "sha256": "1c936e3fec83f7d260869ee0ec57444bb260c89f4552010d9703dd021f414265"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "rail-switch",
-      "promotion_authorized": true,
+      "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "eden-xentraffic-offer-3051",
-        "network": "xentraffic",
-        "tracking_base_url": "https://www.xfnjwej33dd.com/841W6MT/6D9WBFD/",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets"
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "3f409eb789e18029f0bde2d12b10d1264596c42288ab0303551c335f0267f065"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "enhance-md": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "enhanced-tirzepatide-funnel-b": {
-      "constructor_verified": false,
-      "promotion_authorized": false,
-      "reason": "redirector_tos_unverified_for_network:xentraffic",
-      "redirector_tos_verified": false,
-      "status": "WITHHELD"
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "found-health": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -172,579 +334,472 @@
     "futurhealth-wegovy-pillform": {
       "constructor_verified": false,
       "promotion_authorized": false,
-      "reason": "redirector_tos_unverified_for_network:xentraffic",
+      "reason": "xentraffic_offer_3176_paused_current_eligibility_unknown",
       "redirector_tos_verified": false,
       "status": "WITHHELD"
     },
     "g-plan": {
-      "constructor_verified": false,
-      "promotion_authorized": false,
-      "reason": "redirector_tos_unverified_for_network:xentraffic",
-      "redirector_tos_verified": false,
-      "status": "WITHHELD"
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "gala-health": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "gobymeds": {
-      "program_id": "gobymeds",
-      "render_id": "gobymeds",
-      "route": "/go/gobymeds",
+      "constructor_verified": false,
       "network": "direct",
-      "network_offer_id": null,
-      "issued_link": "https://my.gobymeds.com/s/vuMPMv",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://www.gobymeds.com/partnerships/affiliates",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/gobymeds/OPERATOR-SELECTION.json",
-          "exists": true,
-          "sha256": "a9937c5a0fa34acfe428ce85aa8023940eb14b1c063d4f04403111a406ba1097"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/gobymeds-signin.json",
-          "sha256": "1eb1ae6d113d9e7725773fa19cf4c4affb45fc64991b05d1aa3ebb1132f7a021"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/gobymeds-signin-r3.json",
-          "sha256": "38f468832b59358bb2dc5e49157832538086b3fd1d7c359fd9a8706430e2e47a"
-        }
-      ],
-      "subid_parameter": null,
-      "group": "held8",
-      "promotion_authorized": true,
-      "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "gobymeds",
-        "network": "direct",
-        "tracking_base_url": "https://my.gobymeds.com/s/vuMPMv",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://www.gobymeds.com/partnerships/affiliates"
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "359a351c1f3cd4914778ee683e1939e9e9950d636449e870ef02d6c70c1d23a9"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
     },
     "healthrx": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "humecare-data-driven-glp-1-weight-loss-system": {
-      "program_id": "humecare-data-driven-glp-1-weight-loss-system",
-      "render_id": "humecare-data-driven-glp-1-weight-loss-system",
-      "route": "/go/humecare-data-driven-glp-1-weight-loss-system",
-      "network": "katalys",
-      "network_offer_id": "1588",
-      "issued_link": "https://track.revoffers.com/aff_c?offer_id=1588&aff_id=13031",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/site-system/flagship-v2/qa/candidate-train4-d2s-20260910/data/provider-page-contracts.json",
-          "sha256": "31690906664f49dc71e07f720499f49865502e00d60432ee470c899ecca21041"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "hume-sheet661",
-      "promotion_authorized": true,
+      "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "humecare-data-driven-glp-1-weight-loss-system",
-        "network": "katalys",
-        "tracking_base_url": "https://track.revoffers.com/aff_c?offer_id=1588&aff_id=13031",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters"
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "419c0945dd315864738214ca7e1338c7a208283cf0d3c0fa898c0e46172df6dc"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
     },
     "joinskinny-semaglutide-glp-1-us": {
-      "constructor_verified": false,
-      "promotion_authorized": false,
-      "reason": "redirector_tos_unverified_for_network:xentraffic",
-      "redirector_tos_verified": false,
-      "status": "WITHHELD"
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "jrnys-review": {
-      "program_id": "jrnys-review",
-      "render_id": "jrnys-review",
-      "route": "/go/jrnys-review",
-      "network": "affiliati",
-      "network_offer_id": "42896",
-      "issued_link": "https://maanantaispc.com/?a=15309&c=177612&s1=",
-      "disposition": "ADOPT",
-      "terms_source_url": null,
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/GUSTAVO-TELEGRAM/DIGEST.md",
-          "exists": true,
-          "sha256": "86e0690e8450aea012815fe8fa705658e799ac8bf07a2d0ef50e79b808c10cb9"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/A13/BLOCKER.md",
-          "exists": true,
-          "sha256": "cebef609cd4abaaa867786dd00542b06ccc7b1d2653dc98e5466f99b2eac3c06"
-        }
-      ],
-      "subid_parameter": "s2",
-      "group": "affiliati_mint2",
-      "promotion_authorized": true,
+      "attribution_parameter_contract": "affiliati-s1-s2",
       "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "jrnys-review",
-        "network": "affiliati",
-        "tracking_base_url": "https://maanantaispc.com/?a=15309&c=177612&s1=",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_artifact": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/GUSTAVO-TELEGRAM/DIGEST.md",
-        "terms_source_artifact_sha256": "86e0690e8450aea012815fe8fa705658e799ac8bf07a2d0ef50e79b808c10cb9"
+      "network": "affiliati",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "4d65ae7716adf027db89f08091213d0b56c837abe1b268871aac9e85d6974e34"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://affiliatinetwork.com/advertisers/publisher-terms-and-conditions/",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "katalys-1286": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "katalys-1304": {
+      "attribution_parameter_contract": "affiliati-s1-s2",
+      "constructor_verified": true,
+      "network": "affiliati",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://affiliatinetwork.com/advertisers/publisher-terms-and-conditions/",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "katalys-1516": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": false,
+      "network": "katalys",
+      "network_approval_source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1516;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=323"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "katalys-647": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
     },
     "levelsrx-extra-cpa-home-page": {
-      "program_id": "levelsrx-extra-cpa-home-page",
-      "render_id": "levelsrx-extra-cpa-home-page",
-      "route": "/go/levelsrx-extra-cpa-home-page",
-      "network": "xentraffic",
-      "network_offer_id": "3245",
-      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6PX9P76/",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/levelsrx/OPERATOR-SELECTION.json",
-          "exists": true,
-          "sha256": "17e50114782d688dae2f850607dceb62fc620b91346dfd069f9f39e3128ee271"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-offer-3245.json",
-          "sha256": "8ac07dee0515fa1d4e24363abffc565624eecad7ad069527cfb08847bfa0a87d"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/levelsrx-extra-cpa-home-page.json",
-          "sha256": "0f399aed31254f53481e27bf6748707fba132aa8e1132aab5888d5bc5858ceff"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-signin.json",
-          "sha256": "97e7267aea27fe86a148f0c331afb67d3ca2733c6b7458578ad25c9fd8a12942"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "held8",
-      "promotion_authorized": true,
+      "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "levelsrx-extra-cpa-home-page",
-        "network": "xentraffic",
-        "tracking_base_url": "https://www.xfnjwej33dd.com/841W6MT/6PX9P76/",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets"
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "98949e0cc6663ac54a6ad20f5587f37ada2d12aaaa3187a2380e7679055cd197"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "live-vital-launch": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "longevity-meds-glp-1-review": {
-      "program_id": "longevity-meds-glp-1-review",
-      "render_id": "longevity-meds-glp-1-review",
-      "route": "/go/longevity-meds-glp-1-review",
-      "network": "xentraffic",
-      "network_offer_id": "3277",
-      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6RHPZQL/",
-      "disposition": "HOLD",
-      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/longevity-meds/OPERATOR-SELECTION.json",
-          "exists": true,
-          "sha256": "cb2ffd43720a00a7036c4275d2df08ceb9ab95845dfa6519116bc52db1999430"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-offer-3277.json",
-          "sha256": "93a910d5c74eacccb2258c456eb420ea496bebb18f0556686411b800731c210c"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/longevity-meds-glp-1-review.json",
-          "sha256": "f15ea751477315a0960b417dad0237d9379ed352007868380b5985a82b403dc9"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-signin.json",
-          "sha256": "97e7267aea27fe86a148f0c331afb67d3ca2733c6b7458578ad25c9fd8a12942"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "held8",
-      "promotion_authorized": false,
+      "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": false,
-      "advertiser_permission_verified": false,
-      "encoding_verified": false,
-      "privacy_qa_passed": false,
-      "hold_reason": "Exact publisher creative/content approval required, not merely issued tracking link.",
-      "required_artifact": "Dated in-portal approval by XenTraffic/Longevity for offer3277 and the exact GLP Clinic Scout creative/landing-page URLs and revision/hash",
-      "approval_request_owner": "scout; request in portal under its own assignment",
-      "status": "WITHHELD"
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "lttl-glp-landing-page-2": {
-      "program_id": "lttl-glp-landing-page-2",
-      "render_id": "lttl-glp-landing-page-2",
-      "route": "/go/lttl-glp-landing-page-2",
-      "network": "xentraffic",
-      "network_offer_id": "3252",
-      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6Q91WCF/",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliates/BEST-TERMS-MACHINE-20260825/switch-backlog.json",
-          "exists": true,
-          "sha256": "2c6570087799c684383605e2acba61bb5bb74fffa07c33568fff38d7910198f5"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/backrun-20260909T150051Z/sheet-full-row-export.json",
-          "exists": true,
-          "sha256": "1c936e3fec83f7d260869ee0ec57444bb260c89f4552010d9703dd021f414265"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "rail-switch",
-      "promotion_authorized": true,
+      "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "lttl-glp-landing-page-2",
-        "network": "xentraffic",
-        "tracking_base_url": "https://www.xfnjwej33dd.com/841W6MT/6Q91WCF/",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets"
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "37fc9f1b5b2d1c731a49ee5841b8f605f61070758e655b75eed80ca4a077d7f2"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "mademed": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
-    "medvi-review": {
-      "program_id": "medvi-review",
-      "render_id": "medvi-review",
-      "route": "/go/medvi-review",
-      "network": "affiliati",
-      "network_offer_id": "43194",
-      "issued_link": "https://epsilonmkt.com/?a=15309&c=178786&s1=",
-      "disposition": "ADOPT",
-      "terms_source_url": null,
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/GUSTAVO-TELEGRAM/DIGEST.md",
-          "exists": true,
-          "sha256": "86e0690e8450aea012815fe8fa705658e799ac8bf07a2d0ef50e79b808c10cb9"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/A13/BLOCKER.md",
-          "exists": true,
-          "sha256": "cebef609cd4abaaa867786dd00542b06ccc7b1d2653dc98e5466f99b2eac3c06"
-        }
-      ],
-      "subid_parameter": "s2",
-      "group": "affiliati_mint2",
-      "promotion_authorized": true,
+    "mangorx": {
+      "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "medvi-review",
-        "network": "affiliati",
-        "tracking_base_url": "https://epsilonmkt.com/?a=15309&c=178786&s1=",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_artifact": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/GUSTAVO-TELEGRAM/DIGEST.md",
-        "terms_source_artifact_sha256": "86e0690e8450aea012815fe8fa705658e799ac8bf07a2d0ef50e79b808c10cb9"
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "216f16c4f1491840a763a0647464968c14209d036bc13fc9f704ef634ad1553c"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "measured": {
+      "attribution_parameter_contract": "awin-dyn-params",
+      "constructor_verified": false,
+      "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "medvi-review": {
+      "attribution_parameter_contract": "affiliati-s1-s2",
+      "constructor_verified": true,
+      "network": "affiliati",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://affiliatinetwork.com/advertisers/publisher-terms-and-conditions/",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
     },
     "mydrhank": {
-      "constructor_verified": false,
-      "promotion_authorized": false,
-      "reason": "option_c_provider_exclusion_preserved",
-      "redirector_tos_verified": false,
-      "status": "WITHHELD"
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
     },
     "novi-weight-loss-glp-1": {
-      "constructor_verified": false,
-      "promotion_authorized": false,
-      "reason": "redirector_tos_unverified_for_network:xentraffic",
-      "redirector_tos_verified": false,
-      "status": "WITHHELD"
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "nu-image-medical-review": {
-      "program_id": "nu-image-medical-review",
-      "render_id": "nu-image-medical-review",
-      "route": "/go/nu-image-medical-review",
-      "network": "trackdesk",
-      "network_offer_id": "5141d0e3-8018-42d9-9ac5-05bfd79aabbf",
-      "issued_link": "https://nuimagemedical.com/?linkId=lp_716390&sourceId=glp-clinic-scout&tenantId=nu-image-medical",
-      "disposition": "HOLD",
-      "terms_source_url": "https://help.trackdesk.com/en/articles/12580559-deep-links",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/nu-image-medical-review/OPERATOR-SELECTION.json",
-          "exists": true,
-          "sha256": "0cfc41f973c286a6e530b7e36c71e9d7afd00f07788c5509612fe75a9ce9cbc3"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/nuimage-signin-r4.json",
-          "sha256": "e001e51991fd24e3e0b6e6937e1c20b9501b6d79f6e558c172edda3f9146b135"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/nuimage-api-5ab9e8bca7c0.json",
-          "sha256": "e1eb9f195efa5318d5a5cc761222da13455852f318aebb13337248ef908b282e"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/nuimage-onboard-20260819/portal/20-glp1-get-link.txt",
-          "sha256": "22daa1fee5c2b8fae25a4419bf9c945c63592c8fa7a2018687af7b37b67dba07",
-          "captured_at_utc": "2026-08-19T00:50:06.566Z",
-          "source_url": "https://nu-image-medical.trackdesk.com/offers/5141d0e3-8018-42d9-9ac5-05bfd79aabbf/get-link",
-          "locator": null
-        }
-      ],
-      "subid_parameter": "affS1",
-      "group": "held8",
-      "promotion_authorized": false,
       "constructor_verified": false,
-      "advertiser_permission_verified": false,
-      "encoding_verified": false,
-      "privacy_qa_passed": false,
-      "hold_reason": "Exact publisher creative/content approval required, not merely issued tracking link.",
-      "required_artifact": "Dated in-portal approval by NuImage for partner content/landing-page URLs and revision/hash under offer5141d0e3-8018-42d9-9ac5-05bfd79aabbf, issued linkId lp_716390",
-      "approval_request_owner": "scout; request in portal under its own assignment",
-      "status": "WITHHELD"
+      "network": "trackdesk",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
     },
     "oak-weight-loss-program": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "orderlymeds": {
-      "program_id": "orderlymeds",
-      "render_id": "orderlymeds",
-      "route": "/go/orderlymeds",
+      "constructor_verified": false,
       "network": "everflow",
-      "network_offer_id": "2",
-      "issued_link": "https://www.tzca1z1u.com/57D8F2P/3QQG7/",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/orderlymeds/OPERATOR-SELECTION.json",
-          "exists": true,
-          "sha256": "a68ef3e7effa3554ac52532876d533077ed7d502875baaaf48fd18120e25b603"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1750/portal-captures-r2/orderlymeds-offer-2.json",
-          "sha256": "4f1fcaeb296e620ead3e8b189ff8db6376affc13a9376d6a76686401eb2896a7"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/Q45b/DISPATCH-1655/s18-inputs/orderlymeds.json",
-          "sha256": "5e5e102c6c5579055a0ab705211c26720eeaa9f19ed032c73c75ccbadca5ba1a"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "held8",
-      "promotion_authorized": true,
-      "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "orderlymeds",
-        "network": "everflow",
-        "tracking_base_url": "https://www.tzca1z1u.com/57D8F2P/3QQG7/",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets"
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "8cff4036b11fbd12bc7164197a985176d2b62f555f56dff905ece58f59bca6ff"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
     },
     "pallas-health-review": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
-    "refills": {
+    "partnerize-1011l6645": {
       "constructor_verified": false,
-      "promotion_authorized": false,
-      "reason": "redirector_tos_unverified_for_network:xentraffic",
+      "network": "partnerize",
+      "network_approval_source_refs": [
+        "02-partnerize-api-inventory.json#campaign_id=1011l6645;status=approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=148"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
       "redirector_tos_verified": false,
-      "status": "WITHHELD"
+      "status": "VERIFIED"
+    },
+    "refills": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "ro-wegovy-glp1-quiz-us-cpl": {
-      "program_id": "ro-wegovy-glp1-quiz-us-cpl",
-      "render_id": "ro-wegovy-glp1-quiz-us-cpl",
-      "route": "/go/ro-wegovy-glp1-quiz-us-cpl",
-      "network": "xentraffic",
-      "network_offer_id": "3164",
-      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6KWS5L1/",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliates/BEST-TERMS-MACHINE-20260825/switch-backlog.json",
-          "exists": true,
-          "sha256": "2c6570087799c684383605e2acba61bb5bb74fffa07c33568fff38d7910198f5"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/backrun-20260909T150051Z/sheet-full-row-export.json",
-          "exists": true,
-          "sha256": "1c936e3fec83f7d260869ee0ec57444bb260c89f4552010d9703dd021f414265"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "rail-switch",
-      "promotion_authorized": true,
+      "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "ro-wegovy-glp1-quiz-us-cpl",
-        "network": "xentraffic",
-        "tracking_base_url": "https://www.xfnjwej33dd.com/841W6MT/6KWS5L1/",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets"
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "a56ddeca6f458d985011687ac645829000e8338fa377a5cdc7cfb13fb9dfa191"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "rxspan-md-telehealth-program-review": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -753,8 +808,13 @@
       "attribution_parameter_contract": "awin-dyn-params",
       "constructor_verified": true,
       "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -763,8 +823,13 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -773,8 +838,13 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -783,8 +853,28 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "sprout-health": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -793,231 +883,135 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "sunlight-glp1": {
-      "program_id": "sunlight-glp1",
-      "render_id": "sunlight-glp1",
-      "route": "/go/sunlight-glp1",
-      "network": "xentraffic",
-      "network_offer_id": "3254",
-      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6QCRMSM/",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliates/BEST-TERMS-MACHINE-20260825/switch-backlog.json",
-          "exists": true,
-          "sha256": "2c6570087799c684383605e2acba61bb5bb74fffa07c33568fff38d7910198f5"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/backrun-20260909T150051Z/sheet-full-row-export.json",
-          "exists": true,
-          "sha256": "1c936e3fec83f7d260869ee0ec57444bb260c89f4552010d9703dd021f414265"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "rail-switch",
-      "promotion_authorized": true,
+      "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "sunlight-glp1",
-        "network": "xentraffic",
-        "tracking_base_url": "https://www.xfnjwej33dd.com/841W6MT/6QCRMSM/",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets"
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "0761c9c45c08579bda23166290238a4309af58cdab0fbdd7431a9c19ef2048bf"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "synergy-rx-review": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
-    "telos-rx": {
-      "attribution_parameter_contract": "katalys-subid",
-      "constructor_verified": true,
-      "network": "katalys",
-      "promotion_authorized": false,
-      "reason": "Network program paused; link retired; operator requires pause preserved, no research intake and no promotion.",
-      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
-      "redirector_tos_verified": true,
-      "status": "WITHHELD",
-      "live_link_allowed": false,
-      "research_hold_receipt": {
-        "path": "data/telos-research-hold-receipt.json",
-        "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
-      }
-    },
     "tmates-xentraffic-offer-3154": {
-      "program_id": "tmates-xentraffic-offer-3154",
-      "render_id": "tmates-xentraffic-offer-3154",
-      "route": "/go/tmates-xentraffic-offer-3154",
-      "network": "xentraffic",
-      "network_offer_id": "3154",
-      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6KDXB7X/",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/tmates-3154/OPERATOR-SELECTION.json",
-          "exists": true,
-          "sha256": "d08d4ca3856369519d06d8982d809a6a6a4c931be2aada80bde3b33f433735e8"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-offer-3154.json",
-          "sha256": "dab9d1a783d3720e8a58894bb3cf81d243a3d369fb672734a7b0990f9175339f"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/tmates-xentraffic-offer-3154.json",
-          "sha256": "e6eeba185db1d50891a4c926132b17be78f6265db69d74c60b98a95a6a2c9d9e"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-signin.json",
-          "sha256": "97e7267aea27fe86a148f0c331afb67d3ca2733c6b7458578ad25c9fd8a12942"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "held8",
-      "promotion_authorized": true,
+      "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "tmates-xentraffic-offer-3154",
-        "network": "xentraffic",
-        "tracking_base_url": "https://www.xfnjwej33dd.com/841W6MT/6KDXB7X/",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets"
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "295d37ffc0f6c11c6957664482f013e4d7fb94b1e5d0f50b5b4f47bcd103a8a4"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "trimi-glp-1": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "trimrx-xentraffic-offer-3014": {
-      "constructor_verified": false,
-      "promotion_authorized": false,
-      "reason": "redirector_tos_unverified_for_network:xentraffic",
-      "redirector_tos_verified": false,
-      "status": "WITHHELD"
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     },
     "trt-nation": {
-      "program_id": "trt-nation",
-      "render_id": "trt-nation",
-      "route": "/go/trt-nation",
+      "constructor_verified": false,
       "network": "cj",
-      "network_offer_id": "7538517",
-      "issued_link": "https://www.tkqlhce.com/click-101822575-17115008?url=https%3A%2F%2Ftrtnation.com%2Fweight-loss-therapy%2F",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://developers.cj.com/docs/data-imports/action-data",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/trt-nation/OPERATOR-SELECTION.json",
-          "exists": true,
-          "sha256": "cbaefcf78063242d1ccd8db743baca90fc94807e91e97e171ab388ef895b0e13"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/Q45b/DISPATCH-1655/s18-inputs/trt-nation.json",
-          "sha256": "55d52dd78f874946fbf5a58fa4c26abefa46c0330ad050eedad21d838fba236a"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S18/other-rails/cj-trt-program-terms.json",
-          "sha256": "0f9f1a06f5eac5b5eef238ebc354d51d10e176c9185cb7dcc06a26becf861b5c",
-          "captured_at_utc": "2026-09-09T15:54:00Z",
-          "source_url": "https://programs.api.cj.com/query",
-          "locator": null
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/S18/other-rails/cj-trt-links.json",
-          "sha256": "7c2f2963182d512c2f80bb167e8366954c41544c26c970656bf297c546483976",
-          "captured_at_utc": "2026-09-09T15:50:51Z",
-          "source_url": "https://link-search.api.cj.com/v2/link-search",
-          "locator": null
-        }
-      ],
-      "subid_parameter": "sid",
-      "group": "held8",
-      "promotion_authorized": true,
-      "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "trt-nation",
-        "network": "cj",
-        "tracking_base_url": "https://www.tkqlhce.com/click-101822575-17115008?url=https%3A%2F%2Ftrtnation.com%2Fweight-loss-therapy%2F",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://developers.cj.com/docs/data-imports/action-data"
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "46ed6e15a9c602826f73f0ce31a33c36dccb7d7329a7331ce3f73a8f538d273b"
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
     },
     "try-ageless": {
-      "attribution_parameter_contract": "katalys-subid",
-      "constructor_verified": true,
-      "network": "katalys",
-      "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
-      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
-      "redirector_tos_verified": true,
-      "status": "VERIFIED"
+      "constructor_verified": false,
+      "promotion_authorized": false,
+      "reason": "network_paused_katalys_offer_1538",
+      "redirector_tos_verified": false,
+      "status": "WITHHELD"
     },
     "wellmedr-review": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -1026,8 +1020,13 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
@@ -1036,245 +1035,40 @@
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
       "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
       "promotion_authorized": true,
-      "reason": "operator_authorized_live_go_runtime",
+      "reason": "operator_approved_glp_live",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
     },
     "yucca-health-xentraffic-offer-3117": {
-      "program_id": "yucca-health-xentraffic-offer-3117",
-      "render_id": "yucca-health-xentraffic-offer-3117",
-      "route": "/go/yucca-health-xentraffic-offer-3117",
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
       "network": "xentraffic",
-      "network_offer_id": "3142",
-      "issued_link": "https://www.xfnjwej33dd.com/841W6MT/6JS8PDM/",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/yucca-3117/OPERATOR-SELECTION.json",
-          "exists": true,
-          "sha256": "8099806b1cbd6810dbd970053226095df1078ffb04e2a6c49546f5c6bbbe907d"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-offer-3142.json",
-          "sha256": "163a161e64c908e3c18df84dbefe9679ae934198a1e8cbdb1aaf1373200c5572"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/yucca-health-xentraffic-offer-3117.json",
-          "sha256": "de497ac77a0d07c06b56d8375efe67b444750fa44cbc6e84001a11cf388a0a13"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/captures/xentraffic-signin.json",
-          "sha256": "97e7267aea27fe86a148f0c331afb67d3ca2733c6b7458578ad25c9fd8a12942"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "held8",
-      "promotion_authorized": true,
-      "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "yucca-health-xentraffic-offer-3117",
-        "network": "xentraffic",
-        "tracking_base_url": "https://www.xfnjwej33dd.com/841W6MT/6JS8PDM/",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://helpdesk.everflow.io/collaborator/how-to-get-tracking-links-creative-assets"
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
       },
-      "tracking_link_sha256": "bf5e347b7cae49ea7b1d240f68aa81a874664a7807982a1b4fcc55fdde5a69d1"
-    },
-    "awin-128761": {
-      "program_id": "awin-128761",
-      "render_id": "coivas",
-      "route": "/go/coivas",
-      "network": "awin",
-      "network_offer_id": "128761",
-      "issued_link": "https://www.awin1.com/awclick.php?mid=128761&id=2979387",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/site-system/flagship-v2/qa/sealed-train3c-review-20260909T234231Z/data/approved-program-registry.json",
-          "exists": true,
-          "sha256": "f1cf7c6e3a5005c5b06e379a65e3463e18b2eeba470dd73753b760df270e0d4d"
-        }
-      ],
-      "subid_parameter": "clickref",
-      "group": "supersession4",
       "promotion_authorized": true,
-      "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "awin-128761",
-        "network": "awin",
-        "tracking_base_url": "https://www.awin1.com/awclick.php?mid=128761&id=2979387",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params"
-      },
-      "tracking_link_sha256": "50e8c12fe757a75760062a7d8242d450ac3d988a3176cb41ae8c12be5f54d7e9"
-    },
-    "katalys-1286": {
-      "program_id": "katalys-1286",
-      "render_id": "sprout-health",
-      "route": "/go/sprout-health",
-      "network": "katalys",
-      "network_offer_id": "1286",
-      "issued_link": "https://track.revoffers.com/aff_c?offer_id=1286&aff_id=13031",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/site-system/flagship-v2/qa/sealed-train3c-review-20260909T234231Z/data/approved-program-registry.json",
-          "exists": true,
-          "sha256": "f1cf7c6e3a5005c5b06e379a65e3463e18b2eeba470dd73753b760df270e0d4d"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "supersession4",
-      "promotion_authorized": true,
-      "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "katalys-1286",
-        "network": "katalys",
-        "tracking_base_url": "https://track.revoffers.com/aff_c?offer_id=1286&aff_id=13031",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters"
-      },
-      "tracking_link_sha256": "eac13a90859e48e1b9b4564ffe3ed9efc74faa2c10d97eaefd9989565085b255"
-    },
-    "katalys-647": {
-      "program_id": "katalys-647",
-      "render_id": "mangorx",
-      "route": "/go/mangorx",
-      "network": "katalys",
-      "network_offer_id": "647",
-      "issued_link": "https://track.revoffers.com/aff_c?offer_id=647&aff_id=13031",
-      "disposition": "ADOPT",
-      "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/site-system/flagship-v2/qa/sealed-train3c-review-20260909T234231Z/data/approved-program-registry.json",
-          "exists": true,
-          "sha256": "f1cf7c6e3a5005c5b06e379a65e3463e18b2eeba470dd73753b760df270e0d4d"
-        }
-      ],
-      "subid_parameter": "sub1",
-      "group": "supersession4",
-      "promotion_authorized": true,
-      "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "katalys-647",
-        "network": "katalys",
-        "tracking_base_url": "https://track.revoffers.com/aff_c?offer_id=647&aff_id=13031",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters"
-      },
-      "tracking_link_sha256": "b39d33e4b37f5d4d5fd664fa6e1aa8d140fc967a1f5269989e80d177bbb26313"
-    },
-    "katalys-1304": {
-      "program_id": "katalys-1304",
-      "render_id": "direct-meds",
-      "route": "/go/direct-meds",
-      "network": "affiliati",
-      "network_offer_id": "40044",
-      "issued_link": "https://epsilonmkt.com/?a=15309&c=169817",
-      "disposition": "ADOPT",
-      "terms_source_url": null,
-      "source_evidence": [
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/GUSTAVO-TELEGRAM/DIGEST.md",
-          "exists": true,
-          "sha256": "86e0690e8450aea012815fe8fa705658e799ac8bf07a2d0ef50e79b808c10cb9"
-        },
-        {
-          "path": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/DISPATCH-1915/Q45b/direct-meds/OPERATOR-SELECTION.json",
-          "exists": true,
-          "sha256": "218a65bfcb658d243f085d4c89b7cfb7ec62e9e16296262a77b0d12ec265840b"
-        }
-      ],
-      "subid_parameter": "s2",
-      "group": "supersession4",
-      "promotion_authorized": true,
-      "constructor_verified": true,
-      "advertiser_permission_verified": true,
-      "encoding_verified": true,
-      "privacy_qa_passed": true,
-      "status": "VERIFIED",
-      "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-      "redirector_tos_verified": false,
-      "redirector_risk_acceptance": {
-        "schema": "go-redirector-risk-acceptance-v1",
-        "risk_accepted": true,
-        "scope": "first-party-redirect-and-documented-subids",
-        "express_network_permission_proven": false,
-        "program_id": "katalys-1304",
-        "network": "affiliati",
-        "tracking_base_url": "https://epsilonmkt.com/?a=15309&c=169817",
-        "operator_decision_sha256": "957971f18ab3d6f23b6f89752889c9825d2cd02d81d761f5394929ab0bb2715b",
-        "operator_selection_receipt_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
-        "accepted_as_of": "2026-09-10",
-        "limitation": "Operator accepts silence only, not express network approval; actual channel/creative restrictions, privacy, spend and independent release acceptance remain. Goby preserves exact issued URL with no network click parameter.",
-        "terms_source_artifact": "/home/ubuntu/business/reports/ops/orchestration-restore-20260907/PLAN/GUSTAVO-TELEGRAM/DIGEST.md",
-        "terms_source_artifact_sha256": "86e0690e8450aea012815fe8fa705658e799ac8bf07a2d0ef50e79b808c10cb9"
-      },
-      "tracking_link_sha256": "450529f4cdbfa8b1e10184cf41f5d752a781092ad2e12d6581ebf00f2aece10c"
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
     }
   },
   "schema": "glp.go-runtime-promotion-authority.v1",
   "status": "PASS_GOVERNED_ACTIVE_OR_EXPLICITLY_WITHHELD",
   "tracking_clicks": 0,
   "tracking_link_requests": 0,
-  "verification_method": "local_href_and_config_inspection_only",
-  "selection_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e"
+  "verification_method": "local_href_and_config_inspection_only"
 }

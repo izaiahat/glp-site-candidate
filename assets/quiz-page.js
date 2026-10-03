@@ -311,6 +311,7 @@
     identity.append(logo);
     appendText(identity, "h3", "qz-card-name", record.display_name);
     card.append(identity);
+    if (record.claim_qualification) appendText(card, "p", "qz-card-qualification", record.claim_qualification);
 
     const dose = selectedDoseFor(drug);
     if (dose) appendText(card, "p", "qz-card-context", `Your selected dose: ${dose}${/^\d/.test(dose) ? " mg/week" : ""}.`);
@@ -384,7 +385,9 @@
       start.dataset.analyticsEvent = "affiliate_click";
       start.dataset.providerSlug = record.program_id;
       start.dataset.merchant = record.display_name;
-      start.dataset.network = record.network || "direct";
+      if (!record.network) throw new Error(`quiz_affiliate_network_missing:${record.program_id}`);
+      start.dataset.network = record.network;
+      start.dataset.subidCodec = record.subid_codec;
       start.dataset.elementCode = "Q";
       start.dataset.rankPosition = String(index + 1);
       start.dataset.pageType = "quiz-results";

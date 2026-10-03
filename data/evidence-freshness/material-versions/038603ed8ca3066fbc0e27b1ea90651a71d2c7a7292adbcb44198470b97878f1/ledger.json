@@ -1,0 +1,125 @@
+{
+  "accepted_records": 8,
+  "effects": {
+    "accounts_created": 0,
+    "deployments": 0,
+    "emails": 0,
+    "provider_forms": 0,
+    "provider_writes": 0,
+    "spend_usd": 0
+  },
+  "generated_at_utc": "2026-09-14T19:26:55.068Z",
+  "ledger_payload_sha256": "20fb8c516b20599356671b19758a074e3878aca0cfeed357611924cf9bb2c797",
+  "records": [
+    {
+      "cached_at": "2026-08-02T00:59:14.957Z",
+      "capture_id": "ro-weight-loss-pricing-20260802",
+      "disposition": "ACCEPTED",
+      "exact_quote": "First month for $39\n\nAfter your first month, you’ll be charged $74-149/mo depending on the plan you choose.\n\nThe Ro Body membership costs $39 for the first month and as low as $74/month when you prepay for an annual plan.\n\nPlease note that the cost of GLP-1 medication is not included in the membership cost.",
+      "exact_quote_sha256": "5a5fe716e62ea4e88d16b58f6e0bf9f022b9a95bca09fc172ce7e42f38644022",
+      "provider": "firecrawl",
+      "requested_url": "https://ro.co/weight-loss/pricing/",
+      "resolved_url": "https://ro.co/weight-loss/pricing/",
+      "scrape_id": "019fc020-f65c-771b-a062-2308edec20fa",
+      "status_code": 200
+    },
+    {
+      "cached_at": null,
+      "capture_id": "weightwatchers-clinic-pricing-20260802",
+      "disposition": "ACCEPTED",
+      "exact_quote": "$74 $25/first month\n\nThen, $74/month. GLP-1 meds cost not included\n\n$25/month for your first month with a 12-month or 6-month plan. Cost of GLP-1 medications not included.",
+      "exact_quote_sha256": "21647b079c6ec9d811db86d952cf62088a9271395ae8cb65f9449a9cbe7ab251",
+      "provider": "firecrawl",
+      "requested_url": "https://www.weightwatchers.com/us/clinic/weight-loss-medication",
+      "resolved_url": "https://www.weightwatchers.com/us/weight-loss-medication",
+      "scrape_id": "019fc020-fe2a-7747-b317-2c15ba8985ff",
+      "status_code": 200
+    },
+    {
+      "cached_at": "2026-09-14T20:20:29.922Z",
+      "capture_id": "lifemd-weight-management-20260802",
+      "disposition": "ACCEPTED",
+      "exact_quote": "Our program starts as low as $39 for your first month, and just $149 a month thereafter with the flexibility to cancel anytime.\n\nMedication cost is not included and varies based on insurance coverage or self-pay options.",
+      "exact_quote_sha256": "013b98d6db18ca35a78c166548cd83cd37e89ec79e44b61939858581d025e3d1",
+      "provider": "firecrawl",
+      "requested_url": "https://lifemd.com/weight-management/",
+      "resolved_url": "https://lifemd.com/weight-management/",
+      "scrape_id": "01a0a193-edc3-77db-be03-69a2d2b71af7",
+      "status_code": 200
+    },
+    {
+      "cached_at": null,
+      "capture_id": "mochi-pricing-20260802",
+      "disposition": "REJECTED_SOURCE_404",
+      "exact_quote": "",
+      "exact_quote_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "provider": "firecrawl",
+      "requested_url": "https://joinmochi.com/weight-loss-pricing",
+      "resolved_url": "https://joinmochi.com/404",
+      "scrape_id": "019fc021-17bc-75fb-a8c1-6182cacd1768",
+      "status_code": 404
+    },
+    {
+      "cached_at": "2026-08-02T00:15:58.903Z",
+      "capture_id": "plushcare-glp1-pricing-20260802",
+      "disposition": "ACCEPTED",
+      "exact_quote": "$129\n\nInitial visits are $129.\n\nPlease note that any medication or lab work costs are not included.",
+      "exact_quote_sha256": "245f2f94013a8a529983d06d9d11f8ec6a4750ba50b514d9aadb3e54d5c6d203",
+      "provider": "firecrawl",
+      "requested_url": "https://plushcare.com/glp-1-prescription/",
+      "resolved_url": "https://plushcare.com/glp-1-prescription",
+      "scrape_id": "019fc021-215f-728c-854a-b1f09ca8c764",
+      "status_code": 200
+    },
+    {
+      "cached_at": null,
+      "capture_id": "wegovy-savings-20260802",
+      "disposition": "ACCEPTED",
+      "exact_quote": "With commercial insurance: pay as little as $25 per month, subject to a max savings of $100/month.\n\nSelf-pay pricing varies by dose. Patients pay $149 for each month of 1.5 mg and 4 mg. 4 mg offer only available until August 31, 2026, then $199 per month for 4 mg.\n\nPatients new to the Wegovy Savings offer or NovoCare Pharmacy pay $199 for each month of 0.25 mg and 0.5 mg. Offer for 2 monthly fills through December 31, 2026, then $349 per month for Wegovy 0.25 mg, 0.5 mg, 1 mg, 1.7 mg, or 2.4 mg and $399 per month for Wegovy HD 7.2 mg.\n\nSavings are available for people using commercial insurance or those who are uninsured/self-paying (not going through insurance) with a valid prescription. Government-insured patients may use this program if they self pay and process outside of their insurance.",
+      "exact_quote_sha256": "51375a466c3176daca317e26bc8e7b0d4597ef9a495cd9ae561f1babd1d7ee96",
+      "provider": "firecrawl",
+      "requested_url": "https://www.novocare.com/obesity/products/wegovy/savings-offer.html",
+      "resolved_url": "https://www.novocare.com/patient/medicines/wegovy/savings-offer.html",
+      "scrape_id": "019fc021-2897-712d-9095-6a0244b9d37c",
+      "status_code": 200
+    },
+    {
+      "cached_at": "2026-09-14T19:27:04.300Z",
+      "capture_id": "zepbound-savings-20260802",
+      "disposition": "ACCEPTED",
+      "exact_quote": "The $299 per month is for the Zepbound KwikPen or vial, not Zepbound single-dose Pen.\n\nFor patients who have been prescribed Zepbound single-dose pen and have commercial drug insurance that does not provide coverage for Zepbound single-dose pen: You must have commercial drug insurance that does not cover Zepbound single-dose pen and a prescription for an approved use consistent with FDA-approved product labeling to pay as low as $499 for your 1-month prescription fill of Zepbound single-dose pen.\n\nRegular price for a 1-month supply of Zepbound single-patient-use KwikPen is $299 for 2.5 mg, $399 for 5 mg, $499 for 7.5 mg, $699 for 10 mg, $699 for 12.5 mg, and $699 for 15 mg.\n\nMonth is defined as 28-days and up to 4 single-dose pens. Card savings are subject to a maximum monthly savings based on wholesale acquisition cost minus $499, up to a maximum of 13 prescription fills per calendar year.\n\nFor all Zepbound single-patient-use KwikPen dosages, month is defined as 28-days and up to 1 single-patient-use KwikPen. Card may be used for a maximum of up to 11 prescription fills per calendar year.",
+      "exact_quote_sha256": "3372281d3e8a6f89bd635995313f7ea16991642a541f1bf5a8d9fd4fb556b596",
+      "provider": "firecrawl",
+      "requested_url": "https://zepbound.lilly.com/savings",
+      "resolved_url": "https://zepbound.lilly.com/savings",
+      "scrape_id": "01a0a163-18f3-73b8-8114-d6bf20e54561",
+      "status_code": 200
+    },
+    {
+      "cached_at": "2026-08-01T22:00:24.674Z",
+      "capture_id": "ftc-fake-review-rule-20260802",
+      "disposition": "ACCEPTED",
+      "exact_quote": "The final rule addresses reviews and testimonials that misrepresent that they are by someone who does not exist, such as AI-generated fake reviews, or who did not have actual experience with the business or its products or services, or that misrepresent the experience of the person giving it. It prohibits businesses from creating or selling such reviews or testimonials.",
+      "exact_quote_sha256": "0c8ab5d2a6454903bd5d299318e142cbc0e887533746b74ca5e64fb55290944f",
+      "provider": "firecrawl",
+      "requested_url": "https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials",
+      "resolved_url": "https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials",
+      "scrape_id": "019fc021-6d41-761f-8f03-7643c3f1c7c3",
+      "status_code": 200
+    },
+    {
+      "cached_at": "2026-09-14T18:47:13.978Z",
+      "capture_id": "fda-unapproved-glp1-warning-20260802",
+      "disposition": "ACCEPTED",
+      "exact_quote": "unapproved versions do not undergo FDA’s review for safety, effectiveness and quality before they are marketed.\n\nFDA received multiple reports of adverse events, some requiring hospitalization, that may be related to dosing errors associated with compounded injectable semaglutide products.",
+      "exact_quote_sha256": "27736ac1161c0d1ef1696685265621ff903e35e20bda9a5d22fae52af7ae0167",
+      "provider": "firecrawl",
+      "requested_url": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+      "resolved_url": "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+      "scrape_id": "01a0a13e-a2fc-77ef-bdb7-49ed087a7ccf",
+      "status_code": 200
+    }
+  ],
+  "rejected_records": 1,
+  "schema": "glp-wave4-firecrawl-source-capture-ledger-v1"
+}

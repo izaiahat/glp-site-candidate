@@ -149,6 +149,13 @@ for (const width of [1280, 390]) {
         await expect(page.locator(`#${sectionId}`), route).toHaveCount(1);
       }
       const direct = page.locator('a[data-link-mode="transparent-direct"]');
+      if (route === "/reviews/try-ageless/") {
+        // The operator's paused-Ageless exclusion keeps this review readable, not commercially live.
+        await expect(page.locator('a[data-analytics-event="affiliate_click"]'), route).toHaveCount(0);
+        await expect(direct, route).toHaveCount(0);
+        await expect(page.getByRole("link", { name: "Find my match" }), route).toHaveCount(1);
+        continue;
+      }
       await expect(direct.first(), route).toBeVisible();
       expect(await direct.count(), route).toBeGreaterThanOrEqual(1);
       for (const anchor of await direct.evaluateAll((nodes) => nodes.map((node) => ({

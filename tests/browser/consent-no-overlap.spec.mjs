@@ -22,7 +22,7 @@ async function assertDefaultNotice(page) {
   await expect(page.locator("#gcs-consent button")).toHaveCount(1);
   await expect(page.locator('[data-consent="acknowledge"]')).toHaveText("Got it");
   expect(await page.evaluate(() => window.GCSConsent.read())).toMatchObject({
-    analytics: "granted", advertising: "denied", record_type: "preference_only", analytics_basis: "us_default", notice_acknowledged: false,
+    analytics: "granted", advertising: "granted", record_type: "preference_only", analytics_basis: "global_default", notice_acknowledged: false,
   });
 }
 

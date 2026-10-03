@@ -30,8 +30,9 @@ async function assertCount(page, expectedIds) {
   // Progressive disclosure is 12 cards in the accepted E renderer/runtime.
   const shown = Math.min(12, expectedIds.length);
   await expect(page.locator(`${cards}:visible`)).toHaveCount(shown);
-  const prefix = shown < expectedIds.length ? `Showing ${shown} of ${expectedIds.length}` : `Showing ${shown}`;
-  await expect(page.locator("[data-filter-result]")).toHaveText(`${prefix} program card${expectedIds.length === 1 ? "" : "s"}`);
+  // KAEL-DECISION-20260923-optionc-governing-mappings.md A2.3: the status
+  // reports the eligible cohort; only the visible card batch is capped at 12.
+  await expect(page.locator("[data-filter-result]")).toHaveText(`Showing ${expectedIds.length} program card${expectedIds.length === 1 ? "" : "s"}`);
 }
 async function appliedHistorySnapshot(page) {
   return page.evaluate(({ filters, cards }) => ({
@@ -126,12 +127,10 @@ test("facet drafts do not filter or change URL; button and Enter apply; sort kee
   expect(await visibleProgramIds(page)).toEqual(appliedIds);
   expect(page.url()).toBe(appliedUrl);
   const prices = await page.locator(`${cards}:visible`).evaluateAll((rows) => rows.map((row) => {
-    const values = (row.dataset.priceMap || "").split("|").map((entry) => entry.split(":"))
+    const values = (row.dataset.ongoingPriceMap || "").split("|").map((entry) => entry.split(":"))
       .filter(([token, value]) => token === "SEMAGLUTIDE" && typeof value === "string" && value.trim() !== "" && Number.isFinite(Number(value)) && Number(value) >= 0)
       .map(([, value]) => Number(value));
-    const raw = String(row.dataset.price ?? "").trim();
-    const fallback = raw === "" ? Infinity : Number(raw);
-    return values.length ? Math.min(...values) : Number.isFinite(fallback) && fallback >= 0 ? fallback : Infinity;
+    return values.length ? Math.min(...values) : Infinity;
   }));
   expect(prices).toEqual([...prices].sort((a, b) => a - b));
   await search(page).fill("OrderlyMeds");

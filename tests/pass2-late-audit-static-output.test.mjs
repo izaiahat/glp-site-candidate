@@ -138,8 +138,26 @@ test("late-audit aliases, zero-click subscriptions, O23 desktop layout, and D36 
   const captureForm = home.match(/<form[^>]*data-content-upgrade-form-inline[\s\S]*?<\/form>/)?.[0] || "";
   assert.match(captureForm, /name="email"/);
   assert.doesNotMatch(captureForm, /type="checkbox"|name="email_consent"/);
-  assert.doesNotMatch(home, /data-motion-once="true"/);
-  assert.ok((home.match(/data-motion-once="false"/g) || []).length >= 16);
+  // KAEL-DECISION-20260922-motion-mobile-contracts.md §4 allows replay only
+  // where explicitly opted in; hero remains one-shot and H17 alternates.
+  const motionDecision = await readFile(path.resolve(root, "../../../../ops/linear/approvals/KAEL-DECISION-20260922-motion-mobile-contracts.md"), "utf8");
+  assert.match(motionDecision, /Re-entry is permitted for explicitly opted-in nonhero sections/);
+  assert.match(home, /cs-home2-hero__copy[^>]*data-motion="rise" data-motion-once="true"/);
+  for (const [card, direction] of [["shipping", "right"], ["schedule", "left"]]) {
+    assert.match(home, new RegExp(`data-h17-card="${card}"[^>]*data-motion="slide-from-${direction}" data-motion-once="false"`));
+  }
+  const replayTags = [...home.matchAll(/<[^>]+data-motion-once="false"[^>]*>/g)].map(match => match[0]);
+  assert.ok(replayTags.length >= 2, "H17 opt-in replay must be emitted");
+  for (const tag of replayTags) {
+    assert.doesNotMatch(tag, /cs-home2-hero/);
+    assert.match(tag, /data-motion(?:-group)?="[^"]+"/, "each replay entrance opts in on its own element");
+  }
+  const motion = await read("public/assets/motion.js");
+  assert.match(motion, /getAttribute\("data-motion-once"\) === "false"/);
+  assert.match(motion, /onEnter: play, onEnterBack: play/);
+  assert.match(motion, /if \(reduced \|\| !gsap \|\| !ST\) return/);
+  assert.match(css, /@media\s*\(prefers-reduced-motion:reduce\)\s*\{/);
+  assert.doesNotMatch(css, /contain-intrinsic-size|content-visibility:\s*auto/, "no-JS home content must not be viewport-gated");
   const homeReview = home.match(/<form[^>]*data-review-intake[^>]*data-review-compact[\s\S]*?<\/form>/)?.[0] || "";
   assert.match(homeReview, />Submit for review<\/button>/);
   assert.doesNotMatch(homeReview, /type="file" name="evidence"|data-review-step="counterpart"/);

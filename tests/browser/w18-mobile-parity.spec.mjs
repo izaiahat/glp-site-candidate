@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
 import { mkdirSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { governedPaidPrimaryIds, governedWegovyIds } from "./governed-cohort.mjs";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const PROOF = path.join(ROOT, "artifacts", "ultracode", "w18-mobile");
+const PROOF = path.join(process.env.PLAYWRIGHT_SCRATCH_ROOT || os.tmpdir(), "w18-mobile");
 mkdirSync(PROOF, { recursive: true });
 
 const ROUTES = [
@@ -25,14 +25,16 @@ const ANALYTICS = /https:\/\/(?:www\.)?(?:googletagmanager\.com|google-analytics
 
 test.setTimeout(180_000);
 
-test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() => {
-    localStorage.setItem("gcs_tracking_consent_v1", JSON.stringify({
-      analytics: "denied",
-      version: "gcs-cookie-v2-default-on-20260730",
-      saved_at: "2026-08-22T00:00:00.000Z",
-    }));
-  });
+test.beforeEach(async ({ page }, testInfo) => {
+  if (!/W18 paid provider filters|W18 quiz remains/.test(testInfo.title)) {
+    await page.addInitScript(() => {
+      localStorage.setItem("gcs_tracking_consent_v1", JSON.stringify({
+        analytics: "denied",
+        version: "gcs-cookie-v2-default-on-20260730",
+        saved_at: "2026-08-22T00:00:00.000Z",
+      }));
+    });
+  }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.route(ANALYTICS, (route) => route.fulfill({ status: 204, contentType: "application/javascript", body: "" }));
   await page.route("**/api/geo-state", (route) => route.fulfill({
@@ -140,27 +142,88 @@ test("W18 nav drawer and search sheet are focus-contained, full-height, and scro
   expect(errors).toEqual([]);
 });
 
-test("W18 provider and pharmacy filters use ergonomic bottom sheets", async ({ page }) => {
+test("W18 paid provider filters stay inline while pharmacy filters keep their sheet", async ({ page }, testInfo) => {
   const errors = watchRuntimeErrors(page);
-  for (const [route, name] of [
-    ["/lp/best-providers/compounded-semaglutide/", "Filters and sort"],
-    ["/pharmacies/", "Pharmacy filters"],
-  ]) {
-    await page.goto(route, { waitUntil: "networkidle" });
-    const trigger = page.getByRole("button", { name: new RegExp(`^${name}`) });
-    await expect(trigger).toBeVisible();
-    await trigger.click();
-    const sheet = page.getByRole("dialog", { name });
-    await expect(sheet).toBeVisible();
-    const box = await sheet.boundingBox();
-    expect(box?.width).toBeCloseTo(390, 0);
-    expect(box?.height || 0).toBeLessThanOrEqual(680);
-    await expect(page.locator("body")).toHaveClass(/cs-mobile-filters-open/);
-    await sheet.getByRole("button", { name: "Show results" }).click();
-    await expect(sheet).toBeHidden();
-    await expect(trigger).toBeFocused();
-    await expectNoHorizontalOverflow(page, route);
+  const thirdPartyAttempts = [];
+  page.on("request", (request) => { if (ANALYTICS.test(request.url())) thirdPartyAttempts.push(request.url()); });
+  // w18-semantic-independent-review.md F-01: the paid LP has inline filters.
+  await page.goto("/lp/best-providers/compounded-semaglutide/", { waitUntil: "networkidle" });
+  const filters = page.locator('[data-provider-filters]');
+  await expect(filters).toBeVisible();
+  for (const facet of ["treatment", "type", "plan", "sort"]) {
+    await expect(filters.locator(`[data-filter="${facet}"]`).first()).toBeVisible();
   }
+  await expect(page.locator('.p3-more-filters summary')).toContainText('More plans');
+  await page.locator('.p3-more-filters summary').click();
+  await expect(filters.locator('[data-filter="dose"]').first()).toBeVisible();
+  await expect(page.locator('[data-state-open]')).toBeVisible();
+  const primary = page.locator('#provider-results [data-phase3-provider]:visible');
+  const initialIds = governedPaidPrimaryIds("SEMAGLUTIDE");
+  expect(await primary.evaluateAll((nodes) => nodes.map((node) => node.dataset.program))).toEqual(initialIds);
+  await filters.locator('[data-filter="plan"][data-value="3"]').click();
+  await expect(filters.locator('[data-filter="plan"][data-value="3"]')).toHaveAttribute('aria-selected', 'true');
+  await expect(primary).toHaveCount(0);
+  await filters.locator('[data-filter="plan"][data-value="both"]').click();
+  await expect(primary).toHaveCount(initialIds.length);
+  await filters.locator('[data-filter="dose"][data-value="2.4"]').click();
+  await expect(filters.locator('[data-filter="dose"][data-value="2.4"]')).toHaveAttribute('aria-selected', 'true');
+  await expect(primary).toHaveCount(0);
+  await filters.locator('[data-filter="dose"][data-value="all"]').click();
+  expect(await primary.evaluateAll((nodes) => nodes.map((node) => node.dataset.program))).toEqual(initialIds);
+  await expect(filters.locator('[data-filter="sort"][data-value="best"]')).toHaveAttribute('aria-disabled', 'true');
+  await expect(filters.locator('[data-filter="sort"][data-value="cheapest"]')).toHaveAttribute('aria-selected', 'true');
+  expect(await primary.evaluateAll((nodes) => nodes.map((node) => node.dataset.program))).toEqual(initialIds);
+  await filters.locator('[data-filter="type"][data-value="brand"]').click();
+  await expect(page).toHaveURL(/\/wegovy\/\?drug=WEGOVY&form=BRAND_NAME/);
+  await expect(page.locator('[data-provider-filters] [data-filter="type"][data-value="brand"]')).toHaveAttribute('aria-selected', 'true');
+  expect(await primary.evaluateAll((nodes) => nodes.map((node) => node.dataset.program))).toEqual(governedWegovyIds());
+  await expectNoHorizontalOverflow(page, "/lp/best-providers/compounded-semaglutide/");
+  await page.goto("/pharmacies/", { waitUntil: "networkidle" });
+  const trigger = page.getByRole("button", { name: /^Pharmacy filters/ });
+  await expect(trigger).toBeVisible();
+  await trigger.click();
+  const sheet = page.getByRole("dialog", { name: "Pharmacy filters" });
+  await expect(sheet).toBeVisible();
+  expect(await sheet.evaluate((node) => node.contains(document.activeElement))).toBe(true);
+  await expect(sheet).toHaveAttribute("aria-modal", "true");
+  const focusables = sheet.locator('button:not([disabled]):not([tabindex="-1"]):visible,input:not([disabled]):not([type="hidden"]):visible,select:not([disabled]):visible,a[href]:visible');
+  const first = focusables.first();
+  const last = focusables.last();
+  await first.focus();
+  await page.keyboard.press("Shift+Tab");
+  await expect(last).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(first).toBeFocused();
+  for (let step = 0; step < await focusables.count(); step++) {
+    await page.keyboard.press("Tab");
+    expect(await sheet.evaluate((node) => node.contains(document.activeElement)), `Tab ${step} escaped pharmacy sheet`).toBe(true);
+  }
+  const box = await sheet.boundingBox();
+  expect(box?.width).toBeCloseTo(390, 0);
+  expect(box?.height || 0).toBeLessThanOrEqual(680);
+  await expect(page.locator("body")).toHaveClass(/cs-mobile-filters-open/);
+  expect(await page.locator("body").evaluate((body) => getComputedStyle(body).overflow)).toBe("hidden");
+  const { beforeScroll, maxScroll } = await page.evaluate(() => ({
+    beforeScroll: scrollY, maxScroll: document.documentElement.scrollHeight - innerHeight,
+  }));
+  expect(maxScroll).toBeGreaterThan(beforeScroll + 560);
+  const sheetTop = (await sheet.boundingBox()).y;
+  // A real wheel gesture on the backdrop, not a scripted scrollTo that bypasses the lock.
+  expect(sheetTop).toBeGreaterThan(0);
+  if (testInfo.project.name !== "webkit-mobile") {
+    await page.mouse.move(195, Math.max(1, sheetTop / 2));
+    await page.mouse.wheel(0, 560);
+  }
+  // Mobile WebKit does not implement Playwright's mouse.wheel; retain a
+  // keyboard scroll attempt there rather than synthesizing a nontrusted event.
+  await first.focus();
+  await page.keyboard.press("PageDown");
+  await expect.poll(() => page.evaluate(() => scrollY)).toBe(beforeScroll);
+  await sheet.getByRole("button", { name: "Show results" }).click();
+  await expect(sheet).toBeHidden();
+  await expect(trigger).toBeFocused();
+  await expectNoHorizontalOverflow(page, "/pharmacies/");
+  expect(thirdPartyAttempts).toEqual([]);
   expect(errors).toEqual([]);
 });
 
@@ -253,53 +316,75 @@ test("W18 home medication rail responds to a touch swipe", async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test("W18 quiz steps remain reachable and results reveal into a 312px swipe rail", async ({ page }) => {
+test("W18 quiz remains reachable and hands off to readable mobile result cards", async ({ page, baseURL }) => {
   const errors = watchRuntimeErrors(page);
+  const egress = [];
+  const origin = new URL(baseURL).origin;
+  await page.route("**/*", (route) => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    const resultsHandoff = url.origin === origin && url.pathname === "/matches/customized/" && request.method() === "GET";
+    const answerBearing = [...url.searchParams].some(([key, value]) =>
+      /^(?:state|drug|form|goal|intent|reason|feature|dose|current_use)$/i.test(key)
+      || /TIRZEPATIDE|OTHER_HEALTH_CONCERNS/i.test(value))
+      || /TIRZEPATIDE|OTHER_HEALTH_CONCERNS|state=OR/i.test(request.postData() || "")
+      || (request.resourceType() !== "image" && /TIRZEPATIDE|OTHER_HEALTH_CONCERNS/i.test(url.pathname));
+    if (url.origin !== origin) egress.push(`external ${request.method()} ${request.resourceType()}`);
+    else if (answerBearing && !resultsHandoff) egress.push(`answer-bearing non-result ${request.method()} ${request.resourceType()}`);
+  });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/quiz/provider-fit/?restart=1", { waitUntil: "networkidle" });
+  const consent = await page.evaluate(() => JSON.parse(localStorage.getItem("gcs_tracking_consent_v1") || "null"));
+  expect(consent?.analytics).toBe("denied");
+  expect(consent?.advertising).toBe("denied");
+  expect(consent?.analytics_basis).toBe("unset");
   // No consent gate and no start control: the quiz auto-initializes and
   // position 0 ([data-quiz-position="0"]) is shown on load without any click.
   await expect(page.locator("#begin-quiz")).toHaveCount(0);
   await expect(page.locator('[data-quiz-position="0"]:not([hidden])')).toBeVisible();
 
-  for (let guard = 0; guard < 10; guard += 1) {
-    if (await page.locator("#result").isVisible()) break;
-    const field = page.locator(".question:not([hidden])");
-    await expect(field).toBeVisible();
-    const option = field.locator("button.option:not([disabled])").first();
-    if (await option.count()) {
-      await option.click();
-    } else {
-      const select = field.locator("select[data-question]");
-      const value = await select.locator("option:not([disabled])").evaluateAll((options) => options.map((item) => item.value).find(Boolean));
-      expect(value).toBeTruthy();
-      await select.selectOption(value);
-      await field.locator("[data-role=state-continue]").click();
-    }
-  }
-
-  const result = page.locator("#result");
+  // w18-semantic-independent-review.md C03: the survey resolves off-page.
+  const tirzepatide = page.locator('[data-multi="intents"][data-value="TIRZEPATIDE"]');
+  await tirzepatide.focus();
+  await page.keyboard.press("Enter");
+  await expect(tirzepatide).toHaveAttribute("aria-pressed", "true");
+  await page.locator('[data-quiz-position="0"] [data-quiz-next]').focus();
+  await page.keyboard.press("Enter");
+  const noUse = page.locator('[data-single="current_use"][data-value="no"]');
+  await noUse.focus();
+  await page.keyboard.press("Space");
+  await expect(noUse).toHaveAttribute("aria-pressed", "true");
+  const reason = page.locator('[data-multi="reasons"][data-value="OTHER_HEALTH_CONCERNS"]');
+  await reason.focus();
+  await page.keyboard.press("Enter");
+  await expect(reason).toHaveAttribute("aria-pressed", "true");
+  await page.locator('[data-quiz-position="1"] [data-quiz-next]').click();
+  await page.locator('[data-quiz-position="4"] [data-quiz-back]').click();
+  await expect(page.locator('[data-quiz-position="1"]:not([hidden])')).toBeVisible();
+  await page.locator('[data-quiz-position="1"] [data-quiz-next]').click();
+  await page.locator('[data-quiz-position="4"] [data-quiz-next]').click();
+  await page.locator('[data-quiz-select="state"]').selectOption('OR');
+  await page.locator('[data-quiz-position="5"] [data-quiz-next]').click();
+  await page.locator('[data-quiz-finish]').click();
+  await expect(page).toHaveURL(/\/matches\/customized\/.*state=OR/);
+  const result = page.locator('[data-matches-results]');
   await expect(result).toBeVisible();
-  await expect(page.locator(".cs-quiz-result-skeleton")).toHaveCount(0);
-  await expect(page.locator(".cs-quiz-result-viewport")).toBeVisible();
-  const cards = page.locator("#match-cards .qz-card");
-  expect(await cards.count()).toBeGreaterThan(1);
-  const firstBox = await cards.first().boundingBox();
-  expect(firstBox?.width).toBeCloseTo(312, 0);
-  await expect(page.locator(".cs-quiz-result-dots button")).toHaveCount(await cards.count());
-  const track = page.locator("#match-cards");
-  const before = await track.evaluate((node) => getComputedStyle(node).transform);
-  await page.locator(".cs-quiz-result-dots button").nth(1).click();
-  await expect.poll(() => track.evaluate((node) => getComputedStyle(node).transform)).not.toBe(before);
-  const panelInk = await page.evaluate(() => ({
-    about: getComputedStyle(document.querySelector('.quiz-about p')).color,
-    capture: getComputedStyle(document.querySelector('#result .inline-capture p')).color,
-  }));
-  const darkestChannel = (color) => Math.max(...(color.match(/\d+/g) || []).slice(0, 3).map(Number));
-  expect(darkestChannel(panelInk.about)).toBeLessThan(120);
-  expect(darkestChannel(panelInk.capture)).toBeLessThan(120);
+  await expect(result.locator("#qm-results-title")).toBeFocused();
+  const cards = result.locator('[data-result-cards] .qz-card');
+  expect(await cards.count()).toBeGreaterThan(0);
+  const cardBoxes = await cards.evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect()));
+  expect(cardBoxes.every((box) => box.width <= 366 && box.width > 0)).toBe(true);
+  expect(cardBoxes.slice(1).every((box, index) => box.top >= cardBoxes[index].bottom)).toBe(true);
+  await expect(result.locator('[data-full-quiz-link]')).toHaveAttribute('href', /\/quiz\/provider-fit\//);
+  const savedAnswers = await page.evaluate(() => [...Object.entries(localStorage), ...Object.entries(sessionStorage)].filter(([key, value]) =>
+    /quiz.*(?:answer|health)/i.test(key) || /TIRZEPATIDE|OTHER_HEALTH_CONCERNS/.test(value)));
+  expect(savedAnswers).toEqual([]);
   await result.scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(PROOF, "quiz-results-390x844.png"), animations: "disabled" });
-  await expectNoHorizontalOverflow(page, "/quiz/provider-fit/");
+  await expectNoHorizontalOverflow(page, "/matches/customized/");
+  await result.locator('[data-full-quiz-link]').click();
+  await expect(page).toHaveURL(/\/quiz\/provider-fit\//);
+  await expect(page.locator('[data-quiz-position="0"]:not([hidden])')).toBeVisible();
+  expect(egress).toEqual([]);
   expect(errors).toEqual([]);
 });

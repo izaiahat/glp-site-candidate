@@ -1,0 +1,169 @@
+{
+  "schema": "glp-d1-diagnostics-v1",
+  "authority": "D1 operator decision 20260925",
+  "diagnostics": [
+    {
+      "id": "D01",
+      "title": "Old money-template intent grid replaced by active GLP-34 listing",
+      "classification": "D",
+      "reason": "The retired money URL now resolves to the provider comparison composition; its old #best-for .intent-cards anatomy is not the active listing. Source explicitly declares older page functions migration references, not graph output."
+    },
+    {
+      "id": "D02",
+      "title": "Bulk listing now has an explicit bound product visual",
+      "classification": "D",
+      "reason": "The old callback check pins zero product visuals. The active GLP-34 bulk listing visual upgrader explicitly inserts a product-comparison picture inside listing__intro; the former zero-visual presentation is replaced."
+    },
+    {
+      "id": "D03",
+      "title": "Insurance shortcut removed from replacement compact-card composition",
+      "classification": "D",
+      "reason": "Current GLP-34 option-C cards contain fact ledger plus get-started and editorial review/detail actions; they do not emit data-insurance-provider. The insurance wizard remains a separate below-grid section. The failure is an old anatomy hook lookup, not a demonstrated wrong estimate."
+    },
+    {
+      "id": "D04",
+      "title": "Legacy guide library replaced by Insights index",
+      "classification": "D",
+      "reason": "The fixture visits the retired guide library and asks for its library-index element. Build route replacements send /guides/ to /insights/; the retained legacy render function is not evidence that the served Insights page should reproduce its old index."
+    },
+    {
+      "id": "D05",
+      "title": "Hidden Pass-2 quiz audit markup superseded by Phase-4 quiz",
+      "classification": "D",
+      "reason": "The raw timeout shows a matching option exists but is hidden, not absent. Source explicitly wraps legacy Pass-2 sections in hidden/aria-hidden audit markup and labels Phase 4 as the successor. Do not expose old questionnaire elements to satisfy the click."
+    },
+    {
+      "id": "D06",
+      "title": "In-place three-card quiz result animation replaced by customized-results handoff",
+      "classification": "D",
+      "reason": "Current finish navigates to /matches/customized/. That page renders every governed result ID and a separate is-new transition, not the old three-card is-computing skeleton. R3 observed 47 cards on the new destination. Do not truncate the governed results merely to match the retired in-place presentation."
+    },
+    {
+      "id": "D07",
+      "title": "Old category/product hero markers replaced by GLP-34 listing shell",
+      "classification": "D",
+      "reason": "These failures pin old emulated hero/category template markers or hero-scoped figure placement. The active graph uses listingDocument and listingDrugPanel; source explicitly retires older page functions. This does not waive image decoding, medication labeling or responsive bounds on the new shell."
+    },
+    {
+      "id": "D08",
+      "title": "Provider detail plan/rail composition replaced embedded listing card",
+      "classification": "D",
+      "reason": "The test opens OrderlyMeds detail and requires a listing p3-provider-card. Current detail source emits a D3 profile hero, plan cards, evidence/action rail and sticky control, not an embedded listing card. Price/source checks must target the plan records instead."
+    },
+    {
+      "id": "D09",
+      "title": "Paid quiz entrance Fable r2 architecture pin replaced by v5",
+      "classification": "D",
+      "reason": "Operator decision OPERATOR-DECISION-20261002-approve-everything-ship.md approves the current v5 paid entrance and substitutes independent Astra review. The current renderer loads v5-fable.html and reports fable-v5-link-to-unchanged-organic-quiz; ID37 now asserts that exact v5 architecture. All organic-island hash, corruption, isolation, no-hidden-contact and newsletter-runtime assertions remain unchanged; this row records the supersession, not a skipped test."
+    },
+    {
+      "id": "B01",
+      "title": "Filter reset did not clear selected state",
+      "classification": "B",
+      "reason": "R3 observes state still present after Reset. The current reset implementation explicitly clears selectedState, applies persisted groups, then clears shared CS_STATE. That is a real failed user-visible reset effect, not a superseded text or layout requirement. Exact winning race is not isolated; no erroneous medical claim is established."
+    },
+    {
+      "id": "B02",
+      "title": "Copay selection did not populate monthly out-of-pocket",
+      "classification": "B",
+      "reason": "R3 clicked a copay but the input stayed empty instead of 75. The supported handler explicitly assigns the clicked data-copay to monthlyInput.value before paint. This is a broken input interaction, not proof of a false quoted price; the failed estimate is not promoted to a legal claim."
+    },
+    {
+      "id": "B03",
+      "title": "Provider sticky remains fixed after footer release point",
+      "classification": "B",
+      "reason": "The actual geometry shows fixed with released=false after the footer passed the viewport; the test expected the footer-release state. Treat as an observed nonblocking sticky/occlusion UX defect, not as evidence of an unapproved link. Fix attribution requires the sticky observer timeline, not a baseline change."
+    },
+    {
+      "id": "F02",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The historical failure scans dollar leaves of the first canonical grid card above the fold, not incorrect pricing. Fold position is outside D1. Current matrix price/quote/date truth is independently required by F25.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F03",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "History snapshot compares the visible pagination window rather than a fully hydrated cohort. Card-window/history presentation is outside D1; full hydration and current rail integrity remain required, not quarantined.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F06",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Historical INP proxy failed to observe its click; this is timing instrumentation, not an observed consent grant/deny failure. Existing privacy-category assertions are unchanged; real deny/reload/regrant tests remain required.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F07",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Fixed category/bulk card counts mix comparable, state-unknown and unpriced sections. Cardinality/emulation is outside D1; source-price and all affiliate authorization checks stay required.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F09",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The historical failure records 147 while targeting 149 during the price-roll check; its timing cause is not independently established. New required tests verify final text AND data-price-numeric against current source amounts in both motion modes. Only animation timing is non-blocking; a wrong settled amount still fails D1.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F10",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Old load-more timing/window count is presentation. Current complete hydration reaches 50 comparison cards, including both named later money targets; their exact authorized hrefs are checked without navigation.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F11",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "A globally visible supplemental card and an empty primary numeric grid are compatible states. The historical assertion conflates section ownership; empty-state composition is outside D1, not a waiver of pricing truth.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F15",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "P19 helper requires the retired listing anatomy before color/geometry assertions. The D1 decision makes this presentation/emulation precondition diagnostic; existing legal disclosure and link authority gates are retained.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F16",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Five-ID reconciliation: Wellmedr (floor_from), Trimi (monthly_equivalent_of_billing_period) and Shed (floor_from) have matching typed semaglutide offers, not comparable cash rows. Bodybuilding and Sprout lack matching current pricing rows in this table; their approved links remain elsewhere. Only old cardinality is diagnostic; no new paid eligibility or economic-order authority is created.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F19",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The failed assertion is document scrollY after focus, not consent storage or network effects. Scroll placement is outside D1. No privacy-category assertion is edited or suppressed; C01 source scheduling and original real consent tests remain required.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F28",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The old bounded Tab walk searches desktop .cs-navgroup menus in mobile presentation rather than opening the supported mobile menu toggle. Nav presentation/emulation is outside D1; no keyboard/consent oracle is changed.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F29",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "The old predicate rejects any scrollHeight/clientHeight excess without identifying hidden content. Card geometry/decorative overflow is outside D1; open price quotations and visible affiliate actions remain required by F25/F14.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F30",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Raw failure targets the mobile navigation drawer: expectInsideViewport -> openAndCloseMobileDrawer, phase3-page-graph.spec.mjs:253/287, not a provider card. Independent review at 4a7ecaad6495fea44146cbbbe3ed8f55da678e13 passed 22/22 drawer keyboard open/close/focus and viewport checks (11 routes, Chromium/WebKit, 390x844); review2-nav-readback.json. Historical geometry failure is stale, with no current accessibility blockage observed; no accessibility contract is waived.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F31",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Extra plan=both is the explicit all-plan navigation state understood by the filter, not health data export or a changed price. Visual navigation/query normalization equality is outside D1.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    },
+    {
+      "id": "F32",
+      "classification": "D1_PRESENTATION_EMULATION_ONLY",
+      "reason": "Missing preference-match indicator hook after reload is a personalization/UI indicator requirement, not source medication/price truth or a consent grant. Park the indicator work without changing stored preferences or facts.",
+      "authority": "OPERATOR-DECISION-20260925-rebuild-D1-D7; GLP-41 scoped assignment 20260926"
+    }
+  ],
+  "policy": "Only the explicitly listed presentation/emulation predicates are non-blocking warnings under D1. No mixed-file blanket waiver. All original privacy/consent oracles remain unchanged. Current price, claim, approved-link and actual consent-effect checks remain required; see release-dispositions.json for the exact 26-row accounting."
+}

@@ -303,7 +303,7 @@
       // Reuse the existing reveal vocabulary for content sections on every
       // family, without animating the whole main/form or nested controls.
       main.querySelectorAll(":scope > section, :scope > div > section").forEach(function (el) {
-        if (el.closest(".cs-home2-hero") || el.hasAttribute("data-motion-group") || el.hasAttribute("data-h17-card") || el.querySelector("[data-h17-card],[data-motion-group]")) return;
+        if (el.closest(".cs-home2-hero, [role='dialog'], [data-review-sheet]") || el.hasAttribute("data-motion-group") || el.hasAttribute("data-h17-card") || el.querySelector("[data-h17-card],[data-motion-group]")) return;
         if (!el.hasAttribute("data-motion")) el.setAttribute("data-motion", "rise");
       });
     }
@@ -367,4 +367,5 @@
     stop: function () { paused = true; if (lenis) lenis.stop(); syncAuroras(); },
     start: function () { paused = false; if (lenis && !reduced) lenis.start(); syncAuroras(); }
   };
+  window.dispatchEvent(new Event('gcs:motion-ready'));
 })();

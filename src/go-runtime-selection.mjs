@@ -36,20 +36,38 @@ export function loadGoSelection(root = DEFAULT_ROOT) {
       throw new Error(`go_selection_row_invalid:${row.program_id}`);
     programs[row.program_id] = promotion;
   }
-  return { selection_sha256: hash(bytes), programs };
+  return { selection_sha256: hash(bytes), selected_at: selection.at_utc, programs };
 }
 
+// Current exact-offer HOLD rows take precedence over historical blanket
+// approvals. An issued link or old decision hash is not creative approval.
+// Preserve the historical evidence; reconciliation belongs to its source owner.
 export function loadGoPromotionAuthority(root = DEFAULT_ROOT) {
   if (root instanceof URL) root = fileURLToPath(root);
   let legacy = { programs: {} };
   try { legacy = JSON.parse(readFileSync(path.join(root, "data/go-runtime-promotion-authority.json"))); }
   catch (error) { if (error.code !== "ENOENT") throw error; }
   const current = loadGoSelection(root);
-  return { ...legacy, ...(current ? { selection_sha256: current.selection_sha256 } : {}),
-    programs: { ...legacy.programs, ...current?.programs } };
+  const programs = { ...legacy.programs, ...current?.programs };
+  // The genuine 2026-10-01 operator decision retains the XenTraffic hold.
+  // Apply it after historical selection/approval merging, without rewriting
+  // either receipt or the frozen price basis. This is a denial, not a grant.
+  // Policy belongs to this source tree even when callers supply fixture roots.
+  const holdPath = 'data/OPERATOR-DECISION-20261001-all-pipelines-live.md';
+  const holdSha256 = '147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad';
+  if (hash(readFileSync(path.join(DEFAULT_ROOT, holdPath))) !== holdSha256)
+    throw new Error('go_current_hold_authority_invalid');
+  for (const [id, row] of Object.entries(programs)) {
+    if (![legacy.programs?.[id]?.network, current?.programs[id]?.network]
+        .some(network => String(network || '').toLowerCase() === 'xentraffic')) continue;
+    programs[id] = { ...row, status: 'WITHHELD', promotion_authorized: false,
+      current_hold_decision: { path: holdPath, sha256: holdSha256 },
+      reason: 'operator_current_xentraffic_hold' };
+  }
+  return { ...legacy, ...(current ? { selection_sha256: current.selection_sha256 } : {}), programs };
 }
 
-export function applyGoSelectionToLinkMap(links, registry, surface, profileId, current) {
+export function applyGoSelectionToLinkMap(links, registry, surface, profileId, current, promotionAuthority = null) {
   if (!current) return links;
   for (const row of Object.values(current.programs)) {
     const program = registry.programs.find(p => p.program_id === row.program_id);

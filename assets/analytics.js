@@ -7,21 +7,16 @@
     return;
   }
 
-  // D2i reviewed manual UI-operation schema. Empty lists are intentional: not
-  // even ordinals/step IDs, result counts, provider choices, paths or click IDs
-  // are exported. Generic names do NOT sanitize result/answer-derived triggers:
-  // results_view, calculator_result_view, provider_finder_complete and
-  // comparison_facets_changed remain forbidden, not renamed into UI events.
-  // cost_calculator_complete also runs on query-restored calculation; instead
-  // observe trusted form submission independently of values/results below.
+  // Manual events carry no caller-provided properties. PostHog's last-mile
+  // hook separately preserves its protocol envelope and anonymous visit/route
+  // fields. This analytics permission never feeds the advertising lanes.
   const allowed = Object.freeze({
+    $pageview: [],
     affiliate_click: [], comparison_table_view: [],
     cost_calculator_used: [], calculator_submit: [],
-    quiz_complete: [], quiz_start: [], quiz_step_complete: [],
     content_upgrade_view: [], content_upgrade_submit: [],
     content_upgrade_success: [], content_upgrade_complete: [], scroll_75: [],
-    scorecard_start: [], scorecard_step_view: [], scorecard_step_complete: [],
-    scorecard_abandon: [], scorecard_complete: [], sticky_cta_click: [],
+    sticky_cta_click: [],
     comparison_sort_change: [],
   });
   function reviewed(name) { return typeof name === 'string' && Object.hasOwn(allowed, name); }
@@ -30,11 +25,29 @@
     for (const key of allowed[name]) if (params[key] !== undefined) clean[key] = params[key];
     return clean;
   }
-  // Last-mile SDK hook replaces automatic URL/referrer/title/identity enrichment.
-  // Never forward SDK-generated events, profiles or unreviewed properties.
+  // Keep only the SDK protocol fields and the approved anonymous route
+  // dimensions. Never spread caller properties, profiles, referrers or forms.
+  // Removing token makes the real PostHog SDK drop the event before transport.
   function beforeSend(event) {
     if (!consented() || !reviewed(event?.event)) return null;
-    return {event: event.event, properties: cleanProperties(event.event, {})};
+    const properties = event.properties || {};
+    const url = new URL(location.href);
+    url.search = ''; url.hash = ''; url.username = ''; url.password = '';
+    // Only neutral static paths are reportable. Health-specific and unknown
+    // URLs remain absent, not renamed to a misleading homepage visit.
+    const reportRoute = ['/', '/providers/', '/compare/', '/privacy/', '/privacy/cookies/', '/terms/', '/about/'].includes(url.pathname);
+    return {
+      event: event.event,
+      ...(event.uuid !== undefined ? { uuid: event.uuid } : {}),
+      ...(event.timestamp !== undefined ? { timestamp: event.timestamp } : {}),
+      properties: {
+        token: properties.token,
+        distinct_id: window.posthog?.get_distinct_id?.(),
+        $process_person_profile: false,
+        $host: url.host,
+        ...(reportRoute ? { $current_url: url.href, $pathname: url.pathname } : {}),
+      },
+    };
   }
 
   function emit(name, params = {}) {
@@ -44,13 +57,10 @@
     // A12b/A11: do not queue UI events for the uncontained GTM/GA lane.
     // PostHog below remains independently analytics-consented. A future Google
     // lane needs its own reviewed loader/event contract, not an ads toggle.
-    // affiliate_click is the one event that races a document unload: the anchor
-    // navigates off-site in the same tick. gtag already uses beacon transport for
-    // this; PostHog does not by default, so an XHR started here is cancelled by the
-    // navigation and the capture is lost. sendBeacon survives unload, which is the
-    // difference between a measured revenue event and a silent one.
+    // Outbound events use an immediate keepalive-capable fetch through the same
+    // owned consent transport. Beacon cannot carry the epoch's AbortSignal.
     if (window.GCS_POSTHOG_LOADED) {
-      const options = OUTBOUND_EVENTS.has(name) ? { transport: "sendBeacon", send_instantly: true } : undefined;
+      const options = OUTBOUND_EVENTS.has(name) ? { transport: "fetch", send_instantly: true } : undefined;
       try { window.posthog?.capture?.(name, clean, options); } catch { /* analytics never breaks the funnel it measures */ }
     }
     return true;
@@ -65,10 +75,49 @@
   // analytics" - these settings are what keeps that sentence literally true, and
   // the allow-list above means a quiz ANSWER has no property to travel in.
   let pendingQueue = [], loadGeneration = 0, posthogInitialized = false;
+  let transportController = null, transportHost = null;
+  // Install before array.js snapshots fetch. Scope the adapter to this SDK host;
+  // unrelated page fetches are untouched. Each consent epoch owns one signal.
+  // Failed/queued SDK retries keep their original fetch_options, so a regrant
+  // cannot resurrect an old request. Local 400 is terminal in the pinned SDK,
+  // not a fabricated ingestion success, and never leaves this document.
+  function prepareTransport(host) {
+    if (typeof window.fetch !== 'function' || typeof window.AbortController !== 'function' || typeof window.Response !== 'function') return false;
+    const origin = new URL(host).origin;
+    if (transportHost && transportHost !== origin) return false;
+    if (!transportHost) {
+      transportHost = origin;
+      const fetch = window.fetch.bind(window);
+      window.fetch = (input, options = {}) => {
+        let target;
+        try { target = new URL(typeof input === 'string' ? input : (input.url ?? input), location.href); } catch { return fetch(input, options); }
+        if (target.origin !== transportHost) return fetch(input, options);
+        const signal = options.signal;
+        const permitted = () => consented() && signal === transportController?.signal && signal?.aborted === false;
+        const denied = () => new window.Response('', { status: 400 });
+        if (!permitted()) return Promise.resolve(denied());
+        return fetch(input, { ...options, referrerPolicy: 'no-referrer', credentials: 'omit' }).then(
+          response => permitted() ? response : denied(),
+          error => { if (!permitted()) return denied(); throw error; },
+        );
+      };
+    }
+    if (!transportController || transportController.signal.aborted) transportController = new window.AbortController();
+    return true;
+  }
+  function transportOptions() { return { referrerPolicy: 'no-referrer', signal: transportController.signal }; }
+  function stopTransport() { transportController?.abort(); }
   function loadPostHog() {
     const config = window.GCS_POSTHOG || {};
-    if (!consented() || !config.enabled || !config.api_key || !config.host) return;
-    if (window.GCS_POSTHOG_LOADED) { window.posthog?.opt_in_capturing?.({captureEvent:false}); return; }
+    if (!consented() || !config.enabled || !config.api_key || !config.host || !prepareTransport(config.host)) return;
+    if (window.GCS_POSTHOG_LOADED) {
+      window.posthog?.set_config?.({ fetch_options: transportOptions() });
+      // Acknowledge/focus notifications are not new visits. The SDK emits another
+      // pageview on opt_in_capturing, so only call it after an actual withdrawal.
+      if (posthogInitialized && window.posthog?.has_opted_out_capturing?.() === true)
+        window.posthog.opt_in_capturing({captureEventName:false});
+      return;
+    }
     window.GCS_POSTHOG_LOADED = true;
     const queue = pendingQueue = [], generation = ++loadGeneration;
     // `_i: []` is load-bearing, not decoration. The tail of PostHog's array.js reads
@@ -92,8 +141,11 @@
       if (!consented() || typeof window.posthog?.init !== "function") { window.GCS_POSTHOG_LOADED = false; queue.length = 0; return; }
       window.posthog.init(config.api_key, {
         api_host: config.host,
+        api_transport: 'fetch',
+        disable_beacon: true,
+        fetch_options: transportOptions(),
         autocapture: false,
-        capture_pageview: false,
+        capture_pageview: true,
         capture_pageleave: false,
         capture_performance: false,
         disable_session_recording: true,
@@ -108,7 +160,7 @@
         capture_exceptions: false,
         capture_heatmaps: false,
         before_send: beforeSend,
-        property_denylist: ["$initial_referrer", "$referrer", "$current_url", "$pathname", "$host", "$title", "$initial_current_url", "$device_id", "$user_id"],
+        property_denylist: ["$initial_referrer", "$referrer", "$title", "$initial_current_url", "$device_id", "$user_id"],
       });
       posthogInitialized = true;
       for (const args of queue) if (consented()) window.posthog.capture(...args);
@@ -180,8 +232,17 @@
   }
 
   const CLICK_ID_PREFIX = "cs_click_id:last:";
+  const decoratedAnchors = new Map();
+  function attributionConsented() { return window.GCSConsent?.allowsExports?.('advertising') === true; }
+  function clearAttribution() {
+    try {
+      for (const key of Object.keys(localStorage)) if (key.startsWith(CLICK_ID_PREFIX)) localStorage.removeItem(key);
+    } catch { /* unavailable storage cannot be erased; no new identity is issued */ }
+    for (const [anchor, original] of decoratedAnchors) anchor.setAttribute('href', original);
+    decoratedAnchors.clear();
+  }
   function clickIdFor(providerSlug) {
-    if (!consented() || suppressed()) return null;
+    if (!attributionConsented() || suppressed()) { clearAttribution(); return null; }
     const key = CLICK_ID_PREFIX + (providerSlug || "unknown");
     const now = new Date().toISOString();
     const record = { clickId: uuidv7(), createdAt: now, providerSlug: providerSlug || "unknown" };
@@ -201,39 +262,47 @@
   };
 
   function decorateOutbound(anchor, clickId) {
-    if (!consented() || suppressed() || !clickId) return anchor.href;
+    // ClickDealer default issuer links have no established browser-owned slot.
+    // Do not inherit the Katalys fallback or even normalize their URL bytes.
+    if (!attributionConsented() || suppressed() || !clickId) { clearAttribution(); return anchor.href; }
+    if (anchor.dataset?.network === "ClickDealer") return anchor.href;
     let url;
     try { url = new URL(anchor.href); } catch { return anchor.href; }
     if (url.origin === window.location.origin && /^\/go\/[a-z0-9][a-z0-9-]{1,79}$/.test(url.pathname.replace(/\/$/, ""))) {
       url.searchParams.set("cs_click_id", clickId);
       return url.toString();
     }
-    const params = NETWORK_PARAMS[anchor.dataset.network] || NETWORK_PARAMS.Katalys;
+    const codec = anchor.dataset.subidCodec || anchor.dataset.network;
+    const params = NETWORK_PARAMS[codec] || NETWORK_PARAMS.Katalys;
     // Advertising click IDs belong only to the governed /go receiver, never
     // browser analytics or arbitrary direct-network decoration.
-    // Affiliati uses s1 as the primary owned click id and duplicates it into s2.
-    const values = anchor.dataset.network === "Affiliati"
-      ? [clickId, clickId]
-      : [anchor.dataset.sub1, anchor.dataset.sub2, clickId];
-    params.forEach((name, index) => {
-      const value = values[index];
-      if (!value) return;
-      // A param the approved artifact already baked into the href (e.g. Awin
-      // clickref campaign refs) is authoritative — slots 1/2 never overwrite it.
-      // Slots 3/4 are per-visitor and can only exist here, so they always write.
-      if (index < 2 && anchor.dataset.network !== "Affiliati" && url.searchParams.get(name)) return;
-      url.searchParams.set(name, value);
-    });
+    // Affiliati's settled contract is s1=placement and s2=owned click ID.
+    // Exclude it from the generic three-slot decorator; never duplicate identity
+    // into placement or replace an issuer-bound placement already in the href.
+    if (anchor.dataset.network !== "Affiliati" && codec !== "Affiliati") {
+      const values = [anchor.dataset.sub1, anchor.dataset.sub2, clickId];
+      params.forEach((name, index) => {
+        const value = values[index];
+        if (!value) return;
+        if (index < 2 && url.searchParams.get(name)) return;
+        url.searchParams.set(name, value);
+      });
+    } else {
+      if (!url.searchParams.get('s1') && anchor.dataset.sub1) url.searchParams.set('s1', anchor.dataset.sub1);
+      url.searchParams.set('s2', clickId);
+    }
     // Preserve sub1..sub4 as placement/reporting slots. Katalys' specialized
     // owned click key round-trips separately as {transaction_id} in postbacks.
     if (anchor.dataset.network === "Katalys" && clickId) url.searchParams.set("aff_click_id", clickId);
     return url.toString();
   }
 
+  if (!attributionConsented()) clearAttribution();
   if ((window.GCS_ANALYTICS || {}).consent === "granted") loadPostHog();
   window.addEventListener("gcs:consent", (event) => {
+    if (!attributionConsented()) clearAttribution();
     if (event.detail?.analytics === "granted" && consented()) loadPostHog();
-    else { pendingQueue.length = 0; loadGeneration++; if (!posthogInitialized) window.GCS_POSTHOG_LOADED = false; window.posthog?.opt_out_capturing?.(); }
+    else { stopTransport(); pendingQueue.length = 0; loadGeneration++; if (!posthogInitialized) window.GCS_POSTHOG_LOADED = false; window.posthog?.opt_out_capturing?.(); }
   });
 
   window.GCSAnalytics = { event: emit, clickIdFor, decorateOutbound };
@@ -245,13 +314,17 @@
   document.addEventListener("click", (event) => {
     const anchor = event.target.closest('[data-analytics-event="affiliate_click"]');
     if (!anchor) return;
-    if (!consented() || suppressed()) return;
+    if (suppressed()) return;
+    if (!attributionConsented()) clearAttribution();
     const providerSlug = anchor.dataset.providerSlug || anchor.dataset.program;
     const clickId = clickIdFor(providerSlug);
-    // The URL that reaches the network carries sub1..sub4. sub3/sub4 cannot exist
-    // at build time, so this rewrite is the only place they can be attached.
+    // Remember the exact pre-decoration attribute, including relative URL bytes.
+    // A second click must never replace that original with an owned-ID URL.
     const decorated = decorateOutbound(anchor, clickId);
-    if (decorated !== anchor.href) anchor.href = decorated;
+    if (decorated !== anchor.href) {
+      if (!decoratedAnchors.has(anchor)) decoratedAnchors.set(anchor, anchor.getAttribute('href'));
+      anchor.href = decorated;
+    }
     emit("affiliate_click", {
       program: anchor.dataset.program,
       merchant: anchor.dataset.merchant,
@@ -271,22 +344,9 @@
     if (anchor.dataset.elementCode === "F") emit("sticky_cta_click", { page_slug: anchor.dataset.pageSlug, provider_slug: providerSlug });
   });
 
-  // ---- quiz step telemetry (CRO P0-4) -------------------------------------
-  // Non-answer metadata ONLY: step id, ordinal, and index. No answer value, no
-  // health datum, ever - which is why `allowed` has no property to carry one.
-  window.addEventListener("gcs:quiz", (event) => {
-    const detail = event.detail || {};
-    if (!detail.name) return;
-    emit(detail.name, {
-      page_slug: window.location.pathname,
-      step_id: detail.step_id,
-      step_number: detail.step_number,
-      question_index: detail.question_index,
-      last_step: detail.last_step,
-      steps_completed: detail.steps_completed,
-      result_count: detail.result_count,
-    });
-  });
+  // Quiz/scorecard progression is local-only. Do not translate gcs:quiz
+  // into a generic allowed event: branches and timing can reveal health context.
+
 
   let sentScroll75 = false;
   window.addEventListener("scroll", () => {

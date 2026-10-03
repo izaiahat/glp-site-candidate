@@ -12,8 +12,8 @@ export function detectRequestState(request) {
 }
 
 export function detectConsentModel(request) {
-  const country = String(request.cf?.country || request.headers.get("cf-ipcountry") || "").toUpperCase();
-  return country === "US" ? "us-default-on" : "prior-opt-in";
+  // Compatibility endpoint only; the browser no longer waits on geography.
+  return "global-default-on";
 }
 
 export async function onRequestGet({ request }) {

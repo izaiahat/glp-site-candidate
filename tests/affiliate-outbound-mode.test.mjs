@@ -10,14 +10,35 @@ const read = (name) => JSON.parse(readFileSync(new URL(`../data/${name}.json`, i
 const registry = read("program-registry");
 const promotions = loadGoPromotionAuthority().programs;
 const links = loadAffiliateLinkMap("compare");
-const ids = ["gobymeds", "orderlymeds", "nu-image-medical-review", "levelsrx-extra-cpa-home-page", "yucca-health-xentraffic-offer-3117"];
-for (const id of ids) test(`selected ${id} follows current adoption or explicit hold`, () => {
+const modes = new Map([
+  ["gobymeds", "go"], ["orderlymeds", "go"],
+  // The exact current creative-approval HOLD wins over the blanket ruling.
+  ["nu-image-medical-review", "held"],
+  ["levelsrx-extra-cpa-home-page", "held"], ["yucca-health-xentraffic-offer-3117", "held"],
+]);
+for (const [id, mode] of modes) test(`selected ${id} follows current adoption or explicit hold`, () => {
   const program = registry.programs.find((p) => p.program_id === id || p.review_slug === id);
-  const held = id === "nu-image-medical-review";
-  assert.equal(promotions[id].status, held ? "WITHHELD" : "VERIFIED");
-  assert.equal(links[id].live, !held);
-  assert.equal(affiliateOutboundMode(program, links[id], promotions[id]), held ? "held" : "go");
+  assert.equal(promotions[id].status, mode === 'held' ? 'WITHHELD' : 'VERIFIED');
+  assert.equal(links[id].live, mode !== 'held');
+  if (mode === 'held') {
+    const raw = read('go-selection-receipt').programs.find(row => row.program_id === id);
+    if (id === 'nu-image-medical-review') assert.equal(raw.disposition, 'HOLD');
+    else {
+      assert.equal(raw.disposition, 'ADOPT', 'retained historical grant is not rewritten');
+      assert.equal(raw.network.toLowerCase(), 'xentraffic');
+      assert.equal(promotions[id].current_hold_decision.sha256, '147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad');
+    }
+    assert.equal(promotions[id].promotion_authorized, false);
+  }
+  assert.equal(affiliateOutboundMode(program, links[id], promotions[id]), mode);
   assert.equal(affiliateOutboundMode(program, {...links[id], live:false}, promotions[id]), "held");
+});
+test("network-paused Ageless offer 1538 remains link-dark despite stale Sheet selection", () => {
+  const program = registry.programs.find((row) => row.program_id === "try-ageless");
+  assert.equal(promotions["try-ageless"].status, "WITHHELD");
+  assert.equal(promotions["try-ageless"].reason, "network_paused_katalys_offer_1538");
+  assert.equal(links["try-ageless"].live, false);
+  assert.equal(affiliateOutboundMode(program, links["try-ageless"], promotions["try-ageless"]), "held");
 });
 const fixture = () => ({program_id:'fixture-routed',commercial_state:"live",go:{entry_state:"transparent_direct"},profiles:{"glp-clinic-scout":{vertical_fit:true,wired:true,surfaces:{compare:true,go:true}}}});
 const link={live:true,affiliate_href:"https://example.invalid/issued",network:"Katalys"};
@@ -35,8 +56,8 @@ test("commercial and surface holds cannot be cleared by runtime permissions", ()
  p.profiles['glp-clinic-scout'].exceptions={go:{enabled:true,surface_restriction_basis:'operator_terms_transparent_direct_only'}};
  assert.equal(affiliateOutboundMode(p,link,verified),'transparent_direct');
 });
-test("XenTraffic label remains its own network and unknown labels remain direct", () => {
+test("XenTraffic identity is authority-bound; unknown label is only a codec fallback", () => {
  assert.equal(normalizeNetwork('XenTraffic'), 'XenTraffic');
  assert.equal(normalizeNetwork('unknown-network'), 'direct');
- assert.match(subidAttributes({network:'XenTraffic',position:'review-closing',rankPosition:1,pageSlug:'review-example',pageType:'review',providerSlug:'example'}),/data-network="XenTraffic"/);
+ assert.match(subidAttributes({programId:'levelsrx-extra-cpa-home-page',network:'XenTraffic',position:'review-closing',rankPosition:1,pageSlug:'review-example',pageType:'review',providerSlug:'example'}),/data-network="XenTraffic"/);
 });

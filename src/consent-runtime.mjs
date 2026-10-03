@@ -1,3 +1,4 @@
+import {ga4Transport} from './ga4-runtime.mjs';
 // Pure preference reducer: eligibility is an input, NOT server authority.
 // The default served runtime has no adapter; isolated TEST adapters exercise
 // the real readiness/receipt branch without creating a browser authority lane.
@@ -9,17 +10,10 @@ export function consentPreference(choice, {advertisingEligible=false,gpc=false}=
 // Build-time dependency injection only. Default generated browser code binds null;
 // window/config/storage cannot install an adapter. Tests inject in-memory server
 // projections into the same runtime. No live endpoint or issuer is implemented.
-export function createConsentRuntimeSource(adapterExpression='null',modelExpression='null') { return `((start,model)=>{
-  // Only the existing first-party country detector selects the served model.
-  // A missing/failed/unknown response keeps prior opt-in; never infer US from UA.
-  function regionalModel(){
-    let timer;
-    const lookup=Promise.resolve().then(()=>fetch('/api/geo-state?purpose=consent',{credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer'})).then(response=>response.ok===true?response.json():null).then(value=>value?.schema==='glp-consent-region-v1'&&value.model==='us-default-on'?'us-default-on':'prior-opt-in');
-    // Bound notice availability; expiry is prior opt-in and a late US reply cannot upgrade it.
-    const deadline=new Promise(resolve=>{timer=setTimeout(()=>resolve('prior-opt-in'),1500)});
-    return Promise.race([lookup,deadline]).catch(()=>'prior-opt-in').finally(()=>clearTimeout(timer));
-  }
-  window.GCSConsentReady=model===null?regionalModel().then(start):Promise.resolve(start(model==='us-default-on'?'us-default-on':'prior-opt-in'));
+export function createConsentRuntimeSource(adapterExpression='null',modelExpression='null') { return `((start)=>{
+  // One worldwide default. Geography is not a consent prerequisite and cannot
+  // delay, downgrade or upgrade a stored preference. Acknowledgment is not opt-in.
+  window.GCSConsentReady=Promise.resolve(start('global-default-on'));
 })((consentModel)=>((advertisingAdapter)=>{
   const consentPreference=${consentPreference.toString()};
   const COOKIE='gcs_analytics_consent';
@@ -30,15 +24,15 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   // clears the W5 candidate hold. Legacy default-on grants are not opt-in proof.
   const VERSION='gcs-cookie-v4-distinct-purposes';
   const validChoice=v=>['granted','denied'].includes(v);
-  function valid(saved){return saved?.version===VERSION&&saved.record_type==='preference_only'&&validChoice(saved.analytics)&&validChoice(saved.advertising)&&(saved.analytics_basis===undefined||['us_default','explicit','unset'].includes(saved.analytics_basis))}
+  function valid(saved){return saved?.version===VERSION&&saved.record_type==='preference_only'&&validChoice(saved.analytics)&&validChoice(saved.advertising)&&(saved.analytics_basis===undefined||['global_default','us_default','explicit','unset'].includes(saved.analytics_basis))}
   function initializePreference(){
     try{
       const raw=localStorage.getItem(STORAGE),saved=read();
       // Absent is not malformed, unreadable, withdrawn or a legacy default grant.
       // Run once at bootstrap, NEVER in a storage/focus/pageshow refresh.
       if(raw!==null&&!gpcLatched)return;
-      const selected=consentPreference({analytics:consentModel==='us-default-on'?'granted':'denied',advertising:'denied'},{gpc:gpcLatched});
-      const record=valid(saved)?{...saved,analytics:'denied',advertising:'denied'}:{...selected,version:VERSION,record_type:'preference_only',analytics_basis:consentModel==='us-default-on'?'us_default':'unset',notice_acknowledged:false,saved_at:new Date().toISOString()};
+      const selected=consentPreference({analytics:'granted',advertising:advertisingAdapter?'denied':'granted'},{advertisingEligible:true,gpc:gpcLatched});
+      const record=valid(saved)?{...saved,analytics:'denied',advertising:'denied'}:{...selected,version:VERSION,record_type:'preference_only',analytics_basis:'global_default',notice_acknowledged:false,saved_at:new Date().toISOString()};
       blocked=true;localStorage.setItem(STORAGE,JSON.stringify(record));persistence='saved';blocked=false;
     }catch{blocked=true;persistence='failed'}
   }
@@ -54,54 +48,55 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
       return view;
     }catch{return null}
   }
-  function advertisingStatus(){const view=advertisingView(),gpc=gpcLatched||navigator.globalPrivacyControl===true,uncertain=['pending','reconcile'].includes(serverRevocation);return {available:!!view&&!gpc&&!uncertain,purpose:'ad_measurement',reason:gpc?"Your browser's Global Privacy Control is on, so advertising measurement stays off.":serverRevocation==='pending'?'Confirming your advertising choice…':serverRevocation==='reconcile'?"We couldn't confirm that choice, so advertising measurement stays off.":'',server_revocation:serverRevocation}}
+  function advertisingStatus(){const view=advertisingView(),gpc=gpcLatched||navigator.globalPrivacyControl===true,uncertain=['pending','reconcile'].includes(serverRevocation);return {available:(!advertisingAdapter||!!view)&&!gpc&&!uncertain,purpose:'ad_measurement',reason:gpc?"Your browser's Global Privacy Control is on, so advertising measurement stays off.":serverRevocation==='pending'?'Confirming your advertising choice…':serverRevocation==='reconcile'?"We couldn't confirm that choice, so advertising measurement stays off.":'',server_revocation:serverRevocation}}
   function advertisingGranted(saved){
     if(adsBlocked||saved?.advertising!=='granted')return false;
+    // The served browser has no server adapter. Default-on preferences do not
+    // fabricate a server receipt or clear any vendor/configuration hold.
+    if(!advertisingAdapter)return true;
     const view=advertisingView(),s=view?.scope,r=view?.receipt;
     return !!s&&!!r&&r.scope_id===s.id&&r.scope_revision===s.revision&&r.notice_version===s.notice_version&&r.choice==='explicit_opt_in'&&r.ad_storage==='granted'&&r.ad_user_data==='granted'&&r.ad_personalization==='denied'&&r.gpc===false&&r.withdrawn===false&&Number.isSafeInteger(r.expires_at_ms)&&r.expires_at_ms>Date.now();
   }
-  function purposes(){const saved=read(),ok=!blocked&&!gpcLatched&&navigator.globalPrivacyControl!==true&&valid(saved);return {analytics:ok&&saved.analytics==='granted'&&(consentModel==='us-default-on'||saved.analytics_basis!=='us_default')?'granted':'denied',advertising:ok&&advertisingGranted(saved)?'granted':'denied'}}
+  function purposes(){const saved=read(),ok=!blocked&&!gpcLatched&&navigator.globalPrivacyControl!==true&&valid(saved);return {analytics:ok&&saved.analytics==='granted'?'granted':'denied',advertising:ok&&advertisingGranted(saved)?'granted':'denied'}}
   function effective(){return purposes().analytics}
   // Only reviewed UI surfaces may run manual telemetry. Query, fragment and
   // referrer are never export properties and do not change this route decision.
   function eligibleRoute(){const p=location.pathname;if(/^\\/(?:intake|matches|results)(?:\\/|$)/.test(p))return false;if(/^\\/(?:quiz|scorecard|tools)(?:\\/|$)/.test(p))return ['/quiz/provider-fit/','/scorecard/','/tools/glp-1-cost-calculator/'].includes(p);return true}
   // Single runtime permission gate, replacing the historical operator prefix.
-  function exportsAllowed(purpose='analytics'){if(navigator.globalPrivacyControl===true&&!gpcLatched){gpcLatched=true;refresh()}if(purpose!=='analytics')return false;const p=window.GCS_EXPORT_POLICY;return effective()==='granted'&&p?.schema==='glp-release-export-policy-v2'&&p.stage==='production-seal'&&p.third_party_exports===true&&!synthetic()&&eligibleRoute()}
+  function exportsAllowed(purpose='analytics'){if(navigator.globalPrivacyControl===true&&!gpcLatched){gpcLatched=true;refresh()}const key=purpose==='ad_measurement'?'advertising':purpose;if(!['analytics','advertising'].includes(key))return false;const p=window.GCS_EXPORT_POLICY;return purposes()[key]==='granted'&&p?.schema==='glp-release-export-policy-v2'&&p.stage==='production-seal'&&p.third_party_exports===true&&!synthetic()&&eligibleRoute()}
   initializePreference();
   window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
-  window.gtag('consent','default',{analytics_storage:exportsAllowed()?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+  window.gtag('consent','default',{analytics_storage:exportsAllowed()?'granted':'denied',ad_storage:exportsAllowed('advertising')?'granted':'denied',ad_user_data:exportsAllowed('advertising')?'granted':'denied',ad_personalization:'denied'});
   function cookie(value){document.cookie=COOKIE+'='+encodeURIComponent(value)+'; Path=/; Max-Age=31536000; SameSite=Lax; Secure'}
   function localHost(){const h=(location.hostname||'').toLowerCase();return ['','localhost','127.0.0.1','0.0.0.0','::1','[::1]'].includes(h)||h.endsWith('.localhost')||h.endsWith('.local')||h.endsWith('.test')||h.endsWith('.internal')||location.protocol==='file:'}
   function synthetic(){return localHost()||navigator.webdriver===true||/HeadlessChrome|Headless|Playwright|Puppeteer|Lighthouse|Google-InspectionTool|synthetic|bot|crawler|spider/i.test(navigator.userAgent||'')}
   function activeId(c){return localHost()?(c.debug_measurement_id||null):c.measurement_id}
-  /* A12b / A11: the published GTM container is not proven contained here.
-     No GTM/gtag.js loader, Google UI events or GA enablement are permitted.
-     The gtag shim carries ordered consent state only. PostHog remains an
-     independently consented, restricted analytics consumer in analytics.js.
-     Neither a config boolean nor advertising consent clears this hold. */
-  function loadAnalytics(){const c=window.GCS_ANALYTICS||{};const id=activeId(c);if(!exportsAllowed()||!c.enabled||!id){c.consent='denied';return}c.consent='granted';c.active_measurement_id=id;window['ga-disable-'+id]=true;window.gtag('set',{page_location:'https://glpclinicscout.com/',page_referrer:'',page_title:'Clinic Scout',send_page_view:false,allow_google_signals:false,allow_ad_personalization_signals:false});window.GCS_GTM_HELD='A11 containment unbound';}
+  // GA4 has a separate exact ordinary-route, minimized page-view gate. This does not widen
+  // PostHog/UI/advertising route eligibility or release the GTM container hold.
+  const ga4=(${ga4Transport.toString()})(()=>{if(navigator.globalPrivacyControl===true&&!gpcLatched){gpcLatched=true;refresh()}const p=window.GCS_EXPORT_POLICY;return effective()==='granted'&&p?.schema==='glp-release-export-policy-v2'&&p.stage==='production-seal'&&p.third_party_exports===true&&!synthetic()});
+  function loadAnalytics(){const c=window.GCS_ANALYTICS||{};const id=activeId(c);if(!exportsAllowed()||!c.enabled||!id){c.consent='denied';return}c.consent='granted';c.active_measurement_id=id;if(id!=='G-2WQ42JY0WK')window['ga-disable-'+id]=true;window.GCS_GTM_HELD='A11 containment unbound';}
   // Clarity is unbound; replay is not authorized by a generic UI-event grant.
   function loadClarity(){return;}
-  function stopAnalytics(){const c=window.GCS_ANALYTICS||{};c.consent='denied';for(const id of [c.measurement_id,c.debug_measurement_id].filter(Boolean))window['ga-disable-'+id]=true;window.posthog?.opt_out_capturing?.();}
-  function consentUpdate(){const p=purposes();window.gtag('consent','update',{analytics_storage:exportsAllowed()?'granted':'denied',ad_storage:p.advertising,ad_user_data:p.advertising,ad_personalization:'denied'})}
-  function sync(){const analytics=effective();cookie(analytics);consentUpdate();if(exportsAllowed()){loadAnalytics();loadClarity()}else{stopAnalytics()}return analytics}
+  function stopAnalytics(){const c=window.GCS_ANALYTICS||{};c.consent='denied';for(const id of [c.measurement_id,c.debug_measurement_id].filter(id=>id&&id!=='G-2WQ42JY0WK'))window['ga-disable-'+id]=true;window.posthog?.opt_out_capturing?.();}
+  function consentUpdate(){const advertising=exportsAllowed('advertising')?'granted':'denied';window.gtag('consent','update',{analytics_storage:exportsAllowed()?'granted':'denied',ad_storage:advertising,ad_user_data:advertising,ad_personalization:'denied'})}
+  function sync(){const analytics=effective();cookie(analytics);consentUpdate();ga4.load();if(exportsAllowed()){loadAnalytics();loadClarity()}else{stopAnalytics()}return analytics}
   function notify(){window.dispatchEvent(new CustomEvent('gcs:consent',{detail:{...purposes(),record_type:'preference_only',persistence,server_revocation:serverRevocation}}))}
   function revokeAdvertising(){adsBlocked=true;serverRevocation=advertisingAdapter?'pending':'not_implemented';if(!advertisingAdapter)return Promise.resolve();return Promise.resolve().then(()=>advertisingAdapter.revoke()).then(r=>{if(serverRevocation!=='reconcile')serverRevocation=r?.acknowledged===true?'acknowledged':'reconcile'},()=>{serverRevocation='reconcile'})}
   let cleanupBanner=()=>{},returnFocus=null;
   function closeBanner(){cleanupBanner();document.querySelector('#gcs-consent')?.remove();document.documentElement.style.removeProperty('--consent-clearance');if(returnFocus?.isConnected!==false)returnFocus?.focus?.();returnFocus=null}
   function open(){const trigger=document.activeElement;closeBanner();returnFocus=trigger?.isConnected?trigger:document.querySelector('footer a[href^="/privacy/cookies/"]');banner(true);document.querySelector('#gcs-consent')?.querySelector('[data-consent="denied"]')?.focus?.()}
   function bannerStatus(text){const root=document.querySelector('#gcs-consent'),status=root?.querySelector('#gcs-consent-status');if(status)status.textContent=text;}
-  function apply(choice){return commit(choice,'explicit')}
-  function acknowledge(){const saved=read();return commit({analytics:effective(),advertising:'denied'},valid(saved)?saved.analytics_basis||'explicit':'unset')}
+  function apply(choice){return commit(typeof choice==='string'?{analytics:choice,advertising:choice}:choice,'explicit')}
+  function acknowledge(){const saved=read();return commit(purposes(),valid(saved)?saved.analytics_basis||'explicit':'unset')}
   function commit(choice,analyticsBasis,noticeAcknowledged=true){
-    const selected=consentPreference(choice,{advertisingEligible:advertisingStatus().available,gpc:navigator.globalPrivacyControl===true});
+    const selected=consentPreference(choice,{advertisingEligible:!advertisingAdapter||advertisingStatus().available,gpc:gpcLatched||navigator.globalPrivacyControl===true});
     const previous=read(),ticket=++sequence,record={...selected,record_type:'preference_only',version:VERSION,analytics_basis:analyticsBasis,notice_acknowledged:noticeAcknowledged,saved_at:new Date().toISOString()};
-    blocked=true;adsBlocked=true;
+    blocked=true;adsBlocked=!!advertisingAdapter;
     try{localStorage.setItem(STORAGE,JSON.stringify(record));persistence='saved';blocked=false}catch{persistence='failed'}
     gpcLatched=navigator.globalPrivacyControl===true;
     // Synchronous deny/update/queue cancellation always precedes async issuance.
     sync();notify();
-    if(selected.advertising==='granted'&&!blocked){
+    if(selected.advertising==='granted'&&!blocked&&advertisingAdapter){
       const scope=advertisingView()?.scope;
       settled=Promise.resolve().then(()=>ticket===sequence?advertisingAdapter.choose({scope_id:scope.id,choice:'explicit_opt_in'}):null).then(()=>{
         if(ticket!==sequence){serverRevocation='reconcile';adsBlocked=true;sync();notify();return;}
@@ -110,16 +105,16 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
         sync();notify();
         if(purposes().advertising==='granted')closeBanner();else {updateControls(document.querySelector('#gcs-consent'));bannerStatus("We couldn't confirm that choice, so advertising measurement stays off.");}
       },()=>{if(ticket===sequence){adsBlocked=true;serverRevocation='reconcile';sync();notify();updateControls(document.querySelector('#gcs-consent'));bannerStatus("We couldn't confirm that choice, so advertising measurement stays off.")}});
-    }else if(previous?.advertising==='granted'||serverRevocation==='pending'){
+    }else if(advertisingAdapter&&(previous?.advertising==='granted'||serverRevocation==='pending')){
       settled=revokeAdvertising().then(()=>{sync();notify()});
     }else settled=Promise.resolve();
-    if(persistence==='saved'&&noticeAcknowledged){if(selected.advertising==='granted')bannerStatus('Confirming your advertising choice…');else closeBanner()}
+    if(persistence==='saved'&&noticeAcknowledged){if(selected.advertising==='granted'&&advertisingAdapter)bannerStatus('Confirming your advertising choice…');else closeBanner()}
     return {...record,persistence};
   }
-  function updateControls(root){if(!root)return;const gpc=gpcLatched||navigator.globalPrivacyControl===true,grant=root.querySelector('[data-consent="granted"]'),copy=root.querySelector('#gcs-consent-copy');if(grant)grant.disabled=gpc;if(copy)copy.textContent=gpc?'Global Privacy Control keeps analytics and advertising off. Health quiz answers are never sent to analytics.':effective()==='granted'?'Analytics is on to improve comparisons. Health quiz answers are never sent to analytics; advertising stays off.':'Optional analytics helps improve comparisons. It stays off until you turn it on; health quiz answers are never sent to analytics and advertising stays off.';}
+  function updateControls(root){if(!root)return;const gpc=gpcLatched||navigator.globalPrivacyControl===true,grant=root.querySelector('[data-consent="granted"]'),copy=root.querySelector('#gcs-consent-copy');if(grant)grant.disabled=gpc;if(copy){const p=purposes();copy.textContent=gpc?'Global Privacy Control keeps analytics and advertising off.':p.analytics==='granted'&&p.advertising==='granted'?'Analytics and advertising/conversion measurement are on. Acknowledge this notice or manage / opt out at any time.':'Analytics is '+(p.analytics==='granted'?'on':'off')+'; advertising/conversion measurement is '+(p.advertising==='granted'?'on':'off')+'. Manage your tracking choices at any time.';copy.textContent+=' Health quiz answers, health conditions and health-page URLs are never shared in advertising or conversion payloads.';}}
   function refresh(){if(navigator.globalPrivacyControl===true){const saved=read();gpcLatched=true;commit('denied',valid(saved)?saved.analytics_basis||'explicit':'unset',valid(saved)&&saved.notice_acknowledged===true)}else{sync();notify()}updateControls(document.querySelector('#gcs-consent'));}
 
-  function banner(force=false){const saved=read(),needsOptIn=consentModel==='prior-opt-in'&&saved?.analytics==='granted'&&saved.analytics_basis==='us_default';if(document.querySelector('#gcs-consent')||(!force&&valid(saved)&&saved.notice_acknowledged!==false&&!needsOptIn))return;const choices=force||consentModel==='prior-opt-in',root=document.createElement('section');root.id='gcs-consent';root.setAttribute('aria-label','Cookie notice');root.innerHTML='<div class="gcs-consent-copy"><p><span id="gcs-consent-copy"></span> <a href="/privacy/cookies/" data-consent-open>Opt out / manage</a></p><p id="gcs-consent-status" role="status"></p></div><div class="gcs-consent-actions">'+(choices?'<button type="button" data-consent="denied">Turn off analytics</button><button type="button" data-consent="granted">Turn on analytics</button>':'<button type="button" data-consent="acknowledge">Got it</button>')+'</div>';const style=document.querySelector('#gcs-consent-style')||document.createElement('style');style.id='gcs-consent-style';/* P27 changes preference semantics and controls; the following notes describe historical placement only.
+  function banner(force=false){const saved=read();if(document.querySelector('#gcs-consent')||(!force&&valid(saved)&&saved.notice_acknowledged!==false))return;const choices=force,root=document.createElement('section');root.id='gcs-consent';root.setAttribute('aria-label','Cookie notice');root.innerHTML='<div class="gcs-consent-copy"><p><span id="gcs-consent-copy"></span> <a href="/privacy/cookies/" data-consent-open>Manage / opt out</a></p><p id="gcs-consent-status" role="status"></p></div><div class="gcs-consent-actions">'+(choices?'<button type="button" data-consent="denied">Turn off tracking</button><button type="button" data-consent="granted">Turn on tracking</button>':'<button type="button" data-consent="acknowledge">Got it</button>')+'</div>';const style=document.querySelector('#gcs-consent-style')||document.createElement('style');style.id='gcs-consent-style';/* P27 changes preference semantics and controls; the following notes describe historical placement only.
      Consent semantics are defined above; the --consent-clearance contract
      and fixed placement behavior below remain unchanged.
      What changed is where and how it arrives: a bottom-CENTRE toast capped at
@@ -171,10 +166,13 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   // replaces the initial allowance with the actual border-box measurement.
   // Quiz controls need an unobscured scroll target on desktop as well as mobile.
   updateControls(root,true);
-  let height=null;
-  const clearance=()=>{if(root.isConnected){const sticky=Number.parseFloat(document.documentElement.style.getPropertyValue?.('--sticky-clearance'))||0;const bottom=window.innerWidth<=768?8+sticky:20;const reserved=height===null?320:Math.ceil(height+bottom+8);document.documentElement.style.setProperty('--consent-clearance',(window.innerWidth<=920||document.body?.dataset?.page==='quiz-provider-fit')?reserved+'px':'0px')}};
+  let height=null,clearanceFrame=null;
+  const clearance=()=>{if(root.isConnected){const sticky=Number.parseFloat(document.documentElement.style.getPropertyValue?.('--sticky-clearance'))||0;const bottom=window.innerWidth<=768?8+sticky:20;const reserved=height===null?320:Math.ceil(height+bottom+8);const value=(window.innerWidth<=920||document.body?.dataset?.page==='quiz-provider-fit')?reserved+'px':'0px';if(document.documentElement.style.getPropertyValue?.('--consent-clearance')!==value)document.documentElement.style.setProperty('--consent-clearance',value)}};
   clearance();
-  const observer=typeof ResizeObserver==='function'?new ResizeObserver(entries=>{const entry=entries.find(e=>e.target===root),box=entry?.borderBoxSize;if(box){const size=Array.isArray(box)?box[0]:box;if(Number.isFinite(size?.blockSize)){height=Math.ceil(size.blockSize);clearance()}}}):null;observer?.observe(root,{box:'border-box'});
+  // An ancestor CSS variable changes quiz geometry. Writing it during observer
+  // delivery can resize the observed notice again in WebKit's same layout pass.
+  // Measure here; coalesce the write into the next frame (never suppress errors).
+  const observer=typeof ResizeObserver==='function'?new ResizeObserver(entries=>{const entry=entries.find(e=>e.target===root),box=entry?.borderBoxSize;if(box){const size=Array.isArray(box)?box[0]:box;if(Number.isFinite(size?.blockSize)){const next=Math.ceil(size.blockSize);if(next===height)return;height=next;if(clearanceFrame===null)clearanceFrame=window.requestAnimationFrame(()=>{clearanceFrame=null;clearance()})}}}):null;observer?.observe(root,{box:'border-box'});
   // Native WebKit focus scrolling can leave the field edge behind the notice.
   // Correct only real user focus on the affected listing/matcher surfaces;
   // keep the notice and consent defaults intact, with no bootstrap layout read.
@@ -190,10 +188,10 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
     });
   };
   document.addEventListener('focusin',focusClearance);
-  window.addEventListener('resize',clearance,{passive:true});cleanupBanner=()=>{observer?.disconnect();window.removeEventListener?.('resize',clearance);document.removeEventListener?.('focusin',focusClearance);if(focusFrame!==null)window.cancelAnimationFrame(focusFrame)};
+  window.addEventListener('resize',clearance,{passive:true});cleanupBanner=()=>{observer?.disconnect();if(clearanceFrame!==null)window.cancelAnimationFrame(clearanceFrame);window.removeEventListener?.('resize',clearance);document.removeEventListener?.('focusin',focusClearance);if(focusFrame!==null)window.cancelAnimationFrame(focusFrame)};
   root.addEventListener('click',e=>{const b=e.target.closest('[data-consent]');if(!b||b.disabled)return;const result=b.dataset.consent==='acknowledge'?acknowledge():apply(b.dataset.consent==='granted'?'granted':'denied');if(result.persistence==='failed'){updateControls(root);const status=root.querySelector('#gcs-consent-status');if(status)status.textContent='Tracking is off for this page. Your browser could not save the choice; it may not persist on another visit.'}})}
   window.GCSConsent={apply,acknowledge,read,effective,purposes,model:()=>consentModel,advertisingStatus,whenSettled:()=>settled,allowsExports:exportsAllowed,refresh,open,persistenceStatus:()=>persistence};
-  window.addEventListener?.('storage',e=>{if(e.key===STORAGE||e.key===null){sequence++;adsBlocked=true;refresh()}});
+  window.addEventListener?.('storage',e=>{if(e.key===STORAGE||e.key===null){sequence++;adsBlocked=!!advertisingAdapter;refresh()}});
   window.addEventListener?.('focus',refresh);window.addEventListener?.('pageshow',refresh);document.addEventListener('visibilitychange',refresh);
   document.addEventListener('click',e=>{if(e.target.closest?.('[data-consent-open], footer a[href^="/privacy/cookies/"]')){e.preventDefault();open()}});
   sync();notify();if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>banner(),{once:true});else banner();

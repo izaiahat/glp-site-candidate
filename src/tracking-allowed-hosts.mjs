@@ -59,6 +59,16 @@ export function resetTrackingAllowedHostsCache() {
   cache.clear();
 }
 
+export function trackingNetworkIdentity(programId, network, source = defaultDocument()) {
+  const entry = loadTrackingAllowedHosts(source).programs[String(programId)];
+  if (!entry?.network || !entry.allowed_hosts?.length) throw new Error(`tracking_allowed_hosts_underived:${programId}`);
+  const labels = [entry.network, ...(entry.network_aliases || [])];
+  if (network != null && !labels.some(label => normalizeNetwork(label) === normalizeNetwork(network))) {
+    throw new Error(`tracking_allowed_hosts_network_drift:${programId}`);
+  }
+  return entry.network;
+}
+
 export function trackingAllowedHosts(programId, network, source = defaultDocument()) {
   const document = loadTrackingAllowedHosts(source);
   const entry = document.programs[String(programId)];
@@ -69,7 +79,7 @@ export function trackingAllowedHosts(programId, network, source = defaultDocumen
   }
   // The document is keyed by program, so a program that changed rails since it
   // was written would otherwise be checked against its OLD rail's hosts.
-  if (normalizeNetwork(entry.network) !== normalizeNetwork(network)) {
+  if (network == null || trackingNetworkIdentity(programId, network, source) !== entry.network) {
     throw new Error(`tracking_allowed_hosts_network_drift:${programId}`);
   }
   return new Set(entry.allowed_hosts.map(normalizeHost).filter(Boolean));

@@ -1,0 +1,17 @@
+title = "GLP public identifiers and explicit fixtures"
+[extend]
+useDefault = true
+[[allowlists]]
+description = "Reviewed exact public/fixture values; no credentials"
+regexTarget = "secret"
+regexes = [
+  '''^0123456789abcdef0123456789abcdef$''',
+  '''^a5d4602a52ca94d85b0d993f532fe74c$''',
+  '''^c1\-0123456789abcdef01234567$''',
+  '''^national\-wow\-medium\-sildenafil\-vs\-tadalafil\-label\-comparison\-20260723$''',
+  '''^national\-wow\-medium\-trt\-cost\-and\-insurance\-questions\-20260723$''',
+  '''^national\-wow\-medium\-viagra\-vs\-cialis\-label\-and\-cost\-20260723$''',
+  '''^opaque\-click\-v1$''',
+  '''^phc_z6A6VUr9XTjwEwmybusgwsHyYK3tMAB6YyaBmWHj7Xmi$''',
+  '''^seo\-20260802\-01\-r2\-wegovy\-pills\-cost$''',
+]

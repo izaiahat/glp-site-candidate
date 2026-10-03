@@ -271,7 +271,13 @@ export async function listingClass(page, origin, viewport) {
  const singleRenderer=(rendererSource.match(/function renderConfiguredListing\(/g)||[]).length===1&&rendererSource.includes('const listing = (archetype, page) => renderConfiguredListing(archetype, page, listingContext)')&&rendererKinds.every(k=>rendererCalls[k]>0);
 
  const immutable=JSON.parse(fs.readFileSync(path.join(execution,'before/immutable-input-hashes.json')));
- const boundInput=relative=>{const bytes=fs.readFileSync(new URL(relative,root));assert.equal(sha(bytes),immutable.data[relative],`immutable listing oracle: ${relative}`);return JSON.parse(bytes);};
+ const successor=JSON.parse(fs.readFileSync(new URL('tests/fixtures/glp41-approved-input-successor.json',root)));
+ const boundInput=relative=>{
+  const bytes=fs.readFileSync(new URL(relative,root)),replacement=successor.inputs[relative];
+  if(replacement)assert.equal(replacement.before_sha256,immutable.data[relative],'approved successor must bind the old input');
+  assert.equal(sha(bytes),replacement?.after_sha256||immutable.data[relative],`immutable listing oracle: ${relative}`);
+  return JSON.parse(bytes);
+ };
  const registrySource=boundInput('data/program-registry.json'),registry=registrySource.programs;
  const pharmacyInput=boundInput('data/phase3-pharmacy-render-input.json').entries;
  const factInput=boundInput('data/provider-facts-backfill-20260830.json').programs;

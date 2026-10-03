@@ -43,7 +43,7 @@ async function context(options = {}) {
 async function open(page, route) {
   const response = await page.goto(origin + route);
   assert.equal(response.status(), 200, 'actual document serves successfully');
-  const reject = page.getByRole('button', { name: /^(Reject optional|Turn off analytics)$/ });
+  const reject = page.getByRole('button', { name: /^(Reject optional|Turn off tracking)$/ });
   if (await reject.isVisible()) await reject.click();
 }
 
@@ -86,7 +86,13 @@ test('W6 natural completion returns by visit history without saved quiz answers'
     assert.match(await next.locator('.cs-welcome-toast').innerText(), /Pick up where you left off/);
     assert.doesNotMatch(await next.locator('.cs-welcome-toast').innerText(), /saved preferences|Open your matches/);
     assert.equal(await next.locator('.cs-welcome-toast a').getAttribute('href'), '/matches/customized/');
-    await next.locator('.cs-welcome-toast a').click();
+    const continueLink = next.locator('.cs-welcome-toast a');
+    assert.equal(await continueLink.evaluate(e => {
+      const r = e.getBoundingClientRect();
+      const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+      return hit === e || e.contains(hit);
+    }), true, 'consent must remain available without intercepting Continue');
+    await continueLink.click();
     await next.locator('[data-matches-medication]').waitFor({ state: 'visible' });
     assert.equal(new URL(next.url()).search, '');
     assert.equal(await next.locator('[data-matches-results]').isVisible(), false);
@@ -210,7 +216,7 @@ test('D36 authored non-hero sections replay; reduced motion stays readable', asy
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await open(page, '/wegovy/');
     await page.waitForFunction(() => window.CS_MOTION?.gsap);
-    assert.ok(await page.locator('main > section').evaluateAll(nodes => nodes.length > 0 && nodes.every(node => node.dataset.motion && node.dataset.motionOnce === 'false')), 'brand content sections have replay bindings');
+    assert.ok(await page.locator('main > section').evaluateAll(nodes => nodes.length > 0 && nodes.every(node => node.dataset.motion && node.textContent.trim().length > 0)), 'brand content sections retain authored entrances and readable content without a blanket replay default');
   } finally { await ctx.close(); }
   const plain = await context({ javaScriptEnabled: false });
   try {

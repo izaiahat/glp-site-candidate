@@ -58,12 +58,12 @@ export function providerVisualKind(program) {
   return { kind: "provider-logo-fallback", id, name, logo };
 }
 
-export function renderProviderEvidencePicture(program, { eager = true, className = "p3-provider-visual" } = {}) {
+export function renderProviderEvidencePicture(program, { eager = true, className = "p3-provider-visual", sizes = "(max-width:760px) calc(100vw - 32px), 720px", alt = null } = {}) {
   const visual = providerVisualKind(program);
   if (visual.kind === "provider-logo-fallback") {
     const logo = visual.logo;
     return `<picture class="${esc(className)}" data-provider-visual="${esc(visual.id)}" data-provider-visual-kind="provider-logo-fallback"><img src="/assets/provider-logos/${esc(logo.output_file)}" width="${esc(logo.width)}" height="${esc(logo.height)}" loading="${eager ? "eager" : "lazy"}"${eager ? ' fetchpriority="high"' : ""} decoding="async" alt="First-party ${esc(visual.name)} provider logo; editorial scene unavailable"></picture>`;
   }
   const base = `/assets/images/provider-review-pass2/${visual.id}`;
-  return `<picture class="${esc(className)}" data-provider-visual="${esc(visual.id)}" data-provider-visual-kind="editorial-scene"><source srcset="${base}-640.avif 640w, ${base}-1280.avif 1280w" sizes="(max-width:760px) calc(100vw - 32px), 720px" type="image/avif"><source srcset="${base}-640.webp 640w, ${base}-1280.webp 1280w" sizes="(max-width:760px) calc(100vw - 32px), 720px" type="image/webp"><img src="${base}-1280.jpg" srcset="${base}-640.jpg 640w, ${base}-1280.jpg 1280w" sizes="(max-width:760px) calc(100vw - 32px), 720px" width="1280" height="720" loading="${eager ? "eager" : "lazy"}"${eager ? ' fetchpriority="high"' : ""} decoding="async" alt="Original editorial evidence scene for the ${esc(visual.name)} provider profile"></picture>`;
+  return `<picture class="${esc(className)}" data-provider-visual="${esc(visual.id)}" data-provider-visual-kind="editorial-scene"><source srcset="${base}-640.avif 640w, ${base}-1280.avif 1280w" sizes="${esc(sizes)}" type="image/avif"><source srcset="${base}-640.webp 640w, ${base}-1280.webp 1280w" sizes="${esc(sizes)}" type="image/webp"><img src="${base}-1280.jpg" srcset="${base}-640.jpg 640w, ${base}-1280.jpg 1280w" sizes="${esc(sizes)}" width="1280" height="720" loading="${eager ? "eager" : "lazy"}"${eager ? ' fetchpriority="high"' : ""} decoding="async" alt="${esc(alt || `Original editorial evidence scene for the ${visual.name} provider profile`)}"></picture>`;
 }

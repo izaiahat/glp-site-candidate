@@ -10,16 +10,21 @@ async function observeW17Readiness(target, { timeout = 5000 } = {}) {
       for (let node = element; node; node = node.parentElement) ancestors.push(node);
       const gsap = window.CS_MOTION?.gsap || window.gsap;
       const pendingTweens = gsap ? gsap.getTweensOf(ancestors).filter(tween => !tween.paused() && tween.totalProgress() < 1).length : 0;
-      const finiteAnimations = ancestors.flatMap(node => node.getAnimations()).filter(animation => animation.effect?.getComputedTiming().iterations !== Infinity && ['running', 'pending'].includes(animation.playState)).length;
+      // Document.getAnimations includes pseudo-element transitions that
+      // Element.getAnimations() omits without subtree:true. The paint guard
+      // observes the whole document, so finite transitions must finish first.
+      const finiteAnimations = document.getAnimations().filter(animation => animation.effect?.getComputedTiming().iterations !== Infinity && ['running', 'pending'].includes(animation.playState)).length;
       const geometry = ancestors.map(node => {
         const s = getComputedStyle(node), b = node.getBoundingClientRect();
         return { tag: node.tagName, opacity: s.opacity, transform: s.transform, translate: s.translate, visibility: s.visibility, display: s.display, rect: [b.x,b.y,b.width,b.height] };
       });
       const pendingReveal = geometry.some(row => Number(row.opacity) !== 1 || row.visibility !== 'visible' || row.display === 'none');
       const fingerprint = JSON.stringify(geometry);
-      stable = !pendingTweens && !finiteAnimations && !pendingReveal && fingerprint === previous ? stable + 1 : 0;
+      const lenis = window.CS_MOTION?.lenis || window.__gcsLenis;
+      const pendingScroll = Boolean(lenis?.isScrolling);
+      stable = !pendingScroll && !pendingTweens && !finiteAnimations && !pendingReveal && fingerprint === previous ? stable + 1 : 0;
       previous = fingerprint; samples++;
-      last = { pendingTweens, finiteAnimations, pendingReveal, geometry, samples, stable };
+      last = { pendingScroll, pendingTweens, finiteAnimations, pendingReveal, geometry, samples, stable };
       if (stable >= 6) return { ready: true, ...last };
     } while (performance.now() < deadline);
     return { ready: false, reason: 'natural entrance/geometry readiness unresolved', ...last };

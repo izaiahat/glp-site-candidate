@@ -13,18 +13,20 @@
 //   3. unchanged routes are untouched — including declared ones, so a
 //      declaration can never bump a date on its own.
 //
-// (1) and (2) are proven END TO END by running the real stage over a real
-// rendered tree, not by asserting on a mock: the fixture is this release's own
-// `public/` tree with its own provenance minted from its own bytes.
+// (1) and (2) run the real stage over an isolated two-route TEST index. Its
+// baseline pages are manifest-authenticated release bytes, not an invented
+// historical publication of the current candidate output.
 
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { chmod, cp, link, mkdir, mkdtemp, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { loadCarrierArticles } from "../src/carrier-article-retention.mjs";
+import { loadCarrierArticles, renderedCarrierArticle } from "../src/carrier-article-retention.mjs";
+import { prepareLastmod, openComparisonInput } from "../scripts/build-lastmod-provenance.mjs";
 import {
   DECLARED_ROUTES_SCHEMA,
   LASTMOD_ACTIONS,
@@ -37,9 +39,7 @@ import {
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const HASH_A = "a".repeat(64);
 const HASH_B = "b".repeat(64);
-// K6c fixture clocks from actual catalog and accepted declarations.
-const CARRIER_FIXTURE_BASELINE = "2026-09-09";
-const RELEASE = "2026-09-10";
+const RELEASE = "2026-09-10"; // Pure decision examples; integration uses preparer's real UTC date.
 
 test("lastmod hash treats versioned analytics filenames as transport-only", () => {
   const legacy = '<script src="/assets/analytics.js?v=aaaaaaaaaaaaaaaa"></script><main>same content</main>';
@@ -145,6 +145,8 @@ test("a declaration FILE must carry the right schema, and env+file together is r
 
 const PROBE_ROUTE = "/how-we-rate/";
 const UNTOUCHED_ROUTE = "/reviews/orderlymeds/";
+const BASE_POINTER = path.join(ROOT, 'data/predecessors/content-base/current-content-base.json');
+const sha256 = bytes => createHash("sha256").update(bytes).digest("hex");
 
 async function fixture() {
   const work = path.join(ROOT, "artifacts", "test-work");
@@ -163,12 +165,60 @@ async function fixture() {
     recursive: true,
     filter: (source) => !source.startsWith(path.join(ROOT, "public", "assets")),
   });
-  for (const { manifest } of loadCarrierArticles(ROOT).values()) {
+  for (const article of loadCarrierArticles(ROOT).values()) {
+    const { manifest } = article;
+    // This isolated fixture executes the production-seal postbuild stage.
+    // Materialize its article shell with the real stage-aware renderer rather
+    // than feeding candidate bytes to a production retention oracle. Body and
+    // manifest assertions remain exact; the source/public tree is not changed.
+    await writeFile(path.join(root, 'public', manifest.relative), renderedCarrierArticle(article, 'production-seal'));
     for (const relative of [manifest.snapshot, ...manifest.bindings.map(binding => binding.path), ...manifest.files.map(file => file.path)]) {
       await mkdir(path.dirname(path.join(root, relative)), { recursive: true });
       await cp(path.join(ROOT, relative), path.join(root, relative), { recursive: true });
     }
   }
+  // The carrier loader also authenticates the complete image-rebind lineage,
+  // beyond the legacy manifest bindings above. Copy the real receipts, their
+  // preimages and source inputs; never mint replacement evidence or change pins.
+  for (const receiptPath of [
+    'artifacts/ultracode/article-image-REBIND-abfcc41435f896df-7f3b9b7eca877071.json',
+    'artifacts/ultracode/article-image-REBIND-7f3b9b7eca877071-12aa0e7c539a090e.json',
+  ]) {
+    const receipt = JSON.parse(await readFile(path.join(ROOT, receiptPath), 'utf8'));
+    for (const relative of [receiptPath,
+      `artifacts/ultracode/article-image-manifest-before-${receipt.before_manifest_sha256}.json`,
+      ...receipt.after_source_files.map(source => source.path),
+    ]) {
+      await mkdir(path.dirname(path.join(root, relative)), { recursive: true });
+      await cp(path.join(ROOT, relative), path.join(root, relative));
+    }
+  }
+  // Re-run the unchanged mandatory loader on the isolated closure itself.
+  loadCarrierArticles(root);
+  // Use manifest-authenticated predecessor page bytes, not a current tree
+  // relabelled with a fictional historical date. prepareLastmod verifies the
+  // receipt, manifest and provenance again before every comparison.
+  const pointer = JSON.parse(await readFile(BASE_POINTER, "utf8"));
+  // Mirror portability: these are the vendored, manifest-authenticated bytes
+  // of the same predecessor. Do not resolve its historical absolute host paths.
+  const manifestBytes = await readFile(path.join(ROOT, 'data/predecessors/content-base/deployment-manifest.json'));
+  assert.equal(sha256(manifestBytes), pointer.manifest.sha256);
+  const rows = new Map(JSON.parse(manifestBytes).release_rows.map(row => [row.path, row.sha256]));
+  for (const route of [PROBE_ROUTE, UNTOUCHED_ROUTE]) {
+    const relative = `public/${route.slice(1)}index.html`;
+    const bytes = await readFile(path.join(ROOT, 'data/predecessors/content-base/release', relative));
+    assert.equal(sha256(bytes), rows.get(relative), `unauthenticated predecessor: ${route}`);
+    await writeFile(path.join(root, relative), bytes);
+  }
+  // The other copied pages supply real codemod/llms dependencies, but are not
+  // indexable in this isolated two-route TEST fixture.
+  await writeFile(path.join(root, "public/sitemap.xml"), `<urlset>${[PROBE_ROUTE, UNTOUCHED_ROUTE].map(route => `<url><loc>https://glpclinicscout.com${route}</loc></url>`).join("")}</urlset>`);
+  const llmsFile = path.join(root, "data/llms-priority.json");
+  const llms = JSON.parse(await readFile(llmsFile, "utf8"));
+  llms.sections = llms.sections.map(section => ({ ...section,
+    links: section.links.filter(link => [PROBE_ROUTE, UNTOUCHED_ROUTE].includes(link.route)),
+  })).filter(section => section.links.length);
+  await writeFile(llmsFile, JSON.stringify(llms)); // Explicitly scoped TEST indexability, not a production edit.
   // A sealed release is 0444. cp preserves that mode, but this isolated fixture
   // is intentionally mutated by the postbuild stage under test.
   const writable = spawnSync("chmod", ["-R", "u+w", path.join(root, "public")], { encoding: "utf8" });
@@ -179,8 +229,33 @@ async function fixture() {
 function runStage(root, env = {}) {
   return spawnSync(process.execPath, [path.join(root, "scripts", "postbuild-aeo-surface.mjs")], {
     encoding: "utf8",
-    env: { ...process.env, GLP_LASTMOD_PROVENANCE_REFRESH: "", GLP_LASTMOD_DECLARED_ROUTES: "", GLP_LASTMOD_DECLARED_ROUTES_FILE: "", ...env },
+    env: { ...process.env, GCS_RELEASE_STAGE: "production-seal", GLP_LASTMOD_PROVENANCE_REFRESH: "", GLP_LASTMOD_DECLARED_ROUTES: "", GLP_LASTMOD_DECLARED_ROUTES_FILE: "", ...env },
   });
+}
+
+async function preparedStage(root, { preserveHardlink = false } = {}) {
+  const prepared = await prepareLastmod(root);
+  // Recreate the registered caller's cache handoff inside the isolated fixture.
+  // This is preparer output, never a hand-minted production baseline.
+  const provenanceFile = path.join(root, "data/page-content-provenance.json");
+  if (preserveHardlink) {
+    const existing = JSON.parse(await readFile(provenanceFile, "utf8"));
+    for (const route of [PROBE_ROUTE, UNTOUCHED_ROUTE])
+      assert.deepEqual(existing.pages[route], prepared.provenance.pages[route]);
+    assert.equal((await stat(provenanceFile)).nlink, 2, "preparer lost the hardlink before the stage");
+  } else {
+    await rm(provenanceFile, { force: true });
+    await writeFile(provenanceFile, JSON.stringify(prepared.provenance) + "\n");
+  }
+  const input = await openComparisonInput(root, prepared.input);
+  try {
+    const result = spawnSync(process.execPath, [path.join(root, "scripts/postbuild-aeo-surface.mjs")], {
+      encoding: "utf8", cwd: root,
+      env: { ...prepared.env, GCS_RELEASE_STAGE: "production-seal" },
+      stdio: [input.fd, "pipe", "pipe"],
+    });
+    return { ...result, prepared };
+  } finally { await input.close(); }
 }
 
 const provenanceOf = async (root) =>
@@ -190,38 +265,37 @@ test("end to end: a declared change ships a new truthful lastmod; an undeclared 
   t.diagnostic("runs the real post-build stage over the real rendered tree");
   const root = await fixture();
 
-  // Mint a baseline from the fixture's OWN bytes so the starting state is
-  // provenance-clean, then prove the stage is a no-op on an unchanged tree.
-  const minted = runStage(root, { GLP_LASTMOD_PROVENANCE_REFRESH: "1", GLP_RELEASE_DATE: CARRIER_FIXTURE_BASELINE });
-  assert.equal(minted.status, 0, minted.stderr);
-  const clean = runStage(root, { GLP_RELEASE_DATE: RELEASE });
+  // The pinned predecessor supplies the baseline; no blanket refresh or
+  // fictitious historical production publication is minted in this test.
+  const clean = await preparedStage(root);
   assert.equal(clean.status, 0, clean.stderr);
+  assert.equal(clean.prepared.comparison.changed, 0);
   const baseline = await provenanceOf(root);
   assert.ok(baseline[PROBE_ROUTE] && baseline[UNTOUCHED_ROUTE]);
+  const releaseDate = clean.prepared.env.GLP_RELEASE_DATE;
+  assert.ok(releaseDate > baseline[PROBE_ROUTE].lastmod, "predecessor must predate the same TEST transition");
 
   // A real content change on one indexable route.
   const page = path.join(root, "public", `${PROBE_ROUTE.replace(/^\//, "")}index.html`);
   const before = await readFile(page, "utf8");
   await writeFile(page, before.replace("</body>", "<p>declared-route provenance probe</p></body>"));
 
-  const undeclared = runStage(root, { GLP_RELEASE_DATE: RELEASE });
+  const undeclared = runStage(root, { GLP_RELEASE_DATE: releaseDate });
   assert.equal(undeclared.status, 1, "an undeclared content change was allowed through");
   assert.match(undeclared.stderr, new RegExp(`lastmod_provenance_stale:${PROBE_ROUTE}`));
 
   // Declaring a DIFFERENT route does not buy the changed one a pass.
-  const misdeclared = runStage(root, { GLP_RELEASE_DATE: RELEASE, GLP_LASTMOD_DECLARED_ROUTES: UNTOUCHED_ROUTE });
+  const misdeclared = runStage(root, { GLP_RELEASE_DATE: releaseDate, GLP_LASTMOD_DECLARED_ROUTES: UNTOUCHED_ROUTE });
   assert.equal(misdeclared.status, 1, "a declaration of an unrelated route covered the changed one");
   assert.match(misdeclared.stderr, new RegExp(`lastmod_provenance_stale:${PROBE_ROUTE}`));
 
-  // Declaring both: the changed one refreshes, the unchanged one does not.
-  const declared = runStage(root, {
-    GLP_RELEASE_DATE: RELEASE,
-    GLP_LASTMOD_DECLARED_ROUTES: `${PROBE_ROUTE},${UNTOUCHED_ROUTE}`,
-  });
+  // The registered preparer declares only the changed page; the untouched
+  // control retains its authenticated predecessor record without a claim.
+  const declared = await preparedStage(root);
   assert.equal(declared.status, 0, declared.stderr);
   const receipt = JSON.parse(declared.stdout.trim().split("\n").at(-1));
   assert.deepEqual(receipt.declared_routes_refreshed, [PROBE_ROUTE]);
-  assert.deepEqual(receipt.declared_routes_unchanged, [UNTOUCHED_ROUTE]);
+  assert.deepEqual(JSON.parse(declared.prepared.input).routes, [PROBE_ROUTE]);
   assert.equal(receipt.provenance_refresh, false);
   assert.equal(receipt.provenance_written, true);
 
@@ -229,12 +303,13 @@ test("end to end: a declared change ships a new truthful lastmod; an undeclared 
   const moved = Object.keys(after).filter((route) =>
     JSON.stringify(after[route]) !== JSON.stringify(baseline[route]));
   assert.deepEqual(moved, [PROBE_ROUTE], "provenance moved on a route that was not declared-and-changed");
-  assert.equal(after[PROBE_ROUTE].lastmod, RELEASE);
+  assert.equal(after[PROBE_ROUTE].lastmod, releaseDate);
+  assert.ok(after[PROBE_ROUTE].lastmod > baseline[PROBE_ROUTE].lastmod);
   assert.notEqual(after[PROBE_ROUTE].content_sha256, baseline[PROBE_ROUTE].content_sha256);
   assert.deepEqual(after[UNTOUCHED_ROUTE], baseline[UNTOUCHED_ROUTE]);
 
   const sitemap = await readFile(path.join(root, "public", "sitemap.xml"), "utf8");
-  assert.ok(sitemap.includes(`<loc>https://glpclinicscout.com${PROBE_ROUTE}</loc><lastmod>${RELEASE}</lastmod>`));
+  assert.ok(sitemap.includes(`<loc>https://glpclinicscout.com${PROBE_ROUTE}</loc><lastmod>${releaseDate}</lastmod>`));
   assert.ok(sitemap.includes(`<loc>https://glpclinicscout.com${UNTOUCHED_ROUTE}</loc><lastmod>${baseline[UNTOUCHED_ROUTE].lastmod}</lastmod>`));
 });
 
@@ -245,7 +320,8 @@ test("end to end: the provenance file is DETACHED, not written through a predece
   // `EACCES: permission denied, open '…/data/page-content-provenance.json'` on
   // the first machine build that ever refreshed a declared route.
   const root = await fixture();
-  assert.equal(runStage(root, { GLP_LASTMOD_PROVENANCE_REFRESH: "1", GLP_RELEASE_DATE: CARRIER_FIXTURE_BASELINE }).status, 0);
+  const clean = await preparedStage(root);
+  assert.equal(clean.status, 0, clean.stderr);
 
   const provenance = path.join(root, "data", "page-content-provenance.json");
   const sealed = path.join(root, "sealed-predecessor-provenance.json");
@@ -259,21 +335,21 @@ test("end to end: the provenance file is DETACHED, not written through a predece
   const page = path.join(root, "public", `${PROBE_ROUTE.replace(/^\//, "")}index.html`);
   await writeFile(page, (await readFile(page, "utf8")).replace("</body>", "<p>detach probe</p></body>"));
 
-  const declared = runStage(root, { GLP_RELEASE_DATE: RELEASE, GLP_LASTMOD_DECLARED_ROUTES: PROBE_ROUTE });
+  const declared = await preparedStage(root, { preserveHardlink: true });
   assert.equal(declared.status, 0, declared.stderr);
   // Written, on a NEW inode…
   assert.equal((await stat(provenance)).nlink, 1, "provenance was written through the shared inode");
-  assert.equal(JSON.parse(await readFile(provenance, "utf8")).pages[PROBE_ROUTE].lastmod, RELEASE);
+  assert.equal(JSON.parse(await readFile(provenance, "utf8")).pages[PROBE_ROUTE].lastmod, declared.prepared.env.GLP_RELEASE_DATE);
   // …and the sealed predecessor's bytes are untouched.
   assert.equal(await readFile(sealed, "utf8"), sealedBytesBefore);
 });
 
 test("end to end: declaring routes while the blanket refresh is on is refused, not merged", async () => {
   const root = await fixture();
-  const minted = runStage(root, { GLP_LASTMOD_PROVENANCE_REFRESH: "1", GLP_RELEASE_DATE: CARRIER_FIXTURE_BASELINE });
-  assert.equal(minted.status, 0, minted.stderr);
+  const clean = await preparedStage(root);
+  assert.equal(clean.status, 0, clean.stderr);
   const both = runStage(root, {
-    GLP_RELEASE_DATE: RELEASE, GLP_LASTMOD_PROVENANCE_REFRESH: "1", GLP_LASTMOD_DECLARED_ROUTES: PROBE_ROUTE,
+    GLP_RELEASE_DATE: clean.prepared.env.GLP_RELEASE_DATE, GLP_LASTMOD_PROVENANCE_REFRESH: "1", GLP_LASTMOD_DECLARED_ROUTES: PROBE_ROUTE,
   });
   assert.equal(both.status, 1);
   assert.match(both.stderr, /lastmod_declared_routes_with_blanket_refresh/);

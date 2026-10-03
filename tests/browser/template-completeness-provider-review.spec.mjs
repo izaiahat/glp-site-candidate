@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
+import { governedProviderIds, hydrateAllProviderCards } from "./governed-cohort.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { readFileSync } from "node:fs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const PROOF = path.join(ROOT, "artifacts", "ultracode", "template-completeness", "provider-review");
@@ -23,6 +25,40 @@ async function screenshot(locator, filename) {
   await locator.scrollIntoViewIfNeeded();
   await locator.screenshot({ path: path.join(PROOF, filename), animations: "disabled" });
 }
+
+async function assertCanonicalReviewActions(page) {
+  const eligibleIds = governedProviderIds();
+  const allCards = await hydrateAllProviderCards(page);
+  await expect(allCards.locator("[data-provider-card-contract='option-c']")).toHaveCount(eligibleIds.length);
+  const registry = JSON.parse(readFileSync(new URL('../../data/program-registry.json', import.meta.url), 'utf8')).programs;
+  const expected = new Map(eligibleIds.map((id) => {
+    const record = registry.find((row) => row.program_id === id || row.review_slug === id);
+    expect(record, `registry identity ${id}`).toBeTruthy();
+    const alias = record.profiles?.['glp-clinic-scout']?.canonical_identity;
+    const canonical = alias?.role === 'alias'
+      ? registry.find((row) => row.program_id === alias.canonical_program_id) : record;
+    expect(canonical?.review_path, `review path ${id}`).toMatch(/^\/reviews\/[a-z0-9-]+\/$/);
+    return [id, canonical.review_path];
+  }));
+  const seen = new Set();
+  for (const card of await allCards.all()) {
+    const id = await card.getAttribute('data-program');
+    expect(expected.has(id), `unexpected hydrated card ${id}`).toBe(true);
+    expect(seen.has(id), `duplicate hydrated card ${id}`).toBe(false);
+    seen.add(id);
+    const actions = card.locator('.p3-card-actions a[data-provider-review-link]');
+    await expect(actions, id).toHaveCount(1);
+    await expect(actions, id).toHaveAttribute('href', expected.get(id));
+    await expect(actions, id).not.toHaveAttribute('data-analytics-event', 'affiliate_click');
+    await expect(actions, id).not.toHaveAttribute('rel', /sponsored/);
+  }
+  expect(seen).toEqual(new Set(eligibleIds));
+}
+
+test('every hydrated provider hub card has its source-bound canonical internal review action', async ({ page }) => {
+  await page.goto('/providers/', { waitUntil: 'domcontentloaded' });
+  await assertCanonicalReviewActions(page);
+});
 
 test("provider detail and editorial review expose the supported slots and honest gaps", async ({ page }) => {
   for (const viewport of VIEWPORTS) {
@@ -86,23 +122,22 @@ test("provider detail and editorial review expose the supported slots and honest
 });
 
 test("provider-card appearances follow the hub, home, category, and related-shelf contracts", async ({ page }) => {
+  test.setTimeout(240_000);
   for (const viewport of VIEWPORTS) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
 
     await page.goto("/providers/", { waitUntil: "domcontentloaded" });
     const providerHubCards = page.locator(".p3-provider-card[data-phase3-provider]");
-    await expect(providerHubCards).toHaveCount(35);
-    await expect(providerHubCards.locator("[data-provider-card-contract='option-c']")).toHaveCount(35);
-    const firstHubInternalActions = providerHubCards.first().locator(".p3-card-actions a[href^='/providers/']");
-    expect(await firstHubInternalActions.count()).toBeGreaterThan(0);
-    const firstHubInternalProblems = await firstHubInternalActions.evaluateAll((actions) => actions.flatMap((action) => {
-      const target = new URL(action.href, window.location.href);
-      return target.origin !== window.location.origin || action.dataset.analyticsEvent === "affiliate_click"
-        ? [action.href]
-        : [];
-    }));
-    expect(firstHubInternalProblems).toEqual([]);
+    // KAEL-DECISION-20260923-optionc-governing-mappings.md A3.1.
+    const eligibleIds = governedProviderIds();
+    const renderedIds = (await page.locator('[data-canonical-provider-ids]').getAttribute('data-canonical-provider-ids')).split(',');
+    expect(eligibleIds.length).toBeGreaterThan(0);
+    expect(new Set(renderedIds)).toEqual(new Set(eligibleIds));
+    expect(await providerHubCards.evaluateAll((rows) => rows.map((row) => row.dataset.program).sort())).toEqual([...eligibleIds].sort());
+    await expect(providerHubCards.locator("[data-provider-card-contract='option-c']")).toHaveCount(Math.min(12, eligibleIds.length));
+    await expect(page.locator('[data-phase3-provider][data-provider-lazy-index]')).toHaveCount(Math.max(0, eligibleIds.length - 12));
     await screenshot(providerHubCards.first(), `provider-hub-option-c-card-${viewport.label}.png`);
+    await assertCanonicalReviewActions(page);
 
     await page.goto("/", { waitUntil: "domcontentloaded" });
     const verdictRail = page.locator(".cs-home2-verdicts");

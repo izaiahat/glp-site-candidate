@@ -44,13 +44,17 @@ import hashlib
 import importlib.util
 import json
 import os
+import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
+# The original canonical resolver is snapshotted byte-for-byte into the mirror.
+# An explicitly supplied module still wins for the host's registered build lane.
 DEFAULT_RAILS = Path(
     os.environ.get("GLP_AFFILIATE_RAILS_MODULE",
-                   "/home/ubuntu/business/scripts/glp_affiliate_link_rails.py")
+                   str(ROOT / "scripts/glp_affiliate_link_rails.py"))
 )
 OUTPUT = ROOT / "data/tracking-allowed-hosts.json"
 SCHEMA = "glp.tracking_allowed_hosts.v1"
@@ -139,6 +143,51 @@ def monetized_programs(root: Path) -> dict[str, dict]:
                 entry.setdefault("official_url", row["official_url"])
             if row.get("affiliate_tracking_host"):
                 entry.setdefault("tracking_host", row["affiliate_tracking_host"])
+    wire_path = root / "data/affiliate-wire-in-approvals.json"
+    if wire_path.exists():
+        for approval in read_json(wire_path).get("programs") or []:
+            program_id = approval.get("existing_release_alias")
+            if program_id in programs and approval.get("approval_state") == "approved_active" and approval.get("wire_in_ready") is True:
+                programs[program_id]["network"] = approval["network"]
+
+    approved_path = root / "data/approved-program-registry.json"
+    if approved_path.exists():
+        for approval in read_json(approved_path).get("programs") or []:
+            # The approved eMed directory link is not a scored money-page row.
+            if approval.get("registry_id") != "partnerize-1011l6645":
+                continue
+            href = (approval.get("tracking") or {}).get("provider_issued_url")
+            if approval.get("enumeration_class") != "provider_joined_or_approved_exact_id" or not href:
+                continue
+            programs[approval["registry_id"]] = {
+                "network": approval["network"],
+                "tracking_host": urlparse(href).hostname,
+            }
+    # The receipted /go successor supersedes frozen money-row rails. Consume
+    # the SAME validating loader as the renderer (terms/hash/promotion checks),
+    # not a second JSON reader that could accept a tampered selection.
+    # A contract-only root has no GO successor. Do not import a nonexistent
+    # renderer there. Presence of either successor input requires the native
+    # validating loader; a partial/corrupt successor must still fail closed.
+    successor_inputs = (root / "data/go-selection-receipt.json",
+                        root / "src/go-runtime-selection.mjs")
+    if not any(item.exists() for item in successor_inputs):
+        return programs
+    projection = subprocess.run([
+        "node", "--input-type=module", "-e",
+        "import {loadGoSelection} from './src/go-runtime-selection.mjs';"
+        "console.log(JSON.stringify(Object.values(loadGoSelection()?.programs || {})"
+        ".filter(r=>r.disposition==='ADOPT')));"
+    ], cwd=root, check=True, capture_output=True, text=True)
+    for row in json.loads(projection.stdout):
+        href = urlparse(row["issued_link"])
+        if href.scheme != "https" or not href.hostname:
+            raise SystemExit(f"selected_rail_href_invalid:{row['render_id']}")
+        programs[row["render_id"]] = {
+            "network": row["network"], "tracking_host": href.hostname,
+            "official_url": programs.get(row["render_id"], {}).get("official_url"),
+            "selection_sha256": sha_file(root / "data/go-selection-receipt.json"),
+        }
     return programs
 
 
@@ -161,20 +210,55 @@ def build_document(root: Path, rails_path: Path) -> dict:
         resolved[program_id] = {
             "allowed_hosts": sorted(hosts),
             "host_class": rail.host_class,
-            "network": network,
+            "authority_network": network,
+            "network": rail.network,
+            "network_aliases": sorted(set([network, rail.network, *rail.aliases])),
+            "selection_sha256": spec.get("selection_sha256"),
             "resolution": "rail_fixed_hosts" if rail.hosts else (
                 "declared_tracking_host" if spec.get("tracking_host") else "official_url_derived"
             ),
         }
+    # Directory-only ClickDealer captures have no generic constructor rail.
+    # Reuse the renderer's exact capture + promotion verifier; never infer a
+    # network-wide allowlist, mutate issuer URLs, or print private links.
+    if os.environ.get("GLP_PRIVATE_APPROVED_REGISTRY"):
+        projection = subprocess.run([
+            "node", "--input-type=module", "-e",
+            "import {loadApprovedDirectoryRegistry} from './src/private-approved-directory.mjs';"
+            "console.log(JSON.stringify(loadApprovedDirectoryRegistry().approved_directory_programs.map(r=>({"
+            "id:r.registry_id,network:r.network,host:new URL(r.tracking.provider_issued_url).hostname,"
+            "sha256:r.tracking.issued_link_sha256}))));"
+        ], cwd=root, check=True, capture_output=True, text=True)
+        for row in json.loads(projection.stdout):
+            if row["id"] in resolved:
+                raise SystemExit(f"directory_rail_identity_collision:{row['id']}")
+            resolved[row["id"]] = {
+                "allowed_hosts": [row["host"]], "network": row["network"],
+                "host_class": "tracking_domain", "resolution": "exact_issuer_capture",
+                "issued_link_sha256": row["sha256"],
+            }
+    # Render slugs and canonical registry IDs name the same bound program.
+    for row in read_json(root / "data/program-registry.json").get("programs", []):
+        alias = row.get("review_slug")
+        canonical = row["program_id"]
+        if alias and alias in resolved and canonical != alias:
+            if canonical in resolved and resolved[canonical] != resolved[alias]:
+                raise SystemExit(f"rail_registry_alias_collision:{canonical}")
+            resolved[canonical] = resolved[alias]
     return {
         "generated_by": "scripts/emit-tracking-allowed-hosts.py",
-        "inputs": ["data/provider-page-contracts.json", "data/money-page-specs.json"],
+        "inputs": ["data/provider-page-contracts.json", "data/money-page-specs.json", "data/affiliate-wire-in-approvals.json", "data/approved-program-registry.json", "data/go-selection-receipt.json", "data/go-terms-review-ledger.json", "data/program-registry.json"],
         "note": ("Derived, never hand-edited. Regenerated by `npm run build` from "
                  "glp_affiliate_link_rails.program_allowed_hosts — the same resolver "
                  "the wire-in-ready gate and the incremental builder use."),
         "program_count": len(resolved),
         "programs": resolved,
         "rails_module": {"path": str(rails_path), "sha256": sha_file(rails_path)},
+        "directory_capture_validator": ({
+            "path": "src/private-approved-directory.mjs",
+            "sha256": sha_file(root / "src/private-approved-directory.mjs"),
+            "scope": "four exact captured directory links; no constructor or network-wide grant",
+        } if os.environ.get("GLP_PRIVATE_APPROVED_REGISTRY") else None),
         "schema": SCHEMA,
     }
 

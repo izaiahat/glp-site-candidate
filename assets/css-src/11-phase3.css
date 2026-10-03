@@ -870,6 +870,19 @@ main.listing[data-listing-archetype="C"] .p3-filterbar .p3-filter-chips { paddin
   content-visibility: auto;
   contain-intrinsic-size: auto 522px;
 }
+.p3-page.listing[data-listing-archetype="B"] .p3-provider-grid > .p3-provider-card {
+  content-visibility: visible;
+  contain-intrinsic-size: none;
+}
+
+/* WebKit's auto-contained grid cards can omit the final action-row height.
+   Keep Chromium's offscreen optimization; lay out the full card in WebKit. */
+@supports (background: -webkit-named-image(i)) {
+  .p3-page.listing .p3-provider-grid > .p3-provider-card {
+    content-visibility: visible;
+    contain-intrinsic-size: none;
+  }
+}
 
 /* WebKit can retarget a trusted click from the hub disclosure button to the
    section when auto-contained cards materialize during Playwright's/user-agent
@@ -886,6 +899,10 @@ main.listing[data-listing-archetype="C"] .p3-filterbar .p3-filter-chips { paddin
 .p3-provider-card > :not(.p3-card-aurora) {
   position: relative;
   z-index: 1;
+}
+.p3-page.listing .p3-provider-card .p3-card-header > .gcs-kicker {
+  color: var(--p3-ink);
+  background-color: var(--p3-canvas);
 }
 
 .p3-card-aurora {
@@ -3255,6 +3272,9 @@ main[data-phase3-route="/pharmacies/"] [data-pharmacy-filters] button {
 }
 
 /* W18 — mobile provider/pharmacy controls and fixed-action invariants. */
+[data-native-pharmacy-filters] { width: 100%; min-width: 0; }
+[data-native-pharmacy-filters] > summary { list-style: none; }
+[data-native-pharmacy-filters] > summary::-webkit-details-marker { display: none; }
 .cs-mobile-filter-trigger,
 .cs-mobile-filter-header,
 .cs-mobile-filter-backdrop { display: none; }
@@ -3302,6 +3322,13 @@ main[data-phase3-route="/pharmacies/"] [data-pharmacy-filters] button {
   .p3-filter-chips button, [data-bulk-drug-value] { flex: 0 0 auto; min-height: 44px; scroll-snap-align: start; }
   .p3-pharmacy-filters label { grid-column: 1 / -1; }
   .p3-pharmacy-filters :is(input, select, button) { min-height: 48px; }
+  /* The cookie notice reserves bottom space even for the seeded legacy record.
+     Reserve that same clearance for this sheet instead of leaving its state
+     selector and Show results behind the notice's higher stacking layer. */
+  .p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-filters[data-mobile-filter-ready="true"] {
+    bottom: var(--consent-clearance, 0px);
+    max-height: min(78dvh, calc(100dvh - var(--consent-clearance, 0px) - 16px));
+  }
   .p3-state-popover {
     position: static;
     inset: auto;
@@ -3724,6 +3751,10 @@ main.guide-shell .p3-article-faq .gcs-kicker {
 
 .p3-card-aurora {
   overflow: clip;
+  /* Reserve space for GSAP's 1.12 scale and +/-4% drift without enlarging
+     the card's scrollable area or clipping any factual content. */
+  left: 10%;
+  right: 10%;
   pointer-events: none;
   border-radius: var(--radius-card, 18px) var(--radius-card, 18px) 0 0;
 }
@@ -3884,6 +3915,16 @@ main.guide-shell .p3-article-faq .gcs-kicker {
   min-width: 0;
   max-width: 100%;
   overflow-wrap: anywhere;
+}
+
+.p3-page .p3-source-price > .p3-price-medication {
+  /* The label must not consume the amount's track in narrow cards. */
+  grid-column: 1 / -1;
+}
+
+.p3-page .p3-source-price > strong {
+  /* Currency and digits are one amount, even in narrow provider-card tracks. */
+  white-space: nowrap;
 }
 
 .p3-page .p3-card-actions {
@@ -4670,6 +4711,26 @@ main.guide-shell .p3-article-faq .gcs-kicker {
   overflow-wrap: anywhere;
 }
 .p3-page.listing[data-listing-archetype] .listing__support { font-size: 14px; line-height: 1.5; max-width: 70ch; margin: 0; color: var(--p3-muted); }
+.p3-page.listing :is([data-atf-result]) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--p3-rule);
+  border-radius: 12px;
+  background: #10231c;
+}
+.p3-page.listing [data-atf-result] :is(p, strong, small) { margin: 0; line-height: 1.35; }
+.p3-page.listing [data-atf-result] p:first-child { grid-column: 1 / -1; font-size: 12px; color: var(--p3-muted); }
+.p3-page.listing [data-atf-result] [data-atf-price] { grid-column: 1; font-size: 14px; }
+.p3-page.listing [data-atf-result] small { grid-column: 1; }
+.p3-page.listing [data-atf-result] > .cs-btn { grid-column: 2; grid-row: 2 / span 3; min-height: 44px; }
+
+@media (max-width: 759px) {
+  .p3-page.listing [data-atf-result] { grid-template-columns: minmax(0, 1fr); }
+  .p3-page.listing [data-atf-result] > .cs-btn { grid-column: 1; grid-row: auto; justify-self: start; }
+}
 .p3-page.listing[data-listing-archetype] .listing__count { white-space: normal; }
 .p3-page.listing[data-listing-archetype] .listing__disclosure-lead { margin: 8px 0 0; padding: 0; border: 0; background: transparent; color: var(--p3-muted); font-size: 13px; line-height: 1.5; }
 /* Keep the native fallback available alongside the enhanced state control. */
@@ -4758,6 +4819,7 @@ main.guide-shell .p3-article-faq .gcs-kicker {
 .p3-page.listing[data-listing-archetype] .listing__drug-panel :is(p, figcaption) { font-size: 14px; line-height: 1.5; color: var(--p3-muted); }
 .p3-page.listing[data-listing-archetype] .listing__drug-panel :is(h2, h3) { font-size: 20px; line-height: 1.3; }
 .p3-page.listing[data-listing-archetype] .listing__drug-panel :is(picture, img) { display: block; position: static; width: 100%; max-width: 100%; height: auto; transform: none; }
+.p3-page.listing[data-listing-archetype="B"] .listing__drug-panel picture[data-product-visual] img { object-fit: contain; }
 .p3-page.listing[data-listing-archetype] .listing__drug-panel :is(details, .p3-source-price) { padding: 8px 0; background: transparent; color: var(--p3-ink); }
 .p3-page.listing[data-listing-archetype] .listing__drug-faq { margin-top: 16px; }
 .p3-page.listing[data-listing-archetype] :is(.listing__category-art, .d3-directory-prices) { margin-top: 24px; min-width: 0; }

@@ -1,12 +1,18 @@
-import { loadGoSelection } from './go-runtime-selection.mjs';
+import { readFileSync } from 'node:fs';
+import { loadGoSelection, loadGoPromotionAuthority } from './go-runtime-selection.mjs';
 import { loadAffiliateLinkMap } from './affiliate-link-map.mjs';
 const selection = loadGoSelection();
 const links = loadAffiliateLinkMap('compare');
+const promotionAuthority = loadGoPromotionAuthority();
+const registry = JSON.parse(readFileSync(new URL('../data/program-registry.json', import.meta.url), 'utf8'));
 
 // A receipt-backed successor replaces the old rail at render time. Frozen
 // pricing/evidence inputs keep their exact bytes and dates.
 export function selectedGoOutbound(row, surfaceCode) {
   const id = row?.review_slug || row?.program_id;
+  const canonicalId = registry.programs.find((program) => program.program_id === id || program.review_slug === id)?.program_id;
+  const promotion = canonicalId ? promotionAuthority.programs[canonicalId] : null;
+  if (promotion?.status !== 'VERIFIED' || promotion.promotion_authorized !== true) return { held: true };
   const selected = Object.values(selection?.programs || {}).find(p => p.program_id === id || p.render_id === id);
   if (!selected) return null;
   const link = links[selected.render_id];

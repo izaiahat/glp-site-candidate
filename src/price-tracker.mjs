@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { loadEvidenceInputs, materialQualificationsFor } from "../../../../../scripts/glp_evidence_ledger.mjs";
+import { loadEvidenceInputs, materialQualificationsFor } from "../scripts/glp_evidence_ledger.mjs";
 import { applyStandaloneDarkTheme } from "./standalone-dark-theme.mjs";
 
 const ROUTE = "/tools/glp-1-price-tracker/";
