@@ -1,14 +1,23 @@
 // GLP-327: nonproduction proposal only. No provider, price, creative, destination or
 // paid position is approved. This is deliberately outside the organic result grid.
+// The panel is composed only from shared site components (assets/site-p3.css):
+// p3-rail-card, p3-chip, provider-logo wordmark, cs-btn, p3-rail-note. It carries
+// no <style> block, colour value or new class of its own.
 export const SPONSOR_CANDIDATE_ROUTE = "/providers/";
 export const SPONSOR_CANDIDATE_SLOT = "after provider filters, before organic results";
+export const EXAMPLE_SPONSOR = Object.freeze({ provider: "Example Provider", slug: "example-provider" });
+
+const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+export function renderSponsoredPanel({ provider = EXAMPLE_SPONSOR.provider, preview = true, destination = null, affiliate = false, id = "sponsored-placement-title" } = {}) {
+  const cta = preview
+    ? '<button class="cs-btn cs-palette-action" type="button" disabled aria-disabled="true">View provider information</button>'
+    : `<a class="cs-btn cs-palette-action" href="${esc(destination)}" rel="sponsored nofollow noopener" data-sponsored-link>View provider information</a>`;
+  const smallPrint = `${preview ? "Example creative, not a provider endorsement." : `Paid for by ${esc(provider)}.`} ${affiliate ? "We may also earn a commission if you use this link." : "Any applicable affiliate commission will be disclosed next to the final link."} Payment buys advertising space, not a recommendation or rank.`;
+  return `<aside class="p3-rail-card p3-rail-card--cta" data-sponsor-placement-candidate data-sponsored-placement aria-labelledby="${esc(id)}"><p><span class="p3-chip p3-chip--status">Sponsored</span></p><div class="p3-rail-identity p3-provider-identity"><span class="provider-logo provider-logo--wordmark" role="img" aria-label="${esc(provider)}"><span class="provider-wordmark" aria-hidden="true">${esc(provider)}</span></span><p><strong id="${esc(id)}">${esc(provider)}</strong></p></div><p>A paid introduction to ${esc(provider)}. Explore provider-reported program information and check current terms and eligibility directly with the provider.</p><div class="p3-hero-actions p3-wrap-actions" data-wrap-actions>${cta}</div><p class="p3-rail-note">${smallPrint}</p></aside>`;
+}
 
 export function renderSponsorPlacementCandidate(route, { preview = false } = {}) {
   if (route !== SPONSOR_CANDIDATE_ROUTE || !preview) return "";
-  return `<style data-sponsor-candidate-style>
-    .sponsor-proposal{--sp-ink:#e7f5ec;--sp-muted:#bed0c5;--sp-border:#789e87;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.42fr);gap:clamp(18px,3vw,36px);align-items:center;margin:clamp(24px,4vw,48px) 0;padding:clamp(22px,3vw,34px);border:1px solid var(--sp-border);border-radius:20px;background:linear-gradient(115deg,#123226,#0e231d);color:var(--sp-ink);box-shadow:0 16px 40px rgba(4,20,14,.14)}
-    .sponsor-proposal *{box-sizing:border-box}.sponsor-proposal__label{display:inline-block;margin:0 0 16px;padding:6px 11px;border:1px solid #a7d6ac;border-radius:4px;color:#e7f5ec;font:800 .75rem/1.2 Manrope,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}
-    .sponsor-proposal h2{max-width:20ch;margin:0 0 12px;color:#fff;font:750 clamp(1.55rem,3vw,2.4rem)/1.13 Manrope,system-ui,sans-serif;letter-spacing:-.03em}.sponsor-proposal p{max-width:62ch;margin:0 0 12px;color:var(--sp-ink);font:400 1rem/1.55 'Source Sans 3',system-ui,sans-serif}.sponsor-proposal__fine{color:var(--sp-muted)!important;font-size:.87rem!important}.sponsor-proposal__sample{display:grid;place-items:center;min-height:145px;padding:20px;border:1px dashed #a7d6ac;border-radius:14px;background:rgba(255,255,255,.045);color:#e7f5ec;text-align:center;font:700 .9rem/1.5 Manrope,system-ui,sans-serif}.sponsor-proposal__sample small{display:block;color:var(--sp-muted);font-weight:400}
-    @media(max-width:700px){.sponsor-proposal{grid-template-columns:1fr;gap:12px;margin:24px 0;padding:20px}.sponsor-proposal__sample{min-height:96px}.sponsor-proposal h2{max-width:none}}
-  </style><aside class="sponsor-proposal" data-sponsor-placement-candidate aria-labelledby="sponsor-proposal-title"><div><span class="sponsor-proposal__label">Advertisement · paid placement</span><h2 id="sponsor-proposal-title">A place for a sponsor, not a top pick</h2><p>This reserved space could feature a provider after editorial, eligibility and commercial review. It is not one of the comparison results below.</p><p class="sponsor-proposal__fine">If a sponsor is approved, payment for this space will not change the order, scores or inclusion rules of the provider cards. This preview contains no sponsor offer or link.</p></div><div class="sponsor-proposal__sample" aria-label="Internal placeholder, not approved sponsor creative"><span>Internal placement placeholder<small>No approved sponsor creative</small></span></div></aside>`;
+  return renderSponsoredPanel();
 }

@@ -4849,3 +4849,8 @@ main.guide-shell .p3-article-faq .gcs-kicker {
 [data-g08-medication] [data-phase3-provider]::after { content: none !important; animation: none !important; }
 
 
+
+/* GLP-327: the proposed Sponsored panel on /providers/ sits between the filters
+   and #provider-results, whose .listing-results reset removes its top margin.
+   Spacing only; the panel's look comes from .p3-rail-card--cta and .p3-chip. */
+.p3-page > [data-sponsored-placement] { margin-bottom: clamp(24px, 4vw, 42px); }

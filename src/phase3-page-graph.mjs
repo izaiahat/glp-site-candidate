@@ -70,7 +70,7 @@ export function loadPass2DoseCapture() {
   return capture;
 }
 
-function loadProviderLogoManifest() {
+export function loadProviderLogoManifest() {
   const manifest = readJson(PROVIDER_LOGO_MANIFEST_URL, "phase3_provider_logo_manifest_missing");
   if (manifest?.schema !== "glp-provider-logo-manifest-v1" || !Array.isArray(manifest.logos)) throw new Error("phase3_provider_logo_manifest_invalid");
   const atlas = readJson(PROVIDER_LOGO_ATLAS_URL, "phase3_provider_logo_atlas_missing");
@@ -175,7 +175,7 @@ export const PHASE3_INSIGHTS_EXCLUSIONS = new Set([
   "/guides/glp-1-program-total-cost-comparison/",
 ]);
 
-function pageDocument({ route, title, description, body, robots = "index,follow,max-image-preview:large", schema = null, mainClass = "p3-page", listingArchetype = null }) {
+export function pageDocument({ route, title, description, body, robots = "index,follow,max-image-preview:large", schema = null, mainClass = "p3-page", listingArchetype = null }) {
   body = body.replaceAll('Source-checked provider', 'Provider information')
     .replaceAll('Compare only the plan numbers and self-pay evidence you hold.', 'Compare your insurance and self-pay costs.')
     .replaceAll('Each card opens a live listing or product page and preserves source-governed filtering.', 'Choose a medication to compare providers and plan options.');
@@ -190,7 +190,7 @@ function pageDocument({ route, title, description, body, robots = "index,follow,
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="${esc(robots)}"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${canonical(route)}">${jsonLd}${familyStyles}</head><body><main class="${esc(mainClass)}" data-phase3-route="${esc(route)}"${listingArchetype ? ` data-listing-archetype="${esc(listingArchetype)}"` : ""}>${body}</main></body></html>`;
 }
 
-function breadcrumbs(items) {
+export function breadcrumbs(items) {
   return `<nav class="breadcrumbs" aria-label="Breadcrumb">${items.map((item, index) => item.href ? `<a href="${esc(item.href)}">${esc(item.label)}</a>${index < items.length - 1 ? '<span aria-hidden="true">/</span>' : ""}` : `<span aria-current="page">${esc(item.label)}</span>`).join("")}</nav>`;
 }
 

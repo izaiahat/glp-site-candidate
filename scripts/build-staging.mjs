@@ -1285,7 +1285,7 @@ function addSharedRuntime(html) {
     // and are rewritten to site-editorial.css by optimizePaidLandingPage.
     // Insights index pages are 40-editorial-styled (cs-ins-*, p3-pagination-*)
     // so they route to the existing editorial bundle instead.
-    : /^\/(?:providers|pharmacies)\//.test(route) || ["/self-pay/", "/bulk/", "/3-month/", "/6-month/", "/ozempic/", "/wegovy/", "/wegovy-pill/", "/mounjaro/", "/zepbound/"].includes(route) ? "site-p3.css"
+    : /^\/(?:providers|pharmacies|sponsors)\//.test(route) || ["/self-pay/", "/bulk/", "/3-month/", "/6-month/", "/ozempic/", "/wegovy/", "/wegovy-pill/", "/mounjaro/", "/zepbound/"].includes(route) ? "site-p3.css"
     : route === "/insights/" || /^\/insights\/page\//.test(route) ? "site-editorial.css"
     : "site.css";
   const template = route === "/" ? "home"
@@ -2252,6 +2252,14 @@ async function main() {
   await write("reviews/index.html", markReleaseReady(addSharedRuntime(renderReviewDirectoryPage({ programs: reviewHubPrograms, pharmacies: phase3PharmacyInput, logoByProgram: reviewLogoByProgram, dateModified: reviewHubDateModified }))));
   await write("reviews/submit/index.html", addSharedRuntime(renderReviewSubmissionPage({ programs: reviewHubPrograms, pharmacies: phase3PharmacyInput, dateModified: reviewHubDateModified })));
   await writeOps("phase3-page-graph.json", `${JSON.stringify(phase3Build.report, null, 2)}\n`);
+  // GLP-327: proposed paid inventory renders only with the explicit local
+  // preview switch, through the same shared shell and site-p3.css as provider
+  // pages. Never linked from navigation, never in the sitemap, always noindex.
+  if (process.env.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1") {
+    const { renderRateCard, renderPromo, SPONSOR_ROBOTS } = await import("../src/paid-promo.mjs");
+    await write("sponsors/rates/index.html", setRobots(addSharedRuntime(renderRateCard()), SPONSOR_ROBOTS));
+    await write("sponsors/example-provider/index.html", setRobots(addSharedRuntime(renderPromo()), SPONSOR_ROBOTS));
+  }
   // ---- B-17: LP-A paid landing page, first instance (SPEC-ADS §3.1) ---------
   // Built PAUSED-ready: noindex, out of the sitemap, AdsBot allowed by robots,
   // and rendered through the SAME affiliate anchor path as every organic surface
@@ -2853,4 +2861,7 @@ function buildSearchIndex({ augmented, providerReviews, programRegistry, aliasRe
   return `${JSON.stringify({ schema: "glp-clinic-scout-search-index-v1", entry_count: entries.length, entries }, null, 2)}\n`;
 }
 
-await main();
+// GLP-327: importable for scoped renders of the shared shell; the registered
+// build still runs main() when this file is executed directly.
+export { addSharedRuntime };
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();
