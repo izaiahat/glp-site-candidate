@@ -42,6 +42,8 @@ jobs:
         run: node --test tests/candidate-export-policy.test.mjs
       - name: Pricing manifest schema and fail-closed coverage tests
         run: node --test tests/pricing-deployed-row-schema.test.mjs tests/d2f-coverage-floor.test.mjs
+      - name: Affiliate relationship synchronization contracts
+        run: node --test tests/affiliate-relationship-sync.test.mjs
       - name: Record limited scope
         if: always()
         run: |

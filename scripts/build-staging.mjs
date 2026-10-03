@@ -30,6 +30,7 @@ import { buildCostCalculatorData, renderCostCalculator } from "../src/cost-calcu
 import { costCalculatorDropdownProviders as costCalculatorDropdown } from "../src/cost-calculator.mjs";
 import { costAffiliateEmailManifest, costCalculatorAffiliateLinks, decorateCostCalculatorAffiliateSurface } from "../src/cost-calculator-affiliate.mjs";
 import { COST_AFFILIATE_EMAIL_MANIFEST } from "../src/cost-affiliate-email-manifest.generated.mjs";
+import { publicAffiliateTerms, renderAffiliateTerms } from "../src/affiliate-relationship-sync.mjs";
 import { assertLiveSurfaceParity, deriveGoEntriesFromRegistry, deriveReviewRoutesFromRegistry, projectMoneyPagesFromRegistry, projectQuizFromRegistry } from "../src/program-registry.mjs";
 import { applyWave2Repairs, finalizeReviewIntakeRoute } from "./wave2-repairs.mjs";
 import { applyWave2P1Surfaces } from "../src/wave2-p1-surfaces.mjs";
@@ -2705,6 +2706,13 @@ async function main() {
     legalRelatives: Object.keys(legalPageMap),
     phase3Pages: phase3Build.pages,
   }));
+  const termsMarkup = renderAffiliateTerms(programRegistry);
+  if (termsMarkup) {
+    const moneyPage = await readFile(path.join(PUBLIC, 'how-we-make-money/index.html'), 'utf8');
+    if (!moneyPage.includes('</main>')) throw new Error('affiliate_terms_component_mount_missing');
+    await write('how-we-make-money/index.html', moneyPage.replace('</main>', termsMarkup + '</main>'));
+  }
+  await write('data/affiliate-terms.json', JSON.stringify({schema:'reported-affiliate-terms-v1', programs:publicAffiliateTerms(programRegistry)}, null, 2) + '\n');
   const activeGoAnchors = await countPublicGoAnchors(PUBLIC);
   // GO_RUNTIME_PROMOTION_AUTHORITY_V1: missing authority means every route stays held.
   const goPromotionAuthority = loadGoPromotionAuthority(ROOT);
