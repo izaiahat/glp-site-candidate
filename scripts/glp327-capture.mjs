@@ -9,9 +9,12 @@
 // (absent host-only inputs). It renders the same three routes with the same
 // renderer calls build-staging.mjs makes (renderConfiguredListing → pageDocument
 // → upgradePhase3PageVisuals → addSharedRuntime; renderRateCard/renderPromo →
-// addSharedRuntime) and serves the repo's assembled assets/. It skips the
-// build's write-time finalizers, so tokens such as {{LIVE_PROVIDER_COUNT}} stay
-// unresolved. CAPTURE.json records which source was used; never a deployment.
+// addSharedRuntime) and serves the repo's assembled assets/. Copy tokens are
+// finalized through the build's own count path: deriveLiveProviders() (the
+// registry + projected-ledger merchant tally main() uses) feeding
+// resolveDerivedCounts(), which substitutes {{LIVE_PROVIDER_COUNT}} and runs the
+// assertTalliesDerived gate on providers/index.html. Other write-time finalizers
+// are not applied. CAPTURE.json records the source and tally; never a deployment.
 import { createServer } from "node:http";
 import { readFile, writeFile, mkdir, mkdtemp, rm } from "node:fs/promises";
 import { existsSync, readFileSync } from "node:fs";
@@ -41,7 +44,8 @@ async function scopedRender() {
   const { upgradePhase3PageVisuals } = await import("../src/pass2-page-visual-upgrades.mjs");
   const { loadGoPromotionAuthority } = await import("../src/go-runtime-selection.mjs");
   const { renderRateCard, renderPromo, SPONSOR_ROBOTS } = await import("../src/paid-promo.mjs");
-  const { addSharedRuntime } = await import("./build-staging.mjs");
+  const { addSharedRuntime, deriveLiveProviders, resolveDerivedCounts } = await import("./build-staging.mjs");
+  const { projectProviderDisplayLedger } = await import("../src/provider-display-evidence.mjs");
   const graph = json("phase3-page-graph.json"), pharmacyInput = json("phase3-pharmacy-render-input.json");
   graphModule.validatePhase3Graph(graph, pharmacyInput);
   const programRegistry = json("program-registry.json");
@@ -51,12 +55,19 @@ async function scopedRender() {
     doseCapture: graphModule.loadPass2DoseCapture(), logoManifest: graphModule.loadProviderLogoManifest(), articles: [], goAuthority: loadGoPromotionAuthority(),
   });
   const robots = (html) => html.replace(/<meta name="robots" content="[^"]*">/, `<meta name="robots" content="${SPONSOR_ROBOTS}">`);
+  // main() derives the tally from the same consumer ledger view it builds:
+  // structuredClone(raw programs) projected through projectProviderDisplayLedger.
+  const ledgerPrograms = structuredClone(json("program-content-ledger.json").programs).map((row) => projectProviderDisplayLedger(row));
+  tallies.LIVE_PROVIDER_COUNT = deriveLiveProviders(programRegistry, ledgerPrograms).liveProgramCount;
+  // write() runs resolveDerivedCounts on every page; do the same per route file.
+  const finalize = (file, html) => resolveDerivedCounts(html, file, tallies);
   return {
-    "/providers/": addSharedRuntime(upgradePhase3PageVisuals(listing, { family: "providers-hub", route: "/providers/", graph, registry: programRegistry })),
-    "/sponsors/rates/": robots(addSharedRuntime(renderRateCard())),
-    "/sponsors/example-provider/": robots(addSharedRuntime(renderPromo())),
+    "/providers/": finalize("providers/index.html", addSharedRuntime(upgradePhase3PageVisuals(listing, { family: "providers-hub", route: "/providers/", graph, registry: programRegistry }))),
+    "/sponsors/rates/": finalize("sponsors/rates/index.html", robots(addSharedRuntime(renderRateCard()))),
+    "/sponsors/example-provider/": finalize("sponsors/example-provider/index.html", robots(addSharedRuntime(renderPromo()))),
   };
 }
+const tallies = {};
 
 const publicRoot = join(root, "public");
 let siteRoot = publicRoot, assetsRoot = publicRoot, tempRoot = null, source = "built-public";
@@ -121,6 +132,7 @@ try {
         clipBottom: firstCard ? Math.ceil(firstCard.getBoundingClientRect().bottom + scrollY + 32) : null,
         scrollWidth: document.documentElement.scrollWidth,
         fella: /fella/i.test(document.body.innerText),
+        unresolvedTokens: document.documentElement.outerHTML.match(/\{\{[A-Z_]+\}\}/g) || [],
       };
     });
     // Same Axe tags and serious/critical threshold as tests/browser/pass5-standalone-a11y.spec.mjs.
@@ -143,6 +155,7 @@ try {
     if (surface.route.startsWith("/sponsors/") && !/noindex/.test(dom.robots)) failures.push("noindex");
     if (dom.scrollWidth > width + 1) failures.push("horizontal overflow");
     if (dom.fella) failures.push("excluded provider name");
+    if (dom.unresolvedTokens.length) failures.push("unresolved build token");
     if (a11y.length) failures.push("axe serious/critical");
     if (blocked.length) failures.push("unexpected external request");
     checks.push({ surface: surface.key, route: surface.route, viewport: name, width, status: failures.length ? "FAIL" : "PASS", failures, image: path.replace(root + sep, ""), imageSha256: sha(png), dom: { ...dom, clipBottom: undefined }, a11y, blockedOrigins: [...new Set(blocked)], pageErrors });
@@ -155,7 +168,8 @@ const result = {
   status: checks.length === SURFACES.length * VIEWPORTS.length && checks.every((c) => c.status === "PASS") ? "PASS" : "FAIL",
   source,
   head: execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim(),
-  scope: source === "scoped-render" ? "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; build write-time finalizers not applied. Not a release build." : "Registered build output in public/.",
+  scope: source === "scoped-render" ? "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; copy tokens finalized through deriveLiveProviders + resolveDerivedCounts (with the assertTalliesDerived gate), other write-time finalizers not applied. Not a release build." : "Registered build output in public/.",
+  ...(source === "scoped-render" ? { finalizedTallies: { ...tallies, derivation: "deriveLiveProviders(data/program-registry.json, projected data/program-content-ledger.json) -> resolveDerivedCounts" } } : {}),
   checks,
 };
 await writeFile(resolve(out, "CAPTURE.json"), JSON.stringify(result, null, 2) + "\n");

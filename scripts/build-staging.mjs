@@ -185,24 +185,41 @@ const buildDerivations = {
   frozen_byte_tally_rewrites: [], frozen_byte_score_rewrites: [],
 };
 
-function resolveDerivedCounts(content, relative) {
+// `tallies` defaults to this build's derivation; scoped renders pass the same
+// registry-derived values (see deriveLiveProviders) and get the same gates.
+export function resolveDerivedCounts(content, relative, tallies = derivedTallies) {
   if (typeof content !== "string") return content;
   for (const token of TALLY_TOKENS) {
     const marker = `{{${token}}}`;
     if (!content.includes(marker)) continue;
-    if (!Number.isFinite(derivedTallies[token])) throw new Error(`tally_not_derived_yet:${token}`);
+    if (!Number.isFinite(tallies[token])) throw new Error(`tally_not_derived_yet:${token}`);
     buildDerivations.token_substitutions[token] += content.split(marker).length - 1;
-    content = content.replaceAll(marker, String(derivedTallies[token]));
+    content = content.replaceAll(marker, String(tallies[token]));
   }
   if (relative.endsWith(".html") && ANY_TOKEN.test(content)) throw new Error(`unresolved_build_token:${relative}`);
   if (relative.endsWith(".html") && isTallyGatedRoute(relative)) {
-    assertTalliesDerived(relative, content, derivedTallies);
+    assertTalliesDerived(relative, content, tallies);
     buildDerivations.tally_gated_routes += 1;
   }
   if (relative.endsWith(".html") && PROVIDER_SURFACE_ROUTE.test(relative)) {
     buildDerivations.freshness[relative] = assertStampNotStale(relative, content);
   }
   return content;
+}
+
+// The {{LIVE_PROVIDER_COUNT}} derivation main() uses: distinct live merchants,
+// counted after identity dedup over the registry and the projected content
+// ledger. Exported so a scoped render finalizes copy from the same registry
+// truth instead of a typed number.
+export function deriveLiveProviders(programRegistry, ledgerPrograms) {
+  const providerIdentity = assertDeclaredIdentityGroups(programRegistry, SITE_PROFILE, ledgerPrograms);
+  const liveRegistryRows = programRegistry.programs.filter((program) => {
+    const profile = program.profiles?.[SITE_PROFILE];
+    return program.commercial_state === "live" && profile?.vertical_fit === true
+      && profile?.wired === true && profile?.surfaces?.review === true;
+  });
+  const liveAliasRows = liveRegistryRows.filter((program) => providerIdentity.aliasIds.has(program.program_id));
+  return { providerIdentity, liveRegistryRows, liveAliasRows, liveProgramCount: liveRegistryRows.length - liveAliasRows.length };
 }
 
 //: Routes whose "updated" stamp is a claim about provider data freshness.
@@ -1629,18 +1646,11 @@ async function main() {
   // grouping from the display name AND the first-party domain, and throws unless
   // the registry says in writing which row is canonical - so the NEXT duplicate
   // fails the build instead of quietly becoming a 30th provider.
-  const providerIdentity = assertDeclaredIdentityGroups(programRegistry, SITE_PROFILE, contentLedger.programs);
+  const { providerIdentity, liveRegistryRows, liveAliasRows, liveProgramCount } = deriveLiveProviders(programRegistry, contentLedger.programs);
   buildDerivations.identity_groups = {
     merchants: providerIdentity.groups.size,
     aliases: Object.fromEntries([...providerIdentity.aliasIds].map((id) => [id, providerIdentity.canonicalOf.get(id)])),
   };
-  const liveRegistryRows = programRegistry.programs.filter((program) => {
-    const profile = program.profiles?.[SITE_PROFILE];
-    return program.commercial_state === "live" && profile?.vertical_fit === true
-      && profile?.wired === true && profile?.surfaces?.review === true;
-  });
-  const liveAliasRows = liveRegistryRows.filter((program) => providerIdentity.aliasIds.has(program.program_id));
-  const liveProgramCount = liveRegistryRows.length - liveAliasRows.length;
   const liveRowCount = liveRegistryRows.length;
   const directAffiliateRegistryRows = liveRegistryRows
     .filter((program) => ledgerLiveIds.has(String(program.review_slug || program.program_id)));
