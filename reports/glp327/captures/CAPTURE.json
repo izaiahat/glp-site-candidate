@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "source": "scoped-render",
-  "head": "8810d5d31d7c72623f65330f086a6225ec081c5b",
+  "head": "738d47ad4313754b3673c369cdcdeb4ffdc9ead3",
   "scope": "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; copy tokens finalized through deriveLiveProviders + resolveDerivedCounts (with the assertTalliesDerived gate), other write-time finalizers not applied. Not a release build.",
   "finalizedTallies": {
     "LIVE_PROVIDER_COUNT": 57,
