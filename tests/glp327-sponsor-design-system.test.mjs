@@ -53,7 +53,9 @@ test("sponsor pages go through the site document renderer and shared shell with 
     assert.match(page, new RegExp(`<main class="p3-page" data-phase3-route="${route}"`));
     const built = addSharedRuntime(page);
     assert.deepEqual([...built.matchAll(/<link rel="stylesheet" href="([^"?]+)/g)].map((m) => m[1]), ["/assets/site-p3.css"]);
-    assert.match(built, /<nav class="gcs-nav" aria-label="Primary">/);
+    assert.match(built, /<nav class="gcs-nav" aria-label="Primary" data-sponsor-header>/);
+    assert.doesNotMatch(built, /cs-search-toggle|cs-menu-toggle|cs-navgroup|id="cs-drawer"/);
+    assert.match(built, /href="\/providers\/">Compare providers<\/a>/);
     assert.match(built, /<footer class="gcs-footer">/);
     assert.match(built, /<a class="skip-link" href="#main">/);
     for (const style of built.match(/<style\b[\s\S]*?<\/style>/gi) || []) assert.ok(shellStyles.has(style), `non-shell style block: ${style.slice(0, 80)}`);

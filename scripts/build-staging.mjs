@@ -1353,7 +1353,10 @@ function addSharedRuntime(html) {
   const searchPanel = `<div class="cs-search-panel" id="cs-header-search" role="search" aria-label="Search Clinic Scout" hidden><div class="cs-search-box"><button type="button" class="cs-search-back" data-search-close aria-label="Close search and clear"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m12.5 4.5-5.5 5.5 5.5 5.5M7.5 10h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><input type="search" placeholder="Search providers or pharmacies" autocomplete="off" aria-label="Search providers or pharmacies"><span class="cs-search-status" aria-hidden="true"><span class="cs-dot"></span><span class="cs-dot"></span><span class="cs-dot"></span></span></div><div class="cs-search-results"></div></div>`;
   const searchControl = `<div class="cs-search"><button class="cs-search-toggle" type="button" aria-controls="cs-header-search" aria-expanded="false"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search providers</span></button>${searchPanel}</div>`;
   const menuToggle = `<button class="cs-menu-toggle" type="button" aria-expanded="false" aria-controls="cs-drawer" aria-label="Menu" data-menu-toggle><svg width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 1h16M1 7h16M1 13h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Menu</span></button>`;
-  const nav = `<nav class="gcs-nav" aria-label="Primary"><div class="gcs-nav-inner">${brand}${searchControl}<ul class="gcs-links"><li><a href="/insights/"${current("/insights/")}>Insights</a></li>${navGroups}<li><a href="/pharmacies/"${current("/pharmacies/")}>Compounding Pharmacies</a></li><li><a href="/reviews/"${current("/reviews/")}>Reviews</a></li><li><a href="/tools/glp-1-cost-calculator/"${current("/tools/glp-1-cost-calculator/")}>Calculator</a></li><li><a class="cta primary cs-palette-action" href="/quiz/provider-fit/">Find your fit</a></li></ul>${menuToggle}</div></nav>`;
+  const sponsorPage = route.startsWith("/sponsors/");
+  const nav = sponsorPage
+    ? `<nav class="gcs-nav" aria-label="Primary" data-sponsor-header><div class="gcs-nav-inner">${brand}<a class="cs-btn cs-btn--quiet" href="/providers/">Compare providers</a></div></nav>`
+    : `<nav class="gcs-nav" aria-label="Primary"><div class="gcs-nav-inner">${brand}${searchControl}<ul class="gcs-links"><li><a href="/insights/"${current("/insights/")}>Insights</a></li>${navGroups}<li><a href="/pharmacies/"${current("/pharmacies/")}>Compounding Pharmacies</a></li><li><a href="/reviews/"${current("/reviews/")}>Reviews</a></li><li><a href="/tools/glp-1-cost-calculator/"${current("/tools/glp-1-cost-calculator/")}>Calculator</a></li><li><a class="cta primary cs-palette-action" href="/quiz/provider-fit/">Find your fit</a></li></ul>${menuToggle}</div></nav>`;
   // The drawer remains a sibling of the sticky header so its fixed panel is not
   // trapped by the header's backdrop-filter containing block.
   const drawerSection = (label, items) => {
@@ -1399,7 +1402,7 @@ function addSharedRuntime(html) {
     .replace(/<main(?![^>]*\bid=)([^>]*)>/i, '<main id="main" tabindex="-1"$1>')
     .replace(/<main([^>]*)>/i, `<main$1 data-cs-template="${template}">`)
     .replace("</head>", `${performanceConfig}</head>`)
-    .replace(/<body([^>]*)>/i, `<body$1 data-cs-template="${template}"><a class="skip-link" href="#main">Skip to main content</a>${utility}${nav}${drawer}`)
+    .replace(/<body([^>]*)>/i, `<body$1 data-cs-template="${template}"><a class="skip-link" href="#main">Skip to main content</a>${utility}${nav}${sponsorPage ? "" : drawer}`)
     .replace("</body>", `${preFooter}${footer}${subscribeSheet}</body>`);
 }
 

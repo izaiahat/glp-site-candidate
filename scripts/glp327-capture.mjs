@@ -25,6 +25,7 @@ import { readFile, writeFile, mkdir, mkdtemp, rm } from "node:fs/promises";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve, extname, sep, join } from "node:path";
 import { tmpdir } from "node:os";
+import { checkControls } from "./glp327-check-controls.mjs";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { chromium } from "playwright";
@@ -128,7 +129,7 @@ try {
     if (audit.violations.length) gateFindings.push({ gate: "validate:email-aliases", route: surface.route, violations: audit.violations.map(({ alias, code }) => ({ alias, code })) });
     for (const [name, width, height, maxH1] of VIEWPORTS) {
       // Unauthenticated, no service workers, no network beyond the local server.
-      const context = await browser.newContext({ viewport: { width, height }, serviceWorkers: "block", reducedMotion: "reduce" });
+      const context = await browser.newContext({ viewport: { width, height }, serviceWorkers: "block", reducedMotion: "reduce", ...(name === "mobile" ? { hasTouch: true } : {}) });
       const blocked = [], pageErrors = [];
       await context.route("**/*", async (route) => {
         const request = route.request();
@@ -174,7 +175,7 @@ try {
           panelAfterFilters: !results || panel.every((p) => !filters || !!(filters.compareDocumentPosition(p) & Node.DOCUMENT_POSITION_FOLLOWING)),
           panelLocalStyles: panel.some((p) => p.querySelector("style,[style]")),
           organicOrder: results ? [...results.querySelectorAll("[data-phase3-provider-grid] > [data-phase3-provider], [data-phase3-provider-grid] > [data-provider-lazy-index]")].map((e) => e.dataset.program || `lazy:${e.dataset.providerLazyIndex}`) : [],
-          directoryControls: filters ? { search: shown(filters.querySelector("[data-provider-search]")), sort: shown(filters.querySelector('[data-filter-group="sort"]')), state: shown(document.querySelector("[data-state-open]")), extendedFiltersCollapsed: !!more && !more.open } : null,
+          directoryControls: filters ? { search: shown(filters.querySelector("[data-provider-search]")), sort: shown(filters.querySelector('[data-filter-group="sort"]')), state: shown(filters.querySelector("[data-state-native]")), extendedFiltersCollapsed: !!more && !more.open, nativeStateCount: filters.querySelectorAll('[data-state-native]').length, customStateCount: filters.querySelectorAll('[data-state-open]').length, panelTop: rect(panel[0]).top, filterHeight: filters.getBoundingClientRect().height } : null,
           viewport: { width: innerWidth, height: innerHeight, scrollY },
           fold: foldRects, h1,
           scrollWidth: document.documentElement.scrollWidth,
@@ -208,7 +209,13 @@ try {
       if (!dom.panelOutsideResults || !dom.panelBeforeResults || !dom.panelAfterFilters) failures.push("panel placement");
       if (surface.route.startsWith("/sponsors/") && !/noindex/.test(dom.robots)) failures.push("noindex");
       if (surface.route.startsWith("/sponsors/") && (dom.readerPriceAlertCta || dom.prefooterAliases.some((href) => href !== "mailto:partners@glpclinicscout.com"))) failures.push("sponsor page ends in a reader price-alert CTA");
-      if (dom.directoryControls && (!dom.directoryControls.search || !dom.directoryControls.sort || !dom.directoryControls.state || !dom.directoryControls.extendedFiltersCollapsed)) failures.push("directory controls");
+      if (dom.directoryControls && (!dom.directoryControls.search || dom.directoryControls.sort || dom.directoryControls.state || !dom.directoryControls.extendedFiltersCollapsed || dom.directoryControls.nativeStateCount !== 1 || dom.directoryControls.customStateCount !== 0 || dom.directoryControls.filterHeight > 64)) failures.push("directory clutter regression");
+      if (name === "mobile") {
+        if (surface.key === "providers-sponsored-panel" && (dom.directoryControls.panelTop > 220 || dom.fold.cta.bottom > 500)) failures.push("directory first-screen hierarchy");
+        if (surface.key === "rate-card" && (dom.fold.price.top > 180 || dom.fold.cta.bottom > 460)) failures.push("rate-card first-screen hierarchy");
+        if (surface.key === "paid-promo" && dom.fold.cta.bottom > 340) failures.push("promo first-screen hierarchy");
+      }
+      if (pageErrors.length) failures.push("browser page error");
       for (const [key, r] of Object.entries(dom.fold)) if (!r.visible) failures.push(`fold: ${key} not fully visible`);
       if (!dom.h1.length || dom.h1.some((h) => h.fontSize > maxH1)) failures.push(`h1 larger than ${maxH1}px`);
       if (dom.scrollWidth > width + 1) failures.push("horizontal overflow");
@@ -216,7 +223,9 @@ try {
       if (dom.unresolvedTokens.length) failures.push("unresolved build token");
       if (a11y.length) failures.push("axe serious/critical");
       if (blocked.length) failures.push("unexpected external request");
-      checks.push({ surface: surface.key, route: surface.route, viewport: name, width, height, status: failures.length ? "FAIL" : "PASS", failures,
+      const { interactions, expandedImages } = await checkControls({ page, browser, width, height, name, surface, origin: base, out, root, axe });
+      if (interactions.status !== "PASS") failures.push(`controls: ${interactions.error}`);
+      checks.push({ surface: surface.key, route: surface.route, viewport: name, width, height, status: failures.length ? "FAIL" : "PASS", failures, interactions, expandedImages,
         viewportImage: viewportPath.replace(root + sep, ""), viewportImageSha256: sha(viewportPng), pageImage: fullPath.replace(root + sep, ""), pageImageSha256: sha(fullPng),
         pageImageScope: bounded ? `top-anchored, 0-${dom.pageImageBottom}px of ${dom.documentHeight}px (through the first independent results row)` : `full page${expanded.length ? `, secondary terms expanded (${expanded.join(", ")})` : ""}`,
         viewportImageScope: "unscrolled first viewport, accordions collapsed",
@@ -231,6 +240,7 @@ const result = {
   status: checks.length === SURFACES.length * VIEWPORTS.length && checks.every((c) => c.status === "PASS") ? "PASS" : "FAIL",
   source,
   head: execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim(),
+  sourceHashes: Object.fromEntries(["src/paid-promo.mjs", "src/phase3-page-graph.mjs", "src/sponsor-placement-candidate.mjs", "assets/css-src/11-phase3.css", "assets/site.js", "scripts/build-staging.mjs", "scripts/glp327-capture.mjs", "scripts/glp327-check-controls.mjs", "assets/site-p3.css"].map(f => [f, sha(readFileSync(resolve(root, f)))])),
   scope: source === "scoped-render" ? "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; copy tokens finalized through deriveLiveProviders + resolveDerivedCounts (with the assertTalliesDerived gate), other write-time finalizers not applied. Not a release build." : "Registered build output in public/.",
   ...(source === "scoped-render" ? { finalizedTallies: { ...tallies, derivation: "deriveLiveProviders(data/program-registry.json, projected data/program-content-ledger.json) -> resolveDerivedCounts" } } : {}),
   // Repo release gates evaluated on these exact bytes; any finding fails its frames.

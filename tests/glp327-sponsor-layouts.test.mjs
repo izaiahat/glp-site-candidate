@@ -4,6 +4,7 @@
 // on mobile. One regression per layout, plus the committed fold geometry.
 import test from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFileSync, existsSync } from "node:fs";
 import { renderRateCard, renderPromo } from "../src/paid-promo.mjs";
 import * as graphModule from "../src/phase3-page-graph.mjs";
@@ -22,13 +23,13 @@ test("rate card: a short title, then price, terms, both deliverables, renewal, b
   assert.deepEqual(headings(html), ["Sponsor placements"]);
   assert.doesNotMatch(html, /p3-index-hero|<h1[^>]*>Visibility/);
   const offer = section(html, "data-sponsor-offer");
-  for (const text of ["Initial 30-day pilot", "$200", "$100 setup + $100 placement and reporting",
-    "<strong>Directory placement:</strong> One responsive Sponsored panel on /providers/, after filters and before independent results",
-    "<strong>Sponsor page:</strong> One paid introduction page at /sponsors/{provider}/",
-    "Same-scope renewal: $100.", "Another 30 days, by affirmative order only.", "No automatic renewal or recurring charge.",
+  for (const text of ["$200", " / 30 days", "$100 setup + $100 placement and reporting",
+    "One Sponsored directory panel.",
+    "One sponsored provider intro page.",
+    "Same-scope renewal: $100 / 30 days.", "No automatic renewal or recurring charge.",
     'href="mailto:partners@glpclinicscout.com" data-sponsor-booking-cta>Discuss a placement</a>',
     "Sponsored placements never change our independent rankings. No paid top rank, editorial score, favorable review or paid SEO backlink."]) assert.ok(offer.includes(text), text);
-  inOrder(html, ["data-sponsor-title", "data-sponsor-offer", "data-sponsor-example", "data-sponsor-details", "data-sponsor-disclaimer"]);
+  inOrder(html, ["data-sponsor-offer", "data-sponsor-example", "data-sponsor-details", "data-sponsor-disclaimer"]);
   // Secondary terms are all preserved below the offer; financial terms stay
   // visible and only the explanatory audience note uses an accordion.
   const details = html.slice(html.indexOf("data-sponsor-details"));
@@ -46,9 +47,10 @@ test("paid promo: one provider identity, concise paid intro, primary action and 
   assert.doesNotMatch(html, /data-sponsor-placement-candidate|p3-detail-rail|p3-index-hero/, "no duplicated identity rail or oversized hero");
   assert.equal((html.match(/<(?:h[1-6]|strong)\b[^>]*>Example Provider<\//g) || []).length, 1);
   const lead = section(html, "data-sponsor-lead");
-  inOrder(lead, ['<span class="p3-chip p3-chip--status">Sponsored</span>', "<h1", '<p class="lede">A paid introduction to Example Provider.',
+  inOrder(lead, ['<span class="p3-chip p3-chip--status">Sponsored</span>', "<h1", '<p class="lede">Preview only.',
     '<button class="cs-btn cs-palette-action" type="button" disabled aria-disabled="true">View provider information</button>',
-    "This is advertising, not an independent review or a recommendation. Sponsored placements never change our independent rankings."]);
+    "Advertising, not an independent review or recommendation."]);
+  assert.match(html, /Sponsored placements never change our independent rankings/);
   inOrder(html, ["data-sponsor-lead", "data-sponsor-facts", "data-sponsor-promo-checks", 'href="/providers/">Compare providers independently', "data-sponsor-disclaimer"]);
   const slots = [...html.matchAll(/<div data-sponsor-fact-slot><dt>([^<]+)<\/dt><dd>([^<]+)<\/dd><\/div>/g)];
   assert.deepEqual(slots.map(([, label]) => label), ["Program summary", "Published price", "Eligibility and states", "Current offer"]);
@@ -80,22 +82,47 @@ test("/providers/ preview: compact intro and collapsed extended filters put the 
   const atf = off.match(/<section class="p3-atf-price"[\s\S]*?<\/section>/)[0];
   const commission = off.match(/<div class="table-disclosure p3-source-disclosure affiliate-note">[\s\S]*?<\/div>/)[0];
   for (const piece of [registryScope, atf, commission]) assert.ok(on.includes(piece), piece.slice(0, 60));
-  inOrder(on, ["data-sponsor-preview-intro", "We may earn a commission from sponsored links.", "data-sponsor-preview-filters", "data-sponsor-placement-candidate", "data-sponsor-preview-results-lead", "data-provider-registry-scope", "data-atf-result", '<section id="provider-results"']);
+  inOrder(on, ["data-sponsor-preview-intro", "data-sponsor-preview-filters", "data-sponsor-placement-candidate", "data-sponsor-preview-results-lead", "We may earn a commission from sponsored links.", "data-provider-registry-scope", "data-atf-result", '<section id="provider-results"']);
   // Same controls; only the extended groups move behind a native disclosure.
   const before = (html) => html.slice(0, html.indexOf('<section id="provider-results"'));
   const pairs = (html) => [...before(html).matchAll(/data-filter="([^"]+)" data-value="([^"]+)"/g)].map(([, key, value]) => `${key}=${value}`).sort();
   assert.deepEqual(pairs(on), pairs(off));
-  const more = on.match(/<details class="cs-details" data-sponsor-preview-more-filters><summary>More filters<\/summary>[\s\S]*?<\/details>/)[0];
+  const more = on.match(/<details class="cs-details" data-sponsor-preview-more-filters><summary>Filters<\/summary>[\s\S]*?<\/details>/)[0];
   for (const key of ["treatment", "type", "plan", "duration", "dose"]) assert.match(more, new RegExp(`data-filter-group="${key}"`));
-  assert.doesNotMatch(more, /data-provider-search|data-filter-group="sort"|data-state-open/, "search, sort and state stay visible");
-  assert.match(before(on), /data-filter-group="sort"/);
-  assert.match(before(on), /<header class="listing__intro listing__intro--state" data-sponsor-preview-intro><div class="p3-state-control">/);
+  assert.match(more, /data-filter-group="sort"/);
+  assert.match(more, /data-state-native/);
+  assert.match(more, /data-provider-search-reset>Reset/);
+  assert.doesNotMatch(more, /data-state-open/, "one native state selector, not duplicate custom/native choices");
+  assert.equal((on.match(/data-state-native/g) || []).length, 1);
+  assert.match(before(on), /data-sponsor-preview-intro><h1/);
+});
+
+test("clutter regression: one closed filter row and genuinely early commercial actions, not merely below 844px", () => {
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/captures/CAPTURE.json", import.meta.url), "utf8"));
+  for (const c of result.checks) {
+    assert.equal(c.interactions.status, "PASS", `${c.surface}/${c.viewport}`);
+    if (c.surface === "providers-sponsored-panel") {
+      assert.ok(c.dom.directoryControls.extendedFiltersCollapsed);
+      assert.equal(c.dom.directoryControls.nativeStateCount, 1);
+      assert.equal(c.dom.directoryControls.customStateCount, 0);
+      assert.ok(c.dom.directoryControls.filterHeight <= 64);
+      assert.ok(c.interactions.assertions.length >= (c.viewport === "mobile" ? 8 : 6));
+    }
+    if (c.viewport !== "mobile") continue;
+    if (c.surface === "providers-sponsored-panel") { assert.ok(c.dom.directoryControls.panelTop <= 220); assert.ok(c.dom.fold.cta.bottom <= 500); }
+    if (c.surface === "rate-card") { assert.ok(c.dom.fold.price.top <= 180); assert.ok(c.dom.fold.cta.bottom <= 460); }
+    if (c.surface === "paid-promo") assert.ok(c.dom.fold.cta.bottom <= 340);
+  }
+  for (const html of [renderRateCard(), renderPromo()]) assert.doesNotMatch(html, /breadcrumbs|Paid provider introduction|data-sponsor-title|p3-index-hero/);
 });
 
 test("committed captures prove the fold, h1 limits and overflow for all six frames", () => {
-  const result = JSON.parse(readFileSync(new URL("../reports/glp327/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/captures/CAPTURE.json", import.meta.url), "utf8"));
   assert.equal(result.status, "PASS");
   assert.deepEqual(result.gateFindings, []);
+  for (const [file, sha] of Object.entries(result.sourceHashes)) {
+    assert.equal(createHash("sha256").update(readFileSync(new URL(`../${file}`, import.meta.url))).digest("hex"), sha, `capture bound to maintained source: ${file}`);
+  }
   const required = { "rate-card": ["label", "price", "terms", "deliverables", "renewal", "cta", "disclosure"], "paid-promo": ["label", "identity", "intro", "cta", "disclosure"], "providers-sponsored-panel": ["label", "identity", "cta"] };
   assert.deepEqual(result.checks.map((check) => `${check.surface}:${check.viewport}:${check.width}x${check.height}`).sort(),
     Object.keys(required).flatMap((surface) => [`${surface}:desktop:1440x1000`, `${surface}:mobile:390x844`]).sort());

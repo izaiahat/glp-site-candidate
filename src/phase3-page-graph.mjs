@@ -183,7 +183,10 @@ export function pageDocument({ route, title, description, body, robots = "index,
   const cardDates = [...body.replaceAll('\\"', '"').matchAll(/data-source-checked="(\d{4}-\d{2}-\d{2})"/g)].map(match => match[1]);
   if (cardDates.length) {
     const freshness = deriveMoneyPageFreshness({ sources: cardDates.map(verified_as_of => ({ verified_as_of })) });
-    body = body.replace('</h1>', `</h1><p>Prices checked <span data-prices-checked-date>${esc(freshness.source_checked_from)} – ${esc(freshness.source_checked_through)}</span></p>`);
+    const dateNote = `<p>Prices checked <span data-prices-checked-date>${esc(freshness.source_checked_from)} – ${esc(freshness.source_checked_through)}</span></p>`;
+    body = sponsorPreviewActive(route)
+      ? body.replace('<div data-sponsor-preview-results-lead>', `<div data-sponsor-preview-results-lead>${dateNote}`)
+      : body.replace('</h1>', `</h1>${dateNote}`);
   }
   const jsonLd = schema ? `<script type="application/ld+json">${JSON.stringify(schema)}</script>` : "";
   const familyStyles = listingArchetype === "D" ? "" : selectedFamilyStyles(route);
@@ -890,6 +893,11 @@ function providerHubControls(entries, doseCapture, { compact = false } = {}) {
   if (ids.some((id) => !/^[a-z0-9-]+$/.test(id)) || new Set(ids).size !== ids.length
     || entries.some((entry) => !String(entry.provider || "").trim())) throw new Error("phase3_provider_search_identity_invalid");
   const options = entries.map((entry, index) => `<button type="button" role="option" id="p3-provider-option-${index}" data-program="${esc(entry.program_id)}" aria-selected="false" tabindex="-1">${esc(entry.provider)}</button>`).join("");
+  if (compact) {
+    const base = providerHubControlsBase(entries, doseCapture, { compact: true });
+    const inner = base.slice(base.indexOf(">") + 1, -6);
+    return `<div data-provider-filters data-sponsor-preview-filters><form data-provider-search data-canonical-provider-ids="${esc(ids.join(","))}"><input id="p3-provider-search" name="provider" type="search" aria-label="Provider" placeholder="Provider name" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="p3-provider-options" autocomplete="off"><button class="cs-btn cs-palette-action" type="submit">Search</button>${inner}<div id="p3-provider-options" role="listbox" aria-label="Providers" hidden>${options}</div><p data-provider-search-empty role="status" hidden>No providers match your search.</p></form><noscript><p>All provider cards remain available below. Search and filtering need JavaScript.</p></noscript></div>`;
+  }
   const search = `<form data-provider-search data-canonical-provider-ids="${esc(ids.join(","))}"><label for="p3-provider-search">Provider<input id="p3-provider-search" name="provider" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="p3-provider-options" autocomplete="off"></label><button type="submit">Search providers</button><button type="button" data-provider-search-reset>Reset</button><div id="p3-provider-options" role="listbox" aria-label="Providers" hidden>${options}</div><p data-provider-search-empty role="status" hidden>No providers match your search.</p></form>`;
   const styles = '<style>[data-provider-search]{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:end;gap:8px;min-width:0}[data-provider-search] label{grid-column:1/-1;min-width:0}[data-provider-search] input{box-sizing:border-box;width:100%;min-width:0;min-height:44px}[data-provider-search] button{min-width:44px;min-height:44px}[data-provider-search] [role="listbox"],[data-provider-search-empty]{grid-column:1/-1;max-height:320px;overflow:auto}[data-provider-search] [role="option"]{display:block;width:100%;text-align:left}[data-provider-search] [hidden]{display:none!important}</style>';
   const prefix = compact ? '<div class="p3-filterbar" data-provider-filters data-sponsor-preview-filters>' : '<div class="p3-filterbar" data-provider-filters>';
@@ -898,9 +906,10 @@ function providerHubControls(entries, doseCapture, { compact = false } = {}) {
   return `${prefix}${styles}<noscript><style>[data-provider-search]{display:none!important}</style></noscript>${search}${controls.slice(prefix.length)}`;
 }
 
-function providerHubStateControl() {
-  const stateOptions = STATES.map(([code, name]) => `<button type="button" role="option" data-state="${code}" aria-selected="false" tabindex="-1">${esc(name)}</button>`).join("");
+function providerHubStateControl({ nativeOnly = false } = {}) {
   const nativeStateOptions = STATES.map(([code, name]) => `<option value="${code}">${esc(name)}</option>`).join("");
+  if (nativeOnly) return `<div class="p3-state-control"><label class="p3-state-native">State<select data-state-native aria-label="Choose state"><option value="">Choose state</option>${nativeStateOptions}</select></label></div>`;
+  const stateOptions = STATES.map(([code, name]) => `<button type="button" role="option" data-state="${code}" aria-selected="false" tabindex="-1">${esc(name)}</button>`).join("");
   return `<div class="p3-state-control"><button type="button" data-state-open aria-expanded="false" aria-haspopup="listbox" aria-controls="p3-state-options">State: <span data-state-label>Choose state</span></button><div class="p3-state-popover" role="group" aria-label="State search and choices" hidden><input type="search" aria-label="Search states" placeholder="Search states" data-state-search aria-controls="p3-state-options"><div class="p3-state-options" id="p3-state-options" role="listbox" aria-label="Choose state">${stateOptions}</div><p data-state-empty role="status" hidden>No states match your search.</p></div><label class="p3-state-native"><span class="p3-state-native-label">Native state selector</span><select data-state-native aria-label="Choose state (native selector)"><option value="">Choose state</option>${nativeStateOptions}</select></label></div>`;
 }
 
@@ -912,7 +921,7 @@ function providerHubControlsBase(entries, doseCapture, { compact = false } = {})
   // GLP-327 sponsor preview only: the same groups and runtime hooks, with the
   // extended groups behind a native disclosure so the slot is reachable.
   return compact
-    ? `<div class="p3-filterbar" data-provider-filters data-sponsor-preview-filters>${sort}<details class="cs-details" data-sponsor-preview-more-filters><summary>More filters</summary>${extended}</details>${providerHubStateControl()}</div>`
+    ? `<div class="p3-filterbar" data-provider-filters data-sponsor-preview-filters><details class="cs-details" data-sponsor-preview-more-filters><summary>Filters</summary><div data-sponsor-filter-options>${providerHubStateControl({ nativeOnly: true })}${extended}${sort}<button class="cs-btn cs-btn--quiet" type="button" data-provider-search-reset>Reset</button></div></details></div>`
     : `<div class="p3-filterbar" data-provider-filters>${extended}${sort}${providerHubStateControl()}</div>`;
 }
 
@@ -1513,7 +1522,7 @@ function listingDocument({ archetype, route, title, description, heading, suppor
   const gridHook = pharmacy ? "data-pharmacy-grid" : "data-phase3-provider-grid";
   const emptyHook = pharmacy ? "data-pharmacy-empty" : "data-filter-empty";
   const registryScope = route === "/providers/" ? `<p data-provider-registry-scope>We track <span data-live-provider-count>{{LIVE_PROVIDER_COUNT}}</span> providers in total. ${count} meet the comparison-card evidence rules; ${profileCount - count} additional provider profiles have their own first-party pages outside this comparison. The count covers our live registry, not a claim of availability in your state.</p>` : "";
-  const stateMarkup = archetype === "C" ? stateFilterControl() : archetype === "E" ? providerHubStateControl() : "";
+  const stateMarkup = archetype === "C" ? stateFilterControl() : archetype === "E" && !sponsorPreviewActive(route) ? providerHubStateControl() : "";
   if (stateMarkup && controls.split(stateMarkup).length !== 2) throw new Error("listing_state_control_source_missing_or_duplicate");
   const inlineControls = stateMarkup ? controls.replace(stateMarkup, "") : controls;
   // Native details remains usable if enhancement fails, while the parser-time
@@ -1536,14 +1545,13 @@ function listingDocument({ archetype, route, title, description, heading, suppor
   const introHead = `${stateMarkup}<h1${archetype === "E" || archetype === "C" ? ' data-state-heading data-state-title-template="Compare weight loss providers in {state}"' : ""}>${esc(heading)}</h1><p class="listing__support">${esc(support)} <span class="listing__count" ${statusHook} aria-live="polite" aria-atomic="true">${count} ${numericListing ? "comparable price results" : pharmacy ? "pharmacy records" : "provider records"}</span></p>`;
   const results = `<section id="provider-results" class="listing-results p3-provider-section" data-three-column-results${initialVisible ? ` data-initial-visible="${initialVisible}"` : ""} aria-labelledby="listing-results-heading"><h2 id="listing-results-heading" class="sr-only">Results</h2><div class="listing-grid ${pharmacy ? "p3-pharmacy-grid" : "p3-provider-grid"}" ${gridHook}>${cards || (pharmacy ? '<p class="p3-empty">No source-backed row is published for this selection. An evidence gap is not proof that no provider exists.</p>' : "")}</div>${resultTail}<div class="p3-filter-empty" ${emptyHook}${count || pharmacy ? " hidden" : ""}><p>${esc(emptyCopy)}</p>${pharmacy ? "" : '<p data-active-filter-label>Active filters: none.</p><button type="button" data-filter-reset>Reset filters</button>'}</div></section>${pharmacy ? "" : sourceDisclosure()}${afterGrid}${runtime}`;
   // GLP-327: the opt-in sponsor preview recomposes /providers/ ONLY when
-  // GLP327_SPONSOR_PLACEMENT_PREVIEW=1. Every piece is the same markup: the
-  // intro keeps its heading, count and commission disclosure; the registry
-  // scope and the organic first-card preview move below the Sponsored slot,
-  // directly above the unchanged results grid. With the switch off this is the
-  // original composition, byte for byte.
+  // GLP327_SPONSOR_PLACEMENT_PREVIEW=1. A concise heading and one control row
+  // lead into the separate ad. Counts, commission disclosure, registry scope,
+  // price provenance and the first organic preview follow next to the results.
+  // With the switch off this is the original composition, byte for byte.
   const sponsorSlot = renderSponsorPlacementCandidate(route, { preview: process.env.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1" });
   const body = sponsorSlot
-    ? `<header class="${introClass}" data-sponsor-preview-intro>${introHead}${leadDisclosure}</header>${filterControls}${sponsorSlot}<div data-sponsor-preview-results-lead>${registryScope}${atfPreview}</div>${panel}${results}`
+    ? `<header class="${introClass}" data-sponsor-preview-intro><h1 data-state-heading data-state-title-template="Compare providers in {state}">Compare providers</h1></header>${filterControls}${sponsorSlot}<div data-sponsor-preview-results-lead><p class="listing__support">${esc(support)} <span class="listing__count" ${statusHook} aria-live="polite" aria-atomic="true">${count} provider records</span></p>${leadDisclosure}${registryScope}${atfPreview}</div>${panel}${results}`
     : `<header class="${introClass}">${introHead}${registryScope}${leadDisclosure}${atfPreview}</header>${filterControls}${panel}${results}`;
   return pageDocument({ route, title, description, body: '<noscript><style data-preserve>main.listing [data-provider-lazy-index]{display:none!important}</style></noscript>' + body, schema, listingArchetype: archetype,
     mainClass: `p3-page listing${pharmacy ? " p3-pharm-hub" : ""}`,

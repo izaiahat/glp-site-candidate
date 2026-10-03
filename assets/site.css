@@ -331,14 +331,18 @@ a[data-citation],
 .cta:hover .cs-arrow { transform: translateX(3px); }
 /* ADOPTED (design pass 2026-08-27, Phase-2 selection #4): ui-skills.com
    "Add scale feedback to pressed buttons" recipe (ibelick/ui-skills, MIT) —
-   CSS-only :active scale(0.98) at the 90ms instant tier across the whole
-   .cta/.cs-btn family, complementing the shipped hover sweep. The second rule
+   CSS-only :active scale(0.98) across the .cta/.cs-btn family with a 90ms
+   release/return transition, complementing the shipped hover sweep. The second rule
    out-specifies the palette-action :hover transform so the press cue survives
    on primary CTAs. Keyboard-modality + reduced-motion kills live in
-   00-foundation. */
+   00-foundation. WebKit can defer the transform transition's first frame until
+   after a held press is sampled; snap the pressed palette transform while
+   retaining the 90ms return and the other palette transitions. */
 .cta:active, .cs-btn:active { transform: translateY(0) scale(0.98); }
 :is(.cs-palette-action, .cta.primary, .cta.affiliate, .cs-btn--primary, .cs-btn--gradient, .cs-btn--animated):hover:active {
   transform: translateY(0) scale(0.98);
+  transition: background-position var(--duration-base) var(--ease-out-expo),
+              transform 0ms, box-shadow var(--duration-fast) ease;
 }
 .cta[aria-disabled="true"], .cs-btn[disabled] {
   background: var(--color-held-bg); color: var(--color-held);
@@ -1044,6 +1048,16 @@ body.cs-search-open .gcs-brand, body.cs-search-open .gcs-links { opacity: 0; poi
   body main.p3-page > .p3-product-hero { min-height: 520px; }
   body[data-cs-template="review"] > header.ready6-review-hero { padding-top: 40px; }
 }
+body[data-cs-template="review"] > header.ready6-review-hero {
+  position: relative;
+  padding-top: 0;
+}
+body[data-cs-template="review"] > header.ready6-review-hero > .ready6-provider-mark {
+  position: absolute;
+  top: 48px;
+  right: 16px;
+}
+body[data-cs-template="review"] > header.ready6-review-hero h1 { padding-inline-end: min(72px, 20vw); }
 
 /* Pharmacy warning panels retain their dark palette with readable text. */
 body .p3-pharm-detail .p3-unknowns,
@@ -1301,7 +1315,8 @@ body.cs-subscribe-open { overflow: hidden; }
     display: grid; grid-template-rows: 72px minmax(0, 1fr);
     background: rgba(7, 16, 13, 0.98); opacity: 0;
     transform: translateY(100%); transform-origin: center bottom;
-    transition: opacity 180ms ease, transform 240ms cubic-bezier(0.32, 0.72, 0, 1);
+    /* Keep the full-height mobile geometry, but inherit selection #3's
+       140ms/160ms close and 160ms/200ms open from above. */
   }
   .cs-search-panel.is-open { opacity: 1; transform: none; }
   .cs-search-box {
@@ -4381,6 +4396,19 @@ main.listing[data-listing-archetype="C"] .p3-filterbar .p3-filter-chips { paddin
   content-visibility: auto;
   contain-intrinsic-size: auto 522px;
 }
+.p3-page.listing[data-listing-archetype="B"] .p3-provider-grid > .p3-provider-card {
+  content-visibility: visible;
+  contain-intrinsic-size: none;
+}
+
+/* WebKit's auto-contained grid cards can omit the final action-row height.
+   Keep Chromium's offscreen optimization; lay out the full card in WebKit. */
+@supports (background: -webkit-named-image(i)) {
+  .p3-page.listing .p3-provider-grid > .p3-provider-card {
+    content-visibility: visible;
+    contain-intrinsic-size: none;
+  }
+}
 
 /* WebKit can retarget a trusted click from the hub disclosure button to the
    section when auto-contained cards materialize during Playwright's/user-agent
@@ -4397,6 +4425,10 @@ main.listing[data-listing-archetype="C"] .p3-filterbar .p3-filter-chips { paddin
 .p3-provider-card > :not(.p3-card-aurora) {
   position: relative;
   z-index: 1;
+}
+.p3-page.listing .p3-provider-card .p3-card-header > .gcs-kicker {
+  color: var(--p3-ink);
+  background-color: var(--p3-canvas);
 }
 
 .p3-card-aurora {
@@ -6766,6 +6798,9 @@ main[data-phase3-route="/pharmacies/"] [data-pharmacy-filters] button {
 }
 
 /* W18 — mobile provider/pharmacy controls and fixed-action invariants. */
+[data-native-pharmacy-filters] { width: 100%; min-width: 0; }
+[data-native-pharmacy-filters] > summary { list-style: none; }
+[data-native-pharmacy-filters] > summary::-webkit-details-marker { display: none; }
 .cs-mobile-filter-trigger,
 .cs-mobile-filter-header,
 .cs-mobile-filter-backdrop { display: none; }
@@ -6813,6 +6848,13 @@ main[data-phase3-route="/pharmacies/"] [data-pharmacy-filters] button {
   .p3-filter-chips button, [data-bulk-drug-value] { flex: 0 0 auto; min-height: 44px; scroll-snap-align: start; }
   .p3-pharmacy-filters label { grid-column: 1 / -1; }
   .p3-pharmacy-filters :is(input, select, button) { min-height: 48px; }
+  /* The cookie notice reserves bottom space even for the seeded legacy record.
+     Reserve that same clearance for this sheet instead of leaving its state
+     selector and Show results behind the notice's higher stacking layer. */
+  .p3-page.listing[data-listing-archetype="D"] .p3-pharmacy-filters[data-mobile-filter-ready="true"] {
+    bottom: var(--consent-clearance, 0px);
+    max-height: min(78dvh, calc(100dvh - var(--consent-clearance, 0px) - 16px));
+  }
   .p3-state-popover {
     position: static;
     inset: auto;
@@ -7235,6 +7277,10 @@ main.guide-shell .p3-article-faq .gcs-kicker {
 
 .p3-card-aurora {
   overflow: clip;
+  /* Reserve space for GSAP's 1.12 scale and +/-4% drift without enlarging
+     the card's scrollable area or clipping any factual content. */
+  left: 10%;
+  right: 10%;
   pointer-events: none;
   border-radius: var(--radius-card, 18px) var(--radius-card, 18px) 0 0;
 }
@@ -7395,6 +7441,16 @@ main.guide-shell .p3-article-faq .gcs-kicker {
   min-width: 0;
   max-width: 100%;
   overflow-wrap: anywhere;
+}
+
+.p3-page .p3-source-price > .p3-price-medication {
+  /* The label must not consume the amount's track in narrow cards. */
+  grid-column: 1 / -1;
+}
+
+.p3-page .p3-source-price > strong {
+  /* Currency and digits are one amount, even in narrow provider-card tracks. */
+  white-space: nowrap;
 }
 
 .p3-page .p3-card-actions {
@@ -8181,6 +8237,26 @@ main.guide-shell .p3-article-faq .gcs-kicker {
   overflow-wrap: anywhere;
 }
 .p3-page.listing[data-listing-archetype] .listing__support { font-size: 14px; line-height: 1.5; max-width: 70ch; margin: 0; color: var(--p3-muted); }
+.p3-page.listing :is([data-atf-result]) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--p3-rule);
+  border-radius: 12px;
+  background: #10231c;
+}
+.p3-page.listing [data-atf-result] :is(p, strong, small) { margin: 0; line-height: 1.35; }
+.p3-page.listing [data-atf-result] p:first-child { grid-column: 1 / -1; font-size: 12px; color: var(--p3-muted); }
+.p3-page.listing [data-atf-result] [data-atf-price] { grid-column: 1; font-size: 14px; }
+.p3-page.listing [data-atf-result] small { grid-column: 1; }
+.p3-page.listing [data-atf-result] > .cs-btn { grid-column: 2; grid-row: 2 / span 3; min-height: 44px; }
+
+@media (max-width: 759px) {
+  .p3-page.listing [data-atf-result] { grid-template-columns: minmax(0, 1fr); }
+  .p3-page.listing [data-atf-result] > .cs-btn { grid-column: 1; grid-row: auto; justify-self: start; }
+}
 .p3-page.listing[data-listing-archetype] .listing__count { white-space: normal; }
 .p3-page.listing[data-listing-archetype] .listing__disclosure-lead { margin: 8px 0 0; padding: 0; border: 0; background: transparent; color: var(--p3-muted); font-size: 13px; line-height: 1.5; }
 /* Keep the native fallback available alongside the enhanced state control. */
@@ -8269,6 +8345,7 @@ main.guide-shell .p3-article-faq .gcs-kicker {
 .p3-page.listing[data-listing-archetype] .listing__drug-panel :is(p, figcaption) { font-size: 14px; line-height: 1.5; color: var(--p3-muted); }
 .p3-page.listing[data-listing-archetype] .listing__drug-panel :is(h2, h3) { font-size: 20px; line-height: 1.3; }
 .p3-page.listing[data-listing-archetype] .listing__drug-panel :is(picture, img) { display: block; position: static; width: 100%; max-width: 100%; height: auto; transform: none; }
+.p3-page.listing[data-listing-archetype="B"] .listing__drug-panel picture[data-product-visual] img { object-fit: contain; }
 .p3-page.listing[data-listing-archetype] .listing__drug-panel :is(details, .p3-source-price) { padding: 8px 0; background: transparent; color: var(--p3-ink); }
 .p3-page.listing[data-listing-archetype] .listing__drug-faq { margin-top: 16px; }
 .p3-page.listing[data-listing-archetype] :is(.listing__category-art, .d3-directory-prices) { margin-top: 24px; min-width: 0; }
@@ -8298,6 +8375,111 @@ main.guide-shell .p3-article-faq .gcs-kicker {
 [data-g08-medication] [data-phase3-provider]::after { content: none !important; animation: none !important; }
 
 
+
+/* GLP-327 sponsor surfaces (rate card, paid promo template, /providers/ preview
+   slot). Composition only: grid/flex, spacing and type scale built from the
+   shared tokens (--space-*, --p3-*, --radius-*). No colour values; colour,
+   surfaces, buttons, chips and focus states come from the existing
+   p3-rail-card, cs-card, cs-btn, p3-chip, cs-details and provider-logo
+   components. Every selector is scoped to a data-sponsor-* hook that only the
+   opt-in sponsor renderers emit, so the default site composition is untouched. */
+
+/* Sponsored panel: one compact card wherever it appears. */
+[data-sponsored-placement] { display: grid; gap: var(--space-3); }
+.p3-page [data-sponsored-placement] > * { margin: 0; min-width: 0; }
+[data-sponsor-panel-identity] { display: flex; align-items: center; gap: var(--space-3); }
+[data-sponsor-panel-identity] > p { display: grid; justify-items: start; gap: var(--space-1); margin: 0; font-size: 1.1rem; line-height: 1.2; }
+[data-sponsor-panel-body] { font-size: 1rem; line-height: 1.5; }
+[data-sponsored-placement] > .p3-hero-actions { margin-top: 0; }
+[data-sponsored-placement] > .p3-rail-note { max-width: none; }
+
+/* Rate card and promo: short title, then the decision content. */
+[data-sponsor-layout] { display: grid; gap: clamp(16px, 2.6vw, 32px); margin-top: 0; }
+[data-sponsor-layout] > *, [data-sponsor-lead-grid] > * { margin: 0; min-width: 0; }
+.p3-page [data-sponsor-title] { display: grid; gap: var(--space-2); padding: 0; }
+.p3-page [data-sponsor-title] > * { margin: 0; }
+[data-sponsor-layout] h1 { max-width: none; margin: 0; font-size: clamp(1.75rem, 2.6vw, 2.5rem); line-height: 1.1; }
+[data-sponsor-layout] h2 { margin: 0; font-size: clamp(1.3rem, 1.9vw, 1.7rem); line-height: 1.2; }
+[data-sponsor-layout] h3 { margin: 0 0 var(--space-2); font-size: 1.05rem; line-height: 1.3; }
+[data-sponsor-layout] .lede { margin: 0; max-width: var(--p3-reading); font-size: 1.05rem; line-height: 1.5; }
+[data-sponsor-lead-grid] { display: grid; gap: var(--space-5); align-items: start; }
+@media (min-width: 900px) {
+  [data-sponsor-lead-grid] { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+}
+[data-sponsor-offer], [data-sponsor-lead] { display: grid; gap: var(--space-3); }
+.p3-page :is([data-sponsor-offer], [data-sponsor-lead]) > * { margin: 0; }
+[data-sponsor-price] { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
+[data-sponsor-deliverables] { display: grid; gap: var(--space-2); padding-left: 1.2em; }
+.p3-page :is([data-sponsor-offer], [data-sponsor-lead]) > .p3-hero-actions { margin-top: var(--space-1); }
+.p3-page :is([data-sponsor-independence], [data-sponsor-ad-disclosure]) { max-width: none; font-size: 0.82rem; line-height: 1.45; }
+@media (min-width: 761px) {
+  [data-sponsor-layout] :is([data-sponsor-offer], [data-sponsor-lead]) > .p3-hero-actions { display: flex; }
+  [data-sponsor-layout] :is([data-sponsor-offer], [data-sponsor-lead]) > .p3-hero-actions > .cs-btn { width: auto; min-width: 280px; }
+}
+[data-sponsor-example] { display: grid; gap: var(--space-2); margin: 0; }
+[data-sponsor-details] { display: grid; gap: var(--space-4); }
+[data-sponsor-details] .p3-detail-grid { margin: 0; }
+[data-sponsor-details] :is(ul, p) { margin: 0 0 var(--space-2); }
+[data-sponsor-details] li + li, [data-sponsor-promo-checks] li + li { margin-top: var(--space-1); }
+[data-sponsor-details] > details > :not(summary) { margin: 0; }
+[data-sponsor-lead-label] { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+[data-sponsor-lead] .p3-provider-identity { gap: var(--space-3); }
+[data-sponsor-facts] { display: grid; gap: var(--space-3); }
+[data-sponsor-facts] > * { margin: 0; }
+[data-sponsor-facts] dl { display: grid; gap: var(--space-2); margin: 0; }
+[data-sponsor-fact-slot] { padding: var(--space-2) var(--space-3); border: 1px dashed var(--p3-rule); border-radius: var(--radius-control); }
+[data-sponsor-facts] dt { font-weight: 700; }
+[data-sponsor-facts] dd { margin: var(--space-1) 0 0; color: var(--p3-muted); font-size: 0.92rem; line-height: 1.45; }
+[data-sponsor-promo-checks] { margin: 0; }
+[data-sponsor-promo-checks] :is(ul, p) { margin: 0 0 var(--space-3); }
+[data-sponsor-promo-checks] h2 { margin-bottom: var(--space-3); }
+
+/* Content-first sponsor shell, using the maintained shared brand/components. */
+[data-sponsor-header] .gcs-nav-inner { min-height: 64px; gap: var(--space-3); }
+[data-sponsor-header] .gcs-brand { font-size: 1.25rem; }
+[data-sponsor-header] .gcs-brand span { display: inline; }
+[data-sponsor-header] .cs-btn { min-height: 44px; padding: var(--space-2) var(--space-3); font-size: 0.875rem; }
+.p3-page:has([data-sponsor-layout]) { padding-top: var(--space-5); }
+.p3-page [data-sponsor-offer], .p3-page [data-sponsor-lead] { padding: var(--space-5); }
+.p3-page [data-sponsor-offer] > .p3-hero-actions, .p3-page [data-sponsor-lead] > .p3-hero-actions { margin-top: 0; }
+.p3-page [data-sponsor-independence], .p3-page [data-sponsor-ad-disclosure] { font-size: 0.875rem; line-height: 1.5; }
+
+/* Preview only: one search/action/Filters row. Every secondary control is in
+   one closed native disclosure, never reparented into the heading by JS. */
+.p3-page.listing:has([data-sponsor-preview-intro]) { padding-top: var(--space-5); }
+.p3-page.listing[data-listing-archetype] [data-sponsor-preview-intro] { display: block; margin: 0 0 var(--space-3); padding: 0; }
+.p3-page.listing [data-sponsor-preview-intro] h1 { margin: 0; max-width: none; font-size: clamp(1.75rem, 2.6vw, 2.5rem); line-height: 1.15; }
+.p3-page.listing [data-sponsor-preview-filters] { display: block; margin: 0 0 var(--space-4); padding: 0; border-width: 0; }
+.p3-page.listing [data-sponsor-preview-filters] > [data-provider-search] { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: start; gap: var(--space-2); min-width: 0; }
+.p3-page.listing [data-sponsor-preview-filters] input { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; }
+.p3-page.listing [data-sponsor-preview-filters] button[type="submit"] { min-height: 44px; padding: var(--space-2) var(--space-3); }
+.p3-page.listing [data-sponsor-preview-filters] [data-sponsor-preview-more-filters] { margin: 0; }
+.p3-page.listing [data-sponsor-preview-filters] [data-sponsor-preview-more-filters] > summary { box-sizing: border-box; min-height: 44px; padding: var(--space-2) var(--space-3); }
+.p3-page.listing [data-sponsor-preview-filters] [data-sponsor-preview-more-filters][open] { grid-column: 1 / -1; }
+.p3-page.listing [data-sponsor-filter-options] { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: var(--space-4); padding: var(--space-4); }
+.p3-page.listing [data-sponsor-filter-options] > .p3-state-control { align-self: start; }
+.p3-page.listing [data-sponsor-filter-options] > button { justify-self: start; min-height: 44px; padding: var(--space-2) var(--space-4); }
+@media (min-width: 761px) {
+  .p3-page.listing [data-sponsor-filter-options] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .p3-page.listing [data-sponsor-filter-options] > .p3-more-filters { grid-column: 1 / -1; }
+}
+.p3-page.listing [data-sponsor-filter-options] > *, .p3-page.listing [data-sponsor-filter-options] .p3-state-native { margin: 0; min-width: 0; }
+.p3-page.listing [data-sponsor-filter-options] fieldset { padding: 0; border-width: 0; }
+.p3-page.listing [data-sponsor-filter-options] .p3-state-native { font-size: 1rem; }
+.p3-page.listing [data-sponsor-filter-options] select { font-size: 1rem; margin-top: var(--space-2); }
+.p3-page.listing [data-sponsor-preview-filters] [role="listbox"], .p3-page.listing [data-sponsor-preview-filters] [data-provider-search-empty] { grid-column: 1 / -1; max-height: 320px; overflow: auto; }
+.p3-page.listing [data-sponsor-preview-filters] [role="option"] { display: block; width: 100%; min-height: 44px; text-align: left; }
+.p3-page.listing > aside[data-sponsored-placement] { row-gap: var(--space-3); margin: 0 0 var(--space-6); padding: var(--space-5); }
+.p3-page.listing > aside[data-sponsored-placement] > .p3-hero-actions > .cs-btn { margin-top: 0; }
+.p3-page.listing > aside[data-sponsored-placement] > .p3-rail-note { font-size: 0.875rem; line-height: 1.5; }
+.p3-page.listing > aside[data-sponsored-placement] .provider-logo.provider-logo--wordmark { width: 96px; min-width: 96px; height: 44px; min-height: 44px; }
+.p3-page.listing [data-sponsor-preview-results-lead] { display: grid; gap: var(--space-4); margin: 0 0 var(--space-5); }
+.p3-page.listing [data-sponsor-preview-results-lead] > * { margin: 0; }
+@media (min-width: 761px) {
+  .p3-page.listing > aside[data-sponsored-placement] { grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-6); align-items: center; }
+  .p3-page.listing > aside[data-sponsored-placement] > :not(.p3-hero-actions) { grid-column: 1; }
+  .p3-page.listing > aside[data-sponsored-placement] > .p3-hero-actions { grid-column: 2; grid-row: 1 / span 3; }
+}
 
 
 /* ===== 12-phase3-closure.css ===== */
@@ -15200,6 +15382,16 @@ main.guide-shell section.guide-hero--cinema p.guide-byline a {
   main.guide-shell > section.guide-hero--cinema { min-height: clamp(300px, 52vh, 460px); }
   main.guide-shell > section.guide-hero--cinema img { aspect-ratio: auto; }
 }
+@media (min-width: 701px) {
+  body[data-cs-template="guide"]:not([data-cs-template="home"]):not([data-cs-template="calculator"]) > main.guide-shell { padding-top: 18px !important; }
+  main.guide-shell > section.guide-hero--cinema { padding-block-start: 22px; }
+}
+@media (max-width: 700px) {
+  body[data-cs-template="guide"]:not([data-cs-template="home"]):not([data-cs-template="calculator"]) > main.guide-shell { padding-top: 0 !important; }
+  main.guide-shell > nav.breadcrumbs { margin-block-end: 0; }
+  main.guide-shell > section.guide-hero--cinema { padding-block-start: 4px; }
+  main.guide-shell section.guide-hero--cinema .kicker { letter-spacing: 0; margin-block-end: 6px; }
+}
 
 /* --- share row: quiet strip under the hero, not a pill card -------------- */
 main.guide-shell nav.p3-article-share {
@@ -16075,19 +16267,24 @@ body:has(#cost-form) .gcs-lede {
 }
 body:has(#cost-form) .gcs-note { font-size: 0.9rem; color: var(--text-secondary); }
 
-/* split geometry: headline over estimate on the left, the form card right */
-body:has(#cost-form) .calc-layout { display: grid; gap: 26px; align-items: start; }
+/* Mobile reading order starts with the real heading and form. The full
+   description, dated price anchor, and manually typed offers follow the form;
+   desktop restores the split introduction/estimate beside the form. */
+body:has(#cost-form) .calc-layout { display: grid; gap: 16px; align-items: start; }
+body:has(#cost-form) .cost-description { margin: 0; }
 @media (min-width: 861px) {
   body:has(#cost-form) .calc-layout {
     grid-template-columns: minmax(0, 1.06fr) minmax(380px, 0.94fr);
-    grid-template-rows: auto 1fr; /* anchor hugs the headline; form spans both */
-    grid-template-areas: "intro form" "aside form";
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "intro form" "description form" "aside form";
     column-gap: clamp(36px, 4.5vw, 68px); row-gap: 10px;
   }
   body:has(#cost-form) .cost-intro { grid-area: intro; }
+  body:has(#cost-form) .cost-description { grid-area: description; }
   body:has(#cost-form) .cost-idle { grid-area: aside; align-self: start; }
   body:has(#cost-form) .cost-result { grid-area: aside; align-self: start; }
   body:has(#cost-form) .cost-form { grid-area: form; }
+  body:has(#cost-form) [data-calculator-typed-offers] { grid-column: 1 / -1; grid-row: 4; }
 }
 
 /* headline block: visible H1 in their hero scale, our type system */
@@ -16512,8 +16709,10 @@ body:has(.price-index-dataset-note) .inline-capture .gcs-note { font-size: 0.85r
 /* calculator small screens: their mobile order (headline, anchor, form) with
    the anchor scaled down and the form card full-bleed-ish */
 @media (max-width: 860px) {
-  body:has(#cost-form) .cost-intro { padding-top: 10px; }
-  body:has(#cost-form) .cost-intro h1 { font-size: clamp(2rem, 8.4vw, 2.6rem); }
+  body:has(#cost-form) .cost-workspace { padding-top: 8px; }
+  body:has(#cost-form) .calc-layout { gap: 8px; }
+  body:has(#cost-form) .cost-intro { padding-top: 0; }
+  body:has(#cost-form) .cost-intro h1 { font-size: clamp(2rem, 8.4vw, 2.6rem); margin-bottom: 0; }
   body:has(#cost-form) .cost-anchor-value { font-size: clamp(2.5rem, 12vw, 3.3rem); }
   body:has(#cost-form) .cost-intro-rule { margin: 2px 0 14px; }
 }
@@ -17009,7 +17208,7 @@ html.js [data-phase4-quiz]:not(.qz-enhanced) .qz-result-shell {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: 52px;
+  max-height: 48px;
   object-fit: contain;
 }
 
@@ -19827,6 +20026,12 @@ main.p3-page.cs-ins-index .inline-capture .cta.lead:is(:hover, :focus-visible) {
 /* This shelf uses the shared dark action face, not the legacy light palette. */
 .p3-pharm-detail .p3-provider-search-shelf .cs-btn.cs-palette-action {
   color: #f2f8f4 !important;
+}
+
+/* The shared interaction face is light; keep the resting dark-face label,
+   but use the existing ink-on-accent token when that face changes. */
+.p3-pharm-detail .p3-provider-search-shelf .cs-btn.cs-palette-action:is(:hover, :focus-visible) {
+  color: var(--text-on-accent) !important;
 }
 
 /* Preserve the 44px measured target floor after fractional layout in WebKit. */
