@@ -1,60 +1,42 @@
-// GLP-327 paid inventory. Separate from editorial ranking; no activation by default.
-// Every surface here is a site page: it is rendered through the Phase 3
-// pageDocument(), wrapped by the build's shared shell (header, footer, fonts,
-// site-p3.css) and composed of existing site components. Its composition rules
-// live in the shared source (assets/css-src/11-phase3.css, data-sponsor-layout
-// hooks); it never emits a <style> block, inline style or colour value.
+// GLP-327 sponsor inventory. No activation by default; shared site renderer/styles.
 import { pageDocument } from "./phase3-page-graph.mjs";
 import { renderSponsoredPanel, sponsorCta, sponsorSmallPrint, EXAMPLE_SPONSOR } from "./sponsor-placement-candidate.mjs";
 
 export const SPONSOR_RATE_CARD_ROUTE = "/sponsors/rates/";
 export const sponsorPromoRoute = (slug) => `/sponsors/${slug}/`;
-// Paid inventory stays out of search and the sitemap until a sponsor is booked.
 export const SPONSOR_ROBOTS = "noindex,nofollow,noarchive,nosnippet";
 export const SPONSOR_BOOKING_EMAIL = "partners@glpclinicscout.com";
 const DISCLAIMER = "GLP Clinic Scout is an independent comparison publisher, not a clinic, pharmacy or medical provider. This page is not medical advice.";
-const NO_PAID_RANK = "Sponsored placements never change our independent rankings. No paid top rank, editorial score, favorable review or paid SEO backlink.";
-
+const NO_PAID_RANK = "Independent rankings do not change. Sponsorship does not buy a score, favorable review or SEO backlink.";
 const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const list = (items, attrs = "") => `<ul${attrs}>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
 const disclaimer = () => `<aside class="p3-source-disclosure affiliate-note table-disclosure" data-sponsor-disclaimer><p>${esc(DISCLAIMER)}</p></aside>`;
 
 export function renderRateCard() {
   const route = SPONSOR_RATE_CARD_ROUTE;
-  // The PayPal remittance address travels only in the operator's order email;
-  // public pages publish the partner alias (data/email-alias-map.json).
-  // Everything a buyer needs to decide sits in the first viewport: price and
-  // split, both deliverables, renewal terms, the booking CTA and the
-  // no-paid-ranking disclosure. Secondary terms follow, all preserved.
+  // Remittance address stays in the order email; this page uses the partner alias.
   const offer = `<section class="p3-rail-card p3-rail-card--cta" data-sponsor-offer aria-labelledby="sponsor-offer-title">`
     + `<h1 id="sponsor-offer-title">Sponsor placements</h1>`
     + `<p data-sponsor-price><span class="cs-price cs-price--xl">$200</span><span> / 30 days</span></p><p data-sponsor-price-terms>$100 setup + $100 placement and reporting</p>`
-    + list([
-      "One Sponsored directory panel.",
-      "One sponsored provider intro page.",
-    ], " data-sponsor-deliverables")
+    + list(["One Sponsored directory panel.", "One sponsored provider intro page."], " data-sponsor-deliverables")
     + `<p data-sponsor-renewal><strong>Same-scope renewal: $100 / 30 days.</strong> No automatic renewal or recurring charge.</p>`
     + `<div class="p3-hero-actions p3-wrap-actions" data-wrap-actions><a class="cs-btn cs-palette-action" href="mailto:${SPONSOR_BOOKING_EMAIL}" data-sponsor-booking-cta>Discuss a placement</a></div>`
-    + `<p class="p3-rail-note" data-sponsor-independence><strong>Visibility without buying a ranking.</strong> ${esc(NO_PAID_RANK)}</p>`
-    + `</section>`;
-  const example = `<figure data-sponsor-example><figcaption class="gcs-kicker">Example: the Sponsored panel on /providers/</figcaption>${renderSponsoredPanel({ id: "sponsor-example-title" })}</figure>`;
-  const details = `<section data-sponsor-details aria-labelledby="sponsor-details-title"><h2 id="sponsor-details-title">Pilot and renewal details</h2><p>US-provider sponsorship. Introduce your program in clearly labeled paid inventory on an independent GLP-1 provider comparison site.</p><p><strong>Initial 30-day pilot.</strong> Directory placement: one responsive Sponsored panel on <strong>/providers/</strong>, after filters and before independent results. Sponsor page: one paid introduction page at /sponsors/{provider}/.</p>`
-    + `<div class="p3-detail-grid"><article><h3>Also in the pilot</h3>${list(["Approved provider identity, factual creative and one approved CTA", "One copy correction round, plus required safety corrections", "720 consecutive hours from verified activation"])}</article>`
+    + `<p class="p3-rail-note" data-sponsor-independence>${esc(NO_PAID_RANK)}</p></section>`;
+  const example = `<figure data-sponsor-example><figcaption class="gcs-kicker">Example directory placement</figcaption>${renderSponsoredPanel({ id: "sponsor-example-title" })}</figure>`;
+  const details = `<section data-sponsor-details aria-labelledby="sponsor-details-title"><h2 id="sponsor-details-title">What's included</h2><p>For US providers. The 30-day pilot includes one responsive panel on <strong>/providers/</strong>, between the filters and independent results, and one introduction page at /sponsors/{provider}/.</p>`
+    + `<div class="p3-detail-grid"><article><h3>Setup and term</h3>${list(["Approved provider identity, factual creative and one approved CTA", "One copy correction round, plus required safety corrections", "720 consecutive hours from verified activation"])}</article>`
     + `<article><h3>Renewal and reporting</h3>${list(["Same panel and sponsored page.", "Same-scope renewal: $100. Another 30 days, by affirmative order only.", "Delivery and available aggregate measurement report within five business days of term close."])}<p>No traffic, leads, sales or SEO guarantee. Subject to available inventory and final review.</p></article>`
-    + `<article><h3>Booking, payment and refunds</h3>${list(["US providers only.", "Final availability, provider eligibility, creative/link permission, legal terms and approval are required before booking.", "Payment is confirmed after a reviewed order and readiness checks, before activation.", `PayPal payment details are supplied after a confirmed order. Contact: <a href="mailto:${SPONSOR_BOOKING_EMAIL}">${SPONSOR_BOOKING_EMAIL}</a>.`, "Prices before any applicable tax; final tax-inclusive quote must be agreed.", "Full refund if no conforming placement launches; refund or mutually agreed equivalent extension for undelivered time."])}</article></div>`
-    + `<details class="cs-details" data-sponsor-audience><summary>Audience and reporting, honestly</summary><p>Our site offers provider comparisons, cost tools and independent reviews. No verified audience size or sponsor impression estimate is included in this proposal. Unknown is not zero. Site visits are not ad impressions. Only reliably measured, privacy-safe aggregate exposure and outbound clicks would be reported, with collection coverage and limitations. No patient information or health-derived audience is shared.</p></details>`
-    + `</section>`;
+    + `<article><h3>Booking and payment</h3>${list(["US providers only.", "Final availability, provider eligibility, creative/link permission, legal terms and approval are required before booking.", "Payment is confirmed after a reviewed order and readiness checks, before activation.", `PayPal payment details are supplied after a confirmed order. Contact: <a href="mailto:${SPONSOR_BOOKING_EMAIL}">${SPONSOR_BOOKING_EMAIL}</a>.`, "Prices before any applicable tax; final tax-inclusive quote must be agreed.", "Full refund if no conforming placement launches; refund or mutually agreed equivalent extension for undelivered time."])}</article></div>`
+    + `<details class="cs-details" data-sponsor-audience><summary>Audience and reporting</summary><p>We do not have a verified audience size or sponsor impression estimate for this proposal. Site visits are not ad impressions. Reports cover only reliably measured aggregate exposure and outbound clicks, with collection limits noted. No patient information or health-derived audience is shared.</p></details></section>`;
   const body = `<div data-sponsor-layout="rate-card"><div data-sponsor-lead-grid>${offer}${example}</div>${details}${disclaimer()}</div>`;
-  return pageDocument({ route, title: "Sponsor placements · Clinic Scout", description: "Clearly labeled paid inventory for US providers. Sponsored placements never change independent rankings.", body, robots: SPONSOR_ROBOTS });
+  return pageDocument({ route, title: "Sponsor placements · Clinic Scout", description: "A directory panel and provider introduction page for US providers. $200 for 30 days; optional same-scope renewal at $100.", body, robots: SPONSOR_ROBOTS });
 }
 
-// Slots a reviewed provider brief fills before activation. The preview shows
-// where each fact goes and states that it is empty; it never supplies one.
 const PROMO_FACT_SLOTS = Object.freeze([
-  ["Program summary", "Reserved for the provider's approved program summary."],
-  ["Published price", "Reserved for a provider-reported price, shown with its source and checked date."],
-  ["Eligibility and states", "Reserved for provider-reported eligibility and state availability."],
-  ["Current offer", "Reserved for an approved offer and its terms, if the provider has one."],
+  ["Program summary", "Awaiting the provider's program summary."],
+  ["Published price", "Awaiting a reported price, source and checked date."],
+  ["Eligibility and states", "Awaiting eligibility and state availability."],
+  ["Current offer", "Awaiting an approved offer and its terms, if available."],
 ]);
 
 export function renderPromo(order = {}, { preview = true } = {}) {
@@ -68,21 +50,18 @@ export function renderPromo(order = {}, { preview = true } = {}) {
   }
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw Error("Invalid provider slug");
   const route = sponsorPromoRoute(slug);
-  // One identity, one intro, one primary action and the ad disclosure, in that
-  // order, before anything else on the page.
   const lead = `<section class="p3-rail-card p3-rail-card--cta" data-sponsor-lead aria-labelledby="sponsor-provider-title">`
     + `<p data-sponsor-lead-label><span class="p3-chip p3-chip--status">Sponsored</span></p>`
     + `<h1 class="p3-wrap-title" id="sponsor-provider-title" data-wrap-text>${esc(provider)}</h1>`
-    + `<p class="lede">${preview ? "Preview only. Program facts, pricing and eligibility await approved provider materials." : "Explore provider-reported program information and confirm current terms and eligibility directly with the provider."}</p>`
+    + `<p class="lede">${preview ? "Example page. Provider details will appear here after review." : "See program details. Check current prices and eligibility with the provider."}</p>`
     + `<div class="p3-hero-actions p3-wrap-actions" data-wrap-actions>${sponsorCta({ preview, destination: order.destination })}</div>`
-    + `<p class="p3-rail-note" data-sponsor-ad-disclosure>Advertising, not an independent review or recommendation. ${preview ? "Example creative, not a provider endorsement." : `Paid for by ${esc(provider)}.${order.affiliate === true ? " We may also earn a commission if you use this link." : ""}`}</p>`
-    + `</section>`;
+    + `<p class="p3-rail-note" data-sponsor-ad-disclosure>${preview ? "Template only. No provider is being promoted." : sponsorSmallPrint({ provider, preview, affiliate: order.affiliate === true })}</p></section>`;
   const facts = preview
-    ? `<section class="cs-card" data-sponsor-facts aria-labelledby="sponsor-facts-title"><h2 id="sponsor-facts-title">Program at a glance</h2><dl>${PROMO_FACT_SLOTS.map(([label, slot]) => `<div data-sponsor-fact-slot><dt>${esc(label)}</dt><dd>${esc(slot)}</dd></div>`).join("")}</dl><p class="p3-rail-note">Template preview. These slots stay empty until approved, dated provider materials are reviewed; nothing here is a provider fact.</p></section>`
+    ? `<section class="cs-card" data-sponsor-facts aria-labelledby="sponsor-facts-title"><h2 id="sponsor-facts-title">Program at a glance</h2><dl>${PROMO_FACT_SLOTS.map(([label, slot]) => `<div data-sponsor-fact-slot><dt>${esc(label)}</dt><dd>${esc(slot)}</dd></div>`).join("")}</dl></section>`
     : "";
   const body = `<div data-sponsor-layout="promo">${facts ? `<div data-sponsor-lead-grid>${lead}${facts}</div>` : lead}`
-    + `<section class="p3-detail-grid" data-sponsor-promo-checks><article><h2>What to check</h2>${list(["Current total cost and renewal terms", "Program details and available services", "State and individual eligibility", "Cancellation, support and provider terms"])}<p>Information is reported by the provider. We make no treatment, medication, clinician, licensure or outcome claim here.</p></article>`
-    + `<article><h2>Your comparison stays independent</h2><p>This paid page and any clearly labeled directory panel sit outside our organic provider rankings. ${esc(NO_PAID_RANK)} ${sponsorSmallPrint({ provider, preview, affiliate: order.affiliate === true })}</p><div class="p3-hero-actions p3-wrap-actions" data-wrap-actions><a class="cs-btn cs-btn--quiet" href="/providers/">Compare providers independently</a></div></article></section>`
+    + `<section class="p3-detail-grid" data-sponsor-promo-checks><article><h2>Before you choose</h2>${list(["Total cost and renewal terms", "Services included", "Eligibility in your state", "Cancellation and support"])}<p>Confirm these details with the provider.</p></article>`
+    + `<article><h2>Compare your options</h2><p>${esc(NO_PAID_RANK)}</p><div class="p3-hero-actions p3-wrap-actions" data-wrap-actions><a class="cs-btn cs-btn--quiet" href="/providers/">Compare providers independently</a></div></article></section>`
     + `${disclaimer()}</div>`;
-  return pageDocument({ route, title: `${provider} · Sponsored introduction · Clinic Scout`, description: `A clearly labeled paid introduction to ${provider}. Advertising, not an independent review.`, body, robots: SPONSOR_ROBOTS });
+  return pageDocument({ route, title: `${provider} · Sponsored introduction · Clinic Scout`, description: preview ? "Example provider introduction template. No provider is being promoted." : `Sponsored program information from ${provider}.`, body, robots: SPONSOR_ROBOTS });
 }

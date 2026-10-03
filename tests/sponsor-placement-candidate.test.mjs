@@ -12,7 +12,7 @@ test("nonproduction /providers/ slot is opt-in and separate from organic results
   assert.equal(renderSponsorPlacementCandidate("/providers/"), "");
   const section = renderSponsorPlacementCandidate("/providers/", { preview: true });
   assert.match(section, /<span class="p3-chip p3-chip--status">Sponsored<\/span>/);
-  assert.match(section, /Payment buys advertising space, not a recommendation or rank/);
+  assert.match(section, /Example placement\. No provider is being promoted\./);
   assert.doesNotMatch(section, /<a\b|href=|data-phase3-provider|data-program=|data-rank=|ItemList|\$\d+/);
   // Switch on: the preview composition. Switch off: the original composition.
   assert.match(graph, /const sponsorSlot = renderSponsorPlacementCandidate\(route, \{ preview: process\.env\.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1" \}\);/);
@@ -61,7 +61,7 @@ test("/providers/ captures finalize copy tokens through the build's registry-der
   assert.match(capture, /tallies\.LIVE_PROVIDER_COUNT = deriveLiveProviders\(programRegistry, ledgerPrograms\)\.liveProgramCount;/);
   assert.match(capture, /"\/providers\/": finalize\("providers\/index\.html", addSharedRuntime\(/);
   assert.match(capture, /if \(dom\.unresolvedTokens\.length\) failures\.push\("unresolved build token"\);/);
-  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/captures/CAPTURE.json", import.meta.url), "utf8"));
   assert.equal(result.status, "PASS");
   assert.ok(Number.isInteger(result.finalizedTallies?.LIVE_PROVIDER_COUNT));
   for (const check of result.checks) assert.deepEqual(check.dom.unresolvedTokens, [], `${check.surface} ${check.viewport}`);

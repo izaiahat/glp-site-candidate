@@ -28,7 +28,7 @@ test("rate card: a short title, then price, terms, both deliverables, renewal, b
     "One sponsored provider intro page.",
     "Same-scope renewal: $100 / 30 days.", "No automatic renewal or recurring charge.",
     'href="mailto:partners@glpclinicscout.com" data-sponsor-booking-cta>Discuss a placement</a>',
-    "Sponsored placements never change our independent rankings. No paid top rank, editorial score, favorable review or paid SEO backlink."]) assert.ok(offer.includes(text), text);
+    "Independent rankings do not change. Sponsorship does not buy a score, favorable review or SEO backlink."]) assert.ok(offer.includes(text), text);
   inOrder(html, ["data-sponsor-offer", "data-sponsor-example", "data-sponsor-details", "data-sponsor-disclaimer"]);
   // Secondary terms are all preserved below the offer; financial terms stay
   // visible and only the explanatory audience note uses an accordion.
@@ -36,9 +36,9 @@ test("rate card: a short title, then price, terms, both deliverables, renewal, b
   for (const text of ["Approved provider identity, factual creative and one approved CTA", "One copy correction round, plus required safety corrections", "720 consecutive hours from verified activation",
     "Delivery and available aggregate measurement report within five business days of term close.", "No traffic, leads, sales or SEO guarantee. Subject to available inventory and final review.",
     "US providers only.", "Payment is confirmed after a reviewed order and readiness checks, before activation.", "Prices before any applicable tax; final tax-inclusive quote must be agreed.",
-    "Full refund if no conforming placement launches; refund or mutually agreed equivalent extension for undelivered time.", "Unknown is not zero. Site visits are not ad impressions."]) assert.ok(details.includes(text), text);
+    "Full refund if no conforming placement launches; refund or mutually agreed equivalent extension for undelivered time.", "We do not have a verified audience size or sponsor impression estimate for this proposal. Site visits are not ad impressions."]) assert.ok(details.includes(text), text);
   assert.ok(details.indexOf("Full refund if no conforming placement launches") < details.indexOf("<details"), "financial terms are not collapsed");
-  assert.match(details, /<details class="cs-details" data-sponsor-audience><summary>Audience and reporting, honestly<\/summary><p>Our site offers/);
+  assert.match(details, /<details class="cs-details" data-sponsor-audience><summary>Audience and reporting<\/summary><p>We do not have/);
 });
 
 test("paid promo: one provider identity, concise paid intro, primary action and ad disclosure lead; fact slots never carry facts", () => {
@@ -47,14 +47,14 @@ test("paid promo: one provider identity, concise paid intro, primary action and 
   assert.doesNotMatch(html, /data-sponsor-placement-candidate|p3-detail-rail|p3-index-hero/, "no duplicated identity rail or oversized hero");
   assert.equal((html.match(/<(?:h[1-6]|strong)\b[^>]*>Example Provider<\//g) || []).length, 1);
   const lead = section(html, "data-sponsor-lead");
-  inOrder(lead, ['<span class="p3-chip p3-chip--status">Sponsored</span>', "<h1", '<p class="lede">Preview only.',
+  inOrder(lead, ['<span class="p3-chip p3-chip--status">Sponsored</span>', "<h1", '<p class="lede">Example page.',
     '<button class="cs-btn cs-palette-action" type="button" disabled aria-disabled="true">View provider information</button>',
-    "Advertising, not an independent review or recommendation."]);
-  assert.match(html, /Sponsored placements never change our independent rankings/);
+    "Template only. No provider is being promoted."]);
+  assert.match(html, /Independent rankings do not change/);
   inOrder(html, ["data-sponsor-lead", "data-sponsor-facts", "data-sponsor-promo-checks", 'href="/providers/">Compare providers independently', "data-sponsor-disclaimer"]);
   const slots = [...html.matchAll(/<div data-sponsor-fact-slot><dt>([^<]+)<\/dt><dd>([^<]+)<\/dd><\/div>/g)];
   assert.deepEqual(slots.map(([, label]) => label), ["Program summary", "Published price", "Eligibility and states", "Current offer"]);
-  for (const [, , slot] of slots) assert.match(slot, /^Reserved for /);
+  for (const [, , slot] of slots) assert.match(slot, /^Awaiting /);
   assert.doesNotMatch(html, /\$\d|\d\s*%|verified provider|licensed (?:provider|clinician)/i);
   const start = Date.now() - 3600000;
   const live = renderPromo({ provider: "Example", slug: "example", operator_approval: "reviewed", partner_creative_approval: "reviewed", payment_confirmed: true, eligibility_approved: true, inventory_reserved: true, held: false, us_provider: true, starts_at: new Date(start).toISOString(), ends_at: new Date(start + 720 * 3600000).toISOString(), destination: "https://example.com/" }, { preview: false });
@@ -98,7 +98,7 @@ test("/providers/ preview: compact intro and collapsed extended filters put the 
 });
 
 test("clutter regression: one closed filter row and genuinely early commercial actions, not merely below 844px", () => {
-  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/captures/CAPTURE.json", import.meta.url), "utf8"));
   for (const c of result.checks) {
     assert.equal(c.interactions.status, "PASS", `${c.surface}/${c.viewport}`);
     if (c.surface === "providers-sponsored-panel") {
@@ -117,7 +117,7 @@ test("clutter regression: one closed filter row and genuinely early commercial a
 });
 
 test("committed captures prove the fold, h1 limits and overflow for all six frames", () => {
-  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/captures/CAPTURE.json", import.meta.url), "utf8"));
   assert.equal(result.status, "PASS");
   assert.deepEqual(result.gateFindings, []);
   for (const [file, sha] of Object.entries(result.sourceHashes)) {

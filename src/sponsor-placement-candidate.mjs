@@ -22,13 +22,15 @@ export function sponsorCta({ preview = true, destination = null } = {}) {
 }
 
 export function sponsorSmallPrint({ provider = EXAMPLE_SPONSOR.provider, preview = true, affiliate = false } = {}) {
-  return `${preview ? "Example creative, not a provider endorsement." : `Paid for by ${esc(provider)}.`} ${affiliate ? "We may also earn a commission if you use this link." : "Any applicable affiliate commission will be disclosed next to the final link."} Payment buys advertising space, not a recommendation or rank.`;
+  return preview
+    ? "Example placement. No provider is being promoted."
+    : `Paid for by ${esc(provider)}.${affiliate ? " We may also earn a commission if you use this link." : ""}`;
 }
 
 export function renderSponsoredPanel({ provider = EXAMPLE_SPONSOR.provider, preview = true, destination = null, affiliate = false, id = "sponsored-placement-title" } = {}) {
   return `<aside class="p3-rail-card p3-rail-card--cta" data-sponsor-placement-candidate data-sponsored-placement aria-labelledby="${esc(id)}">`
     + `<div class="p3-rail-identity p3-provider-identity" data-sponsor-panel-identity><span class="provider-logo provider-logo--wordmark" role="img" aria-label="${esc(provider)}"><span class="provider-wordmark" aria-hidden="true">${esc(provider)}</span></span><p><span class="p3-chip p3-chip--status">Sponsored</span><strong id="${esc(id)}">${esc(provider)}</strong></p></div>`
-    + `<p data-sponsor-panel-body>A paid introduction to ${esc(provider)}. Explore provider-reported program information and check current terms and eligibility directly with the provider.</p>`
+    + `<p data-sponsor-panel-body>${preview ? "A space for a provider's program summary." : "See program details. Check current prices and eligibility with the provider."}</p>`
     + `<div class="p3-hero-actions p3-wrap-actions" data-wrap-actions>${sponsorCta({ preview, destination })}</div>`
     + `<p class="p3-rail-note">${sponsorSmallPrint({ provider, preview, affiliate })}</p></aside>`;
 }
