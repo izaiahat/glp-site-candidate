@@ -50,10 +50,11 @@ test('changed CSS and home/product image bytes change EVERY consuming path, incl
       const emitted = rewriteContentAssetUrls(html, after);
       assert.notEqual(emitted, oldDocuments[i], route);
       assert.equal(rewriteContentAssetUrls(emitted, after), emitted, 'idempotent producer rewrites');
-      for (const url of urls.filter(url => html.includes(url))) {
+      const originalRefs = [...html.matchAll(/(?<![A-Za-z0-9:/.-])(?:https:\/\/glpclinicscout\.com)?(\/(?:assets\/[A-Za-z0-9_/.-]+|google-ads-api\/assets\/site\.css))/g)].map(match => match[1]);
+      for (const url of urls.filter(url => originalRefs.includes(url))) {
         assert.equal(emitted.includes(url), false, `${route}: bare consumer ${url}`);
         assert.equal(emitted.includes(before.get(url).url), false, `${route}: predecessor consumer ${url}`);
-        assert.equal(emitted.split(after.get(url).url).length, html.split(url).length, `${route}: every occurrence`);
+        assert.equal(emitted.split(after.get(url).url).length - 1, originalRefs.filter(ref => ref === url).length, `${route}: every occurrence`);
       }
     }
     const external = '<img src="https://other.example/assets/images/home-hero-fridge-640.avif"><a href="/assets/site.css.map">map</a><a href="/google-ads-api/assets/site.css.map">OAuth map</a><img src="/assets/images/guide-frozen-640.avif">';
