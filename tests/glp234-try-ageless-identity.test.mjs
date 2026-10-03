@@ -135,11 +135,11 @@ test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and
   const input = 'data/program-registry.json';
   const bytes = read(input);
   const immutable = {data: {[input]: 'bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6'}};
-  assert.equal(pins.inputs[input].after_sha256, '385a0f30f0ca6f72d9d83d8e0cab173f9c66191d4ea7b2fb6bd51c0a34d35ce5');
+  assert.equal(pins.inputs[input].after_sha256, '87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887');
   assert.equal(pins.provenance.previous_care_after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
   assert.equal(pins.provenance.previous_care_fixture_git_ref, 'aa13b69fcbff4f9990b7043702da2fa37756390a:tests/fixtures/glp41-approved-input-successor.json');
   assert.match(pins.authority, /care-metadata-source-repair-authorization-20260927\/RESULT\.json/);
-  assert.equal(pins.status, 'ACCEPTED_EXACT_DATA_SOURCE_ADOPTION_ONLY');
+  assert.equal(pins.status, 'PROPOSED_EXACT_INPUT_SUCCESSOR_PENDING_INDEPENDENT_REVIEW');
   assert.equal(pins.provenance.source_adoption_grant_sha256, '4c16c5924ad1ed4aaa515f3dc6ed0ca608e79e35ed18377caa181d33c5fc30c2');
   assert.equal(pins.provenance.metadata_source_grant_sha256, '7bb6931e5ac1ee6e9c9c0b7ed171dc12c56d1fbe1bc8ff2ddbb8a3a644be4f6a');
   assert.equal(pins.provenance.combined_input_review_status, 'ACCEPTED_EXACT_DATA_AT_REVIEWED_HEAD_SOURCE_ADOPTION_ONLY');

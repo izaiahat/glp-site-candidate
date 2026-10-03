@@ -16,6 +16,7 @@
       "webkit"
     ],
     "cases": [
+      {"file":"tests/browser/quiz-consent-management.spec.mjs","title":"GLP44 quiz keeps native tracking choices accessible after denial, regrant and withdrawal","requirement":"GLP44-persistent-native-management"},
       {"file":"tests/browser/ga4-diagnostic-containment.spec.mjs","title":"GLP44 sampled diagnostics remain contained through GPC pagehide","requirement":"GLP44-sampled-diagnostic-containment","projects":["chromium"],"applicability":"Required Chromium desktop affected-cell regression: pinned SDK stack-line sampling uses V8 stack syntax and a fixed desktop context. Not WebKit/mobile coverage; the original four-project GA SDK cases remain mandatory."},
       {"file":"tests/browser/header-cta-contrast.spec.mjs","title":"GLP-200 home header CTA keeps 4.5 contrast in every interaction state","requirement":"GLP-200"},
       {"file":"tests/browser/ga4-sdk-contract.spec.mjs","title":"GLP44 default-on actual GA SDK minimizes page and enhanced events","requirement":"GLP44-default-on-safe-enhanced"},

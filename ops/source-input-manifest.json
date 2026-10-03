@@ -1,8 +1,10 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3888,
+  "tracked_file_count": 3890,
   "files": [
+    ".gitleaksignore",
+    "tests/browser/quiz-consent-management.spec.mjs",
     "scripts/bind-care-fastpath-contract.mjs",
     "scripts/therapeutic-taxonomy-refresh-policies.json",
     "tests/care-bare-novi-source-followup.test.mjs",

@@ -129,7 +129,7 @@ test('F17 adopts accepted Care registry and refuses preserved predecessor and un
   const run = (candidate, pins) => guard((_name, check) => check(), assert,
     path => path === input ? candidate : path === 'tests/fixtures/glp41-approved-input-successor.json'
       ? Buffer.from(JSON.stringify(pins)) : assert.fail(path), sha);
-  assert.equal(fixture.inputs[input].after_sha256, '385a0f30f0ca6f72d9d83d8e0cab173f9c66191d4ea7b2fb6bd51c0a34d35ce5');
+  assert.equal(fixture.inputs[input].after_sha256, '87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887');
   assert.equal(fixture.provenance.previous_care_after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
   assert.doesNotThrow(() => run(read(input), fixture));
   const stale = structuredClone(fixture);

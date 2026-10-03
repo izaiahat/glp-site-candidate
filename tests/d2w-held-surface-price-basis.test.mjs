@@ -53,7 +53,14 @@ test('actual review renderer preserves repaired copy and the exact Longevity HOL
 delete basis.therapeutic_taxonomy;delete basis.provider_dynamic_profiles;delete basis.consumer_therapeutic_authorities;
 test('existing HOLD declaration preserves the exact frozen pricing oracle',()=>{
  // Use the authenticated historical reader, not a hand-written label rewrite.
+ // Current sole-writer commercial metadata must not enter the frozen price body
+ // or disappear from the original held rendering input.
+ const before=structuredClone(registry);
+ assert.equal(registry.programs.find(p=>p.program_id==='telos-rx').affiliate_relationship_snapshot.promotion_denied,true);
  const historical=historicalPriceIndexRegistry(registry);
+ assert.deepEqual(registry,before);
+ assert.deepEqual(historicalPriceIndexRegistry(historical),historical);
+ assert.ok(historical.programs.every(p=>!Object.hasOwn(p,'affiliate_relationship_snapshot')));
  delete historical.therapeutic_taxonomy;delete historical.provider_dynamic_profiles;delete historical.consumer_therapeutic_authorities;
  assert.equal(expected,'f9a8ce57165d5a014fe623c820a4ab90313d4c5679c4d079e6703a7e2df8f234');
  assert.equal(stableSha256(restoreGoOnlyPriceBasis(historical)),expected);
