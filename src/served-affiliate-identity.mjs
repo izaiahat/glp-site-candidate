@@ -63,6 +63,7 @@ export function rawHeldInputs(root) {
   add('fella-health', 'permanent exclusion');
   for (const p of registry) {
     aliases[p.review_slug || p.program_id] = p.program_id;
+    if (p.affiliate_relationship_snapshot?.promotion_denied === true) add(p.program_id, 'sole-writer:adverse-selected-relationship');
     if (/held|withheld|paused|excluded/i.test(p.commercial_state || '')) add(p.program_id, 'program-registry:commercial_state');
     for (const [surface, exception] of Object.entries(p.profiles?.['glp-clinic-scout']?.exceptions || {})) {
       if (exception.enabled === true && /hold|paused|excluded/i.test(exception.surface_restriction_basis || ''))
