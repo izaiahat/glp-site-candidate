@@ -8,12 +8,13 @@ export function manifestSha256(manifest) {
   return createHash("sha256").update(manifestJsonText(manifest)).digest("hex");
 }
 
-export function assertCurrentHoldGoSuccessor(before, manifest, heldIds) {
+export function assertCurrentHoldGoSuccessor(before, manifest, heldIds, withdrawnIds = new Set()) {
   for (const key of ['schema', 'program_registry_schema', 'site_profile', 'internal_fallback']) {
     if (before[key] !== manifest[key]) throw new Error('go_non_hold_manifest_drift');
   }
   const after = Object.fromEntries(manifest.programs.map(row => [row.route_slug || row.program_id, row]));
-  if (JSON.stringify(Object.keys(before.programs)) !== JSON.stringify(Object.keys(after))) throw new Error('go_non_hold_manifest_drift');
+  const expectedKeys = Object.keys(before.programs).filter(slug => !withdrawnIds.has(before.programs[slug].program_id));
+  if ([...withdrawnIds].some(id => !heldIds.has(id)) || JSON.stringify(expectedKeys) !== JSON.stringify(Object.keys(after))) throw new Error('go_non_hold_manifest_drift');
   for (const [slug, row] of Object.entries(after)) {
     const prior = before.programs[slug];
     if (JSON.stringify(prior) === JSON.stringify(row)) continue;

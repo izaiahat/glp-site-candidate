@@ -1,6 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { relationshipDenials, publicAffiliateTerms, renderAffiliateTerms } from '../src/affiliate-relationship-sync.mjs';
+import { effectiveAffiliateRegistry, historicalAffiliateRegistry, relationshipDenials, publicAffiliateTerms, renderAffiliateTerms } from '../src/affiliate-relationship-sync.mjs';
+
+test('withdrawal removes all live surfaces without repricing frozen history', () => {
+  const base={programs:[{program_id:'alpha',commercial_state:'live',go:{entry_state:'server_redirect'},price:199,profiles:{site:{wired:true,surfaces:{review:true,sitemap:true,go:true,compare:true,quiz:true,calculator:true}}}}]};
+  const observed=structuredClone(base);
+  observed.programs[0].affiliate_relationship_snapshot={promotion_denied:true,lifecycle:'withdrawn'};
+  assert.deepEqual(historicalAffiliateRegistry(observed),base);
+  const effective=effectiveAffiliateRegistry(observed);
+  assert.equal(effective.programs[0].commercial_state,'held');
+  assert.equal(effective.programs[0].price,199);
+  assert.ok(Object.values(effective.programs[0].profiles.site.surfaces).every(x=>x===false));
+  assert.equal(observed.programs[0].commercial_state,'live');
+});
 
 test('F03 cancellation and pause deny only the exact selected relationship; unknown terms remain unknown', () => {
   const registry={programs:[{program_id:'alpha',display_name:'Alpha',affiliate_relationship_snapshot:{network:'awin',network_program_id:'1',relationship_status:'cancelled_by_network',promotion_denied:true,lifecycle:'withdrawn'}},{program_id:'beta',display_name:'Beta',affiliate_relationship_snapshot:{network:'awin',network_program_id:'2',promotion_denied:false,terms:{commission_terms:'Default: 0%; GLP-1: 155 USD',source_checked_at:'2026-10-03',capture_sha256:'a'.repeat(64),writer_receipt_sha256:'b'.repeat(64),source_kind:'authenticated_network_api_via_sole_sheet_writer'}}}]};
