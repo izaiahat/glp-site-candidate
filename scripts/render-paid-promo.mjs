@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {renderPromo,renderRateCard,renderDirectoryMock} from '../src/paid-promo.mjs';
 const args=process.argv.slice(2);
-const get=k=>args[args.indexOf(k)+1];
+const get=k=>args.includes(k)?args[args.indexOf(k)+1]:undefined;
 const out=path.resolve(get('--out')||'reports/sponsor-preview');
 fs.mkdirSync(out,{recursive:true});
 if(args.includes('--activate')){
