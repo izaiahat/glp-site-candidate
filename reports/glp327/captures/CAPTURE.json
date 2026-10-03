@@ -1,0 +1,188 @@
+{
+  "status": "PASS",
+  "source": "scoped-render",
+  "head": "9e6a8aae30c35c982d94e7dfa35535668fbdce3f",
+  "scope": "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; build write-time finalizers not applied. Not a release build.",
+  "checks": [
+    {
+      "surface": "rate-card",
+      "route": "/sponsors/rates/",
+      "viewport": "desktop",
+      "width": 1440,
+      "status": "PASS",
+      "failures": [],
+      "image": "reports/glp327/captures/rate-card-desktop-1440.png",
+      "imageSha256": "310aa1a0450e8cd413f7b34539b2a08a4588c66b149ba6572f96f909240c0a13",
+      "dom": {
+        "robots": "noindex,nofollow,noarchive,nosnippet",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "panels": 0,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "scrollWidth": 1440,
+        "fella": false
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "rate-card",
+      "route": "/sponsors/rates/",
+      "viewport": "mobile",
+      "width": 390,
+      "status": "PASS",
+      "failures": [],
+      "image": "reports/glp327/captures/rate-card-mobile-390.png",
+      "imageSha256": "eddb9b78545e9c52b4709b83cd68b7d1f2235725677c8a86a529dfc402610285",
+      "dom": {
+        "robots": "noindex,nofollow,noarchive,nosnippet",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "panels": 0,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "scrollWidth": 390,
+        "fella": false
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "providers-sponsored-panel",
+      "route": "/providers/",
+      "viewport": "desktop",
+      "width": 1440,
+      "status": "PASS",
+      "failures": [],
+      "image": "reports/glp327/captures/providers-sponsored-panel-desktop-1440.png",
+      "imageSha256": "bec6b23d953806824260b44e6d63052aabae3075924e46d00f04706427d78790",
+      "dom": {
+        "robots": "index,follow,max-image-preview:large",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "panels": 1,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "scrollWidth": 1440,
+        "fella": false
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "providers-sponsored-panel",
+      "route": "/providers/",
+      "viewport": "mobile",
+      "width": 390,
+      "status": "PASS",
+      "failures": [],
+      "image": "reports/glp327/captures/providers-sponsored-panel-mobile-390.png",
+      "imageSha256": "fff7d4504adab5cace8094e719e144ecc431932df2c1b25652505e51d9eae212",
+      "dom": {
+        "robots": "index,follow,max-image-preview:large",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "panels": 1,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "scrollWidth": 390,
+        "fella": false
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "paid-promo",
+      "route": "/sponsors/example-provider/",
+      "viewport": "desktop",
+      "width": 1440,
+      "status": "PASS",
+      "failures": [],
+      "image": "reports/glp327/captures/paid-promo-desktop-1440.png",
+      "imageSha256": "ec8042d7524fa6d7246f2e0fc8b085d3674e71a490183270195935285310ea03",
+      "dom": {
+        "robots": "noindex,nofollow,noarchive,nosnippet",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "panels": 1,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "scrollWidth": 1440,
+        "fella": false
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "paid-promo",
+      "route": "/sponsors/example-provider/",
+      "viewport": "mobile",
+      "width": 390,
+      "status": "PASS",
+      "failures": [],
+      "image": "reports/glp327/captures/paid-promo-mobile-390.png",
+      "imageSha256": "e393c9571ffbccb1ffa64c58562987508f747da1346d613e42b32424e88182c3",
+      "dom": {
+        "robots": "noindex,nofollow,noarchive,nosnippet",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "panels": 1,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "scrollWidth": 390,
+        "fella": false
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    }
+  ]
+}
