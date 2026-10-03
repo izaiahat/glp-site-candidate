@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { projectGoOnlyPriceBasis, GO_PRICE_BASIS_SELECTION_SHA256 } from './go-price-basis.mjs';
+import { relationshipDenials } from './affiliate-relationship-sync.mjs';
 import { redirectorTermsAllowed } from "./go-redirector-authority.mjs";
 
 const DEFAULT_ROOT = fileURLToPath(new URL("../", import.meta.url));
@@ -63,6 +64,15 @@ export function loadGoPromotionAuthority(root = DEFAULT_ROOT) {
     programs[id] = { ...row, status: 'WITHHELD', promotion_authorized: false,
       current_hold_decision: { path: holdPath, sha256: holdSha256 },
       reason: 'operator_current_xentraffic_hold' };
+  }
+  let registry;
+  try { registry = JSON.parse(readFileSync(path.join(root, 'data/program-registry.json'))); }
+  catch (error) { if (error.code !== 'ENOENT') throw error; }
+  for (const denial of relationshipDenials(registry)) {
+    const row = programs[denial.program_id] || {};
+    programs[denial.program_id] = { ...row, status:'WITHHELD', promotion_authorized:false,
+      reason:'sole_writer_relationship_' + denial.lifecycle,
+      relationship_snapshot:denial };
   }
   return { ...legacy, ...(current ? { selection_sha256: current.selection_sha256 } : {}), programs };
 }
