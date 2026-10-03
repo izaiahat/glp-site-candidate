@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: '22'
       - name: Existing portable candidate export tests
-        run: node --test tests/candidate-export-policy.test.mjs
+        run: node --test tests/candidate-export-policy.test.mjs tests/paid-promo.test.mjs
       - name: Record limited scope
         if: always()
         run: |
