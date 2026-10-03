@@ -162,7 +162,7 @@ test('Wellmedr already consolidates unknown charges and policy conflict; protect
   // claim that today's registry still equals the earlier PR4/PR8 composition.
   const pins=read('tests/fixtures/glp41-approved-input-successor.json');
   assert.equal(pins.provenance.prior_care_after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
-  assert.equal(pins.inputs[registryFile].after_sha256, '385a0f30f0ca6f72d9d83d8e0cab173f9c66191d4ea7b2fb6bd51c0a34d35ce5');
+  assert.equal(pins.inputs[registryFile].after_sha256, '87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887');
   assert.equal(hash(readFileSync(new URL(registryFile,root))), pins.inputs[registryFile].after_sha256);
   const expectedBytes = JSON.stringify(expected, null, 2) + '\n';
   assert.equal(hash(expectedBytes), '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d', 'fixed combined bytes reconstructed exclusively from authenticated parent values');
