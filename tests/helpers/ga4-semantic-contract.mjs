@@ -16,7 +16,7 @@ export function integrated(source, options={}) {
  const localStorage={getItem(){if(options.unreadable)throw Error('unreadable');return raw},setItem(k,v){if(options.unwritable)throw Error('unwritable');raw=v;storage.set(k,v)}};
  transportCapabilities(window);
  vm.runInNewContext(source,{window,document,navigator,localStorage,location,URL,Date,CustomEvent:class{}},{timeout:1000});
- return {window,document,navigator,scripts,cookies,storage,setRaw(value){raw=value},commands:()=>Array.from(window.gcsGa4Layer||[],a=>Array.from(a)),fire(n){for(const f of handlers[n]||[])f({key:'gcs_tracking_consent_v1'})}};
+ return {window,document,navigator,location,scripts,cookies,storage,setRaw(value){raw=value},commands:()=>Array.from(window.gcsGa4Layer||[],a=>Array.from(a)),fire(n){for(const f of handlers[n]||[])f({key:'gcs_tracking_consent_v1'})}};
 }
 export function assertPrivateLoader(f, route) {
  assert.deepEqual(f.scripts.map(s=>s.src),['https://www.googletagmanager.com/gtag/js?id='+ID+'&l=gcsGa4Layer']);

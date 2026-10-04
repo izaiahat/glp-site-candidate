@@ -15,6 +15,26 @@ test('fetch options oracle rejects unexpected options while retaining AbortSigna
  assertFetchOptions(options);
  assert.throws(()=>assertFetchOptions({...options,headers:{'X-Unexpected':'CANARY'}}),assert.AssertionError);
 });
+test('neutral TEST label is producer-owned and survives hash removal, denial and regrant',()=>{
+ const f=fixture({url:'https://glpclinicscout.com/privacy/#gcs-test'}),options=f.mockLoad();
+ for(const name of ['$pageview','scroll_75','affiliate_click']) {
+  const event=options.before_send({event:name,properties:{token:'TEST_PROJECT',is_test:false,answer:'CANARY',cs_click_id:'CANARY',gclid:'CANARY'}});
+  assert.equal(event.properties.is_test,true);
+  assert.equal(event.properties.$pathname,'/privacy/');
+  assert.doesNotMatch(JSON.stringify(event),/gcs-test|CANARY/);
+ }
+ f.window.location.hash='';
+ assert.equal(options.before_send({event:'$pageview',properties:{}}).properties.is_test,true);
+ f.window.GCSConsent.apply('denied');assert.equal(options.before_send({event:'$pageview',properties:{}}),null);
+ f.grant();assert.equal(options.before_send({event:'$pageview',properties:{}}).properties.is_test,true);
+ assert.equal(f.window.GCSAnalytics.clickIdFor('TEST'),null);
+ const ordinary=fixture(),normal=ordinary.mockLoad();
+ assert.equal(normal.before_send({event:'$pageview',properties:{is_test:true}}).properties.is_test,undefined);
+ ordinary.window.location.hash='#gcs-test';
+ assert.equal(normal.before_send({event:'$pageview',properties:{}}).properties.is_test,undefined);
+});
+for(const args of [{url:'https://glpclinicscout.com/quiz/provider-fit/#gcs-test'},{url:'https://glpclinicscout.com/privacy/#gcs-test',webdriver:true},{url:'https://glpclinicscout.com/privacy/#gcs-test',gpc:true},{url:'https://glpclinicscout.com/privacy/#gcs-test',stage:'candidate'}])test('neutral TEST never relaxes route, automation, GPC or export hold '+JSON.stringify(args),()=>{const f=fixture(args);f.grant();assert.equal(f.scripts.length,0);assert.equal(f.window.GCSAnalytics.event('scroll_75'),false)});
+
 const analytics=readFileSync(new URL('../assets/analytics.js',import.meta.url),'utf8');
 // MOCK SDK sinks only. No browser, network, grants outside this isolated context.
 export function fixture({url='https://glpclinicscout.com/',gpc=false,webdriver=false,stage='production-seal',saved=null,model='us-default-on'}={}) {

@@ -18,6 +18,10 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   const consentPreference=${consentPreference.toString()};
   const COOKIE='gcs_analytics_consent';
   const STORAGE='gcs_tracking_consent_v1';
+  // Fixed, identifier-free selector latched before either SDK can bootstrap.
+  // No storage, query propagation or caller-controlled event label.
+  const testDocument=location.hash==='#gcs-test';
+  const testNeutral=()=>location.origin==='https://glpclinicscout.com'&&['/','/providers/','/compare/','/privacy/','/privacy/cookies/','/terms/','/about/'].includes(location.pathname);
   let persistence='unknown',blocked=false,gpcLatched=navigator.globalPrivacyControl===true;
   function read(){try{const saved=JSON.parse(localStorage.getItem(STORAGE)||'null');if(saved?.version==='gcs-cookie-v3-explicit-opt-in'&&validChoice(saved.analytics))return {analytics:saved.analytics,advertising:'denied',version:VERSION,record_type:'preference_only',migrated_from:saved.version};return saved}catch{return null}}
   // Consent and export authority are separate: neither a grant nor a UI repair
@@ -63,7 +67,7 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   // referrer are never export properties and do not change this route decision.
   function eligibleRoute(){const p=location.pathname;if(/^\\/(?:intake|matches|results)(?:\\/|$)/.test(p))return false;if(/^\\/(?:quiz|scorecard|tools)(?:\\/|$)/.test(p))return ['/quiz/provider-fit/','/scorecard/','/tools/glp-1-cost-calculator/'].includes(p);return true}
   // Single runtime permission gate, replacing the historical operator prefix.
-  function exportsAllowed(purpose='analytics'){if(navigator.globalPrivacyControl===true&&!gpcLatched){gpcLatched=true;refresh()}const key=purpose==='ad_measurement'?'advertising':purpose;if(!['analytics','advertising'].includes(key))return false;const p=window.GCS_EXPORT_POLICY;return purposes()[key]==='granted'&&p?.schema==='glp-release-export-policy-v2'&&p.stage==='production-seal'&&p.third_party_exports===true&&!synthetic()&&eligibleRoute()}
+  function exportsAllowed(purpose='analytics'){if(navigator.globalPrivacyControl===true&&!gpcLatched){gpcLatched=true;refresh()}const key=purpose==='ad_measurement'?'advertising':purpose;if(!['analytics','advertising'].includes(key)||testDocument&&(key!=='analytics'||!testNeutral()))return false;const p=window.GCS_EXPORT_POLICY;return purposes()[key]==='granted'&&p?.schema==='glp-release-export-policy-v2'&&p.stage==='production-seal'&&p.third_party_exports===true&&!synthetic()&&eligibleRoute()}
   initializePreference();
   window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
   window.gtag('consent','default',{analytics_storage:exportsAllowed()?'granted':'denied',ad_storage:exportsAllowed('advertising')?'granted':'denied',ad_user_data:exportsAllowed('advertising')?'granted':'denied',ad_personalization:'denied'});
@@ -73,7 +77,9 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   function activeId(c){return localHost()?(c.debug_measurement_id||null):c.measurement_id}
   // GA4 has a separate exact ordinary-route, minimized page-view gate. This does not widen
   // PostHog/UI/advertising route eligibility or release the GTM container hold.
-  const ga4=(${ga4Transport.toString()})(()=>{if(navigator.globalPrivacyControl===true&&!gpcLatched){gpcLatched=true;refresh()}const p=window.GCS_EXPORT_POLICY;return effective()==='granted'&&p?.schema==='glp-release-export-policy-v2'&&p.stage==='production-seal'&&p.third_party_exports===true&&!synthetic()});
+  // GA TEST stays uncollected: developer exclusion/positive DebugView evidence
+  // is not established. The active internal filter is not a DebugView partition.
+  const ga4=(${ga4Transport.toString()})(()=>{if(testDocument)return false;if(navigator.globalPrivacyControl===true&&!gpcLatched){gpcLatched=true;refresh()}const p=window.GCS_EXPORT_POLICY;return effective()==='granted'&&p?.schema==='glp-release-export-policy-v2'&&p.stage==='production-seal'&&p.third_party_exports===true&&!synthetic()});
   function loadAnalytics(){const c=window.GCS_ANALYTICS||{};const id=activeId(c);if(!exportsAllowed()||!c.enabled||!id){c.consent='denied';return}c.consent='granted';c.active_measurement_id=id;if(id!=='G-2WQ42JY0WK')window['ga-disable-'+id]=true;window.GCS_GTM_HELD='A11 containment unbound';}
   // Clarity is unbound; replay is not authorized by a generic UI-event grant.
   function loadClarity(){return;}
@@ -190,7 +196,7 @@ export function createConsentRuntimeSource(adapterExpression='null',modelExpress
   document.addEventListener('focusin',focusClearance);
   window.addEventListener('resize',clearance,{passive:true});cleanupBanner=()=>{observer?.disconnect();if(clearanceFrame!==null)window.cancelAnimationFrame(clearanceFrame);window.removeEventListener?.('resize',clearance);document.removeEventListener?.('focusin',focusClearance);if(focusFrame!==null)window.cancelAnimationFrame(focusFrame)};
   root.addEventListener('click',e=>{const b=e.target.closest('[data-consent]');if(!b||b.disabled)return;const result=b.dataset.consent==='acknowledge'?acknowledge():apply(b.dataset.consent==='granted'?'granted':'denied');if(result.persistence==='failed'){updateControls(root);const status=root.querySelector('#gcs-consent-status');if(status)status.textContent='Tracking is off for this page. Your browser could not save the choice; it may not persist on another visit.'}})}
-  window.GCSConsent={apply,acknowledge,read,effective,purposes,model:()=>consentModel,advertisingStatus,whenSettled:()=>settled,allowsExports:exportsAllowed,refresh,open,persistenceStatus:()=>persistence};
+  window.GCSConsent={apply,acknowledge,read,effective,purposes,model:()=>consentModel,advertisingStatus,whenSettled:()=>settled,allowsExports:exportsAllowed,isTestDocument:()=>testDocument,refresh,open,persistenceStatus:()=>persistence};
   window.addEventListener?.('storage',e=>{if(e.key===STORAGE||e.key===null){sequence++;adsBlocked=!!advertisingAdapter;refresh()}});
   window.addEventListener?.('focus',refresh);window.addEventListener?.('pageshow',refresh);document.addEventListener('visibilitychange',refresh);
   document.addEventListener('click',e=>{if(e.target.closest?.('[data-consent-open], footer a[href^="/privacy/cookies/"]')){e.preventDefault();open()}});

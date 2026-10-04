@@ -7,6 +7,7 @@
     return;
   }
 
+  const testDocument = window.GCSConsent?.isTestDocument?.() === true;
   // Manual events carry no caller-provided properties. PostHog's last-mile
   // hook separately preserves its protocol envelope and anonymous visit/route
   // fields. This analytics permission never feeds the advertising lanes.
@@ -44,6 +45,7 @@
         token: properties.token,
         distinct_id: window.posthog?.get_distinct_id?.(),
         $process_person_profile: false,
+        ...(testDocument ? { is_test: true } : {}),
         $host: url.host,
         ...(reportRoute ? { $current_url: url.href, $pathname: url.pathname } : {}),
       },

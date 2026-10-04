@@ -9,6 +9,15 @@ test('R1 positive producer rejects an actual undeclared-cookie side effect',()=>
  assertPrivateLoader(integrated(source),'/about/');
  assert.throws(()=>assertPrivateLoader(integrated(mutant),'/about/'),/unapproved_ga_side_cookie/);
 });
+test('neutral TEST holds GA before bootstrap and remains held after hash removal or regrant',()=>{
+ for(const route of ORDINARY){
+  const f=integrated(source,{url:ORIGIN+route+'#gcs-test'});
+  assertHeld(f,'TEST '+route);
+  f.location.hash='';
+  f.window.GCSConsent.apply('granted');f.fire('scroll');
+  assertHeld(f,'TEST regrant '+route);
+ }
+});
 const saved=(changes={})=>JSON.stringify({version:'gcs-cookie-v4-distinct-purposes',record_type:'preference_only',analytics:'granted',advertising:'granted',...changes});
 for(const route of ORDINARY)test('R1 integrated exact ordinary route '+route,()=>assertPrivateLoader(integrated(source,{url:ORIGIN+route+'?PRIVATE_CANARY#PRIVATE_CANARY'}),route));
 test('R1 each nonredundant eligibility guard independently refuses an otherwise eligible lane',()=>{
