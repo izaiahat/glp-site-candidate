@@ -165,6 +165,11 @@
         property_denylist: ["$initial_referrer", "$referrer", "$title", "$initial_current_url", "$device_id", "$user_id"],
       });
       posthogInitialized = true;
+      // A reload after withdrawal retains the SDK's opt-out preference. Only
+      // the current producer-owned granted epoch may reopen it; init alone
+      // leaves every subsequent event dropped despite a native regrant.
+      if (consented() && window.posthog.has_opted_out_capturing?.() === true)
+        window.posthog.opt_in_capturing({captureEventName:false});
       for (const args of queue) if (consented()) window.posthog.capture(...args);
       queue.length = 0;
     });
