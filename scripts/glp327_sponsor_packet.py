@@ -20,7 +20,8 @@ LEGACY = Path('reports/ops/sponsor-machine-20261003')
 SURFACES = {'rate-card': 'rate-card.pdf', 'providers-sponsored-panel': 'placement-template.pdf',
             'paid-promo': 'promo-page-preview.pdf'}
 SOURCE_REQUIRED = {'src/paid-promo.mjs', 'src/sponsor-placement-candidate.mjs',
-                   'src/phase3-page-graph.mjs', 'assets/site-p3.css'}
+                   'src/phase3-page-graph.mjs', 'assets/site-p3.css',
+                   'src/sponsor-pricing.mjs', 'data/sponsor-pricing.json'}
 
 
 def digest(path):
@@ -129,9 +130,21 @@ def build_packet(site_root, business_root, capture_path, out, review_gate=None):
     if campaign.get('send_enabled') is not False or campaign.get('packet_sha256') is not None:
         raise ValueError('disabled unapproved campaign required')
     # Snapshot bytes before producing the attachment manifest. Recheck all at end.
-    paths = ['scripts/glp_sponsor_campaign.py', 'ops/sponsor-machine/campaign.json',
-             'ops/sponsor-machine/copy.json', str(LEGACY / 'NUIMAGE-DRAFT.md'),
-             str(LEGACY / 'OUTREACH-AND-FOLLOWUPS.md')]
+    paths = ['scripts/glp_sponsor_campaign.py', 'scripts/glp_sponsor_readiness.py',
+             'inbox_control_plane/control_plane.py', 'inbox_control_plane/sponsor_replies.py',
+             'ops/sponsor-machine/campaign.json', 'ops/sponsor-machine/copy.json']
+    pricing = json.loads(confined(site_root, 'data/sponsor-pricing.json').read_text())
+    copy = json.loads(confined(business_root, 'ops/sponsor-machine/copy.json').read_text())
+    expected = {'currency':pricing['currency'], 'initial_total':pricing['initial'],
+                'setup':pricing['setup'], 'initial_placement':pricing['placement'],
+                'term_hours':pricing['termHours'], 'optional_same_scope_renewal':pricing['renewal'],
+                'auto_charge':pricing['autoCharge']}
+    if copy.get('pricing') != expected or campaign.get('pricing') != expected:
+        raise ValueError('native price, current copy and campaign economics disagree')
+    if set(copy.get('variants',{})) != {'cold','established_affiliate'}:
+        raise ValueError('six current relationship-aware templates required')
+    if any(len(v)!=3 for v in copy['variants'].values()):
+        raise ValueError('six current relationship-aware templates required')
     pinned = {p: digest(confined(business_root, p)) for p in paths}
     old_manifest = json.loads(confined(business_root, 'ops/sponsor-machine/assets.json').read_text())
     out.mkdir(parents=True)
@@ -154,7 +167,7 @@ def build_packet(site_root, business_root, capture_path, out, review_gate=None):
                 'previous_manifest_sender_sha256': old_manifest.get('scripts/glp_sponsor_campaign.py'),
                 'send_enabled': False, 'installed': False, 'fable_acceptance': False,
                 'operator_approval': False, 'deployed': False,
-                'limits': 'Current exact rendering bytes; retained 2026-10-03 genuine scoped captures. PDFs produced now. Not a fresh browser run or release build.'}
+                'limits': 'Capture date/head and source hashes are in CAPTURE.json. Exact source-bound pixels only; no release, payment or send acceptance.'}
     dump(out / 'SOURCE-IDENTITY.json', identity)
     shutil.copyfile(capture_path, out / 'CAPTURE.json')
     source_dir = out / 'exact-source'
@@ -168,20 +181,20 @@ def build_packet(site_root, business_root, capture_path, out, review_gate=None):
     dump(out / 'SOURCE-IDENTITY.json', identity)
     review = ('# Current sponsor proposal — personal approval required\n\n'
               'OFFLINE ONLY. No emails, drafts, payment collection, installation or activation.\n\n'
-              '$200 initial 30-day pilot: $100 setup plus $100 placement/reporting. '
-              '720 consecutive hours from verified activation. $100 affirmative same-scope renewal; '
+              f"${pricing['initial']} initial 30-day pilot: ${pricing['setup']} setup plus ${pricing['placement']} placement/reporting. "
+              f"720 consecutive hours from verified activation. ${pricing['renewal']} affirmative same-scope renewal; "
               'no automatic renewal. US only; Fella and held providers excluded. '
               'One Sponsored directory panel plus one sponsored provider intro page, not two directory slots. '
               'Neutral Example Provider; no real sponsor or endorsed client. Independent rankings unchanged. '
               'No guaranteed audience, impressions, leads, sales or SEO.\n\n'
               'Attached rate-card.pdf, placement-template.pdf and promo-page-preview.pdf '
               'are current site-renderer captures, not live pages. All proposed sponsor routes remain undeployed.\n\n'
-              'Nu Image draft and outreach/follow-ups are retained byte-identical for personal review, '
-              'not approved or sent. Sender: partners@glpclinicscout.com. Registered job 3940adcf89f6 remains paused. '
-              '25-message daily ceiling, weekday 09:00 America/Los_Angeles, follow-ups days 4/10. '
+              'Nu Image remains excluded from this campaign. No old warm reply is included or authorized. '
+              'Sender: partners@glpclinicscout.com. Registered job 3940adcf89f6 remains paused. '
+              'Target 25 new providers daily plus separately capped due follow-ups, days 4/10. Current job cadence remains unchanged until approved. '
               'Any reply/bounce/opt-out/complaint or uncertain send stops the sequence.\n\n'
-              'Required decisions: Izaiah approves exact rates, three attachments, campaign and Nu Image exact reply; '
-              'designated Fable accepts unchanged native rendering through the existing exact-request route. '
+              'Required decisions: Izaiah approves exact successor rates, three attachments and campaign; '
+              'designated Fable accepts successor native rendering. Predecessor review is not successor approval. '
               'Parent owns installation, source-hash readback and separate release authority. '
               'No permission for paid-panel creative/link/payment is inferred from affiliate approval.\n\n'
               f'Site PR20 rendering head: {head}. Capture manifest: {digest(capture_path)}.\n'
@@ -199,8 +212,7 @@ def build_packet(site_root, business_root, capture_path, out, review_gate=None):
     capture_pdf(first, rows, business_root, first_only=True)
     text = out / 'operator-copy.pdf'
     texts = [('Approval gates and proposed terms', review),
-             ('Nu Image — exact unsent reply', (bundle / LEGACY / 'NUIMAGE-DRAFT.md').read_text()),
-             ('Campaign — exact outreach and follow-ups', (bundle / LEGACY / 'OUTREACH-AND-FOLLOWUPS.md').read_text())]
+             ('Campaign — six exact template sources; not Gmail drafts', json.dumps(copy,indent=2))]
     gate_files = []
     if review_gate is not None:
         gate = json.loads(Path(review_gate).read_text())

@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: '22'
       - name: Existing portable candidate export tests
-        run: node --test tests/candidate-export-policy.test.mjs tests/paid-promo.test.mjs tests/sponsor-placement-candidate.test.mjs tests/glp327-sponsor-design-system.test.mjs tests/glp327-sponsor-layouts.test.mjs
+        run: node --test tests/candidate-export-policy.test.mjs tests/paid-promo.test.mjs tests/sponsor-placement-candidate.test.mjs tests/glp327-sponsor-design-system.test.mjs tests/glp327-sponsor-layouts.test.mjs tests/glp327-sponsor-r4.test.mjs
       - name: Offline sponsor packet source and exact-byte attachment contracts
         run: |
           python3 -m venv "$RUNNER_TEMP/glp327-packet-venv"

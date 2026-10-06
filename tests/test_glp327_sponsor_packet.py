@@ -25,18 +25,25 @@ def fixture(root):
     subprocess.run(['git', 'init', '-q', str(site)], check=True)
     module = producer()
     sources = {}
+    rates=json.loads((ROOT/'data/sponsor-pricing.json').read_text())
+    economics={'currency':rates['currency'],'initial_total':rates['initial'],'setup':rates['setup'],
+               'initial_placement':rates['placement'],'term_hours':rates['termHours'],
+               'optional_same_scope_renewal':rates['renewal'],'auto_charge':rates['autoCharge']}
     for relative in module.SOURCE_REQUIRED:
         p = site / relative
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text('SYNTHETIC TEST SOURCE\n')
+        p.write_text(json.dumps(rates) if relative=='data/sponsor-pricing.json' else 'SYNTHETIC TEST SOURCE\n')
         sources[relative] = module.digest(p)
     subprocess.run(['git', '-C', str(site), 'add', '.'], check=True)
     subprocess.run(['git', '-C', str(site), '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
                     'commit', '-qm', 'synthetic fixture'], check=True)
     for relative, content in {
-        'ops/sponsor-machine/campaign.json': '{"send_enabled":false,"packet_sha256":null}',
-        'ops/sponsor-machine/copy.json': '{"sequence":[]}',
+        'ops/sponsor-machine/campaign.json': json.dumps({'send_enabled':False,'packet_sha256':None,'pricing':economics}),
+        'ops/sponsor-machine/copy.json': json.dumps({'pricing':economics,'variants':{v:[{'subject':'SYNTHETIC','body':'SYNTHETIC'} for _ in range(3)] for v in ('cold','established_affiliate')}}),
         'scripts/glp_sponsor_campaign.py': '# SYNTHETIC CURRENT SENDER\n',
+        'scripts/glp_sponsor_readiness.py': '# SYNTHETIC CONTACT INTERFACE\n',
+        'inbox_control_plane/control_plane.py': '# SYNTHETIC INBOX\n',
+        'inbox_control_plane/sponsor_replies.py': '# SYNTHETIC REPLY INTERFACE\n',
         'ops/sponsor-machine/assets.json': '{"scripts/glp_sponsor_campaign.py":"obsolete"}',
         str(module.LEGACY / 'NUIMAGE-DRAFT.md'): 'SYNTHETIC DRAFT — DO NOT SEND',
         str(module.LEGACY / 'OUTREACH-AND-FOLLOWUPS.md'): 'SYNTHETIC OUTREACH — DO NOT SEND',
@@ -61,6 +68,23 @@ def fixture(root):
     return site, business, capture
 
 class PacketProducerTests(unittest.TestCase):
+    def test_retained_predecessor_cannot_accept_successor_prices(self):
+        m=producer()
+        cap=ROOT/'reports/ops/sponsor-clean-layout-20261003/copy/captures/CAPTURE.json'
+        with self.assertRaisesRegex(ValueError,'missing shared site source bindings|capture source changed'):
+            m.validate_capture(ROOT,ROOT,cap)
+
+    def test_conflicting_economics_refuse_before_packet_creation(self):
+        m=producer()
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);site,business,cap=fixture(root)
+            data=json.loads((business/'ops/sponsor-machine/copy.json').read_text())
+            data['pricing']['initial_total']=200
+            m.dump(business/'ops/sponsor-machine/copy.json',data)
+            with self.assertRaisesRegex(ValueError,'economics disagree'):
+                m.build_packet(site,business,cap,root/'packet')
+            self.assertFalse((root/'packet').exists())
+
     def test_current_rendered_packet_has_maintained_producer(self):
         path = ROOT / 'scripts/glp327_sponsor_packet.py'
         self.assertTrue(path.is_file(), 'current rendered PDFs need a maintained producer, not an invented manifest')
@@ -86,6 +110,10 @@ class PacketProducerTests(unittest.TestCase):
             with zipfile.ZipFile(archive) as z:
                 self.assertEqual(len([p for p in z.namelist() if p.endswith('.png')]), 6)
                 self.assertIn('exact-source/assets/site-p3.css', z.namelist())
+                self.assertNotIn(str(m.LEGACY/'NUIMAGE-DRAFT.md'),z.namelist())
+                self.assertIn('inbox_control_plane/sponsor_replies.py',z.namelist())
+                review=z.read(str(m.LEGACY/'REVIEW.md')).decode()
+                self.assertIn('$500 initial',review);self.assertNotIn('$200',review);self.assertNotIn('$100',review)
                 self.assertEqual(z.read('glp327_sponsor_packet.py'), (ROOT/'scripts/glp327_sponsor_packet.py').read_bytes())
             self.assertEqual(result['sends'], 0)
             self.assertFalse(result['source']['operator_approval'])

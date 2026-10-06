@@ -240,7 +240,7 @@ const result = {
   status: checks.length === SURFACES.length * VIEWPORTS.length && checks.every((c) => c.status === "PASS") ? "PASS" : "FAIL",
   source,
   head: execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim(),
-  sourceHashes: Object.fromEntries(["src/paid-promo.mjs", "src/phase3-page-graph.mjs", "src/sponsor-placement-candidate.mjs", "assets/css-src/11-phase3.css", "assets/site.js", "scripts/build-staging.mjs", "scripts/glp327-capture.mjs", "scripts/glp327-check-controls.mjs", "assets/site-p3.css"].map(f => [f, sha(readFileSync(resolve(root, f)))])),
+  sourceHashes: Object.fromEntries(["src/sponsor-pricing.mjs", "data/sponsor-pricing.json", "src/paid-promo.mjs", "src/phase3-page-graph.mjs", "src/sponsor-placement-candidate.mjs", "assets/css-src/11-phase3.css", "assets/site.js", "scripts/build-staging.mjs", "scripts/glp327-capture.mjs", "scripts/glp327-check-controls.mjs", "assets/site-p3.css"].map(f => [f, sha(readFileSync(resolve(root, f)))])),
   scope: source === "scoped-render" ? "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; copy tokens finalized through deriveLiveProviders + resolveDerivedCounts (with the assertTalliesDerived gate), other write-time finalizers not applied. Not a release build." : "Registered build output in public/.",
   ...(source === "scoped-render" ? { finalizedTallies: { ...tallies, derivation: "deriveLiveProviders(data/program-registry.json, projected data/program-content-ledger.json) -> resolveDerivedCounts" } } : {}),
   // Repo release gates evaluated on these exact bytes; any finding fails its frames.

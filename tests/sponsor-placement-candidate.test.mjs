@@ -61,7 +61,7 @@ test("/providers/ captures finalize copy tokens through the build's registry-der
   assert.match(capture, /tallies\.LIVE_PROVIDER_COUNT = deriveLiveProviders\(programRegistry, ledgerPrograms\)\.liveProgramCount;/);
   assert.match(capture, /"\/providers\/": finalize\("providers\/index\.html", addSharedRuntime\(/);
   assert.match(capture, /if \(dom\.unresolvedTokens\.length\) failures\.push\("unresolved build token"\);/);
-  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/CAPTURE.json", import.meta.url), "utf8"));
   assert.equal(result.status, "PASS");
   assert.ok(Number.isInteger(result.finalizedTallies?.LIVE_PROVIDER_COUNT));
   for (const check of result.checks) assert.deepEqual(check.dom.unresolvedTokens, [], `${check.surface} ${check.viewport}`);

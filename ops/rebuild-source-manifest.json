@@ -6,28 +6,28 @@
       "callers": [
         "ops/GLP327-SPONSOR-PACKET.md"
       ],
-      "sha256": "f1cd25a27e8dc96a7ee2fd91512f388337166cc11114c1787b6611f4989da46d"
+      "sha256": "b440c42e2ed057fd6da660502982daddff1fa852db5ccddff26f0aa0213f4716"
     },
     "tests/test_glp327_sponsor_packet.py": {
       "kind": "test",
       "callers": [
         ".github/workflows/mirror-ci.yml"
       ],
-      "sha256": "a19598c8b974663622d094434390e65536f6e97e97e26ed0dca9ba4ccde8d452"
+      "sha256": "89d5cf9a1765cf118c8324ed635a351193847ddc7ffdf5d6a352052db7e5fb86"
     },
     "ops/GLP327-SPONSOR-PACKET.md": {
       "kind": "procedure",
       "callers": [
         "GLP-327 parent integration"
       ],
-      "sha256": "4609a1de06ad353b3af9758349cf5629d96cdf288ca27b630131377792ffcb4b"
+      "sha256": "5806f2f4cd9a0413ee66f4a0d0d4f67199488a9335f41d74807142ef504e56ac"
     },
     ".github/workflows/mirror-ci.yml": {
       "kind": "ci",
       "callers": [
         "GitHub PR exact-head checks"
       ],
-      "sha256": "259cc90cec97e6e08b4e6b2cf111d34eddd1247d30a46509968a3d917065465b"
+      "sha256": "716efb4b3c2f98bd4694a779b20352eb386dba1b9cd0bcdf268c68c79bebd544"
     },
     "src/paid-promo.mjs": {
       "kind": "site_source",
@@ -35,7 +35,7 @@
         "scripts/build-staging.mjs",
         "scripts/render-paid-promo.mjs"
       ],
-      "sha256": "cb1be87a0e1ca7352347e290aad6ce27f487e8db2863a9ee13e69f5f987171d6"
+      "sha256": "0085c1841c1ed82dc1628699e6b987a5cd404d5050add9b95ee1de220eec4007"
     },
     "src/sponsor-placement-candidate.mjs": {
       "kind": "site_source",
@@ -50,22 +50,57 @@
       "callers": [
         "node --test"
       ],
-      "sha256": "fe4fec918136436f220b622e67524f04ae5890c07c5d0d0f7fe1c7f70cc3293d"
+      "sha256": "d41c4ad68ea050375e3dcc143b6958a1803b6153ed178c9d055730eecd7ce3ff"
     },
     "tests/sponsor-placement-candidate.test.mjs": {
       "kind": "test",
       "callers": [
         "node --test"
       ],
-      "sha256": "9c5ef02d5701e47532acf3a72a26bad1ed7367fa696432fa0e8d92710864cd93"
+      "sha256": "074e938791b87f9bead11ba2137eb0d895734805423d8231164caef4e238e644"
     },
     "tests/glp327-sponsor-layouts.test.mjs": {
       "kind": "test",
       "callers": [
         "node --test"
       ],
-      "sha256": "ce597ae6e0615206b76c57bfe7b1483c43aa52929d640d7776007e3159b5c0d3"
+      "sha256": "4b47de2d79b25dee724c75831349b742bd7ba242310ee42b6ac940d52f2894dd"
+    },
+    "data/sponsor-pricing.json": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "2d977c8ed9fda6c915f4f323b9f251f6e1fce15064ba710d30162af88be47ac4"
+    },
+    "src/sponsor-pricing.mjs": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "510753de0e4c7c68890058ce35c09637b70dc07a77603e238bfc07d6603a4915"
+    },
+    "tests/glp327-sponsor-r4.test.mjs": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "69af76ce3d20c812ddbdd37a9c1fe148061be32253933bed3c1ae2f9f7fb80c9"
+    },
+    "tests/fixtures/sponsor-payment.mjs": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "00b5c394d5995ed5e33e4736ae49d79d5bfb88e5133344dcf1c03bbfe2fcc4df"
+    },
+    "scripts/glp327-capture.mjs": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "c57c46ba6e2d990d3d25b7514f5adb91b03bd48e667907b7c6784ada526e88c3"
     }
   },
-  "tracked_count": 10
+  "tracked_count": 15
 }

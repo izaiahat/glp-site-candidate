@@ -2,6 +2,7 @@
 // matched the site but giant empty headings wasted the first screen, price,
 // offer and CTA were buried, and the /providers/ Sponsored slot was invisible
 // on mobile. One regression per layout, plus the committed fold geometry.
+import {paymentFixture} from './fixtures/sponsor-payment.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -23,10 +24,10 @@ test("rate card: a short title, then price, terms, both deliverables, renewal, b
   assert.deepEqual(headings(html), ["Sponsor placements"]);
   assert.doesNotMatch(html, /p3-index-hero|<h1[^>]*>Visibility/);
   const offer = section(html, "data-sponsor-offer");
-  for (const text of ["$200", " / 30 days", "$100 setup + $100 placement and reporting",
+  for (const text of ["$500", " / 30 days", "$250 setup + $250 placement and reporting",
     "One Sponsored directory panel.",
     "One sponsored provider intro page.",
-    "Same-scope renewal: $100 / 30 days.", "No automatic renewal or recurring charge.",
+    "Same-scope renewal: $250 / 30 days.", "No automatic renewal or recurring charge.",
     'href="mailto:partners@glpclinicscout.com" data-sponsor-booking-cta>Discuss a placement</a>',
     "Independent rankings do not change. Sponsorship does not buy a score, favorable review or SEO backlink."]) assert.ok(offer.includes(text), text);
   inOrder(html, ["data-sponsor-offer", "data-sponsor-example", "data-sponsor-details", "data-sponsor-disclaimer"]);
@@ -34,7 +35,7 @@ test("rate card: a short title, then price, terms, both deliverables, renewal, b
   // visible and only the explanatory audience note uses an accordion.
   const details = html.slice(html.indexOf("data-sponsor-details"));
   for (const text of ["Approved provider identity, factual creative and one approved CTA", "One copy correction round, plus required safety corrections", "720 consecutive hours from verified activation",
-    "Delivery and available aggregate measurement report within five business days of term close.", "No traffic, leads, sales or SEO guarantee. Subject to available inventory and final review.",
+    "Delivery report within five business days of term close; separately labeled aggregate diagnostics only when supported.", "No traffic, leads, sales or SEO guarantee. Subject to available inventory and final review.",
     "US providers only.", "Payment is confirmed after a reviewed order and readiness checks, before activation.", "Prices before any applicable tax; final tax-inclusive quote must be agreed.",
     "Full refund if no conforming placement launches; refund or mutually agreed equivalent extension for undelivered time.", "We do not have a verified audience size or sponsor impression estimate for this proposal. Site visits are not ad impressions."]) assert.ok(details.includes(text), text);
   assert.ok(details.indexOf("Full refund if no conforming placement launches") < details.indexOf("<details"), "financial terms are not collapsed");
@@ -57,7 +58,7 @@ test("paid promo: one provider identity, concise paid intro, primary action and 
   for (const [, , slot] of slots) assert.match(slot, /^Awaiting /);
   assert.doesNotMatch(html, /\$\d|\d\s*%|verified provider|licensed (?:provider|clinician)/i);
   const start = Date.now() - 3600000;
-  const live = renderPromo({ provider: "Example", slug: "example", operator_approval: "reviewed", partner_creative_approval: "reviewed", payment_confirmed: true, eligibility_approved: true, inventory_reserved: true, held: false, us_provider: true, starts_at: new Date(start).toISOString(), ends_at: new Date(start + 720 * 3600000).toISOString(), destination: "https://example.com/" }, { preview: false });
+  const live = renderPromo({ ...paymentFixture(), provider: "Example", slug: "example", operator_approval: "reviewed", partner_creative_approval: "reviewed", eligibility_approved: true, inventory_reserved: true, held: false, us_provider: true, starts_at: new Date(start).toISOString(), ends_at: new Date(start + 720 * 3600000).toISOString(), destination: "https://example.com/" }, { preview: false });
   assert.doesNotMatch(live, /data-sponsor-fact-slot/, "template slots are preview-only");
   assert.match(live, /rel="sponsored nofollow noopener"/);
 });
@@ -98,7 +99,7 @@ test("/providers/ preview: compact intro and collapsed extended filters put the 
 });
 
 test("clutter regression: one closed filter row and genuinely early commercial actions, not merely below 844px", () => {
-  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/CAPTURE.json", import.meta.url), "utf8"));
   for (const c of result.checks) {
     assert.equal(c.interactions.status, "PASS", `${c.surface}/${c.viewport}`);
     if (c.surface === "providers-sponsored-panel") {
@@ -117,7 +118,7 @@ test("clutter regression: one closed filter row and genuinely early commercial a
 });
 
 test("committed captures prove the fold, h1 limits and overflow for all six frames", () => {
-  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/CAPTURE.json", import.meta.url), "utf8"));
   assert.equal(result.status, "PASS");
   assert.deepEqual(result.gateFindings, []);
   for (const [file, sha] of Object.entries(result.sourceHashes)) {
