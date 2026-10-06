@@ -239,6 +239,7 @@ def build_packet(site_root, business_root, capture_path, out, review_gate=None):
     for filename in SURFACES.values():
         writer.append(assets / filename)
     writer.add_attachment(archive.name, archive.read_bytes())
+    writer.compress_identical_objects(remove_duplicates=True, remove_unreferenced=True)
     pdf = out / 'sponsor-review-packet.pdf'
     with pdf.open('wb') as f:
         writer.write(f)
