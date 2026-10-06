@@ -58,9 +58,7 @@ test("paid promo: one provider identity, concise paid intro, primary action and 
   for (const [, , slot] of slots) assert.match(slot, /^Awaiting /);
   assert.doesNotMatch(html, /\$\d|\d\s*%|verified provider|licensed (?:provider|clinician)/i);
   const start = Date.now() - 3600000;
-  const live = renderPromo({ ...paymentFixture(), provider: "Example", slug: "example", operator_approval: "reviewed", partner_creative_approval: "reviewed", eligibility_approved: true, inventory_reserved: true, held: false, us_provider: true, starts_at: new Date(start).toISOString(), ends_at: new Date(start + 720 * 3600000).toISOString(), destination: "https://example.com/" }, { preview: false });
-  assert.doesNotMatch(live, /data-sponsor-fact-slot/, "template slots are preview-only");
-  assert.match(live, /rel="sponsored nofollow noopener"/);
+  assert.throws(() => renderPromo({ ...paymentFixture(), provider: "Example", slug: "example", operator_approval: "reviewed", partner_creative_approval: "reviewed", eligibility_approved: true, inventory_reserved: true, held: false, us_provider: true, starts_at: new Date(start).toISOString(), ends_at: new Date(start + 720 * 3600000).toISOString(), destination: "https://example.com/" }, { preview: false }), /authenticated payment required/, "fixture JSON cannot authorize live rendering");
 });
 
 test("/providers/ preview: compact intro and collapsed extended filters put the slot before independent results; records, order and disclosures unchanged", () => {
@@ -136,6 +134,13 @@ test("committed captures prove the fold, h1 limits and overflow for all six fram
     assert.ok(check.dom.h1.length && check.dom.h1.every((h) => h.fontSize <= (check.viewport === "desktop" ? 48 : 32)), `${where} h1`);
     assert.ok(check.dom.scrollWidth <= check.width + 1, `${where} overflow`);
     assert.deepEqual(check.a11y, [], `${where} axe`);
+    if (check.surface === "providers-sponsored-panel" && check.pageImageScope === "full page") {
+      assert.equal(check.fullPagePaintAudit?.method, "native-expanded-viewport");
+      assert.deepEqual(check.fullPagePaintAudit.skippedAutoNodes, [], `${where} no unpainted auto-contained cards`);
+      if (check.viewport === "desktop") assert.ok(check.fullPagePaintAudit.autoNodeCount > 0, `${where} audited actual deferred card nodes`);
+      else assert.ok(check.fullPagePaintAudit.autoNodeCount >= 0);
+      assert.ok(check.fullPagePaintAudit.height >= check.fullPagePaintAudit.autoNodeMaxBottom, `${where} all deferred nodes inside native paint viewport`);
+    }
     assert.match(check.viewportImage, /-viewport\.png$/);
     for (const image of [check.viewportImage, check.pageImage]) assert.ok(existsSync(new URL(`../${image}`, import.meta.url)), image);
   }

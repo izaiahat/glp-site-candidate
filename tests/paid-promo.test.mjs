@@ -33,9 +33,7 @@ test('live page fails closed without readiness and preserves rel sponsorship',()
  const start=Date.now()-3600000;
  const order={provider:'Example',slug:'example',operator_approval:'reviewed',partner_creative_approval:'reviewed',payment_confirmed:true,eligibility_approved:true,inventory_reserved:true,held:false,us_provider:true,starts_at:new Date(start).toISOString(),ends_at:new Date(start+720*3600000).toISOString(),destination:'https://example.com/',affiliate:true};
  Object.assign(order,paymentFixture());
- const html=renderPromo(order,{preview:false});
- assert.match(html,/rel="sponsored nofollow noopener"/);
- assert.match(html,/data-sponsor-ad-disclosure>Paid for by Example\. We may also earn a commission if you use this link\./);
+ assert.throws(()=>renderPromo(order,{preview:false}),/payment|activation/i,'synthetic fixture is never live payment proof');
  for(const field of ['operator_approval','partner_creative_approval','payment_verification','reviewed_order','eligibility_approved','inventory_reserved']) assert.throws(()=>renderPromo({...order,[field]:false},{preview:false}),field);
  assert.throws(()=>renderPromo({...order,provider:'Fella Health'},{preview:false}));
  assert.throws(()=>renderPromo({...order,held:true},{preview:false}));

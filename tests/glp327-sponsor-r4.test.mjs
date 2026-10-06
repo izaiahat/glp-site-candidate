@@ -14,9 +14,14 @@ test('r4 total, split and optional renewal replace every active price without la
  assert.equal(refundQuote({kind:'initial',launched:true,undeliveredHours:360}).status,'manual_review');
  assert.throws(()=>refundQuote({kind:'initial',launched:true,undeliveredHours:721}));
 });
+test('self-authenticated JSON and caller rehashes never authorize a paid placement',()=>{
+ const fixture=paymentFixture();
+ for(const delta of [{},{provider:'Different Provider',payer_id:'OTHER'},{order_kind:'nonsense'},{amount:'540.00',tax:'40.00'}])
+  assert.equal(paymentVerified({...fixture,...delta}),false);
+});
 test('a payment boolean or screenshot is not authenticated payment evidence',()=>{
  const forged={reviewed_order:true,order_reference:'R1',payment_verification:{status:'verified',payment_verified:true,source:'paypal_live_authenticated_capture_readback',order_reference:'R1',capture_id:'C1',currency:'USD',amount:'500.00',payee:'ops@glpclinicscout.com',receipt_sha256:'a'.repeat(64)}};
- const valid=paymentFixture();assert.equal(paymentVerified(valid),true);
+ const valid=paymentFixture();assert.equal(paymentVerified(valid),false);
  assert.equal(paymentVerified({...valid,order_reference:'REPLAY-OTHER-ORDER'}),false);
  assert.equal(paymentVerified({...valid,merchant_id:'OTHER-ACCOUNT'}),false);
  valid.payment_verification.receipt_json+=' ';assert.equal(paymentVerified(valid),false);

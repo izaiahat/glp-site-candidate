@@ -42,6 +42,7 @@ def fixture(root):
         'ops/sponsor-machine/copy.json': json.dumps({'pricing':economics,'variants':{v:[{'subject':'SYNTHETIC','body':'SYNTHETIC'} for _ in range(3)] for v in ('cold','established_affiliate')}}),
         'scripts/glp_sponsor_campaign.py': '# SYNTHETIC CURRENT SENDER\n',
         'scripts/glp_sponsor_readiness.py': '# SYNTHETIC CONTACT INTERFACE\n',
+        'scripts/bouncer_shared_account_guard.py': '# SYNTHETIC EXISTING ACCOUNT CLIENT\n',
         'inbox_control_plane/control_plane.py': '# SYNTHETIC INBOX\n',
         'inbox_control_plane/sponsor_replies.py': '# SYNTHETIC REPLY INTERFACE\n',
         'ops/sponsor-machine/assets.json': '{"scripts/glp_sponsor_campaign.py":"obsolete"}',
@@ -101,6 +102,7 @@ class PacketProducerTests(unittest.TestCase):
             result = m.build_packet(site, business, cap, out)
             manifest = json.loads(Path(result['installation_manifest']).read_text())
             self.assertEqual(manifest['scripts/glp_sponsor_campaign.py'], m.digest(business / 'scripts/glp_sponsor_campaign.py'))
+            self.assertEqual(manifest['scripts/bouncer_shared_account_guard.py'],m.digest(business / 'scripts/bouncer_shared_account_guard.py'))
             self.assertNotEqual(manifest['scripts/glp_sponsor_campaign.py'], 'obsolete')
             for relative, sha in manifest.items():
                 self.assertEqual(m.digest(out / 'installation-proposal' / relative), sha)

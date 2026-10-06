@@ -201,7 +201,27 @@ try {
         : [];
       const bounded = dom.pageImageBottom && !providersFullPage;
       const fullPath = resolve(out, bounded ? `${surface.key}-${name}-${width}-page-through-first-results.png` : `${surface.key}-${name}-${width}-full.png`);
+      // captureBeyondViewport skips auto-contained offscreen cards. Paint the
+      // supplementary directory image in a native expanded viewport, without
+      // injecting CSS or changing source. First-screen pixels stay untouched.
+      let fullPagePaintAudit;
+      if (!bounded && surface.key === "providers-sponsored-panel") {
+        const paintHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+        await page.setViewportSize({ width, height: paintHeight });
+        await page.evaluate(() => new Promise(ok => requestAnimationFrame(() => requestAnimationFrame(ok))));
+        fullPagePaintAudit = await page.evaluate(() => {
+          const nodes = [...document.querySelectorAll("main *")].filter(e =>
+            getComputedStyle(e).contentVisibility === "auto" && e.getBoundingClientRect().width > 0 && e.getBoundingClientRect().height > 0);
+          return { method: "native-expanded-viewport", width: innerWidth, height: innerHeight,
+            documentHeight: document.documentElement.scrollHeight, autoNodeCount: nodes.length,
+            autoNodeMaxBottom: Math.max(0, ...nodes.map(e => e.getBoundingClientRect().bottom)),
+            skippedAutoNodes: nodes.filter(e => !e.checkVisibility({ contentVisibilityAuto: true })).map(e => e.id || e.className) };
+        });
+        if (fullPagePaintAudit.skippedAutoNodes.length || fullPagePaintAudit.height < fullPagePaintAudit.autoNodeMaxBottom)
+          throw new Error(`Incomplete full-page native paint: ${JSON.stringify(fullPagePaintAudit)}`);
+      }
       const fullPng = await page.screenshot({ path: fullPath, fullPage: true, animations: "disabled", ...(bounded ? { clip: { x: 0, y: 0, width, height: dom.pageImageBottom } } : {}) });
+      if (fullPagePaintAudit) { await page.setViewportSize({ width, height }); await page.evaluate(() => scrollTo(0, 0)); }
       const failures = [];
       if (gateFindings.some((finding) => finding.route === surface.route)) failures.push("validate:email-aliases");
       if (response?.status() !== 200 || !dom.siteCssLoaded || !dom.header || !dom.footer) failures.push("shared site shell/stylesheet");
@@ -225,7 +245,7 @@ try {
       if (blocked.length) failures.push("unexpected external request");
       const { interactions, expandedImages } = await checkControls({ page, browser, width, height, name, surface, origin: base, out, root, axe });
       if (interactions.status !== "PASS") failures.push(`controls: ${interactions.error}`);
-      checks.push({ surface: surface.key, route: surface.route, viewport: name, width, height, status: failures.length ? "FAIL" : "PASS", failures, interactions, expandedImages,
+      checks.push({ surface: surface.key, route: surface.route, viewport: name, width, height, status: failures.length ? "FAIL" : "PASS", failures, interactions, expandedImages, ...(fullPagePaintAudit ? { fullPagePaintAudit } : {}),
         viewportImage: viewportPath.replace(root + sep, ""), viewportImageSha256: sha(viewportPng), pageImage: fullPath.replace(root + sep, ""), pageImageSha256: sha(fullPng),
         pageImageScope: bounded ? `top-anchored, 0-${dom.pageImageBottom}px of ${dom.documentHeight}px (through the first independent results row)` : `full page${expanded.length ? `, secondary terms expanded (${expanded.join(", ")})` : ""}`,
         viewportImageScope: "unscrolled first viewport, accordions collapsed",

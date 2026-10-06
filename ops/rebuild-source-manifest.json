@@ -6,14 +6,14 @@
       "callers": [
         "ops/GLP327-SPONSOR-PACKET.md"
       ],
-      "sha256": "b440c42e2ed057fd6da660502982daddff1fa852db5ccddff26f0aa0213f4716"
+      "sha256": "2997d4904f7e3217ba57e6806f4f145dc5bd7a3b43d03901a1cbc8480efcfa14"
     },
     "tests/test_glp327_sponsor_packet.py": {
       "kind": "test",
       "callers": [
         ".github/workflows/mirror-ci.yml"
       ],
-      "sha256": "89d5cf9a1765cf118c8324ed635a351193847ddc7ffdf5d6a352052db7e5fb86"
+      "sha256": "fde54d33b414f06d186bd4a70144fd5606c24d56dfdfb3212bc522c44f95ea50"
     },
     "ops/GLP327-SPONSOR-PACKET.md": {
       "kind": "procedure",
@@ -50,7 +50,7 @@
       "callers": [
         "node --test"
       ],
-      "sha256": "d41c4ad68ea050375e3dcc143b6958a1803b6153ed178c9d055730eecd7ce3ff"
+      "sha256": "f11cc2e4abf23af358f8b082bcb4552555d82474278b9f7e69cb3d349babdb15"
     },
     "tests/sponsor-placement-candidate.test.mjs": {
       "kind": "test",
@@ -64,7 +64,7 @@
       "callers": [
         "node --test"
       ],
-      "sha256": "4b47de2d79b25dee724c75831349b742bd7ba242310ee42b6ac940d52f2894dd"
+      "sha256": "5b44aa78b1558bb47dcb13670089b463cc2631c4203ca4fbdb865918073e34d5"
     },
     "data/sponsor-pricing.json": {
       "kind": "sponsor_source",
@@ -78,14 +78,14 @@
       "callers": [
         "GLP327 successor source/capture checks"
       ],
-      "sha256": "510753de0e4c7c68890058ce35c09637b70dc07a77603e238bfc07d6603a4915"
+      "sha256": "c8296a5dac5f62f9526638f94b7e253cf8bfe18d8592710c18843084af058e46"
     },
     "tests/glp327-sponsor-r4.test.mjs": {
       "kind": "sponsor_source",
       "callers": [
         "GLP327 successor source/capture checks"
       ],
-      "sha256": "69af76ce3d20c812ddbdd37a9c1fe148061be32253933bed3c1ae2f9f7fb80c9"
+      "sha256": "67a2ed537ba6201a2fbff8c5ddfcd0dcd757da96ae6c7c382ce508e44ac2ecd4"
     },
     "tests/fixtures/sponsor-payment.mjs": {
       "kind": "sponsor_source",
@@ -99,7 +99,7 @@
       "callers": [
         "GLP327 successor source/capture checks"
       ],
-      "sha256": "c57c46ba6e2d990d3d25b7514f5adb91b03bd48e667907b7c6784ada526e88c3"
+      "sha256": "287990466c499b1aad25257f6429da28851bd1ca31071ffb42a385f83b0632cf"
     }
   },
   "tracked_count": 15
