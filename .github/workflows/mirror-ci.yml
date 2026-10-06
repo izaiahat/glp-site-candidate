@@ -40,6 +40,12 @@ jobs:
           node-version: '22'
       - name: Existing portable candidate export tests
         run: node --test tests/candidate-export-policy.test.mjs tests/paid-promo.test.mjs tests/sponsor-placement-candidate.test.mjs tests/glp327-sponsor-design-system.test.mjs tests/glp327-sponsor-layouts.test.mjs
+      - name: Offline sponsor packet source and exact-byte attachment contracts
+        run: |
+          python3 -m venv "$RUNNER_TEMP/glp327-packet-venv"
+          "$RUNNER_TEMP/glp327-packet-venv/bin/python" -m pip install reportlab==5.0.1 pypdf==6.19.0 pillow==12.3.0
+          mkdir -p "$RUNNER_TEMP/glp327-packet-fixtures"
+          TMPDIR="$RUNNER_TEMP/glp327-packet-fixtures" "$RUNNER_TEMP/glp327-packet-venv/bin/python" -m unittest discover -s tests -p test_glp327_sponsor_packet.py -v
       - name: Pricing manifest schema and fail-closed coverage tests
         run: node --test tests/pricing-deployed-row-schema.test.mjs tests/d2f-coverage-floor.test.mjs
       - name: Affiliate relationship synchronization contracts

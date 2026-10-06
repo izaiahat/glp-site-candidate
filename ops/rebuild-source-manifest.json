@@ -1,6 +1,34 @@
 {
   "description": "GLP327 sponsor-copy source subset in the site mirror; not a complete release manifest or runtime deployment receipt.",
   "files": {
+    "scripts/glp327_sponsor_packet.py": {
+      "kind": "offline_packet_producer",
+      "callers": [
+        "ops/GLP327-SPONSOR-PACKET.md"
+      ],
+      "sha256": "523ec91193e2be9dccddb3011abf23d01fe5aa9e4e3f0fb590c5771f88ff77f6"
+    },
+    "tests/test_glp327_sponsor_packet.py": {
+      "kind": "test",
+      "callers": [
+        ".github/workflows/mirror-ci.yml"
+      ],
+      "sha256": "a19598c8b974663622d094434390e65536f6e97e97e26ed0dca9ba4ccde8d452"
+    },
+    "ops/GLP327-SPONSOR-PACKET.md": {
+      "kind": "procedure",
+      "callers": [
+        "GLP-327 parent integration"
+      ],
+      "sha256": "4609a1de06ad353b3af9758349cf5629d96cdf288ca27b630131377792ffcb4b"
+    },
+    ".github/workflows/mirror-ci.yml": {
+      "kind": "ci",
+      "callers": [
+        "GitHub PR exact-head checks"
+      ],
+      "sha256": "259cc90cec97e6e08b4e6b2cf111d34eddd1247d30a46509968a3d917065465b"
+    },
     "src/paid-promo.mjs": {
       "kind": "site_source",
       "callers": [
@@ -39,5 +67,5 @@
       "sha256": "ce597ae6e0615206b76c57bfe7b1483c43aa52929d640d7776007e3159b5c0d3"
     }
   },
-  "tracked_count": 6
+  "tracked_count": 10
 }
