@@ -1,0 +1,226 @@
+{
+  "status": "PASS_NATIVE_CAPTURE_NOT_RELEASE_OR_DESIGN_ACCEPTANCE",
+  "capture_manifest": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/CAPTURE.json",
+  "capture_manifest_sha256": "966175832c1358c9aa8ffe549a2b30b9f59e4a04c42bcb3f2d7982a78c89f15d",
+  "captured_source_head": "96dbead9a775ed8ac37de00a72c9718a18fecc63",
+  "capture_producer_sha256": "287990466c499b1aad25257f6429da28851bd1ca31071ffb42a385f83b0632cf",
+  "viewport_count": 6,
+  "full_page_count": 6,
+  "supporting_control_image_count": 6,
+  "png_count": 18,
+  "images": [
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/paid-promo-desktop-1440-full.png",
+      "width": 1440,
+      "height": 1937,
+      "bytes": 324923,
+      "sha256": "ea95a939dda9441c35ba01877317a12d893259f1001664fe0dea2db82a29fbd7"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/paid-promo-desktop-1440x1000-viewport.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 244292,
+      "sha256": "da6d87fe77e12278d223d92ef55d12ecbbf13e7b0d8e7f37cc7cd73787f0e8eb"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/paid-promo-mobile-390-full.png",
+      "width": 390,
+      "height": 3476,
+      "bytes": 276299,
+      "sha256": "8c98386c1a3f7a63c0006efb3db5a72dd8ab586e1299b0f975f13d28f0412926"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/paid-promo-mobile-390x844-viewport.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 142392,
+      "sha256": "834b48550f39dc4860ba87455e3de176be68fb4ad637f4f76f5ade520208b435"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/providers-sponsored-panel-desktop-1440-full.png",
+      "width": 1440,
+      "height": 42116,
+      "bytes": 5949657,
+      "sha256": "d4fc8f20bd259439a61134dd192329116ee6149fd63685ac529d186a4beaf008"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/providers-sponsored-panel-desktop-1440x1000-viewport.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 213844,
+      "sha256": "e46d6421b724e9b63089081bb6b6ee5cd3c45ae482468b9f5f70062e08ad1c2c"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/providers-sponsored-panel-desktop-filters-expanded.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 167387,
+      "sha256": "d13dc955c95c06c75ba1a4b2ef1a4f5d368739a243e100a83499e84ba0bd8ee0"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/providers-sponsored-panel-desktop-filters-nojs.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 137934,
+      "sha256": "ee88e274f3dbb2ce8b8386d7f5531611d27c0ce4608c83d6783e1b4218c81d58"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/providers-sponsored-panel-mobile-390-full.png",
+      "width": 390,
+      "height": 75754,
+      "bytes": 5329958,
+      "sha256": "f0eda113115d708a8da2e2afdbdd37b7cec6c9ddd59d3336f1ea10ed026dd559"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/providers-sponsored-panel-mobile-390x844-viewport.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 86666,
+      "sha256": "1cec7c45b6faecb7f1be10341829c7f3a03db11175f7993bdb236a4bf7541ddc"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/providers-sponsored-panel-mobile-filters-expanded.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 58871,
+      "sha256": "a1df2b505628c2c522215b3725d776c6c5a4a4a1a85993debe6265971321750e"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/providers-sponsored-panel-mobile-filters-nojs.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 60979,
+      "sha256": "f318b70c486668a0fb59fa3f6adbb0aa11a346e709e3f3e0bf91e325e0739a72"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/rate-card-desktop-1440-full.png",
+      "width": 1440,
+      "height": 2843,
+      "bytes": 513011,
+      "sha256": "1246f13279aedbe190962a4e59a8a24bbf983d791c2bdc8081d0ff968dca1318"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/rate-card-desktop-1440x1000-viewport.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 344885,
+      "sha256": "49de2e30c83409cf26fa70d1d8a1367820267e9bb563ef63abcd607ce0aa21bd"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/rate-card-desktop-audience-expanded.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 96961,
+      "sha256": "7f9b55fca903dd124fd0558a463ac25046d6abe288e6c0bd036a4f0b1fc5d40c"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/rate-card-mobile-390-full.png",
+      "width": 390,
+      "height": 4749,
+      "bytes": 405319,
+      "sha256": "5a0cd2a0b448badf537c3c9d0af36614df7e0ad88ea4cc7b1e76f89869ad6356"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/rate-card-mobile-390x844-viewport.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 166270,
+      "sha256": "c4d997df82cbbe1678f1455a0447ad6a86df63072c22947a90c90e0a3d2617c0"
+    },
+    {
+      "path": "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/rate-card-mobile-audience-expanded.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 66700,
+      "sha256": "0deb32274db2fdec960a828ff084abde684e941e1f18a4ccb272baef72e63152"
+    }
+  ],
+  "html_byte_delta_from_frozen_r4": {
+    "rate": {
+      "old_sha256": "998309d352021ed317078b96f9e1cc9e773655f8b14bd26c80d14f4f8da4644a",
+      "current_sha256": "998309d352021ed317078b96f9e1cc9e773655f8b14bd26c80d14f4f8da4644a",
+      "bytes_equal": true
+    },
+    "promo": {
+      "old_sha256": "40771d00c41aa6818254e02d312aff48f0708eaaa4c8b3edcc25772b5c581e87",
+      "current_sha256": "40771d00c41aa6818254e02d312aff48f0708eaaa4c8b3edcc25772b5c581e87",
+      "bytes_equal": true
+    }
+  },
+  "source_hash_deltas_from_initial_native_attempt": {
+    "src/sponsor-pricing.mjs": {
+      "before": "510753de0e4c7c68890058ce35c09637b70dc07a77603e238bfc07d6603a4915",
+      "after": "c8296a5dac5f62f9526638f94b7e253cf8bfe18d8592710c18843084af058e46"
+    },
+    "scripts/glp327-capture.mjs": {
+      "before": "c57c46ba6e2d990d3d25b7514f5adb91b03bd48e667907b7c6784ada526e88c3",
+      "after": "287990466c499b1aad25257f6429da28851bd1ca31071ffb42a385f83b0632cf"
+    }
+  },
+  "pixel_byte_deltas_from_initial_native_attempt": [
+    {
+      "surface": "rate-card",
+      "viewport": "desktop",
+      "viewport_sha256_equal": true,
+      "full_page_sha256_equal": true
+    },
+    {
+      "surface": "rate-card",
+      "viewport": "mobile",
+      "viewport_sha256_equal": true,
+      "full_page_sha256_equal": true
+    },
+    {
+      "surface": "providers-sponsored-panel",
+      "viewport": "desktop",
+      "viewport_sha256_equal": true,
+      "full_page_sha256_equal": false
+    },
+    {
+      "surface": "providers-sponsored-panel",
+      "viewport": "mobile",
+      "viewport_sha256_equal": true,
+      "full_page_sha256_equal": false
+    },
+    {
+      "surface": "paid-promo",
+      "viewport": "desktop",
+      "viewport_sha256_equal": true,
+      "full_page_sha256_equal": true
+    },
+    {
+      "surface": "paid-promo",
+      "viewport": "mobile",
+      "viewport_sha256_equal": true,
+      "full_page_sha256_equal": true
+    }
+  ],
+  "first_screen_visual_review": "All six original inspected viewport bytes equal the final producer-bound viewport bytes; price/terms/CTA/disclosure readable with no observed overlap or horizontal clipping. Author inspection only.",
+  "directory_full_page_method": "Supplementary native expanded viewport; no injected CSS. Full directory is 1440x42116 and 390x75754. Corrected desktop card crop painted; very tall images need native crops/tiles for review.",
+  "preserved_attempt_directories": [
+    "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures-before-payment-repair",
+    "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures-native-attempt-1-unpainted",
+    "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures-native-attempt-2-incomplete-paint",
+    "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures-native-attempt-3-incomplete-height",
+    "/home/ubuntu/business/.worktrees/sponsor-site-r4-20261006/reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures-pre-source-commit"
+  ],
+  "effects": {
+    "sends": 0,
+    "gmail_drafts": 0,
+    "live_contact_api_calls": 0,
+    "verification_debits": 0,
+    "payment_actions": 0,
+    "merges": 0,
+    "installs": 0,
+    "deployments": 0
+  },
+  "holds": [
+    "independent backend re-review",
+    "coherent approved importer installation",
+    "registered paused no-send acceptance",
+    "current Fable design verdict",
+    "final pricing/copy/legal approval",
+    "authenticated PayPal allocation producer unavailable: payment UNKNOWN, placement false"
+  ]
+}
