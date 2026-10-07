@@ -69,6 +69,33 @@ def fixture(root):
     return site, business, capture
 
 class PacketProducerTests(unittest.TestCase):
+    def test_outward_directory_pdf_is_bounded_without_replacing_full_evidence(self):
+        from PIL import Image
+        from pypdf import PdfReader
+        m = producer()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); site, business, cap = fixture(root)
+            data = json.loads(cap.read_text())
+            full_hashes = {}
+            for row in data['checks']:
+                if row['surface'] != 'providers-sponsored-panel':
+                    continue
+                full = business / f"captures/SYNTHETIC-full-{row['viewport']}.png"
+                Image.new('RGB', (row['width'], 20000), color=(20, 60, 40)).save(full)
+                row['pageImage'] = str(full.relative_to(business))
+                row['pageImageSha256'] = m.digest(full)
+                full_hashes[full] = m.digest(full)
+            m.dump(cap, data)
+            result = m.build_packet(site, business, cap, root / 'packet')
+            attachment = result['attachments']['placement-template.pdf']
+            self.assertEqual(attachment['pages'], 2, 'one native first-screen page per viewport, not the organic directory')
+            self.assertEqual(len(PdfReader(attachment['path']).pages), 2)
+            for full, sha in full_hashes.items():
+                self.assertEqual(m.digest(full), sha)
+            with zipfile.ZipFile(root / 'packet/sponsor-review-packet.zip') as z:
+                for full, sha in full_hashes.items():
+                    self.assertEqual(z.read(str(full.relative_to(business))), full.read_bytes())
+
     def test_retained_predecessor_cannot_accept_successor_prices(self):
         m=producer()
         cap=ROOT/'reports/ops/sponsor-clean-layout-20261003/copy/captures/CAPTURE.json'

@@ -97,7 +97,7 @@ test("/providers/ preview: compact intro and collapsed extended filters put the 
 });
 
 test("clutter regression: one closed filter row and genuinely early commercial actions, not merely below 844px", () => {
-  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/readiness-r5/captures/CAPTURE.json", import.meta.url), "utf8"));
   for (const c of result.checks) {
     assert.equal(c.interactions.status, "PASS", `${c.surface}/${c.viewport}`);
     if (c.surface === "providers-sponsored-panel") {
@@ -116,7 +116,7 @@ test("clutter regression: one closed filter row and genuinely early commercial a
 });
 
 test("committed captures prove the fold, h1 limits and overflow for all six frames", () => {
-  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/readiness-r5/captures/CAPTURE.json", import.meta.url), "utf8"));
   assert.equal(result.status, "PASS");
   assert.deepEqual(result.gateFindings, []);
   for (const [file, sha] of Object.entries(result.sourceHashes)) {

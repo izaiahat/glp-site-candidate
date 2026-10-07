@@ -159,7 +159,11 @@ def build_packet(site_root, business_root, capture_path, out, review_gate=None):
     for surface, filename in SURFACES.items():
         rows = sorted((r for r in cap['checks'] if r['surface'] == surface),
                       key=lambda r: r['viewport'] != 'mobile')
-        capture_pdf(assets / filename, rows, business_root)
+        # Outward placement art ends at the native first screens, including the
+        # Sponsored/payer disclosure. Full organic captures stay in the internal
+        # review archive unchanged; they are not the purchased placement.
+        capture_pdf(assets / filename, rows, business_root,
+                    first_only=surface == 'providers-sponsored-panel')
     head = subprocess.check_output(['git', '-C', str(site_root), 'rev-parse', 'HEAD'], text=True).strip()
     identity = {'schema': 'glp327_offline_packet_v1', 'site_head': head,
                 'capture_head': cap['head'], 'capture_manifest_sha256': digest(capture_path),

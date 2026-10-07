@@ -15,21 +15,19 @@ test("nonproduction /providers/ slot is opt-in and separate from organic results
   assert.match(section, /Example placement\. No provider is being promoted\./);
   assert.doesNotMatch(section, /<a\b|href=|data-phase3-provider|data-program=|data-rank=|ItemList|\$\d+/);
   // Switch on: the preview composition. Switch off: the original composition.
-  assert.match(graph, /const sponsorSlot = renderSponsorPlacementCandidate\(route, \{ preview: process\.env\.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1" \}\);/);
+  assert.match(graph, /const sponsorSlot = renderSponsorPlacementCandidate\(route, \{ preview: process\.env\.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1", sponsorOrder \}\);/);
   assert.match(graph, /data-sponsor-preview-intro><h1 data-state-heading data-state-title-template="Compare providers in \{state\}">Compare providers<\/h1>/);
   assert.match(graph, /\$\{filterControls\}\$\{sponsorSlot\}<div data-sponsor-preview-results-lead>/);
   assert.match(graph, /\$\{leadDisclosure\}\$\{registryScope\}\$\{atfPreview\}<\/div>\$\{panel\}\$\{results\}`/);
   assert.match(graph, /: `<header class="\$\{introClass\}">\$\{introHead\}\$\{registryScope\}\$\{leadDisclosure\}\$\{atfPreview\}<\/header>\$\{filterControls\}\$\{panel\}\$\{results\}`;/);
-  assert.match(graph, /controls = providerHubControls\(providers, doseCapture, \{ compact: sponsorPreviewActive\(route\) \}\);/);
+  assert.match(graph, /controls = providerHubControls\(providers, doseCapture, \{ compact: sponsorPreviewActive\(route\) \|\| \(route === "\/providers\/" && sponsorOrder !== null\) \}\);/);
   assert.match(graph, /providers\.sort\(\(a, b\) => price\(a\) - price\(b\)/);
 });
-test("sponsor pages are built only behind the preview switch, noindex, through the shared shell", () => {
-  const block = build.slice(build.indexOf('if (process.env.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1") {'));
-  assert.ok(block.length > 0 && block.indexOf("}") > 0);
-  const gated = block.slice(0, block.indexOf("\n  }\n"));
-  assert.match(gated, /write\("sponsors\/rates\/index\.html", setRobots\(addSharedRuntime\(renderRateCard\(\)\), SPONSOR_ROBOTS\)\)/);
-  assert.match(gated, /write\("sponsors\/example-provider\/index\.html", setRobots\(addSharedRuntime\(renderPromo\(\)\), SPONSOR_ROBOTS\)\)/);
-  assert.equal((build.match(/sponsors\/rates\/index\.html/g) || []).length, 1, "not referenced by sitemap, nav or search index");
+test("sponsor pages consume exact gated inventory, noindex, through the shared shell", () => {
+  assert.match(build, /renderSponsorInventory\(await readJson\("sponsor-inventory.json"\),/);
+  assert.match(build, /sponsorOrder: sponsorInventory.order/);
+  assert.match(build, /Object.entries\(sponsorInventory.pages\)/);
+  assert.match(build, /write\(file, setRobots\(addSharedRuntime\(html\), SPONSOR_ROBOTS\)\)/);
   assert.match(build, /\/\^\\\/\(\?:providers\|pharmacies\|sponsors\)\\\/\/\.test\(route\)/, "sponsor routes load site-p3.css like provider pages");
 });
 test("/providers/ captures finalize copy tokens through the build's registry-derived count path", async () => {
@@ -61,7 +59,7 @@ test("/providers/ captures finalize copy tokens through the build's registry-der
   assert.match(capture, /tallies\.LIVE_PROVIDER_COUNT = deriveLiveProviders\(programRegistry, ledgerPrograms\)\.liveProgramCount;/);
   assert.match(capture, /"\/providers\/": finalize\("providers\/index\.html", addSharedRuntime\(/);
   assert.match(capture, /if \(dom\.unresolvedTokens\.length\) failures\.push\("unresolved build token"\);/);
-  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/revision-r4/captures/CAPTURE.json", import.meta.url), "utf8"));
+  const result = JSON.parse(readFileSync(new URL("../reports/ops/sponsor-clean-layout-20261003/copy/readiness-r5/captures/CAPTURE.json", import.meta.url), "utf8"));
   assert.equal(result.status, "PASS");
   assert.ok(Number.isInteger(result.finalizedTallies?.LIVE_PROVIDER_COUNT));
   for (const check of result.checks) assert.deepEqual(check.dom.unresolvedTokens, [], `${check.surface} ${check.viewport}`);

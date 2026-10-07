@@ -1515,14 +1515,15 @@ const LISTING_CONFIG = Object.freeze({
   E: Object.freeze({ mode: "provider", support: "Compare published medications, monthly cost and cancellation terms." }),
 });
 
-function listingDocument({ archetype, route, title, description, heading, support, count, controls, cards, panel = "", atfPreview = "", resultTail = "", afterGrid = "", runtime = "", schema, initialVisible = null, profileCount = null, hasNonpriced = false }) {
+function listingDocument({ archetype, route, title, description, heading, support, count, controls, cards, panel = "", atfPreview = "", resultTail = "", afterGrid = "", runtime = "", schema, initialVisible = null, profileCount = null, hasNonpriced = false, sponsorOrder = null }) {
   const pharmacy = archetype === "D";
   if (!LISTING_CONFIG[archetype] || (archetype !== "B" && panel)) throw new Error("listing_configuration_invalid");
   const statusHook = pharmacy ? "data-pharmacy-result" : "data-filter-result";
   const gridHook = pharmacy ? "data-pharmacy-grid" : "data-phase3-provider-grid";
   const emptyHook = pharmacy ? "data-pharmacy-empty" : "data-filter-empty";
   const registryScope = route === "/providers/" ? `<p data-provider-registry-scope>We track <span data-live-provider-count>{{LIVE_PROVIDER_COUNT}}</span> providers in total. ${count} meet the comparison-card evidence rules; ${profileCount - count} additional provider profiles have their own first-party pages outside this comparison. The count covers our live registry, not a claim of availability in your state.</p>` : "";
-  const stateMarkup = archetype === "C" ? stateFilterControl() : archetype === "E" && !sponsorPreviewActive(route) ? providerHubStateControl() : "";
+  const sponsorComposition = sponsorPreviewActive(route) || (route === "/providers/" && sponsorOrder !== null);
+  const stateMarkup = archetype === "C" ? stateFilterControl() : archetype === "E" && !sponsorComposition ? providerHubStateControl() : "";
   if (stateMarkup && controls.split(stateMarkup).length !== 2) throw new Error("listing_state_control_source_missing_or_duplicate");
   const inlineControls = stateMarkup ? controls.replace(stateMarkup, "") : controls;
   // Native details remains usable if enhancement fails, while the parser-time
@@ -1549,7 +1550,7 @@ function listingDocument({ archetype, route, title, description, heading, suppor
   // lead into the separate ad. Counts, commission disclosure, registry scope,
   // price provenance and the first organic preview follow next to the results.
   // With the switch off this is the original composition, byte for byte.
-  const sponsorSlot = renderSponsorPlacementCandidate(route, { preview: process.env.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1" });
+  const sponsorSlot = renderSponsorPlacementCandidate(route, { preview: process.env.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1", sponsorOrder });
   const body = sponsorSlot
     ? `<header class="${introClass}" data-sponsor-preview-intro><h1 data-state-heading data-state-title-template="Compare providers in {state}">Compare providers</h1></header>${filterControls}${sponsorSlot}<div data-sponsor-preview-results-lead><p class="listing__support">${esc(support)} <span class="listing__count" ${statusHook} aria-live="polite" aria-atomic="true">${count} provider records</span></p>${leadDisclosure}${registryScope}${atfPreview}</div>${panel}${results}`
     : `<header class="${introClass}">${introHead}${registryScope}${leadDisclosure}${atfPreview}</header>${filterControls}${panel}${results}`;
@@ -1583,7 +1584,7 @@ function listingUnknownCard(program, entry, registry, logoManifest) {
   return `<article class="p3-provider-card cs-card" data-phase3-provider data-price-state-provider="${esc(id)}" data-program="${esc(id)}" data-price="" data-price-map="" data-state-mode="unknown" data-drugs="" data-forms="" data-duration="unknown" data-dose="unknown"><header class="p3-card-header">${providerIdentity({ program_id: id, provider: program.display_name }, logoManifest)}</header><p>${esc(priceStateText(entry) || 'Reported pricing is available in the provider review. Floors, bundles and starting prices are not exact monthly cash schedules.')}</p><p>Review medication options, coverage and program terms independently of price.</p><div class="p3-card-actions"><a class="cs-btn cs-btn--quiet" href="${esc(review || `/providers/${program.program_id}/`)}"${review ? " data-card-review" : ""}>${review ? `Read ${esc(program.display_name)} review` : `Open ${esc(program.display_name)} details`}</a></div></article>`;
 }
 
-export function renderConfiguredListing(archetype, page, { graph, pharmacyInput, pricingMatrix, registry, coupons, doseCapture, logoManifest, articles, goAuthority }) {
+export function renderConfiguredListing(archetype, page, { graph, pharmacyInput, pricingMatrix, registry, coupons, doseCapture, logoManifest, articles, goAuthority, sponsorOrder = null }) {
   const config = LISTING_CONFIG[archetype];
   const route = page.route;
   const pharmacy = archetype === "D";
@@ -1637,7 +1638,7 @@ export function renderConfiguredListing(archetype, page, { graph, pharmacyInput,
         unknownPrograms = [];
         heading = `Compare ${providers.length} self-pay provider options`;
       }
-      controls = providerHubControls(providers, doseCapture, { compact: sponsorPreviewActive(route) });
+      controls = providerHubControls(providers, doseCapture, { compact: sponsorPreviewActive(route) || (route === "/providers/" && sponsorOrder !== null) });
       if (route === "/providers/") {
         below += '<section class="section-heading" aria-labelledby="g08-category-links-title"><h2 id="g08-category-links-title">Explore compounded medication categories</h2><div class="p3-hero-actions p3-wrap-actions"><a class="cs-btn cs-btn--quiet" href="/semaglutide/">Compounded semaglutide programs</a><a class="cs-btn cs-btn--quiet" href="/tirzepatide/">Compounded tirzepatide programs</a></div></section>';
         const retatrutideFda = renderCitationAnchor({ url: "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss", label: "FDA notice", reason: CITATION_REASONS.INLINE_FACT_SOURCE });
@@ -1791,7 +1792,7 @@ const main=root.closest("main");for(const event of ["click","input","change"])ma
     !pharmacy ? providerItemListSchema(route, route === "/providers/" ? "GLP-1 provider comparison" : heading, providers, registry) : null,
   );
   const seo = route === "/providers/" ? pageSeoCopy(route) : null;
-  return listingDocument({ archetype, route, title: seo?.title ?? `${heading} · Clinic Scout`, description: seo?.meta ?? support, heading, support, count, controls, cards, atfPreview,
+  return listingDocument({ archetype, route, title: seo?.title ?? `${heading} · Clinic Scout`, description: seo?.meta ?? support, heading, support, count, controls, cards, atfPreview, sponsorOrder,
     panel: panel.html, afterGrid: below + reverseIndex + (route === '/providers/' ? approvedDirectoryLinks() : ''), schema, initialVisible: archetype === "E" ? 12 : null,
     profileCount: route === "/providers/" ? livePrograms.length : null,
     hasNonpriced,
@@ -1869,7 +1870,7 @@ function renderComparisonPreset(page, { pricingMatrix, registry, logoManifest, c
   });
 }
 
-export function buildPhase3PageGraph({ graph, pharmacyInput, pricingMatrix, programRegistry, homeSpec, articles, couponOffersByProgram = {}, goPromotionAuthority = loadGoPromotionAuthority() }) {
+export function buildPhase3PageGraph({ graph, pharmacyInput, pricingMatrix, programRegistry, homeSpec, articles, couponOffersByProgram = {}, goPromotionAuthority = loadGoPromotionAuthority(), sponsorOrder = null }) {
   validatePhase3Graph(graph, pharmacyInput);
   const doseCapture = loadPass2DoseCapture();
   const logoManifest = loadProviderLogoManifest();
@@ -1878,7 +1879,7 @@ export function buildPhase3PageGraph({ graph, pharmacyInput, pricingMatrix, prog
   const articleRoutes = glpArticles.map((article) => article.canonical_path);
   if (new Set(articleRoutes).size !== articleRoutes.length) throw new Error("phase3_insights_article_route_duplicate");
   if (glpArticles.some((article) => !String(article.canonical_path || "").startsWith("/guides/") || !(article.h1 || article.title))) throw new Error("phase3_insights_article_destination_invalid");
-  const listingContext = { graph, pharmacyInput, pricingMatrix, registry: providerRegistry, coupons: couponOffersByProgram, doseCapture, logoManifest, articles: glpArticles, goAuthority: goPromotionAuthority };
+  const listingContext = { graph, pharmacyInput, pricingMatrix, registry: providerRegistry, coupons: couponOffersByProgram, doseCapture, logoManifest, articles: glpArticles, goAuthority: goPromotionAuthority, sponsorOrder };
   const listing = (archetype, page) => renderConfiguredListing(archetype, page, listingContext);
   const pages = [];
   const add = (route, html, family) => {

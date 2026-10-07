@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {renderPromo,renderRateCard,SPONSOR_ROBOTS} from '../src/paid-promo.mjs';
-import {renderSponsorPlacementCandidate, renderSponsoredPanel} from '../src/sponsor-placement-candidate.mjs';
+import {renderSponsorPlacementCandidate, renderSponsoredPanel, sponsorSmallPrint, sponsorCta} from '../src/sponsor-placement-candidate.mjs';
 import {auditPage} from '../scripts/validate-public-email-aliases.mjs';
 import {readFileSync} from 'node:fs';
 import {paymentFixture} from './fixtures/sponsor-payment.mjs';
@@ -10,11 +10,12 @@ test('plain sponsor copy keeps disclosures next to the decision and link',()=>{
  const panel=renderSponsoredPanel();
  assert.match(panel,/Example placement\. No provider is being promoted\./);
  assert.doesNotMatch(panel,/A paid introduction|Payment buys advertising space|Any applicable affiliate commission/);
- const livePanel=renderSponsoredPanel({provider:'Example',preview:false,destination:'https://example.com/',affiliate:true});
+ assert.throws(()=>renderSponsoredPanel({provider:'Example',preview:false,destination:'https://example.com/',affiliate:true}),/activation|payment/i);
+ const livePanel=`<span>Sponsored</span>${sponsorCta({preview:false,destination:'https://example.com/'})}${sponsorSmallPrint({provider:'Example',preview:false,affiliate:true})}`;
  assert.match(livePanel,/>Sponsored<\/span>/);
  assert.match(livePanel,/Paid for by Example\. We may also earn a commission if you use this link\./);
  assert.ok(livePanel.indexOf('Paid for by Example.')-livePanel.indexOf('data-sponsored-link')<250,'disclosure adjacent to link');
- assert.doesNotMatch(renderSponsoredPanel({preview:false,provider:'Example',destination:'https://example.com/'}),/commission/,'no invented affiliate connection');
+ assert.doesNotMatch(sponsorSmallPrint({preview:false,provider:'Example'}),/commission/,'no invented affiliate connection');
  const promo=renderPromo();
  assert.equal((promo.match(/Independent rankings do not change/g)||[]).length,1,'one independence explanation');
  assert.doesNotMatch(promo,/Your comparison stays independent|Any applicable affiliate commission|We make no treatment/);

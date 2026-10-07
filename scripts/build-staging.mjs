@@ -2221,7 +2221,14 @@ async function main() {
   } catch {}
   const homepage = renderHomePage({ blogCount: glpGuideArticles.filter((article) => !PHASE3_INSIGHTS_EXCLUSIONS.has(article.canonical_path)).length, comparisonCount: derivedTallies.COMPARISON_CARD_COUNT, programCount: liveProgramCount, updatedLabel, topPicks, cheapest, railMeds, verdictCards, receiptCards, readerReviews: approvedReaderReviews, reviewPrograms: reader.programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id)), reviewPharmacies: phase3PharmacyInput });
   await write("index.html", markReleaseReady(addSharedRuntime(addOg(homepage, "home-evidence", "Clinic Scout · Compare what matters before you commit"))));
+  // The maintained inventory is empty until an exact reviewed, released order
+  // has authenticated payment custody. No caller/preview flag supplies it.
+  const { renderSponsorInventory } = await import("../src/sponsor-inventory.mjs");
+  const sponsorInventory = renderSponsorInventory(await readJson("sponsor-inventory.json"), {
+    preview: process.env.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1",
+  });
   const phase3Build = buildPhase3PageGraph({
+    sponsorOrder: sponsorInventory.order,
     graph: phase3GraphConfig,
     pharmacyInput: phase3PharmacyInput,
     pricingMatrix: reader.providerPricingMatrix,
@@ -2274,13 +2281,11 @@ async function main() {
   await write("reviews/index.html", markReleaseReady(addSharedRuntime(renderReviewDirectoryPage({ programs: reviewHubPrograms, pharmacies: phase3PharmacyInput, logoByProgram: reviewLogoByProgram, dateModified: reviewHubDateModified }))));
   await write("reviews/submit/index.html", addSharedRuntime(renderReviewSubmissionPage({ programs: reviewHubPrograms, pharmacies: phase3PharmacyInput, dateModified: reviewHubDateModified })));
   await writeOps("phase3-page-graph.json", `${JSON.stringify(phase3Build.report, null, 2)}\n`);
-  // GLP-327: proposed paid inventory renders only with the explicit local
-  // preview switch, through the same shared shell and site-p3.css as provider
-  // pages. Never linked from navigation, never in the sitemap, always noindex.
-  if (process.env.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1") {
-    const { renderRateCard, renderPromo, SPONSOR_ROBOTS } = await import("../src/paid-promo.mjs");
-    await write("sponsors/rates/index.html", setRobots(addSharedRuntime(renderRateCard()), SPONSOR_ROBOTS));
-    await write("sponsors/example-provider/index.html", setRobots(addSharedRuntime(renderPromo()), SPONSOR_ROBOTS));
+  // Selected factual inventory and opt-in neutral examples share the shell.
+  // Unpaid inventory emits no routes. Sponsor pages stay noindex/out of sitemap.
+  const { SPONSOR_ROBOTS } = await import("../src/paid-promo.mjs");
+  for (const [file, html] of Object.entries(sponsorInventory.pages)) {
+    await write(file, setRobots(addSharedRuntime(html), SPONSOR_ROBOTS));
   }
   // ---- B-17: LP-A paid landing page, first instance (SPEC-ADS §3.1) ---------
   // Built PAUSED-ready: noindex, out of the sitemap, AdsBot allowed by robots,

@@ -1,6 +1,7 @@
 // GLP-327 sponsor inventory. No activation by default; shared site renderer/styles.
 import { pageDocument } from "./phase3-page-graph.mjs";
-import { SPONSOR_PRICING, usd, paymentVerified } from "./sponsor-pricing.mjs";
+import { SPONSOR_PRICING, usd } from "./sponsor-pricing.mjs";
+import { validateSponsorOrder, renderSponsorFacts } from "./sponsor-order.mjs";
 import { renderSponsoredPanel, sponsorCta, sponsorSmallPrint, EXAMPLE_SPONSOR } from "./sponsor-placement-candidate.mjs";
 
 export const SPONSOR_RATE_CARD_ROUTE = "/sponsors/rates/";
@@ -43,23 +44,18 @@ const PROMO_FACT_SLOTS = Object.freeze([
 export function renderPromo(order = {}, { preview = true } = {}) {
   const provider = order.provider || EXAMPLE_SPONSOR.provider;
   const slug = order.slug || EXAMPLE_SPONSOR.slug;
-  if (!preview) {
-    if (!order.operator_approval || !order.partner_creative_approval || !paymentVerified(order) || !order.eligibility_approved || !order.inventory_reserved || !order.starts_at || !order.ends_at) throw Error("Sponsor activation gates missing; authenticated payment required");
-    if (/fella/i.test(provider) || order.held !== false || order.us_provider !== true) throw Error("Excluded, held or unverified jurisdiction");
-    const url = new URL(order.destination); if (url.protocol !== "https:" || url.username || url.password) throw Error("Invalid approved destination");
-    const start = Date.parse(order.starts_at), end = Date.parse(order.ends_at); if (!Number.isFinite(start) || !Number.isFinite(end) || end - start !== 720 * 3600000 || Date.now() < start || Date.now() >= end) throw Error("Outside paid term");
-  }
+  if (!preview) validateSponsorOrder(order);
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw Error("Invalid provider slug");
   const route = sponsorPromoRoute(slug);
   const lead = `<section class="p3-rail-card p3-rail-card--cta" data-sponsor-lead aria-labelledby="sponsor-provider-title">`
     + `<p data-sponsor-lead-label><span class="p3-chip p3-chip--status">Sponsored</span></p>`
     + `<h1 class="p3-wrap-title" id="sponsor-provider-title" data-wrap-text>${esc(provider)}</h1>`
-    + `<p class="lede">${preview ? "Example page. Provider details will appear here after review." : "See program details. Check current prices and eligibility with the provider."}</p>`
+    + `<p class="lede">${preview ? "Example page. Provider details will appear here after review." : esc(order.facts.program_summary.text)}</p>`
     + `<div class="p3-hero-actions p3-wrap-actions" data-wrap-actions>${sponsorCta({ preview, destination: order.destination })}</div>`
     + `<p class="p3-rail-note" data-sponsor-ad-disclosure>${preview ? "Template only. No provider is being promoted." : sponsorSmallPrint({ provider, preview, affiliate: order.affiliate === true })}</p></section>`;
   const facts = preview
     ? `<section class="cs-card" data-sponsor-facts aria-labelledby="sponsor-facts-title"><h2 id="sponsor-facts-title">Program at a glance</h2><dl>${PROMO_FACT_SLOTS.map(([label, slot]) => `<div data-sponsor-fact-slot><dt>${esc(label)}</dt><dd>${esc(slot)}</dd></div>`).join("")}</dl></section>`
-    : "";
+    : renderSponsorFacts(order);
   const body = `<div data-sponsor-layout="promo">${facts ? `<div data-sponsor-lead-grid>${lead}${facts}</div>` : lead}`
     + `<section class="p3-detail-grid" data-sponsor-promo-checks><article><h2>Before you choose</h2>${list(["Total cost and renewal terms", "Services included", "Eligibility in your state", "Cancellation and support"])}<p>Confirm these details with the provider.</p></article>`
     + `<article><h2>Compare your options</h2><p>${esc(NO_PAID_RANK)}</p><div class="p3-hero-actions p3-wrap-actions" data-wrap-actions><a class="cs-btn cs-btn--quiet" href="/providers/">Compare providers independently</a></div></article></section>`
