@@ -1,10 +1,11 @@
 import { resendContactsEnabled, syncResendContact } from "./resend-contacts.mjs";
+import { GUIDE_RESOURCE, validGuidePath } from './guide-resource-contract.mjs';
 import { canonicalContactStatements, runCanonicalContactStatements } from "./canonical-contact.mjs";
 import { COST_AFFILIATE_EMAIL_MANIFEST } from "./cost-affiliate-email-manifest.generated.mjs";
 
 const COST_BREAKDOWN_KEYS = Object.freeze(["cost_breakdown_version", "cost_provider_id", "cost_provider_name", "cost_first_month_usd", "cost_recurring_month_usd", "cost_months", "cost_total_usd", "cost_price_context", "cost_checked_as_of"]);
 const MATCH_PROGRAM_IDS_KEY = "match_program_ids";
-const ALLOWED_KEYS = new Set(["email", "first_name", "source_page", "lead_magnet_key", "email_consent", "privacy_consent", "marketing_consent", "consent_version", "company", MATCH_PROGRAM_IDS_KEY, ...COST_BREAKDOWN_KEYS]);
+const ALLOWED_KEYS = new Set(["email", "first_name", "source_page", "lead_magnet_key", "email_consent", "privacy_consent", "marketing_consent", "consent_version", "company", "guide_path", "request_id", MATCH_PROGRAM_IDS_KEY, ...COST_BREAKDOWN_KEYS]);
 const SAFE_SLUG = /^[a-z0-9][a-z0-9-]{1,100}$/;
 const CONSENT_VERSION = "glp-content-upgrade-v2-20260801";
 const LEGACY_CONSENT_VERSION = "glp-content-upgrade-v1-20260724";
@@ -69,6 +70,8 @@ function esc(value) {
 
 export function resolveContentUpgradeTemplate(leadMagnetKey) {
   const key = String(leadMagnetKey || "");
+  if (key === GUIDE_RESOURCE.leadMagnetKey) return { templateKey: 'guide-link', subject: 'Your requested guide link' };
+  if (key.startsWith('guides-')) return null;
   const templateKey = key.endsWith("-match-checklist") ? "match-checklist" : key.endsWith("-terms-checklist") ? "terms-checklist" : key.endsWith("-cost-breakdown") ? "cost-breakdown" : null;
   if (!templateKey || !CONTENT_UPGRADE_TEMPLATES[templateKey]) return null;
   return { templateKey, ...CONTENT_UPGRADE_TEMPLATES[templateKey] };
@@ -77,6 +80,10 @@ export function resolveContentUpgradeTemplate(leadMagnetKey) {
 // Branded transactional email. Email-client constraints rule the markup: nested tables,
 // per-element inline styles, no external CSS/images/webfonts, bulletproof-button CTA.
 function contentUpgradeEmailHtml({ template, unsubscribeUrl, origin = DEFAULT_SITE_ORIGIN, capture }) {
+  if (template.templateKey === 'guide-link') {
+    if (!validGuidePath(capture?.guidePath)) throw new Error('guide_path_invalid');
+    return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;padding:24px;background:#f7f5ef;color:#193047;font:15px/1.55 Arial,sans-serif"><main style="max-width:600px;margin:auto;padding:24px;background:#fff"><p>GLP CLINIC SCOUT</p><h1>Your requested guide link</h1><p><a href="${esc(origin)}${esc(capture.guidePath)}" style="color:#3f6f63">Open the guide you requested</a></p><p>This is the link you requested, not a subscription to follow-up emails.</p><p style="font-size:12px">GLP Clinic Scout, operated by Tilton Group LLC · 2108 N St, Ste N · Sacramento, CA 95816</p><p><a href="${esc(origin)}/privacy/">Privacy Policy</a></p></main></body></html>`;
+  }
   if (template.templateKey === "match-checklist") {
     const matches = capture?.matchPrograms;
     if (!Array.isArray(matches) || matches.length !== 3) throw new Error("match_programs_missing");
@@ -136,6 +143,11 @@ function checked(value) {
   return value === true || value === "true";
 }
 
+async function sha256Text(value) {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
 function safeBreakdownText(value, field, maxLength) {
   const text = String(value || "").trim();
   if (!text || text.length > maxLength || /[\u0000-\u001f\u007f]/.test(text)) throw new Error(`${field}_invalid`);
@@ -191,6 +203,18 @@ export function validateContentUpgrade(payload) {
   const sourcePage = String(payload.source_page || "").trim();
   if (!SAFE_SLUG.test(sourcePage)) throw new Error("source_page_invalid");
   const leadMagnetKey = String(payload.lead_magnet_key || "").trim();
+  if (sourcePage.startsWith('guides-')) throw new Error('legacy_guide_capture_rejected');
+  if (sourcePage === GUIDE_RESOURCE.sourcePage || leadMagnetKey === GUIDE_RESOURCE.leadMagnetKey) {
+    if (sourcePage !== GUIDE_RESOURCE.sourcePage || leadMagnetKey !== GUIDE_RESOURCE.leadMagnetKey) throw new Error('guide_resource_key_invalid');
+    const guideKeys = new Set(['email', 'source_page', 'lead_magnet_key', 'email_consent', 'consent_version', 'company', 'guide_path', 'request_id']);
+    if (Object.keys(payload).some(key => !guideKeys.has(key))) throw new Error('guide_resource_field_not_allowed');
+    if (!checked(payload.email_consent)) throw new Error('required_consent_missing');
+    if (payload.consent_version !== GUIDE_RESOURCE.consentVersion) throw new Error('consent_version_invalid');
+    if (!validGuidePath(payload.guide_path)) throw new Error('guide_path_invalid');
+    if (!/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(payload.request_id || '')) throw new Error('request_id_invalid');
+    return { email, firstName: '', sourcePage, leadMagnetKey, consentVersion: GUIDE_RESOURCE.consentVersion, resourceOnly: true, guidePath: payload.guide_path, requestId: payload.request_id };
+  }
+  if (Object.hasOwn(payload, 'guide_path') || Object.hasOwn(payload, 'request_id')) throw new Error('guide_resource_field_not_allowed');
   const isCostBreakdown = leadMagnetKey === `${sourcePage}-cost-breakdown`;
   const isMatchChecklist = leadMagnetKey === `${sourcePage}-match-checklist`;
   if (!isCostBreakdown && !isMatchChecklist && leadMagnetKey !== `${sourcePage}-terms-checklist`) throw new Error("lead_magnet_key_invalid");
@@ -259,11 +283,12 @@ export async function handleContentUpgradeRequest(request, env, fetchImpl = glob
       funnelStage: "content-upgrade",
       sourceSurface: `content-upgrade/${capture.sourcePage}`,
       sourceContext: { lead_magnet_key: capture.leadMagnetKey, ...(capture.costBreakdown ? { cost_breakdown: capture.costBreakdown } : {}), ...(capture.matchPrograms ? { match_program_ids: capture.matchPrograms.map((match) => match.programId) } : {}) },
-      marketingConsent: true,
+      marketingConsent: !capture.resourceOnly,
+      purpose: capture.resourceOnly ? 'resource-delivery' : 'marketing',
       consentVersion: capture.consentVersion,
       consentSource,
-      consentCopySha256: CONTENT_UPGRADE_CONSENT_COPY_SHA256,
-      idempotencyKey: `marketing:${subscriberId}:content-upgrade/${capture.sourcePage}:${capture.consentVersion}`,
+      consentCopySha256: capture.resourceOnly ? await sha256Text(GUIDE_RESOURCE.consentText) : CONTENT_UPGRADE_CONSENT_COPY_SHA256,
+      idempotencyKey: capture.resourceOnly ? `resource:${subscriberId}:${capture.requestId}` : `marketing:${subscriberId}:content-upgrade/${capture.sourcePage}:${capture.consentVersion}`,
       capturedAt: createdAt,
       unsubscribeToken,
     });
@@ -298,11 +323,11 @@ export async function handleContentUpgradeRequest(request, env, fetchImpl = glob
 // Best-effort delivery log. Reuses the existing email_deliveries D1 contract so send
 // outcomes are auditable and the EPC/webhook machinery can reconcile them later.
 // Wrapped so a logging failure can never propagate into the capture response.
-async function logContentUpgradeDelivery(env, { subscriberId, leadMagnetKey, status, resendEmailId = null }) {
+async function logContentUpgradeDelivery(env, { subscriberId, leadMagnetKey, requestId = null, status, resendEmailId = null }) {
   if (!env?.GLP_DB?.prepare) return;
   const now = new Date().toISOString();
   const deliveryId = [...crypto.getRandomValues(new Uint8Array(16))].map((byte) => byte.toString(16).padStart(2, "0")).join("");
-  const idempotencyKey = `content-upgrade/${subscriberId}/${leadMagnetKey}`.slice(0, 256);
+  const idempotencyKey = `content-upgrade/${subscriberId}/${requestId || leadMagnetKey}`.slice(0, 256);
   const campaignId = `content-upgrade-${leadMagnetKey}`.slice(0, 200);
   const sentAt = status === "sent" ? now : null;
   const failedAt = status === "failed" ? now : null;
@@ -317,10 +342,15 @@ async function logContentUpgradeDelivery(env, { subscriberId, leadMagnetKey, sta
 // into the shared global Contacts DB. Both provider receipts are returned.
 export async function deliverContentUpgrade({ env, capture, subscriberId, unsubscribeToken }, fetchImpl = globalThis.fetch) {
   if (!resendContactsEnabled(env)) return { status: "sends_held", resend_email: null, resend_contact: null };
+  const resourceOnly = capture.leadMagnetKey === GUIDE_RESOURCE.leadMagnetKey;
+  if (String(capture.leadMagnetKey || '').startsWith('guides-')) return { status: 'send_no_template', resend_email: null, resend_contact: null };
+  // Public delivery export must enforce this even for callers bypassing capture.
+  if (resourceOnly && (!capture.resourceOnly || !validGuidePath(capture.guidePath) || !capture.requestId)) throw new Error('guide_resource_capture_invalid');
+  const syncContact = () => resourceOnly ? Promise.resolve({ status: 'not_requested', contact_id: null }) : syncResendContact({ env, email: capture.email }, fetchImpl);
   const apiKey = env.RESEND_API_KEY;
   if (!apiKey) {
     await logContentUpgradeDelivery(env, { subscriberId, leadMagnetKey: capture.leadMagnetKey, status: "failed" });
-    const resendContact = await syncResendContact({ env, email: capture.email }, fetchImpl);
+    const resendContact = await syncContact();
     return {
       status: "send_misconfigured",
       reason: "missing_api_key",
@@ -340,7 +370,7 @@ export async function deliverContentUpgrade({ env, capture, subscriberId, unsubs
   const fromName = env.RESEND_FROM_NAME || DEFAULT_FROM_NAME;
   const origin = env.SITE_ORIGIN || DEFAULT_SITE_ORIGIN;
   const unsubscribeUrl = `${origin}/unsubscribe?token=${encodeURIComponent(unsubscribeToken || "")}`;
-  const idempotencyKey = `content-upgrade/${subscriberId}/${template.templateKey}`.slice(0, 256);
+  const idempotencyKey = `content-upgrade/${subscriberId}/${resourceOnly ? capture.requestId : template.templateKey}`.slice(0, 256);
   let resendEmail = { status: "failed", endpoint: RESEND_EMAILS_ENDPOINT, http_status: null, email_id: null, reason: "transport_error" };
   try {
     const response = await fetchImpl(RESEND_EMAILS_ENDPOINT, {
@@ -352,7 +382,7 @@ export async function deliverContentUpgrade({ env, capture, subscriberId, unsubs
         ...(env.RESEND_REPLY_TO ? { reply_to: env.RESEND_REPLY_TO } : {}),
         subject: template.subject,
         html: contentUpgradeEmailHtml({ template, unsubscribeUrl, origin, capture }),
-        headers: { "List-Unsubscribe": `<${unsubscribeUrl}>`, "List-Unsubscribe-Post": "List-Unsubscribe=One-Click", "X-Entity-Ref-ID": idempotencyKey }
+        headers: resourceOnly ? { "X-Entity-Ref-ID": idempotencyKey } : { "List-Unsubscribe": `<${unsubscribeUrl}>`, "List-Unsubscribe-Post": "List-Unsubscribe=One-Click", "X-Entity-Ref-ID": idempotencyKey }
       })
     });
     const data = await response.json().catch(() => ({}));
@@ -366,17 +396,18 @@ export async function deliverContentUpgrade({ env, capture, subscriberId, unsubs
     };
   } catch { /* the explicit failed receipt above remains */ }
 
-  const resendContact = await syncResendContact({ env, email: capture.email }, fetchImpl);
+  const resendContact = await syncContact();
   const deliveryStatus = resendEmail.status === "sent" ? "sent" : "failed";
   await logContentUpgradeDelivery(env, {
     subscriberId,
     leadMagnetKey: capture.leadMagnetKey,
+    requestId: capture.requestId,
     status: deliveryStatus,
     resendEmailId: resendEmail.email_id,
   });
 
   const status = resendEmail.status === "sent" ? "sent" : "send_failed";
-  const warnings = resendEmail.status === "sent" && resendContact.status !== "synced"
+  const warnings = !resourceOnly && resendEmail.status === "sent" && resendContact.status !== "synced"
     ? [{ code: "CONTACT_SYNC_FAILED", retryable: Boolean(resendContact.retryable) }]
     : [];
   return {

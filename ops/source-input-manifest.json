@@ -1,8 +1,11 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3890,
+  "tracked_file_count": 3893,
   "files": [
+    "src/guide-resource-contract.mjs",
+    "tests/guide-resource-consent.test.mjs",
+    "migrations/010_resource_delivery_purpose.sql",
     ".gitleaksignore",
     "tests/browser/quiz-consent-management.spec.mjs",
     "scripts/bind-care-fastpath-contract.mjs",

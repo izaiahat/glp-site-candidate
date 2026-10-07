@@ -44,6 +44,8 @@ jobs:
         run: node --test tests/pricing-deployed-row-schema.test.mjs tests/d2f-coverage-floor.test.mjs
       - name: Affiliate relationship synchronization contracts
         run: node --test tests/affiliate-relationship-sync.test.mjs
+      - name: Guide resource renderer and privacy regression (offline only)
+        run: node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs
       - name: Record limited scope
         if: always()
         run: |
