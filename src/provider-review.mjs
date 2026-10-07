@@ -6,6 +6,7 @@ import path from "node:path";
 import { buildSchemaGraph } from "./schema.mjs";
 import { subidAttributes } from "./affiliate-subid.mjs";
 import { selectedGoOutbound } from "./go-render-selection.mjs";
+import { relationshipEndedNotice } from './affiliate-relationship-sync.mjs';
 import { trackingAllowedHosts } from "./tracking-allowed-hosts.mjs";
 import { scoreProvider } from "./money-page.mjs";
 import { renderPromoEvidence } from "./promo-code.mjs";
@@ -448,8 +449,10 @@ function renderFastpathProviderReviewPage(review, identity) {
   const sources = review.sources.map((source, index) => `<li id="source-${index + 1}"><span>${index + 1}</span>${renderCitationAnchor({ url: source.url, label: source.publisher, reason: CITATION_REASONS.REVIEW_SOURCE_LEDGER })}<small>Checked ${esc(source.verified_as_of)}</small></li>`).join("");
   const criteria = criteriaList(row);
   const warning = contract.page_copy.regulatory_warning ? `<aside class="regulatory-warning" id="regulatory-warning" role="note"><p class="eyebrow">Provider-specific FDA warning</p><h2>Read the FDA warning-letter context first</h2><p>${esc(contract.page_copy.regulatory_warning)}${fastpathCitations(review, "regulatory_warning", "FDA warning letter")}</p></aside>` : "";
-  const affiliateContext = integration.hold_copy ? `<section class="affiliate-status" id="affiliate-status" aria-label="Affiliate status"><p class="affiliate-status-label">Affiliate status</p><p>${esc(integration.hold_copy)}</p></section>` : "";
-  const affiliateCta = linkDark
+  const endedNotice = relationshipEndedNotice(selectedGoOutbound(row, 'reviews.rv2')?.relationship_snapshot);
+  const holdCopy = endedNotice || integration.hold_copy;
+  const affiliateContext = holdCopy ? `<section class="affiliate-status" id="affiliate-status" aria-label="Affiliate status"><p class="affiliate-status-label">Affiliate status</p><p>${esc(holdCopy)}</p></section>` : "";
+  const affiliateCta = endedNotice ? '' : linkDark
     ? `<p class="cta secondary affiliate-hold" aria-disabled="true" data-affiliate-state="held">Partner link unavailable</p>`
     : affiliateReviewCta(row);
   // Shared left-to-right counter: sections beyond the first three RENDERED

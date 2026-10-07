@@ -11,12 +11,15 @@ export function historicalAffiliateRegistry(registry) {
 export function effectiveAffiliateRegistry(registry) {
   const result = structuredClone(registry);
   for (const p of result.programs || []) {
-    if (p.affiliate_relationship_snapshot?.lifecycle !== 'withdrawn') continue;
+    const lifecycle = p.affiliate_relationship_snapshot?.lifecycle;
+    if (!['withdrawn','ended'].includes(lifecycle)) continue;
+    const retainEditorial = lifecycle === 'ended' && p.affiliate_relationship_snapshot.editorial_retained === true;
     p.commercial_state = 'held';
     p.go = {...p.go, entry_state:'held'};
     for (const profile of Object.values(p.profiles || {})) {
       profile.wired = false;
       for (const surface of ['compare','quiz','calculator','review','sitemap','go']) {
+        if (retainEditorial && ['review','sitemap'].includes(surface)) continue;
         profile.surfaces[surface] = false;
         (profile.exceptions ||= {})[surface] ||= {enabled:true,
           reason:'Reported selected affiliate relationship withdrawn.',
@@ -30,6 +33,12 @@ export function effectiveAffiliateRegistry(registry) {
 export function relationshipDenials(registry) {
   return (registry?.programs || []).filter(p => p.affiliate_relationship_snapshot?.promotion_denied === true)
     .map(p => ({program_id:p.program_id, render_id:p.review_slug || p.program_id, ...p.affiliate_relationship_snapshot}));
+}
+
+export function relationshipEndedNotice(snapshot) {
+  if (snapshot?.lifecycle !== 'ended' || snapshot.promotion_denied !== true) return null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(snapshot.ended_effective_at || '')) throw new Error('ended_relationship_date_invalid');
+  return `Our affiliate relationship with this provider ended on ${snapshot.ended_effective_at}. We no longer display affiliate links for this provider. This editorial review is retained; the relationship ending does not establish that the provider's services are unavailable.`;
 }
 
 export function publicAffiliateTerms(registry) {
