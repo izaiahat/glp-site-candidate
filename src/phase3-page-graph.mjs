@@ -12,6 +12,7 @@ import { CITATION_REASONS, renderCitationAnchor } from "./citation-attribution.m
 import { renderCouponChip } from "./coupon-offers.mjs";
 import { loadAffiliateLinkMap } from "./affiliate-link-map.mjs";
 import { loadGoPromotionAuthority } from './go-runtime-selection.mjs';
+import { relationshipEndedNotice } from './affiliate-relationship-sync.mjs';
 import { selectedGoOutbound } from './go-render-selection.mjs';
 import { affiliateOutboundMode } from "./affiliate-outbound-mode.mjs";
 import { resolveCardOutbound } from "./card-outbound.mjs";
@@ -1043,7 +1044,10 @@ function renderProviderDetailComplete(program, pricingMatrix, registry, coupons,
   const affiliate = COMPARE_AFFILIATE_MAP[program.program_id];
   const selected = selectedGoOutbound(program, 'providers.rv1');
   const affiliateAttrs = affiliate?.live ? subidAttributes({ programId: program.program_id, network: affiliate.network, href: affiliate.affiliate_href, position: "intro", rankPosition: 0, pageSlug: `provider-${program.program_id}`, pageType: "provider-detail", providerSlug: program.program_id }) : "";
-  const getStarted = affiliate?.live && affiliate.affiliate_href
+  const endedNotice = relationshipEndedNotice(selected?.relationship_snapshot);
+  const getStarted = endedNotice
+    ? `<p class="p3-unavailable-action" data-affiliate-state="ended">${esc(endedNotice)}</p>`
+    : affiliate?.live && affiliate.affiliate_href
     ? `<a class="cs-btn cs-palette-action" href="${esc(selected?.href || affiliate.affiliate_href)}" rel="sponsored noopener nofollow" data-analytics-event="affiliate_click" data-program="${esc(program.program_id)}" ${selected?.href ? 'data-link-mode="server-redirect" data-funnel-v2-go data-subid="providers.rv1" data-variant="a"' : 'data-link-mode="transparent-direct"'} ${affiliateAttrs}>Get started</a>`
     : '<p class="p3-unavailable-action" data-affiliate-unavailable><strong>Enrollment link pending verification</strong><span>No destination appears until Clinic Scout verifies it.</span></p>';
   const fact = (label, value, source = null) => {

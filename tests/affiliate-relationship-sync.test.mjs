@@ -2,6 +2,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { effectiveAffiliateRegistry, historicalAffiliateRegistry, relationshipDenials, publicAffiliateTerms, renderAffiliateTerms } from '../src/affiliate-relationship-sync.mjs';
 
+test('ended relationship disables commercial surfaces while retaining editorial review and sitemap', () => {
+  const base={programs:[{program_id:'katalys-1622',commercial_state:'live',go:{entry_state:'server_redirect'},profiles:{site:{wired:true,surfaces:{review:true,sitemap:true,go:true,compare:true,quiz:true,calculator:true}}},affiliate_relationship_snapshot:{promotion_denied:true,lifecycle:'ended',ended_effective_at:'2026-09-30',editorial_retained:true}}]};
+  const p=effectiveAffiliateRegistry(base).programs[0];
+  assert.equal(p.commercial_state,'held');assert.equal(p.profiles.site.wired,false);
+  assert.equal(p.profiles.site.surfaces.review,true);assert.equal(p.profiles.site.surfaces.sitemap,true);
+  for (const surface of ['go','compare','quiz','calculator']) assert.equal(p.profiles.site.surfaces[surface],false);
+  assert.equal(base.programs[0].commercial_state,'live');
+});
+
 test('withdrawal removes all live surfaces without repricing frozen history', () => {
   const base={programs:[{program_id:'alpha',commercial_state:'live',go:{entry_state:'server_redirect'},price:199,profiles:{site:{wired:true,surfaces:{review:true,sitemap:true,go:true,compare:true,quiz:true,calculator:true}}}}]};
   const observed=structuredClone(base);
