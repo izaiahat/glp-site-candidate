@@ -133,6 +133,7 @@ def build_packet(site_root, business_root, capture_path, out, review_gate=None):
         raise ValueError('disabled unapproved campaign required')
     # Snapshot bytes before producing the attachment manifest. Recheck all at end.
     paths = ['scripts/glp_sponsor_campaign.py', 'scripts/glp_sponsor_readiness.py',
+             'scripts/glp_sponsor_paypal.py',
              'scripts/bouncer_shared_account_guard.py',
              'inbox_control_plane/control_plane.py', 'inbox_control_plane/sponsor_replies.py',
              'ops/sponsor-machine/campaign.json', 'ops/sponsor-machine/copy.json']

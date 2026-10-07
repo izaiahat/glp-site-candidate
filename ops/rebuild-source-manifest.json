@@ -6,14 +6,14 @@
       "callers": [
         "ops/GLP327-SPONSOR-PACKET.md"
       ],
-      "sha256": "376e6392e20b05fa9ecea1488169a546db00321d6dc7db955b3a2d18178f1afa"
+      "sha256": "5fd2593fa76253e7361d65f0818b6dd9cf2ce63d3fc69358a2641e4db4059e0e"
     },
     "tests/test_glp327_sponsor_packet.py": {
       "kind": "test",
       "callers": [
         ".github/workflows/mirror-ci.yml"
       ],
-      "sha256": "d289bc7b84308426d70b17d56c21f89facac8ce92018488d2c2664adce182ffc"
+      "sha256": "49c05bb8e3e39250d7a36027ce62ce61ad19873317b45a86acdb20912601bfad"
     },
     "ops/GLP327-SPONSOR-PACKET.md": {
       "kind": "procedure",

@@ -41,6 +41,7 @@ def fixture(root):
         'ops/sponsor-machine/campaign.json': json.dumps({'send_enabled':False,'packet_sha256':None,'pricing':economics}),
         'ops/sponsor-machine/copy.json': json.dumps({'pricing':economics,'variants':{v:[{'subject':'SYNTHETIC','body':'SYNTHETIC'} for _ in range(3)] for v in ('cold','established_affiliate')}}),
         'scripts/glp_sponsor_campaign.py': '# SYNTHETIC CURRENT SENDER\n',
+        'scripts/glp_sponsor_paypal.py': '# SYNTHETIC CURRENT PAYMENT DEPENDENCY\n',
         'scripts/glp_sponsor_readiness.py': '# SYNTHETIC CONTACT INTERFACE\n',
         'scripts/bouncer_shared_account_guard.py': '# SYNTHETIC EXISTING ACCOUNT CLIENT\n',
         'inbox_control_plane/control_plane.py': '# SYNTHETIC INBOX\n',
@@ -69,6 +70,33 @@ def fixture(root):
     return site, business, capture
 
 class PacketProducerTests(unittest.TestCase):
+    def test_paypal_dependency_is_current_in_manifest_bundle_and_archive(self):
+        m = producer()
+        relative = 'scripts/glp_sponsor_paypal.py'
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); site, business, cap = fixture(root)
+            dependency = business / relative
+            dependency.write_text('# SYNTHETIC SUCCESSOR PAYMENT DEPENDENCY\n')
+            before = {str(p.relative_to(business)): m.digest(p) for p in business.rglob('*') if p.is_file()}
+            result = m.build_packet(site, business, cap, root / 'packet')
+            manifest = json.loads(Path(result['installation_manifest']).read_text())
+            self.assertIn(relative, manifest, 'installed sender imports this approval-relevant dependency')
+            self.assertEqual(manifest[relative], m.digest(dependency))
+            self.assertEqual((root / 'packet/installation-proposal' / relative).read_bytes(), dependency.read_bytes())
+            with zipfile.ZipFile(root / 'packet/sponsor-review-packet.zip') as archive:
+                self.assertEqual(archive.read(relative), dependency.read_bytes())
+            self.assertEqual(before, {str(p.relative_to(business)): m.digest(p) for p in business.rglob('*') if p.is_file()})
+            self.assertEqual(result['attachments']['placement-template.pdf']['pages'], 2)
+
+    def test_missing_paypal_dependency_refuses_before_output(self):
+        m = producer()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); site, business, cap = fixture(root)
+            (business / 'scripts/glp_sponsor_paypal.py').unlink()
+            with self.assertRaisesRegex(ValueError, 'missing or unconfined input: scripts/glp_sponsor_paypal.py'):
+                m.build_packet(site, business, cap, root / 'packet')
+            self.assertFalse((root / 'packet').exists())
+
     def test_outward_directory_pdf_is_bounded_without_replacing_full_evidence(self):
         from PIL import Image
         from pypdf import PdfReader
