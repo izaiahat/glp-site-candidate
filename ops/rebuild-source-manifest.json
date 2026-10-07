@@ -29,6 +29,22 @@
       ],
       "sha256": "716efb4b3c2f98bd4694a779b20352eb386dba1b9cd0bcdf268c68c79bebd544"
     },
+    "src/sponsor-order.mjs": {
+      "kind": "site_source",
+      "callers": [
+        "src/sponsor-inventory.mjs",
+        "src/paid-promo.mjs",
+        "src/sponsor-placement-candidate.mjs"
+      ],
+      "sha256": "806ca6448982b763d949e14265bc4bf07f58526dd3cc84b67376003c5c664cad"
+    },
+    "tests/glp327-sponsor-live-content.test.mjs": {
+      "kind": "test",
+      "callers": [
+        ".github/workflows/glp80-qualified-projection.yml"
+      ],
+      "sha256": "eebcc048c972314e0d650ff6fafc2da1e5a21e00dc3196868e6bbc9d6c4a1390"
+    },
     "src/paid-promo.mjs": {
       "kind": "site_source",
       "callers": [
@@ -64,7 +80,7 @@
       "callers": [
         "node --test"
       ],
-      "sha256": "741192212eb6df3e224d75e948ea22197f36c6120dd28044bb9c9663638753a5"
+      "sha256": "f74f8d4c860a1133472f856289359cb3fafab3bf06752c5efa3b8470dff992a2"
     },
     "data/sponsor-pricing.json": {
       "kind": "sponsor_source",
@@ -102,5 +118,5 @@
       "sha256": "ba72271521048ee98904fe4e66b29bcff25f5654c2ff2635af6b427f8b5ac599"
     }
   },
-  "tracked_count": 15
+  "tracked_count": 17
 }

@@ -13,6 +13,7 @@ function https(value) {
 }
 export function validateSponsorOrder(order) {
  if(!order.operator_approval||!order.partner_creative_approval||order.release_approved!==true||!paymentVerified(order)||!order.eligibility_approved||!order.inventory_reserved||!order.starts_at||!order.ends_at) throw Error('Sponsor activation gates missing; authenticated payment required; release approval required');
+ if(typeof order.affiliate!=='boolean') throw Error('Explicit boolean affiliate status required');
  if(typeof order.provider!=='string'||!order.provider.trim()||/fella/i.test(order.provider)||order.held!==false||order.us_provider!==true) throw Error('Excluded, held or unverified jurisdiction');
  if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(order.slug||'')||['rates','example-provider'].includes(order.slug)) throw Error('Invalid or reserved provider slug');
  if(typeof order.order_reference!=='string'||!order.order_reference.trim()||order.inventory_slot!=='providers-directory-panel') throw Error('Exact reviewed order and inventory slot required');

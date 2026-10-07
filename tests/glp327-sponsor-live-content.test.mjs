@@ -8,7 +8,33 @@ import {sponsorContentFixture} from './fixtures/sponsor-content.mjs';
 mock.module('../src/sponsor-pricing.mjs', {namedExports:{...pricing,paymentVerified:order=>order.order_reference==='SYNTHETIC-NOT-A-PAYMENT'}});
 const {renderPromo} = await import('../src/paid-promo.mjs');
 const {renderSponsoredPanel} = await import('../src/sponsor-placement-candidate.mjs');
+const {validateSponsorOrder} = await import('../src/sponsor-order.mjs');
 const {renderConfiguredListing,phase3Registry,loadPass2DoseCapture,loadProviderLogoManifest} = await import('../src/phase3-page-graph.mjs');
+
+test('A2 affiliate status requires explicit booleans and equal commission disclosures across surfaces',async()=>{
+ const {renderSponsorInventory} = await import('../src/sponsor-inventory.mjs');
+ const disclosure=html=>html.match(/Paid for by Synthetic Fixture Provider\.(?: We may also earn a commission if you use this link\.)?/)[0];
+ for(const affiliate of [true,false]) {
+  const inventory=sponsorContentFixture(),order=inventory.orders[0];order.affiliate=affiliate;
+  assert.equal(validateSponsorOrder(order),order);
+  const selected=renderSponsorInventory(inventory);
+  const promo=selected.pages['sponsors/synthetic-fixture-provider/index.html'];
+  const panel=renderSponsoredPanel({...selected.order,preview:false});
+  const expected=`Paid for by Synthetic Fixture Provider.${affiliate?' We may also earn a commission if you use this link.':''}`;
+  assert.equal(disclosure(panel),expected);
+  assert.equal(disclosure(promo),expected);
+  for(const html of [panel,promo]) assert.equal(html.includes('We may also earn a commission'),affiliate);
+  assert.equal(pricing.paymentVerified(order),false,'synthetic controls are not real payment evidence');
+ }
+ for(const [name,value] of [['missing',undefined],['null',null],['string true','true'],['string false','false']]) {
+  const inventory=sponsorContentFixture(),order=inventory.orders[0];
+  if(value===undefined) delete order.affiliate;else order.affiliate=value;
+  for(const [surface,render] of [
+   ['validator',()=>validateSponsorOrder(order)],['inventory',()=>renderSponsorInventory(inventory)],
+   ['directory panel',()=>renderSponsoredPanel({...order,preview:false})],['promo',()=>renderPromo(order,{preview:false})]
+  ]) assert.throws(render,/Explicit boolean affiliate status required/,`${surface} must reject ${name}`);
+ }
+});
 
 test('A2 exact reviewed inventory renders all factual slots on the page and directory; real unpaid inventory stays absent',async()=>{
  const inventory=sponsorContentFixture(), order=inventory.orders[0];
