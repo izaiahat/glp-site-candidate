@@ -60,10 +60,17 @@ async function main() {
   for (const required of ["cs_click_id", "uuidv7", "decorateOutbound", "loadPostHog", "comparison_sort_change", "affiliate_click"]) {
     if (!analytics.includes(required)) findings.push(`analytics runtime missing ${required}`);
   }
-  // Later privacy instruction: quiz-derived progression stays local, not merely
-  // answer-free. Require the real allowlist and reject any quiz/scorecard entry.
+  // GLP-44 operator direction: coarse progression may follow an explicit
+  // analytics choice, never default-on or an answer/branch/result payload.
   const allowedEvents = analytics.match(/const allowed = Object\.freeze\(\{([\s\S]*?)\}\);/)?.[1];
-  if (!allowedEvents || /(?:quiz|scorecard)_[a-z_]*\s*:/.test(allowedEvents)) findings.push("quiz-derived event is exportable or event allowlist is missing");
+  if (!allowedEvents) findings.push('event allowlist missing');
+  const progression = new Set(['quiz_start','quiz_step_complete','quiz_complete','results_view']);
+  for (const match of (allowedEvents || '').matchAll(/((?:quiz|scorecard)_[a-z_]*|results_view)\s*:\s*(\[[^\]]*\])/g)) {
+    if (!progression.has(match[1]) || match[2].replace(/\s/g,'') !== '[]') findings.push('unreviewed quiz event or properties');
+  }
+  for (const guard of ["analytics_basis === 'explicit'", '!progressionAllowed(event.event)', '!progressionAllowed(name)']) {
+    if (!analytics.includes(guard)) findings.push('missing explicit progression guard: '+guard);
+  }
   // Health-vertical privacy contract (CRO D8): these are what keep the site's own
   // "Health quiz answers are never sent to analytics" line literally true.
   for (const required of ["autocapture: false", "disable_session_recording: true", "mask_all_text: true", "mask_all_element_attributes: true"]) {

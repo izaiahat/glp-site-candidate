@@ -17,8 +17,15 @@
     content_upgrade_view: [], content_upgrade_submit: [],
     content_upgrade_success: [], content_upgrade_complete: [], scroll_75: [],
     sticky_cta_click: [],
+    // Scoped progression is allowed only after an explicit analytics choice.
+    quiz_start: [], quiz_step_complete: [], quiz_complete: [], results_view: [],
+    comparison_filters_applied: [],
     comparison_sort_change: [],
   });
+  const PROGRESSION_EVENTS = new Set(['quiz_start','quiz_step_complete','quiz_complete','results_view']);
+  function progressionAllowed(name) {
+    return !PROGRESSION_EVENTS.has(name) || window.GCSConsent?.read?.()?.analytics_basis === 'explicit';
+  }
   function reviewed(name) { return typeof name === 'string' && Object.hasOwn(allowed, name); }
   function cleanProperties(name, params) {
     const clean = {};
@@ -29,7 +36,7 @@
   // dimensions. Never spread caller properties, profiles, referrers or forms.
   // Removing token makes the real PostHog SDK drop the event before transport.
   function beforeSend(event) {
-    if (!consented() || !reviewed(event?.event)) return null;
+    if (!consented() || !reviewed(event?.event) || !progressionAllowed(event.event)) return null;
     const properties = event.properties || {};
     const url = new URL(location.href);
     url.search = ''; url.hash = ''; url.username = ''; url.password = '';
@@ -52,7 +59,7 @@
 
   function emit(name, params = {}) {
     const config = window.GCS_ANALYTICS || {};
-    if (!consented() || !config.enabled || config.consent !== "granted" || !reviewed(name)) return false;
+    if (!consented() || !config.enabled || config.consent !== "granted" || !reviewed(name) || !progressionAllowed(name)) return false;
     const clean = cleanProperties(name, params);
     // A12b/A11: do not queue UI events for the uncontained GTM/GA lane.
     // PostHog below remains independently analytics-consented. A future Google
@@ -344,8 +351,12 @@
     if (anchor.dataset.elementCode === "F") emit("sticky_cta_click", { page_slug: anchor.dataset.pageSlug, provider_slug: providerSlug });
   });
 
-  // Quiz/scorecard progression is local-only. Do not translate gcs:quiz
-  // into a generic allowed event: branches and timing can reveal health context.
+  // No values, branch identifiers, ordinal step numbers or result counts.
+  // Only operator-authorized coarse progression after an explicit analytics choice.
+  window.addEventListener('gcs:quiz', event => {
+    const name = event.detail?.name;
+    if (PROGRESSION_EVENTS.has(name)) emit(name);
+  });
 
 
   let sentScroll75 = false;

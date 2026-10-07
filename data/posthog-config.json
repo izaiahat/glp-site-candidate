@@ -11,6 +11,12 @@
     "disable_session_recording": true,
     "mask_all_text": true,
     "mask_all_element_attributes": true,
+    "coarse_progression": {
+      "events": ["quiz_start", "quiz_step_complete", "quiz_complete", "results_view"],
+      "requires_analytics_basis": "explicit",
+      "properties": [],
+      "notes": "No quiz answers, branch or step identifiers, result counts, sensitive paths, persistent identity, or replay. Cross-page user funnels remain unmeasured."
+    },
     "person_profiles": "identified_only",
     "note": "Health vertical (CRO D8): no answer values, no free text, no replay. The banner line 'Health quiz answers are never sent to analytics' must stay literally true."
   },
