@@ -46,6 +46,10 @@ test('review articles cannot replace provider profiles or duplicate catalog rout
   assert.throws(() => assertArticleReviewRoutes([article, article], []), /article_review_route_collision/);
   assert.throws(() => assertArticleReviewRoutes([{canonical_path: '/reviews/submit/'}], []), /article_review_route_collision/);
   assert.doesNotThrow(() => assertArticleReviewRoutes([{canonical_path: '/reviews/provider-a-cost/'}], ['/reviews/provider-a/']));
+  const call = source.match(/assertArticleReviewRoutes\(allArticles, \[[\s\S]*?\n  \]\);/)[0];
+  assert.throws(() => vm.runInNewContext(call, {assertArticleReviewRoutes,
+    allArticles:[article], reader:{providerReviews:[]}, ready6Editorial:{pages:[{route:article.canonical_path}]},
+    READY6_LEGACY_REDIRECTS:[], RETIRED_PROGRAM_ROUTES:[]}), /article_review_route_collision/);
 });
 
 test('review capture promises a deliverable the resolver actually supports', () => {

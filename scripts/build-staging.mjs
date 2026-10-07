@@ -2022,7 +2022,7 @@ async function main() {
   await write("tools/glp-1-cost-calculator/index.html", addSharedRuntime(addOg(costCalculatorHtml, "money-online-glp-1-programs", costCalculator.h1)));
   assertArticleReviewRoutes(allArticles, [
     ...reader.providerReviews.map((review) => review.path),
-    ...ready6Editorial.pages.map((page) => page.path || page.canonical_path),
+    ...ready6Editorial.pages.map((page) => page.route),
     ...READY6_LEGACY_REDIRECTS.flat(), ...RETIRED_PROGRAM_ROUTES.flat(),
   ]);
   for (const article of allArticles) {
