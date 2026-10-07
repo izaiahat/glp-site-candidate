@@ -50,7 +50,7 @@ test('A2 exact reviewed inventory renders all factual slots on the page and dire
   const {addSharedRuntime,deriveLiveProviders,resolveDerivedCounts}=await import('../scripts/build-staging.mjs');
   const {projectProviderDisplayLedger}=await import('../src/provider-display-evidence.mjs');
   const {upgradePhase3PageVisuals}=await import('../src/pass2-page-visual-upgrades.mjs');
-  const tallies={LIVE_PROVIDER_COUNT:deriveLiveProviders(programRegistry,structuredClone(json('program-content-ledger.json').programs).map(projectProviderDisplayLedger)).liveProgramCount};
+  const tallies={LIVE_PROVIDER_COUNT:deriveLiveProviders(programRegistry,structuredClone(json('program-content-ledger.json').programs).map(row=>projectProviderDisplayLedger(row))).liveProgramCount};
   const finalized=resolveDerivedCounts(addSharedRuntime(upgradePhase3PageVisuals(directory,{family:'providers-hub',route:'/providers/',graph,registry:programRegistry})),'providers/index.html',tallies);
   writeFileSync(process.env.GLP327_FIXTURE_HTML_OUT+'/promo.html',addSharedRuntime(promo));
   writeFileSync(process.env.GLP327_FIXTURE_HTML_OUT+'/directory.html',finalized);

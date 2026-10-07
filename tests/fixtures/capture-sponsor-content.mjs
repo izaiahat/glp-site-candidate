@@ -6,6 +6,8 @@ import {resolve,join,extname,sep} from 'node:path';
 import {chromium} from 'playwright';
 import axe from 'axe-core';
 import assert from 'node:assert/strict';
+import {sponsorContentFixture} from './sponsor-content.mjs';
+const expectedOrder=sponsorContentFixture().orders[0];
 const root=resolve(new URL('../..',import.meta.url).pathname);
 const [inputArg,outArg]=process.argv.slice(2);
 if(!inputArg||!outArg) throw Error('Two explicit local fixture directories required');
@@ -26,15 +28,17 @@ const browser=await chromium.launch({headless:true});
 const checks=[];
 try {
  for(const [name,width,height] of [['desktop',1440,1000],['mobile',390,844]]) {
-  const context=await browser.newContext({viewport:{width,height},serviceWorkers:'block'});
-  await context.route('**/*',route=>route.request().url().startsWith(origin+'/')?route.continue():route.abort());
   for(const surface of ['promo','directory']) {
+   // Fresh context per native surface, as in the registered neutral capture;
+   // avoid manufacturing a cross-page return-visit toast in isolated fixtures.
+   const context=await browser.newContext({viewport:{width,height},serviceWorkers:'block',reducedMotion:'reduce'});
+   await context.route('**/*',route=>route.request().url().startsWith(origin+'/')?route.continue():route.abort());
    const page=await context.newPage();await page.goto(`${origin}/${surface}.html`,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
    await page.addScriptTag({content:axe.source});
    const target=page.locator(surface==='directory'?'[data-sponsored-placement]':'[data-sponsor-layout="promo"]');
    await target.waitFor();
    const text=await target.innerText();
-   for(const fact of ['Synthetic Fixture Provider','Synthetic price: $123 monthly; medication excluded.','Synthetic eligibility: adults in CA only.','Synthetic offer: no current promotional discount.','Paid for by Synthetic Fixture Provider.','Sponsored']) assert.ok(text.includes(fact),fact);
+   for(const fact of [expectedOrder.provider,...Object.values(expectedOrder.facts).map(f=>f.text),`Paid for by ${expectedOrder.provider}.`,'Sponsored']) assert.ok(text.includes(fact),fact);
    assert.equal(await page.locator('[data-sponsored-link]').count(),1);
    assert.equal(await page.locator('[data-sponsored-link]').getAttribute('rel'),'sponsored nofollow noopener');
    const dom=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,unresolvedTokens:document.body.innerText.includes('{{LIVE_PROVIDER_COUNT}}')}));
@@ -44,9 +48,8 @@ try {
    await page.screenshot({path:join(out,`SYNTHETIC-${surface}-${name}-viewport.png`)});
    await target.screenshot({path:join(out,`SYNTHETIC-${surface}-${name}-native-content.png`)});
    checks.push({surface,viewport:name,width,height,dom,a11y,reportedFactsVisible:true,realPayment:false});
-   await page.close();
+   await context.close();
   }
-  await context.close();
  }
  await writeFile(join(out,'SYNTHETIC-CAPTURE.json'),JSON.stringify({status:'PASS',scope:'Isolated fictional test artifact only. Module-mocked payment; no live/payment/creative acceptance.',checks},null,2)+'\n');
  console.log(JSON.stringify({status:'PASS',frames:checks.length,out}));

@@ -21,7 +21,9 @@ SURFACES = {'rate-card': 'rate-card.pdf', 'providers-sponsored-panel': 'placemen
             'paid-promo': 'promo-page-preview.pdf'}
 SOURCE_REQUIRED = {'src/paid-promo.mjs', 'src/sponsor-placement-candidate.mjs',
                    'src/phase3-page-graph.mjs', 'assets/site-p3.css',
-                   'src/sponsor-pricing.mjs', 'data/sponsor-pricing.json'}
+                   'src/sponsor-pricing.mjs', 'data/sponsor-pricing.json',
+                   'src/sponsor-order.mjs', 'src/sponsor-inventory.mjs',
+                   'data/sponsor-inventory.json'}
 
 
 def digest(path):
