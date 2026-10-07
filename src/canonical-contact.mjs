@@ -1,6 +1,6 @@
 const VERTICAL = "glp-clinic-scout";
 const SAFE_SURFACE = /^[a-z0-9][a-z0-9._:/-]{1,119}$/;
-const PURPOSES = new Set(["marketing", "verification-only", "withdrawal", "suppression"]);
+const PURPOSES = new Set(["marketing", "verification-only", "withdrawal", "suppression", "resource-delivery"]);
 
 function normalizedName(value) {
   const name = String(value || "").trim().replace(/\s+/g, " ");
@@ -45,7 +45,7 @@ export function canonicalContactStatements(db, {
   if (!/^[a-f0-9]{64}$/.test(String(consentCopySha256 || ""))) throw new Error("consent_copy_sha256_invalid");
   if (reviewId != null && !/^review_[a-f0-9-]{16,80}$/.test(String(reviewId))) throw new Error("review_id_invalid");
   if (Boolean(marketingConsent) !== (normalizedPurpose === "marketing")) throw new Error("purpose_consent_mismatch");
-  const consentStatus = marketingConsent ? "opted-in" : "verification-only";
+  const consentStatus = marketingConsent ? "opted-in" : normalizedPurpose === "resource-delivery" ? "resource-only" : "verification-only";
   const statements = [];
 
   if (marketingConsent) {

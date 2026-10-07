@@ -10,15 +10,15 @@ import { validateContentUpgrade } from "../src/content-upgrade.mjs";
 
 const frame = (route, body = "<main><p>Body</p></main>") => `<!doctype html><html><head><link rel="canonical" href="https://glpclinicscout.com${route}"></head><body>${body}</body></html>`;
 
-test("all added capture surfaces use a clear consent note and hidden v2 version", () => {
-  const html = addP1ContentUpgradeSurface(frame("/guides/example-guide/"));
+test("commercial capture surfaces retain their existing v2 contract", () => {
+  const html = addP1ContentUpgradeSurface(frame("/best/example-guide/"));
   assert.equal((html.match(/action="\/api\/content-upgrade"/g) || []).length, 1);
   assert.equal((html.match(/type="checkbox"/g) || []).length, 0);
   assert.doesNotMatch(html, /name="email_consent"/);
   assert.match(html, /<input type="hidden" name="consent_version" value="glp-content-upgrade-v2-20260801">/);
   assert.match(html, /class="capture-consent-note"[\s\S]*?By submitting your email,[\s\S]*?Privacy Policy[\s\S]*?Unsubscribe anytime/i);
   assert.equal((html.match(/payload\.email_consent='true'/g) || []).length, 1);
-  assert.match(html, />Email me the source-checked guide<\/button>/);
+  assert.match(html, />Email me the checklist<\/button>/);
   assert.doesNotMatch(html, /name="(?:privacy_consent|marketing_consent)"/);
 });
 
@@ -46,7 +46,7 @@ test("calculator capture is inserted inside the result surface", () => {
 });
 
 test("capture consent precedes submit without redundant trust copy", () => {
-  const html = addP1ContentUpgradeSurface(frame("/guides/example/", "<main><section><h2>One</h2><h2>Two</h2></section></main>"));
+  const html = addP1ContentUpgradeSurface(frame("/best/example/", "<main><section><h2>One</h2><h2>Two</h2></section></main>"));
   const form = html.match(/<form[^>]*action="\/api\/content-upgrade"[\s\S]*?<\/form>/)[0];
   assert.notEqual(form.indexOf("capture-consent-note"), -1);
   assert.notEqual(form.indexOf('type="submit"'), -1);

@@ -34,6 +34,7 @@
           headers: { "content-type": "application/json", accept: "application/json" },
           body: JSON.stringify(payload),
           credentials: "same-origin",
+          referrerPolicy: payload.guide_path ? 'no-referrer' : 'same-origin',
           keepalive: true,
         });
         const result = await response.json().catch(() => ({ status: "RESPONSE_INVALID" }));
@@ -69,6 +70,8 @@
     if (!statusNode) return;
 
     setCalculatorFields(form);
+    const requestId = form.elements.namedItem('request_id');
+    if (requestId && !requestId.value) requestId.value = crypto.randomUUID();
     const payload = Object.fromEntries(new FormData(form).entries());
     payload.email_consent = "true";
     form.dataset.captureBusy = "true";
@@ -87,7 +90,7 @@
       const held = result.status === "CAPTURED_SENDS_HELD";
       if (!delivered && !held) throw new Error(result.status || "UNEXPECTED_CAPTURE_STATUS");
       statusNode.textContent = delivered
-        ? (placement === "calculator-result" ? "Done — your cost breakdown was emailed." : "Done — your checklist was emailed.")
+        ? (placement === "guide-resource" ? "Done — your guide link was emailed." : placement === "calculator-result" ? "Done — your cost breakdown was emailed." : "Done — your checklist was emailed.")
         : "Saved — email delivery is not active yet.";
       form.reset();
       window.GCSAnalytics?.event("content_upgrade_success", { page_slug: payload.source_page, surface: placement });
