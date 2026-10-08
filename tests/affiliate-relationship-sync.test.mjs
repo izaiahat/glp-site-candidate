@@ -63,6 +63,18 @@ test('ended relationship disables commercial surfaces while retaining editorial 
   assert.throws(()=>projectPreservedPriceIndexLiveCount(prior.replace('57 live providers','55 live providers'),'2026-08-16',56,{predecessorLiveCount:57}),/price_index_live_count_not_derived/);
 });
 
+test('quiz audit removes only explicit ended or withdrawn golden identities', () => {
+  const source=readFileSync(new URL('../scripts/audit-quiz-results-matrix.mjs',import.meta.url),'utf8');
+  const declaration=source.match(/^  const retiredIds=.*;$/m)?.[0];
+  const expected=source.match(/^    const expected = .*;$/m)?.[0];
+  assert.ok(declaration && expected);
+  const project=new Function('registry','vector','relationshipDenials',declaration+expected+'return expected;');
+  const registry={programs:['ended','withdrawn','paused','unknown'].map(lifecycle=>({program_id:lifecycle,review_slug:lifecycle+'-alias',affiliate_relationship_snapshot:{promotion_denied:true,lifecycle}}))};
+  const vector={expected_program_ids:registry.programs.map(p=>p.review_slug)};
+  assert.deepEqual(project(registry,vector,relationshipDenials),['paused-alias','unknown-alias']);
+  assert.equal(vector.expected_program_ids.length,4);
+});
+
 test('withdrawal removes all live surfaces without repricing frozen history', () => {
   const base={programs:[{program_id:'alpha',commercial_state:'live',go:{entry_state:'server_redirect'},price:199,profiles:{site:{wired:true,surfaces:{review:true,sitemap:true,go:true,compare:true,quiz:true,calculator:true}}}}]};
   const observed=structuredClone(base);
