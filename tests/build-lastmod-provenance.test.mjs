@@ -260,7 +260,9 @@ test('regression: frozen carrier keeps its exact authenticated provenance record
       await f.write('public/sitemap.xml', `<urlset><url><loc>https://glpclinicscout.com${carrierRoute}</loc></url></urlset>`);
       const result = await f.prepare();
       assert.deepEqual(result.provenance.pages[carrierRoute], f.provenance.pages[carrierRoute]);
-      assert.deepEqual(JSON.parse(result.input).routes, stage==='candidate'?[]:[carrierRoute]);
+      // Even candidate emission now changes the historical analytics src; the
+      // existing detector declares that raw-byte delta without changing lastmod.
+      assert.deepEqual(JSON.parse(result.input).routes, [carrierRoute]);
       await f.write(file, Buffer.concat([emitted, Buffer.from('<p>Unapproved carrier edit</p>')]));
       await assert.rejects(f.prepare(), /carrier_article_output_drift/);
     }
