@@ -2444,8 +2444,12 @@ async function main() {
     BASELINE_PRICE_ROW_COUNT: pricingBaseline.coverage.medication_rows,
     BASELINE_PRICED_PROVIDER_COUNT: pricingBaseline.coverage.providers_with_evidenced_pricing,
   }),derivedTallies);
+  const rawIdentity = assertDeclaredIdentityGroups(rawProgramRegistry, SITE_PROFILE, rawContentLedger.programs);
+  const predecessorLiveProgramCount = rawProgramRegistry.programs.filter(p => p.commercial_state === 'live'
+    && p.profiles?.[SITE_PROFILE]?.vertical_fit === true && p.profiles[SITE_PROFILE].wired === true
+    && p.profiles[SITE_PROFILE].surfaces?.review === true && !rawIdentity.aliasIds.has(p.program_id)).length;
   const normalizedPreservedPriceIndex = normalizePriceIndexBuild4Semantics(
-    projectPreservedPriceIndexLiveCount(stripCurrentPriceDisclosure(preservedPriceIndexHtml.toString("utf8")), priceIndexInput.tracker.price_index.observations.at(-1).observed_on, liveProgramCount));
+    projectPreservedPriceIndexLiveCount(stripCurrentPriceDisclosure(preservedPriceIndexHtml.toString("utf8")), priceIndexInput.tracker.price_index.observations.at(-1).observed_on, liveProgramCount, {predecessorLiveCount:predecessorLiveProgramCount}));
   if (!priceIndexRefresh && normalizedPriceIndex !== normalizedPreservedPriceIndex) {
     let firstDifference = 0;
     while (firstDifference < normalizedPriceIndex.length && normalizedPriceIndex[firstDifference] === normalizedPreservedPriceIndex[firstDifference]) firstDifference += 1;

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import {projectPreservedPriceIndexLiveCount} from '../src/price-index-live-count.mjs';
 import * as relationshipSync from '../src/affiliate-relationship-sync.mjs';
 const {effectiveAffiliateRegistry, historicalAffiliateRegistry, relationshipDenials, publicAffiliateTerms, renderAffiliateTerms} = relationshipSync;
 
@@ -50,6 +51,11 @@ test('ended relationship disables commercial surfaces while retaining editorial 
   assert.deepEqual(project(unknown,inputs,'site'),inputs);
   const duplicate=structuredClone(inputs);duplicate.contentLedger.programs.push(duplicate.contentLedger.programs[0]);
   assert.throws(()=>project(raw,duplicate,'site'),/relationship_build_identity/);
+  const prior='<p>Historical sample 57; price $157; observed 2026-08-16.</p>'+Array(4).fill('<p>57 live providers</p>').join('');
+  const updated=projectPreservedPriceIndexLiveCount(prior,'2026-08-16',56,{predecessorLiveCount:57});
+  assert.equal(updated,prior.replaceAll('57 live providers','56 live providers'));
+  assert.throws(()=>projectPreservedPriceIndexLiveCount(prior,'2026-08-16',56,{predecessorLiveCount:58}),/price_index_live_count_not_derived/);
+  assert.throws(()=>projectPreservedPriceIndexLiveCount(prior.replace('57 live providers','55 live providers'),'2026-08-16',56,{predecessorLiveCount:57}),/price_index_live_count_not_derived/);
 });
 
 test('withdrawal removes all live surfaces without repricing frozen history', () => {
