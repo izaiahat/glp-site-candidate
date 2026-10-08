@@ -1,4 +1,5 @@
 import { selectedFamilyStyles } from "../src/selected-family-styles.mjs";
+import { assertArticleReviewRoutes } from "../src/article-review-routes.mjs";
 import { captureLastmodEmission } from "./build-lastmod-provenance.mjs";
 import { resetTrackingAllowedHostsCache } from "../src/tracking-allowed-hosts.mjs";
 import { eligibilityCensus } from "../src/held-eligibility-census.mjs";
@@ -996,7 +997,7 @@ details{border-top:1px solid var(--line);padding-top:16px}summary{min-height:44p
 `;
 
 function addGuideMetadata(html, article, author) {
-  if (!/^\/(?:guides|best)\/[a-z0-9-]+\/$/.test(article.canonical_path || "")) throw new Error(`article_canonical_path_invalid:${article.article_id}`);
+  if (!/^\/(?:guides|best|reviews)\/[a-z0-9-]+\/$/.test(article.canonical_path || "")) throw new Error(`article_canonical_path_invalid:${article.article_id}`);
   const canonicalUrl = `https://glpclinicscout.com${article.canonical_path}`;
   const rawDescription = String(article.description || article.direct_answer || article.h1).replace(/\s+/g, " ").trim();
   const description = rawDescription.length <= 160 ? rawDescription : `${rawDescription.slice(0, 157).replace(/\s+\S*$/, "")}…`;
@@ -1020,13 +1021,14 @@ function addGuideMetadata(html, article, author) {
     author,
     image: existsSync(path.join(ROOT, "assets/derivatives", `guide-${heroSlug}-1600.jpg`)) ? `https://glpclinicscout.com${heroJpg}` : null,
     evidenceReview: { status: article.evidence_review?.status, source_urls: (article.sources || []).map((item) => item.url) },
-    breadcrumbs: [{ name: "Home", path: "/" }, article.canonical_path.startsWith("/best/") ? { name: "Compare", path: "/providers/" } : { name: "Guides", path: "/insights/" }, { name: article.h1, path: article.canonical_path }],
+    breadcrumbs: [{ name: "Home", path: "/" }, article.canonical_path.startsWith("/reviews/") ? { name: "Reviews", path: "/reviews/" } : article.canonical_path.startsWith("/best/") ? { name: "Compare", path: "/providers/" } : { name: "Guides", path: "/insights/" }, { name: article.h1, path: article.canonical_path }],
   });
   const hasCanonical = /<link\s+rel="canonical"/i.test(html);
   const meta = `<meta name="description" content="${escHtml(description)}">`;
   const withDescription = /<meta\s+name="description"[^>]*>/i.test(html) ? html.replace(/<meta\s+name="description"[^>]*>/i, meta) : html.replace("</head>", `${meta}</head>`);
   const metadata = `${hasCanonical ? "" : `<link rel="canonical" href="${canonicalUrl}">`}<script type="application/ld+json">${JSON.stringify(schema.jsonLd)}</script>`;
-  return withDescription.replace("</head>", `${metadata}</head>`);
+  const document = withDescription.replace("</head>", `${metadata}</head>`);
+  return article.canonical_path.startsWith("/reviews/") ? document.replace(/<html\b/i, '<html data-article-review="true"') : document;
 }
 
 // Phase-4 gate remediation 2026-08-27 (GATES-PRELIM issue #7): the quiz page
@@ -1265,7 +1267,9 @@ function addByteFrozenSharedRuntime(html) {
 
 function addSharedRuntime(html) {
   const route = html.match(/<link rel="canonical" href="https:\/\/glpclinicscout\.com([^"#?]*)/i)?.[1] || "/";
+  const articleReview = route.startsWith("/reviews/") && /<html\b[^>]*data-article-review="true"/i.test(html);
   const stylesheet = route === "/" ? "site-home.css"
+    : articleReview ? "site-editorial.css"
     : route === "/compare/" ? "site-p3.css"
     // 2026-08-27 compare-search fix 4: this /best/ route is an upgraded guide
     // document, not a money-table template; load the bundle that owns its
@@ -1290,6 +1294,7 @@ function addSharedRuntime(html) {
     : route === "/insights/" || /^\/insights\/page\//.test(route) ? "site-editorial.css"
     : "site.css";
   const template = route === "/" ? "home"
+    : articleReview ? "guide"
     : route === "/guides/" ? "library"
     : route.startsWith("/guides/") ? "guide"
     : route.startsWith("/authors/") ? "author"
@@ -1301,7 +1306,7 @@ function addSharedRuntime(html) {
     : route === "/glp-1-price-index/" ? "price-index"
     : stylesheet === "site-trust.css" ? "trust"
     : "default";
-  const editorialHero = /^\/guides\//.test(route)
+  const editorialHero = (articleReview || /^\/guides\//.test(route))
     ? html.match(/<source\s+srcset="([^"]+)"\s+sizes="([^"]+)"\s+type="image\/avif">/i)
     : null;
   const editorialHeroPreload = editorialHero
@@ -2015,6 +2020,11 @@ async function main() {
 
   const costCalculatorHtml = directCalculatorWorkspace(decorateCostCalculatorAffiliateSurface(renderCostCalculator(reader.costCalculator), reader.costCalculator, reader.augmented, reader.programRegistry, activationSelection, SITE_PROFILE));
   await write("tools/glp-1-cost-calculator/index.html", addSharedRuntime(addOg(costCalculatorHtml, "money-online-glp-1-programs", costCalculator.h1)));
+  assertArticleReviewRoutes(allArticles, [
+    ...reader.providerReviews.map((review) => review.path),
+    ...ready6Editorial.pages.map((page) => page.route),
+    ...READY6_LEGACY_REDIRECTS.flat(), ...RETIRED_PROGRAM_ROUTES.flat(),
+  ]);
   for (const article of allArticles) {
     // R2 target release: render Mounjaro from the refreshed catalog row.
     const key = `guide-${routeSlug(article.canonical_path)}`;
