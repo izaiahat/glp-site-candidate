@@ -1,0 +1,835 @@
+{
+  "status": "PASS",
+  "source": "scoped-render",
+  "head": "8cd91b88888d5340f3ecba56b82e6e128f9f104b",
+  "sourceHashes": {
+    "src/sponsor-pricing.mjs": "572935c24b213b6472cf4849f8bfc9f3fbfd2eb3d69c1c3185cbe2d92af5d51b",
+    "src/sponsor-payment-observer.mjs": "d53f5aa3f61e16c1459591304149099968ffc31fb7431e992b3b912a2b18795d",
+    "data/sponsor-pricing.json": "2d977c8ed9fda6c915f4f323b9f251f6e1fce15064ba710d30162af88be47ac4",
+    "src/sponsor-order.mjs": "806ca6448982b763d949e14265bc4bf07f58526dd3cc84b67376003c5c664cad",
+    "src/sponsor-inventory.mjs": "29fdf97b41189dc741914e2b869dcdb90303773ea43eade87b171dfb37968ac7",
+    "data/sponsor-inventory.json": "bafa8a971e724ac934ef477fdaf6acc5a30ed222b180c3faeee461aa085b288c",
+    "src/paid-promo.mjs": "78ab3f915e51a1c9f361bb615834009678f4312ffdbf36e1d6525ce65394ef97",
+    "src/phase3-page-graph.mjs": "f420b606886c3ff5a60a9f7db18193d2e7cd06f7c8244f8d2c14b18a6d470909",
+    "src/sponsor-placement-candidate.mjs": "e33ad87a5fd8b90f3ea20b9747f37f6cf08cbdd7e129b037a0d395518f0b0441",
+    "assets/css-src/11-phase3.css": "e4053b053c1d5218241840fca73333faa6e9975489c1f70f01864887da2c926f",
+    "assets/site.js": "0b1d94492f69a61d95bad9e35149f4c3e66070daccc9fbab9f769c1de1a9a0dc",
+    "scripts/build-staging.mjs": "f2a49102f454eac64b39b345f0fda1bd27c1a3ad78cced18b535bd9fd89250af",
+    "scripts/glp327-capture.mjs": "bcc556bbe0a352c4c8d38b3c57f1b6095c65a809fcc5358fd2243d3612ad4a0b",
+    "scripts/glp327-check-controls.mjs": "966657b0fd6f76675fb59637257035f84c4667cb84d3642665a47e772a436a83",
+    "assets/site-p3.css": "472043d8a3de18235f3e4a319d4bedbaa6c4a957280bf7c64d52e5dd1f0a2196"
+  },
+  "scope": "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; copy tokens finalized through deriveLiveProviders + resolveDerivedCounts (with the assertTalliesDerived gate), other write-time finalizers not applied. Not a release build.",
+  "finalizedTallies": {
+    "LIVE_PROVIDER_COUNT": 57,
+    "derivation": "deriveLiveProviders(data/program-registry.json, projected data/program-content-ledger.json) -> resolveDerivedCounts"
+  },
+  "gateFindings": [],
+  "checks": [
+    {
+      "surface": "rate-card",
+      "route": "/sponsors/rates/",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "status": "PASS",
+      "failures": [],
+      "interactions": {
+        "status": "PASS",
+        "assertions": [
+          "Full audience/reporting/privacy note is readable below the offer"
+        ]
+      },
+      "expandedImages": [
+        {
+          "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-desktop-audience-expanded.png",
+          "sha256": "bbfa52377a2c55e1887c8331efd771865f2e0165984a8aee3b7fc03fe267ffd1"
+        }
+      ],
+      "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-desktop-1440x1000-viewport.png",
+      "viewportImageSha256": "49de2e30c83409cf26fa70d1d8a1367820267e9bb563ef63abcd607ce0aa21bd",
+      "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-desktop-1440-full.png",
+      "pageImageSha256": "1246f13279aedbe190962a4e59a8a24bbf983d791c2bdc8081d0ff968dca1318",
+      "pageImageScope": "full page, secondary terms expanded (Audience and reporting)",
+      "viewportImageScope": "unscrolled first viewport, accordions collapsed",
+      "dom": {
+        "documentHeight": 2647,
+        "pageImageBottom": null,
+        "robots": "noindex,nofollow,noarchive,nosnippet",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "readerPriceAlertCta": false,
+        "prefooterAliases": [
+          "mailto:partners@glpclinicscout.com"
+        ],
+        "panels": 1,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "organicOrder": [],
+        "directoryControls": null,
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "scrollY": 0
+        },
+        "fold": {
+          "label": {
+            "selector": "#sponsor-offer-title",
+            "top": 118,
+            "bottom": 159,
+            "left": 85,
+            "right": 748,
+            "visible": true
+          },
+          "price": {
+            "selector": "[data-sponsor-price] .cs-price",
+            "top": 171,
+            "bottom": 218,
+            "left": 85,
+            "right": 196,
+            "visible": true
+          },
+          "terms": {
+            "selector": "[data-sponsor-price-terms]",
+            "top": 233,
+            "bottom": 263,
+            "left": 85,
+            "right": 733,
+            "visible": true
+          },
+          "deliverables": {
+            "selector": "[data-sponsor-deliverables]",
+            "top": 275,
+            "bottom": 342,
+            "left": 85,
+            "right": 748,
+            "visible": true
+          },
+          "renewal": {
+            "selector": "[data-sponsor-renewal]",
+            "top": 354,
+            "bottom": 384,
+            "left": 85,
+            "right": 733,
+            "visible": true
+          },
+          "cta": {
+            "selector": "[data-sponsor-booking-cta]",
+            "top": 404,
+            "bottom": 454,
+            "left": 85,
+            "right": 365,
+            "visible": true
+          },
+          "disclosure": {
+            "selector": "[data-sponsor-independence]",
+            "top": 466,
+            "bottom": 487,
+            "left": 85,
+            "right": 748,
+            "visible": true
+          }
+        },
+        "h1": [
+          {
+            "text": "Sponsor placements",
+            "fontSize": 37.44,
+            "top": 118,
+            "bottom": 159,
+            "left": 85,
+            "right": 748
+          }
+        ],
+        "scrollWidth": 1440,
+        "fella": false,
+        "unresolvedTokens": []
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "rate-card",
+      "route": "/sponsors/rates/",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "failures": [],
+      "interactions": {
+        "status": "PASS",
+        "assertions": [
+          "Full audience/reporting/privacy note is readable below the offer"
+        ]
+      },
+      "expandedImages": [
+        {
+          "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-mobile-audience-expanded.png",
+          "sha256": "0deb32274db2fdec960a828ff084abde684e941e1f18a4ccb272baef72e63152"
+        }
+      ],
+      "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-mobile-390x844-viewport.png",
+      "viewportImageSha256": "c4d997df82cbbe1678f1455a0447ad6a86df63072c22947a90c90e0a3d2617c0",
+      "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-mobile-390-full.png",
+      "pageImageSha256": "5a0cd2a0b448badf537c3c9d0af36614df7e0ad88ea4cc7b1e76f89869ad6356",
+      "pageImageScope": "full page, secondary terms expanded (Audience and reporting)",
+      "viewportImageScope": "unscrolled first viewport, accordions collapsed",
+      "dom": {
+        "documentHeight": 4422,
+        "pageImageBottom": null,
+        "robots": "noindex,nofollow,noarchive,nosnippet",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "readerPriceAlertCta": false,
+        "prefooterAliases": [
+          "mailto:partners@glpclinicscout.com"
+        ],
+        "panels": 1,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "organicOrder": [],
+        "directoryControls": null,
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "scrollY": 0
+        },
+        "fold": {
+          "label": {
+            "selector": "#sponsor-offer-title",
+            "top": 121,
+            "bottom": 152,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          },
+          "price": {
+            "selector": "[data-sponsor-price] .cs-price",
+            "top": 164,
+            "bottom": 196,
+            "left": 39,
+            "right": 116,
+            "visible": true
+          },
+          "terms": {
+            "selector": "[data-sponsor-price-terms]",
+            "top": 213,
+            "bottom": 241,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          },
+          "deliverables": {
+            "selector": "[data-sponsor-deliverables]",
+            "top": 253,
+            "bottom": 317,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          },
+          "renewal": {
+            "selector": "[data-sponsor-renewal]",
+            "top": 329,
+            "bottom": 385,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          },
+          "cta": {
+            "selector": "[data-sponsor-booking-cta]",
+            "top": 405,
+            "bottom": 455,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          },
+          "disclosure": {
+            "selector": "[data-sponsor-independence]",
+            "top": 467,
+            "bottom": 530,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          }
+        },
+        "h1": [
+          {
+            "text": "Sponsor placements",
+            "fontSize": 28,
+            "top": 121,
+            "bottom": 152,
+            "left": 39,
+            "right": 351
+          }
+        ],
+        "scrollWidth": 390,
+        "fella": false,
+        "unresolvedTokens": []
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "providers-sponsored-panel",
+      "route": "/providers/",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "status": "PASS",
+      "failures": [],
+      "interactions": {
+        "status": "PASS",
+        "assertions": [
+          "Keyboard opens native Filters; exactly one selector, all 51 states/DC + placeholder",
+          "Native state updates URL/heading; Reset clears state",
+          "Arrow-key tabs; autocomplete Enter commits provider; Reset clears search",
+          "Expanded controls pass serious/critical axe",
+          "Closing restores a single row, <=64px",
+          "No-JS native details/selector/options and all organic cards remain accessible"
+        ]
+      },
+      "expandedImages": [
+        {
+          "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-desktop-filters-expanded.png",
+          "sha256": "a3d99bfaeeefa6413ed337a70a12e5339ae276c668ff1b88e3e44276230f425b"
+        },
+        {
+          "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-desktop-filters-nojs.png",
+          "sha256": "ee88e274f3dbb2ce8b8386d7f5531611d27c0ce4608c83d6783e1b4218c81d58"
+        }
+      ],
+      "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-desktop-1440x1000-viewport.png",
+      "viewportImageSha256": "e46d6421b724e9b63089081bb6b6ee5cd3c45ae482468b9f5f70062e08ad1c2c",
+      "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-desktop-1440-page-through-first-results.png",
+      "pageImageSha256": "0294f1d5693c3411ac56cc5872d9282f0562cc6e8f3274ad0f215fc0462f9b52",
+      "pageImageScope": "top-anchored, 0-2057px of 40255px (through the first independent results row)",
+      "viewportImageScope": "unscrolled first viewport, accordions collapsed",
+      "dom": {
+        "documentHeight": 40255,
+        "pageImageBottom": 2057,
+        "robots": "index,follow,max-image-preview:large",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "readerPriceAlertCta": true,
+        "prefooterAliases": [
+          "mailto:support@glpclinicscout.com"
+        ],
+        "panels": 1,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "organicOrder": [
+          "snagrx",
+          "yucca-health-xentraffic-offer-3117",
+          "humecare-data-driven-glp-1-weight-loss-system",
+          "tmates-xentraffic-offer-3154",
+          "futurhealth-wegovy-pillform",
+          "altrx-glp1-us-cps",
+          "biltrx",
+          "bodybuilding-com-glp-1-longevity-review",
+          "coivas",
+          "coreage-rx-glp-1-1632",
+          "curex-glp-1",
+          "direct-meds",
+          "drhouse",
+          "dudemeds-review",
+          "eden-xentraffic-offer-3051",
+          "enhance-md",
+          "enhanced-tirzepatide-funnel-b",
+          "found-health",
+          "gala-health",
+          "gobymeds",
+          "healthrx",
+          "joinskinny-semaglutide-glp-1-us",
+          "levelsrx-extra-cpa-home-page",
+          "live-vital-launch",
+          "longevity-meds-glp-1-review",
+          "lttl-glp-landing-page-2",
+          "mademed",
+          "measured",
+          "novi-weight-loss-glp-1",
+          "nu-image-medical-review",
+          "oak-weight-loss-program",
+          "orderlymeds",
+          "pallas-health-review",
+          "refills",
+          "ro-wegovy-glp1-quiz-us-cpl",
+          "rxspan-md-telehealth-program-review",
+          "serena-health",
+          "shedrx",
+          "skinnyrx-1-glp-weight-loss-provider-review",
+          "sprout-health",
+          "strut-health",
+          "sunlight-glp1",
+          "synergy-rx-review",
+          "trimi-glp-1",
+          "trimrx-xentraffic-offer-3014",
+          "trt-nation",
+          "try-ageless",
+          "wellmedr-review",
+          "wellorithm",
+          "yourera-program"
+        ],
+        "directoryControls": {
+          "search": true,
+          "sort": false,
+          "state": false,
+          "extendedFiltersCollapsed": true,
+          "nativeStateCount": 1,
+          "customStateCount": 0,
+          "panelTop": 236,
+          "filterHeight": 55.6875
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "scrollY": 0
+        },
+        "fold": {
+          "label": {
+            "selector": "[data-sponsor-placement-candidate] .p3-chip",
+            "top": 261,
+            "bottom": 287,
+            "left": 341,
+            "right": 419,
+            "visible": true
+          },
+          "identity": {
+            "selector": "#sponsored-placement-title",
+            "top": 289,
+            "bottom": 308,
+            "left": 341,
+            "right": 478,
+            "visible": true
+          },
+          "cta": {
+            "selector": "[data-sponsor-placement-candidate] .cs-btn",
+            "top": 294,
+            "bottom": 344,
+            "left": 953,
+            "right": 1207,
+            "visible": true
+          }
+        },
+        "h1": [
+          {
+            "text": "Compare providers",
+            "fontSize": 36,
+            "top": 111,
+            "bottom": 152,
+            "left": 208,
+            "right": 1232
+          }
+        ],
+        "scrollWidth": 1440,
+        "fella": false,
+        "unresolvedTokens": []
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "providers-sponsored-panel",
+      "route": "/providers/",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "failures": [],
+      "interactions": {
+        "status": "PASS",
+        "assertions": [
+          "Keyboard opens native Filters; exactly one selector, all 51 states/DC + placeholder",
+          "Native state updates URL/heading; Reset clears state",
+          "Arrow-key tabs; autocomplete Enter commits provider; Reset clears search",
+          "Expanded mobile controls have >=44px touch targets",
+          "Expanded controls pass serious/critical axe",
+          "Touch opens/closes native Filters",
+          "Closing restores a single row, <=64px",
+          "Directory navigation drawer works by touch and closes with Escape",
+          "No-JS native details/selector/options and all organic cards remain accessible"
+        ]
+      },
+      "expandedImages": [
+        {
+          "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-mobile-filters-expanded.png",
+          "sha256": "a1df2b505628c2c522215b3725d776c6c5a4a4a1a85993debe6265971321750e"
+        },
+        {
+          "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-mobile-filters-nojs.png",
+          "sha256": "f318b70c486668a0fb59fa3f6adbb0aa11a346e709e3f3e0bf91e325e0739a72"
+        }
+      ],
+      "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-mobile-390x844-viewport.png",
+      "viewportImageSha256": "1cec7c45b6faecb7f1be10341829c7f3a03db11175f7993bdb236a4bf7541ddc",
+      "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-mobile-390-page-through-first-results.png",
+      "pageImageSha256": "af422903e097610fe07bb3f891214f853a21d480ce6e52792a7f288baace7cc5",
+      "pageImageScope": "top-anchored, 0-2145px of 73673px (through the first independent results row)",
+      "viewportImageScope": "unscrolled first viewport, accordions collapsed",
+      "dom": {
+        "documentHeight": 73673,
+        "pageImageBottom": 2145,
+        "robots": "index,follow,max-image-preview:large",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "readerPriceAlertCta": true,
+        "prefooterAliases": [
+          "mailto:support@glpclinicscout.com"
+        ],
+        "panels": 1,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "organicOrder": [
+          "snagrx",
+          "yucca-health-xentraffic-offer-3117",
+          "humecare-data-driven-glp-1-weight-loss-system",
+          "tmates-xentraffic-offer-3154",
+          "futurhealth-wegovy-pillform",
+          "altrx-glp1-us-cps",
+          "biltrx",
+          "bodybuilding-com-glp-1-longevity-review",
+          "coivas",
+          "coreage-rx-glp-1-1632",
+          "curex-glp-1",
+          "direct-meds",
+          "drhouse",
+          "dudemeds-review",
+          "eden-xentraffic-offer-3051",
+          "enhance-md",
+          "enhanced-tirzepatide-funnel-b",
+          "found-health",
+          "gala-health",
+          "gobymeds",
+          "healthrx",
+          "joinskinny-semaglutide-glp-1-us",
+          "levelsrx-extra-cpa-home-page",
+          "live-vital-launch",
+          "longevity-meds-glp-1-review",
+          "lttl-glp-landing-page-2",
+          "mademed",
+          "measured",
+          "novi-weight-loss-glp-1",
+          "nu-image-medical-review",
+          "oak-weight-loss-program",
+          "orderlymeds",
+          "pallas-health-review",
+          "refills",
+          "ro-wegovy-glp1-quiz-us-cpl",
+          "rxspan-md-telehealth-program-review",
+          "serena-health",
+          "shedrx",
+          "skinnyrx-1-glp-weight-loss-provider-review",
+          "sprout-health",
+          "strut-health",
+          "sunlight-glp1",
+          "synergy-rx-review",
+          "trimi-glp-1",
+          "trimrx-xentraffic-offer-3014",
+          "trt-nation",
+          "try-ageless",
+          "wellmedr-review",
+          "wellorithm",
+          "yourera-program"
+        ],
+        "directoryControls": {
+          "search": true,
+          "sort": false,
+          "state": false,
+          "extendedFiltersCollapsed": true,
+          "nativeStateCount": 1,
+          "customStateCount": 0,
+          "panelTop": 210,
+          "filterHeight": 54.046875
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "scrollY": 0
+        },
+        "fold": {
+          "label": {
+            "selector": "[data-sponsor-placement-candidate] .p3-chip",
+            "top": 235,
+            "bottom": 261,
+            "left": 149,
+            "right": 227,
+            "visible": true
+          },
+          "identity": {
+            "selector": "#sponsored-placement-title",
+            "top": 263,
+            "bottom": 282,
+            "left": 149,
+            "right": 286,
+            "visible": true
+          },
+          "cta": {
+            "selector": "[data-sponsor-placement-candidate] .cs-btn",
+            "top": 330,
+            "bottom": 381,
+            "left": 41,
+            "right": 349,
+            "visible": true
+          }
+        },
+        "h1": [
+          {
+            "text": "Compare providers",
+            "fontSize": 26,
+            "top": 98,
+            "bottom": 128,
+            "left": 16,
+            "right": 374
+          }
+        ],
+        "scrollWidth": 390,
+        "fella": false,
+        "unresolvedTokens": []
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "paid-promo",
+      "route": "/sponsors/example-provider/",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "status": "PASS",
+      "failures": [],
+      "interactions": {
+        "status": "PASS",
+        "assertions": []
+      },
+      "expandedImages": [],
+      "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/paid-promo-desktop-1440x1000-viewport.png",
+      "viewportImageSha256": "da6d87fe77e12278d223d92ef55d12ecbbf13e7b0d8e7f37cc7cd73787f0e8eb",
+      "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/paid-promo-desktop-1440-full.png",
+      "pageImageSha256": "ea95a939dda9441c35ba01877317a12d893259f1001664fe0dea2db82a29fbd7",
+      "pageImageScope": "full page",
+      "viewportImageScope": "unscrolled first viewport, accordions collapsed",
+      "dom": {
+        "documentHeight": 1937,
+        "pageImageBottom": null,
+        "robots": "noindex,nofollow,noarchive,nosnippet",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "readerPriceAlertCta": false,
+        "prefooterAliases": [
+          "mailto:partners@glpclinicscout.com"
+        ],
+        "panels": 0,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "organicOrder": [],
+        "directoryControls": null,
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "scrollY": 0
+        },
+        "fold": {
+          "label": {
+            "selector": "[data-sponsor-lead-label] .p3-chip",
+            "top": 118,
+            "bottom": 144,
+            "left": 85,
+            "right": 163,
+            "visible": true
+          },
+          "identity": {
+            "selector": "#sponsor-provider-title",
+            "top": 156,
+            "bottom": 197,
+            "left": 85,
+            "right": 748,
+            "visible": true
+          },
+          "intro": {
+            "selector": "[data-sponsor-lead] .lede",
+            "top": 209,
+            "bottom": 234,
+            "left": 85,
+            "right": 645,
+            "visible": true
+          },
+          "cta": {
+            "selector": "[data-sponsor-lead] .cs-btn",
+            "top": 254,
+            "bottom": 305,
+            "left": 85,
+            "right": 365,
+            "visible": true
+          },
+          "disclosure": {
+            "selector": "[data-sponsor-ad-disclosure]",
+            "top": 317,
+            "bottom": 338,
+            "left": 85,
+            "right": 748,
+            "visible": true
+          }
+        },
+        "h1": [
+          {
+            "text": "Example Provider",
+            "fontSize": 37.44,
+            "top": 156,
+            "bottom": 197,
+            "left": 85,
+            "right": 748
+          }
+        ],
+        "scrollWidth": 1440,
+        "fella": false,
+        "unresolvedTokens": []
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    },
+    {
+      "surface": "paid-promo",
+      "route": "/sponsors/example-provider/",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "failures": [],
+      "interactions": {
+        "status": "PASS",
+        "assertions": []
+      },
+      "expandedImages": [],
+      "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/paid-promo-mobile-390x844-viewport.png",
+      "viewportImageSha256": "834b48550f39dc4860ba87455e3de176be68fb4ad637f4f76f5ade520208b435",
+      "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/paid-promo-mobile-390-full.png",
+      "pageImageSha256": "8c98386c1a3f7a63c0006efb3db5a72dd8ab586e1299b0f975f13d28f0412926",
+      "pageImageScope": "full page",
+      "viewportImageScope": "unscrolled first viewport, accordions collapsed",
+      "dom": {
+        "documentHeight": 3476,
+        "pageImageBottom": null,
+        "robots": "noindex,nofollow,noarchive,nosnippet",
+        "stylesheets": [
+          "/assets/site-p3.css"
+        ],
+        "siteCssLoaded": true,
+        "header": true,
+        "footer": true,
+        "readerPriceAlertCta": false,
+        "prefooterAliases": [
+          "mailto:partners@glpclinicscout.com"
+        ],
+        "panels": 0,
+        "sponsoredLabel": true,
+        "panelOutsideResults": true,
+        "panelBeforeResults": true,
+        "panelAfterFilters": true,
+        "panelLocalStyles": false,
+        "organicOrder": [],
+        "directoryControls": null,
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "scrollY": 0
+        },
+        "fold": {
+          "label": {
+            "selector": "[data-sponsor-lead-label] .p3-chip",
+            "top": 121,
+            "bottom": 147,
+            "left": 39,
+            "right": 117,
+            "visible": true
+          },
+          "identity": {
+            "selector": "#sponsor-provider-title",
+            "top": 159,
+            "bottom": 190,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          },
+          "intro": {
+            "selector": "[data-sponsor-lead] .lede",
+            "top": 202,
+            "bottom": 252,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          },
+          "cta": {
+            "selector": "[data-sponsor-lead] .cs-btn",
+            "top": 272,
+            "bottom": 323,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          },
+          "disclosure": {
+            "selector": "[data-sponsor-ad-disclosure]",
+            "top": 335,
+            "bottom": 356,
+            "left": 39,
+            "right": 351,
+            "visible": true
+          }
+        },
+        "h1": [
+          {
+            "text": "Example Provider",
+            "fontSize": 28,
+            "top": 159,
+            "bottom": 190,
+            "left": 39,
+            "right": 351
+          }
+        ],
+        "scrollWidth": 390,
+        "fella": false,
+        "unresolvedTokens": []
+      },
+      "a11y": [],
+      "blockedOrigins": [],
+      "pageErrors": []
+    }
+  ]
+}
