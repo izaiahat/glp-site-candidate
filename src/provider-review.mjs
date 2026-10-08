@@ -405,6 +405,8 @@ export function buildProviderReviewSpecs(pages, providerContracts, fastpath, reg
       && !aliasIds.has(record.program_id) && entry && entry.medications.length === 0) {
       model.row = { ...model.row, price_state_disclosure_evidence: priceStateText(entry) };
     }
+    const endedNotice = relationshipEndedNotice(record?.affiliate_relationship_snapshot);
+    if (endedNotice) model.row = {...model.row, affiliate_relationship_notice:endedNotice};
     return { ...model, provider_detail_path };
   });
 }
