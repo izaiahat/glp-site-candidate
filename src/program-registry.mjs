@@ -1,3 +1,4 @@
+import { effectiveAffiliateRegistry } from './affiliate-relationship-sync.mjs';
 import { access, readFile, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import path from "node:path";
@@ -383,6 +384,7 @@ export async function reviewPageIds(root, registry, profileId) {
 }
 
 export async function collectCoverageInputs({ root, registry, profileId, money, quiz, calculatorConfig, providerContracts, providerFastpath }) {
+  registry = effectiveAffiliateRegistry(registry);
   const resolvedRoot = rootPath(root);
   // 2026-08-06 cluster 1: coverage has to audit the surfaces the BUILD assembles,
   // not the raw data files. Reading money-page-specs.json directly counted the
@@ -450,7 +452,8 @@ function assertExactSurface(actual, expected, profileId, surface, canonical = (i
 }
 
 export function validateProgramCoverage(inputs) {
-  const { registry, profileId, actual, root, providerContracts, providerFastpath } = inputs;
+  const { profileId, actual, root, providerContracts, providerFastpath } = inputs;
+  const registry = effectiveAffiliateRegistry(inputs.registry);
   const siteProfile = validateRegistryShape(registry, profileId);
   const expected = deriveProfileSurfaceSets(registry, profileId, inputs.ledgerPrograms || []);
   const reviewRouteToProgramId = new Map(registry.programs.map((program) => [program.review_path, program.program_id]));
