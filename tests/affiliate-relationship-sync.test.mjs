@@ -54,6 +54,17 @@ test('ended relationship disables commercial surfaces while retaining editorial 
   const prior='<p>Historical sample 57; price $157; observed 2026-08-16.</p>'+Array(4).fill('<p>57 live providers</p>').join('');
   const updated=projectPreservedPriceIndexLiveCount(prior,'2026-08-16',56,{predecessorLiveCount:57});
   assert.equal(updated,prior.replaceAll('57 live providers','56 live providers'));
+  // The caller still binds raw membership (57) when the authenticated next
+  // predecessor already contains the effective count (56). Repeat is byte-exact.
+  assert.equal(projectPreservedPriceIndexLiveCount(updated,'2026-08-16',56,{predecessorLiveCount:57}),updated);
+  for (const invalid of [
+    prior.replace('57 live providers','56 live providers'),
+    updated.replace('56 live providers','57 live providers'),
+    prior.replaceAll('57 live providers','55 live providers'),
+    updated.replace('<p>56 live providers</p>',''),
+    updated+'<p>56 live providers</p>',
+    updated.replaceAll('<p>56 live providers</p>',''),
+  ]) assert.throws(()=>projectPreservedPriceIndexLiveCount(invalid,'2026-08-16',56,{predecessorLiveCount:57}),/price_index_live_count_(not_derived|shape)/);
   assert.throws(()=>projectPreservedPriceIndexLiveCount(prior,'2026-08-16',56,{predecessorLiveCount:58}),/price_index_live_count_not_derived/);
   assert.throws(()=>projectPreservedPriceIndexLiveCount(prior.replace('57 live providers','55 live providers'),'2026-08-16',56,{predecessorLiveCount:57}),/price_index_live_count_not_derived/);
 });
