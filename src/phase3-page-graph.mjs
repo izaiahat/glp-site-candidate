@@ -1101,15 +1101,18 @@ function renderProviderDetailComplete(program, pricingMatrix, registry, coupons,
   // without a bound price get no Product — a missing price is never estimated.
   // No aggregateRating, no availability claims, nothing invented.
   const description = `Source-bound pricing, program facts, tradeoffs, pharmacy relationships, and explicit unknowns for ${program.display_name}.`;
+  // Typed floors/prepaid/conditional rows have no plain cash Offer projection.
+  // Keep their reader-facing terms without a misleading Product with offers:[].
+  const cashOffers=(priced?.medications || []).filter(row=>!isTypedPrice(row) && Number.isFinite(row.ongoing_usd));
   const schema = pageSchemaGraph(
     breadcrumbSchema(route, [{ href: "/", label: "Home" }, { href: "/providers/", label: "Providers" }, { label: program.display_name }]),
-    priced?.medications?.length ? {
+    cashOffers.length ? {
       "@type": "Product",
       "@id": `${canonical(route)}#product`,
       name: program.display_name,
       description,
       url: canonical(route),
-      offers: priced.medications.filter((row) => !isTypedPrice(row)).map((row) => ({
+      offers: cashOffers.map((row) => ({
         "@type": "Offer",
         name: row.label,
         price: row.ongoing_usd,

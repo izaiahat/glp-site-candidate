@@ -5,6 +5,9 @@ on:
       - src/price-refresh-evidence.mjs
       - src/price-state.mjs
       - tests/price-refresh-evidence.test.mjs
+      - tests/helpers/price-refresh-surfaces.mjs
+      - src/cost-calculator.mjs
+      - src/phase3-page-graph.mjs
       - .github/workflows/price-refresh-evidence.yml
 jobs:
   price-refresh-evidence-exact-head:
@@ -16,4 +19,6 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
+      - run: npm ci --include=dev --ignore-scripts --no-audit --no-fund
       - run: node --test tests/price-refresh-evidence.test.mjs
+      - run: git diff --exit-code
