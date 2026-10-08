@@ -2,6 +2,7 @@ import {readFileSync} from 'node:fs';
 import path from 'node:path';
 import {isDeepStrictEqual} from 'node:util';
 import {sha256} from './pricing-coverage-floor.mjs';
+import {applyPriceRefreshEvidence} from './price-refresh-evidence.mjs';
 
 
 // Exact S30 removals, not a coverage waiver. Baseline authentication remains
@@ -46,10 +47,16 @@ export function validateAttestedRetention(root, matrix, baseline) {
     }
   }
   if (!isDeepStrictEqual(removals,contract.removed_rows)) fail('removal_accounting');
+  // Build the immutable retained-row oracle FIRST, then apply only individually
+  // proven dollar-field successors. All historical removal/identity guards stay.
   for (const [id,entry] of Object.entries(expected)) {
     const indices=new Set(removals.filter(r=>r.program_id===id).map(r=>r.baseline_index));
     entry.medications=entry.medications.filter((_,index)=>!indices.has(index));
     entry.medications.push(...(successor.additions[id] || []));
+  }
+  const refreshed = applyPriceRefreshEvidence(root, expected);
+  for (const [id,entry] of Object.entries(refreshed)) {
+    const indices=new Set(removals.filter(r=>r.program_id===id).map(r=>r.baseline_index));
     if (!isDeepStrictEqual(entry.medications,matrix.providers?.[id]?.medications)) fail('attested_set_drift:'+id);
     if (!entry.medications.length && (!matrix.providers[id].unavailable_reason || !['not_attested','not_published'].includes(matrix.providers[id].pricing_state))) fail('missing_reason:'+id);
     if (!entry.medications.length && matrix.providers[id].unavailable_reason !== (successor.unpriced_reasons[id] || (indices.size ? REMOVED_PRICE_REASON : old.providers[id].unavailable_reason))) fail('forged_reason:'+id);
