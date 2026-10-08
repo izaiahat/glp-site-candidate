@@ -37,6 +37,15 @@ test('ended relationship disables commercial surfaces while retaining editorial 
     const bad=structuredClone(inputs);bad[field].live_program_count=3;
     assert.throws(()=>project(raw,bad,'site'),/relationship_build_raw_count/);
   }
+  const dynamic=structuredClone(raw);
+  const counts=n=>({provider_identities:n,semaglutide:0,tirzepatide:0,retatrutide:0,wegovy:0,zepbound:0,mounjaro:0,oral:0,injectable:0,compounded:0,brand_name:0,treatment_type_unknown:n,calculator_autofill:0,calculator_manual:n});
+  dynamic.provider_dynamic_profiles={profiles:Object.fromEntries(['ended','peer'].map(id=>[id+'-review',{registry_program_ids:[id],taxonomy:{molecule_tags:[],brand_name_tags:[],delivery_form_tags:[],treatment_type_tags:[]},calculator:{mode:'manual'}}])),expected_counts:counts(2)};
+  const projected=effectiveAffiliateRegistry(dynamic);
+  assert.deepEqual(Object.keys(projected.provider_dynamic_profiles.profiles),['peer-review']);
+  assert.deepEqual(projected.provider_dynamic_profiles.expected_counts,counts(1));
+  assert.equal(Object.keys(dynamic.provider_dynamic_profiles.profiles).length,2);
+  const drift=structuredClone(dynamic);drift.provider_dynamic_profiles.expected_counts.provider_identities=9;
+  assert.throws(()=>effectiveAffiliateRegistry(drift),/relationship_dynamic_raw_count/);
   const unknown=structuredClone(raw);unknown.programs[0].affiliate_relationship_snapshot.lifecycle='unknown';
   assert.deepEqual(project(unknown,inputs,'site'),inputs);
   const duplicate=structuredClone(inputs);duplicate.contentLedger.programs.push(duplicate.contentLedger.programs[0]);
