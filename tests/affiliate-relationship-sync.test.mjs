@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {projectPreservedPriceIndexLiveCount} from '../src/price-index-live-count.mjs';
+import {rawHeldOutputCensus,assertRawHeldOutput} from '../src/served-affiliate-identity.mjs';
 import * as relationshipSync from '../src/affiliate-relationship-sync.mjs';
 const {effectiveAffiliateRegistry, historicalAffiliateRegistry, relationshipDenials, publicAffiliateTerms, renderAffiliateTerms} = relationshipSync;
 
@@ -51,6 +52,10 @@ test('ended relationship disables commercial surfaces while retaining editorial 
   assert.deepEqual(project(unknown,inputs,'site'),inputs);
   const duplicate=structuredClone(inputs);duplicate.contentLedger.programs.push(duplicate.contentLedger.programs[0]);
   assert.throws(()=>project(raw,duplicate,'site'),/relationship_build_identity/);
+  const held={held:[{id:'pallas-health-review',sources:['fixture']}],aliases:{},issued:[]};
+  const markup='<noscript><a href="/go/pallas-health-review">Start</a></noscript>';
+  const documents=[{file:'fixture.html',text:markup},{file:'fixture.json',text:'[]'}];
+  assert.throws(()=>assertRawHeldOutput(rawHeldOutputCensus(documents,held,{})),/raw_held_output_live/);
   const prior='<p>Historical sample 57; price $157; observed 2026-08-16.</p>'+Array(4).fill('<p>57 live providers</p>').join('');
   const updated=projectPreservedPriceIndexLiveCount(prior,'2026-08-16',56,{predecessorLiveCount:57});
   assert.equal(updated,prior.replaceAll('57 live providers','56 live providers'));

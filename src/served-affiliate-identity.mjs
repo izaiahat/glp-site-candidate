@@ -106,7 +106,7 @@ export function rawHeldOutputCensus(documents, inputs, runtime) {
       for (const child of node.childNodes || []) visit(child);
       if (node.content) visit(node.content);
     }
-    visit(parse(text, {sourceCodeLocationInfo:true}));
+    visit(parse(text, {sourceCodeLocationInfo:true, scriptingEnabled:false}));
   }
   function payload(value, file, pointer = '$') {
     if (typeof value === 'string' && /<a\b/i.test(value)) markup(value, file, pointer);
