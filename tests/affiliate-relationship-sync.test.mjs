@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { effectiveAffiliateRegistry, historicalAffiliateRegistry, relationshipDenials, publicAffiliateTerms, renderAffiliateTerms } from '../src/affiliate-relationship-sync.mjs';
 
 test('ended relationship disables commercial surfaces while retaining editorial review and sitemap', () => {
@@ -9,6 +10,15 @@ test('ended relationship disables commercial surfaces while retaining editorial 
   assert.equal(p.profiles.site.surfaces.review,true);assert.equal(p.profiles.site.surfaces.sitemap,true);
   for (const surface of ['go','compare','quiz','calculator']) assert.equal(p.profiles.site.surfaces[surface],false);
   assert.equal(base.programs[0].commercial_state,'live');
+  // Evaluate the actual CLI's pure removal allocation without executing its
+  // imports or writes. Ended must join withdrawn; paused/unknown stay distinct.
+  const source = readFileSync(new URL('../scripts/regenerate-go-runtime-manifest.mjs', import.meta.url), 'utf8');
+  const declarations = source.match(/^  const withdrawn = .*;$/gm);
+  assert.equal(declarations?.length, 1);
+  const select = new Function('registry', `${declarations[0]} return withdrawn;`);
+  const cohort = {programs:['ended','withdrawn','paused','reported','unknown'].map(lifecycle => ({program_id:lifecycle, affiliate_relationship_snapshot:{lifecycle}}))};
+  assert.deepEqual([...select(cohort)], ['ended','withdrawn']);
+  assert.deepEqual([...select(effectiveAffiliateRegistry(base))], ['katalys-1622']);
 });
 
 test('withdrawal removes all live surfaces without repricing frozen history', () => {
