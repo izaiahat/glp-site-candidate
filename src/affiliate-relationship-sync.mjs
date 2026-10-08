@@ -1,3 +1,5 @@
+import {deriveDynamicFacetCounts} from './provider-dynamic-profiles.mjs';
+
 // Denial-only F03 relationship overlay. This module never grants activation,
 // selects a different rail, changes patient prices or calculates earnings.
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -27,6 +29,58 @@ export function effectiveAffiliateRegistry(registry) {
       }
     }
   }
+  const removed = new Set((result.programs || []).filter(p => ['withdrawn','ended'].includes(p.affiliate_relationship_snapshot?.lifecycle)).map(p => p.program_id));
+  const dynamic = result.provider_dynamic_profiles;
+  if (removed.size && dynamic) {
+    if (JSON.stringify(dynamic.expected_counts) !== JSON.stringify(deriveDynamicFacetCounts(dynamic.profiles)))
+      throw new Error('relationship_dynamic_raw_count');
+    for (const [id, profile] of Object.entries(dynamic.profiles)) {
+      const members = profile.registry_program_ids;
+      if (!Array.isArray(members) || !members.length) throw new Error('relationship_dynamic_identity');
+      if (!members.some(member => removed.has(member))) continue;
+      if (!members.every(member => removed.has(member))) throw new Error('relationship_dynamic_partial_identity');
+      delete dynamic.profiles[id];
+    }
+    dynamic.expected_counts = deriveDynamicFacetCounts(dynamic.profiles);
+  }
+  return result;
+}
+
+// Project current denials into consumer copies, not frozen approval evidence.
+// Raw counts must first match raw membership; subtraction cannot heal drift.
+export function effectiveAffiliateBuildInputs(registry, inputs, profileId) {
+  const result = structuredClone(inputs);
+  const {eligibility, contentLedger, activationSelection} = result;
+  const ids = rows => rows.map(p => p.program_id);
+  for (const rows of [registry.programs, eligibility.programs, contentLedger.programs]) {
+    if (new Set(ids(rows)).size !== rows.length) throw new Error('relationship_build_identity');
+  }
+  const ledger = new Map(contentLedger.programs.map(p => [p.program_id, p]));
+  const rawLive = registry.programs.filter(p => p.commercial_state === 'live'
+    && p.profiles?.[profileId]?.vertical_fit === true && p.profiles[profileId].wired === true
+    && p.profiles[profileId].surfaces?.review === true);
+  const commercial = p => p?.live_link_allowed === true || p?.promotion_authorized === true;
+  const rawDirectCount = rawLive.filter(p => commercial(ledger.get(p.review_slug || p.program_id))).length;
+  if (eligibility.program_count !== eligibility.programs.length
+      || eligibility.live_program_count !== rawDirectCount
+      || activationSelection.live_program_count !== rawDirectCount) throw new Error('relationship_build_raw_count');
+  const removed = rawLive.filter(p => ['withdrawn','ended'].includes(p.affiliate_relationship_snapshot?.lifecycle));
+  const denied = new Set();
+  let directRemoved = 0;
+  for (const p of removed) {
+    const id = p.review_slug || p.program_id;
+    if (p.affiliate_relationship_snapshot.promotion_denied !== true || denied.has(id)
+        || !ledger.has(id) || eligibility.programs.filter(row => row.program_id === id).length !== 1)
+      throw new Error('relationship_build_identity');
+    denied.add(id);
+    if (commercial(ledger.get(id))) directRemoved++;
+    Object.assign(ledger.get(id), {live_link_allowed:false, promotion_authorized:false});
+  }
+  // Eligibility is the live-build partition; editorial ledger rows stay present.
+  eligibility.programs = eligibility.programs.filter(p => !denied.has(p.program_id));
+  eligibility.program_count -= denied.size;
+  eligibility.live_program_count -= directRemoved;
+  activationSelection.live_program_count -= directRemoved;
   return result;
 }
 

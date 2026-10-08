@@ -4,6 +4,19 @@
   "authority": "GLP44 continuing-owner source-only proposal under parent 20260922_191215_fffbbb, 2026-10-03 resume assignment. NOT independent acceptance or release authority. Exact current raw registry 87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887 is already merged source; native GLP331/332 producer replay and removal of exactly 41 affiliate_relationship_snapshot attachments recover immediate predecessor 385a0f30f0ca6f72d9d83d8e0cab173f9c66191d4ea7b2fb6bd51c0a34d35ce5 byte-for-byte. F17 immutable before anchor and Node/browser exact-byte guards remain unchanged. Review required before adoption/full gate. Retained audit reports/ops/glp44-full-gate-repair-20261003/F17-INPUT-AUDIT.json sha256 80f37969ab100d50cc2f27a23513bb2c6a21fe9557d5f5da52d703d11fc1cb1f. Historical predecessor authority only: Exact source/data independent acceptance and coordinator isolated adoption: reports/ops/f04-f06-taxonomy-independent-review-20261002/DISPOSITION.md sha256 f81ca3f8fae24e7c7ba10e652c8b7f8ed197c8ad71bacd73b65d1c8e1ffab405; reports/ops/f06-held-authority-review-20261002/RESULT.json sha256 f81f55201959240c10b08811ae1aaee8f7ddbd4d2f67b1d8299df1614e9c937b; reports/ops/f04-f06-taxonomy-successor-20261002/successor/SOURCE-OVERLAY.json sha256 1658c5c69a43d1510d36adf9f9da09fefb31653d5168552e71fb1dd7a05f4fc2; reports/ops/f06-held-authority-20261002/SOURCE-OVERLAY.json sha256 2e597b2d0a8c2eab5f401e1b5b2f798a3bc31f958453cae135b34f522ee14565; reports/ops/f06-held-authority-review-20261002/COORDINATOR-ADOPTION.json sha256 84c4a8e4613071d454e048c6ff33a72c9bf02bb27cc61b1bf30752273aa4bbd2. No public release, installation or activation authority. Historical lineage only; not acceptance of this successor: Coordinator source-only grant reports/ops/care-metadata-source-repair-authorization-20260927/RESULT.json (sha256 7bb6931e5ac1ee6e9c9c0b7ed171dc12c56d1fbe1bc8ff2ddbb8a3a644be4f6a) follows independent source diagnosis reports/ops/glp42-care-successor-adoption-review-20260927/INDEPENDENT-REVIEW.json (sha256 70aedc346f0f0eb69f193db0073f29b7f59ef1c6b15addedd06a1353a2ef97ad) at head aa13b69fcbff4f9990b7043702da2fa37756390a. Previous Care exact-data review and adoption grant remain historical provenance, not acceptance of this metadata successor. Source-only custody is not operator release authority, merge approval or a full build acceptance.",
   "source_head": "fc647dc91582f9bb7d0b5321d432480ca16bef1f",
   "provenance": {
+    "pallas_successor_proposal": {
+      "status": "PROPOSED_EXACT_INPUT_SUCCESSOR_PENDING_INDEPENDENT_REVIEW",
+      "before_sha256": "87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887",
+      "after_sha256": "7fd52a55dd68967fb2d4428d62785a41457281dac07c1a4f24129677869ab94f",
+      "native_fanout_receipt": "reports/ops/glp347-pallas-20261007/actual-registry-apply-20261008/registry-sync.json",
+      "native_fanout_receipt_sha256": "cbef03c612c927a8f166adde50a2e63d1a99a9f34951f56967ae8b5b67689d06",
+      "source_event_id": "evt_a53e6b7c535958b272d91cc7528e",
+      "changed_program_count": 1,
+      "changed_program_id": "pallas-health-review",
+      "only_changed_program_field": "affiliate_relationship_snapshot",
+      "independent_acceptance": null,
+      "scope": "Actual sole-writer ending and suppression, then installed native registry fanout. Historical authority text below is retained lineage only. No approval of this source/artifact is claimed."
+    },
     "source_head_role": "PR14 immediate source predecessor, not the assembled head; exact combined registry is bound by inputs.after_sha256",
     "integration_parent": "b42a4983f1cea415328473d93b6bf57aa063532a",
     "common_registry_predecessor_sha256": "b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b",
@@ -57,7 +70,7 @@
   "inputs": {
     "data/program-registry.json": {
       "before_sha256": "bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6",
-      "after_sha256": "87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887",
+      "after_sha256": "7fd52a55dd68967fb2d4428d62785a41457281dac07c1a4f24129677869ab94f",
       "reason": "GLP44 continuing-owner source-only proposal under parent 20260922_191215_fffbbb, 2026-10-03 resume assignment. NOT independent acceptance or release authority. Exact current raw registry 87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887 is already merged source; native GLP331/332 producer replay and removal of exactly 41 affiliate_relationship_snapshot attachments recover immediate predecessor 385a0f30f0ca6f72d9d83d8e0cab173f9c66191d4ea7b2fb6bd51c0a34d35ce5 byte-for-byte. F17 immutable before anchor and Node/browser exact-byte guards remain unchanged. Review required before adoption/full gate. Retained audit reports/ops/glp44-full-gate-repair-20261003/F17-INPUT-AUDIT.json sha256 80f37969ab100d50cc2f27a23513bb2c6a21fe9557d5f5da52d703d11fc1cb1f. Historical predecessor reason only: Exact metadata-only successor independently approved in reports/ops/f06-accepted-candidate-run-20261002/continuation/METADATA-INDEPENDENT-RESULT.json sha256 ca73756f4d7c721dc9f8c819430a918612f069449d4422adddcca1a7f6ffd027; native probe receipt sha256 18b16066675e01291a04923069cc9677fbbb5bfca89b00ac43f901569499a741. Parent direct GLP98 continuing-owner task grant authorizes candidate-only adoption and coupled pins through the existing producer. Immediate predecessor 0e5483bb42df81a6d03be465ed98318bc454288cca39562839a10f92fa5a4c5b; prior fixture retained at 8cc4a4d70199b6d2604b89ca59123d0b484bda18. No new facts, clocks, prices, hold release, publication or final acceptance."
     }
   }

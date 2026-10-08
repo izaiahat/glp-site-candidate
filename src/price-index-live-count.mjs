@@ -55,15 +55,24 @@ export function assertPriceIndexLiveCount(html, liveCount, { substituted = false
  * carrying its historical numbers across verbatim. Idempotent for a predecessor
  * that already carries the migrated copy.
  */
-export function projectPreservedPriceIndexLiveCount(html, observedOn, liveCount) {
+export function projectPreservedPriceIndexLiveCount(html, observedOn, liveCount, {predecessorLiveCount = liveCount} = {}) {
   const count = requireLiveCount(liveCount);
   if (!OBSERVED_ON.test(String(observedOn || ""))) throw new Error("price_index_live_count_observed_on_invalid");
   const source = String(html);
   LEGACY_METRIC.lastIndex = 0; LEGACY_ASIDE.lastIndex = 0; LEGACY_UNIVERSE.lastIndex = 0;
   const legacyMetric = [...source.matchAll(LEGACY_METRIC)];
   if (legacyMetric.length === 0) {
-    assertPriceIndexLiveCount(source, liveCount, { substituted: true });
-    return source;
+    // Raw membership binds the first denial transition; an authenticated
+    // predecessor may already carry the current total on an ordinary repeat.
+    // Never admit mixed counts or relax the exact four-region assertion.
+    RENDERED_COUNT.lastIndex = 0;
+    const rows = [...source.matchAll(RENDERED_COUNT)];
+    const alreadyCurrent = rows.length === 4 && rows.every(row => row[1] === count);
+    assertPriceIndexLiveCount(source, alreadyCurrent ? liveCount : predecessorLiveCount, { substituted: true });
+    // Change only the four current catalog totals, never historical samples.
+    const projected = source.replace(RENDERED_COUNT, (match, old) => count + match.slice(old.length));
+    assertPriceIndexLiveCount(projected, liveCount, { substituted: true });
+    return projected;
   }
   const legacyAside = [...source.matchAll(LEGACY_ASIDE)];
   const legacyUniverse = [...source.matchAll(LEGACY_UNIVERSE)];

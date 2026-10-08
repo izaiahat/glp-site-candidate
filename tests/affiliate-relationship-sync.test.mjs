@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { effectiveAffiliateRegistry, historicalAffiliateRegistry, relationshipDenials, publicAffiliateTerms, renderAffiliateTerms } from '../src/affiliate-relationship-sync.mjs';
+import { readFileSync } from 'node:fs';
+import {projectPreservedPriceIndexLiveCount} from '../src/price-index-live-count.mjs';
+import * as relationshipSync from '../src/affiliate-relationship-sync.mjs';
+const {effectiveAffiliateRegistry, historicalAffiliateRegistry, relationshipDenials, publicAffiliateTerms, renderAffiliateTerms} = relationshipSync;
 
 test('ended relationship disables commercial surfaces while retaining editorial review and sitemap', () => {
   const base={programs:[{program_id:'katalys-1622',commercial_state:'live',go:{entry_state:'server_redirect'},profiles:{site:{wired:true,surfaces:{review:true,sitemap:true,go:true,compare:true,quiz:true,calculator:true}}},affiliate_relationship_snapshot:{promotion_denied:true,lifecycle:'ended',ended_effective_at:'2026-09-30',editorial_retained:true}}]};
@@ -9,6 +12,73 @@ test('ended relationship disables commercial surfaces while retaining editorial 
   assert.equal(p.profiles.site.surfaces.review,true);assert.equal(p.profiles.site.surfaces.sitemap,true);
   for (const surface of ['go','compare','quiz','calculator']) assert.equal(p.profiles.site.surfaces[surface],false);
   assert.equal(base.programs[0].commercial_state,'live');
+  // Evaluate the actual CLI's pure removal allocation without executing its
+  // imports or writes. Ended must join withdrawn; paused/unknown stay distinct.
+  const source = readFileSync(new URL('../scripts/regenerate-go-runtime-manifest.mjs', import.meta.url), 'utf8');
+  const declarations = source.match(/^  const withdrawn = .*;$/gm);
+  assert.equal(declarations?.length, 1);
+  const select = new Function('registry', `${declarations[0]} return withdrawn;`);
+  const cohort = {programs:['ended','withdrawn','paused','reported','unknown'].map(lifecycle => ({program_id:lifecycle, affiliate_relationship_snapshot:{lifecycle}}))};
+  assert.deepEqual([...select(cohort)], ['ended','withdrawn']);
+  assert.deepEqual([...select(effectiveAffiliateRegistry(base))], ['katalys-1622']);
+  const {effectiveAffiliateBuildInputs: project} = relationshipSync;
+  assert.equal(typeof project, 'function', 'current denial needs coherent in-memory build inputs');
+  const raw={programs:['ended','peer'].map(id=>({program_id:id,review_slug:id+'-review',commercial_state:'live',profiles:{site:{vertical_fit:true,wired:true,surfaces:{review:true}}},...(id==='ended'?{affiliate_relationship_snapshot:{promotion_denied:true,lifecycle:'ended'}}:{})}))};
+  const inputs={eligibility:{program_count:2,live_program_count:2,programs:['ended-review','peer-review'].map(program_id=>({program_id,live_link_allowed:true,promotion_authorized:true}))},contentLedger:{programs:['ended-review','peer-review'].map(program_id=>({program_id,live_link_allowed:true,promotion_authorized:true,research:'retain'}))},activationSelection:{live_program_count:2,programs:[{program_id:'ended-review'},{program_id:'peer-review'}]}};
+  const original=structuredClone(inputs),result=project(raw,inputs,'site');
+  assert.deepEqual(inputs,original);
+  assert.equal(result.activationSelection.live_program_count,1);
+  assert.equal(result.eligibility.live_program_count,1);
+  assert.equal(result.eligibility.program_count,1);
+  assert.deepEqual(result.eligibility.programs,[original.eligibility.programs[1]]);
+  assert.deepEqual(result.contentLedger.programs[1],original.contentLedger.programs[1]);
+  assert.deepEqual(result.contentLedger.programs[0],{...original.contentLedger.programs[0],live_link_allowed:false,promotion_authorized:false});
+  assert.deepEqual(result.activationSelection.programs,original.activationSelection.programs);
+  for(const field of ['eligibility','activationSelection']) {
+    const bad=structuredClone(inputs);bad[field].live_program_count=3;
+    assert.throws(()=>project(raw,bad,'site'),/relationship_build_raw_count/);
+  }
+  const dynamic=structuredClone(raw);
+  const counts=n=>({provider_identities:n,semaglutide:0,tirzepatide:0,retatrutide:0,wegovy:0,zepbound:0,mounjaro:0,oral:0,injectable:0,compounded:0,brand_name:0,treatment_type_unknown:n,calculator_autofill:0,calculator_manual:n});
+  dynamic.provider_dynamic_profiles={profiles:Object.fromEntries(['ended','peer'].map(id=>[id+'-review',{registry_program_ids:[id],taxonomy:{molecule_tags:[],brand_name_tags:[],delivery_form_tags:[],treatment_type_tags:[]},calculator:{mode:'manual'}}])),expected_counts:counts(2)};
+  const projected=effectiveAffiliateRegistry(dynamic);
+  assert.deepEqual(Object.keys(projected.provider_dynamic_profiles.profiles),['peer-review']);
+  assert.deepEqual(projected.provider_dynamic_profiles.expected_counts,counts(1));
+  assert.equal(Object.keys(dynamic.provider_dynamic_profiles.profiles).length,2);
+  const drift=structuredClone(dynamic);drift.provider_dynamic_profiles.expected_counts.provider_identities=9;
+  assert.throws(()=>effectiveAffiliateRegistry(drift),/relationship_dynamic_raw_count/);
+  const unknown=structuredClone(raw);unknown.programs[0].affiliate_relationship_snapshot.lifecycle='unknown';
+  assert.deepEqual(project(unknown,inputs,'site'),inputs);
+  const duplicate=structuredClone(inputs);duplicate.contentLedger.programs.push(duplicate.contentLedger.programs[0]);
+  assert.throws(()=>project(raw,duplicate,'site'),/relationship_build_identity/);
+  const prior='<p>Historical sample 57; price $157; observed 2026-08-16.</p>'+Array(4).fill('<p>57 live providers</p>').join('');
+  const updated=projectPreservedPriceIndexLiveCount(prior,'2026-08-16',56,{predecessorLiveCount:57});
+  assert.equal(updated,prior.replaceAll('57 live providers','56 live providers'));
+  // The caller still binds raw membership (57) when the authenticated next
+  // predecessor already contains the effective count (56). Repeat is byte-exact.
+  assert.equal(projectPreservedPriceIndexLiveCount(updated,'2026-08-16',56,{predecessorLiveCount:57}),updated);
+  for (const invalid of [
+    prior.replace('57 live providers','56 live providers'),
+    updated.replace('56 live providers','57 live providers'),
+    prior.replaceAll('57 live providers','55 live providers'),
+    updated.replace('<p>56 live providers</p>',''),
+    updated+'<p>56 live providers</p>',
+    updated.replaceAll('<p>56 live providers</p>',''),
+  ]) assert.throws(()=>projectPreservedPriceIndexLiveCount(invalid,'2026-08-16',56,{predecessorLiveCount:57}),/price_index_live_count_(not_derived|shape)/);
+  assert.throws(()=>projectPreservedPriceIndexLiveCount(prior,'2026-08-16',56,{predecessorLiveCount:58}),/price_index_live_count_not_derived/);
+  assert.throws(()=>projectPreservedPriceIndexLiveCount(prior.replace('57 live providers','55 live providers'),'2026-08-16',56,{predecessorLiveCount:57}),/price_index_live_count_not_derived/);
+});
+
+test('quiz audit removes only explicit ended or withdrawn golden identities', () => {
+  const source=readFileSync(new URL('../scripts/audit-quiz-results-matrix.mjs',import.meta.url),'utf8');
+  const declaration=source.match(/^  const retiredIds=.*;$/m)?.[0];
+  const expected=source.match(/^    const expected = .*;$/m)?.[0];
+  assert.ok(declaration && expected);
+  const project=new Function('registry','vector','relationshipDenials',declaration+expected+'return expected;');
+  const registry={programs:['ended','withdrawn','paused','unknown'].map(lifecycle=>({program_id:lifecycle,review_slug:lifecycle+'-alias',affiliate_relationship_snapshot:{promotion_denied:true,lifecycle}}))};
+  const vector={expected_program_ids:registry.programs.map(p=>p.review_slug)};
+  assert.deepEqual(project(registry,vector,relationshipDenials),['paused-alias','unknown-alias']);
+  assert.equal(vector.expected_program_ids.length,4);
 });
 
 test('withdrawal removes all live surfaces without repricing frozen history', () => {

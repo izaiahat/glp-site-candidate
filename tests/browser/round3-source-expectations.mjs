@@ -6,13 +6,16 @@ import { projectProviderDisplayLedger, projectProviderDisplayFacts } from "../..
 import { isComparableCashRow } from "../../src/price-state.mjs";
 import { evaluatePhase4Quiz } from "../../src/quiz.mjs";
 import { projectMoneyPagesFromRegistry, projectQuizFromRegistry } from "../../src/program-registry.mjs";
-import { projectTherapeuticSurfaces } from "../../src/therapeutic-taxonomy.mjs";
+import { projectTherapeuticSurfaces, reconcileTherapeuticTaxonomyWireIn } from "../../src/therapeutic-taxonomy.mjs";
+import { effectiveAffiliateRegistry } from '../../src/affiliate-relationship-sync.mjs';
 import { applyMeritScores, meritScore } from "../../src/merit-ranking.mjs";
 import { ALL_IN_MONTHS, applyPricingToCandidates } from "../../src/quiz-ranking.mjs";
 
 const read = (name) => JSON.parse(readFileSync(new URL(`../../data/${name}`, import.meta.url), "utf8"));
 const profileId = "glp-clinic-scout";
-const registry = read("program-registry.json");
+const registry = effectiveAffiliateRegistry(read("program-registry.json"));
+reconcileTherapeuticTaxonomyWireIn({registry,profileId,pages:read('money-page-specs.json').pages,
+  quizConfig:read('quiz-config.json'),asOf:new Date(`${registry.therapeutic_taxonomy.sealed_as_of}T12:00:00Z`)});
 const matrix = read("provider-pricing-matrix.json");
 const graph = read("phase3-page-graph.json");
 const ledger = read("program-content-ledger.json").programs.map((entry) => projectProviderDisplayLedger(entry));

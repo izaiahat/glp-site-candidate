@@ -10,7 +10,7 @@ import {rejectDiagnosticFlags,checkExecutedProvenance} from './release-executed-
 import {bindEmittedConsent} from './consent-emitted-binding.mjs';
 const require = createRequire(import.meta.url);
 
-export const requiredNodeCounts = Object.freeze({ 'care-source-contracts': 9, 'ga4-contracts': 29, 'host-bootstrap': 387, 'material-contracts': 44, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 13 });
+export const requiredNodeCounts = Object.freeze({ 'care-source-contracts': 9, 'ga4-contracts': 29, 'host-bootstrap': 388, 'material-contracts': 44, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 13 });
 export function requiredNodeCountsPass(id, log) {
   const expected = requiredNodeCounts[id];
   const count = key => Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1);
