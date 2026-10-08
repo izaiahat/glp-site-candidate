@@ -1,3 +1,4 @@
+import { effectiveAffiliateRegistry } from '../src/affiliate-relationship-sync.mjs';
 import { loadGoSelection, loadGoPromotionAuthority } from '../src/go-runtime-selection.mjs';
 import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
 import assert from "node:assert/strict";
@@ -51,7 +52,7 @@ async function loadFixture() {
     providerContracts,
     providerFastpath,
   });
-  inputs.registry = clone(registry);
+  inputs.registry = effectiveAffiliateRegistry(clone(registry));
   inputs.registry.site_profiles["glp-clinic-scout"].expected_sitemap_routes = buildReport.indexable_routes;
   return inputs;
 }
@@ -121,7 +122,7 @@ test("production-successor profile satisfies every required registry surface", a
   assert.ok(liveContracts.length > 0);
   assert.equal(result.live_fastpath_programs, liveContracts.length);
   assert.deepEqual(result.held_contract_programs.sort(), contracts.providers.filter(p => !registryLive.has(p.program_id)).map(p => p.program_id).sort());
-  assert.deepEqual(result.held_contract_programs, ['telos-rx']);
+  assert.deepEqual(result.held_contract_programs, ['pallas-health-review', 'telos-rx']);
 });
 
 test("hostile omission of a required compare surface fails closed", async () => {
