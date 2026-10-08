@@ -30,6 +30,44 @@ export function effectiveAffiliateRegistry(registry) {
   return result;
 }
 
+// Project current denials into consumer copies, not frozen approval evidence.
+// Raw counts must first match raw membership; subtraction cannot heal drift.
+export function effectiveAffiliateBuildInputs(registry, inputs, profileId) {
+  const result = structuredClone(inputs);
+  const {eligibility, contentLedger, activationSelection} = result;
+  const ids = rows => rows.map(p => p.program_id);
+  for (const rows of [registry.programs, eligibility.programs, contentLedger.programs]) {
+    if (new Set(ids(rows)).size !== rows.length) throw new Error('relationship_build_identity');
+  }
+  const ledger = new Map(contentLedger.programs.map(p => [p.program_id, p]));
+  const rawLive = registry.programs.filter(p => p.commercial_state === 'live'
+    && p.profiles?.[profileId]?.vertical_fit === true && p.profiles[profileId].wired === true
+    && p.profiles[profileId].surfaces?.review === true);
+  const commercial = p => p?.live_link_allowed === true || p?.promotion_authorized === true;
+  const rawDirectCount = rawLive.filter(p => commercial(ledger.get(p.review_slug || p.program_id))).length;
+  if (eligibility.program_count !== eligibility.programs.length
+      || eligibility.live_program_count !== rawDirectCount
+      || activationSelection.live_program_count !== rawDirectCount) throw new Error('relationship_build_raw_count');
+  const removed = rawLive.filter(p => ['withdrawn','ended'].includes(p.affiliate_relationship_snapshot?.lifecycle));
+  const denied = new Set();
+  let directRemoved = 0;
+  for (const p of removed) {
+    const id = p.review_slug || p.program_id;
+    if (p.affiliate_relationship_snapshot.promotion_denied !== true || denied.has(id)
+        || !ledger.has(id) || eligibility.programs.filter(row => row.program_id === id).length !== 1)
+      throw new Error('relationship_build_identity');
+    denied.add(id);
+    if (commercial(ledger.get(id))) directRemoved++;
+    Object.assign(ledger.get(id), {live_link_allowed:false, promotion_authorized:false});
+  }
+  // Eligibility is the live-build partition; editorial ledger rows stay present.
+  eligibility.programs = eligibility.programs.filter(p => !denied.has(p.program_id));
+  eligibility.program_count -= denied.size;
+  eligibility.live_program_count -= directRemoved;
+  activationSelection.live_program_count -= directRemoved;
+  return result;
+}
+
 export function relationshipDenials(registry) {
   return (registry?.programs || []).filter(p => p.affiliate_relationship_snapshot?.promotion_denied === true)
     .map(p => ({program_id:p.program_id, render_id:p.review_slug || p.program_id, ...p.affiliate_relationship_snapshot}));

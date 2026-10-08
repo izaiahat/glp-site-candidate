@@ -31,7 +31,7 @@ import { buildCostCalculatorData, renderCostCalculator } from "../src/cost-calcu
 import { costCalculatorDropdownProviders as costCalculatorDropdown } from "../src/cost-calculator.mjs";
 import { costAffiliateEmailManifest, costCalculatorAffiliateLinks, decorateCostCalculatorAffiliateSurface } from "../src/cost-calculator-affiliate.mjs";
 import { COST_AFFILIATE_EMAIL_MANIFEST } from "../src/cost-affiliate-email-manifest.generated.mjs";
-import { effectiveAffiliateRegistry, historicalAffiliateRegistry, publicAffiliateTerms, renderAffiliateTerms } from "../src/affiliate-relationship-sync.mjs";
+import { effectiveAffiliateRegistry, historicalAffiliateRegistry, effectiveAffiliateBuildInputs, publicAffiliateTerms, renderAffiliateTerms } from "../src/affiliate-relationship-sync.mjs";
 import { assertLiveSurfaceParity, deriveGoEntriesFromRegistry, deriveReviewRoutesFromRegistry, projectMoneyPagesFromRegistry, projectQuizFromRegistry } from "../src/program-registry.mjs";
 import { applyWave2Repairs, finalizeReviewIntakeRoute } from "./wave2-repairs.mjs";
 import { applyWave2P1Surfaces } from "../src/wave2-p1-surfaces.mjs";
@@ -1601,12 +1601,14 @@ async function main() {
     rm(PUBLIC, { recursive: true, force: true }),
     rm(OPS, { recursive: true, force: true }),
   ]);
-  const [identity, eligibility, rawContentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, activationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
+  const [identity, rawEligibility, rawContentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, rawActivationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
     readJson("identity-registry.json"), readJson("program-page-eligibility.json"), readJson("program-content-ledger.json"), readJson("money-page-specs.json"), readJson("quiz-config.json"), readJson("directory/npi-city-batch.json"), readJson("visual-system.json"), readJson("email-system.json"), readJson("resend-email-machine.json"), readJson("blog/keyword-ownership-map.json"), readJson("blog/content-batch.json"), readJson("blog/content-national-wow-additions.json"), readJson("blog/author-registry.json"), readJson("affiliate-activation-selection.json"), readJson("cost-calculator.json"), readJson("provider-page-contracts.json"), readJson("provider-fastpath-contract.json"), readJson("provider-pricing-matrix.json"), readJson("medication-direct-pricing.json"), readJson("coupon-offers.json"),
   ]);
   // Keep the hash-pinned price-index ledger untouched, including its in-memory
   // rows. Renderers use this consumer copy; quiz owns its projection from raw.
-  const contentLedger = { ...rawContentLedger, programs: structuredClone(rawContentLedger.programs).map((row) => projectProviderDisplayLedger(row)) };
+  const {eligibility, activationSelection, contentLedger: relationshipLedger} = effectiveAffiliateBuildInputs(rawProgramRegistry,
+    {eligibility:rawEligibility, activationSelection:rawActivationSelection, contentLedger:rawContentLedger}, SITE_PROFILE);
+  const contentLedger = { ...relationshipLedger, programs: relationshipLedger.programs.map((row) => projectProviderDisplayLedger(row)) };
   const [phase3GraphConfig, phase3PharmacyInput] = await Promise.all([readJson("phase3-page-graph.json"), readJson("phase3-pharmacy-render-input.json")]);
   reconcileTherapeuticTaxonomyWireIn({
     registry: programRegistry,
