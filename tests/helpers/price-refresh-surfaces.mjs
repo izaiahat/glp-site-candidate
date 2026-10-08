@@ -11,7 +11,7 @@ import {quizTypedPriceEvidence} from '../../src/quiz.mjs';
 import {renderAdsLandingPage} from '../../src/ads-landing.mjs';
 import {attachPricingMatrix,renderCostCalculator} from '../../src/cost-calculator.mjs';
 import {renderComparisonTable} from '../../src/money-page.mjs';
-import {buildPhase3PageGraph,directoryPriceMap} from '../../src/phase3-page-graph.mjs';
+import {renderProviderDetailComplete,directoryPriceMap} from '../../src/phase3-page-graph.mjs';
 
 const read=relative=>JSON.parse(readFileSync(new URL('../../'+relative,import.meta.url)));
 const fragment=html=>JSDOM.fragment(html);
@@ -37,20 +37,14 @@ export function provePriceSurfaces(row, out=null) {
     money_comparison_table:renderComparisonTable({rows:tableRows,pricing_matrix:matrix}),
     calculator:renderCostCalculator({providers:[provider],pricing_coverage:{providers:1,with_evidenced_pricing:1,pricing_unavailable:0,medication_rows:1,rows_with_intro_month_1:0},path:'/tools/glp-1-cost-calculator/',related_comparison_path:'/providers/',title:'Fixture calculator',description:'Synthetic fixture'})
   };
-  // Render the actual registered graph with one explicitly synthetic provider
-  // frame. Source files, snapshots, dates and live provider facts are untouched.
-  const registry=read('data/program-registry.json'),graph=read('data/phase3-page-graph.json');
+  // Exercise the complete provider renderer without unrelated private funnels.
+  const registry=read('data/program-registry.json');
   assert(!registry.programs.some(p=>p.program_id===pid),'fixture provider collided with a live provider');
   const program=structuredClone(registry.programs.find(p=>p.program_id==='enhance-md'));
   Object.assign(program,{program_id:pid,display_name:entry.provider,review_path:`/reviews/${pid}/`});
   delete program.go; delete program.affiliate_relationship_snapshot;
   registry.programs.push(program);
-  graph.expected_indexable_routes++;
-  const articles=['content-batch.json','content-national-wow-additions.json'].flatMap(p=>read('data/blog/'+p).articles).filter(a=>a.canonical_path.startsWith('/guides/')&&!/(erectile|viagra|cialis|sildenafil|tadalafil|online-ed|peptide|bpc-157|cjc-1295|ipamorelin|hair-loss|minoxidil|finasteride|trt|testosterone|metabolic-health|metabolic-syndrome|insulin-resistance|continuous-glucose)/.test(a.canonical_path));
-  const graphMatrix=read('data/provider-pricing-matrix.json');
-  graphMatrix.providers[pid]=entry;
-  const built=buildPhase3PageGraph({graph,programRegistry:registry,pharmacyInput:read('data/phase3-pharmacy-render-input.json'),pricingMatrix:graphMatrix,homeSpec:{rows:[]},articles});
-  surfaces.actual_provider_detail=built.pages.find(p=>p.route===`/providers/${pid}/`).html;
+  surfaces.actual_provider_detail=renderProviderDetailComplete(program,matrix,registry,{}, {providers:{}},read('assets/provider-logos/manifest.json'),[]);
   const proof={synthetic:true,publication:false,writer_row_id:row.row_id,surfaces:{},numeric_projection:'NOT_PROMOTED'};
   for(const [name,html] of Object.entries(surfaces)) {
     const doc=fragment(html),lines=[...doc.querySelectorAll('.typed-price-line,[data-g08-price-line]')];

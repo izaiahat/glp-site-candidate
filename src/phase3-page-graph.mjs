@@ -1034,7 +1034,7 @@ function providerPlanSection(priced, doseCapture, coupon, { heroFirst = false } 
   return `<section class="p3-provider-section p3-plans" aria-labelledby="plans-${esc(priced.program_id)}" data-provider-plans><div class="p3-plan-head"><div><p class="gcs-kicker">Medication and plan pricing</p><h2 id="plans-${esc(priced.program_id)}">Treatments</h2></div>${jumps ? `<nav class="p3-plan-jumps" aria-label="Jump to a medication plan">${jumps}</nav>` : ""}</div><p class="p3-plan-note">Dates, quotes, and source links stay attached to every displayed amount. Exact dose tiers appear only when the provider publishes source-reported per-dose pricing; otherwise the dose grid is omitted.</p>${renderCouponChip(coupon)}<div class="p3-plan-grid" data-plan-grid>${cards}</div></section>`;
 }
 
-function renderProviderDetailComplete(program, pricingMatrix, registry, coupons, doseCapture, logoManifest, pharmacyEntries) {
+export function renderProviderDetailComplete(program, pricingMatrix, registry, coupons, doseCapture, logoManifest, pharmacyEntries) {
   const entry = pricingEntryForProgram(program.program_id, pricingMatrix);
   const priced = entry ? { ...entry, medications: (entry.medications || []).filter((row) => isTypedPrice(row) || Number.isFinite(row.ongoing_usd)) } : null;
   const ledger = PROGRAM_LEDGER_BY_ID.get(program.program_id) || null;
