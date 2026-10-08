@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import * as child from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {sponsorContentFixture} from './fixtures/sponsor-content.mjs';
+import {readFileSync} from 'node:fs';
+import {retainedPricingCaptureSource} from './fixtures/sponsor-retained-capture.mjs';
 
 // Isolated transport fixture, NOT a production payment/approval override.
 let input;
@@ -35,4 +37,15 @@ test('unverified, copied, stale response, wrong reference and process failure al
     {status:0,stdout:JSON.stringify({payment_verified:true,source:'paypal_authenticated_invoice_reporting_observer',order_reference:'OTHER',request_sha256:'a'.repeat(64)})}
   ]) {response=bad;assert.equal(paymentVerified({...order,payment_verified:true}),false);}
   response=undefined;
+});
+
+test('retained capture projects only the exact live-only delegate; all render/economics bytes stay pinned',()=>{
+ const source=readFileSync(new URL('../src/sponsor-pricing.mjs',import.meta.url),'utf8');
+ const capture=JSON.parse(readFileSync(new URL('../reports/ops/sponsor-clean-layout-20261003/copy/readiness-r5/captures/CAPTURE.json',import.meta.url),'utf8'));
+ const hash=s=>createHash('sha256').update(s).digest('hex');
+ const expected=capture.sourceHashes['src/sponsor-pricing.mjs'];
+ assert.equal(hash(retainedPricingCaptureSource(source)),expected);
+ assert.throws(()=>retainedPricingCaptureSource(source.replace('return authenticatedSponsorPayment(order);','return true;')));
+ assert.throws(()=>retainedPricingCaptureSource(source.replace("from './sponsor-payment-observer.mjs'","from './other.mjs'")));
+ assert.notEqual(hash(retainedPricingCaptureSource(source.replace('SPONSOR_PRICING[kind]','999'))),expected);
 });

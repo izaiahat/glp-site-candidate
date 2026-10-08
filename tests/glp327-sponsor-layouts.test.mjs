@@ -3,6 +3,7 @@
 // offer and CTA were buried, and the /providers/ Sponsored slot was invisible
 // on mobile. One regression per layout, plus the committed fold geometry.
 import {paymentFixture} from './fixtures/sponsor-payment.mjs';
+import {retainedPricingCaptureSource} from './fixtures/sponsor-retained-capture.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -128,7 +129,8 @@ test("committed captures prove the fold, h1 limits and overflow for all six fram
       assert.equal(source.split(guard).length, 2, "exact affiliate guard occurs once");
       source = source.replace(guard, "");
     }
-    assert.equal(createHash("sha256").update(source).digest("hex"), sha, `retained capture source, excluding only the live affiliate guard: ${file}`);
+    if (file === "src/sponsor-pricing.mjs") source = retainedPricingCaptureSource(source);
+    assert.equal(createHash("sha256").update(source).digest("hex"), sha, `historical render source; exact live-only gates separately tested/reviewed: ${file}`);
   }
   const required = { "rate-card": ["label", "price", "terms", "deliverables", "renewal", "cta", "disclosure"], "paid-promo": ["label", "identity", "intro", "cta", "disclosure"], "providers-sponsored-panel": ["label", "identity", "cta"] };
   assert.deepEqual(result.checks.map((check) => `${check.surface}:${check.viewport}:${check.width}x${check.height}`).sort(),
