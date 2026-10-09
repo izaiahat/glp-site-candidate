@@ -1814,6 +1814,8 @@ async function main() {
     pages: canonicalAugmented,
     quizConfig: canonicalQuiz,
     programs: contentLedger.programs,
+    // OPERATOR DECISION 2026-10-09: stale evidence holds back that claim only.
+    staleEvidence: "hold",
   });
   const therapeuticProgramIds = [...therapeuticSurfaces.validated.programs.keys()];
   for (const article of allArticles) {
@@ -1837,6 +1839,10 @@ async function main() {
     program_rows: therapeuticProgramIds.length,
     counts: therapeuticSurfaces.validated.counts,
     trt_nation_link_state: therapeuticSurfaces.validated.programs.get("trt-nation")?.commercial_link_state,
+    claims_held_stale: therapeuticSurfaces.validated.held_stale,
+    canonical_claims_held_stale: therapeuticSurfaces.claimsHeldStale,
+    dynamic_profiles_held_stale: therapeuticSurfaces.dynamic.held_stale,
+    consumer_authority_held_stale: therapeuticSurfaces.consumerAuthorities.retatrutide.claim_held_stale,
     source_authorities: Object.fromEntries(Object.entries(programRegistry.therapeutic_taxonomy.authorities).map(([key, value]) => [key, value.sha256])),
   };
   buildDerivations.provider_dynamic_profiles = {
