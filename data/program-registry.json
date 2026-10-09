@@ -185,10 +185,10 @@
         "network": "katalys",
         "network_program_id": "1614",
         "sheet_row": 132,
-        "relationship_status": "live_wired_verified",
-        "source_checked_at": "2026-08-25T02:52:37Z",
-        "promotion_denied": false,
-        "lifecycle": "reported",
+        "relationship_status": "paused_network_program_paused",
+        "source_checked_at": "2026-10-09T03:20:03Z",
+        "promotion_denied": true,
+        "lifecycle": "paused",
         "reported_information": true
       }
     },
