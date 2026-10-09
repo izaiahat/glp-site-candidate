@@ -48,6 +48,8 @@ jobs:
         run: node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs
       - name: Carrier analytics emitter and alias cache regression (offline only)
         run: node --test tests/carrier-analytics-emission.test.mjs
+      - name: Accepted guide source and on-page-only contract (offline)
+        run: node --test tests/accepted-guide-source.test.mjs
       - name: Record limited scope
         if: always()
         run: |

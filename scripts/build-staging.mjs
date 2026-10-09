@@ -1382,7 +1382,9 @@ function addSharedRuntime(html) {
     .replace(/<main([^>]*)>/i, `<main$1 data-cs-template="${template}">`)
     .replace("</head>", `${performanceConfig}</head>`)
     .replace(/<body([^>]*)>/i, `<body$1 data-cs-template="${template}"><a class="skip-link" href="#main">Skip to main content</a>${utility}${nav}${drawer}`)
-    .replace("</body>", `${preFooter}${footer}${subscribeSheet}</body>`);
+    .replace("</body>", /data-article-capture="none"/.test(html)
+      ? `${preFooter.replace(/<button\b[^>]*data-subscribe-open[^>]*>[\s\S]*?<\/button>/g, "")}${footer.replace(/<li><button\b[^>]*data-subscribe-open[^>]*>[\s\S]*?<\/button><\/li>/g, "")}</body>`
+      : `${preFooter}${footer}${subscribeSheet}</body>`);
 }
 
 function optimizePaidLandingPage(html) {
@@ -1542,6 +1544,7 @@ function trustPages(identity, articles = [], authorRegistry = { authors: [] }) {
 }
 
 import { loadCarrierArticles, renderedCarrierArticle, assertCarrierArticleOutput } from "../src/carrier-article-retention.mjs";
+import { loadAcceptedGuides, acceptedGuideOwnership, addAcceptedInboundLinks } from "../src/accepted-guide-source.mjs";
 async function main() {
   console.log(JSON.stringify(await refreshPriceTracker()));
   // Required source derivation, not a carried-forward artifact. The former
@@ -1753,7 +1756,8 @@ async function main() {
   // at sitemap emission and shadow-file removal. Retired sources stay in the
   // evidence/imagery catalogs, but cannot block or enter public article output,
   // author lists or search. Every non-consolidated article still fails closed.
-  const allArticles = [...blogBatch.articles, ...nationalArticles]
+  const acceptedGuides = loadAcceptedGuides(ROOT);
+  const allArticles = [...blogBatch.articles, ...nationalArticles, ...acceptedGuides]
     .filter((article) => !CONSOLIDATED_SOURCE_ROUTES.has(article.canonical_path))
     .map((article) => ({
       ...article,
@@ -1761,7 +1765,7 @@ async function main() {
     }));
   const glpArticles = allArticles.filter((article) => articleVertical(article) === "GLP-1");
   const glpGuideArticles = glpArticles.filter((article) => article.canonical_path.startsWith("/guides/"));
-  const allOwnership = [...keywordMap.entries];
+  const allOwnership = [...keywordMap.entries, ...acceptedGuideOwnership(acceptedGuides)];
   for (const article of nationalArticles) {
     const matches = allOwnership.filter((entry) => entry.url === article.canonical_path);
     if (matches.length !== 1) throw new Error(`national_keyword_ownership_match_count_invalid:${article.article_id}:${matches.length}`);
@@ -2036,7 +2040,8 @@ async function main() {
   ]);
   for (const article of allArticles) {
     // R2 target release: render Mounjaro from the refreshed catalog row.
-    const key = `guide-${routeSlug(article.canonical_path)}`;
+    const key = acceptedGuides.some(a => a.canonical_path === article.canonical_path)
+      ? "editorial-evidence-hero" : `guide-${routeSlug(article.canonical_path)}`;
     // ORCHESTRATOR-DISPOSITION (glp41-image-review-20260925): descriptive
     // correction only; immutable generation receipts and image bytes stay put.
     const heroAlt = article.canonical_path === "/guides/best-company-to-get-glp-1/"
@@ -2044,7 +2049,7 @@ async function main() {
       : article.images?.[0]?.alt || `Guide overview for ${article.h1}`;
     const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, publicProviderNames(resolveBlogComparisonSpec(article, therapeuticSurfaces.programs)), resolveArticleAuthor(article), reader.contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
     const articleGraph = addArticleShareControls(articleVertical(article) === "GLP-1" ? upgradeInsightsArticle(articleBase, article, glpGuideArticles.filter((item) => item.canonical_path !== article.canonical_path && path.join(item.canonical_path.replace(/^\//, ""), "index.html") !== MOUNJARO_COUPON_ROUTE_FILE)) : articleBase);
-    const rendered = addSharedRuntime(articleGraph);
+    const rendered = addSharedRuntime(addAcceptedInboundLinks(articleGraph, article.canonical_path, acceptedGuides));
     await write(path.join(article.canonical_path.replace(/^\//, ""), "index.html"), articleVertical(article) === "GLP-1" ? markReleaseReady(article.suppress_cta ? rendered : addGuideFunnel(rendered)) : rendered);
   }
   const directoryStates = npi.cities.map((city) => {
