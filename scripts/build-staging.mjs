@@ -41,6 +41,7 @@ import { refreshPriceTracker } from "./refresh-price-tracker.mjs";
 import { buildPriceIndexArtifacts, PRICE_INDEX_ROUTE, rebindPriceIndexShippedHtml } from "../src/price-index.mjs";
 import { readPriceIndexPredecessor } from "../src/price-index-predecessor.mjs";
 import { frozenPriceLedger } from "../src/price-index-nonprice-binding.mjs";
+import { addCurrentPriceIndexOffers, stripCurrentPriceIndexOffers } from "../src/price-refresh-evidence.mjs";
 import { historicalPriceIndexRegistry } from "../src/price-index-historical-registry.mjs";
 import { composePriceWatchIssue, validatePublishedPriceWatchIssue } from "../src/price-watch-email.mjs";
 import { buildMysteryShopArtifacts, loadEvidenceInputs, evidenceLedgerAuthority } from "../src/mystery-shop.mjs";
@@ -2455,7 +2456,7 @@ async function main() {
     && p.profiles?.[SITE_PROFILE]?.vertical_fit === true && p.profiles[SITE_PROFILE].wired === true
     && p.profiles[SITE_PROFILE].surfaces?.review === true && !rawIdentity.aliasIds.has(p.program_id)).length;
   const normalizedPreservedPriceIndex = normalizePriceIndexBuild4Semantics(
-    projectPreservedPriceIndexLiveCount(stripCurrentPriceDisclosure(preservedPriceIndexHtml.toString("utf8")), priceIndexInput.tracker.price_index.observations.at(-1).observed_on, liveProgramCount, {predecessorLiveCount:predecessorLiveProgramCount}));
+    projectPreservedPriceIndexLiveCount(stripCurrentPriceDisclosure(stripCurrentPriceIndexOffers(preservedPriceIndexHtml.toString("utf8"))), priceIndexInput.tracker.price_index.observations.at(-1).observed_on, liveProgramCount, {predecessorLiveCount:predecessorLiveProgramCount}));
   if (!priceIndexRefresh && normalizedPriceIndex !== normalizedPreservedPriceIndex) {
     let firstDifference = 0;
     while (firstDifference < normalizedPriceIndex.length && normalizedPriceIndex[firstDifference] === normalizedPreservedPriceIndex[firstDifference]) firstDifference += 1;
@@ -2480,7 +2481,8 @@ async function main() {
     throw new Error("price_index_build4_manifest_semantic_preservation_mismatch");
   }
   if (priceIndexRefresh || pass2ShellRefresh) {
-    await write(PRICE_INDEX_ROUTE_FILE, priceIndex.html);
+    // Render current typed evidence separately from the immutable benchmark.
+    await write(PRICE_INDEX_ROUTE_FILE, publicProviderNames(addCurrentPriceIndexOffers(priceIndex.html, { root: ROOT, matrix: providerPricingMatrix })));
     // S9 item 11: the page now carries the derived live-count token, so the bytes
     // on disk are the substituted ones. Bind the manifest to what actually
     // shipped and prove the shipped bytes carry the derived count.
@@ -2488,8 +2490,8 @@ async function main() {
     assertPriceIndexLiveCount(shippedPriceIndexHtml, liveProgramCount, { substituted: true });
     await writeOps("price-index-manifest.json", JSON.stringify(rebindPriceIndexShippedHtml(priceIndex.manifest, shippedPriceIndexHtml), null, 2) + "\n");
   } else {
-    const disclosedPriceIndex = stripCurrentPriceDisclosure(preservedPriceIndexHtml.toString("utf8")).replace("</main>", PRICE_STATE_DISCLOSURE + "</main>");
-    await write(PRICE_INDEX_ROUTE_FILE, disclosedPriceIndex);
+    const disclosedPriceIndex = stripCurrentPriceDisclosure(stripCurrentPriceIndexOffers(preservedPriceIndexHtml.toString("utf8"))).replace("</main>", PRICE_STATE_DISCLOSURE + "</main>");
+    await write(PRICE_INDEX_ROUTE_FILE, publicProviderNames(addCurrentPriceIndexOffers(disclosedPriceIndex, { root: ROOT, matrix: providerPricingMatrix })));
     const shippedPriceIndexHtml = await readFile(path.join(PUBLIC, PRICE_INDEX_ROUTE_FILE), "utf8");
     await writeOps("price-index-manifest.json", JSON.stringify(rebindPriceIndexShippedHtml(preservedPriceIndexManifest, shippedPriceIndexHtml), null, 2) + "\n");
   }
