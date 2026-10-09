@@ -1545,6 +1545,7 @@ function trustPages(identity, articles = [], authorRegistry = { authors: [] }) {
 
 import { loadCarrierArticles, renderedCarrierArticle, assertCarrierArticleOutput } from "../src/carrier-article-retention.mjs";
 import { loadAcceptedGuides, acceptedGuideOwnership, addAcceptedInboundLinks } from "../src/accepted-guide-source.mjs";
+import { loadAcceptedUpdates, applyAcceptedUpdates } from "../src/accepted-update-source.mjs";
 async function main() {
   console.log(JSON.stringify(await refreshPriceTracker()));
   // Required source derivation, not a carried-forward artifact. The former
@@ -1756,16 +1757,19 @@ async function main() {
   // at sitemap emission and shadow-file removal. Retired sources stay in the
   // evidence/imagery catalogs, but cannot block or enter public article output,
   // author lists or search. Every non-consolidated article still fails closed.
-  const acceptedGuides = loadAcceptedGuides(ROOT);
-  const allArticles = [...blogBatch.articles, ...nationalArticles, ...acceptedGuides]
+  const additions = loadAcceptedGuides(ROOT);
+  const acceptedUpdates = loadAcceptedUpdates(ROOT);
+  const acceptedGuides = [...additions, ...acceptedUpdates.map(x => x.article)];
+  const allArticles = applyAcceptedUpdates([...blogBatch.articles, ...nationalContent.articles, ...additions], acceptedUpdates)
     .filter((article) => !CONSOLIDATED_SOURCE_ROUTES.has(article.canonical_path))
     .map((article) => ({
       ...article,
+      sections: article.sections.map(section => ({...section, heading: section.heading || section.h2})),
       surface_taxonomy: commercialGuideRoutes.has(article.canonical_path) ? "commercial" : (article.surface_taxonomy || "medical"),
     }));
   const glpArticles = allArticles.filter((article) => articleVertical(article) === "GLP-1");
   const glpGuideArticles = glpArticles.filter((article) => article.canonical_path.startsWith("/guides/"));
-  const allOwnership = [...keywordMap.entries, ...acceptedGuideOwnership(acceptedGuides)];
+  const allOwnership = [...keywordMap.entries, ...acceptedGuideOwnership(additions)];
   for (const article of nationalArticles) {
     const matches = allOwnership.filter((entry) => entry.url === article.canonical_path);
     if (matches.length !== 1) throw new Error(`national_keyword_ownership_match_count_invalid:${article.article_id}:${matches.length}`);
