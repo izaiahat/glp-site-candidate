@@ -6,6 +6,7 @@ import path from 'node:path';
 import {applyPriceRefreshEvidence} from '../src/price-refresh-evidence.mjs';
 import {validatePriceRow} from '../src/pricing-evidence-v2.mjs';
 import {provePriceSurfaces} from './helpers/price-refresh-surfaces.mjs';
+import {renderPricePair} from '../src/directory-detail-finals.mjs';
 
 // Confined synthetic captures, never live observations or adoption authority.
 function fixture(fn, raw='Compounded semaglutide injection Standard plan starts from $21/month.', medication='compounded-semaglutide-injection') {
@@ -122,6 +123,35 @@ test('native receiver successor reaches all maintained price surfaces without ca
 
 test('held provider remains denied',()=>fixture(({root,registry,expected,save})=>{
   registry.programs[0].commercial_state='held';save();assert.throws(()=>applyPriceRefreshEvidence(root,expected,new Date('2026-10-08')),/held/);
+}));
+
+test('fresh exact re-attestation preserves unknowns and renders through native surfaces',()=>fixture(({root,entry,expected,save})=>{
+  entry.mode='reattest';
+  entry.before.facts.billing_period={value:'UNKNOWN',evidence:[],artifact_needed:'Checkout terms'};
+  entry.after=structuredClone(entry.before);
+  expected.clinic.medications[0]=structuredClone(entry.before);
+  for(const list of [entry.after.evidence,entry.after.identity_evidence,
+      ...Object.values(entry.after.facts).map(f=>f.evidence)]) {
+    for(const w of list) w.captured_at_utc=entry.captured_at_utc;
+  }
+  save();
+  const result=applyPriceRefreshEvidence(root,expected,new Date('2026-10-08'));
+  const row=result.clinic.medications[0];
+  assert.equal(row.facts.amount_usd.value,12);
+  assert.deepEqual(row.facts.billing_period,entry.before.facts.billing_period);
+  assert.match(renderPricePair(row,()=>{throw Error('legacy renderer used');}),/\$12/);
+  assert.deepEqual(applyPriceRefreshEvidence(root,result,new Date('2026-10-08')),result);
+  entry.after.facts.amount_usd.value=21;save();
+  assert.throws(()=>applyPriceRefreshEvidence(root,expected,new Date('2026-10-08')),/reattest_changed_value/);
+}));
+
+test('provider pricing identity resolves mapped live program and its holds',()=>fixture(({root,registry,expected,save})=>{
+  registry.programs[0].program_id='network-clinic';
+  registry.provider_dynamic_profiles.profiles.clinic.registry_program_ids=['network-clinic'];
+  save();
+  assert.equal(applyPriceRefreshEvidence(root,expected,new Date('2026-10-08')).clinic.medications[0].facts.amount_usd.value,21);
+  registry.programs[0].commercial_state='held';save();
+  assert.throws(()=>applyPriceRefreshEvidence(root,expected,new Date('2026-10-08')),/held/);
 }));
 
 test('tampered raw source cannot stand in for same-source validation',()=>fixture(({root,entry,expected})=>{

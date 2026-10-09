@@ -143,10 +143,42 @@ export function applyPriceRefreshEvidence(root, expectedProviders, now = new Dat
   for (const p of programs.values()) if (p.commercial_state !== 'live' || p.affiliate_relationship_snapshot?.promotion_denied === true) held.add(p.program_id);
   for (const entry of ledger.entries) {
     const {program_id:pid,row_id,before,after,extraction,source_url,captured_at_utc,reviewed_at_utc,markdown_path,markdown_sha256} = entry;
-    const program = programs.get(pid);
-    if (!program || held.has(pid) || /fella/i.test(pid) || program.commercial_state !== 'live') fail('held:' + pid);
     const profile = registry.provider_dynamic_profiles.profiles[pid];
+    const boundIds = [...new Set([pid,...(profile?.registry_program_ids || [])])];
+    const boundPrograms = boundIds.map(id=>programs.get(id)).filter(Boolean);
+    if (!boundPrograms.length || boundIds.some(id=>held.has(id)) || /fella/i.test(pid)
+        || boundPrograms.some(p=>p.commercial_state !== 'live')) fail('held:' + pid);
     const hosts = new Set((profile?.source_urls || []).map(u => new URL(u).hostname));
+    if (entry.mode === 'reattest') {
+      const rows = expected[pid]?.medications || [], index = rows.findIndex(r=>r.row_id===row_id);
+      if(index < 0 || !isDeepStrictEqual(rows[index],before)) fail('reattest_preimage');
+      const allowed = structuredClone(before), reviewed = new Date(reviewed_at_utc);
+      if(!Number.isFinite(+reviewed) || reviewed > now) fail('reattest_review_clock');
+      const renew = (old, next) => {
+        if(!Array.isArray(old) || !old.length || !Array.isArray(next) || old.length!==next.length) fail('reattest_witness_set');
+        return old.map((w,i)=>{
+          const n=next[i], captured=new Date(n.captured_at_utc);
+          if(!safe(n.source_url) || !hosts.has(new URL(n.source_url).hostname)
+              || !Number.isFinite(+captured) || captured>reviewed || reviewed-captured>7*86400000) fail('reattest_source_clock');
+          if(!/^[a-f0-9]{64}$/.test(n.capture_sha256) || n.capture_path!==`data/pricing-evidence/${n.capture_sha256}.md`) fail('reattest_capture_path');
+          const raw=readFileSync(path.join(root,n.capture_path));
+          if(hash(raw)!==n.capture_sha256 || !w.quote || !raw.toString('utf8').includes(w.quote)) fail('reattest_quote');
+          const permitted={...w,capture_path:n.capture_path,capture_sha256:n.capture_sha256,captured_at_utc:n.captured_at_utc};
+          if(!isDeepStrictEqual(n,permitted)) fail('reattest_changed_quote_or_source');
+          return n;
+        });
+      };
+      for(const name of ['identity_evidence','evidence']) allowed[name]=renew(before[name],after[name]);
+      for(const [name,fact] of Object.entries(before.facts)) {
+        if(fact.value===null || fact.value==='UNKNOWN') continue;
+        allowed.facts[name].evidence=renew(fact.evidence,after.facts[name]?.evidence);
+      }
+      if(!isDeepStrictEqual(allowed,after)) fail('reattest_changed_value_or_terms');
+      const errors=validatePriceRow(after,{root,now:+now});
+      if(errors.length) fail('reattest_native_row:'+errors.join(','));
+      rows[index]=structuredClone(after);
+      continue;
+    }
     if (!safe(source_url) || !hosts.has(new URL(source_url).hostname)) fail('source:' + pid);
     if (!/^data\/price-refresh-captures\/[a-f0-9]{64}\.md$/.test(markdown_path)) fail('capture_path');
     const raw = readFileSync(path.join(root,markdown_path));
