@@ -143,9 +143,11 @@ export function applyPriceRefreshEvidence(root, expectedProviders, now = new Dat
   for (const p of programs.values()) if (p.commercial_state !== 'live' || p.affiliate_relationship_snapshot?.promotion_denied === true) held.add(p.program_id);
   for (const entry of ledger.entries) {
     const {program_id:pid,row_id,before,after,extraction,source_url,captured_at_utc,reviewed_at_utc,markdown_path,markdown_sha256} = entry;
-    const program = programs.get(pid);
-    if (!program || held.has(pid) || /fella/i.test(pid) || program.commercial_state !== 'live') fail('held:' + pid);
     const profile = registry.provider_dynamic_profiles.profiles[pid];
+    const boundIds = [...new Set([pid,...(profile?.registry_program_ids || [])])];
+    const boundPrograms = boundIds.map(id=>programs.get(id)).filter(Boolean);
+    if (!boundPrograms.length || boundIds.some(id=>held.has(id)) || /fella/i.test(pid)
+        || boundPrograms.some(p=>p.commercial_state !== 'live')) fail('held:' + pid);
     const hosts = new Set((profile?.source_urls || []).map(u => new URL(u).hostname));
     if (entry.mode === 'reattest') {
       const rows = expected[pid]?.medications || [], index = rows.findIndex(r=>r.row_id===row_id);

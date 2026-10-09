@@ -145,6 +145,15 @@ test('fresh exact re-attestation preserves unknowns and renders through native s
   assert.throws(()=>applyPriceRefreshEvidence(root,expected,new Date('2026-10-08')),/reattest_changed_value/);
 }));
 
+test('provider pricing identity resolves mapped live program and its holds',()=>fixture(({root,registry,expected,save})=>{
+  registry.programs[0].program_id='network-clinic';
+  registry.provider_dynamic_profiles.profiles.clinic.registry_program_ids=['network-clinic'];
+  save();
+  assert.equal(applyPriceRefreshEvidence(root,expected,new Date('2026-10-08')).clinic.medications[0].facts.amount_usd.value,21);
+  registry.programs[0].commercial_state='held';save();
+  assert.throws(()=>applyPriceRefreshEvidence(root,expected,new Date('2026-10-08')),/held/);
+}));
+
 test('tampered raw source cannot stand in for same-source validation',()=>fixture(({root,entry,expected})=>{
   writeFileSync(path.join(root,entry.markdown_path),'Compounded semaglutide injection starts from $12/month.');
   assert.throws(()=>applyPriceRefreshEvidence(root,expected,new Date('2026-10-08')),/capture_hash/);
