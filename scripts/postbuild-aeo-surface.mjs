@@ -51,6 +51,7 @@ import { renderLlmsTxt } from "../src/llms-txt.mjs";
 import { READY6_ROUTES } from "../src/ready6-editorial.mjs";
 import { loadCarrierArticles, assertCarrierArticleOutput } from "../src/carrier-article-retention.mjs";
 import { loadAcceptedGuides } from "../src/accepted-guide-source.mjs";
+import { loadAcceptedUpdates, applyAcceptedUpdates } from "../src/accepted-update-source.mjs";
 import { inheritedDisclosureDates } from "../src/inherited-disclosure-dates.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -367,7 +368,7 @@ async function main() {
     .map(async (file) => JSON.parse(await readFile(path.join(DATA, file), "utf8"))));
   catalogs.push({articles: loadAcceptedGuides(ROOT)});
   const articles = new Map();
-  for (const article of catalogs.flatMap((catalog) => catalog.articles)) {
+  for (const article of applyAcceptedUpdates(catalogs.flatMap(catalog => catalog.articles), loadAcceptedUpdates(ROOT))) {
     if (articles.has(article.canonical_path)) throw new Error(`catalog_duplicate_route:${article.canonical_path}`);
     articles.set(article.canonical_path, article);
   }

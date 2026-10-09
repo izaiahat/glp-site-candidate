@@ -1,4 +1,5 @@
 import { loadAcceptedGuides } from "./accepted-guide-source.mjs";
+import { loadAcceptedUpdates } from "./accepted-update-source.mjs";
 import { affiliateCta, renderComparisonTable } from "./money-page.mjs";
 import { collectEvidenceDates, deriveMoneyPageFreshness } from './freshness.mjs';
 import { affiliateLinkMode, affiliateNetworkIdentity, normalizeNetwork } from "./affiliate-subid.mjs";
@@ -279,7 +280,8 @@ export function reviewBrief(brief, author) {
   if (brief.word_count < 1500 || brief.word_count > 3600) {
     // An immutable, QA + five-gate accepted packet may use its reviewed long-form
     // blueprint. Exact prose/source equality is required; flags cannot bypass it.
-    const accepted = loadAcceptedGuides(new URL('../', import.meta.url).pathname).some(a =>
+    const acceptedRoot = new URL('../', import.meta.url).pathname;
+    const accepted = [...loadAcceptedGuides(acceptedRoot), ...loadAcceptedUpdates(acceptedRoot).map(x => x.article)].some(a =>
       a.article_id === brief.article_id && a.canonical_path === brief.canonical_path && a.word_count === brief.word_count &&
       JSON.stringify(a.sections) === JSON.stringify(brief.sections) && JSON.stringify(a.sources) === JSON.stringify(brief.sources));
     if (!accepted) return { status: "HELD", reason: "word_count_outside_blueprint" };

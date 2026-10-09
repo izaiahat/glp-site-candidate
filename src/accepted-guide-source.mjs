@@ -4,8 +4,9 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-export function loadAcceptedGuides(root) {
-  const manifest = JSON.parse(readFileSync(path.join(root, 'data/blog/accepted-guides/manifest.json')));
+export function loadAcceptedGuides(root, manifestName = 'manifest.json') {
+  if (!['manifest.json','updates.json'].includes(manifestName)) throw new Error('accepted_manifest_name_invalid');
+  const manifest = JSON.parse(readFileSync(path.join(root, 'data/blog/accepted-guides', manifestName)));
   const routes = new Set();
   return manifest.entries.map(entry => {
     const read = spec => {
