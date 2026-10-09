@@ -12,7 +12,7 @@ import { CITATION_REASONS, renderCitationAnchor } from "./citation-attribution.m
 import { renderCouponChip } from "./coupon-offers.mjs";
 import { loadAffiliateLinkMap } from "./affiliate-link-map.mjs";
 import { loadGoPromotionAuthority } from './go-runtime-selection.mjs';
-import { relationshipEndedNotice } from './affiliate-relationship-sync.mjs';
+import { relationshipEndedNotice, relationshipDenials } from './affiliate-relationship-sync.mjs';
 import { selectedGoOutbound } from './go-render-selection.mjs';
 import { affiliateOutboundMode } from "./affiliate-outbound-mode.mjs";
 import { resolveCardOutbound } from "./card-outbound.mjs";
@@ -1672,7 +1672,10 @@ export function renderConfiguredListing(archetype, page, { graph, pharmacyInput,
         : providers;
       const byId = new Map(funnelProviders.map(entry => [entry.program_id, entry]));
       const ranked = economicRows.map((row, index) => ({ row, rank: index + 1, entry: byId.get(row.program_id) }));
-      const picked = ranked.filter(item => item.entry && item.entry.medications.length);
+      // An adverse/paused selected relationship (promotion_denied) leaves the
+      // commercial order; the remaining approved order is unchanged.
+      const deniedIds = new Set(relationshipDenials(registry).flatMap(d => [d.program_id, d.render_id]));
+      const picked = ranked.filter(item => item.entry && item.entry.medications.length && !deniedIds.has(item.row.program_id));
       if (!picked.length || (dualPresentation && picked.length !== 5)) throw new Error(`p19_${family}_eligible_cohort_changed`);
       const renderCard = (item, index) => {
         const full = compactProviderCard(item.entry, registry, doseCapture, logoManifest, {
