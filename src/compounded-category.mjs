@@ -7,6 +7,7 @@ import { loadGoPromotionAuthority } from './go-runtime-selection.mjs';
 import { resolveCardOutbound } from './card-outbound.mjs';
 import { renderCouponChip } from './coupon-offers.mjs';
 import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
+import { taxonomyRowStale } from './therapeutic-taxonomy.mjs';
 const read = path => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
 const content = read('../data/compounded-category-content.json');
 const affiliateMap = loadAffiliateLinkMap('compare');
@@ -248,6 +249,7 @@ export function renderCompoundedCategoryBody({medication,programs,pricingMatrix,
     return program.commercial_state==='live' && profile?.vertical_fit===true && profile?.wired===true && profile?.surfaces?.review===true
       && !/fella/i.test(`${program.program_id} ${program.review_slug||''} ${program.display_name}`)
       && taxonomy?.commercial_link_state?.compare==='live'
+      && !taxonomyRowStale(taxonomy, registry.therapeutic_taxonomy.freshness_max_days) // stale evidence: claim held
       && taxonomy.molecule_tags?.includes(medication) && taxonomy.treatment_type_tags?.includes('compounded');
   }).sort((a,b)=>a.display_name.localeCompare(b.display_name,'en')||a.program_id.localeCompare(b.program_id,'en'));
   if (new Set(eligible.map(p=>p.program_id)).size !== eligible.length) throw new Error('compounded_category_duplicate_program');
