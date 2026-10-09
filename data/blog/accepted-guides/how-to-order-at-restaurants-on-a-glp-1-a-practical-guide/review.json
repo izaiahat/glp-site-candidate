@@ -1,0 +1,74 @@
+{
+  "authority": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T092208Z-scheduled-refill/topic-9cda63e68c2de5f9ea4b/topic-queue-snapshot-20261009T092208Z-restaurants.json",
+    "selection_binding": {
+      "operator_directive_id": "operator-keyword-gap-20260823:B-6d6efbaab1594fb6",
+      "queue_position": 12,
+      "queue_sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+      "selection_receipt_sha256": "c72599db3286bd59561afc1312d732fd48fcff9a7f26a4e7462d777564a8ae2d",
+      "strategy_map_sha256": "05d215c1bd3a8656f4bc5f5534a1ad5e13934b94a649492743fd975533f2818b",
+      "strategy_queue_sha256": "59627aee4ddb6a2a1eb1f2b3a0129c2b2ab184c38426194db63e404a78fd3ea6",
+      "target_query": "glp-1 friendly restaurants",
+      "target_route": "/guides/how-to-order-at-restaurants-on-a-glp-1-a-practical-guide/",
+      "topic_id": "9cda63e68c2de5f9ea4b"
+    },
+    "selection_receipt": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T092208Z-scheduled-refill/selection-02.json",
+      "receipt_sha256": "c72599db3286bd59561afc1312d732fd48fcff9a7f26a4e7462d777564a8ae2d",
+      "sha256": "0e02012f5031f7e7ebd1ad136c9b0ac2c209eb3d41f5002bd00795de826ee2ee"
+    },
+    "sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+    "topic_id": "9cda63e68c2de5f9ea4b",
+    "type": "operator_directed_queue_item"
+  },
+  "effects": {
+    "cache_purges": 0,
+    "deployments": 0,
+    "gsc_submissions": 0,
+    "publishes": 0
+  },
+  "effort": "high",
+  "findings": [],
+  "gates": [
+    {
+      "findings": [],
+      "gate": "A",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "B",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "C",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "D",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "E",
+      "status": "PASS"
+    }
+  ],
+  "job_id": "20261009T092208Z-restaurants",
+  "model": "gpt-6-astra-900k",
+  "provider": "openai-codex",
+  "raw_review_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T092208Z-scheduled-refill/topic-9cda63e68c2de5f9ea4b/opus-history-20261009T092208Z-restaurants/round-03-sol-raw.json",
+  "raw_review_sha256": "423cc8d3409e0ccbe513ed58ceefaf7c25fa78961b53ec3408bb645a8f9dbd88",
+  "receipt_sha256": "6c2b1970c0c39d7c8f7d01696e570ba780992f40983ee6a7b073f3490b533ec0",
+  "review_transport": "hermes-openai-codex-astra-independent",
+  "reviewed_at_utc": "2026-10-09T10:29:42.733324Z",
+  "round": 3,
+  "schema": "glp-opus-seo-round-receipt-v1",
+  "status": "PASS_OPUS_SEO_DRAFT",
+  "subject_manifest_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T092208Z-scheduled-refill/topic-9cda63e68c2de5f9ea4b/opus-history-20261009T092208Z-restaurants/round-03-subject-manifest.json",
+  "subject_manifest_sha256": "1441d77dde10919f4b729bc3e0662b7563fa5fe38155faae0c4995b367223bb5",
+  "tools_disabled": true,
+  "topic_id": "9cda63e68c2de5f9ea4b"
+}

@@ -1,3 +1,4 @@
+import { loadAcceptedGuides } from "./accepted-guide-source.mjs";
 import { affiliateCta, renderComparisonTable } from "./money-page.mjs";
 import { collectEvidenceDates, deriveMoneyPageFreshness } from './freshness.mjs';
 import { affiliateLinkMode, affiliateNetworkIdentity, normalizeNetwork } from "./affiliate-subid.mjs";
@@ -274,7 +275,15 @@ export function reviewBrief(brief, author) {
   if (new Set(sources.map((item) => item.source_id)).size !== sources.length) return { status: "HELD", reason: "source_id_duplicate" };
   if (risk === "MEDIUM" && !sources.some((item) => PRIMARY_HOSTS.some((host) => new URL(item.url).hostname.endsWith(host)))) return { status: "HELD", reason: "primary_medical_source_missing" };
   if (brief.evidence_review?.status !== "PASS" || !brief.evidence_review?.reviewed_at || !brief.evidence_review?.content_sha256) return { status: "HELD", reason: "evidence_review_receipt_missing" };
-  if (!Number.isInteger(brief.word_count) || brief.word_count < 1500 || brief.word_count > 3600) return { status: "HELD", reason: "word_count_outside_blueprint" };
+  if (!Number.isInteger(brief.word_count)) return { status: "HELD", reason: "word_count_outside_blueprint" };
+  if (brief.word_count < 1500 || brief.word_count > 3600) {
+    // An immutable, QA + five-gate accepted packet may use its reviewed long-form
+    // blueprint. Exact prose/source equality is required; flags cannot bypass it.
+    const accepted = loadAcceptedGuides(new URL('../', import.meta.url).pathname).some(a =>
+      a.article_id === brief.article_id && a.canonical_path === brief.canonical_path && a.word_count === brief.word_count &&
+      JSON.stringify(a.sections) === JSON.stringify(brief.sections) && JSON.stringify(a.sources) === JSON.stringify(brief.sources));
+    if (!accepted) return { status: "HELD", reason: "word_count_outside_blueprint" };
+  }
   if (brief.internal_links && (!Array.isArray(brief.internal_links) || brief.internal_links.some((item) => !item?.label || !isValidInternalLinkPath(item.path)))) return { status: "BLOCKED", reason: "internal_link_invalid" };
   const affiliateUrls = new Set((brief.affiliate_links || []).map((item) => item?.url).filter(Boolean));
   const sourceUrls = new Set(sources.map((item) => item.url));
@@ -522,6 +531,7 @@ export function renderBlogPost(brief, comparisonSpec, author, programs) {
   // The capture is a site-owned, explicit-consent content upgrade, not an
   // affiliate CTA. Every article/guide template gets the same capture surface;
   // suppress_cta continues to suppress only the commercial next-step cards.
+  if (brief.capture_surface?.email_field === null && brief.capture_surface?.follow_up_consent === false && brief.capture_surface?.health_data_fields?.length === 0) return rendered.replace('<html lang="en"', '<html lang="en" data-article-capture="none"');
   return addP1ContentUpgradeSurface(rendered, brief.canonical_path.replace(/^\//, ""));
 }
 

@@ -61,6 +61,10 @@ function normalizeExistingContentUpgrade(html) {
 }
 
 export function addP1ContentUpgradeSurface(html, relative = "") {
+  if (typeof html === "string" && /data-article-capture="none"/.test(html)) {
+    if (/<form\b|<input\b[^>]*(?:type="email"|name="email")/i.test(html)) throw new Error("on_page_capture_contract_conflict");
+    return html;
+  }
   if (typeof html !== "string" || !/<link\s+rel="canonical"/i.test(html)) return html;
   // Replace this producer's carried-forward guide form before the generic
   // legacy normalizer can reintroduce bundled marketing consent.
