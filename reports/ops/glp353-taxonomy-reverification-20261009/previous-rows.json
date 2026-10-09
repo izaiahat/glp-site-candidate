@@ -1,0 +1,3165 @@
+{
+  "biltrx": {
+    "brand_name_tags": [
+      "mounjaro",
+      "wegovy",
+      "zepbound"
+    ],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "f239f29e3504095c4e99a2aa7a8cbde1ba241a94ae51b66cd3cc1336741d333a",
+        "source_url": "https://biltrx.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "f31e1f83aa16945f630e26302960a4c7a5b618e818c3e0495e1097209171222f",
+        "source_url": "https://biltrx.com/glp-1/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "c2a076f4c8bb072576a0d7e46438ef10d9985f521b345086e3bc615b238906dd",
+        "source_url": "https://biltrx.com/all-medications/tirzepatide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "6396feeeb3c6a3c181198f0b539391bd9bcee8bc1b187335110b05be88f7abbf",
+        "source_url": "https://biltrx.com/all-medications/semaglutide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "77a1470e41c994620d9d175ae4a9473ec32b47e02d414b90a098ca8b9fff8dda",
+        "source_url": "https://biltrx.com/terms-of-service/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "f24fce7b72744f4cf77ca43a05b4344f26b6cccee0b24311c8aeec2e31a85b09",
+        "source_url": "https://biltrx.com/all-medications/mounjaro/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "069992a56a3ae4d2e3c55b9059de3ed20ad8d517c41405eb17a6e94fdb2ea018",
+        "source_url": "https://biltrx.com/all-medications/wegovy/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "de60aa7e5b121380ba411a1cc2a6f4086e4ce94fc6cd63f0c9da90323df92231",
+        "source_url": "https://biltrx.com/all-medications/zepbound/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "e07fff4630b528f0cd56346e6a88fdca21f2402edd6edf01c841b9f307f7a1f6",
+        "source_url": "https://biltrx.com/all-medications/ozempic/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "08340a180d8439dd493ac31246fde51819dfeb64a5936d55341408a9bb2d5c89",
+        "source_url": "https://biltrx.com/all-medications/compounded-tirzepatide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "378db2fbdb248de1b1554f352ac4229e3acb3944fe900f12513824c953a1830a",
+        "source_url": "https://biltrx.com/all-medications/compounded-semaglutide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_biltrx",
+        "authority_sha256": "c0beaf20a54a6a18f9baf9338d370dc576549ca56b5150f9af32501b411b3485",
+        "evidence_sha256": "74f696eb12224c8782a14c48cfe9147da4c2f1442c1402fff8b28f6904cfe477",
+        "source_url": "https://biltrx.com/sms-terms-of-service/",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "317a57efcd94a6fffdf5d94b9dc2754ba964903ab6fc0fc058bf67d1ffbfea3d",
+    "program_id": "biltrx",
+    "provider": "BiltRx",
+    "registry_program_id": "biltrx",
+    "render_label": null,
+    "source_urls": [
+      "https://biltrx.com/",
+      "https://biltrx.com/all-medications/compounded-semaglutide/",
+      "https://biltrx.com/all-medications/compounded-tirzepatide/",
+      "https://biltrx.com/all-medications/mounjaro/",
+      "https://biltrx.com/all-medications/ozempic/",
+      "https://biltrx.com/all-medications/semaglutide/",
+      "https://biltrx.com/all-medications/tirzepatide/",
+      "https://biltrx.com/all-medications/wegovy/",
+      "https://biltrx.com/all-medications/zepbound/",
+      "https://biltrx.com/glp-1/",
+      "https://biltrx.com/sms-terms-of-service/",
+      "https://biltrx.com/terms-of-service/"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "brand_name",
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "direct-meds": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable",
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "a1db901603ffd79f379ecf990807bdf8c0afdf6e8867095a59396673afcd9b35",
+        "source_url": "https://directmeds.com/dm-offers/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "f4636c9f48867ef3c7140db55fc05e36d65cf7d45db05d52014d54e21da4dc67",
+        "source_url": "https://directmeds.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "853d2e5c371cf4265f6902e379dc27f1c9cf73a97feb0a680968e68035e255e7",
+        "source_url": "https://directmeds.com/dm-offers-stc/questionnaire-1.php",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "b01dcd2c0c0210fcc916865622a0917bb7a5441ab8465cff2e1bca99ddb5068c",
+        "source_url": "https://directmeds.com/dm-company/terms.html",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "93977849afed15d84854c7297211117a7931880784081b4260a42f6def214e80",
+        "source_url": "https://directmeds.com/solutions/weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "d09966087c39fa9605cca2b4700af2548d4598775752321baa31447bd642d434",
+        "source_url": "https://directmeds.com/guide-to-buying-glp-1-medications-online",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "477ccd756ad792fa08cee7cb44be50171d2b3294dd2f68a6a94f440198e24674",
+        "source_url": "https://directmeds.com/guide-to-buying-glp-1-medications-online/everything-you-need-to-know-about-ordering-semaglutide-online",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "b10c455160c6cf1cb4b174f1b18378aba69d65e6ce4803cf3003e0100c4e8045",
+        "source_url": "https://directmeds.com/guide-to-buying-glp-1-medications-online/what-you-need-to-know-about-buying-tirzepatide-online",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "bdcba25d74b84f40eff78d47e740e6212c908b8a9f19321feae5e13e5073875b",
+        "source_url": "https://directmeds.com/guide-to-buying-glp-1-medications-online/getting-started-with-weight-loss-injections-online",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "9af1d7d9592c6f7f4aade0b609635c29fe54c9ecca249d39dd71ff0d6f73024e",
+        "source_url": "https://directmeds.com/guide-to-buying-glp-1-medications-online/why-semaglutide-oral-drops-is-a-convenient-alternative-to-injections",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "c0d4a168714eaac77f7b886e4cff60b1b3f3e5cbc372769f9b85c1de14de3e40",
+        "source_url": "https://directmeds.com/guide-to-buying-glp-1-medications-online/exploring-oral-tirzepatide-as-a-needle-free-weight-loss-option",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "b01dcd2c0c0210fcc916865622a0917bb7a5441ab8465cff2e1bca99ddb5068c",
+        "source_url": "https://directmeds.com/dmo/terms",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "05336f6132250f6987bf84e6abde0919b5ee77622e7194d1632f311c43222dbf",
+        "source_url": "https://directmeds.com/portal/shop/categories/weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "8ba09dbabcf43af90de4a343e815e9989bcdb2634c5df539babbe5c096078c89",
+        "source_url": "https://directmeds.com/products/semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "82cda7464330c1a73a12159cbc752bf8577cb3c2582f82a7b225238d6c38fdd6",
+        "source_url": "https://directmeds.com/portal/products/semaglutide-injection",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "b49edb643365d86819f9048985ac65b91dd2f18fad5e7f6a17084e4e70c29311",
+        "source_url": "https://directmeds.com/products/tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "22310a5e6b031f044644140620991cbcbb01de64625340a61dad3e0390344394",
+        "source_url": "https://directmeds.com/portal/products/tirzepatide-injection",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_direct_meds",
+        "authority_sha256": "11865e1927083ed7f8e0843cad52307d7948a29b4240edc93c5224369879ae6c",
+        "evidence_sha256": "b10c455160c6cf1cb4b174f1b18378aba69d65e6ce4803cf3003e0100c4e8045",
+        "source_url": "https://directmeds.com/guide-to-buying-glp-1-medications-online/buying-tirzepatide-online/",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "e02847db9350a3cfe2ca8cc1d8dd0128ddfbf91242d402444b04ce609d43b3b7",
+    "program_id": "direct-meds",
+    "provider": "Direct Meds",
+    "registry_program_id": "katalys-1304",
+    "render_label": null,
+    "source_urls": [
+      "https://directmeds.com/",
+      "https://directmeds.com/dm-company/terms.html",
+      "https://directmeds.com/dm-offers-stc/questionnaire-1.php",
+      "https://directmeds.com/dm-offers/",
+      "https://directmeds.com/dmo/terms",
+      "https://directmeds.com/guide-to-buying-glp-1-medications-online",
+      "https://directmeds.com/guide-to-buying-glp-1-medications-online/buying-tirzepatide-online/",
+      "https://directmeds.com/guide-to-buying-glp-1-medications-online/everything-you-need-to-know-about-ordering-semaglutide-online",
+      "https://directmeds.com/guide-to-buying-glp-1-medications-online/exploring-oral-tirzepatide-as-a-needle-free-weight-loss-option",
+      "https://directmeds.com/guide-to-buying-glp-1-medications-online/getting-started-with-weight-loss-injections-online",
+      "https://directmeds.com/guide-to-buying-glp-1-medications-online/what-you-need-to-know-about-buying-tirzepatide-online",
+      "https://directmeds.com/guide-to-buying-glp-1-medications-online/why-semaglutide-oral-drops-is-a-convenient-alternative-to-injections",
+      "https://directmeds.com/portal/products/semaglutide-injection",
+      "https://directmeds.com/portal/products/tirzepatide-injection",
+      "https://directmeds.com/portal/shop/categories/weight-loss",
+      "https://directmeds.com/products/semaglutide",
+      "https://directmeds.com/products/tirzepatide",
+      "https://directmeds.com/solutions/weight-loss"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "drhouse": {
+    "brand_name_tags": [],
+    "classification_state": "CURRENT_FIRST_PARTY_RECONCILED_CONSERVATIVE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "4529101fa39e518663cb8719071856c7e9acffdd73eb72d5422681dfc32d8527",
+        "source_url": "https://drhouse.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "02324cef250248dc7f415c765a83ef3fcc68ddad211d1089c6a8653c63f4d291",
+        "source_url": "https://drhouse.com/pricing/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "53ba58edee553f3522eeb789e34fce558c9f0094ba71b10690d29a1446027387",
+        "source_url": "https://drhouse.com/telehealth/weight-loss-treatment/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "b7435bb78948773f4d272c61a0a060274a9a575ff9f0b735b2e4fe951abfb87a",
+        "source_url": "https://drhouse.com/telehealth/hair-loss-treatment/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "2edeccd10a1d13b15dd6bac2bb9a635268f2ffaeb0514821f0d764880795d432",
+        "source_url": "https://drhouse.com/telehealth/smoking-cessation-treatment/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "0d25a5d7b6846f6d0e6ae3d206aee5bb71ac7358faebe7847b0cb4976d1f8147",
+        "source_url": "https://drhouse.com/telehealth/sinus-infection-treatment/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "bba40e6a21572099fb71799ff03c68c57874ab8d9f0bb423fcd5b2f1d5bfa14c",
+        "source_url": "https://drhouse.com/telehealth/cold-flu-treatment/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "d4a4594cca4dac19a6ddd40845225526a22ea56e8d087cc57443648d95584529",
+        "source_url": "https://drhouse.com/telehealth/food-poisoning-treatment/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "a35d372638c34a42cb2cec55183f30ce538b803dc908c36c30cf5e26c19f62ab",
+        "source_url": "https://drhouse.com/telehealth/strep-throat-treatment/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "b9c2f617c4f0e7b89a9f73a6fe709306cef594314ff94e8c0e2592c2caf5826e",
+        "source_url": "https://drhouse.com/telehealth/diarrhea-treatment/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "d6cdb5ed00a09f0b74af1976da460c426f1e9f4dee1d655621ef01742ccb1c6c",
+        "source_url": "https://drhouse.com/telehealth/covid-treatment/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_drhouse",
+        "authority_sha256": "d0d46eb7bb071af39dc2c29fd634530aabdcf4be1abd286ca866151d18f2c6a3",
+        "evidence_sha256": "d1ac8b0e941048190a38a10151f9239a9ea3ba8c43cf39a59da32ca921d6bd40",
+        "source_url": "https://drhouse.com/telehealth/back-pain-treatment/",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [],
+    "normalized_sha256": "d81abea3b0d917ff8b956aaa3d75339bedd2421518a8435c5f55535beb085697",
+    "program_id": "drhouse",
+    "provider": "DrHouse",
+    "registry_program_id": "drhouse",
+    "render_label": null,
+    "source_urls": [
+      "https://drhouse.com/",
+      "https://drhouse.com/pricing/",
+      "https://drhouse.com/telehealth/back-pain-treatment/",
+      "https://drhouse.com/telehealth/cold-flu-treatment/",
+      "https://drhouse.com/telehealth/covid-treatment/",
+      "https://drhouse.com/telehealth/diarrhea-treatment/",
+      "https://drhouse.com/telehealth/food-poisoning-treatment/",
+      "https://drhouse.com/telehealth/hair-loss-treatment/",
+      "https://drhouse.com/telehealth/sinus-infection-treatment/",
+      "https://drhouse.com/telehealth/smoking-cessation-treatment/",
+      "https://drhouse.com/telehealth/strep-throat-treatment/",
+      "https://drhouse.com/telehealth/weight-loss-treatment/"
+    ],
+    "treatment_type_state": "not_verified",
+    "treatment_type_tags": [],
+    "verified_as_of": "2026-09-08"
+  },
+  "enhance-md": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_enhance_md",
+        "authority_sha256": "3c0215ed95ed9e16a55449cb8e35e8355b54f42d509cd09c7cbf33d6ae3d5cc0",
+        "evidence_sha256": "ef2b7e7bc1addd951d8f0405eca83f6d6ccccabe15b953952531dc0aa2941604",
+        "source_url": "https://enhance.md/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_enhance_md",
+        "authority_sha256": "3c0215ed95ed9e16a55449cb8e35e8355b54f42d509cd09c7cbf33d6ae3d5cc0",
+        "evidence_sha256": "d8766589c84a414f0e493afec55adef467a57f6aae506271442dfc566bcd127f",
+        "source_url": "https://enhance.md/product/microdosing-tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_enhance_md",
+        "authority_sha256": "3c0215ed95ed9e16a55449cb8e35e8355b54f42d509cd09c7cbf33d6ae3d5cc0",
+        "evidence_sha256": "3c1dd3d72a49a0b7c143c9553c0199aaa4b09486401d465cb5b5aa742917136d",
+        "source_url": "https://enhance.md/product/core-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_enhance_md",
+        "authority_sha256": "3c0215ed95ed9e16a55449cb8e35e8355b54f42d509cd09c7cbf33d6ae3d5cc0",
+        "evidence_sha256": "141acc780092bb19685e646552720f56f4f4dcb11f8622760e823a8886289da1",
+        "source_url": "https://enhance.md/product/advanced-tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_enhance_md",
+        "authority_sha256": "3c0215ed95ed9e16a55449cb8e35e8355b54f42d509cd09c7cbf33d6ae3d5cc0",
+        "evidence_sha256": "74c00606dc96f57d56bcd126bd3856de7b6e7e4602f30bf9a3bde6ff9d641f6c",
+        "source_url": "https://enhance.md/product/elite-tirzepatide-and-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_enhance_md",
+        "authority_sha256": "3c0215ed95ed9e16a55449cb8e35e8355b54f42d509cd09c7cbf33d6ae3d5cc0",
+        "evidence_sha256": "13126b6c8b9204e2b630dd8bcc799f348a19e2b215c7304df3b628030ff0fcc9",
+        "source_url": "https://enhance.md/terms-of-service",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_enhance_md",
+        "authority_sha256": "3c0215ed95ed9e16a55449cb8e35e8355b54f42d509cd09c7cbf33d6ae3d5cc0",
+        "evidence_sha256": "6b1b035560bd843addbfe3e461bf6fd1211644a47e5ad81adbaf607a76ed21c6",
+        "source_url": "https://enhance.md/faq",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_enhance_md",
+        "authority_sha256": "3c0215ed95ed9e16a55449cb8e35e8355b54f42d509cd09c7cbf33d6ae3d5cc0",
+        "evidence_sha256": "6ab079bb51407e32ccf12cdfb55e6d243aa96f95d5f8b93501dc15dc2f72a0e0",
+        "source_url": "https://enhance.md/how-it-works",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "a292629d0e8ebc30098368a4446da6cffc4a49a9f1fcc33c5ce0eaf899e46c2f",
+    "program_id": "enhance-md",
+    "provider": "Enhance.MD",
+    "registry_program_id": "enhance-md",
+    "render_label": null,
+    "source_urls": [
+      "https://enhance.md/",
+      "https://enhance.md/faq",
+      "https://enhance.md/how-it-works",
+      "https://enhance.md/product/advanced-tirzepatide",
+      "https://enhance.md/product/core-semaglutide",
+      "https://enhance.md/product/elite-tirzepatide-and-semaglutide",
+      "https://enhance.md/product/microdosing-tirzepatide",
+      "https://enhance.md/terms-of-service"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "found-health": {
+    "brand_name_tags": [
+      "mounjaro",
+      "wegovy",
+      "zepbound"
+    ],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable",
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "805a848fdc1f2f3b32820e773c025fc273ba3306a8d625d97b173d41f55a6135",
+        "source_url": "https://joinfound.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "4b2b416e63084f0702712978102716dca5030d618d78531a50a501b0b6bcec8e",
+        "source_url": "https://joinfound.com/terms/offer-terms",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "70486750b7fee193568612ccd0bccd87a49f42ed2df05f00cf87addda6808e3e",
+        "source_url": "https://joinfound.com/plans-and-pricing",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "8479532a35cf043dec60446717d145b8ea43bf116a68cd194672e1d1284067a9",
+        "source_url": "https://joinfound.com/medication",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "96f7605e1b95d37422d7414f1c867907b51a48152589d8f5b393b387c7ce41f1",
+        "source_url": "https://joinfound.com/medicare-weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "ef19a0bfc15d3e3c7c9a13b355f07c293d42533eb0067b3e04bbeec83ef2bf02",
+        "source_url": "https://joinfound.com/medication/compounded-tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "f040dc483118091964ef5329f30a8326eb61c23ded3a5a6c48146b8b6ff222a8",
+        "source_url": "https://joinfound.com/medication/compounded-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "eea5cca36b6ff468ce3bbadbfc46bf2d2fc4779ee5cfade00d4c06e5e00888fe",
+        "source_url": "https://joinfound.com/glp1-checker",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "04db9c0e9d08e2b5fc53777ac97c8a66a57d5bc6f580aa42af2b13ab7727bb0d",
+        "source_url": "https://joinfound.com/terms/terms-and-conditions",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "f3160213fb6c517a36eaf979bf9331a2ea323e7382b80b48109d37ac352205f1",
+        "source_url": "https://joinfound.com/terms/offer-terms-v3",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "bb2989214e769f8fbcd0b17b4b6de34540427d43da3afdeab98ac57bdf93a017",
+        "source_url": "https://joinfound.com/terms/payment-and-billing-consent",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "eb4c2092ca730c416e783f4314d5afc505bcc6008482f58cc5e0cf9c85a7eeb9",
+        "source_url": "https://joinfound.com/terms/telehealth-consent",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "ae718dc45112500510bf06ac60c96b05bc469d083dd45ad302881df440e361e3",
+        "source_url": "https://joinfound.com/terms/privacy-policy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "0bc335d17077a9feec12fc56047ac6f3904f973c8ad69f191a999fe24c83c431",
+        "source_url": "https://joinfound.com/terms/state-privacy-law-addendum",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "4b623ed4dd3e8cddf02c12c6edd0681bfa42e7c47f305caee5bcbe13c0ad4de6",
+        "source_url": "https://joinfound.com/medication/ozempic",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "3720ace2b554c94642fb3b89b4131ac3a1bbb6a67cab1d36ec4cff78624ace58",
+        "source_url": "https://joinfound.com/medication/mounjaro",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "39eec97f7fcd01ab312260e87fd2acba478cc4dfe6c66102306e60bdb45a6d99",
+        "source_url": "https://joinfound.com/medication/zepbound",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "2937460cd04e9e2d9ffd5f68064d694f7b9faadc64e305b95224bb351b86c0a3",
+        "source_url": "https://joinfound.com/medication/wegovy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "0009a26086a6b98462d45dc43764a58192d8647710d8d40642b46c409572e356",
+        "source_url": "https://joinfound.com/terms/privacy-practices-notice",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "cb83a79d863c68d2d5e7b5f1992b72100e6445cf69854a458e57f9e9a8967fd9",
+        "source_url": "https://joinfound.com/terms/sms-terms",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "fe92d87a6881dd0068825b905f5608f787379352dfc9fc81375420e33db8b939",
+        "source_url": "https://joinfound.com/category/weight-loss-medication",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "a83b307c579db466f748fd246e18d44c02f007ce5c51ccd3422db507f72186ce",
+        "source_url": "https://joinfound.com/terms/california-resident-privacy-notice",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "9266e829d9fff5f9de23b4de4997e5171a79cccc5204e75998ea779e7d35abfd",
+        "source_url": "https://joinfound.com/terms/colorado-resident-privacy-notice",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "5391abd84c793f0841a13465c76be233975a449eedc056d633c48135d7d65574",
+        "source_url": "https://joinfound.com/terms/connecticut-resident-privacy-notice",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "fe56ca6895eeadda94054212440dbe1740317ee3f252577706b5f3920135b4cc",
+        "source_url": "https://joinfound.com/terms/utah-resident-privacy-notice",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_found_health",
+        "authority_sha256": "ea1e3a254c7004fefa383b051a69686a6914b66d5b3339970db0f35ab37e738c",
+        "evidence_sha256": "72d079a91ed071aabd97003a887b69d91e5d6020fc6c6c5accb87a536257e2eb",
+        "source_url": "https://joinfound.com/terms/virginia-resident-privacy-notice",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "76ade03ee6af8a2882bb64c0c2090fc35447832d5b59ce5a2e8b7e4a7cf6de99",
+    "program_id": "found-health",
+    "provider": "Found",
+    "registry_program_id": "found-health",
+    "render_label": null,
+    "source_urls": [
+      "https://joinfound.com/",
+      "https://joinfound.com/category/weight-loss-medication",
+      "https://joinfound.com/glp1-checker",
+      "https://joinfound.com/medicare-weight-loss",
+      "https://joinfound.com/medication",
+      "https://joinfound.com/medication/compounded-semaglutide",
+      "https://joinfound.com/medication/compounded-tirzepatide",
+      "https://joinfound.com/medication/mounjaro",
+      "https://joinfound.com/medication/ozempic",
+      "https://joinfound.com/medication/wegovy",
+      "https://joinfound.com/medication/zepbound",
+      "https://joinfound.com/plans-and-pricing",
+      "https://joinfound.com/terms/california-resident-privacy-notice",
+      "https://joinfound.com/terms/colorado-resident-privacy-notice",
+      "https://joinfound.com/terms/connecticut-resident-privacy-notice",
+      "https://joinfound.com/terms/offer-terms",
+      "https://joinfound.com/terms/offer-terms-v3",
+      "https://joinfound.com/terms/payment-and-billing-consent",
+      "https://joinfound.com/terms/privacy-policy",
+      "https://joinfound.com/terms/privacy-practices-notice",
+      "https://joinfound.com/terms/sms-terms",
+      "https://joinfound.com/terms/state-privacy-law-addendum",
+      "https://joinfound.com/terms/telehealth-consent",
+      "https://joinfound.com/terms/terms-and-conditions",
+      "https://joinfound.com/terms/utah-resident-privacy-notice",
+      "https://joinfound.com/terms/virginia-resident-privacy-notice"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "brand_name",
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "gala-health": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "d370a0c8bc377566b4419b109e39ec828926cbc08ab07fe8108bd3d4c3dbeb88",
+        "source_url": "https://galaglp1.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "f8566cd61962c79c41b28f9b12a3e60a6c3ae9161674ad65cac82b1a30283d69",
+        "source_url": "https://galaglp1.com/weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "1167548ede84a5ed8347f53f5da1e9776a52a50fa55dcbe2be4cc63e2e31316d",
+        "source_url": "https://galaglp1.com/weight-loss/compounded-glp1",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "ee5aa3b855fa9092fe4a074bf9d4c1b47719af464da843215c1c42a3c5f9ee02",
+        "source_url": "https://galaglp1.com/weight-loss/compounded-glp1-gip-microdosing",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "4d824f07520b49dca54876ecb9fc24cdc11125792982519ee528b54361c05a5c",
+        "source_url": "https://galaglp1.com/weight-loss/ozempic",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "f0066eac051c97d74f6848b4aa47b21d743488a58d532d3cfa10676527098374",
+        "source_url": "https://galaglp1.com/weight-loss/wegovy-pill",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "ea89bae81b29a4c9de3a17fe58eb435e5e70e476044d49f82c319698fbbb8193",
+        "source_url": "https://galaglp1.com/hormone-health",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "9a57191096cf625d326a320d8fa42f1e201d1a3ca0938e51b6e4280a75e037b5",
+        "source_url": "https://galaglp1.com/longevity",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "911cb7f9142fb6bd212ca837c41b54a832814dbd6aa46c6f9f82db42201381ac",
+        "source_url": "https://galaglp1.com/terms-and-conditions",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "3a5c449fa55e4c49fd97a7c3362a9f4a34c43037ab73ebc4c4d39752387ecbab",
+        "source_url": "https://galaglp1.com/refund-policy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gala_health",
+        "authority_sha256": "7a0339d4542276d8e7f907520637caf9c62aeebad293ce03ed5328aa3a48435c",
+        "evidence_sha256": "a98dffe7cbcc411b66fba5e97fc6827c04d369d08c6fd4e6dabdabbe46c5ed29",
+        "source_url": "https://galaglp1.com/sms-terms-and-conditions",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "5ef924b2fa1fe0318815ce3565dce81acedf92011ed01107993887b0d99aff6b",
+    "program_id": "gala-health",
+    "provider": "Gala GLP-1",
+    "registry_program_id": "gala-health",
+    "render_label": null,
+    "source_urls": [
+      "https://galaglp1.com/",
+      "https://galaglp1.com/hormone-health",
+      "https://galaglp1.com/longevity",
+      "https://galaglp1.com/refund-policy",
+      "https://galaglp1.com/sms-terms-and-conditions",
+      "https://galaglp1.com/terms-and-conditions",
+      "https://galaglp1.com/weight-loss",
+      "https://galaglp1.com/weight-loss/compounded-glp1",
+      "https://galaglp1.com/weight-loss/compounded-glp1-gip-microdosing",
+      "https://galaglp1.com/weight-loss/ozempic",
+      "https://galaglp1.com/weight-loss/wegovy-pill"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "brand_name",
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "gobymeds": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_gobymeds",
+        "authority_sha256": "8e3b09519994a240b8238e06d0aabe0b000b8425647dd3cfc51716bcc7a1e0e1",
+        "evidence_sha256": "f8d8904a3ef8c527256b86666d7767429e57e036eb4a7ffe20047bef9b5bc8bd",
+        "source_url": "https://www.gobymeds.com/getting-started/pricing",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gobymeds",
+        "authority_sha256": "8e3b09519994a240b8238e06d0aabe0b000b8425647dd3cfc51716bcc7a1e0e1",
+        "evidence_sha256": "a109ff4411b134849b36f74923524d137555dc327c14fbc4342bc0cadeabcd9a",
+        "source_url": "https://www.gobymeds.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gobymeds",
+        "authority_sha256": "8e3b09519994a240b8238e06d0aabe0b000b8425647dd3cfc51716bcc7a1e0e1",
+        "evidence_sha256": "56be39f816b49c361be13893d38132cdb2f8a4b52968b45edb31511769ca0346",
+        "source_url": "https://www.gobymeds.com/getting-started/starter-bundle",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gobymeds",
+        "authority_sha256": "8e3b09519994a240b8238e06d0aabe0b000b8425647dd3cfc51716bcc7a1e0e1",
+        "evidence_sha256": "7a88de65d3df4ba11b5c6f938b963f8e7d27d75a47a67a426fe49d878435910e",
+        "source_url": "https://www.gobymeds.com/getting-started/compounded-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gobymeds",
+        "authority_sha256": "8e3b09519994a240b8238e06d0aabe0b000b8425647dd3cfc51716bcc7a1e0e1",
+        "evidence_sha256": "275b76bed4b38f0535fe6b8b4316a39d1c565469d030039c48fe99e5127ff044",
+        "source_url": "https://www.gobymeds.com/getting-started/compounded-tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gobymeds",
+        "authority_sha256": "8e3b09519994a240b8238e06d0aabe0b000b8425647dd3cfc51716bcc7a1e0e1",
+        "evidence_sha256": "cc5b5a7f8a87b28baa4866ef3135c320d42437bced20bfd389380d63b9f32f46",
+        "source_url": "https://www.gobymeds.com/getting-started/personalized-meds",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gobymeds",
+        "authority_sha256": "8e3b09519994a240b8238e06d0aabe0b000b8425647dd3cfc51716bcc7a1e0e1",
+        "evidence_sha256": "ce398b58bb010357117fa51ea2c1165da8d69c6a703962c047501d89d33b7684",
+        "source_url": "https://www.gobymeds.com/legal/terms-of-service",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gobymeds",
+        "authority_sha256": "8e3b09519994a240b8238e06d0aabe0b000b8425647dd3cfc51716bcc7a1e0e1",
+        "evidence_sha256": "bf9c7d7024051f83e26d715e3c6b413a6753883c6f01f97988efd13208311f1f",
+        "source_url": "https://www.gobymeds.com/legal/safety-information-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_gobymeds",
+        "authority_sha256": "8e3b09519994a240b8238e06d0aabe0b000b8425647dd3cfc51716bcc7a1e0e1",
+        "evidence_sha256": "1c381dfc1d90363a2b1b50740d0879f50ecdfb340ccbf799b0d183a72baf44c1",
+        "source_url": "https://www.gobymeds.com/legal/safety-information-tirzepatide",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "9cfb612fb648b0a6f14c83bf4fe5867a1cbad41d138062460637aa71a357614f",
+    "program_id": "gobymeds",
+    "provider": "GobyMeds",
+    "registry_program_id": "gobymeds",
+    "render_label": null,
+    "source_urls": [
+      "https://www.gobymeds.com/",
+      "https://www.gobymeds.com/getting-started/compounded-semaglutide",
+      "https://www.gobymeds.com/getting-started/compounded-tirzepatide",
+      "https://www.gobymeds.com/getting-started/personalized-meds",
+      "https://www.gobymeds.com/getting-started/pricing",
+      "https://www.gobymeds.com/getting-started/starter-bundle",
+      "https://www.gobymeds.com/legal/safety-information-semaglutide",
+      "https://www.gobymeds.com/legal/safety-information-tirzepatide",
+      "https://www.gobymeds.com/legal/terms-of-service"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "brand_name",
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "healthrx": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "7b1afd6be85ca9b93dd0f9fb13a021fba265b816235c909bcedf15f3833d7fb7",
+        "source_url": "https://healthrx.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "4f99f48dbcedbee7c1db81b684a1c4b83a52a6ee6d8c8202afe463c8de85739d",
+        "source_url": "https://healthrx.com/pricing",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "52b5c16a1e58412bb303ab8ed7e127c94ab533df9ba5f15d563ce903fe1a5344",
+        "source_url": "https://healthrx.com/weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "eff3a110df9e5dfab19774862714bf101d55964eabc3b213ba376687621de713",
+        "source_url": "https://healthrx.com/glp1-offer-v1",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "9d609de84aca07f9722a28154b7d7297f223d90d428dbc186b5e1c8157a01d53",
+        "source_url": "https://healthrx.com/weight-loss-intake",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "1eeab0c53551716d355d83c98e75101bcb8787c9e625acac1e57f825272987df",
+        "source_url": "https://healthrx.com/tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "37f249aa1abe2ca61c623469fe7aa3169d83d75f1354e8566e3e2a47667de073",
+        "source_url": "https://healthrx.com/semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "cfaedfbe0c36b391f69a2723b6b13eab09edcf30ddb4399632af1cc83c3a9a2a",
+        "source_url": "https://healthrx.com/glp-1",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "bad8008c5cc6eca4384d14a99aa76f6bc1bc898dfccc20f620db336e4e010e22",
+        "source_url": "https://healthrx.com/terms",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "b6bdf3d61f8875dce864ed3575693cbfbe22356125534a9c0e9b8fe6207b6d22",
+        "source_url": "https://healthrx.com/returns-refund-policy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "90ca21a11cc593666faedbc913b88a94b79a2ff5b0db4832a53ca708bc633203",
+        "source_url": "https://healthrx.com/sms-terms-and-conditions",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "abe931f1c4b88015ad9136de8bb74834fcc71f89ec72d15983112c9d5a6b70c9",
+        "source_url": "https://healthrx.com/glp1-results",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "108c0eed7f100916b5ff5455c31ca4f9714fbbeb79df8a411fcc757dbc2c52b2",
+        "source_url": "https://healthrx.com/glp1-research",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "2381467977bfff6a071e1db060f465041ebd2390d5c98cf378fbc4a9bfe6036e",
+        "source_url": "https://healthrx.com/glp1-in-the-news",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "39abc74c12eae5b6e29e61f7e76534fe89d9103b7be4327c6d9b67e0693b2a85",
+        "source_url": "https://healthrx.com/compounded-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "608df3c27b3b2da62d6f11385de5645e68fe3807701cba5ddc2dc7fef27e9caa",
+        "source_url": "https://healthrx.com/compounded-tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "af921e9d4cd8c9d07b7f7df364ac0fe2555d82cb26c310754cd675c6e87ce263",
+        "source_url": "https://healthrx.com/mounjaro/geriatric-safety",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "164baa0fc620b0cddb773066c316c0a4f7c350a396263643e9b4736429a4e804",
+        "source_url": "https://healthrx.com/titration-zepbound/re-titration-after-stop",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "bca8d46251e894d3bc393af4e062b2965d59616c12cc278f8203366d6ef427a5",
+        "source_url": "https://healthrx.com/wegovy/geriatric-safety",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "7bbf99c4b4e25643b0b4ffdcd4faf9644990355c6a7a9e3ac068785fdf604657",
+        "source_url": "https://healthrx.com/wegovy/missed-dose-protocol",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "13258697a6a5497dd7064879b1f516c4020926c9871bc233b4c7e49a1de155b6",
+        "source_url": "https://healthrx.com/zepbound/adolescent-dosing",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "32907487494f71ee6f79f7b5058defb7815c7eb03d1ed55feb2977e6b6ccdab5",
+        "source_url": "https://healthrx.com/compare-glp-1/mounjaro-vs-retatrutide--cost-access",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_healthrx",
+        "authority_sha256": "0c13a35713a3693503ca7d8ad597bd5883d567a922f52d284c2daaa3152a9398",
+        "evidence_sha256": "ca477573bea817a1dd36d5e0ecbc1ae66da0c08da37e3d8f744a3fa6e1ce18a3",
+        "source_url": "https://healthrx.com/compare-glp-1/ozempic-vs-retatrutide--cost-access",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "09211a3de4b7ab764c66c16106a1ef379e9011cbbbff1c5366c381e685cb39bd",
+    "program_id": "healthrx",
+    "provider": "HealthRX",
+    "registry_program_id": "healthrx",
+    "render_label": null,
+    "source_urls": [
+      "https://healthrx.com/",
+      "https://healthrx.com/compare-glp-1/mounjaro-vs-retatrutide--cost-access",
+      "https://healthrx.com/compare-glp-1/ozempic-vs-retatrutide--cost-access",
+      "https://healthrx.com/compounded-semaglutide",
+      "https://healthrx.com/compounded-tirzepatide",
+      "https://healthrx.com/glp-1",
+      "https://healthrx.com/glp1-in-the-news",
+      "https://healthrx.com/glp1-offer-v1",
+      "https://healthrx.com/glp1-research",
+      "https://healthrx.com/glp1-results",
+      "https://healthrx.com/mounjaro/geriatric-safety",
+      "https://healthrx.com/pricing",
+      "https://healthrx.com/returns-refund-policy",
+      "https://healthrx.com/semaglutide",
+      "https://healthrx.com/sms-terms-and-conditions",
+      "https://healthrx.com/terms",
+      "https://healthrx.com/tirzepatide",
+      "https://healthrx.com/titration-zepbound/re-titration-after-stop",
+      "https://healthrx.com/wegovy/geriatric-safety",
+      "https://healthrx.com/wegovy/missed-dose-protocol",
+      "https://healthrx.com/weight-loss",
+      "https://healthrx.com/weight-loss-intake",
+      "https://healthrx.com/zepbound/adolescent-dosing"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "live-vital-launch": {
+    "brand_name_tags": [],
+    "classification_state": "B2_STAGE5_EXACT_EVIDENCE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "ws_r_001_live_vital_launch",
+        "authority_sha256": "9a1cd81680474fabc803eed65789797307db256aa5e01cd552ea461484798fce",
+        "evidence_sha256": "49b349aa62728c3544e1808e51f52e24e856d7c51cdf4335fca692ea2cdfadc2",
+        "source_url": "https://www.livevital.io/treatments/semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "ws_r_001_live_vital_launch",
+        "authority_sha256": "9a1cd81680474fabc803eed65789797307db256aa5e01cd552ea461484798fce",
+        "evidence_sha256": "b9f03c8a0272360fa701454882e21e24baefe3be034c9c4100346b683034fae1",
+        "source_url": "https://www.livevital.io/treatments/tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "ws_r_001_live_vital_launch",
+        "authority_sha256": "9a1cd81680474fabc803eed65789797307db256aa5e01cd552ea461484798fce",
+        "evidence_sha256": "d328a2a3cf7d5964e548b2b6919e18cc89e38295f65fa5df495939df0243cdd8",
+        "source_url": "https://www.livevital.io/",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "daed8e687014d3043e296cd1a5b1a997612e30a24231d54d6809486267fa8351",
+    "program_id": "live-vital-launch",
+    "provider": "Live Vital Launch",
+    "registry_program_id": "live-vital-launch",
+    "render_label": null,
+    "source_urls": [
+      "https://www.livevital.io/",
+      "https://www.livevital.io/treatments/semaglutide",
+      "https://www.livevital.io/treatments/tirzepatide"
+    ],
+    "treatment_type_state": "not_verified",
+    "treatment_type_tags": [],
+    "verified_as_of": "2026-09-08"
+  },
+  "mademed": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable",
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "3a188850bd6ae905d91ad33bc8f62f85a2a63279fd74f28fdad2602e52e265e8",
+        "source_url": "https://mademed.com/rx/injectable-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "6b958a1b4cd6c42e6f2c2a6c8dcb4738480b123f05b845eb5094225f5d8dd52b",
+        "source_url": "https://mademed.com/weight-loss/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "4619c140372e43565ef78f19e10d51665f7a645716ed0ffb273b73d4fdfa1f9f",
+        "source_url": "https://mademed.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "f9bbc2f4544a2bffc2a8f62d6fdc699029310ae09354ca13f04cbb9904ece031",
+        "source_url": "https://mademed.com/rx/injectable-tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "776529b35f1fa1a405955ebd1f88a76220d954b59301843c47eadb99ce4f5327",
+        "source_url": "https://mademed.com/rx/injectable-semaglutide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "f6c2c5418266abea9fa44a40b46b81a924901f7a105411a1d3fdaafb4817e43d",
+        "source_url": "https://mademed.com/rx/oral-semaglutide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "f9bbc2f4544a2bffc2a8f62d6fdc699029310ae09354ca13f04cbb9904ece031",
+        "source_url": "https://mademed.com/rx/injectable-tirzepatide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "e93d24f41fedea95317a587727088232d105b497e393176154d98c5c93c3c3c1",
+        "source_url": "https://mademed.com/rx/oral-tirzepatide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "2868d04a0d8ce92eda0b2970e16c5f7e8af3eec01efbaa0a86fdefc756148124",
+        "source_url": "https://mademed.com/terms/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "4619c140372e43565ef78f19e10d51665f7a645716ed0ffb273b73d4fdfa1f9f",
+        "source_url": "https://mademed.com/weight-loss/<Base64-Image-Removed>",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mademed",
+        "authority_sha256": "512e1ac7a2969ea91273a0805aef4e38dea58126288626ffefb9acfd2a0f3283",
+        "evidence_sha256": "80720ca3857d16f533e861966b86ae4ced53d1f27a14bf2bdc6f6f9d9b3610cf",
+        "source_url": "https://mademed.com/treatments/",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "6aceb568c401c156742c3d102996cb66ddb2952629a43a43b8c4010f2d046234",
+    "program_id": "mademed",
+    "provider": "MadeMed",
+    "registry_program_id": "mademed",
+    "render_label": null,
+    "source_urls": [
+      "https://mademed.com/",
+      "https://mademed.com/rx/injectable-semaglutide",
+      "https://mademed.com/rx/injectable-semaglutide/",
+      "https://mademed.com/rx/injectable-tirzepatide",
+      "https://mademed.com/rx/injectable-tirzepatide/",
+      "https://mademed.com/rx/oral-semaglutide/",
+      "https://mademed.com/rx/oral-tirzepatide/",
+      "https://mademed.com/terms/",
+      "https://mademed.com/treatments/",
+      "https://mademed.com/weight-loss/",
+      "https://mademed.com/weight-loss/<Base64-Image-Removed>"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "mangorx": {
+    "brand_name_tags": [],
+    "classification_state": "CURRENT_FIRST_PARTY_RECONCILED_CONSERVATIVE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_mangorx",
+        "authority_sha256": "6281bf603370ba25fd41da83101ba19f62d57a49be8e29772c0f7470a7746d06",
+        "evidence_sha256": "aa3fc31b25e121b6130bc1f78e3e3866baf8778dca1305c8697f7b6f74323621",
+        "source_url": "https://mangorx.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mangorx",
+        "authority_sha256": "6281bf603370ba25fd41da83101ba19f62d57a49be8e29772c0f7470a7746d06",
+        "evidence_sha256": "e3ef5188dea2c6ffc8253ca79c3345741c71111033c2655c6f0d91431a2227bc",
+        "source_url": "https://mangorx.com/products/slim",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mangorx",
+        "authority_sha256": "6281bf603370ba25fd41da83101ba19f62d57a49be8e29772c0f7470a7746d06",
+        "evidence_sha256": "ab45860934a84325007e631a154b4e6da75eac3ceca086a77020f1b0ca3c7bf8",
+        "source_url": "https://mangorx.com/weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mangorx",
+        "authority_sha256": "6281bf603370ba25fd41da83101ba19f62d57a49be8e29772c0f7470a7746d06",
+        "evidence_sha256": "10624737ea2064acf6757c64fffd2a3c6ec321eb5779cefa40dd5c68942bd7d3",
+        "source_url": "https://mangorx.com/terms-and-conditions/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mangorx",
+        "authority_sha256": "6281bf603370ba25fd41da83101ba19f62d57a49be8e29772c0f7470a7746d06",
+        "evidence_sha256": "ab45860934a84325007e631a154b4e6da75eac3ceca086a77020f1b0ca3c7bf8",
+        "source_url": "https://mangorx.com/weight-loss#pricing",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide"
+    ],
+    "normalized_sha256": "877559ff2dbf7887b6df225a4bd9a55092817d96cba2ae510247543c9973f54d",
+    "program_id": "mangorx",
+    "provider": "MangoRx",
+    "registry_program_id": "katalys-647",
+    "render_label": null,
+    "source_urls": [
+      "https://mangorx.com/",
+      "https://mangorx.com/products/slim",
+      "https://mangorx.com/terms-and-conditions/",
+      "https://mangorx.com/weight-loss",
+      "https://mangorx.com/weight-loss#pricing"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "measured": {
+    "brand_name_tags": [
+      "wegovy"
+    ],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "editorial_link_dark",
+      "quiz": "editorial_link_dark"
+    },
+    "delivery_form_tags": [
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "1ad57beb658fae1306710a1692a0d1b1d8bbdb0b979ce96cb69f5c05cbe72003",
+        "source_url": "https://trymeasured.com/how-it-works",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "3e92e78ebd261d85bf8b9b715fd8a3b98246e15b983076489b9849d777401246",
+        "source_url": "https://trymeasured.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "d97d82003150b22966cfc82dd95103e4846842be9c8de62341860a60e5880b43",
+        "source_url": "https://trymeasured.com/medications",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "86ef0f39bbee08ef05dc9253ac144c6b100a049a221d9f883c0ca6b977c45b0d",
+        "source_url": "https://trymeasured.com/terms",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "819bc67cd0cda49ed1e256bef52eeb92c022fca1b0babac301a7d8fda9fcf771",
+        "source_url": "https://trymeasured.com/medications/glp1-microdose",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "50c91cf2c83780d4589291daeb3257c750cc94c42447f5f66511c1a429defb52",
+        "source_url": "https://trymeasured.com/medications/wegovy-pill",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "51a364142799b230b37b1460337664cc64ad36715e7dcdd24a6c9750077c64c4",
+        "source_url": "https://trymeasured.com/medications/zepbound",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "5e6f595e22f865375ceb99f99886abc6b5761b31c3c8876f62ae1d6305e76317",
+        "source_url": "https://trymeasured.com/medications/wegovy-pen",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "153db4f26bb216731ab9da411323a96eb4166ebc21b5df91ffb5ad2210464c0a",
+        "source_url": "https://trymeasured.com/medications/ozempic",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "10a201142ee8caac6432b04f00cc4ef752e6191e168ebcbb528eebd4b24c8ac4",
+        "source_url": "https://trymeasured.com/medications/mounjaro",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "91890a9c7ecd4dd6cbfac53e3b7339fd07978eaa9a7a904582d25b787c86108b",
+        "source_url": "https://trymeasured.com/medications/compounded-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "dda4a3cee0706101cd9254c6881bd77d2d210c3bb17a82f6bc2f7274991ee8ad",
+        "source_url": "https://trymeasured.com/medications/compounded-tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "c436da23e44a159c6336f5205cd07d546a7976d34bdd7198404f5f82d5029579",
+        "source_url": "https://trymeasured.com/about",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_measured",
+        "authority_sha256": "3793c0698804828656ddbc9de157c39f2110bc20aafe91d8f96d3fa4d7b49eb5",
+        "evidence_sha256": "9ac2c194be324b46596a024f591db4b18b17e10f21bc0c936c4122b6811fc609",
+        "source_url": "https://trymeasured.com/medications/wegovy-pen",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "d7328a4a4bd812f14bb8f427d865f9b210ceaa92fb7bd00746cede2745db713d",
+    "program_id": "measured",
+    "provider": "Measured",
+    "registry_program_id": "measured",
+    "render_label": null,
+    "source_urls": [
+      "https://trymeasured.com/",
+      "https://trymeasured.com/about",
+      "https://trymeasured.com/how-it-works",
+      "https://trymeasured.com/medications",
+      "https://trymeasured.com/medications/compounded-semaglutide",
+      "https://trymeasured.com/medications/compounded-tirzepatide",
+      "https://trymeasured.com/medications/glp1-microdose",
+      "https://trymeasured.com/medications/mounjaro",
+      "https://trymeasured.com/medications/ozempic",
+      "https://trymeasured.com/medications/wegovy-pen",
+      "https://trymeasured.com/medications/wegovy-pill",
+      "https://trymeasured.com/medications/zepbound",
+      "https://trymeasured.com/terms"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "mydrhank": {
+    "brand_name_tags": [],
+    "classification_state": "CURRENT_FIRST_PARTY_RECONCILED_CONSERVATIVE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_mydrhank",
+        "authority_sha256": "b3770bad064eee24e585b8156320cebef6c6932377e72439db07dfc51a4fab1a",
+        "evidence_sha256": "5c2aa1d5be35faba5b2b12b90adc32f7d92449cda3f8b7d342ea2b44adca0641",
+        "source_url": "https://mydrhank.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mydrhank",
+        "authority_sha256": "b3770bad064eee24e585b8156320cebef6c6932377e72439db07dfc51a4fab1a",
+        "evidence_sha256": "a2b4a6afcc0f184db455589eb01f66aeb609f898a6c635bd5aeefff1349a4ac6",
+        "source_url": "https://mydrhank.com/products/compounded-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mydrhank",
+        "authority_sha256": "b3770bad064eee24e585b8156320cebef6c6932377e72439db07dfc51a4fab1a",
+        "evidence_sha256": "3815524e1edbc1eb5dba4002929a46d3e7356be8ff5386688d49eda1733e58d2",
+        "source_url": "https://mydrhank.com/products/compounded-tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mydrhank",
+        "authority_sha256": "b3770bad064eee24e585b8156320cebef6c6932377e72439db07dfc51a4fab1a",
+        "evidence_sha256": "4cbdc93fedb10a46dccab0c787d89c249b3d9a582c479805d2e51cd824afdb60",
+        "source_url": "https://mydrhank.com/products/oral-semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mydrhank",
+        "authority_sha256": "b3770bad064eee24e585b8156320cebef6c6932377e72439db07dfc51a4fab1a",
+        "evidence_sha256": "da1246433b665abb0b75ee607ca1b116cffc096c53a065eb43476c65e8a642d8",
+        "source_url": "https://mydrhank.com/weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_mydrhank",
+        "authority_sha256": "b3770bad064eee24e585b8156320cebef6c6932377e72439db07dfc51a4fab1a",
+        "evidence_sha256": "8d63e166d603160a9ed0593d136a6d86636e2e9677303a0a4e1f4dc8aced71d2",
+        "source_url": "https://mydrhank.com/terms-of-use",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide"
+    ],
+    "normalized_sha256": "9e3ea355a9ecf7afa2131a7b12a2757d88adc34742102c289e479ba3449d33f3",
+    "program_id": "mydrhank",
+    "provider": "MyDrHank",
+    "registry_program_id": "mydrhank",
+    "render_label": null,
+    "source_urls": [
+      "https://mydrhank.com/",
+      "https://mydrhank.com/products/compounded-semaglutide",
+      "https://mydrhank.com/products/compounded-tirzepatide",
+      "https://mydrhank.com/products/oral-semaglutide",
+      "https://mydrhank.com/terms-of-use",
+      "https://mydrhank.com/weight-loss"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "oak-weight-loss-program": {
+    "brand_name_tags": [],
+    "classification_state": "CURRENT_FIRST_PARTY_RECONCILED_CONSERVATIVE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_oak_weight_loss_program",
+        "authority_sha256": "c7434035fcacab507aa89cc739ad8b0bf4fa0ac866e8f5f4b49214cd7a39ee52",
+        "evidence_sha256": "942813190a1d8fa2e2cdf2d7cfe6a33efea5d962f732b8530e8964478e7a5c3a",
+        "source_url": "https://www.oaklovesyou.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_oak_weight_loss_program",
+        "authority_sha256": "c7434035fcacab507aa89cc739ad8b0bf4fa0ac866e8f5f4b49214cd7a39ee52",
+        "evidence_sha256": "7702920f9d3a3dcc9397acbdde21347f3c910fb49897b693dc110c69d6e00e44",
+        "source_url": "https://www.oaklovesyou.com/weightloss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_oak_weight_loss_program",
+        "authority_sha256": "c7434035fcacab507aa89cc739ad8b0bf4fa0ac866e8f5f4b49214cd7a39ee52",
+        "evidence_sha256": "658506836d9ae23c67c9dfb0398a81f3d2913d09748307f61ac696a50a1ff89a",
+        "source_url": "https://www.oaklovesyou.com/terms-of-use",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_oak_weight_loss_program",
+        "authority_sha256": "c7434035fcacab507aa89cc739ad8b0bf4fa0ac866e8f5f4b49214cd7a39ee52",
+        "evidence_sha256": "f9215ba557e5dc23477575b2454143f036fc087b00d2a20abae8153019d8c997",
+        "source_url": "https://www.oaklovesyou.com/weightloss#",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [],
+    "normalized_sha256": "cdff2fd09e5c9a87a0157ef817b11bda56d0abc4e3b9030284c0acc1385548fd",
+    "program_id": "oak-weight-loss-program",
+    "provider": "Oak Longevity",
+    "registry_program_id": "oak-weight-loss-program",
+    "render_label": null,
+    "source_urls": [
+      "https://www.oaklovesyou.com/",
+      "https://www.oaklovesyou.com/terms-of-use",
+      "https://www.oaklovesyou.com/weightloss",
+      "https://www.oaklovesyou.com/weightloss#"
+    ],
+    "treatment_type_state": "not_verified",
+    "treatment_type_tags": [],
+    "verified_as_of": "2026-09-08"
+  },
+  "orderlymeds": {
+    "brand_name_tags": [
+      "wegovy",
+      "zepbound"
+    ],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "30beab41a1efc5f5e1e899807b7c5418099ad4f3ee065b9831a127f3bb67d64e",
+        "source_url": "https://orderlymeds.com/pricing/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "10ebc166225eb3f77cc7bee8c874dadfbb2c90346843c36605c3ffb2e6ae2613",
+        "source_url": "https://orderlymeds.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "0a3c8dca5a326ef38ae47fffd4fa20288507ee26c872f06507d8f5108ea967af",
+        "source_url": "https://orderlymeds.com/treatments/glp1s",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "d6a6b2e4cf306fc329f6b5d976fc72487f99e1985edfe72e83287c6e60d349d9",
+        "source_url": "https://orderlymeds.com/treatments/glp1s/compounded-glp1-gip",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "555073fd41184731b43c78ff6bda0321f0f5aad71fe22205ac24dd104fd87912",
+        "source_url": "https://orderlymeds.com/treatments/glp1s/compounded-glp1",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "447849154504f569f92500b1bbe418d215bc9331b825c38d7c17e615cd288784",
+        "source_url": "https://orderlymeds.com/treatments/glp1s/wegovy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "630ee690a8228ac2e979f6e0872757ee55d52846e7d49975496e4792f06249f7",
+        "source_url": "https://orderlymeds.com/treatments/glp1s/zepbound",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "ab437696cb6d4836bdd6584d6dad8af4c4354b7e4b63f132feda644642799015",
+        "source_url": "https://orderlymeds.com/treatments/longevity",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "90c702e9160e8a69ac58d84039c434e96667d44d167d3d2962be81a126a9096b",
+        "source_url": "https://orderlymeds.com/treatments/longevity/nad",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "bac70b1fe36364cfd322fa1b0e0925e48a3b6bcedfe25523590ef42f8ff11401",
+        "source_url": "https://orderlymeds.com/treatments/longevity/sermorelin",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "49d2210effab4960ec83dfec6cb39a5f85683999e71286dd57d8a566d1bd2d47",
+        "source_url": "https://orderlymeds.com/pricing",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "ee5ff5f11a388125c25d1b91fc304ff9dc8fc977e65d4930492e7ab86355ee33",
+        "source_url": "https://orderlymeds.com/personalized-weight-loss-planner",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "c7a60bd63e04611728365b2e994c2c3cc3f29cfb8a73bb2ce544bc0f7338aeaa",
+        "source_url": "https://orderlymeds.com/resources",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "7b5f4056a22a6f23085c53ba036bb9856646c3c628a756a276a7b9d050642b43",
+        "source_url": "https://orderlymeds.com/treatments/glp1s/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "334e1810721b4ed0ca3a7240beca26a77559b09e5bf18a97f42433456b0066ac",
+        "source_url": "https://orderlymeds.com/weight-loss-calculator",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "fee37ebad1bcd597145fccfe83ddd39ebc9741cf59c9ebc5a4f754ffbf29c07f",
+        "source_url": "https://orderlymeds.com/terms-conditions",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "7edd2919bc1df2fb0a417b5f481d7f25d4bf687ad6b7a91373a8255b0b86aa83",
+        "source_url": "https://orderlymeds.com/personalized-weight-loss-planner/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "15b29efc56ae03ddd7a0b046f8a324519446123461fe7f81f854fe87ff0bf2f5",
+        "source_url": "https://orderlymeds.com/treatments/glp1s/compounded-glp1-gip/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "11619a32509fac1c83895f89779f541d64ac54f1a3ca1ba9d3de9732b07b4f63",
+        "source_url": "https://orderlymeds.com/treatments/glp1s/compounded-glp1/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "399bbcad209f5d19f4a0a5e14d83389bcc22cc82299496b31e0f41c7fcd74cdb",
+        "source_url": "https://orderlymeds.com/treatments/glp1s/zepbound/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "ae8146e7c3d6331c0f914e3b7b0fd02af1b95955d0f5b44e5b19e2d944fe11e6",
+        "source_url": "https://orderlymeds.com/treatments/glp1s/wegovy/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "2bf04d9aaadc195c53f68049a85d85dfd085fc08e24a38ba414b66bfb42eda34",
+        "source_url": "https://orderlymeds.com/article-content/glp-1s-and-hormonal-changes-why-your-body-feels-different-and-what-to-do/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "f203b8b61751c0273f4c45e91a2116607e3f9dd476128dccd968aa750ec12b70",
+        "source_url": "https://orderlymeds.com/medication/holistic/glp1s-nausea-tips/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_orderlymeds",
+        "authority_sha256": "2b5e4489d9df7abc4e58f9d7e821208c549dba337d27f55419d3993c47068272",
+        "evidence_sha256": "0d89aca02dfa6d2d272241b3a582accc6cf09fc8a37f2c8f2f14d64e71d6f6b0",
+        "source_url": "https://orderlymeds.com/treatments/",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "246eef2b120ba6768ce23a7cfc8963a24f7262ab99139f2990bd99e8ae37af9c",
+    "program_id": "orderlymeds",
+    "provider": "OrderlyMeds",
+    "registry_program_id": "orderlymeds",
+    "render_label": null,
+    "source_urls": [
+      "https://orderlymeds.com/",
+      "https://orderlymeds.com/article-content/glp-1s-and-hormonal-changes-why-your-body-feels-different-and-what-to-do/",
+      "https://orderlymeds.com/medication/holistic/glp1s-nausea-tips/",
+      "https://orderlymeds.com/personalized-weight-loss-planner",
+      "https://orderlymeds.com/personalized-weight-loss-planner/",
+      "https://orderlymeds.com/pricing",
+      "https://orderlymeds.com/pricing/",
+      "https://orderlymeds.com/resources",
+      "https://orderlymeds.com/terms-conditions",
+      "https://orderlymeds.com/treatments/",
+      "https://orderlymeds.com/treatments/glp1s",
+      "https://orderlymeds.com/treatments/glp1s/",
+      "https://orderlymeds.com/treatments/glp1s/compounded-glp1",
+      "https://orderlymeds.com/treatments/glp1s/compounded-glp1-gip",
+      "https://orderlymeds.com/treatments/glp1s/compounded-glp1-gip/",
+      "https://orderlymeds.com/treatments/glp1s/compounded-glp1/",
+      "https://orderlymeds.com/treatments/glp1s/wegovy",
+      "https://orderlymeds.com/treatments/glp1s/wegovy/",
+      "https://orderlymeds.com/treatments/glp1s/zepbound",
+      "https://orderlymeds.com/treatments/glp1s/zepbound/",
+      "https://orderlymeds.com/treatments/longevity",
+      "https://orderlymeds.com/treatments/longevity/nad",
+      "https://orderlymeds.com/treatments/longevity/sermorelin",
+      "https://orderlymeds.com/weight-loss-calculator"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "brand_name",
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "serena-health": {
+    "brand_name_tags": [],
+    "classification_state": "CURRENT_FIRST_PARTY_RECONCILED_CONSERVATIVE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable",
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "7ef9b7b49d3d000faf362e75e4fe0363a9f7df06a9fc6a98e7628a71c67f6775",
+        "source_url": "https://serenahealth.life/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "eef9af76bac3a67e61628daa6725e10ca503bf6ccabb9704dc47cdf3d47aa938",
+        "source_url": "https://serenahealth.life/products/semaglutide-b6-injectable/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "a77c758d670cd2f657bb622f3576715abac5a8376998798aef94fdc716b48ee9",
+        "source_url": "https://serenahealth.life/products/semaglutide-sublingual/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "b8449daca98515a1044e939746f88a3d1b8019dcbf261ce9f6562e3884a30963",
+        "source_url": "https://serenahealth.life/products/tirzepatide-b6-injectable/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "5aba8830aaf82da8e01e0c84e466b48161cbc46305f7267a06bc5cfa64c230d6",
+        "source_url": "https://serenahealth.life/weight-loss/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "21143e22362964b62005f817b82af8fdb96dc57ac44b1fc4287c7947cfb9004c",
+        "source_url": "https://serenahealth.life/terms/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "1ee3107507b331ab44ae777d4a93b5b74961b49bcb74437b92d62f4e715d5b13",
+        "source_url": "https://serenahealth.life/resources/semaglutide-injectable-complete-guide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "eef9af76bac3a67e61628daa6725e10ca503bf6ccabb9704dc47cdf3d47aa938",
+        "source_url": "https://serenahealth.life/products/semaglutide-b6-injectable/#research",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "2e75615c14009516583fc169eeb7bfdd21bd460da4972e157038a5a124d71fd6",
+        "source_url": "https://serenahealth.life/resources/injectable-vs-sublingual-semaglutide-understanding-your-options",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "1015b2f806f907974e35f264985bf1ec7826da8eaab4f136447b77f550e6f2f8",
+        "source_url": "https://serenahealth.life/resources/semaglutide-sublingual-complete-guide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "a77c758d670cd2f657bb622f3576715abac5a8376998798aef94fdc716b48ee9",
+        "source_url": "https://serenahealth.life/products/semaglutide-sublingual/#research",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_serena_health",
+        "authority_sha256": "2d1f1110c3a3399e2bc317a75734a2bf00e8e7379154a86a56ac0d1dc0927dbe",
+        "evidence_sha256": "fd38858acf4e583ef24e0e89414ae5e0e9d26ff9ae59d518821272febff3499b",
+        "source_url": "https://serenahealth.life/resources/tirzepatide-complete-guide",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "6e0185c5e106a7ba6e288b8e2c107477f4c1d886aeaecb86f4dc7ff3691a735a",
+    "program_id": "serena-health",
+    "provider": "Serena Health",
+    "registry_program_id": "serena-health",
+    "render_label": null,
+    "source_urls": [
+      "https://serenahealth.life/",
+      "https://serenahealth.life/products/semaglutide-b6-injectable/",
+      "https://serenahealth.life/products/semaglutide-b6-injectable/#research",
+      "https://serenahealth.life/products/semaglutide-sublingual/",
+      "https://serenahealth.life/products/semaglutide-sublingual/#research",
+      "https://serenahealth.life/products/tirzepatide-b6-injectable/",
+      "https://serenahealth.life/resources/injectable-vs-sublingual-semaglutide-understanding-your-options",
+      "https://serenahealth.life/resources/semaglutide-injectable-complete-guide",
+      "https://serenahealth.life/resources/semaglutide-sublingual-complete-guide",
+      "https://serenahealth.life/resources/tirzepatide-complete-guide",
+      "https://serenahealth.life/terms/",
+      "https://serenahealth.life/weight-loss/"
+    ],
+    "treatment_type_state": "not_verified",
+    "treatment_type_tags": [],
+    "verified_as_of": "2026-09-08"
+  },
+  "shed": {
+    "brand_name_tags": [
+      "wegovy",
+      "zepbound"
+    ],
+    "classification_state": "CURRENT_FIRST_PARTY_RECONCILED_CONSERVATIVE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "editorial_link_dark"
+    },
+    "delivery_form_tags": [
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "a96b50421ccc85abb6b14687c7b6cd8e00761483a87a48eabbdbebede9ae8a4c",
+        "source_url": "https://shedrx.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "a96b50421ccc85abb6b14687c7b6cd8e00761483a87a48eabbdbebede9ae8a4c",
+        "source_url": "https://www.tryshed.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "2e4be103936c29e08891c056c48b11f27e74bdd5da2b78dd644f3dc305ef2259",
+        "source_url": "https://www.tryshed.com/products/product/glp-1-liquid-drops",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "0bcda08ab479041be979ea9fe3be401fcd53d20f842a07713d8de90064c95abf",
+        "source_url": "https://www.tryshed.com/resources/legal/terms",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "7ff51a2e0820aeabc629a97c1929a5792455d63abcb94210c0fd8ece86e937fe",
+        "source_url": "https://www.tryshed.com/products/compounded-tirzepatide-injections",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "44d48249f6a597911b818be0cfb99ed216dcdd59b41113ba89097040dee8030b",
+        "source_url": "https://www.tryshed.com/products/compounded-semaglutide-injections",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "a48407eb455e776c77eeb1ee930f83691e0462bff14f6871e9e8c92e6037f003",
+        "source_url": "https://www.tryshed.com/products/category/weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "9cbf02f7c57d7c0383935c6b8b5ab944dee82fe467647699d5df1f1aebed6ff9",
+        "source_url": "https://www.tryshed.com/blog/post/shed-health-coach-tells-why-health-coaching-and-weight-loss-are-the-perfect-pair",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "7b5b9c494122f895514a5e11df20922f4a6700f96c81ff6e2daf8e0cba4d28f2",
+        "source_url": "https://www.tryshed.com/blog/post/non-scale-victories-and-their-importance-in-weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "0bcda08ab479041be979ea9fe3be401fcd53d20f842a07713d8de90064c95abf",
+        "source_url": "https://www.tryshed.com/resources/legal/terms#",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "7ff51a2e0820aeabc629a97c1929a5792455d63abcb94210c0fd8ece86e937fe",
+        "source_url": "https://www.tryshed.com/products/compounded-tirzepatide-injections#",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "44d48249f6a597911b818be0cfb99ed216dcdd59b41113ba89097040dee8030b",
+        "source_url": "https://www.tryshed.com/products/compounded-semaglutide-injections#",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "89d674008df8499bd7b8c005dd61d8a4f99b29586c7034fde1e0713e5541fd3a",
+        "source_url": "https://www.tryshed.com/products/product/wegovy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "2e0b41e11badf53e1c5f54eb94bc96e0d0d7d92c3452edb612838752e6b68ad5",
+        "source_url": "https://www.tryshed.com/products/product/zepbound-shed-membership",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "a92df5db6d82eace3c3c772fe1237831e707b28b6e1b77c1a33d4ebf756c2301",
+    "program_id": "shed",
+    "provider": "SHED",
+    "registry_program_id": "katalys-1516",
+    "render_label": "SHED program (same provider as Shed)",
+    "source_urls": [
+      "https://shedrx.com/",
+      "https://www.tryshed.com/",
+      "https://www.tryshed.com/blog/post/non-scale-victories-and-their-importance-in-weight-loss",
+      "https://www.tryshed.com/blog/post/shed-health-coach-tells-why-health-coaching-and-weight-loss-are-the-perfect-pair",
+      "https://www.tryshed.com/products/category/weight-loss",
+      "https://www.tryshed.com/products/compounded-semaglutide-injections",
+      "https://www.tryshed.com/products/compounded-semaglutide-injections#",
+      "https://www.tryshed.com/products/compounded-tirzepatide-injections",
+      "https://www.tryshed.com/products/compounded-tirzepatide-injections#",
+      "https://www.tryshed.com/products/product/glp-1-liquid-drops",
+      "https://www.tryshed.com/products/product/wegovy",
+      "https://www.tryshed.com/products/product/zepbound-shed-membership",
+      "https://www.tryshed.com/resources/legal/terms",
+      "https://www.tryshed.com/resources/legal/terms#"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "shedrx": {
+    "brand_name_tags": [
+      "wegovy",
+      "zepbound"
+    ],
+    "classification_state": "CURRENT_FIRST_PARTY_RECONCILED_CONSERVATIVE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "a96b50421ccc85abb6b14687c7b6cd8e00761483a87a48eabbdbebede9ae8a4c",
+        "source_url": "https://shedrx.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "a96b50421ccc85abb6b14687c7b6cd8e00761483a87a48eabbdbebede9ae8a4c",
+        "source_url": "https://www.tryshed.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "2e4be103936c29e08891c056c48b11f27e74bdd5da2b78dd644f3dc305ef2259",
+        "source_url": "https://www.tryshed.com/products/product/glp-1-liquid-drops",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "0bcda08ab479041be979ea9fe3be401fcd53d20f842a07713d8de90064c95abf",
+        "source_url": "https://www.tryshed.com/resources/legal/terms",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "7ff51a2e0820aeabc629a97c1929a5792455d63abcb94210c0fd8ece86e937fe",
+        "source_url": "https://www.tryshed.com/products/compounded-tirzepatide-injections",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "44d48249f6a597911b818be0cfb99ed216dcdd59b41113ba89097040dee8030b",
+        "source_url": "https://www.tryshed.com/products/compounded-semaglutide-injections",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "a48407eb455e776c77eeb1ee930f83691e0462bff14f6871e9e8c92e6037f003",
+        "source_url": "https://www.tryshed.com/products/category/weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "9cbf02f7c57d7c0383935c6b8b5ab944dee82fe467647699d5df1f1aebed6ff9",
+        "source_url": "https://www.tryshed.com/blog/post/shed-health-coach-tells-why-health-coaching-and-weight-loss-are-the-perfect-pair",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "7b5b9c494122f895514a5e11df20922f4a6700f96c81ff6e2daf8e0cba4d28f2",
+        "source_url": "https://www.tryshed.com/blog/post/non-scale-victories-and-their-importance-in-weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "0bcda08ab479041be979ea9fe3be401fcd53d20f842a07713d8de90064c95abf",
+        "source_url": "https://www.tryshed.com/resources/legal/terms#",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "7ff51a2e0820aeabc629a97c1929a5792455d63abcb94210c0fd8ece86e937fe",
+        "source_url": "https://www.tryshed.com/products/compounded-tirzepatide-injections#",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "44d48249f6a597911b818be0cfb99ed216dcdd59b41113ba89097040dee8030b",
+        "source_url": "https://www.tryshed.com/products/compounded-semaglutide-injections#",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "89d674008df8499bd7b8c005dd61d8a4f99b29586c7034fde1e0713e5541fd3a",
+        "source_url": "https://www.tryshed.com/products/product/wegovy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_shedrx",
+        "authority_sha256": "100f33bc5ad070356f9221bb8ed51e05e0597860436792cee8ff7bff90e51ca7",
+        "evidence_sha256": "2e0b41e11badf53e1c5f54eb94bc96e0d0d7d92c3452edb612838752e6b68ad5",
+        "source_url": "https://www.tryshed.com/products/product/zepbound-shed-membership",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "c8e656351d06dd0215fa04d180042c70d84b892cb9c366384da45f0612657be0",
+    "program_id": "shedrx",
+    "provider": "Shed",
+    "registry_program_id": "shedrx",
+    "render_label": null,
+    "source_urls": [
+      "https://shedrx.com/",
+      "https://www.tryshed.com/",
+      "https://www.tryshed.com/blog/post/non-scale-victories-and-their-importance-in-weight-loss",
+      "https://www.tryshed.com/blog/post/shed-health-coach-tells-why-health-coaching-and-weight-loss-are-the-perfect-pair",
+      "https://www.tryshed.com/products/category/weight-loss",
+      "https://www.tryshed.com/products/compounded-semaglutide-injections",
+      "https://www.tryshed.com/products/compounded-semaglutide-injections#",
+      "https://www.tryshed.com/products/compounded-tirzepatide-injections",
+      "https://www.tryshed.com/products/compounded-tirzepatide-injections#",
+      "https://www.tryshed.com/products/product/glp-1-liquid-drops",
+      "https://www.tryshed.com/products/product/wegovy",
+      "https://www.tryshed.com/products/product/zepbound-shed-membership",
+      "https://www.tryshed.com/resources/legal/terms",
+      "https://www.tryshed.com/resources/legal/terms#"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "brand_name",
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "sprout-health": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_sprout_health",
+        "authority_sha256": "868c4d4056edbc7068f6d886da0d181317b2b17639c2b29763a2945d5caaa7a5",
+        "evidence_sha256": "3462cc8c8b04d87d92cd2d22f35c34a6eb23b5580b7cf0859603e8d1120c995c",
+        "source_url": "https://joinsprouthealth.com/shop",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_sprout_health",
+        "authority_sha256": "868c4d4056edbc7068f6d886da0d181317b2b17639c2b29763a2945d5caaa7a5",
+        "evidence_sha256": "3462cc8c8b04d87d92cd2d22f35c34a6eb23b5580b7cf0859603e8d1120c995c",
+        "source_url": "https://joinsprouthealth.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_sprout_health",
+        "authority_sha256": "868c4d4056edbc7068f6d886da0d181317b2b17639c2b29763a2945d5caaa7a5",
+        "evidence_sha256": "3462cc8c8b04d87d92cd2d22f35c34a6eb23b5580b7cf0859603e8d1120c995c",
+        "source_url": "https://joinsprouthealth.com/\\",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_sprout_health",
+        "authority_sha256": "868c4d4056edbc7068f6d886da0d181317b2b17639c2b29763a2945d5caaa7a5",
+        "evidence_sha256": "b8e02db68f27466921f556e828c13a30e6db4777fc5ddd0c05db6ba4f9c03336",
+        "source_url": "https://joinsprouthealth.com/terms-and-conditions/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_sprout_health",
+        "authority_sha256": "868c4d4056edbc7068f6d886da0d181317b2b17639c2b29763a2945d5caaa7a5",
+        "evidence_sha256": "68f980a36809db79c0721d05a842b0aa0aa63525b60912ec9a67cdc6c7380757",
+        "source_url": "https://joinsprouthealth.com/refund_returns/",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "7602e1ff99cf5fcd30ee43223c7697c5c18d47a63b85d62cffb7edcee95226e1",
+    "program_id": "sprout-health",
+    "provider": "Sprout Health",
+    "registry_program_id": "katalys-1286",
+    "render_label": null,
+    "source_urls": [
+      "https://joinsprouthealth.com/",
+      "https://joinsprouthealth.com/\\",
+      "https://joinsprouthealth.com/refund_returns/",
+      "https://joinsprouthealth.com/shop",
+      "https://joinsprouthealth.com/terms-and-conditions/"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "strut-health": {
+    "brand_name_tags": [],
+    "classification_state": "CURRENT_FIRST_PARTY_RECONCILED_CONSERVATIVE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "46c29bc78ab82db0865ab92fa34cb2ca806117d5fb0f91353d785539013b8107",
+        "source_url": "https://www.struthealth.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "af7f99d85fb1acdd3b6732e2bff9990f2e9620e8440dca600535af65c4f941d7",
+        "source_url": "https://www.struthealth.com/terms-and-conditions",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "75dc4dab716c5ef5196fcfbe24dabcc51a9ca0b8fa2bf520f1f75ae849af266b",
+        "source_url": "https://www.struthealth.com/weight-loss/semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "874be65f4de0a3909abd98dd16e37fbb742771409c050c472018fbd826e7cb3b",
+        "source_url": "https://www.struthealth.com/weight-loss",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "af7f99d85fb1acdd3b6732e2bff9990f2e9620e8440dca600535af65c4f941d7",
+        "source_url": "https://www.struthealth.com/terms-and-conditions#this-document-contains-important-information-regarding-your-right-and-obligations-as-well-as-conditions-limitations-and-exclusions-that-might-apply-to-you-please-read-it-carefully",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "af7f99d85fb1acdd3b6732e2bff9990f2e9620e8440dca600535af65c4f941d7",
+        "source_url": "https://www.struthealth.com/terms-and-conditions#changes-to-these-term-of-use",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "af7f99d85fb1acdd3b6732e2bff9990f2e9620e8440dca600535af65c4f941d7",
+        "source_url": "https://www.struthealth.com/terms-and-conditions#privacy-practices",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "af7f99d85fb1acdd3b6732e2bff9990f2e9620e8440dca600535af65c4f941d7",
+        "source_url": "https://www.struthealth.com/terms-and-conditions#services-provided-no-medical-care-or-advice-by-strut",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "af7f99d85fb1acdd3b6732e2bff9990f2e9620e8440dca600535af65c4f941d7",
+        "source_url": "https://www.struthealth.com/terms-and-conditions#availability-of-services",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "af7f99d85fb1acdd3b6732e2bff9990f2e9620e8440dca600535af65c4f941d7",
+        "source_url": "https://www.struthealth.com/terms-and-conditions#ordering-and-purchasing-products",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "af7f99d85fb1acdd3b6732e2bff9990f2e9620e8440dca600535af65c4f941d7",
+        "source_url": "https://www.struthealth.com/terms-and-conditions#eligibility-site-access-security-and-restrictions-passwords",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_strut_health",
+        "authority_sha256": "0e013104eba174b2b1a031ce7fda2e3ad15b753846ea22efdfab02a45417300c",
+        "evidence_sha256": "af7f99d85fb1acdd3b6732e2bff9990f2e9620e8440dca600535af65c4f941d7",
+        "source_url": "https://www.struthealth.com/terms-and-conditions#electronic-communications",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide"
+    ],
+    "normalized_sha256": "d149a9dc58a82a65900080c3685edbf4b7605202840ba836137a0d5092e49751",
+    "program_id": "strut-health",
+    "provider": "Strut Health",
+    "registry_program_id": "strut-health",
+    "render_label": null,
+    "source_urls": [
+      "https://www.struthealth.com/",
+      "https://www.struthealth.com/terms-and-conditions",
+      "https://www.struthealth.com/terms-and-conditions#availability-of-services",
+      "https://www.struthealth.com/terms-and-conditions#changes-to-these-term-of-use",
+      "https://www.struthealth.com/terms-and-conditions#electronic-communications",
+      "https://www.struthealth.com/terms-and-conditions#eligibility-site-access-security-and-restrictions-passwords",
+      "https://www.struthealth.com/terms-and-conditions#ordering-and-purchasing-products",
+      "https://www.struthealth.com/terms-and-conditions#privacy-practices",
+      "https://www.struthealth.com/terms-and-conditions#services-provided-no-medical-care-or-advice-by-strut",
+      "https://www.struthealth.com/terms-and-conditions#this-document-contains-important-information-regarding-your-right-and-obligations-as-well-as-conditions-limitations-and-exclusions-that-might-apply-to-you-please-read-it-carefully",
+      "https://www.struthealth.com/weight-loss",
+      "https://www.struthealth.com/weight-loss/semaglutide"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "trimi-glp-1": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "c8bebfad7d231e066a5054305903673d532f27b8cc7123f15d8b43a13d743e4d",
+        "source_url": "https://trytrimi.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "70e1c41330a5c5d7b1227f1b5cacd0d0dc23970e38bbd7787c6cc7a58c78d962",
+        "source_url": "https://trytrimi.com/treatments",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "57bcc706c690a2030be6035c3ef3d17f6522a3a62f0f140c70c4ff57032146f9",
+        "source_url": "https://trytrimi.com/treatments/tirzepatide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "7738a50e6717b2d4b4f03604f3199418ea38668ba0e3fb2e15df250848cc9a09",
+        "source_url": "https://trytrimi.com/treatments/semaglutide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "34eb0f93bac17c5f38c593d0e433371b1201031d661517fa8814b47cd2a095cb",
+        "source_url": "https://trytrimi.com/refund-policy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "e9b6050459b17a68889733bf409863e2fce2244e4dae1a02f1e05c3de397f523",
+        "source_url": "https://trytrimi.com/glp1-closet-reset",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "7cf6b722397df7a7a77ea0026f6b648102944ed7c5d21eb746e707a25f2b77c3",
+        "source_url": "https://trytrimi.com/what-would-americans-give-up-for-glp-1s",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "e8312b657f444e7fe0422897a8dbd543d64a66595143c16307197af7027f04dc",
+        "source_url": "https://trytrimi.com/price-of-transformation-study",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "623002bf571ded6fbc83ba77b88cbf81c647af5d89784a9966a91a1bfe28fc11",
+        "source_url": "https://trytrimi.com/cost-guide",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "858e02ff793d23c02bfb840966fd645bd26e6791d704f564550f88e6ecff04b4",
+        "source_url": "https://trytrimi.com/compare",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "309758540be91c45bd2eed99554ebddb9921828bc74dc6aad350c33b20e782ea",
+        "source_url": "https://trytrimi.com/promo",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "1ffd6130ace4d6fef72bc1b195030538dd8adda98dde6644428a27bb315d6d47",
+        "source_url": "https://trytrimi.com/terms-of-service",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "623002bf571ded6fbc83ba77b88cbf81c647af5d89784a9966a91a1bfe28fc11",
+        "source_url": "https://trytrimi.com/pricing",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "b1b0b620431e2e369fa2be0da91fcf9c4318782b07c0b324d0ac9ba1cb6cee7d",
+        "source_url": "https://trytrimi.com/glp1-cost-index",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "5dab711f005e4102e22381062ec9ad816b65cbde7c50f8c68ad45f3c52ea5b7b",
+        "source_url": "https://trytrimi.com/weight-loss-budget",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "d272ac1523b1df7bc025c116000c57df505b458524488edde2d621dce5fc3ea2",
+        "source_url": "https://trytrimi.com/answers",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "ec73b1c94597b3607bceb730af8669a0179501f7b0b8c18c2da898cb9752f8bf",
+        "source_url": "https://trytrimi.com/guides/treatments-semaglutide.pdf",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trimi_glp_1",
+        "authority_sha256": "57d93dc77047e902607c1c9a1b1dfa6a923471ee975e41be8e14c252de78c273",
+        "evidence_sha256": "e209d23ea812bc8f1c7ff761eb514a1968e4a55d112393ad65ec73a8ac6ba3a9",
+        "source_url": "https://trytrimi.com/guides/treatments-tirzepatide.pdf",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "a6b115539b83462b6c9a5037870b87a3e2616cfe3dd9ae44364c977c39111821",
+    "program_id": "trimi-glp-1",
+    "provider": "Trimi",
+    "registry_program_id": "trimi-glp-1",
+    "render_label": null,
+    "source_urls": [
+      "https://trytrimi.com/",
+      "https://trytrimi.com/answers",
+      "https://trytrimi.com/compare",
+      "https://trytrimi.com/cost-guide",
+      "https://trytrimi.com/glp1-closet-reset",
+      "https://trytrimi.com/glp1-cost-index",
+      "https://trytrimi.com/guides/treatments-semaglutide.pdf",
+      "https://trytrimi.com/guides/treatments-tirzepatide.pdf",
+      "https://trytrimi.com/price-of-transformation-study",
+      "https://trytrimi.com/pricing",
+      "https://trytrimi.com/promo",
+      "https://trytrimi.com/refund-policy",
+      "https://trytrimi.com/terms-of-service",
+      "https://trytrimi.com/treatments",
+      "https://trytrimi.com/treatments/semaglutide",
+      "https://trytrimi.com/treatments/tirzepatide",
+      "https://trytrimi.com/weight-loss-budget",
+      "https://trytrimi.com/what-would-americans-give-up-for-glp-1s"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "trt-nation": {
+    "brand_name_tags": [],
+    "classification_state": "CURRENT_FIRST_PARTY_RECONCILED_CONSERVATIVE",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "1f92eedf094780eb39706ddbc5f6d6cd6bbd4b10fd079a563b7e3bf10903f429",
+        "source_url": "https://trtnation.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "cac9b32684ab990c59de2ba6384f0120f8122e10a3e74211ab515b2961f840a6",
+        "source_url": "https://trtnation.com/weight-loss-therapy/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "cac9b32684ab990c59de2ba6384f0120f8122e10a3e74211ab515b2961f840a6",
+        "source_url": "https://trtnation.com/weight-loss-therapy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "601e0e7e4d19d9e027ff8ba1cedc62ba4d9992717f4bc48c68689a7129670d38",
+        "source_url": "https://trtnation.com/popular-treatments/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "86c3444c188361d938fd8ae258a1722ab710fcedc7b1c31540488fed1f19cdbd",
+        "source_url": "https://trtnation.com/buy-online/terms-conditions/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "cac9b32684ab990c59de2ba6384f0120f8122e10a3e74211ab515b2961f840a6",
+        "source_url": "https://trtnation.com/weight-loss-therapy/#content",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "cac9b32684ab990c59de2ba6384f0120f8122e10a3e74211ab515b2961f840a6",
+        "source_url": "https://trtnation.com/weight-loss-therapy/#",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "601e0e7e4d19d9e027ff8ba1cedc62ba4d9992717f4bc48c68689a7129670d38",
+        "source_url": "https://trtnation.com/popular-treatments/#content",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "1e7f03a5c987ed80a4b4c3746cea891a7c5f2f934a1387ae1c475d90fb1eaadc",
+        "source_url": "https://trtnation.com/popular-treatments/#",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "86c3444c188361d938fd8ae258a1722ab710fcedc7b1c31540488fed1f19cdbd",
+        "source_url": "https://trtnation.com/terms-conditions/#content",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "86c3444c188361d938fd8ae258a1722ab710fcedc7b1c31540488fed1f19cdbd",
+        "source_url": "https://trtnation.com/terms-conditions/#",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "09a3efbb0f3adf6459128189a98adeaa1c08f21ae89ba5743828a0b3a27b8239",
+        "source_url": "https://trtnation.com/faqs/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_trt_nation",
+        "authority_sha256": "19f98135792b161b96d5a9c8249aaabd4091b4f09c229cba838fb459d9627e6d",
+        "evidence_sha256": "6d4ea64a01ceb9daed1130765d32a6fb463976f6847b81a85f820bc5f9d6894b",
+        "source_url": "https://trtnation.com/about/",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "tirzepatide"
+    ],
+    "normalized_sha256": "783fe41c8fd47c6c37b76c54173089f351e51e9c116afadb64b4919460caffb7",
+    "program_id": "trt-nation",
+    "provider": "TRT Nation",
+    "registry_program_id": "trt-nation",
+    "render_label": null,
+    "source_urls": [
+      "https://trtnation.com/",
+      "https://trtnation.com/about/",
+      "https://trtnation.com/buy-online/terms-conditions/",
+      "https://trtnation.com/faqs/",
+      "https://trtnation.com/popular-treatments/",
+      "https://trtnation.com/popular-treatments/#",
+      "https://trtnation.com/popular-treatments/#content",
+      "https://trtnation.com/terms-conditions/#",
+      "https://trtnation.com/terms-conditions/#content",
+      "https://trtnation.com/weight-loss-therapy",
+      "https://trtnation.com/weight-loss-therapy/",
+      "https://trtnation.com/weight-loss-therapy/#",
+      "https://trtnation.com/weight-loss-therapy/#content"
+    ],
+    "treatment_type_state": "not_verified",
+    "treatment_type_tags": [],
+    "verified_as_of": "2026-09-08"
+  },
+  "try-ageless": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable",
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "b3f33645fa0a3dc025e7f55b5ff0aa3e36b85537cb69eb6e6035c1df96d651b1",
+        "source_url": "https://tryageless.com/affiliate-weight-plans/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "ccf88ba38affc15c9291a818cd77327ff4c076d921f6f289158871482125c5f1",
+        "source_url": "https://tryageless.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "2f54a94f9220979a4228ccd087a78e22dab7ed9da26bb8847fbcc03364ab2597",
+        "source_url": "https://tryageless.com/ol-glp1/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "e1259d31deebc11d3c2de2133be9e24a557ab2286fa2ae0be17ac678c9864844",
+        "source_url": "https://tryageless.com/terms/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "51318f1998d8d85291984f3b8869fcfa9e42cf77a24eb946875121ef87816f1d",
+        "source_url": "https://tryageless.com/product/tirzepatide-b12-injection/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "89b2bcc4c2d3891810d11367571169ba9dd365ce724b4d2052f4b7b1eab090a9",
+        "source_url": "https://tryageless.com/all-treatments/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "a50c84732096c0099bee0a3cbf5c9c1cfc0907be18b502d156099b0f8b9e05dc",
+        "source_url": "https://tryageless.com/product/tirzepatide-oral-drop/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "ba03a9597bd5dc4d267c78cc7ed988b46705d5b90e614ddd25b769bc283b0c74",
+        "source_url": "https://tryageless.com/product-category/weight-loss/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "d2032a32fde40eedfdf759c02d36f4315fd4627cfc42450c11c3d686d01ab225",
+        "source_url": "https://tryageless.com/product/tirzepatide-odt/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "f84538a6643f24fa49c59a2367297fde3a63e9ea47da0bcaafc56b9b076c953c",
+        "source_url": "https://tryageless.com/product/semaglutide-b12-injection/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "2ec30a7e471225561563846ad0fbcc9b8ed418fb9a5866767a2d241e8f48dbed",
+        "source_url": "https://tryageless.com/product/semaglutide-troche/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "109a01dc786e14e23adb191de366d7a702f5a94d054c4922a433a8732f2f3193",
+        "source_url": "https://tryageless.com/product/semaglutide-oral-drop/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "51318f1998d8d85291984f3b8869fcfa9e42cf77a24eb946875121ef87816f1d",
+        "source_url": "https://tryageless.com/weight-loss-treatments/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "ccf88ba38affc15c9291a818cd77327ff4c076d921f6f289158871482125c5f1",
+        "source_url": "https://tryageless.com/weight-loss/semaglutide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "a60122a42310b69022e5e5e66f03ef9572f289efd7ae5e09681ce32cf60a0bdc",
+        "source_url": "https://tryageless.com/weight-loss/tirzepatide/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_try_ageless",
+        "authority_sha256": "c56103a1820cb53c24df8a43e97502355d8c647e992d365a4abe937fe728469f",
+        "evidence_sha256": "8b3bd4c67fa0927cb3b7e5b21e18b426968f47892085dc32cfb55bb9d96eea77",
+        "source_url": "https://tryageless.com/product/semaglutide-odt/",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "b05e828fb7049589e380b9ce460623a380fe6216587bfbd665b58038d63fe5f8",
+    "program_id": "try-ageless",
+    "provider": "Try Ageless",
+    "registry_program_id": "try-ageless",
+    "render_label": null,
+    "source_urls": [
+      "https://tryageless.com/",
+      "https://tryageless.com/affiliate-weight-plans/",
+      "https://tryageless.com/all-treatments/",
+      "https://tryageless.com/ol-glp1/",
+      "https://tryageless.com/product-category/weight-loss/",
+      "https://tryageless.com/product/semaglutide-b12-injection/",
+      "https://tryageless.com/product/semaglutide-odt/",
+      "https://tryageless.com/product/semaglutide-oral-drop/",
+      "https://tryageless.com/product/semaglutide-troche/",
+      "https://tryageless.com/product/tirzepatide-b12-injection/",
+      "https://tryageless.com/product/tirzepatide-odt/",
+      "https://tryageless.com/product/tirzepatide-oral-drop/",
+      "https://tryageless.com/terms/",
+      "https://tryageless.com/weight-loss-treatments/",
+      "https://tryageless.com/weight-loss/semaglutide/",
+      "https://tryageless.com/weight-loss/tirzepatide/"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "wellorithm": {
+    "brand_name_tags": [
+      "mounjaro",
+      "wegovy",
+      "zepbound"
+    ],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [
+      "injectable",
+      "oral"
+    ],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "4064ffe2251233dee68ddaa301c86bdb88f929f7d3284ba75734f5425da2964a",
+        "source_url": "https://wellorithm.com/campaign-7",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "d0dae69c0c43d0319c173067f093c145bba5076cf8f59a491a5c055d8acb094d",
+        "source_url": "https://wellorithm.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "214ae847c2d9a9b00e874f55e47279abb06b69337b3b17e857e8fdfcf921dcda",
+        "source_url": "https://wellorithm.com/quiz-2",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "739894b69298b1f23589b65386cfb91406978c3df6bcb2c3730e1453e6597038",
+        "source_url": "https://wellorithm.com/terms-conditions",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "4098bfb458942f1caafc9eb17e1979da472e56883dd710017e33f6b22c4cf11e",
+        "source_url": "https://wellorithm.com/mounjaro",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "dc42bd0441f10d3b50b68f60ba59a917a926dc6a3358349021fc4f1de6056cac",
+        "source_url": "https://wellorithm.com/ozempic",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "b7acdb5e0c3c5b802a08b189746c56fe0ae14b7ce18abf9ab7ec2a8b88176c1b",
+        "source_url": "https://wellorithm.com/wegovy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "465dabccb7f4b1711aa7934f4f2f2e4d5f816b6c0a2a941a07ea0ec735842c15",
+        "source_url": "https://wellorithm.com/zepbound",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "e3f30378c9a99f13ebe0d9b29d2bec8ecde7a0bb17565b6d8901d5bde629f6a3",
+        "source_url": "https://wellorithm.com/faqs",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_wellorithm",
+        "authority_sha256": "72d0ab1d2818d2aa265ca463ea8250b27b9928681981f3aae713c5e580da16b2",
+        "evidence_sha256": "5c9be91fd9c15e74dea194bedff174dd6f4230cc36d69d980c0d009b0fd80540",
+        "source_url": "https://wellorithm.com/about-us",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "688ec48fc5ce666370e0c06725ae50450cf497b073bb629370404ce6ae223762",
+    "program_id": "wellorithm",
+    "provider": "Wellorithm",
+    "registry_program_id": "wellorithm",
+    "render_label": null,
+    "source_urls": [
+      "https://wellorithm.com/",
+      "https://wellorithm.com/about-us",
+      "https://wellorithm.com/campaign-7",
+      "https://wellorithm.com/faqs",
+      "https://wellorithm.com/mounjaro",
+      "https://wellorithm.com/ozempic",
+      "https://wellorithm.com/quiz-2",
+      "https://wellorithm.com/terms-conditions",
+      "https://wellorithm.com/wegovy",
+      "https://wellorithm.com/zepbound"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  },
+  "yourera-program": {
+    "brand_name_tags": [],
+    "classification_state": "SOURCE_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [],
+    "evidence_bindings": [
+      {
+        "authority": "evidence_refresh_yourera_program",
+        "authority_sha256": "9ec04e1d0769e783380954cbd16de46c19f85908420a525c5dd760b0dd527976",
+        "evidence_sha256": "4d1a94c1e437faa85df6d7bf9b508ef09af61cfbdf141bf40c17edf38c261e24",
+        "source_url": "https://www.yourera.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_yourera_program",
+        "authority_sha256": "9ec04e1d0769e783380954cbd16de46c19f85908420a525c5dd760b0dd527976",
+        "evidence_sha256": "204ae22dbcd2193329733cc55911f6bc5cabd2e576ef92dd350e1885e65e6973",
+        "source_url": "https://www.yourera.com/terms",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_yourera_program",
+        "authority_sha256": "9ec04e1d0769e783380954cbd16de46c19f85908420a525c5dd760b0dd527976",
+        "evidence_sha256": "acb053aa9e6a0b3b4a2dbe829c8ff51ae5f5d5bf6a09b30573fbef9ddd924efc",
+        "source_url": "https://www.yourera.com/refund-policy",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_yourera_program",
+        "authority_sha256": "9ec04e1d0769e783380954cbd16de46c19f85908420a525c5dd760b0dd527976",
+        "evidence_sha256": "4d1a94c1e437faa85df6d7bf9b508ef09af61cfbdf141bf40c17edf38c261e24",
+        "source_url": "https://www.yourera.com/",
+        "verified_as_of": "2026-09-08"
+      },
+      {
+        "authority": "evidence_refresh_yourera_program",
+        "authority_sha256": "9ec04e1d0769e783380954cbd16de46c19f85908420a525c5dd760b0dd527976",
+        "evidence_sha256": "41683bbc2b1cd58cd385c73b2cd69e46396c6bd50a99f72b9c5c0036b9beee73",
+        "source_url": "https://www.yourera.com/terms",
+        "verified_as_of": "2026-09-08"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "0dea60ae02a90d3817dce50732fe004fa92c0001e0749d146b5d22e45e52c04f",
+    "program_id": "yourera-program",
+    "provider": "yourEra",
+    "registry_program_id": "yourera-program",
+    "render_label": null,
+    "source_urls": [
+      "https://www.yourera.com/",
+      "https://www.yourera.com/refund-policy",
+      "https://www.yourera.com/terms"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-08"
+  }
+}

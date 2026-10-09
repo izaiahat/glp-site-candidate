@@ -1,0 +1,32 @@
+name: GLP-353 therapeutic evidence custody
+on:
+  pull_request:
+    paths:
+      - 'data/program-registry.json'
+      - 'reports/ops/glp353-taxonomy-reverification-20261009/**'
+      - 'tests/glp353-taxonomy-reverification.test.mjs'
+      - '.github/workflows/glp353-taxonomy-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  taxonomy-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.EXPECTED_SHA }}
+          persist-credentials: false
+      - name: Verify exact PR head
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          printf 'checked_head=%s\n' "$(git rev-parse HEAD)"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Evidence custody, held classification, canonical identity and stale negative
+        run: node --test tests/glp353-taxonomy-reverification.test.mjs tests/therapeutic-taxonomy-build6.test.mjs tests/glp181-taxonomy-identity.test.mjs
+      - name: Native taxonomy and dynamic-profile check (no build)
+        run: node scripts/reconcile-therapeutic-wire-in.mjs --release . --check
