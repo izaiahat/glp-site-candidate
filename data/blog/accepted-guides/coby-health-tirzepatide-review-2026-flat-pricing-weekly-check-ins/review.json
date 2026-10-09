@@ -1,0 +1,74 @@
+{
+  "authority": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T144442Z-scheduled-refill/topic-b8d270305a0c4307f963/topic-queue-snapshot-20261009T144442Z-coby-current-byte.json",
+    "selection_binding": {
+      "operator_directive_id": "operator-keyword-gap-20260823:B-221196e1614564d6",
+      "queue_position": 17,
+      "queue_sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+      "selection_receipt_sha256": "6b3939d73e27575fcc678e0dad48beba311db4a3296871575ec8b73a54c60dba",
+      "strategy_map_sha256": "05d215c1bd3a8656f4bc5f5534a1ad5e13934b94a649492743fd975533f2818b",
+      "strategy_queue_sha256": "59627aee4ddb6a2a1eb1f2b3a0129c2b2ab184c38426194db63e404a78fd3ea6",
+      "target_query": "coby health tirzepatide",
+      "target_route": "/guides/coby-health-tirzepatide-review-2026-flat-pricing-weekly-check-ins/",
+      "topic_id": "b8d270305a0c4307f963"
+    },
+    "selection_receipt": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T144442Z-scheduled-refill/selection-01.json",
+      "receipt_sha256": "6b3939d73e27575fcc678e0dad48beba311db4a3296871575ec8b73a54c60dba",
+      "sha256": "58cd8ebeb0d41ce2f0a3165f742c55c5f6749e334c06a13acbcc32c8e1568fee"
+    },
+    "sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+    "topic_id": "b8d270305a0c4307f963",
+    "type": "operator_directed_queue_item"
+  },
+  "effects": {
+    "cache_purges": 0,
+    "deployments": 0,
+    "gsc_submissions": 0,
+    "publishes": 0
+  },
+  "effort": "high",
+  "findings": [],
+  "gates": [
+    {
+      "findings": [],
+      "gate": "A",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "B",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "C",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "D",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "E",
+      "status": "PASS"
+    }
+  ],
+  "job_id": "20261009T144442Z-coby-current-byte",
+  "model": "gpt-6-astra-900k",
+  "provider": "openai-codex",
+  "raw_review_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T144442Z-scheduled-refill/topic-b8d270305a0c4307f963/opus-history-20261009T144442Z-coby-current-byte/round-04-sol-raw.json",
+  "raw_review_sha256": "b697139644503467320af6622e7c8333c7361c5bafea9d99786824661fb5d657",
+  "receipt_sha256": "1cbd6e79af1371892d1ab8090cac3a115b814fbfc6cbeb89a4b2d21abac08cc2",
+  "review_transport": "hermes-openai-codex-astra-independent",
+  "reviewed_at_utc": "2026-10-09T15:24:34.494505Z",
+  "round": 4,
+  "schema": "glp-opus-seo-round-receipt-v1",
+  "status": "PASS_OPUS_SEO_DRAFT",
+  "subject_manifest_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T144442Z-scheduled-refill/topic-b8d270305a0c4307f963/opus-history-20261009T144442Z-coby-current-byte/round-04-subject-manifest.json",
+  "subject_manifest_sha256": "228e2965d3fb12bc1bb564e156b2d08c76c9e29e9f0cc1d2a5efc5f337e9f6a0",
+  "tools_disabled": true,
+  "topic_id": "b8d270305a0c4307f963"
+}
