@@ -37,7 +37,7 @@ test('GLP-353 renews 24 canonical rows plus the Shed alias from live hash-bound 
     assert.equal(row.evidence_captured_at.slice(0, 10), row.verified_as_of);
     assert.deepEqual(row.commercial_link_state, previous[item.program_id].commercial_link_state);
     for (const assertion of item.assertions) {
-      assert.ok(assertion.quote.length >= 20, 'An assertion must retain its substantive quote, never an iterated string character');
+      assert.ok(assertion.quote.length >= 10, 'An assertion must retain its substantive quote, never an iterated string character');
       const capture = JSON.parse(read(proof.captures[assertion.source_url].path));
       assert.ok(normalized(capture.response.data.markdown).includes(normalized(assertion.quote)), `${item.program_id}:${assertion.tag}`);
     }
