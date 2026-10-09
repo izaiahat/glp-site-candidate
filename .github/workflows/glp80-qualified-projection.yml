@@ -28,5 +28,5 @@ jobs:
           sudo cp tests/fixtures/eden-consumer-authority/research.md "$target/research.md"
           sudo cp tests/fixtures/eden-consumer-authority/audit-summary.json "$target/audit-summary.json"
           node --test tests/eden-qualified-projection.test.mjs
-          node --test tests/price-refresh-evidence.test.mjs
+          node --test tests/price-refresh-evidence.test.mjs tests/price-index-current-offers.test.mjs
           git diff --exit-code

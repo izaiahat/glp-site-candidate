@@ -3,6 +3,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {isDeepStrictEqual} from 'node:util';
 import {validatePriceRow} from './pricing-evidence-v2.mjs';
+import {renderTypedPrice} from './typed-price-labels.mjs';
 
 const hash = value => createHash('sha256').update(value).digest('hex');
 const fail = reason => { throw new Error('price_refresh_evidence:' + reason); };
@@ -231,4 +232,42 @@ export function applyPriceRefreshEvidence(root, expectedProviders, now = new Dat
     rows[index] = structuredClone(after);
   }
   return expected;
+}
+
+// Current typed offers and the frozen monthly benchmark have different schemas.
+// Publish the validated matrix on the index without backfilling its historical
+// observation, promoting display-only offers to cash, or minting affiliate CTAs.
+const CURRENT_INDEX_START='<!-- current-validated-price-offers:start -->';
+const CURRENT_INDEX_END='<!-- current-validated-price-offers:end -->';
+const escapeIndex=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function stripCurrentPriceIndexOffers(html) {
+  const start=html.indexOf(CURRENT_INDEX_START), end=html.indexOf(CURRENT_INDEX_END);
+  if(start<0 && end<0) return html;
+  if(start<0 || end<start || html.indexOf(CURRENT_INDEX_START,start+1)>=0 || html.indexOf(CURRENT_INDEX_END,end+1)>=0) fail('index_section_boundary');
+  return html.slice(0,start)+html.slice(end+CURRENT_INDEX_END.length);
+}
+export function addCurrentPriceIndexOffers(html,{root,matrix,now=new Date()}) {
+  const ledger=JSON.parse(readFileSync(path.join(root,'data/price-refresh-ledger.json')));
+  // Reuse the registered receiver: raw captures, chain, dates, unknown facts,
+  // mapped identities and current provider holds are all checked before render.
+  const validated=applyPriceRefreshEvidence(root,matrix.providers,now);
+  if(!isDeepStrictEqual(validated,matrix.providers)) fail('index_matrix_not_adopted');
+  const latest=new Map(ledger.entries.map(e=>[e.program_id+'\0'+e.row_id,e]));
+  const rows=[...latest.values()].map(e=>{
+    const provider=matrix.providers[e.program_id], row=provider.medications.find(r=>r.row_id===e.row_id);
+    if(!row || !isDeepStrictEqual(row,e.after)) fail('index_row_not_current');
+    // Date the price witness itself; separately dated billing/cancellation
+    // witnesses remain visible and must not be silently re-dated.
+    const dates=row.evidence.map(w=>w.captured_at_utc.slice(0,10));
+    const asOf=dates.sort()[0];
+    return {programId:e.program_id,provider:provider.provider,row,asOf};
+  }).sort((a,b)=>a.provider.localeCompare(b.provider)||a.row.row_id.localeCompare(b.row.row_id));
+  html=stripCurrentPriceIndexOffers(html);
+  if(!rows.length) return html;
+  const providers=new Set(rows.map(r=>r.provider)).size;
+  const cards=rows.map(({programId,provider,row,asOf})=>`<article class="panel" data-program="${escapeIndex(programId)}" data-current-price-row="${escapeIndex(row.row_id)}" data-current-price-as-of="${escapeIndex(asOf)}"><h3>${escapeIndex(provider)} — ${escapeIndex(row.label)}</h3><p>Price evidence as of ${escapeIndex(asOf)}.</p>${renderTypedPrice(row,{showDate:true,headingLevel:4})}</article>`).join('');
+  const section=`${CURRENT_INDEX_START}<section class="panel" data-current-validated-price-offers><h2>Current validated provider offers</h2><p>${rows.length} validated price rows across ${providers} providers. Each offer keeps its medication, billing basis, qualifications, unknowns and dated first-party evidence. These offer types are not comparable monthly cash charges and are not included in the historical benchmark statistics below.</p>${cards}</section>${CURRENT_INDEX_END}`;
+  if(!/<main\b[^>]*>[\s\S]*?<\/h1>[\s\S]*?<\/section>/.test(html)) fail('index_hero_missing');
+  // Keep the page h1 first and seat this section after the native hero.
+  return html.replace(/(<main\b[^>]*>[\s\S]*?<\/h1>[\s\S]*?<\/section>)/,match=>match+section);
 }
