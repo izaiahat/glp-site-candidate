@@ -34,6 +34,12 @@ function preserveInactiveLegacyGovernance(before, article) {
     if (Object.hasOwn(before,key)) result[key] = structuredClone(before[key]);
     else delete result[key];
   }
+  // An inactive legacy flag is not a CTA. Retain its disclosure, but keep
+  // the independently accepted no-CTA subject's stricter rendering controls.
+  // Otherwise the current editorial contract correctly refuses a true flag
+  // with no commerce surface. Never bypass that editorial guard.
+  result.has_affiliate_cta = false;
+  result.suppress_cta = true;
   return result;
 }
 
@@ -65,7 +71,8 @@ export function applyAcceptedUpdates(articles, updates) {
     if (objectSha(before) !== before_sha256) throw new Error('accepted_update_predecessor_changed');
     const changed = GOVERNANCE.some(k => JSON.stringify(before[k]) !== JSON.stringify(article[k]));
     const replacement = changed ? preserveInactiveLegacyGovernance(before, article) : article;
-    if (GOVERNANCE.some(k => JSON.stringify(before[k]) !== JSON.stringify(replacement[k]))) throw new Error('accepted_update_governance_changed');
+    const expectedGovernance = changed ? {...before, has_affiliate_cta:false, suppress_cta:true} : before;
+    if (GOVERNANCE.some(k => JSON.stringify(expectedGovernance[k]) !== JSON.stringify(replacement[k]))) throw new Error('accepted_update_governance_changed');
     result[index] = replacement;
   }
   return result;

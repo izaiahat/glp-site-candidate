@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { applyAcceptedUpdates, objectSha } from '../src/accepted-update-source.mjs';
 import * as updatesSource from '../src/accepted-update-source.mjs';
 import { readFileSync } from 'node:fs';
-import { validateKeywordOwnership } from '../src/blog-system.mjs';
+import { validateKeywordOwnership, reviewBrief } from '../src/blog-system.mjs';
 
 test('replacement keeps identity and provider/risk guards, not a second article', () => {
   const before = {article_id:'a', canonical_path:'/guides/a/', risk_tier:'HIGH', suppress_cta:true, sections:[{heading:'Old'}]};
@@ -27,11 +27,11 @@ test('neutral exact review projects only authenticated inactive legacy governanc
   delete article.inline_ftc_disclosure_text;
   const original=JSON.stringify(article);
   const [result]=applyAcceptedUpdates([before],[{article,before_sha256:objectSha(before)}]);
-  assert.equal(result.has_affiliate_cta,true);
+  assert.equal(result.has_affiliate_cta,false);
   assert.equal(result.inline_ftc_disclosure,true);
   assert.equal(result.inline_ftc_disclosure_text,before.inline_ftc_disclosure_text);
   assert.equal('surface_taxonomy' in result,false);
-  assert.equal('suppress_cta' in result,false);
+  assert.equal(result.suppress_cta,true);
   assert.equal(result.comparison_spec,null);
   assert.deepEqual(result.sections,article.sections);
   assert.equal(JSON.stringify(article),original);
@@ -65,4 +65,15 @@ test('authenticated shortage update replaces ownership keyword without changing 
   assert.throws(() => updatesSource.applyAcceptedUpdateOwnership(owners, articles, [{...updates[0], before_sha256:'0'.repeat(64)}]), /predecessor/);
   const collision = [...projected, {...matches[0], url:'/guides/different/'}];
   assert.throws(() => validateKeywordOwnership(collision), /keyword/);
+});
+
+test('real neutral accepted update passes unchanged editorial gate without reviving an inactive CTA', () => {
+  const articles = JSON.parse(readFileSync(new URL('../data/blog/content-batch.json', import.meta.url))).articles;
+  const updates = updatesSource.loadAcceptedUpdates(new URL('../', import.meta.url).pathname);
+  const article = applyAcceptedUpdates(articles, updates).find(a => a.article_id === updates[0].article.article_id);
+  const author = {status:'verified_organization', clinical_credentials_claimed:false};
+  assert.equal(reviewBrief(article, author).status, 'PASS');
+  assert.equal(article.has_affiliate_cta, false);
+  assert.equal(article.suppress_cta, true);
+  assert.equal(reviewBrief({...article, has_affiliate_cta:true}, author).reason, 'editorial_affiliate_contract_incomplete');
 });
