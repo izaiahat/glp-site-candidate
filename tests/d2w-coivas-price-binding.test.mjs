@@ -2,7 +2,8 @@ import test from 'node:test';import assert from 'node:assert/strict';import fs f
 import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
 import {projectCoivasResearchPriceBasis,COIVAS_RESEARCH_PRICE_BINDING} from '../src/price-index-coivas-research-binding.mjs';
 import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
-const read=n=>fs.readFileSync(new URL('../data/'+n,import.meta.url)),sha=b=>createHash('sha256').update(b).digest('hex');
+import {readHistoricalPriceFixture} from './helpers/provider-append-predecessor.mjs';
+const read=n=>readHistoricalPriceFixture(new URL('../data/'+n,import.meta.url)),sha=b=>createHash('sha256').update(b).digest('hex');
 const current=read('program-content-ledger.json'),frozen=read('price-index-frozen-content-ledger.json'),binding=JSON.parse(read('price-index-nonprice-binding.json')),registry=JSON.parse(read('program-registry.json'));
 const receipt=JSON.parse(fs.readFileSync(COIVAS_RESEARCH_PRICE_BINDING.path));const delta=receipt.changes.find(r=>r.program_id==='coivas');
 const call=d=>{const b=Buffer.from(JSON.stringify(d));return frozenPriceLedger(b,frozen,{...binding,current_sha256:sha(b)});};

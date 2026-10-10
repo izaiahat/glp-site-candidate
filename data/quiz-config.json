@@ -795,7 +795,7 @@
       "why_match": "RxSpan MD Telehealth Program publishes its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
     },
     {
-      "display_name": "Pallas Health – GLP-1 Weight Loss & NAD",
+      "display_name": "Pallas Health \u2013 GLP-1 Weight Loss & NAD",
       "held_route": "/go/pallas-health-review?s=provider-fit.result&v=a",
       "live_link_allowed": false,
       "priority_score": 0,
@@ -817,7 +817,7 @@
       "source_clearance": true,
       "staging_eligible": true,
       "unknown_render_action": "OMIT",
-      "why_match": "Pallas Health – GLP-1 Weight Loss & NAD publishes more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
+      "why_match": "Pallas Health \u2013 GLP-1 Weight Loss & NAD publishes more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
     },
     {
       "display_name": "Wellmedr",
@@ -1505,7 +1505,7 @@
       "why_match": "Ivim Health publishes more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
     }
   ],
-  "description": "Answer seven quick questions to compare providers by treatment, state, and your selected preferences — free, in about a minute.",
+  "description": "Answer seven quick questions to compare providers by treatment, state, and your selected preferences \u2014 free, in about a minute.",
   "email_capture": {
     "code_built": true,
     "consent_version": "glp-lead-v2-20260723",
@@ -1778,10 +1778,10 @@
     }
   ],
   "guided_fallback": {
-    "lede": "No verified provider fits every answer you gave. Rather than show you nothing, here are the closest matches — with exactly what each one does not meet.",
+    "lede": "No verified provider fits every answer you gave. Rather than show you nothing, here are the closest matches \u2014 with exactly what each one does not meet.",
     "mismatch_prefix": "Does not match your answer"
   },
-  "h1": "Find your GLP‑1 match.",
+  "h1": "Find your GLP\u20111 match.",
   "matching_policy": {
     "composition_order": [
       "source_and_staging_clearance",
@@ -2667,12 +2667,12 @@
     "status": "NOT_IMPLEMENTED_IN_MATCHING"
   },
   "storage": "ephemeral_page_memory_only",
-  "title": "Which provider fits my priorities? — Clinic Scout staging",
+  "title": "Which provider fits my priorities? \u2014 Clinic Scout staging",
   "transmit_answers": false,
   "unavailable_option_copy": {
-    "blocked_by": "No provider in our comparison offers this together with your earlier answer “{answer}”.",
+    "blocked_by": "No provider in our comparison offers this together with your earlier answer \u201c{answer}\u201d.",
     "blocked_by_combination": "No provider in our comparison offers this together with your earlier answers.",
     "none_at_all": "No provider in our comparison publishes this, so we cannot match you to one.",
-    "state_suffix": " — no match with your answers"
+    "state_suffix": " \u2014 no match with your answers"
   }
 }

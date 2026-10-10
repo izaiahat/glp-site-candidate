@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
@@ -16,6 +17,8 @@ test('native append reader retains original price oracles and rejects input drif
  assert.throws(()=>historicalPriceIndexRegistry(bad),/append_current_drift/);
  const ledger=read('program-content-ledger.json'), frozen=read('price-index-frozen-content-ledger.json'), binding=JSON.parse(read('price-index-nonprice-binding.json'));
  assert.deepEqual(frozenPriceLedger(ledger,frozen,binding).bytes,frozen);
+ assert.equal(frozenPriceLedger(ledger,frozen,binding).current_sha256,createHash('sha256').update(ledger).digest('hex'));
+ assert.throws(()=>frozenPriceLedger(Buffer.concat([ledger,Buffer.from(' ')]),frozen,binding),/append_current_bytes_drift/);
  const forged=JSON.parse(ledger); forged.programs[0].starting_price='free';
  assert.throws(()=>frozenPriceLedger(Buffer.from(JSON.stringify(forged)),frozen,binding),/append_current_drift/);
  assert.equal(JSON.stringify(registry),original);

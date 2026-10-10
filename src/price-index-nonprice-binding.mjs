@@ -49,8 +49,11 @@ function heldProjection(current, frozen, binding, readBytes) {
 // readBytes is an injected byte transport for hostile tests; every byte read
 // still has to match the immutable descriptor/receipt/authority chain above.
 export function frozenPriceLedger(currentBytes, frozenBytes, binding, readBytes = readFileSync) {
-  currentBytes=providerPricePredecessorBytes(currentBytes,'ledger',readBytes);
   const rawCurrentSha=sha(currentBytes);
+  const appendPredecessor=providerPricePredecessorBytes(currentBytes,'ledger',readBytes);
+  if(appendPredecessor!==currentBytes) {
+    return {...frozenPriceLedger(appendPredecessor,frozenBytes,binding,readBytes),current_sha256:rawCurrentSha};
+  }
   if(binding?.schema==='glp.frozen-price-nonprice-binding.v5'){
     const prior=s32LedgerPredecessor(currentBytes,binding,readBytes);
     return {...frozenPriceLedger(prior.bytes,frozenBytes,prior.binding,readBytes),current_sha256:rawCurrentSha};

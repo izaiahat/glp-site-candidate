@@ -23,15 +23,16 @@ export function makeProviderPriceAppend(beforeBytes, currentBytes, kind, addedId
   if(before.therapeutic_taxonomy?.price_index_registry_frozen_source_sha256!==current.therapeutic_taxonomy?.price_index_registry_frozen_source_sha256)throw Error('append_scope');
  } else if(Object.hasOwn(current,'research_enrichment'))expected.research_enrichment=current.research_enrichment;
  if(canonical(expected)!==canonical(current))throw Error('append_scope');
- return {schema:'glp.provider-price-append.v1',kind,added_ids:addedIds,predecessor_base64:Buffer.from(beforeBytes).toString('base64'),predecessor_sha256:sha(beforeBytes),predecessor_semantic_sha256:digest(before),current_semantic_sha256:digest(current)};
+ return {schema:'glp.provider-price-append.v1',kind,added_ids:addedIds,predecessor_base64:Buffer.from(beforeBytes).toString('base64'),predecessor_sha256:sha(beforeBytes),predecessor_semantic_sha256:digest(before),current_semantic_sha256:digest(current),current_bytes_sha256:kind==='ledger'?sha(currentBytes):null};
 }
 export function projectProviderPriceAppend(currentBytes,binding,kind) {
- const keys=['schema','kind','added_ids','predecessor_base64','predecessor_sha256','predecessor_semantic_sha256','current_semantic_sha256'];
+ const keys=['schema','kind','added_ids','predecessor_base64','predecessor_sha256','predecessor_semantic_sha256','current_semantic_sha256','current_bytes_sha256'];
  if(!binding||binding.schema!=='glp.provider-price-append.v1'||binding.kind!==kind||canonical(Object.keys(binding).sort())!==canonical(keys.sort()))throw Error('append_binding_invalid');
  const beforeBytes=Buffer.from(binding.predecessor_base64,'base64'), before=JSON.parse(beforeBytes), current=JSON.parse(currentBytes);
  if(sha(beforeBytes)!==binding.predecessor_sha256||digest(before)!==binding.predecessor_semantic_sha256)throw Error('append_predecessor_drift');
  if(digest(current)===binding.predecessor_semantic_sha256)return beforeBytes;
  if(digest(current)!==binding.current_semantic_sha256)throw Error('append_current_drift');
+ if(kind==='ledger'&&sha(currentBytes)!==binding.current_bytes_sha256)throw Error('append_current_bytes_drift');
  const checked=makeProviderPriceAppend(beforeBytes,currentBytes,kind,binding.added_ids);
  if(canonical(checked)!==canonical(binding))throw Error('append_binding_invalid');
  return beforeBytes;

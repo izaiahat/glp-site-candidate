@@ -7,8 +7,10 @@ import {stableSha256} from '../src/therapeutic-taxonomy.mjs';
 import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
 import {buildProviderReviewSpecs,renderProviderReviewPage} from '../src/provider-review.mjs';
 const registry=JSON.parse(readFileSync(new URL('../data/program-registry.json',import.meta.url)));
-const expected=registry.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256;
-const basis=structuredClone(registry);
+import {providerPricePredecessorRegistry} from '../src/provider-price-append.mjs';
+const priceFixture=providerPricePredecessorRegistry(registry);
+const expected=priceFixture.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256;
+const basis=structuredClone(priceFixture);
 const read = name => JSON.parse(readFileSync(new URL('../data/'+name,import.meta.url)));
 const escapeHtml = text => String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
 test('actual review renderer preserves repaired copy and the exact Longevity HOLD',()=>{
@@ -75,7 +77,7 @@ for(const [name,edit] of [
  ['commercial',p=>p.commercial_state='held'],
  ['route',p=>p.go.route='/go/different'],
 ])test(`held projection refuses unrelated ${name} drift`,()=>{
- const current=structuredClone(registry);edit(current.programs.find(p=>p.program_id==='longevity-meds-glp-1-review'));
+ const current=structuredClone(priceFixture);edit(current.programs.find(p=>p.program_id==='longevity-meds-glp-1-review'));
  assert.throws(()=>historicalPriceIndexRegistry(current), /go_price_basis_held_scope_drift|price_index_historical_registry_drift/);
  const b=structuredClone(basis);edit(b.programs.find(p=>p.program_id==='longevity-meds-glp-1-review'));
  try{assert.notEqual(stableSha256(restoreGoOnlyPriceBasis(b)),expected);}catch(error){if(error.code==='ERR_ASSERTION')throw error;assert.match(error.message,/go_price_basis_/);}
