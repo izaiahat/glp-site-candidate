@@ -80,7 +80,7 @@ jobs:
       - name: Carrier analytics emitter and alias cache regression (offline only)
         run: node --test tests/carrier-analytics-emission.test.mjs
       - name: Accepted guide source and on-page-only contract (offline)
-        run: node --test tests/accepted-guide-source.test.mjs
+        run: node --test tests/accepted-guide-source.test.mjs tests/accepted-update-source.test.mjs
       - name: GLP47 approved onboarding and B01 launch hold (offline only)
         run: node --test tests/glp47-approved-onboarding.test.mjs
       - name: Record limited scope

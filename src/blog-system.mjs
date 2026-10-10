@@ -511,7 +511,7 @@ export function renderBlogPost(brief, comparisonSpec, author, programs) {
     headline: brief.h1,
     description,
     url: canonical,
-    datePublished: brief.updated_at,
+    datePublished: brief.date_published || brief.updated_at,
     dateModified: brief.updated_at,
     author: { "@type": author.entity_type === "Organization" ? "Organization" : "Person", name: author.display_name, url: `https://glpclinicscout.com${author.bio_path}` },
     publisher: { "@type": "Organization", name: "GLP Clinic Scout", url: "https://glpclinicscout.com/" },

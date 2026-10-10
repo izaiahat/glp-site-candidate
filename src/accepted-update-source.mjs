@@ -34,6 +34,31 @@ function preserveInactiveLegacyGovernance(before, article) {
     if (Object.hasOwn(before,key)) result[key] = structuredClone(before[key]);
     else delete result[key];
   }
+  // An inactive legacy flag is not a CTA. Retain its disclosure, but keep
+  // the independently accepted no-CTA subject's stricter rendering controls.
+  // Otherwise the current editorial contract correctly refuses a true flag
+  // with no commerce surface. Never bypass that editorial guard.
+  result.has_affiliate_cta = false;
+  result.suppress_cta = true;
+  return result;
+}
+
+export function applyAcceptedUpdateOwnership(owners, articles, updates) {
+  // Reuse exact predecessor/identity/governance authentication. Only the
+  // accepted target query changes; release flags and frozen inputs do not.
+  applyAcceptedUpdates(articles, updates);
+  const result = [...owners];
+  for (const {article} of updates) {
+    const before = articles.find(a => a.canonical_path === article.canonical_path);
+    const matches = result.map((row, index) => [row, index]).filter(([row]) => row.url === article.canonical_path);
+    if (matches.length !== 1) throw new Error('accepted_update_ownership_count_invalid');
+    const [owner, index] = matches[0];
+    if ((owner.article_id || owner.owner) !== article.article_id || owner.risk_tier !== article.risk_tier
+        || owner.primary_keyword !== before.primary_keyword || typeof article.primary_keyword !== 'string' || !article.primary_keyword.trim()) {
+      throw new Error('accepted_update_ownership_identity_invalid');
+    }
+    result[index] = {...owner, primary_keyword: article.primary_keyword};
+  }
   return result;
 }
 
@@ -46,7 +71,8 @@ export function applyAcceptedUpdates(articles, updates) {
     if (objectSha(before) !== before_sha256) throw new Error('accepted_update_predecessor_changed');
     const changed = GOVERNANCE.some(k => JSON.stringify(before[k]) !== JSON.stringify(article[k]));
     const replacement = changed ? preserveInactiveLegacyGovernance(before, article) : article;
-    if (GOVERNANCE.some(k => JSON.stringify(before[k]) !== JSON.stringify(replacement[k]))) throw new Error('accepted_update_governance_changed');
+    const expectedGovernance = changed ? {...before, has_affiliate_cta:false, suppress_cta:true} : before;
+    if (GOVERNANCE.some(k => JSON.stringify(expectedGovernance[k]) !== JSON.stringify(replacement[k]))) throw new Error('accepted_update_governance_changed');
     result[index] = replacement;
   }
   return result;
