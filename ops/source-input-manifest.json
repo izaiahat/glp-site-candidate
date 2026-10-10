@@ -1,8 +1,10 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3896,
+  "tracked_file_count": 3898,
   "files": [
+    "tests/glp47-approved-onboarding.test.mjs",
+    "ops/glp47-approved-onboarding.md",
     "tests/price-index-current-offers.test.mjs",
     "src/article-review-routes.mjs",
     "tests/article-review-routes.test.mjs",
