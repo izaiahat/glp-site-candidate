@@ -2,12 +2,39 @@ name: GLP-353 therapeutic evidence custody
 on:
   pull_request:
     paths:
-      - 'data/program-registry.json'
-      - 'reports/ops/glp353-taxonomy-reverification-20261009/**'
-      - 'tests/glp353-taxonomy-reverification.test.mjs'
-      - '.github/workflows/glp353-taxonomy-evidence.yml'
+      - ".github/workflows/glp353-taxonomy-evidence.yml"
+      - "data/program-content-ledger.json"
+      - "data/program-registry.json"
+      - "data/therapeutic-taxonomy*.json"
+      - "package.json"
+      - "reports/ops/glp353-taxonomy-reverification-20261009/**"
+      - "scripts/reconcile-therapeutic-wire-in.mjs"
+      - "scripts/therapeutic-taxonomy-refresh-policies.json"
+      - "src/affiliate-relationship-sync.mjs"
+      - "src/citation-attribution.mjs"
+      - "src/cost-calculator.mjs"
+      - "src/go-promotion-contract.mjs"
+      - "src/go-redirector-authority.mjs"
+      - "src/go-runtime-manifest.mjs"
+      - "src/medication-options.mjs"
+      - "src/price-refresh-evidence.mjs"
+      - "src/price-state.mjs"
+      - "src/pricing-coverage-floor.mjs"
+      - "src/pricing-evidence-v2.mjs"
+      - "src/program-registry.mjs"
+      - "src/provider-display-evidence.mjs"
+      - "src/provider-dynamic-profiles.mjs"
+      - "src/provider-identity.mjs"
+      - "src/therapeutic-taxonomy.mjs"
+      - "src/typed-price-labels.mjs"
+      - "tests/glp181-taxonomy-identity.test.mjs"
+      - "tests/glp353-taxonomy-reverification.test.mjs"
+      - "tests/therapeutic-taxonomy-build6.test.mjs"
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   taxonomy-evidence:
     runs-on: ubuntu-latest

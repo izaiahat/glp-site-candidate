@@ -3,18 +3,29 @@ name: GLP90 XenTraffic receiver source checks
 on:
   pull_request:
     paths:
-      - 'functions/api/postback/xentraffic.js'
-      - 'src/xentraffic-attribution.mjs'
-      - 'src/worker.mjs'
-      - 'src/network-constructors.mjs'
-      - 'data/go-selection-receipt.json'
-      - 'functions/go/program-manifest.js'
-      - 'migrations/**'
-      - 'tests/xentraffic-postback.test.mjs'
-      - 'docs/xentraffic-postback-candidate.md'
-      - '.github/workflows/glp90-xentraffic-receiver.yml'
+      - ".github/workflows/glp90-xentraffic-receiver.yml"
+      - "data/go-selection-receipt.json"
+      - "docs/xentraffic-postback-candidate.md"
+      - "functions/api/postback/xentraffic.js"
+      - "functions/go/program-manifest.js"
+      - "migrations/**"
+      - "package.json"
+      - "src/a12-permission-contract.mjs"
+      - "src/a17-issuer-schema.mjs"
+      - "src/advertising-issuer-probe.mjs"
+      - "src/advertising-issuer.mjs"
+      - "src/go-redirector-authority.mjs"
+      - "src/network-constructors.mjs"
+      - "src/platform-click-context.mjs"
+      - "src/worker.mjs"
+      - "src/xentraffic-attribution.mjs"
+      - "tests/fixtures/f06-historical-source/program-manifest.js"
+      - "tests/xentraffic-postback.test.mjs"
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   receiver-source:
     name: GLP90 six receiver behaviors and account-lineage regression

@@ -2,8 +2,33 @@ name: glp80-qualified-projection
 on:
   pull_request:
     branches: [main]
+    paths:
+      - ".github/workflows/glp80-qualified-projection.yml"
+      - "assets/**"
+      - "data/**"
+      - "functions/go/program-manifest.js"
+      - "package-lock.json"
+      - "package.json"
+      - "scripts/build-lastmod-provenance.mjs"
+      - "scripts/build-staging.mjs"
+      - "scripts/codemod-aeo-citation-schema.mjs"
+      - "scripts/glp_evidence_ledger.mjs"
+      - "scripts/glp_material_acceptance.mjs"
+      - "scripts/postbuild-aeo-surface.mjs"
+      - "scripts/refresh-price-tracker.mjs"
+      - "scripts/wave2-repairs.mjs"
+      - "src/**"
+      - "tests/eden-qualified-projection.test.mjs"
+      - "tests/fixtures/eden*/**"
+      - "tests/fixtures/eden-qualified-closure.json"
+      - "tests/helpers/price-refresh-surfaces.mjs"
+      - "tests/price-index-current-offers.test.mjs"
+      - "tests/price-refresh-evidence.test.mjs"
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   focused-exact-head:
     runs-on: ubuntu-latest
