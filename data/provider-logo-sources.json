@@ -440,6 +440,33 @@
       "source_kind": "remote_image",
       "source_page_url": "https://glp1.medvi.org/",
       "surface": "light"
+    },
+    {
+      "asset_url": "https://assets.embeddables.com/Logo_03344447052555455.svg",
+      "output_file": "rightwell-review.webp",
+      "program_id": "rightwell-review",
+      "provider": "RightWell",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.rightwell.com/get-started?",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/693034e0b94728017fd500b9/69387014118dfc0d5bbbe67b_Willow%20Full%20Logo%20-%20Electric.svg",
+      "output_file": "willow-review.webp",
+      "program_id": "willow-review",
+      "provider": "Willow",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.startwillow.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://media-s3-cdn.ivimhealth.com/assets/images/logos/ivim-black.svg",
+      "output_file": "ivim-health-review.webp",
+      "program_id": "ivim-health-review",
+      "provider": "Ivim Health",
+      "source_kind": "remote_image",
+      "source_page_url": "https://ivimhealth.com/",
+      "surface": "light"
     }
   ],
   "research_authority": "Firecrawl first-party branding extraction plus direct first-party HTML verification",

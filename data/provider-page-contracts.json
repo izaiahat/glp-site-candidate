@@ -52,7 +52,7 @@
         "cancellation": "Reported subscription terms: cancellation by support email or account portal, effective at the end of the current billing period; no prorated refunds. This does not establish a right to cancel a dispensed prescription order.",
         "description": "Reported information about MadeMed's injectable semaglutide quarterly plan, separate review and shipping stages, subscription cancellation, unknown state availability, and attributed pharmacy information.",
         "eligibility": "A clinician determines eligibility after an online consultation; no prescription is guaranteed. MadeMed's terms identify Xpedicare, LLC as the independent medical group delivering clinical services. The captured terms warn that services and medications may not be available in every state. Exact state and formulation-specific availability is UNKNOWN; these captures do not establish a complete state list. Patients must be in a state where the service is offered.",
-        "pricing": "Reported information: MadeMed's injectable semaglutide quarterly plan is $239/month equivalent, billed $717 every 3 months—not monthly payments or a standalone first-month charge. The plan includes physician consultation; a $39 doctor visit fee is retained if no prescription is issued, not charged on every prescribed order. Complete six-month billing terms, other formulation prices, and any standalone consultation price remain unknown in this review.",
+        "pricing": "Reported information: MadeMed's injectable semaglutide quarterly plan is $239/month equivalent, billed $717 every 3 months\u2014not monthly payments or a standalone first-month charge. The plan includes physician consultation; a $39 doctor visit fee is retained if no prescription is issued, not charged on every prescribed order. Complete six-month billing terms, other formulation prices, and any standalone consultation price remain unknown in this review.",
         "regulatory": "MadeMed describes its products as compounded. Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
         "shipping": "The injectable semaglutide page reports doctor review within 24 hours and overnight shipping. UNKNOWN total order-to-delivery time; these are provider-reported stages, not a delivery guarantee or an oral-product estimate.",
         "title": "MadeMed review: published GLP-1 prices, shipping, cancellation, and pharmacy partner"
@@ -65,6 +65,63 @@
         "calculator_eligible": false,
         "editorial_content_ready": true,
         "regulatory_banner_required": "compounded_glp_general"
+      },
+      "research_copy_bindings": {
+        "captures": {
+          "injectable": {
+            "capture_index": 0,
+            "observed_at": "2026-09-09T17:50:47.714918+00:00",
+            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-mademed/authoring/mademed-c1/captures/mademed-product-captures.json",
+            "sha256": "995d9d78118af0cc278dc283344d161c770da723f00b2e938d9839f44295820b",
+            "url": "https://mademed.com/rx/injectable-semaglutide/"
+          },
+          "terms": {
+            "capture_index": 2,
+            "observed_at": "2026-09-09T17:50:10.145659+00:00",
+            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-mademed/authoring/mademed-c1/captures/mademed-detail-captures.json",
+            "sha256": "0dfd41fae059fef22cd22511bc3ac31a4b8a7e1240cbcdc6dc851dda023c2109",
+            "url": "https://mademed.com/terms/"
+          }
+        },
+        "citation_fields": {
+          "accreditation_and_pharmacy": [
+            "terms",
+            "injectable"
+          ],
+          "cancellation_and_refunds": [
+            "terms"
+          ],
+          "eligibility_and_states": [
+            "terms",
+            "injectable"
+          ],
+          "pricing_and_inclusions": [
+            "injectable"
+          ],
+          "shipping_and_returns": [
+            "injectable"
+          ]
+        },
+        "factual_disposition": {
+          "path": "reports/ops/glp42-20260921/factual-supersession-independent-review.md",
+          "reviewed_at": "2026-09-22",
+          "scope": "M1-M9; new qualified disposition, not a source observation or effective date"
+        },
+        "pricing": {
+          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/mademed.json",
+          "artifact_sha256": "0e7e2939fdfd98d74413b0efd167b673721d0d2fb858434c0529ccff0765dbe5",
+          "field_verified_as_of": {
+            "consultation_fee": "2026-09-09",
+            "first_month_price": "2026-09-09",
+            "monthly_price": "2026-09-09"
+          },
+          "fields": [
+            "monthly_price",
+            "first_month_price",
+            "consultation_fee"
+          ],
+          "projection": "qualified_summary_of_bound_fields"
+        }
       },
       "review_path": "/reviews/mademed/",
       "row_contract": {
@@ -94,51 +151,6 @@
         "source_url": "https://mademed.com/weight-loss/",
         "starting_price": "Reported injectable semaglutide: $239/month equivalent, billed $717 every 3 months; other formulation prices and complete six-month terms remain unknown.",
         "starting_price_sort": null
-      },
-      "research_copy_bindings": {
-        "factual_disposition": {
-          "path": "reports/ops/glp42-20260921/factual-supersession-independent-review.md",
-          "reviewed_at": "2026-09-22",
-          "scope": "M1-M9; new qualified disposition, not a source observation or effective date"
-        },
-        "citation_fields": {
-          "accreditation_and_pharmacy": ["terms", "injectable"],
-          "cancellation_and_refunds": ["terms"],
-          "eligibility_and_states": ["terms", "injectable"],
-          "pricing_and_inclusions": ["injectable"],
-          "shipping_and_returns": ["injectable"]
-        },
-        "captures": {
-          "terms": {
-            "url": "https://mademed.com/terms/",
-            "observed_at": "2026-09-09T17:50:10.145659+00:00",
-            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-mademed/authoring/mademed-c1/captures/mademed-detail-captures.json",
-            "sha256": "0dfd41fae059fef22cd22511bc3ac31a4b8a7e1240cbcdc6dc851dda023c2109",
-            "capture_index": 2
-          },
-          "injectable": {
-            "url": "https://mademed.com/rx/injectable-semaglutide/",
-            "observed_at": "2026-09-09T17:50:47.714918+00:00",
-            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-mademed/authoring/mademed-c1/captures/mademed-product-captures.json",
-            "sha256": "995d9d78118af0cc278dc283344d161c770da723f00b2e938d9839f44295820b",
-            "capture_index": 0
-          }
-        },
-        "pricing": {
-          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/mademed.json",
-          "artifact_sha256": "0e7e2939fdfd98d74413b0efd167b673721d0d2fb858434c0529ccff0765dbe5",
-          "fields": [
-            "monthly_price",
-            "first_month_price",
-            "consultation_fee"
-          ],
-          "field_verified_as_of": {
-            "monthly_price": "2026-09-09",
-            "first_month_price": "2026-09-09",
-            "consultation_fee": "2026-09-09"
-          },
-          "projection": "qualified_summary_of_bound_fields"
-        }
       }
     },
     {
@@ -206,6 +218,10 @@
         "editorial_content_ready": true,
         "regulatory_banner_required": "compounded_glp_general"
       },
+      "research_hold_receipt": {
+        "path": "data/telos-research-hold-receipt.json",
+        "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
+      },
       "review_path": "/reviews/telos-rx/",
       "row_contract": {
         "affiliate_href": null,
@@ -234,10 +250,6 @@
         "source_url": "https://telosrx.com/pages/for-men",
         "starting_price": "Protocol page advertises a first month as low as $49 with a qualifying intake, and tirzepatide as low as $139/month against a stated $399 list price",
         "starting_price_sort": null
-      },
-      "research_hold_receipt": {
-        "path": "data/telos-research-hold-receipt.json",
-        "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
       }
     },
     {
@@ -396,6 +408,70 @@
         "editorial_content_ready": true,
         "regulatory_banner_required": "provider_specific_fda_warning_plus_compounded_glp_general"
       },
+      "research_copy_bindings": {
+        "captures": {
+          "cancellation": {
+            "capture_index": 6,
+            "observed_at": "2026-09-09T18:21:54.364571+00:00",
+            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-strut-health/authoring/strut-health-c1/captures/research-captures.json",
+            "sha256": "c4262ce0e1ecaf509fce20e2690609f66b28e74bb2e7ea108b4569b62da416e5",
+            "url": "https://support.struthealth.com/hc/en-us/articles/4413534799131-Can-I-cancel-my-subscription"
+          },
+          "historical_faq": {
+            "capture_index": 3,
+            "observed_at": "2026-08-06T06:55:50.404446+00:00",
+            "path": "reports/glp-clinic-scout/affiliate-machine/g6-r1a-wirein-20260806/research-captures/strut-health-captures.json",
+            "sha256": "a705c02945bcecf1eaa7e108f599fd2a05057c2a31674f0963962fb59f1692ac",
+            "url": "https://www.struthealth.com/faq"
+          },
+          "shipping": {
+            "capture_index": 0,
+            "observed_at": "2026-09-09T18:23:46.529668+00:00",
+            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-strut-health/authoring/strut-health-c1/captures/shipping-captures.json",
+            "sha256": "d0463251ab30146200be8901daf3a29cfb4b1996a53faebd5fe1f638e598a1c4",
+            "url": "https://support.struthealth.com/hc/en-us/articles/4415354181787-After-I-place-an-order-when-will-my-order-ship"
+          },
+          "terms": {
+            "capture_index": 3,
+            "observed_at": "2026-09-09T18:21:52.115300+00:00",
+            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-strut-health/authoring/strut-health-c1/captures/research-captures.json",
+            "sha256": "c4262ce0e1ecaf509fce20e2690609f66b28e74bb2e7ea108b4569b62da416e5",
+            "url": "https://www.struthealth.com/terms-and-conditions"
+          }
+        },
+        "citation_fields": {
+          "cancellation_and_refunds": [
+            "cancellation"
+          ],
+          "eligibility_and_states": [
+            "historical_faq",
+            "terms"
+          ],
+          "shipping_and_returns": [
+            "shipping"
+          ]
+        },
+        "factual_disposition": {
+          "path": "reports/ops/glp42-20260921/factual-supersession-independent-review.md",
+          "reviewed_at": "2026-09-22",
+          "scope": "S1-S3 only; no price, fee, accreditation, pharmacy, clinical or activation disposition"
+        },
+        "pricing": {
+          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/strut-health.json",
+          "artifact_sha256": "2e3e88f03c4dd6aef9750b846a51396843d78095abacd7c2c19bc2d21897e365",
+          "field_verified_as_of": {
+            "consultation_fee": "2026-09-09",
+            "first_month_price": "2026-09-09",
+            "monthly_price": "2026-09-09"
+          },
+          "fields": [
+            "monthly_price",
+            "first_month_price",
+            "consultation_fee"
+          ],
+          "projection": "qualified_summary_of_bound_fields"
+        }
+      },
       "review_path": "/reviews/strut-health/",
       "row_contract": {
         "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=384&aff_id=13031",
@@ -423,63 +499,6 @@
         "source_url": "https://www.struthealth.com/weight-loss/semaglutide",
         "starting_price": "Reported injectable semaglutide monthly vial: $129, including consultations and shipping; exact first charge and patient-specific renewal total remain unknown.",
         "starting_price_sort": null
-      },
-      "research_copy_bindings": {
-        "factual_disposition": {
-          "path": "reports/ops/glp42-20260921/factual-supersession-independent-review.md",
-          "reviewed_at": "2026-09-22",
-          "scope": "S1-S3 only; no price, fee, accreditation, pharmacy, clinical or activation disposition"
-        },
-        "citation_fields": {
-          "cancellation_and_refunds": ["cancellation"],
-          "eligibility_and_states": ["historical_faq", "terms"],
-          "shipping_and_returns": ["shipping"]
-        },
-        "captures": {
-          "historical_faq": {
-            "url": "https://www.struthealth.com/faq",
-            "observed_at": "2026-08-06T06:55:50.404446+00:00",
-            "path": "reports/glp-clinic-scout/affiliate-machine/g6-r1a-wirein-20260806/research-captures/strut-health-captures.json",
-            "sha256": "a705c02945bcecf1eaa7e108f599fd2a05057c2a31674f0963962fb59f1692ac",
-            "capture_index": 3
-          },
-          "terms": {
-            "url": "https://www.struthealth.com/terms-and-conditions",
-            "observed_at": "2026-09-09T18:21:52.115300+00:00",
-            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-strut-health/authoring/strut-health-c1/captures/research-captures.json",
-            "sha256": "c4262ce0e1ecaf509fce20e2690609f66b28e74bb2e7ea108b4569b62da416e5",
-            "capture_index": 3
-          },
-          "cancellation": {
-            "url": "https://support.struthealth.com/hc/en-us/articles/4413534799131-Can-I-cancel-my-subscription",
-            "observed_at": "2026-09-09T18:21:54.364571+00:00",
-            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-strut-health/authoring/strut-health-c1/captures/research-captures.json",
-            "sha256": "c4262ce0e1ecaf509fce20e2690609f66b28e74bb2e7ea108b4569b62da416e5",
-            "capture_index": 6
-          },
-          "shipping": {
-            "url": "https://support.struthealth.com/hc/en-us/articles/4415354181787-After-I-place-an-order-when-will-my-order-ship",
-            "observed_at": "2026-09-09T18:23:46.529668+00:00",
-            "path": "reports/glp-clinic-scout/affiliate-machine/onboarding-manifest/runs/S19-research-packet-strut-health/authoring/strut-health-c1/captures/shipping-captures.json",
-            "sha256": "d0463251ab30146200be8901daf3a29cfb4b1996a53faebd5fe1f638e598a1c4",
-            "capture_index": 0
-          }
-        },
-        "pricing": {
-          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/strut-health.json",
-          "artifact_sha256": "2e3e88f03c4dd6aef9750b846a51396843d78095abacd7c2c19bc2d21897e365",
-          "fields": [
-            "monthly_price",
-            "first_month_price",
-            "consultation_fee"
-          ],
-          "field_verified_as_of": {
-            "monthly_price": "2026-09-09",
-            "first_month_price": "2026-09-09",
-            "consultation_fee": "2026-09-09"
-          },
-          "projection": "qualified_summary_of_bound_fields"
-        }
       }
     },
     {
@@ -557,7 +576,7 @@
         "eligibility": "TRT Nation states it operates in every U.S. state except Alabama, Alaska, Arkansas, Missouri, and Hawaii, and separately notes that some treatments may not be available in certain states.",
         "pricing": "Reported information: TRT Nation lists tirzepatide at $219/month regardless of dosage, with a three-month minimum purchase. This is not a standalone first-month payment or a verified all-in recurring charge. The exact initial checkout total, separate consultation fee and any other applicable charges remain unknown; no zero-fee inference is made.",
         "regulatory": "TRT Nation describes the product as compounded tirzepatide. Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
-        "shipping": "General FAQ reports processing and shipment typically within 1–3 business days after prescription approval and standard delivery taking 3–5 business days depending on location, with most patients receiving medication within one week of approval. This is a general provider estimate, not a guaranteed weight-loss-specific or intake-to-delivery deadline.",
+        "shipping": "General FAQ reports processing and shipment typically within 1\u20133 business days after prescription approval and standard delivery taking 3\u20135 business days depending on location, with most patients receiving medication within one week of approval. This is a general provider estimate, not a guaranteed weight-loss-specific or intake-to-delivery deadline.",
         "title": "TRT Nation weight-loss review: tirzepatide price, lab costs, states served, and shipping"
       },
       "page_evidence_source": "reports/glp-clinic-scout/affiliate-machine/g6-r1a-wirein-20260806/research/trt-nation.json",
@@ -568,6 +587,38 @@
         "calculator_eligible": true,
         "editorial_content_ready": true,
         "regulatory_banner_required": "compounded_glp_general"
+      },
+      "research_copy_bindings": {
+        "cons": {
+          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/trt-nation.json",
+          "artifact_sha256": "1ac853c351a8df5ff0e67547e1d802feab9b80db136317c5e594478e02b700e9",
+          "field_verified_as_of": {
+            "cancellation": "2026-09-09",
+            "first_month_price": "2026-09-09",
+            "monthly_price": "2026-09-09"
+          },
+          "fields": [
+            "first_month_price",
+            "monthly_price",
+            "cancellation"
+          ],
+          "projection": "unsupported_literal_removed; historical raw evidence retained, not display authority"
+        },
+        "pricing": {
+          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/trt-nation.json",
+          "artifact_sha256": "1ac853c351a8df5ff0e67547e1d802feab9b80db136317c5e594478e02b700e9",
+          "field_verified_as_of": {
+            "consultation_fee": "2026-09-09",
+            "first_month_price": "2026-09-09",
+            "monthly_price": "2026-09-09"
+          },
+          "fields": [
+            "monthly_price",
+            "first_month_price",
+            "consultation_fee"
+          ],
+          "projection": "qualified_summary_of_bound_fields"
+        }
       },
       "review_path": "/reviews/trt-nation/",
       "row_contract": {
@@ -596,38 +647,6 @@
         "source_url": "https://trtnation.com/weight-loss-therapy/",
         "starting_price": "Reported tirzepatide: $219/month with a three-month minimum purchase; exact all-in checkout and other charges remain unknown.",
         "starting_price_sort": null
-      },
-      "research_copy_bindings": {
-        "pricing": {
-          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/trt-nation.json",
-          "artifact_sha256": "1ac853c351a8df5ff0e67547e1d802feab9b80db136317c5e594478e02b700e9",
-          "fields": [
-            "monthly_price",
-            "first_month_price",
-            "consultation_fee"
-          ],
-          "field_verified_as_of": {
-            "monthly_price": "2026-09-09",
-            "first_month_price": "2026-09-09",
-            "consultation_fee": "2026-09-09"
-          },
-          "projection": "qualified_summary_of_bound_fields"
-        },
-        "cons": {
-          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/trt-nation.json",
-          "artifact_sha256": "1ac853c351a8df5ff0e67547e1d802feab9b80db136317c5e594478e02b700e9",
-          "fields": [
-            "first_month_price",
-            "monthly_price",
-            "cancellation"
-          ],
-          "field_verified_as_of": {
-            "first_month_price": "2026-09-09",
-            "monthly_price": "2026-09-09",
-            "cancellation": "2026-09-09"
-          },
-          "projection": "unsupported_literal_removed; historical raw evidence retained, not display authority"
-        }
       }
     },
     {
@@ -716,6 +735,9 @@
     {
       "display_name": "DrHouse",
       "field_sources": {
+        "cancellation_and_refunds": [
+          "https://drhouse.com/refund-and-cancellation-policy"
+        ],
         "cancellation_and_roles": [
           "https://drhouse.com/pricing/"
         ],
@@ -729,9 +751,6 @@
         ],
         "shipping_and_returns": [
           "https://drhouse.com/weight-loss/"
-        ],
-        "cancellation_and_refunds": [
-          "https://drhouse.com/refund-and-cancellation-policy"
         ]
       },
       "logo_contract": {
@@ -761,7 +780,7 @@
         "eligibility": "All 50 U.S. states, per the provider's own homepage and weight-loss page. The consultation IS the product: $129 without insurance, or a copay with coverage. Prescriptions and doctor's notes are included in the visit cost unless further treatment falls outside the consultation scope. The provider states there are no hidden fees.",
         "pricing": "UNKNOWN medication-inclusive first-month total. The published copay or $129 figure is a one-time physician visit, not a GLP-1 medication package.\n\nUNKNOWN recurring medication-inclusive monthly price. The terms describe per-visit and/or per-transaction fees, not a fixed monthly GLP-1 bundle.\n\nReported one-time physician visit: insurance copay or $129 without insurance, not a medication-inclusive monthly price. Conflicting generic primary-care FAQ prices also remain on this page; the exact applicable checkout charge is UNKNOWN.",
         "regulatory": "No captive or compounding pharmacy. Prescriptions are sent to the reader's own preferred retail pharmacy for pickup, and insurance can be used there for the medication. DrHouse's terms describe partnering pharmacies rather than naming a 503A/503B facility.",
-        "shipping": "The generic prescription FAQ reports transmission to a pharmacy within 1–2 hours in most cases, potentially longer if more information is needed. This is not medication delivery time. GLP-1-specific fulfillment and delivery wait remain UNKNOWN.",
+        "shipping": "The generic prescription FAQ reports transmission to a pharmacy within 1\u20132 hours in most cases, potentially longer if more information is needed. This is not medication delivery time. GLP-1-specific fulfillment and delivery wait remain UNKNOWN.",
         "title": "DrHouse review: $129 pay-per-visit telehealth, branded GLP-1s, and your own pharmacy"
       },
       "program_id": "drhouse",
@@ -771,6 +790,39 @@
         "calculator_eligible": false,
         "editorial_content_ready": true,
         "regulatory_banner_required": "branded_glp_only_no_compounded"
+      },
+      "research_copy_bindings": {
+        "cancellation": {
+          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/drhouse.json",
+          "artifact_sha256": "d2e72a173e42af6a8323a2dc3fae54c66d4c6c784f6e70be4fcb1435215dfc89",
+          "field_verified_as_of": {
+            "cancellation": "2026-09-09"
+          },
+          "fields": [
+            "cancellation"
+          ]
+        },
+        "cons": {
+          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/drhouse.json",
+          "artifact_sha256": "d2e72a173e42af6a8323a2dc3fae54c66d4c6c784f6e70be4fcb1435215dfc89",
+          "field_verified_as_of": {
+            "shipping_wait": "2026-09-09"
+          },
+          "fields": [
+            "shipping_wait"
+          ],
+          "projection": "unsupported_literal_removed; historical raw evidence retained, not display authority"
+        },
+        "shipping": {
+          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/drhouse.json",
+          "artifact_sha256": "d2e72a173e42af6a8323a2dc3fae54c66d4c6c784f6e70be4fcb1435215dfc89",
+          "field_verified_as_of": {
+            "shipping_wait": "2026-09-09"
+          },
+          "fields": [
+            "shipping_wait"
+          ]
+        }
       },
       "review_path": "/reviews/drhouse/",
       "row_contract": {
@@ -800,39 +852,6 @@
         "source_url": "https://drhouse.com/pricing/",
         "starting_price": "UNKNOWN medication-inclusive first-month total. The published copay or $129 figure is a one-time physician visit, not a GLP-1 medication package.\n\nUNKNOWN recurring medication-inclusive monthly price. The terms describe per-visit and/or per-transaction fees, not a fixed monthly GLP-1 bundle.\n\nReported one-time physician visit: insurance copay or $129 without insurance, not a medication-inclusive monthly price. Conflicting generic primary-care FAQ prices also remain on this page; the exact applicable checkout charge is UNKNOWN.",
         "starting_price_sort": null
-      },
-      "research_copy_bindings": {
-        "shipping": {
-          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/drhouse.json",
-          "artifact_sha256": "d2e72a173e42af6a8323a2dc3fae54c66d4c6c784f6e70be4fcb1435215dfc89",
-          "fields": [
-            "shipping_wait"
-          ],
-          "field_verified_as_of": {
-            "shipping_wait": "2026-09-09"
-          }
-        },
-        "cancellation": {
-          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/drhouse.json",
-          "artifact_sha256": "d2e72a173e42af6a8323a2dc3fae54c66d4c6c784f6e70be4fcb1435215dfc89",
-          "fields": [
-            "cancellation"
-          ],
-          "field_verified_as_of": {
-            "cancellation": "2026-09-09"
-          }
-        },
-        "cons": {
-          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/drhouse.json",
-          "artifact_sha256": "d2e72a173e42af6a8323a2dc3fae54c66d4c6c784f6e70be4fcb1435215dfc89",
-          "fields": [
-            "shipping_wait"
-          ],
-          "field_verified_as_of": {
-            "shipping_wait": "2026-09-09"
-          },
-          "projection": "unsupported_literal_removed; historical raw evidence retained, not display authority"
-        }
       }
     },
     {
@@ -1127,9 +1146,9 @@
       "official_url": "https://www.gobymeds.com/",
       "page_copy": {
         "bottom_line": "Reported information: the pricing page lists compounded semaglutide single-month $169, compounded tirzepatide single-month $299, a tirzepatide starter bundle total of $399 for 12 weeks, Zepbound $1399/month and Wegovy $1695/month. Dose-dependent bundles are separately listed. Promotional figures accompanied by the December 31, 2025 expiry are not used as current prices. Exact selected next-order cost is UNKNOWN; these are not proven automatic recurring charges.",
-        "cancellation": "Cancellation is stage-dependent, requested through customer support, and effective only once GobyMeds (or the pharmacy/provider whose action is needed) confirms it. Before clinical review begins — and before any prescription, dispensing or shipment — the order is cancelled with a full refund. If a provider declines to prescribe, the order is fully refunded and no consultation fee is retained. If the patient cancels after clinical review has begun, GobyMeds may retain a $50 consultation/clinical-review fee. There is no subscription to cancel: billing is a single payment per order with no auto-renewal.",
+        "cancellation": "Cancellation is stage-dependent, requested through customer support, and effective only once GobyMeds (or the pharmacy/provider whose action is needed) confirms it. Before clinical review begins \u2014 and before any prescription, dispensing or shipment \u2014 the order is cancelled with a full refund. If a provider declines to prescribe, the order is fully refunded and no consultation fee is retained. If the patient cancels after clinical review has begun, GobyMeds may retain a $50 consultation/clinical-review fee. There is no subscription to cancel: billing is a single payment per order with no auto-renewal.",
         "description": "A source-checked look at GobyMeds' published pricing for compounded and branded GLP-1s, what the starter bundle includes, its 503A/503B pharmacy routing, HSA and FSA acceptance, and how its published cancellation and refund ladder actually works.",
-        "eligibility": "Marketed as provider-reviewed care across all 50 U.S. states. The Terms of Service condition access on the participating provider being licensed where the patient is physically located at the time of care, and state that a residence, mailing, billing or shipping address does not by itself establish eligibility. No separate consultation fee and no membership fee up front — the consultation is stated as included in the bundle price. A $50 consultation/clinical-review fee (or another amount disclosed at checkout) may be charged or retained from a refund only if the patient cancels after clinical review has begun.",
+        "eligibility": "Marketed as provider-reviewed care across all 50 U.S. states. The Terms of Service condition access on the participating provider being licensed where the patient is physically located at the time of care, and state that a residence, mailing, billing or shipping address does not by itself establish eligibility. No separate consultation fee and no membership fee up front \u2014 the consultation is stated as included in the bundle price. A $50 consultation/clinical-review fee (or another amount disclosed at checkout) may be charged or retained from a refund only if the patient cancels after clinical review has begun.",
         "pricing": "Reported information: the pricing page lists a $299 total starter bundle covering 12 weeks for first-time compounded-semaglutide patients, including medication, shipping, consultation and injection kit. This is a bundle total, not a $99 first checkout charge. The same capture retains JUMPSTART promotional copy with an explicit December 31, 2025 end date; that promotion is not treated as current. Exact selected checkout charge remains UNKNOWN.\n\nReported information: the pricing page lists compounded semaglutide single-month $169, compounded tirzepatide single-month $299, a tirzepatide starter bundle total of $399 for 12 weeks, Zepbound $1399/month and Wegovy $1695/month. Dose-dependent bundles are separately listed. Promotional figures accompanied by the December 31, 2025 expiry are not used as current prices. Exact selected next-order cost is UNKNOWN; these are not proven automatic recurring charges.\n\nReported information: the terms permit a $50 consultation or clinical-review fee, or another amount disclosed at checkout, for voluntary cancellation after review/processing costs have been incurred. Do not interpret the homepage's free-consultation marketing as eliminating this conditional cancellation fee.",
         "regulatory": "Compounded medications are dispensed by 503A or 503B pharmacy partners licensed in the patient's own state. GobyMeds states it does not operate a pharmacy or practice medicine: care is furnished by independent medical groups and prescriptions are dispensed by independent licensed pharmacies. Both compounded GLP-1s and FDA-approved branded pens are offered. Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
         "shipping": "UNKNOWN guaranteed end-to-end delivery time. The provider's terms state that shipping and fulfillment estimates are not guaranteed and list clinical, pharmacy, availability, carrier and other possible delays.",
@@ -1165,7 +1184,7 @@
         "promotion_authorized": true,
         "pros": [
           "Reported information: the pricing page lists compounded semaglutide single-month $169, compounded tirzepatide single-month $299, a tirzepatide starter bundle total of $399 for 12 weeks, Zepbound $1399/month and Wegovy $1695/month. Dose-dependent bundles are separately listed. Promotional figures accompanied by the December 31, 2025 expiry are not used as current prices. Exact selected next-order cost is UNKNOWN; these are not proven automatic recurring charges.",
-          "The terms rule out subscriptions, auto-renewal and recurring billing entirely — each order is a single payment",
+          "The terms rule out subscriptions, auto-renewal and recurring billing entirely \u2014 each order is a single payment",
           "HSA and FSA cards are accepted, and no consultation or membership fee is charged on top",
           "Reported information: the pricing page lists compounded semaglutide single-month $169, compounded tirzepatide single-month $299, a tirzepatide starter bundle total of $399 for 12 weeks, Zepbound $1399/month and Wegovy $1695/month. Dose-dependent bundles are separately listed. Promotional figures accompanied by the December 31, 2025 expiry are not used as current prices. Exact selected next-order cost is UNKNOWN; these are not proven automatic recurring charges.",
           "Prescriptions are routed to a pharmacy partner licensed in the patient's own state, and the provider markets availability in all 50 states"
@@ -1214,13 +1233,13 @@
       },
       "official_url": "https://get.coreagerx.com/home35/",
       "page_copy": {
-        "bottom_line": "Reported starting figures: compounded semaglutide from $99/mo and compounded tirzepatide from $149/mo, explicitly named in separate homepage product sections and corroborated by their individual product pages. These are not established monthly-billed charges. The same homepage also says the combined GLP-1 offering is from $199/mo; that discrepancy is unresolved. The home35 landing page's starting prices are expressly based on a 12-month plan paid in full, as quoted in first_month_price. Its broad $149 flat-rate claim is not applied to every medication. Exact selected-plan recurring charge, renewal cadence and all-in price remain UNKNOWN. No efficacy claim in the source excerpt is adopted.\n\nUNKNOWN exact fee for the selected GLP-1 treatment; not zero. The refund policy reports a possible $50–$100 consultation fee depending on the treatment purchased and says it is non-refundable once consultation or medical review begins. This is a conditional provider-reported range, not a universal additional charge or a confirmed first-order amount.\n\nReported information: medication typically arrives approximately 2–3 business days after pharmacy shipment. This is carrier transit, not time from checkout to arrival. Medical review, documentation, approval and compounding occur before shipment, so end-to-end arrival time remains UNKNOWN. Standard prescription shipping is included unless otherwise disclosed at checkout; no unconditional zero shipping charge is inferred.",
+        "bottom_line": "Reported starting figures: compounded semaglutide from $99/mo and compounded tirzepatide from $149/mo, explicitly named in separate homepage product sections and corroborated by their individual product pages. These are not established monthly-billed charges. The same homepage also says the combined GLP-1 offering is from $199/mo; that discrepancy is unresolved. The home35 landing page's starting prices are expressly based on a 12-month plan paid in full, as quoted in first_month_price. Its broad $149 flat-rate claim is not applied to every medication. Exact selected-plan recurring charge, renewal cadence and all-in price remain UNKNOWN. No efficacy claim in the source excerpt is adopted.\n\nUNKNOWN exact fee for the selected GLP-1 treatment; not zero. The refund policy reports a possible $50\u2013$100 consultation fee depending on the treatment purchased and says it is non-refundable once consultation or medical review begins. This is a conditional provider-reported range, not a universal additional charge or a confirmed first-order amount.\n\nReported information: medication typically arrives approximately 2\u20133 business days after pharmacy shipment. This is carrier transit, not time from checkout to arrival. Medical review, documentation, approval and compounding occur before shipment, so end-to-end arrival time remains UNKNOWN. Standard prescription shipping is included unless otherwise disclosed at checkout; no unconditional zero shipping charge is inferred.",
         "cancellation": "Reported information, not a legal determination: the policy allows cancellation through the patient account or Patient Care Team before renewal is processed to stop future charges; this does not automatically cancel or refund processed orders. It also describes one-time purchases and automatic-renewal subscriptions, so no universal no-subscription claim is made. Order cancellation is conditional on no provider approval, no pharmacy transmission and remaining within the policy's refund window. Applicable consultation fees may be retained. The policy says prescription orders are final after both approval and pharmacy transmission, and establishes a 30-calendar-day order refund cutoff subject to applicable law. Canceling future renewals remains distinct from refunding the current order.",
         "description": "A source-checked look at CoreAge Rx published compounded GLP-1 prices, provider review, included support, and delivery disclosures.",
         "eligibility": "United States offer; Katalys program terms restrict Louisiana and Mississippi. Provider review and support are included; no separate consultation fee is published.",
-        "pricing": "Reported advertised starting prices: Semaglutide $99 per month; Tirzepatide $149 per month; Semaglutide Microdosing Therapy $149 per month; Tirzepatide Microdosing Therapy $199 per month. These are distinct named product tiers, not confirmed monthly-billed renewal amounts. Each product page says compounded in the USA, no long-term contracts, no membership fees and fast free delivery. The separate home35 campaign advertises $149/mo adjacent to START SEMAGLUTIDE NOW, $149/Month after START TIRZEPATIDE NOW, and an unattributed $99/Month. Its footer conditions prices on a 12-month plan paid in full. That prepaid condition is not silently removed, nor automatically imposed on the separate product-page offers. The homepage's generic GLP-1 from $199/mo statement conflicts with its named $99/$149 cards. Home and FAQ say same price at every dose; no numeric dose schedule is invented. No struck-through standard price or dollar first-month discount is established on the inspected GLP-1 pages. Exact first/renewal debits, selected-plan prepayment total, taxes and all-in calculator total remain UNKNOWN. Published prices are retained despite these gaps.\n\nReported conditional consultation fee: $50–$100 depending on treatment, non-refundable once consultation or medical review begins. Exact selected-treatment fee and whether separately charged versus included remain UNKNOWN, not zero. The FAQ separately says in most cases a no-cost consultation may be included with the order. This conditional inclusion is preserved, not promoted to universally free consultation. The FAQ's 100% refund if not approved conflicts with the policy's retained applicable consultation fee.",
+        "pricing": "Reported advertised starting prices: Semaglutide $99 per month; Tirzepatide $149 per month; Semaglutide Microdosing Therapy $149 per month; Tirzepatide Microdosing Therapy $199 per month. These are distinct named product tiers, not confirmed monthly-billed renewal amounts. Each product page says compounded in the USA, no long-term contracts, no membership fees and fast free delivery. The separate home35 campaign advertises $149/mo adjacent to START SEMAGLUTIDE NOW, $149/Month after START TIRZEPATIDE NOW, and an unattributed $99/Month. Its footer conditions prices on a 12-month plan paid in full. That prepaid condition is not silently removed, nor automatically imposed on the separate product-page offers. The homepage's generic GLP-1 from $199/mo statement conflicts with its named $99/$149 cards. Home and FAQ say same price at every dose; no numeric dose schedule is invented. No struck-through standard price or dollar first-month discount is established on the inspected GLP-1 pages. Exact first/renewal debits, selected-plan prepayment total, taxes and all-in calculator total remain UNKNOWN. Published prices are retained despite these gaps.\n\nReported conditional consultation fee: $50\u2013$100 depending on treatment, non-refundable once consultation or medical review begins. Exact selected-treatment fee and whether separately charged versus included remain UNKNOWN, not zero. The FAQ separately says in most cases a no-cost consultation may be included with the order. This conditional inclusion is preserved, not promoted to universally free consultation. The FAQ's 100% refund if not approved conflicts with the policy's retained applicable consultation fee.",
         "regulatory": "The page says medication comes from FDA-registered pharmacies; it does not publish a 503A or 503B designation. Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
-        "shipping": "Reported information: medication typically arrives approximately 2–3 business days after pharmacy shipment. This is carrier transit, not time from checkout to arrival. Medical review, documentation, approval and compounding occur before shipment, so end-to-end arrival time remains UNKNOWN. Standard prescription shipping is included unless otherwise disclosed at checkout; no unconditional zero shipping charge is inferred.",
+        "shipping": "Reported information: medication typically arrives approximately 2\u20133 business days after pharmacy shipment. This is carrier transit, not time from checkout to arrival. Medical review, documentation, approval and compounding occur before shipment, so end-to-end arrival time remains UNKNOWN. Standard prescription shipping is included unless otherwise disclosed at checkout; no unconditional zero shipping charge is inferred.",
         "title": "CoreAge Rx GLP-1 review: pricing, provider review, and disclosures"
       },
       "program_id": "coreage-rx-glp-1-1632",
@@ -1239,7 +1258,7 @@
         "best_for": "People comparing published flat monthly compounded GLP-1 pricing with online provider review",
         "cons": [
           "Louisiana and Mississippi are restricted in the captured program terms",
-          "Reported information: medication typically arrives approximately 2–3 business days after pharmacy shipment. This is carrier transit, not time from checkout to arrival. Medical review, documentation, approval and compounding occur before shipment, so end-to-end arrival time remains UNKNOWN. Standard prescription shipping is included unless otherwise disclosed at checkout; no unconditional zero shipping charge is inferred.",
+          "Reported information: medication typically arrives approximately 2\u20133 business days after pharmacy shipment. This is carrier transit, not time from checkout to arrival. Medical review, documentation, approval and compounding occur before shipment, so end-to-end arrival time remains UNKNOWN. Standard prescription shipping is included unless otherwise disclosed at checkout; no unconditional zero shipping charge is inferred.",
           "Compounded drugs are not FDA approved"
         ],
         "criteria_scores": {},
@@ -1251,14 +1270,14 @@
         "promotion_authorized": true,
         "pros": [
           "UNKNOWN exact first-month charge and initial checkout total. The landing page explicitly qualifies displayed starting prices as based on a 12-month plan paid in full. A starting monthly equivalent is not a first-month bill. No annual checkout total, first charge, or renewal amount is inferred from multiplication or the page's flat-rate headline. See monthly_price for medication-specific starting figures and the unresolved homepage pricing discrepancy.\n\nReported starting figures: compounded semaglutide from $99/mo and compounded tirzepatide from $149/mo, explicitly named in separate homepage product sections and corroborated by their individual product pages. These are not established monthly-billed charges. The same homepage also says the combined GLP-1 offering is from $199/mo; that discrepancy is unresolved. The home35 landing page's starting prices are expressly based on a 12-month plan paid in full, as quoted in first_month_price. Its broad $149 flat-rate claim is not applied to every medication. Exact selected-plan recurring charge, renewal cadence and all-in price remain UNKNOWN. No efficacy claim in the source excerpt is adopted.\n\nReported information: offers are limited to United States residents aged 18 and older. Prescription products require consultation and a valid prescription; individual treatment eligibility is a clinician decision, not established by age alone. A treatment-specific BMI threshold is UNKNOWN in the captured public pages.",
-          "Reported conditional consultation fee: $50–$100 depending on treatment, non-refundable once consultation or medical review begins. Exact selected-treatment fee and whether separately charged versus included remain UNKNOWN, not zero. The FAQ separately says in most cases a no-cost consultation may be included with the order. This conditional inclusion is preserved, not promoted to universally free consultation. The FAQ's 100% refund if not approved conflicts with the policy's retained applicable consultation fee.",
-          "Reported conditional consultation fee: $50–$100 depending on treatment, non-refundable once consultation or medical review begins. Exact selected-treatment fee and whether separately charged versus included remain UNKNOWN, not zero. The FAQ separately says in most cases a no-cost consultation may be included with the order. This conditional inclusion is preserved, not promoted to universally free consultation. The FAQ's 100% refund if not approved conflicts with the policy's retained applicable consultation fee."
+          "Reported conditional consultation fee: $50\u2013$100 depending on treatment, non-refundable once consultation or medical review begins. Exact selected-treatment fee and whether separately charged versus included remain UNKNOWN, not zero. The FAQ separately says in most cases a no-cost consultation may be included with the order. This conditional inclusion is preserved, not promoted to universally free consultation. The FAQ's 100% refund if not approved conflicts with the policy's retained applicable consultation fee.",
+          "Reported conditional consultation fee: $50\u2013$100 depending on treatment, non-refundable once consultation or medical review begins. Exact selected-treatment fee and whether separately charged versus included remain UNKNOWN, not zero. The FAQ separately says in most cases a no-cost consultation may be included with the order. This conditional inclusion is preserved, not promoted to universally free consultation. The FAQ's 100% refund if not approved conflicts with the policy's retained applicable consultation fee."
         ],
         "provider": "CoreAge Rx GLP-1",
         "review_path": "/reviews/coreage-rx-glp-1-1632/",
         "score": null,
         "source_url": "https://get.coreagerx.com/home35/",
-        "starting_price": "Reported advertised starting prices: Semaglutide $99 per month; Tirzepatide $149 per month; Semaglutide Microdosing Therapy $149 per month; Tirzepatide Microdosing Therapy $199 per month. These are distinct named product tiers, not confirmed monthly-billed renewal amounts. Each product page says compounded in the USA, no long-term contracts, no membership fees and fast free delivery. The separate home35 campaign advertises $149/mo adjacent to START SEMAGLUTIDE NOW, $149/Month after START TIRZEPATIDE NOW, and an unattributed $99/Month. Its footer conditions prices on a 12-month plan paid in full. That prepaid condition is not silently removed, nor automatically imposed on the separate product-page offers. The homepage's generic GLP-1 from $199/mo statement conflicts with its named $99/$149 cards. Home and FAQ say same price at every dose; no numeric dose schedule is invented. No struck-through standard price or dollar first-month discount is established on the inspected GLP-1 pages. Exact first/renewal debits, selected-plan prepayment total, taxes and all-in calculator total remain UNKNOWN. Published prices are retained despite these gaps.\n\nReported conditional consultation fee: $50–$100 depending on treatment, non-refundable once consultation or medical review begins. Exact selected-treatment fee and whether separately charged versus included remain UNKNOWN, not zero. The FAQ separately says in most cases a no-cost consultation may be included with the order. This conditional inclusion is preserved, not promoted to universally free consultation. The FAQ's 100% refund if not approved conflicts with the policy's retained applicable consultation fee.",
+        "starting_price": "Reported advertised starting prices: Semaglutide $99 per month; Tirzepatide $149 per month; Semaglutide Microdosing Therapy $149 per month; Tirzepatide Microdosing Therapy $199 per month. These are distinct named product tiers, not confirmed monthly-billed renewal amounts. Each product page says compounded in the USA, no long-term contracts, no membership fees and fast free delivery. The separate home35 campaign advertises $149/mo adjacent to START SEMAGLUTIDE NOW, $149/Month after START TIRZEPATIDE NOW, and an unattributed $99/Month. Its footer conditions prices on a 12-month plan paid in full. That prepaid condition is not silently removed, nor automatically imposed on the separate product-page offers. The homepage's generic GLP-1 from $199/mo statement conflicts with its named $99/$149 cards. Home and FAQ say same price at every dose; no numeric dose schedule is invented. No struck-through standard price or dollar first-month discount is established on the inspected GLP-1 pages. Exact first/renewal debits, selected-plan prepayment total, taxes and all-in calculator total remain UNKNOWN. Published prices are retained despite these gaps.\n\nReported conditional consultation fee: $50\u2013$100 depending on treatment, non-refundable once consultation or medical review begins. Exact selected-treatment fee and whether separately charged versus included remain UNKNOWN, not zero. The FAQ separately says in most cases a no-cost consultation may be included with the order. This conditional inclusion is preserved, not promoted to universally free consultation. The FAQ's 100% refund if not approved conflicts with the policy's retained applicable consultation fee.",
         "starting_price_sort": null
       }
     },
@@ -1298,11 +1317,11 @@
       },
       "official_url": "https://bbhealthplus.com/",
       "page_copy": {
-        "bottom_line": "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH — LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
+        "bottom_line": "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH \u2014 LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
         "cancellation": "",
         "description": "A source-checked review of Bodybuilding Health+ compounded GLP-1 bundle prices, provider evaluation, cancellation, and pharmacy disclosures.",
         "eligibility": "An online medical evaluation is required.",
-        "pricing": "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH — LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
+        "pricing": "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH \u2014 LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
         "regulatory": "Compounded GLP-1 medications are prepared by licensed U.S. pharmacies; no 503A or 503B designation is published. Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
         "shipping": "The captured page does not publish an exact shipping window.",
         "title": "Bodybuilding Health+ GLP-1 review: bundle pricing, evaluation, and disclosures"
@@ -1315,14 +1334,29 @@
         "editorial_content_ready": true,
         "regulatory_banner_required": "compounded_glp_general"
       },
+      "research_copy_bindings": {
+        "pricing": {
+          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/bodybuilding-com-glp-1-longevity-review.json",
+          "artifact_sha256": "99f54b4b2b6f1c956927f098fba359e30746cc3c3c207ea055f5a63a43649ebf",
+          "field_verified_as_of": {
+            "first_month_price": "2026-09-10",
+            "monthly_price": "2026-09-10"
+          },
+          "fields": [
+            "first_month_price",
+            "monthly_price"
+          ],
+          "projection": "attested bundle monthly equivalents carried verbatim; stale captured figures replaced"
+        }
+      },
       "review_path": "/reviews/bodybuilding-com-glp-1-longevity-review/",
       "row_contract": {
         "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=1584&aff_id=13031",
         "affiliate_link_mode": "transparent_direct",
         "affiliate_network": "Katalys",
-        "best_for": "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH — LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
+        "best_for": "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH \u2014 LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
         "cons": [
-          "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH — LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
+          "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH \u2014 LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
           "No exact shipping window is published",
           "Compounded drugs are not FDA approved"
         ],
@@ -1342,23 +1376,8 @@
         "review_path": "/reviews/bodybuilding-com-glp-1-longevity-review/",
         "score": null,
         "source_url": "https://bbhealthplus.com/",
-        "starting_price": "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH — LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
+        "starting_price": "Reported information, captured 2026-09-10: compounded semaglutide 1-month $179/mo; 3-month Popular $159.33/mo (SAVE $59); 6-month $158/mo (SAVE $126); 12-month Best Value $141.50/mo (SAVE $450). Compounded tirzepatide 1-month $209/mo; 3-month Popular $179/mo (SAVE $90); 6-month $174.67/mo (SAVE $206); 12-month Best Value $187.33/mo (SAVE $260). These are advertised bundle rates/monthly equivalents, not verified exact first or renewal debits. Preserve the higher tirzepatide 12-month rate as published. Bundle length is stated; prepayment, exact bundle total, renewal cadence/price, consultation amount, shipping charge and dose-specific pricing are UNKNOWN. No source says a uniform price applies to every dose. Public product intake pages separately advertise $150 OFF YOUR FIRST MONTH \u2014 LIMITED TIME OFFER; qualifying plan, baseline, expiry, stacking and net debit are UNKNOWN. Do not subtract $150 from homepage figures. The first intake step requests height and weight; no patient data were entered.",
         "starting_price_sort": null
-      },
-      "research_copy_bindings": {
-        "pricing": {
-          "artifact": "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/wire-backlog-worker/program-research/bodybuilding-com-glp-1-longevity-review.json",
-          "artifact_sha256": "99f54b4b2b6f1c956927f098fba359e30746cc3c3c207ea055f5a63a43649ebf",
-          "fields": [
-            "first_month_price",
-            "monthly_price"
-          ],
-          "field_verified_as_of": {
-            "first_month_price": "2026-09-10",
-            "monthly_price": "2026-09-10"
-          },
-          "projection": "attested bundle monthly equivalents carried verbatim; stale captured figures replaced"
-        }
       }
     },
     {
@@ -1484,7 +1503,7 @@
         "cancellation": "The captured page does not publish a complete product-specific cancellation and refund schedule.",
         "description": "A source-checked review of RxSpan MD published GLP-1 product prices, formats, clinician-led care, state availability, and delivery disclosures.",
         "eligibility": "Service is advertised in all 50 states, with availability varying by treatment and jurisdiction. Clinician-led care is included and no hidden fees are advertised; no separate consultation fee is published.",
-        "pricing": "Published first-month prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. These are advertised first-month figures, not verified exact checkout debits; brand renewal prices are UNKNOWN. Compounded products publish regular monthly prices and prepaid annual promotional totals, not an independently verified first-month debit. Do not substitute their monthly equivalents for an initial charge.\n\nAdvertised regular monthly prices: compounded semaglutide injection $249; semaglutide capsules $249; tirzepatide injection $329; tirzepatide capsules $349. Advertised 12-month STARTNOW promotional plans, each billed as one upfront payment and auto-renewing, final price confirmed at checkout: semaglutide injection as low as $175/mo, $2,094 upfront; semaglutide capsules as low as $162/mo, $1,933 upfront; tirzepatide injection as low as $243/mo, $2,905 upfront; tirzepatide capsules as low as $243/mo, $2,905 upfront. Preserve the published rounded monthly figures rather than treating them as exact debits. The rendered Choose a plan selector separately shows 12 months $175/mo with STARTNOW, 6 months $199/mo, 3 months $219/mo, Monthly $249/mo; its selected product is not explicitly bound in extracted text, so do not apply these tiers to every medication. The page says prepaid monthly, quarterly, semi-annually or annually; no exact renewal total is verified. Brand products publish first-month rather than recurring prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. Exact checkout and renewal debits remain UNKNOWN. Homepage banner separately advertises Save 10% on any order — use code STARTNOW; no additional discounted amount was calculated.",
+        "pricing": "Published first-month prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. These are advertised first-month figures, not verified exact checkout debits; brand renewal prices are UNKNOWN. Compounded products publish regular monthly prices and prepaid annual promotional totals, not an independently verified first-month debit. Do not substitute their monthly equivalents for an initial charge.\n\nAdvertised regular monthly prices: compounded semaglutide injection $249; semaglutide capsules $249; tirzepatide injection $329; tirzepatide capsules $349. Advertised 12-month STARTNOW promotional plans, each billed as one upfront payment and auto-renewing, final price confirmed at checkout: semaglutide injection as low as $175/mo, $2,094 upfront; semaglutide capsules as low as $162/mo, $1,933 upfront; tirzepatide injection as low as $243/mo, $2,905 upfront; tirzepatide capsules as low as $243/mo, $2,905 upfront. Preserve the published rounded monthly figures rather than treating them as exact debits. The rendered Choose a plan selector separately shows 12 months $175/mo with STARTNOW, 6 months $199/mo, 3 months $219/mo, Monthly $249/mo; its selected product is not explicitly bound in extracted text, so do not apply these tiers to every medication. The page says prepaid monthly, quarterly, semi-annually or annually; no exact renewal total is verified. Brand products publish first-month rather than recurring prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. Exact checkout and renewal debits remain UNKNOWN. Homepage banner separately advertises Save 10% on any order \u2014 use code STARTNOW; no additional discounted amount was calculated.",
         "regulatory": "The captured page does not publish a 503A or 503B pharmacy designation. Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
         "shipping": "Free expedited delivery is advertised; no exact number of days is published.",
         "title": "RxSpan MD GLP-1 review: brand and compounded prices, care, and delivery"
@@ -1504,7 +1523,7 @@
         "affiliate_network": "Katalys",
         "best_for": "People comparing brand-name, oral, and injectable GLP-1 options with published cash prices",
         "cons": [
-          "Published first-month prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. These are advertised first-month figures, not verified exact checkout debits; brand renewal prices are UNKNOWN. Compounded products publish regular monthly prices and prepaid annual promotional totals, not an independently verified first-month debit. Do not substitute their monthly equivalents for an initial charge.\n\nAdvertised regular monthly prices: compounded semaglutide injection $249; semaglutide capsules $249; tirzepatide injection $329; tirzepatide capsules $349. Advertised 12-month STARTNOW promotional plans, each billed as one upfront payment and auto-renewing, final price confirmed at checkout: semaglutide injection as low as $175/mo, $2,094 upfront; semaglutide capsules as low as $162/mo, $1,933 upfront; tirzepatide injection as low as $243/mo, $2,905 upfront; tirzepatide capsules as low as $243/mo, $2,905 upfront. Preserve the published rounded monthly figures rather than treating them as exact debits. The rendered Choose a plan selector separately shows 12 months $175/mo with STARTNOW, 6 months $199/mo, 3 months $219/mo, Monthly $249/mo; its selected product is not explicitly bound in extracted text, so do not apply these tiers to every medication. The page says prepaid monthly, quarterly, semi-annually or annually; no exact renewal total is verified. Brand products publish first-month rather than recurring prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. Exact checkout and renewal debits remain UNKNOWN. Homepage banner separately advertises Save 10% on any order — use code STARTNOW; no additional discounted amount was calculated.",
+          "Published first-month prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. These are advertised first-month figures, not verified exact checkout debits; brand renewal prices are UNKNOWN. Compounded products publish regular monthly prices and prepaid annual promotional totals, not an independently verified first-month debit. Do not substitute their monthly equivalents for an initial charge.\n\nAdvertised regular monthly prices: compounded semaglutide injection $249; semaglutide capsules $249; tirzepatide injection $329; tirzepatide capsules $349. Advertised 12-month STARTNOW promotional plans, each billed as one upfront payment and auto-renewing, final price confirmed at checkout: semaglutide injection as low as $175/mo, $2,094 upfront; semaglutide capsules as low as $162/mo, $1,933 upfront; tirzepatide injection as low as $243/mo, $2,905 upfront; tirzepatide capsules as low as $243/mo, $2,905 upfront. Preserve the published rounded monthly figures rather than treating them as exact debits. The rendered Choose a plan selector separately shows 12 months $175/mo with STARTNOW, 6 months $199/mo, 3 months $219/mo, Monthly $249/mo; its selected product is not explicitly bound in extracted text, so do not apply these tiers to every medication. The page says prepaid monthly, quarterly, semi-annually or annually; no exact renewal total is verified. Brand products publish first-month rather than recurring prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. Exact checkout and renewal debits remain UNKNOWN. Homepage banner separately advertises Save 10% on any order \u2014 use code STARTNOW; no additional discounted amount was calculated.",
           "No exact delivery-day promise is published"
         ],
         "criteria_scores": {},
@@ -1515,7 +1534,7 @@
         "program_id": "rxspan-md-telehealth-program-review",
         "promotion_authorized": true,
         "pros": [
-          "Published first-month prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. These are advertised first-month figures, not verified exact checkout debits; brand renewal prices are UNKNOWN. Compounded products publish regular monthly prices and prepaid annual promotional totals, not an independently verified first-month debit. Do not substitute their monthly equivalents for an initial charge.\n\nAdvertised regular monthly prices: compounded semaglutide injection $249; semaglutide capsules $249; tirzepatide injection $329; tirzepatide capsules $349. Advertised 12-month STARTNOW promotional plans, each billed as one upfront payment and auto-renewing, final price confirmed at checkout: semaglutide injection as low as $175/mo, $2,094 upfront; semaglutide capsules as low as $162/mo, $1,933 upfront; tirzepatide injection as low as $243/mo, $2,905 upfront; tirzepatide capsules as low as $243/mo, $2,905 upfront. Preserve the published rounded monthly figures rather than treating them as exact debits. The rendered Choose a plan selector separately shows 12 months $175/mo with STARTNOW, 6 months $199/mo, 3 months $219/mo, Monthly $249/mo; its selected product is not explicitly bound in extracted text, so do not apply these tiers to every medication. The page says prepaid monthly, quarterly, semi-annually or annually; no exact renewal total is verified. Brand products publish first-month rather than recurring prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. Exact checkout and renewal debits remain UNKNOWN. Homepage banner separately advertises Save 10% on any order — use code STARTNOW; no additional discounted amount was calculated.",
+          "Published first-month prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. These are advertised first-month figures, not verified exact checkout debits; brand renewal prices are UNKNOWN. Compounded products publish regular monthly prices and prepaid annual promotional totals, not an independently verified first-month debit. Do not substitute their monthly equivalents for an initial charge.\n\nAdvertised regular monthly prices: compounded semaglutide injection $249; semaglutide capsules $249; tirzepatide injection $329; tirzepatide capsules $349. Advertised 12-month STARTNOW promotional plans, each billed as one upfront payment and auto-renewing, final price confirmed at checkout: semaglutide injection as low as $175/mo, $2,094 upfront; semaglutide capsules as low as $162/mo, $1,933 upfront; tirzepatide injection as low as $243/mo, $2,905 upfront; tirzepatide capsules as low as $243/mo, $2,905 upfront. Preserve the published rounded monthly figures rather than treating them as exact debits. The rendered Choose a plan selector separately shows 12 months $175/mo with STARTNOW, 6 months $199/mo, 3 months $219/mo, Monthly $249/mo; its selected product is not explicitly bound in extracted text, so do not apply these tiers to every medication. The page says prepaid monthly, quarterly, semi-annually or annually; no exact renewal total is verified. Brand products publish first-month rather than recurring prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. Exact checkout and renewal debits remain UNKNOWN. Homepage banner separately advertises Save 10% on any order \u2014 use code STARTNOW; no additional discounted amount was calculated.",
           "Clinician-led care is advertised",
           "Free expedited delivery is advertised"
         ],
@@ -1523,12 +1542,12 @@
         "review_path": "/reviews/rxspan-md-telehealth-program-review/",
         "score": null,
         "source_url": "https://www.rxspanmd.com/",
-        "starting_price": "Published first-month prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. These are advertised first-month figures, not verified exact checkout debits; brand renewal prices are UNKNOWN. Compounded products publish regular monthly prices and prepaid annual promotional totals, not an independently verified first-month debit. Do not substitute their monthly equivalents for an initial charge.\n\nAdvertised regular monthly prices: compounded semaglutide injection $249; semaglutide capsules $249; tirzepatide injection $329; tirzepatide capsules $349. Advertised 12-month STARTNOW promotional plans, each billed as one upfront payment and auto-renewing, final price confirmed at checkout: semaglutide injection as low as $175/mo, $2,094 upfront; semaglutide capsules as low as $162/mo, $1,933 upfront; tirzepatide injection as low as $243/mo, $2,905 upfront; tirzepatide capsules as low as $243/mo, $2,905 upfront. Preserve the published rounded monthly figures rather than treating them as exact debits. The rendered Choose a plan selector separately shows 12 months $175/mo with STARTNOW, 6 months $199/mo, 3 months $219/mo, Monthly $249/mo; its selected product is not explicitly bound in extracted text, so do not apply these tiers to every medication. The page says prepaid monthly, quarterly, semi-annually or annually; no exact renewal total is verified. Brand products publish first-month rather than recurring prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. Exact checkout and renewal debits remain UNKNOWN. Homepage banner separately advertises Save 10% on any order — use code STARTNOW; no additional discounted amount was calculated.",
+        "starting_price": "Published first-month prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. These are advertised first-month figures, not verified exact checkout debits; brand renewal prices are UNKNOWN. Compounded products publish regular monthly prices and prepaid annual promotional totals, not an independently verified first-month debit. Do not substitute their monthly equivalents for an initial charge.\n\nAdvertised regular monthly prices: compounded semaglutide injection $249; semaglutide capsules $249; tirzepatide injection $329; tirzepatide capsules $349. Advertised 12-month STARTNOW promotional plans, each billed as one upfront payment and auto-renewing, final price confirmed at checkout: semaglutide injection as low as $175/mo, $2,094 upfront; semaglutide capsules as low as $162/mo, $1,933 upfront; tirzepatide injection as low as $243/mo, $2,905 upfront; tirzepatide capsules as low as $243/mo, $2,905 upfront. Preserve the published rounded monthly figures rather than treating them as exact debits. The rendered Choose a plan selector separately shows 12 months $175/mo with STARTNOW, 6 months $199/mo, 3 months $219/mo, Monthly $249/mo; its selected product is not explicitly bound in extracted text, so do not apply these tiers to every medication. The page says prepaid monthly, quarterly, semi-annually or annually; no exact renewal total is verified. Brand products publish first-month rather than recurring prices: Ozempic $1,299, Wegovy $1,349, Zepbound $1,069. Exact checkout and renewal debits remain UNKNOWN. Homepage banner separately advertises Save 10% on any order \u2014 use code STARTNOW; no additional discounted amount was calculated.",
         "starting_price_sort": null
       }
     },
     {
-      "display_name": "Pallas Health – GLP-1 Weight Loss & NAD",
+      "display_name": "Pallas Health \u2013 GLP-1 Weight Loss & NAD",
       "field_sources": {
         "cancellation_and_roles": [
           "https://www.pallashealth.co/",
@@ -1602,7 +1621,7 @@
           "No membership fee is advertised",
           "Free shipping and cancellation at any time are advertised"
         ],
-        "provider": "Pallas Health – GLP-1 Weight Loss & NAD",
+        "provider": "Pallas Health \u2013 GLP-1 Weight Loss & NAD",
         "review_path": "/reviews/pallas-health-review/",
         "score": null,
         "source_url": "https://www.pallashealth.co/",
@@ -1652,9 +1671,9 @@
         "cancellation": "The dedicated policy now says cancellation is effective when the request is received, with no retention conversation or administrative approval required. A request received before charge submission stops that charge; later requests stop future renewals and trigger review of the current payment under refund rules. The old 48-hour notice rule is not carried forward. Canceling renewal does not itself end a prepaid current term or refund a processed payment. Before Medication Fulfillment Start, the policy provides a full affected-payment refund unless a separately itemized and accepted service fee applies; after that point, completed services and pharmacy-started medication are nonrefundable except as legally required, with objectively unearned portions refundable. Terms-of-use wording about intake-stage consultation refunds conflicts and is retained separately, not resolved here.",
         "description": "A source-checked review of Wellmedr's published GLP-1 plan pricing, what the plan includes, shipping, the cancellation window, and its compounded-medication disclosures.",
         "eligibility": "No complete state availability list is published; eligibility is determined at sign-up. The plan price is described as including medication and provider support; no separate consultation fee is published.",
-        "pricing": "Reported on 2026-09-11: semaglutide starting at $49 a month and tirzepatide starting at $89 a month on Monthly Plan cards; shipments every 4 weeks are not a verified billing interval. Ozempic starting at $1,399 and Zepbound starting at $1,599 appear as named month-to-month offers, not ingredient comparisons. Labor Day banner advertises $200 OFF Every Month or $49/mo on 12/month Plans — For Life. Separate new-customer offer says $150 off for life with no long term commitments; product cards advertise 50% off your first month without absolute first-charge amounts. Offers are not combined, and standard prices are UNKNOWN. Dedicated policy says 21-Day Plan bills every 21 calendar days, not monthly; 3-, 6-, 12-Month Plans are prepaid in full and renew only with separate affirmative enrollment. Per-month prepaid prices are equivalents, not monthly debits. Three/six-month renewals generally charge 10 days before term end; twelve-month generally 15 days before, with exact date disclosed at checkout. Exact first charge, renewal debit, consultation fee and all-in total remain UNKNOWN. Historical $199/$299 today and $59/$99 monthly figures were not present in these live captures and are not current prices.",
+        "pricing": "Reported on 2026-09-11: semaglutide starting at $49 a month and tirzepatide starting at $89 a month on Monthly Plan cards; shipments every 4 weeks are not a verified billing interval. Ozempic starting at $1,399 and Zepbound starting at $1,599 appear as named month-to-month offers, not ingredient comparisons. Labor Day banner advertises $200 OFF Every Month or $49/mo on 12/month Plans \u2014 For Life. Separate new-customer offer says $150 off for life with no long term commitments; product cards advertise 50% off your first month without absolute first-charge amounts. Offers are not combined, and standard prices are UNKNOWN. Dedicated policy says 21-Day Plan bills every 21 calendar days, not monthly; 3-, 6-, 12-Month Plans are prepaid in full and renew only with separate affirmative enrollment. Per-month prepaid prices are equivalents, not monthly debits. Three/six-month renewals generally charge 10 days before term end; twelve-month generally 15 days before, with exact date disclosed at checkout. Exact first charge, renewal debit, consultation fee and all-in total remain UNKNOWN. Historical $199/$299 today and $59/$99 monthly figures were not present in these live captures and are not current prices.",
         "regulatory": "Compounded GLP-1 medications are dispensed by licensed U.S. pharmacies; the page does not publish a 503A or 503B designation. Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
-        "shipping": "The FAQ reports shipment within 1–2 business days after provider approval and standard delivery typically taking 3–5 business days. These are distinct dispatch and delivery estimates, not a guaranteed combined intake-to-arrival wait. The dedicated policy says medication ships after clinical approval and pharmacy processing and the checkout-disclosed timeframe applies. Landing-page four-week shipments describe refills, not initial delivery. Exact checkout-specific arrival date is UNKNOWN.",
+        "shipping": "The FAQ reports shipment within 1\u20132 business days after provider approval and standard delivery typically taking 3\u20135 business days. These are distinct dispatch and delivery estimates, not a guaranteed combined intake-to-arrival wait. The dedicated policy says medication ships after clinical approval and pharmacy processing and the checkout-disclosed timeframe applies. Landing-page four-week shipments describe refills, not initial delivery. Exact checkout-specific arrival date is UNKNOWN.",
         "title": "Wellmedr GLP-1 review: plan pricing, cancellation window, and compounded terms"
       },
       "program_id": "wellmedr-review",
@@ -1672,8 +1691,8 @@
         "affiliate_network": "Katalys",
         "best_for": "People shopping the lowest advertised GLP-1 entry price who are comfortable committing to a 12-month plan to hold it",
         "cons": [
-          "Reported on 2026-09-11: semaglutide starting at $49 a month and tirzepatide starting at $89 a month on Monthly Plan cards; shipments every 4 weeks are not a verified billing interval. Ozempic starting at $1,399 and Zepbound starting at $1,599 appear as named month-to-month offers, not ingredient comparisons. Labor Day banner advertises $200 OFF Every Month or $49/mo on 12/month Plans — For Life. Separate new-customer offer says $150 off for life with no long term commitments; product cards advertise 50% off your first month without absolute first-charge amounts. Offers are not combined, and standard prices are UNKNOWN. Dedicated policy says 21-Day Plan bills every 21 calendar days, not monthly; 3-, 6-, 12-Month Plans are prepaid in full and renew only with separate affirmative enrollment. Per-month prepaid prices are equivalents, not monthly debits. Three/six-month renewals generally charge 10 days before term end; twelve-month generally 15 days before, with exact date disclosed at checkout. Exact first charge, renewal debit, consultation fee and all-in total remain UNKNOWN. Historical $199/$299 today and $59/$99 monthly figures were not present in these live captures and are not current prices.",
-          "The FAQ reports shipment within 1–2 business days after provider approval and standard delivery typically taking 3–5 business days. These are distinct dispatch and delivery estimates, not a guaranteed combined intake-to-arrival wait. The dedicated policy says medication ships after clinical approval and pharmacy processing and the checkout-disclosed timeframe applies. Landing-page four-week shipments describe refills, not initial delivery. Exact checkout-specific arrival date is UNKNOWN.\n\nThe dedicated policy now says cancellation is effective when the request is received, with no retention conversation or administrative approval required. A request received before charge submission stops that charge; later requests stop future renewals and trigger review of the current payment under refund rules. The old 48-hour notice rule is not carried forward. Canceling renewal does not itself end a prepaid current term or refund a processed payment. Before Medication Fulfillment Start, the policy provides a full affected-payment refund unless a separately itemized and accepted service fee applies; after that point, completed services and pharmacy-started medication are nonrefundable except as legally required, with objectively unearned portions refundable. Terms-of-use wording about intake-stage consultation refunds conflicts and is retained separately, not resolved here.",
+          "Reported on 2026-09-11: semaglutide starting at $49 a month and tirzepatide starting at $89 a month on Monthly Plan cards; shipments every 4 weeks are not a verified billing interval. Ozempic starting at $1,399 and Zepbound starting at $1,599 appear as named month-to-month offers, not ingredient comparisons. Labor Day banner advertises $200 OFF Every Month or $49/mo on 12/month Plans \u2014 For Life. Separate new-customer offer says $150 off for life with no long term commitments; product cards advertise 50% off your first month without absolute first-charge amounts. Offers are not combined, and standard prices are UNKNOWN. Dedicated policy says 21-Day Plan bills every 21 calendar days, not monthly; 3-, 6-, 12-Month Plans are prepaid in full and renew only with separate affirmative enrollment. Per-month prepaid prices are equivalents, not monthly debits. Three/six-month renewals generally charge 10 days before term end; twelve-month generally 15 days before, with exact date disclosed at checkout. Exact first charge, renewal debit, consultation fee and all-in total remain UNKNOWN. Historical $199/$299 today and $59/$99 monthly figures were not present in these live captures and are not current prices.",
+          "The FAQ reports shipment within 1\u20132 business days after provider approval and standard delivery typically taking 3\u20135 business days. These are distinct dispatch and delivery estimates, not a guaranteed combined intake-to-arrival wait. The dedicated policy says medication ships after clinical approval and pharmacy processing and the checkout-disclosed timeframe applies. Landing-page four-week shipments describe refills, not initial delivery. Exact checkout-specific arrival date is UNKNOWN.\n\nThe dedicated policy now says cancellation is effective when the request is received, with no retention conversation or administrative approval required. A request received before charge submission stops that charge; later requests stop future renewals and trigger review of the current payment under refund rules. The old 48-hour notice rule is not carried forward. Canceling renewal does not itself end a prepaid current term or refund a processed payment. Before Medication Fulfillment Start, the policy provides a full affected-payment refund unless a separately itemized and accepted service fee applies; after that point, completed services and pharmacy-started medication are nonrefundable except as legally required, with objectively unearned portions refundable. Terms-of-use wording about intake-stage consultation refunds conflicts and is retained separately, not resolved here.",
           "No complete state list is published, and compounded drugs are not FDA approved"
         ],
         "criteria_scores": {},
@@ -1692,7 +1711,7 @@
         "review_path": "/reviews/wellmedr-review/",
         "score": null,
         "source_url": "https://www.wellmedr.com/pages/get-started-weight-loss",
-        "starting_price": "Reported on 2026-09-11: semaglutide starting at $49 a month and tirzepatide starting at $89 a month on Monthly Plan cards; shipments every 4 weeks are not a verified billing interval. Ozempic starting at $1,399 and Zepbound starting at $1,599 appear as named month-to-month offers, not ingredient comparisons. Labor Day banner advertises $200 OFF Every Month or $49/mo on 12/month Plans — For Life. Separate new-customer offer says $150 off for life with no long term commitments; product cards advertise 50% off your first month without absolute first-charge amounts. Offers are not combined, and standard prices are UNKNOWN. Dedicated policy says 21-Day Plan bills every 21 calendar days, not monthly; 3-, 6-, 12-Month Plans are prepaid in full and renew only with separate affirmative enrollment. Per-month prepaid prices are equivalents, not monthly debits. Three/six-month renewals generally charge 10 days before term end; twelve-month generally 15 days before, with exact date disclosed at checkout. Exact first charge, renewal debit, consultation fee and all-in total remain UNKNOWN. Historical $199/$299 today and $59/$99 monthly figures were not present in these live captures and are not current prices.",
+        "starting_price": "Reported on 2026-09-11: semaglutide starting at $49 a month and tirzepatide starting at $89 a month on Monthly Plan cards; shipments every 4 weeks are not a verified billing interval. Ozempic starting at $1,399 and Zepbound starting at $1,599 appear as named month-to-month offers, not ingredient comparisons. Labor Day banner advertises $200 OFF Every Month or $49/mo on 12/month Plans \u2014 For Life. Separate new-customer offer says $150 off for life with no long term commitments; product cards advertise 50% off your first month without absolute first-charge amounts. Offers are not combined, and standard prices are UNKNOWN. Dedicated policy says 21-Day Plan bills every 21 calendar days, not monthly; 3-, 6-, 12-Month Plans are prepaid in full and renew only with separate affirmative enrollment. Per-month prepaid prices are equivalents, not monthly debits. Three/six-month renewals generally charge 10 days before term end; twelve-month generally 15 days before, with exact date disclosed at checkout. Exact first charge, renewal debit, consultation fee and all-in total remain UNKNOWN. Historical $199/$299 today and $59/$99 monthly figures were not present in these live captures and are not current prices.",
         "starting_price_sort": null
       }
     },
@@ -1830,7 +1849,7 @@
         "eligibility": "No complete state availability list is published; services are limited to U.S. states where they are available. No separate consultation fee is published; the provider states a medical evaluation is required and pricing varies by plan and subscription.",
         "pricing": "Reported advertised USD monthly starting prices, captured 2026-09-11: compounded semaglutide injection as low as $99/mo; semaglutide RDT (rapid-dissolve tablets) as low as $269/mo; tirzepatide injection as low as $269/mo on the category page and homepage, but $289/mo on its product page; tirzepatide RDT as low as $314/mo. The category also lists WAYT-less Program as low as $269/mo and WAYT-tain Program as low as $126/mo. These are published floors, not exact first/renewal debits or all-in totals. All are subject to medical consultation and prescribing; pricing varies by plan/subscription. No dose-specific schedule, all-dose promise, separately priced consultation, numeric shipping charge, standard-versus-discount schedule, prepaid total or commitment duration is established. Preserve the conflicting tirzepatide figures rather than choosing one as an exact bill.",
         "regulatory": "The provider names Absolute Pharmacy, Belmar Pharma Solutions, The Pharmacy Hub and TMC Acquisition dba Tailor Made Compounding as prescription-fulfillment services; it does not publish a 503A or 503B designation. Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
-        "shipping": "The provider publishes a typical shipping time of 1–2 days.",
+        "shipping": "The provider publishes a typical shipping time of 1\u20132 days.",
         "title": "Nu Image Medical GLP-1 review: four published prices, the needle-free option, and the cancellation window"
       },
       "program_id": "nu-image-medical-review",
@@ -2001,7 +2020,7 @@
         "eligibility": "All 50 states.",
         "pricing": "UNKNOWN_NO_SOURCE",
         "regulatory": "Breeze Meds names pharmacy partners, but the captured provider pages do not state a compounding-pharmacy classification.",
-        "shipping": "The provider publishes a typical 2–3 week span from initial consultation through medication receipt.",
+        "shipping": "The provider publishes a typical 2\u20133 week span from initial consultation through medication receipt.",
         "title": "Breeze Meds review: medication options, starting price, eligibility, and evidence gaps"
       },
       "program_id": "breeze-meds-review",
@@ -2186,7 +2205,7 @@
         "description": "A source-checked review of altRx compounded GLP-1 options, provider review, published monthly pricing, included services, fulfillment timing, pharmacy disclosure, and cancellation terms.",
         "eligibility": "altRx states that a licensed provider reviews the health evaluation and determines whether treatment and a prescription are appropriate. It states that membership is available in all 50 U.S. states, subject to state-specific provider availability and prescribing authority.",
         "pricing": "Reported advertised prices, not verified checkout debits: compounded semaglutide (Compounded GLP-1) injection $89/month and compounded tirzepatide (Compounded GLP-1 / GIP) injection $149/month. The banner qualifies these as STARTING prices, SAME PRICE EVERY MONTH, summer offer ending SEPTEMBER 15TH AT MIDNIGHT (year/timezone not specified in banner), and the homepage says same price at every dose. Product pages separately publish $89/mo and $149/mo. Exact first/renewal debits, selected plan term, prepaid total and standard post-promotion rate remain UNKNOWN. The August 25, 2026 refund policy describes single-month and discounted multi-month/bundled full-term commitments sold as a single indivisible purchase; no tier-specific numeric price or upfront total is established. Do not multiply monthly advertisements into verified charges. Other own-product-page advertisements: Zepbound $1249/mo, Wegovy $1579/mo and Ozempic $1149/mo, each an injection pen offering subject to prescribing, not verified supply or exact debits. Exact product quotes and forms are retained in this cycle typed-facts-spec.json. No literal injectable appears in these captures; the constrained delivery tag is omitted without dropping reported injection forms. Ozempic is outside the existing brand-tag vocabulary and is preserved in this prose and typed evidence, not aliased.",
-        "regulatory": "altRx states: “Compounded drugs are not FDA approved and are not evaluated for safety, effectiveness, or quality standards.” It also states: “Compounded drugs are permitted to be prescribed under federal law but are not FDA approved and do not undergo safety, effectiveness, or manufacturing review.”",
+        "regulatory": "altRx states: \u201cCompounded drugs are not FDA approved and are not evaluated for safety, effectiveness, or quality standards.\u201d It also states: \u201cCompounded drugs are permitted to be prescribed under federal law but are not FDA approved and do not undergo safety, effectiveness, or manufacturing review.\u201d",
         "shipping": "",
         "title": "altRx GLP-1 review: options, monthly price, eligibility, and cancellation terms"
       },
@@ -2282,8 +2301,8 @@
         "description": "A source-checked review of Novi's GLP-1 medication options, provider review, starting-price evidence, consultation fee, pharmacy statement, shipping estimates, and cancellation terms.",
         "eligibility": "Novi's terms state that prescription products require a medical consultation and a provider's written prescription, and that no prescription is guaranteed. The service is limited to U.S. states where it is available.",
         "pricing": "Novi publishes starting figures of $99 and $133 per month, but the captured pricing section does not bind either figure to a named treatment. Its terms also state that the monthly subscription fee includes a $20 independent-physician consultation fee.",
-        "regulatory": "Novi states: “GLP-1s are FDA-approved for weight management in appropriate patients, but they aren't right for everyone—your clinician screens your history and risks (including key contraindications like certain thyroid cancers/MEN2).” The captured pages do not publish a compounded-versus-brand classification for the semaglutide or tirzepatide options.",
-        "shipping": "Novi's homepage timeline says the provider writes a prescription in 1 day, the order ships within 1 day, and delivery is 2-day. Its FAQ separately publishes conflicting full-flow estimates of 2–3 days and 2–3 weeks.",
+        "regulatory": "Novi states: \u201cGLP-1s are FDA-approved for weight management in appropriate patients, but they aren't right for everyone\u2014your clinician screens your history and risks (including key contraindications like certain thyroid cancers/MEN2).\u201d The captured pages do not publish a compounded-versus-brand classification for the semaglutide or tirzepatide options.",
+        "shipping": "Novi's homepage timeline says the provider writes a prescription in 1 day, the order ships within 1 day, and delivery is 2-day. Its FAQ separately publishes conflicting full-flow estimates of 2\u20133 days and 2\u20133 weeks.",
         "title": "Novi GLP-1 review: medications, starting prices, eligibility, and cancellation terms"
       },
       "program_id": "novi-weight-loss-glp-1",
@@ -2376,8 +2395,8 @@
         "description": "A source-checked review of Curex's compounded GLP-1 options, licensed-provider review, first-month starting prices, ongoing price floor, nationwide availability, California delivery-form limitation, pharmacy statement, shipping, and cancellation terms.",
         "eligibility": "Curex says any prescription for compounded semaglutide or tirzepatide follows a licensed provider's review of the patient's health and is personalized to the patient's needs.",
         "pricing": "Curex publishes semaglutide injection and oral tablet as starting at $49 for the first month, and tirzepatide injection and oral tablet as starting at $149 for the first month. It publishes a provider-wide ongoing floor of $199 per month, with no membership fee and free shipping.",
-        "regulatory": "Curex states: “Compounded medications have not been approved by the FDA and the FDA has not evaluated their safety or efficacy.”",
-        "shipping": "Curex publishes shipping in 1–2 days from a licensed U.S. compounding pharmacy and free shipping every month.",
+        "regulatory": "Curex states: \u201cCompounded medications have not been approved by the FDA and the FDA has not evaluated their safety or efficacy.\u201d",
+        "shipping": "Curex publishes shipping in 1\u20132 days from a licensed U.S. compounding pharmacy and free shipping every month.",
         "title": "Curex GLP-1 review: medication forms, pricing, eligibility, and shipping"
       },
       "program_id": "curex-glp-1",
@@ -2575,10 +2594,10 @@
         "bottom_line": "Eden is strongest for people comparing online licensed-provider review, compounded semaglutide or tirzepatide, branded GLP-1 options, and published medication and membership components. Confirm the exact selected-treatment checkout and renewal totals before paying.",
         "cancellation": "Eden states that subscriptions may be canceled through account settings or customer support. Membership cancellations must be submitted at least 48 hours before renewal, apply to future billing cycles, and do not apply to orders already processed or shipped.",
         "description": "A source-checked review of Eden's online eligibility process, licensed-provider review, compounded and branded GLP-1 options, medication and membership pricing components, pharmacy network, delivery estimate, and cancellation terms.",
-        "eligibility": "Eden states that its semaglutide program may consider people with a BMI of 30 or higher, or 27–29.9 with a weight-related condition. A licensed provider reviews medical history and lab work, and meeting the criteria does not guarantee a prescription.",
+        "eligibility": "Eden states that its semaglutide program may consider people with a BMI of 30 or higher, or 27\u201329.9 with a weight-related condition. A licensed provider reviews medical history and lab work, and meeting the criteria does not guarantee a prescription.",
         "pricing": "Eden publishes compounded semaglutide medication at $99 per month and compounded tirzepatide medication at $199 per month. It states that an active membership is required at $39 for the first month and $99 per month thereafter.",
-        "regulatory": "Eden states: “Compounded medications are prepared based on specific patient needs and are not reviewed or approved by the FDA for safety or effectiveness.”",
-        "shipping": "Eden publishes a 3–5-business-day arrival estimate when home delivery is used.",
+        "regulatory": "Eden states: \u201cCompounded medications are prepared based on specific patient needs and are not reviewed or approved by the FDA for safety or effectiveness.\u201d",
+        "shipping": "Eden publishes a 3\u20135-business-day arrival estimate when home delivery is used.",
         "title": "Eden GLP-1 review: treatment options, pricing components, eligibility, and cancellation terms"
       },
       "program_id": "eden-xentraffic-offer-3051",
@@ -2674,7 +2693,7 @@
         "description": "A source-checked review of FuturHealth's daily oral Wegovy pill program, licensed-clinician review, published first and renewal prices, included support, pharmacy sourcing, shipping statement, and cancellation terms.",
         "eligibility": "FuturHealth states that medication access is based on BMI and health profile and requires a licensed medical professional's prescribing decision.",
         "pricing": "FuturHealth publishes $248 for month 1 if prescribed and $298 per month on automatic renewal. It states that the price includes program membership and medication cost at any dose.",
-        "regulatory": "FuturHealth states: “Wegovy® is the only FDA-approved semaglutide in a pill for weight loss.”",
+        "regulatory": "FuturHealth states: \u201cWegovy\u00ae is the only FDA-approved semaglutide in a pill for weight loss.\u201d",
         "shipping": "FuturHealth describes shipping as fast but does not publish a dispatch or delivery-time range on the captured offer page.",
         "title": "FuturHealth Wegovy Pill review: published pricing, eligibility, included support, and cancellation terms"
       },
@@ -2777,8 +2796,8 @@
         "description": "A source-checked review of Lttl's online eligibility process, clinician review, compounded semaglutide and tirzepatide options, published starting prices, pharmacy fulfillment, shipping estimates, and cancellation terms.",
         "eligibility": "Lttl states that the service is available to adults 18 or older where partner providers are licensed. A licensed clinician determines treatment eligibility from medical history and assessment responses.",
         "pricing": "UNKNOWN exact first billed total for the selected treatment and commitment. Reported information: semaglutide starts at $89; this is not a first-month charge. The current weight-loss pricing table associates the $89 monthly equivalent with $1,068 billed annually. Individual checkout, tax and consultation charges are not established.\n\nReported information: the tabbed pricing section lists tirzepatide at $149 billed monthly, $146/month with $438 billed quarterly, $143/month with $858 billed every six months, or $139/month with $1,668 billed annually; semaglutide at $99 billed monthly, $96/month with $288 billed quarterly, $93/month with $558 billed every six months, or $89/month with $1,068 billed annually. The $89 and $139 starting figures are commitment-specific monthly equivalents, not standalone first-month charges. The plans page also displays $139/mo billed as $1,668 annually, and monthly auto-refill as a four-week supply versus 52 weeks for the 12-month option. UNKNOWN selected patient's exact initial and renewal totals or any separate consultation amount; calculator remains manual.\n\nUNKNOWN consultation fee amount, not zero. Reported information: fees are generally non-refundable after review, even without a prescription. Insurance & Pricing includes an assessment in the plan and also says patients pay out-of-pocket for consultation and medication; no separate dollar amount is published in the captured pages. Terms of Service provides a medical-disqualification refund exception. These policies conflict; no controlling interpretation or guaranteed refund is asserted.",
-        "regulatory": "Lttl states: “Compounded GLP-1 medications offered through Lttl are produced in FDA-registered facilities but are not FDA-approved.”",
-        "shipping": "Lttl publishes pharmacy processing of 2–5 business days after a prescription, followed by standard shipping estimated at 3–7 business days after the order leaves the pharmacy.",
+        "regulatory": "Lttl states: \u201cCompounded GLP-1 medications offered through Lttl are produced in FDA-registered facilities but are not FDA-approved.\u201d",
+        "shipping": "Lttl publishes pharmacy processing of 2\u20135 business days after a prescription, followed by standard shipping estimated at 3\u20137 business days after the order leaves the pharmacy.",
         "title": "Lttl GLP-1 review: treatment options, pricing, eligibility, shipping, and cancellation"
       },
       "program_id": "lttl-glp-landing-page-2",
@@ -2873,8 +2892,8 @@
         "description": "A source-checked review of Enhanced's clinician-guided tirzepatide protocol, published pricing, eligibility review, included follow-ups, pharmacy disclosure, shipping estimate, and refund terms.",
         "eligibility": "Enhanced states that a licensed clinician reviews bloodwork, history, and goals to determine whether tirzepatide is appropriate. A prescription is not guaranteed.",
         "pricing": "",
-        "regulatory": "Enhanced states: “This medication has been compounded by a licensed 503A/503B pharmacy. Compounded medications are not FDA-approved and have not been evaluated for safety, efficacy, or quality.”",
-        "shipping": "Enhanced publishes an estimated 3–5 days from assessment to therapy in hand and states that processing depends on provider availability.",
+        "regulatory": "Enhanced states: \u201cThis medication has been compounded by a licensed 503A/503B pharmacy. Compounded medications are not FDA-approved and have not been evaluated for safety, efficacy, or quality.\u201d",
+        "shipping": "Enhanced publishes an estimated 3\u20135 days from assessment to therapy in hand and states that processing depends on provider availability.",
         "title": "Enhanced tirzepatide review: pricing, eligibility, shipping, and refund terms"
       },
       "program_id": "enhanced-tirzepatide-funnel-b",
@@ -2969,7 +2988,7 @@
         "description": "A source-checked review of Sunlight.com's compounded semaglutide and tirzepatide options, clinician review, published starting prices, included telehealth visits, shipping timeline, and cancellation terms.",
         "eligibility": "Sunlight.com states that a licensed clinician reviews the health intake and determines whether an appointment is needed. If approved, the prescription is processed; a prescription is not guaranteed.",
         "pricing": "Sunlight.com publishes semaglutide starting at $88 and tirzepatide starting at $157. It states that each flat monthly rate includes the prescription, unlimited telehealth visits, and free shipping with no hidden fees.",
-        "regulatory": "Sunlight.com states: “Compounded versions available on the Sunlight platform are not FDA-evaluated for safety, quality, or effectiveness—results may vary.”",
+        "regulatory": "Sunlight.com states: \u201cCompounded versions available on the Sunlight platform are not FDA-evaluated for safety, quality, or effectiveness\u2014results may vary.\u201d",
         "shipping": "Sunlight.com states that prescriptions are shipped within 7 business days after approval.",
         "title": "Sunlight.com GLP-1 review: pricing, eligibility, shipping, and cancellation"
       },
@@ -3062,7 +3081,7 @@
         "description": "A source-checked review of JoinSkinny's compounded semaglutide and tirzepatide options, clinician review, published fee structure, shipping, pharmacy statements, and cancellation terms.",
         "eligibility": "JoinSkinny states that a licensed provider reviews the health questionnaire and prescribes a personalized plan only if appropriate. A prescription is not guaranteed.",
         "pricing": "JoinSkinny describes flat-rate monthly pricing and bundle options, but the fresh first-party captures do not publish a numeric program price. Confirm checkout and renewal totals before paying.",
-        "regulatory": "JoinSkinny states: “JoinSkinny offers compounded GLP-1s exclusively from U.S. pharmacies. Compounded medications are regulated and compounding pharmacies are licensed and inspected by Boards of Pharmacy, but the FDA has not evaluated the medications for safety, quality, or efficacy.”",
+        "regulatory": "JoinSkinny states: \u201cJoinSkinny offers compounded GLP-1s exclusively from U.S. pharmacies. Compounded medications are regulated and compounding pharmacies are licensed and inspected by Boards of Pharmacy, but the FDA has not evaluated the medications for safety, quality, or efficacy.\u201d",
         "shipping": "JoinSkinny states that prescriptions received before 2 p.m. Central ship the same day and that prescriptions ship next-day by UPS in temperature-controlled packaging; weekend orders ship Monday.",
         "title": "JoinSkinny GLP-1 review: eligibility, fees, shipping, and cancellation"
       },
@@ -3159,12 +3178,12 @@
       "page_copy": {
         "affiliate_constraint": "LevelsRx is approved through XenTraffic. This review uses provider-published facts and an affiliate disclosure; eligibility, prescribing, pricing, and fulfillment remain with the provider and its clinical and pharmacy partners.",
         "bottom_line": "LevelsRx publishes compounded semaglutide, compounded tirzepatide, and oral compounded semaglutide options with virtual clinician consultations and support included. Its prices are treatment-specific starting amounts, so confirm the selected checkout and renewal total.",
-        "cancellation": "LevelsRx states: “Cancellation requests must be submitted at least 7 days before your next billing cycle to take effect in the current billing period.” It also states that cancellation must be handled by phone and that fees are generally non-refundable outside stated exceptions.",
+        "cancellation": "LevelsRx states: \u201cCancellation requests must be submitted at least 7 days before your next billing cycle to take effect in the current billing period.\u201d It also states that cancellation must be handled by phone and that fees are generally non-refundable outside stated exceptions.",
         "description": "A source-checked review of LevelsRx's clinician-guided online GLP-1 care, compounded semaglutide, compounded tirzepatide, oral compounded semaglutide, virtual consultations, prescription management, coaching, and delivery support.",
         "eligibility": "LevelsRx states that patients must be at least 18 and meet clinician-reviewed weight and health criteria; prescriptions are not guaranteed.",
         "pricing": "Reported starting price: compounded semaglutide is advertised from $150 per month. UNKNOWN exact initial charge, selected plan duration and patient-specific total; this is not an attested first-month checkout total.\n\nReported advertised starting monthly figures: compounded semaglutide weekly injection $150/mo; compounded tirzepatide weekly injection $240/mo; oral compounded semaglutide liposomal liquid/dropper $150/mo. The public branded product page additionally advertises Wegovy (semaglutide) and Zepbound (tirzepatide) weekly injections starting at $1200/mo each, conditional on clinical appropriateness after provider evaluation. UNKNOWN exact first/renewal debits, selected duration, prepaid commitment, discounted versus standard plan rates or complete checkout total. These starting figures are retained, not converted into exact monthly billing. Terms & Conditions (Last Updated August 03, 2026) say first-cycle charging begins at enrollment/intake submission and automatic subsequent charges use the then-current fee at the interval indicated at registration, plus applicable taxes/other charges. Promotional rates apply only for the offered periods, then renew at the then-current fee; no current numerical discount or prepaid tier was published in these captures. Multiple subscription types and Care Coaching/Diet Coaching plans are mentioned but no separately priced tiers were found. Public enrollment links stop at the BMI/intake route, which was not opened.",
-        "regulatory": "LevelsRx states: “Meds only issued when clinically appropriate after provider evaluation” and “LevelsRx does not manufacture compounded medications.”",
-        "shipping": "LevelsRx states: “Free home delivery” and “Fast, reliable delivery for every refill once you complete the required refill form.” It does not publish a delivery-day estimate.",
+        "regulatory": "LevelsRx states: \u201cMeds only issued when clinically appropriate after provider evaluation\u201d and \u201cLevelsRx does not manufacture compounded medications.\u201d",
+        "shipping": "LevelsRx states: \u201cFree home delivery\u201d and \u201cFast, reliable delivery for every refill once you complete the required refill form.\u201d It does not publish a delivery-day estimate.",
         "title": "LevelsRx review: GLP-1 options, starting prices, eligibility, and cancellation"
       },
       "program_id": "levelsrx-extra-cpa-home-page",
@@ -3250,8 +3269,8 @@
         "description": "A source-checked review of Refills' personalized GLP-1 care, provider-led eligibility process, licensed compounding-pharmacy model, published price floor, shipping estimate, and cancellation terms.",
         "eligibility": "Refills says a provider evaluates health history, current medications, weight-loss goals, appropriateness, and safety before prescribing treatment.",
         "pricing": "Refills advertises Personalized GLP-1 for as low as $5 per day and says cost depends on the medication, prescribed plan, and state. It does not publish an exact recurring monthly total on the captured pages.",
-        "regulatory": "Refills states: “Compounded drug products are not approved or evaluated for safety, effectiveness, or quality by the FDA. Prescription required.”",
-        "shipping": "Refills says most orders arrive within 3–5 business days after prescription approval and pharmacy processing.",
+        "regulatory": "Refills states: \u201cCompounded drug products are not approved or evaluated for safety, effectiveness, or quality by the FDA. Prescription required.\u201d",
+        "shipping": "Refills says most orders arrive within 3\u20135 business days after prescription approval and pharmacy processing.",
         "title": "Refills weight-loss review: GLP-1 options, eligibility, pricing, shipping, and cancellation"
       },
       "program_id": "refills",
@@ -3351,7 +3370,7 @@
         "description": "A source-checked review of TMates' online eligibility process, compounded semaglutide and tirzepatide plans, brand-name prescription management, pricing, pharmacy disclosures, shipping, and cancellation terms.",
         "eligibility": "TMates says medical staff evaluate eligibility during the online consultation. The checked pages do not publish a specific BMI threshold.",
         "pricing": "TMates publishes a one-month semaglutide plan at $249 and a one-month tirzepatide plan at $297. Lower monthly equivalents are published for prepaid multi-month plans.",
-        "regulatory": "TMates states: “Compounded medications are subject to strict quality and purity standards, but are not evaluated by the FDA for safety, quality or efficacy.”",
+        "regulatory": "TMates states: \u201cCompounded medications are subject to strict quality and purity standards, but are not evaluated by the FDA for safety, quality or efficacy.\u201d",
         "shipping": "TMates advertises free shipping with arrival in 1-2 days on its weight-loss page.",
         "title": "TMates GLP-1 review: pricing, treatment formats, telehealth care, and cancellation"
       },
@@ -3436,7 +3455,7 @@
         "description": "A source-checked review of TrimRX's online GLP-1 evaluation, compounded and branded-prescription options, pharmacy model, eligibility process, delivery timing, pricing evidence, and cancellation terms.",
         "eligibility": "TrimRX says licensed professionals review an online evaluation to determine whether GLP-1 medication is right for the patient.",
         "pricing": "Current TrimRX pages publish different starting and package figures. Confirm the exact selected treatment, first charge, follow-up charge, and checkout terms before paying.",
-        "regulatory": "TrimRX states: “These compounded drugs are not FDA-approved. This means the FDA has not reviewed them for safety, effectiveness, or quality.”",
+        "regulatory": "TrimRX states: \u201cThese compounded drugs are not FDA-approved. This means the FDA has not reviewed them for safety, effectiveness, or quality.\u201d",
         "shipping": "TrimRX publishes delivery estimates after the medication leaves the pharmacy and from prescription approval through delivery; actual timing can vary.",
         "title": "TrimRX weight-loss review: GLP-1 options, eligibility, pricing, shipping, and cancellation"
       },
@@ -3524,7 +3543,7 @@
         "description": "A source-checked review of Yucca Health's telehealth GLP-1 eligibility process, compounded medication options, plan pricing, pharmacy model, shipping timeline, and refund terms.",
         "eligibility": "Yucca Health says a licensed provider determines eligibility from medical history, current health, goals, and clinical criteria before treatment.",
         "pricing": "Yucca Health publishes $146 month-to-month semaglutide and $258 month-to-month tirzepatide. Lower monthly rates require six-month plans billed in advance.",
-        "regulatory": "Yucca Health states: “While compounded medications are not FDA-approved and have not undergone FDA review for safety, effectiveness, or manufacturing quality, our pharmacy partners are fully licensed and held to rigorous compounding standards.”",
+        "regulatory": "Yucca Health states: \u201cWhile compounded medications are not FDA-approved and have not undergone FDA review for safety, effectiveness, or manufacturing quality, our pharmacy partners are fully licensed and held to rigorous compounding standards.\u201d",
         "shipping": "",
         "title": "Yucca Health GLP-1 review: eligibility, compounded options, pricing, shipping, and refunds"
       },
@@ -3611,8 +3630,8 @@
         "description": "A source-checked review of Longevity Meds' online GLP-1 eligibility process, compounded medication options, published pricing, pharmacy model, shipping timing, and cancellation policy.",
         "eligibility": "Longevity Meds says a licensed healthcare provider determines eligibility after an online intake and clinical review using medical history, current health, BMI, and treatment goals.",
         "pricing": "Advertised starting monthly figures, captured 2026-09-11: semaglutide USD 144.99/month (listed doses 0.25, 0.5, 1, 1.5, 2.5 mg); tirzepatide USD 184.99/month (2.5, 5, 7.5, 10, 12.5, 15 mg). Both cards say Same Price All, No Membership Costs and Everything Included; the hero says A Month and Includes Doctor Visit + Shipping. These are advertised monthly starting/monthly-equivalent figures, not verified first or renewal debits. The payment policy separately requires three months with full supply up front regardless of billing option. Exact prepaid total and selected renewal amount UNKNOWN. No separate discounted/standard/prepaid tier schedule or first-month promotion is established in the captured body text; checkout was not entered.",
-        "regulatory": "Longevity Meds states: “Compounded drugs are allowed to be prescribed under federal law, but they are not FDA-approved and do not go through FDA reviews for safety, effectiveness, or manufacturing quality.”",
-        "shipping": "Longevity Meds' FAQ says orders typically ship within 3–5 business days after approval with temperature-controlled cold shipping.",
+        "regulatory": "Longevity Meds states: \u201cCompounded drugs are allowed to be prescribed under federal law, but they are not FDA-approved and do not go through FDA reviews for safety, effectiveness, or manufacturing quality.\u201d",
+        "shipping": "Longevity Meds' FAQ says orders typically ship within 3\u20135 business days after approval with temperature-controlled cold shipping.",
         "title": "Longevity Meds GLP-1 review: eligibility, compounded options, pricing, shipping, and cancellation"
       },
       "program_id": "longevity-meds-glp-1-review",
@@ -3709,7 +3728,7 @@
         "description": "A source-checked review of SnagRX compounded semaglutide and tirzepatide options, online eligibility, published pricing, included services, shipping, pharmacy disclosure, and cancellation terms.",
         "eligibility": "SnagRX says a medical practitioner reviews the intake and determines whether a prescription is appropriate. It states that services are available in every U.S. state except Louisiana, with Nebraska limited to patients age 19 or older.",
         "pricing": "SnagRX publishes compounded semaglutide at $99 per month billed monthly. It also publishes a $69 monthly equivalent for a 12-month plan billed as $828 once. Prescription and telemedicine visits are stated as included, with no insurance required.",
-        "regulatory": "SnagRX states: “Although compounded drugs are permitted to be prescribed under federal law, they are not FDA-approved and do not undergo safety, effectiveness, or manufacturing review by the FDA.”",
+        "regulatory": "SnagRX states: \u201cAlthough compounded drugs are permitted to be prescribed under federal law, they are not FDA-approved and do not undergo safety, effectiveness, or manufacturing review by the FDA.\u201d",
         "shipping": "SnagRX states that shipping is free and arrives in 1-2 days.",
         "title": "SnagRX review: GLP-1 options, pricing, eligibility, and cancellation terms"
       },
@@ -3802,8 +3821,8 @@
         "description": "A source-checked review of the HumeCare+ physician-guided GLP-1 program, including published pricing, clinical eligibility, compounded-medication disclosures, included support, delivery, and cancellation terms.",
         "eligibility": "HumeCare+ says people with a BMI of 25 or higher may be eligible after a licensed clinician evaluates their health history, current medications, and weight-loss goals. It says the program is available in every U.S. state except Alabama, Louisiana, and Mississippi.",
         "pricing": "HumeCare+ publishes $199 per month, billed monthly, including medication if prescribed, ongoing care, and full program access. Its terms say certain medications, dosages, formulations, or fulfillment options may carry additional charges disclosed at fulfillment.",
-        "regulatory": "HumeCare+ states: “Compounded drugs are not FDA approved and are not evaluated for safety, effectiveness, or quality standards.”",
-        "shipping": "HumeCare+ states: “Free next-day delivery.”",
+        "regulatory": "HumeCare+ states: \u201cCompounded drugs are not FDA approved and are not evaluated for safety, effectiveness, or quality standards.\u201d",
+        "shipping": "HumeCare+ states: \u201cFree next-day delivery.\u201d",
         "title": "HumeCare+ review: GLP-1 program, pricing, eligibility, and cancellation terms"
       },
       "program_id": "humecare-data-driven-glp-1-weight-loss-system",
@@ -4100,6 +4119,377 @@
         "starting_price_sort": null
       },
       "tracking_host": "epsilonmkt.com"
+    },
+    {
+      "display_name": "RightWell",
+      "field_sources": {
+        "cancellation_and_roles": [
+          "https://shop.rightwell.com/pages/terms-and-conditions",
+          "https://www.rightwell.com/"
+        ],
+        "pricing_and_inclusions": [
+          "https://www.rightwell.com/"
+        ],
+        "regulatory": [
+          "https://www.rightwell.com/"
+        ]
+      },
+      "logo_contract": {
+        "asset_ready": true,
+        "intended_public_path": "/assets/provider-logos/rightwell-review.webp",
+        "official_source": "https://assets.embeddables.com/Logo_03344447052555455.svg",
+        "report_asset": "assets/provider-logos/rightwell-review.webp",
+        "sha256": "32ee0fb7e7c2898f050dc21808840be82f6b3c6a60a4e241217d62b639671016"
+      },
+      "network_contract": {
+        "activation_blocker": null,
+        "immutable_offer_id": "32122",
+        "local_evidence_checked_through": "2026-10-10",
+        "network": "MaxBounty",
+        "promotion_authorized_in_this_artifact": true,
+        "publisher_id": "803003",
+        "relationship_state": "approved_or_active",
+        "sheet_status": "approved_active_tracking_ready",
+        "tracking_url": "https://afflat3c2.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32122&c=918277&a=803003&k=8FB3E2948DEC86BC482F4EB04CC7514C&l=38072",
+        "transparent_direct_supported_by_current_renderer": true
+      },
+      "official_url": "https://www.rightwell.com/get-started?",
+      "page_copy": {
+        "bottom_line": "RightWell describes clinician-reviewed telehealth access to GLP-1 medications with medication, delivery, and ongoing support included in treatment-specific pricing.",
+        "cancellation": "Reported information: the updated clinical-platform terms say cancellation before the next renewal stops future renewal charges, generally without reversing charges for services already performed or medications processed for fulfillment. Exact enrollment-specific cutoff and applicable refund policy remain UNKNOWN; no no-questions refund promise.",
+        "description": "A source-checked review of RightWell's telehealth GLP-1 program, clinician eligibility process, treatment-specific pricing, pharmacy model, shipping timeline, and cancellation terms.",
+        "eligibility": "Reported information: clinical services are provided by independent healthcare professionals or medical entities. A complete current clinical state list is UNKNOWN; national campaign targeting does not establish state licensing or availability. RightWell publishes unlimited doctor consultations at no extra cost.",
+        "pricing": "Reported information: the current homepage contains multiple promotional variants, including starting at $159 and $109. Exact selected-product first charge is UNKNOWN; do not combine variants or treat one as a universal price.",
+        "regulatory": "RightWell says some patients may receive compounded GLP-1 medications prepared by U.S.-licensed pharmacies in FDA-registered facilities and that these medications are not FDA-approved or reviewed for safety, effectiveness, or quality.",
+        "shipping": "RightWell says physician review or consultation scheduling occurs within 24 hours and medication tracking details are provided within two business days; it does not publish a complete order-to-delivery window.",
+        "title": "RightWell review: GLP-1 eligibility, pricing, shipping, and cancellation"
+      },
+      "program_id": "rightwell-review",
+      "publication_state": {
+        "affiliate_activation_candidate_after_gate": true,
+        "affiliate_activation_state": "G6_R1A_WIRE_IN_20260806",
+        "calculator_eligible": false,
+        "editorial_content_ready": true,
+        "regulatory_banner_required": "compounded_medication_fda_disclosure_required"
+      },
+      "review_path": "/reviews/rightwell-review/",
+      "row_contract": {
+        "affiliate_href": "https://afflat3c2.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32122&c=918277&a=803003&k=8FB3E2948DEC86BC482F4EB04CC7514C&l=38072",
+        "affiliate_link_mode": "transparent_direct",
+        "affiliate_network": "MaxBounty",
+        "best_for": "Adults comparing clinician-reviewed telehealth access to GLP-1 medications with ongoing support",
+        "cons": [
+          "A universal recurring treatment price is not published before evaluation",
+          "The captured pages do not publish a complete state availability list",
+          "The captured page links to a LegitScript checker but does not independently establish current certification status"
+        ],
+        "criteria_scores": {},
+        "insurance": "RightWell's captured offer variants state that insurance is not required.",
+        "live_link_allowed": true,
+        "logo": "/assets/provider-logos/rightwell-review.webp",
+        "medications": [
+          "Prescription GLP-1 options; specific available medications require clinician evaluation"
+        ],
+        "program_id": "rightwell-review",
+        "promotion_authorized": true,
+        "pros": [
+          "RightWell publishes clinician eligibility review following a telehealth consultation",
+          "Published program fees include medication, delivery, and unlimited support",
+          "RightWell publishes unlimited doctor consultations at no extra cost"
+        ],
+        "provider": "RightWell",
+        "review_path": "/reviews/rightwell-review/",
+        "score": null,
+        "source_url": "https://www.rightwell.com/",
+        "starting_price": "Treatment-specific pricing provided after initial evaluation",
+        "starting_price_sort": null
+      },
+      "source_capture_bindings": {
+        "https://shop.rightwell.com/pages/terms-and-conditions": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/captures/capture-bundle.json",
+          "bundle_sha256": "22cccf809a3f10eea1a2f527a843f77049cc0414a116898b3a62a4316d650b98",
+          "captured_at_utc": "2026-10-10T06:42:51.621909+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/captures/49bef4d44580003a.json",
+          "raw_capture_sha256": "6660e03e0ad4a1379682e9816b6860d2852a37f425614fd11e9fba787fc28e22"
+        },
+        "https://www.rightwell.com/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/captures/capture-bundle.json",
+          "bundle_sha256": "22cccf809a3f10eea1a2f527a843f77049cc0414a116898b3a62a4316d650b98",
+          "captured_at_utc": "2026-10-10T06:42:51.621909+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/captures/38925d421fb75413.json",
+          "raw_capture_sha256": "4425f95e62ae0b10ac547664154e8c4310a6a9a39a486d0a4a053cacbf899b30"
+        },
+        "https://www.rightwell.com/get-started": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/captures/capture-bundle.json",
+          "bundle_sha256": "22cccf809a3f10eea1a2f527a843f77049cc0414a116898b3a62a4316d650b98",
+          "captured_at_utc": "2026-10-10T06:42:51.621909+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/captures/48749ab64e76ef36.json",
+          "raw_capture_sha256": "5a0cc1633f0577d305a191a055f9ed2539dd33d07d3cbb1599234e8cdcddbe54"
+        }
+      },
+      "tracking_host": "afflat3c2.com"
+    },
+    {
+      "display_name": "Willow",
+      "field_sources": {
+        "cancellation_and_roles": [
+          "https://www.startwillow.com/faqs",
+          "https://www.startwillow.com/terms-of-service"
+        ],
+        "pricing_and_inclusions": [
+          "https://docs.startwillow.com/en/articles/8838999-how-much-do-treatments-cost",
+          "https://www.startwillow.com/faqs"
+        ],
+        "regulatory": [
+          "https://www.startwillow.com/compound-semaglutide"
+        ]
+      },
+      "logo_contract": {
+        "asset_ready": true,
+        "intended_public_path": "/assets/provider-logos/willow-review.webp",
+        "official_source": "https://cdn.prod.website-files.com/693034e0b94728017fd500b9/69387014118dfc0d5bbbe67b_Willow%20Full%20Logo%20-%20Electric.svg",
+        "report_asset": "assets/provider-logos/willow-review.webp",
+        "sha256": "1421b39293f27a1f26ebf7c508f297f2ef26bb2fcb3b5663343a0ee654ab7843"
+      },
+      "network_contract": {
+        "activation_blocker": null,
+        "immutable_offer_id": "29207",
+        "local_evidence_checked_through": "2026-10-10",
+        "network": "MaxBounty",
+        "promotion_authorized_in_this_artifact": true,
+        "publisher_id": "803003",
+        "relationship_state": "approved_or_active",
+        "sheet_status": "approved_active_tracking_ready",
+        "tracking_url": "https://afflat3c2.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=29207&c=918277&a=803003&k=D62EA6B8BC269A61D5529EF7EF07089C&l=33375",
+        "transparent_direct_supported_by_current_renderer": true
+      },
+      "official_url": "https://www.startwillow.com/",
+      "page_copy": {
+        "bottom_line": "Willow offers compounded semaglutide and compounded tirzepatide in oral and injectable options, with physician access included in its treatment program. Compare the published dose-specific prices and confirm your prescribed plan and renewal total.",
+        "cancellation": "Willow\u2019s FAQ states that cancellation is available through the Patient Care Team, with requests at least 2 business days before the next processing date to avoid the next charge and a full refund within 5-10 business days if cancelled before pharmacy submission.",
+        "description": "Willow pairs compounded oral and injectable GLP-1 options with online physician access. This review covers the published treatment prices, eligibility, pharmacy statement, shipping and cancellation terms.",
+        "eligibility": "Willow is currently available in:\n\nArizona, California, Colorado, Connecticut, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kentucky, Maine, Maryland, Massachusetts, Michigan, Minnesota, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New York, North Carolina, Ohio, Oklahoma, Oregon, Pennsylvania, South Carolina, Tennessee, Texas, Virginia, Washington, Wisconsin and Wyoming. The FAQ says the plan includes medical evaluation, treatment plan, physician access, medication, support and free shipping, with no additional fees in the included program; medication costs vary by dosage and prescription.",
+        "pricing": "Reported information: the help article says plans start at $199/month, but the article separately lists NAD+ at $199/month and GLP-1 products at higher rates. This is not a universal GLP-1 first charge. Exact selected-treatment initial bill remains UNKNOWN.",
+        "regulatory": "Willow states: \u201cCompounded semaglutide is not approved by the FDA, and the FDA does not review compounded medications for safety, effectiveness, or quality. These medications are prepared by state-licensed compounding pharmacies that operate under state board of pharmacy oversight and are required to meet USP compounding standards.\u201d Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
+        "shipping": "The FAQ publishes pharmacy processing of 2-4 business days followed by delivery typically in 2-3 days via FedEx or UPS, with possible delays during high-volume periods.",
+        "title": "Willow GLP-1 review: treatment options, pricing and care"
+      },
+      "program_id": "willow-review",
+      "publication_state": {
+        "affiliate_activation_candidate_after_gate": true,
+        "affiliate_activation_state": "G6_R1A_WIRE_IN_20260806",
+        "calculator_eligible": false,
+        "editorial_content_ready": true,
+        "regulatory_banner_required": "compounded_glp_general"
+      },
+      "review_path": "/reviews/willow-review/",
+      "row_contract": {
+        "affiliate_href": "https://afflat3c2.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=29207&c=918277&a=803003&k=D62EA6B8BC269A61D5529EF7EF07089C&l=33375",
+        "affiliate_link_mode": "transparent_direct",
+        "affiliate_network": "MaxBounty",
+        "best_for": "Comparing compounded oral and injectable semaglutide and tirzepatide options with physician access",
+        "cons": [
+          "Published treatment prices vary by dose and prescription",
+          "The FAQ excludes people with diabetes and lists state availability",
+          "Program renews automatically; cancellation deadlines apply"
+        ],
+        "criteria_scores": {},
+        "insurance": "No insurance required; the treatment-cost page states FSA and HSA eligibility.",
+        "live_link_allowed": true,
+        "logo": "/assets/provider-logos/willow-review.webp",
+        "medications": "Compounded semaglutide and compounded tirzepatide; oral tablets and injectable options",
+        "program_id": "willow-review",
+        "promotion_authorized": true,
+        "pros": [
+          "Compounded oral and injectable options published",
+          "Treatment-specific monthly prices published",
+          "Medical evaluation, physician access and shipping included in the treatment program"
+        ],
+        "provider": "Willow",
+        "review_path": "/reviews/willow-review/",
+        "score": null,
+        "source_url": "https://docs.startwillow.com/en/articles/8838999-how-much-do-treatments-cost",
+        "starting_price": "Compounded semaglutide from $299/month; compounded tirzepatide from $399/month; dose-dependent pricing",
+        "starting_price_sort": null
+      },
+      "source_capture_bindings": {
+        "https://docs.startwillow.com/en/articles/8838999-how-much-do-treatments-cost": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/capture-bundle.json",
+          "bundle_sha256": "cafd440830e9bfa08e37d305394a490800d23753b2f455002daa0a9e6db4a173",
+          "captured_at_utc": "2026-10-10T06:45:08.336759+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/358833b1d21d090d.json",
+          "raw_capture_sha256": "b67010467af580e38e822be78256cd280a66cb47ed0daf05d65a6709907d4edd"
+        },
+        "https://www.startwillow.com/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/capture-bundle.json",
+          "bundle_sha256": "cafd440830e9bfa08e37d305394a490800d23753b2f455002daa0a9e6db4a173",
+          "captured_at_utc": "2026-10-10T06:45:08.336759+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/0bc272359dc499b3.json",
+          "raw_capture_sha256": "55f4a80b2cb915fd934963d0cea69ca0a53e576a0a868a43bc842194be3419e6"
+        },
+        "https://www.startwillow.com/compound-semaglutide": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/capture-bundle.json",
+          "bundle_sha256": "cafd440830e9bfa08e37d305394a490800d23753b2f455002daa0a9e6db4a173",
+          "captured_at_utc": "2026-10-10T06:45:08.336759+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/848f95bd95775533.json",
+          "raw_capture_sha256": "c83b637f26100d82c722304f904ebc6396092d0f3c712524611ef3a32a77b093"
+        },
+        "https://www.startwillow.com/faqs": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/capture-bundle.json",
+          "bundle_sha256": "cafd440830e9bfa08e37d305394a490800d23753b2f455002daa0a9e6db4a173",
+          "captured_at_utc": "2026-10-10T06:45:08.336759+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/478a01044f7da0cb.json",
+          "raw_capture_sha256": "5a5df0dd55ad1daaf54ef7ad14aa43f5a71e61850a052867f1c972b96183eca9"
+        },
+        "https://www.startwillow.com/terms-of-service": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/capture-bundle.json",
+          "bundle_sha256": "cafd440830e9bfa08e37d305394a490800d23753b2f455002daa0a9e6db4a173",
+          "captured_at_utc": "2026-10-10T06:45:08.336759+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/40e8b67e6fdbef9e.json",
+          "raw_capture_sha256": "ebf0f3e640cf096fa2b8e3005fb8b6e9801e20567bf6b1d449260548e39314dd"
+        }
+      },
+      "tracking_host": "afflat3c2.com"
+    },
+    {
+      "display_name": "Ivim Health",
+      "field_sources": {
+        "cancellation_and_roles": [
+          "https://www.ivimhealth.com/terms-and-conditions/",
+          "https://www.ivimhealth.com/glp1idwt/",
+          "https://www.ivimhealth.com/compounded-tirzepatide/",
+          "https://www.ivimhealth.com/refund_returns/"
+        ],
+        "pricing_and_inclusions": [
+          "https://www.ivimhealth.com/glp1idwt/",
+          "https://www.ivimhealth.com/compounded-tirzepatide/",
+          "https://www.ivimhealth.com/terms-and-conditions/",
+          "https://www.ivimhealth.com/wegovypill/"
+        ],
+        "regulatory": [
+          "https://www.ivimhealth.com/glp1idwt/"
+        ]
+      },
+      "logo_contract": {
+        "asset_ready": true,
+        "intended_public_path": "/assets/provider-logos/ivim-health-review.webp",
+        "official_source": "https://media-s3-cdn.ivimhealth.com/assets/images/logos/ivim-black.svg",
+        "report_asset": "assets/provider-logos/ivim-health-review.webp",
+        "sha256": "1dba9f3934455b75728893bec6e19f7141e6746b9a09eb39b393c1ea0bc58f4d"
+      },
+      "network_contract": {
+        "activation_blocker": null,
+        "immutable_offer_id": "31359",
+        "local_evidence_checked_through": "2026-10-10",
+        "network": "MaxBounty",
+        "promotion_authorized_in_this_artifact": true,
+        "publisher_id": "803003",
+        "relationship_state": "approved_or_active",
+        "sheet_status": "approved_active_tracking_ready",
+        "tracking_url": "https://afflat3c1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=31359&c=918277&a=803003&k=396C183662E0636632D2B5F21947E4FE&l=36909",
+        "transparent_direct_supported_by_current_renderer": true
+      },
+      "official_url": "https://ivimhealth.com/",
+      "page_copy": {
+        "bottom_line": "Ivim offers individualized GLP-1 care with a published program fee and provider-led eligibility review. Confirm the selected medication, total charges, and cancellation terms before enrolling.",
+        "cancellation": "Reported information: Ivim's official cancellation statements conflict. Its Terms & Conditions describes refunds for unshipped medication, less a $100 fee per undeveloped three-month portion or $50 per undeveloped two-month portion, with a medical-ineligibility fee waiver. Its GLP-1 ID program page states: \u201cBecause GLP-1 medications are prescribed and shipped based on your selected program length, cancellation is not available once your program has started.\u201d Controlling plan-specific cancellation and refund eligibility remain UNKNOWN. Confirm the applicable terms with Ivim before enrolling; no refund is promised.",
+        "description": "Reported information on Ivim Health\u2019s GLP-1 medications, starting prices, program fee, eligibility, pharmacy statement, and cancellation terms.",
+        "eligibility": "Ivim states: \u201cNot available in all states.\u201d A definitive state coverage list is not established by this capture. Ivim publishes a free provider consultation followed by a $74.99 monthly membership.",
+        "pricing": "UNKNOWN exact first checkout total. Ivim publishes compounded semaglutide starting at $75/mo and compounded tirzepatide starting at $133/mo, plus a $74.99/mo program fee. These are starting figures, not established checkout or renewal totals.",
+        "regulatory": "Ivim states: \u201cMedications are prepared by independent, licensed compounding pharmacies.\u201d Compounded drugs are not FDA approved and are not reviewed by FDA for safety, effectiveness, or quality before marketing.",
+        "shipping": "UNKNOWN delivery estimate. Ivim states: \u201cGLP-1 ID Program medications are not auto-shipped. Each shipment requires clinical review, titration assessment, and individual provider approval prior to dispensing.\u201d",
+        "title": "Ivim Health review: GLP-1 options, pricing, and program terms"
+      },
+      "program_id": "ivim-health-review",
+      "publication_state": {
+        "affiliate_activation_candidate_after_gate": true,
+        "affiliate_activation_state": "G6_R1A_WIRE_IN_20260806",
+        "calculator_eligible": false,
+        "editorial_content_ready": true,
+        "regulatory_banner_required": "compounded_glp_general"
+      },
+      "review_path": "/reviews/ivim-health-review/",
+      "row_contract": {
+        "affiliate_href": "https://afflat3c1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=31359&c=918277&a=803003&k=396C183662E0636632D2B5F21947E4FE&l=36909",
+        "affiliate_link_mode": "transparent_direct",
+        "affiliate_network": "MaxBounty",
+        "best_for": "People comparing individualized GLP-1 care with provider-led eligibility review",
+        "cons": [
+          "Program fee is separate from starting medication prices",
+          "Exact checkout and renewal totals depend on the selected plan",
+          "Availability varies by state"
+        ],
+        "criteria_scores": {},
+        "insurance": "Confirm coverage for the selected treatment directly with Ivim.",
+        "live_link_allowed": true,
+        "logo": "/assets/provider-logos/ivim-health-review.webp",
+        "medications": "Semaglutide and tirzepatide; published branded and compounded options",
+        "program_id": "ivim-health-review",
+        "promotion_authorized": true,
+        "pros": [
+          "Published medication starting prices and program fee",
+          "Provider-led eligibility review",
+          "Published oral and injectable options"
+        ],
+        "provider": "Ivim Health",
+        "review_path": "/reviews/ivim-health-review/",
+        "score": null,
+        "source_url": "https://www.ivimhealth.com/glp1idwt/",
+        "starting_price": "Compounded semaglutide starts at $75/mo plus a $74.99/mo program fee; exact total depends on plan",
+        "starting_price_sort": null
+      },
+      "source_capture_bindings": {
+        "https://www.ivimhealth.com/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+          "bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5",
+          "captured_at_utc": "2026-10-10T06:46:30.887344+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/7964debaae4b5e95.json",
+          "raw_capture_sha256": "f93f5f23a9b7626fe7896aa0ba8fe29cdce6a1f0dab3f621c82c39f3c02c9b5c"
+        },
+        "https://www.ivimhealth.com/compounded-medications/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+          "bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5",
+          "captured_at_utc": "2026-10-10T06:46:30.887344+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/6003f6b3a26b44e0.json",
+          "raw_capture_sha256": "3a1abac5ada6fb043edc166ff798291ba03e9478a08e2b26d80b558dc65b8209"
+        },
+        "https://www.ivimhealth.com/compounded-tirzepatide/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+          "bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5",
+          "captured_at_utc": "2026-10-10T06:46:30.887344+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/f4618f90e2930311.json",
+          "raw_capture_sha256": "107c7fcd5a970d10d2d72409b0b5b2e5a6c1edb486cf55d050a8c69d76c54c48"
+        },
+        "https://www.ivimhealth.com/glp1idwt/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+          "bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5",
+          "captured_at_utc": "2026-10-10T06:46:30.887344+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/6e7f4a547bab4165.json",
+          "raw_capture_sha256": "2ec05df0926fad329324d3b7ac10d1e954ca7be589767e7381cdb06745e1d1d3"
+        },
+        "https://www.ivimhealth.com/refund_returns/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+          "bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5",
+          "captured_at_utc": "2026-10-10T06:46:30.887344+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/f7c5d007e1ac0da6.json",
+          "raw_capture_sha256": "a6c57241cf7754c8dd7ee85ba01dc92db616e1460244f4c690114ef342ec8121"
+        },
+        "https://www.ivimhealth.com/terms-and-conditions/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+          "bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5",
+          "captured_at_utc": "2026-10-10T06:46:30.887344+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/e9eb018e5a738485.json",
+          "raw_capture_sha256": "5e1bf9c4e61c82487d980e45344da5d52da71485ccc44ed1c99a7a4e48b4dd37"
+        },
+        "https://www.ivimhealth.com/wegovypill/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+          "bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5",
+          "captured_at_utc": "2026-10-10T06:46:30.887344+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/f90a4c0be57ae97e.json",
+          "raw_capture_sha256": "762737103bd8083bf3da0d4556acf30620bb8422e1a6aa600ad9fd3a0b3768cb"
+        }
+      },
+      "tracking_host": "afflat3c1.com"
     }
   ],
   "publication_policy": {
@@ -4128,7 +4518,7 @@
   "schema": "glp-provider-fastpath-contracts-v1",
   "target_release": {
     "current_provider_review_count": 13,
-    "requested_provider_review_count": 56,
+    "requested_provider_review_count": 59,
     "source_tree": "/home/ubuntu/business/site-system/flagship-v2/staging/glp-consumer-fable-final-20260730",
     "source_tree_modified_by_this_lane": false
   }

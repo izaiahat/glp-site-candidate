@@ -2,9 +2,9 @@
   "capture_method": "Direct first-party capture with headless Chrome (no third-party scraping service); each row cites the page URL, the capture date, and the sha256 of the captured document.",
   "captured_on": "2026-08-18",
   "coverage": {
-    "providers_total": 58,
+    "providers_total": 61,
     "providers_with_evidenced_pricing": 33,
-    "providers_pricing_unavailable": 25,
+    "providers_pricing_unavailable": 28,
     "medication_rows": 82,
     "rows_with_intro_month_1": 5
   },
@@ -7372,6 +7372,27 @@
       "provider": "Yucca Health",
       "unavailable_reason": null,
       "pricing_state": "attested_offer"
+    },
+    "rightwell-review": {
+      "program_id": "rightwell-review",
+      "provider": "RightWell",
+      "medications": [],
+      "unavailable_reason": "Enter the actual selected-treatment checkout and renewal charges after evaluation. Do not autofill from a promotional variant or general GLP-1 educational article.",
+      "pricing_state": "not_attested"
+    },
+    "willow-review": {
+      "program_id": "willow-review",
+      "provider": "Willow",
+      "medications": [],
+      "unavailable_reason": "Enter the selected treatment's actual initial and renewal bill. Do not autofill from a lowest site-wide price or an obsolete dose tier.",
+      "pricing_state": "not_attested"
+    },
+    "ivim-health-review": {
+      "program_id": "ivim-health-review",
+      "provider": "Ivim Health",
+      "medications": [],
+      "unavailable_reason": "Enter the selected plan, exact checkout total, renewal cost, and separately billed membership manually; published starting medication figures do not establish these totals.",
+      "pricing_state": "not_attested"
     }
   },
   "quote_normalization": "Quotes are verbatim provider wording with one normalization: the capture harness marks block boundaries with a pilcrow so a <dd> value cannot run into the next <dt>. Those markers are OUR artifact, not the provider's text, so they render as a middot separator. Every price was verified against the RAW capture before this normalization.",

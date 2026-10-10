@@ -1,8 +1,8 @@
 {
-  "count": 57,
+  "count": 60,
   "logo_treatment_counts": {
-    "dark-chip": 11,
-    "light-chip": 46
+    "dark-chip": 12,
+    "light-chip": 48
   },
   "logo_treatment_derived_by": "scripts/analyze-provider-logo-luminance.py",
   "logo_treatment_schema": "glp-provider-logo-treatment-v1",
@@ -2970,6 +2970,162 @@
       "surface": "light",
       "verified_as_of": "",
       "width": 500
+    },
+    {
+      "bytes": 7026,
+      "height": 153,
+      "logo_fit": {
+        "center_offset": [
+          0.001,
+          0.013
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          599,
+          149
+        ],
+        "mark_share": [
+          0.998,
+          0.974
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 3.61,
+        "contrast_on_light_chip": 4.34,
+        "mean_ink_rgb": [
+          114.3,
+          115.2,
+          179.7
+        ],
+        "measured_pixels": 9426,
+        "relative_luminance": 0.192,
+        "translucent_share": 0.687
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "rightwell-review.webp",
+      "output_sha256": "32ee0fb7e7c2898f050dc21808840be82f6b3c6a60a4e241217d62b639671016",
+      "program_id": "rightwell-review",
+      "provider": "RightWell",
+      "public_path": "/assets/provider-logos/rightwell-review.webp",
+      "raw_sha256": "ed137263ef411be955e8548dff73f8c40d0432375f8c6c80f10026faefbc0129",
+      "resolved_url": "https://assets.embeddables.com/Logo_03344447052555455.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://assets.embeddables.com/Logo_03344447052555455.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.rightwell.com/get-started?",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 600
+    },
+    {
+      "bytes": 7244,
+      "height": 171,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          600,
+          171
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 14.07,
+        "contrast_on_light_chip": 1.11,
+        "mean_ink_rgb": [
+          231.0,
+          254.1,
+          116.5
+        ],
+        "measured_pixels": 10252,
+        "relative_luminance": 0.8923,
+        "translucent_share": 0.7023
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "willow-review.webp",
+      "output_sha256": "1421b39293f27a1f26ebf7c508f297f2ef26bb2fcb3b5663343a0ee654ab7843",
+      "program_id": "willow-review",
+      "provider": "Willow",
+      "public_path": "/assets/provider-logos/willow-review.webp",
+      "raw_sha256": "5bb5b1ebcbf22614dbce73f607d442bbd6be084b476bd1dbe24ffdf19fade534",
+      "resolved_url": "https://cdn.prod.website-files.com/693034e0b94728017fd500b9/69387014118dfc0d5bbbe67b_Willow%20Full%20Logo%20-%20Electric.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/693034e0b94728017fd500b9/69387014118dfc0d5bbbe67b_Willow%20Full%20Logo%20-%20Electric.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.startwillow.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 600
+    },
+    {
+      "bytes": 4596,
+      "height": 104,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.005
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          1,
+          600,
+          102
+        ],
+        "mark_share": [
+          1.0,
+          0.971
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 2.71,
+        "contrast_on_light_chip": 5.79,
+        "mean_ink_rgb": [
+          88.3,
+          107.4,
+          69.1
+        ],
+        "measured_pixels": 2628,
+        "relative_luminance": 0.1312,
+        "translucent_share": 0.8945
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "ivim-health-review.webp",
+      "output_sha256": "1dba9f3934455b75728893bec6e19f7141e6746b9a09eb39b393c1ea0bc58f4d",
+      "program_id": "ivim-health-review",
+      "provider": "Ivim Health",
+      "public_path": "/assets/provider-logos/ivim-health-review.webp",
+      "raw_sha256": "ed270d2bc532970c3a2e60adc86202e99e63a0970bbf1ea13aa0e76ac6699ad0",
+      "resolved_url": "https://media-s3-cdn.ivimhealth.com/assets/images/logos/ivim-black.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://media-s3-cdn.ivimhealth.com/assets/images/logos/ivim-black.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://ivimhealth.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 600
     }
   ],
   "runtime_remote_assets": 0,

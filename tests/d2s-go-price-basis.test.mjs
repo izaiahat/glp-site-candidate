@@ -4,7 +4,8 @@ import { readFileSync } from 'node:fs';
 import { restoreGoOnlyPriceBasis } from '../src/go-runtime-selection.mjs';
 import { historicalPriceIndexRegistry } from '../src/price-index-historical-registry.mjs';
 import { stableSha256 } from '../src/therapeutic-taxonomy.mjs';
-const registry=JSON.parse(readFileSync(new URL('../data/program-registry.json',import.meta.url)));
+import {readHistoricalPriceFixture} from './helpers/provider-append-predecessor.mjs';
+const registry=JSON.parse(readHistoricalPriceFixture(new URL('../data/program-registry.json',import.meta.url)));
 const expected=registry.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256;
 // This test owns the four GO-only edits, not subsequent factual/name changes.
 // Authenticate the original whole price body via its native reader, then take

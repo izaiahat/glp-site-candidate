@@ -1471,6 +1471,105 @@
         "provider_issued_url": "https://epsilonmkt.com/?a=15309&c=178786&s1="
       },
       "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 723,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "RightWell",
+      "existing_release_alias": "rightwell-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/policy-staging/approval-classifications/glp/maxbounty-32122.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "MaxBounty",
+      "provider_program_id": "32122",
+      "publisher_id": "803003",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://afflat3c2.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32122&c=918277&a=803003&k=8FB3E2948DEC86BC482F4EB04CC7514C&l=38072"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 731,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Willow",
+      "existing_release_alias": "willow-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/policy-staging/approval-classifications/glp/maxbounty-29207.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "MaxBounty",
+      "provider_program_id": "29207",
+      "publisher_id": "803003",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://afflat3c2.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=29207&c=918277&a=803003&k=D62EA6B8BC269A61D5529EF7EF07089C&l=33375"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 713,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Ivim Health",
+      "existing_release_alias": "ivim-health-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/policy-staging/approval-classifications/glp/maxbounty-31359.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "MaxBounty",
+      "provider_program_id": "31359",
+      "publisher_id": "803003",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://afflat3c1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=31359&c=918277&a=803003&k=396C183662E0636632D2B5F21947E4FE&l=36909"
+      },
+      "wire_in_ready": true
     }
   ],
   "schema": "glp-affiliate-wire-in-approvals-v1",
@@ -1478,6 +1577,6 @@
     "b2_sheet_row": 124,
     "canonical_sheet": "Affiliate Applications Sheet",
     "mission": "g6_r1a_glp_affiliate_wirein_20260806",
-    "sheet_snapshot_sha256": "d07efd9a6ba8008de35db14705a9502481a03ef50f129978fe36a0b657995c8c"
+    "sheet_snapshot_sha256": "b10569d3ca231ae379cca351dbad46bd8625b19b1a2daf5ff769840d15b1a754"
   }
 }

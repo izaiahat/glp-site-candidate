@@ -1,0 +1,25 @@
+import {createHash} from 'node:crypto';
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
+import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
+const read=n=>readFileSync(new URL('../data/'+n,import.meta.url));
+const receipt=JSON.parse(read('telos-research-hold-receipt.json'));
+test('native append reader retains original price oracles and rejects input drift',{skip:!existsSync(receipt.operator_ack.path)},()=>{
+ const registry=JSON.parse(read('program-registry.json'));
+ const original=JSON.stringify(registry);
+ const basis=historicalPriceIndexRegistry(registry);
+ assert.equal(basis.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256,'f9a8ce57165d5a014fe623c820a4ab90313d4c5679c4d079e6703a7e2df8f234');
+ assert.deepEqual(historicalPriceIndexRegistry(basis),basis);
+ for(const id of ['rightwell-review','willow-review','ivim-health-review'])assert.equal(basis.programs.some(p=>p.program_id===id),false);
+ const bad=structuredClone(registry); bad.programs[0].display_name+=' unexplained';
+ assert.throws(()=>historicalPriceIndexRegistry(bad),/append_current_drift/);
+ const ledger=read('program-content-ledger.json'), frozen=read('price-index-frozen-content-ledger.json'), binding=JSON.parse(read('price-index-nonprice-binding.json'));
+ assert.deepEqual(frozenPriceLedger(ledger,frozen,binding).bytes,frozen);
+ assert.equal(frozenPriceLedger(ledger,frozen,binding).current_sha256,createHash('sha256').update(ledger).digest('hex'));
+ assert.throws(()=>frozenPriceLedger(Buffer.concat([ledger,Buffer.from(' ')]),frozen,binding),/append_current_bytes_drift/);
+ const forged=JSON.parse(ledger); forged.programs[0].starting_price='free';
+ assert.throws(()=>frozenPriceLedger(Buffer.from(JSON.stringify(forged)),frozen,binding),/append_current_drift/);
+ assert.equal(JSON.stringify(registry),original);
+});

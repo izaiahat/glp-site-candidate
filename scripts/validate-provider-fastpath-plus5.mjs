@@ -98,9 +98,9 @@ const siteCss = await readText("public/assets/site.css");
 assert.equal(contracts.schema, "glp-provider-fastpath-contracts-v1");
 assert.equal(fastpath.schema, "glp-provider-fastpath-integration-v1");
 assert.equal(sha256(await read("data/provider-page-contracts.json")), fastpath.current_contract_sha256);
-assert.equal(contracts.providers.length, 43);
-assert.equal(fastpath.providers.length, 43);
-assert.equal(logoManifest.count, 57);
+assert.equal(contracts.providers.length, 46);
+assert.equal(fastpath.providers.length, 46);
+assert.equal(logoManifest.count, 60);
 assert.equal(logoManifest.runtime_remote_assets, 0);
 assert.equal(programRegistry.schema, "site-program-registry-v1");
 // D2w: all 43 editorial contracts remain; only receipted Telos is now held.

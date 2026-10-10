@@ -114,8 +114,11 @@
   },
   "comparison_pages": [
     {
+      "duration_months": [
+        1,
+        3
+      ],
       "kind": "cross-duration",
-      "duration_months": [1, 3],
       "medication_ids": [
         "compounded-tirzepatide-injection",
         "compounded-semaglutide-injection"
@@ -161,7 +164,7 @@
       "tone": "tirzepatide"
     }
   ],
-  "expected_indexable_routes": 174,
+  "expected_indexable_routes": 177,
   "legacy_redirects": [
     [
       "/guides/",

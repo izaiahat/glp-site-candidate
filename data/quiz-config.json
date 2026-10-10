@@ -795,7 +795,7 @@
       "why_match": "RxSpan MD Telehealth Program publishes its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
     },
     {
-      "display_name": "Pallas Health – GLP-1 Weight Loss & NAD",
+      "display_name": "Pallas Health \u2013 GLP-1 Weight Loss & NAD",
       "held_route": "/go/pallas-health-review?s=provider-fit.result&v=a",
       "live_link_allowed": false,
       "priority_score": 0,
@@ -817,7 +817,7 @@
       "source_clearance": true,
       "staging_eligible": true,
       "unknown_render_action": "OMIT",
-      "why_match": "Pallas Health – GLP-1 Weight Loss & NAD publishes more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
+      "why_match": "Pallas Health \u2013 GLP-1 Weight Loss & NAD publishes more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
     },
     {
       "display_name": "Wellmedr",
@@ -1438,9 +1438,74 @@
       "source_clearance": true,
       "staging_eligible": true,
       "why_match": "MEDVI publishes a comparable monthly price, more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
+    },
+    {
+      "display_name": "RightWell",
+      "held_route": "/go/rightwell-review?s=provider-fit.result&v=a",
+      "live_link_allowed": false,
+      "priority_score": 0,
+      "program_id": "rightwell-review",
+      "promotion_authorized": false,
+      "rules": {
+        "goal": [
+          "prefer-not-to-say"
+        ],
+        "insurance": [
+          "prefer-not-to-say",
+          "self-pay",
+          "unsure"
+        ]
+      },
+      "source_clearance": true,
+      "staging_eligible": true,
+      "why_match": "RightWell publishes its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
+    },
+    {
+      "display_name": "Willow",
+      "held_route": "/go/willow-review?s=provider-fit.result&v=a",
+      "live_link_allowed": false,
+      "priority_score": 0,
+      "program_id": "willow-review",
+      "promotion_authorized": false,
+      "rules": {
+        "goal": [
+          "medication-form",
+          "prefer-not-to-say"
+        ],
+        "insurance": [
+          "prefer-not-to-say",
+          "self-pay",
+          "unsure"
+        ]
+      },
+      "source_clearance": true,
+      "staging_eligible": true,
+      "why_match": "Willow publishes more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
+    },
+    {
+      "display_name": "Ivim Health",
+      "held_route": "/go/ivim-health-review?s=provider-fit.result&v=a",
+      "live_link_allowed": false,
+      "priority_score": 0,
+      "program_id": "ivim-health-review",
+      "promotion_authorized": false,
+      "rules": {
+        "goal": [
+          "medication-form",
+          "prefer-not-to-say"
+        ],
+        "insurance": [
+          "prefer-not-to-say",
+          "self-pay",
+          "unsure"
+        ]
+      },
+      "source_clearance": true,
+      "staging_eligible": true,
+      "why_match": "Ivim Health publishes more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
     }
   ],
-  "description": "Answer seven quick questions to compare providers by treatment, state, and your selected preferences — free, in about a minute.",
+  "description": "Answer seven quick questions to compare providers by treatment, state, and your selected preferences \u2014 free, in about a minute.",
   "email_capture": {
     "code_built": true,
     "consent_version": "glp-lead-v2-20260723",
@@ -1559,6 +1624,7 @@
         "trt-nation",
         "try-ageless",
         "wellmedr-review",
+        "willow-review",
         "trimi-glp-1",
         "direct-meds",
         "bodybuilding-com-glp-1-longevity-review",
@@ -1576,6 +1642,7 @@
         "tmates-xentraffic-offer-3154",
         "eden-xentraffic-offer-3051",
         "gobymeds",
+        "ivim-health-review",
         "joinskinny-semaglutide-glp-1-us",
         "levelsrx-extra-cpa-home-page",
         "longevity-meds-glp-1-review",
@@ -1640,11 +1707,13 @@
         "measured",
         "novi-weight-loss-glp-1",
         "refills",
+        "rightwell-review",
         "skinnyrx-1-glp-weight-loss-provider-review",
         "strut-health",
         "trimrx-xentraffic-offer-3014",
         "trt-nation",
         "wellmedr-review",
+        "willow-review",
         "yourera-program",
         "direct-meds",
         "trimi-glp-1",
@@ -1656,6 +1725,7 @@
         "eden-xentraffic-offer-3051",
         "enhanced-tirzepatide-funnel-b",
         "gobymeds",
+        "ivim-health-review",
         "levelsrx-extra-cpa-home-page",
         "longevity-meds-glp-1-review",
         "mydrhank",
@@ -1708,10 +1778,10 @@
     }
   ],
   "guided_fallback": {
-    "lede": "No verified provider fits every answer you gave. Rather than show you nothing, here are the closest matches — with exactly what each one does not meet.",
+    "lede": "No verified provider fits every answer you gave. Rather than show you nothing, here are the closest matches \u2014 with exactly what each one does not meet.",
     "mismatch_prefix": "Does not match your answer"
   },
-  "h1": "Find your GLP‑1 match.",
+  "h1": "Find your GLP\u20111 match.",
   "matching_policy": {
     "composition_order": [
       "source_and_staging_clearance",
@@ -1738,6 +1808,7 @@
     "prevention_note": "Filtering is monotone, so an option that empties the candidate set at pick time would empty it on every path through it. Such an option is offered DISABLED with a published reason rather than allowed to dead-end. If every option of a question would be dead, none is disabled and the guided closest-matches fallback explains the result instead.",
     "ranking_basis": "goal_weighted_profiles_over_evidence_derived_criteria_plus_published_all_in_cost (src/quiz-ranking.mjs; rationale data/quiz-scoring-rationale.json)",
     "result_count": "all_eligible",
+    "result_scope_reason": "Return all eligible matches in evidence order, rather than permanently hiding unpriced providers below a three-result cap. Missing prices cannot enter the cost lane; non-price attributes and all existing constraints remain.",
     "routing_answers": [
       "goal",
       "insurance",
@@ -1748,8 +1819,7 @@
     "schema": "commercial-priority-matching-v1",
     "state_routing_note": "geographic availability only, from dated research evidence; never excludes without explicit provider-published evidence (2026-08-06)",
     "state_used_for_matching": false,
-    "tie_breaker": "published_all_in_cost_asc_then_program_id_asc",
-    "result_scope_reason": "Return all eligible matches in evidence order, rather than permanently hiding unpriced providers below a three-result cap. Missing prices cannot enter the cost lane; non-price attributes and all existing constraints remain."
+    "tie_breaker": "published_all_in_cost_asc_then_program_id_asc"
   },
   "medication_preference_empty_state": "No verified provider in this comparison currently offers that medication. We will not substitute or guess.",
   "pass2_flow": {
@@ -2597,12 +2667,12 @@
     "status": "NOT_IMPLEMENTED_IN_MATCHING"
   },
   "storage": "ephemeral_page_memory_only",
-  "title": "Which provider fits my priorities? — Clinic Scout staging",
+  "title": "Which provider fits my priorities? \u2014 Clinic Scout staging",
   "transmit_answers": false,
   "unavailable_option_copy": {
-    "blocked_by": "No provider in our comparison offers this together with your earlier answer “{answer}”.",
+    "blocked_by": "No provider in our comparison offers this together with your earlier answer \u201c{answer}\u201d.",
     "blocked_by_combination": "No provider in our comparison offers this together with your earlier answers.",
     "none_at_all": "No provider in our comparison publishes this, so we cannot match you to one.",
-    "state_suffix": " — no match with your answers"
+    "state_suffix": " \u2014 no match with your answers"
   }
 }

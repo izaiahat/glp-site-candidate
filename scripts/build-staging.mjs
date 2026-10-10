@@ -43,6 +43,7 @@ import { readPriceIndexPredecessor } from "../src/price-index-predecessor.mjs";
 import { frozenPriceLedger } from "../src/price-index-nonprice-binding.mjs";
 import { addCurrentPriceIndexOffers, stripCurrentPriceIndexOffers } from "../src/price-refresh-evidence.mjs";
 import { historicalPriceIndexRegistry } from "../src/price-index-historical-registry.mjs";
+import { providerPricePredecessorRegistry } from "../src/provider-price-append.mjs";
 import { composePriceWatchIssue, validatePublishedPriceWatchIssue } from "../src/price-watch-email.mjs";
 import { buildMysteryShopArtifacts, loadEvidenceInputs, evidenceLedgerAuthority } from "../src/mystery-shop.mjs";
 import { buildDealArtifacts, resolveDealEvaluationClocks } from "../src/deal-ingestion.mjs";
@@ -2414,11 +2415,12 @@ async function main() {
     // checking its frozen body. Keep current identity/authority out of this
     // price-only copy and leave programRegistry unchanged for public surfaces.
     const priceIndexRegistryBasis = historicalPriceIndexRegistry(historicalAffiliateRegistry(rawProgramRegistry));
+    const priceIndexTaxonomy = priceIndexRegistryBasis.therapeutic_taxonomy;
     delete priceIndexRegistryBasis.therapeutic_taxonomy;
     delete priceIndexRegistryBasis.provider_dynamic_profiles;
     delete priceIndexRegistryBasis.consumer_therapeutic_authorities;
     const semanticBasisSha256 = stableSha256(restoreGoOnlyPriceBasis(priceIndexRegistryBasis, ROOT));
-    if (semanticBasisSha256 !== programRegistry.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256) {
+    if (semanticBasisSha256 !== priceIndexTaxonomy.price_index_registry_programs_semantic_basis_sha256) {
       throw new Error("price_index_registry_semantic_basis_drift");
     }
     const frozenSourceSha256 = programRegistry.therapeutic_taxonomy.price_index_registry_frozen_source_sha256;
@@ -2462,8 +2464,9 @@ async function main() {
     BASELINE_PRICE_ROW_COUNT: pricingBaseline.coverage.medication_rows,
     BASELINE_PRICED_PROVIDER_COUNT: pricingBaseline.coverage.providers_with_evidenced_pricing,
   }),derivedTallies);
-  const rawIdentity = assertDeclaredIdentityGroups(rawProgramRegistry, SITE_PROFILE, rawContentLedger.programs);
-  const predecessorLiveProgramCount = rawProgramRegistry.programs.filter(p => p.commercial_state === 'live'
+  const preservedRegistry = providerPricePredecessorRegistry(rawProgramRegistry);
+  const rawIdentity = assertDeclaredIdentityGroups(preservedRegistry, SITE_PROFILE, rawContentLedger.programs);
+  const predecessorLiveProgramCount = preservedRegistry.programs.filter(p => p.commercial_state === 'live'
     && p.profiles?.[SITE_PROFILE]?.vertical_fit === true && p.profiles[SITE_PROFILE].wired === true
     && p.profiles[SITE_PROFILE].surfaces?.review === true && !rawIdentity.aliasIds.has(p.program_id)).length;
   const normalizedPreservedPriceIndex = normalizePriceIndexBuild4Semantics(
