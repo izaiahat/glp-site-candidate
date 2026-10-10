@@ -16,6 +16,27 @@ export function loadAcceptedUpdates(root) {
   const articles = loadAcceptedGuides(root, 'updates.json');
   return articles.map((article, index) => ({article, before_sha256:manifest.entries[index].before_sha256}));
 }
+function preserveInactiveLegacyGovernance(before, article) {
+  // The QA/five-gate subject stays byte-identical. Only the authenticated
+  // predecessor owns rendering governance, as in the native R2 builder.
+  const neutral = article.commercial_link_taxonomy === 'medical_claims'
+    && Array.isArray(article.exact_services) && article.exact_services.length === 0
+    && article.has_affiliate_cta === false && article.inline_ftc_disclosure === false
+    && article.surface_taxonomy === 'medical' && article.suppress_cta === true
+    && article.risk_tier === before.risk_tier
+    && article.comparison_required === false && before.comparison_required === false
+    && (before.comparison_spec === null || !Object.hasOwn(before, 'comparison_spec'))
+    && ['offer_module','affiliate_link','affiliate_links'].every(k => !Object.hasOwn(before,k) && !Object.hasOwn(article,k))
+    && !Object.hasOwn(article,'inline_ftc_disclosure_text');
+  if (!neutral) throw new Error('accepted_update_governance_changed');
+  const result = {...article};
+  for (const key of GOVERNANCE) {
+    if (Object.hasOwn(before,key)) result[key] = structuredClone(before[key]);
+    else delete result[key];
+  }
+  return result;
+}
+
 export function applyAcceptedUpdates(articles, updates) {
   const result = [...articles];
   for (const {article, before_sha256} of updates) {
@@ -23,8 +44,10 @@ export function applyAcceptedUpdates(articles, updates) {
     if (matches.length !== 1 || matches[0][0].article_id !== article.article_id) throw new Error('accepted_update_identity_invalid');
     const [before, index] = matches[0];
     if (objectSha(before) !== before_sha256) throw new Error('accepted_update_predecessor_changed');
-    if (GOVERNANCE.some(k => JSON.stringify(before[k]) !== JSON.stringify(article[k]))) throw new Error('accepted_update_governance_changed');
-    result[index] = article;
+    const changed = GOVERNANCE.some(k => JSON.stringify(before[k]) !== JSON.stringify(article[k]));
+    const replacement = changed ? preserveInactiveLegacyGovernance(before, article) : article;
+    if (GOVERNANCE.some(k => JSON.stringify(before[k]) !== JSON.stringify(replacement[k]))) throw new Error('accepted_update_governance_changed');
+    result[index] = replacement;
   }
   return result;
 }
