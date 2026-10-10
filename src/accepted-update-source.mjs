@@ -37,6 +37,25 @@ function preserveInactiveLegacyGovernance(before, article) {
   return result;
 }
 
+export function applyAcceptedUpdateOwnership(owners, articles, updates) {
+  // Reuse exact predecessor/identity/governance authentication. Only the
+  // accepted target query changes; release flags and frozen inputs do not.
+  applyAcceptedUpdates(articles, updates);
+  const result = [...owners];
+  for (const {article} of updates) {
+    const before = articles.find(a => a.canonical_path === article.canonical_path);
+    const matches = result.map((row, index) => [row, index]).filter(([row]) => row.url === article.canonical_path);
+    if (matches.length !== 1) throw new Error('accepted_update_ownership_count_invalid');
+    const [owner, index] = matches[0];
+    if ((owner.article_id || owner.owner) !== article.article_id || owner.risk_tier !== article.risk_tier
+        || owner.primary_keyword !== before.primary_keyword || typeof article.primary_keyword !== 'string' || !article.primary_keyword.trim()) {
+      throw new Error('accepted_update_ownership_identity_invalid');
+    }
+    result[index] = {...owner, primary_keyword: article.primary_keyword};
+  }
+  return result;
+}
+
 export function applyAcceptedUpdates(articles, updates) {
   const result = [...articles];
   for (const {article, before_sha256} of updates) {

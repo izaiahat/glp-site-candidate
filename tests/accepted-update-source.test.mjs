@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { applyAcceptedUpdates, objectSha } from '../src/accepted-update-source.mjs';
+import * as updatesSource from '../src/accepted-update-source.mjs';
+import { readFileSync } from 'node:fs';
+import { validateKeywordOwnership } from '../src/blog-system.mjs';
 
 test('replacement keeps identity and provider/risk guards, not a second article', () => {
   const before = {article_id:'a', canonical_path:'/guides/a/', risk_tier:'HIGH', suppress_cta:true, sections:[{heading:'Old'}]};
@@ -38,4 +41,28 @@ test('neutral exact review projects only authenticated inactive legacy governanc
   }
   const active={...before,affiliate_link:'https://invalid.test/old'};
   assert.throws(()=>applyAcceptedUpdates([active],[{article,before_sha256:objectSha(active)}]),/governance/);
+});
+
+test('authenticated shortage update replaces ownership keyword without changing frozen source or gates', () => {
+  const root = new URL('../', import.meta.url).pathname;
+  const read = rel => JSON.parse(readFileSync(new URL('../' + rel, import.meta.url)));
+  const articles = read('data/blog/content-batch.json').articles;
+  const owners = read('data/blog/keyword-ownership-map.json').entries;
+  const updates = updatesSource.loadAcceptedUpdates(root);
+  const original = JSON.stringify({articles, owners, updates});
+  const projected = updatesSource.applyAcceptedUpdateOwnership(owners, articles, updates);
+  const update = updates[0].article;
+  const matches = projected.filter(x => x.url === update.canonical_path && x.primary_keyword === update.primary_keyword);
+  assert.equal(matches.length, 1, `blog_article_owner_missing:${update.article_id}`);
+  const before = owners.find(x => x.url === update.canonical_path);
+  assert.deepEqual(matches[0], {...before, primary_keyword: update.primary_keyword});
+  assert.equal(projected.length, owners.length);
+  validateKeywordOwnership(projected);
+  assert.equal(JSON.stringify({articles, owners, updates}), original);
+  const wrongOwner = owners.map(x => x === before ? {...x, owner:'foreign'} : x);
+  assert.throws(() => updatesSource.applyAcceptedUpdateOwnership(wrongOwner, articles, updates), /ownership/);
+  assert.throws(() => updatesSource.applyAcceptedUpdateOwnership([...owners, before], articles, updates), /ownership/);
+  assert.throws(() => updatesSource.applyAcceptedUpdateOwnership(owners, articles, [{...updates[0], before_sha256:'0'.repeat(64)}]), /predecessor/);
+  const collision = [...projected, {...matches[0], url:'/guides/different/'}];
+  assert.throws(() => validateKeywordOwnership(collision), /keyword/);
 });

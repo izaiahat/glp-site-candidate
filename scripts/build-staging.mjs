@@ -1545,7 +1545,7 @@ function trustPages(identity, articles = [], authorRegistry = { authors: [] }) {
 
 import { loadCarrierArticles, renderedCarrierArticle, assertCarrierArticleOutput } from "../src/carrier-article-retention.mjs";
 import { loadAcceptedGuides, acceptedGuideOwnership, addAcceptedInboundLinks } from "../src/accepted-guide-source.mjs";
-import { loadAcceptedUpdates, applyAcceptedUpdates } from "../src/accepted-update-source.mjs";
+import { loadAcceptedUpdates, applyAcceptedUpdates, applyAcceptedUpdateOwnership } from "../src/accepted-update-source.mjs";
 async function main() {
   console.log(JSON.stringify(await refreshPriceTracker()));
   // Required source derivation, not a carried-forward artifact. The former
@@ -1769,13 +1769,15 @@ async function main() {
     }));
   const glpArticles = allArticles.filter((article) => articleVertical(article) === "GLP-1");
   const glpGuideArticles = glpArticles.filter((article) => article.canonical_path.startsWith("/guides/"));
-  const allOwnership = [...keywordMap.entries, ...acceptedGuideOwnership(additions)];
+  const originalOwnership = [...keywordMap.entries, ...acceptedGuideOwnership(additions)];
   for (const article of nationalArticles) {
-    const matches = allOwnership.filter((entry) => entry.url === article.canonical_path);
+    const matches = originalOwnership.filter((entry) => entry.url === article.canonical_path);
     if (matches.length !== 1) throw new Error(`national_keyword_ownership_match_count_invalid:${article.article_id}:${matches.length}`);
     const owner = matches[0];
     if ((owner.article_id || owner.owner) !== article.article_id || owner.primary_keyword !== article.primary_keyword || owner.risk_tier !== article.risk_tier || owner.status !== article.status) throw new Error(`national_keyword_ownership_identity_invalid:${article.article_id}`);
   }
+  const allOwnership = applyAcceptedUpdateOwnership(originalOwnership,
+    [...blogBatch.articles, ...nationalContent.articles, ...additions], acceptedUpdates);
   validateKeywordOwnership(allOwnership);
   const authorMap = new Map(authorRegistry.authors.map((author) => [author.author_id, { id: author.author_id, ...author }]));
   const publisherAuthor = authorMap.get("izaiah-tilton");
