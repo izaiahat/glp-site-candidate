@@ -2,12 +2,16 @@ name: GLP-195 superseded profile validation
 on:
   pull_request:
     paths:
-      - 'src/provider-dynamic-profiles.mjs'
-      - 'tests/glp195-superseded-profile.test.mjs'
-      - '.github/workflows/glp195-superseded-profile.yml'
+      - ".github/workflows/glp195-superseded-profile.yml"
+      - "package.json"
+      - "src/provider-dynamic-profiles.mjs"
+      - "tests/glp195-superseded-profile.test.mjs"
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   superseded-profile:
     runs-on: ubuntu-latest

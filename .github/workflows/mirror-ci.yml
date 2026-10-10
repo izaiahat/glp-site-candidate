@@ -8,6 +8,34 @@ name: Private mirror portable checks (build excluded)
 # Existing build/test logic is untouched; this is NOT a build or release PASS.
 on:
   pull_request:
+    paths:
+      - ".github/workflows/mirror-ci.yml"
+      - "assets/**"
+      - "data/**"
+      - "functions/go/program-manifest.js"
+      - "package.json"
+      - "scripts/audit-quiz-results-matrix.mjs"
+      - "scripts/build-lastmod-provenance.mjs"
+      - "scripts/build-staging.mjs"
+      - "scripts/codemod-aeo-citation-schema.mjs"
+      - "scripts/glp_evidence_ledger.mjs"
+      - "scripts/glp_material_acceptance.mjs"
+      - "scripts/postbuild-aeo-surface.mjs"
+      - "scripts/refresh-price-tracker.mjs"
+      - "scripts/regenerate-go-runtime-manifest.mjs"
+      - "scripts/wave2-repairs.mjs"
+      - "src/**"
+      - "tests/accepted-guide-source.test.mjs"
+      - "tests/affiliate-relationship-sync.test.mjs"
+      - "tests/candidate-export-policy.test.mjs"
+      - "tests/carrier-analytics-emission.test.mjs"
+      - "tests/content-upgrade-contract.test.mjs"
+      - "tests/d2f-coverage-floor.test.mjs"
+      - "tests/glp47-approved-onboarding.test.mjs"
+      - "tests/guide-resource-consent.test.mjs"
+      - "tests/helpers/**"
+      - "tests/pricing-deployed-row-schema.test.mjs"
+      - "tests/wave2-p1-surfaces.test.mjs"
   workflow_dispatch:
     inputs:
       source_sha:
@@ -17,6 +45,9 @@ on:
         default: ''
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   portable-export-contracts:
     name: Portable export contracts (build NOT checked)

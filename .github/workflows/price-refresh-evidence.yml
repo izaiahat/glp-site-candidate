@@ -2,13 +2,18 @@ name: price-refresh-evidence
 on:
   pull_request:
     paths:
-      - src/price-refresh-evidence.mjs
-      - src/price-state.mjs
-      - tests/price-refresh-evidence.test.mjs
-      - tests/helpers/price-refresh-surfaces.mjs
-      - src/cost-calculator.mjs
-      - src/phase3-page-graph.mjs
-      - .github/workflows/price-refresh-evidence.yml
+      - ".github/workflows/price-refresh-evidence.yml"
+      - "assets/**"
+      - "data/**"
+      - "functions/go/program-manifest.js"
+      - "package-lock.json"
+      - "package.json"
+      - "src/**"
+      - "tests/helpers/**"
+      - "tests/price-refresh-evidence.test.mjs"
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   price-refresh-evidence-exact-head:
     runs-on: ubuntu-latest
