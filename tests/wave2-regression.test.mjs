@@ -270,7 +270,7 @@ test("Wave-2 commercial routes have a balanced ten-source internal-link floor", 
   for (const [route, incoming] of sources) assert.ok(incoming.size >= 10, `${route}: only ${incoming.size} distinct source routes`);
 });
 
-test("all 54 legacy review pages retain the evidence-safe 2026 SERP template and conditional rating schema", async () => {
+test("all 57 legacy review pages retain the evidence-safe 2026 SERP template and conditional rating schema", async () => {
   const { pageSeoCopy } = await import("../src/page-seo-copy.mjs");
   const sitemap = await readFile(new URL("sitemap.xml", PUBLIC), "utf8");
   const routes = [...sitemap.matchAll(/<loc>https:\/\/glpclinicscout\.com(\/reviews\/[^<]+)<\/loc>/g)].map((match) => match[1]).filter((route) => !READY6_ROUTES.has(route));
@@ -279,7 +279,7 @@ test("all 54 legacy review pages retain the evidence-safe 2026 SERP template and
   // and was already excluded from this set).
   // 32 -> 29 on 2026-08-18: the three niche-fit review pages (Paternity Lab,
   // Advanced Trichology, LyfeFuel) came off this site by operator ruling.
-  assert.equal(routes.length, 54); // 2026-08-27 live-head merge: +nu-image
+  assert.equal(routes.length, 57); // 2026-08-27 live-head merge: +nu-image
   let rated = 0;
   let pending = 0;
   for (const route of routes) {

@@ -1,3 +1,4 @@
+import {providerPricePredecessorBytes} from './provider-price-append.mjs';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {release2PriceLedgerBasis} from './price-index-release2-basis.mjs';
@@ -48,6 +49,7 @@ function heldProjection(current, frozen, binding, readBytes) {
 // readBytes is an injected byte transport for hostile tests; every byte read
 // still has to match the immutable descriptor/receipt/authority chain above.
 export function frozenPriceLedger(currentBytes, frozenBytes, binding, readBytes = readFileSync) {
+  currentBytes=providerPricePredecessorBytes(currentBytes,'ledger',readBytes);
   const rawCurrentSha=sha(currentBytes);
   if(binding?.schema==='glp.frozen-price-nonprice-binding.v5'){
     const prior=s32LedgerPredecessor(currentBytes,binding,readBytes);

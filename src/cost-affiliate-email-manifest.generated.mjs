@@ -19,22 +19,6 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "network": "Katalys"
     },
     {
-      "program_id": "breeze-meds-review",
-      "merchant": "Breeze Meds",
-      "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=1518&aff_id=13031",
-      "tracking_host": "track.revoffers.com",
-      "review_path": "/reviews/breeze-meds-review/",
-      "network": "Katalys"
-    },
-    {
-      "program_id": "care-bare-rx-glp1-review",
-      "merchant": "Care Bare Rx GLP1",
-      "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=1519&aff_id=13031",
-      "tracking_host": "track.revoffers.com",
-      "review_path": "/reviews/care-bare-rx-glp1-review/",
-      "network": "Katalys"
-    },
-    {
       "program_id": "coivas",
       "merchant": "Coivas",
       "affiliate_href": "https://www.awin1.com/awclick.php?mid=128761&id=2979387",
@@ -187,14 +171,6 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "network": "everflow"
     },
     {
-      "program_id": "pallas-health-review",
-      "merchant": "Pallas Health – GLP-1 Weight Loss & NAD",
-      "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=1622&aff_id=13031",
-      "tracking_host": "track.revoffers.com",
-      "review_path": "/reviews/pallas-health-review/",
-      "network": "Katalys"
-    },
-    {
       "program_id": "rxspan-md-telehealth-program-review",
       "merchant": "RxSpan MD Telehealth Program",
       "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=1599&aff_id=13031",
@@ -248,22 +224,6 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=384&aff_id=13031",
       "tracking_host": "track.revoffers.com",
       "review_path": "/reviews/strut-health/",
-      "network": "Katalys"
-    },
-    {
-      "program_id": "synergy-rx-review",
-      "merchant": "Synergy Rx",
-      "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=1520&aff_id=13031",
-      "tracking_host": "track.revoffers.com",
-      "review_path": "/reviews/synergy-rx-review/",
-      "network": "Katalys"
-    },
-    {
-      "program_id": "trimi-glp-1",
-      "merchant": "Trimi",
-      "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=1614&aff_id=13031",
-      "tracking_host": "track.revoffers.com",
-      "review_path": "/reviews/trimi-glp-1/",
       "network": "Katalys"
     },
     {

@@ -4,7 +4,7 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
   "program_registry_schema": "site-program-registry-v1",
   "site_profile": "glp-clinic-scout",
   "internal_fallback": "https://glpclinicscout.com/providers/",
-  "manifest_sha256": "517c2f1a67f4fe5d0707498b55d88454515510ea9032dd437be4228d5892d9be",
+  "manifest_sha256": "0b1b80ce0fa594d83419331c5a4adb2bdcab58925b8f6897428528ea3b128242",
   "programs": {
     "found-health": {
       "program_id": "found-health",
@@ -9961,6 +9961,36 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
       "encoding_verified": true,
       "privacy_qa_passed": true,
       "redirector_tos_verified": false
+    },
+    "rightwell-review": {
+      "program_id": "rightwell-review",
+      "display_name": "RightWell",
+      "route": "/go/rightwell-review",
+      "entry_state": "transparent_direct",
+      "commercial_state": "live",
+      "live_link_allowed": false,
+      "promotion_authorized": false,
+      "candidate_gate": "No complete live attribution and promotion receipt; entry remains held."
+    },
+    "willow-review": {
+      "program_id": "willow-review",
+      "display_name": "Willow",
+      "route": "/go/willow-review",
+      "entry_state": "transparent_direct",
+      "commercial_state": "live",
+      "live_link_allowed": false,
+      "promotion_authorized": false,
+      "candidate_gate": "No complete live attribution and promotion receipt; entry remains held."
+    },
+    "ivim-health-review": {
+      "program_id": "ivim-health-review",
+      "display_name": "Ivim Health",
+      "route": "/go/ivim-health-review",
+      "entry_state": "transparent_direct",
+      "commercial_state": "live",
+      "live_link_allowed": false,
+      "promotion_authorized": false,
+      "candidate_gate": "No complete live attribution and promotion receipt; entry remains held."
     }
   }
 });

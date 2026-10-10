@@ -1,3 +1,4 @@
+import {providerPricePredecessorRegistry} from './provider-price-append.mjs';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {projectGoOnlyPriceBasis} from './go-price-basis.mjs';
@@ -16,6 +17,7 @@ const wholeHistoricalPriceBody = 'f9a8ce57165d5a014fe623c820a4ab90313d4c5679c4d0
 // bytes, complete restored registry body and complete frozen ledger are required.
 // The three separately governed evidence attachments are not price-body fields.
 export function historicalPriceIndexRegistry(registry, contentLedger, readBytes = readFileSync) {
+  registry = providerPricePredecessorRegistry(registry, readBytes);
   // Already-projected input has a live Telos row and no alias too. Shape is
   // not authority: every return must authenticate evidence, taxonomy pins,
   // the complete historical body and any supplied ledger, then return a copy.

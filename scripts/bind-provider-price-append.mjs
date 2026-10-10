@@ -1,0 +1,22 @@
+import {execFileSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {makeProviderPriceAppend} from '../src/provider-price-append.mjs';
+import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
+import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
+import {historicalAffiliateRegistry} from '../src/affiliate-relationship-sync.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const arg=process.argv.indexOf('--base');
+if(arg<0||!/^[a-f0-9]{40}$/.test(process.argv[arg+1]||''))throw Error('exact_git_base_required');
+const base=process.argv[arg+1], ids=['rightwell-review','willow-review','ivim-health-review'];
+const get=(name)=>execFileSync('git',['show',`${base}:data/${name}`],{cwd:root,maxBuffer:20*1024*1024});
+const oldRegistry=Buffer.from(JSON.stringify(historicalAffiliateRegistry(JSON.parse(get('program-registry.json')))));
+const currentRegistry=Buffer.from(JSON.stringify(historicalAffiliateRegistry(JSON.parse(readFileSync(path.join(root,'data/program-registry.json'))))));
+const oldLedger=get('program-content-ledger.json'), currentLedger=readFileSync(path.join(root,'data/program-content-ledger.json'));
+// Authentic historical source must pass the original whole-body/ledger gates.
+historicalPriceIndexRegistry(JSON.parse(oldRegistry));
+frozenPriceLedger(oldLedger,readFileSync(path.join(root,'data/price-index-frozen-content-ledger.json')),JSON.parse(readFileSync(path.join(root,'data/price-index-nonprice-binding.json'))));
+const pair={schema:'glp.provider-price-append-pair.v1',registry:makeProviderPriceAppend(oldRegistry,currentRegistry,'registry',ids),ledger:makeProviderPriceAppend(oldLedger,currentLedger,'ledger',ids)};
+writeFileSync(path.join(root,'data/provider-price-append.json'),JSON.stringify(pair,null,2)+'\n');
+console.log(JSON.stringify({status:'PAIRED_APPEND_DERIVED',base,added_ids:ids,historical_oracles:'UNCHANGED_PASS'}));
