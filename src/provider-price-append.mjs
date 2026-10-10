@@ -30,7 +30,10 @@ export function projectProviderPriceAppend(currentBytes,binding,kind) {
  if(!binding||binding.schema!=='glp.provider-price-append.v1'||binding.kind!==kind||canonical(Object.keys(binding).sort())!==canonical(keys.sort()))throw Error('append_binding_invalid');
  const beforeBytes=Buffer.from(binding.predecessor_base64,'base64'), before=JSON.parse(beforeBytes), current=JSON.parse(currentBytes);
  if(sha(beforeBytes)!==binding.predecessor_sha256||digest(before)!==binding.predecessor_semantic_sha256)throw Error('append_predecessor_drift');
- if(digest(current)===binding.predecessor_semantic_sha256)return beforeBytes;
+ if(digest(current)===binding.predecessor_semantic_sha256) {
+  if(kind==='ledger'&&sha(currentBytes)!==binding.predecessor_sha256)throw Error('append_predecessor_bytes_drift');
+  return beforeBytes;
+ }
  if(digest(current)!==binding.current_semantic_sha256)throw Error('append_current_drift');
  if(kind==='ledger'&&sha(currentBytes)!==binding.current_bytes_sha256)throw Error('append_current_bytes_drift');
  const checked=makeProviderPriceAppend(beforeBytes,currentBytes,kind,binding.added_ids);

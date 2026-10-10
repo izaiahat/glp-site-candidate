@@ -6,6 +6,7 @@ import {loadGoPromotionAuthority,restoreGoOnlyPriceBasis} from '../src/go-runtim
 import {stableSha256} from '../src/therapeutic-taxonomy.mjs';
 import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
 import {buildProviderReviewSpecs,renderProviderReviewPage} from '../src/provider-review.mjs';
+import {readBeforeProviderAppendFixture} from './helpers/provider-append-predecessor.mjs';
 const registry=JSON.parse(readFileSync(new URL('../data/program-registry.json',import.meta.url)));
 import {providerPricePredecessorRegistry} from '../src/provider-price-append.mjs';
 const priceFixture=providerPricePredecessorRegistry(registry);
@@ -42,7 +43,7 @@ test('actual review renderer preserves repaired copy and the exact Longevity HOL
    assert.equal(authority.promotion_authorized,false);
    // Historical decision bytes remain authentic, but cannot waive this exact
    // unresolved creative approval. Preserve the evidence, not its old grant.
-   const legacy=read('go-runtime-promotion-authority.json').programs[id];
+   const legacy=JSON.parse(readBeforeProviderAppendFixture(new URL('../data/go-runtime-promotion-authority.json',import.meta.url))).programs[id];
    assert.equal(createHash('sha256').update(readFileSync(legacy.operator_approved_live_decision.path)).digest('hex'),legacy.operator_approved_live_decision.sha256);
    const issued=read('affiliate-wire-in-approvals.json').programs.find(p=>p.existing_release_alias===id)?.tracking?.provider_issued_url;
    assert.equal(issued,'https://www.xfnjwej33dd.com/841W6MT/6RHPZQL/');

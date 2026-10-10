@@ -4,7 +4,8 @@ import {readFileSync} from 'node:fs';
 import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
 import {release2PriceLedgerBasis} from '../src/price-index-release2-basis.mjs';
 import {renderCategoryPrice} from '../src/compounded-category.mjs';
-const read=name=>readFileSync(new URL('../data/'+name,import.meta.url));
+import {readHistoricalPriceFixture} from './helpers/provider-append-predecessor.mjs';
+const read=name=>readHistoricalPriceFixture(new URL('../data/'+name,import.meta.url));
 const current=read('program-content-ledger.json'),frozen=read('price-index-frozen-content-ledger.json');
 const binding=JSON.parse(read('price-index-nonprice-binding.json'));
 test('TAP844 v5 proof admits exact R2 basis and rejects altered successor proof',()=>{

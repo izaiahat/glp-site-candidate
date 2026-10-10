@@ -1,3 +1,4 @@
+import {readBeforeProviderAppendFixture} from './helpers/provider-append-predecessor.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -140,7 +141,7 @@ test('R2 current holds beat conflicting legacy approvals and block link-map resu
   try {
     mkdirSync(join(temp, 'data'));
     const selection = JSON.parse(read('data/go-selection-receipt.json'));
-    const legacy = JSON.parse(read('data/go-runtime-promotion-authority.json'));
+    const legacy = JSON.parse(readBeforeProviderAppendFixture(new URL('../data/go-runtime-promotion-authority.json',import.meta.url)));
     const terms = JSON.parse(read('data/go-terms-review-ledger.json'));
     const held = selection.programs.filter(p => p.disposition === 'HOLD');
     const persist = () => {

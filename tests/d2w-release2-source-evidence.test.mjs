@@ -4,7 +4,8 @@ import {readFileSync} from 'node:fs';
 import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
 import {release2PriceLedgerBasis} from '../src/price-index-release2-basis.mjs';
 import {sourceDisplayPacket,projectProviderDisplayFacts,projectProviderDisplayLedger} from '../src/provider-display-evidence.mjs';
-const read=n=>readFileSync(new URL('../data/'+n,import.meta.url));
+import {readHistoricalPriceFixture} from './helpers/provider-append-predecessor.mjs';
+const read=n=>readHistoricalPriceFixture(new URL('../data/'+n,import.meta.url));
 const current=read('program-content-ledger.json'),frozen=read('price-index-frozen-content-ledger.json'),binding=JSON.parse(read('price-index-nonprice-binding.json'));
 test('R2 exact source changes retain whole frozen price oracle',()=>{
  const result=frozenPriceLedger(current,frozen,binding);assert.deepEqual(result.bytes,frozen);

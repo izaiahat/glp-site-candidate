@@ -1,3 +1,4 @@
+import { explicitlyUnscoredReview } from './review-score-contract.mjs';
 import { pageSeoCopy } from "./page-seo-copy.mjs";
 // DESIGN WAVE 2026-08-06: compact (still fully visible) affiliate-status disclosure.
 import { existsSync, readFileSync } from "node:fs";
@@ -373,9 +374,7 @@ export function buildProviderReviewSpecs(pages, providerContracts, fastpath, reg
     const ledgerEntry = ledgerById.get(contract.program_id);
     // A capture-bound authored contract can explicitly withhold a review score.
     // Generic ledger ranking must not overwrite that independently reviewed state.
-    const explicitlyUnscored = contract.source_capture_bindings
-      && Object.hasOwn(contract.row_contract, 'score') && contract.row_contract.score === null
-      && Object.keys(contract.row_contract.criteria_scores || {}).length === 0;
+    const explicitlyUnscored = explicitlyUnscoredReview(contract);
     if (ledgerEntry?.criteria_scores && !explicitlyUnscored) {
       fastpathReview.row.criteria_scores = ledgerEntry.criteria_scores;
       fastpathReview.row.score_basis = ledgerEntry.score_basis;

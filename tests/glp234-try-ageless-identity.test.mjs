@@ -16,7 +16,8 @@ import { loadGoPromotionAuthority } from '../src/go-runtime-selection.mjs';
 import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
 
 test('GLP-234 F3 exact identity successor reconstructs only the historical price label', async () => {
-  const registry = await load('program-registry.json');
+  const {readHistoricalPriceFixture} = await import('./helpers/provider-append-predecessor.mjs');
+  const registry = JSON.parse(readHistoricalPriceFixture(new URL('../data/program-registry.json',import.meta.url)));
   const ledger = await load('price-index-frozen-content-ledger.json');
   const before = structuredClone({registry, ledger});
   const historical = historicalPriceIndexRegistry(registry, ledger);
