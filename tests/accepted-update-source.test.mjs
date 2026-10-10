@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { applyAcceptedUpdates, objectSha } from '../src/accepted-update-source.mjs';
 import * as updatesSource from '../src/accepted-update-source.mjs';
 import { readFileSync } from 'node:fs';
-import { validateKeywordOwnership, reviewBrief } from '../src/blog-system.mjs';
+import { validateKeywordOwnership, reviewBrief, renderBlogPost } from '../src/blog-system.mjs';
 
 test('replacement keeps identity and provider/risk guards, not a second article', () => {
   const before = {article_id:'a', canonical_path:'/guides/a/', risk_tier:'HIGH', suppress_cta:true, sections:[{heading:'Old'}]};
@@ -76,4 +76,15 @@ test('real neutral accepted update passes unchanged editorial gate without reviv
   assert.equal(article.has_affiliate_cta, false);
   assert.equal(article.suppress_cta, true);
   assert.equal(reviewBrief({...article, has_affiliate_cta:true}, author).reason, 'editorial_affiliate_contract_incomplete');
+});
+
+test('accepted material update retains original publication date in rendered Article schema', () => {
+  const articles = JSON.parse(readFileSync(new URL('../data/blog/content-batch.json', import.meta.url))).articles;
+  const updates = updatesSource.loadAcceptedUpdates(new URL('../', import.meta.url).pathname);
+  const article = applyAcceptedUpdates(articles, updates).find(a => a.article_id === updates[0].article.article_id);
+  const author = {status:'verified_organization', clinical_credentials_claimed:false,
+    entity_type:'Organization', display_name:'GLP Clinic Scout Editorial Team', bio_path:'/authors/clinic-scout-editorial-team/'};
+  const html = renderBlogPost(article, null, author);
+  assert.match(html, /"datePublished":"2026-07-23"/);
+  assert.match(html, /"dateModified":"2026-10-09"/);
 });
