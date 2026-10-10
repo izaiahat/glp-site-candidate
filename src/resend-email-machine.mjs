@@ -123,6 +123,27 @@ export function buildMessage({ config, subscriber, template, featuredProgram = n
   const goUrl = eligibleFeature ? `https://glpclinicscout.com/go/${encodeURIComponent(featuredProgram.program_id)}?s=email-glp.${position}&v=${variant}` : null;
   const promo = eligibleFeature && featuredProgram.promo_code_verified === true && featuredProgram.promo_code ? featuredProgram.promo_code : null;
   const unsubscribe = `https://glpclinicscout.com/unsubscribe?token=${encodeURIComponent(subscriber.unsubscribe_token)}`;
+  if (template.copy_format === "glp47-approved-20261009") {
+    // The approved onboarding bytes must not inherit weekly briefing copy.
+    if (!config.welcome_sequence.includes(template) || !template.body_text || !config.welcome_footer) throw new Error("glp47_template_not_bound");
+    const text = `${template.body_text}\n\n${config.welcome_footer.replace("{{unsubscribe_url}}", unsubscribe)}`;
+    if (/\{\{[^}]*\}\}/.test(text)) throw new Error("glp47_unresolved_template_token");
+    const safeUrl = esc(unsubscribe);
+    return {
+      endpoint: RESEND_API,
+      idempotencyKey: `${campaignId}/${subscriber.subscriber_id}/${template.step}`.slice(0, 256),
+      body: {
+        from: config.welcome_sequence_approval.sender,
+        to: [subscriber.email], subject: template.subject,
+        reply_to: config.welcome_sequence_approval.reply_to,
+        html: `<div style="white-space:pre-wrap">${esc(text).replaceAll(safeUrl, `<a href="${safeUrl}">${safeUrl}</a>`)}</div>`,
+        text,
+        headers: { "List-Unsubscribe": `<${unsubscribe}>`, "List-Unsubscribe-Post": "List-Unsubscribe=One-Click", "X-Clinic-Scout-Campaign": campaignId },
+        tags: [{ name: "vertical", value: subscriber.vertical }, { name: "funnel_stage", value: subscriber.funnel_stage }, { name: "campaign", value: campaignId }],
+      },
+      attribution: { page_slug: "email-glp", link_position: position, variant, campaign_id: campaignId, program_id: null },
+    };
+  }
   const affiliate = goUrl ? `<p><strong>Featured option:</strong> ${esc(featuredProgram.display_name)}. <a href="${goUrl}">Review current terms</a>${promo ? ` · verified promo code <strong>${esc(promo)}</strong>` : ""}</p><p><small>Affiliate disclosure: Clinic Scout may earn a commission if you use this link. Commission does not change our evidence standards.</small></p>` : `<p><strong>Featured option held:</strong> no program has cleared economics, EPC sample, compliance, redirector-ToS, and live-link gates.</p>`;
   const valueParagraphs = String(template.body_text || "Compare current all-in cost, eligibility limits, service area, cancellation terms, and what each public source actually proves.")
     .split(/\n+/).filter(Boolean).map((paragraph) => `<p>${esc(paragraph)}</p>`).join("");
@@ -170,6 +191,9 @@ function nextSendAt(consentAt, sequence, nextStep) {
 
 export async function runDripScheduler(env, config, now = new Date()) {
   if (!emailRuntimeGate(config, env)) return { status: "HELD", sent: 0, reason: "email_runtime_gate" };
+  // GLP47 approval covers copy only. No retained owner-backed B-01 runtime
+  // receiving exists; source review is required to replace this launch hold.
+  if (config.welcome_sequence.some(item => item.copy_format === "glp47-approved-20261009")) return { status: "HELD", sent: 0, reason: "glp47_onboarding_runtime_held_b01" };
   if (!env.EMAIL_DB?.prepare) return { status: "HELD", sent: 0, reason: "email_db_missing" };
   const cap = Number(env.EMAIL_WARMUP_DAILY_CAP || 25);
   const due = await env.EMAIL_DB.prepare("SELECT * FROM subscribers WHERE status='active' AND consent_status='opted-in' AND next_send_at <= ? AND next_drip_step BETWEEN 1 AND 5 ORDER BY next_send_at LIMIT ?").bind(now.toISOString(), cap).all();
