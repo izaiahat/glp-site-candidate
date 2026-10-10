@@ -26,6 +26,7 @@ on:
       - "scripts/wave2-repairs.mjs"
       - "src/**"
       - "tests/accepted-guide-source.test.mjs"
+      - "tests/accepted-update-source.test.mjs"
       - "tests/affiliate-relationship-sync.test.mjs"
       - "tests/candidate-export-policy.test.mjs"
       - "tests/carrier-analytics-emission.test.mjs"

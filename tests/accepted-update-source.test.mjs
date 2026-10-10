@@ -87,6 +87,12 @@ test('accepted material update retains original publication date in rendered Art
   const author = {status:'verified_organization', clinical_credentials_claimed:false,
     entity_type:'Organization', display_name:'GLP Clinic Scout Editorial Team', bio_path:'/authors/clinic-scout-editorial-team/'};
   const html = renderBlogPost(article, null, author);
+  assert.equal(article.title, 'GLP-1 Availability: FDA Status vs Local Stock (2026)');
+  for (const heading of ['Restart an FDA search without guessing a product URL',
+    'Keep national statements separate from the pharmacy answer',
+    'A prescription and a stock check answer different questions']) {
+    assert.ok(html.includes(heading), `reviewed shortage section missing: ${heading}`);
+  }
   assert.match(html, /"datePublished":"2026-07-23"/);
   assert.match(html, /"dateModified":"2026-10-09"/);
   // Execute the actual final metadata writer without invoking main/build.

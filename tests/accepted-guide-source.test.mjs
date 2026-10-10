@@ -60,3 +60,12 @@ test('fifth accepted guide is additive without rewriting frozen catalogs or imag
   } finally {rmSync(temp,{recursive:true,force:true});}
 });
 test('on-page variant refuses contradictory email form',()=>assert.throws(()=>addP1ContentUpgradeSurface('<html data-article-capture="none"><form></form></html>'),/contract_conflict/));
+
+test('accepted-update regressions trigger the exact-head portable workflow', () => {
+  const workflow = readFileSync(path.join(root, '.github/workflows/mirror-ci.yml'), 'utf8');
+  const triggers = workflow.slice(workflow.indexOf('  pull_request:'), workflow.indexOf('  workflow_dispatch:'));
+  assert.match(triggers, /^\s+- "tests\/accepted-update-source\.test\.mjs"\s*$/m,
+    'accepted-update-only source repair must receive exact-head CI');
+  assert.match(workflow, /node --test tests\/accepted-guide-source\.test\.mjs tests\/accepted-update-source\.test\.mjs/);
+  assert.match(workflow, /ref: \$\{\{ env\.EXPECTED_SHA \}\}/);
+});
