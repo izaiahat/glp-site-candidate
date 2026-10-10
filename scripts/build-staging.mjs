@@ -1017,7 +1017,7 @@ function addGuideMetadata(html, article, author) {
     url: canonicalUrl,
     title: article.title,
     description,
-    datePublished: article.updated_at,
+    datePublished: article.date_published || article.updated_at,
     dateModified: article.date_modified || article.updated_at,
     author,
     image: existsSync(path.join(ROOT, "assets/derivatives", `guide-${heroSlug}-1600.jpg`)) ? `https://glpclinicscout.com${heroJpg}` : null,

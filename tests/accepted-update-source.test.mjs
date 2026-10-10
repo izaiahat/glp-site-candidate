@@ -4,6 +4,8 @@ import { applyAcceptedUpdates, objectSha } from '../src/accepted-update-source.m
 import * as updatesSource from '../src/accepted-update-source.mjs';
 import { readFileSync } from 'node:fs';
 import { validateKeywordOwnership, reviewBrief, renderBlogPost } from '../src/blog-system.mjs';
+import { buildSchemaGraph } from '../src/schema.mjs';
+import path from 'node:path';
 
 test('replacement keeps identity and provider/risk guards, not a second article', () => {
   const before = {article_id:'a', canonical_path:'/guides/a/', risk_tier:'HIGH', suppress_cta:true, sections:[{heading:'Old'}]};
@@ -87,4 +89,13 @@ test('accepted material update retains original publication date in rendered Art
   const html = renderBlogPost(article, null, author);
   assert.match(html, /"datePublished":"2026-07-23"/);
   assert.match(html, /"dateModified":"2026-10-09"/);
+  // Execute the actual final metadata writer without invoking main/build.
+  // Only the unrelated optional hero-asset probe is substituted.
+  const builder = readFileSync(new URL('../scripts/build-staging.mjs', import.meta.url), 'utf8');
+  const start = builder.indexOf('function addGuideMetadata(');
+  const end = builder.indexOf('\n}\n', start) + 2;
+  assert.ok(start >= 0 && end > start);
+  const metadata = new Function('buildSchemaGraph','existsSync','path','ROOT','escHtml',
+    `return (${builder.slice(start, end)});`)(buildSchemaGraph, () => false, path, '.', String);
+  assert.match(metadata('<html><head></head><body></body></html>', article, author), /"datePublished":"2026-07-23"/);
 });
