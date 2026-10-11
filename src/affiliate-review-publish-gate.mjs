@@ -19,6 +19,12 @@ export function assertAffiliateReviewPublishable(review, program, authority, htm
   if (!program || ![program.program_id, program.review_slug].includes(id)) throw new Error(`affiliate_review_registry_missing:${id}`);
   const own=anchors(html).filter(a=>a['data-program'] && [id, program.program_id, program.review_slug].includes(a['data-program']) && (a['data-analytics-event']==='affiliate_click'||(a.rel||'').split(/\s+/).includes('sponsored')));
   const relationship=program.affiliate_relationship_snapshot;
+  const profile=program.profiles?.['glp-clinic-scout'];
+  const identity=profile?.canonical_identity;
+  if(identity?.role==='alias' && profile.surfaces?.go===false && profile.surfaces?.compare===false) {
+    if(own.length || !anchors(html).some(a=>a.href===`/reviews/${identity.canonical_program_id}/`)) throw new Error(`canonical_alias_review_invalid:${id}`);
+    return {status:'CANONICAL_ALIAS_NO_PROMOTION',program_id:id};
+  }
   const held=relationship?.promotion_denied===true || (authority?.status==='WITHHELD' && authority?.promotion_authorized===false);
   if(held) {
     if(own.length) throw new Error(`held_review_has_affiliate_anchor:${id}`);
@@ -38,7 +44,9 @@ export function assertAffiliateReviewPublishable(review, program, authority, htm
   if(url.protocol!=='https:' || url.username || url.password) throw new Error(`affiliate_review_url_invalid:${id}`);
   // Redirect selections are accepted only when the authority binds both the
   // exact issued URL and exact first-party href. No redirect is requested here.
-  const expected=authority.disposition==='ADOPT' && authority.issued_link===approved ? `${authority.route}?s=reviews.rv2&v=a` : approved;
+  const surface=review.surface_code || 'reviews.rv2';
+  if(!/^[a-z0-9][a-z0-9-]*\.[a-z0-9][a-z0-9-]*$/.test(surface)) throw new Error(`affiliate_review_surface_invalid:${id}`);
+  const expected=authority.disposition==='ADOPT' && authority.issued_link===approved ? `${authority.route}?s=${surface}&v=a` : approved;
   const matching=own.filter(a=>a.href===expected && ['sponsored','nofollow'].every(v=>(a.rel||'').split(/\s+/).includes(v)));
   if(!matching.length || matching.length!==own.length) throw new Error(`affiliate_review_missing_approved_anchor:${id}`);
   if(!/commission/i.test(visibleText(html))) throw new Error(`affiliate_review_disclosure_missing:${id}`);

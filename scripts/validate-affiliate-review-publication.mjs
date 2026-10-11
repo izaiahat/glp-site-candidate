@@ -9,16 +9,18 @@ const registry=JSON.parse(readFileSync(path.join(root,'data/program-registry.jso
 const contracts=loadProviderPageContracts(root).providers;
 const money=JSON.parse(readFileSync(path.join(root,'data/money-page-specs.json'))).pages.flatMap(p=>p.rows);
 const authority=loadGoPromotionAuthority(root).programs;
-let count=0;
+let count=0, details=0;
 for(const program of registry.programs) {
-  if(!program.review_path) continue;
-  const file=path.join(root,'public',program.review_path,'index.html');
-  if(!existsSync(file)) continue;
   const contract=contracts.find(p=>p.program_id===program.program_id);
   const approval=authority[program.program_id];
   const row=contract?.row_contract || money.find(r=>[program.program_id,program.review_slug].includes(r.program_id)) || {};
-  const review={program_id:program.program_id,row,fastpath_contract:contract};
-  assertAffiliateReviewPublishable(review,program,approval,readFileSync(file,'utf8'));
-  count++;
+  for(const [route,surface] of [[program.review_path,'reviews.rv2'],[`/providers/${program.program_id}/`,'providers.rv1']]) {
+    if(!route) continue;
+    const file=path.join(root,'public',route,'index.html');
+    if(!existsSync(file)) continue;
+    const review={program_id:program.program_id,row,fastpath_contract:contract,surface_code:surface};
+    assertAffiliateReviewPublishable(review,program,approval,readFileSync(file,'utf8'));
+    if(surface==='reviews.rv2') count++; else details++;
+  }
 }
-console.log(JSON.stringify({status:'PASS',review_pages_checked:count,tracking_visits:0}));
+console.log(JSON.stringify({status:'PASS',review_pages_checked:count,provider_detail_pages_checked:details,tracking_visits:0}));

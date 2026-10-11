@@ -5,6 +5,12 @@ on:
       - src/affiliate-review-publish-gate.mjs
       - scripts/build-staging.mjs
       - tests/affiliate-review-publish-gate.test.mjs
+      - src/provider-detail-affiliate.mjs
+      - src/phase3-page-graph.mjs
+      - src/go-runtime-selection.mjs
+      - scripts/validate-affiliate-review-publication.mjs
+      - tests/provider-detail-affiliate.test.mjs
+      - package.json
       - data/review-tracking-receipts.json
       - .github/workflows/affiliate-review-publish-gate.yml
 permissions:
@@ -26,4 +32,4 @@ jobs:
         run: |
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           npm ci --include=dev --ignore-scripts --no-audit --no-fund
-          node --test tests/affiliate-review-publish-gate.test.mjs
+          node --test tests/affiliate-review-publish-gate.test.mjs tests/provider-detail-affiliate.test.mjs

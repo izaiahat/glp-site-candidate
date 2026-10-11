@@ -13,6 +13,7 @@ import { renderCouponChip } from "./coupon-offers.mjs";
 import { loadAffiliateLinkMap } from "./affiliate-link-map.mjs";
 import { loadGoPromotionAuthority } from './go-runtime-selection.mjs';
 import { relationshipEndedNotice, relationshipDenials } from './affiliate-relationship-sync.mjs';
+import { providerDetailAffiliate } from './provider-detail-affiliate.mjs';
 import { selectedGoOutbound } from './go-render-selection.mjs';
 import { affiliateOutboundMode } from "./affiliate-outbound-mode.mjs";
 import { resolveCardOutbound } from "./card-outbound.mjs";
@@ -1041,8 +1042,8 @@ export function renderProviderDetailComplete(program, pricingMatrix, registry, c
   const ledger = PROGRAM_LEDGER_BY_ID.get(program.program_id) || null;
   const route = `/providers/${program.program_id}/`;
   const reviewPath = canonicalReviewPath(program, registry);
-  const affiliate = COMPARE_AFFILIATE_MAP[program.program_id];
   const selected = selectedGoOutbound(program, 'providers.rv1');
+  const affiliate = providerDetailAffiliate(program, COMPARE_AFFILIATE_MAP, selected);
   const affiliateAttrs = affiliate?.live ? subidAttributes({ programId: program.program_id, network: affiliate.network, href: affiliate.affiliate_href, position: "intro", rankPosition: 0, pageSlug: `provider-${program.program_id}`, pageType: "provider-detail", providerSlug: program.program_id }) : "";
   const endedNotice = relationshipEndedNotice(selected?.relationship_snapshot);
   const getStarted = endedNotice

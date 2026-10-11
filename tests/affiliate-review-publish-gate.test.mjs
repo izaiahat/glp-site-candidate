@@ -23,3 +23,9 @@ test('validated build invokes final artifact gate as well as pre-write guard',()
  assert.ok(pkg.scripts['build:validated'].endsWith('node scripts/validate-affiliate-review-publication.mjs'));
  assert.match(readFileSync(new URL('../scripts/build-staging.mjs',import.meta.url),'utf8'),/assertAffiliateReviewPublishable\(review, record/);
 });
+test('existing alias promotion restriction stays link-dark and points to canonical review',()=>{
+ const p={...program,profiles:{'glp-clinic-scout':{canonical_identity:{role:'alias',canonical_program_id:'canonical'},surfaces:{go:false,compare:false}}}};
+ const canonical='<a href="/reviews/canonical/">Canonical review</a>';
+ assert.equal(assertAffiliateReviewPublishable(review,p,authority,canonical).status,'CANONICAL_ALIAS_NO_PROMOTION');
+ assert.throws(()=>assertAffiliateReviewPublishable(review,p,authority,canonical+html),/canonical_alias_review_invalid/);
+});
