@@ -53,7 +53,12 @@ test('GLP-353 renews 24 canonical rows plus the Shed alias from live hash-bound 
     }
   }
   assert.equal(registry.therapeutic_taxonomy.programs.shedrx.verified_as_of, '2026-10-09');
-  validateTherapeuticTaxonomy(registry, 'glp-clinic-scout', {asOf: new Date('2026-10-09T12:00:00Z')});
+  // Validate the immutable October 9 cohort at its own clock.
+  const atReview = structuredClone(registry);
+  const pair = JSON.parse(read('data/provider-price-append.json'));
+  const prior = JSON.parse(Buffer.from(pair.registry.predecessor_base64, 'base64'));
+  atReview.therapeutic_taxonomy.programs.coivas = prior.therapeutic_taxonomy.programs.coivas;
+  validateTherapeuticTaxonomy(atReview, 'glp-clinic-scout', {asOf: new Date('2026-10-09T12:00:00Z')});
 });
 test('GLP-353 holds Mademed compounded classification without guessing absence or lifting commercial holds', () => {
   const row = registry.therapeutic_taxonomy.programs.mademed;
