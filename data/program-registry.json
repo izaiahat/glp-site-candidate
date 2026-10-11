@@ -11664,6 +11664,10 @@
       "ws_r_001_live_vital_launch": {
         "path": "reports/ops/orchestration-restore-20260907/WS-R/live-vital-launch/PACKET.json",
         "sha256": "9a1cd81680474fabc803eed65789797307db256aa5e01cd552ea461484798fce"
+      },
+      "taxonomy_refresh_coivas_run-20261011T232425601480Z": {
+        "path": "reports/ops/fable-plan-2-20261009/lanes/T1/taxonomy-refresh/run-20261011T232425601480Z/coivas-verification.json",
+        "sha256": "305970d2310b52735fbad5818e506cb815b31b88d338ec9ac48f10f54e22200d"
       }
     },
     "derivation": "Set-union projection from the sealed base map, corrected Firecrawl refresh, and brand/form addendum. Tags are accepted only when an authority row explicitly records them; missing tags remain unknown and are never inferred from prose.",
@@ -11912,18 +11916,18 @@
         "delivery_form_tags": [],
         "evidence_bindings": [
           {
-            "authority": "wire_in_coivas",
-            "authority_sha256": "12c749c6c501ee107537c56cc242cab4af79d791f3b4799cad105209c15c6b93",
-            "evidence_sha256": "aa51c76f180f4a51dbbaaf036e5f80a4f90d2d65a5106df5a0f4b024aaad9ef8",
+            "authority": "taxonomy_refresh_coivas_run-20261011T232425601480Z",
+            "authority_sha256": "305970d2310b52735fbad5818e506cb815b31b88d338ec9ac48f10f54e22200d",
             "source_url": "https://www.coivas.com/challenge",
-            "verified_as_of": "2026-09-10"
+            "verified_as_of": "2026-10-11",
+            "evidence_sha256": "40159c9ff47b6647b4f68850811c3dad64172c099bd5569f7738c343c5140035"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "28d8288588502d3016a1f98d67b8e9a857ad367911a63ea9df06981f612d69c1",
+        "normalized_sha256": "fda1efd3d4c91ccb97c5c9266d5c9ff0026a88c92b754d83a99d8621aac45bd7",
         "program_id": "coivas",
         "provider": "Coivas",
         "registry_program_id": "awin-128761",
@@ -11935,7 +11939,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-09-10"
+        "verified_as_of": "2026-10-11"
       },
       "coreage-rx-glp-1-1632": {
         "brand_name_tags": [],
@@ -14432,7 +14436,7 @@
       "/best/expanded-curated-glp-1-programs/"
     ],
     "schema": "glp-therapeutic-taxonomy-v1",
-    "sealed_as_of": "2026-10-10"
+    "sealed_as_of": "2026-10-11"
   },
   "updated_at": "2026-08-18"
 }

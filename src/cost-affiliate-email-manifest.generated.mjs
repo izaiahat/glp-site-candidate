@@ -107,6 +107,14 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "network": "katalys"
     },
     {
+      "program_id": "ivim-health-review",
+      "merchant": "Ivim Health",
+      "affiliate_href": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=31359&c=918277&a=803003&k=0&l=36909",
+      "tracking_host": "afflat3e1.com",
+      "review_path": "/reviews/ivim-health-review/",
+      "network": "MaxBounty"
+    },
+    {
       "program_id": "jrnys-review",
       "merchant": "JRNYS",
       "affiliate_href": "https://maanantaispc.com/?a=15309&c=177612&s1=",
@@ -169,6 +177,14 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "tracking_host": "www.tzca1z1u.com",
       "review_path": "/reviews/orderlymeds/",
       "network": "everflow"
+    },
+    {
+      "program_id": "rightwell-review",
+      "merchant": "RightWell",
+      "affiliate_href": "https://afflat3e3.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32122&c=918277&a=803003&k=0&l=38072",
+      "tracking_host": "afflat3e3.com",
+      "review_path": "/reviews/rightwell-review/",
+      "network": "MaxBounty"
     },
     {
       "program_id": "rxspan-md-telehealth-program-review",
@@ -249,6 +265,14 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "tracking_host": "track.revoffers.com",
       "review_path": "/reviews/wellorithm/",
       "network": "Katalys"
+    },
+    {
+      "program_id": "willow-review",
+      "merchant": "Willow",
+      "affiliate_href": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=29207&c=918277&a=803003&k=0&l=33375",
+      "tracking_host": "afflat3e1.com",
+      "review_path": "/reviews/willow-review/",
+      "network": "MaxBounty"
     },
     {
       "program_id": "yourera-program",

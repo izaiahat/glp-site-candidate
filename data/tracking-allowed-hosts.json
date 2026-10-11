@@ -322,7 +322,7 @@
     },
     "ivim-health-review": {
       "allowed_hosts": [
-        "afflat3c1.com"
+        "afflat3e1.com"
       ],
       "authority_network": "MaxBounty",
       "host_class": "network_redirector",
@@ -647,7 +647,7 @@
     },
     "rightwell-review": {
       "allowed_hosts": [
-        "afflat3c2.com"
+        "afflat3e3.com"
       ],
       "authority_network": "MaxBounty",
       "host_class": "network_redirector",
@@ -923,7 +923,7 @@
     },
     "willow-review": {
       "allowed_hosts": [
-        "afflat3c2.com"
+        "afflat3e1.com"
       ],
       "authority_network": "MaxBounty",
       "host_class": "network_redirector",
@@ -966,7 +966,7 @@
     }
   },
   "rails_module": {
-    "path": "/home/ubuntu/business/.worktrees/q10-site-20261010/scripts/glp_affiliate_link_rails.py",
+    "path": "/home/ubuntu/business/.worktrees/t1-tracking-site-20261011/scripts/glp_affiliate_link_rails.py",
     "sha256": "7a87021aee03c60215fb9d6eb85e9c7405812efbf14d488d65fd58b30c6c70d6"
   },
   "schema": "glp.tracking_allowed_hosts.v1"

@@ -1,0 +1,29 @@
+name: Affiliate review publish gate
+on:
+  pull_request:
+    paths:
+      - src/affiliate-review-publish-gate.mjs
+      - scripts/build-staging.mjs
+      - tests/affiliate-review-publish-gate.test.mjs
+      - data/review-tracking-receipts.json
+      - .github/workflows/affiliate-review-publish-gate.yml
+permissions:
+  contents: read
+jobs:
+  fail-closed-review-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Exact-head offline regressions
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          npm ci --include=dev --ignore-scripts --no-audit --no-fund
+          node --test tests/affiliate-review-publish-gate.test.mjs

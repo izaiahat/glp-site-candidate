@@ -103,7 +103,6 @@
       "reason": "sole_writer_relationship_paused",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
-      "status": "WITHHELD",
       "relationship_snapshot": {
         "program_id": "breeze-meds-review",
         "render_id": "breeze-meds-review",
@@ -115,7 +114,8 @@
         "reported_information": true,
         "sheet_row": 104,
         "source_checked_at": "2026-09-29T14:30:17Z"
-      }
+      },
+      "status": "WITHHELD"
     },
     "care-bare-rx-glp1-review": {
       "attribution_parameter_contract": "katalys-subid",
@@ -130,7 +130,6 @@
       "reason": "sole_writer_relationship_paused",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
-      "status": "WITHHELD",
       "relationship_snapshot": {
         "program_id": "care-bare-rx-glp1-review",
         "render_id": "care-bare-rx-glp1-review",
@@ -142,7 +141,8 @@
         "reported_information": true,
         "sheet_row": 105,
         "source_checked_at": "2026-09-29T14:30:14Z"
-      }
+      },
+      "status": "WITHHELD"
     },
     "clickdealer-176223-249142": {
       "constructor_verified": false,
@@ -253,6 +253,10 @@
     "curex-glp-1": {
       "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
+      "current_hold_decision": {
+        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
+        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
+      },
       "network": "xentraffic",
       "operator_approved_live_decision": {
         "bytes": 816,
@@ -267,11 +271,7 @@
       "redirector_tos_verified": true,
       "risk_acceptance_logged": true,
       "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
-      "status": "WITHHELD",
-      "current_hold_decision": {
-        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
-        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
-      }
+      "status": "WITHHELD"
     },
     "direct-meds": {
       "attribution_parameter_contract": "affiliati-s1-s2",
@@ -388,6 +388,10 @@
     "enhanced-tirzepatide-funnel-b": {
       "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
+      "current_hold_decision": {
+        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
+        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
+      },
       "network": "xentraffic",
       "operator_approved_live_decision": {
         "bytes": 816,
@@ -402,11 +406,7 @@
       "redirector_tos_verified": true,
       "risk_acceptance_logged": true,
       "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
-      "status": "WITHHELD",
-      "current_hold_decision": {
-        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
-        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
-      }
+      "status": "WITHHELD"
     },
     "found-health": {
       "attribution_parameter_contract": "katalys-subid",
@@ -433,6 +433,10 @@
     "g-plan": {
       "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
+      "current_hold_decision": {
+        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
+        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
+      },
       "network": "xentraffic",
       "operator_approved_live_decision": {
         "bytes": 816,
@@ -447,11 +451,7 @@
       "redirector_tos_verified": true,
       "risk_acceptance_logged": true,
       "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
-      "status": "WITHHELD",
-      "current_hold_decision": {
-        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
-        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
-      }
+      "status": "WITHHELD"
     },
     "gala-health": {
       "attribution_parameter_contract": "katalys-subid",
@@ -574,9 +574,24 @@
       },
       "tracking_link_sha256": "419c0945dd315864738214ca7e1338c7a208283cf0d3c0fa898c0e46172df6dc"
     },
+    "ivim-health-review": {
+      "constructor_verified": true,
+      "direct_only": true,
+      "issued_link": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=31359&c=918277&a=803003&k=0&l=36909",
+      "network": "MaxBounty",
+      "promotion_authorized": true,
+      "reason": "approved_api_link_sole_writer_ready",
+      "source_receipt": "data/review-tracking-receipts.json#ivim-health-review",
+      "status": "VERIFIED",
+      "tracking_link_sha256": "cc204b9eaced77f02712c02f3d8e1f8efc37c7a227296ba0634d09099788bd04"
+    },
     "joinskinny-semaglutide-glp-1-us": {
       "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
+      "current_hold_decision": {
+        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
+        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
+      },
       "network": "xentraffic",
       "operator_approved_live_decision": {
         "bytes": 816,
@@ -591,11 +606,7 @@
       "redirector_tos_verified": true,
       "risk_acceptance_logged": true,
       "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
-      "status": "WITHHELD",
-      "current_hold_decision": {
-        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
-        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
-      }
+      "status": "WITHHELD"
     },
     "jrnys-review": {
       "program_id": "jrnys-review",
@@ -1090,6 +1101,10 @@
     "novi-weight-loss-glp-1": {
       "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
+      "current_hold_decision": {
+        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
+        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
+      },
       "network": "xentraffic",
       "operator_approved_live_decision": {
         "bytes": 816,
@@ -1104,11 +1119,7 @@
       "redirector_tos_verified": true,
       "risk_acceptance_logged": true,
       "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
-      "status": "WITHHELD",
-      "current_hold_decision": {
-        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
-        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
-      }
+      "status": "WITHHELD"
     },
     "nu-image-medical-review": {
       "program_id": "nu-image-medical-review",
@@ -1231,7 +1242,6 @@
       "reason": "sole_writer_relationship_ended",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
-      "status": "WITHHELD",
       "relationship_snapshot": {
         "program_id": "pallas-health-review",
         "render_id": "pallas-health-review",
@@ -1257,7 +1267,8 @@
         "source_checked_at": "2026-10-07T22:55:04Z",
         "source_event_id": "evt_a53e6b7c535958b272d91cc7528e",
         "source_kind": "operator_disposition_from_authenticated_termination_mail"
-      }
+      },
+      "status": "WITHHELD"
     },
     "partnerize-1011l6645": {
       "constructor_verified": false,
@@ -1279,6 +1290,10 @@
     "refills": {
       "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
+      "current_hold_decision": {
+        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
+        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
+      },
       "network": "xentraffic",
       "operator_approved_live_decision": {
         "bytes": 816,
@@ -1293,11 +1308,18 @@
       "redirector_tos_verified": true,
       "risk_acceptance_logged": true,
       "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
-      "status": "WITHHELD",
-      "current_hold_decision": {
-        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
-        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
-      }
+      "status": "WITHHELD"
+    },
+    "rightwell-review": {
+      "constructor_verified": true,
+      "direct_only": true,
+      "issued_link": "https://afflat3e3.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32122&c=918277&a=803003&k=0&l=38072",
+      "network": "MaxBounty",
+      "promotion_authorized": true,
+      "reason": "approved_api_link_sole_writer_ready",
+      "source_receipt": "data/review-tracking-receipts.json#rightwell-review",
+      "status": "VERIFIED",
+      "tracking_link_sha256": "e278591f33e78693c5c9f6681215a183bd3fd0c10eaa58c5d384b09cc2a788a0"
     },
     "ro-wegovy-glp1-quiz-us-cpl": {
       "program_id": "ro-wegovy-glp1-quiz-us-cpl",
@@ -1521,7 +1543,6 @@
       "reason": "sole_writer_relationship_paused",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
-      "status": "WITHHELD",
       "relationship_snapshot": {
         "program_id": "synergy-rx-review",
         "render_id": "synergy-rx-review",
@@ -1533,7 +1554,25 @@
         "reported_information": true,
         "sheet_row": 103,
         "source_checked_at": "2026-09-29T14:30:08Z"
-      }
+      },
+      "status": "WITHHELD"
+    },
+    "telos-rx": {
+      "promotion_authorized": false,
+      "reason": "sole_writer_relationship_paused",
+      "relationship_snapshot": {
+        "program_id": "telos-rx",
+        "render_id": "telos-rx",
+        "lifecycle": "paused",
+        "network": "katalys",
+        "network_program_id": "1612",
+        "promotion_denied": true,
+        "relationship_status": "paused_network_program_paused",
+        "reported_information": true,
+        "sheet_row": 93,
+        "source_checked_at": "2026-09-01T14:26:58Z"
+      },
+      "status": "WITHHELD"
     },
     "tmates-xentraffic-offer-3154": {
       "program_id": "tmates-xentraffic-offer-3154",
@@ -1607,7 +1646,6 @@
       "reason": "sole_writer_relationship_paused",
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
-      "status": "WITHHELD",
       "relationship_snapshot": {
         "program_id": "trimi-glp-1",
         "render_id": "trimi-glp-1",
@@ -1619,11 +1657,16 @@
         "reported_information": true,
         "sheet_row": 132,
         "source_checked_at": "2026-10-09T14:30:03Z"
-      }
+      },
+      "status": "WITHHELD"
     },
     "trimrx-xentraffic-offer-3014": {
       "attribution_parameter_contract": "xentraffic-sub1",
       "constructor_verified": true,
+      "current_hold_decision": {
+        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
+        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
+      },
       "network": "xentraffic",
       "operator_approved_live_decision": {
         "bytes": 816,
@@ -1638,11 +1681,7 @@
       "redirector_tos_verified": true,
       "risk_acceptance_logged": true,
       "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
-      "status": "WITHHELD",
-      "current_hold_decision": {
-        "path": "data/OPERATOR-DECISION-20261001-all-pipelines-live.md",
-        "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
-      }
+      "status": "WITHHELD"
     },
     "trt-nation": {
       "program_id": "trt-nation",
@@ -1709,7 +1748,6 @@
       "promotion_authorized": false,
       "reason": "sole_writer_relationship_paused",
       "redirector_tos_verified": false,
-      "status": "WITHHELD",
       "relationship_snapshot": {
         "program_id": "try-ageless",
         "render_id": "try-ageless",
@@ -1721,7 +1759,8 @@
         "reported_information": true,
         "sheet_row": 94,
         "source_checked_at": "2026-09-14T22:50:03Z"
-      }
+      },
+      "status": "WITHHELD"
     },
     "wellmedr-review": {
       "attribution_parameter_contract": "katalys-subid",
@@ -1752,6 +1791,17 @@
       "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "redirector_tos_verified": true,
       "status": "VERIFIED"
+    },
+    "willow-review": {
+      "constructor_verified": true,
+      "direct_only": true,
+      "issued_link": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=29207&c=918277&a=803003&k=0&l=33375",
+      "network": "MaxBounty",
+      "promotion_authorized": true,
+      "reason": "approved_api_link_sole_writer_ready",
+      "source_receipt": "data/review-tracking-receipts.json#willow-review",
+      "status": "VERIFIED",
+      "tracking_link_sha256": "9c7ef5b6bc5f30cca5785ca39026c0f88b867e4a3e25eab2fb2c05b9175e164f"
     },
     "yourera-program": {
       "attribution_parameter_contract": "katalys-subid",
@@ -1826,29 +1876,12 @@
         "sha256": "147069fc66b2f66639321828e723dc2859d37a4b2c205f2239369724ab1b74ad"
       },
       "reason": "operator_current_xentraffic_hold"
-    },
-    "telos-rx": {
-      "status": "WITHHELD",
-      "promotion_authorized": false,
-      "reason": "sole_writer_relationship_paused",
-      "relationship_snapshot": {
-        "program_id": "telos-rx",
-        "render_id": "telos-rx",
-        "lifecycle": "paused",
-        "network": "katalys",
-        "network_program_id": "1612",
-        "promotion_denied": true,
-        "relationship_status": "paused_network_program_paused",
-        "reported_information": true,
-        "sheet_row": 93,
-        "source_checked_at": "2026-09-01T14:26:58Z"
-      }
     }
   },
   "schema": "glp.go-runtime-promotion-authority.v1",
+  "selection_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e",
   "status": "PASS_GOVERNED_ACTIVE_OR_EXPLICITLY_WITHHELD",
   "tracking_clicks": 0,
   "tracking_link_requests": 0,
-  "verification_method": "local_href_and_config_inspection_only",
-  "selection_sha256": "712a058818ee5c5c9fd9f030da286fe8979069c7e2dc21a37416ed612c543e7e"
+  "verification_method": "local_href_and_config_inspection_only"
 }
