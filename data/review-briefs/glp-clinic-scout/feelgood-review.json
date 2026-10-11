@@ -1,0 +1,99 @@
+{
+  "schema": "provider-review-brief-v1",
+  "status": "SOURCE_DRAFT_INDEPENDENT_REVIEW_REQUIRED",
+  "site_profile": "glp-clinic-scout",
+  "program_id": "feelgood-review",
+  "display_name": "FeelGood",
+  "approval_id": null,
+  "approved_at": null,
+  "auto_generate": false,
+  "auto_publish": false,
+  "provider_facts": {
+    "official_url": "https://www.feelgoodmeds.com/",
+    "network": "MaxBounty",
+    "network_program_id": "32854",
+    "sheet_row": null,
+    "published_price": null,
+    "price_source_url": null,
+    "medications": null,
+    "insurance": null,
+    "shipping": null,
+    "cancellation": null
+  },
+  "required_review": {
+    "source_checked_through": "2026-10-10T06:41:48.092798+00:00",
+    "evidence_sources": [
+      {
+        "field": "monthly_price",
+        "source_url": "https://www.feelgoodmeds.com/weight-loss",
+        "quote": "### Compounded Injections\n\nOne simple injection per week.\n\nStarting at\n\n$149/mo",
+        "quote_sha256": "2141035e17f62364546a1c442c8796bdaf9bcc8651d8ef9cf467c34e76c6541f",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/feelgood-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "919fe8056b496471ef1f3867e7ee4e934db75ebe069358e3a926f4a260c7cc80"
+      },
+      {
+        "field": "eligibility",
+        "source_url": "https://www.feelgoodmeds.com/terms-of-use",
+        "quote": "You further understand and agree that after reviewing your information, the Provider in their independent professional judgment, will determine whether to prescribe medication, other treatments, or, alternatively, recommend that you consult with alternative clinical resources.",
+        "quote_sha256": "384e1c55c2eb1299c62c18c15620fdbf926f365c0b96f5a09137146fcff075a4",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/feelgood-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "919fe8056b496471ef1f3867e7ee4e934db75ebe069358e3a926f4a260c7cc80"
+      },
+      {
+        "field": "cancellation",
+        "source_url": "https://www.feelgoodmeds.com/refund-policy",
+        "quote": "To ensure a smooth process, we require your cancellation request to be received at least **72 hours prior to your next billing date.** If prior notice is not received in this window, your subscription will be charged in accordance with the then-current billing cycle, and the cancellation will take effect on the subsequent billing cycle.",
+        "quote_sha256": "93f1f78106fe737241453ffc6187e2e98ed7412f86dc122f483fceb2138ced8b",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/feelgood-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "919fe8056b496471ef1f3867e7ee4e934db75ebe069358e3a926f4a260c7cc80"
+      }
+    ],
+    "reviewer_status": "PENDING",
+    "compare_row_status": "REQUIRED",
+    "quiz_candidate_status": "REQUIRED",
+    "calculator_status": "NOT_REQUIRED_WITHOUT_USABLE_PRICE",
+    "review_page_status": "REQUIRED",
+    "go_entry_status": "REQUIRED",
+    "sitemap_status": "REQUIRED",
+    "health_status": "PENDING",
+    "legal_status": "PENDING",
+    "design_status": "PENDING",
+    "release_authority": false,
+    "canonical_authority_adopted": false
+  },
+  "approval_observation": {
+    "receipt": "reports/ops/fable-plan-2-20261009/lanes/Q3/seven-official/32854.json",
+    "receipt_sha256": "5010bc01596988dd8d89a6bbd653b3e0dc28aad212d6646dd3353875e5423029",
+    "state": "Approved",
+    "observed_at_utc": "2026-10-10T06:21:23.836846+00:00",
+    "publication_authority": false
+  },
+  "research_binding": {
+    "path": "reports/ops/fable-plan-2-20261009/lanes/Q4/feelgood-review/feelgood-review.json",
+    "sha256": "4abb74c7549c8fd2d98c72f7e901d7ba832aa8f95783b03d466899dc731ba79c"
+  },
+  "proposed_review_path": "/reviews/feelgood-review/",
+  "holds": [
+    "canonical_program_authority_absent",
+    "independent_health_legal_design_acceptance_absent"
+  ],
+  "page_copy": {
+    "title": "FeelGood review: pricing, eligibility and cancellation",
+    "description": "Reported provider information with unsupported costs and clinical claims left unknown.",
+    "affiliate_disclosure": "Clinic Scout is an independent comparison publisher, not a clinic. We may earn a commission if you use a provider link. Compensation does not establish treatment suitability.",
+    "bottom_line": "Compare the selected plan’s complete costs and terms before considering enrollment. A provider’s marketing statements and affiliate approval do not establish medical suitability or independent quality verification.",
+    "pricing": "Reported information: FeelGood advertises compounded injections starting at $149/month. A starting price is not a complete first checkout or universal renewal bill. Medication selection and any additional charges must be established for the selected plan; this draft does not populate a cost calculator.",
+    "eligibility": "Reported information: FeelGood states that the provider reviews patient information and decides whether to prescribe or recommend alternative care. Completing an intake is not a prescription guarantee. Complete eligibility criteria and a definitive state availability list remain unestablished in the retained sources.",
+    "cancellation": "Reported information: FeelGood’s refund policy requires a cancellation request at least 72 hours before the next billing date. Requests outside that window take effect in the subsequent billing cycle. The marketing phrase “cancel anytime” must not be read as a guarantee that the next charge can always be avoided.",
+    "clinical_boundary": "This is research-based information, not first-hand treatment experience or medical advice. Any prescription requires individual clinician assessment. No efficacy, safety, certification or guaranteed outcome claim is approved by this draft."
+  },
+  "cta": {
+    "enabled": false,
+    "href": null,
+    "public_go_surface": false
+  },
+  "held_scope_note": null
+}

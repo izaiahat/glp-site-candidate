@@ -1,0 +1,99 @@
+{
+  "schema": "provider-review-brief-v1",
+  "status": "SOURCE_DRAFT_INDEPENDENT_REVIEW_REQUIRED",
+  "site_profile": "glp-clinic-scout",
+  "program_id": "instarx-review",
+  "display_name": "InstaRx",
+  "approval_id": null,
+  "approved_at": null,
+  "auto_generate": false,
+  "auto_publish": false,
+  "provider_facts": {
+    "official_url": "https://instarx.com/",
+    "network": "MaxBounty",
+    "network_program_id": "32662",
+    "sheet_row": null,
+    "published_price": null,
+    "price_source_url": null,
+    "medications": null,
+    "insurance": null,
+    "shipping": null,
+    "cancellation": null
+  },
+  "required_review": {
+    "source_checked_through": "2026-10-10T06:43:16.470017+00:00",
+    "evidence_sources": [
+      {
+        "field": "monthly_price",
+        "source_url": "https://go.instarx.com/glp2",
+        "quote": "No. You pay the same flat monthly price no matter what dose your physician prescribes.",
+        "quote_sha256": "a603efed6652729e601272bfa95da70bdc1054a2e7b60b6618eaa438a05395b4",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "fc9c1481001f739e3285ed54b6091809559d5c397e4c8133560456ae63765067"
+      },
+      {
+        "field": "eligibility",
+        "source_url": "https://instarx.com/policies/terms-and-conditions",
+        "quote": "You must be at least 18 years of age to use our Services.",
+        "quote_sha256": "ee0946c5f7609ec6c1931a5396e552b1cc0b52a1ad01dbc0cb115146dcb28f34",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "fc9c1481001f739e3285ed54b6091809559d5c397e4c8133560456ae63765067"
+      },
+      {
+        "field": "cancellation",
+        "source_url": "https://go.instarx.com/glp2",
+        "quote": "Yes — you can cancel any time with no fees and no questions asked.",
+        "quote_sha256": "79576f1cd7521936555d510c2a75a8ae89b17ad9ec5996b193fdf9af53a19a9e",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "fc9c1481001f739e3285ed54b6091809559d5c397e4c8133560456ae63765067"
+      }
+    ],
+    "reviewer_status": "PENDING",
+    "compare_row_status": "REQUIRED",
+    "quiz_candidate_status": "REQUIRED",
+    "calculator_status": "NOT_REQUIRED_WITHOUT_USABLE_PRICE",
+    "review_page_status": "REQUIRED",
+    "go_entry_status": "REQUIRED",
+    "sitemap_status": "REQUIRED",
+    "health_status": "PENDING",
+    "legal_status": "PENDING",
+    "design_status": "PENDING",
+    "release_authority": false,
+    "canonical_authority_adopted": false
+  },
+  "approval_observation": {
+    "receipt": "reports/ops/fable-plan-2-20261009/lanes/Q3/seven-official/32662.json",
+    "receipt_sha256": "54ad236bbae128ae5b3c18303103e35556c0fa320bec2d0fc236dc612642322e",
+    "state": "Approved",
+    "observed_at_utc": "2026-10-10T06:21:24.082446+00:00",
+    "publication_authority": false
+  },
+  "research_binding": {
+    "path": "reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/instarx-review.json",
+    "sha256": "3473f0da599e7411c74aec19a8e298f436cae62cb2bdd5dea96199914d33f46d"
+  },
+  "proposed_review_path": "/reviews/instarx-review/",
+  "holds": [
+    "canonical_program_authority_absent",
+    "independent_health_legal_design_acceptance_absent"
+  ],
+  "page_copy": {
+    "title": "InstaRx review: pricing, eligibility and cancellation",
+    "description": "Reported provider information with unsupported costs and clinical claims left unknown.",
+    "affiliate_disclosure": "Clinic Scout is an independent comparison publisher, not a clinic. We may earn a commission if you use a provider link. Compensation does not establish treatment suitability.",
+    "bottom_line": "Compare the selected plan’s complete costs and terms before considering enrollment. A provider’s marketing statements and affiliate approval do not establish medical suitability or independent quality verification.",
+    "pricing": "Reported information: the retained InstaRx sources do not establish a named-treatment recurring total. Do not convert an introductory offer or a statement about flat pricing across doses into a universal renewal bill. First checkout, recurring charges and any additional fees remain unknown.",
+    "eligibility": "Reported information: InstaRx describes a health intake followed by provider evaluation, with a personalized plan if prescribed. The terms require adults aged 18 or older. Age alone is not clinical eligibility; the captured sources do not establish BMI thresholds or suitability for a particular reader.",
+    "cancellation": "Reported information: the landing-page cancellation language and the separate requirement to cancel before renewal must be read together. The captured refund page does not establish the cancellation procedure or individual refund eligibility. No fee-free refund promise is made here.",
+    "clinical_boundary": "This is research-based information, not first-hand treatment experience or medical advice. Any prescription requires individual clinician assessment. No efficacy, safety, certification or guaranteed outcome claim is approved by this draft."
+  },
+  "cta": {
+    "enabled": false,
+    "href": null,
+    "public_go_surface": false
+  },
+  "held_scope_note": null
+}

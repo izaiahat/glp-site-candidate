@@ -1,0 +1,98 @@
+{
+  "schema": "provider-review-brief-v1",
+  "status": "SOURCE_DRAFT_INDEPENDENT_REVIEW_REQUIRED",
+  "site_profile": "glp-clinic-scout",
+  "program_id": "ivim-health-review",
+  "display_name": "Ivim Health",
+  "approval_id": null,
+  "approved_at": null,
+  "auto_generate": false,
+  "auto_publish": false,
+  "provider_facts": {
+    "official_url": "https://ivimhealth.com/",
+    "network": "MaxBounty",
+    "network_program_id": "31359",
+    "sheet_row": null,
+    "published_price": null,
+    "price_source_url": null,
+    "medications": null,
+    "insurance": null,
+    "shipping": null,
+    "cancellation": null
+  },
+  "required_review": {
+    "source_checked_through": "2026-10-10T06:46:30.887344+00:00",
+    "evidence_sources": [
+      {
+        "field": "monthly_price",
+        "source_url": "https://www.ivimhealth.com/glp1idwt/",
+        "quote": "Compounded\n\nSemaglutide (GLP-1)\n\nstarting at\\*\n\n$75/mo\n\nCompounded\n\nTirzepatide (GLP-1 + GIP)\n\nstarting at\\*\n\n$133/mo\n\n[\\+ $74.99/mo Program Fee](https://www.ivimhealth.com/glp1idwt/#comparison-table)",
+        "quote_sha256": "2ea5c2eddbb9e4d58c1883547fcd7cd8ed4786cb9dc54d7b51bd831bde3e75ca",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5"
+      },
+      {
+        "field": "eligibility",
+        "source_url": "https://www.ivimhealth.com/glp1idwt/",
+        "quote": "Our intake questionnaire and consultation with a provider determine if you medically qualify.",
+        "quote_sha256": "0120794826c28f6eec015a907402c95fdb939ed92827bce48e325b0a79267451",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5"
+      },
+      {
+        "field": "cancellation",
+        "source_url": "https://www.ivimhealth.com/terms-and-conditions/",
+        "quote": "Upon cancellation, we will refund any unshipped medication, less an administrative/restocking fee of $100 for each undeveloped three-month portion of your plan or $50 for each undeveloped two-month portion (as applies to four- or six-month programs). For example, ending a six-month plan after three months’ shipments would trigger one $100 fee; cancelling a six-month plan after two months would incur two $50 fees for the remaining four months’ supply. This fee will be waived entirely if a provider determines you are medically ineligible to continue; for instance, due to pregnancy or other documented contraindications.",
+        "quote_sha256": "d3a95848861c128a1f63541fb9eb3f3442159e95e02708d9c1e80eb3d9b8b386",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "91c9a661697fd0c4716be10c480b1a127cb0c63778bfcfcd98c6937e79bbe9f5"
+      }
+    ],
+    "reviewer_status": "PENDING",
+    "compare_row_status": "REQUIRED",
+    "quiz_candidate_status": "REQUIRED",
+    "calculator_status": "NOT_REQUIRED_WITHOUT_USABLE_PRICE",
+    "review_page_status": "REQUIRED",
+    "go_entry_status": "REQUIRED",
+    "sitemap_status": "REQUIRED",
+    "health_status": "PENDING",
+    "legal_status": "PENDING",
+    "design_status": "PENDING",
+    "release_authority": false,
+    "canonical_authority_adopted": false
+  },
+  "approval_observation": {
+    "receipt": "reports/ops/fable-plan-2-20261009/lanes/Q3/seven-official/31359.json",
+    "receipt_sha256": "efdef732f263afa3a1ce8df40e832fbbe2cabc27967c34bfcc7ca39528fa2a1d",
+    "state": "Approved",
+    "observed_at_utc": "2026-10-10T06:21:24.377147+00:00",
+    "publication_authority": false
+  },
+  "research_binding": {
+    "path": "reports/ops/fable-plan-2-20261009/lanes/Q4/ivim-health-review/ivim-health-review.json",
+    "sha256": "776a94dbf1f481861eaef107d8b817504c4648ca80324ce7a3251e25c75d7161"
+  },
+  "proposed_review_path": "/reviews/ivim-health-review/",
+  "holds": [
+    "independent_health_legal_design_acceptance_absent"
+  ],
+  "page_copy": {
+    "title": "Ivim Health review: pricing, eligibility and cancellation",
+    "description": "Reported provider information with unsupported costs and clinical claims left unknown.",
+    "affiliate_disclosure": "Clinic Scout is an independent comparison publisher, not a clinic. We may earn a commission if you use a provider link. Compensation does not establish treatment suitability.",
+    "bottom_line": "Compare the selected plan’s complete costs and terms before considering enrollment. A provider’s marketing statements and affiliate approval do not establish medical suitability or independent quality verification.",
+    "pricing": "Reported information: Ivim’s retained sources describe medication starting figures and a separate program fee. Neither establishes the complete selected first payment or renewal bill. This draft does not treat a medication-only headline as an all-inclusive monthly cost.",
+    "eligibility": "Reported information: Ivim says its intake questionnaire and provider consultation determine medical qualification. This is a care-process description, not a promise of approval or treatment effectiveness. Independent clinical and claim acceptance remains pending.",
+    "cancellation": "Reported information: Ivim describes conditional refunds for unshipped medication and plan-dependent administrative/restocking fees. The retained terms contain specific exceptions and examples. This draft makes no “cancel anytime for a full refund” promise; the selected-plan terms must control.",
+    "clinical_boundary": "This is research-based information, not first-hand treatment experience or medical advice. Any prescription requires individual clinician assessment. No efficacy, safety, certification or guaranteed outcome claim is approved by this draft."
+  },
+  "cta": {
+    "enabled": false,
+    "href": null,
+    "public_go_surface": false
+  },
+  "held_scope_note": null
+}

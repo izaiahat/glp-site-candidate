@@ -1,0 +1,91 @@
+{
+  "schema": "provider-review-brief-v1",
+  "status": "HELD_NO_CLINICAL_CANDIDATE",
+  "site_profile": "glp-clinic-scout",
+  "program_id": "retaclinic-review",
+  "display_name": "RetaClinic",
+  "approval_id": null,
+  "approved_at": null,
+  "auto_generate": false,
+  "auto_publish": false,
+  "provider_facts": {
+    "official_url": "https://retaclinic.com/",
+    "network": "MaxBounty",
+    "network_program_id": "33066",
+    "sheet_row": null,
+    "published_price": null,
+    "price_source_url": null,
+    "medications": null,
+    "insurance": null,
+    "shipping": null,
+    "cancellation": null
+  },
+  "required_review": {
+    "source_checked_through": "2026-10-10T06:50:44.029826+00:00",
+    "evidence_sources": [
+      {
+        "field": "monthly_price",
+        "source_url": "https://retaclinic.com/products",
+        "quote": "1 month plan · $190/mo3 month plan · $175/mo6 month plan · $160/mo12 month plan · $150/mo",
+        "quote_sha256": "a6276e2cc16c424aff010b916bf96a7f471e6f6f6b07937d33ac6f3f5dc5b06e",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/retaclinic-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "89e0380e7b30e8d8848f536dcbdf7f2958b16db3a5ea15ae442bd2c4129cc56d"
+      },
+      {
+        "field": "eligibility",
+        "source_url": "https://retaclinic.com/",
+        "quote": "You must be 18+ and a US resident. Eligibility is determined by the reviewing physician based on your medical intake.",
+        "quote_sha256": "141489e452781bc151c73176b2d11a0273e3237413b5ad04c18eddd9a8791aaa",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/retaclinic-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "89e0380e7b30e8d8848f536dcbdf7f2958b16db3a5ea15ae442bd2c4129cc56d"
+      },
+      {
+        "field": "cancellation",
+        "source_url": "https://retaclinic.com/faq",
+        "quote": "Yes. You can pause or discontinue a protocol at any time through your patient portal. If your compound has not yet shipped, a full refund is available upon cancellation request.",
+        "quote_sha256": "46d5b5e53d74f7b15a0978ab45a6eb03e1136a5d1c73a5b9fc62ef695295f99c",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/retaclinic-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "89e0380e7b30e8d8848f536dcbdf7f2958b16db3a5ea15ae442bd2c4129cc56d"
+      }
+    ],
+    "reviewer_status": "PENDING",
+    "compare_row_status": "NOT_YET_REQUIRED",
+    "quiz_candidate_status": "NOT_YET_REQUIRED",
+    "calculator_status": "NOT_REQUIRED_WITHOUT_USABLE_PRICE",
+    "review_page_status": "REQUIRED",
+    "go_entry_status": "REQUIRED",
+    "sitemap_status": "REQUIRED",
+    "health_status": "PENDING",
+    "legal_status": "PENDING",
+    "design_status": "PENDING",
+    "release_authority": false,
+    "canonical_authority_adopted": false
+  },
+  "approval_observation": {
+    "receipt": "reports/ops/fable-plan-2-20261009/lanes/Q3/seven-official/33066.json",
+    "receipt_sha256": "4f4cb2d64156e21a942f75851de19c666d716fb3e1da797879fd48dcfdb4a719",
+    "state": "Approved",
+    "observed_at_utc": "2026-10-10T06:21:24.620416+00:00",
+    "publication_authority": false
+  },
+  "research_binding": {
+    "path": "reports/ops/fable-plan-2-20261009/lanes/Q4/retaclinic-review/retaclinic-review.json",
+    "sha256": "2ad03a781bbf003487d22ab6aaaf4ec07df75683ac5583a1949265c0e56f36fd"
+  },
+  "proposed_review_path": "/reviews/retaclinic-review/",
+  "holds": [
+    "clinical_campaign_product_scope_unresolved",
+    "RUO_retatrutide_excluded_no_clinical_recommendation",
+    "independent_health_legal_design_acceptance_absent"
+  ],
+  "page_copy": null,
+  "cta": {
+    "enabled": false,
+    "href": null,
+    "public_go_surface": false
+  },
+  "held_scope_note": "No clinical recommendation authored: exact campaign-to-prescription-only product binding unresolved; RUO retatrutide excluded."
+}

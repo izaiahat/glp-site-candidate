@@ -1,0 +1,102 @@
+{
+  "schema": "provider-review-brief-v1",
+  "status": "SOURCE_DRAFT_INDEPENDENT_REVIEW_REQUIRED",
+  "site_profile": "glp-clinic-scout",
+  "program_id": "tyde-wellness-review",
+  "display_name": "Tyde Wellness",
+  "approval_id": null,
+  "approved_at": null,
+  "auto_generate": false,
+  "auto_publish": false,
+  "provider_facts": {
+    "official_url": "https://www.tydewellness.com/",
+    "network": "MaxBounty",
+    "network_program_id": "32639",
+    "sheet_row": null,
+    "published_price": null,
+    "price_source_url": null,
+    "medications": null,
+    "insurance": null,
+    "shipping": null,
+    "cancellation": null
+  },
+  "required_review": {
+    "source_checked_through": "2026-10-10T06:38:41.442702+00:00",
+    "evidence_sources": [
+      {
+        "field": "monthly_price",
+        "source_url": "https://www.tydewellness.com/",
+        "quote": "| **Full Dose Regular** | $249/month | $166/month | $113/month |",
+        "quote_sha256": "f89b71037c828b9df186bfe6af3740e49e0fc54c8f2d024893616961110c380f",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "393c0f98a8869f196fa0470ba0df4823984a20827a37a0e3dd5834f8270c0772"
+      },
+      {
+        "field": "eligibility",
+        "source_url": "https://www.tydewellness.com/faqs/",
+        "quote": "If you are overweight or obese (with a BMI of 25 or higher), or have one or more obesity-related conditions like type 2 diabetes, hypertension, or high cholesterol, you may be a good candidate for GLP-1 therapy.",
+        "quote_sha256": "85976fcd1c96d22acfdcdd5c9d57593c18d3796c8b9945a00ddcd371ea29776c",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "393c0f98a8869f196fa0470ba0df4823984a20827a37a0e3dd5834f8270c0772"
+      },
+      {
+        "field": "cancellation",
+        "source_url": "https://www.tydewellness.com/terms-conditions/",
+        "quote": "Users may cancel their membership at any time by submitting a cancellation request at least two (2) weeks prior to their renewal date.",
+        "quote_sha256": "0c3d89a5304ecffb8ec44b1ae53e26e095ab1655d4ff75659e533a3021369736",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "393c0f98a8869f196fa0470ba0df4823984a20827a37a0e3dd5834f8270c0772"
+      }
+    ],
+    "reviewer_status": "PENDING",
+    "compare_row_status": "REQUIRED",
+    "quiz_candidate_status": "REQUIRED",
+    "calculator_status": "NOT_REQUIRED_WITHOUT_USABLE_PRICE",
+    "review_page_status": "REQUIRED",
+    "go_entry_status": "REQUIRED",
+    "sitemap_status": "REQUIRED",
+    "health_status": "PENDING",
+    "legal_status": "PENDING",
+    "design_status": "PENDING",
+    "release_authority": false,
+    "canonical_authority_adopted": false
+  },
+  "approval_observation": {
+    "receipt": "reports/ops/fable-plan-2-20261009/lanes/Q3/seven-official/32639.json",
+    "receipt_sha256": "48728fed22bc42d0366569437342bbb2571a61f99fc3a085beb83d7d3b0580fa",
+    "state": "Approved",
+    "observed_at_utc": "2026-10-10T06:21:25.237236+00:00",
+    "publication_authority": false
+  },
+  "research_binding": {
+    "path": "reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/tyde-wellness-review.json",
+    "sha256": "6493ce5ca3b7a3d3423b7b1ce3476455b629dd71bc993e8c8697cde4930099fd"
+  },
+  "proposed_review_path": "/reviews/tyde-wellness-review/",
+  "holds": [
+    "canonical_program_authority_absent",
+    "official_root_intake_identity_conflict",
+    "controlling_cancellation_deadline_unknown",
+    "tracking_host_refusal_retained",
+    "independent_health_legal_design_acceptance_absent"
+  ],
+  "page_copy": {
+    "title": "Tyde Wellness review: pricing, eligibility and cancellation",
+    "description": "Reported provider information with unsupported costs and clinical claims left unknown.",
+    "affiliate_disclosure": "Clinic Scout is an independent comparison publisher, not a clinic. We may earn a commission if you use a provider link. Compensation does not establish treatment suitability.",
+    "bottom_line": "Compare the selected plan’s complete costs and terms before considering enrollment. A provider’s marketing statements and affiliate approval do not establish medical suitability or independent quality verification.",
+    "pricing": "Reported information: Tyde publishes different monthly figures for plans of different lengths. Those figures do not establish the selected upfront debit or renewal bill. This draft deliberately withholds numeric calculator inputs and does not rank a prepaid monthly equivalent as a month-to-month charge.",
+    "eligibility": "Reported information: the retained FAQ describes eligibility criteria subject to individual clinician evaluation. Campaign targeting ages are not clinical eligibility. The official marketing root and the governed intake domain remain unresolved inputs to the unchanged authority gate.",
+    "cancellation": "The retained official policies conflict: Terms & Conditions requires two weeks before renewal, while Membership Terms says before the renewal charge. The controlling deadline remains UNKNOWN. This draft adopts neither deadline as authoritative and makes no unconditional refund promise.",
+    "clinical_boundary": "This is research-based information, not first-hand treatment experience or medical advice. Any prescription requires individual clinician assessment. No efficacy, safety, certification or guaranteed outcome claim is approved by this draft."
+  },
+  "cta": {
+    "enabled": false,
+    "href": null,
+    "public_go_surface": false
+  },
+  "held_scope_note": null
+}
