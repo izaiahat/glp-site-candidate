@@ -3,6 +3,7 @@ import path from 'node:path';
 import {isDeepStrictEqual} from 'node:util';
 import {sha256} from './pricing-coverage-floor.mjs';
 import {applyPriceRefreshEvidence} from './price-refresh-evidence.mjs';
+import {retainedManualPricingBasis} from './provider-surface-append.mjs';
 
 
 // Exact S30 removals, not a coverage waiver. Baseline authentication remains
@@ -10,6 +11,11 @@ import {applyPriceRefreshEvidence} from './price-refresh-evidence.mjs';
 export const RETENTION_SHA256 = '0388da4c781f36911c1064c899d1f222c58a1e3e8ed7340dba76e44f5c042598';
 export const REMOVED_PRICE_REASON = 'Price not attested by current reviewed evidence as a complete medication-specific first and recurring cash schedule. Prior asserted cash rows were removed under the source-bound S30 review; this does not mean the provider publishes no prices or offers free treatment.';
 export function validateAttestedRetention(root, matrix, baseline) {
+  const addedIds=['rightwell-review','willow-review','ivim-health-review'];
+  if(addedIds.some(id=>matrix.providers?.[id])) {
+    const registry=JSON.parse(readFileSync(path.join(root,'data/program-registry.json')));
+    matrix=retainedManualPricingBasis(matrix,registry,addedIds);
+  }
   const fail = why => { throw new Error('attested_price_retention:' + why); };
   const bound = (relative, hash) => {
     if (!/^data\/price-state-(?:evidence\/[a-z0-9-]+|retention)\.json$/.test(relative)) fail('path');

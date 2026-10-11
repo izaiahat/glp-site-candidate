@@ -1,3 +1,4 @@
+import { explicitlyUnscoredReview } from '../src/review-score-contract.mjs';
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
@@ -35,7 +36,9 @@ test("provider-add reviews bind the exact merit score their comparison rows publ
     assert.ok(Number.isFinite(expected), `provider_add_merit_input_missing:${id}:criteria_scores`);
     const review = reviews.get(id);
     assert.ok(review, `provider_add_review_missing:${id}`);
-    assert.equal(scoreProvider(review.row), expected, `provider_add_review_score_drift:${id}`);
+    const unscored=explicitlyUnscoredReview(contract);
+    assert.equal(scoreProvider(review.row), unscored ? null : expected, `provider_add_review_score_drift:${id}`);
+    if(unscored)assert.deepEqual(review.row.criteria_scores,{});
 
     const comparisonRows = money.pages.flatMap((page) => page.rows || [])
       .filter((row) => row.program_id === id);
@@ -49,7 +52,13 @@ test("provider-add reviews bind the exact merit score their comparison rows publ
     }
 
     const html = renderProviderReviewPage(review, identity);
-    assert.match(html, new RegExp(`class="score">${(expected / 10).toFixed(1).replace(".", "\\.")}\\/10<\\/p>`), id);
-    assert.doesNotMatch(html, /Not scored|Score pending|Pending evidence/i, id);
+    if(unscored) {
+      assert.match(html, /class="score score-unscored">Not scored<\/p>/, id);
+      assert.match(html, /No comparable editorial score is assigned/, id);
+      assert.doesNotMatch(html, /"reviewRating"|class="score">[\d.]+\/10/, id);
+    } else {
+      assert.match(html, new RegExp(`class="score">${(expected / 10).toFixed(1).replace(".", "\\.")}\\/10<\\/p>`), id);
+      assert.doesNotMatch(html, /Not scored|Score pending|Pending evidence/i, id);
+    }
   }
 });

@@ -84,6 +84,8 @@ jobs:
         run: node --test tests/accepted-guide-source.test.mjs tests/accepted-update-source.test.mjs
       - name: GLP47 approved onboarding and B01 launch hold (offline only)
         run: node --test tests/glp47-approved-onboarding.test.mjs
+      - name: GLP93 bounded provider append regressions (offline exact head)
+        run: node --test tests/provider-price-append.test.mjs tests/provider-surface-append.test.mjs tests/provider-reviewed-score.test.mjs tests/q11-price-append-adverse.test.mjs tests/review-score-contract.test.mjs
       - name: Record limited scope
         if: always()
         run: |

@@ -270,18 +270,25 @@ test("Wave-2 commercial routes have a balanced ten-source internal-link floor", 
   for (const [route, incoming] of sources) assert.ok(incoming.size >= 10, `${route}: only ${incoming.size} distinct source routes`);
 });
 
-test("all 54 legacy review pages retain the evidence-safe 2026 SERP template and conditional rating schema", async () => {
+test("all 57 legacy review pages retain the evidence-safe 2026 SERP template and conditional rating schema", async () => {
   const { pageSeoCopy } = await import("../src/page-seo-copy.mjs");
   const sitemap = await readFile(new URL("sitemap.xml", PUBLIC), "utf8");
-  const routes = [...sitemap.matchAll(/<loc>https:\/\/glpclinicscout\.com(\/reviews\/[^<]+)<\/loc>/g)].map((match) => match[1]).filter((route) => !READY6_ROUTES.has(route));
+  const {readBeforeProviderAppendFixture}=await import('./helpers/provider-append-predecessor.mjs');
+  const oldRegistry=JSON.parse(readBeforeProviderAppendFixture(new URL('../data/program-registry.json',import.meta.url)));
+  const legacyRoutes=new Set(oldRegistry.programs.map(p=>p.review_path));
+  const allRoutes=[...sitemap.matchAll(/<loc>https:\/\/glpclinicscout\.com(\/reviews\/[^<]+)<\/loc>/g)].map((match) => match[1]).filter((route) => !READY6_ROUTES.has(route));
+  const appendedRoutes=allRoutes.filter(route=>!legacyRoutes.has(route));
+  assert.deepEqual(appendedRoutes.sort(),['/reviews/ivim-health-review/','/reviews/rightwell-review/','/reviews/willow-review/']);
+  const routes=allRoutes;
   // 32 -> 30 on 2026-08-17: the Synergy RX and CareBareRX review pages were
   // removed when Katalys paused those programs (Breeze Meds is a READY6 route
   // and was already excluded from this set).
   // 32 -> 29 on 2026-08-18: the three niche-fit review pages (Paternity Lab,
   // Advanced Trichology, LyfeFuel) came off this site by operator ruling.
-  assert.equal(routes.length, 54); // 2026-08-27 live-head merge: +nu-image
+  assert.equal(routes.length, 57); // 2026-08-27 live-head merge: +nu-image
   let rated = 0;
   let pending = 0;
+  const deliberatelyUnscored=[];
   for (const route of routes) {
     const html = await readPublic(route);
     assert.ok(visibleMainWordCount(html) >= 1800, `${route}: ${visibleMainWordCount(html)} visible main words`);
@@ -321,7 +328,10 @@ test("all 54 legacy review pages retain the evidence-safe 2026 SERP template and
       assert.equal(review.reviewRating.bestRating, 10, route);
       assert.equal(review.reviewRating.worstRating, 0, route);
     } else {
-      pending += 1;
+      if(appendedRoutes.includes(route)) {
+        deliberatelyUnscored.push(route);
+        assert.match(html,/No comparable editorial score is assigned/,route);
+      } else pending += 1;
       assert.equal(review.reviewRating, undefined, route);
     }
   }
@@ -333,7 +343,8 @@ test("all 54 legacy review pages retain the evidence-safe 2026 SERP template and
   // ruling. Every remaining page in this set now binds a real rating, so an
   // unscored page here is a regression rather than a known exception. The four
   // still-unscored READY6 routes are excluded from `routes` above.
-  assert.equal(rated + pending, routes.length);
+  assert.deepEqual(deliberatelyUnscored.sort(),appendedRoutes);
+  assert.equal(rated + pending + deliberatelyUnscored.length, routes.length);
   assert.ok(rated > 0);
   assert.equal(pending, 0);
   for (const route of routes) {

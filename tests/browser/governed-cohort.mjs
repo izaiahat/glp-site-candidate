@@ -6,8 +6,12 @@ import { priceStateText } from "../../src/price-state.mjs";
 import { isTypedPrice } from "../../src/typed-price-labels.mjs";
 
 const readData = (file) => JSON.parse(readFileSync(fileURLToPath(new URL(`../../data/${file}`, import.meta.url)), "utf8"));
-const networkPaused = (id) => /(?:network_paused|xentraffic_offer_\d+_paused)/.test(
-  readData('go-runtime-promotion-authority.json').programs?.[id]?.reason || '');
+import { loadGoPromotionAuthority } from '../../src/go-runtime-selection.mjs';
+const networkPaused = (id) => {
+  const authority=loadGoPromotionAuthority().programs?.[id];
+  return authority?.relationship_snapshot?.lifecycle==='paused'
+    || /(?:network_paused|xentraffic_offer_\d+_paused)/.test(authority?.reason || '');
+};
 
 export function governedProviderIds() {
   const sourceRegistry = readData("program-registry.json");

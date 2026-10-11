@@ -13,7 +13,9 @@ const policies = JSON.parse(read('scripts/therapeutic-taxonomy-refresh-policies.
 const id = 'care-bare-rx-glp1-review';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 
+import {readBeforeProviderAppendFixture} from './helpers/provider-append-predecessor.mjs';
 test('Care Bare corrects only active brand projections and does not erase historical quotation', () => {
+  const registry=JSON.parse(readBeforeProviderAppendFixture(new URL('../data/program-registry.json',import.meta.url)));
   const program = registry.programs.find(row => row.program_id === id);
   const profile = registry.provider_dynamic_profiles.profiles[id];
   const taxonomy = registry.therapeutic_taxonomy.programs[id];
@@ -63,8 +65,8 @@ test('Care Bare active medication summaries omit the brand association without c
 test('Care fastpath paired binding changes only the contract digest and refuses wrong contract bytes', () => {
   const old='6f64b4de008cfd9808f1007d9eb80a64f5eb7b6c7444b5ea2de2eaaff777db55';
   const accepted='edcbabb72522b0884f6d6ac97a813b6bf7afc2bb63bf4302c42162a0d03ffef6';
-  const contract=read('data/provider-page-contracts.json');
-  const final=read('data/provider-fastpath-contract.json');
+  const contract=readBeforeProviderAppendFixture(new URL('../data/provider-page-contracts.json',import.meta.url));
+  const final=readBeforeProviderAppendFixture(new URL('../data/provider-fastpath-contract.json',import.meta.url));
   assert.equal(sha(contract), accepted);
   assert.equal(JSON.parse(final).current_contract_sha256,sha(contract)); // native validator line 100
   const prior=final.toString().replace(`"current_contract_sha256": "${accepted}"`,`"current_contract_sha256": "${old}"`);

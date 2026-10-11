@@ -394,6 +394,7 @@
       "display_name": "telos rx",
       "evidence_state": "commercial_comparison_fields_pending",
       "fda_warning_status": "none",
+      "go_route_wired": false,
       "legal_state": "compliant_framing_candidate",
       "live_link_allowed": false,
       "network": "katalys",
@@ -406,16 +407,15 @@
         "epc": null,
         "payout": null
       },
+      "research_hold_receipt": {
+        "path": "data/telos-research-hold-receipt.json",
+        "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
+      },
       "status": "paused_network_program_paused",
       "terms_positive": true,
       "tracking": null,
       "tracking_material_included": false,
-      "tracking_present_private": true,
-      "go_route_wired": false,
-      "research_hold_receipt": {
-        "path": "data/telos-research-hold-receipt.json",
-        "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
-      }
+      "tracking_present_private": true
     },
     {
       "advertiser_permission_verified": false,
@@ -980,7 +980,7 @@
       "compliance_state": "staged_compliant_framing_candidate",
       "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
       "constructor_verified": false,
-      "display_name": "Pallas Health – GLP-1 Weight Loss & NAD",
+      "display_name": "Pallas Health \u2013 GLP-1 Weight Loss & NAD",
       "evidence_state": "commercial_comparison_fields_pending",
       "fda_warning_status": "none",
       "legal_state": "compliant_framing_candidate",
@@ -2130,6 +2130,132 @@
         "payout": null
       },
       "route": "/go/medvi-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "RightWell",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "rightwell-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/rightwell-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Willow",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "willow-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/willow-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Ivim Health",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "ivim-health-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/ivim-health-review",
       "status": "staged_operator_gate",
       "terms_positive": true,
       "tracking": null,

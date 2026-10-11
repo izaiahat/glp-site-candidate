@@ -6,9 +6,12 @@ import {loadGoPromotionAuthority,restoreGoOnlyPriceBasis} from '../src/go-runtim
 import {stableSha256} from '../src/therapeutic-taxonomy.mjs';
 import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
 import {buildProviderReviewSpecs,renderProviderReviewPage} from '../src/provider-review.mjs';
+import {readBeforeProviderAppendFixture} from './helpers/provider-append-predecessor.mjs';
 const registry=JSON.parse(readFileSync(new URL('../data/program-registry.json',import.meta.url)));
-const expected=registry.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256;
-const basis=structuredClone(registry);
+import {providerPricePredecessorRegistry} from '../src/provider-price-append.mjs';
+const priceFixture=providerPricePredecessorRegistry(registry);
+const expected=priceFixture.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256;
+const basis=structuredClone(priceFixture);
 const read = name => JSON.parse(readFileSync(new URL('../data/'+name,import.meta.url)));
 const escapeHtml = text => String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
 test('actual review renderer preserves repaired copy and the exact Longevity HOLD',()=>{
@@ -40,7 +43,7 @@ test('actual review renderer preserves repaired copy and the exact Longevity HOL
    assert.equal(authority.promotion_authorized,false);
    // Historical decision bytes remain authentic, but cannot waive this exact
    // unresolved creative approval. Preserve the evidence, not its old grant.
-   const legacy=read('go-runtime-promotion-authority.json').programs[id];
+   const legacy=JSON.parse(readBeforeProviderAppendFixture(new URL('../data/go-runtime-promotion-authority.json',import.meta.url))).programs[id];
    assert.equal(createHash('sha256').update(readFileSync(legacy.operator_approved_live_decision.path)).digest('hex'),legacy.operator_approved_live_decision.sha256);
    const issued=read('affiliate-wire-in-approvals.json').programs.find(p=>p.existing_release_alias===id)?.tracking?.provider_issued_url;
    assert.equal(issued,'https://www.xfnjwej33dd.com/841W6MT/6RHPZQL/');
@@ -75,7 +78,7 @@ for(const [name,edit] of [
  ['commercial',p=>p.commercial_state='held'],
  ['route',p=>p.go.route='/go/different'],
 ])test(`held projection refuses unrelated ${name} drift`,()=>{
- const current=structuredClone(registry);edit(current.programs.find(p=>p.program_id==='longevity-meds-glp-1-review'));
+ const current=structuredClone(priceFixture);edit(current.programs.find(p=>p.program_id==='longevity-meds-glp-1-review'));
  assert.throws(()=>historicalPriceIndexRegistry(current), /go_price_basis_held_scope_drift|price_index_historical_registry_drift/);
  const b=structuredClone(basis);edit(b.programs.find(p=>p.program_id==='longevity-meds-glp-1-review'));
  try{assert.notEqual(stableSha256(restoreGoOnlyPriceBasis(b)),expected);}catch(error){if(error.code==='ERR_ASSERTION')throw error;assert.match(error.message,/go_price_basis_/);}
