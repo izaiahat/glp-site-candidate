@@ -57,9 +57,11 @@ export function loadGoPromotionAuthority(root = DEFAULT_ROOT) {
     const receipt = JSON.parse(readFileSync(path.join(root, 'data/review-tracking-receipts.json'))).programs?.[id];
     const api = receipt?.tracking_api_receipt;
     const campaign = receipt?.campaign;
+    const expectedOffer = JSON.parse(readFileSync(path.join(root,'data/program-registry.json'))).programs.find(p=>p.program_id===id)?.affiliate_relationship_snapshot?.network_program_id;
     const href = api?.response?.['tracking-link'];
     const url = new URL(href);
-    if (row.network !== 'MaxBounty' || campaign?.details?.affiliate_campaign_status !== 'Approved'
+    if (!expectedOffer || String(expectedOffer)!==String(campaign?.campaign_id)
+        || row.network !== 'MaxBounty' || campaign?.details?.affiliate_campaign_status !== 'Approved'
         || api?.status !== 200 || api?.publisher_id !== '803003' || api?.tracking_clicks !== 0
         || api?.response?.success !== true || href !== row.issued_link
         || hash(href) !== row.tracking_link_sha256 || url.protocol !== 'https:'

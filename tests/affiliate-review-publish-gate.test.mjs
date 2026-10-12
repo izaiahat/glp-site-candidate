@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import { assertAffiliateReviewPublishable } from '../src/affiliate-review-publish-gate.mjs';
+import { assertAffiliateReviewPublishable, labelNonAffiliateReview } from '../src/affiliate-review-publish-gate.mjs';
 const href='https://network.example/trk/?o=1&a=803003';
 const program={program_id:'test',commercial_state:'live',affiliate_relationship_snapshot:{relationship_status:'approved_active_tracking_ready',promotion_denied:false}};
 const review={program_id:'test',row:{promotion_authorized:true,live_link_allowed:true,affiliate_href:href},fastpath_contract:{network_contract:{relationship_state:'approved_or_active',tracking_url:href}}};
@@ -22,6 +22,14 @@ test('validated build invokes final artifact gate as well as pre-write guard',()
  const pkg=JSON.parse(readFileSync(new URL('../package.json',import.meta.url)));
  assert.ok(pkg.scripts['build:validated'].endsWith('node scripts/validate-affiliate-review-publication.mjs'));
  assert.match(readFileSync(new URL('../scripts/build-staging.mjs',import.meta.url),'utf8'),/assertAffiliateReviewPublishable\(review, record/);
+});
+test('renderer labels only explicitly non-affiliate prescription records',()=>{
+ const p={program_id:'rx',affiliate_relationship:'non_affiliate',prescription_provider:true};
+ const raw='<h1>Provider review</h1>';
+ assert.throws(()=>assertAffiliateReviewPublishable({program_id:'rx'},p,null,raw),/label_missing/);
+ const labeled=labelNonAffiliateReview(raw,p);
+ assert.equal(assertAffiliateReviewPublishable({program_id:'rx'},p,null,labeled).status,'NON_AFFILIATE_LABELED');
+ assert.equal(labelNonAffiliateReview(raw,program),raw);
 });
 test('existing alias promotion restriction stays link-dark and points to canonical review',()=>{
  const p={...program,profiles:{'glp-clinic-scout':{canonical_identity:{role:'alias',canonical_program_id:'canonical'},surfaces:{go:false,compare:false}}}};

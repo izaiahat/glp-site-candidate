@@ -1,6 +1,16 @@
 import {affiliateOutboundMode} from './affiliate-outbound-mode.mjs';
 import {subidAttributes} from './affiliate-subid.mjs';
 
+// A reviewed direct destination does not require first-party redirect permission.
+// This grants no link: both the resolver and current promotion authority must agree.
+export function approvedDirectCard(outbound, affiliate, promotion) {
+  return outbound?.mode === 'transparent_direct' && affiliate?.live === true
+    && promotion?.status === 'VERIFIED' && promotion.promotion_authorized === true
+    && typeof outbound.href === 'string' && outbound.href.startsWith('https://')
+    && outbound.href === affiliate.affiliate_href
+    && (!promotion.issued_link || promotion.issued_link === outbound.href);
+}
+
 // Pure consumer. Promotion data belongs to the authority owner, never this renderer.
 export function resolveCardOutbound({program, affiliate, promotionAuthority, pageSlug, position, rankPosition}) {
   const renderId = program?.review_slug || program?.program_id;

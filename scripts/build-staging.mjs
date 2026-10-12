@@ -65,7 +65,7 @@ import { upgradePhase3PageVisuals } from "../src/pass2-page-visual-upgrades.mjs"
 import { renderReviewDirectoryPage, renderReviewIntakeForm, renderReviewSubmissionPage } from "../src/pass2-review-hub.mjs";
 import { loadAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
 import { loadProviderPageContracts } from "../src/provider-cta-contract.mjs";
-import { assertAffiliateReviewPublishable } from '../src/affiliate-review-publish-gate.mjs';
+import { assertAffiliateReviewPublishable, labelNonAffiliateReview } from '../src/affiliate-review-publish-gate.mjs';
 import { loadGoPromotionAuthority, restoreGoOnlyPriceBasis } from "../src/go-runtime-selection.mjs";
 
 const MONTH_NAMES = Object.freeze(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]);
@@ -2011,8 +2011,9 @@ async function main() {
   const reviewPublishAuthority = loadGoPromotionAuthority(ROOT).programs;
   for (const review of reader.providerReviews) {
     const key = review.fastpath_contract ? "editorial-evidence-hero" : `review-${routeSlug(review.path)}`;
-    const html = markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)));
+    let html = markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)));
     const record = programRegistry.programs.find(p => p.program_id === review.program_id || p.review_slug === review.program_id);
+    html = labelNonAffiliateReview(html,record);
     assertAffiliateReviewPublishable(review, record, reviewPublishAuthority[record?.program_id || review.program_id], html);
     await write(path.join(review.path.replace(/^\//, ""), "index.html"), html);
   }

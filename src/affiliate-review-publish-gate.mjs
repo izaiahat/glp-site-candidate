@@ -14,6 +14,12 @@ function visibleText(html) {
 
 // Current denial outranks a historical grant. Missing authority is not denial,
 // and missing relationship evidence is not a non-affiliate designation.
+export function labelNonAffiliateReview(html,program) {
+  if(program?.affiliate_relationship!=='non_affiliate'||program.prescription_provider!==true) return html;
+  if((html.match(/<\/h1>/g)||[]).length!==1) throw new Error('non_affiliate_review_heading_invalid');
+  return html.replace('</h1>','</h1><aside class="affiliate-note" data-non-affiliate-provider><strong>Non-affiliate provider.</strong> We do not earn a commission from this provider.</aside>');
+}
+
 export function assertAffiliateReviewPublishable(review, program, authority, html) {
   const id=review.program_id;
   if (!program || ![program.program_id, program.review_slug].includes(id)) throw new Error(`affiliate_review_registry_missing:${id}`);
