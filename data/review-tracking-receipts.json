@@ -2,9 +2,6 @@
   "programs": {
     "ivim-health-review": {
       "campaign": {
-        "allowed_countries": [
-          "US"
-        ],
         "allowed_traffic_types": {
           "brand_bid_traffic": "N",
           "contextual_traffic": "Y",
@@ -17,21 +14,6 @@
           "social_media_traffic": "Y"
         },
         "campaign_id": 31359,
-        "categories": {
-          "category": "Health & Wellness",
-          "subcategory": "Diet & Nutrition"
-        },
-        "commission": [
-          {
-            "conversion_type": "SALE",
-            "default_rate": "Y",
-            "description": "Paid order",
-            "rate": "$105.00 per lead",
-            "rate_type": "Fixed",
-            "status": "Active",
-            "subject_to_forex": 0
-          }
-        ],
         "creatives": [
           {
             "creative_id": 206454,
@@ -69,38 +51,12 @@
             "width": 157
           }
         ],
-        "dayparting": {},
         "details": {
           "affiliate_campaign_status": "Approved",
-          "cap": "This campaign does not have a daily cap.",
-          "coupon": "",
-          "description": "Ivim Health is a leading telehealth platform specializing in medically managed weight loss. Their \"GLP-1 ID\" program provides individualized dosing of compounded or brand-name Semaglutide and Tirzepatide. Converts on Paid Order<br><br>Targeting: Primary audience includes adults (25\u201355) with a BMI of 30+ (or 27+ with comorbidities) seeking \"physician-backed\" alternatives to high-cost retail prescriptions.<br><br>Restrictions: No Brand Bidding on \"Ivim Health\" or related trademarks. No incentivized or \"get-paid-to-join\" traffic. Marketing must clearly state that compounded medications are not FDA-approved and that results vary by individual. Prohibited tactics include using \"before and after\" photos without proper disclaimers or promising a \"guaranteed\" supply during national medication shortages. All email traffic must be 100% CAN-SPAM and TCPA compliant.",
-          "desktop_traffic": "Y",
-          "epc": 1.0808435852372584,
-          "expiry_date": "No expiry",
-          "geo_filtering": "Y",
-          "keywords": "",
-          "landing_page_sample": "https://ivimhealth.com/",
-          "mobile_traffic": "Y",
           "name": "Ivim Health - GLP+1 - CPS (US)",
-          "os_filtering": "N",
-          "payment_delay": 0,
-          "payment_delay_mode": "END_OF_MONTH",
-          "prepop": "",
           "rules": "<b><u>No solo emails.</u></b>\n<br><br>\nContent-based newsletters (freebie newsletters, for example) with multiple links <b>ONLY</b>.  <br><br>\nBy choosing to run newsletter traffic, you accept the responsibility of managing opt-out links and maintaining the suppression list for your newsletter emails.",
-          "schedule_enabled": "N",
-          "status": "By Request",
-          "supports_multiple_postback": "N",
-          "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=36909&s=thumb",
-          "tracking_type": "A"
+          "status": "By Request"
         },
-        "email_restrictions": {
-          "from_lines": "Newsletter From Lines",
-          "rules": "<b><u>No solo emails.</u></b>\n<br><br>\nContent-based newsletters (freebie newsletters, for example) with multiple links <b>ONLY</b>.  <br><br>\nBy choosing to run newsletter traffic, you accept the responsibility of managing opt-out links and maintaining the suppression list for your newsletter emails.",
-          "subject_lines": "Newsletter Subject Lines",
-          "suppression": "N"
-        },
-        "is_bookmarked": true,
         "landing_pages": [
           {
             "allows_deeplink": "Y",
@@ -147,14 +103,10 @@
             "name": "Supplements ",
             "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=36909&s=thumb"
           }
-        ],
-        "os_list": [],
-        "postback": [],
-        "search_restrictions": "No brand bidding",
-        "success": true
+        ]
       },
-      "network_program_id": "31359",
-      "schema": "glp.maxbounty.approved_api_link_source.v1",
+      "capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T1/approved-link-source-31359.json",
+      "capture_sha256": "c46af515abb01c49a761bef299e1907ec68221a132fbd935a8fdee42964abac4",
       "tracking_api_receipt": {
         "campaign_id": "31359",
         "captured_at_utc": "2026-10-11T23:10:21.584418+00:00",
@@ -175,15 +127,10 @@
         "schema": "glp.maxbounty.authorized_api_tracking_link.v1",
         "status": 200,
         "tracking_clicks": 0
-      },
-      "tracking_clicks": 0,
-      "tracking_link": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=31359&c=918277&a=803003&k=0&l=36909"
+      }
     },
     "rightwell-review": {
       "campaign": {
-        "allowed_countries": [
-          "US"
-        ],
         "allowed_traffic_types": {
           "brand_bid_traffic": "N",
           "contextual_traffic": "Y",
@@ -196,54 +143,13 @@
           "social_media_traffic": "Y"
         },
         "campaign_id": 32122,
-        "categories": {
-          "category": "Health & Wellness",
-          "subcategory": "Diet & Nutrition"
-        },
-        "commission": [
-          {
-            "conversion_type": "SALE",
-            "default_rate": "Y",
-            "description": "Sale",
-            "rate": "$270.00 per lead",
-            "rate_type": "Fixed",
-            "status": "Active",
-            "subject_to_forex": 0
-          }
-        ],
         "creatives": [],
-        "dayparting": {},
         "details": {
           "affiliate_campaign_status": "Approved",
-          "cap": "This campaign does not have a daily cap.",
-          "coupon": "",
-          "description": "RightWell offers a clinical weight loss solution that connects patients with licensed healthcare providers to access GLP-1 medications and personalized medical support.<br><br>Converts on a completed purchase or subscription sign-up.<br><br>Targeting: US-based adults aged 25-60 interested in medical weight loss, GLP-1 medications, and telehealth healthcare services.<br><br>Restrictions: Brand bidding and variations are strictly prohibited. Promotional materials must not include sweepstakes, promised cash redemptions, or incentivized \"freebie\" hooks.",
-          "desktop_traffic": "Y",
-          "epc": 1.35,
-          "expiry_date": "No expiry",
-          "geo_filtering": "Y",
-          "keywords": "",
-          "landing_page_sample": "https://www.rightwell.com/get-started?",
-          "mobile_traffic": "Y",
           "name": "RightWell - GLP-1 Weight Loss - CPS (US)",
-          "os_filtering": "N",
-          "payment_delay": 0,
-          "payment_delay_mode": "END_OF_MONTH",
-          "prepop": "",
           "rules": "<b><u>No solo emails.</u></b>\n<br><br>\nContent-based newsletters (freebie newsletters, for example) with multiple links <b>ONLY</b>.  <br><br>\nBy choosing to run newsletter traffic, you accept the responsibility of managing opt-out links and maintaining the suppression list for your newsletter emails.",
-          "schedule_enabled": "N",
-          "status": "By Request",
-          "supports_multiple_postback": "N",
-          "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16443&o=32122&l=38072&s=thumb",
-          "tracking_type": "S"
+          "status": "By Request"
         },
-        "email_restrictions": {
-          "from_lines": "Newsletter From Lines",
-          "rules": "<b><u>No solo emails.</u></b>\n<br><br>\nContent-based newsletters (freebie newsletters, for example) with multiple links <b>ONLY</b>.  <br><br>\nBy choosing to run newsletter traffic, you accept the responsibility of managing opt-out links and maintaining the suppression list for your newsletter emails.",
-          "subject_lines": "Newsletter Subject Lines",
-          "suppression": "N"
-        },
-        "is_bookmarked": true,
         "landing_pages": [
           {
             "allows_deeplink": null,
@@ -254,14 +160,10 @@
             "name": "Get Started",
             "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16443&o=32122&l=38072&s=thumb"
           }
-        ],
-        "os_list": [],
-        "postback": [],
-        "search_restrictions": "No brand bidding",
-        "success": true
+        ]
       },
-      "network_program_id": "32122",
-      "schema": "glp.maxbounty.approved_api_link_source.v1",
+      "capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T1/approved-link-source-32122.json",
+      "capture_sha256": "1120190f54131af416744d5bfe64069ba60c0f77416d6d766c378c8abddcabfd",
       "tracking_api_receipt": {
         "campaign_id": "32122",
         "captured_at_utc": "2026-10-11T23:10:21.150529+00:00",
@@ -282,15 +184,10 @@
         "schema": "glp.maxbounty.authorized_api_tracking_link.v1",
         "status": 200,
         "tracking_clicks": 0
-      },
-      "tracking_clicks": 0,
-      "tracking_link": "https://afflat3e3.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32122&c=918277&a=803003&k=0&l=38072"
+      }
     },
     "willow-review": {
       "campaign": {
-        "allowed_countries": [
-          "US"
-        ],
         "allowed_traffic_types": {
           "brand_bid_traffic": "N",
           "contextual_traffic": "Y",
@@ -303,54 +200,13 @@
           "social_media_traffic": "Y"
         },
         "campaign_id": 29207,
-        "categories": {
-          "category": "Health & Wellness",
-          "subcategory": "Diet & Nutrition"
-        },
-        "commission": [
-          {
-            "conversion_type": "OTHER",
-            "default_rate": "Y",
-            "description": "Sale",
-            "rate": "$150.00 per lead",
-            "rate_type": "Fixed",
-            "status": "Active",
-            "subject_to_forex": 0
-          }
-        ],
         "creatives": [],
-        "dayparting": {},
         "details": {
           "affiliate_campaign_status": "Approved",
-          "cap": "This campaign does not have a daily cap.",
-          "coupon": "",
-          "description": "Willlow offers a science-backed weight loss program that leverages GLP-1 medications like semaglutide (the active ingredient in Ozempic) to help individuals achieve sustainable results. The program combines FDA-approved treatments with medical oversight and lifestyle coaching, tailored for long-term weight management.<br><br>Converts on sale<br><br>Targeting: Adults aged 25\u201365 seeking medically supervised weight loss solutions using GLP-1 medications.<br><br>Restrictions: No misleading health claims, no reference to celebrity endorsements unless approved.<br><br>Creatives to be made by approval.",
-          "desktop_traffic": "Y",
-          "epc": 0.7643135075041689,
-          "expiry_date": "No expiry",
-          "geo_filtering": "Y",
-          "keywords": "",
-          "landing_page_sample": "https://www.startwillow.com/",
-          "mobile_traffic": "Y",
           "name": "Willow - Weightloss GLP-1 - CPS (US)",
-          "os_filtering": "N",
-          "payment_delay": 0,
-          "payment_delay_mode": "END_OF_MONTH",
-          "prepop": "",
           "rules": "<b><u>No solo emails.</u></b>\n<br><br>\nContent-based newsletters (freebie newsletters, for example) with multiple links <b>ONLY</b>.  <br><br>\nBy choosing to run newsletter traffic, you accept the responsibility of managing opt-out links and maintaining the suppression list for your newsletter emails.",
-          "schedule_enabled": "N",
-          "status": "By Request",
-          "supports_multiple_postback": "N",
-          "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=15098&o=29207&l=33375&s=thumb",
-          "tracking_type": "A"
+          "status": "By Request"
         },
-        "email_restrictions": {
-          "from_lines": "Newsletter From Lines",
-          "rules": "<b><u>No solo emails.</u></b>\n<br><br>\nContent-based newsletters (freebie newsletters, for example) with multiple links <b>ONLY</b>.  <br><br>\nBy choosing to run newsletter traffic, you accept the responsibility of managing opt-out links and maintaining the suppression list for your newsletter emails.",
-          "subject_lines": "Newsletter Subject Lines",
-          "suppression": "N"
-        },
-        "is_bookmarked": true,
         "landing_pages": [
           {
             "allows_deeplink": null,
@@ -361,14 +217,10 @@
             "name": "Home Page",
             "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=15098&o=29207&l=33375&s=thumb"
           }
-        ],
-        "os_list": [],
-        "postback": [],
-        "search_restrictions": "No brand bidding",
-        "success": true
+        ]
       },
-      "network_program_id": "29207",
-      "schema": "glp.maxbounty.approved_api_link_source.v1",
+      "capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T1/approved-link-source-29207.json",
+      "capture_sha256": "c39471d6ec029221ee9ae767f5dfbb43f948910b2a357552c40521bcdb1e4d84",
       "tracking_api_receipt": {
         "campaign_id": "29207",
         "captured_at_utc": "2026-10-11T23:10:21.375436+00:00",
@@ -389,9 +241,7 @@
         "schema": "glp.maxbounty.authorized_api_tracking_link.v1",
         "status": 200,
         "tracking_clicks": 0
-      },
-      "tracking_clicks": 0,
-      "tracking_link": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=29207&c=918277&a=803003&k=0&l=33375"
+      }
     }
   },
   "schema": "glp-review-approved-tracking-v1",
