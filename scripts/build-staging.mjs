@@ -43,7 +43,7 @@ import { readPriceIndexPredecessor } from "../src/price-index-predecessor.mjs";
 import { frozenPriceLedger } from "../src/price-index-nonprice-binding.mjs";
 import { addCurrentPriceIndexOffers, stripCurrentPriceIndexOffers } from "../src/price-refresh-evidence.mjs";
 import { historicalPriceIndexRegistry } from "../src/price-index-historical-registry.mjs";
-import { providerPricePredecessorRegistry } from "../src/provider-price-append.mjs";
+import { providerReviewRuntimePredecessorRegistry } from "../src/provider-price-append.mjs";
 import { composePriceWatchIssue, validatePublishedPriceWatchIssue } from "../src/price-watch-email.mjs";
 import { buildMysteryShopArtifacts, loadEvidenceInputs, evidenceLedgerAuthority } from "../src/mystery-shop.mjs";
 import { buildDealArtifacts, resolveDealEvaluationClocks } from "../src/deal-ingestion.mjs";
@@ -2473,7 +2473,7 @@ async function main() {
     BASELINE_PRICE_ROW_COUNT: pricingBaseline.coverage.medication_rows,
     BASELINE_PRICED_PROVIDER_COUNT: pricingBaseline.coverage.providers_with_evidenced_pricing,
   }),derivedTallies);
-  const preservedRegistry = providerPricePredecessorRegistry(rawProgramRegistry);
+  const preservedRegistry = effectiveAffiliateRegistry(providerReviewRuntimePredecessorRegistry(rawProgramRegistry));
   const rawIdentity = assertDeclaredIdentityGroups(preservedRegistry, SITE_PROFILE, rawContentLedger.programs);
   const predecessorLiveProgramCount = preservedRegistry.programs.filter(p => p.commercial_state === 'live'
     && p.profiles?.[SITE_PROFILE]?.vertical_fit === true && p.profiles[SITE_PROFILE].wired === true
