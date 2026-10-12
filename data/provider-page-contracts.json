@@ -4490,6 +4490,499 @@
         }
       },
       "tracking_host": "afflat3e1.com"
+    },
+    {
+      "display_name": "Tyde Wellness",
+      "field_sources": {
+        "cancellation_and_roles": [
+          "https://www.tydewellness.com/terms-conditions/",
+          "https://www.tydewellness.com/states-we-serve/",
+          "https://www.tydewellness.com/",
+          "https://www.tydewellness.com/faqs/",
+          "https://www.tydewellness.com/membership-terms/"
+        ],
+        "pricing_and_inclusions": [
+          "https://www.tydewellness.com/",
+          "https://www.tydewellness.com/faqs/",
+          "https://www.tydewellness.com/states-we-serve/"
+        ],
+        "regulatory": [
+          "https://www.tydewellness.com/pharmacy-partners/"
+        ]
+      },
+      "logo_contract": {
+        "asset_ready": true,
+        "intended_public_path": "/assets/provider-logos/tyde-wellness-review.webp",
+        "official_source": "https://www.tydewellness.com/wp-content/uploads/2026/09/tyde-drk.svg",
+        "report_asset": "assets/provider-logos/tyde-wellness-review.webp",
+        "sha256": "42830b5a439ad3df613a4a16317aac2df10ca8be690ac28071c75bf8add19b79"
+      },
+      "network_contract": {
+        "activation_blocker": null,
+        "immutable_offer_id": "32639",
+        "local_evidence_checked_through": "2026-10-10",
+        "network": "MaxBounty",
+        "promotion_authorized_in_this_artifact": true,
+        "publisher_id": "803003",
+        "relationship_state": "approved_or_active",
+        "sheet_status": "approved_active_tracking_ready",
+        "tracking_url": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32639&c=918277&a=803003&k=0&l=39106",
+        "transparent_direct_supported_by_current_renderer": true
+      },
+      "official_url": "https://glp1.intake.tydewellness.com/",
+      "page_copy": {
+        "bottom_line": "Reported information: Tyde Wellness describes an online program involving clinician evaluation and compounded GLP-1 medications. Exact bills, dispensing pharmacy and eligibility require confirmation.",
+        "cancellation": "Reported information is conflicting: Terms & Conditions requires a request at least two weeks before renewal, while Membership Terms says before the renewal charge. The controlling deadline remains UNKNOWN; confirm directly with the provider before enrolling. Dispensed medication is non-returnable; refund eligibility is conditional.",
+        "description": "Tyde Wellness describes an online program involving clinician evaluation and compounded GLP-1 medications. Exact bills, dispensing pharmacy and eligibility require confirmation.",
+        "eligibility": "Reported information: Tyde's current official state list contains all 50 US states, including California, and requires physical presence in a listed state for the visit. This is not an independent licensing or every-treatment availability determination. Reported information: the homepage says there are no separate monthly membership fees. A distinct consultation charge is UNKNOWN, not assumed zero.",
+        "pricing": "Reported information: the website advertises a $150 introductory reduction on eligible full-dose 3- or 6-month orders. Exact checkout first charge and selected treatment remain UNKNOWN; an advertised monthly equivalent is not a first charge.",
+        "regulatory": "Reported information: Tyde names Belmar Pharma Solutions, Casa Pharma, Olympia Pharmacy, Red Rock Home Pharmacy and Beaker Pharmacy as compounding partners. The partner page describes Belmar, Olympia and Red Rock as 503A pharmacies. These are provider-reported classifications, not independently verified registration, licensing or certification. The specific pharmacy assigned to a reader remains UNKNOWN. Compounded medications are not FDA-approved.",
+        "shipping": "Reported information: the homepage advertises free 2-day shipping. Time from intake to clinician approval, dispensing and dispatch remains UNKNOWN; this is not a guaranteed total turnaround.",
+        "title": "Tyde Wellness Review 2026: Costs, Terms & Evidence"
+      },
+      "program_id": "tyde-wellness-review",
+      "publication_state": {
+        "affiliate_activation_candidate_after_gate": true,
+        "affiliate_activation_state": "G6_R1A_WIRE_IN_20260806",
+        "calculator_eligible": false,
+        "editorial_content_ready": true,
+        "regulatory_banner_required": "compounded_medication_fda_disclosure_required"
+      },
+      "review_path": "/reviews/tyde-wellness-review/",
+      "row_contract": {
+        "affiliate_href": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32639&c=918277&a=803003&k=0&l=39106",
+        "affiliate_link_mode": "transparent_direct",
+        "affiliate_network": "MaxBounty",
+        "best_for": "Readers comparing provider-reported compounded GLP-1 program information",
+        "cons": [
+          "Exact selected checkout and renewal bills require confirmation",
+          "Pharmacy assignment and independent licensing remain UNKNOWN"
+        ],
+        "criteria_scores": {},
+        "insurance": "UNKNOWN reimbursement; confirm directly",
+        "live_link_allowed": true,
+        "logo": "/assets/provider-logos/tyde-wellness-review.webp",
+        "medications": "Compounded semaglutide and tirzepatide (provider-reported; clinician evaluation required)",
+        "program_id": "tyde-wellness-review",
+        "promotion_authorized": true,
+        "pros": [
+          "Official pages describe clinician evaluation before prescribing"
+        ],
+        "provider": "Tyde Wellness",
+        "review_path": "/reviews/tyde-wellness-review/",
+        "score": null,
+        "source_url": "https://www.tydewellness.com/",
+        "starting_price": "UNKNOWN exact first and recurring bill; advertised starting amounts are not a universal total",
+        "starting_price_sort": null
+      },
+      "source_capture_bindings": {
+        "https://www.tydewellness.com/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/capture-bundle.json",
+          "bundle_sha256": "393c0f98a8869f196fa0470ba0df4823984a20827a37a0e3dd5834f8270c0772",
+          "captured_at_utc": "2026-10-10T06:38:41.442702+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/3f733b3a592d5821.json",
+          "raw_capture_sha256": "d9b26b5962f681ca94fa15e5bc47ab7046fcd85d92f391a5f9f11dc35540d0f1"
+        },
+        "https://www.tydewellness.com/faqs/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/capture-bundle.json",
+          "bundle_sha256": "393c0f98a8869f196fa0470ba0df4823984a20827a37a0e3dd5834f8270c0772",
+          "captured_at_utc": "2026-10-10T06:38:41.442702+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/3882cb2e2040569d.json",
+          "raw_capture_sha256": "b1c35a1e9054216013097883c796ee3db638a678a313d1160e2eeb411ce6e677"
+        },
+        "https://www.tydewellness.com/membership-terms/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/capture-bundle.json",
+          "bundle_sha256": "393c0f98a8869f196fa0470ba0df4823984a20827a37a0e3dd5834f8270c0772",
+          "captured_at_utc": "2026-10-10T06:38:41.442702+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/900ae722f148eec9.json",
+          "raw_capture_sha256": "d75a0be0d6d088119f963ab6df934da4a8baa3d2d1791f11f73a2f090b3c1f15"
+        },
+        "https://www.tydewellness.com/pharmacy-partners/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/capture-bundle.json",
+          "bundle_sha256": "393c0f98a8869f196fa0470ba0df4823984a20827a37a0e3dd5834f8270c0772",
+          "captured_at_utc": "2026-10-10T06:38:41.442702+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/b2b7f53598e1bc54.json",
+          "raw_capture_sha256": "9ee064c4fd0210047204c10b54bdf990445f454c7727b28df911a2a7791032d0"
+        },
+        "https://www.tydewellness.com/states-we-serve/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/capture-bundle.json",
+          "bundle_sha256": "393c0f98a8869f196fa0470ba0df4823984a20827a37a0e3dd5834f8270c0772",
+          "captured_at_utc": "2026-10-10T06:38:41.442702+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/e6dde82b97bd5305.json",
+          "raw_capture_sha256": "81e5cbc093d62fd7a54d608a8622d40f765edfd41da6179c4fe9ba5173d9ae81"
+        },
+        "https://www.tydewellness.com/terms-conditions/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/capture-bundle.json",
+          "bundle_sha256": "393c0f98a8869f196fa0470ba0df4823984a20827a37a0e3dd5834f8270c0772",
+          "captured_at_utc": "2026-10-10T06:38:41.442702+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/captures/395a8b7b9436d30e.json",
+          "raw_capture_sha256": "689dca9fa094f3cd68864b2808f7d3186754b4cb5860bf58192c7fe34ac201d2"
+        }
+      },
+      "tracking_host": "afflat3e1.com"
+    },
+    {
+      "display_name": "FeelGood",
+      "field_sources": {
+        "cancellation_and_roles": [
+          "https://www.feelgoodmeds.com/refund-policy",
+          "https://www.feelgoodmeds.com/terms-of-use"
+        ],
+        "pricing_and_inclusions": [
+          "https://www.feelgoodmeds.com/refund-policy",
+          "https://www.feelgoodmeds.com/weight-loss",
+          "https://www.feelgoodmeds.com/terms-of-use"
+        ],
+        "regulatory": [
+          "https://www.feelgoodmeds.com/terms-of-use",
+          "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+        ]
+      },
+      "logo_contract": {
+        "asset_ready": true,
+        "intended_public_path": "/assets/provider-logos/feelgood-review.webp",
+        "official_source": "https://www.feelgoodmeds.com/images/logo.svg?dpl=dpl_7upp676uAyCwibzvdfUwfQKCH1T2",
+        "report_asset": "assets/provider-logos/feelgood-review.webp",
+        "sha256": "1c513dc15c5e21d4f003868fe95f0cf99544f5e54df39ee0bfa48a97b1608269"
+      },
+      "network_contract": {
+        "activation_blocker": null,
+        "immutable_offer_id": "32854",
+        "local_evidence_checked_through": "2026-10-10",
+        "network": "MaxBounty",
+        "promotion_authorized_in_this_artifact": true,
+        "publisher_id": "803003",
+        "relationship_state": "approved_or_active",
+        "sheet_status": "approved_active_tracking_ready",
+        "tracking_url": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32854&c=918277&a=803003&k=0&l=38940",
+        "transparent_direct_supported_by_current_renderer": true
+      },
+      "official_url": "https://www.feelgoodmeds.com/?",
+      "page_copy": {
+        "bottom_line": "Reported information: FeelGood describes an online program involving clinician evaluation and compounded GLP-1 medications. Exact bills, dispensing pharmacy and eligibility require confirmation.",
+        "cancellation": "FeelGood requires cancellation requests at least 72 hours before the next billing date; otherwise cancellation takes effect in the subsequent billing cycle.",
+        "description": "FeelGood describes an online program involving clinician evaluation and compounded GLP-1 medications. Exact bills, dispensing pharmacy and eligibility require confirmation.",
+        "eligibility": "The terms require a provider licensed in the patient's state. A definitive state availability list is not established in these captures. Consultations may be included in the subscription price. A separate consultation fee is not established by the captured pages.",
+        "pricing": "Starting at $149/month is published; the exact first checkout total remains unknown.",
+        "regulatory": "Reported information: FeelGood states it is not acting as a pharmacy. The captured pages do not identify the assigned dispensing pharmacy or establish independent pharmacy licensing. FDA states that compounded drugs are not FDA approved and that it does not review them for safety, effectiveness or quality before they are marketed.",
+        "shipping": "Free shipping is advertised. A definitive delivery-time commitment is not established in these captures.",
+        "title": "FeelGood Review 2026: Costs, Terms & Evidence"
+      },
+      "program_id": "feelgood-review",
+      "publication_state": {
+        "affiliate_activation_candidate_after_gate": true,
+        "affiliate_activation_state": "G6_R1A_WIRE_IN_20260806",
+        "calculator_eligible": false,
+        "editorial_content_ready": true,
+        "regulatory_banner_required": "compounded_medication_fda_disclosure_required"
+      },
+      "review_path": "/reviews/feelgood-review/",
+      "row_contract": {
+        "affiliate_href": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32854&c=918277&a=803003&k=0&l=38940",
+        "affiliate_link_mode": "transparent_direct",
+        "affiliate_network": "MaxBounty",
+        "best_for": "Readers comparing provider-reported compounded GLP-1 program information",
+        "cons": [
+          "Exact selected checkout and renewal bills require confirmation",
+          "Pharmacy assignment and independent licensing remain UNKNOWN"
+        ],
+        "criteria_scores": {},
+        "insurance": "UNKNOWN reimbursement; confirm directly",
+        "live_link_allowed": true,
+        "logo": "/assets/provider-logos/feelgood-review.webp",
+        "medications": "Product labels on the provider\u2019s weight-loss page: Compounded Injections, Compounded Tablets and Original Injections (provider-reported); the medication in each product is UNKNOWN from captured pages.",
+        "program_id": "feelgood-review",
+        "promotion_authorized": true,
+        "pros": [
+          "Official pages describe clinician evaluation before prescribing"
+        ],
+        "provider": "FeelGood",
+        "review_path": "/reviews/feelgood-review/",
+        "score": null,
+        "source_url": "https://www.feelgoodmeds.com/refund-policy",
+        "starting_price": "UNKNOWN exact first and recurring bill; advertised starting amounts are not a universal total",
+        "starting_price_sort": null
+      },
+      "source_capture_bindings": {
+        "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/feelgood-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "fbe828980dd4808ccc0419d3f32406c9340eabf1f3bec3479e6a97a9d01accef",
+          "captured_at_utc": "2026-10-11T23:58:23.731345+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13/captures/fda-glp1-concerns.raw",
+          "raw_capture_sha256": "bb7a15fabbb42ebc5cddc5bb8781ff097612df259407cf104c0aa979ef8e7754"
+        },
+        "https://www.feelgoodmeds.com/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/feelgood-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "fbe828980dd4808ccc0419d3f32406c9340eabf1f3bec3479e6a97a9d01accef",
+          "captured_at_utc": "2026-10-10T06:41:48.092798+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/feelgood-review/captures/1b19c14b8bb87361.json",
+          "raw_capture_sha256": "1a66de1923c4bd8b3ab4ddefafaf69ff61d70d689f0691c5c18406d5d2fdf8d2"
+        },
+        "https://www.feelgoodmeds.com/refund-policy": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/feelgood-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "fbe828980dd4808ccc0419d3f32406c9340eabf1f3bec3479e6a97a9d01accef",
+          "captured_at_utc": "2026-10-10T06:41:48.092798+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/feelgood-review/captures/07883f5044d23b73.json",
+          "raw_capture_sha256": "701f3dbe01512e7c9e8ca983986141694afefb03457215ff7783f378d0aeeafb"
+        },
+        "https://www.feelgoodmeds.com/terms-of-use": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/feelgood-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "fbe828980dd4808ccc0419d3f32406c9340eabf1f3bec3479e6a97a9d01accef",
+          "captured_at_utc": "2026-10-10T06:41:48.092798+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/feelgood-review/captures/23585c5025a540f5.json",
+          "raw_capture_sha256": "edb134d24e33238d11a655846f0504327380f003bc33540d93db04b540d77ffc"
+        },
+        "https://www.feelgoodmeds.com/weight-loss": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/feelgood-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "fbe828980dd4808ccc0419d3f32406c9340eabf1f3bec3479e6a97a9d01accef",
+          "captured_at_utc": "2026-10-10T06:41:48.092798+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/feelgood-review/captures/ad7377cc6db6a013.json",
+          "raw_capture_sha256": "655bc4db1a12117accc500093ca2a9aed976357e19d026b2c1e0ebc7de3c1a8d"
+        }
+      },
+      "tracking_host": "afflat3e1.com"
+    },
+    {
+      "display_name": "InstaRx",
+      "field_sources": {
+        "cancellation_and_roles": [
+          "https://go.instarx.com/glp2",
+          "https://instarx.com/",
+          "https://instarx.com/policies/terms-and-conditions"
+        ],
+        "pricing_and_inclusions": [
+          "https://go.instarx.com/glp2",
+          "https://instarx.com/policies/terms-and-conditions",
+          "https://instarx.com/"
+        ],
+        "regulatory": [
+          "https://go.instarx.com/glp2"
+        ]
+      },
+      "logo_contract": {
+        "asset_ready": true,
+        "intended_public_path": "/assets/provider-logos/instarx-review.webp",
+        "official_source": "https://go.instarx.com/_next/image?url=%2Flogos%2Finstarx-logo.png&w=256&q=75&dpl=dpl_Ea8275wLSP2xzyxfETnyPD6exrn2",
+        "report_asset": "assets/provider-logos/instarx-review.webp",
+        "sha256": "e508d2d375df607f1076db5b10978bba0d73f26edb82899c22e94a7d2ad5518f"
+      },
+      "network_contract": {
+        "activation_blocker": null,
+        "immutable_offer_id": "32662",
+        "local_evidence_checked_through": "2026-10-10",
+        "network": "MaxBounty",
+        "promotion_authorized_in_this_artifact": true,
+        "publisher_id": "803003",
+        "relationship_state": "approved_or_active",
+        "sheet_status": "approved_active_tracking_ready",
+        "tracking_url": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32662&c=918277&a=803003&k=0&l=38569",
+        "transparent_direct_supported_by_current_renderer": true
+      },
+      "official_url": "https://go.instarx.com/glp2",
+      "page_copy": {
+        "bottom_line": "Reported information: InstaRx describes an online program involving clinician evaluation and compounded GLP-1 medications. Exact bills, dispensing pharmacy and eligibility require confirmation.",
+        "cancellation": "The landing page says cancellation is available any time with no fees; the terms separately require cancellation before renewal. Refund eligibility and the cancellation procedure are not established by the captured refund page.",
+        "description": "InstaRx describes an online program involving clinician evaluation and compounded GLP-1 medications. Exact bills, dispensing pharmacy and eligibility require confirmation.",
+        "eligibility": "UNKNOWN consumer service-state list: the captured homepage shows this question without an answer. The terms state that the $45 doctor consultation fee is included in the monthly price.",
+        "pricing": "UNKNOWN treatment-specific first-month total: the landing page advertises Starting at $148 but does not bind that starting amount to a named medication or establish the initial billing period.",
+        "regulatory": "Reported information: InstaRx reports compounding at U.S.-licensed pharmacies. Assigned pharmacy, independent licensing and 503A/503B classification remain UNKNOWN. Compounded medications are not FDA-approved.",
+        "shipping": "The landing page advertises free 1-2 day shipping in temperature-controlled packaging; this is a provider-reported shipping estimate, not a guaranteed intake-to-delivery time.",
+        "title": "InstaRx Review 2026: Costs, Terms & Evidence"
+      },
+      "program_id": "instarx-review",
+      "publication_state": {
+        "affiliate_activation_candidate_after_gate": true,
+        "affiliate_activation_state": "G6_R1A_WIRE_IN_20260806",
+        "calculator_eligible": false,
+        "editorial_content_ready": true,
+        "regulatory_banner_required": "compounded_medication_fda_disclosure_required"
+      },
+      "review_path": "/reviews/instarx-review/",
+      "row_contract": {
+        "affiliate_href": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32662&c=918277&a=803003&k=0&l=38569",
+        "affiliate_link_mode": "transparent_direct",
+        "affiliate_network": "MaxBounty",
+        "best_for": "Readers comparing provider-reported compounded GLP-1 program information",
+        "cons": [
+          "Exact selected checkout and renewal bills require confirmation",
+          "Pharmacy assignment and independent licensing remain UNKNOWN"
+        ],
+        "criteria_scores": {},
+        "insurance": "UNKNOWN reimbursement; confirm directly",
+        "live_link_allowed": true,
+        "logo": "/assets/provider-logos/instarx-review.webp",
+        "medications": "Compounded semaglutide and tirzepatide (provider-reported; clinician evaluation required)",
+        "program_id": "instarx-review",
+        "promotion_authorized": true,
+        "pros": [
+          "Official pages describe clinician evaluation before prescribing"
+        ],
+        "provider": "InstaRx",
+        "review_path": "/reviews/instarx-review/",
+        "score": null,
+        "source_url": "https://go.instarx.com/glp2",
+        "starting_price": "UNKNOWN exact first and recurring bill; advertised starting amounts are not a universal total",
+        "starting_price_sort": null
+      },
+      "source_capture_bindings": {
+        "https://go.instarx.com/glp2": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/capture-bundle.json",
+          "bundle_sha256": "fc9c1481001f739e3285ed54b6091809559d5c397e4c8133560456ae63765067",
+          "captured_at_utc": "2026-10-10T06:43:16.470017+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/5446204b25701481.json",
+          "raw_capture_sha256": "24136b31c710b0ff2c40bce81c0760f0672eb3470a41acfb00bc3c1c3f05e3a6"
+        },
+        "https://go.instarx.com/policies/refund-policy": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/capture-bundle.json",
+          "bundle_sha256": "fc9c1481001f739e3285ed54b6091809559d5c397e4c8133560456ae63765067",
+          "captured_at_utc": "2026-10-10T06:43:16.470017+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/b0a1b7424f8a8076.json",
+          "raw_capture_sha256": "73a4ff55dced89cfc2656abe22939b939812719e10500d8ae8e84877edbfb78e"
+        },
+        "https://instarx.com/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/capture-bundle.json",
+          "bundle_sha256": "fc9c1481001f739e3285ed54b6091809559d5c397e4c8133560456ae63765067",
+          "captured_at_utc": "2026-10-10T06:43:16.470017+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/f06b85335ffad6e5.json",
+          "raw_capture_sha256": "06b68ad685eb0597dd5916501ce80bf343d972274f63f2e399c723bc78ebf37e"
+        },
+        "https://instarx.com/policies/terms-and-conditions": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/capture-bundle.json",
+          "bundle_sha256": "fc9c1481001f739e3285ed54b6091809559d5c397e4c8133560456ae63765067",
+          "captured_at_utc": "2026-10-10T06:43:16.470017+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/captures/936ebe2cbf98375e.json",
+          "raw_capture_sha256": "f43e230fd8ee700c5dc12426d951fe8dc3734ba61f2ff9f2f18f03b997bfb9c8"
+        }
+      },
+      "tracking_host": "afflat3e1.com"
+    },
+    {
+      "display_name": "RetaClinic",
+      "field_sources": {
+        "cancellation_and_roles": [
+          "https://retaclinic.com/faq",
+          "https://retaclinic.com/",
+          "https://retaclinic.com/terms-and-conditions"
+        ],
+        "pricing_and_inclusions": [
+          "https://retaclinic.com/products",
+          "https://retaclinic.com/faq",
+          "https://retaclinic.com/"
+        ],
+        "regulatory": [
+          "https://retaclinic.com/",
+          "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+        ]
+      },
+      "logo_contract": {
+        "asset_ready": true,
+        "intended_public_path": "/assets/provider-logos/retaclinic-review.webp",
+        "official_source": "https://cdn.prod.website-files.com/69d588c4a47264dd82d6f4fc/69f2e42b19ae6fdd308667d3_retaclinic-webclip-256.png",
+        "report_asset": "assets/provider-logos/retaclinic-review.webp",
+        "sha256": "687549219085476db8c13df7ca6550afdbaf653e6af6b0d66c212aa6bc0b62ad"
+      },
+      "network_contract": {
+        "activation_blocker": "Operator RV-Q13: campaign landing lists retatrutide; prescription-plan editorial review only, no commercial link.",
+        "immutable_offer_id": "33066",
+        "local_evidence_checked_through": "2026-10-10",
+        "network": "MaxBounty",
+        "promotion_authorized_in_this_artifact": false,
+        "publisher_id": "803003",
+        "relationship_state": "approved_or_active",
+        "sheet_status": "approved_active_tracking_ready",
+        "tracking_url": null,
+        "transparent_direct_supported_by_current_renderer": true
+      },
+      "official_url": "https://retaclinic.com/",
+      "page_copy": {
+        "bottom_line": "Reported information: RetaClinic describes physician-reviewed prescription plans for semaglutide and tirzepatide, with the consult included in the plan price. Confirm the selected plan, first charge and renewal amount before enrolling.",
+        "cancellation": "Reported cancellation through the patient portal; the FAQ offers a full refund before shipment. The terms say shipped custom compounded products cannot be returned. Renewal cancellation cutoff remains UNKNOWN.",
+        "description": "RetaClinic describes itself as an online telehealth platform that connects patients with independent physicians, who decide after an online consult whether to prescribe semaglutide or tirzepatide. This review covers its published plan pricing, eligibility, shipping and cancellation terms.",
+        "eligibility": "The homepage reports availability in all 50 states. Treatment-specific restrictions and independent coverage verification remain UNKNOWN. Reported information: initial and refill consultations are free; clinician intake review is included in the protocol price.",
+        "pricing": "Reported information: the Semaglutide/B12 card lists a one-month plan at $190/month, with lower monthly equivalents for longer commitments. Exact selected-product initial charge, renewal charge and prepaid total remain UNKNOWN.",
+        "regulatory": "RetaClinic states: Compounded medications are not FDA-approved as finished drug products. They are prepared for individual patients at US-licensed compounding pharmacies. Your physician will discuss benefits and risks during your consult. Dispensing pharmacy identity and 503A/503B classification remain UNKNOWN; no independent licensing verification is asserted. FDA risk note: RetaClinic\u2019s pages also list retatrutide, which its product page labels Research Use Only. FDA states that retatrutide cannot be used in compounding under federal law, is not a component of any FDA-approved drug and has not been found safe and effective for any condition, and that it has warned telehealth companies for marketing unapproved drugs such as retatrutide. This review does not cover or recommend retatrutide.",
+        "shipping": "Reported typical turnaround is a few business days after clinician approval. An exact delivery date remains UNKNOWN; this is a provider estimate, not a guarantee.",
+        "title": "RetaClinic review: prescription GLP-1 plans, costs and terms"
+      },
+      "program_id": "retaclinic-review",
+      "publication_state": {
+        "affiliate_activation_candidate_after_gate": true,
+        "affiliate_activation_state": "G6_R1A_WIRE_IN_20260806",
+        "calculator_eligible": false,
+        "editorial_content_ready": true,
+        "regulatory_banner_required": "compounded_medication_fda_disclosure_required"
+      },
+      "review_path": "/reviews/retaclinic-review/",
+      "row_contract": {
+        "affiliate_href": null,
+        "affiliate_link_mode": "transparent_direct",
+        "affiliate_network": "MaxBounty",
+        "best_for": "Readers comparing provider-reported prescription GLP-1 plan information",
+        "cons": [
+          "Exact upfront and renewal bills remain unknown",
+          "Dispensing pharmacy identity and 503A/503B classification remain unknown"
+        ],
+        "criteria_scores": {},
+        "insurance": "UNKNOWN; terms describe cash-pay purchases. Confirm directly before relying on coverage.",
+        "live_link_allowed": false,
+        "logo": "/assets/provider-logos/retaclinic-review.webp",
+        "medications": "Prescription semaglutide and tirzepatide plans, including compounded combinations, via physician consult (provider-reported; clinician evaluation required)",
+        "program_id": "retaclinic-review",
+        "promotion_authorized": false,
+        "pros": [
+          "Official pages describe physician review before any prescription is issued"
+        ],
+        "provider": "RetaClinic",
+        "review_path": "/reviews/retaclinic-review/",
+        "score": null,
+        "source_url": "https://retaclinic.com/products",
+        "starting_price": "Semaglutide/B12 listed at $190/mo for a one-month plan; longer-term monthly equivalents differ; exact first and renewal bills UNKNOWN",
+        "starting_price_sort": null
+      },
+      "source_capture_bindings": {
+        "https://qualify.retaclinic.com/qp": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/retaclinic-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "2aae1d3faf6cfb5c108992e12b70f3914978254b6950cb2aab5df50c8158f6ef",
+          "captured_at_utc": "2026-10-10T06:50:44.029826+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/retaclinic-review/captures/65a743eed2a385c4.json",
+          "raw_capture_sha256": "ff408de21e187ae2f22fdd5e5ffa64c94581ea774a8b656a0cf08f47e6e980df"
+        },
+        "https://retaclinic.com/": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/retaclinic-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "2aae1d3faf6cfb5c108992e12b70f3914978254b6950cb2aab5df50c8158f6ef",
+          "captured_at_utc": "2026-10-10T06:50:44.029826+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/retaclinic-review/captures/d06a7e85a0b2170c.json",
+          "raw_capture_sha256": "f6c02271889c7e1511672458a7d61b2ab6efd7fac3c64b172e5a24c8df167fa3"
+        },
+        "https://retaclinic.com/faq": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/retaclinic-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "2aae1d3faf6cfb5c108992e12b70f3914978254b6950cb2aab5df50c8158f6ef",
+          "captured_at_utc": "2026-10-10T06:50:44.029826+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/retaclinic-review/captures/eb30ebad98fc9350.json",
+          "raw_capture_sha256": "fee70d93c99fe8a7cfb0b00c37bfe267741c448036aaba547259c86af9826752"
+        },
+        "https://retaclinic.com/products": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/retaclinic-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "2aae1d3faf6cfb5c108992e12b70f3914978254b6950cb2aab5df50c8158f6ef",
+          "captured_at_utc": "2026-10-10T06:50:44.029826+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/retaclinic-review/captures/3682b64c1f3b2116.json",
+          "raw_capture_sha256": "10ac948aa242439522c89e92772077011e9b254bb2204fcf82da016278b3df0b"
+        },
+        "https://retaclinic.com/terms-and-conditions": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/retaclinic-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "2aae1d3faf6cfb5c108992e12b70f3914978254b6950cb2aab5df50c8158f6ef",
+          "captured_at_utc": "2026-10-10T06:50:44.029826+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/retaclinic-review/captures/8ad3ebfb01c88a17.json",
+          "raw_capture_sha256": "ea032b669edbd67bb7ebff8e070e77a9e36a89eb6b650a508d014830fa1732a1"
+        },
+        "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss": {
+          "bundle_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13b/retaclinic-review/capture-bundle-supplemental.json",
+          "bundle_sha256": "2aae1d3faf6cfb5c108992e12b70f3914978254b6950cb2aab5df50c8158f6ef",
+          "captured_at_utc": "2026-10-11T23:58:23.731345+00:00",
+          "raw_capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q13/captures/fda-glp1-concerns.raw",
+          "raw_capture_sha256": "bb7a15fabbb42ebc5cddc5bb8781ff097612df259407cf104c0aa979ef8e7754"
+        }
+      }
     }
   ],
   "publication_policy": {
@@ -4518,7 +5011,7 @@
   "schema": "glp-provider-fastpath-contracts-v1",
   "target_release": {
     "current_provider_review_count": 13,
-    "requested_provider_review_count": 59,
+    "requested_provider_review_count": 63,
     "source_tree": "/home/ubuntu/business/site-system/flagship-v2/staging/glp-consumer-fable-final-20260730",
     "source_tree_modified_by_this_lane": false
   }

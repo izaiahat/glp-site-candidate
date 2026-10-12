@@ -110,7 +110,7 @@ test("production-successor profile satisfies every required registry surface", a
   // 38 -> 35 on 2026-08-17: the three Katalys-paused programs' review pages.
   // 37 -> 34 on 2026-08-18: the three niche-fit review pages (Paternity Lab,
   // Advanced Trichology, LyfeFuel) came off this site by operator ruling.
-  assert.equal(result.review_pages, 62); // 2026-08-27 live-head merge: +nu-image
+  assert.equal(result.review_pages, 66); // 2026-08-27 live-head merge: +nu-image
   assert.equal(result.live_money_programs, liveIds.length);
   // measured left the live fast-path set on 2026-08-13 (operator rejected the
   // Awin 126727 terms) and REJOINED it on 2026-08-31 when he rescinded that in

@@ -54,13 +54,20 @@ export function refreshProviderPriceAppendEvidence(currentBytes,binding) {
  return successor;
 }
 export function providerPricePredecessorBytes(bytes,kind,readBytes=readFileSync) {
- const ids=['rightwell-review','willow-review','ivim-health-review'];
+ const ids=['rightwell-review','willow-review','ivim-health-review','tyde-wellness-review','feelgood-review','instarx-review','retaclinic-review'];
  if(!JSON.parse(bytes).programs.some(p=>ids.includes(p.program_id)))return bytes;
  let binding;
  try {binding=JSON.parse(readBytes(new URL('../data/provider-price-append.json',import.meta.url)));}
  catch(error){throw Error('append_pair_unreadable',{cause:error});}
  if(binding.schema!=='glp.provider-price-append-pair.v1'||canonical(Object.keys(binding).sort())!==canonical(['ledger','registry','schema'])||!['ledger','registry'].every(k=>canonical([...binding[k].added_ids].sort())===canonical([...ids].sort())))throw Error('append_pair_invalid');
  return projectProviderPriceAppend(bytes,binding[kind],kind);
+}
+export function providerReviewRuntimePredecessorRegistry(registry,readBytes=readFileSync) {
+ // Authenticate the seven-ID price append, then project only the four review
+ // additions to the already-published three-provider runtime predecessor.
+ providerPricePredecessorRegistry(registry,readBytes);
+ const additions=new Set(['tyde-wellness-review','feelgood-review','instarx-review','retaclinic-review']);
+ return {...registry,programs:registry.programs.filter(p=>!additions.has(p.program_id))};
 }
 export function providerPricePredecessorRegistry(registry,readBytes=readFileSync) {
  return JSON.parse(providerPricePredecessorBytes(Buffer.from(JSON.stringify(historicalAffiliateRegistry(registry))),'registry',readBytes));

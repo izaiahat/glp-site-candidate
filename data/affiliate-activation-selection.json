@@ -21,7 +21,7 @@
   ],
   "go_route_program_count": 0,
   "lead_sharing_authorized": false,
-  "live_program_count": 61,
+  "live_program_count": 64,
   "live_program_count_basis": "Derived from data/program-registry.json (commercial_state=live AND vertical_fit AND wired AND surfaces.review), keyed by render identity and intersected with data/program-content-ledger.json. program_count stays the Katalys Sheet direct-activation subset with tracking-link hashes; it is NOT the count of live providers on the site and must never be rendered as one.",
   "live_review_routes_outside_program_register": [
     {

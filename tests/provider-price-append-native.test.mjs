@@ -12,7 +12,7 @@ test('native append reader retains original price oracles and rejects input drif
  const basis=historicalPriceIndexRegistry(registry);
  assert.equal(basis.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256,'f9a8ce57165d5a014fe623c820a4ab90313d4c5679c4d079e6703a7e2df8f234');
  assert.deepEqual(historicalPriceIndexRegistry(basis),basis);
- for(const id of ['rightwell-review','willow-review','ivim-health-review'])assert.equal(basis.programs.some(p=>p.program_id===id),false);
+ for(const id of ['rightwell-review','willow-review','ivim-health-review','tyde-wellness-review','feelgood-review','instarx-review','retaclinic-review'])assert.equal(basis.programs.some(p=>p.program_id===id),false);
  const bad=structuredClone(registry); bad.programs[0].display_name+=' unexplained';
  assert.throws(()=>historicalPriceIndexRegistry(bad),/append_current_drift/);
  const ledger=read('program-content-ledger.json'), frozen=read('price-index-frozen-content-ledger.json'), binding=JSON.parse(read('price-index-nonprice-binding.json'));

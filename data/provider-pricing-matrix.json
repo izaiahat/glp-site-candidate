@@ -2,9 +2,9 @@
   "capture_method": "Direct first-party capture with headless Chrome (no third-party scraping service); each row cites the page URL, the capture date, and the sha256 of the captured document.",
   "captured_on": "2026-08-18",
   "coverage": {
-    "providers_total": 61,
+    "providers_total": 65,
     "providers_with_evidenced_pricing": 33,
-    "providers_pricing_unavailable": 28,
+    "providers_pricing_unavailable": 32,
     "medication_rows": 82,
     "rows_with_intro_month_1": 5
   },
@@ -7392,6 +7392,34 @@
       "provider": "Ivim Health",
       "medications": [],
       "unavailable_reason": "Enter the selected plan, exact checkout total, renewal cost, and separately billed membership manually; published starting medication figures do not establish these totals.",
+      "pricing_state": "not_attested"
+    },
+    "tyde-wellness-review": {
+      "program_id": "tyde-wellness-review",
+      "provider": "Tyde Wellness",
+      "medications": [],
+      "unavailable_reason": "Enter the selected medication, plan duration, actual checkout first charge and renewal charge manually. Do not treat multi-month monthly equivalents as a single-month first charge.",
+      "pricing_state": "not_attested"
+    },
+    "feelgood-review": {
+      "program_id": "feelgood-review",
+      "provider": "FeelGood",
+      "medications": [],
+      "unavailable_reason": "Enter your first checkout and renewal totals manually; the published starting price does not establish your complete treatment cost.",
+      "pricing_state": "not_attested"
+    },
+    "instarx-review": {
+      "program_id": "instarx-review",
+      "provider": "InstaRx",
+      "medications": [],
+      "unavailable_reason": "Confirm the chosen medication, first charge and renewal total before entering costs manually; unknown charges are not zero.",
+      "pricing_state": "not_attested"
+    },
+    "retaclinic-review": {
+      "program_id": "retaclinic-review",
+      "provider": "RetaClinic",
+      "medications": [],
+      "unavailable_reason": "Enter the clinician-selected treatment's actual initial and renewal bill. Retatrutide marked not for human consumption is not a clinical treatment option in this comparison.",
       "pricing_state": "not_attested"
     }
   },

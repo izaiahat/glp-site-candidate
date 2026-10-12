@@ -67,6 +67,14 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "network": "Katalys"
     },
     {
+      "program_id": "feelgood-review",
+      "merchant": "FeelGood",
+      "affiliate_href": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32854&c=918277&a=803003&k=0&l=38940",
+      "tracking_host": "afflat3e1.com",
+      "review_path": "/reviews/feelgood-review/",
+      "network": "MaxBounty"
+    },
+    {
       "program_id": "found-health",
       "merchant": "Found",
       "affiliate_href": "https://track.revoffers.com/aff_c?offer_id=1162&aff_id=13031",
@@ -105,6 +113,14 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "tracking_host": "track.revoffers.com",
       "review_path": "/reviews/humecare-data-driven-glp-1-weight-loss-system/",
       "network": "katalys"
+    },
+    {
+      "program_id": "instarx-review",
+      "merchant": "InstaRx",
+      "affiliate_href": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32662&c=918277&a=803003&k=0&l=38569",
+      "tracking_host": "afflat3e1.com",
+      "review_path": "/reviews/instarx-review/",
+      "network": "MaxBounty"
     },
     {
       "program_id": "ivim-health-review",
@@ -249,6 +265,14 @@ export const COST_AFFILIATE_EMAIL_MANIFEST = Object.freeze({
       "tracking_host": "www.tkqlhce.com",
       "review_path": "/reviews/trt-nation/",
       "network": "cj"
+    },
+    {
+      "program_id": "tyde-wellness-review",
+      "merchant": "Tyde Wellness",
+      "affiliate_href": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32639&c=918277&a=803003&k=0&l=39106",
+      "tracking_host": "afflat3e1.com",
+      "review_path": "/reviews/tyde-wellness-review/",
+      "network": "MaxBounty"
     },
     {
       "program_id": "wellmedr-review",

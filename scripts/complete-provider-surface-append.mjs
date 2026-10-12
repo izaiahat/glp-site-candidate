@@ -3,7 +3,7 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import {appendManualPricing,appendGoldenVectors} from '../src/provider-surface-append.mjs';
 import {relationshipDenials} from '../src/affiliate-relationship-sync.mjs';
 const read=p=>JSON.parse(readFileSync(p)), write=(p,d)=>writeFileSync(p,JSON.stringify(d,null,2)+'\n');
-const ids=['rightwell-review','willow-review','ivim-health-review'];
+const ids=['tyde-wellness-review','feelgood-review','instarx-review','retaclinic-review'];
 const registry=read('data/program-registry.json');
 const auditRun=spawnSync(process.execPath,['scripts/audit-quiz-results-matrix.mjs'],{encoding:'utf8',maxBuffer:10*1024*1024});
 if(![0,1].includes(auditRun.status))throw Error('audit_execution_failed');

@@ -1,0 +1,22 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {stripPriceStateDisclosures} from '../src/price-state.mjs';
+const root=new URL('../',import.meta.url);
+test('append producer strips only exact current and authenticated predecessor coverage copy',()=>{
+ const source=readFileSync(new URL('scripts/build-staging.mjs',root),'utf8');
+ const body=source.match(/const stripCurrentPriceDisclosure = html => ([\s\S]*?);\n  const preservedRegistry/)[1];
+ const tallies={LIVE_PROVIDER_COUNT:63,PRICED_PROVIDER_COUNT:31,CALCULATOR_COMPARABLE_PROVIDER_COUNT:5,BASELINE_PRICE_ROW_COUNT:89,CURRENT_PRICE_ROW_COUNT:82,BASELINE_PRICED_PROVIDER_COUNT:35,MATRIX_PRICED_PROVIDER_COUNT:33};
+ const strip=new Function('html','stripPriceStateDisclosures','derivedTallies','pricingBaseline','predecessorLiveProgramCount',`return ${body}`);
+ const baseline=JSON.parse(readFileSync(new URL('data/pricing-coverage-baseline.json',root),'utf8'));
+ const apply=html=>strip(html,stripPriceStateDisclosures,tallies,baseline,59);
+ const html=readFileSync(new URL('artifacts/build4-preservation/glp-1-price-index/index.html',root),'utf8');
+ const aside=html.match(/<aside class="panel" data-price-state-disclosure>[\s\S]*?<\/aside>/)[0];
+ assert.match(aside,/identities: 59\./); assert.match(aside,/subset contains 31 identities/);
+ assert.equal(apply(html),html.replace(aside,''));
+ assert.equal(apply(aside.replace('identities: 59.','identities: 999.')),aside.replace('identities: 59.','identities: 999.'));
+ const historical='<p>$179 on 2026-10-09; 12 honestly observed weeks.</p>';
+ assert.equal(apply(aside+historical),historical);
+ assert.notEqual(apply(aside+historical.replace('$179','$1')),historical);
+ assert.notEqual(apply(aside+historical.replace('12 honestly','13 honestly')),historical);
+});
