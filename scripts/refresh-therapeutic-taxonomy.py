@@ -18,9 +18,10 @@ import urllib.request
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
-BUSINESS = ROOT.parents[3]
+BUSINESS = Path(os.environ.get('GLP_BUSINESS_ROOT', ROOT.parents[3])).resolve()
 sys.path.insert(0, str(BUSINESS / 'scripts'))
 from affiliate_direct_evidence_capture import _firecrawl_key
+from firecrawl_client import firecrawl_urlopen
 
 REPORTS = BUSINESS / 'reports/ops/glp38-20260915/taxonomy-refresh'
 REGISTRY = ROOT / 'data/program-registry.json'
@@ -222,11 +223,13 @@ def capture(url, dest):
     request_body = {'url': url, 'formats': ['markdown', 'links'], 'onlyMainContent': False, 'maxAge': 0}
     request = urllib.request.Request('https://api.firecrawl.dev/v2/scrape', data=json.dumps(request_body).encode(),
         headers={'Authorization': 'Bearer ' + _firecrawl_key(), 'Content-Type': 'application/json'}, method='POST')
-    with urllib.request.urlopen(request, timeout=120) as response:
+    with firecrawl_urlopen(request, caller='refresh-therapeutic-taxonomy', run_id=dest.parent.name, timeout=120) as response:
         raw = response.read()
+    dest.with_suffix('.raw.json').write_bytes(raw)
     received = dt.datetime.now(dt.timezone.utc).isoformat()
     document = json.loads(raw)
-    receipt = {'request': request_body, 'started_at': started, 'received_at': received, 'response': document}
+    receipt = {'request': request_body, 'started_at': started, 'received_at': received,
+               'raw_response_sha256': sha(raw), 'response': document}
     dest.write_bytes(encoded(receipt))
     data = document.get('data') or {}
     meta = data.get('metadata') or {}
