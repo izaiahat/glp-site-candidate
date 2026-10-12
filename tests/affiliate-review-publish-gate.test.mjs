@@ -31,6 +31,14 @@ test('renderer labels only explicitly non-affiliate prescription records',()=>{
  assert.equal(assertAffiliateReviewPublishable({program_id:'rx'},p,null,labeled).status,'NON_AFFILIATE_LABELED');
  assert.equal(labelNonAffiliateReview(raw,program),raw);
 });
+test('stripping tracking metadata cannot hide a held or malformed subject link',()=>{
+ const stripped=html.replace(' data-program="test"','').replace(' data-analytics-event="affiliate_click"','').replace(' rel="sponsored nofollow"','');
+ const held={...program,affiliate_relationship_snapshot:{promotion_denied:true}};
+ assert.throws(()=>assertAffiliateReviewPublishable(review,held,{status:'WITHHELD',promotion_authorized:false},stripped),/held_review_has_affiliate_anchor/);
+ assert.throws(()=>assertAffiliateReviewPublishable(review,program,authority,html+stripped),/affiliate_review_missing_approved_anchor/);
+ const wrong=html.replace('o=1','o=2').replace(' data-analytics-event="affiliate_click"','').replace(' rel="sponsored nofollow"','');
+ assert.throws(()=>assertAffiliateReviewPublishable(review,program,authority,html+wrong),/affiliate_review_missing_approved_anchor/);
+});
 test('existing alias promotion restriction stays link-dark and points to canonical review',()=>{
  const p={...program,profiles:{'glp-clinic-scout':{canonical_identity:{role:'alias',canonical_program_id:'canonical'},surfaces:{go:false,compare:false}}}};
  const canonical='<a href="/reviews/canonical/">Canonical review</a>';

@@ -23,7 +23,13 @@ export function labelNonAffiliateReview(html,program) {
 export function assertAffiliateReviewPublishable(review, program, authority, html) {
   const id=review.program_id;
   if (!program || ![program.program_id, program.review_slug].includes(id)) throw new Error(`affiliate_review_registry_missing:${id}`);
-  const own=anchors(html).filter(a=>a['data-program'] && [id, program.program_id, program.review_slug].includes(a['data-program']) && (a['data-analytics-event']==='affiliate_click'||(a.rel||'').split(/\s+/).includes('sponsored')));
+  const identities = [id, program.program_id, program.review_slug].filter(Boolean);
+  const boundHrefs = [review.fastpath_contract?.network_contract?.tracking_url, review.row?.affiliate_href, authority?.issued_link].filter(Boolean);
+  // Inspect destination/subject independently of tracking metadata. Otherwise
+  // stripping data-program/rel turns a forbidden link into an invisible one.
+  const own = anchors(html).filter(a => identities.includes(a['data-program'])
+    || boundHrefs.includes(a.href)
+    || (authority?.route && a.href?.split('?')[0] === authority.route));
   const relationship=program.affiliate_relationship_snapshot;
   const profile=program.profiles?.['glp-clinic-scout'];
   const identity=profile?.canonical_identity;
@@ -53,7 +59,7 @@ export function assertAffiliateReviewPublishable(review, program, authority, htm
   const surface=review.surface_code || 'reviews.rv2';
   if(!/^[a-z0-9][a-z0-9-]*\.[a-z0-9][a-z0-9-]*$/.test(surface)) throw new Error(`affiliate_review_surface_invalid:${id}`);
   const expected=authority.disposition==='ADOPT' && authority.issued_link===approved ? `${authority.route}?s=${surface}&v=a` : approved;
-  const matching=own.filter(a=>a.href===expected && ['sponsored','nofollow'].every(v=>(a.rel||'').split(/\s+/).includes(v)));
+  const matching=own.filter(a=>identities.includes(a['data-program']) && a.href===expected && ['sponsored','nofollow'].every(v=>(a.rel||'').split(/\s+/).includes(v)));
   if(!matching.length || matching.length!==own.length) throw new Error(`affiliate_review_missing_approved_anchor:${id}`);
   if(!/commission/i.test(visibleText(html))) throw new Error(`affiliate_review_disclosure_missing:${id}`);
   return {status:'AFFILIATE_BOUND',program_id:id,anchors:matching.length,approved_url:approved};
