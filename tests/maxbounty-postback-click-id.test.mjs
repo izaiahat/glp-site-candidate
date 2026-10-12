@@ -33,7 +33,7 @@ for(const analytics of ['granted','denied'])for(const advertising of ['granted',
   if(advertising==='denied')assert.equal(f.a.getAttribute('href'),f.original);
  }finally{f.dom.window.close()}
 });
-for(const options of [{account:'999'},{offer:'999'},{host:'affiliate-fixture.invalid'},{extra:'&a=999'},{extra:'&o=999'},{extra:'&s2=issuer-owned'},{extra:'&s2=x&s2=y'}])test(`MaxBounty refuses unowned target: ${JSON.stringify(options)}`,()=>{
+for(const options of [{account:'999'},{offer:'999'},{host:'affiliate-fixture.invalid'},{host:'afflatfake.com'},{extra:'&a=999'},{extra:'&o=999'},{extra:'&s2=issuer-owned'},{extra:'&s2=x&s2=y'}])test(`MaxBounty refuses unowned target: ${JSON.stringify(options)}`,()=>{
  const f=fixture(options);try{f.a.click();assert.equal(f.a.getAttribute('href'),f.original)}finally{f.dom.window.close()}
 });
 for(const mode of ['withdraw','gpc'])test(`MaxBounty restores exact issued bytes after ${mode}`,()=>{

@@ -283,7 +283,7 @@
     // No placement, health context, advertising IDs or Katalys fallback here.
     if (anchor.dataset.network === "MaxBounty") {
       const offers = ["31359", "32122", "29207", "32639", "32854", "32662"];
-      if (url.protocol !== "https:" || !/^afflat[a-z0-9]+\.com$/.test(url.hostname)
+      if (url.protocol !== "https:" || !["afflat3e1.com", "afflat3e3.com"].includes(url.hostname)
           || !url.pathname.startsWith("/trk/lnk/")
           || url.searchParams.getAll("a").length !== 1 || url.searchParams.get("a") !== "803003"
           || url.searchParams.getAll("o").length !== 1 || !offers.includes(url.searchParams.get("o"))) return anchor.href;
