@@ -5526,15 +5526,31 @@
               "enabled": true,
               "reason": "Operator RV-Q13: campaign landing lists retatrutide; prescription-plan editorial review only, no commercial link.",
               "surface_restriction_basis": "editorial_only_hold"
+            },
+            "compare": {
+              "enabled": true,
+              "reason": "Operator RV-Q13: campaign landing lists retatrutide; prescription-plan editorial review only, no commercial link.",
+              "surface_restriction_basis": "editorial_only_hold"
+            },
+            "quiz": {
+              "enabled": true,
+              "reason": "Operator RV-Q13: campaign landing lists retatrutide; prescription-plan editorial review only, no commercial link.",
+              "surface_restriction_basis": "editorial_only_hold"
+            },
+            "calculator": {
+              "enabled": true,
+              "reason": "Operator RV-Q13: campaign landing lists retatrutide; prescription-plan editorial review only, no commercial link.",
+              "surface_restriction_basis": "editorial_only_hold"
             }
           },
           "surfaces": {
-            "calculator": true,
-            "compare": true,
+            "calculator": false,
+            "compare": false,
             "go": false,
-            "quiz": true,
+            "quiz": false,
             "review": true,
-            "sitemap": true
+            "sitemap": true,
+            "guides": false
           },
           "vertical_fit": true,
           "wired": true

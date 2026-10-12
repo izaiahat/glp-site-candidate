@@ -1,17 +1,17 @@
 {
   "schema": "glp-provider-logo-lp-atlas-v1",
   "status": "PASS",
-  "source_manifest_sha256": "61e3bc7381c1b2cdeecde5471a6fb6b0e8053e337db1676517e0a46ba75959c5",
+  "source_manifest_sha256": "54a019402f2fa610736279fa15bd036ca9558b7f81813c666eb4c859beda715e",
   "public_path": "/assets/provider-logos/pass2-lp-atlas.webp",
-  "atlas_sha256": "e5e208dffe834a533de2c08c3832d3ea7582f1f94674c5397f6fe90adbc03f19",
-  "atlas_bytes": 106534,
+  "atlas_sha256": "2a5f516a3860011a5fabeb0bd1a50c3cd184ba4b9b0ef73422aee7bf41b952ff",
+  "atlas_bytes": 109662,
   "atlas_width": 1152,
   "atlas_height": 552,
   "display_width": 96,
   "display_height": 46,
   "display_atlas_width": 768,
   "display_atlas_height": 368,
-  "entry_count": 60,
+  "entry_count": 64,
   "entries": [
     {
       "program_id": "altrx-glp1-us-cps",
@@ -140,12 +140,21 @@
       "display_y": 46
     },
     {
+      "program_id": "feelgood-review",
+      "provider": "FeelGood",
+      "logo_treatment": "light-chip",
+      "source_path": "/assets/provider-logos/feelgood-review.webp",
+      "source_sha256": "1c513dc15c5e21d4f003868fe95f0cf99544f5e54df39ee0bfa48a97b1608269",
+      "display_x": 576,
+      "display_y": 46
+    },
+    {
       "program_id": "found-health",
       "provider": "Found",
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/found-health.svg",
       "source_sha256": "77c9e5438ce8322d936dcc2f3d81f59137dc96d8dfb35afba5978bce684757f1",
-      "display_x": 576,
+      "display_x": 672,
       "display_y": 46
     },
     {
@@ -154,8 +163,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/futurhealth-wegovy-pillform.webp",
       "source_sha256": "5a5bb062d38c8a747f9b31335460c926d80dfdc5866488a791460838468cf772",
-      "display_x": 672,
-      "display_y": 46
+      "display_x": 0,
+      "display_y": 92
     },
     {
       "program_id": "g-plan",
@@ -163,7 +172,7 @@
       "logo_treatment": "dark-chip",
       "source_path": "/assets/provider-logos/g-plan.webp",
       "source_sha256": "ed5fd9f366785ddd1bf973d3d4d22d9fc2a73092bac6b279a2a365c5780ea7df",
-      "display_x": 0,
+      "display_x": 96,
       "display_y": 92
     },
     {
@@ -172,7 +181,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/gala-health.webp",
       "source_sha256": "07159f7b0b33928988859295057e8f7c9a6a914b03859ed8e2c95b160136c7a2",
-      "display_x": 96,
+      "display_x": 192,
       "display_y": 92
     },
     {
@@ -181,7 +190,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/gobymeds.webp",
       "source_sha256": "462134957dea0636751c1a03fd9905c022ecd9283f406be8b556fafdc8e1d619",
-      "display_x": 192,
+      "display_x": 288,
       "display_y": 92
     },
     {
@@ -190,7 +199,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/healthrx.svg",
       "source_sha256": "64404ca9c943ed057f0425c34dd2605b82bf597077e4d34207a1d53b0fb22e8d",
-      "display_x": 288,
+      "display_x": 384,
       "display_y": 92
     },
     {
@@ -199,7 +208,16 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/humecare-data-driven-glp-1-weight-loss-system.webp",
       "source_sha256": "c224e41467b9d278a27142de4a267eed707feaf72bb80e26d53e2a8bfdba6b03",
-      "display_x": 384,
+      "display_x": 480,
+      "display_y": 92
+    },
+    {
+      "program_id": "instarx-review",
+      "provider": "InstaRx",
+      "logo_treatment": "light-chip",
+      "source_path": "/assets/provider-logos/instarx-review.webp",
+      "source_sha256": "e508d2d375df607f1076db5b10978bba0d73f26edb82899c22e94a7d2ad5518f",
+      "display_x": 576,
       "display_y": 92
     },
     {
@@ -208,7 +226,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/ivim-health-review.webp",
       "source_sha256": "1dba9f3934455b75728893bec6e19f7141e6746b9a09eb39b393c1ea0bc58f4d",
-      "display_x": 480,
+      "display_x": 672,
       "display_y": 92
     },
     {
@@ -217,8 +235,8 @@
       "logo_treatment": "dark-chip",
       "source_path": "/assets/provider-logos/joinskinny-semaglutide-glp-1-us.webp",
       "source_sha256": "564cc6d111b85106b5fc6e8e097ecc84466551c4ed3e6844b47d36b5c55f0fe1",
-      "display_x": 576,
-      "display_y": 92
+      "display_x": 0,
+      "display_y": 138
     },
     {
       "program_id": "jrnys-review",
@@ -226,8 +244,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/jrnys-review.webp",
       "source_sha256": "45210eb496767a4907a7cb8ce49aa112bd40380886d2decfdc0cbfaa39363c77",
-      "display_x": 672,
-      "display_y": 92
+      "display_x": 96,
+      "display_y": 138
     },
     {
       "program_id": "levelsrx-extra-cpa-home-page",
@@ -235,7 +253,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/levelsrx-extra-cpa-home-page.webp",
       "source_sha256": "67462c51dfcd907cad40a7ad82475b576b5defc55356267c86c193030759a7ca",
-      "display_x": 0,
+      "display_x": 192,
       "display_y": 138
     },
     {
@@ -244,7 +262,7 @@
       "logo_treatment": "dark-chip",
       "source_path": "/assets/provider-logos/live-vital-launch.webp",
       "source_sha256": "0d86ac65d87dcf1c270f13d900f73f89b27478436ac58015151ba1a733a32773",
-      "display_x": 96,
+      "display_x": 288,
       "display_y": 138
     },
     {
@@ -253,7 +271,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/longevity-meds-glp-1-review.webp",
       "source_sha256": "a993330b2c9253f51cf58ea84aef9a7d886cad64dd267d564a49c17f2ece2a52",
-      "display_x": 192,
+      "display_x": 384,
       "display_y": 138
     },
     {
@@ -262,7 +280,7 @@
       "logo_treatment": "dark-chip",
       "source_path": "/assets/provider-logos/lttl-glp-landing-page-2.webp",
       "source_sha256": "e1c78fe5f50cacb5aa73c7aa9b70d7908463d5b2a2926a3db948ca5e8339cc1f",
-      "display_x": 288,
+      "display_x": 480,
       "display_y": 138
     },
     {
@@ -271,7 +289,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/mademed.svg",
       "source_sha256": "07df6b74726b15086fb89c89f08209635d3114af7b71859341d50d111f7fe2e0",
-      "display_x": 384,
+      "display_x": 576,
       "display_y": 138
     },
     {
@@ -280,7 +298,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/measured.svg",
       "source_sha256": "629d28b487bb2135668d4f480a1d01ce80e9e90f56649bcee13b7449c1cfa319",
-      "display_x": 480,
+      "display_x": 672,
       "display_y": 138
     },
     {
@@ -289,8 +307,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/medvi-review.webp",
       "source_sha256": "27fb5a61bdb79fd39b6295d9b83b5dfee726d448ccf297fc84b5b231006fa689",
-      "display_x": 576,
-      "display_y": 138
+      "display_x": 0,
+      "display_y": 184
     },
     {
       "program_id": "mydrhank",
@@ -298,8 +316,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/mydrhank.webp",
       "source_sha256": "209cee34a61359984c2f923c3a1f62c4d7e30f15c194e0e5f81acdf2771f07be",
-      "display_x": 672,
-      "display_y": 138
+      "display_x": 96,
+      "display_y": 184
     },
     {
       "program_id": "novi-weight-loss-glp-1",
@@ -307,7 +325,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/novi-weight-loss-glp-1.webp",
       "source_sha256": "d0b0a5c6152060c388bea17f2c3255fa39d1397f490471a2f95940fdb755ae0d",
-      "display_x": 0,
+      "display_x": 192,
       "display_y": 184
     },
     {
@@ -316,7 +334,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/nu-image-medical-review.webp",
       "source_sha256": "90199d64d6121382523571606c7c59e83722834124b59a7267a7c209954fe5a7",
-      "display_x": 96,
+      "display_x": 288,
       "display_y": 184
     },
     {
@@ -325,7 +343,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/oak-weight-loss-program.webp",
       "source_sha256": "8647a9faed6aacea00f96ce1833f5c8db040c1034c1ffd7568756d0766996b81",
-      "display_x": 192,
+      "display_x": 384,
       "display_y": 184
     },
     {
@@ -334,7 +352,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/orderlymeds.webp",
       "source_sha256": "eab41bf3122ef6f46aaa6a034e37a8bd4fe20a2bd25f5de6ec2dc0e7ca05b0d3",
-      "display_x": 288,
+      "display_x": 480,
       "display_y": 184
     },
     {
@@ -343,7 +361,7 @@
       "logo_treatment": "dark-chip",
       "source_path": "/assets/provider-logos/pallas-health-review.webp",
       "source_sha256": "4df1e4c60f4df38dbd9bf7a019443cfa9eed968af7885bfea80cc1a85e620c85",
-      "display_x": 384,
+      "display_x": 576,
       "display_y": 184
     },
     {
@@ -352,8 +370,17 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/refills.webp",
       "source_sha256": "e6172e6f21d1c1fe8a338e0377066cbaa87194c89297f5555eb7f718a64b0ed4",
-      "display_x": 480,
+      "display_x": 672,
       "display_y": 184
+    },
+    {
+      "program_id": "retaclinic-review",
+      "provider": "RetaClinic",
+      "logo_treatment": "light-chip",
+      "source_path": "/assets/provider-logos/retaclinic-review.webp",
+      "source_sha256": "687549219085476db8c13df7ca6550afdbaf653e6af6b0d66c212aa6bc0b62ad",
+      "display_x": 0,
+      "display_y": 230
     },
     {
       "program_id": "rightwell-review",
@@ -361,8 +388,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/rightwell-review.webp",
       "source_sha256": "32ee0fb7e7c2898f050dc21808840be82f6b3c6a60a4e241217d62b639671016",
-      "display_x": 576,
-      "display_y": 184
+      "display_x": 96,
+      "display_y": 230
     },
     {
       "program_id": "ro-wegovy-glp1-quiz-us-cpl",
@@ -370,8 +397,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/ro-wegovy-glp1-quiz-us-cpl.webp",
       "source_sha256": "4cb17c0fa9b7625076869a0a3aacc06918943b4c05d0fd7bd4956693e5f102f1",
-      "display_x": 672,
-      "display_y": 184
+      "display_x": 192,
+      "display_y": 230
     },
     {
       "program_id": "rxspan-md-telehealth-program-review",
@@ -379,7 +406,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/rxspan-md-telehealth-program-review.webp",
       "source_sha256": "1bdc062e16e2a822da5f801700615d137d25d356406663d5a638500e477214bb",
-      "display_x": 0,
+      "display_x": 288,
       "display_y": 230
     },
     {
@@ -388,7 +415,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/serena-health.webp",
       "source_sha256": "a6bccc2642f3bf64ea724fa1e0eced2273324a64621e747be6c719866d02f865",
-      "display_x": 96,
+      "display_x": 384,
       "display_y": 230
     },
     {
@@ -397,7 +424,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/shedrx.webp",
       "source_sha256": "c21353d6643238b11fc44f8181e52fdf9afd6c7b343dcce5a70273bc36db230d",
-      "display_x": 192,
+      "display_x": 480,
       "display_y": 230
     },
     {
@@ -406,7 +433,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/skinnyrx-1-glp-weight-loss-provider-review.webp",
       "source_sha256": "038c72bd687869c9755919693c0ea7e32ebb7087efdd28d7e39730c5ea5bda58",
-      "display_x": 288,
+      "display_x": 576,
       "display_y": 230
     },
     {
@@ -415,7 +442,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/snagrx.webp",
       "source_sha256": "49f94733715957f08338b36ace9c3da0bbd7430593d20b6de0724f996342574b",
-      "display_x": 384,
+      "display_x": 672,
       "display_y": 230
     },
     {
@@ -424,8 +451,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/strut-health.webp",
       "source_sha256": "7bbc956e10f73a7ee388b48822eb02a0e51cff3ba8c9700e66ca36f8482fa84e",
-      "display_x": 480,
-      "display_y": 230
+      "display_x": 0,
+      "display_y": 276
     },
     {
       "program_id": "sunlight-glp1",
@@ -433,8 +460,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/sunlight-glp1.webp",
       "source_sha256": "d188d4da1f22f459f5a59e064ecb5a8a836b40f09b46e4c7d0a9fb1f32c2f0a9",
-      "display_x": 576,
-      "display_y": 230
+      "display_x": 96,
+      "display_y": 276
     },
     {
       "program_id": "synergy-rx",
@@ -442,8 +469,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/synergy-rx.webp",
       "source_sha256": "ff64bc5bb4f13403c9f233db2ef43e743d8f0e1a9b119660dd6d90c219b81746",
-      "display_x": 672,
-      "display_y": 230
+      "display_x": 192,
+      "display_y": 276
     },
     {
       "program_id": "synergy-rx-review",
@@ -451,7 +478,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/synergy-rx-review.webp",
       "source_sha256": "aa11f3161d2eb797586ed7aef7cf2a7b6c5595c5bf54deca13dc0c418f6e2b93",
-      "display_x": 0,
+      "display_x": 288,
       "display_y": 276
     },
     {
@@ -460,7 +487,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/telos-rx.webp",
       "source_sha256": "715578123913d499a203a91ff3e6f344612adcbe47e255336f92914d0ac8a199",
-      "display_x": 96,
+      "display_x": 384,
       "display_y": 276
     },
     {
@@ -469,7 +496,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/tmates-xentraffic-offer-3154.webp",
       "source_sha256": "7fd72e21bc876947346791c591b0afb3d6479773dbbd729d2dfb126d33fb6995",
-      "display_x": 192,
+      "display_x": 480,
       "display_y": 276
     },
     {
@@ -478,7 +505,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/trimi-glp-1.webp",
       "source_sha256": "968b5f93673a9e40afbdb4f94e96878b173ed9a59d78854b2e402e5a51ba7e7f",
-      "display_x": 288,
+      "display_x": 576,
       "display_y": 276
     },
     {
@@ -487,7 +514,7 @@
       "logo_treatment": "dark-chip",
       "source_path": "/assets/provider-logos/trimrx-xentraffic-offer-3014.webp",
       "source_sha256": "90d689754385af565a533a7f21f0e45427e9f90bbaf5d0f94d9a36f04360c4f8",
-      "display_x": 384,
+      "display_x": 672,
       "display_y": 276
     },
     {
@@ -496,8 +523,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/trt-nation.webp",
       "source_sha256": "6402ffc1173736a3b483611938314b8744d9089b02dc1b8f00a8c0b0ac7bfe55",
-      "display_x": 480,
-      "display_y": 276
+      "display_x": 0,
+      "display_y": 322
     },
     {
       "program_id": "try-ageless",
@@ -505,8 +532,17 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/try-ageless.webp",
       "source_sha256": "b1a5ad70f8e9c1df32c8a89468cc4fcf5d85ae90c69a590acd4e77f940a163c8",
-      "display_x": 576,
-      "display_y": 276
+      "display_x": 96,
+      "display_y": 322
+    },
+    {
+      "program_id": "tyde-wellness-review",
+      "provider": "Tyde Wellness",
+      "logo_treatment": "light-chip",
+      "source_path": "/assets/provider-logos/tyde-wellness-review.webp",
+      "source_sha256": "42830b5a439ad3df613a4a16317aac2df10ca8be690ac28071c75bf8add19b79",
+      "display_x": 192,
+      "display_y": 322
     },
     {
       "program_id": "wellmedr-review",
@@ -514,8 +550,8 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/wellmedr-review.webp",
       "source_sha256": "a515fd1cfce72d9aa81a1dd12c78b14e6899a14ce161d3145b5a12865920e2c8",
-      "display_x": 672,
-      "display_y": 276
+      "display_x": 288,
+      "display_y": 322
     },
     {
       "program_id": "wellorithm",
@@ -523,7 +559,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/wellorithm.webp",
       "source_sha256": "1a14d20a870de05b3b965b01f58f8737bea029864d9847c7313e6b8f1cbfc778",
-      "display_x": 0,
+      "display_x": 384,
       "display_y": 322
     },
     {
@@ -532,7 +568,7 @@
       "logo_treatment": "dark-chip",
       "source_path": "/assets/provider-logos/willow-review.webp",
       "source_sha256": "1421b39293f27a1f26ebf7c508f297f2ef26bb2fcb3b5663343a0ee654ab7843",
-      "display_x": 96,
+      "display_x": 480,
       "display_y": 322
     },
     {
@@ -541,7 +577,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/yourera-program.webp",
       "source_sha256": "e373238163456508ca3cf6811b8fdffdbed1e96e5072e3693e81abb12e1eb76b",
-      "display_x": 192,
+      "display_x": 576,
       "display_y": 322
     },
     {
@@ -550,7 +586,7 @@
       "logo_treatment": "light-chip",
       "source_path": "/assets/provider-logos/yucca-health-xentraffic-offer-3117.webp",
       "source_sha256": "cd5280ddf6c1d0da47d44f4e33c7068418086119d7a2a947ae0ebe99b89f4859",
-      "display_x": 288,
+      "display_x": 672,
       "display_y": 322
     }
   ]

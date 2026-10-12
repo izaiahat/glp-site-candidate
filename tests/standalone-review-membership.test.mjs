@@ -1,0 +1,22 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {deriveProfileSurfaceSets,assertLiveSurfaceParity} from '../src/program-registry.mjs';
+import {buildProviderReviewSpecs} from '../src/provider-review.mjs';
+import {effectiveAffiliateRegistry,effectiveAffiliateBuildInputs} from '../src/affiliate-relationship-sync.mjs';
+const read=f=>JSON.parse(readFileSync(new URL('../data/'+f,import.meta.url)));
+test('held non-live-eligible review builds standalone, outside all recommendation pools',()=>{
+ const raw=read('program-registry.json'),registry=effectiveAffiliateRegistry(raw);
+ const inputs=effectiveAffiliateBuildInputs(raw,{eligibility:read('program-page-eligibility.json'),activationSelection:read('affiliate-activation-selection.json'),contentLedger:read('program-content-ledger.json')},'glp-clinic-scout');
+ const row=inputs.eligibility.programs.find(p=>p.program_id==='retaclinic-review');
+ assert.equal(row.live_link_allowed,false);
+ assert.equal(row.promotion_authorized,false);
+ assert.equal(row.status,'held_editorial_only');
+ assertLiveSurfaceParity(registry,'glp-clinic-scout',inputs.eligibility,inputs.contentLedger.programs);
+ const sets=deriveProfileSurfaceSets(registry,'glp-clinic-scout',inputs.contentLedger.programs);
+ assert.ok(sets.review.has('retaclinic-review'));
+ for(const surface of ['quiz','calculator','compare','go'])assert.equal(sets[surface].has('retaclinic-review'),false,surface);
+ assert.equal(read('quiz-config.json').candidates.some(c=>c.program_id==='retaclinic-review'),false);
+ const reviews=buildProviderReviewSpecs(read('money-page-specs.json').pages,read('provider-page-contracts.json'),read('provider-fastpath-contract.json'),registry,'glp-clinic-scout',inputs.contentLedger.programs);
+ assert.ok(reviews.some(r=>r.program_id==='retaclinic-review'&&r.path==='/reviews/retaclinic-review/'));
+});

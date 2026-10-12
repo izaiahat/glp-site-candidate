@@ -45,6 +45,21 @@ def load_image(path: Path, media_type: str) -> Image.Image:
     return Image.open(path).convert("RGBA")
 
 
+def atlas_input(logo: dict) -> Image.Image:
+    image = load_image(ROOT / logo['public_path'].lstrip('/'), logo['media_type'])
+    # Only the four newly appended raster inputs are normalized to the atlas's
+    # existing inner cell. Keep their shipped high-resolution sources untouched.
+    # A 256-color RGBA palette bounds those inputs' palette before the
+    # fixed-quality sprite encoder without changing the byte budget or treatment.
+    if logo['program_id'] in {
+        'tyde-wellness-review', 'feelgood-review',
+        'instarx-review', 'retaclinic-review',
+    }:
+        image.thumbnail((CELL_WIDTH - 24, CELL_HEIGHT - 18), Image.Resampling.LANCZOS)
+        image = image.quantize(colors=256, method=Image.Quantize.FASTOCTREE).convert('RGBA')
+    return image
+
+
 def fit(image: Image.Image) -> Image.Image:
     canvas = Image.new("RGBA", (CELL_WIDTH, CELL_HEIGHT), (255, 255, 255, 0))
     image.thumbnail((CELL_WIDTH - 24, CELL_HEIGHT - 18), Image.Resampling.LANCZOS)
@@ -64,7 +79,7 @@ def main() -> None:
         source_path = ROOT / logo["public_path"].lstrip("/")
         if sha256(source_path) != logo["output_sha256"]:
             raise SystemExit(f"provider_logo_source_hash_mismatch:{logo['program_id']}")
-        tile = fit(load_image(source_path, logo["media_type"]))
+        tile = fit(atlas_input(logo))
         column = index % COLUMNS
         row = index // COLUMNS
         atlas.alpha_composite(tile, (column * CELL_WIDTH, row * CELL_HEIGHT))

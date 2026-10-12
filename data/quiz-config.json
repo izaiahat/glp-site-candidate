@@ -1567,27 +1567,6 @@
       "source_clearance": true,
       "staging_eligible": true,
       "why_match": "InstaRx publishes its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
-    },
-    {
-      "display_name": "RetaClinic",
-      "held_route": "/go/retaclinic-review?s=provider-fit.result&v=a",
-      "live_link_allowed": false,
-      "priority_score": 0,
-      "program_id": "retaclinic-review",
-      "promotion_authorized": false,
-      "rules": {
-        "goal": [
-          "prefer-not-to-say"
-        ],
-        "insurance": [
-          "prefer-not-to-say",
-          "self-pay",
-          "unsure"
-        ]
-      },
-      "source_clearance": true,
-      "staging_eligible": true,
-      "why_match": "RetaClinic publishes its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
     }
   ],
   "description": "Answer seven quick questions to compare providers by treatment, state, and your selected preferences \u2014 free, in about a minute.",
