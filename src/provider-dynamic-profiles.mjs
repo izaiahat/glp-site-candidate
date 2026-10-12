@@ -266,7 +266,12 @@ export function validateProviderDynamicProfiles(registry, profileId, { asOf = ne
       const exception = canonicalProfile.exceptions?.[surface];
       return exception?.enabled === true && typeof exception.surface_restriction_basis === "string" && exception.surface_restriction_basis.trim();
     };
-    if (surfaces.compare !== true) fail("registry_surface_missing", id);
+    const canonicalProgram=registryState.canonical.get(id);
+    const reviewOnly=canonicalProfile.surface_membership==='review_only';
+    if(reviewOnly && (canonicalProgram.affiliate_relationship_snapshot?.promotion_denied!==true
+      || surfaces.review!==true || surfaces.sitemap!==true
+      || !['compare','quiz','calculator','go'].every(s=>surfaces[s]===false && documentedOff(s)))) fail('review_only_surface_invalid',id);
+    if (surfaces.compare !== true && !reviewOnly) fail("registry_surface_missing", id);
     for (const surface of ["quiz", "calculator"]) {
       if (surfaces[surface] !== true && !documentedOff(surface)) fail("registry_surface_missing", `${id}:${surface}`);
     }
@@ -280,7 +285,8 @@ export function validateProviderDynamicProfiles(registry, profileId, { asOf = ne
 
 export function providerSuggestions(registry, profileId, options) {
   const validated = validateProviderDynamicProfiles(registry, profileId, options);
-  return Object.freeze([...validated.profiles.values()].map((profile) => Object.freeze({
+  const reviewOnlyIds=new Set((registry.programs||[]).filter(p=>p.profiles?.[profileId]?.surface_membership==='review_only').map(renderId));
+  return Object.freeze([...validated.profiles.values()].filter(p=>!reviewOnlyIds.has(p.program_id)).map((profile) => Object.freeze({
     program_id: profile.program_id, provider: profile.provider,
   })).sort((a, b) => a.provider.localeCompare(b.provider) || a.program_id.localeCompare(b.program_id)));
 }

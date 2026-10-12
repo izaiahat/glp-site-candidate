@@ -681,7 +681,8 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
         : profile.normalized_sha256,
     })];
   }));
-  const expectedIds = new Set(projectedPrograms.keys());
+  const reviewOnlyIds=new Set((registry.programs||[]).filter(p=>p.profiles?.[profileId]?.surface_membership==='review_only').map(p=>String(p.review_slug||p.program_id)));
+  const expectedIds = new Set([...projectedPrograms.keys()].filter(id=>!reviewOnlyIds.has(id)));
   // S9-2: a receipted hold stays a DARK ROW in the raw money/quiz source
   // documents - the installed held-aware census requires the row to be present
   // and projects it off, and a missing held row is itself a fail-closed failure.
@@ -697,6 +698,7 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
       if (!scopedOff) return false;
       // Two provable non-members: a receipted, unwired hold, and a declared
       // alias identity that consolidates onto its canonical record.
+      if(reviewOnlyIds.has(String(item.review_slug||item.program_id)))return true;
       return item.commercial_state === "held"
         ? profile.wired === false
         : profile.canonical_identity?.role === "alias";
@@ -704,7 +706,7 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
     .map((item) => String(item.review_slug || item.program_id)));
   const requiredPaths = new Set(validated.document.required_surface_paths);
   const projectedPages = pages.map((page) => {
-    const rows = (page.rows || []).map((row) => {
+    const rows = (page.rows || []).filter(row=>!reviewOnlyIds.has(String(row.program_id))).map((row) => {
       const taxonomy = projectedPrograms.get(String(row.program_id));
       if (!taxonomy) return { ...row };
       const linkState = commercialLinkState(row, "compare");
@@ -731,7 +733,7 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
   for (const route of requiredPaths) {
     if (!projectedPages.some((page) => page.path === route)) fail("required_surface_missing", route);
   }
-  const candidates = (quizConfig.candidates || []).map((candidate) => {
+  const candidates = (quizConfig.candidates || []).filter(row=>!reviewOnlyIds.has(String(row.program_id))).map((candidate) => {
     const taxonomy = projectedPrograms.get(String(candidate.program_id));
     if (!taxonomy) return { ...candidate };
     // quiz-config is deliberately link-dark at rest. renderQuiz resolves the

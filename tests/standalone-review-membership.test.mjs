@@ -1,9 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {deriveProfileSurfaceSets,assertLiveSurfaceParity} from '../src/program-registry.mjs';
+import {deriveProfileSurfaceSets,assertLiveSurfaceParity,projectMoneyPagesFromRegistry} from '../src/program-registry.mjs';
 import {buildProviderReviewSpecs} from '../src/provider-review.mjs';
 import {effectiveAffiliateRegistry,effectiveAffiliateBuildInputs} from '../src/affiliate-relationship-sync.mjs';
+import {validateProviderDynamicProfiles,providerSuggestions} from '../src/provider-dynamic-profiles.mjs';
+import {buildCostCalculatorData,costCalculatorDropdownProviders} from '../src/cost-calculator.mjs';
 const read=f=>JSON.parse(readFileSync(new URL('../data/'+f,import.meta.url)));
 test('held non-live-eligible review builds standalone, outside all recommendation pools',()=>{
  const raw=read('program-registry.json'),registry=effectiveAffiliateRegistry(raw);
@@ -19,4 +21,14 @@ test('held non-live-eligible review builds standalone, outside all recommendatio
  assert.equal(read('quiz-config.json').candidates.some(c=>c.program_id==='retaclinic-review'),false);
  const reviews=buildProviderReviewSpecs(read('money-page-specs.json').pages,read('provider-page-contracts.json'),read('provider-fastpath-contract.json'),registry,'glp-clinic-scout',inputs.contentLedger.programs);
  assert.ok(reviews.some(r=>r.program_id==='retaclinic-review'&&r.path==='/reviews/retaclinic-review/'));
+ const options={asOf:new Date(`${registry.provider_dynamic_profiles.sealed_as_of}T12:00:00Z`)};
+ assert.ok(validateProviderDynamicProfiles(registry,'glp-clinic-scout',options).profiles.has('retaclinic-review'));
+ assert.equal(providerSuggestions(registry,'glp-clinic-scout',options).some(p=>p.program_id==='retaclinic-review'),false);
+ const pages=projectMoneyPagesFromRegistry(registry,'glp-clinic-scout',read('money-page-specs.json').pages,inputs.contentLedger.programs);
+ const calc=buildCostCalculatorData(read('cost-calculator.json'),pages,read('provider-page-contracts.json'),read('provider-fastpath-contract.json'),registry);
+ assert.equal(calc.providers.some(p=>p.program_id==='retaclinic-review'),false);
+ assert.equal(costCalculatorDropdownProviders(calc).eligible.some(p=>p.program_id==='retaclinic-review'),false);
+ const bad=structuredClone(registry);
+ bad.programs.find(p=>p.program_id==='found-health').profiles['glp-clinic-scout'].surfaces.compare=false;
+ assert.throws(()=>validateProviderDynamicProfiles(bad,'glp-clinic-scout',options),/registry_surface_missing/);
 });

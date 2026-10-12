@@ -167,10 +167,11 @@ export function buildCostCalculatorData(config, pages, providerContracts, fastpa
     const dynamic = validateProviderDynamicProfiles(registry, profileId, {
       asOf: new Date(`${registry.provider_dynamic_profiles.sealed_as_of}T12:00:00Z`),
     });
+    const reviewOnlyIds=new Set(registry.programs.filter(p=>p.profiles?.[profileId]?.surface_membership==='review_only').map(p=>String(p.review_slug||p.program_id)));
     const candidateIds = new Set(candidates.keys());
-    const missing = dynamic.canonicalIds.filter((id) => !candidateIds.has(id));
+    const missing = dynamic.canonicalIds.filter((id) => !candidateIds.has(id) && !reviewOnlyIds.has(id));
     if (missing.length) throw new Error(`cost_calculator_dynamic_membership_mismatch:missing=${missing.join(",")}`);
-    providers = [...dynamic.profiles.values()].map((profile) => ({
+    providers = [...dynamic.profiles.values()].filter(p=>!reviewOnlyIds.has(p.program_id)).map((profile) => ({
       program_id: profile.program_id,
       provider: profile.provider,
       ...profile.calculator,
