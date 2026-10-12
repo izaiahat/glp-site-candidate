@@ -1,9 +1,9 @@
 import { parse } from 'parse5';
 
-function anchors(html) {
+function anchors(html, scriptingEnabled = true) {
   const result=[];
-  const visit=node=>{ const attrs=Object.fromEntries((node.attrs||[]).map(a=>[a.name,a.value])); if(['script','style','template','noscript'].includes(node.tagName) || Object.hasOwn(attrs,'hidden') || attrs['aria-hidden']==='true' || /display\s*:\s*none|visibility\s*:\s*hidden/i.test(attrs.style||'')) return; if(node.tagName==='a') result.push(attrs); for(const child of node.childNodes||[]) visit(child); };
-  visit(parse(html)); return result;
+  const visit=node=>{ const attrs=Object.fromEntries((node.attrs||[]).map(a=>[a.name,a.value])); if(['script','style','template'].includes(node.tagName) || (scriptingEnabled && node.tagName==='noscript') || Object.hasOwn(attrs,'hidden') || attrs['aria-hidden']==='true' || /display\s*:\s*none|visibility\s*:\s*hidden/i.test(attrs.style||'')) return; if(node.tagName==='a') result.push(attrs); for(const child of node.childNodes||[]) visit(child); };
+  visit(parse(html, { scriptingEnabled })); return result;
 }
 
 function visibleText(html) {
@@ -27,9 +27,11 @@ export function assertAffiliateReviewPublishable(review, program, authority, htm
   const boundHrefs = [review.fastpath_contract?.network_contract?.tracking_url, review.row?.affiliate_href, authority?.issued_link].filter(Boolean);
   // Inspect destination/subject independently of tracking metadata. Otherwise
   // stripping data-program/rel turns a forbidden link into an invisible one.
-  const own = anchors(html).filter(a => identities.includes(a['data-program'])
+  // The denial/malformed-link census includes the no-JS fallback too.
+  const isOwn = a => identities.includes(a['data-program'])
     || boundHrefs.includes(a.href)
-    || (authority?.route && a.href?.split('?')[0] === authority.route));
+    || (authority?.route && a.href?.split('?')[0] === authority.route);
+  const own = anchors(html, false).filter(isOwn);
   const relationship=program.affiliate_relationship_snapshot;
   const profile=program.profiles?.['glp-clinic-scout'];
   const identity=profile?.canonical_identity;
@@ -59,8 +61,10 @@ export function assertAffiliateReviewPublishable(review, program, authority, htm
   const surface=review.surface_code || 'reviews.rv2';
   if(!/^[a-z0-9][a-z0-9-]*\.[a-z0-9][a-z0-9-]*$/.test(surface)) throw new Error(`affiliate_review_surface_invalid:${id}`);
   const expected=authority.disposition==='ADOPT' && authority.issued_link===approved ? `${authority.route}?s=${surface}&v=a` : approved;
-  const matching=own.filter(a=>identities.includes(a['data-program']) && a.href===expected && ['sponsored','nofollow'].every(v=>(a.rel||'').split(/\s+/).includes(v)));
-  if(!matching.length || matching.length!==own.length) throw new Error(`affiliate_review_missing_approved_anchor:${id}`);
+  const isMatching = a => identities.includes(a['data-program']) && a.href===expected && ['sponsored','nofollow'].every(v=>(a.rel||'').split(/\s+/).includes(v));
+  const matching=own.filter(isMatching);
+  // A no-JS-only link cannot establish the ordinary rendered CTA.
+  if(!anchors(html).some(a=>isOwn(a) && isMatching(a)) || matching.length!==own.length) throw new Error(`affiliate_review_missing_approved_anchor:${id}`);
   if(!/commission/i.test(visibleText(html))) throw new Error(`affiliate_review_disclosure_missing:${id}`);
   return {status:'AFFILIATE_BOUND',program_id:id,anchors:matching.length,approved_url:approved};
 }
