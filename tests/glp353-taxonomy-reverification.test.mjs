@@ -53,11 +53,16 @@ test('GLP-353 renews 24 canonical rows plus the Shed alias from live hash-bound 
     }
   }
   assert.equal(registry.therapeutic_taxonomy.programs.shedrx.verified_as_of, '2026-10-09');
-  // The immutable GLP-353 captures keep their original dates; later maintained
-  // renewals (e.g. Coivas) must not be tested against a pre-capture clock.
-  const currentAsOf = Object.values(registry.therapeutic_taxonomy.programs)
-    .map(row => row.verified_as_of).sort().at(-1);
-  validateTherapeuticTaxonomy(registry, 'glp-clinic-scout', {asOf: new Date(`${currentAsOf}T12:00:00Z`)});
+  // Keep the immutable cohort at its original clock. Coivas was not part of
+  // that cohort; its later producer receipt authenticates the exact predecessor.
+  // Current Coivas and the real-clock CLI are checked separately in its tests.
+  const historical = structuredClone(registry);
+  const coivasRenewal = JSON.parse(read('reports/ops/glp38-20260915/taxonomy-refresh/run-20261012T030059882049Z/coivas-verification.json'));
+  assert.equal(coivasRenewal.previous_row.program_id, 'coivas');
+  assert.equal(coivasRenewal.previous_row.verified_as_of, '2026-09-10');
+  assert.ok(!proof.rows.some(row => row.program_id === 'coivas'));
+  historical.therapeutic_taxonomy.programs.coivas = coivasRenewal.previous_row;
+  validateTherapeuticTaxonomy(historical, 'glp-clinic-scout', {asOf: new Date('2026-10-09T12:00:00Z')});
 });
 test('GLP-353 holds Mademed compounded classification without guessing absence or lifting commercial holds', () => {
   const row = registry.therapeutic_taxonomy.programs.mademed;
