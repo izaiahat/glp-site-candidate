@@ -50,6 +50,18 @@ test('no-JS fallback cannot hide a held subject link',()=>{
  assert.throws(()=>assertAffiliateReviewPublishable(review,program,authority,`<p>commission</p><noscript>${html}</noscript>`),/affiliate_review_missing_approved_anchor/);
  assert.equal(assertAffiliateReviewPublishable(review,program,authority,html+'<noscript><a data-program="other" href="https://other.example/">Other</a></noscript>').anchors,1);
 });
+test('hidden attributes cannot erase held or malformed subject anchors from denial census',()=>{
+ const held={...program,affiliate_relationship_snapshot:{promotion_denied:true}};
+ const bare=`<a href="${href.replaceAll('&','&amp;')}">Start</a>`;
+ for(const attrs of ['hidden','aria-hidden="true"','style="display:none"','style="visibility:hidden"']) {
+  const hidden=`<div ${attrs}>${bare}</div>`;
+  assert.throws(()=>assertAffiliateReviewPublishable(review,held,authority,hidden),/held_review_has_affiliate_anchor/);
+  assert.throws(()=>assertAffiliateReviewPublishable(review,held,authority,`<noscript>${hidden}</noscript>`),/held_review_has_affiliate_anchor/);
+  assert.throws(()=>assertAffiliateReviewPublishable(review,program,authority,html+hidden),/missing_approved_anchor/);
+ }
+ assert.throws(()=>assertAffiliateReviewPublishable(review,program,authority,html.replace('<a ','<a hidden ')),/missing_approved_anchor/);
+ assert.equal(assertAffiliateReviewPublishable(review,held,authority,`<script>${bare}</script><template>${bare}</template>`).status,'HELD_NO_PROMOTION');
+});
 test('existing alias promotion restriction stays link-dark and points to canonical review',()=>{
  const p={...program,profiles:{'glp-clinic-scout':{canonical_identity:{role:'alias',canonical_program_id:'canonical'},surfaces:{go:false,compare:false}}}};
  const canonical='<a href="/reviews/canonical/">Canonical review</a>';
