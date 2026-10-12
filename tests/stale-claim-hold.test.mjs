@@ -52,3 +52,18 @@ test("stale consumer authority is held as unavailable, never positive", () => {
   const filters = consumerTherapeuticFilters(registry, profile, { asOf, dynamic, staleEvidence: "hold" });
   assert.ok(!filters.some((item) => item.value === "retatrutide"));
 });
+
+test("GLP-361 registered-build wire-in seam carries the GLP-353 hold; default reconcile stays fail-closed", async () => {
+  const { reconcileTherapeuticTaxonomyWireIn } = await import("../src/therapeutic-taxonomy.mjs");
+  const pages = JSON.parse(await readFile(new URL("../data/money-page-specs.json", import.meta.url), "utf8")).pages;
+  const quizConfig = JSON.parse(await readFile(new URL("../data/quiz-config.json", import.meta.url), "utf8"));
+  assert.throws(() => reconcileTherapeuticTaxonomyWireIn({ registry: structuredClone(registry), profileId: profile,
+    pages, quizConfig, asOf: staleAsOf }), /therapeutic_taxonomy_evidence_stale/);
+  const held = structuredClone(registry);
+  reconcileTherapeuticTaxonomyWireIn({ registry: held, profileId: profile, pages, quizConfig, asOf: staleAsOf, staleEvidence: "hold" });
+  // The hold stays visible downstream: stale rows are still named, and default validation still refuses them.
+  assert.ok(validateTherapeuticTaxonomy(held, profile, { asOf: staleAsOf, staleEvidence: "hold" }).held_stale.length > 0);
+  assert.throws(() => validateTherapeuticTaxonomy(held, profile, { asOf: staleAsOf }), /therapeutic_taxonomy_evidence_stale/);
+  const source = await readFile(new URL("../scripts/build-staging.mjs", import.meta.url), "utf8");
+  assert.match(source, /reconcileTherapeuticTaxonomyWireIn\(\{[^}]*staleEvidence: "hold",\s*\}\);/s);
+});

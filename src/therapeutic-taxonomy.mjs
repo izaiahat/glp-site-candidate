@@ -194,7 +194,7 @@ function wireInRow(program, pid, evidence, authorities, pages, quizConfig, requi
   return row;
 }
 
-export function reconcileTherapeuticTaxonomyWireIn({ registry, profileId, pages, quizConfig, asOf = new Date() }) {
+export function reconcileTherapeuticTaxonomyWireIn({ registry, profileId, pages, quizConfig, asOf = new Date(), staleEvidence = "fail" }) {
   const document = registry?.therapeutic_taxonomy;
   if (!document || document.schema !== "glp-therapeutic-taxonomy-v1") fail("schema_invalid");
   const requiredPaths = new Set(document.required_surface_paths || []);
@@ -222,7 +222,7 @@ export function reconcileTherapeuticTaxonomyWireIn({ registry, profileId, pages,
   document.programs = programs;
   document.expected_counts = deriveFacetCounts(programs);
   document.sealed_as_of = Object.values(programs).map((row) => row.verified_as_of).sort().at(-1) || document.sealed_as_of;
-  validateTherapeuticTaxonomy(registry, profileId, { asOf });
+  validateTherapeuticTaxonomy(registry, profileId, { asOf, staleEvidence });
   return Object.freeze({
     registry,
     activeProgramIds: Object.freeze([...active.keys()].sort()),

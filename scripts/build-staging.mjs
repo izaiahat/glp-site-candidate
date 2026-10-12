@@ -1621,6 +1621,8 @@ async function main() {
     profileId: SITE_PROFILE,
     pages: moneySpecs.pages,
     quizConfig,
+    // OPERATOR DECISION 2026-10-09: stale evidence holds back that claim only.
+    staleEvidence: "hold",
   });
   // OPERATOR MODEL 2026-08-13: fail the build loudly when any live-eligible
   // provider is missing from a surface without a documented
