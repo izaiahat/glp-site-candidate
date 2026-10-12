@@ -1,3 +1,5 @@
+import './ready6-alias-link-eligibility.test.mjs';
+import './provider-append-disclosure.test.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';

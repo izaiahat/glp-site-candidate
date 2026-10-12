@@ -2468,11 +2468,17 @@ async function main() {
   // sources, dates, manifest and original captured document remain immutable.
   if (priceIndex.html.split(PRICE_STATE_DISCLOSURE).length!==2) throw new Error('price_state_disclosure_missing_or_duplicate');
   const normalizedPriceIndex = normalizePriceIndexBuild4Semantics(substitutePriceIndexLiveCount(priceIndex.html.replace(PRICE_STATE_DISCLOSURE,''), liveProgramCount));
-  const stripCurrentPriceDisclosure = html => stripPriceStateDisclosures(stripPriceStateDisclosures(html, {
+  const stripCurrentPriceDisclosure = html => stripPriceStateDisclosures(stripPriceStateDisclosures(stripPriceStateDisclosures(html, {
     ...derivedTallies,
     BASELINE_PRICE_ROW_COUNT: pricingBaseline.coverage.medication_rows,
     BASELINE_PRICED_PROVIDER_COUNT: pricingBaseline.coverage.providers_with_evidenced_pricing,
-  }),derivedTallies);
+  }),derivedTallies), {
+    ...derivedTallies,
+    // The append changes editorial membership, not historical price evidence.
+    // Use the authenticated predecessor's identity count for its exact copy;
+    // never erase arbitrary disclosure counts or mutate the retained document.
+    LIVE_PROVIDER_COUNT: predecessorLiveProgramCount,
+  });
   const preservedRegistry = effectiveAffiliateRegistry(providerReviewRuntimePredecessorRegistry(rawProgramRegistry));
   const rawIdentity = assertDeclaredIdentityGroups(preservedRegistry, SITE_PROFILE, rawContentLedger.programs);
   const predecessorLiveProgramCount = preservedRegistry.programs.filter(p => p.commercial_state === 'live'
