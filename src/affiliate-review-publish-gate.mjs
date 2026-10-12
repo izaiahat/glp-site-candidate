@@ -1,8 +1,8 @@
 import { parse } from 'parse5';
 
-function anchors(html, scriptingEnabled = true) {
+function anchors(html, scriptingEnabled = true, includeHidden = false) {
   const result=[];
-  const visit=node=>{ const attrs=Object.fromEntries((node.attrs||[]).map(a=>[a.name,a.value])); if(['script','style','template'].includes(node.tagName) || (scriptingEnabled && node.tagName==='noscript') || Object.hasOwn(attrs,'hidden') || attrs['aria-hidden']==='true' || /display\s*:\s*none|visibility\s*:\s*hidden/i.test(attrs.style||'')) return; if(node.tagName==='a') result.push(attrs); for(const child of node.childNodes||[]) visit(child); };
+  const visit=node=>{ const attrs=Object.fromEntries((node.attrs||[]).map(a=>[a.name,a.value])); if(['script','style','template'].includes(node.tagName) || (scriptingEnabled && node.tagName==='noscript') || (!includeHidden && (Object.hasOwn(attrs,'hidden') || attrs['aria-hidden']==='true' || /display\s*:\s*none|visibility\s*:\s*hidden/i.test(attrs.style||'')))) return; if(node.tagName==='a') result.push(attrs); for(const child of node.childNodes||[]) visit(child); };
   visit(parse(html, { scriptingEnabled })); return result;
 }
 
@@ -31,7 +31,7 @@ export function assertAffiliateReviewPublishable(review, program, authority, htm
   const isOwn = a => identities.includes(a['data-program'])
     || boundHrefs.includes(a.href)
     || (authority?.route && a.href?.split('?')[0] === authority.route);
-  const own = anchors(html, false).filter(isOwn);
+  const own = anchors(html, false, true).filter(isOwn);
   const relationship=program.affiliate_relationship_snapshot;
   const profile=program.profiles?.['glp-clinic-scout'];
   const identity=profile?.canonical_identity;
