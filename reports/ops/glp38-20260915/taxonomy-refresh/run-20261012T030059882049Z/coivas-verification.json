@@ -1,0 +1,75 @@
+{
+  "program_id": "coivas",
+  "source_url": "https://www.coivas.com/challenge",
+  "verified_as_of": "2026-10-12",
+  "captured_at": "2026-10-12T03:01:01.554401+00:00",
+  "assertions": {
+    "molecule_tags": {
+      "semaglutide": {
+        "quote": "The Challenge covers compounded semaglutide or compounded tirzepatide",
+        "context": "our terms for complete eligibility requirements. what medications are included? the challenge covers compounded semaglutide or compounded tirzepatide — both once-weekly glp-1 injections prescribed by a licensed clinician based on your health history"
+      },
+      "tirzepatide": {
+        "quote": "The Challenge covers compounded semaglutide or compounded tirzepatide",
+        "context": "our terms for complete eligibility requirements. what medications are included? the challenge covers compounded semaglutide or compounded tirzepatide — both once-weekly glp-1 injections prescribed by a licensed clinician based on your health history"
+      }
+    },
+    "brand_name_tags": {},
+    "delivery_form_tags": {},
+    "treatment_type_tags": {
+      "compounded": {
+        "quote": "The Challenge covers compounded semaglutide or compounded tirzepatide",
+        "context": "our terms for complete eligibility requirements. what medications are included? the challenge covers compounded semaglutide or compounded tirzepatide — both once-weekly glp-1 injections prescribed by a licensed clinician based on your health history"
+      }
+    }
+  },
+  "capture_sha256": "0ebd0d0d8a5dfa6290dc4f27eca7f90964cedde442cf7f2ebcda53dd4854dbbe",
+  "capture_path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20261012T030059882049Z/coivas-primary.json",
+  "finding": null,
+  "previous_row": {
+    "brand_name_tags": [],
+    "classification_state": "WIRE_IN_EXPLICIT",
+    "commercial_link_state": {
+      "compare": "live",
+      "quiz": "live"
+    },
+    "delivery_form_tags": [],
+    "evidence_bindings": [
+      {
+        "authority": "wire_in_coivas",
+        "authority_sha256": "12c749c6c501ee107537c56cc242cab4af79d791f3b4799cad105209c15c6b93",
+        "evidence_sha256": "aa51c76f180f4a51dbbaaf036e5f80a4f90d2d65a5106df5a0f4b024aaad9ef8",
+        "source_url": "https://www.coivas.com/challenge",
+        "verified_as_of": "2026-09-10"
+      }
+    ],
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "normalized_sha256": "28d8288588502d3016a1f98d67b8e9a857ad367911a63ea9df06981f612d69c1",
+    "program_id": "coivas",
+    "provider": "Coivas",
+    "registry_program_id": "awin-128761",
+    "render_label": null,
+    "source_urls": [
+      "https://www.coivas.com/challenge"
+    ],
+    "treatment_type_state": "verified",
+    "treatment_type_tags": [
+      "compounded"
+    ],
+    "verified_as_of": "2026-09-10"
+  },
+  "tags_unchanged": {
+    "molecule_tags": [
+      "semaglutide",
+      "tirzepatide"
+    ],
+    "brand_name_tags": [],
+    "delivery_form_tags": [],
+    "treatment_type_tags": [
+      "compounded"
+    ]
+  }
+}
