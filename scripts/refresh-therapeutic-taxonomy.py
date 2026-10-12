@@ -18,9 +18,10 @@ import urllib.request
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
-BUSINESS = ROOT.parents[3]
+BUSINESS = Path(os.environ.get('GLP_BUSINESS_ROOT', ROOT.parents[3])).resolve()
 sys.path.insert(0, str(BUSINESS / 'scripts'))
 from affiliate_direct_evidence_capture import _firecrawl_key
+from firecrawl_client import firecrawl_urlopen
 
 REPORTS = BUSINESS / 'reports/ops/glp38-20260915/taxonomy-refresh'
 REGISTRY = ROOT / 'data/program-registry.json'
@@ -222,11 +223,13 @@ def capture(url, dest):
     request_body = {'url': url, 'formats': ['markdown', 'links'], 'onlyMainContent': False, 'maxAge': 0}
     request = urllib.request.Request('https://api.firecrawl.dev/v2/scrape', data=json.dumps(request_body).encode(),
         headers={'Authorization': 'Bearer ' + _firecrawl_key(), 'Content-Type': 'application/json'}, method='POST')
-    with urllib.request.urlopen(request, timeout=120) as response:
+    with firecrawl_urlopen(request, caller='refresh-therapeutic-taxonomy', run_id=dest.parent.name, timeout=120) as response:
         raw = response.read()
+    dest.with_suffix('.raw.json').write_bytes(raw)
     received = dt.datetime.now(dt.timezone.utc).isoformat()
     document = json.loads(raw)
-    receipt = {'request': request_body, 'started_at': started, 'received_at': received, 'response': document}
+    receipt = {'request': request_body, 'started_at': started, 'received_at': received,
+               'raw_response_sha256': sha(raw), 'response': document}
     dest.write_bytes(encoded(receipt))
     data = document.get('data') or {}
     meta = data.get('metadata') or {}
@@ -240,6 +243,28 @@ def capture(url, dest):
     if meta.get('cachedAt') and dt.datetime.fromisoformat(meta['cachedAt'].replace('Z', '+00:00')) < dt.datetime.fromisoformat(started):
         raise ValueError('stale_cache_refused')
     return receipt
+
+
+def derive_price_append(registry):
+    """Renew only the evidence attachment binding; price predecessor stays exact."""
+    target = ROOT / 'data/provider-price-append.json'
+    if not target.exists():
+        if any(p['program_id'] in ('rightwell-review', 'willow-review', 'ivim-health-review') for p in registry['programs']):
+            raise ValueError('append_pair_unreadable')
+        return None
+    original = target.read_bytes()
+    code = '''import fs from 'node:fs';
+import {refreshProviderPriceAppendEvidence} from './src/provider-price-append.mjs';
+import {historicalAffiliateRegistry} from './src/affiliate-relationship-sync.mjs';
+const x=JSON.parse(fs.readFileSync(0,'utf8'));
+const pair=x.pair;
+pair.registry=refreshProviderPriceAppendEvidence(Buffer.from(JSON.stringify(historicalAffiliateRegistry(x.registry))),pair.registry);
+process.stdout.write(JSON.stringify(pair));'''
+    result = subprocess.run(['node', '--input-type=module', '-e', code], cwd=ROOT,
+        input=json.dumps({'registry': registry, 'pair': json.loads(original)}), text=True, capture_output=True)
+    if result.returncode:
+        raise ValueError('taxonomy_append_successor_refused:' + result.stderr[-2400:])
+    return target, original, encoded(json.loads(result.stdout))
 
 
 def validate(registry, ids):
@@ -428,10 +453,21 @@ def main():
             candidate = derive_reviewed_metadata(candidate)
         validate_qualified_renderer(candidate, list(proposals))
         candidate = validate(candidate, list(proposals))
+        append = derive_price_append(candidate)
         if REGISTRY.read_bytes() != original:
             raise ValueError('registry_changed_during_validation')
+        if append and append[0].read_bytes() != append[1]:
+            raise ValueError('append_binding_changed_during_validation')
         temp = REGISTRY.with_name(REGISTRY.name + '.taxonomy-refresh.tmp')
         temp.write_bytes(encoded(candidate))
+        if append:
+            target, prior, successor = append
+            staged = target.with_name(target.name + '.taxonomy-refresh.tmp')
+            staged.write_bytes(successor)
+            # A crash between the two replaces stays fail-closed at the exact
+            # registry binding; recovery is the maintained binding producer.
+            os.replace(staged, target)
+            result['price_append_successor'] = {'path': str(target), 'before_sha256': sha(prior), 'after_sha256': sha(successor)}
         os.replace(temp, REGISTRY)
         readback = json.loads(REGISTRY.read_text())
         for pid, (manifest, _) in proposals.items():
