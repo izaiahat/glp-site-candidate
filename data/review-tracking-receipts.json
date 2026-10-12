@@ -1,0 +1,249 @@
+{
+  "programs": {
+    "ivim-health-review": {
+      "campaign": {
+        "allowed_traffic_types": {
+          "brand_bid_traffic": "N",
+          "contextual_traffic": "Y",
+          "display_traffic": "Y",
+          "email_traffic": "Y",
+          "incentive_traffic": "N",
+          "mobile_traffic": "Y",
+          "native_traffic": "Y",
+          "search_traffic": "Y",
+          "social_media_traffic": "Y"
+        },
+        "campaign_id": 31359,
+        "creatives": [
+          {
+            "creative_id": 206454,
+            "height": 491,
+            "image": "https://cdn.mb1-content.com/cdn/creative/image?m=16126&o=31359&i=206454.dat",
+            "type": "banner",
+            "width": 872
+          },
+          {
+            "creative_id": 206455,
+            "height": 329,
+            "image": "https://cdn.mb1-content.com/cdn/creative/image?m=16126&o=31359&i=206455.dat",
+            "type": "banner",
+            "width": 271
+          },
+          {
+            "creative_id": 206456,
+            "height": 307,
+            "image": "https://cdn.mb1-content.com/cdn/creative/image?m=16126&o=31359&i=206456.dat",
+            "type": "banner",
+            "width": 274
+          },
+          {
+            "creative_id": 206457,
+            "height": 290,
+            "image": "https://cdn.mb1-content.com/cdn/creative/image?m=16126&o=31359&i=206457.dat",
+            "type": "banner",
+            "width": 271
+          },
+          {
+            "creative_id": 206458,
+            "height": 51,
+            "image": "https://cdn.mb1-content.com/cdn/creative/image?m=16126&o=31359&i=206458.dat",
+            "type": "banner",
+            "width": 157
+          }
+        ],
+        "details": {
+          "affiliate_campaign_status": "Approved",
+          "name": "Ivim Health - GLP+1 - CPS (US)",
+          "rules": "<b><u>No solo emails.</u></b>\n<br><br>\nContent-based newsletters (freebie newsletters, for example) with multiple links <b>ONLY</b>.  <br><br>\nBy choosing to run newsletter traffic, you accept the responsibility of managing opt-out links and maintaining the suppression list for your newsletter emails.",
+          "status": "By Request"
+        },
+        "landing_pages": [
+          {
+            "allows_deeplink": "Y",
+            "deeplink_instructions": "Pass encoded link in S5",
+            "default_lp": "N",
+            "full": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=38633&s=full",
+            "landing_page_id": 38633,
+            "name": "Deeplink",
+            "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=38633&s=thumb"
+          },
+          {
+            "allows_deeplink": " ",
+            "deeplink_instructions": "",
+            "default_lp": "N",
+            "full": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=38635&s=full",
+            "landing_page_id": 38635,
+            "name": "GLP-1",
+            "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=38635&s=thumb"
+          },
+          {
+            "allows_deeplink": null,
+            "deeplink_instructions": null,
+            "default_lp": "N",
+            "full": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=36910&s=full",
+            "landing_page_id": 36910,
+            "name": "Home Page",
+            "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=36910&s=thumb"
+          },
+          {
+            "allows_deeplink": " ",
+            "deeplink_instructions": "",
+            "default_lp": "N",
+            "full": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=38636&s=full",
+            "landing_page_id": 38636,
+            "name": "Microdosing",
+            "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=38636&s=thumb"
+          },
+          {
+            "allows_deeplink": null,
+            "deeplink_instructions": null,
+            "default_lp": "Y",
+            "full": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=36909&s=full",
+            "landing_page_id": 36909,
+            "name": "Supplements ",
+            "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16126&o=31359&l=36909&s=thumb"
+          }
+        ]
+      },
+      "capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T1/approved-link-source-31359.json",
+      "capture_sha256": "c46af515abb01c49a761bef299e1907ec68221a132fbd935a8fdee42964abac4",
+      "tracking_api_receipt": {
+        "campaign_id": "31359",
+        "captured_at_utc": "2026-10-11T23:10:21.584418+00:00",
+        "endpoint": "https://api.maxbounty.com/affiliates/api/trackinglink",
+        "method": "POST",
+        "publisher_id": "803003",
+        "raw_response_sha256": "6f71f8862ad8fd32f4da86ee4cbdeb873f93e7b46539b14078adcea04136b688",
+        "request": {
+          "campaign_id": 31359,
+          "creative_id": 918277
+        },
+        "response": {
+          "safesearch": false,
+          "success": true,
+          "tracking-link": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=31359&c=918277&a=803003&k=0&l=36909",
+          "withTrafficAndCreative": false
+        },
+        "schema": "glp.maxbounty.authorized_api_tracking_link.v1",
+        "status": 200,
+        "tracking_clicks": 0
+      }
+    },
+    "rightwell-review": {
+      "campaign": {
+        "allowed_traffic_types": {
+          "brand_bid_traffic": "N",
+          "contextual_traffic": "Y",
+          "display_traffic": "Y",
+          "email_traffic": "Y",
+          "incentive_traffic": "N",
+          "mobile_traffic": "Y",
+          "native_traffic": "Y",
+          "search_traffic": "Y",
+          "social_media_traffic": "Y"
+        },
+        "campaign_id": 32122,
+        "creatives": [],
+        "details": {
+          "affiliate_campaign_status": "Approved",
+          "name": "RightWell - GLP-1 Weight Loss - CPS (US)",
+          "rules": "<b><u>No solo emails.</u></b>\n<br><br>\nContent-based newsletters (freebie newsletters, for example) with multiple links <b>ONLY</b>.  <br><br>\nBy choosing to run newsletter traffic, you accept the responsibility of managing opt-out links and maintaining the suppression list for your newsletter emails.",
+          "status": "By Request"
+        },
+        "landing_pages": [
+          {
+            "allows_deeplink": null,
+            "deeplink_instructions": null,
+            "default_lp": "Y",
+            "full": "https://cdn.mb1-content.com/cdn/creative/lp?m=16443&o=32122&l=38072&s=full",
+            "landing_page_id": 38072,
+            "name": "Get Started",
+            "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=16443&o=32122&l=38072&s=thumb"
+          }
+        ]
+      },
+      "capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T1/approved-link-source-32122.json",
+      "capture_sha256": "1120190f54131af416744d5bfe64069ba60c0f77416d6d766c378c8abddcabfd",
+      "tracking_api_receipt": {
+        "campaign_id": "32122",
+        "captured_at_utc": "2026-10-11T23:10:21.150529+00:00",
+        "endpoint": "https://api.maxbounty.com/affiliates/api/trackinglink",
+        "method": "POST",
+        "publisher_id": "803003",
+        "raw_response_sha256": "9fd317185a299ef61b7b8c73c22b29b335d4205ac9941f7b1b85c6eb0d73853e",
+        "request": {
+          "campaign_id": 32122,
+          "creative_id": 918277
+        },
+        "response": {
+          "safesearch": false,
+          "success": true,
+          "tracking-link": "https://afflat3e3.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32122&c=918277&a=803003&k=0&l=38072",
+          "withTrafficAndCreative": false
+        },
+        "schema": "glp.maxbounty.authorized_api_tracking_link.v1",
+        "status": 200,
+        "tracking_clicks": 0
+      }
+    },
+    "willow-review": {
+      "campaign": {
+        "allowed_traffic_types": {
+          "brand_bid_traffic": "N",
+          "contextual_traffic": "Y",
+          "display_traffic": "Y",
+          "email_traffic": "Y",
+          "incentive_traffic": "Y",
+          "mobile_traffic": "Y",
+          "native_traffic": "Y",
+          "search_traffic": "Y",
+          "social_media_traffic": "Y"
+        },
+        "campaign_id": 29207,
+        "creatives": [],
+        "details": {
+          "affiliate_campaign_status": "Approved",
+          "name": "Willow - Weightloss GLP-1 - CPS (US)",
+          "rules": "<b><u>No solo emails.</u></b>\n<br><br>\nContent-based newsletters (freebie newsletters, for example) with multiple links <b>ONLY</b>.  <br><br>\nBy choosing to run newsletter traffic, you accept the responsibility of managing opt-out links and maintaining the suppression list for your newsletter emails.",
+          "status": "By Request"
+        },
+        "landing_pages": [
+          {
+            "allows_deeplink": null,
+            "deeplink_instructions": null,
+            "default_lp": "Y",
+            "full": "https://cdn.mb1-content.com/cdn/creative/lp?m=15098&o=29207&l=33375&s=full",
+            "landing_page_id": 33375,
+            "name": "Home Page",
+            "thumbnail": "https://cdn.mb1-content.com/cdn/creative/lp?m=15098&o=29207&l=33375&s=thumb"
+          }
+        ]
+      },
+      "capture_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T1/approved-link-source-29207.json",
+      "capture_sha256": "c39471d6ec029221ee9ae767f5dfbb43f948910b2a357552c40521bcdb1e4d84",
+      "tracking_api_receipt": {
+        "campaign_id": "29207",
+        "captured_at_utc": "2026-10-11T23:10:21.375436+00:00",
+        "endpoint": "https://api.maxbounty.com/affiliates/api/trackinglink",
+        "method": "POST",
+        "publisher_id": "803003",
+        "raw_response_sha256": "8788ddb899919e5c58914346dcde02dff8f84f1604f1b163c6d0a3e6fde6012e",
+        "request": {
+          "campaign_id": 29207,
+          "creative_id": 918277
+        },
+        "response": {
+          "safesearch": false,
+          "success": true,
+          "tracking-link": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=29207&c=918277&a=803003&k=0&l=33375",
+          "withTrafficAndCreative": false
+        },
+        "schema": "glp.maxbounty.authorized_api_tracking_link.v1",
+        "status": 200,
+        "tracking_clicks": 0
+      }
+    }
+  },
+  "schema": "glp-review-approved-tracking-v1",
+  "tracking_clicks": 0
+}

@@ -1,0 +1,70 @@
+import { parse } from 'parse5';
+
+function anchors(html, scriptingEnabled = true) {
+  const result=[];
+  const visit=node=>{ const attrs=Object.fromEntries((node.attrs||[]).map(a=>[a.name,a.value])); if(['script','style','template'].includes(node.tagName) || (scriptingEnabled && node.tagName==='noscript') || Object.hasOwn(attrs,'hidden') || attrs['aria-hidden']==='true' || /display\s*:\s*none|visibility\s*:\s*hidden/i.test(attrs.style||'')) return; if(node.tagName==='a') result.push(attrs); for(const child of node.childNodes||[]) visit(child); };
+  visit(parse(html, { scriptingEnabled })); return result;
+}
+
+function visibleText(html) {
+  const texts=[];
+  const visit=node=>{const attrs=Object.fromEntries((node.attrs||[]).map(a=>[a.name,a.value])); if(['script','style','template','noscript'].includes(node.tagName)||Object.hasOwn(attrs,'hidden')||attrs['aria-hidden']==='true'||/display\s*:\s*none|visibility\s*:\s*hidden/i.test(attrs.style||''))return; if(node.nodeName==='#text')texts.push(node.value);for(const child of node.childNodes||[])visit(child);};
+  visit(parse(html));return texts.join(' ');
+}
+
+// Current denial outranks a historical grant. Missing authority is not denial,
+// and missing relationship evidence is not a non-affiliate designation.
+export function labelNonAffiliateReview(html,program) {
+  if(program?.affiliate_relationship!=='non_affiliate'||program.prescription_provider!==true) return html;
+  if((html.match(/<\/h1>/g)||[]).length!==1) throw new Error('non_affiliate_review_heading_invalid');
+  return html.replace('</h1>','</h1><aside class="affiliate-note" data-non-affiliate-provider><strong>Non-affiliate provider.</strong> We do not earn a commission from this provider.</aside>');
+}
+
+export function assertAffiliateReviewPublishable(review, program, authority, html) {
+  const id=review.program_id;
+  if (!program || ![program.program_id, program.review_slug].includes(id)) throw new Error(`affiliate_review_registry_missing:${id}`);
+  const identities = [id, program.program_id, program.review_slug].filter(Boolean);
+  const boundHrefs = [review.fastpath_contract?.network_contract?.tracking_url, review.row?.affiliate_href, authority?.issued_link].filter(Boolean);
+  // Inspect destination/subject independently of tracking metadata. Otherwise
+  // stripping data-program/rel turns a forbidden link into an invisible one.
+  // The denial/malformed-link census includes the no-JS fallback too.
+  const isOwn = a => identities.includes(a['data-program'])
+    || boundHrefs.includes(a.href)
+    || (authority?.route && a.href?.split('?')[0] === authority.route);
+  const own = anchors(html, false).filter(isOwn);
+  const relationship=program.affiliate_relationship_snapshot;
+  const profile=program.profiles?.['glp-clinic-scout'];
+  const identity=profile?.canonical_identity;
+  if(identity?.role==='alias' && profile.surfaces?.go===false && profile.surfaces?.compare===false) {
+    if(own.length || !anchors(html).some(a=>a.href===`/reviews/${identity.canonical_program_id}/`)) throw new Error(`canonical_alias_review_invalid:${id}`);
+    return {status:'CANONICAL_ALIAS_NO_PROMOTION',program_id:id};
+  }
+  const held=relationship?.promotion_denied===true || (authority?.status==='WITHHELD' && authority?.promotion_authorized===false);
+  if(held) {
+    if(own.length) throw new Error(`held_review_has_affiliate_anchor:${id}`);
+    return {status:'HELD_NO_PROMOTION',program_id:id};
+  }
+  if(program.affiliate_relationship==='non_affiliate' && program.prescription_provider===true) {
+    if(own.length || !/non[- ]affiliate/i.test(visibleText(html)) || !/do not earn a commission from this provider/i.test(visibleText(html))) throw new Error(`non_affiliate_review_label_missing:${id}`);
+    return {status:'NON_AFFILIATE_LABELED',program_id:id};
+  }
+  const net=review.fastpath_contract?.network_contract;
+  const affiliated=relationship?.relationship_status?.startsWith('approved_active_') || net?.relationship_state==='approved_or_active' || review.row?.promotion_authorized===true;
+  if(!affiliated) throw new Error(`affiliate_review_relationship_unknown:${id}`);
+  const approved=authority?.disposition==='ADOPT' ? authority.issued_link : (net?.tracking_url || review.row?.affiliate_href);
+  if(authority?.issued_link && authority.disposition!=='ADOPT' && authority.issued_link!==approved) throw new Error(`affiliate_review_approval_unbound:${id}`);
+  if(authority?.status!=='VERIFIED'||authority.promotion_authorized!==true || !approved || review.row?.live_link_allowed!==true) throw new Error(`affiliate_review_approval_unbound:${id}`);
+  let url; try {url=new URL(approved);} catch {throw new Error(`affiliate_review_url_invalid:${id}`);}
+  if(url.protocol!=='https:' || url.username || url.password) throw new Error(`affiliate_review_url_invalid:${id}`);
+  // Redirect selections are accepted only when the authority binds both the
+  // exact issued URL and exact first-party href. No redirect is requested here.
+  const surface=review.surface_code || 'reviews.rv2';
+  if(!/^[a-z0-9][a-z0-9-]*\.[a-z0-9][a-z0-9-]*$/.test(surface)) throw new Error(`affiliate_review_surface_invalid:${id}`);
+  const expected=authority.disposition==='ADOPT' && authority.issued_link===approved ? `${authority.route}?s=${surface}&v=a` : approved;
+  const isMatching = a => identities.includes(a['data-program']) && a.href===expected && ['sponsored','nofollow'].every(v=>(a.rel||'').split(/\s+/).includes(v));
+  const matching=own.filter(isMatching);
+  // A no-JS-only link cannot establish the ordinary rendered CTA.
+  if(!anchors(html).some(a=>isOwn(a) && isMatching(a)) || matching.length!==own.length) throw new Error(`affiliate_review_missing_approved_anchor:${id}`);
+  if(!/commission/i.test(visibleText(html))) throw new Error(`affiliate_review_disclosure_missing:${id}`);
+  return {status:'AFFILIATE_BOUND',program_id:id,anchors:matching.length,approved_url:approved};
+}

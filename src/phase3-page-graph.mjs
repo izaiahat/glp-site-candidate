@@ -13,9 +13,10 @@ import { renderCouponChip } from "./coupon-offers.mjs";
 import { loadAffiliateLinkMap } from "./affiliate-link-map.mjs";
 import { loadGoPromotionAuthority } from './go-runtime-selection.mjs';
 import { relationshipEndedNotice, relationshipDenials } from './affiliate-relationship-sync.mjs';
+import { providerDetailAffiliate } from './provider-detail-affiliate.mjs';
 import { selectedGoOutbound } from './go-render-selection.mjs';
 import { affiliateOutboundMode } from "./affiliate-outbound-mode.mjs";
-import { resolveCardOutbound } from "./card-outbound.mjs";
+import { resolveCardOutbound, approvedDirectCard } from "./card-outbound.mjs";
 import { selectUnpublishedProviders } from "./unpublished-provider-cards.mjs";
 import { subidAttributes } from "./affiliate-subid.mjs";
 import { renderProductComparisonPicture } from "./pass2-product-visuals.mjs";
@@ -1041,8 +1042,8 @@ export function renderProviderDetailComplete(program, pricingMatrix, registry, c
   const ledger = PROGRAM_LEDGER_BY_ID.get(program.program_id) || null;
   const route = `/providers/${program.program_id}/`;
   const reviewPath = canonicalReviewPath(program, registry);
-  const affiliate = COMPARE_AFFILIATE_MAP[program.program_id];
   const selected = selectedGoOutbound(program, 'providers.rv1');
+  const affiliate = providerDetailAffiliate(program, COMPARE_AFFILIATE_MAP, selected);
   const affiliateAttrs = affiliate?.live ? subidAttributes({ programId: program.program_id, network: affiliate.network, href: affiliate.affiliate_href, position: "intro", rankPosition: 0, pageSlug: `provider-${program.program_id}`, pageType: "provider-detail", providerSlug: program.program_id }) : "";
   const endedNotice = relationshipEndedNotice(selected?.relationship_snapshot);
   const getStarted = endedNotice
@@ -1834,14 +1835,20 @@ function renderComparisonPreset(page, { pricingMatrix, registry, logoManifest, c
     if (page.slug === "both" && !terms.length) return [];
     return [{ ...entry, medications, offers, medicationId, terms }];
   })).sort((a, b) => a.provider.localeCompare(b.provider));
-  const cards = candidates.map(entry => {
+  const cards = candidates.map((entry,index) => {
     const coverage = providerStateCoverage(PROGRAM_LEDGER_BY_ID.get(entry.program_id));
     const bindings = [...new Map(entry.offers.flatMap(offer => offer.evidence).map(binding => [binding.capture_sha256, binding])).values()];
     const sources = bindings.map(binding => `<small data-source-checked="${esc(binding.checked_date)}">${renderCitationAnchor({ url: binding.source_url, label: "Treatment source", reason: CITATION_REASONS.INLINE_FACT_SOURCE, rel: "noopener noreferrer" })}</small>`).join("");
     const stateSource = coverage.source ? renderCitationAnchor({ url: coverage.source, label: "State coverage source", reason: CITATION_REASONS.INLINE_FACT_SOURCE, rel: "noopener noreferrer" }) : "";
     const cash = entry.medications.filter(row => !isTypedPrice(row) && comparisonTerm(row) === 1);
     const review = canonicalReviewPath(entry.record, registry) || `/providers/${entry.record.program_id}/`;
-    return `<article class="p3-provider-card cs-card" data-phase3-provider data-comparison-card data-program="${esc(entry.program_id)}" data-provider-name="${esc(entry.provider)}" data-drugs="${esc(medicationToken(entry.medicationId))}" data-medications="${esc(entry.medicationId)}" data-forms="COMPOUNDED" data-duration="${esc(entry.terms.join(" ") || "unknown")}" data-monthly-price="${cash.length === 1 ? esc(cash[0].ongoing_usd) : ""}" data-state-mode="${esc(coverage.mode)}" data-state-includes="${esc(coverage.included.join(" "))}" data-state-excludes="${esc(coverage.excluded.join(" "))}"><header class="p3-card-header"><p class="gcs-kicker">Reported provider information</p>${providerIdentity(entry, logoManifest)}<p>${esc(entry.medicationId.includes("tirzepatide") ? "Compounded tirzepatide injection" : "Compounded semaglutide injection")}</p>${sources}</header>${comparisonCardBody(page, entry, sourcePrice)}${renderCouponChip(coupons[entry.program_id])}<p data-comparison-state>State availability: confirm with the provider.</p>${stateSource}<div class="p3-card-actions"><a class="cs-btn cs-btn--quiet" data-card-review href="${esc(review)}">Open ${esc(entry.provider)} details</a></div></article>`;
+    const affiliate = COMPARE_AFFILIATE_MAP[entry.program_id];
+    const outbound = resolveCardOutbound({program:entry.record,affiliate,promotionAuthority:goAuthority,pageSlug:page.slug,position:'provider-card',rankPosition:index+1});
+    const direct = {mode:outbound.mode==='held'?'held':'transparent_direct',href:affiliate?.affiliate_href};
+    const approved = approvedDirectCard(direct,affiliate,goAuthority.programs?.[entry.record.program_id]);
+    const attributes = affiliate ? subidAttributes({programId:entry.program_id,network:affiliate.network,href:affiliate.affiliate_href,position:'provider-card',pageSlug:page.slug,pageType:'funnel-v2-comparison',providerSlug:entry.program_id,rankPosition:index+1}) : '';
+    const action = approved ? `<a href="${esc(direct.href)}" class="cs-btn cs-palette-action" rel="sponsored nofollow noopener" data-analytics-event="affiliate_click" data-program="${esc(entry.program_id)}" ${attributes}>Visit provider</a>` : '';
+    return `<article class="p3-provider-card cs-card" data-phase3-provider data-comparison-card data-program="${esc(entry.program_id)}" data-provider-name="${esc(entry.provider)}" data-drugs="${esc(medicationToken(entry.medicationId))}" data-medications="${esc(entry.medicationId)}" data-forms="COMPOUNDED" data-duration="${esc(entry.terms.join(" ") || "unknown")}" data-monthly-price="${cash.length === 1 ? esc(cash[0].ongoing_usd) : ""}" data-state-mode="${esc(coverage.mode)}" data-state-includes="${esc(coverage.included.join(" "))}" data-state-excludes="${esc(coverage.excluded.join(" "))}"><header class="p3-card-header"><p class="gcs-kicker">Reported provider information</p>${providerIdentity(entry, logoManifest)}<p>${esc(entry.medicationId.includes("tirzepatide") ? "Compounded tirzepatide injection" : "Compounded semaglutide injection")}</p>${sources}</header>${comparisonCardBody(page, entry, sourcePrice)}${renderCouponChip(coupons[entry.program_id])}<p data-comparison-state>State availability: confirm with the provider.</p>${stateSource}<div class="p3-card-actions">${action}<a class="cs-btn cs-btn--quiet" data-card-review href="${esc(review)}">Open ${esc(entry.provider)} details</a></div></article>`;
   }).join("");
   const support = page.slug === "both" ? "Compare separately reported monthly and three-month terms for one medication. Missing terms and dose-specific prices remain unestablished." : "Inspect provider information alongside the preset details our sources do not yet establish. Listed providers are not confirmed matches for this preset.";
   const schema = pageSchemaGraph(breadcrumbSchema(page.route, [{ href: "/", label: "Home" }, { label: page.name }]));

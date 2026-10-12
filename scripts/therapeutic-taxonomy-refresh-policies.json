@@ -1,4 +1,12 @@
 {
+  "coivas": {
+    "url": "https://www.coivas.com/challenge",
+    "finding": "Retained molecule and compounded tags reverified on the unchanged first-party source; no tags or prices added.",
+    "quotes": {
+      "molecule_tags": {"semaglutide": "The Challenge covers compounded semaglutide or compounded tirzepatide", "tirzepatide": "The Challenge covers compounded semaglutide or compounded tirzepatide"},
+      "treatment_type_tags": {"compounded": "The Challenge covers compounded semaglutide or compounded tirzepatide"}
+    }
+  },
   "altrx-glp1-us-cps": {
     "url": "https://www.altrx.com/about",
     "quotes": {

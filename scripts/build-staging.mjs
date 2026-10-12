@@ -65,6 +65,7 @@ import { upgradePhase3PageVisuals } from "../src/pass2-page-visual-upgrades.mjs"
 import { renderReviewDirectoryPage, renderReviewIntakeForm, renderReviewSubmissionPage } from "../src/pass2-review-hub.mjs";
 import { loadAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
 import { loadProviderPageContracts } from "../src/provider-cta-contract.mjs";
+import { assertAffiliateReviewPublishable, labelNonAffiliateReview } from '../src/affiliate-review-publish-gate.mjs';
 import { loadGoPromotionAuthority, restoreGoOnlyPriceBasis } from "../src/go-runtime-selection.mjs";
 
 const MONTH_NAMES = Object.freeze(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]);
@@ -2007,7 +2008,15 @@ async function main() {
   const reader = publicProviderNames({ programRegistry, contentLedger, providerPricingMatrix, augmented, projectedQuiz, providerReviews, costCalculator });
   await write("data/therapeutic-taxonomy.json", JSON.stringify(reader.programRegistry.therapeutic_taxonomy, null, 2) + "\n");
   for (const spec of reader.augmented) { const key = `money-${routeSlug(spec.path)}`; await write(path.join(spec.path.replace(/^\//, ""), "index.html"), addSharedRuntime(addOg(pageHero(addPriceIndexMoneyLink(addMoneyHero(setRobots(renderMoneyPage(spec, { ...identity, author: editorialAuthor }), "index,follow,max-image-preview:large"))), key, `Comparison overview for ${spec.h1}`), key, spec.h1))); }
-  for (const review of reader.providerReviews) { const key = review.fastpath_contract ? "editorial-evidence-hero" : `review-${routeSlug(review.path)}`; await write(path.join(review.path.replace(/^\//, ""), "index.html"), markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)))); }
+  const reviewPublishAuthority = loadGoPromotionAuthority(ROOT).programs;
+  for (const review of reader.providerReviews) {
+    const key = review.fastpath_contract ? "editorial-evidence-hero" : `review-${routeSlug(review.path)}`;
+    let html = markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)));
+    const record = programRegistry.programs.find(p => p.program_id === review.program_id || p.review_slug === review.program_id);
+    html = labelNonAffiliateReview(html,record);
+    assertAffiliateReviewPublishable(review, record, reviewPublishAuthority[record?.program_id || review.program_id], html);
+    await write(path.join(review.path.replace(/^\//, ""), "index.html"), html);
+  }
   const ready6WithDetailReturns = ready6Editorial.pages.map(page => {
     const record = programRegistry.programs.find(program => program.review_path === page.route);
     const alias = record?.profiles?.['glp-clinic-scout']?.canonical_identity;

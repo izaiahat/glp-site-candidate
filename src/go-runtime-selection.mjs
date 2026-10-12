@@ -50,6 +50,25 @@ export function loadGoPromotionAuthority(root = DEFAULT_ROOT) {
   catch (error) { if (error.code !== "ENOENT") throw error; }
   const current = loadGoSelection(root);
   const programs = { ...legacy.programs, ...current?.programs };
+  // Direct review-only successors are bound to retained approved publisher API
+  // readbacks. A URL in the authority map alone never grants permission.
+  for (const [id, row] of Object.entries(programs)) {
+    if (row.direct_only !== true || row.status === 'WITHHELD') continue;
+    const receipt = JSON.parse(readFileSync(path.join(root, 'data/review-tracking-receipts.json'))).programs?.[id];
+    const api = receipt?.tracking_api_receipt;
+    const campaign = receipt?.campaign;
+    const expectedOffer = JSON.parse(readFileSync(path.join(root,'data/program-registry.json'))).programs.find(p=>p.program_id===id)?.affiliate_relationship_snapshot?.network_program_id;
+    const href = api?.response?.['tracking-link'];
+    const url = new URL(href);
+    if (!expectedOffer || String(expectedOffer)!==String(campaign?.campaign_id)
+        || row.network !== 'MaxBounty' || campaign?.details?.affiliate_campaign_status !== 'Approved'
+        || api?.status !== 200 || api?.publisher_id !== '803003' || api?.tracking_clicks !== 0
+        || api?.response?.success !== true || href !== row.issued_link
+        || hash(href) !== row.tracking_link_sha256 || url.protocol !== 'https:'
+        || url.searchParams.get('o') !== String(campaign.campaign_id)
+        || url.searchParams.get('a') !== api.publisher_id)
+      throw new Error(`review_tracking_receipt_unbound:${id}`);
+  }
   // The genuine 2026-10-01 operator decision retains the XenTraffic hold.
   // Apply it after historical selection/approval merging, without rewriting
   // either receipt or the frozen price basis. This is a denial, not a grant.
