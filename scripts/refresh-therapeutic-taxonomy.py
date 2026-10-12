@@ -245,6 +245,28 @@ def capture(url, dest):
     return receipt
 
 
+def derive_price_append(registry):
+    """Renew only the evidence attachment binding; price predecessor stays exact."""
+    target = ROOT / 'data/provider-price-append.json'
+    if not target.exists():
+        if any(p['program_id'] in ('rightwell-review', 'willow-review', 'ivim-health-review') for p in registry['programs']):
+            raise ValueError('append_pair_unreadable')
+        return None
+    original = target.read_bytes()
+    code = '''import fs from 'node:fs';
+import {refreshProviderPriceAppendEvidence} from './src/provider-price-append.mjs';
+import {historicalAffiliateRegistry} from './src/affiliate-relationship-sync.mjs';
+const x=JSON.parse(fs.readFileSync(0,'utf8'));
+const pair=x.pair;
+pair.registry=refreshProviderPriceAppendEvidence(Buffer.from(JSON.stringify(historicalAffiliateRegistry(x.registry))),pair.registry);
+process.stdout.write(JSON.stringify(pair));'''
+    result = subprocess.run(['node', '--input-type=module', '-e', code], cwd=ROOT,
+        input=json.dumps({'registry': registry, 'pair': json.loads(original)}), text=True, capture_output=True)
+    if result.returncode:
+        raise ValueError('taxonomy_append_successor_refused:' + result.stderr[-2400:])
+    return target, original, encoded(json.loads(result.stdout))
+
+
 def validate(registry, ids):
     code = '''import fs from 'node:fs';
 import {normalizedTaxonomySha256,reconcileTherapeuticTaxonomyWireIn} from './src/therapeutic-taxonomy.mjs';
@@ -431,10 +453,21 @@ def main():
             candidate = derive_reviewed_metadata(candidate)
         validate_qualified_renderer(candidate, list(proposals))
         candidate = validate(candidate, list(proposals))
+        append = derive_price_append(candidate)
         if REGISTRY.read_bytes() != original:
             raise ValueError('registry_changed_during_validation')
+        if append and append[0].read_bytes() != append[1]:
+            raise ValueError('append_binding_changed_during_validation')
         temp = REGISTRY.with_name(REGISTRY.name + '.taxonomy-refresh.tmp')
         temp.write_bytes(encoded(candidate))
+        if append:
+            target, prior, successor = append
+            staged = target.with_name(target.name + '.taxonomy-refresh.tmp')
+            staged.write_bytes(successor)
+            # A crash between the two replaces stays fail-closed at the exact
+            # registry binding; recovery is the maintained binding producer.
+            os.replace(staged, target)
+            result['price_append_successor'] = {'path': str(target), 'before_sha256': sha(prior), 'after_sha256': sha(successor)}
         os.replace(temp, REGISTRY)
         readback = json.loads(REGISTRY.read_text())
         for pid, (manifest, _) in proposals.items():
