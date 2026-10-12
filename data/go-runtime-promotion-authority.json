@@ -408,6 +408,17 @@
       "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
       "status": "WITHHELD"
     },
+    "feelgood-review": {
+      "constructor_verified": true,
+      "direct_only": true,
+      "issued_link": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32854&c=918277&a=803003&k=0&l=38940",
+      "network": "MaxBounty",
+      "promotion_authorized": true,
+      "reason": "approved_api_link_sole_writer_ready",
+      "source_receipt": "data/review-tracking-receipts.json#feelgood-review",
+      "status": "VERIFIED",
+      "tracking_link_sha256": "62e0cbc65704e3833009c5fe598de8c0252f3a3a769daa883eb5564b079e8b3e"
+    },
     "found-health": {
       "attribution_parameter_contract": "katalys-subid",
       "constructor_verified": true,
@@ -573,6 +584,17 @@
       "subid_parameter": "sub1",
       "terms_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
       "tracking_link_sha256": "419c0945dd315864738214ca7e1338c7a208283cf0d3c0fa898c0e46172df6dc"
+    },
+    "instarx-review": {
+      "constructor_verified": true,
+      "direct_only": true,
+      "issued_link": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32662&c=918277&a=803003&k=0&l=38569",
+      "network": "MaxBounty",
+      "promotion_authorized": true,
+      "reason": "approved_api_link_sole_writer_ready",
+      "source_receipt": "data/review-tracking-receipts.json#instarx-review",
+      "status": "VERIFIED",
+      "tracking_link_sha256": "f72736173d15a25caac44b0ada1e5610b4ae70c06eb530ef93a75765f2d07e5c"
     },
     "ivim-health-review": {
       "constructor_verified": true,
@@ -1761,6 +1783,17 @@
         "source_checked_at": "2026-09-14T22:50:03Z"
       },
       "status": "WITHHELD"
+    },
+    "tyde-wellness-review": {
+      "constructor_verified": true,
+      "direct_only": true,
+      "issued_link": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32639&c=918277&a=803003&k=0&l=39106",
+      "network": "MaxBounty",
+      "promotion_authorized": true,
+      "reason": "approved_api_link_sole_writer_ready",
+      "source_receipt": "data/review-tracking-receipts.json#tyde-wellness-review",
+      "status": "VERIFIED",
+      "tracking_link_sha256": "676571f9ca82dd5d780b10a7904b9983e69037bcf130a0c9c75dc4710fef0f06"
     },
     "wellmedr-review": {
       "attribution_parameter_contract": "katalys-subid",

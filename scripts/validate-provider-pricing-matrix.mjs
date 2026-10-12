@@ -77,7 +77,7 @@ if (isV2) {
           const removedRows=removed.filter(r=>r.program_id===id).map(r=>historical.providers[id].medications[r.baseline_index]);
           snapshot[id]=rows.filter(r=>!removedRows.some(old=>isDeepStrictEqual(r,old)));
         }
-        violations.push(...validateLegacySnapshot(retainedManualPricingBasis(matrix,registry,['rightwell-review','willow-review','ivim-health-review']),snapshot));
+        violations.push(...validateLegacySnapshot(retainedManualPricingBasis(matrix,registry,['rightwell-review','willow-review','ivim-health-review','tyde-wellness-review','feelgood-review','instarx-review','retaclinic-review']),snapshot));
       }
     } catch { violations.push("legacy_snapshot_unreadable"); }
   }

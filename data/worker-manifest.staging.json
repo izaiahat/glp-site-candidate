@@ -2261,6 +2261,132 @@
       "tracking": null,
       "tracking_material_included": false,
       "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "Tyde Wellness",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "tyde-wellness-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/tyde-wellness-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "FeelGood",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "feelgood-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/feelgood-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
+    },
+    {
+      "advertiser_permission_verified": false,
+      "allowed_fallback_hosts": [
+        "telosrx.com"
+      ],
+      "allowed_link_positions": [
+        "hero",
+        "table",
+        "pros",
+        "pricing",
+        "conclusion",
+        "sticky"
+      ],
+      "allowed_page_roles": [
+        "best-online-glp1",
+        "best-glp1-insurance"
+      ],
+      "compliance_state": "staged_compliant_framing_candidate",
+      "compliant_framing_note": "Describe provider access, pharmacy fulfillment, posted price, cancellation, and refund terms. State that the formulations are compounded and not FDA-approved; do not repeat product outcomes, imply automatic prescribing, or compare them as equivalent to branded drugs.",
+      "constructor_verified": false,
+      "display_name": "InstaRx",
+      "evidence_state": "commercial_comparison_fields_pending",
+      "fda_warning_status": "none",
+      "legal_state": "compliant_framing_candidate",
+      "live_link_allowed": false,
+      "network": "katalys",
+      "official_fallback": "https://telosrx.com/",
+      "operator_selection_receipt_sha256": null,
+      "program_id": "instarx-review",
+      "promotion_authorized": false,
+      "ranking_inputs": {
+        "commission": null,
+        "epc": null,
+        "payout": null
+      },
+      "route": "/go/instarx-review",
+      "status": "staged_operator_gate",
+      "terms_positive": true,
+      "tracking": null,
+      "tracking_material_included": false,
+      "tracking_present_private": true
     }
   ],
   "schema": "glp-worker-staging-manifest-v1"

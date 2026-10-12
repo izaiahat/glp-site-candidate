@@ -41,7 +41,7 @@ export function projectProviderPriceAppend(currentBytes,binding,kind) {
  return beforeBytes;
 }
 export function providerPricePredecessorBytes(bytes,kind,readBytes=readFileSync) {
- const ids=['rightwell-review','willow-review','ivim-health-review'];
+ const ids=['rightwell-review','willow-review','ivim-health-review','tyde-wellness-review','feelgood-review','instarx-review','retaclinic-review'];
  if(!JSON.parse(bytes).programs.some(p=>ids.includes(p.program_id)))return bytes;
  let binding;
  try {binding=JSON.parse(readBytes(new URL('../data/provider-price-append.json',import.meta.url)));}

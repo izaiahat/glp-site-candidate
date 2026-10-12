@@ -1570,6 +1570,105 @@
         "provider_issued_url": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=31359&c=918277&a=803003&k=0&l=36909"
       },
       "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 815,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "Tyde Wellness",
+      "existing_release_alias": "tyde-wellness-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/tyde-wellness-review/policy-staging/approval-classifications/glp/maxbounty-32639.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "MaxBounty",
+      "provider_program_id": "32639",
+      "publisher_id": "803003",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32639&c=918277&a=803003&k=0&l=39106"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 708,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "FeelGood",
+      "existing_release_alias": "feelgood-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/feelgood-review/policy-staging/approval-classifications/glp/maxbounty-32854.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "MaxBounty",
+      "provider_program_id": "32854",
+      "publisher_id": "803003",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32854&c=918277&a=803003&k=0&l=38940"
+      },
+      "wire_in_ready": true
+    },
+    {
+      "approval_state": "approved_active",
+      "canonical_sheet_row": 712,
+      "current_terms_reassessment": {
+        "as_of_utc": null,
+        "evidence_path": null,
+        "future_change_terms_gate_open": false,
+        "hold_trigger": "current_terms_reassessment_required",
+        "live_link_disposition": "preserve_existing_live",
+        "may_authorize_material_expansion": false,
+        "may_authorize_new_activation": false,
+        "verdict": "HOLD_FUTURE_CHANGE_EXISTING_LIVE_PRESERVED"
+      },
+      "display_name": "InstaRx",
+      "existing_release_alias": "instarx-review",
+      "historical_activation_authority": {
+        "approval_state": "approved_active",
+        "bridge_ruling_considered": "terms-document-hierarchy-20260806",
+        "classification_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q4/instarx-review/policy-staging/approval-classifications/glp/maxbounty-32662.json",
+        "rubric_verdict_at_activation": "PASS"
+      },
+      "network": "MaxBounty",
+      "provider_program_id": "32662",
+      "publisher_id": "803003",
+      "sheet_status": "approved_active_tracking_ready",
+      "signup_complete": true,
+      "tracking": {
+        "clicks": 0,
+        "link_qa_status": "not_clicked_preserve_attribution",
+        "provider_issued_url": "https://afflat3e1.com/trk/lnk/1F15DA40-7F62-4828-8FD9-B22D78C53F9D/?o=32662&c=918277&a=803003&k=0&l=38569"
+      },
+      "wire_in_ready": true
     }
   ],
   "schema": "glp-affiliate-wire-in-approvals-v1",
@@ -1577,6 +1676,6 @@
     "b2_sheet_row": 124,
     "canonical_sheet": "Affiliate Applications Sheet",
     "mission": "g6_r1a_glp_affiliate_wirein_20260806",
-    "sheet_snapshot_sha256": "b10569d3ca231ae379cca351dbad46bd8625b19b1a2daf5ff769840d15b1a754"
+    "sheet_snapshot_sha256": "5340fc6f319d917cd7ec2ab3c0c9f4293eb86174c63ff62dc0e6a5fe1185fe2a"
   }
 }

@@ -1503,6 +1503,91 @@
       "source_clearance": true,
       "staging_eligible": true,
       "why_match": "Ivim Health publishes more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
+    },
+    {
+      "display_name": "Tyde Wellness",
+      "held_route": "/go/tyde-wellness-review?s=provider-fit.result&v=a",
+      "live_link_allowed": false,
+      "priority_score": 0,
+      "program_id": "tyde-wellness-review",
+      "promotion_authorized": false,
+      "rules": {
+        "goal": [
+          "prefer-not-to-say"
+        ],
+        "insurance": [
+          "prefer-not-to-say",
+          "self-pay",
+          "unsure"
+        ]
+      },
+      "source_clearance": true,
+      "staging_eligible": true,
+      "why_match": "Tyde Wellness publishes its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
+    },
+    {
+      "display_name": "FeelGood",
+      "held_route": "/go/feelgood-review?s=provider-fit.result&v=a",
+      "live_link_allowed": false,
+      "priority_score": 0,
+      "program_id": "feelgood-review",
+      "promotion_authorized": false,
+      "rules": {
+        "goal": [
+          "medication-form",
+          "prefer-not-to-say"
+        ],
+        "insurance": [
+          "prefer-not-to-say",
+          "self-pay",
+          "unsure"
+        ]
+      },
+      "source_clearance": true,
+      "staging_eligible": true,
+      "why_match": "FeelGood publishes more than one medication format, its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
+    },
+    {
+      "display_name": "InstaRx",
+      "held_route": "/go/instarx-review?s=provider-fit.result&v=a",
+      "live_link_allowed": false,
+      "priority_score": 0,
+      "program_id": "instarx-review",
+      "promotion_authorized": false,
+      "rules": {
+        "goal": [
+          "prefer-not-to-say"
+        ],
+        "insurance": [
+          "prefer-not-to-say",
+          "self-pay",
+          "unsure"
+        ]
+      },
+      "source_clearance": true,
+      "staging_eligible": true,
+      "why_match": "InstaRx publishes its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
+    },
+    {
+      "display_name": "RetaClinic",
+      "held_route": "/go/retaclinic-review?s=provider-fit.result&v=a",
+      "live_link_allowed": false,
+      "priority_score": 0,
+      "program_id": "retaclinic-review",
+      "promotion_authorized": false,
+      "rules": {
+        "goal": [
+          "prefer-not-to-say"
+        ],
+        "insurance": [
+          "prefer-not-to-say",
+          "self-pay",
+          "unsure"
+        ]
+      },
+      "source_clearance": true,
+      "staging_eligible": true,
+      "why_match": "RetaClinic publishes its dispensing pharmacy chain, a shipping timeframe, cancellation terms and the states it serves. This is a commercial fit on your stated priorities, not a clinical recommendation; verify current terms at the source."
     }
   ],
   "description": "Answer seven quick questions to compare providers by treatment, state, and your selected preferences \u2014 free, in about a minute.",

@@ -467,6 +467,42 @@
       "source_kind": "remote_image",
       "source_page_url": "https://ivimhealth.com/",
       "surface": "light"
+    },
+    {
+      "asset_url": "https://www.tydewellness.com/wp-content/uploads/2026/09/tyde-drk.svg",
+      "output_file": "tyde-wellness-review.webp",
+      "program_id": "tyde-wellness-review",
+      "provider": "Tyde Wellness",
+      "source_kind": "remote_image",
+      "source_page_url": "https://glp1.intake.tydewellness.com/",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://www.feelgoodmeds.com/images/logo.svg?dpl=dpl_7upp676uAyCwibzvdfUwfQKCH1T2",
+      "output_file": "feelgood-review.webp",
+      "program_id": "feelgood-review",
+      "provider": "FeelGood",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.feelgoodmeds.com/?",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://go.instarx.com/_next/image?url=%2Flogos%2Finstarx-logo.png&w=256&q=75&dpl=dpl_Ea8275wLSP2xzyxfETnyPD6exrn2",
+      "output_file": "instarx-review.webp",
+      "program_id": "instarx-review",
+      "provider": "InstaRx",
+      "source_kind": "remote_image",
+      "source_page_url": "https://go.instarx.com/glp2",
+      "surface": "light"
+    },
+    {
+      "asset_url": "https://cdn.prod.website-files.com/69d588c4a47264dd82d6f4fc/69f2e42b19ae6fdd308667d3_retaclinic-webclip-256.png",
+      "output_file": "retaclinic-review.webp",
+      "program_id": "retaclinic-review",
+      "provider": "RetaClinic",
+      "source_kind": "remote_image",
+      "source_page_url": "https://retaclinic.com/",
+      "surface": "light"
     }
   ],
   "research_authority": "Firecrawl first-party branding extraction plus direct first-party HTML verification",

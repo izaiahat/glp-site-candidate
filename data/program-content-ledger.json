@@ -7244,25 +7244,313 @@
       "starting_price": "Compounded semaglutide starts at $75/mo plus a $74.99/mo program fee; exact total depends on plan",
       "starting_price_sort": null,
       "status": "live_operator_approved_transparent_direct"
+    },
+    {
+      "affiliate_link_mode": "transparent_direct",
+      "affiliate_network": "MaxBounty",
+      "average_wait": "Reported information: the homepage advertises free 2-day shipping. Time from intake to clinician approval, dispensing and dispatch remains UNKNOWN; this is not a guaranteed total turnaround.",
+      "best_for": "Readers comparing provider-reported compounded GLP-1 program information",
+      "criteria_scores": {},
+      "display_name": "Tyde Wellness",
+      "go_route_wired": false,
+      "insurance": "UNKNOWN reimbursement; confirm directly",
+      "limitations": [
+        "Exact selected checkout and renewal bills require confirmation",
+        "Pharmacy assignment and independent licensing remain UNKNOWN"
+      ],
+      "live_link_allowed": true,
+      "meds_offered": "Compounded semaglutide and tirzepatide (provider-reported; clinician evaluation required)",
+      "operator_selection_receipt_sha256": "119eb0772c7f40047a5890324e41c7f5ecc543932ac5291ccff9fc2181b288d5",
+      "program_id": "tyde-wellness-review",
+      "promotion_authorized": true,
+      "redirector_tos_verified": false,
+      "registry_id": "tyde-wellness-review",
+      "regulatory_search_source": "data/provider-page-contracts.json#field_sources",
+      "regulatory_search_status": "USE_PROVIDER_FASTPATH_CONTRACT_AUTHORITY",
+      "research_cancellation": {
+        "quote": "Users may cancel their membership at any time by submitting a cancellation request at least two (2) weeks prior to their renewal date.",
+        "source_url": "https://www.tydewellness.com/terms-conditions/",
+        "value": "Reported information is conflicting: Terms & Conditions requires a request at least two weeks before renewal, while Membership Terms says before the renewal charge. The controlling deadline remains UNKNOWN; confirm directly with the provider before enrolling. Dispensed medication is non-returnable; refund eligibility is conditional.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_consultation_fee": {
+        "quote": "There are no hidden fees or separate monthly membership fees, so you know what your plan costs before you get started.",
+        "source_url": "https://www.tydewellness.com/",
+        "value": "Reported information: the homepage says there are no separate monthly membership fees. A distinct consultation charge is UNKNOWN, not assumed zero.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_first_month_price": {
+        "quote": "Tyde offers flexible 1-, 3-, and 6-month plans, with more savings when you choose a longer plan. You can also save $150 on your first full-dose 3- or 6-month order.",
+        "source_url": "https://www.tydewellness.com/",
+        "value": "Reported information: the website advertises a $150 introductory reduction on eligible full-dose 3- or 6-month orders. Exact checkout first charge and selected treatment remain UNKNOWN; an advertised monthly equivalent is not a first charge.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_legitscript": {
+        "quote": "The FDA does not review or approve any compounded medications for safety or effectiveness.",
+        "source_url": "https://www.tydewellness.com/faqs/",
+        "value": "UNKNOWN. LegitScript was not checked and is outside this assignment. This FDA statement is safety context, not certification evidence.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_pharmacy_type": {
+        "quote": "We may work with different pharmacies based on your location, prescription needs, and clinician recommendations.",
+        "source_url": "https://www.tydewellness.com/pharmacy-partners/",
+        "value": "Reported information: Tyde names Belmar Pharma Solutions, Casa Pharma, Olympia Pharmacy, Red Rock Home Pharmacy and Beaker Pharmacy as compounding partners. The partner page describes Belmar, Olympia and Red Rock as 503A pharmacies. These are provider-reported classifications, not independently verified registration, licensing or certification. The specific pharmacy assigned to a reader remains UNKNOWN. Compounded medications are not FDA-approved.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_shipping_wait": {
+        "quote": "free 2-day shipping",
+        "source_url": "https://www.tydewellness.com/",
+        "value": "Reported information: the homepage advertises free 2-day shipping. Time from intake to clinician approval, dispensing and dispatch remains UNKNOWN; this is not a guaranteed total turnaround.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_states_served": {
+        "quote": "Tyde Wellness currently offers telehealth services to patients located in the following states:",
+        "source_url": "https://www.tydewellness.com/states-we-serve/",
+        "value": "Reported information: Tyde's current official state list contains all 50 US states, including California, and requires physical presence in a listed state for the visit. This is not an independent licensing or every-treatment availability determination.",
+        "verified_as_of": "2026-10-10"
+      },
+      "review_path": "/reviews/tyde-wellness-review/",
+      "score": null,
+      "source_kind": "fastpath",
+      "source_url": "https://www.tydewellness.com/",
+      "starting_price": "UNKNOWN exact first and recurring bill; advertised starting amounts are not a universal total",
+      "starting_price_sort": null,
+      "status": "live_operator_approved_transparent_direct"
+    },
+    {
+      "affiliate_link_mode": "transparent_direct",
+      "affiliate_network": "MaxBounty",
+      "average_wait": "Free shipping is advertised. A definitive delivery-time commitment is not established in these captures.",
+      "best_for": "Readers comparing provider-reported compounded GLP-1 program information",
+      "criteria_scores": {},
+      "display_name": "FeelGood",
+      "go_route_wired": false,
+      "insurance": "UNKNOWN reimbursement; confirm directly",
+      "limitations": [
+        "Exact selected checkout and renewal bills require confirmation",
+        "Pharmacy assignment and independent licensing remain UNKNOWN"
+      ],
+      "live_link_allowed": true,
+      "meds_offered": "Product labels on the provider\u2019s weight-loss page: Compounded Injections, Compounded Tablets and Original Injections (provider-reported); the medication in each product is UNKNOWN from captured pages.",
+      "operator_selection_receipt_sha256": "119eb0772c7f40047a5890324e41c7f5ecc543932ac5291ccff9fc2181b288d5",
+      "program_id": "feelgood-review",
+      "promotion_authorized": true,
+      "redirector_tos_verified": false,
+      "registry_id": "feelgood-review",
+      "regulatory_search_source": "data/provider-page-contracts.json#field_sources",
+      "regulatory_search_status": "USE_PROVIDER_FASTPATH_CONTRACT_AUTHORITY",
+      "research_cancellation": {
+        "quote": "To ensure a smooth process, we require your cancellation request to be received at least **72 hours prior to your next billing date.** If prior notice is not received in this window, your subscription",
+        "source_url": "https://www.feelgoodmeds.com/refund-policy",
+        "value": "FeelGood requires cancellation requests at least 72 hours before the next billing date; otherwise cancellation takes effect in the subsequent billing cycle.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_consultation_fee": {
+        "quote": "Your Subscription Services represents a single price for the subscription purchased. This may include consultations both live and via electronic form submissions and reviews by a healthcare provider f",
+        "source_url": "https://www.feelgoodmeds.com/refund-policy",
+        "value": "Consultations may be included in the subscription price. A separate consultation fee is not established by the captured pages.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_first_month_price": {
+        "quote": "Personalized GLP-1 Treatments \u2014 Starting at $149/month",
+        "source_url": "https://www.feelgoodmeds.com/refund-policy",
+        "value": "Starting at $149/month is published; the exact first checkout total remains unknown.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_legitscript": {
+        "quote": "US-Certified Pharmacy",
+        "source_url": "https://www.feelgoodmeds.com/weight-loss",
+        "value": "Unknown: the phrase US-Certified Pharmacy does not establish current LegitScript certification.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_pharmacy_type": {
+        "quote": "By accepting these Terms of Use, you additionally understand and agree that FeelGood is not acting as a pharmacy, nor does FeelGood control or interfere with any such services. By accepting these Term",
+        "source_url": "https://www.feelgoodmeds.com/terms-of-use",
+        "value": "Reported information: FeelGood states it is not acting as a pharmacy. The captured pages do not identify the assigned dispensing pharmacy or establish independent pharmacy licensing. FDA states that compounded drugs are not FDA approved and that it does not review them for safety, effectiveness or quality before they are marketed.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_shipping_wait": {
+        "quote": "No membership\u2022Cancel anytime\u2022Free shipping",
+        "source_url": "https://www.feelgoodmeds.com/weight-loss",
+        "value": "Free shipping is advertised. A definitive delivery-time commitment is not established in these captures.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_states_served": {
+        "quote": "To the extent the Services you seek require care by a licensed provider, all Healthcare Service consultations are provided by a Provider licensed in the state where you, the patient, are located, and ",
+        "source_url": "https://www.feelgoodmeds.com/terms-of-use",
+        "value": "The terms require a provider licensed in the patient's state. A definitive state availability list is not established in these captures.",
+        "verified_as_of": "2026-10-10"
+      },
+      "review_path": "/reviews/feelgood-review/",
+      "score": null,
+      "source_kind": "fastpath",
+      "source_url": "https://www.feelgoodmeds.com/refund-policy",
+      "starting_price": "UNKNOWN exact first and recurring bill; advertised starting amounts are not a universal total",
+      "starting_price_sort": null,
+      "status": "live_operator_approved_transparent_direct"
+    },
+    {
+      "affiliate_link_mode": "transparent_direct",
+      "affiliate_network": "MaxBounty",
+      "average_wait": "The landing page advertises free 1-2 day shipping in temperature-controlled packaging; this is a provider-reported shipping estimate, not a guaranteed intake-to-delivery time.",
+      "best_for": "Readers comparing provider-reported compounded GLP-1 program information",
+      "criteria_scores": {},
+      "display_name": "InstaRx",
+      "go_route_wired": false,
+      "insurance": "UNKNOWN reimbursement; confirm directly",
+      "limitations": [
+        "Exact selected checkout and renewal bills require confirmation",
+        "Pharmacy assignment and independent licensing remain UNKNOWN"
+      ],
+      "live_link_allowed": true,
+      "meds_offered": "Compounded semaglutide and tirzepatide (provider-reported; clinician evaluation required)",
+      "operator_selection_receipt_sha256": "119eb0772c7f40047a5890324e41c7f5ecc543932ac5291ccff9fc2181b288d5",
+      "program_id": "instarx-review",
+      "promotion_authorized": true,
+      "redirector_tos_verified": false,
+      "registry_id": "instarx-review",
+      "regulatory_search_source": "data/provider-page-contracts.json#field_sources",
+      "regulatory_search_status": "USE_PROVIDER_FASTPATH_CONTRACT_AUTHORITY",
+      "research_cancellation": {
+        "quote": "Yes \u2014 you can cancel any time with no fees and no questions asked.",
+        "source_url": "https://go.instarx.com/glp2",
+        "value": "The landing page says cancellation is available any time with no fees; the terms separately require cancellation before renewal. Refund eligibility and the cancellation procedure are not established by the captured refund page.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_consultation_fee": {
+        "quote": "The doctor consultation fee of $45 is included as part of your monthly price.",
+        "source_url": "https://instarx.com/policies/terms-and-conditions",
+        "value": "The terms state that the $45 doctor consultation fee is included in the monthly price.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_first_month_price": {
+        "quote": "Starting at$148\u2014 Doctor-prescribed GLP\u20111, delivered in 1-2 days.No insurance needed. No hidden fees. No clinic visits.",
+        "source_url": "https://go.instarx.com/glp2",
+        "value": "UNKNOWN treatment-specific first-month total: the landing page advertises Starting at $148 but does not bind that starting amount to a named medication or establish the initial billing period.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_legitscript": {
+        "quote": "Verify LegitScript Approval for instarx.com",
+        "source_url": "https://instarx.com/",
+        "value": "UNKNOWN: independent LegitScript verification is outside scope. The homepage publishes this verification-link label; the link was not followed.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_pharmacy_type": {
+        "quote": "All Insta Rx medications are compounded at U.S.-licensed pharmacies and prescribed only after review by a licensed physician.",
+        "source_url": "https://go.instarx.com/glp2",
+        "value": "Reported information: InstaRx reports compounding at U.S.-licensed pharmacies. Assigned pharmacy, independent licensing and 503A/503B classification remain UNKNOWN. Compounded medications are not FDA-approved.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_shipping_wait": {
+        "quote": "Free 1-2 day shipping, temperature-controlled.",
+        "source_url": "https://go.instarx.com/glp2",
+        "value": "The landing page advertises free 1-2 day shipping in temperature-controlled packaging; this is a provider-reported shipping estimate, not a guaranteed intake-to-delivery time.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_states_served": {
+        "quote": "What states is InstaRX available in?",
+        "source_url": "https://instarx.com/",
+        "value": "UNKNOWN consumer service-state list: the captured homepage shows this question without an answer.",
+        "verified_as_of": "2026-10-10"
+      },
+      "review_path": "/reviews/instarx-review/",
+      "score": null,
+      "source_kind": "fastpath",
+      "source_url": "https://go.instarx.com/glp2",
+      "starting_price": "UNKNOWN exact first and recurring bill; advertised starting amounts are not a universal total",
+      "starting_price_sort": null,
+      "status": "live_operator_approved_transparent_direct"
+    },
+    {
+      "affiliate_link_mode": "transparent_direct",
+      "affiliate_network": "MaxBounty",
+      "average_wait": "Reported typical turnaround is a few business days after clinician approval. An exact delivery date remains UNKNOWN; this is a provider estimate, not a guarantee.",
+      "best_for": "Readers comparing provider-reported prescription GLP-1 plan information",
+      "criteria_scores": {},
+      "display_name": "RetaClinic",
+      "go_route_wired": false,
+      "insurance": "UNKNOWN; terms describe cash-pay purchases. Confirm directly before relying on coverage.",
+      "limitations": [
+        "Exact upfront and renewal bills remain unknown",
+        "Dispensing pharmacy identity and 503A/503B classification remain unknown"
+      ],
+      "live_link_allowed": false,
+      "meds_offered": "Prescription semaglutide and tirzepatide plans, including compounded combinations, via physician consult (provider-reported; clinician evaluation required)",
+      "operator_selection_receipt_sha256": "119eb0772c7f40047a5890324e41c7f5ecc543932ac5291ccff9fc2181b288d5",
+      "program_id": "retaclinic-review",
+      "promotion_authorized": false,
+      "redirector_tos_verified": false,
+      "registry_id": "retaclinic-review",
+      "regulatory_search_source": "data/provider-page-contracts.json#field_sources",
+      "regulatory_search_status": "USE_PROVIDER_FASTPATH_CONTRACT_AUTHORITY",
+      "research_cancellation": {
+        "quote": "Yes. You can pause or discontinue a protocol at any time through your patient portal. If your compound has not yet shipped, a full refund is available upon cancellation request.",
+        "source_url": "https://retaclinic.com/faq",
+        "value": "Reported cancellation through the patient portal; the FAQ offers a full refund before shipment. The terms say shipped custom compounded products cannot be returned. Renewal cancellation cutoff remains UNKNOWN.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_consultation_fee": {
+        "quote": "Initial and follow-up consultations for refills are free. The clinician intake review is included in the protocol price. There is no separate fee to speak with a clinician about whether a protocol may",
+        "source_url": "https://retaclinic.com/faq",
+        "value": "Reported information: initial and refill consultations are free; clinician intake review is included in the protocol price.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_first_month_price": {
+        "quote": "1 month plan \u00b7 $190/mo3 month plan \u00b7 $175/mo6 month plan \u00b7 $160/mo12 month plan \u00b7 $150/mo",
+        "source_url": "https://retaclinic.com/products",
+        "value": "Reported information: the Semaglutide/B12 card lists a one-month plan at $190/month, with lower monthly equivalents for longer commitments. Exact selected-product initial charge, renewal charge and prepaid total remain UNKNOWN.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_legitscript": {
+        "quote": "Every protocol is physician-approved before anything ships.",
+        "source_url": "https://retaclinic.com/",
+        "value": "UNKNOWN. No independent LegitScript lookup was performed; the physician-review quote is context, not certification evidence.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_pharmacy_type": {
+        "quote": "Compounded medications are not FDA-approved as finished drug products. They are prepared for individual patients at US-licensed compounding pharmacies. Your physician will discuss benefits and risks d",
+        "source_url": "https://retaclinic.com/",
+        "value": "RetaClinic states: Compounded medications are not FDA-approved as finished drug products. They are prepared for individual patients at US-licensed compounding pharmacies. Your physician will discuss benefits and risks during your consult. Dispensing pharmacy identity and 503A/503B classification remain UNKNOWN; no independent licensing verification is asserted. FDA risk note: RetaClinic\u2019s pages also list retatrutide, which its product page labels Research Use Only. FDA states that retatrutide cannot be used in compounding under federal law, is not a component of any FDA-approved drug and has not been found safe and effective for any condition, and that it has warned telehealth companies for marketing unapproved drugs such as retatrutide. This review does not cover or recommend retatrutide.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_shipping_wait": {
+        "quote": "Once your intake is clinician-approved, your peptides are prepared by our pharmacy partners and shipped directly to you. Typical turnaround is a few business days. You will receive tracking informatio",
+        "source_url": "https://retaclinic.com/faq",
+        "value": "Reported typical turnaround is a few business days after clinician approval. An exact delivery date remains UNKNOWN; this is a provider estimate, not a guarantee.",
+        "verified_as_of": "2026-10-10"
+      },
+      "research_states_served": {
+        "quote": "Physician review within hours30+ peptides availableAvailable in all 50 states",
+        "source_url": "https://retaclinic.com/",
+        "value": "The homepage reports availability in all 50 states. Treatment-specific restrictions and independent coverage verification remain UNKNOWN.",
+        "verified_as_of": "2026-10-10"
+      },
+      "review_path": "/reviews/retaclinic-review/",
+      "score": null,
+      "source_kind": "fastpath",
+      "source_url": "https://retaclinic.com/products",
+      "starting_price": "Semaglutide/B12 listed at $190/mo for a one-month plan; longer-term monthly equivalents differ; exact first and renewal bills UNKNOWN",
+      "starting_price_sort": null,
+      "status": "live_operator_approved_transparent_direct"
     }
   ],
   "promotion_authorized": true,
   "research_enrichment": {
     "fields_merged": 7,
-    "merged_at_utc": "2026-10-10T09:03:10Z",
+    "merged_at_utc": "2026-10-12T02:15:31Z",
     "note": "legitscript values are provider-claim (public checker was rate-limited 2026-08-06); never render as independently verified",
     "price_index_evidence_preserved": {},
     "program_filter": [
-      "ivim-health-review"
+      "retaclinic-review"
     ],
     "programs_seeded": [
-      "ivim-health-review"
+      "retaclinic-review"
     ],
     "research_dirs": [
       "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/deep-research-20260806",
       "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/g6-r1a-wirein-20260806/research",
       "/home/ubuntu/business/reports/glp-clinic-scout/affiliate-machine/surface-unification-20260806/research",
-      "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/Q8/accepted-research"
+      "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/RV-Q13/accepted-research"
     ],
     "source": [
       "deep-research-20260806",
