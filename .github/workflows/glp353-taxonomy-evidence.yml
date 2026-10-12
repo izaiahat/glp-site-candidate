@@ -9,6 +9,10 @@ on:
       - "package.json"
       - "reports/ops/glp353-taxonomy-reverification-20261009/**"
       - "scripts/reconcile-therapeutic-wire-in.mjs"
+      - "scripts/refresh-therapeutic-taxonomy.py"
+      - "tests/test_coivas_taxonomy_refresh.py"
+      - "tests/coivas-taxonomy-evidence.test.mjs"
+      - "reports/ops/glp38-20260915/taxonomy-refresh/**"
       - "scripts/therapeutic-taxonomy-refresh-policies.json"
       - "src/affiliate-relationship-sync.mjs"
       - "src/citation-attribution.mjs"
@@ -25,6 +29,10 @@ on:
       - "src/provider-display-evidence.mjs"
       - "src/provider-dynamic-profiles.mjs"
       - "src/provider-identity.mjs"
+      - "src/provider-price-append.mjs"
+      - "data/provider-price-append.json"
+      - "scripts/bind-provider-price-append.mjs"
+      - "tests/provider-price-append.test.mjs"
       - "src/therapeutic-taxonomy.mjs"
       - "src/typed-price-labels.mjs"
       - "tests/glp181-taxonomy-identity.test.mjs"
@@ -53,7 +61,9 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
+      - name: Coivas maintained producer regression (offline)
+        run: python3 tests/test_coivas_taxonomy_refresh.py
       - name: Evidence custody, held classification, canonical identity and stale negative
-        run: node --test tests/glp353-taxonomy-reverification.test.mjs tests/therapeutic-taxonomy-build6.test.mjs tests/glp181-taxonomy-identity.test.mjs
+        run: node --test tests/provider-price-append.test.mjs tests/coivas-taxonomy-evidence.test.mjs tests/glp353-taxonomy-reverification.test.mjs tests/therapeutic-taxonomy-build6.test.mjs tests/glp181-taxonomy-identity.test.mjs
       - name: Native taxonomy and dynamic-profile check (no build)
         run: node scripts/reconcile-therapeutic-wire-in.mjs --release . --check

@@ -40,6 +40,19 @@ export function projectProviderPriceAppend(currentBytes,binding,kind) {
  if(canonical(checked)!==canonical(binding))throw Error('append_binding_invalid');
  return beforeBytes;
 }
+// Maintained evidence-only successor. Reuse the authenticated original price
+// predecessor and complete append scope; never edit frozen or ledger pins.
+export function refreshProviderPriceAppendEvidence(currentBytes,binding) {
+ if(binding?.kind!=='registry')throw Error('append_binding_invalid');
+ const beforeBytes=Buffer.from(binding.predecessor_base64,'base64');
+ projectProviderPriceAppend(beforeBytes,binding,'registry');
+ const successor=makeProviderPriceAppend(beforeBytes,currentBytes,'registry',binding.added_ids);
+ for(const key of ['predecessor_base64','predecessor_sha256','predecessor_semantic_sha256','added_ids']) {
+  if(canonical(successor[key])!==canonical(binding[key]))throw Error('append_predecessor_drift');
+ }
+ projectProviderPriceAppend(currentBytes,successor,'registry');
+ return successor;
+}
 export function providerPricePredecessorBytes(bytes,kind,readBytes=readFileSync) {
  const ids=['rightwell-review','willow-review','ivim-health-review'];
  if(!JSON.parse(bytes).programs.some(p=>ids.includes(p.program_id)))return bytes;

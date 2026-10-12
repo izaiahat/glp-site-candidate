@@ -4957,7 +4957,7 @@
         "network_program_id": "32122",
         "sheet_row": 723,
         "relationship_status": "approved_active_tracking_ready",
-        "source_checked_at": "2026-09-09T15:12:30Z",
+        "source_checked_at": "2026-10-11T23:20:16Z",
         "promotion_denied": false,
         "lifecycle": "reported",
         "reported_information": true
@@ -5048,7 +5048,7 @@
         "network_program_id": "29207",
         "sheet_row": 731,
         "relationship_status": "approved_active_tracking_ready",
-        "source_checked_at": "2026-09-09T15:13:26Z",
+        "source_checked_at": "2026-10-11T23:20:20Z",
         "promotion_denied": false,
         "lifecycle": "reported",
         "reported_information": true
@@ -5178,7 +5178,7 @@
         "network_program_id": "31359",
         "sheet_row": 713,
         "relationship_status": "approved_active_tracking_ready",
-        "source_checked_at": "2026-09-09T15:11:22Z",
+        "source_checked_at": "2026-10-11T23:20:24Z",
         "promotion_denied": false,
         "lifecycle": "reported",
         "reported_information": true
@@ -11665,9 +11665,9 @@
         "path": "reports/ops/orchestration-restore-20260907/WS-R/live-vital-launch/PACKET.json",
         "sha256": "9a1cd81680474fabc803eed65789797307db256aa5e01cd552ea461484798fce"
       },
-      "taxonomy_refresh_coivas_run-20261011T232425601480Z": {
-        "path": "reports/ops/fable-plan-2-20261009/lanes/T1/taxonomy-refresh/run-20261011T232425601480Z/coivas-verification.json",
-        "sha256": "305970d2310b52735fbad5818e506cb815b31b88d338ec9ac48f10f54e22200d"
+      "taxonomy_refresh_coivas_run-20261012T030059882049Z": {
+        "path": "reports/ops/glp38-20260915/taxonomy-refresh/run-20261012T030059882049Z/coivas-verification.json",
+        "sha256": "be59e8359a488320127c8e9114b710898b16c3b5886e223ea613d3cb3f580f5c"
       }
     },
     "derivation": "Set-union projection from the sealed base map, corrected Firecrawl refresh, and brand/form addendum. Tags are accepted only when an authority row explicitly records them; missing tags remain unknown and are never inferred from prose.",
@@ -11916,18 +11916,18 @@
         "delivery_form_tags": [],
         "evidence_bindings": [
           {
-            "authority": "taxonomy_refresh_coivas_run-20261011T232425601480Z",
-            "authority_sha256": "305970d2310b52735fbad5818e506cb815b31b88d338ec9ac48f10f54e22200d",
+            "authority": "taxonomy_refresh_coivas_run-20261012T030059882049Z",
+            "authority_sha256": "be59e8359a488320127c8e9114b710898b16c3b5886e223ea613d3cb3f580f5c",
             "source_url": "https://www.coivas.com/challenge",
-            "verified_as_of": "2026-10-11",
-            "evidence_sha256": "40159c9ff47b6647b4f68850811c3dad64172c099bd5569f7738c343c5140035"
+            "verified_as_of": "2026-10-12",
+            "evidence_sha256": "0ebd0d0d8a5dfa6290dc4f27eca7f90964cedde442cf7f2ebcda53dd4854dbbe"
           }
         ],
         "molecule_tags": [
           "semaglutide",
           "tirzepatide"
         ],
-        "normalized_sha256": "fda1efd3d4c91ccb97c5c9266d5c9ff0026a88c92b754d83a99d8621aac45bd7",
+        "normalized_sha256": "d6fcd86924d71d5ba46b3e67e8579509a2be60e03481d1ed24c1d0dbd655f3a7",
         "program_id": "coivas",
         "provider": "Coivas",
         "registry_program_id": "awin-128761",
@@ -11939,7 +11939,7 @@
         "treatment_type_tags": [
           "compounded"
         ],
-        "verified_as_of": "2026-10-11"
+        "verified_as_of": "2026-10-12"
       },
       "coreage-rx-glp-1-1632": {
         "brand_name_tags": [],
@@ -14436,7 +14436,7 @@
       "/best/expanded-curated-glp-1-programs/"
     ],
     "schema": "glp-therapeutic-taxonomy-v1",
-    "sealed_as_of": "2026-10-11"
+    "sealed_as_of": "2026-10-12"
   },
   "updated_at": "2026-08-18"
 }
