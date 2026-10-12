@@ -102,6 +102,23 @@
         "path": "data/blog/accepted-guides/how-to-get-oral-glp-1/review.json",
         "sha256": "14bc6b52d8b2d8e550a973f831737b2ef7ed361e4187f22b929d3497b64544a2"
       }
+    },
+    {
+      "entry_id": "395d836eb92344387fec898e",
+      "route": "/guides/texas-glp-1-access/",
+      "decorative_image_policy": "existing-approved-editorial-evidence-hero; no new generation or shared-manifest mutation",
+      "article": {
+        "path": "data/blog/accepted-guides/texas-glp-1-access/article.json",
+        "sha256": "5614488dfe09d1c7ae741fe3d8ea4919e06bc5bd2e240f4b6800082dafe637ce"
+      },
+      "qa": {
+        "path": "data/blog/accepted-guides/texas-glp-1-access/qa.json",
+        "sha256": "99c9605c2653b8259df2ab2be53af4d004e1ab35753f0e212a892da9bd89467b"
+      },
+      "review": {
+        "path": "data/blog/accepted-guides/texas-glp-1-access/review.json",
+        "sha256": "e8bd7c19746212c7401224d49bb724e217a289369c04fa9956055d7b281ed3be"
+      }
     }
   ]
 }
