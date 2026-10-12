@@ -45,6 +45,21 @@ class CoivasRefreshTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stdout.strip(), str(ROOT))
 
+    def test_refresh_derives_the_dependent_price_binding_before_registry_write(self):
+        registry = json.loads((ROOT / 'data/program-registry.json').read_text())
+        target, original, successor = refresh.derive_price_append(registry)
+        before, after = json.loads(original), json.loads(successor)
+        self.assertEqual(before['ledger'], after['ledger'])
+        for field in ('predecessor_base64', 'predecessor_sha256', 'predecessor_semantic_sha256', 'added_ids'):
+            self.assertEqual(before['registry'][field], after['registry'][field])
+        self.assertEqual(target.read_bytes(), original, 'derivation is no-write')
+        changed = copy.deepcopy(registry)
+        changed['programs'][0]['program_id'] = 'unreviewed-price-identity'
+        with self.assertRaisesRegex(ValueError, 'taxonomy_append_successor_refused'):
+            refresh.derive_price_append(changed)
+        source = (ROOT / 'scripts/refresh-therapeutic-taxonomy.py').read_text()
+        self.assertLess(source.index('append = derive_price_append(candidate)'), source.index('os.replace(temp, REGISTRY)'))
+
     def test_capture_retains_exact_raw_response_bytes(self):
         import contextlib
         import io
