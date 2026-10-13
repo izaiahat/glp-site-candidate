@@ -279,6 +279,31 @@
       url.searchParams.set("cs_click_id", clickId);
       return url.toString();
     }
+    // PB93: only the six issued MaxBounty offers for publisher 803003 own S2.
+    // No placement, health context, advertising IDs or Katalys fallback here.
+    if (anchor.dataset.network === "MaxBounty") {
+      const offers = ["31359", "32122", "29207", "32639", "32854", "32662"];
+      if (url.protocol !== "https:" || !["afflat3e1.com", "afflat3e3.com"].includes(url.hostname)
+          || !url.pathname.startsWith("/trk/lnk/")
+          || url.searchParams.getAll("a").length !== 1 || url.searchParams.get("a") !== "803003"
+          || url.searchParams.getAll("o").length !== 1 || !offers.includes(url.searchParams.get("o"))) return anchor.href;
+      const existing = url.searchParams.getAll("s2");
+      if (existing.length > 1) return anchor.href;
+      if (existing.length === 1 && existing[0] !== clickId) {
+        // Only replace an identity previously added by this native handler.
+        // A saved original with issuer-owned S2 (or a changed target) is not ours.
+        const original = decoratedAnchors.get(anchor);
+        if (original == null) return anchor.href;
+        let issued;
+        try { issued = new URL(original, window.location.href); } catch { return anchor.href; }
+        if (issued.searchParams.has("s2")) return anchor.href;
+        const withoutOwnedId = new URL(url);
+        withoutOwnedId.searchParams.delete("s2");
+        if (withoutOwnedId.toString() !== issued.toString()) return anchor.href;
+      }
+      url.searchParams.set("s2", clickId);
+      return url.toString();
+    }
     const codec = anchor.dataset.subidCodec || anchor.dataset.network;
     const params = NETWORK_PARAMS[codec] || NETWORK_PARAMS.Katalys;
     // Advertising click IDs belong only to the governed /go receiver, never
