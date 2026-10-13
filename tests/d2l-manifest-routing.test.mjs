@@ -7,6 +7,8 @@ import { completeGoAuthority } from './fixtures/complete-go-authority.mjs';
 import { loadAffiliateLinkMap } from '../src/affiliate-link-map.mjs';
 import {buildPhase3PageGraph} from '../src/phase3-page-graph.mjs';
 import {parseGoQuery} from '../src/worker.mjs';
+import {JSDOM} from 'jsdom';
+import {resolveCardOutbound,approvedDirectCard} from '../src/card-outbound.mjs';
 const read=p=>JSON.parse(fs.readFileSync(new URL('../'+p,import.meta.url),'utf8'));
 const fixture={programs:{}};
 const args={graph:read('data/phase3-page-graph.json'),pharmacyInput:read('data/phase3-pharmacy-render-input.json'),pricingMatrix:read('data/provider-pricing-matrix.json'),programRegistry:read('data/program-registry.json'),homeSpec:{rows:[]},articles:['data/blog/content-batch.json','data/blog/content-national-wow-additions.json'].flatMap(p=>read(p).articles).filter(a=>a.canonical_path.startsWith('/guides/')&&!/(erectile|viagra|cialis|sildenafil|tadalafil|online-ed|peptide|bpc-157|cjc-1295|ipamorelin|hair-loss|minoxidil|finasteride|trt|testosterone|metabolic-health|metabolic-syndrome|insulin-resistance|continuous-glucose)/.test(a.canonical_path))};
@@ -98,4 +100,85 @@ test('D2l direct-only contractual exception cannot be cleared by a generic promo
  held.profiles['glp-clinic-scout'].exceptions.go={enabled:true,reason:'Explicit historical direct-only test fixture',surface_restriction_basis:'operator_terms_transparent_direct_only'};
  const heldPages=buildPhase3PageGraph({...args,programRegistry:heldRegistry,goPromotionAuthority:fixture}).pages;
  let count=0;for(const p of heldPages.filter(p=>['/mounjaro/','/wegovy/'].includes(p.route))){for(const a of anchors(p.html,'biltrx')){count++;assert(!href(a).startsWith('/go/'));}}assert(count>0);
+});
+
+// Census independently of mode: missing metadata must not make a test vacuous.
+const comparisonCounts=new Map([['/both/',7],['/starter/',31],['/step-up/',31]]);
+const comparisonSelector='[data-comparison-card] a[rel~="sponsored"]';
+function assertComparisonOutbound(pages,authority) {
+ let goCount=0,directCount=0;
+ for(const [route,count] of comparisonCounts) {
+  const page=pages.find(p=>p.route===route);assert(page,route);
+  const dom=new JSDOM(page.html); // No scripts/resources/navigation.
+  try {
+   const doc=dom.window.document;
+   const cards=[...doc.querySelectorAll('[data-comparison-card]')];
+   const actions=[...doc.querySelectorAll(comparisonSelector)];
+   assert.equal(cards.length,count,route+' cards');assert.equal(actions.length,count,route+' anchors');
+   assert.equal(doc.querySelectorAll('[data-comparison-card][data-medications*="retatrutide"]').length,0);
+   assert.equal(doc.querySelectorAll('[data-comparison-card][data-program*="fella"]').length,0);
+   for(const action of actions) {
+    const id=action.dataset.program;
+    const program=args.programRegistry.programs.find(p=>p.program_id===id||p.review_slug===id);assert(program);
+    const outbound=resolveCardOutbound({program,affiliate:links[id],promotionAuthority:authority,
+     pageSlug:route.slice(1,-1),position:'provider-card',rankPosition:cards.indexOf(action.closest('[data-comparison-card]'))+1});
+    assert(outbound.mode==='go'||approvedDirectCard(outbound,links[id],authority.programs[program.program_id]));
+    if(outbound.mode==='go')goCount++;else directCount++;
+    assert.equal(action.getAttribute('href'),outbound.href,route+': '+id+' target');
+    const attrDom=new JSDOM(`<a ${outbound.attributes}></a>`);
+    try { for(const attr of attrDom.window.document.querySelector('a').attributes)
+     assert.equal(action.getAttribute(attr.name),attr.value,route+': '+id+' '+attr.name);
+    } finally { attrDom.window.close(); }
+    assert.equal(action.dataset.linkPosition,'provider-card');
+    assert.equal(action.dataset.analyticsEvent,'affiliate_click');
+    assert.equal(action.className,'cs-btn cs-palette-action');assert.equal(action.textContent,'Visit provider');
+    assert.equal(action.getAttribute('rel'),'sponsored nofollow noopener');
+    assert(action.closest('[data-comparison-card]').querySelector('a[data-card-review]'));
+   }
+  } finally { dom.window.close(); }
+ }
+ return {goCount,directCount};
+}
+test('D2l comparison presets retain all 69 resolved modes and 25 GO targets',()=>{
+ assert.deepEqual(assertComparisonOutbound(adopted,loadGoPromotionAuthority()),{goCount:25,directCount:44});
+});
+test('D2l TEST-only priced Reta row cannot enter comparison presets',()=>{
+ const pricingMatrix=structuredClone(args.pricingMatrix),authority=loadGoPromotionAuthority();
+ const subject=Object.values(pricingMatrix.providers).find(entry=>entry.program_id==='direct-meds');
+ assert(subject?.medications.length>0);
+ // TEST-only adversarial pricing input, not a health claim or production grant.
+ subject.medications.push({...structuredClone(subject.medications[0]),medication_id:'retatrutide'});
+ assert(subject.medications.some(row=>row.medication_id==='retatrutide'));
+ const pages=buildPhase3PageGraph({...args,pricingMatrix,goPromotionAuthority:authority}).pages;
+ assert.deepEqual(assertComparisonOutbound(pages,authority),{goCount:25,directCount:44});
+});
+test('D2l comparison presets consume TEST-only complete GO and approved direct controls',()=>{
+ const authority=loadGoPromotionAuthority();
+ const program=args.programRegistry.programs.find(p=>p.program_id==='orderlymeds');assert(program);
+ // Explicit TEST-only direct approval: no GO receipt fields; never persisted.
+ authority.programs.orderlymeds={status:'VERIFIED',promotion_authorized:true,issued_link:links.orderlymeds.affiliate_href};
+ assert(approvedDirectCard(resolveCardOutbound({program,affiliate:links.orderlymeds,promotionAuthority:authority,
+  pageSlug:'starter',position:'provider-card',rankPosition:1}),links.orderlymeds,authority.programs.orderlymeds));
+ const directCounts=assertComparisonOutbound(render(authority),authority);
+ assert(directCounts.directCount>44);assert.equal(directCounts.goCount+directCounts.directCount,69);
+ authority.programs.orderlymeds=completeGoAuthority(program,links.orderlymeds);
+ const counts=assertComparisonOutbound(render(authority),authority);
+ assert.deepEqual(counts,{goCount:25,directCount:44});
+});
+for(const state of ['held','review-only'])test(`D2l comparison presets preserve ${state} exclusion`,()=>{
+ const registry=structuredClone(args.programRegistry),authority=loadGoPromotionAuthority();
+ const program=registry.programs.find(p=>p.program_id==='orderlymeds');assert(program);
+ // This subject is present on starter/step-up; both has no published term.
+ for(const route of ['/starter/','/step-up/'])assert(anchors(adopted.find(p=>p.route===route).html,'orderlymeds').length>0);
+ if(state==='held')program.commercial_state='held';
+ else { program.profiles['glp-clinic-scout'].surfaces.compare=false;program.profiles['glp-clinic-scout'].surfaces.review=true; }
+ const outbound=resolveCardOutbound({program,affiliate:links.orderlymeds,promotionAuthority:authority,pageSlug:'starter',position:'provider-card',rankPosition:1});
+ assert.equal(outbound.mode,'held');assert.equal(outbound.href,null);assert.equal(outbound.attributes,'');
+ assert.equal(approvedDirectCard(outbound,links.orderlymeds,authority.programs.orderlymeds),false);
+ const pages=buildPhase3PageGraph({...args,programRegistry:registry,goPromotionAuthority:authority}).pages;
+ for(const route of comparisonCounts.keys()) {
+  const dom=new JSDOM(pages.find(p=>p.route===route).html);
+  try {assert.equal(dom.window.document.querySelectorAll('[data-comparison-card][data-program="orderlymeds"]').length,0);}
+  finally {dom.window.close();}
+ }
 });
