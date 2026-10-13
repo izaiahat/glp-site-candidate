@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { renderBlogPost, acceptedRenderContract, renderContractProse, plainContractText } from '../src/blog-system.mjs';
+import { renderBlogPost, reviewBrief, acceptedRenderContract, renderContractProse, plainContractText } from '../src/blog-system.mjs';
 import { upgradeInsightsArticle } from '../src/phase3-page-graph.mjs';
 import { loadAcceptedGuides } from '../src/accepted-guide-source.mjs';
 
@@ -70,4 +70,21 @@ test('render contract dates: Updated=dateModified, prices=pricesCheckedDate only
   assert.match(html, /· Updated 2026-10-13</);
   assert.doesNotMatch(html, /Prices checked <span data-prices-checked-date>[^<]*–/);
   if (/data-prices-checked-date/.test(html)) assert.match(html, /data-prices-checked-date>2026-10-09</);
+});
+
+test('real reviewed oral GLP-1 successor update applies over the accepted addition and renders the contract', async () => {
+  const { loadAcceptedUpdates, applyAcceptedUpdates } = await import('../src/accepted-update-source.mjs');
+  const additions = loadAcceptedGuides(root);
+  const updates = loadAcceptedUpdates(root).filter((u) => u.article.canonical_path === '/guides/how-to-get-oral-glp-1/');
+  assert.equal(updates.length, 1);
+  const article = applyAcceptedUpdates(additions, updates).find((a) => a.canonical_path === '/guides/how-to-get-oral-glp-1/');
+  assert.equal(article.render_contract.schema, 'glp-accepted-guide-render-v1');
+  assert.equal(reviewBrief(article, author).status, 'PASS');
+  const html = renderBlogPost(article, null, author, []);
+  assert.match(html, /data-release="release-ready"/);
+  assert.doesNotMatch(html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, ''), /\[S\d+\]|\*\*|facts-to-compare/);
+  assert.match(html, /<nav class="guide-toc" data-render-contract="automatic-sections"/);
+  assert.equal((html.match(/<h3 id="section-/g) || []).length, 4);
+  assert.match(html, /<meta name="description" content="Learn how to get oral GLP-1 medicines with five checks/);
+  assert.doesNotMatch(html, /captured competitor/i);
 });
