@@ -61,3 +61,13 @@ test('legacy accepted guides without render_contract keep their previous output 
     assert.doesNotMatch(html, /data-render-contract=/);
   }
 });
+
+test('render contract dates: Updated=dateModified, prices=pricesCheckedDate only', () => {
+  const a = fixture();
+  a.updated_at = '2026-10-13'; a.prices_checked_date = '2026-10-09'; a.source_checked_through = '2026-10-09';
+  a.sources = a.sources.map((s, i) => ({ ...s, verified_as_of: i ? '2026-10-13' : '2026-10-09' }));
+  const html = renderBlogPost(a, null, author, []);
+  assert.match(html, /· Updated 2026-10-13</);
+  assert.doesNotMatch(html, /Prices checked <span data-prices-checked-date>[^<]*–/);
+  if (/data-prices-checked-date/.test(html)) assert.match(html, /data-prices-checked-date>2026-10-09</);
+});
