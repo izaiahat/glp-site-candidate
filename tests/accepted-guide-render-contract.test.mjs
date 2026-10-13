@@ -20,8 +20,8 @@ function fixture() {
     { source_id: 'S15', publisher: 'Novo Nordisk', url: 'https://www.novo-pi.com/wegovy.pdf', source_class: 'primary', verified_as_of: '2026-10-13', claim_ids: ['C1'] }];
   base.claims = [{ claim_id: 'C1', statement: '| Wegovy tablets | **Label.** Indicated text. [S15][S4] |', source_ids: ['S15', 'S4'] }];
   base.sections = [{ heading: 'Check 1', paragraphs: ['Intro **bold** text. [S15]', 'Mechanism prose. [S4]'], bullets: [], ordered_items: [],
-    subheadings: [{ heading: 'How the receptor mechanism and blood-sugar evidence differ', before_paragraph: 1 }],
-    tables: [{ headers: ['Product', 'What the label establishes'], rows: [['Wegovy tablets', 'Indicated. **Page 3.** [S15]']], after_paragraph: 1 }] }];
+    subheadings: [{ heading: 'How the receptor mechanism and blood-sugar evidence differ', before_paragraph: 1, order: 2 }],
+    tables: [{ headers: ['Product', 'What the label establishes'], rows: [['Wegovy tablets', 'Indicated. **Page 3.** [S15]']], after_paragraph: 1, order: 1 }] }];
   base.faqs = [{ q: 'Same?', a: 'No. **Section 1.** [S15][S4]' }];
   base.direct_answer = 'Start with a clinician and confirm the exact product. [S15][S4]';
   base.word_count = 1600; // outside accepted long-form equality is irrelevant to rendering
@@ -104,4 +104,54 @@ test('postbuild AEO citation-label pass relabels render-contract source-id ledge
   // Legacy numeric rows keep their previous behaviour.
   const legacy = '<li id="guide-source-1"><strong>FDA</strong><span>x</span><a href="https://www.fda.gov/a" rel="nofollow noopener" data-citation="guide_source_ledger">Open source</a><small>Checked 2026-09-01</small></li>';
   assert.ok(remediatePage(legacy, newState()).includes('>FDA — regulatory document, 2026-09</a>'));
+});
+
+const render = (brief) => upgradeInsightsArticle(renderBlogPost(brief, null, author, []), { ...brief, author }, []);
+
+test('CR-04: unknown or misplaced [S#] tokens fail closed across every published contract field', () => {
+  const cases = [
+    [(b) => { b.sections[0].heading = 'Check 1 [S99]'; }, /citation_in_heading:.*sections\[0\]\.heading/],
+    [(b) => { b.sections[0].subheadings[0].heading = 'Mechanism [S99]'; }, /citation_in_heading:.*subheadings\[0\]/],
+    [(b) => { b.sections[0].subheadings[0].heading = 'Mechanism [S15]'; }, /citation_in_heading/],
+    [(b) => { b.faqs[0].q = 'Same? [S99]'; }, /citation_in_heading:.*faqs\[0\]\.q/],
+    [(b) => { b.h1 = `${b.h1} [S15]`; }, /citation_in_heading:.*:h1:/],
+    [(b) => { b.claims[0].statement = 'Unbacked statement. [S99]'; }, /citation_unmapped:.*claims\[0\]\.statement:S99/],
+    [(b) => { b.claims[0].source_ids = ['S15', 'S99']; }, /citation_unmapped:.*source_ids:S99/],
+    [(b) => { b.faqs[0].a = 'No. [S99]'; }, /citation_unmapped:.*faqs\[0\]\.a/],
+    [(b) => { b.sections[0].tables[0].rows[0][1] = 'x [S99]'; }, /citation_unmapped:.*tables\[0\]/],
+    [(b) => { b.direct_answer = 'Start. [S99]'; }, /citation_unmapped:.*direct_answer/],
+  ];
+  for (const [mutate, expected] of cases) {
+    const brief = fixture(); mutate(brief);
+    assert.throws(() => render(brief), expected);
+  }
+  // A known token in a claim is still stripped from the plain projection, never an unknown one.
+  assert.equal(plainContractText('Known. [S15]', fixture()), 'Known.');
+  assert.throws(() => plainContractText('Unknown. [S99]', fixture()), /citation_unmapped/);
+  assert.doesNotThrow(() => render(fixture()));
+});
+
+function orderedBrief(blocks) {
+  const brief = fixture();
+  brief.sections = [{ heading: 'Check 1', paragraphs: ['Intro prose. [S15]', 'Second prose. [S4]'], bullets: [], ordered_items: [], ...blocks }];
+  return brief;
+}
+const table = { headers: ['Product', 'What the label establishes'], rows: [['Wegovy tablets', 'Indicated. [S15]']], after_paragraph: 1 };
+
+test('CR-05: a table authored before an H3 renders before it; a table authored under an H3 renders under it', () => {
+  const before = render(orderedBrief({ tables: [{ ...table, order: 1 }], subheadings: [{ heading: 'Sub heading', before_paragraph: 1, order: 2 }] }));
+  assert.ok(before.indexOf('<table') < before.indexOf('>Sub heading</h3>'));
+  assert.ok(before.indexOf('>Sub heading</h3>') < before.indexOf('Second prose.'));
+  const after = render(orderedBrief({ tables: [{ ...table, order: 2 }], subheadings: [{ heading: 'Sub heading', before_paragraph: 1, order: 1 }] }));
+  assert.ok(after.indexOf('>Sub heading</h3>') < after.indexOf('<table'));
+  assert.ok(after.indexOf('<table') < after.indexOf('Second prose.'));
+});
+
+test('CR-05: missing, duplicate or offset-inconsistent block order fails closed', () => {
+  for (const blocks of [
+    { tables: [{ ...table }], subheadings: [{ heading: 'Sub', before_paragraph: 1, order: 2 }] },
+    { tables: [{ ...table, order: 1 }], subheadings: [{ heading: 'Sub', before_paragraph: 1, order: 1 }] },
+    { tables: [{ ...table, order: 0 }], subheadings: [{ heading: 'Sub', before_paragraph: 1, order: 2 }] },
+    { tables: [{ ...table, after_paragraph: 2, order: 1 }], subheadings: [{ heading: 'Sub', before_paragraph: 1, order: 2 }] },
+  ]) assert.throws(() => render(orderedBrief(blocks)), /structure_order_invalid/);
 });

@@ -469,7 +469,8 @@
       "subheadings": [
         {
           "before_paragraph": 3,
-          "heading": "How the receptor mechanism and blood-sugar evidence differ"
+          "heading": "How the receptor mechanism and blood-sugar evidence differ",
+          "order": 4
         }
       ],
       "tables": [
@@ -479,6 +480,7 @@
             "Product named in the current label",
             "What the label establishes"
           ],
+          "order": 1,
           "rows": [
             [
               "Wegovy tablets",
@@ -526,7 +528,8 @@
       "subheadings": [
         {
           "before_paragraph": 5,
-          "heading": "Read warning categories precisely"
+          "heading": "Read warning categories precisely",
+          "order": 5
         }
       ],
       "tables": []
@@ -549,7 +552,8 @@
       "subheadings": [
         {
           "before_paragraph": 7,
-          "heading": "Medicare oral-product access is a separate pathway"
+          "heading": "Medicare oral-product access is a separate pathway",
+          "order": 9
         }
       ],
       "tables": [
@@ -559,6 +563,7 @@
             "Wegovy tablet strength",
             "Published self-pay medication price"
           ],
+          "order": 1,
           "rows": [
             [
               "1.5 mg",
@@ -580,6 +585,7 @@
             "Question to ask",
             "What to record"
           ],
+          "order": 3,
           "rows": [
             [
               "What is covered?",
@@ -634,7 +640,8 @@
       "subheadings": [
         {
           "before_paragraph": 4,
-          "heading": "Long-term treatment and stopping are different evidence questions"
+          "heading": "Long-term treatment and stopping are different evidence questions",
+          "order": 4
         }
       ],
       "tables": []
@@ -665,6 +672,7 @@
             "Before relying on an answer",
             "Write down"
           ],
+          "order": 0,
           "rows": [
             [
               "Product discussion",
@@ -704,7 +712,7 @@
   ],
   "serp_contract": {
     "parity_target_words": 3500,
-    "path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/A5/review/packet/02-serp-brief.json",
+    "path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/A7/packet/02-serp-brief.json",
     "ranking_wedge": "Five practical access checks that distinguish current oral product labels, including Ozempic tablets, from prescription approval, coverage, fulfilment and follow-up; no conversion or treatment plan.",
     "status": "PASS_CAPTURED"
   },

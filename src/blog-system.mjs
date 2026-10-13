@@ -99,9 +99,52 @@ export function renderContractProse(escapedText, brief) {
       return ` <sup class="inline-citation">${ids.map((id) => `<a href="#${sourceAnchor(id)}" aria-label="Source ${id}">${id}</a>`).join("")}</sup>`;
     });
 }
+// Fail-closed citation contract: every [S#] token in every published contract
+// field must name a ledger source before anything is rendered or stripped.
+// Headings (H1/title/meta, H2, H3) and FAQ questions are not citation slots, so
+// any token there is refused rather than escaped through or silently dropped.
+const CITATION_TOKEN = /\[(S\d+)\]/g;
+const citationIds = (text) => [...String(text ?? "").matchAll(CITATION_TOKEN)].map((match) => match[1]);
+export function validateContractCitations(brief) {
+  const known = new Set((brief.sources || []).map((source) => source.source_id));
+  const where = brief.canonical_path;
+  const refuseAny = (label, text) => {
+    const ids = citationIds(text);
+    if (ids.length) throw new Error(`accepted_guide_citation_in_heading:${where}:${label}:${ids.join(",")}`);
+  };
+  const requireKnown = (label, text) => {
+    const unknown = citationIds(text).filter((id) => !known.has(id));
+    if (unknown.length) throw new Error(`accepted_guide_citation_unmapped:${where}:${label}:${unknown.join(",")}`);
+  };
+  for (const key of ["h1", "title", "meta_description", "description"]) refuseAny(key, brief[key]);
+  for (const key of ["direct_answer", "conclusion", "medical_advice_disclaimer"]) requireKnown(key, brief[key]);
+  for (const key of ["pros", "cons"]) (brief[key] || []).forEach((item, index) => refuseAny(`${key}[${index}]`, item));
+  (brief.sections || []).forEach((section, index) => {
+    refuseAny(`sections[${index}].heading`, section.heading ?? section.h2);
+    (section.subheadings || []).forEach((sub, subIndex) => refuseAny(`sections[${index}].subheadings[${subIndex}]`, sub?.heading));
+    for (const key of ["paragraphs", "bullets", "ordered_items"]) (section[key] || []).forEach((item, itemIndex) => requireKnown(`sections[${index}].${key}[${itemIndex}]`, item));
+    (section.tables || []).forEach((table, tableIndex) => {
+      refuseAny(`sections[${index}].tables[${tableIndex}].caption`, table?.caption);
+      [...(table?.headers || []), ...(table?.rows || []).flat()].forEach((cell) => requireKnown(`sections[${index}].tables[${tableIndex}]`, cell));
+    });
+  });
+  normalizeGuideFaqs(brief).forEach((item, index) => { refuseAny(`faqs[${index}].q`, item.q); requireKnown(`faqs[${index}].a`, item.a); });
+  (brief.claims || []).forEach((claim, index) => {
+    requireKnown(`claims[${index}].statement`, claim.statement);
+    const unknownIds = (claim.source_ids || []).filter((id) => !known.has(id));
+    if (unknownIds.length) throw new Error(`accepted_guide_citation_unmapped:${where}:claims[${index}].source_ids:${unknownIds.join(",")}`);
+  });
+  return true;
+}
 // Plain-text projection for JSON-LD and claim/source summaries: no Markdown
-// markers, raw table pipes, blockquote prefixes or bare citation tokens.
-export function plainContractText(text) {
+// markers, raw table pipes, blockquote prefixes or bare citation tokens. With a
+// brief, tokens are checked against its source ledger before being removed.
+export function plainContractText(text, brief = null) {
+  if (brief) {
+    const known = new Set((brief.sources || []).map((source) => source.source_id));
+    const unknown = citationIds(text).filter((id) => !known.has(id));
+    if (unknown.length) throw new Error(`accepted_guide_citation_unmapped:${brief.canonical_path}:${unknown.join(",")}`);
+  }
   return String(text ?? "")
     .replace(/^>\s*/, "")
     .replace(/^\|\s*(.*?)\s*\|\s*$/s, (_, cells) => cells.split(/\s*\|\s*/).join(": "))
@@ -121,10 +164,11 @@ function renderClaimEvidence(brief) {
   const contract = acceptedRenderContract(brief);
   const claims = brief.claims || [];
   const items = claims.map((claim) => {
+    if (contract && (claim.source_ids || []).some((id) => !sourceIndex.has(id))) throw new Error(`accepted_guide_citation_unmapped:${brief.canonical_path}:${claim.claim_id}`);
     const refs = contract
-      ? (claim.source_ids || []).filter((id) => sourceIndex.has(id)).map((id) => `<a href="#${sourceAnchor(id)}" aria-label="Source ${esc(id)}">${esc(id)}</a>`).join("")
+      ? (claim.source_ids || []).map((id) => `<a href="#${sourceAnchor(id)}" aria-label="Source ${esc(id)}">${esc(id)}</a>`).join("")
       : (claim.source_ids || []).map((id) => sourceIndex.get(id)).filter(Boolean).map((index) => `<a href="#guide-source-${index}" aria-label="Source ${index}">${index}</a>`).join("");
-    return `<li id="${esc(claim.claim_id)}"><span>${esc(contract ? plainContractText(claim.statement) : claim.statement)}</span>${refs ? `<sup class="inline-citation">${refs}</sup>` : ""}</li>`;
+    return `<li id="${esc(claim.claim_id)}"><span>${esc(contract ? plainContractText(claim.statement, brief) : claim.statement)}</span>${refs ? `<sup class="inline-citation">${refs}</sup>` : ""}</li>`;
   }).join("");
   return items ? `<section class="claim-evidence"><h2 id="verified-claims">Verified claims</h2><p>Each statement below is bound to its numbered source.</p><details class="cs-details claim-evidence-fold"><summary>Open the claim-to-source map (${claims.length} claim${claims.length === 1 ? "" : "s"})</summary><ol>${items}</ol></details></section>` : "";
 }
@@ -165,7 +209,7 @@ function renderGuideChecklist(brief) {
 
 function renderGuideSources(brief) {
   const contract = acceptedRenderContract(brief);
-  const claims = new Map((brief.claims || []).map((claim) => [claim.claim_id, contract ? plainContractText(claim.statement) : claim.statement]));
+  const claims = new Map((brief.claims || []).map((claim) => [claim.claim_id, contract ? plainContractText(claim.statement, brief) : claim.statement]));
   const ordered = contract
     ? [...(brief.sources || [])].sort((a, b) => Number(String(a.source_id).slice(1)) - Number(String(b.source_id).slice(1)))
     : (brief.sources || []);
@@ -528,6 +572,7 @@ export function renderBlogPost(brief, comparisonSpec, author, programs) {
     : priceDates.size ? deriveMoneyPageFreshness({ path: brief.canonical_path, sources: [...(brief.sources || []), ...[...priceDates].map(verified_as_of => ({ verified_as_of }))] }) : null;
   const faqs = normalizeGuideFaqs(brief);
   const renderContract = acceptedRenderContract(brief);
+  if (renderContract) validateContractCitations(brief);
   const contractRows = renderContract ? brief.sections.map((section, index) => {
     const heading = publicHeading(section.heading || section.h2 || "");
     const id = `section-${index + 1}-${slugify(heading)}`;
@@ -538,12 +583,24 @@ export function renderBlogPost(brief, comparisonSpec, author, programs) {
     const tables = section.tables || [];
     const valid = (at) => Number.isInteger(at) && at >= 0 && at <= paragraphs.length;
     if (subheadings.some((sub) => !sub?.heading || !valid(sub.before_paragraph)) || tables.some((table) => !valid(table.after_paragraph))) throw new Error(`accepted_guide_structure_invalid:${brief.canonical_path}`);
+    // Tables and H3s share one authored block sequence (`order` = number of
+    // paragraphs, tables and H3s before the block). Paragraph offsets alone
+    // cannot order a table and an H3 at the same offset, so the shared key is
+    // required and must agree with the offsets; otherwise fail closed.
+    const blocks = [...tables.map((table) => ({ kind: "table", at: table.after_paragraph, order: table.order, table })),
+      ...subheadings.map((sub) => ({ kind: "h3", at: sub.before_paragraph, order: sub.order, sub }))]
+      .sort((a, b) => a.order - b.order);
+    if (blocks.some((block) => !Number.isInteger(block.order)) || new Set(blocks.map((block) => block.order)).size !== blocks.length
+        || blocks.some((block, index) => block.order !== block.at + index || (index && block.at < blocks[index - 1].at))) {
+      throw new Error(`accepted_guide_structure_order_invalid:${brief.canonical_path}`);
+    }
     const subIds = new Set();
     const tableHtml = (table) => `<div class="table-scroll responsive-table"><table><caption>${esc(heading)}</caption><thead><tr>${(table.headers || []).map((cell) => `<th scope="col">${prose(cell)}</th>`).join("")}</tr></thead><tbody>${(table.rows || []).map((row) => `<tr>${row.map((cell, cellIndex) => cellIndex === 0 ? `<th scope="row">${prose(cell)}</th>` : `<td>${prose(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
     let body = "";
     for (let at = 0; at <= paragraphs.length; at += 1) {
-      body += tables.filter((table) => table.after_paragraph === at).map(tableHtml).join("");
-      for (const sub of subheadings.filter((row) => row.before_paragraph === at)) {
+      for (const block of blocks.filter((row) => row.at === at)) {
+        if (block.kind === "table") { body += tableHtml(block.table); continue; }
+        const sub = block.sub;
         const subId = `${id}-${slugify(sub.heading)}`;
         if (subIds.has(subId)) throw new Error(`accepted_guide_subheading_duplicate:${brief.canonical_path}`);
         subIds.add(subId);
@@ -607,7 +664,7 @@ export function renderBlogPost(brief, comparisonSpec, author, programs) {
     citation: (brief.sources || []).map((source) => source.url),
   };
   const faqSchema = faqs.length
-    ? { "@context": "https://schema.org", "@type": "FAQPage", "@id": `${canonical}#faq`, mainEntity: faqs.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: renderContract ? plainContractText(item.a) : item.a } })) }
+    ? { "@context": "https://schema.org", "@type": "FAQPage", "@id": `${canonical}#faq`, mainEntity: faqs.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: renderContract ? plainContractText(item.a, brief) : item.a } })) }
     : null;
   // Design pass 2026-08-26 (PAGE-SPECS-20260826/insights spec §2 + §4.1):
   // content-first article order. Cinematic photo hero (H1 + byline on a scrim,
