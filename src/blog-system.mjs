@@ -99,38 +99,45 @@ export function renderContractProse(escapedText, brief) {
       return ` <sup class="inline-citation">${ids.map((id) => `<a href="#${sourceAnchor(id)}" aria-label="Source ${id}">${id}</a>`).join("")}</sup>`;
     });
 }
-// Fail-closed citation contract: every [S#] token in every published contract
-// field must name a ledger source before anything is rendered or stripped.
-// Headings (H1/title/meta, H2, H3) and FAQ questions are not citation slots, so
-// any token there is refused rather than escaped through or silently dropped.
+// Fail-closed citation contract (exhaustive). Every string anywhere in the
+// brief is audited before anything is rendered or stripped: [S#] tokens are
+// admitted only in the citation slots the renderer resolves (direct answer,
+// section prose, table cells, FAQ answers, claim statements) and must name a
+// ledger source there; a token in any other field (H1/title/meta, H2/H3 incl.
+// the h2 fallback, FAQ questions, captions, source publisher labels, links,
+// pros/cons, disclaimers, ...) is refused rather than escaped or dropped.
 const CITATION_TOKEN = /\[(S\d+)\]/g;
 const citationIds = (text) => [...String(text ?? "").matchAll(CITATION_TOKEN)].map((match) => match[1]);
+const CITATION_SLOTS = [
+  /^direct_answer$/,
+  /^sections\[\d+\]\.(?:paragraphs|bullets|ordered_items)\[\d+\]$/,
+  /^sections\[\d+\]\.tables\[\d+\]\.(?:headers\[\d+\]|rows\[\d+\]\[\d+\])$/,
+  /^(?:faqs|faq)\[\d+\]\.(?:a|answer)$/,
+  /^claims\[\d+\]\.statement$/,
+];
 export function validateContractCitations(brief) {
   const known = new Set((brief.sources || []).map((source) => source.source_id));
   const where = brief.canonical_path;
-  const refuseAny = (label, text) => {
-    const ids = citationIds(text);
-    if (ids.length) throw new Error(`accepted_guide_citation_in_heading:${where}:${label}:${ids.join(",")}`);
+  const walk = (value, label) => {
+    if (typeof value === "string") {
+      const ids = citationIds(value);
+      if (!ids.length) return;
+      if (!CITATION_SLOTS.some((slot) => slot.test(label))) throw new Error(`accepted_guide_citation_outside_slot:${where}:${label}:${ids.join(",")}`);
+      const unknown = ids.filter((id) => !known.has(id));
+      if (unknown.length) throw new Error(`accepted_guide_citation_unmapped:${where}:${label}:${unknown.join(",")}`);
+    } else if (Array.isArray(value)) value.forEach((item, index) => walk(item, `${label}[${index}]`));
+    else if (value && typeof value === "object") for (const [key, item] of Object.entries(value)) walk(item, label ? `${label}.${key}` : key);
   };
-  const requireKnown = (label, text) => {
-    const unknown = citationIds(text).filter((id) => !known.has(id));
-    if (unknown.length) throw new Error(`accepted_guide_citation_unmapped:${where}:${label}:${unknown.join(",")}`);
-  };
-  for (const key of ["h1", "title", "meta_description", "description"]) refuseAny(key, brief[key]);
-  for (const key of ["direct_answer", "conclusion", "medical_advice_disclaimer"]) requireKnown(key, brief[key]);
-  for (const key of ["pros", "cons"]) (brief[key] || []).forEach((item, index) => refuseAny(`${key}[${index}]`, item));
+  walk(brief, "");
   (brief.sections || []).forEach((section, index) => {
-    refuseAny(`sections[${index}].heading`, section.heading ?? section.h2);
-    (section.subheadings || []).forEach((sub, subIndex) => refuseAny(`sections[${index}].subheadings[${subIndex}]`, sub?.heading));
-    for (const key of ["paragraphs", "bullets", "ordered_items"]) (section[key] || []).forEach((item, itemIndex) => requireKnown(`sections[${index}].${key}[${itemIndex}]`, item));
-    (section.tables || []).forEach((table, tableIndex) => {
-      refuseAny(`sections[${index}].tables[${tableIndex}].caption`, table?.caption);
-      [...(table?.headers || []), ...(table?.rows || []).flat()].forEach((cell) => requireKnown(`sections[${index}].tables[${tableIndex}]`, cell));
+    // Validate the exact effective heading rendering uses; never render an empty one.
+    const effective = section?.heading || section?.h2 || "";
+    if (!String(effective).trim()) throw new Error(`accepted_guide_heading_empty:${where}:sections[${index}]`);
+    (section.subheadings || []).forEach((sub, subIndex) => {
+      if (!String(sub?.heading || "").trim()) throw new Error(`accepted_guide_heading_empty:${where}:sections[${index}].subheadings[${subIndex}]`);
     });
   });
-  normalizeGuideFaqs(brief).forEach((item, index) => { refuseAny(`faqs[${index}].q`, item.q); requireKnown(`faqs[${index}].a`, item.a); });
   (brief.claims || []).forEach((claim, index) => {
-    requireKnown(`claims[${index}].statement`, claim.statement);
     const unknownIds = (claim.source_ids || []).filter((id) => !known.has(id));
     if (unknownIds.length) throw new Error(`accepted_guide_citation_unmapped:${where}:claims[${index}].source_ids:${unknownIds.join(",")}`);
   });

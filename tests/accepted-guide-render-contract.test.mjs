@@ -110,11 +110,16 @@ const render = (brief) => upgradeInsightsArticle(renderBlogPost(brief, null, aut
 
 test('CR-04: unknown or misplaced [S#] tokens fail closed across every published contract field', () => {
   const cases = [
-    [(b) => { b.sections[0].heading = 'Check 1 [S99]'; }, /citation_in_heading:.*sections\[0\]\.heading/],
-    [(b) => { b.sections[0].subheadings[0].heading = 'Mechanism [S99]'; }, /citation_in_heading:.*subheadings\[0\]/],
-    [(b) => { b.sections[0].subheadings[0].heading = 'Mechanism [S15]'; }, /citation_in_heading/],
-    [(b) => { b.faqs[0].q = 'Same? [S99]'; }, /citation_in_heading:.*faqs\[0\]\.q/],
-    [(b) => { b.h1 = `${b.h1} [S15]`; }, /citation_in_heading:.*:h1:/],
+    [(b) => { b.sections[0].heading = 'Check 1 [S99]'; }, /citation_outside_slot:.*sections\[0\]\.heading/],
+    [(b) => { b.sections[0].heading = ''; b.sections[0].h2 = 'Claim [S99]'; }, /citation_outside_slot:.*sections\[0\]\.h2/],
+    [(b) => { b.sections[0].heading = ''; delete b.sections[0].h2; }, /heading_empty:.*sections\[0\]/],
+    [(b) => { b.sections[0].subheadings[0].heading = 'Mechanism [S99]'; }, /citation_outside_slot:.*subheadings\[0\]\.heading/],
+    [(b) => { b.sections[0].subheadings[0].heading = 'Mechanism [S15]'; }, /citation_outside_slot/],
+    [(b) => { b.faqs[0].q = 'Same? [S99]'; }, /citation_outside_slot:.*faqs\[0\]\.q/],
+    [(b) => { b.h1 = `${b.h1} [S15]`; }, /citation_outside_slot:.*:h1:/],
+    [(b) => { b.sources[0].publisher = 'Novo Nordisk [S99]'; }, /citation_outside_slot:.*sources\[0\]\.publisher/],
+    [(b) => { b.medical_advice_disclaimer = 'Not advice. [S99]'; }, /citation_outside_slot:.*medical_advice_disclaimer/],
+    [(b) => { b.internal_links = [{ label: 'More [S99]', path: '/guides/' }]; }, /citation_outside_slot:.*internal_links\[0\]\.label/],
     [(b) => { b.claims[0].statement = 'Unbacked statement. [S99]'; }, /citation_unmapped:.*claims\[0\]\.statement:S99/],
     [(b) => { b.claims[0].source_ids = ['S15', 'S99']; }, /citation_unmapped:.*source_ids:S99/],
     [(b) => { b.faqs[0].a = 'No. [S99]'; }, /citation_unmapped:.*faqs\[0\]\.a/],
