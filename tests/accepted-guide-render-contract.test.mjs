@@ -45,6 +45,35 @@ test('render contract: H3, TOC, emphasis, S-id citations, no 3-column recap', ()
   assert.match(html, /<meta name="description" content="Learn how to get oral GLP-1 medicines with five checks/);
 });
 
+for (const controls of [
+  { suppress_cta: true, surface_taxonomy: 'commercial' },
+  { suppress_cta: false, surface_taxonomy: 'medical' },
+  { suppress_cta: true, surface_taxonomy: 'medical' },
+  {}, // Missing taxonomy is medical in the maintained brief reviewer.
+]) {
+  test(`protected related reading uses only declared contextual link labels ${JSON.stringify(controls)}`, () => {
+    const article = { canonical_path: '/guides/fixture/', title: 'Fixture', ...controls,
+      internal_links: [{ path: '/guides/context/', label: 'Contextual cost guide' }] };
+    const related = [{ canonical_path: '/guides/price/', title: 'Trimi from $99',
+      meta_description: 'yourEra $169 and Gala $179', direct_answer: 'Shed $199 and Found',
+      surface_taxonomy: 'commercial' }];
+    const html = upgradeInsightsArticle('<main><article>Bound prose</article></main>', article, related);
+    assert.match(html, /p3-keep-reading/);
+    assert.match(html, /href="\/guides\/context\/">Contextual cost guide<\/a>/);
+    assert.doesNotMatch(html, /Trimi|yourEra|Gala|Shed|Found|\$99|\$169|\$179|\$199/);
+    assert.doesNotMatch(html, /href="\/guides\/price\/"/);
+    const empty = upgradeInsightsArticle('<main><article>Bound prose</article></main>', { ...article, internal_links: [] }, related);
+    assert.doesNotMatch(empty, /p3-keep-reading/);
+  });
+}
+
+test('commercial CTA-enabled related cards retain their existing excerpts', () => {
+  const html = upgradeInsightsArticle('<main><article>Prose</article></main>',
+    { canonical_path: '/guides/commercial/', suppress_cta: false, surface_taxonomy: 'commercial' },
+    [{ canonical_path: '/guides/price/', title: 'Price guide', meta_description: 'Reported price $99' }]);
+  assert.match(html, /Reported price \$99/);
+});
+
 test('render contract fails closed on unknown citation, bad contract or bad structure', () => {
   const brief = fixture();
   assert.throws(() => renderContractProse('x [S99]', brief), /citation_unmapped/);

@@ -1492,7 +1492,17 @@ export function upgradeInsightsArticle(html, article, related = []) {
   const faq = faqItems.length
     ? `<section class="p3-article-faq guide-faq" data-faq data-faq-disclosure><p class="gcs-kicker">Guide disclosures</p><h2>Questions about this evidence record</h2>${faqItems.map(([question, answer]) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join("")}</section>`
     : "";
-  const keepReading = `<section class="p3-keep-reading"><p class="gcs-kicker">Keep reading</p><h2>Continue the source trail.</h2><div>${related.slice(0, 3).map((item) => `<a class="cs-card" data-wrap-card href="${esc(item.canonical_path)}">${articlePicture(item, { className: "p3-story-picture" })}<h3 class="p3-wrap-title" data-wrap-text>${esc(item.h1 || item.title)}</h3><p>${esc(item.meta_description || item.direct_answer || "Source-checked Clinic Scout research.")}</p></a>`).join("")}</div></section>`;
+  // Medical/no-CTA guides must not inherit price/service claims from unrelated
+  // cards. Keep only the article's declared contextual guide links and labels;
+  // never import destination titles, deks, pictures or fallback related cards.
+  const scopedReading = article.suppress_cta === true || (article.surface_taxonomy || "medical") === "medical";
+  const contextualLinks = (article.internal_links || []).filter((link) => /^\/guides\/[a-z0-9-]+\/$/.test(link.path || "") && link.label);
+  const readingItems = scopedReading
+    ? contextualLinks.map((link) => `<li><a href="${esc(link.path)}">${esc(link.label)}</a></li>`).join("")
+    : related.slice(0, 3).map((item) => `<a class="cs-card" data-wrap-card href="${esc(item.canonical_path)}">${articlePicture(item, { className: "p3-story-picture" })}<h3 class="p3-wrap-title" data-wrap-text>${esc(item.h1 || item.title)}</h3><p>${esc(item.meta_description || item.direct_answer || "Source-checked Clinic Scout research.")}</p></a>`).join("");
+  const keepReading = readingItems
+    ? `<section class="p3-keep-reading"><p class="gcs-kicker">Keep reading</p><h2>Continue the source trail.</h2>${scopedReading ? `<ul>${readingItems}</ul>` : `<div>${readingItems}</div>`}</section>`
+    : "";
   return html
     .replace(/<main([^>]*)>/i, '<main$1 data-phase3-article="true" data-insights-article-anatomy="hero-body-sources-related-author">')
     // Accepted guides with the GLP-320 render contract keep their automatic TOC.
