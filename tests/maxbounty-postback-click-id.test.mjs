@@ -27,6 +27,27 @@ for(const offer of offers)test(`MaxBounty ${offer}: native consented click ident
   assert.equal(q.has('sub3'),false);assert.equal(q.has('sub1'),false);assert.equal(q.has('sub2'),false);
  }finally{f.dom.window.close()}
 });
+test('MaxBounty repeat native clicks refresh only runtime-owned S2 and retain withdrawal bytes',()=>{
+ const f=fixture();try{
+  f.a.setAttribute('target','_blank');
+  f.a.click();
+  const first=new URL(f.a.href).searchParams.get('s2');
+  assert.equal(first,JSON.parse(f.w.localStorage.getItem('cs_click_id:last:TEST')).clickId);
+  f.a.click();
+  const second=JSON.parse(f.w.localStorage.getItem('cs_click_id:last:TEST')).clickId;
+  assert.notEqual(second,first);
+  assert.equal(new URL(f.a.href).searchParams.get('s2'),second);
+  const expected=new URL(f.original);expected.searchParams.set('s2',second);
+  assert.equal(f.a.href,expected.toString());
+  f.w.GCSConsent.apply({analytics:'denied',advertising:'denied'});
+  assert.equal(f.a.getAttribute('href'),f.original);
+  assert.equal(f.w.localStorage.getItem('cs_click_id:last:TEST'),null);
+ }finally{f.dom.window.close()}
+ const issuer=fixture({extra:'&s2=issuer-owned'});try{
+  issuer.a.click();issuer.a.click();
+  assert.equal(issuer.a.getAttribute('href'),issuer.original);
+ }finally{issuer.dom.window.close()}
+});
 for(const analytics of ['granted','denied'])for(const advertising of ['granted','denied'])test(`MaxBounty consent: analytics=${analytics} advertising=${advertising}`,()=>{
  const f=fixture({analytics,advertising});try{
   f.a.click();assert.equal(new URL(f.a.href).searchParams.has('s2'),advertising==='granted');
