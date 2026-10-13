@@ -294,6 +294,7 @@ export async function handleContentUpgradeRequest(request, env, fetchImpl = glob
     });
     const results = await runCanonicalContactStatements(env.GLP_DB, statements);
     if (results.some((result) => result?.success === false)) throw new Error("insert_failed");
+    if (!capture.resourceOnly && Number(results[0]?.meta?.changes || 0) !== 1) return json(409, {status:'EXISTING_PURPOSE_OR_SUPPRESSION_HELD'});
   } catch {
     return json(503, { status: "STORAGE_FAILED" });
   }

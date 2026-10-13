@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import { handleNewsletterSubscribeRequest } from '../src/newsletter-subscribe.mjs';
 import { runDripScheduler } from '../src/resend-email-machine.mjs';
 import { onRequestPost } from '../functions/unsubscribe.js';
+import { handleContentUpgradeRequest } from '../src/content-upgrade.mjs';
 const config=JSON.parse(readFileSync(new URL('../data/resend-email-machine.json',import.meta.url)));
 const version='glp47-comparison-guides-v1-20261013';
 const sha='e600463c7f9c19da67dd38f6ea7b76b2f3a46db3bacfd2e761e38a87684d0580';
@@ -46,6 +47,9 @@ test('GLP47 durable approved-purpose capture enrolls once; scheduler delivers ex
   assert.equal((await handleNewsletterSubscribeRequest(request(payload()),env,transport)).status,409);
   const legacyRepeat=await handleNewsletterSubscribeRequest(request(payload('safe@example.invalid',{consent_version:'glp-newsletter-v1-20260822'})),env,transport);
   assert.equal(legacyRepeat.status,409);assert.equal(calls.length,2,'held legacy upsert must not revive contact or send confirmation');
+  const legacyResource=new Request('https://glpclinicscout.com/api/content-upgrade',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({source_page:'insights',lead_magnet_key:'insights-terms-checklist',consent_version:'glp-content-upgrade-v2-20260801',email:'safe@example.invalid',email_consent:'true',company:''})});
+  const resourceRepeat=await handleContentUpgradeRequest(legacyResource,{...env,GLP_DB:db,CONTENT_UPGRADE_CAPTURE_MODE:'local_test'},transport);
+  assert.equal(resourceRepeat.status,409);assert.equal(calls.length,2,'held marketing-resource upsert must not revive contacts or send');
   assert.equal((await runDripScheduler(env,config,new Date(Date.parse(row.consent_at)+3*86400000),transport)).sent,0);assert.equal(calls.length,2);
   assert.equal(sqlite.prepare('SELECT status FROM subscribers').get().status,'unsubscribed');
  }finally{sqlite.close()}

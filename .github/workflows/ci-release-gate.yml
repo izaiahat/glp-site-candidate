@@ -16,6 +16,7 @@ on:
       - "src/candidate-export-policy.mjs"
       - "src/onboarding-consent.mjs"
       - "src/newsletter-subscribe.mjs"
+      - "src/content-upgrade.mjs"
       - "src/canonical-contact.mjs"
       - "src/resend-email-machine.mjs"
       - "workers/email-scheduler.mjs"
