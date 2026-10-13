@@ -1002,7 +1002,9 @@ details{border-top:1px solid var(--line);padding-top:16px}summary{min-height:44p
 function addGuideMetadata(html, article, author) {
   if (!/^\/(?:guides|best|reviews)\/[a-z0-9-]+\/$/.test(article.canonical_path || "")) throw new Error(`article_canonical_path_invalid:${article.article_id}`);
   const canonicalUrl = `https://glpclinicscout.com${article.canonical_path}`;
-  const rawDescription = String(article.description || article.direct_answer || article.h1).replace(/\s+/g, " ").trim();
+  // Accepted render-contract guides carry a reviewed 150-160 char meta_description;
+  // never substitute a truncated quick answer for it.
+  const rawDescription = String((article.render_contract ? article.meta_description : null) || article.description || article.direct_answer || article.h1).replace(/\s+/g, " ").trim();
   const description = rawDescription.length <= 160 ? rawDescription : `${rawDescription.slice(0, 157).replace(/\s+\S*$/, "")}…`;
   // Phase-4 gate remediation 2026-08-27 (GATES-PRELIM issues #5/#6/#9):
   // - The guides crumb routed through the RETIRED /guides/ hub (301 -> /insights/)

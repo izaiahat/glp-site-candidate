@@ -72,6 +72,45 @@ function guideSourceIndex(brief) {
   return new Map((brief.sources || []).map((source, index) => [source.source_id, index + 1]));
 }
 
+// GLP-320 accepted-guide render contract. Opt-in per article (compiled by the
+// native packet compiler); legacy catalogs keep their reviewed output bytes.
+const ACCEPTED_RENDER_SCHEMA = "glp-accepted-guide-render-v1";
+export function acceptedRenderContract(brief) {
+  const contract = brief?.render_contract;
+  if (contract == null) return null;
+  if (contract.schema !== ACCEPTED_RENDER_SCHEMA || contract.subheadings !== "h3" || contract.toc !== "automatic-sections"
+      || contract.inline_emphasis !== true || contract.citations !== "source-id" || contract.facts_recap !== false) {
+    throw new Error(`accepted_render_contract_invalid:${brief.canonical_path}`);
+  }
+  return contract;
+}
+// Stable S-number labels: visible tokens, anchors and the source list all use
+// the ledger source_id, never a positional number that can disagree with it.
+const sourceAnchor = (id) => `guide-source-${String(id).toLowerCase()}`;
+const CITATION_RUN = /(?:\s*\[(S\d+)\])+/g;
+export function renderContractProse(escapedText, brief) {
+  const known = new Set((brief.sources || []).map((source) => source.source_id));
+  return String(escapedText)
+    .replace(/\*\*([^*\n]+?)\*\*/g, "<strong>$1</strong>")
+    .replace(CITATION_RUN, (run) => {
+      const ids = [...run.matchAll(/\[(S\d+)\]/g)].map((match) => match[1]);
+      const unknown = ids.filter((id) => !known.has(id));
+      if (unknown.length) throw new Error(`accepted_guide_citation_unmapped:${brief.canonical_path}:${unknown.join(",")}`);
+      return ` <sup class="inline-citation">${ids.map((id) => `<a href="#${sourceAnchor(id)}" aria-label="Source ${id}">${id}</a>`).join("")}</sup>`;
+    });
+}
+// Plain-text projection for JSON-LD and claim/source summaries: no Markdown
+// markers, raw table pipes, blockquote prefixes or bare citation tokens.
+export function plainContractText(text) {
+  return String(text ?? "")
+    .replace(/^>\s*/, "")
+    .replace(/^\|\s*(.*?)\s*\|\s*$/s, (_, cells) => cells.split(/\s*\|\s*/).join(": "))
+    .replace(/\*\*([^*\n]+?)\*\*/g, "$1")
+    .replace(/(?:\s*\[S\d+\])+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 // Design pass 2026-08-26 (insights spec §4.1): the full claim-to-source map is
 // evidence APPENDIX, not lede furniture. The section heading and its anchor
 // stay visible (TOC and "Mapped claim" links keep a landing target); the long
@@ -79,10 +118,13 @@ function guideSourceIndex(brief) {
 // DOM — nothing is deleted, it just stops costing ~2,400px before the article.
 function renderClaimEvidence(brief) {
   const sourceIndex = guideSourceIndex(brief);
+  const contract = acceptedRenderContract(brief);
   const claims = brief.claims || [];
   const items = claims.map((claim) => {
-    const refs = (claim.source_ids || []).map((id) => sourceIndex.get(id)).filter(Boolean).map((index) => `<a href="#guide-source-${index}" aria-label="Source ${index}">${index}</a>`).join("");
-    return `<li id="${esc(claim.claim_id)}"><span>${esc(claim.statement)}</span>${refs ? `<sup class="inline-citation">${refs}</sup>` : ""}</li>`;
+    const refs = contract
+      ? (claim.source_ids || []).filter((id) => sourceIndex.has(id)).map((id) => `<a href="#${sourceAnchor(id)}" aria-label="Source ${esc(id)}">${esc(id)}</a>`).join("")
+      : (claim.source_ids || []).map((id) => sourceIndex.get(id)).filter(Boolean).map((index) => `<a href="#guide-source-${index}" aria-label="Source ${index}">${index}</a>`).join("");
+    return `<li id="${esc(claim.claim_id)}"><span>${esc(contract ? plainContractText(claim.statement) : claim.statement)}</span>${refs ? `<sup class="inline-citation">${refs}</sup>` : ""}</li>`;
   }).join("");
   return items ? `<section class="claim-evidence"><h2 id="verified-claims">Verified claims</h2><p>Each statement below is bound to its numbered source.</p><details class="cs-details claim-evidence-fold"><summary>Open the claim-to-source map (${claims.length} claim${claims.length === 1 ? "" : "s"})</summary><ol>${items}</ol></details></section>` : "";
 }
@@ -108,6 +150,7 @@ function renderInformationGain(brief) {
 // Design pass 2026-08-26: appendix material (spec §4.1) — the fact recap ships
 // collapsed next to the claim map. Content unchanged, ~1,200px reclaimed.
 function renderGuideFacts(brief) {
+  if (acceptedRenderContract(brief)) return "";
   const rows = (brief.claims || []).filter((claim) => /\$|price|cost|coverage|eligib|label|approved|warning|percent|%/i.test(claim.statement || "")).slice(0, 8);
   if (!rows.length) return "";
   return `<section class="guide-data-table"><h2 id="facts-to-compare">Facts to compare</h2><details class="cs-details guide-facts-fold"><summary>Open the source-bound fact recap (${rows.length} row${rows.length === 1 ? "" : "s"})</summary><div class="table-scroll responsive-table"><table><caption>Source-bound facts from this guide</caption><thead><tr><th scope="col">Question</th><th scope="col">Published fact</th><th scope="col">Evidence</th></tr></thead><tbody>${rows.map((claim) => `<tr><th scope="row">${/\$|price|cost/i.test(claim.statement) ? "Cost" : /label|approved/i.test(claim.statement) ? "Product status" : /warning|risk/i.test(claim.statement) ? "Safety boundary" : "Eligibility or terms"}</th><td data-label="Published fact">${esc(claim.statement)}</td><td data-label="Evidence"><a href="#${esc(claim.claim_id)}">Mapped claim</a></td></tr>`).join("")}</tbody></table></div></details></section>`;
@@ -121,13 +164,18 @@ function renderGuideChecklist(brief) {
 }
 
 function renderGuideSources(brief) {
-  const claims = new Map((brief.claims || []).map((claim) => [claim.claim_id, claim.statement]));
-  return (brief.sources || []).map((source, index) => {
+  const contract = acceptedRenderContract(brief);
+  const claims = new Map((brief.claims || []).map((claim) => [claim.claim_id, contract ? plainContractText(claim.statement) : claim.statement]));
+  const ordered = contract
+    ? [...(brief.sources || [])].sort((a, b) => Number(String(a.source_id).slice(1)) - Number(String(b.source_id).slice(1)))
+    : (brief.sources || []);
+  return ordered.map((source, index) => {
     const supported = (source.claim_ids || []).map((id) => claims.get(id)).filter(Boolean);
     const unavailable = /(?:_404|NOT_OBTAINABLE|EXACT_QUERY_SERP)/.test(String(source.source_class || ""));
     const sourceControl = unavailable
       ? `<span class="source-nolink" data-citation="${CITATION_REASONS.GUIDE_SOURCE_LEDGER}" data-source-access="recorded_unavailable">Recorded unavailable at check time</span>`
       : renderCitationAnchor({ url: source.url, label: "Open source", reason: CITATION_REASONS.GUIDE_SOURCE_LEDGER });
+    if (contract) return `<li id="${sourceAnchor(source.source_id)}"><strong><span class="guide-source-id">${esc(source.source_id)}</span> ${esc(source.publisher)}</strong><span>${supported.length ? `Supports: ${supported.map(esc).join(" · ")}` : "Background source for the guide boundary."}</span>${sourceControl}<small>Checked ${esc(source.verified_as_of)}</small></li>`;
     return `<li id="guide-source-${index + 1}"><strong>${esc(source.publisher)}</strong><span>${supported.length ? `Supports: ${supported.map(esc).join(" · ")}` : "Background source for the guide boundary."}</span>${sourceControl}<small>Checked ${esc(source.verified_as_of)}</small></li>`;
   }).join("");
 }
@@ -419,7 +467,8 @@ function normalizeGuideFaqs(brief) {
     .filter((item) => item.q && item.a);
 }
 
-function renderGuideFaq(faqs) {
+function renderGuideFaq(faqs, brief = null) {
+  const answer = (text) => brief && acceptedRenderContract(brief) ? renderContractProse(esc(text), brief) : esc(text);
   if (!faqs.length) return "";
   // Repair D (monotony): the first Q&A keeps the plain faq-item skin as the
   // section's visual anchor; every repeat beyond it additionally carries the
@@ -428,7 +477,7 @@ function renderGuideFaq(faqs) {
   // +/- marker, border, and inter-item spacing) — cs-details is additive, not
   // a replacement, so no existing FAQ styling/spacing regresses.
   const items = faqs
-    .map((item, index) => `<details class="faq-item${index > 0 ? " cs-details" : ""}"><summary>${esc(item.q)}</summary><div><p>${esc(item.a)}</p></div></details>`)
+    .map((item, index) => `<details class="faq-item${index > 0 ? " cs-details" : ""}"><summary>${esc(item.q)}</summary><div><p>${answer(item.a)}</p></div></details>`)
     .join("");
   return `<section class="guide-faq" aria-labelledby="faq"><h2 id="faq">Frequently asked questions</h2>${items}</section>`;
 }
@@ -466,7 +515,35 @@ export function renderBlogPost(brief, comparisonSpec, author, programs) {
   const priceDates = collectEvidenceDates({ offers: brief.offer_module?.rows?.map(row => row.checked_date), comparisonSources: comparisonSpec?.sources?.map(source => source.verified_as_of), comparisonChecks: comparisonSpec?.rows?.flatMap(row => [row.price_checked_on, row.promo?.verified_as_of, row.social_proof?.verified_as_of, row.therapeutic_taxonomy?.verified_as_of, ...(row.source_links || []).map(source => source.verified_as_of), ...Object.values(row).map(field => field?.verified_as_of), ...(row.meds_offered_evidence?.sources || []).map(source => source.checked_date)]), prices_checked_date: brief.prices_checked_date });
   const priceFreshness = priceDates.size ? deriveMoneyPageFreshness({ path: brief.canonical_path, sources: [...(brief.sources || []), ...[...priceDates].map(verified_as_of => ({ verified_as_of }))] }) : null;
   const faqs = normalizeGuideFaqs(brief);
-  const sectionRows = brief.sections.map((section, index) => {
+  const renderContract = acceptedRenderContract(brief);
+  const contractRows = renderContract ? brief.sections.map((section, index) => {
+    const heading = publicHeading(section.heading || section.h2 || "");
+    const id = `section-${index + 1}-${slugify(heading)}`;
+    const prose = (text) => renderContractProse(mdLinks(esc(text), affiliateUrls, affiliateMeta, briefPageSlug, sourceUrls), brief);
+    const paragraphs = publicParagraphs(section.paragraphs);
+    if (paragraphs.length !== (section.paragraphs || []).length) throw new Error(`accepted_guide_paragraph_filtered:${brief.canonical_path}`);
+    const subheadings = section.subheadings || [];
+    const tables = section.tables || [];
+    const valid = (at) => Number.isInteger(at) && at >= 0 && at <= paragraphs.length;
+    if (subheadings.some((sub) => !sub?.heading || !valid(sub.before_paragraph)) || tables.some((table) => !valid(table.after_paragraph))) throw new Error(`accepted_guide_structure_invalid:${brief.canonical_path}`);
+    const subIds = new Set();
+    const tableHtml = (table) => `<div class="table-scroll responsive-table"><table><caption>${esc(heading)}</caption><thead><tr>${(table.headers || []).map((cell) => `<th scope="col">${prose(cell)}</th>`).join("")}</tr></thead><tbody>${(table.rows || []).map((row) => `<tr>${row.map((cell, cellIndex) => cellIndex === 0 ? `<th scope="row">${prose(cell)}</th>` : `<td>${prose(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    let body = "";
+    for (let at = 0; at <= paragraphs.length; at += 1) {
+      body += tables.filter((table) => table.after_paragraph === at).map(tableHtml).join("");
+      for (const sub of subheadings.filter((row) => row.before_paragraph === at)) {
+        const subId = `${id}-${slugify(sub.heading)}`;
+        if (subIds.has(subId)) throw new Error(`accepted_guide_subheading_duplicate:${brief.canonical_path}`);
+        subIds.add(subId);
+        body += `<h3 id="${subId}">${esc(sub.heading)}</h3>`;
+      }
+      if (at < paragraphs.length) body += `<p>${prose(paragraphs[at])}</p>`;
+    }
+    const ordered = Array.isArray(section.ordered_items) && section.ordered_items.length ? `<ol>${section.ordered_items.map((text) => `<li>${prose(text)}</li>`).join("")}</ol>` : "";
+    const bullets = Array.isArray(section.bullets) && section.bullets.length ? `<ul>${section.bullets.map((text) => `<li>${prose(text)}</li>`).join("")}</ul>` : "";
+    return { heading, id, html: `<section aria-labelledby="${id}"><h2 id="${id}">${esc(heading)}</h2>${body}${ordered}${bullets}</section>` };
+  }) : null;
+  const sectionRows = contractRows || brief.sections.map((section, index) => {
     const heading = publicHeading(section.heading || section.h2 || "").replace(/\bverification verification\b/gi, "verification");
     const id = `section-${index + 1}-${slugify(heading)}`;
     const paragraphs = publicParagraphs(section.paragraphs).map((text) => `<p>${mdLinks(esc(text), affiliateUrls, affiliateMeta, briefPageSlug, sourceUrls)}</p>`).join("");
@@ -518,7 +595,7 @@ export function renderBlogPost(brief, comparisonSpec, author, programs) {
     citation: (brief.sources || []).map((source) => source.url),
   };
   const faqSchema = faqs.length
-    ? { "@context": "https://schema.org", "@type": "FAQPage", "@id": `${canonical}#faq`, mainEntity: faqs.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })) }
+    ? { "@context": "https://schema.org", "@type": "FAQPage", "@id": `${canonical}#faq`, mainEntity: faqs.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: renderContract ? plainContractText(item.a) : item.a } })) }
     : null;
   // Design pass 2026-08-26 (PAGE-SPECS-20260826/insights spec §2 + §4.1):
   // content-first article order. Cinematic photo hero (H1 + byline on a scrim,
@@ -529,7 +606,7 @@ export function renderBlogPost(brief, comparisonSpec, author, programs) {
   // to the sources it cites — nothing is removed, it stops being pre-content
   // furniture. addGuideFunnel still finds `<section class="answer">`, pageHero/
   // responsiveHero still find the editorial-evidence-hero picture stems.
-  const rendered = `<!doctype html><html lang="en" data-release="${indexable ? "release-ready" : "held"}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="${indexable ? "index,follow,max-image-preview:large" : "noindex,nofollow,noarchive,nosnippet,max-image-preview:large"}"><title>${esc(brief.title)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${esc(canonical)}"><script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script>${faqSchema ? `<script type="application/ld+json">${JSON.stringify(faqSchema).replaceAll("<", "\\u003c")}</script>` : ""}</head><body><main class="guide-shell">${GUIDE_STYLE}<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/insights/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">${esc(brief.h1)}</span></nav><section class="guide-hero guide-hero--cinema"><div class="guide-hero-copy"><p class="kicker">${esc(humanTopic(brief) === "Source-checked research" ? "Source-checked guide" : `${humanTopic(brief)} · source-checked guide`)}</p><h1>${esc(brief.h1)}</h1><p class="guide-byline">By <a href="${esc(author.bio_path)}">the ${esc(author.display_name)}</a> · Updated ${esc(sourceCheckedDate)}</p></div><picture><source srcset="/assets/images/editorial-evidence-hero-1600.avif" type="image/avif"><source srcset="/assets/images/editorial-evidence-hero-1600.webp" type="image/webp"><img src="/assets/images/editorial-evidence-hero-1600.jpg" alt="Generated editorial evidence map for ${esc(brief.h1)}" width="1600" height="900" loading="eager" fetchpriority="high"></picture></section><p class="guide-evidence-band">Sources checked ${esc(sourceCheckedDate)}${priceFreshness ? ` · Prices checked <span data-prices-checked-date>${esc(priceFreshness.source_checked_from)} – ${esc(priceFreshness.source_checked_through)}</span>` : ""} · Prices and terms can change.</p><section class="answer"><div class="panel evidence-line quick-answer"><p class="guide-lede">${esc(brief.direct_answer)}</p></div></section><aside class="disclosure"><strong>Evidence boundary.</strong> ${esc(brief.medical_advice_disclaimer || "This guide does not diagnose, prescribe, or replace a licensed professional.")} ${brief.surface_taxonomy === "commercial" && brief.inline_ftc_disclosure ? `<span class="affiliate-disclosure"><strong>Affiliate disclosure:</strong> ${esc(brief.inline_ftc_disclosure_text)}</span>` : ""}</aside><nav class="guide-toc" aria-label="In this guide"><p class="eyebrow">In this guide</p><ol>${toc}<li><a href="#verified-claims">Verified claims</a></li>${faqs.length ? '<li><a href="#faq">Frequently asked questions</a></li>' : ""}<li><a href="#sources">Sources</a></li></ol></nav>${comparison}${placeSections(sectionRows, offerModule, brief.offer_module?.after_section_id)}${renderInformationGain(brief)}${brief.suppress_cta ? "" : renderNextStepCard("guide-early")}${renderGuideFaq(faqs)}<nav class="related-guides" aria-label="Related Clinic Scout guides"><h2>Keep comparing</h2><ul>${related}</ul></nav><section class="guide-appendix" aria-label="Evidence appendix">${renderGuideChecklist(brief)}${renderClaimEvidence(brief)}${renderGuideFacts(brief)}${prosCons}</section><section class="guide-sources" id="sources"><h2>Sources and what they support</h2><ol>${sources}</ol></section>${brief.suppress_cta ? "" : renderNextStepCard("guide-end")}<aside><strong>Scope boundary:</strong> This guide does not diagnose, prescribe, authenticate a product, determine individual eligibility, or replace a licensed professional, regulator, insurer, pharmacist, or program administrator.</aside></main></body></html>`;
+  const rendered = `<!doctype html><html lang="en" data-release="${indexable ? "release-ready" : "held"}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="${indexable ? "index,follow,max-image-preview:large" : "noindex,nofollow,noarchive,nosnippet,max-image-preview:large"}"><title>${esc(brief.title)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${esc(canonical)}"><script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script>${faqSchema ? `<script type="application/ld+json">${JSON.stringify(faqSchema).replaceAll("<", "\\u003c")}</script>` : ""}</head><body><main class="guide-shell">${GUIDE_STYLE}<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/insights/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">${esc(brief.h1)}</span></nav><section class="guide-hero guide-hero--cinema"><div class="guide-hero-copy"><p class="kicker">${esc(humanTopic(brief) === "Source-checked research" ? "Source-checked guide" : `${humanTopic(brief)} · source-checked guide`)}</p><h1>${esc(brief.h1)}</h1><p class="guide-byline">By <a href="${esc(author.bio_path)}">the ${esc(author.display_name)}</a> · Updated ${esc(sourceCheckedDate)}</p></div><picture><source srcset="/assets/images/editorial-evidence-hero-1600.avif" type="image/avif"><source srcset="/assets/images/editorial-evidence-hero-1600.webp" type="image/webp"><img src="/assets/images/editorial-evidence-hero-1600.jpg" alt="Generated editorial evidence map for ${esc(brief.h1)}" width="1600" height="900" loading="eager" fetchpriority="high"></picture></section><p class="guide-evidence-band">Sources checked ${esc(sourceCheckedDate)}${priceFreshness ? ` · Prices checked <span data-prices-checked-date>${esc(priceFreshness.source_checked_from)} – ${esc(priceFreshness.source_checked_through)}</span>` : ""} · Prices and terms can change.</p><section class="answer"><div class="panel evidence-line quick-answer"><p class="guide-lede">${renderContract ? renderContractProse(esc(brief.direct_answer), brief) : esc(brief.direct_answer)}</p></div></section><aside class="disclosure"><strong>Evidence boundary.</strong> ${esc(brief.medical_advice_disclaimer || "This guide does not diagnose, prescribe, or replace a licensed professional.")} ${brief.surface_taxonomy === "commercial" && brief.inline_ftc_disclosure ? `<span class="affiliate-disclosure"><strong>Affiliate disclosure:</strong> ${esc(brief.inline_ftc_disclosure_text)}</span>` : ""}</aside><nav class="guide-toc"${renderContract ? ' data-render-contract="automatic-sections"' : ""} aria-label="In this guide"><p class="eyebrow">In this guide</p><ol>${toc}<li><a href="#verified-claims">Verified claims</a></li>${faqs.length ? '<li><a href="#faq">Frequently asked questions</a></li>' : ""}<li><a href="#sources">Sources</a></li></ol></nav>${comparison}${placeSections(sectionRows, offerModule, brief.offer_module?.after_section_id)}${renderInformationGain(brief)}${brief.suppress_cta ? "" : renderNextStepCard("guide-early")}${renderGuideFaq(faqs, brief)}<nav class="related-guides" aria-label="Related Clinic Scout guides"><h2>Keep comparing</h2><ul>${related}</ul></nav><section class="guide-appendix" aria-label="Evidence appendix">${renderGuideChecklist(brief)}${renderClaimEvidence(brief)}${renderGuideFacts(brief)}${prosCons}</section><section class="guide-sources" id="sources"><h2>Sources and what they support</h2><ol>${sources}</ol></section>${brief.suppress_cta ? "" : renderNextStepCard("guide-end")}<aside><strong>Scope boundary:</strong> This guide does not diagnose, prescribe, authenticate a product, determine individual eligibility, or replace a licensed professional, regulator, insurer, pharmacist, or program administrator.</aside></main></body></html>`;
   // The capture is a site-owned, explicit-consent content upgrade, not an
   // affiliate CTA. Every article/guide template gets the same capture surface;
   // suppress_cta continues to suppress only the commercial next-step cards.
