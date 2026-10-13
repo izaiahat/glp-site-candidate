@@ -1,8 +1,9 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3905,
+  "tracked_file_count": 3906,
   "files": [
+    "tests/maxbounty-postback-click-id.test.mjs",
     "tests/coivas-taxonomy-evidence.test.mjs",
     "tests/test_coivas_taxonomy_refresh.py",
     "reports/ops/glp38-20260915/taxonomy-refresh/run-20261012T030059882049Z/coivas-primary.raw.json",
