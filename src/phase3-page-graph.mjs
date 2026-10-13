@@ -1480,17 +1480,33 @@ export function upgradeInsightsArticle(html, article, related = []) {
     ? `<aside class="p3-article-author cs-curator" data-author-block><hr class="cs-grad-rule" aria-hidden="true"><div class="cs-curator-row"><span class="cs-curator-mark" aria-hidden="true"></span><div><p class="gcs-kicker">Curated by</p><p>Curated and evidence-reviewed by <a href="${esc(author.bio_path)}">${esc(author.display_name)}</a>. Every claim in this guide stays bound to a dated, named source before it publishes. ${author.clinical_credentials_claimed === false ? "No clinical credentials are claimed." : ""}</p></div></div></aside>`
     : "";
   const tags = `<nav class="cs-article-tags" aria-label="Article topics"><span>Categories</span><a href="/insights/">${esc(articleTopicLabel(article))}</a><a href="/insights/">GLP-1</a></nav>`;
+  // Accepted render-contract guides: the disclosure FAQ is plain text, so bare
+  // [S#] tokens and Markdown emphasis from the quick answer are not shown raw.
+  const plainAnswer = article.render_contract
+    ? String(article.direct_answer || "").replace(/\*\*([^*\n]+?)\*\*/g, "$1").replace(/(?:\s*\[S\d+\])+/g, "").trim()
+    : article.direct_answer;
   const faqItems = [
-    article.direct_answer ? ["What does this guide establish?", article.direct_answer] : null,
+    plainAnswer ? ["What does this guide establish?", plainAnswer] : null,
     article.medical_advice_disclaimer ? ["What does this guide not determine?", article.medical_advice_disclaimer] : null,
   ].filter(Boolean);
   const faq = faqItems.length
     ? `<section class="p3-article-faq guide-faq" data-faq data-faq-disclosure><p class="gcs-kicker">Guide disclosures</p><h2>Questions about this evidence record</h2>${faqItems.map(([question, answer]) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join("")}</section>`
     : "";
-  const keepReading = `<section class="p3-keep-reading"><p class="gcs-kicker">Keep reading</p><h2>Continue the source trail.</h2><div>${related.slice(0, 3).map((item) => `<a class="cs-card" data-wrap-card href="${esc(item.canonical_path)}">${articlePicture(item, { className: "p3-story-picture" })}<h3 class="p3-wrap-title" data-wrap-text>${esc(item.h1 || item.title)}</h3><p>${esc(item.meta_description || item.direct_answer || "Source-checked Clinic Scout research.")}</p></a>`).join("")}</div></section>`;
+  // Medical/no-CTA guides must not inherit price/service claims from unrelated
+  // cards. Keep only the article's declared contextual guide links and labels;
+  // never import destination titles, deks, pictures or fallback related cards.
+  const scopedReading = article.suppress_cta === true || (article.surface_taxonomy || "medical") === "medical";
+  const contextualLinks = (article.internal_links || []).filter((link) => /^\/guides\/[a-z0-9-]+\/$/.test(link.path || "") && link.label);
+  const readingItems = scopedReading
+    ? contextualLinks.map((link) => `<li><a href="${esc(link.path)}">${esc(link.label)}</a></li>`).join("")
+    : related.slice(0, 3).map((item) => `<a class="cs-card" data-wrap-card href="${esc(item.canonical_path)}">${articlePicture(item, { className: "p3-story-picture" })}<h3 class="p3-wrap-title" data-wrap-text>${esc(item.h1 || item.title)}</h3><p>${esc(item.meta_description || item.direct_answer || "Source-checked Clinic Scout research.")}</p></a>`).join("");
+  const keepReading = readingItems
+    ? `<section class="p3-keep-reading"><p class="gcs-kicker">Keep reading</p><h2>Continue the source trail.</h2>${scopedReading ? `<ul>${readingItems}</ul>` : `<div>${readingItems}</div>`}</section>`
+    : "";
   return html
     .replace(/<main([^>]*)>/i, '<main$1 data-phase3-article="true" data-insights-article-anatomy="hero-body-sources-related-author">')
-    .replace(/<nav class="guide-toc"[\s\S]*?<\/nav>/i, "")
+    // Accepted guides with the GLP-320 render contract keep their automatic TOC.
+    .replace(/<nav class="guide-toc"(?![^>]*data-render-contract="automatic-sections")[\s\S]*?<\/nav>/i, "")
     .replace(/<nav class="breadcrumbs"([\s\S]*?)<a href="\/guides\/">Guides<\/a>/i, '<nav class="breadcrumbs"$1<a href="/insights/">Insights</a>')
     .replace(/(<section class="guide-hero[^"]*">[\s\S]*?<\/section>)/i, `$1${share}`)
     .replace("</main>", `${faq}${keepReading}${tags}${authorBlock}</main>`);
