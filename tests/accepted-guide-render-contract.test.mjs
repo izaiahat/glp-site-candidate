@@ -88,3 +88,20 @@ test('real reviewed oral GLP-1 successor update applies over the accepted additi
   assert.match(html, /<meta name="description" content="Learn how to get oral GLP-1 medicines with five checks/);
   assert.doesNotMatch(html, /captured competitor/i);
 });
+
+test('postbuild AEO citation-label pass relabels render-contract source-id ledger rows (no "Open source" anchors)', async () => {
+  const { newState, remediatePage } = await import('../scripts/codemod-aeo-citation-schema.mjs');
+  const article = fixture();
+  const html = upgradeInsightsArticle(renderBlogPost(article, null, author, []), article, []);
+  assert.ok(html.includes('<li id="guide-source-s4">') && html.includes('>Open source</a>'), 'renderer emits source-id rows with the generic anchor');
+  const state = newState();
+  const out = remediatePage(html, state);
+  assert.equal(out.includes('>Open source<'), false);
+  assert.equal(state.citationAnchors, 3);
+  assert.ok(out.includes('>Novo Nordisk — published page, 2026-10</a>'));
+  assert.ok(out.includes('>Novo Nordisk — PDF document, 2026-10</a>'));
+  assert.ok(out.includes('<strong><span class="guide-source-id">S4</span> Novo Nordisk</strong>'), 'visible source-id chip unchanged');
+  // Legacy numeric rows keep their previous behaviour.
+  const legacy = '<li id="guide-source-1"><strong>FDA</strong><span>x</span><a href="https://www.fda.gov/a" rel="nofollow noopener" data-citation="guide_source_ledger">Open source</a><small>Checked 2026-09-01</small></li>';
+  assert.ok(remediatePage(legacy, newState()).includes('>FDA — regulatory document, 2026-09</a>'));
+});
