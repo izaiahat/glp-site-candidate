@@ -191,6 +191,8 @@ export async function handleNewsletterSubscribeRequest(request, env, fetchImpl =
     });
     const results = await runCanonicalContactStatements(db, statements);
     if (results.some((result) => result?.success === false)) throw new Error("insert_failed");
+    // A ledger insert does not make a guarded subscriber no-op sendable.
+    if (Number(results[0]?.meta?.changes || 0) !== 1) return json(409, {status:'EXISTING_PURPOSE_OR_SUPPRESSION_HELD',sends_started:false});
   } catch {
     return json(503, { status: "STORAGE_FAILED" });
   }

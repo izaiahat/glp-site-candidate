@@ -193,7 +193,7 @@ function nextSendAt(consentAt, sequence, nextStep) {
 
 export async function runDripScheduler(env, config, now = new Date(), fetchImpl = fetch) {
   if (config.welcome_sequence.some(item => item.copy_format === 'glp47-approved-20261009')) {
-    if (!onboardingRuntimeGate(config, env)) return {status:'HELD',sent:0,reason:'glp47_onboarding_runtime_held_b01'};
+    if (!await onboardingRuntimeGate(config, env)) return {status:'HELD',sent:0,reason:'glp47_onboarding_runtime_held_b01'};
     if (!env.EMAIL_DB?.prepare) return {status:'HELD',sent:0,reason:'email_db_missing'};
     const dailyCap = Math.max(1, Math.min(25, Number(env.EMAIL_WARMUP_DAILY_CAP || 25) || 1));
     const daily = await env.EMAIL_DB.prepare("SELECT COUNT(*) AS count FROM email_deliveries WHERE vertical='glp-clinic-scout' AND message_type='welcome' AND sent_at>=?").bind(now.toISOString().slice(0,10)+'T00:00:00.000Z').first();

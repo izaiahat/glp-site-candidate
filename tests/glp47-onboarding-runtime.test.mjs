@@ -44,6 +44,8 @@ test('GLP47 durable approved-purpose capture enrolls once; scheduler delivers ex
   row=sqlite.prepare('SELECT * FROM subscribers').get();assert.equal(Date.parse(row.next_send_at)-now.getTime(),2*86400000);
   const withdrawal=await onRequestPost({request:new Request('https://glpclinicscout.com/unsubscribe',{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams({token})}),env:{...env,RESEND_ENABLED:'false'}});assert.equal(withdrawal.status,200);
   assert.equal((await handleNewsletterSubscribeRequest(request(payload()),env,transport)).status,409);
+  const legacyRepeat=await handleNewsletterSubscribeRequest(request(payload('safe@example.invalid',{consent_version:'glp-newsletter-v1-20260822'})),env,transport);
+  assert.equal(legacyRepeat.status,409);assert.equal(calls.length,2,'held legacy upsert must not revive contact or send confirmation');
   assert.equal((await runDripScheduler(env,config,new Date(Date.parse(row.consent_at)+3*86400000),transport)).sent,0);assert.equal(calls.length,2);
   assert.equal(sqlite.prepare('SELECT status FROM subscribers').get().status,'unsubscribed');
  }finally{sqlite.close()}
@@ -85,4 +87,13 @@ test('GLP47 scheduled day-two sends once; unknown effects are held without repla
    const replay=await runDripScheduler(env,config,new Date(day2.getTime()+2000),transport);
    assert.equal(replay.status,'HELD');assert.equal(replay.sent,0);assert.equal(sends,2);
  } finally {sqlite.close();}
+});
+
+test('GLP47 actual approved bytes cannot be changed under unchanged approval metadata',async()=>{
+ for(const mutate of [c=>{c.welcome_sequence[0].body_text+=' changed';},c=>{c.welcome_footer+=' changed';}]) {
+  const changed=structuredClone(config);mutate(changed);let touched=false;
+  const env=environment({prepare(){touched=true;throw new Error('must not touch DB');}});
+  const result=await runDripScheduler(env,changed);
+  assert.equal(result.status,'HELD');assert.equal(touched,false);
+ }
 });
