@@ -1,0 +1,27 @@
+name = "glp-clinic-scout-onboarding"
+main = "../email-scheduler.mjs"
+compatibility_date = "2026-08-08"
+account_id = "f860943dff399ffb1db0a28dcd3dadfd"
+workers_dev = false
+preview_urls = false
+keep_vars = true
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[triggers]
+crons = ["0 * * * *"]
+
+[[d1_databases]]
+binding = "EMAIL_DB"
+database_name = "glp-clinic-scout-prod"
+database_id = "bcb91d2d-c3f1-4c55-93e3-070587e86d60"
+
+[vars]
+# Deployment remains held until independent exact-head review and parent adoption.
+ONBOARDING_ENABLED = "false"
+ONBOARDING_B01_READY = "false"
+ONBOARDING_COPY_SHA256 = "e600463c7f9c19da67dd38f6ea7b76b2f3a46db3bacfd2e761e38a87684d0580"
+EMAIL_WARMUP_STATUS = "PASS"
+EMAIL_WARMUP_DAILY_CAP = "25"

@@ -14,6 +14,15 @@ on:
       - "assets/analytics.js"
       - "package.json"
       - "src/candidate-export-policy.mjs"
+      - "src/onboarding-consent.mjs"
+      - "src/newsletter-subscribe.mjs"
+      - "src/canonical-contact.mjs"
+      - "src/resend-email-machine.mjs"
+      - "workers/email-scheduler.mjs"
+      - "workers/onboarding/wrangler.toml"
+      - "scripts/run-onboarding-manual.mjs"
+      - "scripts/build-staging.mjs"
+      - "tests/glp47-onboarding-runtime.test.mjs"
       - "src/consent-runtime.mjs"
       - "src/ga4-runtime.mjs"
       - "tests/d2i-analytics-hygiene.test.mjs"
@@ -64,6 +73,8 @@ jobs:
             tests/d2o-server-consent.test.mjs \
             tests/d2o-consent-lifecycle.test.mjs \
             tests/d2o-consent-races.test.mjs
+      - name: GLP47 approved-purpose runtime and capture regression (offline only)
+        run: npm run test:onboarding
       - name: MaxBounty source-runtime privacy regressions (offline only)
         run: |
           npm ci --include=dev --ignore-scripts --no-audit --no-fund

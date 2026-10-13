@@ -1,4 +1,6 @@
 import { CONTENT_UPGRADE_TERMS_CAPTURE_SOURCES, COST_CALCULATOR_CAPTURE } from "./site-capture-consent-sources.mjs";
+import { onboardingRuntimeGate, ONBOARDING_ELIGIBILITY_SQL } from './onboarding-consent.mjs';
+import { syncResendContact } from './resend-contacts.mjs';
 
 const RESEND_API = "https://api.resend.com/emails";
 const EMAIL_STATUS_EVENTS = new Set(["email.sent", "email.delivered", "email.delivery_delayed", "email.failed", "email.opened", "email.clicked", "email.bounced", "email.complained", "email.suppressed"]);
@@ -189,11 +191,46 @@ function nextSendAt(consentAt, sequence, nextStep) {
   return new Date(new Date(consentAt).getTime() + entry.day * 86_400_000).toISOString();
 }
 
-export async function runDripScheduler(env, config, now = new Date()) {
+export async function runDripScheduler(env, config, now = new Date(), fetchImpl = fetch) {
+  if (config.welcome_sequence.some(item => item.copy_format === 'glp47-approved-20261009')) {
+    if (!onboardingRuntimeGate(config, env)) return {status:'HELD',sent:0,reason:'glp47_onboarding_runtime_held_b01'};
+    if (!env.EMAIL_DB?.prepare) return {status:'HELD',sent:0,reason:'email_db_missing'};
+    const dailyCap = Math.max(1, Math.min(25, Number(env.EMAIL_WARMUP_DAILY_CAP || 25) || 1));
+    const daily = await env.EMAIL_DB.prepare("SELECT COUNT(*) AS count FROM email_deliveries WHERE vertical='glp-clinic-scout' AND message_type='welcome' AND sent_at>=?").bind(now.toISOString().slice(0,10)+'T00:00:00.000Z').first();
+    const cap = Math.max(0, dailyCap-Number(daily?.count||0));
+    if (!cap) return {status:'HELD',sent:0,reason:'onboarding_daily_cap',receipts:[]};
+    const due = await env.EMAIL_DB.prepare(`SELECT s.* FROM subscribers s WHERE ${ONBOARDING_ELIGIBILITY_SQL} AND s.next_send_at<=? AND s.next_drip_step BETWEEN 1 AND 2 ORDER BY s.next_send_at LIMIT ?`).bind(now.toISOString(),cap).all();
+    const receipts=[];let sent=0;let held=0;
+    for (const subscriber of due.results||[]) {
+      const template=config.welcome_sequence.find(t=>t.step===subscriber.next_drip_step);
+      const campaignId=`welcome-glp-${template.step}`;
+      const message=buildMessage({config,subscriber,template,campaignId});
+      const deliveryId=`${subscriber.subscriber_id}:${campaignId}`;
+      const claim=await env.EMAIL_DB.prepare(`INSERT OR IGNORE INTO email_deliveries(delivery_id,idempotency_key,subscriber_id,vertical,funnel_stage,message_type,sequence_step,campaign_id,status,created_at) SELECT ?,?,?,?,?,'welcome',?,?,'sending',? WHERE EXISTS(SELECT 1 FROM subscribers s WHERE ${ONBOARDING_ELIGIBILITY_SQL} AND s.subscriber_id=? AND s.next_drip_step=?) AND (SELECT COUNT(*) FROM email_deliveries d WHERE d.vertical='glp-clinic-scout' AND d.message_type='welcome' AND d.created_at>=? AND d.status IN ('sending','sent','delivered'))<?`).bind(deliveryId,message.idempotencyKey,subscriber.subscriber_id,subscriber.vertical,subscriber.funnel_stage,template.step,campaignId,now.toISOString(),subscriber.subscriber_id,template.step,now.toISOString().slice(0,10)+'T00:00:00.000Z',dailyCap).run();
+      if (Number(claim?.meta?.changes||0)!==1) continue;
+      // Revalidate after claiming and before each outward effect. Unknown effects
+      // retain their claim; no time-based blind retry of provider idempotency.
+      const eligible=()=>env.EMAIL_DB.prepare(`SELECT 1 AS found FROM subscribers s WHERE ${ONBOARDING_ELIGIBILITY_SQL} AND s.subscriber_id=?`).bind(subscriber.subscriber_id).first();
+      if (!(await eligible())) {held++;continue;}
+      let contact=null;
+      if (template.step===1) {
+        contact=await syncResendContact({env:{...env,RESEND_ENABLED:'true'},email:subscriber.email,firstName:subscriber.first_name},fetchImpl);
+        if (contact.status!=='synced') {held++;receipts.push({delivery_id:deliveryId,status:'HELD',reason:'contact_sync_failed'});continue;}
+      }
+      if (!(await eligible())) {held++;continue;}
+      const outcome=await sendWithResend(message,env,fetchImpl);
+      if (outcome.status!=='sent') {held++;receipts.push({delivery_id:deliveryId,status:'UNKNOWN_OR_FAILED',reason:outcome.reason||`provider_http_${outcome.http_status}`});continue;}
+      await env.EMAIL_DB.prepare("UPDATE email_deliveries SET status='sent',resend_email_id=?,sent_at=? WHERE delivery_id=?").bind(outcome.resend_email_id,now.toISOString(),deliveryId).run();
+      // Day two is two days after actual welcome, not an old capture clock.
+      const next=template.step===1?new Date(now.getTime()+2*86400000).toISOString():null;
+      await env.EMAIL_DB.prepare(`UPDATE subscribers SET next_drip_step=?,next_send_at=?,last_sent_at=?,updated_at=? WHERE subscriber_id=? AND vertical=? AND status='active' AND consent_status='opted-in' AND NOT EXISTS(SELECT 1 FROM suppression_log z WHERE z.email=subscribers.email AND z.vertical=subscribers.vertical)`).bind(template.step+1,next,now.toISOString(),now.toISOString(),subscriber.subscriber_id,subscriber.vertical).run();
+      sent++;receipts.push({delivery_id:deliveryId,status:'sent',resend_email_id:outcome.resend_email_id,resend_contact_id:contact?.contact_id||null,sequence_step:template.step});
+    }
+    const pending = await env.EMAIL_DB.prepare("SELECT COUNT(*) AS count FROM email_deliveries WHERE vertical='glp-clinic-scout' AND message_type='welcome' AND status IN ('sending','retry')").bind().first();
+    const unresolved = Number(pending?.count||0);
+    return {status:held||unresolved?'HELD':'PASS',sent,held,unresolved,receipts};
+  }
   if (!emailRuntimeGate(config, env)) return { status: "HELD", sent: 0, reason: "email_runtime_gate" };
-  // GLP47 approval covers copy only. No retained owner-backed B-01 runtime
-  // receiving exists; source review is required to replace this launch hold.
-  if (config.welcome_sequence.some(item => item.copy_format === "glp47-approved-20261009")) return { status: "HELD", sent: 0, reason: "glp47_onboarding_runtime_held_b01" };
   if (!env.EMAIL_DB?.prepare) return { status: "HELD", sent: 0, reason: "email_db_missing" };
   const cap = Number(env.EMAIL_WARMUP_DAILY_CAP || 25);
   const due = await env.EMAIL_DB.prepare("SELECT * FROM subscribers WHERE status='active' AND consent_status='opted-in' AND next_send_at <= ? AND next_drip_step BETWEEN 1 AND 5 ORDER BY next_send_at LIMIT ?").bind(now.toISOString(), cap).all();
