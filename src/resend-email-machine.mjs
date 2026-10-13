@@ -214,7 +214,7 @@ export async function runDripScheduler(env, config, now = new Date(), fetchImpl 
       if (!(await eligible())) {held++;continue;}
       let contact=null;
       if (template.step===1) {
-        contact=await syncResendContact({env:{...env,RESEND_ENABLED:'true'},email:subscriber.email,firstName:subscriber.first_name},fetchImpl);
+        contact=await syncResendContact({env:{...env,RESEND_ENABLED:'true'},email:subscriber.email,firstName:'there'},fetchImpl);
         if (contact.status!=='synced') {held++;receipts.push({delivery_id:deliveryId,status:'HELD',reason:'contact_sync_failed'});continue;}
       }
       if (!(await eligible())) {held++;continue;}

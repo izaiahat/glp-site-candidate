@@ -98,7 +98,7 @@ export function validateNewsletterSubscription(payload) {
   const sourceSurface = String(payload.source_surface || "sitewide-price-watch").trim();
   if (!ALLOWED_SOURCE_SURFACES.has(sourceSurface)) throw new Error("source_surface_invalid");
   const providerContext = payload.provider_context ?? null;
-  if (onboarding && (sourceSurface !== ONBOARDING_SURFACE || providerContext !== null)) throw new Error('onboarding_purpose_invalid');
+  if (onboarding && (sourceSurface !== ONBOARDING_SURFACE || providerContext !== null || firstName !== '')) throw new Error('onboarding_purpose_invalid');
   if (providerContext !== null) {
     if (!providerContext || typeof providerContext !== "object" || Array.isArray(providerContext)) throw new Error("provider_context_invalid");
     if (Object.keys(providerContext).some((key) => !ALLOWED_CONTEXT_KEYS.has(key))) throw new Error("provider_context_invalid");

@@ -23,6 +23,7 @@ test('GLP47 durable approved-purpose capture enrolls once; scheduler delivers ex
  const transport=async(url,init)=>{calls.push({url,body:JSON.parse(init.body)});return new Response(JSON.stringify({id:url.endsWith('/contacts')?'synthetic-contact':'synthetic-message'}),{status:200})};
  try{
   assert.equal((await handleNewsletterSubscribeRequest(request(payload('unconsented@example.invalid',{email_consent:false})),env,transport)).status,400);
+  assert.equal((await handleNewsletterSubscribeRequest(request(payload('field@example.invalid',{first_name:'private health context'})),env,transport)).status,400);
   assert.equal((await handleNewsletterSubscribeRequest(request(payload('quiz@example.invalid',{source_surface:'quiz-provider-fit'})),env,transport)).status,400);
   sqlite.prepare("INSERT INTO suppression_log VALUES (?,'glp-clinic-scout','unsubscribed','fixture',?)").run('suppressed@example.invalid',new Date().toISOString());
   assert.equal((await handleNewsletterSubscribeRequest(request(payload('suppressed@example.invalid')),env,transport)).status,409);
