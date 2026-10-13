@@ -56,19 +56,19 @@
       "status": "PASS"
     }
   ],
-  "job_id": "A5-successor-review-r2-20261013",
+  "job_id": "A8-successor-review-r4-fullbuild-20261013",
   "model": "gpt-6-astra-900k",
   "provider": "openai-codex",
-  "raw_review_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/A5/review/history-r2/round-01-sol-raw.json",
-  "raw_review_sha256": "aa7734b52eba540a83b04607c5cd15fac9d17af1b11366faf30f48543a48ca28",
-  "receipt_sha256": "b1e8c1fa6ebdbeda4bc16cc5917a2722fed64c89fd4c5d7eaf154bfec9278724",
+  "raw_review_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/A8/review/history-r4/round-01-sol-raw.json",
+  "raw_review_sha256": "f0bb6c94f9c0ea9ea9eb24d19f45952b228012e1204af24deb97aea9b1c84e24",
+  "receipt_sha256": "00a520c3046db81f53ea3d71925cf271f222b4f51af13730b564b1fa9169c30e",
   "review_transport": "hermes-openai-codex-astra-independent",
-  "reviewed_at_utc": "2026-10-13T03:29:49.271155Z",
+  "reviewed_at_utc": "2026-10-13T07:32:26.004517Z",
   "round": 1,
   "schema": "glp-opus-seo-round-receipt-v1",
   "status": "PASS_OPUS_SEO_DRAFT",
-  "subject_manifest_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/A5/review/history-r2/round-01-subject-manifest.json",
-  "subject_manifest_sha256": "af3c6d24b088f6f2b0ffa32c7484482a0679452ce4653b380c633bb40ab8bf5d",
+  "subject_manifest_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/A8/review/history-r4/round-01-subject-manifest.json",
+  "subject_manifest_sha256": "faa48422dad8fe8d10190d8944db9790e7e5aa49e99cad705028ad67df41db64",
   "tools_disabled": true,
   "topic_id": "7610a73b64a734722f3a"
 }
