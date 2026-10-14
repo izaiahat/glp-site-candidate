@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import { handleNewsletterSubscribeRequest } from '../src/newsletter-subscribe.mjs';
 import { runDripScheduler, ingestResendWebhook } from '../src/resend-email-machine.mjs';
 import { createHmac } from 'node:crypto';
+import { manualD1 } from '../scripts/run-onboarding-manual.mjs';
 import { onRequestPost } from '../functions/unsubscribe.js';
 import { handleContentUpgradeRequest } from '../src/content-upgrade.mjs';
 const config=JSON.parse(readFileSync(new URL('../data/resend-email-machine.json',import.meta.url)));
@@ -100,6 +101,25 @@ test('GLP47 missing atomic receipt adapter is held before DB or provider effects
  const env=environment({prepare(){assert.fail('missing batch must refuse before DB')}});
  const out=await runDripScheduler(env,config,new Date(),()=>assert.fail('missing batch must refuse before provider'));
  assert.equal(out.status,'HELD');assert.equal(out.sent,0);
+});
+test('GLP47 registered manual D1 adapter preserves batch bindings and refuses incomplete/uncertain results without retry',async()=>{
+ let calls=0;const bodies=[];
+ const db=manualD1('OFFLINE_ONLY',async(url,init)=>{
+  assert.match(url,/bcb91d2d-c3f1-4c55-93e3-070587e86d60\/query$/);calls++;
+  const body=JSON.parse(init.body);bodies.push(body);
+  return Response.json({success:true,result:(body.batch||[body]).map(()=>({success:true,results:[{n:1}],meta:{changes:1}}))});
+ });
+ assert.equal((await db.prepare('SELECT ? AS n').bind('offline').first()).n,1);
+ const statements=[db.prepare('SELECT ?').bind('one'),db.prepare('SELECT ?').bind('two')];
+ assert.equal((await db.batch(statements)).length,2);
+ assert.deepEqual(bodies[1],{batch:[{sql:'SELECT ?',params:['one']},{sql:'SELECT ?',params:['two']}]});assert.equal(calls,2);
+ for(const response of [{success:false,result:[]},{success:true,result:[{success:true}]},{success:true,result:[{success:true},{success:false}]},{success:true,result:[{},{}]}]) {
+  let attempts=0;const bad=manualD1('OFFLINE_ONLY',async()=>{attempts++;return Response.json(response)});
+  await assert.rejects(bad.batch([bad.prepare('SELECT ?').bind('one'),bad.prepare('SELECT ?').bind('two')]),/manual_d1_query_failed/);
+  assert.equal(attempts,1);
+ }
+ let attempts=0;const unknown=manualD1('OFFLINE_ONLY',async()=>{attempts++;throw Error('offline lost response')});
+ await assert.rejects(unknown.batch([unknown.prepare('SELECT 1').bind()]),/offline lost response/);assert.equal(attempts,1);
 });
 test('GLP47 durable approved-purpose capture enrolls once; scheduler delivers exact welcome and refuses replay/withdrawal',async()=>{
  const {sqlite,db}=database();const env=environment(db);const calls=[];
