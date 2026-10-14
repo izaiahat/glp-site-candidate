@@ -44,6 +44,7 @@ on:
       - "tests/care-bare-novi-source-followup.test.mjs"
       - "tests/f17-historical-registry-binding.test.mjs"
       - "tests/fixtures/f17-pinned-program-registry.json.gz"
+      - "tests/fixtures/f17-pre-pallas-input-successor.json"
       - "tests/quiz-input-seam.test.mjs"
       - "tests/glp234-try-ageless-identity.test.mjs"
       - "tests/price-index-caller-seams.test.mjs"
@@ -131,7 +132,9 @@ jobs:
       # Executes the complete immutable historical F17 assertion body with
       # exact committed fixture bytes; not current-registry/build acceptance.
       - name: F17 historical registry custody (source-only; no current approval)
-        run: node --test tests/f17-historical-registry-binding.test.mjs
+        run: |
+          node --test tests/f17-historical-registry-binding.test.mjs
+          node --test --test-name-pattern '^GLP-234 F17 exact' tests/glp234-try-ageless-identity.test.mjs
       - name: Record limited scope
         if: always()
         run: |

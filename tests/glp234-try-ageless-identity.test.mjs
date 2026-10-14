@@ -16,6 +16,7 @@ import { loadGoPromotionAuthority } from '../src/go-runtime-selection.mjs';
 import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
 import { effectiveAffiliateBuildInputs, effectiveAffiliateRegistry } from '../src/affiliate-relationship-sync.mjs';
 import { quizInputSeam } from './helpers/quiz-input-seam.mjs';
+import { readF17PinnedRegistry } from './helpers/f17-pinned-registry.mjs';
 
 test('GLP-234 F3 exact identity successor reconstructs only the historical price label', async () => {
   const {readHistoricalPriceFixture} = await import('./helpers/provider-append-predecessor.mjs');
@@ -128,9 +129,14 @@ const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 // not supply independent acceptance, run a browser, or authorize publication.
 test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and refuses unintended leaves', async () => {
   const read = (path) => readFileSync(new URL('../' + path, import.meta.url));
-  const pins = JSON.parse(read('tests/fixtures/glp41-approved-input-successor.json'));
+  // Exact Git pins at ed8deacd242647f38f029eae1ce84303b5097fca, before
+  // fe0df36 adopted the Pallas denial. Original lineage assertions below are
+  // historical custody, not approval of today's registry or this successor.
+  const lineageBytes = read('tests/fixtures/f17-pre-pallas-input-successor.json');
+  assert.equal(sha(lineageBytes), '7a8ad0ed7c3a3e58be97a7b9ac2bdc8e0f2b45b469964e3cfa86369dd7ea399a');
+  const pins = JSON.parse(lineageBytes);
   const input = 'data/program-registry.json';
-  const bytes = read(input);
+  const bytes = readF17PinnedRegistry();
   const immutable = {data: {[input]: 'bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6'}};
   assert.equal(pins.inputs[input].after_sha256, '87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887');
   assert.equal(pins.provenance.previous_care_after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
@@ -146,6 +152,24 @@ test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and
   // Fixed parent hashes are provenance, not inherited approval of this union.
   assert.equal(pins.provenance.immediate_predecessor_sha256, '836bba4cd1cee5afe637ac0a727a65ee539361295a615e2767cc8d5b923a74e4');
   assert.equal(pins.provenance.breeze_parent_registry_sha256, '139ead035992abe19e0e5c99830869c72274931ca4d7280dd65c3f1e6e241f86');
+
+  const lineagePins = pins;
+  {
+  // Current maintained consumers still receive the exact Pallas successor
+  // pins and registry. The lexical scope keeps their injection seam unchanged.
+  const pins = JSON.parse(read('tests/fixtures/glp41-approved-input-successor.json'));
+  const pallas = pins.provenance.pallas_successor_proposal;
+  assert.equal(pallas.before_sha256, lineagePins.inputs[input].after_sha256);
+  assert.equal(pallas.after_sha256, sha(bytes));
+  assert.equal(pins.inputs[input].after_sha256, sha(bytes));
+  assert.equal(pallas.changed_program_count, 1);
+  assert.equal(pallas.changed_program_id, 'pallas-health-review');
+  assert.equal(pallas.only_changed_program_field, 'affiliate_relationship_snapshot');
+  assert.equal(pallas.independent_acceptance, null, 'proposal is not inherited acceptance');
+  const retainedLineage = structuredClone(pins);
+  delete retainedLineage.provenance.pallas_successor_proposal;
+  retainedLineage.inputs[input].after_sha256 = lineagePins.inputs[input].after_sha256;
+  assert.deepEqual(retainedLineage, lineagePins, 'all other historical pin fields remain exact');
 
   // Run the existing Node test body unchanged with in-memory input substitutions.
   const nodeSource = read('tests/glp41-material-contracts.test.mjs').toString();
@@ -175,6 +199,9 @@ test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and
   }}, new URL('../', import.meta.url), fixture, immutable, assert, sha)(input);
   runNode(bytes);
   assert.deepEqual(runBrowserInput(bytes), JSON.parse(bytes));
+  // Historical custody cannot accidentally accept today's distinct registry.
+  assert.throws(() => runNode(read(input)), {code: 'ERR_ASSERTION'});
+  assert.throws(() => runBrowserInput(read(input)), /immutable listing oracle/);
 
   const registry = JSON.parse(bytes);
   assert.equal(JSON.stringify(registry, null, 2) + '\n', bytes.toString(), 'mutation serialization must preserve otherwise exact bytes');
@@ -219,6 +246,7 @@ test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and
   wrongBefore.inputs[input].before_sha256 = prior.inputs[input].after_sha256;
   assert.throws(() => runNode(bytes, wrongBefore), {code: 'ERR_ASSERTION'});
   assert.throws(() => runBrowserInput(bytes, wrongBefore), /approved successor must bind the old input/);
+  }
 });
 
 test('GLP-234 registry projections name the first-party brand without altering routing or held commercial custody', async () => {
