@@ -33,6 +33,8 @@ on:
       - "tests/article-selection-seam.test.mjs"
       - "tests/glp234-held-article-output.test.mjs"
       - "tests/affiliate-relationship-sync.test.mjs"
+      - "tests/affiliate-expansion-13.test.mjs"
+      - "tests/affiliate-expansion-approval-input.test.mjs"
       - "tests/candidate-export-policy.test.mjs"
       - "tests/carrier-analytics-emission.test.mjs"
       - "tests/content-upgrade-contract.test.mjs"
@@ -131,6 +133,8 @@ jobs:
       # private approval authenticity, economics or built paid-page behavior.
       - name: R11 private approval input binding (source-only; no private reads)
         run: node --test tests/r11-approval-input-binding.test.mjs
+      - name: Affiliate expansion private approval input binding (source-only; no private reads)
+        run: node --test tests/affiliate-expansion-approval-input.test.mjs
       # Native R2 collection needs a genuine private deployed-baseline receipt.
       # This recorder checks only maintained fixture paths/copies, not prices.
       - name: R2 retention fixture input binding (source-only; no private reads)
