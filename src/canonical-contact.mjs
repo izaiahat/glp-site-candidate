@@ -34,6 +34,7 @@ export function canonicalContactStatements(db, {
   idempotencyKey,
   capturedAt,
   unsubscribeToken = null,
+  captureOnly = false,
 }) {
   const name = normalizedName(firstName);
   const surface = String(sourceSurface || "").trim();
@@ -51,7 +52,7 @@ export function canonicalContactStatements(db, {
   if (marketingConsent) {
     if (!subscriberId || !/^[a-f0-9]{64}$/.test(subscriberId)) throw new Error("subscriber_id_invalid");
     if (!/^[a-f0-9]{32}$/.test(unsubscribeToken || "")) throw new Error("unsubscribe_token_invalid");
-    statements.push(db.prepare("INSERT INTO subscribers (subscriber_id,email,first_name,vertical,funnel_stage,consent_status,consent_version,consent_source,consent_at,unsubscribe_token,status,next_drip_step,next_send_at,created_at,updated_at) VALUES (?,?,?,?,?,'opted-in',?,?,?,?,'active',0,NULL,?,?) ON CONFLICT(email,vertical) DO UPDATE SET first_name=CASE WHEN excluded.first_name <> 'there' THEN excluded.first_name ELSE subscribers.first_name END,funnel_stage=excluded.funnel_stage,consent_status='opted-in',consent_version=excluded.consent_version,consent_source=excluded.consent_source,consent_at=excluded.consent_at,unsubscribe_token=CASE WHEN LENGTH(subscribers.unsubscribe_token)=32 THEN subscribers.unsubscribe_token ELSE excluded.unsubscribe_token END,status='active',next_drip_step=0,next_send_at=NULL,updated_at=excluded.updated_at")
+    if (!captureOnly) statements.push(db.prepare("INSERT INTO subscribers (subscriber_id,email,first_name,vertical,funnel_stage,consent_status,consent_version,consent_source,consent_at,unsubscribe_token,status,next_drip_step,next_send_at,created_at,updated_at) VALUES (?,?,?,?,?,'opted-in',?,?,?,?,'active',0,NULL,?,?) ON CONFLICT(email,vertical) DO UPDATE SET first_name=CASE WHEN excluded.first_name <> 'there' THEN excluded.first_name ELSE subscribers.first_name END,funnel_stage=excluded.funnel_stage,consent_status='opted-in',consent_version=excluded.consent_version,consent_source=excluded.consent_source,consent_at=excluded.consent_at,unsubscribe_token=CASE WHEN LENGTH(subscribers.unsubscribe_token)=32 THEN subscribers.unsubscribe_token ELSE excluded.unsubscribe_token END,status='active',next_drip_step=0,next_send_at=NULL,updated_at=excluded.updated_at WHERE subscribers.consent_version <> 'glp47-comparison-guides-v1-20261013' AND subscribers.status='active' AND NOT EXISTS (SELECT 1 FROM suppression_log z WHERE z.email=subscribers.email AND z.vertical=subscribers.vertical)")
       .bind(subscriberId, email, name, VERTICAL, funnelStage, consentVersion, consentSource, capturedAt, unsubscribeToken, capturedAt, capturedAt));
   }
 
