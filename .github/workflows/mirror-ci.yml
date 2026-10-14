@@ -36,6 +36,8 @@ on:
       - "tests/carrier-analytics-emission.test.mjs"
       - "tests/content-upgrade-contract.test.mjs"
       - "tests/d2f-coverage-floor.test.mjs"
+      - "tests/d2w-s9-source-controls.test.mjs"
+      - "tests/price-index-caller-seams.test.mjs"
       - "tests/f06-fastpath-current-hold.test.mjs"
       - "tests/glp47-approved-onboarding.test.mjs"
       - "tests/guide-resource-consent.test.mjs"
@@ -109,6 +111,8 @@ jobs:
         run: node --test tests/f06-fastpath-current-hold.test.mjs
       - name: Taxonomy refresh import boundary (offline exact head)
         run: node --test tests/therapeutic-refresh-import.test.mjs
+      - name: Price caller dependency seam regression (synthetic inputs; not price-oracle acceptance)
+        run: node --test tests/price-index-caller-seams.test.mjs
       - name: Record limited scope
         if: always()
         run: |

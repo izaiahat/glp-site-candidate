@@ -6,6 +6,7 @@ import {spawnSync} from 'node:child_process';
 import {projectMoneyPagesFromRegistry,projectQuizFromRegistry,deriveProfileSurfaceSets} from '../src/program-registry.mjs';
 import {projectTherapeuticSurfaces,stableSha256} from '../src/therapeutic-taxonomy.mjs';
 import {restoreGoOnlyPriceBasis} from '../src/go-runtime-selection.mjs';
+import {historicalAffiliateRegistry} from '../src/affiliate-relationship-sync.mjs';
 import {fileURLToPath} from 'node:url';
 import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
 import {historicalPriceIndexRegistry} from '../src/price-index-historical-registry.mjs';
@@ -18,6 +19,7 @@ import {buildProviderReviewSpecs,renderProviderReviewPage} from '../src/provider
 import {buildPhase3PageGraph} from '../src/phase3-page-graph.mjs';
 import {sourceDisplayPacket,projectProviderDisplayLedger,projectProviderDisplayFacts} from '../src/provider-display-evidence.mjs';
 import {readHistoricalPriceFixture,readBeforeProviderAppendFixture} from './helpers/provider-append-predecessor.mjs';
+import {priceIndexCallerSeams} from './helpers/price-index-caller-seams.mjs';
 const root=new URL('../',import.meta.url),bytes=n=>['program-registry.json','provider-page-contracts.json','provider-fastpath-contract.json','quiz-config.json','money-page-specs.json','phase3-page-graph.json'].includes(n)?readBeforeProviderAppendFixture(new URL('data/'+n,root)):readHistoricalPriceFixture(new URL('data/'+n,root)),read=n=>JSON.parse(bytes(n)),sha=b=>createHash('sha256').update(b).digest('hex');
 const registry=read('program-registry.json'),money=read('money-page-specs.json'),quiz=read('quiz-config.json'),ledger=read('program-content-ledger.json'),profile='glp-clinic-scout';
 const frozen=frozenPriceLedger(bytes('program-content-ledger.json'),bytes('price-index-frozen-content-ledger.json'),read('price-index-nonprice-binding.json'));
@@ -139,17 +141,8 @@ test('GLP-234 F3-R1 maintained build and observer caller seams accept authentica
  const build=readFileSync(new URL('scripts/build-staging.mjs',root),'utf8');
  // The previous seam began AFTER this independent guard and missed the real
  // build failure: current consumer identity is not the frozen price identity.
- const preflightStart=build.indexOf('  let priceIndexRegistrySourceSha256 =');
- const preflightEnd=build.indexOf('  const priceLedger =',preflightStart);
- assert.ok(preflightStart>=0&&preflightEnd>preflightStart);
- const preflight=new Function('programRegistry','programRegistryBytes','priceTrackerConfig','createHash','stableSha256','restoreGoOnlyPriceBasis','ROOT','historicalPriceIndexRegistry',
-  build.slice(preflightStart,preflightEnd)+'\nreturn priceIndexRegistrySourceSha256;');
- const callPreflight=(r,tracker,reader=historicalPriceIndexRegistry)=>preflight(r,bytes('program-registry.json'),tracker,createHash,stableSha256,restoreGoOnlyPriceBasis,fileURLToPath(root),reader);
- const buildStart=build.indexOf('  const priceIndexInput = {');
- const buildEnd=build.indexOf('  const priceIndexRefresh =',buildStart);
- assert.ok(buildStart>=0&&buildEnd>buildStart);
- const buildCall=new Function('priceTrackerConfig','originalDataStudy','programRegistry','priceLedger','originalDataStudyBytes','priceIndexRegistrySourceSha256','createHash','buildPriceIndexArtifacts','applyWave2P1Surfaces','markReleaseReady','addByteFrozenSharedRuntime','PRICE_INDEX_ROUTE_FILE',
-  build.slice(buildStart,buildEnd)+'\nreturn priceIndex;');
+ const {preflight,buildCall}=priceIndexCallerSeams(build);
+ const callPreflight=(r,tracker,reader=historicalPriceIndexRegistry)=>preflight(r,bytes('program-registry.json'),tracker,createHash,stableSha256,restoreGoOnlyPriceBasis,fileURLToPath(root),reader,historicalAffiliateRegistry,r);
  const observer=readFileSync(new URL('scripts/update-price-index.mjs',root),'utf8');
  const normalizeStart=observer.indexOf('const sourceHashes = normalizePriceIndexSourceHashes(');
  const normalizeEnd=observer.indexOf('const migration =',normalizeStart);
@@ -163,7 +156,7 @@ test('GLP-234 F3-R1 maintained build and observer caller seams accept authentica
  const historical=historicalPriceIndexRegistry(registry,frozen.ledger);
  for(const programRegistry of [registry,historical]){
   const callBuild=()=>buildCall(input.tracker,input.study,programRegistry,frozen,bytes('original-data-study.json'),callPreflight(programRegistry,input.tracker),createHash,
-   (candidate,options)=>buildPriceIndexArtifacts(candidate,{...options,now}),html=>html,html=>html,html=>html,'glp-1-price-index/index.html');
+   (candidate,options)=>buildPriceIndexArtifacts(candidate,{...options,now}),html=>html,html=>html,html=>html,'glp-1-price-index/index.html',historicalAffiliateRegistry);
   const callObserve=()=>observeCall({...input,programRegistry},{study:bytes('original-data-study.json'),programRegistry:bytes('program-registry.json')},frozen,sha,normalizePriceIndexSourceHashes,validatePriceIndexInputs,latest);
   assert.deepEqual(callBuild(),expected);assert.deepEqual(callObserve(),validated);
   const wrongTracker=structuredClone(input.tracker);
