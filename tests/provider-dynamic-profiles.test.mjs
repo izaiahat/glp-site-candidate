@@ -141,6 +141,10 @@ function syntheticFixture({ registry, money, quiz, asOf }) {
 }
 
 test("29 registry rows reconcile to 28 evidence-bound identities shared by suggestions and calculator", () => {
+  // Historical all-identities parity predates explicit review-only membership.
+  // Keep every original assertion on one authenticated input generation, not
+  // today's acquisition pool with its deliberately excluded standalone review.
+  const { registry, money, calculator, providerContracts, fastpath, asOf } = historicalRetatrutideInputs();
   const validated = validateProviderDynamicProfiles(registry, "glp-clinic-scout", { asOf });
   assert.equal(registry.therapeutic_taxonomy.expected_counts.provider_rows, Object.keys(registry.therapeutic_taxonomy.programs).length);
   assert.equal(validated.canonicalIds.length, registry.provider_dynamic_profiles.expected_counts.provider_identities);

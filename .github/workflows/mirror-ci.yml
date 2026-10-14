@@ -79,6 +79,7 @@ on:
       - "tests/pricing-deployed-row-schema.test.mjs"
       - "tests/therapeutic-refresh-import.test.mjs"
       - "tests/provider-dynamic-profiles.test.mjs"
+      - "tests/identity-calculator-census.test.mjs"
       - "tests/retatrutide-capture-custody.test.mjs"
       - "tests/fixtures/historical-retatrutide-inputs.mjs"
       - "tests/fixtures/retatrutide-capture/**"
@@ -173,11 +174,11 @@ jobs:
         run: node --test tests/f06-fastpath-current-hold.test.mjs
       - name: Taxonomy refresh import boundary (offline exact head)
         run: node --test tests/therapeutic-refresh-import.test.mjs
-      - name: September retatrutide fixture custody and current strict expiry (no build or evidence refresh)
+      - name: Complete dynamic-profile identity census, historical capture custody and current holds (no build or evidence refresh)
         run: |
           sudo install -d -m 0755 -o "$(id -u)" -g "$(id -g)" /home/ubuntu/business
           node tests/helpers/materialize-retatrutide-capture.mjs
-          node --test --test-name-pattern '^(one synthetic provider|retatrutide remains|field-addressable exact|retatrutide authority rejects|retatrutide historical|retatrutide captured|retatrutide current)' tests/provider-dynamic-profiles.test.mjs tests/retatrutide-capture-custody.test.mjs
+          node --test --test-concurrency=1 tests/provider-dynamic-profiles.test.mjs tests/identity-calculator-census.test.mjs tests/retatrutide-capture-custody.test.mjs
       - name: Price caller dependency seam regression (synthetic inputs; not price-oracle acceptance)
         run: node --test tests/price-index-caller-seams.test.mjs
       - name: Article selection dependency seam (source catalogs only; not built-output acceptance)
