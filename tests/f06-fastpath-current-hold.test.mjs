@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { historicalEndedValidator } from './fixtures/historical-ended-review.mjs';
 
 // Replay the maintained branch selector without running unrelated file writers.
 test('F06 fastpath validator applies current hold before historical VERIFIED and retains active controls', async (t) => {
@@ -30,7 +31,11 @@ test('F06 fastpath validator applies current hold before historical VERIFIED and
     const endedAuthority={[id]:{status:'WITHHELD',promotion_authorized:false}};
     const endedManifest={programs:{[id]:{live_link_allowed:false,promotion_authorized:false}}};
     const ended='<main data-link-dark="true">Our affiliate relationship with this provider ended on 2026-10-01. This editorial review is retained</main>';
-    const runEnded=(registry=endedRegistry,html=ended) => run(assert,provider,selection,endedAuthority,endedManifest,html,registry);
+    // Preserve every original pre-marker compatibility assertion and refusal
+    // on the authenticated original validator. Native current rendering is
+    // exercised separately, with stricter current-state mutations.
+    const runHistorical = historicalEndedValidator();
+    const runEnded=(registry=endedRegistry,html=ended) => runHistorical(assert,provider,selection,endedAuthority,endedManifest,html,registry);
     assert.equal(await runEnded(),0);
     for (const patch of [
       {promotion_denied:false},

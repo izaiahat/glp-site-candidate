@@ -40,6 +40,10 @@ on:
       - "tests/high-intent-affiliate-surfaces.test.mjs"
       - "tests/paused-offer-reason-custody.test.mjs"
       - "tests/selected-program-denial-partition.test.mjs"
+      - "tests/provider-fastpath-plus5.test.mjs"
+      - "tests/fastpath-unscored-custody.test.mjs"
+      - "tests/fixtures/historical-unscored-copy.mjs"
+      - "tests/fixtures/historical-ended-review.mjs"
       - "tests/editorial-monetization.test.mjs"
       - "tests/editorial-denial-custody.test.mjs"
       - "tests/fixtures/editorial-historical-links.mjs"
@@ -135,6 +139,31 @@ jobs:
         run: node --test tests/glp47-approved-onboarding.test.mjs
       - name: GLP93 bounded provider append regressions (offline exact head)
         run: node --test tests/provider-price-append.test.mjs tests/provider-surface-append.test.mjs tests/provider-reviewed-score.test.mjs tests/q11-price-append-adverse.test.mjs tests/review-score-contract.test.mjs
+      - name: Authenticate test-only fastpath historical source closure
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import os, base64, subprocess
+          closure = {
+            '9cd63e73d743d69104fa0a281ce42113743faf4a': ['src/provider-review.mjs'],
+            '34db221edec1b3fbf4ae87aac67be64f75c30ca7': ['src/provider-review.mjs', 'scripts/validate-provider-fastpath-plus5.mjs'],
+          }
+          env = dict(os.environ)
+          auth = base64.b64encode(('x-access-token:' + env.pop('GH_TOKEN')).encode()).decode()
+          env.update(GIT_CONFIG_COUNT='1', GIT_CONFIG_KEY_0='http.https://github.com/.extraheader', GIT_CONFIG_VALUE_0='AUTHORIZATION: basic ' + auth)
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', '--filter=blob:none', 'origin', *closure], env=env, check=True)
+          blobs = set()
+          for ref, files in closure.items():
+              rows = subprocess.check_output(['git', 'ls-tree', ref, '--', *files], text=True).splitlines()
+              assert len(rows) == len(files)
+              blobs.update(row.split()[2] for row in rows)
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', *sorted(blobs)], env=env, check=True)
+          print('Authenticated test-only renderer/validator closure: two refs,', len(blobs), 'blobs; checkout unchanged')
+          PY
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+      - name: Fastpath current neutral-score copy and real ended renderer-validator compatibility (source-only; no build)
+        run: node --test --test-name-pattern '^(provider-review specs cover|current fastpath unscored|historical unscored wording|ended fastpath review retains|real ended Pallas)' tests/provider-fastpath-plus5.test.mjs tests/fastpath-unscored-custody.test.mjs
       - name: F06 current-hold and ended-relationship validator seam (offline exact head)
         run: node --test tests/f06-fastpath-current-hold.test.mjs
       - name: Taxonomy refresh import boundary (offline exact head)
