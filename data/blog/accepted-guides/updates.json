@@ -60,6 +60,20 @@
         "sha256": "716e5c42eecf28ed2defc1550b6a5d1c6d3854e73c12606cc2a3b29ceaa5dec2"
       },
       "route": "/guides/how-to-get-oral-glp-1/",
+      "first_publication": {
+        "date": "2026-10-11",
+        "timezone": "America/Los_Angeles",
+        "deployment_id": "1282a970-a7aa-46f5-b27f-c850c217d6bc",
+        "site_head": "f6745ece21e51cc21fedc7dc47d4405bac648643",
+        "not_before_utc": "2026-10-12T03:15:22Z",
+        "observed_live_by_utc": "2026-10-12T03:17:31Z",
+        "evidence": [
+          {"path": "reports/glp-clinic-scout/seo-machine/current-release-f6745ece21e51cc21fedc7dc47d4405bac648643/CURRENT-RECEIPT.json", "sha256": "07003cf8dd9239ba6e2dff485314f9ea1fbe948f0d0fde382db458c7722563d4"},
+          {"path": "reports/glp-clinic-scout/seo-machine/current-release-f6745ece21e51cc21fedc7dc47d4405bac648643/10-final-publication-receipt.json", "sha256": "1e5c6ae1208bacf4426d50cf018087f7f540cf763918b39b2461f7d0e7a10e69"},
+          {"path": "reports/glp-clinic-scout/seo-machine/article-buffer/consumed/d065321eb1b8a3bbbd6a1617d5884a1623bd384a9dfccd79d0ab0ee1a7040c58.json", "sha256": "909321fb9fdb27051629558a8bd0b58d5b2465033aa3c7fecb0fb742a8da482f"},
+          {"path": "reports/ops/fable-plan-2-20261009/lanes/A3/live-guide.headers", "sha256": "26f7b593efd606e8d3389f9993ab3517da2cafe22ef225c103762d720f5f8b4a"}
+        ]
+      },
       "semantic_materiality": {
         "basis": "independent_five_gate_review_repair",
         "changed_sections": [

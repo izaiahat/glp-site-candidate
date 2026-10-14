@@ -1022,7 +1022,9 @@ function addGuideMetadata(html, article, author) {
     url: canonicalUrl,
     title: article.title,
     description,
-    datePublished: article.date_published || article.updated_at,
+    // An unbound date must not become the draft/check date. Published events
+    // are projected separately by the accepted-source handoff.
+    datePublished: article.date_published === null ? undefined : (article.date_published || article.updated_at),
     dateModified: article.date_modified || article.updated_at,
     author,
     image: existsSync(path.join(ROOT, "assets/derivatives", `guide-${heroSlug}-1600.jpg`)) ? `https://glpclinicscout.com${heroJpg}` : null,

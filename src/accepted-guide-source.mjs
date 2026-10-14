@@ -25,8 +25,28 @@ export function loadAcceptedGuides(root, manifestName = 'manifest.json') {
         article.batch_gate_passed !== true || article.operator_release_receipt !== null || !/^[a-f0-9]{64}$/.test(review.receipt_sha256 || '') ||
         !/^\/guides\/[a-z0-9-]+\/$/.test(entry.route) || routes.has(entry.route) ||
         article.has_affiliate_cta !== false || article.suppress_cta !== true) throw new Error('accepted_guide_identity_invalid');
+    // Source-reviewed event metadata is a rendering projection, never a rewrite
+    // of the accepted article/QA/review. Evidence hashes are audit references,
+    // not authentication or a replacement for independent source/health review.
+    let datePublished = article.date_published;
+    if (entry.first_publication !== undefined) {
+      const event = entry.first_publication;
+      const instant = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(value)
+        && Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value.replace('Z', '.000Z');
+      const day = value => new Intl.DateTimeFormat('en-CA', {timeZone: 'America/Los_Angeles',
+        year:'numeric', month:'2-digit', day:'2-digit'}).format(new Date(value));
+      if (!event || event.timezone !== 'America/Los_Angeles'
+          || !instant(event.not_before_utc) || !instant(event.observed_live_by_utc)
+          || event.not_before_utc > event.observed_live_by_utc
+          || day(event.not_before_utc) !== event.date || day(event.observed_live_by_utc) !== event.date
+          || !/^[a-f0-9-]{36}$/.test(event.deployment_id || '') || !/^[a-f0-9]{40}$/.test(event.site_head || '')
+          || !Array.isArray(event.evidence) || !event.evidence.length
+          || event.evidence.some(s => !s.path?.startsWith('reports/') || !/^[a-f0-9]{64}$/.test(s.sha256 || ''))
+          || (datePublished != null && datePublished !== event.date)) throw new Error('accepted_guide_publication_binding_invalid');
+      datePublished = event.date;
+    }
     routes.add(entry.route);
-    return {...article, operator_release_receipt: review.receipt_sha256};
+    return {...article, date_published: datePublished, operator_release_receipt: review.receipt_sha256};
   });
 }
 export function acceptedGuideOwnership(articles) {

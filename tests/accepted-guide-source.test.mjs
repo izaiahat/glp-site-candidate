@@ -61,6 +61,40 @@ test('fifth accepted guide is additive without rewriting frozen catalogs or imag
 });
 test('on-page variant refuses contradictory email form',()=>assert.throws(()=>addP1ContentUpgradeSurface('<html data-article-capture="none"><form></form></html>'),/contract_conflict/));
 
+test('publication projection refuses invalid events without changing sealed subjects or their acceptance', () => {
+  const temp = mkdtempSync(path.join(os.tmpdir(), 'accepted-publication-'));
+  try {
+    cpSync(path.join(root, 'data/blog/accepted-guides'), path.join(temp, 'data/blog/accepted-guides'), {recursive:true});
+    const mp = path.join(temp, 'data/blog/accepted-guides/updates.json');
+    const original = JSON.parse(readFileSync(mp));
+    const index = original.entries.findIndex(e => e.route === '/guides/how-to-get-oral-glp-1/');
+    const row = original.entries[index];
+    const before = Object.fromEntries(['article','qa','review'].map(k => [k, readFileSync(path.join(temp,row[k].path))]));
+    const published = loadAcceptedGuides(temp, 'updates.json')[index];
+    assert.equal(published.date_published, '2026-10-11');
+    assert.equal(JSON.parse(before.article).date_published, null);
+    for (const mutate of [
+      e => {e.date = '2026-10-13';}, e => {e.timezone = 'UTC';},
+      e => {e.not_before_utc = '2026-02-30T03:15:22Z';},
+      e => {e.observed_live_by_utc = '2026-10-13T03:17:31Z';},
+      e => {e.observed_live_by_utc = '2026-10-12T03:14:00Z';},
+      e => {e.evidence = [];}, e => {e.evidence[0].sha256 = 'not-a-hash';},
+    ]) {
+      const m = structuredClone(original); mutate(m.entries[index].first_publication);
+      writeFileSync(mp, JSON.stringify(m));
+      assert.throws(() => loadAcceptedGuides(temp, 'updates.json'), /publication_binding_invalid/);
+    }
+    writeFileSync(mp, JSON.stringify(original));
+    for (const k of ['article','qa','review']) assert.deepEqual(readFileSync(path.join(temp,row[k].path)), before[k]);
+    // Date metadata cannot authorize an unaccepted payload, even when rehashed.
+    const review = JSON.parse(before.review); review.gates[4].status = 'FAIL';
+    writeFileSync(path.join(temp,row.review.path), JSON.stringify(review));
+    original.entries[index].review.sha256 = createHash('sha256').update(readFileSync(path.join(temp,row.review.path))).digest('hex');
+    writeFileSync(mp, JSON.stringify(original));
+    assert.throws(() => loadAcceptedGuides(temp, 'updates.json'), /acceptance_invalid/);
+  } finally {rmSync(temp, {recursive:true,force:true});}
+});
+
 test('accepted-update regressions trigger the exact-head portable workflow', () => {
   const workflow = readFileSync(path.join(root, '.github/workflows/mirror-ci.yml'), 'utf8');
   const triggers = workflow.slice(workflow.indexOf('  pull_request:'), workflow.indexOf('  workflow_dispatch:'));
