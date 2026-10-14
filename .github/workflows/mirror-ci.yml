@@ -39,6 +39,7 @@ on:
       - "tests/direct-affiliate-lane.test.mjs"
       - "tests/high-intent-affiliate-surfaces.test.mjs"
       - "tests/paused-offer-reason-custody.test.mjs"
+      - "tests/selected-program-denial-partition.test.mjs"
       - "tests/fixtures/historical-ageless-promotion.mjs"
       - "tests/fixtures/ageless-promotion-pre-relationship.json"
       - "tests/candidate-export-policy.test.mjs"
@@ -117,6 +118,8 @@ jobs:
         run: node --test tests/affiliate-relationship-sync.test.mjs
       - name: Paused-offer reason custody and native outbound controls (source-only)
         run: node --test tests/paused-offer-reason-custody.test.mjs tests/affiliate-outbound-mode.test.mjs
+      - name: Current selected-program denial partition (source-only; no build)
+        run: node --test --test-name-pattern '^(the all-or-nothing money link map still resolves every selected program|calculator and quiz share one fail-closed transparent-direct resolver|current selected-program oracle requires complete live-or-authenticated-denied partition on every owning surface)$' tests/direct-affiliate-lane.test.mjs tests/high-intent-affiliate-surfaces.test.mjs tests/selected-program-denial-partition.test.mjs
       - name: Guide resource renderer and privacy regression (offline only)
         run: |
           node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs
