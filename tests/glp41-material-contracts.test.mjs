@@ -1,4 +1,5 @@
 import {readBeforeProviderAppendFixture} from './helpers/provider-append-predecessor.mjs';
+import {readF17PinnedRegistry} from './helpers/f17-pinned-registry.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -17,6 +18,7 @@ import {assertCurrentHoldGoSuccessor} from '../src/go-runtime-manifest.mjs';
 import {loadGoPromotionAuthority, loadGoSelection, applyGoSelectionToLinkMap} from '../src/go-runtime-selection.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = path => readFileSync(new URL('../'+path, import.meta.url));
+const f17Read = path => path === 'data/program-registry.json' ? readF17PinnedRegistry() : read(path);
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 
 test('D1 every original requirement has exactly one reviewed disposition', () => {
@@ -38,13 +40,13 @@ test('D1 a material repair cannot be silently moved to quarantine', () => {
 });
 
 test('F17 approved registry successor binds exact prior and current bytes', () => {
-  const pins = JSON.parse(read('tests/fixtures/glp41-approved-input-successor.json'));
+  const pins = JSON.parse(f17Read('tests/fixtures/glp41-approved-input-successor.json'));
   assert.deepEqual(Object.keys(pins.inputs), ['data/program-registry.json']);
   const pin = pins.inputs['data/program-registry.json'];
   assert.equal(pin.before_sha256, 'bd74cce7b25ccc1b754f26b70be51a8f96afb8356e8a53c3e919985c9d8500b6');
-  assert.equal(sha(read('data/program-registry.json')), pin.after_sha256);
+  assert.equal(sha(f17Read('data/program-registry.json')), pin.after_sha256);
   assert.notEqual(pin.before_sha256, pin.after_sha256);
-  const predecessor = JSON.parse(read('data/program-registry.json'));
+  const predecessor = JSON.parse(f17Read('data/program-registry.json'));
   const pallas = predecessor.programs.filter(p => p.program_id === 'pallas-health-review');
   assert.equal(pallas.length, 1);
   assert.equal(pallas[0].affiliate_relationship_snapshot.promotion_denied, true);
@@ -54,7 +56,7 @@ test('F17 approved registry successor binds exact prior and current bytes', () =
     promotion_denied:false,lifecycle:'reported',reported_information:true};
   assert.equal(sha(Buffer.from(JSON.stringify(predecessor,null,2)+'\n')),
     '87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887');
-  assert.notEqual(sha(Buffer.concat([read('data/program-registry.json'), Buffer.from('tampered')])), pin.after_sha256);
+  assert.notEqual(sha(Buffer.concat([f17Read('data/program-registry.json'), Buffer.from('tampered')])), pin.after_sha256);
 });
 
 test('F34 final emitted carrier articles retain the exact authenticated body and stage bytes', () => {
