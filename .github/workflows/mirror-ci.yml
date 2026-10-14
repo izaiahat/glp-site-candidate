@@ -22,6 +22,8 @@ on:
       - "scripts/glp_material_acceptance.mjs"
       - "scripts/postbuild-aeo-surface.mjs"
       - "scripts/refresh-price-tracker.mjs"
+      - "scripts/refresh-therapeutic-taxonomy.py"
+      - "scripts/therapeutic-taxonomy-refresh-policies.json"
       - "scripts/regenerate-go-runtime-manifest.mjs"
       - "scripts/validate-provider-fastpath-plus5.mjs"
       - "scripts/wave2-repairs.mjs"
@@ -38,6 +40,7 @@ on:
       - "tests/guide-resource-consent.test.mjs"
       - "tests/helpers/**"
       - "tests/pricing-deployed-row-schema.test.mjs"
+      - "tests/therapeutic-refresh-import.test.mjs"
       - "tests/wave2-p1-surfaces.test.mjs"
   workflow_dispatch:
     inputs:
@@ -90,6 +93,8 @@ jobs:
         run: node --test tests/provider-price-append.test.mjs tests/provider-surface-append.test.mjs tests/provider-reviewed-score.test.mjs tests/q11-price-append-adverse.test.mjs tests/review-score-contract.test.mjs
       - name: F06 current-hold and ended-relationship validator seam (offline exact head)
         run: node --test tests/f06-fastpath-current-hold.test.mjs
+      - name: Taxonomy refresh import boundary (offline exact head)
+        run: node --test tests/therapeutic-refresh-import.test.mjs
       - name: Record limited scope
         if: always()
         run: |

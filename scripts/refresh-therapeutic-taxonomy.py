@@ -19,9 +19,6 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 BUSINESS = Path(os.environ.get('GLP_BUSINESS_ROOT', ROOT.parents[3])).resolve()
-sys.path.insert(0, str(BUSINESS / 'scripts'))
-from affiliate_direct_evidence_capture import _firecrawl_key
-from firecrawl_client import firecrawl_urlopen
 
 REPORTS = BUSINESS / 'reports/ops/glp38-20260915/taxonomy-refresh'
 REGISTRY = ROOT / 'data/program-registry.json'
@@ -216,6 +213,19 @@ process.stdout.write(JSON.stringify(registry));'''
 def check_previous_row(current, previous):
     if current != previous:
         raise ValueError('program_changed_during_capture')
+
+
+def _firecrawl_key():
+    # Retain the existing capture seam, without loading live adapters for pure callers.
+    sys.path.insert(0, str(BUSINESS / 'scripts'))
+    from affiliate_direct_evidence_capture import _firecrawl_key as live_key
+    return live_key()
+
+
+def firecrawl_urlopen(*args, **kwargs):
+    sys.path.insert(0, str(BUSINESS / 'scripts'))
+    from firecrawl_client import firecrawl_urlopen as live_urlopen
+    return live_urlopen(*args, **kwargs)
 
 
 def capture(url, dest):
