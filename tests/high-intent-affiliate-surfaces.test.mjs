@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { historicalAgelessPromotion } from './fixtures/historical-ageless-promotion.mjs';
 import { readFile } from "node:fs/promises";
 import { buildAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
 import { buildCostCalculatorData, renderCostCalculator } from "../src/cost-calculator.mjs";
@@ -47,7 +48,11 @@ test("calculator and quiz share one fail-closed transparent-direct resolver", as
   assert.equal(historical.disposition, 'historical_snapshot_only_not_activation_authority');
   assert.equal(historical.network_program_id, '1538');
   assert.equal(promotionAuthority.programs["try-ageless"]?.status, "WITHHELD");
-  assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "network_paused_katalys_offer_1538");
+  // The original pause reason is historical; current denial retains writer provenance.
+  assert.equal(historicalAgelessPromotion().reason, "network_paused_katalys_offer_1538");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "sole_writer_relationship_paused");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.promotion_authorized, false);
+  assert.deepEqual(promotionAuthority.programs["try-ageless"]?.relationship_snapshot, {program_id: "try-ageless", render_id: "try-ageless", ...registry.programs.find(row => row.program_id === "try-ageless").affiliate_relationship_snapshot});
   const eligibleIds = new Set(selection.programs.filter((item) => item.program_id !== "try-ageless").map((item) => item.program_id));
   assert.equal(eligibleIds.size, 10);
   assert.deepEqual(new Set(liveCalculator.map((item) => item.program_id)), eligibleIds);
