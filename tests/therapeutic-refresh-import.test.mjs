@@ -48,11 +48,18 @@ except ModuleNotFoundError as exc:
 else:
     raise AssertionError('capture bypassed missing live adapters')
 assert attempts == ['affiliate_direct_evidence_capture'], attempts
-print('pure import/support PASS; missing-adapter capture refused; no network/process/write effects')`;
+try:
+    module.firecrawl_urlopen(object(), timeout=45, retries=3)
+except ModuleNotFoundError as exc:
+    assert exc.name == 'firecrawl_client', str(exc)
+else:
+    raise AssertionError('transport bypassed missing live adapter')
+assert attempts == ['affiliate_direct_evidence_capture', 'firecrawl_client'], attempts
+print('pure import/support PASS; missing key/transport refused; no network/process/write effects')`;
   const env = {...process.env, PYTHONDONTWRITEBYTECODE: '1'};
   delete env.PYTHONPATH;
   delete env.GLP_BUSINESS_ROOT;
   const run = spawnSync('python3', ['-I', '-B', '-c', code], {cwd: root, env, encoding: 'utf8'});
   assert.equal(run.status, 0, run.stderr);
-  assert.equal(run.stdout.trim(), 'pure import/support PASS; missing-adapter capture refused; no network/process/write effects');
+  assert.equal(run.stdout.trim(), 'pure import/support PASS; missing key/transport refused; no network/process/write effects');
 });

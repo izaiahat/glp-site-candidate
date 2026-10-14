@@ -215,13 +215,20 @@ def check_previous_row(current, previous):
         raise ValueError('program_changed_during_capture')
 
 
-def capture(url, dest):
-    # Pure policy/validation imports must not require live capture adapters.
-    # Capture retains the same mandatory adapters and fails closed without them.
+def _firecrawl_key():
+    # Retain the existing capture seam, without loading live adapters for pure callers.
     sys.path.insert(0, str(BUSINESS / 'scripts'))
-    from affiliate_direct_evidence_capture import _firecrawl_key
-    from firecrawl_client import firecrawl_urlopen
+    from affiliate_direct_evidence_capture import _firecrawl_key as live_key
+    return live_key()
 
+
+def firecrawl_urlopen(*args, **kwargs):
+    sys.path.insert(0, str(BUSINESS / 'scripts'))
+    from firecrawl_client import firecrawl_urlopen as live_urlopen
+    return live_urlopen(*args, **kwargs)
+
+
+def capture(url, dest):
     started = dt.datetime.now(dt.timezone.utc).isoformat()
     request_body = {'url': url, 'formats': ['markdown', 'links'], 'onlyMainContent': False, 'maxAge': 0}
     request = urllib.request.Request('https://api.firecrawl.dev/v2/scrape', data=json.dumps(request_body).encode(),
