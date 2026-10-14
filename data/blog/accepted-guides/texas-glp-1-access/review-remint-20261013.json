@@ -1,0 +1,92 @@
+{
+  "authority": {
+    "path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T73/T73-texas-remint-20261013T054050Z/topic-queue-snapshot-T73-texas-remint-20261013T054050Z.json",
+    "selection_binding": {
+      "operator_directive_id": "auto-supply-20260815-1051aa6a3f83",
+      "queue_position": 30,
+      "queue_sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+      "selection_receipt_sha256": "3885a6c95573a13be04b5c112cfbc9b614d22304ed00f7fcf212af64ea03d163",
+      "strategy_map_sha256": "05d215c1bd3a8656f4bc5f5534a1ad5e13934b94a649492743fd975533f2818b",
+      "strategy_queue_sha256": "59627aee4ddb6a2a1eb1f2b3a0129c2b2ab184c38426194db63e404a78fd3ea6",
+      "target_query": "glp-1 access texas",
+      "target_route": "/guides/texas-glp-1-access/",
+      "topic_id": "f93f01dc834f65a505ed"
+    },
+    "selection_receipt": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T195641Z-scheduled-refill/selection-04.json",
+      "receipt_sha256": "3885a6c95573a13be04b5c112cfbc9b614d22304ed00f7fcf212af64ea03d163",
+      "sha256": "ee87ece4fdacc2e9a1e8a8ec64bbe527e3b0c1e7d7a778e5f8ba2886772016d3"
+    },
+    "sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+    "topic_id": "f93f01dc834f65a505ed",
+    "type": "operator_directed_queue_item"
+  },
+  "effects": {
+    "cache_purges": 0,
+    "deployments": 0,
+    "gsc_submissions": 0,
+    "publishes": 0
+  },
+  "effort": "high",
+  "findings": [
+    {
+      "file": "01-evidence-ledger.json",
+      "gate": "A",
+      "id": "A-01",
+      "issue": "Claims C10 and C11, rendered at draft lines 85–87, rely on S6Q1's prescribing-information highlights for Zepbound indications, contraindications and the boxed warning. The supplied S6 captures contain physical pages 1 and 15, but not the full boxed warning or numbered sections 1 and 4 required by Gate A's label-section capture rule. S13 adds sections 12.1–12.2 and another indications highlight, not those missing sections. The packet also does not explicitly capture the label's revision identifier; a checked date and recent-major-changes list do not establish that identifier.",
+      "line_end": 183,
+      "line_start": 154,
+      "related_files": [
+        "03-editorial-brief.md",
+        "04-draft.md",
+        "05-claim-source-map.json"
+      ],
+      "required_fix": "CAPTURE: Persist a new S-numbered capture of the current FDA-approved Zepbound prescribing information containing its revision identifier, full boxed warning, section 1 and section 4, plus section 5.1 for the retained thyroid-risk statement. Add the verbatim supporting passages and capture bindings to the evidence ledger, bind C10 and C11 to the exact applicable quotes, and update the draft's label references and editorial brief accordingly. Bind the existing mechanism capture to the same confirmed revision. Regenerate the derived article and QA receipt, require the unchanged validator to pass, and reseal the successor packet.",
+      "severity": "BLOCKING"
+    }
+  ],
+  "gates": [
+    {
+      "findings": [
+        "A-01"
+      ],
+      "gate": "A",
+      "status": "FAIL"
+    },
+    {
+      "findings": [],
+      "gate": "B",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "C",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "D",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "E",
+      "status": "PASS"
+    }
+  ],
+  "job_id": "exact-original-review-2026-10-13T054933-569732Z",
+  "model": "gpt-6-astra-900k",
+  "provider": "openai-codex",
+  "raw_review_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T73/exact-original-review-2026-10-13T054933-569732Z/round-01-sol-raw.json",
+  "raw_review_sha256": "7e66dd837a1a22a51f3d776d48ec56fa1c6a0dd767cf19b73d0bf248181bb70d",
+  "receipt_sha256": "637a71912095897e97bfcf7fb83e7c757b4183c7d7000dcc75b1c510a3329dea",
+  "review_transport": "hermes-openai-codex-astra-independent",
+  "reviewed_at_utc": "2026-10-13T05:51:11.884140Z",
+  "round": 1,
+  "schema": "glp-opus-seo-round-receipt-v1",
+  "status": "BLOCKED_OPUS_SEO_DRAFT",
+  "subject_manifest_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T73/exact-original-review-2026-10-13T054933-569732Z/round-01-subject-manifest.json",
+  "subject_manifest_sha256": "8e885ae68de8bb165fb2303f42a64232768e59caf09f291daf36cad427c210c6",
+  "tools_disabled": true,
+  "topic_id": "f93f01dc834f65a505ed"
+}

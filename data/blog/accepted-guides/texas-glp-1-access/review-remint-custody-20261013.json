@@ -1,0 +1,40 @@
+{
+  "article_exact_pr73_bytes": true,
+  "custody": {
+    "effort": "high",
+    "ended_at": 1791870671.6175864,
+    "input_message_id": 5242468,
+    "model": "gpt-6-astra-900k",
+    "payload_sha256": "126cb7a34a46fdf844c46c6e2c9ac8a00f3d0fa22c8efeeacc1353112035ac1b",
+    "provider": "openai-codex",
+    "response_message_id": 5242529,
+    "response_sha256": "e83aad8927d02d7ec418829ceae6a0a0a6572fd7443dd63041b0ca80a9ec4d26",
+    "schema": "glp-native-reviewer-result-custody-v1",
+    "session_id": "glp_astra_review_1791870574_0a444e3c",
+    "started_at": 1791870576.5542521,
+    "system_prompt_sha256": "9f47931e61fd113abdf67e7f5b18d411d0bd7f3cc1d58770b37a253d904ac452"
+  },
+  "findings": [
+    {
+      "file": "01-evidence-ledger.json",
+      "gate": "A",
+      "id": "A-01",
+      "issue": "Claims C10 and C11, rendered at draft lines 85–87, rely on S6Q1's prescribing-information highlights for Zepbound indications, contraindications and the boxed warning. The supplied S6 captures contain physical pages 1 and 15, but not the full boxed warning or numbered sections 1 and 4 required by Gate A's label-section capture rule. S13 adds sections 12.1–12.2 and another indications highlight, not those missing sections. The packet also does not explicitly capture the label's revision identifier; a checked date and recent-major-changes list do not establish that identifier.",
+      "line_end": 183,
+      "line_start": 154,
+      "related_files": [
+        "03-editorial-brief.md",
+        "04-draft.md",
+        "05-claim-source-map.json"
+      ],
+      "required_fix": "CAPTURE: Persist a new S-numbered capture of the current FDA-approved Zepbound prescribing information containing its revision identifier, full boxed warning, section 1 and section 4, plus section 5.1 for the retained thyroid-risk statement. Add the verbatim supporting passages and capture bindings to the evidence ledger, bind C10 and C11 to the exact applicable quotes, and update the draft's label references and editorial brief accordingly. Bind the existing mechanism capture to the same confirmed revision. Regenerate the derived article and QA receipt, require the unchanged validator to pass, and reseal the successor packet.",
+      "severity": "BLOCKING"
+    }
+  ],
+  "manifest": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T73/exact-original-review-2026-10-13T054933-569732Z/round-01-subject-manifest.json",
+  "original_packet_unchanged": true,
+  "raw": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T73/exact-original-review-2026-10-13T054933-569732Z/round-01-sol-raw.json",
+  "receipt": "269a4daa3759b0929fd058c726dc68b37839dfb7da481b22b425b9bf80fc7290",
+  "receipt_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/T73/exact-original-review-2026-10-13T054933-569732Z/round-01-receipt.json",
+  "status": "BLOCKED_OPUS_SEO_DRAFT"
+}
