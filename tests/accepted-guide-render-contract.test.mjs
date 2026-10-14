@@ -131,6 +131,25 @@ test('explicit-unbound date never falls back to modified/check date in either sc
   assert.equal(article.prices_checked_date, '2026-10-09');
 });
 
+test('publication recovery hands source-owned editorial date to the unchanged AEO dateline writer', async () => {
+  const { recoveryEditorialDates } = await import('../scripts/build-lastmod-provenance.mjs');
+  const { stampDateline, newState } = await import('../scripts/codemod-aeo-citation-schema.mjs');
+  const { loadAcceptedUpdates } = await import('../src/accepted-update-source.mjs');
+  const route = '/guides/how-to-get-oral-glp-1/';
+  const article = loadAcceptedUpdates(root).find(x => x.article.canonical_path === route).article;
+  const dates = recoveryEditorialDates(root, [route, '/guides/glp-1-shortage-availability-check/']);
+  assert.deepEqual(dates, {[route]:'2026-10-13'});
+  assert.deepEqual(recoveryEditorialDates(root, []), {});
+  const html = stampDateline(finalMetadata(renderBlogPost(article, null, author, []), article), dates[route], newState());
+  for (const schema of articleSchemas(html)) {
+    assert.equal(schema.datePublished, '2026-10-11');
+    assert.equal(schema.dateModified, '2026-10-13');
+  }
+  assert.equal(article.prices_checked_date, '2026-10-09');
+  assert.match(readFileSync(path.join(root, 'scripts/build-lastmod-provenance.mjs'), 'utf8'),
+    /editorial_dates: recoveryEditorialDates\(root, changed\)/);
+});
+
 test('real reviewed oral GLP-1 successor update applies over the accepted addition and renders the contract', async () => {
   const { loadAcceptedUpdates, applyAcceptedUpdates } = await import('../src/accepted-update-source.mjs');
   const additions = loadAcceptedGuides(root);
