@@ -2,7 +2,8 @@ name: Private mirror portable checks (build excluded)
 
 # GLP-42 registration of mirror-ci.yml from PR #8 at
 # 2927c1ea184d2ed23aa2dd448c8fc0d04df8c37d, scoped to portable checks.
-# Excludes npm ci, npm run build and the post-build full npm test suite.
+# Locked dev dependencies only: lifecycle scripts and browser downloads disabled.
+# Excludes npm run build, private-input checks and the post-build full npm test suite.
 # Approved imagery, private registry, predecessor/rail/lastmod evidence and
 # excluded owner/IndexNow keys are unavailable here. Never fabricate/upload them.
 # Existing build/test logic is untouched; this is NOT a build or release PASS.
@@ -75,6 +76,11 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
+      - name: Locked portable test dependencies (no lifecycle scripts or browsers)
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+        run: npm ci --ignore-scripts --include=dev --no-audit --no-fund
       - name: Existing portable candidate export tests
         run: node --test tests/candidate-export-policy.test.mjs tests/paid-promo.test.mjs tests/sponsor-placement-candidate.test.mjs tests/glp327-sponsor-design-system.test.mjs tests/glp327-sponsor-layouts.test.mjs tests/glp327-sponsor-r4.test.mjs
       - name: Authenticated sponsor observer boundary fixtures (no live effects)
