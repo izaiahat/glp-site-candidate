@@ -36,7 +36,10 @@ for (const [id, mode] of modes) test(`selected ${id} follows current adoption or
 test("network-paused Ageless offer 1538 remains link-dark despite stale Sheet selection", () => {
   const program = registry.programs.find((row) => row.program_id === "try-ageless");
   assert.equal(promotions["try-ageless"].status, "WITHHELD");
-  assert.equal(promotions["try-ageless"].reason, "network_paused_katalys_offer_1538");
+  assert.equal(promotions["try-ageless"].reason, "sole_writer_relationship_paused");
+  assert.equal(promotions["try-ageless"].relationship_snapshot.relationship_status, "paused_network_program_paused");
+  assert.equal(promotions["try-ageless"].relationship_snapshot.network_program_id, "1538");
+  assert.equal(promotions["try-ageless"].relationship_snapshot.promotion_denied, true);
   assert.equal(links["try-ageless"].live, false);
   assert.equal(affiliateOutboundMode(program, links["try-ageless"], promotions["try-ageless"]), "held");
 });
