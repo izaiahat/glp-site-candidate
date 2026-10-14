@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { historicalRetatrutideInputs } from './fixtures/historical-retatrutide-inputs.mjs';
 import {
   deriveDynamicFacetCounts,
   providerSuggestions,
@@ -62,7 +63,8 @@ function canonicalQuiz(sourceRegistry, sourceQuiz) {
   return { ...sourceQuiz, candidates: sourceQuiz.candidates.filter((row) => !scopedOff.has(row.program_id)) };
 }
 
-function syntheticFixture() {
+function syntheticFixture({ registry, money, quiz, asOf }) {
+  const fixtureEvidenceDate = asOf.toISOString().slice(0, 10);
   const nextRegistry = structuredClone(registry);
   const nextMoney = structuredClone(money);
   const nextQuiz = structuredClone(quiz);
@@ -195,7 +197,8 @@ test("stale, missing, and conflicting dynamic evidence fail closed", () => {
 });
 
 test("one synthetic provider propagates to compare, quiz, calculator, counts, and suggestions", () => {
-  const fixture = syntheticFixture();
+  const { registry, money, quiz, calculator, providerContracts, fastpath, asOf } = historicalRetatrutideInputs();
+  const fixture = syntheticFixture({ registry, money, quiz, asOf });
   const taxonomy = reconcileTherapeuticTaxonomyWireIn({
     registry: fixture.registry,
     profileId: "glp-clinic-scout",
@@ -235,6 +238,7 @@ test("one synthetic provider propagates to compare, quiz, calculator, counts, an
 });
 
 test("retatrutide remains unavailable rather than becoming a consumer facet", async () => {
+  const { registry, money, quiz, asOf } = historicalRetatrutideInputs();
   const browserSource = await readFile(new URL("../assets/site.js", import.meta.url), "utf8");
   const projected = projectTherapeuticSurfaces({ registry, profileId: "glp-clinic-scout", pages: canonicalMoneyPages(registry, money), quizConfig: canonicalQuiz(registry, quiz), asOf });
   assert.equal(projected.consumerAuthorities.retatrutide.provider_evidence_positive, false);
@@ -277,6 +281,7 @@ test("existing-provider research updates apply deterministically and malformed i
 });
 
 test("field-addressable exact evidence bytes and dual-authority drift fail closed", () => {
+  const { registry, money, quiz, asOf } = historicalRetatrutideInputs();
   const emptyDigest = createHash("sha256").update("").digest("hex");
   for (const profile of Object.values(registry.provider_dynamic_profiles.profiles)) {
     assert.ok(profile.evidence_bindings.every((binding) => binding.evidence_text && binding.evidence_sha256 !== emptyDigest));
@@ -290,6 +295,7 @@ test("field-addressable exact evidence bytes and dual-authority drift fail close
 });
 
 test("retatrutide authority rejects hostile hosts, capture drift, metadata drift, booleans, and unsupported provider bytes", () => {
+  const { registry, money, quiz, asOf } = historicalRetatrutideInputs();
   const project = (source) => projectTherapeuticSurfaces({
     registry: source,
     profileId: "glp-clinic-scout",
