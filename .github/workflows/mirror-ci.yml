@@ -38,6 +38,8 @@ on:
       - "tests/content-upgrade-contract.test.mjs"
       - "tests/d2f-coverage-floor.test.mjs"
       - "tests/d2w-s9-source-controls.test.mjs"
+      - "tests/quiz-input-seam.test.mjs"
+      - "tests/glp234-try-ageless-identity.test.mjs"
       - "tests/price-index-caller-seams.test.mjs"
       - "tests/f06-fastpath-current-hold.test.mjs"
       - "tests/glp47-approved-onboarding.test.mjs"
@@ -103,6 +105,10 @@ jobs:
         run: node --test tests/price-index-caller-seams.test.mjs
       - name: Article selection dependency seam (source catalogs only; not built-output acceptance)
         run: node --test tests/article-selection-seam.test.mjs
+      - name: Build-to-quiz dependency seam (synthetic inputs; not native oracle acceptance)
+        run: node --test tests/quiz-input-seam.test.mjs
+      - name: GLP234 native raw-scoring and current-hold quiz regression (real source inputs only)
+        run: node --test --test-name-pattern '^GLP-234 F1 actual build-to-quiz' tests/glp234-try-ageless-identity.test.mjs
       - name: Record limited scope
         if: always()
         run: |
