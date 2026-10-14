@@ -1,27 +1,27 @@
 {
   "status": "PASS",
   "source": "scoped-render",
-  "head": "8cd91b88888d5340f3ecba56b82e6e128f9f104b",
+  "head": "3a4dd2b8f4347b4564a84ac53c34df90f60440aa",
   "sourceHashes": {
     "src/sponsor-pricing.mjs": "572935c24b213b6472cf4849f8bfc9f3fbfd2eb3d69c1c3185cbe2d92af5d51b",
     "src/sponsor-payment-observer.mjs": "d53f5aa3f61e16c1459591304149099968ffc31fb7431e992b3b912a2b18795d",
-    "data/sponsor-pricing.json": "2d977c8ed9fda6c915f4f323b9f251f6e1fce15064ba710d30162af88be47ac4",
+    "data/sponsor-pricing.json": "4b3c479981283b847ea73ed2245b18f646180bd7a10ddf4405ba71f31470f521",
     "src/sponsor-order.mjs": "806ca6448982b763d949e14265bc4bf07f58526dd3cc84b67376003c5c664cad",
-    "src/sponsor-inventory.mjs": "29fdf97b41189dc741914e2b869dcdb90303773ea43eade87b171dfb37968ac7",
-    "data/sponsor-inventory.json": "bafa8a971e724ac934ef477fdaf6acc5a30ed222b180c3faeee461aa085b288c",
+    "src/sponsor-inventory.mjs": "b42327de9f0d569b1b314c6cf29896926deeff8845b4c02cd136dce46125fb37",
+    "data/sponsor-inventory.json": "0a04134753e1744b0b793c94ec2c63e5ba49ae30ce64c2816d305225820199fc",
     "src/paid-promo.mjs": "78ab3f915e51a1c9f361bb615834009678f4312ffdbf36e1d6525ce65394ef97",
-    "src/phase3-page-graph.mjs": "f420b606886c3ff5a60a9f7db18193d2e7cd06f7c8244f8d2c14b18a6d470909",
+    "src/phase3-page-graph.mjs": "34053af3d0b76b8541df6151a0e9f62539fa5353a84ca79e695d2889e9ace0c1",
     "src/sponsor-placement-candidate.mjs": "e33ad87a5fd8b90f3ea20b9747f37f6cf08cbdd7e129b037a0d395518f0b0441",
-    "assets/css-src/11-phase3.css": "e4053b053c1d5218241840fca73333faa6e9975489c1f70f01864887da2c926f",
+    "assets/css-src/11-phase3.css": "6f0dba1459a6884662ca9b5fa4914e7f1d4fe3f2d895d5288f20d34fcf9d9177",
     "assets/site.js": "0b1d94492f69a61d95bad9e35149f4c3e66070daccc9fbab9f769c1de1a9a0dc",
-    "scripts/build-staging.mjs": "f2a49102f454eac64b39b345f0fda1bd27c1a3ad78cced18b535bd9fd89250af",
+    "scripts/build-staging.mjs": "97ceaf9fde8aee92d8d35e231b0e2d04ea6766567bd3a55edf91bfdd9d22bcbc",
     "scripts/glp327-capture.mjs": "bcc556bbe0a352c4c8d38b3c57f1b6095c65a809fcc5358fd2243d3612ad4a0b",
     "scripts/glp327-check-controls.mjs": "966657b0fd6f76675fb59637257035f84c4667cb84d3642665a47e772a436a83",
-    "assets/site-p3.css": "472043d8a3de18235f3e4a319d4bedbaa6c4a957280bf7c64d52e5dd1f0a2196"
+    "assets/site-p3.css": "915102967dc1af187b8f5765f8a640c1d122e53e84f95eb8a125d8099d0d85b5"
   },
   "scope": "Site renderers + shared shell + assembled assets/ in a mirror where the registered build halts on absent host-only inputs; copy tokens finalized through deriveLiveProviders + resolveDerivedCounts (with the assertTalliesDerived gate), other write-time finalizers not applied. Not a release build.",
   "finalizedTallies": {
-    "LIVE_PROVIDER_COUNT": 57,
+    "LIVE_PROVIDER_COUNT": 64,
     "derivation": "deriveLiveProviders(data/program-registry.json, projected data/program-content-ledger.json) -> resolveDerivedCounts"
   },
   "gateFindings": [],
@@ -43,17 +43,17 @@
       "expandedImages": [
         {
           "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-desktop-audience-expanded.png",
-          "sha256": "bbfa52377a2c55e1887c8331efd771865f2e0165984a8aee3b7fc03fe267ffd1"
+          "sha256": "a74859fb9e05d649240ab3cda566af1a56b83a91886b72a343ec2f45f3f7e8e0"
         }
       ],
       "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-desktop-1440x1000-viewport.png",
-      "viewportImageSha256": "49de2e30c83409cf26fa70d1d8a1367820267e9bb563ef63abcd607ce0aa21bd",
+      "viewportImageSha256": "8f10fedd05bfa56cf50880e5e32b3d4665d96d714e894995f7a1f9289dcb08a1",
       "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-desktop-1440-full.png",
-      "pageImageSha256": "1246f13279aedbe190962a4e59a8a24bbf983d791c2bdc8081d0ff968dca1318",
+      "pageImageSha256": "965f7f9efed69ff79e8fca0610d02c4ea4e8b4cf28f2518ea94a30c0939b523b",
       "pageImageScope": "full page, secondary terms expanded (Audience and reporting)",
       "viewportImageScope": "unscrolled first viewport, accordions collapsed",
       "dom": {
-        "documentHeight": 2647,
+        "documentHeight": 2803,
         "pageImageBottom": null,
         "robots": "noindex,nofollow,noarchive,nosnippet",
         "stylesheets": [
@@ -93,45 +93,45 @@
             "top": 171,
             "bottom": 218,
             "left": 85,
-            "right": 196,
+            "right": 209,
             "visible": true
           },
           "terms": {
             "selector": "[data-sponsor-price-terms]",
-            "top": 233,
-            "bottom": 263,
+            "top": 231,
+            "bottom": 261,
             "left": 85,
-            "right": 733,
+            "right": 748,
             "visible": true
           },
           "deliverables": {
             "selector": "[data-sponsor-deliverables]",
-            "top": 275,
-            "bottom": 342,
+            "top": 273,
+            "bottom": 340,
             "left": 85,
             "right": 748,
             "visible": true
           },
           "renewal": {
             "selector": "[data-sponsor-renewal]",
-            "top": 354,
-            "bottom": 384,
+            "top": 352,
+            "bottom": 411,
             "left": 85,
-            "right": 733,
+            "right": 748,
             "visible": true
           },
           "cta": {
             "selector": "[data-sponsor-booking-cta]",
-            "top": 404,
-            "bottom": 454,
+            "top": 431,
+            "bottom": 482,
             "left": 85,
             "right": 365,
             "visible": true
           },
           "disclosure": {
             "selector": "[data-sponsor-independence]",
-            "top": 466,
-            "bottom": 487,
+            "top": 494,
+            "bottom": 536,
             "left": 85,
             "right": 748,
             "visible": true
@@ -172,17 +172,17 @@
       "expandedImages": [
         {
           "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-mobile-audience-expanded.png",
-          "sha256": "0deb32274db2fdec960a828ff084abde684e941e1f18a4ccb272baef72e63152"
+          "sha256": "e31a42e5c8d9ab7024232c19b4608fc115c1acc600e8eab8c5b036c91aa29577"
         }
       ],
       "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-mobile-390x844-viewport.png",
-      "viewportImageSha256": "c4d997df82cbbe1678f1455a0447ad6a86df63072c22947a90c90e0a3d2617c0",
+      "viewportImageSha256": "d225b72910263fbf752c2304ed8686a66af427c20f3f8d460b67f511312ec5c0",
       "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/rate-card-mobile-390-full.png",
-      "pageImageSha256": "5a0cd2a0b448badf537c3c9d0af36614df7e0ad88ea4cc7b1e76f89869ad6356",
+      "pageImageSha256": "85c2781d90672f0e05e1c39cd095355def6c787ed2e41704a74436a30d5cf005",
       "pageImageScope": "full page, secondary terms expanded (Audience and reporting)",
       "viewportImageScope": "unscrolled first viewport, accordions collapsed",
       "dom": {
-        "documentHeight": 4422,
+        "documentHeight": 4760,
         "pageImageBottom": null,
         "robots": "noindex,nofollow,noarchive,nosnippet",
         "stylesheets": [
@@ -211,58 +211,58 @@
         "fold": {
           "label": {
             "selector": "#sponsor-offer-title",
-            "top": 121,
-            "bottom": 152,
-            "left": 39,
-            "right": 351,
+            "top": 113,
+            "bottom": 144,
+            "left": 31,
+            "right": 359,
             "visible": true
           },
           "price": {
             "selector": "[data-sponsor-price] .cs-price",
-            "top": 164,
-            "bottom": 196,
-            "left": 39,
+            "top": 152,
+            "bottom": 184,
+            "left": 31,
             "right": 116,
             "visible": true
           },
           "terms": {
             "selector": "[data-sponsor-price-terms]",
-            "top": 213,
-            "bottom": 241,
-            "left": 39,
-            "right": 351,
+            "top": 195,
+            "bottom": 243,
+            "left": 31,
+            "right": 359,
             "visible": true
           },
           "deliverables": {
             "selector": "[data-sponsor-deliverables]",
-            "top": 253,
-            "bottom": 317,
-            "left": 39,
-            "right": 351,
+            "top": 251,
+            "bottom": 307,
+            "left": 31,
+            "right": 359,
             "visible": true
           },
           "renewal": {
             "selector": "[data-sponsor-renewal]",
-            "top": 329,
-            "bottom": 385,
-            "left": 39,
-            "right": 351,
+            "top": 315,
+            "bottom": 387,
+            "left": 31,
+            "right": 359,
             "visible": true
           },
           "cta": {
             "selector": "[data-sponsor-booking-cta]",
-            "top": 405,
-            "bottom": 455,
-            "left": 39,
-            "right": 351,
+            "top": 403,
+            "bottom": 453,
+            "left": 31,
+            "right": 359,
             "visible": true
           },
           "disclosure": {
             "selector": "[data-sponsor-independence]",
-            "top": 467,
-            "bottom": 530,
-            "left": 39,
-            "right": 351,
+            "top": 461,
+            "bottom": 524,
+            "left": 31,
+            "right": 359,
             "visible": true
           }
         },
@@ -270,10 +270,10 @@
           {
             "text": "Sponsor placements",
             "fontSize": 28,
-            "top": 121,
-            "bottom": 152,
-            "left": 39,
-            "right": 351
+            "top": 113,
+            "bottom": 144,
+            "left": 31,
+            "right": 359
           }
         ],
         "scrollWidth": 390,
@@ -306,22 +306,22 @@
       "expandedImages": [
         {
           "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-desktop-filters-expanded.png",
-          "sha256": "a3d99bfaeeefa6413ed337a70a12e5339ae276c668ff1b88e3e44276230f425b"
+          "sha256": "8f5f24504c3f586c2452c4189004b3ab8f9d0235bac164290beff80456fc1d89"
         },
         {
           "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-desktop-filters-nojs.png",
-          "sha256": "ee88e274f3dbb2ce8b8386d7f5531611d27c0ce4608c83d6783e1b4218c81d58"
+          "sha256": "05f061a9a9ef5edfbb8e02f9f54b5da61cdc056cc3813184a143de16f1b11621"
         }
       ],
       "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-desktop-1440x1000-viewport.png",
-      "viewportImageSha256": "e46d6421b724e9b63089081bb6b6ee5cd3c45ae482468b9f5f70062e08ad1c2c",
+      "viewportImageSha256": "6b838a7f2ad3b04afa59b61d85e0aeeb6521f385f943d6a22aa14747294f32d6",
       "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-desktop-1440-page-through-first-results.png",
-      "pageImageSha256": "0294f1d5693c3411ac56cc5872d9282f0562cc6e8f3274ad0f215fc0462f9b52",
-      "pageImageScope": "top-anchored, 0-2057px of 40255px (through the first independent results row)",
+      "pageImageSha256": "0bd9a062891e629b11625046d2ad93ec40be420dc88a9afb4c4ceeacc08aebdc",
+      "pageImageScope": "top-anchored, 0-2134px of 44823px (through the first independent results row)",
       "viewportImageScope": "unscrolled first viewport, accordions collapsed",
       "dom": {
-        "documentHeight": 40255,
-        "pageImageBottom": 2057,
+        "documentHeight": 44823,
+        "pageImageBottom": 2134,
         "robots": "index,follow,max-image-preview:large",
         "stylesheets": [
           "/assets/site-p3.css"
@@ -412,7 +412,7 @@
             "top": 261,
             "bottom": 287,
             "left": 341,
-            "right": 419,
+            "right": 433,
             "visible": true
           },
           "identity": {
@@ -420,14 +420,14 @@
             "top": 289,
             "bottom": 308,
             "left": 341,
-            "right": 478,
+            "right": 504,
             "visible": true
           },
           "cta": {
             "selector": "[data-sponsor-placement-candidate] .cs-btn",
             "top": 294,
             "bottom": 344,
-            "left": 953,
+            "left": 914,
             "right": 1207,
             "visible": true
           }
@@ -475,22 +475,22 @@
       "expandedImages": [
         {
           "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-mobile-filters-expanded.png",
-          "sha256": "a1df2b505628c2c522215b3725d776c6c5a4a4a1a85993debe6265971321750e"
+          "sha256": "29f8e60fb7def061c89db3fa8e59e065b08516041bd06425c54f46136aee8cbc"
         },
         {
           "path": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-mobile-filters-nojs.png",
-          "sha256": "f318b70c486668a0fb59fa3f6adbb0aa11a346e709e3f3e0bf91e325e0739a72"
+          "sha256": "48dffc7e1f6ae70c796e920d3a072e518dd395d9816f739e471e7a1259368e5c"
         }
       ],
       "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-mobile-390x844-viewport.png",
-      "viewportImageSha256": "1cec7c45b6faecb7f1be10341829c7f3a03db11175f7993bdb236a4bf7541ddc",
+      "viewportImageSha256": "54b7ef56ff33250ff3556cea9709542c3f8239917efdeb4edd43b6e0e890ea57",
       "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/providers-sponsored-panel-mobile-390-page-through-first-results.png",
-      "pageImageSha256": "af422903e097610fe07bb3f891214f853a21d480ce6e52792a7f288baace7cc5",
-      "pageImageScope": "top-anchored, 0-2145px of 73673px (through the first independent results row)",
+      "pageImageSha256": "6f9b3eefeda16cff300b0347a840b9387b71c52de4198d6e8f16dcfc7fafc3dd",
+      "pageImageScope": "top-anchored, 0-2257px of 83333px (through the first independent results row)",
       "viewportImageScope": "unscrolled first viewport, accordions collapsed",
       "dom": {
-        "documentHeight": 73673,
-        "pageImageBottom": 2145,
+        "documentHeight": 83333,
+        "pageImageBottom": 2257,
         "robots": "index,follow,max-image-preview:large",
         "stylesheets": [
           "/assets/site-p3.css"
@@ -581,7 +581,7 @@
             "top": 235,
             "bottom": 261,
             "left": 149,
-            "right": 227,
+            "right": 241,
             "visible": true
           },
           "identity": {
@@ -589,13 +589,13 @@
             "top": 263,
             "bottom": 282,
             "left": 149,
-            "right": 286,
+            "right": 312,
             "visible": true
           },
           "cta": {
             "selector": "[data-sponsor-placement-candidate] .cs-btn",
-            "top": 330,
-            "bottom": 381,
+            "top": 354,
+            "bottom": 405,
             "left": 41,
             "right": 349,
             "visible": true
@@ -633,13 +633,13 @@
       },
       "expandedImages": [],
       "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/paid-promo-desktop-1440x1000-viewport.png",
-      "viewportImageSha256": "da6d87fe77e12278d223d92ef55d12ecbbf13e7b0d8e7f37cc7cd73787f0e8eb",
+      "viewportImageSha256": "5802bae425eb0aff17847c3951c062cd6e47af216e08dc1dbdfabe5ced45b9db",
       "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/paid-promo-desktop-1440-full.png",
-      "pageImageSha256": "ea95a939dda9441c35ba01877317a12d893259f1001664fe0dea2db82a29fbd7",
+      "pageImageSha256": "3705690b4a715e0cbc79c977e068d171310f4054f2f9cd4f5bbdcf0e88c94566",
       "pageImageScope": "full page",
       "viewportImageScope": "unscrolled first viewport, accordions collapsed",
       "dom": {
-        "documentHeight": 1937,
+        "documentHeight": 1960,
         "pageImageBottom": null,
         "robots": "noindex,nofollow,noarchive,nosnippet",
         "stylesheets": [
@@ -671,7 +671,7 @@
             "top": 118,
             "bottom": 144,
             "left": 85,
-            "right": 163,
+            "right": 177,
             "visible": true
           },
           "identity": {
@@ -687,7 +687,7 @@
             "top": 209,
             "bottom": 234,
             "left": 85,
-            "right": 645,
+            "right": 748,
             "visible": true
           },
           "cta": {
@@ -695,7 +695,7 @@
             "top": 254,
             "bottom": 305,
             "left": 85,
-            "right": 365,
+            "right": 378,
             "visible": true
           },
           "disclosure": {
@@ -739,13 +739,13 @@
       },
       "expandedImages": [],
       "viewportImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/paid-promo-mobile-390x844-viewport.png",
-      "viewportImageSha256": "834b48550f39dc4860ba87455e3de176be68fb4ad637f4f76f5ade520208b435",
+      "viewportImageSha256": "407ddd27046d1330d92336ebe201e05cfac3c922814b404978a095efbc7cd7f6",
       "pageImage": "reports/ops/sponsor-clean-layout-20261003/copy/observer-successor-20261008/captures/paid-promo-mobile-390-full.png",
-      "pageImageSha256": "8c98386c1a3f7a63c0006efb3db5a72dd8ab586e1299b0f975f13d28f0412926",
+      "pageImageSha256": "6f352f7707a3db20201dded00bfb1acfea05c75250c33536cd6e84889ad19f6a",
       "pageImageScope": "full page",
       "viewportImageScope": "unscrolled first viewport, accordions collapsed",
       "dom": {
-        "documentHeight": 3476,
+        "documentHeight": 3706,
         "pageImageBottom": null,
         "robots": "noindex,nofollow,noarchive,nosnippet",
         "stylesheets": [
@@ -777,7 +777,7 @@
             "top": 121,
             "bottom": 147,
             "left": 39,
-            "right": 117,
+            "right": 131,
             "visible": true
           },
           "identity": {
@@ -807,7 +807,7 @@
           "disclosure": {
             "selector": "[data-sponsor-ad-disclosure]",
             "top": 335,
-            "bottom": 356,
+            "bottom": 377,
             "left": 39,
             "right": 351,
             "visible": true

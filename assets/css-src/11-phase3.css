@@ -4917,6 +4917,13 @@ main.guide-shell .p3-article-faq .gcs-kicker {
 .p3-page [data-sponsor-offer], .p3-page [data-sponsor-lead] { padding: var(--space-5); }
 .p3-page [data-sponsor-offer] > .p3-hero-actions, .p3-page [data-sponsor-lead] > .p3-hero-actions { margin-top: 0; }
 .p3-page [data-sponsor-independence], .p3-page [data-sponsor-ad-disclosure] { font-size: 0.875rem; line-height: 1.5; }
+/* Keep the complete approved mobile offer readable before the booking action.
+   The longer setup/placement and renewal terms use the shared body scale;
+   promo and directory surfaces retain their existing composition. */
+@media (max-width: 760px) {
+  .p3-page [data-sponsor-layout="rate-card"] [data-sponsor-offer] { gap: var(--space-2); padding: var(--space-4); }
+  [data-sponsor-layout="rate-card"] :is([data-sponsor-price-terms], [data-sponsor-deliverables], [data-sponsor-renewal]) { font-size: 1rem; line-height: 1.5; }
+}
 
 /* Preview only: one search/action/Filters row. Every secondary control is in
    one closed native disclosure, never reparented into the heading by JS. */
