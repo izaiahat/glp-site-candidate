@@ -8,12 +8,14 @@ import { auditTree } from '../scripts/validate-approved-provider-link-monetizati
 import { loadApprovedProviderDomainMap } from '../src/approved-provider-domains.mjs';
 import { loadGoSelection } from '../src/go-runtime-selection.mjs';
 import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
-import { assertApprovedMapCoverage, assertCitationCoverage, citationBaseline } from './helpers/d2w-s9-citation-canary.mjs';
+import { assertApprovedMapCoverage, assertCitationCoverage, citationBaseline, loadHistoricalS9DomainMap } from './helpers/d2w-s9-citation-canary.mjs';
 import { detailPrograms, readData } from './helpers/d2w-s9-contracts.mjs';
 const fixture = new URL('./fixtures/approved-provider-link-sweep-prefix/', import.meta.url).pathname;
 
 test('S9 citation floor decreases only for the exact receipted held Telos source', () => {
-  const map = loadApprovedProviderDomainMap();
+  assert.throws(() => assertApprovedMapCoverage(loadApprovedProviderDomainMap()), /approved domain identity drift:shedrx.com/,
+    'today\'s narrower identities are not the immutable historical S9 canary');
+  const map = loadHistoricalS9DomainMap();
   assertApprovedMapCoverage(map);
   const report = auditTree(fixture, { map });
   assertCitationCoverage(report);
@@ -30,7 +32,7 @@ test('S9 citation floor decreases only for the exact receipted held Telos source
 });
 
 test('S9 every remaining approved domain omission trips identity coverage even at an unchanged count', () => {
-  const map = loadApprovedProviderDomainMap();
+  const map = loadHistoricalS9DomainMap();
   for (const [host] of citationBaseline.domains) {
     const omitted = { domains: new Map(map.domains), programs: map.programs };
     omitted.domains.delete(host);
@@ -38,7 +40,7 @@ test('S9 every remaining approved domain omission trips identity coverage even a
     assert.equal(omitted.domains.size, map.domains.size);
     assert.throws(() => assertApprovedMapCoverage(omitted), /approved domain omitted/, host);
   }
-  const report = auditTree(fixture);
+  const report = auditTree(fixture, { map });
   for (let i = 0; i < report.ledger.marked_citation.length; i++) {
     const swapped = structuredClone(report);
     swapped.ledger.marked_citation[i].href = 'https://omitted-approved-source.invalid/';
@@ -77,7 +79,7 @@ test('S9 held canonical and alias remain receipt-bound, absent from approved map
     assert.equal(GO_RUNTIME_MANIFEST.programs[id], undefined);
     assert.notEqual(loadGoSelection().programs[id]?.status, 'VERIFIED');
   }
-  assertApprovedMapCoverage(loadApprovedProviderDomainMap());
+  assertApprovedMapCoverage(loadHistoricalS9DomainMap());
   const promoted = loadApprovedProviderDomainMap();
   promoted.programs.set('telos-rx', { program_id: 'telos-rx' });
   assert.throws(() => assertApprovedMapCoverage(promoted), /held Telos program promoted/);

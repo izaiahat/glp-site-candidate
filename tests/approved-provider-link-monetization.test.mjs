@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { auditTree } from "../scripts/validate-approved-provider-link-monetization.mjs";
 import { CITATION_REASONS, isCitationReason, isNonPublicSourceUrl, renderCitationAnchor } from "../src/citation-attribution.mjs";
 import { loadApprovedProviderDomainMap, lookupProviderDomain } from "../src/approved-provider-domains.mjs";
-import { assertApprovedMapCoverage, assertCitationCoverage } from './helpers/d2w-s9-citation-canary.mjs';
+import { assertApprovedMapCoverage, assertCitationCoverage, loadHistoricalS9DomainMap } from './helpers/d2w-s9-citation-canary.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PREFIX_FIXTURE = path.join(ROOT, "tests/fixtures/approved-provider-link-sweep-prefix");
@@ -33,10 +33,11 @@ test("pre-fix fixture FAILS the gate — the state the operator directive was wr
 });
 
 test("the price index's own first-party-source marker counts as a recorded decision", () => {
-  const report = auditTree(PREFIX_FIXTURE);
+  const historicalMap = loadHistoricalS9DomainMap();
+  const report = auditTree(PREFIX_FIXTURE, { map: historicalMap });
   const priceIndexFindings = report.findings.filter((finding) => finding.file.startsWith("glp-1-price-index"));
   assert.deepEqual(priceIndexFindings, []);
-  assertApprovedMapCoverage(loadApprovedProviderDomainMap());
+  assertApprovedMapCoverage(historicalMap);
   assertCitationCoverage(report);
 });
 

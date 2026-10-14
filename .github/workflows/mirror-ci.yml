@@ -38,6 +38,8 @@ on:
       - "tests/content-upgrade-contract.test.mjs"
       - "tests/d2f-coverage-floor.test.mjs"
       - "tests/d2w-s9-source-controls.test.mjs"
+      - "tests/d2w-s9-contract-migrations.test.mjs"
+      - "tests/approved-provider-link-monetization.test.mjs"
       - "tests/d2w-release2-price-state.test.mjs"
       - "tests/retention-fixture-input-binding.test.mjs"
       - "tests/glp41-material-contracts.test.mjs"
@@ -163,6 +165,29 @@ jobs:
           test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
           unset GH_TOKEN
           node --test --test-name-pattern '^Wellmedr already' tests/glp75-source-bounded-seo.test.mjs
+      # The immutable S9 canary is historical identity coverage, not a
+      # grant for today's domains. Fetch only its real six-input Git closure.
+      - name: S9 historical citation identity custody (not current approval)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import base64, os, subprocess
+          ref = 'fe0df36e273e26a994e6c75d09729295a219e6e8'
+          files = ['data/program-registry.json', 'data/money-page-specs.json', 'data/program-content-ledger.json', 'data/provider-page-contracts.json', 'data/approved-program-registry.json', 'data/provider-pricing-matrix.json']
+          env = dict(os.environ)
+          auth = base64.b64encode(('x-access-token:' + env.pop('GH_TOKEN')).encode()).decode()
+          env.update(GIT_CONFIG_COUNT='1', GIT_CONFIG_KEY_0='http.https://github.com/.extraheader', GIT_CONFIG_VALUE_0='AUTHORIZATION: basic ' + auth)
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', '--filter=blob:none', 'origin', ref], env=env, check=True)
+          rows = subprocess.check_output(['git', 'ls-tree', ref, '--', *files], text=True).splitlines()
+          assert len(rows) == len(files)
+          blobs = sorted({row.split()[2] for row in rows})
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', *blobs], env=env, check=True)
+          print('Authenticated S9 historical source closure: one ref,', len(blobs), 'distinct blobs; checkout unchanged')
+          PY
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          unset GH_TOKEN
+          node --test --test-name-pattern '^(S9 citation floor|S9 every remaining|S9 held canonical|S9 real detector|the price index)' tests/d2w-s9-contract-migrations.test.mjs tests/approved-provider-link-monetization.test.mjs
       - name: Record limited scope
         if: always()
         run: |
