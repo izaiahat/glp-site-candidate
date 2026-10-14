@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { renderMoneyPage } from "../src/money-page.mjs";
 import { buildProviderReviewSpecs, renderProviderReviewPage } from "../src/provider-review.mjs";
 import { handleGoRequest } from "../src/worker.mjs";
@@ -17,7 +19,10 @@ const providerFastpath = await readJson("../data/provider-fastpath-contract.json
 const registry = await readJson("../data/program-registry.json");
 const approved = await readJson("../data/approved-program-registry.json");
 const wireApprovals = await readJson("../data/affiliate-wire-in-approvals.json");
-const operatorDecision = await readFile(new URL("../../../../../ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md", import.meta.url), "utf8");
+const privateRoot = process.env.GLP_PRIVATE_EVIDENCE_ROOT;
+assert.ok(privateRoot && path.isAbsolute(privateRoot), "GLP_PRIVATE_EVIDENCE_ROOT must be an absolute path for affiliate expansion approval");
+const evidenceRoot = pathToFileURL(path.resolve(privateRoot) + path.sep);
+const operatorDecision = await readFile(new URL("ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md", evidenceRoot), "utf8");
 const selectedIds = new Set(selection.programs.map((item) => item.program_id));
 const goSelection = loadGoSelection();
 const selectedGo = new Map(Object.values(goSelection.programs).map((row) => [row.render_id, row]));
