@@ -46,6 +46,7 @@ on:
       - "tests/fixtures/f17-pinned-program-registry.json.gz"
       - "tests/fixtures/f17-pre-pallas-input-successor.json"
       - "tests/quiz-input-seam.test.mjs"
+      - "tests/glp75-source-bounded-seo.test.mjs"
       - "tests/glp234-try-ageless-identity.test.mjs"
       - "tests/price-index-caller-seams.test.mjs"
       - "tests/funnel-v2-instrumentation.test.mjs"
@@ -135,6 +136,33 @@ jobs:
         run: |
           node --test tests/f17-historical-registry-binding.test.mjs
           node --test --test-name-pattern '^GLP-234 F17 exact' tests/glp234-try-ageless-identity.test.mjs
+      # Only the named original GLP75 historical oracle runs. Fetch four
+      # shallow source trees and its exact blob closure, not full history.
+      - name: GLP75 historical protected-input custody (not current approval)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import base64, os, subprocess
+          refs = ['e52b7cb903ceaa77ff8d16f958a986398cf3abda', '752572dc8bfa64e5cea2c8da7de6181dade5fbdd', 'b42a4983f1cea415328473d93b6bf57aa063532a', 'ed8deacd242647f38f029eae1ce84303b5097fca']
+          files = ['data/program-registry.json', 'data/provider-page-contracts.json', 'data/phase3-pharmacy-render-input.json', 'data/affiliate-activation-selection.json', 'data/go-runtime-promotion-authority.json']
+          env = dict(os.environ)
+          auth = base64.b64encode(('x-access-token:' + env.pop('GH_TOKEN')).encode()).decode()
+          env.update(GIT_CONFIG_COUNT='1', GIT_CONFIG_KEY_0='http.https://github.com/.extraheader', GIT_CONFIG_VALUE_0='AUTHORIZATION: basic ' + auth)
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', '--filter=blob:none', 'origin', *refs], env=env, check=True)
+          blobs = set()
+          for ref in refs:
+              selected = files if ref != refs[2] else files[:1]
+              if ref == refs[3]: selected = files[1:]
+              rows = subprocess.check_output(['git', 'ls-tree', ref, '--', *selected], text=True)
+              assert len(rows.splitlines()) == len(selected)
+              blobs.update(row.split()[2] for row in rows.splitlines())
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', *sorted(blobs)], env=env, check=True)
+          print('Authenticated historical source closure: four refs,', len(blobs), 'distinct blobs; checkout unchanged')
+          PY
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          unset GH_TOKEN
+          node --test --test-name-pattern '^Wellmedr already' tests/glp75-source-bounded-seo.test.mjs
       - name: Record limited scope
         if: always()
         run: |
