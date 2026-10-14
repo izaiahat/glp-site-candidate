@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
+import { buildSchemaGraph } from '../src/schema.mjs';
 import { renderBlogPost, reviewBrief, acceptedRenderContract, renderContractProse, plainContractText } from '../src/blog-system.mjs';
 import { upgradeInsightsArticle } from '../src/phase3-page-graph.mjs';
 import { loadAcceptedGuides } from '../src/accepted-guide-source.mjs';
@@ -101,6 +103,53 @@ test('render contract dates: Updated=dateModified, prices=pricesCheckedDate only
   if (/data-prices-checked-date/.test(html)) assert.match(html, /data-prices-checked-date>2026-10-09</);
 });
 
+function finalMetadata(html, article) {
+  // Execute the actual final metadata producer without running the whole build.
+  const source = readFileSync(path.join(root, 'scripts/build-staging.mjs'), 'utf8');
+  const fn = source.slice(source.indexOf('function addGuideMetadata('), source.indexOf('\nfunction addQuizBreadcrumbSchema('));
+  const scope = { buildSchemaGraph, existsSync: () => false, path, ROOT: root,
+    escHtml: value => String(value), };
+  vm.createContext(scope);
+  vm.runInContext(fn + '\nthis.render = addGuideMetadata;', scope);
+  return scope.render(html, article, author);
+}
+function articleSchemas(html) {
+  return [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .flatMap(m => { const x = JSON.parse(m[1]); return x['@graph'] || [x]; })
+    .filter(x => x['@type'] === 'Article');
+}
+test('explicit-unbound date never falls back to modified/check date in either schema writer', () => {
+  const article = fixture();
+  article.date_published = null;
+  article.updated_at = '2026-10-13'; article.prices_checked_date = '2026-10-09';
+  const html = finalMetadata(renderBlogPost(article, null, author, []), article);
+  const schemas = articleSchemas(html); assert.equal(schemas.length, 2);
+  for (const schema of schemas) {
+    assert.equal(Object.hasOwn(schema, 'datePublished'), false);
+    assert.equal(schema.dateModified, '2026-10-13');
+  }
+  assert.equal(article.prices_checked_date, '2026-10-09');
+});
+
+test('publication recovery hands source-owned editorial date to the unchanged AEO dateline writer', async () => {
+  const { recoveryEditorialDates } = await import('../scripts/build-lastmod-provenance.mjs');
+  const { stampDateline, newState } = await import('../scripts/codemod-aeo-citation-schema.mjs');
+  const { loadAcceptedUpdates } = await import('../src/accepted-update-source.mjs');
+  const route = '/guides/how-to-get-oral-glp-1/';
+  const article = loadAcceptedUpdates(root).find(x => x.article.canonical_path === route).article;
+  const dates = recoveryEditorialDates(root, [route, '/guides/glp-1-shortage-availability-check/']);
+  assert.deepEqual(dates, {[route]:'2026-10-13'});
+  assert.deepEqual(recoveryEditorialDates(root, []), {});
+  const html = stampDateline(finalMetadata(renderBlogPost(article, null, author, []), article), dates[route], newState());
+  for (const schema of articleSchemas(html)) {
+    assert.equal(schema.datePublished, '2026-10-11');
+    assert.equal(schema.dateModified, '2026-10-13');
+  }
+  assert.equal(article.prices_checked_date, '2026-10-09');
+  assert.match(readFileSync(path.join(root, 'scripts/build-lastmod-provenance.mjs'), 'utf8'),
+    /editorial_dates: recoveryEditorialDates\(root, changed\)/);
+});
+
 test('real reviewed oral GLP-1 successor update applies over the accepted addition and renders the contract', async () => {
   const { loadAcceptedUpdates, applyAcceptedUpdates } = await import('../src/accepted-update-source.mjs');
   const additions = loadAcceptedGuides(root);
@@ -108,6 +157,14 @@ test('real reviewed oral GLP-1 successor update applies over the accepted additi
   assert.equal(updates.length, 1);
   const article = applyAcceptedUpdates(additions, updates).find((a) => a.canonical_path === '/guides/how-to-get-oral-glp-1/');
   assert.equal(article.render_contract.schema, 'glp-accepted-guide-render-v1');
+  assert.equal(article.date_published, '2026-10-11', 'first production day in America/Los_Angeles, not the Oct13 repair');
+  assert.equal(article.updated_at, '2026-10-13');
+  assert.equal(article.prices_checked_date, '2026-10-09');
+  const final = finalMetadata(renderBlogPost(article, null, author, []), article);
+  for (const schema of articleSchemas(final)) {
+    assert.equal(schema.datePublished, '2026-10-11');
+    assert.equal(schema.dateModified, '2026-10-13');
+  }
   assert.equal(reviewBrief(article, author).status, 'PASS');
   const html = renderBlogPost(article, null, author, []);
   assert.match(html, /data-release="release-ready"/);
