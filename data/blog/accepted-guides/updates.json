@@ -46,34 +46,46 @@
     },
     {
       "article": {
-        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/article.json",
-        "sha256": "5222dd97e04710eca573d684b73d7baa481f9d27adc5c75645321b124af6be55"
+        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/article-successor-4d3797d7797926c11a5cb77d858a5cf9cd8a8a7ce2db2f1e9e2e73369af4b4fc.json",
+        "sha256": "4d3797d7797926c11a5cb77d858a5cf9cd8a8a7ce2db2f1e9e2e73369af4b4fc"
       },
       "before_sha256": "cd90baba5d9dce8c01b632cc25fe98ed3dde3630dd2de7b00fbdcd97d0170e55",
       "entry_id": "a17fe571440cc6cb22cd36cf",
-      "qa": {
-        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/qa.json",
-        "sha256": "f307f12fe53e272cc51ff3296b62190ad1adb98c77205403d84add059f88be99"
-      },
-      "review": {
-        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/review.json",
-        "sha256": "716e5c42eecf28ed2defc1550b6a5d1c6d3854e73c12606cc2a3b29ceaa5dec2"
-      },
-      "route": "/guides/how-to-get-oral-glp-1/",
       "first_publication": {
         "date": "2026-10-11",
-        "timezone": "America/Los_Angeles",
         "deployment_id": "1282a970-a7aa-46f5-b27f-c850c217d6bc",
-        "site_head": "f6745ece21e51cc21fedc7dc47d4405bac648643",
+        "evidence": [
+          {
+            "path": "reports/glp-clinic-scout/seo-machine/current-release-f6745ece21e51cc21fedc7dc47d4405bac648643/CURRENT-RECEIPT.json",
+            "sha256": "07003cf8dd9239ba6e2dff485314f9ea1fbe948f0d0fde382db458c7722563d4"
+          },
+          {
+            "path": "reports/glp-clinic-scout/seo-machine/current-release-f6745ece21e51cc21fedc7dc47d4405bac648643/10-final-publication-receipt.json",
+            "sha256": "1e5c6ae1208bacf4426d50cf018087f7f540cf763918b39b2461f7d0e7a10e69"
+          },
+          {
+            "path": "reports/glp-clinic-scout/seo-machine/article-buffer/consumed/d065321eb1b8a3bbbd6a1617d5884a1623bd384a9dfccd79d0ab0ee1a7040c58.json",
+            "sha256": "909321fb9fdb27051629558a8bd0b58d5b2465033aa3c7fecb0fb742a8da482f"
+          },
+          {
+            "path": "reports/ops/fable-plan-2-20261009/lanes/A3/live-guide.headers",
+            "sha256": "26f7b593efd606e8d3389f9993ab3517da2cafe22ef225c103762d720f5f8b4a"
+          }
+        ],
         "not_before_utc": "2026-10-12T03:15:22Z",
         "observed_live_by_utc": "2026-10-12T03:17:31Z",
-        "evidence": [
-          {"path": "reports/glp-clinic-scout/seo-machine/current-release-f6745ece21e51cc21fedc7dc47d4405bac648643/CURRENT-RECEIPT.json", "sha256": "07003cf8dd9239ba6e2dff485314f9ea1fbe948f0d0fde382db458c7722563d4"},
-          {"path": "reports/glp-clinic-scout/seo-machine/current-release-f6745ece21e51cc21fedc7dc47d4405bac648643/10-final-publication-receipt.json", "sha256": "1e5c6ae1208bacf4426d50cf018087f7f540cf763918b39b2461f7d0e7a10e69"},
-          {"path": "reports/glp-clinic-scout/seo-machine/article-buffer/consumed/d065321eb1b8a3bbbd6a1617d5884a1623bd384a9dfccd79d0ab0ee1a7040c58.json", "sha256": "909321fb9fdb27051629558a8bd0b58d5b2465033aa3c7fecb0fb742a8da482f"},
-          {"path": "reports/ops/fable-plan-2-20261009/lanes/A3/live-guide.headers", "sha256": "26f7b593efd606e8d3389f9993ab3517da2cafe22ef225c103762d720f5f8b4a"}
-        ]
+        "site_head": "f6745ece21e51cc21fedc7dc47d4405bac648643",
+        "timezone": "America/Los_Angeles"
       },
+      "qa": {
+        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/qa-successor-0912ba7818af5a59c87d357bdde1b88b463a8804141b37ba20318eb36ed79d1c.json",
+        "sha256": "0912ba7818af5a59c87d357bdde1b88b463a8804141b37ba20318eb36ed79d1c"
+      },
+      "review": {
+        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/review-successor-63fba1b72e3436236dda32065cdc6ec21374f9c6f68c45cd7cefea6a5815480b.json",
+        "sha256": "63fba1b72e3436236dda32065cdc6ec21374f9c6f68c45cd7cefea6a5815480b"
+      },
+      "route": "/guides/how-to-get-oral-glp-1/",
       "semantic_materiality": {
         "basis": "independent_five_gate_review_repair",
         "changed_sections": [
