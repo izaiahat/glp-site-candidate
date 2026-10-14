@@ -38,6 +38,8 @@ on:
       - "tests/content-upgrade-contract.test.mjs"
       - "tests/d2f-coverage-floor.test.mjs"
       - "tests/d2w-s9-source-controls.test.mjs"
+      - "tests/d2w-release2-price-state.test.mjs"
+      - "tests/retention-fixture-input-binding.test.mjs"
       - "tests/quiz-input-seam.test.mjs"
       - "tests/glp234-try-ageless-identity.test.mjs"
       - "tests/price-index-caller-seams.test.mjs"
@@ -115,6 +117,10 @@ jobs:
       # private approval authenticity, economics or built paid-page behavior.
       - name: R11 private approval input binding (source-only; no private reads)
         run: node --test tests/r11-approval-input-binding.test.mjs
+      # Native R2 collection needs a genuine private deployed-baseline receipt.
+      # This recorder checks only maintained fixture paths/copies, not prices.
+      - name: R2 retention fixture input binding (source-only; no private reads)
+        run: node --test tests/retention-fixture-input-binding.test.mjs
       - name: Record limited scope
         if: always()
         run: |
