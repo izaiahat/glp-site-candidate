@@ -14,6 +14,7 @@ const id = 'care-bare-rx-glp1-review';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 
 import {readBeforeProviderAppendFixture} from './helpers/provider-append-predecessor.mjs';
+import {readF17PinnedRegistry} from './helpers/f17-pinned-registry.mjs';
 test('Care Bare corrects only active brand projections and does not erase historical quotation', () => {
   const registry=JSON.parse(readBeforeProviderAppendFixture(new URL('../data/program-registry.json',import.meta.url)));
   const program = registry.programs.find(row => row.program_id === id);
@@ -121,26 +122,27 @@ test('unchanged native structural reconciler accepts registry at original dates 
 });
 
 test('F17 adopts accepted Care registry and refuses preserved predecessor and unapproved bytes', () => {
+  const candidate = readF17PinnedRegistry();
   const fixture = JSON.parse(read('tests/fixtures/glp41-approved-input-successor.json'));
   const input = 'data/program-registry.json';
   const nodeSource = read('tests/glp41-material-contracts.test.mjs').toString();
   const start = nodeSource.indexOf("test('F17 approved registry successor binds exact prior and current bytes'");
   const end = nodeSource.indexOf("\ntest('F34", start);
   assert.ok(start >= 0 && end > start);
-  const guard = new Function('test', 'assert', 'read', 'sha', nodeSource.slice(start, end));
+  const guard = new Function('test', 'assert', 'f17Read', 'sha', nodeSource.slice(start, end));
   const run = (candidate, pins) => guard((_name, check) => check(), assert,
     path => path === input ? candidate : path === 'tests/fixtures/glp41-approved-input-successor.json'
       ? Buffer.from(JSON.stringify(pins)) : assert.fail(path), sha);
   assert.equal(fixture.inputs[input].after_sha256, '7fd52a55dd68967fb2d4428d62785a41457281dac07c1a4f24129677869ab94f');
   assert.equal(fixture.provenance.pallas_successor_proposal.before_sha256, '87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887');
   assert.equal(fixture.provenance.previous_care_after_sha256, 'e463477e4a0094353f763e37a044eafd53a07d09b4e72345769244a879eb515e');
-  assert.doesNotThrow(() => run(read(input), fixture));
+  assert.doesNotThrow(() => run(candidate, fixture));
   const stale = structuredClone(fixture);
   stale.inputs[input].after_sha256 = fixture.provenance.previous_care_after_sha256;
-  assert.throws(() => run(read(input), stale), { code: 'ERR_ASSERTION' });
+  assert.throws(() => run(candidate, stale), { code: 'ERR_ASSERTION' });
   const predecessor = structuredClone(fixture);
   predecessor.inputs[input].after_sha256 = fixture.provenance.prior_care_after_sha256;
   assert.equal(predecessor.inputs[input].after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
-  assert.throws(() => run(read(input), predecessor), { code: 'ERR_ASSERTION' });
-  assert.throws(() => run(Buffer.concat([read(input), Buffer.from(' ')]), fixture), { code: 'ERR_ASSERTION' });
+  assert.throws(() => run(candidate, predecessor), { code: 'ERR_ASSERTION' });
+  assert.throws(() => run(Buffer.concat([candidate, Buffer.from(' ')]), fixture), { code: 'ERR_ASSERTION' });
 });
