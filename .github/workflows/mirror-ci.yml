@@ -40,6 +40,9 @@ on:
       - "tests/high-intent-affiliate-surfaces.test.mjs"
       - "tests/paused-offer-reason-custody.test.mjs"
       - "tests/selected-program-denial-partition.test.mjs"
+      - "tests/editorial-monetization.test.mjs"
+      - "tests/editorial-denial-custody.test.mjs"
+      - "tests/fixtures/editorial-historical-links.mjs"
       - "tests/fixtures/historical-ageless-promotion.mjs"
       - "tests/fixtures/ageless-promotion-pre-relationship.json"
       - "tests/candidate-export-policy.test.mjs"
@@ -214,6 +217,29 @@ jobs:
           test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
           unset GH_TOKEN
           node --test --test-name-pattern '^(S9 citation floor|S9 every remaining|S9 held canonical|S9 real detector|the price index)' tests/d2w-s9-contract-migrations.test.mjs tests/approved-provider-link-monetization.test.mjs
+      # Original >=3 minimum stays on exact historical raw inputs; today's
+      # complete guide rows use current denial-only relationship authority.
+      - name: Editorial historical minimum and current denial partition (source-only; no build)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import base64, os, subprocess
+          ref = '9cd63e73d743d69104fa0a281ce42113743faf4a'
+          files = ['data/money-page-specs.json', 'data/program-registry.json', 'data/affiliate-activation-selection.json', 'data/go-runtime-promotion-authority.json']
+          env = dict(os.environ)
+          auth = base64.b64encode(('x-access-token:' + env.pop('GH_TOKEN')).encode()).decode()
+          env.update(GIT_CONFIG_COUNT='1', GIT_CONFIG_KEY_0='http.https://github.com/.extraheader', GIT_CONFIG_VALUE_0='AUTHORIZATION: basic ' + auth)
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', '--filter=blob:none', 'origin', ref], env=env, check=True)
+          rows = subprocess.check_output(['git', 'ls-tree', ref, '--', *files], text=True).splitlines()
+          assert len(rows) == len(files)
+          blobs = sorted({row.split()[2] for row in rows})
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', *blobs], env=env, check=True)
+          print('Authenticated editorial raw-input closure: one ref,', len(blobs), 'blobs; checkout unchanged')
+          PY
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          unset GH_TOKEN
+          node --test --test-name-pattern '^(the four ruled comparison guides resolve|current ruled guides preserve|historical editorial inputs reject|current editorial oracle refuses)' tests/editorial-monetization.test.mjs tests/editorial-denial-custody.test.mjs
       - name: Record limited scope
         if: always()
         run: |
