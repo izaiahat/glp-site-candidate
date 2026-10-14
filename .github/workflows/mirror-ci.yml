@@ -41,6 +41,8 @@ on:
       - "tests/quiz-input-seam.test.mjs"
       - "tests/glp234-try-ageless-identity.test.mjs"
       - "tests/price-index-caller-seams.test.mjs"
+      - "tests/funnel-v2-instrumentation.test.mjs"
+      - "tests/r11-approval-input-binding.test.mjs"
       - "tests/f06-fastpath-current-hold.test.mjs"
       - "tests/glp47-approved-onboarding.test.mjs"
       - "tests/guide-resource-consent.test.mjs"
@@ -109,6 +111,10 @@ jobs:
         run: node --test tests/quiz-input-seam.test.mjs
       - name: GLP234 native raw-scoring and current-hold quiz regression (real source inputs only)
         run: node --test --test-name-pattern '^GLP-234 F1 actual build-to-quiz' tests/glp234-try-ageless-identity.test.mjs
+      # R11 portable coverage validates only input paths and refusal, not
+      # private approval authenticity, economics or built paid-page behavior.
+      - name: R11 private approval input binding (source-only; no private reads)
+        run: node --test tests/r11-approval-input-binding.test.mjs
       - name: Record limited scope
         if: always()
         run: |
