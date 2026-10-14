@@ -56,6 +56,7 @@ on:
       - "tests/pricing-deployed-row-schema.test.mjs"
       - "tests/therapeutic-refresh-import.test.mjs"
       - "tests/wave2-p1-surfaces.test.mjs"
+      - "tests/pass2-late-audit-static.test.mjs"
   workflow_dispatch:
     inputs:
       source_sha:
@@ -96,7 +97,9 @@ jobs:
       - name: Affiliate relationship synchronization contracts
         run: node --test tests/affiliate-relationship-sync.test.mjs
       - name: Guide resource renderer and privacy regression (offline only)
-        run: node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs
+        run: |
+          node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs
+          node --test --test-name-pattern '^O-28 ' tests/pass2-late-audit-static.test.mjs
       - name: Carrier analytics emitter and alias cache regression (offline only)
         run: node --test tests/carrier-analytics-emission.test.mjs
       - name: Accepted guide source and on-page-only contract (offline)
