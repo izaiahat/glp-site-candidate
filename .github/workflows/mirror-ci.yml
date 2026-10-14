@@ -30,6 +30,8 @@ on:
       - "src/**"
       - "tests/accepted-guide-source.test.mjs"
       - "tests/accepted-update-source.test.mjs"
+      - "tests/article-selection-seam.test.mjs"
+      - "tests/glp234-held-article-output.test.mjs"
       - "tests/affiliate-relationship-sync.test.mjs"
       - "tests/candidate-export-policy.test.mjs"
       - "tests/carrier-analytics-emission.test.mjs"
@@ -99,6 +101,8 @@ jobs:
         run: node --test tests/therapeutic-refresh-import.test.mjs
       - name: Price caller dependency seam regression (synthetic inputs; not price-oracle acceptance)
         run: node --test tests/price-index-caller-seams.test.mjs
+      - name: Article selection dependency seam (source catalogs only; not built-output acceptance)
+        run: node --test tests/article-selection-seam.test.mjs
       - name: Record limited scope
         if: always()
         run: |

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync, existsSync, readdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import vm from 'node:vm';
+import {selectBuildArticles} from './helpers/article-selection-seam.mjs';
 import {reviewBrief} from '../src/blog-system.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -22,15 +22,11 @@ test('GLP-234 existing consolidated-route exclusion keeps the held article out o
 
   // Execute the maintained catalog-selection seam, not a second test-only filter.
   const build = read('scripts/build-staging.mjs');
-  const consolidation = build.slice(build.indexOf('const CONSOLIDATED_DUPLICATE_ROUTES ='), build.indexOf('// Design pass 2026-08-20 (Fable edit 1)'));
-  const selection = build.slice(build.indexOf('  const commercialGuideRoutes ='), build.indexOf('  const glpArticles ='));
-  const selected = vm.runInNewContext(`${consolidation}\n${selection}\nallArticles`, {blogBatch, nationalArticles});
+  const selected = selectBuildArticles(build, root, blogBatch, nationalArticles);
   assert.equal(selected.some(article => article.canonical_path === route), false);
   // A new, non-consolidated article with a missing receipt is NOT silently dropped.
   const unreviewed = {...held, article_id: 'unreviewed-negative', canonical_path: '/guides/unreviewed-negative/'};
-  const negative = vm.runInNewContext(`${consolidation}\n${selection}\nallArticles`, {
-    blogBatch: {...blogBatch, articles: [...blogBatch.articles, unreviewed]}, nationalArticles,
-  });
+  const negative = selectBuildArticles(build, root, {...blogBatch, articles: [...blogBatch.articles, unreviewed]}, nationalArticles);
   assert.ok(negative.some(article => article.article_id === unreviewed.article_id));
   assert.deepEqual(reviewBrief(unreviewed, held.author), {status: 'HELD', reason: 'evidence_review_receipt_missing'});
   assert.match(build, /if \(articleReview.status !== "PASS"\) throw new Error\(`blog_article_gate:/);
