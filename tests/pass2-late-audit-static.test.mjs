@@ -19,15 +19,42 @@ const LEGACY_REVIEW_ROUTES = [
 
 const legacyCaptureFixture = `<!doctype html><html><head><link rel="canonical" href="https://glpclinicscout.com/guides/mounjaro-coupon/"></head><body><main><form action="/api/content-upgrade" method="post" data-content-upgrade-form-inline><input type="hidden" name="source_page" value="guides-mounjaro-coupon"><input type="hidden" name="lead_magnet_key" value="guides-mounjaro-coupon-terms-checklist"><input type="hidden" name="consent_version" value="glp-content-upgrade-v2-20260801"><label>Email<input type="email" name="email" required></label><label class="capture-consent"><input type="checkbox" name="email_consent" value="true" required><span>Email me this checklist under the <a href="/privacy/">Privacy Policy</a>. Unsubscribe anytime.</span></label><button type="submit">Email me the checklist</button><label class="capture-honeypot" aria-hidden="true">Leave blank<input type="text" name="company" tabindex="-1"></label></form></main><script>const payload=Object.fromEntries(new FormData(form).entries());</script></body></html>`;
 
+// GLP73 (217cfac) split guide-link delivery from commercial capture. Keep the
+// original guide fixture above for refusal; only commercial forms retain v2.
+const commercialCaptureFixture = legacyCaptureFixture
+  .replaceAll("/guides/mounjaro-coupon/", "/best/online-glp-1-providers/")
+  .replaceAll("guides-mounjaro-coupon", "best-online-glp-1-providers");
+
 test("O-28 normalizes preserved and inline email capture without losing passive consent metadata", () => {
-  const output = applyWave2P1Surfaces(legacyCaptureFixture, "guides/mounjaro-coupon/index.html");
+  const output = applyWave2P1Surfaces(commercialCaptureFixture, "best/online-glp-1-providers/index.html");
   assert.doesNotMatch(output, /<input\b(?=[^>]*type=["']checkbox["'])(?=[^>]*name=["'](?:email_consent|marketing_consent|privacy_consent|subscribe_consent)["'])/i);
-  assert.match(output, /name="source_page" value="guides-mounjaro-coupon"/);
+  assert.match(output, /name="source_page" value="best-online-glp-1-providers"/);
+  assert.match(output, /name="lead_magnet_key" value="best-online-glp-1-providers-terms-checklist"/);
   assert.match(output, /name="consent_version" value="glp-content-upgrade-v2-20260801"/);
   assert.match(output, /class="capture-honeypot"[\s\S]*?name="company"/);
   assert.match(output, /class="capture-consent-note"[\s\S]*?href="\/privacy\/"[\s\S]*?Unsubscribe anytime/);
   assert.match(output, /payload\.email_consent='true'/);
-  assert.equal(applyWave2P1Surfaces(output, "guides/mounjaro-coupon/index.html"), output, "normalization must be idempotent");
+  assert.equal(applyWave2P1Surfaces(output, "best/online-glp-1-providers/index.html"), output, "normalization must be idempotent");
+
+  // The original guide input is not permission to bypass GLP73's privacy guard.
+  assert.throws(() => applyWave2P1Surfaces(legacyCaptureFixture, "guides/mounjaro-coupon/index.html"),
+    /^Error: guide_legacy_capture_requires_reconciliation$/);
+  const guideFrame = legacyCaptureFixture.replace(/<form\b[\s\S]*?<\/form>/, "")
+    .replace(/<script\b[\s\S]*?<\/script>/, "");
+  const guideOutput = applyWave2P1Surfaces(guideFrame, "guides/mounjaro-coupon/index.html");
+  const guideForm = guideOutput.match(/<form\b[\s\S]*?<\/form>/)?.[0];
+  assert.ok(guideForm, "a clean guide still receives its resource-delivery form");
+  assert.match(guideForm, /name="source_page" value="guide-link"/);
+  assert.match(guideForm, /name="lead_magnet_key" value="guide-link-resource"/);
+  assert.match(guideForm, /name="consent_version" value="glp-guide-resource-v1-20261007"/);
+  assert.match(guideForm, /name="guide_path" value="\/guides\/mounjaro-coupon\/"/);
+  assert.match(guideForm, /name="request_id" value=""/);
+  assert.match(guideForm, /does not subscribe you to follow-up emails/);
+  assert.match(guideForm, /email service receives your email address and the guide link/);
+  assert.doesNotMatch(guideForm, /guides-mounjaro-coupon|terms-checklist|glp-content-upgrade-v2|occasional provider-comparison|name="(?:email_consent|marketing_consent|privacy_consent|subscribe_consent)"/);
+  assert.match(guideOutput, /referrerPolicy:'no-referrer'/);
+  assert.equal(applyWave2P1Surfaces(guideOutput, "guides/mounjaro-coupon/index.html"), guideOutput,
+    "resource-only guide rendering must be idempotent");
 });
 
 test("G-1 shared-interactive READY6 mode yields shell-ready bodies and retains governed evidence", async () => {
