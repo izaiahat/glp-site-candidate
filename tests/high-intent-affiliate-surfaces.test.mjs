@@ -71,7 +71,7 @@ test("calculator and quiz share one fail-closed transparent-direct resolver", as
     const authority = promotionAuthority.programs[item.program_id];
     assert.equal(authority.status, 'WITHHELD');
     assert.equal(authority.promotion_authorized, false);
-    assert.equal(authority.reason, 'sole_writer_relationship_paused');
+    assert.equal(authority.reason, `sole_writer_relationship_${snapshot.lifecycle}`);
     assert.deepEqual(authority.relationship_snapshot, {program_id: item.program_id, render_id: item.program_id, ...snapshot});
     for (const links of [calculator, quiz]) {
       assert.equal(links[item.program_id]?.live, false);

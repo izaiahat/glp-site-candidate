@@ -125,7 +125,7 @@ test("the all-or-nothing money link map still resolves every selected program", 
     const authority = promotionAuthority.programs[item.program_id];
     assert.equal(authority.status, 'WITHHELD');
     assert.equal(authority.promotion_authorized, false);
-    assert.equal(authority.reason, 'sole_writer_relationship_paused');
+    assert.equal(authority.reason, `sole_writer_relationship_${snapshot.lifecycle}`);
     assert.deepEqual(authority.relationship_snapshot, {program_id: item.program_id, render_id: item.program_id, ...snapshot});
     assert.equal(links[item.program_id]?.live, false);
     assert.equal(links[item.program_id]?.affiliate_href, null);
