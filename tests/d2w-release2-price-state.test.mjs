@@ -47,6 +47,12 @@ test('R2 altered evidence snapshot fails its pinned source hash',()=>{
   fs.mkdirSync(path.join(temp,'data'),{recursive:true});fs.copyFileSync(path.join(root,'data/price-state-retention.json'),path.join(temp,'data/price-state-retention.json'));
   fs.copyFileSync(path.join(root,'data/price-state-retention-v3.json'),path.join(temp,'data/price-state-retention-v3.json'));
   fs.cpSync(path.join(root,'data/price-state-evidence'),path.join(temp,'data/price-state-evidence'),{recursive:true});
+  // Replay the authentic current manual-profile and reattestation inputs.
+  // These are read-only fixture dependencies; only copied S30 packets below
+  // may be mutated. Links avoid duplicating the multi-megabyte registry/ledger.
+  for (const relative of ['data/program-registry.json','data/price-refresh-ledger.json','data/affiliate-activation-selection.json','data/pricing-evidence']) {
+   fs.symlinkSync(path.join(root,relative),path.join(temp,relative));
+  }
   assert.doesNotThrow(()=>validateAttestedRetention(temp,matrix,baseline));
   fs.writeFileSync(path.join(temp,contract.bindings[0].packet_path),'{}');
   assert.throws(()=>validateAttestedRetention(temp,matrix,baseline),/source_hash/);

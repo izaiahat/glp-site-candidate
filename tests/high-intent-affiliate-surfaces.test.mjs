@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { historicalAgelessPromotion } from './fixtures/historical-ageless-promotion.mjs';
 import { readFile } from "node:fs/promises";
 import { buildAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
 import { buildCostCalculatorData, renderCostCalculator } from "../src/cost-calculator.mjs";
@@ -47,11 +48,44 @@ test("calculator and quiz share one fail-closed transparent-direct resolver", as
   assert.equal(historical.disposition, 'historical_snapshot_only_not_activation_authority');
   assert.equal(historical.network_program_id, '1538');
   assert.equal(promotionAuthority.programs["try-ageless"]?.status, "WITHHELD");
-  assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "network_paused_katalys_offer_1538");
+  // The original pause reason is historical; current denial retains writer provenance.
+  assert.equal(historicalAgelessPromotion().reason, "network_paused_katalys_offer_1538");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "sole_writer_relationship_paused");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.promotion_authorized, false);
+  assert.deepEqual(promotionAuthority.programs["try-ageless"]?.relationship_snapshot, {program_id: "try-ageless", render_id: "try-ageless", ...registry.programs.find(row => row.program_id === "try-ageless").affiliate_relationship_snapshot});
   const eligibleIds = new Set(selection.programs.filter((item) => item.program_id !== "try-ageless").map((item) => item.program_id));
   assert.equal(eligibleIds.size, 10);
-  assert.deepEqual(new Set(liveCalculator.map((item) => item.program_id)), eligibleIds);
-  assert.deepEqual(new Set(liveQuiz.map((item) => item.program_id)), eligibleIds);
+  // Keep all ten selected identities covered while requiring the current
+  // sole-writer pause to suppress Trimi on BOTH real output surfaces.
+  const denied = selection.programs.filter(item => registry.programs.find(row => row.program_id === item.program_id)?.affiliate_relationship_snapshot?.promotion_denied === true);
+  assert.deepEqual(denied.map(item => item.program_id), ['trimi-glp-1']);
+  for (const item of denied) {
+    const snapshot = registry.programs.find(row => row.program_id === item.program_id).affiliate_relationship_snapshot;
+    assert.equal(snapshot.lifecycle, 'paused');
+    assert.equal(snapshot.relationship_status, 'paused_network_program_paused');
+    assert.equal(snapshot.network, item.network.toLowerCase());
+    assert.equal(snapshot.network_program_id, item.network_program_id);
+    assert.equal(snapshot.sheet_row, item.sheet_row);
+    assert.equal(snapshot.reported_information, true);
+    assert.match(snapshot.source_checked_at, /^\d{4}-\d{2}-\d{2}T/);
+    const authority = promotionAuthority.programs[item.program_id];
+    assert.equal(authority.status, 'WITHHELD');
+    assert.equal(authority.promotion_authorized, false);
+    assert.equal(authority.reason, `sole_writer_relationship_${snapshot.lifecycle}`);
+    assert.deepEqual(authority.relationship_snapshot, {program_id: item.program_id, render_id: item.program_id, ...snapshot});
+    for (const links of [calculator, quiz]) {
+      assert.equal(links[item.program_id]?.live, false);
+      assert.equal(links[item.program_id]?.affiliate_href, null);
+      assert.equal(links[item.program_id]?.go_href, undefined);
+    }
+  }
+  const currentEligibleIds = new Set([...eligibleIds].filter(id => !denied.some(item => item.program_id === id)));
+  assert.deepEqual(new Set(liveCalculator.map((item) => item.program_id)), currentEligibleIds);
+  assert.deepEqual(new Set(liveQuiz.map((item) => item.program_id)), currentEligibleIds);
+  for (const live of [liveCalculator, liveQuiz]) {
+    assert.equal(live.length + denied.length, eligibleIds.size);
+    assert.deepEqual(new Set([...live, ...denied].map(item => item.program_id)), eligibleIds);
+  }
   for (const paused of ["synergy-rx", "care-bare-rx-glp1", "try-ageless"]) {
     assert.equal(liveCalculator.some((item) => item.program_id === paused), false, paused);
     assert.equal(liveQuiz.some((item) => item.program_id === paused), false, paused);

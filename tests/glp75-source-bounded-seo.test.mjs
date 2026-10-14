@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { renderBlogPost } from '../src/blog-system.mjs';
 import { renderConfiguredListing } from '../src/phase3-page-graph.mjs';
 import { createHash } from 'node:crypto';
+import { readF17PinnedRegistry } from './helpers/f17-pinned-registry.mjs';
 
 // GLP-75 standalone fixtures remain frozen. GLP-234 composes only the
 // independently adjudicated PR4 catalog keys and seven registry paths, plus
@@ -160,10 +161,42 @@ test('Wellmedr already consolidates unknown charges and policy conflict; protect
   exactRegistry(JSON.parse(historicalRegistryBytes));
   // The independently accepted factual successor is a separate input, not a
   // claim that today's registry still equals the earlier PR4/PR8 composition.
-  const pins=read('tests/fixtures/glp41-approved-input-successor.json');
+  // Historical lineage is the exact pre-Pallas pin document from Git ed8deacd.
+  // It is not today's registry or an inherited approval of later successors.
+  const lineageBytes = readFileSync(new URL('tests/fixtures/f17-pre-pallas-input-successor.json', root));
+  assert.equal(hash(lineageBytes), '7a8ad0ed7c3a3e58be97a7b9ac2bdc8e0f2b45b469964e3cfa86369dd7ea399a');
+  const pins=JSON.parse(lineageBytes);
   assert.equal(pins.provenance.prior_care_after_sha256, '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d');
   assert.equal(pins.inputs[registryFile].after_sha256, '87b578d60e4803f0ab28e39d01a33cec478d26e0c3c333d0373dccb2a61dc887');
+  const lineagePins = pins;
+  {
+  // Bind only this byte assertion to the existing authentic F17 registry.
+  // Current source and every other current-input reader remain separate.
+  const pins=read('tests/fixtures/glp41-approved-input-successor.json');
+  const bytes = readF17PinnedRegistry();
+  const pallas = pins.provenance.pallas_successor_proposal;
+  assert.equal(pallas.before_sha256, lineagePins.inputs[registryFile].after_sha256);
+  assert.equal(pallas.after_sha256, hash(bytes));
+  assert.equal(pallas.changed_program_count, 1);
+  assert.equal(pallas.changed_program_id, 'pallas-health-review');
+  assert.equal(pallas.only_changed_program_field, 'affiliate_relationship_snapshot');
+  assert.equal(pallas.independent_acceptance, null, 'proposal is not inherited acceptance');
+  const retainedLineage = structuredClone(pins);
+  delete retainedLineage.provenance.pallas_successor_proposal;
+  retainedLineage.inputs[registryFile].after_sha256 = lineagePins.inputs[registryFile].after_sha256;
+  assert.deepEqual(retainedLineage, lineagePins, 'every other pin field remains exact');
+  const exactF17 = candidate => assert.equal(hash(candidate), pins.inputs[registryFile].after_sha256);
+  exactF17(bytes);
+  assert.throws(() => exactF17(readFileSync(new URL(registryFile, root))), {code:'ERR_ASSERTION'}, 'current source is not historical custody');
+  assert.throws(() => exactF17(Buffer.concat([bytes, Buffer.from(' ')])), {code:'ERR_ASSERTION'});
+  {
+  const readFileSync = url => {
+    assert.equal(url.href, new URL(registryFile, root).href, 'no other reader is substituted');
+    return bytes;
+  };
   assert.equal(hash(readFileSync(new URL(registryFile,root))), pins.inputs[registryFile].after_sha256);
+  }
+  }
   const expectedBytes = JSON.stringify(expected, null, 2) + '\n';
   assert.equal(hash(expectedBytes), '612814c63d7276d2affe721a7e63664d02703c2554d049a4db25ee61ee05560d', 'fixed combined bytes reconstructed exclusively from authenticated parent values');
   const exactRegistryBytes = bytes => assert.equal(bytes, expectedBytes, 'combined registry bytes equal independently reconstructed union');
@@ -193,8 +226,13 @@ test('Wellmedr already consolidates unknown charges and policy conflict; protect
     const unchanged = bytes => acceptedSuccessors[file]
       ? assert.equal(hash(bytes), acceptedSuccessors[file], `separately accepted successor: ${file}`)
       : assert.equal(bytes, baselineBytes, `combined must not rewrite ${file}`);
-    const currentBytes=readFileSync(new URL(file, root), 'utf8');
+    // Exact source at ed8deacd, before later provider/authority successors;
+    // these unchanged historical pins cannot approve today's source.
+    const currentBytes=frozen('ed8deacd242647f38f029eae1ce84303b5097fca', file);
     unchanged(currentBytes);
+    if (file === 'data/provider-page-contracts.json') {
+      assert.throws(() => unchanged(readFileSync(new URL(file, root), 'utf8')), {code:'ERR_ASSERTION'}, 'current source must not pass the historical pin');
+    }
     assert.throws(() => unchanged(`${currentBytes} `), { code: 'ERR_ASSERTION' }, `even serialization drift is forbidden: ${file}`);
   }
 });

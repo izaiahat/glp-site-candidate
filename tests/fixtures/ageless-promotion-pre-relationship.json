@@ -1,0 +1,1074 @@
+{
+  "affiliati_subid_contract": {
+    "changed_files": [],
+    "default_link_form": "creative",
+    "marker": "AFFILIATI_S1_S2_CONTRACT_V1",
+    "status": "PASS_SUPPORTED"
+  },
+  "operator_authority": {
+    "bytes": 4729,
+    "path": "/home/ubuntu/business/reports/ops/briefs/DEPLOY-FIX-DRAIN-EVERYTHING-20260831.md",
+    "sha256": "efd4fdbd2b3e3d57952c2ab5ef2bf8d53ef5c1f4e10cc537ee650a366dbb9682"
+  },
+  "programs": {
+    "altrx-glp1-us-cps": {
+      "constructor_verified": false,
+      "promotion_authorized": false,
+      "reason": "xentraffic_offer_3162_paused_current_eligibility_unknown",
+      "redirector_tos_verified": false,
+      "status": "WITHHELD"
+    },
+    "awin-128761": {
+      "attribution_parameter_contract": "awin-dyn-params",
+      "constructor_verified": true,
+      "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "biltrx": {
+      "attribution_parameter_contract": "awin-dyn-params",
+      "constructor_verified": true,
+      "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "bodybuilding-com-glp-1-longevity-review": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "breeze-meds-review": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "care-bare-rx-glp1-review": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "clickdealer-176223-249142": {
+      "constructor_verified": false,
+      "directory_only": true,
+      "issued_link_sha256": "c11c7303c8ebad842d8521139a78567e847b83c6c3f851c4b4165c743029f4a1",
+      "network": "clickdealer",
+      "network_approval_source_refs": [
+        "reports/ops/glp41-clickdealer-link-recovery-20260925/RESULT.json#campaign_links[campaign_id=12094657,offer_id=176223,offer_contract_id=249142]",
+        "reports/ops/glp41-20260924/approved-provider-census/RESULT.json#176223:249142"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "clickdealer-178335-251864": {
+      "constructor_verified": false,
+      "directory_only": true,
+      "issued_link_sha256": "6d488c238b84b7d4d2073a19954507aec0a98e8231a8efac12106ccfa9136a6c",
+      "network": "clickdealer",
+      "network_approval_source_refs": [
+        "reports/ops/glp41-clickdealer-link-recovery-20260925/RESULT.json#campaign_links[campaign_id=12094630,offer_id=178335,offer_contract_id=251864]",
+        "reports/ops/glp41-20260924/approved-provider-census/RESULT.json#178335:251864"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "clickdealer-181687-255411": {
+      "constructor_verified": false,
+      "directory_only": true,
+      "issued_link_sha256": "0011b689116241f6f8aa9dbc3bb2a18882f42d612f41241667c70266c6a76eed",
+      "network": "clickdealer",
+      "network_approval_source_refs": [
+        "reports/ops/glp41-clickdealer-link-recovery-20260925/RESULT.json#campaign_links[campaign_id=12094632,offer_id=181687,offer_contract_id=255411]",
+        "reports/ops/glp41-20260924/approved-provider-census/RESULT.json#181687:255411"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "clickdealer-181731-255455": {
+      "constructor_verified": false,
+      "directory_only": true,
+      "issued_link_sha256": "79e5645e0c121f24b25d2c3b1d7365e1f3e64473aba2c1ba505980b6a3f67138",
+      "network": "clickdealer",
+      "network_approval_source_refs": [
+        "reports/ops/glp41-clickdealer-link-recovery-20260925/RESULT.json#campaign_links[campaign_id=12094787,offer_id=181731,offer_contract_id=255455]",
+        "reports/ops/glp41-20260924/approved-provider-census/RESULT.json#181731:255455"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "coivas": {
+      "attribution_parameter_contract": "awin-dyn-params",
+      "constructor_verified": true,
+      "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "coreage-rx-glp-1-1632": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "curex-glp-1": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "direct-meds": {
+      "attribution_parameter_contract": "affiliati-s1-s2",
+      "constructor_verified": true,
+      "network": "affiliati",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://affiliatinetwork.com/advertisers/publisher-terms-and-conditions/",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "drhouse": {
+      "attribution_parameter_contract": "awin-dyn-params",
+      "constructor_verified": true,
+      "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "dudemeds-review": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "eden-xentraffic-offer-3051": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "enhance-md": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "enhanced-tirzepatide-funnel-b": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "found-health": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "futurhealth-wegovy-pillform": {
+      "constructor_verified": false,
+      "promotion_authorized": false,
+      "reason": "xentraffic_offer_3176_paused_current_eligibility_unknown",
+      "redirector_tos_verified": false,
+      "status": "WITHHELD"
+    },
+    "g-plan": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "gala-health": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "gobymeds": {
+      "constructor_verified": false,
+      "network": "direct",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "healthrx": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "humecare-data-driven-glp-1-weight-loss-system": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "joinskinny-semaglutide-glp-1-us": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "jrnys-review": {
+      "attribution_parameter_contract": "affiliati-s1-s2",
+      "constructor_verified": true,
+      "network": "affiliati",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://affiliatinetwork.com/advertisers/publisher-terms-and-conditions/",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "katalys-1286": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "katalys-1304": {
+      "attribution_parameter_contract": "affiliati-s1-s2",
+      "constructor_verified": true,
+      "network": "affiliati",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://affiliatinetwork.com/advertisers/publisher-terms-and-conditions/",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "katalys-1516": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": false,
+      "network": "katalys",
+      "network_approval_source_refs": [
+        "04-katalys-graphql-inventory.json#offerId=1516;relationship=Approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=323"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "katalys-647": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "levelsrx-extra-cpa-home-page": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "live-vital-launch": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "longevity-meds-glp-1-review": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": false,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "lttl-glp-landing-page-2": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "mademed": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "mangorx": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "measured": {
+      "attribution_parameter_contract": "awin-dyn-params",
+      "constructor_verified": false,
+      "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "medvi-review": {
+      "attribution_parameter_contract": "affiliati-s1-s2",
+      "constructor_verified": true,
+      "network": "affiliati",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://affiliatinetwork.com/advertisers/publisher-terms-and-conditions/",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "mydrhank": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "novi-weight-loss-glp-1": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "nu-image-medical-review": {
+      "constructor_verified": false,
+      "network": "trackdesk",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "oak-weight-loss-program": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "orderlymeds": {
+      "constructor_verified": false,
+      "network": "everflow",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "pallas-health-review": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "partnerize-1011l6645": {
+      "constructor_verified": false,
+      "network": "partnerize",
+      "network_approval_source_refs": [
+        "02-partnerize-api-inventory.json#campaign_id=1011l6645;status=approved",
+        "12-sheet-provider-diff-post-apply.json#/all_rows/row=148"
+      ],
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "refills": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "ro-wegovy-glp1-quiz-us-cpl": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "rxspan-md-telehealth-program-review": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "serena-health": {
+      "attribution_parameter_contract": "awin-dyn-params",
+      "constructor_verified": true,
+      "network": "awin",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://help.awin.com/developers/docs/click-appends-dyn-params",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "shedrx": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "skinnyrx-1-glp-weight-loss-provider-review": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "snagrx": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "sprout-health": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "strut-health": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "sunlight-glp1": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "synergy-rx-review": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "tmates-xentraffic-offer-3154": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "trimi-glp-1": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "trimrx-xentraffic-offer-3014": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    },
+    "trt-nation": {
+      "constructor_verified": false,
+      "network": "cj",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_verified": false,
+      "status": "VERIFIED"
+    },
+    "try-ageless": {
+      "constructor_verified": false,
+      "promotion_authorized": false,
+      "reason": "network_paused_katalys_offer_1538",
+      "redirector_tos_verified": false,
+      "status": "WITHHELD"
+    },
+    "wellmedr-review": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "wellorithm": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "yourera-program": {
+      "attribution_parameter_contract": "katalys-subid",
+      "constructor_verified": true,
+      "network": "katalys",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_source_url": "https://kb.katalys.com/kb/tracking-url-parameters",
+      "redirector_tos_verified": true,
+      "status": "VERIFIED"
+    },
+    "yucca-health-xentraffic-offer-3117": {
+      "attribution_parameter_contract": "xentraffic-sub1",
+      "constructor_verified": true,
+      "network": "xentraffic",
+      "operator_approved_live_decision": {
+        "bytes": 816,
+        "path": "/home/ubuntu/business/ops/linear/approvals/OPERATOR-DECISION-20260924-all-approved-providers-live.md",
+        "sha256": "8748cf8a88876d346d4850434a07d2b8a9984e8b1409a28ca2c073817e5b9ac5"
+      },
+      "promotion_authorized": true,
+      "reason": "operator_approved_glp_live",
+      "redirector_tos_basis": "operator_risk_acceptance",
+      "redirector_tos_finding": "redirector_tos_unverified_for_network:xentraffic",
+      "redirector_tos_risk_acceptance": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "redirector_tos_verified": true,
+      "risk_acceptance_logged": true,
+      "risk_acceptance_receipt": "ops/linear/approvals/OPERATOR-DECISION-20260919-deploy-all-approved-no-terms-gate.json",
+      "status": "VERIFIED"
+    }
+  },
+  "schema": "glp.go-runtime-promotion-authority.v1",
+  "status": "PASS_GOVERNED_ACTIVE_OR_EXPLICITLY_WITHHELD",
+  "tracking_clicks": 0,
+  "tracking_link_requests": 0,
+  "verification_method": "local_href_and_config_inspection_only"
+}

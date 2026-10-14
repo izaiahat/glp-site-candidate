@@ -140,7 +140,9 @@ test("late-audit aliases, zero-click subscriptions, O23 desktop layout, and D36 
   assert.doesNotMatch(captureForm, /type="checkbox"|name="email_consent"/);
   // KAEL-DECISION-20260922-motion-mobile-contracts.md §4 allows replay only
   // where explicitly opted in; hero remains one-shot and H17 alternates.
-  const motionDecision = await readFile(path.resolve(root, "../../../../ops/linear/approvals/KAEL-DECISION-20260922-motion-mobile-contracts.md"), "utf8");
+  const privateRoot = process.env.GLP_PRIVATE_EVIDENCE_ROOT;
+  assert.ok(privateRoot && path.isAbsolute(privateRoot), 'GLP_PRIVATE_EVIDENCE_ROOT must be an absolute path');
+  const motionDecision = await readFile(path.join(privateRoot, "ops/linear/approvals/KAEL-DECISION-20260922-motion-mobile-contracts.md"), "utf8");
   assert.match(motionDecision, /Re-entry is permitted for explicitly opted-in nonhero sections/);
   assert.match(home, /cs-home2-hero__copy[^>]*data-motion="rise" data-motion-once="true"/);
   for (const [card, direction] of [["shipping", "right"], ["schedule", "left"]]) {

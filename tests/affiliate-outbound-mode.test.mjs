@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { completeGoAuthority } from './fixtures/complete-go-authority.mjs';
+import { historicalAgelessPromotion } from './fixtures/historical-ageless-promotion.mjs';
 import { readFileSync } from "node:fs";
 import { affiliateOutboundMode } from "../src/affiliate-outbound-mode.mjs";
 import { loadGoPromotionAuthority } from "../src/go-runtime-selection.mjs";
@@ -36,10 +37,11 @@ for (const [id, mode] of modes) test(`selected ${id} follows current adoption or
 test("network-paused Ageless offer 1538 remains link-dark despite stale Sheet selection", () => {
   const program = registry.programs.find((row) => row.program_id === "try-ageless");
   assert.equal(promotions["try-ageless"].status, "WITHHELD");
+  // The original pause reason is historical; current denial retains writer provenance.
+  assert.equal(historicalAgelessPromotion().reason, "network_paused_katalys_offer_1538");
   assert.equal(promotions["try-ageless"].reason, "sole_writer_relationship_paused");
-  assert.equal(promotions["try-ageless"].relationship_snapshot.relationship_status, "paused_network_program_paused");
-  assert.equal(promotions["try-ageless"].relationship_snapshot.network_program_id, "1538");
-  assert.equal(promotions["try-ageless"].relationship_snapshot.promotion_denied, true);
+  assert.equal(promotions["try-ageless"].promotion_authorized, false);
+  assert.deepEqual(promotions["try-ageless"].relationship_snapshot, {program_id: "try-ageless", render_id: "try-ageless", ...registry.programs.find(row => row.program_id === "try-ageless").affiliate_relationship_snapshot});
   assert.equal(links["try-ageless"].live, false);
   assert.equal(affiliateOutboundMode(program, links["try-ageless"], promotions["try-ageless"]), "held");
 });

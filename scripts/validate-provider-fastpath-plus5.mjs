@@ -147,7 +147,12 @@ for (const provider of fastpath.providers) {
       assert.match(relationship.ended_effective_at, /^\d{4}-\d{2}-\d{2}$/);
       assert.ok(html.includes(`Our affiliate relationship with this provider ended on ${relationship.ended_effective_at}.`));
       assert.match(html, /This editorial review is retained/);
-      assert.doesNotMatch(html, /data-affiliate-state="held"/);
+      // Ended notices retain explicit machine-readable denial without the
+      // obsolete disabled CTA. Pre-marker absence is a historical test oracle,
+      // never permission for current output to lose its held-state identity.
+      assert.match(html, /<section class="affiliate-status"[^>]*data-affiliate-state="held"[^>]*>/);
+      assert.equal((html.match(/data-affiliate-state="held"/g) || []).length, 1);
+      assert.doesNotMatch(html, /Partner link unavailable|class="cta secondary affiliate-hold"/);
     } else assert.match(html, /data-affiliate-state="held"/);
     assert.doesNotMatch(html, /data-affiliate-state="active"|href="\/go\/|data-analytics-event="affiliate_click"|rel="sponsored/);
     const entry = GO_RUNTIME_MANIFEST.programs[selected?.render_id || provider.program_id];

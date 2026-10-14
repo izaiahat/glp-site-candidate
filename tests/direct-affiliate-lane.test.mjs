@@ -8,6 +8,7 @@
 // (which returns {} for the WHOLE site if any one program fails to resolve).
 import assert from "node:assert/strict";
 import test from "node:test";
+import { historicalAgelessPromotion } from './fixtures/historical-ageless-promotion.mjs';
 import { readFile } from "node:fs/promises";
 import { buildProviderReviewSpecs, renderProviderReviewPage } from "../src/provider-review.mjs";
 import * as reviewModule from '../src/provider-review.mjs';
@@ -100,10 +101,39 @@ test("the all-or-nothing money link map still resolves every selected program", 
   const paused = selection.excluded_selection_evidence.find((item) => item.program_id === "try-ageless");
   assert.equal(paused?.disposition, 'historical_snapshot_only_not_activation_authority');
   assert.equal(paused?.network_program_id, "1538");
-  assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "network_paused_katalys_offer_1538");
+  // The original pause reason is historical; current denial retains writer provenance.
+  assert.equal(historicalAgelessPromotion().reason, "network_paused_katalys_offer_1538");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.reason, "sole_writer_relationship_paused");
+  assert.equal(promotionAuthority.programs["try-ageless"]?.promotion_authorized, false);
+  assert.deepEqual(promotionAuthority.programs["try-ageless"]?.relationship_snapshot, {program_id: "try-ageless", render_id: "try-ageless", ...registry.programs.find(row => row.program_id === "try-ageless").affiliate_relationship_snapshot});
   assert.equal(promotionAuthority.programs["try-ageless"]?.status, "WITHHELD");
   assert.equal(links["try-ageless"]?.live, false);
-  const eligible = selection.programs.filter((item) => item.program_id !== "try-ageless");
+  // The retained ten-row Sheet selection is not a current promotion grant.
+  // Authenticate its exact denied member before deriving the live partition;
+  // an arbitrary missing provider must never shrink the expected set.
+  const denied = selection.programs.filter(item => registry.programs.find(row => row.program_id === item.program_id)?.affiliate_relationship_snapshot?.promotion_denied === true);
+  assert.deepEqual(denied.map(item => item.program_id), ['trimi-glp-1']);
+  for (const item of denied) {
+    const snapshot = registry.programs.find(row => row.program_id === item.program_id).affiliate_relationship_snapshot;
+    assert.equal(snapshot.lifecycle, 'paused');
+    assert.equal(snapshot.relationship_status, 'paused_network_program_paused');
+    assert.equal(snapshot.network, item.network.toLowerCase());
+    assert.equal(snapshot.network_program_id, item.network_program_id);
+    assert.equal(snapshot.sheet_row, item.sheet_row);
+    assert.equal(snapshot.reported_information, true);
+    assert.match(snapshot.source_checked_at, /^\d{4}-\d{2}-\d{2}T/);
+    const authority = promotionAuthority.programs[item.program_id];
+    assert.equal(authority.status, 'WITHHELD');
+    assert.equal(authority.promotion_authorized, false);
+    assert.equal(authority.reason, `sole_writer_relationship_${snapshot.lifecycle}`);
+    assert.deepEqual(authority.relationship_snapshot, {program_id: item.program_id, render_id: item.program_id, ...snapshot});
+    assert.equal(links[item.program_id]?.live, false);
+    assert.equal(links[item.program_id]?.affiliate_href, null);
+    assert.equal(links[item.program_id]?.go_href, undefined);
+  }
+  assert.equal(live.length + denied.length, selection.program_count);
+  assert.deepEqual(new Set([...live, ...denied].map(item => item.program_id)), new Set(selection.programs.map(item => item.program_id)));
+  const eligible = selection.programs.filter(item => !denied.some(row => row.program_id === item.program_id));
   assert.equal(live.length, eligible.length,
     "the money-page link map went link-dark or lost a program");
   assert.deepEqual(new Set(live.map((item) => item.program_id)), new Set(eligible.map((item) => item.program_id)));

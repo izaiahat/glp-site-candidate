@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
 import test from "node:test";
 
 import { constructNetworkUrl } from "../src/network-constructors.mjs";
@@ -60,8 +62,11 @@ test("operator-mapped organic bulk routes retain honest empty results without an
 });
 
 test("operator-approved R11 paid /lp/ routes order eligible source-backed EPC and disclose it last", () => {
-  const decision = JSON.parse(requireText(new URL("../../../../ops/linear/approvals/OPERATOR-DECISION-20260918-paid-page-payout-order.json", ROOT)));
-  const ruling = JSON.parse(requireText(new URL("../../../../reports/ops/glp38-20260915/p19-rulings/R11-RESTORE.json", ROOT)));
+  const privateRoot = process.env.GLP_PRIVATE_EVIDENCE_ROOT;
+  assert.ok(privateRoot && path.isAbsolute(privateRoot), "GLP_PRIVATE_EVIDENCE_ROOT must be an absolute path for R11 approvals");
+  const evidenceRoot = pathToFileURL(path.resolve(privateRoot) + path.sep);
+  const decision = JSON.parse(requireText(new URL("ops/linear/approvals/OPERATOR-DECISION-20260918-paid-page-payout-order.json", evidenceRoot)));
+  const ruling = JSON.parse(requireText(new URL("reports/ops/glp38-20260915/p19-rulings/R11-RESTORE.json", evidenceRoot)));
   assert.equal(decision.id, "OPERATOR-DECISION-20260918-paid-page-payout-order");
   assert.equal(ruling.family, "R11");
   assert.equal(ruling.branch, "RESTORE");
