@@ -13,12 +13,20 @@ export function assertCarrierArticleBytes(retained, bytes) {
 }
 export function renderedCarrierArticle(retained, stage = releaseExportPolicy().stage) {
   assertCarrierArticleBytes(retained, retained.bytes);
-  if (stage === 'candidate') return retained.bytes;
   releaseExportPolicy(stage);
   const original = retained.bytes.toString();
+  // The frozen snapshot is authenticated above; bind only its one historical
+  // analytics script src to the raw source/hash used by build-staging's writer.
+  // Never rewrite the snapshot, its pins, prose, dates or consent attributes.
+  const analytics = readFileSync(new URL('../assets/analytics.js', import.meta.url));
+  const analyticsUrl = `/assets/analytics.${sha(analytics).slice(0, 16)}.js`;
+  const src = /(<script\b[^>]*\bsrc=")\/assets\/analytics(?:\.[a-f0-9]{16})?\.js(?:\?v=[a-f0-9]{16})?("[^>]*>)/g;
+  if ([...original.matchAll(src)].length !== 1) throw new Error('carrier_article_analytics_load_invalid');
+  const rebound = original.replace(src, `$1${analyticsUrl}$2`);
+  if (stage === 'candidate') return Buffer.from(rebound);
   const held = policyMarkup(releaseExportPolicy('candidate'));
   if (original.split(held).length !== 2 || candidateExportShellFindings(original, {stage:'candidate'}).length) throw new Error('carrier_article_candidate_shell_drift');
-  const html = stageCandidateExportPolicy(original.replace(held, policyMarkup(releaseExportPolicy(stage))), {stage});
+  const html = stageCandidateExportPolicy(rebound.replace(held, policyMarkup(releaseExportPolicy(stage))), {stage});
   if (candidateExportShellFindings(html, {stage}).length || html.match(/<main\b[\s\S]*?<\/main>/)?.[0] !== original.match(/<main\b[\s\S]*?<\/main>/)?.[0]) throw new Error('carrier_article_production_shell_drift');
   return Buffer.from(html);
 }

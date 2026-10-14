@@ -1,0 +1,15 @@
+import {spawnSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {appendManualPricing,appendGoldenVectors} from '../src/provider-surface-append.mjs';
+import {relationshipDenials} from '../src/affiliate-relationship-sync.mjs';
+const read=p=>JSON.parse(readFileSync(p)), write=(p,d)=>writeFileSync(p,JSON.stringify(d,null,2)+'\n');
+const ids=['tyde-wellness-review','feelgood-review','instarx-review','retaclinic-review'];
+const registry=read('data/program-registry.json');
+const auditRun=spawnSync(process.execPath,['scripts/audit-quiz-results-matrix.mjs'],{encoding:'utf8',maxBuffer:10*1024*1024});
+if(![0,1].includes(auditRun.status))throw Error('audit_execution_failed');
+const audit=JSON.parse(auditRun.stdout);
+const retired=relationshipDenials(registry).filter(p=>['ended','withdrawn'].includes(p.lifecycle)).flatMap(p=>[p.program_id,p.render_id]);
+const quiz=appendGoldenVectors(read('data/quiz-config.json'),audit,ids,retired);
+const matrix=appendManualPricing(read('data/provider-pricing-matrix.json'),registry,ids);
+write('data/quiz-config.json',quiz); write('data/provider-pricing-matrix.json',matrix);
+console.log(JSON.stringify({status:'APPEND_ONLY',ids,pricing:'manual/no amounts',goldens:quiz.golden_vectors.length,retained_order:'unchanged',historical_price_rows:'unchanged'}));

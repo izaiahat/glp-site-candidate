@@ -89,7 +89,7 @@ test('raw current holds stay dark in every emitted HTML, lazy JSON and GO route'
     // templates/nested lazy JSON; fake VERIFIED metadata grants nothing.
     const direct = `<a href="https://fixture.invalid/issued" data-program="${id}" rel="sponsored" data-status="VERIFIED">Start</a>`;
     const go = `<a href="/go/${id}">Start</a>`;
-    for (const markup of [direct, go]) for (const file of ['injected.html', 'injected.json']) {
+    for (const markup of [direct, go, `<noscript>${direct}</noscript>`, `<noscript>${go}</noscript>`]) for (const file of ['injected.html', 'injected.json']) {
       const text = file.endsWith('.json') ? JSON.stringify({cards:[`<template>${markup}</template>`]}) : markup;
       const fixture = [{file:'healthy.html', text:'<p>Informational profile</p>'}, {file:'healthy.json', text:'[]'}, {file, text}];
       assert.throws(() => assertRawHeldOutput(rawHeldOutputCensus(fixture, inputs, {}), id), /raw_held_output_live/);

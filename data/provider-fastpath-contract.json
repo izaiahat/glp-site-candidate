@@ -1,9 +1,9 @@
 {
   "base_provider_review_count": 13,
   "checked_as_of": "2026-07-30",
-  "current_contract_sha256": "edcbabb72522b0884f6d6ac97a813b6bf7afc2bb63bf4302c42162a0d03ffef6",
-  "expected_provider_review_count": 54,
-  "fastpath_provider_count": 43,
+  "current_contract_sha256": "172e5a88885bf2779e83ccbdb55db18dc6f6c237b443124c21b51d7e4c9b86d8",
+  "expected_provider_review_count": 61,
+  "fastpath_provider_count": 50,
   "providers": [
     {
       "activation_at_utc": "2026-08-02T10:00:00Z",
@@ -83,11 +83,11 @@
         "width": 1200
       },
       "program_id": "telos-rx",
-      "route_state": "READY_EDITORIAL_LINK_DARK",
       "research_hold_receipt": {
         "path": "data/telos-research-hold-receipt.json",
         "sha256": "f18426e9dea271a1c8ae5b234324ddbb57c3c524e61c1494dd8c281174c9c585"
-      }
+      },
+      "route_state": "READY_EDITORIAL_LINK_DARK"
     },
     {
       "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
@@ -1621,6 +1621,265 @@
       },
       "program_id": "medvi-review",
       "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-10-10T09:03:05.605731Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-10-10",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 153,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/rightwell-review.webp",
+        "sha256": "32ee0fb7e7c2898f050dc21808840be82f6b3c6a60a4e241217d62b639671016",
+        "source_path": "assets/provider-logos/rightwell-review.webp",
+        "surface": "light",
+        "width": 600
+      },
+      "program_id": "rightwell-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-10-10T09:03:07.820728Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-10-10",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 171,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/willow-review.webp",
+        "sha256": "1421b39293f27a1f26ebf7c508f297f2ef26bb2fcb3b5663343a0ee654ab7843",
+        "source_path": "assets/provider-logos/willow-review.webp",
+        "surface": "light",
+        "width": 600
+      },
+      "program_id": "willow-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-10-10T09:03:10.119200Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-10-10",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 104,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/ivim-health-review.webp",
+        "sha256": "1dba9f3934455b75728893bec6e19f7141e6746b9a09eb39b393c1ea0bc58f4d",
+        "source_path": "assets/provider-logos/ivim-health-review.webp",
+        "surface": "light",
+        "width": 600
+      },
+      "program_id": "ivim-health-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-10-12T02:15:24.479099Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-10-10",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 113,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/tyde-wellness-review.webp",
+        "sha256": "42830b5a439ad3df613a4a16317aac2df10ca8be690ac28071c75bf8add19b79",
+        "source_path": "assets/provider-logos/tyde-wellness-review.webp",
+        "surface": "light",
+        "width": 600
+      },
+      "program_id": "tyde-wellness-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-10-12T02:15:26.627550Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-10-10",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 115,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/feelgood-review.webp",
+        "sha256": "1c513dc15c5e21d4f003868fe95f0cf99544f5e54df39ee0bfa48a97b1608269",
+        "source_path": "assets/provider-logos/feelgood-review.webp",
+        "surface": "light",
+        "width": 600
+      },
+      "program_id": "feelgood-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-10-12T02:15:28.786540Z",
+      "affiliate_cta_state": "ACTIVE_PROVIDER_ISSUED_DIRECT",
+      "checked_as_of": "2026-10-10",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 161,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/instarx-review.webp",
+        "sha256": "e508d2d375df607f1076db5b10978bba0d73f26edb82899c22e94a7d2ad5518f",
+        "source_path": "assets/provider-logos/instarx-review.webp",
+        "surface": "light",
+        "width": 512
+      },
+      "program_id": "instarx-review",
+      "route_state": "LIVE_EDITORIAL_AFFILIATE_ACTIVE"
+    },
+    {
+      "activation_at_utc": "2026-10-12T02:15:31.344633Z",
+      "affiliate_cta_state": "HOLD_EDITORIAL_ONLY",
+      "checked_as_of": "2026-10-10",
+      "field_bindings": {
+        "bottom_line": [
+          "pricing_and_inclusions"
+        ],
+        "cancellation": [
+          "cancellation_and_roles"
+        ],
+        "eligibility": [
+          "cancellation_and_roles"
+        ],
+        "pricing": [
+          "pricing_and_inclusions"
+        ],
+        "regulatory": [
+          "regulatory"
+        ],
+        "shipping": [
+          "pricing_and_inclusions"
+        ]
+      },
+      "hold_copy": "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.",
+      "logo": {
+        "height": 256,
+        "media_type": "image/webp",
+        "path": "/assets/provider-logos/retaclinic-review.webp",
+        "sha256": "687549219085476db8c13df7ca6550afdbaf653e6af6b0d66c212aa6bc0b62ad",
+        "source_path": "assets/provider-logos/retaclinic-review.webp",
+        "surface": "light",
+        "width": 256
+      },
+      "program_id": "retaclinic-review",
+      "route_state": "READY_EDITORIAL_LINK_DARK"
     }
   ],
   "publication_policy": {

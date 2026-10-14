@@ -1,4 +1,6 @@
 import { selectedFamilyStyles } from "../src/selected-family-styles.mjs";
+import { ONBOARDING_CONSENT_VERSION, ONBOARDING_CONSENT_TEXT } from '../src/onboarding-consent.mjs';
+import { assertArticleReviewRoutes } from "../src/article-review-routes.mjs";
 import { captureLastmodEmission } from "./build-lastmod-provenance.mjs";
 import { resetTrackingAllowedHostsCache } from "../src/tracking-allowed-hosts.mjs";
 import { eligibilityCensus } from "../src/held-eligibility-census.mjs";
@@ -30,7 +32,7 @@ import { buildCostCalculatorData, renderCostCalculator } from "../src/cost-calcu
 import { costCalculatorDropdownProviders as costCalculatorDropdown } from "../src/cost-calculator.mjs";
 import { costAffiliateEmailManifest, costCalculatorAffiliateLinks, decorateCostCalculatorAffiliateSurface } from "../src/cost-calculator-affiliate.mjs";
 import { COST_AFFILIATE_EMAIL_MANIFEST } from "../src/cost-affiliate-email-manifest.generated.mjs";
-import { effectiveAffiliateRegistry, historicalAffiliateRegistry, publicAffiliateTerms, renderAffiliateTerms } from "../src/affiliate-relationship-sync.mjs";
+import { effectiveAffiliateRegistry, historicalAffiliateRegistry, effectiveAffiliateBuildInputs, publicAffiliateTerms, renderAffiliateTerms } from "../src/affiliate-relationship-sync.mjs";
 import { assertLiveSurfaceParity, deriveGoEntriesFromRegistry, deriveReviewRoutesFromRegistry, projectMoneyPagesFromRegistry, projectQuizFromRegistry } from "../src/program-registry.mjs";
 import { applyWave2Repairs, finalizeReviewIntakeRoute } from "./wave2-repairs.mjs";
 import { applyWave2P1Surfaces } from "../src/wave2-p1-surfaces.mjs";
@@ -40,7 +42,9 @@ import { refreshPriceTracker } from "./refresh-price-tracker.mjs";
 import { buildPriceIndexArtifacts, PRICE_INDEX_ROUTE, rebindPriceIndexShippedHtml } from "../src/price-index.mjs";
 import { readPriceIndexPredecessor } from "../src/price-index-predecessor.mjs";
 import { frozenPriceLedger } from "../src/price-index-nonprice-binding.mjs";
+import { addCurrentPriceIndexOffers, stripCurrentPriceIndexOffers } from "../src/price-refresh-evidence.mjs";
 import { historicalPriceIndexRegistry } from "../src/price-index-historical-registry.mjs";
+import { providerReviewRuntimePredecessorRegistry } from "../src/provider-price-append.mjs";
 import { composePriceWatchIssue, validatePublishedPriceWatchIssue } from "../src/price-watch-email.mjs";
 import { buildMysteryShopArtifacts, loadEvidenceInputs, evidenceLedgerAuthority } from "../src/mystery-shop.mjs";
 import { buildDealArtifacts, resolveDealEvaluationClocks } from "../src/deal-ingestion.mjs";
@@ -62,6 +66,7 @@ import { upgradePhase3PageVisuals } from "../src/pass2-page-visual-upgrades.mjs"
 import { renderReviewDirectoryPage, renderReviewIntakeForm, renderReviewSubmissionPage } from "../src/pass2-review-hub.mjs";
 import { loadAffiliateLinkMap } from "../src/affiliate-link-map.mjs";
 import { loadProviderPageContracts } from "../src/provider-cta-contract.mjs";
+import { assertAffiliateReviewPublishable, labelNonAffiliateReview } from '../src/affiliate-review-publish-gate.mjs';
 import { loadGoPromotionAuthority, restoreGoOnlyPriceBasis } from "../src/go-runtime-selection.mjs";
 
 const MONTH_NAMES = Object.freeze(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]);
@@ -1013,9 +1018,11 @@ details{border-top:1px solid var(--line);padding-top:16px}summary{min-height:44p
 `;
 
 function addGuideMetadata(html, article, author) {
-  if (!/^\/(?:guides|best)\/[a-z0-9-]+\/$/.test(article.canonical_path || "")) throw new Error(`article_canonical_path_invalid:${article.article_id}`);
+  if (!/^\/(?:guides|best|reviews)\/[a-z0-9-]+\/$/.test(article.canonical_path || "")) throw new Error(`article_canonical_path_invalid:${article.article_id}`);
   const canonicalUrl = `https://glpclinicscout.com${article.canonical_path}`;
-  const rawDescription = String(article.description || article.direct_answer || article.h1).replace(/\s+/g, " ").trim();
+  // Accepted render-contract guides carry a reviewed 150-160 char meta_description;
+  // never substitute a truncated quick answer for it.
+  const rawDescription = String((article.render_contract ? article.meta_description : null) || article.description || article.direct_answer || article.h1).replace(/\s+/g, " ").trim();
   const description = rawDescription.length <= 160 ? rawDescription : `${rawDescription.slice(0, 157).replace(/\s+\S*$/, "")}…`;
   // Phase-4 gate remediation 2026-08-27 (GATES-PRELIM issues #5/#6/#9):
   // - The guides crumb routed through the RETIRED /guides/ hub (301 -> /insights/)
@@ -1032,18 +1039,21 @@ function addGuideMetadata(html, article, author) {
     url: canonicalUrl,
     title: article.title,
     description,
-    datePublished: article.updated_at,
+    // An unbound date must not become the draft/check date. Published events
+    // are projected separately by the accepted-source handoff.
+    datePublished: article.date_published === null ? undefined : (article.date_published || article.updated_at),
     dateModified: article.date_modified || article.updated_at,
     author,
     image: existsSync(path.join(ROOT, "assets/derivatives", `guide-${heroSlug}-1600.jpg`)) ? `https://glpclinicscout.com${heroJpg}` : null,
     evidenceReview: { status: article.evidence_review?.status, source_urls: (article.sources || []).map((item) => item.url) },
-    breadcrumbs: [{ name: "Home", path: "/" }, article.canonical_path.startsWith("/best/") ? { name: "Compare", path: "/providers/" } : { name: "Guides", path: "/insights/" }, { name: article.h1, path: article.canonical_path }],
+    breadcrumbs: [{ name: "Home", path: "/" }, article.canonical_path.startsWith("/reviews/") ? { name: "Reviews", path: "/reviews/" } : article.canonical_path.startsWith("/best/") ? { name: "Compare", path: "/providers/" } : { name: "Guides", path: "/insights/" }, { name: article.h1, path: article.canonical_path }],
   });
   const hasCanonical = /<link\s+rel="canonical"/i.test(html);
   const meta = `<meta name="description" content="${escHtml(description)}">`;
   const withDescription = /<meta\s+name="description"[^>]*>/i.test(html) ? html.replace(/<meta\s+name="description"[^>]*>/i, meta) : html.replace("</head>", `${meta}</head>`);
   const metadata = `${hasCanonical ? "" : `<link rel="canonical" href="${canonicalUrl}">`}<script type="application/ld+json">${JSON.stringify(schema.jsonLd)}</script>`;
-  return withDescription.replace("</head>", `${metadata}</head>`);
+  const document = withDescription.replace("</head>", `${metadata}</head>`);
+  return article.canonical_path.startsWith("/reviews/") ? document.replace(/<html\b/i, '<html data-article-review="true"') : document;
 }
 
 // Phase-4 gate remediation 2026-08-27 (GATES-PRELIM issue #7): the quiz page
@@ -1282,7 +1292,9 @@ function addByteFrozenSharedRuntime(html) {
 
 function addSharedRuntime(html) {
   const route = html.match(/<link rel="canonical" href="https:\/\/glpclinicscout\.com([^"#?]*)/i)?.[1] || "/";
+  const articleReview = route.startsWith("/reviews/") && /<html\b[^>]*data-article-review="true"/i.test(html);
   const stylesheet = route === "/" ? "site-home.css"
+    : articleReview ? "site-editorial.css"
     : route === "/compare/" ? "site-p3.css"
     // 2026-08-27 compare-search fix 4: this /best/ route is an upgraded guide
     // document, not a money-table template; load the bundle that owns its
@@ -1307,6 +1319,7 @@ function addSharedRuntime(html) {
     : route === "/insights/" || /^\/insights\/page\//.test(route) ? "site-editorial.css"
     : "site.css";
   const template = route === "/" ? "home"
+    : articleReview ? "guide"
     : route === "/guides/" ? "library"
     : route.startsWith("/guides/") ? "guide"
     : route.startsWith("/authors/") ? "author"
@@ -1318,7 +1331,7 @@ function addSharedRuntime(html) {
     : route === "/glp-1-price-index/" ? "price-index"
     : stylesheet === "site-trust.css" ? "trust"
     : "default";
-  const editorialHero = /^\/guides\//.test(route)
+  const editorialHero = (articleReview || /^\/guides\//.test(route))
     ? html.match(/<source\s+srcset="([^"]+)"\s+sizes="([^"]+)"\s+type="image\/avif">/i)
     : null;
   const editorialHeroPreload = editorialHero
@@ -1383,7 +1396,8 @@ function addSharedRuntime(html) {
   const preFooter = sponsorRoute
     ? '<div class="cs-prefooter"><div class="cs-prefooter__inner"><p>Questions about a placement? Email <a href="mailto:partners@glpclinicscout.com">partners@glpclinicscout.com</a>.</p></div></div>'
     : readerPreFooter;
-  const subscribeSheet = `<div class="cs-subscribe-layer" data-subscribe-layer hidden><button class="cs-subscribe-backdrop" type="button" aria-label="Close subscribe form" data-subscribe-close></button><section class="cs-subscribe-sheet" role="dialog" aria-modal="true" aria-labelledby="cs-subscribe-title" tabindex="-1"><button class="cs-subscribe-close" type="button" aria-label="Close subscribe form" data-subscribe-close>×</button><div class="cs-subscribe-copy"><p class="gcs-kicker">Weekly price watch</p><h2 id="cs-subscribe-title">Know when GLP-1 prices move.</h2><p>One useful comparison each week. No spam, no sold lists, and you can unsubscribe anytime.</p></div><form class="cs-subscribe-form" data-subscribe-form novalidate><label for="cs-subscribe-email">Email address</label><div class="cs-subscribe-fields"><input id="cs-subscribe-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com"><button class="cs-btn cs-palette-action" type="submit">Sign up</button></div><p class="cs-subscribe-consent-note">By signing up, you agree to receive Clinic Scout price and comparison updates under our <a href="/privacy/">Privacy Policy</a>. Unsubscribe anytime.</p><input name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><input name="consent_version" type="hidden" value="glp-newsletter-v1-20260822"><input name="consent_source" type="hidden" value="/subscribe-bottom-sheet/"><p class="cs-subscribe-status" role="status" aria-live="polite"></p></form></section></div>`;
+
+  const subscribeSheet = `<div class="cs-subscribe-layer" data-subscribe-layer hidden><button class="cs-subscribe-backdrop" type="button" aria-label="Close subscribe form" data-subscribe-close></button><section class="cs-subscribe-sheet" role="dialog" aria-modal="true" aria-labelledby="cs-subscribe-title" tabindex="-1"><button class="cs-subscribe-close" type="button" aria-label="Close subscribe form" data-subscribe-close>×</button><div class="cs-subscribe-copy"><p class="gcs-kicker">Comparison guides</p><h2 id="cs-subscribe-title">Compare before you choose.</h2><p>Useful questions and comparison updates. No sold lists, and you can unsubscribe anytime.</p></div><form class="cs-subscribe-form" data-subscribe-form novalidate><label for="cs-subscribe-email">Email address</label><div class="cs-subscribe-fields"><input id="cs-subscribe-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com"><button class="cs-btn cs-palette-action" type="submit">Sign up</button></div><p class="cs-subscribe-consent-note">${ONBOARDING_CONSENT_TEXT} See our <a href="/privacy/">Privacy Policy</a>.</p><input name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><input name="consent_version" type="hidden" value="${ONBOARDING_CONSENT_VERSION}"><input name="consent_source" type="hidden" value="/subscribe-bottom-sheet/"><p class="cs-subscribe-status" role="status" aria-live="polite"></p></form></section></div>`;
   // Footer: 02-shell's .cs-footer-grid grammar. Every destination and every
   // legal/disclosure string from the previous footer is preserved verbatim —
   // the entity stamp is the exact SITE-BUILD-SOP:64 string, character for
@@ -1403,7 +1417,9 @@ function addSharedRuntime(html) {
     .replace(/<main([^>]*)>/i, `<main$1 data-cs-template="${template}">`)
     .replace("</head>", `${performanceConfig}</head>`)
     .replace(/<body([^>]*)>/i, `<body$1 data-cs-template="${template}"><a class="skip-link" href="#main">Skip to main content</a>${utility}${nav}${sponsorPage ? "" : drawer}`)
-    .replace("</body>", `${preFooter}${footer}${subscribeSheet}</body>`);
+    .replace("</body>", /data-article-capture="none"/.test(html)
+      ? `${preFooter.replace(/<button\b[^>]*data-subscribe-open[^>]*>[\s\S]*?<\/button>/g, "")}${footer.replace(/<li><button\b[^>]*data-subscribe-open[^>]*>[\s\S]*?<\/button><\/li>/g, "")}</body>`
+      : `${preFooter}${footer}${subscribeSheet}</body>`);
 }
 
 function optimizePaidLandingPage(html) {
@@ -1563,6 +1579,8 @@ function trustPages(identity, articles = [], authorRegistry = { authors: [] }) {
 }
 
 import { loadCarrierArticles, renderedCarrierArticle, assertCarrierArticleOutput } from "../src/carrier-article-retention.mjs";
+import { loadAcceptedGuides, acceptedGuideOwnership, addAcceptedInboundLinks } from "../src/accepted-guide-source.mjs";
+import { loadAcceptedUpdates, applyAcceptedUpdates, applyAcceptedUpdateOwnership } from "../src/accepted-update-source.mjs";
 async function main() {
   console.log(JSON.stringify(await refreshPriceTracker()));
   // Required source derivation, not a carried-forward artifact. The former
@@ -1623,12 +1641,14 @@ async function main() {
     rm(PUBLIC, { recursive: true, force: true }),
     rm(OPS, { recursive: true, force: true }),
   ]);
-  const [identity, eligibility, rawContentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, activationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
+  const [identity, rawEligibility, rawContentLedger, moneySpecs, quizConfig, npi, visual, emailSequences, resendMachine, keywordMap, blogBatch, nationalContent, authorRegistry, rawActivationSelection, costCalculatorConfig, providerPageContracts, providerFastpath, providerPricingMatrix, medicationDirectPricing, couponFeed] = await Promise.all([
     readJson("identity-registry.json"), readJson("program-page-eligibility.json"), readJson("program-content-ledger.json"), readJson("money-page-specs.json"), readJson("quiz-config.json"), readJson("directory/npi-city-batch.json"), readJson("visual-system.json"), readJson("email-system.json"), readJson("resend-email-machine.json"), readJson("blog/keyword-ownership-map.json"), readJson("blog/content-batch.json"), readJson("blog/content-national-wow-additions.json"), readJson("blog/author-registry.json"), readJson("affiliate-activation-selection.json"), readJson("cost-calculator.json"), readJson("provider-page-contracts.json"), readJson("provider-fastpath-contract.json"), readJson("provider-pricing-matrix.json"), readJson("medication-direct-pricing.json"), readJson("coupon-offers.json"),
   ]);
   // Keep the hash-pinned price-index ledger untouched, including its in-memory
   // rows. Renderers use this consumer copy; quiz owns its projection from raw.
-  const contentLedger = { ...rawContentLedger, programs: structuredClone(rawContentLedger.programs).map((row) => projectProviderDisplayLedger(row)) };
+  const {eligibility, activationSelection, contentLedger: relationshipLedger} = effectiveAffiliateBuildInputs(rawProgramRegistry,
+    {eligibility:rawEligibility, activationSelection:rawActivationSelection, contentLedger:rawContentLedger}, SITE_PROFILE);
+  const contentLedger = { ...relationshipLedger, programs: relationshipLedger.programs.map((row) => projectProviderDisplayLedger(row)) };
   const [phase3GraphConfig, phase3PharmacyInput] = await Promise.all([readJson("phase3-page-graph.json"), readJson("phase3-pharmacy-render-input.json")]);
   reconcileTherapeuticTaxonomyWireIn({
     registry: programRegistry,
@@ -1765,21 +1785,27 @@ async function main() {
   // at sitemap emission and shadow-file removal. Retired sources stay in the
   // evidence/imagery catalogs, but cannot block or enter public article output,
   // author lists or search. Every non-consolidated article still fails closed.
-  const allArticles = [...blogBatch.articles, ...nationalArticles]
+  const additions = loadAcceptedGuides(ROOT);
+  const acceptedUpdates = loadAcceptedUpdates(ROOT);
+  const acceptedGuides = [...additions, ...acceptedUpdates.map(x => x.article)];
+  const allArticles = applyAcceptedUpdates([...blogBatch.articles, ...nationalContent.articles, ...additions], acceptedUpdates)
     .filter((article) => !CONSOLIDATED_SOURCE_ROUTES.has(article.canonical_path))
     .map((article) => ({
       ...article,
+      sections: article.sections.map(section => ({...section, heading: section.heading || section.h2})),
       surface_taxonomy: commercialGuideRoutes.has(article.canonical_path) ? "commercial" : (article.surface_taxonomy || "medical"),
     }));
   const glpArticles = allArticles.filter((article) => articleVertical(article) === "GLP-1");
   const glpGuideArticles = glpArticles.filter((article) => article.canonical_path.startsWith("/guides/"));
-  const allOwnership = [...keywordMap.entries];
+  const originalOwnership = [...keywordMap.entries, ...acceptedGuideOwnership(additions)];
   for (const article of nationalArticles) {
-    const matches = allOwnership.filter((entry) => entry.url === article.canonical_path);
+    const matches = originalOwnership.filter((entry) => entry.url === article.canonical_path);
     if (matches.length !== 1) throw new Error(`national_keyword_ownership_match_count_invalid:${article.article_id}:${matches.length}`);
     const owner = matches[0];
     if ((owner.article_id || owner.owner) !== article.article_id || owner.primary_keyword !== article.primary_keyword || owner.risk_tier !== article.risk_tier || owner.status !== article.status) throw new Error(`national_keyword_ownership_identity_invalid:${article.article_id}`);
   }
+  const allOwnership = applyAcceptedUpdateOwnership(originalOwnership,
+    [...blogBatch.articles, ...nationalContent.articles, ...additions], acceptedUpdates);
   validateKeywordOwnership(allOwnership);
   const authorMap = new Map(authorRegistry.authors.map((author) => [author.author_id, { id: author.author_id, ...author }]));
   const publisherAuthor = authorMap.get("izaiah-tilton");
@@ -1827,6 +1853,8 @@ async function main() {
     pages: canonicalAugmented,
     quizConfig: canonicalQuiz,
     programs: contentLedger.programs,
+    // OPERATOR DECISION 2026-10-09: stale evidence holds back that claim only.
+    staleEvidence: "hold",
   });
   const therapeuticProgramIds = [...therapeuticSurfaces.validated.programs.keys()];
   for (const article of allArticles) {
@@ -1850,6 +1878,10 @@ async function main() {
     program_rows: therapeuticProgramIds.length,
     counts: therapeuticSurfaces.validated.counts,
     trt_nation_link_state: therapeuticSurfaces.validated.programs.get("trt-nation")?.commercial_link_state,
+    claims_held_stale: therapeuticSurfaces.validated.held_stale,
+    canonical_claims_held_stale: therapeuticSurfaces.claimsHeldStale,
+    dynamic_profiles_held_stale: therapeuticSurfaces.dynamic.held_stale,
+    consumer_authority_held_stale: therapeuticSurfaces.consumerAuthorities.retatrutide.claim_held_stale,
     source_authorities: Object.fromEntries(Object.entries(programRegistry.therapeutic_taxonomy.authorities).map(([key, value]) => [key, value.sha256])),
   };
   buildDerivations.provider_dynamic_profiles = {
@@ -2002,7 +2034,15 @@ async function main() {
   const reader = publicProviderNames({ programRegistry, contentLedger, providerPricingMatrix, augmented, projectedQuiz, providerReviews, costCalculator });
   await write("data/therapeutic-taxonomy.json", JSON.stringify(reader.programRegistry.therapeutic_taxonomy, null, 2) + "\n");
   for (const spec of reader.augmented) { const key = `money-${routeSlug(spec.path)}`; await write(path.join(spec.path.replace(/^\//, ""), "index.html"), addSharedRuntime(addOg(pageHero(addPriceIndexMoneyLink(addMoneyHero(setRobots(renderMoneyPage(spec, { ...identity, author: editorialAuthor }), "index,follow,max-image-preview:large"))), key, `Comparison overview for ${spec.h1}`), key, spec.h1))); }
-  for (const review of reader.providerReviews) { const key = review.fastpath_contract ? "editorial-evidence-hero" : `review-${routeSlug(review.path)}`; await write(path.join(review.path.replace(/^\//, ""), "index.html"), markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)))); }
+  const reviewPublishAuthority = loadGoPromotionAuthority(ROOT).programs;
+  for (const review of reader.providerReviews) {
+    const key = review.fastpath_contract ? "editorial-evidence-hero" : `review-${routeSlug(review.path)}`;
+    let html = markReleaseReady(addSharedRuntime(addOg(standaloneHero(renderProviderReviewPage(review, { ...identity, author: editorialAuthor }), key, `About ${review.provider}`), key, `${review.provider} review`)));
+    const record = programRegistry.programs.find(p => p.program_id === review.program_id || p.review_slug === review.program_id);
+    html = labelNonAffiliateReview(html,record);
+    assertAffiliateReviewPublishable(review, record, reviewPublishAuthority[record?.program_id || review.program_id], html);
+    await write(path.join(review.path.replace(/^\//, ""), "index.html"), html);
+  }
   const ready6WithDetailReturns = ready6Editorial.pages.map(page => {
     const record = programRegistry.programs.find(program => program.review_path === page.route);
     const alias = record?.profiles?.['glp-clinic-scout']?.canonical_identity;
@@ -2035,9 +2075,15 @@ async function main() {
 
   const costCalculatorHtml = directCalculatorWorkspace(decorateCostCalculatorAffiliateSurface(renderCostCalculator(reader.costCalculator), reader.costCalculator, reader.augmented, reader.programRegistry, activationSelection, SITE_PROFILE));
   await write("tools/glp-1-cost-calculator/index.html", addSharedRuntime(addOg(costCalculatorHtml, "money-online-glp-1-programs", costCalculator.h1)));
+  assertArticleReviewRoutes(allArticles, [
+    ...reader.providerReviews.map((review) => review.path),
+    ...ready6Editorial.pages.map((page) => page.route),
+    ...READY6_LEGACY_REDIRECTS.flat(), ...RETIRED_PROGRAM_ROUTES.flat(),
+  ]);
   for (const article of allArticles) {
     // R2 target release: render Mounjaro from the refreshed catalog row.
-    const key = `guide-${routeSlug(article.canonical_path)}`;
+    const key = acceptedGuides.some(a => a.canonical_path === article.canonical_path)
+      ? "editorial-evidence-hero" : `guide-${routeSlug(article.canonical_path)}`;
     // ORCHESTRATOR-DISPOSITION (glp41-image-review-20260925): descriptive
     // correction only; immutable generation receipts and image bytes stay put.
     const heroAlt = article.canonical_path === "/guides/best-company-to-get-glp-1/"
@@ -2045,7 +2091,7 @@ async function main() {
       : article.images?.[0]?.alt || `Guide overview for ${article.h1}`;
     const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, publicProviderNames(resolveBlogComparisonSpec(article, therapeuticSurfaces.programs)), resolveArticleAuthor(article), reader.contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
     const articleGraph = addArticleShareControls(articleVertical(article) === "GLP-1" ? upgradeInsightsArticle(articleBase, article, glpGuideArticles.filter((item) => item.canonical_path !== article.canonical_path && path.join(item.canonical_path.replace(/^\//, ""), "index.html") !== MOUNJARO_COUPON_ROUTE_FILE)) : articleBase);
-    const rendered = addSharedRuntime(articleGraph);
+    const rendered = addSharedRuntime(addAcceptedInboundLinks(articleGraph, article.canonical_path, acceptedGuides));
     await write(path.join(article.canonical_path.replace(/^\//, ""), "index.html"), articleVertical(article) === "GLP-1" ? markReleaseReady(article.suppress_cta ? rendered : addGuideFunnel(rendered)) : rendered);
   }
   const directoryStates = npi.cities.map((city) => {
@@ -2417,11 +2463,12 @@ async function main() {
     // checking its frozen body. Keep current identity/authority out of this
     // price-only copy and leave programRegistry unchanged for public surfaces.
     const priceIndexRegistryBasis = historicalPriceIndexRegistry(historicalAffiliateRegistry(rawProgramRegistry));
+    const priceIndexTaxonomy = priceIndexRegistryBasis.therapeutic_taxonomy;
     delete priceIndexRegistryBasis.therapeutic_taxonomy;
     delete priceIndexRegistryBasis.provider_dynamic_profiles;
     delete priceIndexRegistryBasis.consumer_therapeutic_authorities;
     const semanticBasisSha256 = stableSha256(restoreGoOnlyPriceBasis(priceIndexRegistryBasis, ROOT));
-    if (semanticBasisSha256 !== programRegistry.therapeutic_taxonomy.price_index_registry_programs_semantic_basis_sha256) {
+    if (semanticBasisSha256 !== priceIndexTaxonomy.price_index_registry_programs_semantic_basis_sha256) {
       throw new Error("price_index_registry_semantic_basis_drift");
     }
     const frozenSourceSha256 = programRegistry.therapeutic_taxonomy.price_index_registry_frozen_source_sha256;
@@ -2460,13 +2507,24 @@ async function main() {
   // sources, dates, manifest and original captured document remain immutable.
   if (priceIndex.html.split(PRICE_STATE_DISCLOSURE).length!==2) throw new Error('price_state_disclosure_missing_or_duplicate');
   const normalizedPriceIndex = normalizePriceIndexBuild4Semantics(substitutePriceIndexLiveCount(priceIndex.html.replace(PRICE_STATE_DISCLOSURE,''), liveProgramCount));
-  const stripCurrentPriceDisclosure = html => stripPriceStateDisclosures(stripPriceStateDisclosures(html, {
+  const stripCurrentPriceDisclosure = html => stripPriceStateDisclosures(stripPriceStateDisclosures(stripPriceStateDisclosures(html, {
     ...derivedTallies,
     BASELINE_PRICE_ROW_COUNT: pricingBaseline.coverage.medication_rows,
     BASELINE_PRICED_PROVIDER_COUNT: pricingBaseline.coverage.providers_with_evidenced_pricing,
-  }),derivedTallies);
+  }),derivedTallies), {
+    ...derivedTallies,
+    // The append changes editorial membership, not historical price evidence.
+    // Use the authenticated predecessor's identity count for its exact copy;
+    // never erase arbitrary disclosure counts or mutate the retained document.
+    LIVE_PROVIDER_COUNT: predecessorLiveProgramCount,
+  });
+  const preservedRegistry = effectiveAffiliateRegistry(providerReviewRuntimePredecessorRegistry(rawProgramRegistry));
+  const rawIdentity = assertDeclaredIdentityGroups(preservedRegistry, SITE_PROFILE, rawContentLedger.programs);
+  const predecessorLiveProgramCount = preservedRegistry.programs.filter(p => p.commercial_state === 'live'
+    && p.profiles?.[SITE_PROFILE]?.vertical_fit === true && p.profiles[SITE_PROFILE].wired === true
+    && p.profiles[SITE_PROFILE].surfaces?.review === true && !rawIdentity.aliasIds.has(p.program_id)).length;
   const normalizedPreservedPriceIndex = normalizePriceIndexBuild4Semantics(
-    projectPreservedPriceIndexLiveCount(stripCurrentPriceDisclosure(preservedPriceIndexHtml.toString("utf8")), priceIndexInput.tracker.price_index.observations.at(-1).observed_on, liveProgramCount));
+    projectPreservedPriceIndexLiveCount(stripCurrentPriceDisclosure(stripCurrentPriceIndexOffers(preservedPriceIndexHtml.toString("utf8"))), priceIndexInput.tracker.price_index.observations.at(-1).observed_on, liveProgramCount, {predecessorLiveCount:predecessorLiveProgramCount}));
   if (!priceIndexRefresh && normalizedPriceIndex !== normalizedPreservedPriceIndex) {
     let firstDifference = 0;
     while (firstDifference < normalizedPriceIndex.length && normalizedPriceIndex[firstDifference] === normalizedPreservedPriceIndex[firstDifference]) firstDifference += 1;
@@ -2491,7 +2549,8 @@ async function main() {
     throw new Error("price_index_build4_manifest_semantic_preservation_mismatch");
   }
   if (priceIndexRefresh || pass2ShellRefresh) {
-    await write(PRICE_INDEX_ROUTE_FILE, priceIndex.html);
+    // Render current typed evidence separately from the immutable benchmark.
+    await write(PRICE_INDEX_ROUTE_FILE, publicProviderNames(addCurrentPriceIndexOffers(priceIndex.html, { root: ROOT, matrix: providerPricingMatrix })));
     // S9 item 11: the page now carries the derived live-count token, so the bytes
     // on disk are the substituted ones. Bind the manifest to what actually
     // shipped and prove the shipped bytes carry the derived count.
@@ -2499,8 +2558,8 @@ async function main() {
     assertPriceIndexLiveCount(shippedPriceIndexHtml, liveProgramCount, { substituted: true });
     await writeOps("price-index-manifest.json", JSON.stringify(rebindPriceIndexShippedHtml(priceIndex.manifest, shippedPriceIndexHtml), null, 2) + "\n");
   } else {
-    const disclosedPriceIndex = stripCurrentPriceDisclosure(preservedPriceIndexHtml.toString("utf8")).replace("</main>", PRICE_STATE_DISCLOSURE + "</main>");
-    await write(PRICE_INDEX_ROUTE_FILE, disclosedPriceIndex);
+    const disclosedPriceIndex = stripCurrentPriceDisclosure(stripCurrentPriceIndexOffers(preservedPriceIndexHtml.toString("utf8"))).replace("</main>", PRICE_STATE_DISCLOSURE + "</main>");
+    await write(PRICE_INDEX_ROUTE_FILE, publicProviderNames(addCurrentPriceIndexOffers(disclosedPriceIndex, { root: ROOT, matrix: providerPricingMatrix })));
     const shippedPriceIndexHtml = await readFile(path.join(PUBLIC, PRICE_INDEX_ROUTE_FILE), "utf8");
     await writeOps("price-index-manifest.json", JSON.stringify(rebindPriceIndexShippedHtml(preservedPriceIndexManifest, shippedPriceIndexHtml), null, 2) + "\n");
   }
@@ -2683,7 +2742,7 @@ async function main() {
     status: "PASS_FINAL_BYTE_PARITY_AND_EXACT_STYLE_CSP",
     routes: standaloneCspRows,
   };
-  const assetCacheHeaders = `\n# Wave 4 price tracker: link-dark, non-interactive, zero runtime network\n/tools/glp-1-price-tracker/*\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Referrer-Policy: no-referrer\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()\n  Content-Security-Policy: default-src 'none'; script-src 'none'; connect-src 'none'; img-src 'none'; style-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'\n  Cache-Control: no-store\n\n# Weekly Price Watch feed: machine-readable, same-release, never cached\n/data/price-watch-issue.json\n  Cache-Control: no-store\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Content-Type: application/json; charset=utf-8\n\n# Wave 4 manufacturer-offer route: link-dark, non-interactive, zero runtime network\n/tools/glp-1-savings-offer-monitor/*\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Referrer-Policy: no-referrer\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()\n  Content-Security-Policy: default-src 'none'; script-src 'none'; connect-src 'none'; img-src 'none'; style-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'\n  Cache-Control: no-store\n\n# Round-2 versioned static assets\n/assets/site.css\n  Cache-Control: public, max-age=31536000, immutable\n/assets/site-*.css\n  Cache-Control: public, max-age=31536000, immutable\n/assets/site.js\n  Cache-Control: public, max-age=31536000, immutable\n/assets/consent.js\n  Cache-Control: public, max-age=31536000, immutable\n/assets/analytics.js\n  Cache-Control: public, max-age=31536000, immutable\n/assets/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n/assets/images/*\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n/assets/provider-logos/*\n  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400\n\n# Wave 4 clean-room public evidence route\n/research/public-funnel-evidence/*\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Cache-Control: no-store\n\n# Held Wave 4 descriptive dataset: static and network-dark\n/research/original-data/public-glp-1-program-pricing-sample/*\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; script-src 'none'; connect-src 'none'; img-src 'none'; font-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none'\n`;
+  const assetCacheHeaders = `\n# Wave 4 price tracker: link-dark, non-interactive, zero runtime network\n/tools/glp-1-price-tracker/*\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Referrer-Policy: no-referrer\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()\n  Content-Security-Policy: default-src 'none'; script-src 'none'; connect-src 'none'; img-src 'none'; style-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'\n  Cache-Control: no-store\n\n# Weekly Price Watch feed: machine-readable, same-release, never cached\n/data/price-watch-issue.json\n  Cache-Control: no-store\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Content-Type: application/json; charset=utf-8\n\n# Wave 4 manufacturer-offer route: link-dark, non-interactive, zero runtime network\n/tools/glp-1-savings-offer-monitor/*\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Referrer-Policy: no-referrer\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()\n  Content-Security-Policy: default-src 'none'; script-src 'none'; connect-src 'none'; img-src 'none'; style-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'\n  Cache-Control: no-store\n\n# Round-2 versioned static assets\n/assets/site.css\n  Cache-Control: public, max-age=31536000, immutable\n/assets/site-*.css\n  Cache-Control: public, max-age=31536000, immutable\n/assets/site.js\n  Cache-Control: public, max-age=31536000, immutable\n/assets/consent.js\n  Cache-Control: public, max-age=31536000, immutable\n/assets/analytics.js\n  Cache-Control: no-store\n/assets/${ANALYTICS_ASSET_FILENAME}\n  Cache-Control: public, max-age=31536000, immutable\n/assets/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n/assets/images/*\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n/assets/provider-logos/*\n  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400\n\n# Wave 4 clean-room public evidence route\n/research/public-funnel-evidence/*\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Cache-Control: no-store\n\n# Held Wave 4 descriptive dataset: static and network-dark\n/research/original-data/public-glp-1-program-pricing-sample/*\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet\n  Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; script-src 'none'; connect-src 'none'; img-src 'none'; font-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none'\n`;
   const networkVerificationHeaders = `\n# Affiliate-network ownership verification endpoints: machine-fetched, never indexed\n${networkVerificationEmitted.map((page) => `/${page.path}\n  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet`).join("\n")}\n`;
   const strictNetworkDarkCsp = (styleSource) => `default-src 'none'; script-src 'none'; connect-src 'none'; img-src 'none'; font-src 'none'; style-src ${styleSource}; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'`;
   const hardenedAssetCacheHeaders = standaloneCspRows.reduce(

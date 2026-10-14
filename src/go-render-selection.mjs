@@ -12,7 +12,7 @@ export function selectedGoOutbound(row, surfaceCode) {
   const id = row?.review_slug || row?.program_id;
   const canonicalId = registry.programs.find((program) => program.program_id === id || program.review_slug === id)?.program_id;
   const promotion = canonicalId ? promotionAuthority.programs[canonicalId] : null;
-  if (promotion?.status !== 'VERIFIED' || promotion.promotion_authorized !== true) return { held: true };
+  if (promotion?.status !== 'VERIFIED' || promotion.promotion_authorized !== true) return { held: true, relationship_snapshot: promotion?.relationship_snapshot || null };
   const selected = Object.values(selection?.programs || {}).find(p => p.program_id === id || p.render_id === id);
   if (!selected) return null;
   const link = links[selected.render_id];

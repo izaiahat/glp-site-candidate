@@ -1,0 +1,836 @@
+{
+  "ai_assistance_disclosure": "site-editorial-policy",
+  "article_id": "phase2-batch5-glp1-shortage-availability-check-20260723",
+  "audience": "U.S. readers researching glp 1 availability using current primary evidence",
+  "author": {
+    "author_id": "clinic-scout-editorial-team",
+    "bio_path": "/authors/clinic-scout-editorial-team/",
+    "clinical_credentials_claimed": false,
+    "display_name": "Clinic Scout Editorial Team",
+    "entity_type": "Organization",
+    "status": "verified_organization"
+  },
+  "batch_gate_passed": true,
+  "brief_id": "seo-r2-cfd06fb145fe65bbb412-guides-glp-1-shortage-availability-check",
+  "byline_attribution": "By the Clinic Scout Editorial Team \u00b7 no clinical credentials claimed",
+  "canonical_path": "/guides/glp-1-shortage-availability-check/",
+  "capture_surface": {
+    "email_field": null,
+    "follow_up_consent": false,
+    "health_data_fields": [],
+    "status": "ON_PAGE_ONLY"
+  },
+  "claims": [
+    {
+      "claim_id": "R2-20261009-L6b-001",
+      "source_ids": [
+        "S1"
+      ],
+      "statement": "> **Quick answer:** FDA dated tirzepatide injection\u2019s shortage resolution December 19, 2024 and semaglutide injection\u2019s February 21, 2025. GLP 1 availability still needs a local pharmacy check: national resolution does not establish local stock. These are historical determinations, not a fresh product-level lookup. [S1]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-002",
+      "source_ids": [
+        "S5",
+        "S2"
+      ],
+      "statement": "We recaptured FDA\u2019s GLP-1 supply clarification, its Drug Shortages guidance and its Drug Approvals and Databases directory on October 9, 2026. We also checked first-party pharmacy and manufacturer material for the narrow statements cited below. Our new answer is a practical fallback: if an old FDA product-status URL fails, restart from FDA\u2019s official directory rather than interpreting the failure as a status result. [S5][S2]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-003",
+      "source_ids": [
+        "S1"
+      ],
+      "statement": "The FDA clarification says tirzepatide injection\u2019s shortage was resolved on December 19, 2024 and semaglutide injection\u2019s shortage on February 21, 2025. Those are dated agency statements, not an October 9 readback of every product presentation. The same clarification warns that patients and prescribers may encounter intermittent, localized disruptions. A historical national determination and a specific pharmacy\u2019s answer are different evidence. [S1]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-004",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "statement": "We did not verify pharmacy inventory, a delivery reservation, insurance eligibility, a patient prescription, current transaction prices or a successful live product-status lookup. Two older product-URL attempts in the evidence pack returned HTTP 503 redirect notices on August 31, 2026. We preserve those failed attempts as historical limitations; we do not relabel them as October 9 stock checks or count an unavailable result as \u201cnot in shortage.\u201d [S3][S4]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-005",
+      "source_ids": [
+        "S1"
+      ],
+      "statement": "| FDA\u2019s dated GLP-1 supply clarification [S1] | The agency\u2019s published resolution statements and warning about localized disruption; not stock at a named pharmacy. |"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-006",
+      "source_ids": [
+        "S2"
+      ],
+      "statement": "| FDA Drug Shortages guidance [S2] | Where to search and why national-status information differs from local access. |"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-007",
+      "source_ids": [
+        "S5"
+      ],
+      "statement": "| FDA\u2019s official directory [S5] | A fresh starting point for the Drug Shortages link; the directory itself does not establish product status. |"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-008",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "statement": "| Historical failed product URLs [S3][S4] | A documented access limitation at that time; no positive product-status conclusion. |"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-009",
+      "source_ids": [
+        "S5",
+        "S2"
+      ],
+      "statement": "FDA\u2019s Drug Approvals and Databases directory includes a Drug Shortages link. Its shortage guidance says the database can be searched by generic name or active ingredient. Use that search instruction after following the directory link if a saved URL is broken. A changed address or failed request is not evidence that a medicine is available, discontinued or in shortage. [S5][S2]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-010",
+      "source_ids": [
+        "S5",
+        "S2"
+      ],
+      "statement": "2. Follow its Drug Shortages link and use FDA\u2019s generic-name or active-ingredient search guidance. [S5][S2]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-011",
+      "source_ids": [
+        "S2"
+      ],
+      "statement": "5. Our editorial recommendation is to take prescription-access questions to your clinician or pharmacist. FDA specifically directs readers to discuss treatment options with a health professional when the drug is already in its shortage database; that conditional guidance is not a prescribing recommendation from this publisher. [S2]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-012",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "statement": "FDA\u2019s Drug Shortages page discusses national database checks separately from temporary, localized out-of-stock issues. This guide\u2019s FDA capture does not establish inventory at your particular pharmacy. The GLP-1 clarification also explicitly acknowledges possible localized supply disruptions after the national shortages were resolved. Neither source promises that your prescription can be filled today in your location. [S1][S2]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-013",
+      "source_ids": [
+        "S10"
+      ],
+      "statement": "As one first-party example of an access check, Amazon Pharmacy\u2019s help page tells readers to search its website for their medication and strength to check availability. That is a statement about Amazon\u2019s published search guidance, not our independent verification of its inventory or an endorsement. [S10]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-014",
+      "source_ids": [
+        "S8",
+        "S9"
+      ],
+      "statement": "Lilly\u2019s Zepbound Medication Guide identifies Zepbound as a prescription medicine. NovoCare\u2019s pharmacy page states that all doses of Wegovy and Ozempic require a prescription, whether a person self-pays or uses insurance. These are product-specific first-party statements; they do not establish that any reader is clinically eligible or that a particular service will issue a prescription. [S8][S9]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-015",
+      "source_ids": [
+        "S2"
+      ],
+      "statement": "Do not treat a supply problem as permission to change your dose, use somebody else\u2019s prescription or select a different product yourself. Ask the clinician responsible for your care. This guide deliberately does not provide dosing, an interruption schedule, suitability criteria or advice on restarting treatment. FDA\u2019s shortage guidance directs readers to discuss treatment options with their health care provider or pharmacist if the drug is already listed in its shortage database. Our editorial recommendation is to discuss your own access problem with your care team, not to choose a change yourself. [S2]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-016",
+      "source_ids": [
+        "S1",
+        "S8",
+        "S9"
+      ],
+      "statement": "The FDA shortage determinations quoted here concern injection products. FDA\u2019s February 21, 2025 statement names semaglutide injection, and its December 19, 2024 statement names tirzepatide injection. They are not statements about every presentation sharing an ingredient name. Lilly\u2019s Medication Guide describes Zepbound as an injectable prescription medicine containing tirzepatide. NovoCare names semaglutide in its prescription statement for Wegovy and Ozempic. Read those statements at their stated product scope rather than extending an injection-status conclusion to an oral product. [S1][S8][S9]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-017",
+      "source_ids": [
+        "S5"
+      ],
+      "statement": "A headline about a product in development is a different question from whether your prescription can be filled. This guide supplies no pipeline approval or launch claim. To evaluate a development announcement, our suggested next question is: which official product document establishes the status being described? FDA\u2019s directory supplies a starting point for Drug Approvals and Databases, and the shortage link addresses a different status question. Do not interpret a trial announcement, directory listing or inaccessible link as a pharmacy-stock confirmation. [S5]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-018",
+      "source_ids": [
+        "S1"
+      ],
+      "statement": "FDA distinguishes approved products from compounded preparations: it says compounded drugs are not approved by FDA, while approved drugs undergo its premarket review for safety, effectiveness and quality. That regulatory distinction is not a comparative treatment recommendation, and this guide does not infer interchangeability or suitability from it. For deeper verification of what an online program says it supplies, use our product-status guide rather than assuming every offer describes the same product. [S1]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-019",
+      "source_ids": [
+        "S9",
+        "S1"
+      ],
+      "statement": "NovoCare\u2019s published prescription rule applies whether someone self-pays or goes through insurance. That is the specific first-party statement captured for this guide. It does not tell us whether your plan covers a prescription, whether authorization is complete, what you would owe, or whether a pharmacy can fill it. A national shortage resolution supplies none of those individual transaction answers either. [S9][S1]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-020",
+      "source_ids": [
+        "S8",
+        "S9",
+        "S10"
+      ],
+      "statement": "The captured manufacturer sources identify prescription requirements; Amazon Pharmacy\u2019s own guidance describes searching by medication and strength. Those are separate first-party instructions, not evidence that an online visit will produce a prescription or that a search will produce a completed fill. This guide has not tested a patient visit, transferred a prescription, reserved inventory or placed an order. [S8][S9][S10]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-021",
+      "source_ids": [
+        "S1"
+      ],
+      "statement": "FDA\u2019s clarification distinguishes a drug appearing on the shortage list from a drug no longer on that list. It explains that the applicable statutory conditions concern compounding drugs that are essentially copies of FDA-approved drugs. It also says compounded drugs are not approved by FDA, whereas FDA-approved drugs undergo its rigorous review for safety, effectiveness and quality. We are not providing a legal determination for any pharmacy or prescription. [S1]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-022",
+      "source_ids": [
+        "S1"
+      ],
+      "statement": "FDA also describes a specific post-shortage distinction under section 503A: when a shortage resolves, it generally considers the drug commercially available, and restrictions apply to compounding essentially copies of a commercially available drug. The same captured passage notes that certain amounts are permissible when compounding is not done regularly or in inordinate amounts. This is a description of FDA\u2019s published distinction, not a determination that any particular pharmacy or prescription meets its conditions. [S1]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-023",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "statement": "No pharmacy-stock conclusion follows from the sources cited here. FDA\u2019s clarification warns about intermittent localized disruption, and its shortage guidance distinguishes national information from real-time pharmacy inventory. Ask about the exact product and record the answer actually provided. [S1][S2]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-024",
+      "source_ids": [
+        "S5",
+        "S2"
+      ],
+      "statement": "Restart from FDA\u2019s Drug Approvals and Databases directory and follow Drug Shortages. FDA describes searching by generic name or active ingredient. Record an inaccessible result as unverified; neither the directory nor a failed URL proves a medicine\u2019s current status. [S5][S2]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-025",
+      "source_ids": [
+        "S1"
+      ],
+      "statement": "The clarification states December 19, 2024 for tirzepatide injection and February 21, 2025 for semaglutide injection. This article attributes those dates to that statement and does not present them as a new October 9 product-level lookup. [S1]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-026",
+      "source_ids": [
+        "S10"
+      ],
+      "statement": "A first-party pharmacy page can describe its own check. Amazon Pharmacy\u2019s help page, for example, says to search its website by medication and strength. That instruction is not our inventory verification, and we make no general promise about search accuracy or successful fulfillment. [S10]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-027",
+      "source_ids": [
+        "S8",
+        "S9"
+      ],
+      "statement": "Zepbound\u2019s Medication Guide calls it a prescription medicine. NovoCare\u2019s pharmacy page says all doses of Wegovy and Ozempic require a prescription for both self-pay and insurance routes. A stock question does not establish your clinical suitability or a prescribing decision. [S8][S9]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-028",
+      "source_ids": [
+        "S2"
+      ],
+      "statement": "This page does not recommend a treatment change. FDA\u2019s shortage guidance conditionally tells readers to discuss other treatment options with their healthcare provider or pharmacist if the drug is already in the database. Our editorial advice is to speak with the clinician responsible for your prescription rather than changing treatment yourself. [S2]"
+    },
+    {
+      "claim_id": "R2-20261009-L6b-029",
+      "source_ids": [
+        "S1"
+      ],
+      "statement": "This guide provides no such legal conclusion. FDA\u2019s clarification explains shortage-list and statutory compounding distinctions and says compounded drugs are not FDA-approved. A local access problem is not, on its own, the evidence needed to establish a particular exception. [S1]"
+    }
+  ],
+  "commercial_link_taxonomy": "medical_claims",
+  "comparison_required": false,
+  "conclusion": "Use the dated source checks and decision framework above when evaluating glp 1 availability; verify current individual details with the relevant clinician, plan, pharmacy, or manufacturer.",
+  "cons": [
+    "Terms, prices, labels, and coverage can change.",
+    "Individual outcomes and eligibility cannot be inferred from general evidence.",
+    "The page cannot replace clinician, plan, or pharmacy verification."
+  ],
+  "date_published": "2026-07-23",
+  "direct_answer": "FDA dated tirzepatide injection\u2019s shortage resolution December 19, 2024 and semaglutide injection\u2019s February 21, 2025. GLP 1 availability still needs a local pharmacy check: national resolution does not establish local stock. These are historical determinations, not a fresh product-level lookup. [S1]",
+  "editorial_contract_version": "seo-phase1-v1",
+  "evidence_review": {
+    "claim_source_map": "claims[] -> source_ids[] -> sources[].source_id",
+    "clinical_credentials_claimed": false,
+    "clinical_reviewer": null,
+    "content_sha256": "6a463915398f6fea6f61ebab88b4c360c5b1a9fc79bf2f276f894fb4c4ac0791",
+    "reviewed_at": "2026-10-09T00:00:00Z",
+    "status": "PASS"
+  },
+  "exact_services": [],
+  "faqs": [
+    {
+      "a": "No pharmacy-stock conclusion follows from the sources cited here. FDA\u2019s clarification warns about intermittent localized disruption, and its shortage guidance distinguishes national information from real-time pharmacy inventory. Ask about the exact product and record the answer actually provided. [S1][S2]",
+      "q": "Does a resolved national shortage mean my pharmacy has stock?"
+    },
+    {
+      "a": "Restart from FDA\u2019s Drug Approvals and Databases directory and follow Drug Shortages. FDA describes searching by generic name or active ingredient. Record an inaccessible result as unverified; neither the directory nor a failed URL proves a medicine\u2019s current status. [S5][S2]",
+      "q": "What should I do when an old FDA product-status URL fails?"
+    },
+    {
+      "a": "The clarification states December 19, 2024 for tirzepatide injection and February 21, 2025 for semaglutide injection. This article attributes those dates to that statement and does not present them as a new October 9 product-level lookup. [S1]",
+      "q": "Which historical resolution dates does FDA publish?"
+    },
+    {
+      "a": "A first-party pharmacy page can describe its own check. Amazon Pharmacy\u2019s help page, for example, says to search its website by medication and strength. That instruction is not our inventory verification, and we make no general promise about search accuracy or successful fulfillment. [S10]",
+      "q": "Can I check a pharmacy website instead of inferring stock from FDA?"
+    },
+    {
+      "a": "Zepbound\u2019s Medication Guide calls it a prescription medicine. NovoCare\u2019s pharmacy page says all doses of Wegovy and Ozempic require a prescription for both self-pay and insurance routes. A stock question does not establish your clinical suitability or a prescribing decision. [S8][S9]",
+      "q": "Do the branded medicines mentioned here require a prescription?"
+    },
+    {
+      "a": "This page does not recommend a treatment change. FDA\u2019s shortage guidance conditionally tells readers to discuss other treatment options with their healthcare provider or pharmacist if the drug is already in the database. Our editorial advice is to speak with the clinician responsible for your prescription rather than changing treatment yourself. [S2]",
+      "q": "Should I switch medicine or strength if I cannot find it?"
+    },
+    {
+      "a": "This guide provides no such legal conclusion. FDA\u2019s clarification explains shortage-list and statutory compounding distinctions and says compounded drugs are not FDA-approved. A local access problem is not, on its own, the evidence needed to establish a particular exception. [S1]",
+      "q": "Does local difficulty establish permission to compound a copy?"
+    }
+  ],
+  "h1": "GLP-1 Availability: FDA Status vs Local Stock (2026)",
+  "has_affiliate_cta": false,
+  "inbound_link_plan": [
+    {
+      "anchor_text": "GLP-1 availability check",
+      "context_sentence": "Before treating a listed price as actionable, separate national supply from local stock with this [GLP-1 availability check](/guides/glp-1-shortage-availability-check/).",
+      "source_route": "/guides/tirzepatide-cost/",
+      "target_route": "/guides/glp-1-shortage-availability-check/"
+    },
+    {
+      "anchor_text": "national and local GLP-1 availability check",
+      "context_sentence": "Once the dispensing pharmacy is identified, use the [national and local GLP-1 availability check](/guides/glp-1-shortage-availability-check/).",
+      "source_route": "/guides/verify-online-glp-1-pharmacy/",
+      "target_route": "/guides/glp-1-shortage-availability-check/"
+    }
+  ],
+  "inline_ftc_disclosure": false,
+  "intent": "informational availability verification",
+  "internal_links": [
+    {
+      "label": "Clinic Scout Editorial Team",
+      "path": "/editorial-guidelines/"
+    },
+    {
+      "label": "online program and product-status guide",
+      "path": "/guides/verify-online-glp-1-program-product-status/"
+    },
+    {
+      "label": "pharmacy verification guide",
+      "path": "/guides/verify-online-glp-1-pharmacy/"
+    },
+    {
+      "label": "oral GLP-1 availability guide",
+      "path": "/guides/oral-glp-1-availability/"
+    },
+    {
+      "label": "Zepbound savings-card guide",
+      "path": "/guides/zepbound-coupon/"
+    }
+  ],
+  "medical_advice_disclaimer": "This evidence guide is educational and is not medical advice, diagnosis, individualized eligibility screening, or a treatment recommendation.",
+  "meta_description": "GLP-1 availability checked October 9, 2026: compare FDA national-status evidence with local pharmacy verification, source limits, and practical next steps.",
+  "operator_release_receipt": null,
+  "owner_key": "guides-glp-1-shortage-availability-check",
+  "prices_checked_date": null,
+  "primary_keyword": "glp 1 availability",
+  "pros": [
+    "Uses current primary evidence.",
+    "Separates verified facts from unknowns.",
+    "Maps decision-bearing claims to captured source text."
+  ],
+  "r2_contract": {
+    "action": "substantive_refresh",
+    "affiliate_clicks_28d": 0,
+    "article_id": "phase2-batch5-glp1-shortage-availability-check-20260723",
+    "carrier_excluded": true,
+    "click_decay_fraction": 0.0,
+    "cogny_strategy_preference": {
+      "evidence_class": null,
+      "priority": 10,
+      "publication_authorized": false,
+      "score": 0.1,
+      "source": "refresh_list"
+    },
+    "ctr": 0.0,
+    "current_clicks": 0,
+    "current_routes": [
+      "/best/ozempic-alternatives/",
+      "/guides/best-company-to-get-glp-1/",
+      "/guides/best-glp-1-online-providers/",
+      "/guides/bpc-157-fda-status-and-evidence/",
+      "/guides/brand-vs-compounded-glp-1-cost/",
+      "/guides/california-glp-1-access/",
+      "/guides/cheapest-glp1/",
+      "/guides/cjc-1295-ipamorelin-regulatory-status/",
+      "/guides/compare-online-glp-1-provider-fees/",
+      "/guides/compounded-semaglutide-vs-ozempic-regulatory-status/",
+      "/guides/compounded-tirzepatide-vs-zepbound-regulatory-status/",
+      "/guides/continuous-glucose-monitor-consumer-guide/",
+      "/guides/counterfeit-ozempic-verification-reporting/",
+      "/guides/erectile-dysfunction-evidence-overview/",
+      "/guides/ezra-glp-1-reviews/",
+      "/guides/finasteride-evidence-and-options/",
+      "/guides/finasteride-vs-minoxidil/",
+      "/guides/found-vs-trimi-insurance-self-pay/",
+      "/guides/gala-vs-shed/",
+      "/guides/glp-1-cost-sensitivity/",
+      "/guides/glp-1-hsa-fsa-reimbursement-evidence/",
+      "/guides/glp-1-insurance-support-vs-coverage/",
+      "/guides/glp-1-prior-authorization-appeals/",
+      "/guides/glp-1-program-total-cost-comparison/",
+      "/guides/glp-1-shortage-availability-check/",
+      "/guides/glp-1-subscription-cancellation-terms/",
+      "/guides/healthrx-vs-agelessrx/",
+      "/guides/how-to-get-glp-1-prescription-online/",
+      "/guides/how-to-get-ozempic-online/",
+      "/guides/how-to-get-zepbound-online/",
+      "/guides/insulin-resistance-evidence-overview/",
+      "/guides/lilly-patient-assistance-vs-savings/",
+      "/guides/medicare-glp-1-bridge-eligibility/",
+      "/guides/metabolic-health-evidence-overview/",
+      "/guides/metabolic-syndrome-evidence-guide/",
+      "/guides/minoxidil-evidence-and-options/",
+      "/guides/mounjaro-cost-without-insurance/",
+      "/guides/mounjaro-coupon/",
+      "/guides/mounjaro-side-effects-evidence-guide/",
+      "/guides/mounjaro-vs-ozempic-label-and-cost/",
+      "/guides/mounjaro-vs-zepbound-label-and-cost/",
+      "/guides/novo-nordisk-patient-assistance-vs-savings/",
+      "/guides/online-ed-treatment-verification-checklist/",
+      "/guides/online-glp-1-intake-to-pharmacy-fulfillment/",
+      "/guides/online-hair-loss-treatment-verification/",
+      "/guides/online-trt-clinic-verification/",
+      "/guides/oral-glp-1-availability/",
+      "/guides/oral-glp-1-insurance-coverage/",
+      "/guides/ozempic-cost-without-insurance/",
+      "/guides/ozempic-side-effects-evidence-guide/",
+      "/guides/ozempic-vs-wegovy-label-and-cost/",
+      "/guides/ozempic-vs-zepbound/",
+      "/guides/peptide-clinic-verification-checklist/",
+      "/guides/peptide-therapy-regulatory-status/",
+      "/guides/rekulo-glp-1-reviews/",
+      "/guides/semaglutide-online-safety-verification/",
+      "/guides/semaglutide-vs-tirzepatide-label-evidence/",
+      "/guides/sildenafil-vs-tadalafil-label-comparison/",
+      "/guides/testosterone-gel-vs-injections-label-differences/",
+      "/guides/tirzepatide-cost/",
+      "/guides/tirzepatide-online-verification-checklist/",
+      "/guides/top-rated-glp-1-providers/",
+      "/guides/trimi-vs-yourera/",
+      "/guides/trt-cost-and-insurance-questions/",
+      "/guides/trt-evidence-overview/",
+      "/guides/verify-online-glp-1-pharmacy/",
+      "/guides/verify-online-glp-1-program-product-status/",
+      "/guides/viagra-vs-cialis-label-and-cost/",
+      "/guides/wegovy-pills-oral-semaglutide-cost/",
+      "/guides/wegovy-side-effects-evidence-guide/",
+      "/guides/wellorithm-vs-enhance-md/",
+      "/guides/what-is-glp-1/",
+      "/guides/zepbound-coupon/",
+      "/guides/zepbound-insurance-coverage/",
+      "/guides/zepbound-side-effects-evidence-guide/",
+      "/guides/zepbound-wegovy-cost-without-insurance/",
+      "/guides/zepbound-wegovy-savings-card-terms/"
+    ],
+    "dataforseo_keyword_difficulty": null,
+    "dataforseo_measured_query_count": 0,
+    "dataforseo_relevance_score": 43.0,
+    "dataforseo_search_volume": 0,
+    "gsc_queries": [
+      {
+        "clicks": 0,
+        "competitor_position": null,
+        "ctr": 0.0,
+        "dataforseo_measured": false,
+        "impressions": 2,
+        "keyword_difficulty": null,
+        "opportunity_id": "A-7f86d437aca48fe0",
+        "opportunity_score": 43.0,
+        "our_dataforseo_position": null,
+        "position": 19.5,
+        "query": "glp 1 availability",
+        "search_volume": null
+      },
+      {
+        "clicks": 0,
+        "competitor_position": null,
+        "ctr": 0.0,
+        "dataforseo_measured": false,
+        "impressions": 1,
+        "keyword_difficulty": null,
+        "opportunity_id": "A-60a868533c511cc1",
+        "opportunity_score": 26.0,
+        "our_dataforseo_position": null,
+        "position": 15.0,
+        "query": "glp-1 supply status",
+        "search_volume": null
+      }
+    ],
+    "impressions": 3,
+    "keyword_gap_opportunity_ids": [
+      "A-60a868533c511cc1",
+      "A-7f86d437aca48fe0"
+    ],
+    "opportunity_class": "A",
+    "page_age_days": 75,
+    "position": 18.0,
+    "previous_clicks": 1,
+    "priority": "P1",
+    "r2_edit_forbidden": false,
+    "refresh_deadline_days": 21,
+    "refresh_tier": "R2",
+    "required_inbound_links": 2,
+    "route": "/guides/glp-1-shortage-availability-check/",
+    "route_owner": "r2_updater",
+    "selection_basis": "keyword_gap_striking_distance_11_40",
+    "striking_distance_routes": [
+      "/guides/glp-1-shortage-availability-check/"
+    ]
+  },
+  "risk_tier": "MEDIUM",
+  "schema": "blog-brief-v2-opus-autopublish",
+  "search_intent": "transactional informational",
+  "sections": [
+    {
+      "bullets": [],
+      "heading": "Quick answer",
+      "ordered_items": [],
+      "paragraphs": [
+        "> **Quick answer:** FDA dated tirzepatide injection\u2019s shortage resolution December 19, 2024 and semaglutide injection\u2019s February 21, 2025. GLP 1 availability still needs a local pharmacy check: national resolution does not establish local stock. These are historical determinations, not a fresh product-level lookup. [S1]"
+      ],
+      "tables": []
+    },
+    {
+      "bullets": [],
+      "heading": "What was verified, and what was not",
+      "ordered_items": [],
+      "paragraphs": [
+        "We recaptured FDA\u2019s GLP-1 supply clarification, its Drug Shortages guidance and its Drug Approvals and Databases directory on October 9, 2026. We also checked first-party pharmacy and manufacturer material for the narrow statements cited below. Our new answer is a practical fallback: if an old FDA product-status URL fails, restart from FDA\u2019s official directory rather than interpreting the failure as a status result. [S5][S2]",
+        "The FDA clarification says tirzepatide injection\u2019s shortage was resolved on December 19, 2024 and semaglutide injection\u2019s shortage on February 21, 2025. Those are dated agency statements, not an October 9 readback of every product presentation. The same clarification warns that patients and prescribers may encounter intermittent, localized disruptions. A historical national determination and a specific pharmacy\u2019s answer are different evidence. [S1]",
+        "We did not verify pharmacy inventory, a delivery reservation, insurance eligibility, a patient prescription, current transaction prices or a successful live product-status lookup. Two older product-URL attempts in the evidence pack returned HTTP 503 redirect notices on August 31, 2026. We preserve those failed attempts as historical limitations; we do not relabel them as October 9 stock checks or count an unavailable result as \u201cnot in shortage.\u201d [S3][S4]"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "Evidence checked",
+            "What it establishes in this guide"
+          ],
+          "rows": [
+            [
+              "FDA\u2019s dated GLP-1 supply clarification [S1]",
+              "The agency\u2019s published resolution statements and warning about localized disruption; not stock at a named pharmacy."
+            ],
+            [
+              "FDA Drug Shortages guidance [S2]",
+              "Where to search and why national-status information differs from local access."
+            ],
+            [
+              "FDA\u2019s official directory [S5]",
+              "A fresh starting point for the Drug Shortages link; the directory itself does not establish product status."
+            ],
+            [
+              "Historical failed product URLs [S3][S4]",
+              "A documented access limitation at that time; no positive product-status conclusion."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "bullets": [],
+      "heading": "Restart an FDA search without guessing a product URL",
+      "ordered_items": [
+        "Open FDA\u2019s [Drug Approvals and Databases directory](https://www.fda.gov/drugs/development-approval-process-drugs/drug-approvals-and-databases).",
+        "Follow its Drug Shortages link and use FDA\u2019s generic-name or active-ingredient search guidance. [S5][S2]",
+        "Record exactly which product or ingredient the page covers, the statement date if supplied and the time you checked.",
+        "If the page is unavailable, record \u201cunable to verify from this source,\u201d retaining the address and error. Do not invent a status from the error.",
+        "Our editorial recommendation is to take prescription-access questions to your clinician or pharmacist. FDA specifically directs readers to discuss treatment options with a health professional when the drug is already in its shortage database; that conditional guidance is not a prescribing recommendation from this publisher. [S2]"
+      ],
+      "paragraphs": [
+        "FDA\u2019s Drug Approvals and Databases directory includes a Drug Shortages link. Its shortage guidance says the database can be searched by generic name or active ingredient. Use that search instruction after following the directory link if a saved URL is broken. A changed address or failed request is not evidence that a medicine is available, discontinued or in shortage. [S5][S2]",
+        "Our suggested workflow is to write down the medicine name shown on the prescription, the active ingredient, the presentation and the date of the check. These are editorial record fields, not a required patient form or a dosing recommendation. Keep the actual product description unchanged while checking; an inconvenient result is not a reason to substitute another medicine or strength on your own.",
+        "We suggest keeping the page title and source address with your note so a later reader can see what you checked. Do not copy only a status phrase into a spreadsheet without its scope and date. This is our editorial method for preserving context, not a claim that FDA requires a particular spreadsheet or screenshot process."
+      ],
+      "tables": []
+    },
+    {
+      "bullets": [],
+      "heading": "Keep national statements separate from the pharmacy answer",
+      "ordered_items": [],
+      "paragraphs": [
+        "FDA\u2019s Drug Shortages page discusses national database checks separately from temporary, localized out-of-stock issues. This guide\u2019s FDA capture does not establish inventory at your particular pharmacy. The GLP-1 clarification also explicitly acknowledges possible localized supply disruptions after the national shortages were resolved. Neither source promises that your prescription can be filled today in your location. [S1][S2]",
+        "As one first-party example of an access check, Amazon Pharmacy\u2019s help page tells readers to search its website for their medication and strength to check availability. That is a statement about Amazon\u2019s published search guidance, not our independent verification of its inventory or an endorsement. [S10]",
+        "For your own inquiry, ask the pharmacy what its answer covers. Our suggested questions below are editorial prompts, not verified descriptions of every pharmacy\u2019s systems. A staff member may use different terms, and we have not tested these questions as patient transactions. Write down the answer you actually receive instead of filling in a presumed sequence.",
+        "Use the same small set of questions when comparing responses, but do not turn it into an unsupported pharmacy ranking. This article has not mystery-shopped pharmacies, measured fill rates or compared delivery performance. An unresolved answer belongs in the unknown column, not in a success count."
+      ],
+      "tables": [
+        {
+          "headers": [
+            "Suggested question",
+            "What to record, without making an inference"
+          ],
+          "rows": [
+            [
+              "\u201cAre you referring to this exact medicine, presentation and strength?\u201d",
+              "The product description supplied in the answer; leave a mismatch unresolved."
+            ],
+            [
+              "\u201cDoes the answer concern what you can fill now, or a future order?\u201d",
+              "The pharmacy\u2019s own explanation, including whether it gave a date or declined to estimate."
+            ],
+            [
+              "\u201cIs there any confirmation I should obtain before traveling?\u201d",
+              "The pharmacy\u2019s actual instruction, not an assumed reservation."
+            ],
+            [
+              "\u201cIf this cannot be filled, whom should I contact next?\u201d",
+              "The contact or next step actually recommended; do not choose a treatment alternative yourself."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "bullets": [],
+      "heading": "A prescription and a stock check answer different questions",
+      "ordered_items": [],
+      "paragraphs": [
+        "Lilly\u2019s Zepbound Medication Guide identifies Zepbound as a prescription medicine. NovoCare\u2019s pharmacy page states that all doses of Wegovy and Ozempic require a prescription, whether a person self-pays or uses insurance. These are product-specific first-party statements; they do not establish that any reader is clinically eligible or that a particular service will issue a prescription. [S8][S9]",
+        "Do not treat a supply problem as permission to change your dose, use somebody else\u2019s prescription or select a different product yourself. Ask the clinician responsible for your care. This guide deliberately does not provide dosing, an interruption schedule, suitability criteria or advice on restarting treatment. FDA\u2019s shortage guidance directs readers to discuss treatment options with their health care provider or pharmacist if the drug is already listed in its shortage database. Our editorial recommendation is to discuss your own access problem with your care team, not to choose a change yourself. [S2]",
+        "Keep the separate questions visible in your notes: what was prescribed, what the source says about national status, what the pharmacy says about access, and what remains unknown. Those are editorial categories for organizing a conversation, not a claim that an order must pass through a universal set of fulfillment stages. We do not record or ask you to send us patient details.",
+        "For broader verification questions, see our [online program and product-status guide](/guides/verify-online-glp-1-program-product-status/). Our [pharmacy verification guide](/guides/verify-online-glp-1-pharmacy/) concerns dispensing identity, while the [oral GLP-1 availability guide](/guides/oral-glp-1-availability/) concerns a different product category. The [Zepbound savings-card guide](/guides/zepbound-coupon/) addresses payment terms. These sibling resources do not replace a pharmacist\u2019s current stock answer or your prescriber\u2019s judgment."
+      ],
+      "tables": []
+    },
+    {
+      "bullets": [],
+      "heading": "Products, forms and approval status are separate checks",
+      "ordered_items": [],
+      "paragraphs": [
+        "The FDA shortage determinations quoted here concern injection products. FDA\u2019s February 21, 2025 statement names semaglutide injection, and its December 19, 2024 statement names tirzepatide injection. They are not statements about every presentation sharing an ingredient name. Lilly\u2019s Medication Guide describes Zepbound as an injectable prescription medicine containing tirzepatide. NovoCare names semaglutide in its prescription statement for Wegovy and Ozempic. Read those statements at their stated product scope rather than extending an injection-status conclusion to an oral product. [S1][S8][S9]",
+        "Our editorial suggestion is to begin with the exact product named on the prescription or package, then check the official document for that product. Keep the brand, ingredient and presentation as separate fields. If a search result discusses a different form, leave the question unresolved rather than treating a shared ingredient name as a match. The medicine and strength chosen by your prescriber should not be silently replaced while searching for an easier stock answer.",
+        "A headline about a product in development is a different question from whether your prescription can be filled. This guide supplies no pipeline approval or launch claim. To evaluate a development announcement, our suggested next question is: which official product document establishes the status being described? FDA\u2019s directory supplies a starting point for Drug Approvals and Databases, and the shortage link addresses a different status question. Do not interpret a trial announcement, directory listing or inaccessible link as a pharmacy-stock confirmation. [S5]",
+        "FDA distinguishes approved products from compounded preparations: it says compounded drugs are not approved by FDA, while approved drugs undergo its premarket review for safety, effectiveness and quality. That regulatory distinction is not a comparative treatment recommendation, and this guide does not infer interchangeability or suitability from it. For deeper verification of what an online program says it supplies, use our product-status guide rather than assuming every offer describes the same product. [S1]"
+      ],
+      "tables": []
+    },
+    {
+      "bullets": [],
+      "heading": "Insurance and payment do not answer the stock question",
+      "ordered_items": [],
+      "paragraphs": [
+        "NovoCare\u2019s published prescription rule applies whether someone self-pays or goes through insurance. That is the specific first-party statement captured for this guide. It does not tell us whether your plan covers a prescription, whether authorization is complete, what you would owe, or whether a pharmacy can fill it. A national shortage resolution supplies none of those individual transaction answers either. [S9][S1]",
+        "Our suggested inquiry separates the questions. Ask your insurer about the exact prescription and the terms applying to your plan; ask the pharmacy for the amount and product covered by its actual quote. If someone gives a price, record whether the answer came from your insurer, the pharmacy or an advertised offer, and keep any stated conditions with it. This is an editorial record method, not a promise that a particular offer or insurance process is available to you. We have not verified a current transaction price and therefore provide no price amount here.",
+        "A payment answer and a stock answer should remain separately dated. For example, in your own notes, a quote can remain recorded while the supply field says \u201cnot verified.\u201d Do not change that to \u201cavailable\u201d just because you have a payment route in mind. For detailed offer terms, use the linked savings-card guide and check its dated evidence; it is not a substitute for the pharmacy\u2019s current answer about the prescribed product."
+      ],
+      "tables": []
+    },
+    {
+      "bullets": [],
+      "heading": "From an online prescription question to a pharmacy check",
+      "ordered_items": [],
+      "paragraphs": [
+        "The captured manufacturer sources identify prescription requirements; Amazon Pharmacy\u2019s own guidance describes searching by medication and strength. Those are separate first-party instructions, not evidence that an online visit will produce a prescription or that a search will produce a completed fill. This guide has not tested a patient visit, transferred a prescription, reserved inventory or placed an order. [S8][S9][S10]",
+        "For an online access inquiry, our editorial questions are: who is responsible for the prescribing decision, which pharmacy is being discussed, what exact product does the answer cover, and what remains unconfirmed? Preserve the response you actually receive. If an answer covers only a consultation or only a website search, do not record an imagined dispensing outcome. Take an unresolved prescription-access question to the clinician or pharmacist responsible for it; this page cannot make that decision for you."
+      ],
+      "tables": []
+    },
+    {
+      "bullets": [],
+      "heading": "Do not infer a compounding permission from an availability problem",
+      "ordered_items": [],
+      "paragraphs": [
+        "FDA\u2019s clarification distinguishes a drug appearing on the shortage list from a drug no longer on that list. It explains that the applicable statutory conditions concern compounding drugs that are essentially copies of FDA-approved drugs. It also says compounded drugs are not approved by FDA, whereas FDA-approved drugs undergo its rigorous review for safety, effectiveness and quality. We are not providing a legal determination for any pharmacy or prescription. [S1]",
+        "The practical boundary in this guide is narrow: a local difficulty or unavailable web page does not, by itself, prove that a compounding exception applies. We will not turn a reader\u2019s access problem into a claim that a particular compounded product is permitted, equivalent, safe or appropriate. Ask the prescribing clinician and dispensing pharmacy about the actual product and applicable requirements. Do not extrapolate branded-product information to a compounded preparation.",
+        "FDA also describes a specific post-shortage distinction under section 503A: when a shortage resolves, it generally considers the drug commercially available, and restrictions apply to compounding essentially copies of a commercially available drug. The same captured passage notes that certain amounts are permissible when compounding is not done regularly or in inordinate amounts. This is a description of FDA\u2019s published distinction, not a determination that any particular pharmacy or prescription meets its conditions. [S1]",
+        "For a question about a compounded preparation, our editorial suggestion is to ask the prescriber and dispensing pharmacy to identify the actual preparation and explain the applicable basis, instead of presenting a national-status screenshot as permission. Do not substitute a product description that the source does not cover. Keep the regulatory question, the prescribing question and the availability question separate; this article settles none of them for an individual transaction."
+      ],
+      "tables": []
+    },
+    {
+      "bullets": [],
+      "heading": "An optional record you can use immediately",
+      "ordered_items": [],
+      "paragraphs": [
+        "This comparison method is on the page. No signup, downloadable file or delivered checklist is required, and this article promises no follow-up email. Copy the following editorial template into your own notes if it is useful. It is not a patient intake form, and we have not filled it with invented pharmacy observations.",
+        "Do not put a hypothetical answer in the same column as a verified one. If you have not spoken with a pharmacy, the pharmacy field stays blank. If the source does not cover your presentation, keep that mismatch visible. If a later response differs, preserve both dates rather than silently replacing the older note and implying it was always current."
+      ],
+      "tables": [
+        {
+          "headers": [
+            "Record field",
+            "Example of the kind of information to enter"
+          ],
+          "rows": [
+            [
+              "Product checked",
+              "Copy the exact name and presentation from your own prescription; do not enter a substitute."
+            ],
+            [
+              "Official evidence",
+              "Page title, source address, statement date if present and date you checked."
+            ],
+            [
+              "Pharmacy question",
+              "Your exact question and the response actually received."
+            ],
+            [
+              "Unresolved item",
+              "\u201cNot verified,\u201d an access error or the limitation stated by the source."
+            ],
+            [
+              "Follow-up",
+              "The clinician or pharmacist you were told to contact, without inventing an outcome."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "bullets": [],
+      "heading": "Our update policy and evidence limits",
+      "ordered_items": [],
+      "paragraphs": [
+        "This page\u2019s October 9, 2026 revision adds a directory fallback and separates dated national statements from a pharmacy\u2019s answer. A source check alone is not a content revision; a modification date should identify an actual change to the reader\u2019s answer.",
+        "We will revisit the cited answer when FDA changes a relevant national-status statement, when its shortage-directory navigation changes, or when a newly captured first-party source materially changes a cited access instruction. Source errors are recorded as errors. If a scheduled check finds no substantiated answer change, the article remains unchanged; the check receipt is not represented as a content revision.",
+        "The current evidence is deliberately bounded. The FDA statements are dated statements recaptured on October 9; they are not live pharmacy inventory. The two August 31 failures remain historical. Manufacturer and pharmacy instructions are attributed only to the named publisher. This article makes no claims about efficacy, expected results, side-effect rates, current prices, clinician availability or stock fulfillment."
+      ],
+      "tables": []
+    }
+  ],
+  "serp_contract": {
+    "parity_target_words": 1815,
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/source-updater/027ff7f60699815d0bc438b6/packet/02-serp-brief.json",
+    "ranking_wedge": "New official-directory fallback for a failed product URL, explicit separation of dated national status from pharmacy access, narrow first-party prescription/search statements, on-page record template, historical-error honesty and no current stock/price claim.",
+    "status": "PASS_CURRENT_SERP_CAPTURED_SCOPE_LIMITATIONS_EXPLICIT"
+  },
+  "source_checked_through": "2026-10-09",
+  "sources": [
+    {
+      "claim_ids": [
+        "R2-20261009-L6b-001",
+        "R2-20261009-L6b-003",
+        "R2-20261009-L6b-005",
+        "R2-20261009-L6b-012",
+        "R2-20261009-L6b-016",
+        "R2-20261009-L6b-018",
+        "R2-20261009-L6b-019",
+        "R2-20261009-L6b-021",
+        "R2-20261009-L6b-022",
+        "R2-20261009-L6b-023",
+        "R2-20261009-L6b-025",
+        "R2-20261009-L6b-029"
+      ],
+      "publisher": "U.S. Food and Drug Administration",
+      "source_class": "primary_regulator_shortage_and_compounding_policy_page",
+      "source_id": "S1",
+      "url": "https://www.fda.gov/drugs/drug-alerts-and-statements/fda-clarifies-policies-compounders-national-glp-1-supply-begins-stabilize",
+      "verified_as_of": "2026-10-09"
+    },
+    {
+      "claim_ids": [
+        "R2-20261009-L6b-002",
+        "R2-20261009-L6b-006",
+        "R2-20261009-L6b-009",
+        "R2-20261009-L6b-010",
+        "R2-20261009-L6b-011",
+        "R2-20261009-L6b-012",
+        "R2-20261009-L6b-015",
+        "R2-20261009-L6b-023",
+        "R2-20261009-L6b-024",
+        "R2-20261009-L6b-028"
+      ],
+      "publisher": "U.S. Food and Drug Administration",
+      "source_class": "primary_regulator_drug_shortages_guidance",
+      "source_id": "S2",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-shortages",
+      "verified_as_of": "2026-10-09"
+    },
+    {
+      "claim_ids": [
+        "R2-20261009-L6b-004",
+        "R2-20261009-L6b-008"
+      ],
+      "publisher": "U.S. Food and Drug Administration",
+      "source_class": "first_party_program_terms",
+      "source_id": "S3",
+      "url": "https://dps.fda.gov/drugshortages/activeingredient/semaglutide-injection",
+      "verified_as_of": "2026-08-31"
+    },
+    {
+      "claim_ids": [
+        "R2-20261009-L6b-004",
+        "R2-20261009-L6b-008"
+      ],
+      "publisher": "U.S. Food and Drug Administration",
+      "source_class": "first_party_program_terms",
+      "source_id": "S4",
+      "url": "https://dps.fda.gov/drugshortages/resolved/tirzepatide-injection",
+      "verified_as_of": "2026-08-31"
+    },
+    {
+      "claim_ids": [
+        "R2-20261009-L6b-002",
+        "R2-20261009-L6b-007",
+        "R2-20261009-L6b-009",
+        "R2-20261009-L6b-010",
+        "R2-20261009-L6b-017",
+        "R2-20261009-L6b-024"
+      ],
+      "publisher": "U.S. Food and Drug Administration",
+      "source_class": "primary_regulator_directory",
+      "source_id": "S5",
+      "url": "https://www.fda.gov/drugs/development-approval-process-drugs/drug-approvals-and-databases",
+      "verified_as_of": "2026-10-09"
+    },
+    {
+      "claim_ids": [
+        "R2-20261009-L6b-014",
+        "R2-20261009-L6b-016",
+        "R2-20261009-L6b-020",
+        "R2-20261009-L6b-027"
+      ],
+      "publisher": "Eli Lilly and Company",
+      "source_class": "primary_manufacturer_product_guide",
+      "source_id": "S8",
+      "url": "https://pi.lilly.com/us/zepbound-us-mg.pdf",
+      "verified_as_of": "2026-10-09"
+    },
+    {
+      "claim_ids": [
+        "R2-20261009-L6b-014",
+        "R2-20261009-L6b-016",
+        "R2-20261009-L6b-019",
+        "R2-20261009-L6b-020",
+        "R2-20261009-L6b-027"
+      ],
+      "publisher": "Novo Nordisk",
+      "source_class": "first_party_pharmacy_guidance",
+      "source_id": "S9",
+      "url": "https://www.novocare.com/pharmacy.html",
+      "verified_as_of": "2026-10-09"
+    },
+    {
+      "claim_ids": [
+        "R2-20261009-L6b-013",
+        "R2-20261009-L6b-020",
+        "R2-20261009-L6b-026"
+      ],
+      "publisher": "Amazon Pharmacy",
+      "source_class": "first_party_pharmacy_guidance",
+      "source_id": "S10",
+      "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=Tc3YmeOT3s3FXSeLMm",
+      "verified_as_of": "2026-10-09"
+    }
+  ],
+  "status": "PASS_OPUS_PENDING",
+  "suppress_cta": true,
+  "surface_taxonomy": "medical",
+  "target_query": "glp 1 availability",
+  "title": "GLP-1 Availability: FDA Status vs Local Stock (2026)",
+  "updated_at": "2026-10-09",
+  "word_count": 3161
+}

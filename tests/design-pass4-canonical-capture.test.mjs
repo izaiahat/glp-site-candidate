@@ -49,6 +49,8 @@ async function canonicalCaptureDb(databasePath) {
       consent_text TEXT NOT NULL, created_at TEXT NOT NULL
     );
   `);
+  // Canonical marketing now consults the maintained suppression store too.
+  database.exec(await readFile(path.join(ROOT, "migrations/002_email_machine.sql"), "utf8"));
   database.exec(await readFile(path.join(ROOT, "migrations/004_review_capture.sql"), "utf8"));
   database.exec(await readFile(path.join(ROOT, "migrations/005_canonical_contact_capture.sql"), "utf8"));
   let closed = false;

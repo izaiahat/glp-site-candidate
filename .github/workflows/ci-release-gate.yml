@@ -9,6 +9,31 @@ name: ci-release-gate (portable checks only)
 # their maintained scripts and assertions are unchanged. Green is not release approval.
 on:
   pull_request:
+    paths:
+      - ".github/workflows/ci-release-gate.yml"
+      - "assets/analytics.js"
+      - "package.json"
+      - "src/candidate-export-policy.mjs"
+      - "src/onboarding-consent.mjs"
+      - "src/newsletter-subscribe.mjs"
+      - "src/content-upgrade.mjs"
+      - "src/canonical-contact.mjs"
+      - "src/resend-email-machine.mjs"
+      - "workers/email-scheduler.mjs"
+      - "workers/onboarding/wrangler.toml"
+      - "scripts/run-onboarding-manual.mjs"
+      - "scripts/build-staging.mjs"
+      - "tests/glp47-onboarding-runtime.test.mjs"
+      - "src/consent-runtime.mjs"
+      - "src/ga4-runtime.mjs"
+      - "tests/d2i-analytics-hygiene.test.mjs"
+      - "tests/d2o-consent-lifecycle.test.mjs"
+      - "tests/d2o-consent-purposes.test.mjs"
+      - "tests/d2o-consent-races.test.mjs"
+      - "tests/d2o-server-consent.test.mjs"
+      - "tests/maxbounty-postback-click-id.test.mjs"
+      - "tests/consent-attribution-withdrawal.test.mjs"
+      - "tests/fixtures/posthog/array.js"
   workflow_dispatch:
     inputs:
       source_sha:
@@ -19,7 +44,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: ci-release-gate-${{ github.event.pull_request.number || inputs.source_sha || github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 jobs:
   portable-consent-contracts:
@@ -49,6 +74,12 @@ jobs:
             tests/d2o-server-consent.test.mjs \
             tests/d2o-consent-lifecycle.test.mjs \
             tests/d2o-consent-races.test.mjs
+      - name: GLP47 approved-purpose runtime and capture regression (offline only)
+        run: npm run test:onboarding
+      - name: MaxBounty source-runtime privacy regressions (offline only)
+        run: |
+          npm ci --include=dev --ignore-scripts --no-audit --no-fund
+          node --test tests/maxbounty-postback-click-id.test.mjs tests/consent-attribution-withdrawal.test.mjs
       - name: Record limited scope
         if: always()
         run: |

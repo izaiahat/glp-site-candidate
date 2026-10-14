@@ -2,6 +2,8 @@ import {readFileSync} from 'node:fs';
 import path from 'node:path';
 import {isDeepStrictEqual} from 'node:util';
 import {sha256} from './pricing-coverage-floor.mjs';
+import {applyPriceRefreshEvidence} from './price-refresh-evidence.mjs';
+import {retainedManualPricingBasis} from './provider-surface-append.mjs';
 
 
 // Exact S30 removals, not a coverage waiver. Baseline authentication remains
@@ -9,6 +11,11 @@ import {sha256} from './pricing-coverage-floor.mjs';
 export const RETENTION_SHA256 = '0388da4c781f36911c1064c899d1f222c58a1e3e8ed7340dba76e44f5c042598';
 export const REMOVED_PRICE_REASON = 'Price not attested by current reviewed evidence as a complete medication-specific first and recurring cash schedule. Prior asserted cash rows were removed under the source-bound S30 review; this does not mean the provider publishes no prices or offers free treatment.';
 export function validateAttestedRetention(root, matrix, baseline) {
+  const addedIds=['rightwell-review','willow-review','ivim-health-review','tyde-wellness-review','feelgood-review','instarx-review','retaclinic-review'];
+  if(addedIds.some(id=>matrix.providers?.[id])) {
+    const registry=JSON.parse(readFileSync(path.join(root,'data/program-registry.json')));
+    matrix=retainedManualPricingBasis(matrix,registry,addedIds);
+  }
   const fail = why => { throw new Error('attested_price_retention:' + why); };
   const bound = (relative, hash) => {
     if (!/^data\/price-state-(?:evidence\/[a-z0-9-]+|retention)\.json$/.test(relative)) fail('path');
@@ -46,10 +53,16 @@ export function validateAttestedRetention(root, matrix, baseline) {
     }
   }
   if (!isDeepStrictEqual(removals,contract.removed_rows)) fail('removal_accounting');
+  // Build the immutable retained-row oracle FIRST, then apply only individually
+  // proven dollar-field successors. All historical removal/identity guards stay.
   for (const [id,entry] of Object.entries(expected)) {
     const indices=new Set(removals.filter(r=>r.program_id===id).map(r=>r.baseline_index));
     entry.medications=entry.medications.filter((_,index)=>!indices.has(index));
     entry.medications.push(...(successor.additions[id] || []));
+  }
+  const refreshed = applyPriceRefreshEvidence(root, expected);
+  for (const [id,entry] of Object.entries(refreshed)) {
+    const indices=new Set(removals.filter(r=>r.program_id===id).map(r=>r.baseline_index));
     if (!isDeepStrictEqual(entry.medications,matrix.providers?.[id]?.medications)) fail('attested_set_drift:'+id);
     if (!entry.medications.length && (!matrix.providers[id].unavailable_reason || !['not_attested','not_published'].includes(matrix.providers[id].pricing_state))) fail('missing_reason:'+id);
     if (!entry.medications.length && matrix.providers[id].unavailable_reason !== (successor.unpriced_reasons[id] || (indices.size ? REMOVED_PRICE_REASON : old.providers[id].unavailable_reason))) fail('forged_reason:'+id);

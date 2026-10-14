@@ -1,0 +1,74 @@
+{
+  "authority": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/source-updater/027ff7f60699815d0bc438b6/topic-queue-snapshot-source-update-027ff7f60699815d0bc438b6.json",
+    "selection_binding": {
+      "operator_directive_id": "glp-content-mix-v1:516531efb655924161e549690a9f716ef4794d6a7e21996d43c61f37f38eaaa3",
+      "queue_position": 1,
+      "queue_sha256": "516531efb655924161e549690a9f716ef4794d6a7e21996d43c61f37f38eaaa3",
+      "selection_receipt_sha256": "54c2cea3a687b9fb8f1104fb041b06379061436aa7bbc13cfe69f3e5c5a629d2",
+      "strategy_map_sha256": "05d215c1bd3a8656f4bc5f5534a1ad5e13934b94a649492743fd975533f2818b",
+      "strategy_queue_sha256": "5763fcc1e92fb3cfe5b4175f7c1e2db38044274d3f8c4167333296d88d259ec9",
+      "target_query": "glp 1 availability",
+      "target_route": "/guides/glp-1-shortage-availability-check/",
+      "topic_id": "r2-cfd06fb145fe65bbb412"
+    },
+    "selection_receipt": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/source-updater/027ff7f60699815d0bc438b6/authority/01-r2-cfd06fb145fe65bbb412-selection.json",
+      "receipt_sha256": "54c2cea3a687b9fb8f1104fb041b06379061436aa7bbc13cfe69f3e5c5a629d2",
+      "sha256": "b1dbda66f81e8e0b17d3ba4cd32e071958225b9ec7b8ca7fc46eb3d6ec7fd715"
+    },
+    "sha256": "516531efb655924161e549690a9f716ef4794d6a7e21996d43c61f37f38eaaa3",
+    "topic_id": "r2-cfd06fb145fe65bbb412",
+    "type": "gsc_r2_update_authority"
+  },
+  "effects": {
+    "cache_purges": 0,
+    "deployments": 0,
+    "gsc_submissions": 0,
+    "publishes": 0
+  },
+  "effort": "high",
+  "findings": [],
+  "gates": [
+    {
+      "findings": [],
+      "gate": "A",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "B",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "C",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "D",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "E",
+      "status": "PASS"
+    }
+  ],
+  "job_id": "source-update-027ff7f60699815d0bc438b6",
+  "model": "gpt-6-astra-900k",
+  "provider": "openai-codex",
+  "raw_review_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/source-updater/027ff7f60699815d0bc438b6/opus-history-source-update-027ff7f60699815d0bc438b6/round-01-sol-raw.json",
+  "raw_review_sha256": "41306749526ab980c97a03e07e90a929d8f08fca1af126f391d97cc682940a12",
+  "receipt_sha256": "95c9ac74264a7ce79ca604afcb78e8bcd5c2c8b21f0ece2c1970f641c6bc9cb8",
+  "review_transport": "hermes-openai-codex-astra-independent",
+  "reviewed_at_utc": "2026-10-10T00:31:16.785226Z",
+  "round": 1,
+  "schema": "glp-opus-seo-round-receipt-v1",
+  "status": "PASS_OPUS_SEO_DRAFT",
+  "subject_manifest_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/source-updater/027ff7f60699815d0bc438b6/opus-history-source-update-027ff7f60699815d0bc438b6/round-01-subject-manifest.json",
+  "subject_manifest_sha256": "a1bdb43230abc3ef8f7ad22a828db43c9acfca9d25b1e669720a656409b0f849",
+  "tools_disabled": true,
+  "topic_id": "r2-cfd06fb145fe65bbb412"
+}

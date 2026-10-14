@@ -1,3 +1,15 @@
+test('GLP44 explicit analytics choice exports coarse progression only',()=>{
+ const f=fixture({url:'https://glpclinicscout.com/quiz/provider-fit/'});f.grant();const o=f.mockLoad();
+ for(const name of ['quiz_start','quiz_step_complete','quiz_complete','results_view']){
+  f.window.dispatchEvent({type:'gcs:quiz',detail:{name,step_number:7,answer:'CANARY'}});
+  assert.equal(f.captures.at(-1)?.[0],name);assert.deepEqual(JSON.parse(JSON.stringify(f.captures.at(-1)[1])),{});
+ }
+ const event=o.before_send({event:'quiz_step_complete',properties:{step_number:7,answer:'CANARY'}});
+ assert.equal(event.properties.$pathname,undefined);assert.doesNotMatch(JSON.stringify(event),/CANARY|step_number/);
+ f.window.GCSConsent.apply('denied');assert.equal(f.window.GCSAnalytics.event('quiz_start'),false);
+ assert.equal(o.before_send({event:'quiz_start',properties:{}}),null);
+});
+
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';

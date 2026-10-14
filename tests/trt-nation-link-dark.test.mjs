@@ -1,3 +1,4 @@
+import {effectiveAffiliateRegistry,effectiveAffiliateBuildInputs} from '../src/affiliate-relationship-sync.mjs';
 import { loadGoSelection, loadGoPromotionAuthority } from '../src/go-runtime-selection.mjs';
 import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
 // FILENAME NOTE: this file is still called trt-nation-link-dark.test.mjs.
@@ -264,14 +265,18 @@ test("TRT retains the verified GLP-1 destination and is live under the 2026-09-2
   assert.equal("affiliate_href" in eligibilityRow, false);
 
   const buildReport = await readJson("artifacts/ops/build-report.json");
+  const currentRegistry=effectiveAffiliateRegistry(inputs.programRegistry);
+  const current=effectiveAffiliateBuildInputs(inputs.programRegistry,{eligibility:inputs.eligibility,contentLedger:inputs.contentLedger,activationSelection:inputs.activationSelection},'glp-clinic-scout');
+  assert.deepEqual(current.contentLedger.programs.find(p=>p.program_id==='trt-nation'),inputs.contentLedger.programs.find(p=>p.program_id==='trt-nation'));
   const aliasIds = new Set(inputs.programRegistry.programs
     .filter((program) => program.profiles?.["glp-clinic-scout"]?.canonical_identity?.role === "alias")
     .map((program) => String(program.review_slug || program.program_id)));
-  const expectedDirectPrograms = inputs.contentLedger.programs
+  const expectedDirectPrograms = current.contentLedger.programs
     .filter((program) => (program.live_link_allowed || program.promotion_authorized) && !aliasIds.has(program.program_id)).length;
   assert.equal(buildReport.direct_affiliate_programs, expectedDirectPrograms);
-  assert.equal(buildReport.live_programs, inputs.programRegistry.provider_dynamic_profiles.expected_counts.provider_identities);
-  assert.equal(buildReport.live_registry_rows, inputs.programRegistry.therapeutic_taxonomy.expected_counts.provider_rows);
+  assert.equal(buildReport.live_programs, currentRegistry.provider_dynamic_profiles.expected_counts.provider_identities);
+  const currentRows=currentRegistry.programs.filter(p=>p.commercial_state==='live' && p.profiles?.['glp-clinic-scout']?.vertical_fit===true && p.profiles['glp-clinic-scout'].wired===true && p.profiles['glp-clinic-scout'].surfaces?.review===true);
+  assert.equal(buildReport.live_registry_rows, currentRows.length);
 
   assert.equal(inputs.reviewBrief.cta.enabled, true);
   assert.equal(inputs.reviewBrief.cta.link_click_qa_performed, true);

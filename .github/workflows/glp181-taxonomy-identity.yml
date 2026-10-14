@@ -2,15 +2,33 @@ name: GLP-181 taxonomy identity
 on:
   pull_request:
     paths:
-      - 'src/therapeutic-taxonomy.mjs'
-      - 'tests/glp181-taxonomy-identity.test.mjs'
-      - '.github/workflows/glp181-taxonomy-identity.yml'
-  push:
-    branches:
-      - 'fix/glp181-taxonomy-canonical-alias'
+      - ".github/workflows/glp181-taxonomy-identity.yml"
+      - "data/program-content-ledger.json"
+      - "package.json"
+      - "src/affiliate-relationship-sync.mjs"
+      - "src/citation-attribution.mjs"
+      - "src/cost-calculator.mjs"
+      - "src/go-promotion-contract.mjs"
+      - "src/go-redirector-authority.mjs"
+      - "src/go-runtime-manifest.mjs"
+      - "src/medication-options.mjs"
+      - "src/price-refresh-evidence.mjs"
+      - "src/price-state.mjs"
+      - "src/pricing-coverage-floor.mjs"
+      - "src/pricing-evidence-v2.mjs"
+      - "src/program-registry.mjs"
+      - "src/provider-display-evidence.mjs"
+      - "src/provider-dynamic-profiles.mjs"
+      - "src/provider-identity.mjs"
+      - "src/therapeutic-taxonomy.mjs"
+      - "src/typed-price-labels.mjs"
+      - "tests/glp181-taxonomy-identity.test.mjs"
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   taxonomy-identity:
     runs-on: ubuntu-latest

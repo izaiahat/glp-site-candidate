@@ -98,9 +98,9 @@ const siteCss = await readText("public/assets/site.css");
 assert.equal(contracts.schema, "glp-provider-fastpath-contracts-v1");
 assert.equal(fastpath.schema, "glp-provider-fastpath-integration-v1");
 assert.equal(sha256(await read("data/provider-page-contracts.json")), fastpath.current_contract_sha256);
-assert.equal(contracts.providers.length, 43);
-assert.equal(fastpath.providers.length, 43);
-assert.equal(logoManifest.count, 57);
+assert.equal(contracts.providers.length, 50);
+assert.equal(fastpath.providers.length, 50);
+assert.equal(logoManifest.count, 64);
 assert.equal(logoManifest.runtime_remote_assets, 0);
 assert.equal(programRegistry.schema, "site-program-registry-v1");
 // D2w: all 43 editorial contracts remain; only receipted Telos is now held.
@@ -140,7 +140,15 @@ for (const provider of fastpath.providers) {
     // Current denial outranks the immutable historical selection receipt.
     assert.equal(promotionAuthority[provider.program_id].promotion_authorized, false);
     assert.match(html, /data-link-dark="true"/);
-    assert.match(html, /data-affiliate-state="held"/);
+    const relationship = programRegistry.programs.find(row => row.program_id === provider.program_id)?.affiliate_relationship_snapshot;
+    if (relationship?.lifecycle === 'ended') {
+      assert.equal(relationship.promotion_denied, true);
+      assert.equal(relationship.editorial_retained, true);
+      assert.match(relationship.ended_effective_at, /^\d{4}-\d{2}-\d{2}$/);
+      assert.ok(html.includes(`Our affiliate relationship with this provider ended on ${relationship.ended_effective_at}.`));
+      assert.match(html, /This editorial review is retained/);
+      assert.doesNotMatch(html, /data-affiliate-state="held"/);
+    } else assert.match(html, /data-affiliate-state="held"/);
     assert.doesNotMatch(html, /data-affiliate-state="active"|href="\/go\/|data-analytics-event="affiliate_click"|rel="sponsored/);
     const entry = GO_RUNTIME_MANIFEST.programs[selected?.render_id || provider.program_id];
     if (entry) {

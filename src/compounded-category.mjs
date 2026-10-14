@@ -4,9 +4,10 @@ import { isTypedPrice, typedPriceText } from './typed-price-labels.mjs';
 import { CITATION_REASONS, renderCitationAnchor } from './citation-attribution.mjs';
 import { loadAffiliateLinkMap } from './affiliate-link-map.mjs';
 import { loadGoPromotionAuthority } from './go-runtime-selection.mjs';
-import { resolveCardOutbound } from './card-outbound.mjs';
+import { resolveCardOutbound, approvedDirectCard } from './card-outbound.mjs';
 import { renderCouponChip } from './coupon-offers.mjs';
 import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
+import { taxonomyRowStale } from './therapeutic-taxonomy.mjs';
 const read = path => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
 const content = read('../data/compounded-category-content.json');
 const affiliateMap = loadAffiliateLinkMap('compare');
@@ -248,6 +249,7 @@ export function renderCompoundedCategoryBody({medication,programs,pricingMatrix,
     return program.commercial_state==='live' && profile?.vertical_fit===true && profile?.wired===true && profile?.surfaces?.review===true
       && !/fella/i.test(`${program.program_id} ${program.review_slug||''} ${program.display_name}`)
       && taxonomy?.commercial_link_state?.compare==='live'
+      && !taxonomyRowStale(taxonomy, registry.therapeutic_taxonomy.freshness_max_days) // stale evidence: claim held
       && taxonomy.molecule_tags?.includes(medication) && taxonomy.treatment_type_tags?.includes('compounded');
   }).sort((a,b)=>a.display_name.localeCompare(b.display_name,'en')||a.program_id.localeCompare(b.program_id,'en'));
   if (new Set(eligible.map(p=>p.program_id)).size !== eligible.length) throw new Error('compounded_category_duplicate_program');
@@ -264,14 +266,16 @@ export function renderCompoundedCategoryBody({medication,programs,pricingMatrix,
     const outbound=resolveCardOutbound({program,affiliate:affiliateMap[renderId],promotionAuthority,pageSlug:medication,position:'provider-card',rankPosition:index+1});
     const manifestEntry=GO_RUNTIME_MANIFEST.programs[renderId];
     // The category is a consumer of owner-issued authority, never its writer.
-    // Legacy/direct/held entries retain an explicit internal-review fallback.
-    const tracked=outbound.mode==='go'
+    // Held entries retain an internal review fallback. Approved direct links
+    // need no GO redirect grant and keep their exact provider-issued URL.
+    const tracked=(outbound.mode==='go'
       && manifestEntry?.status==='live_operator_approved'
       && manifestEntry.link_mode==='server_redirect'
       && manifestEntry.route===program.go?.route
       && manifestEntry.allowed_page_roles?.includes(medication)
       && manifestEntry.allowed_positions?.includes(outbound.f08Key.split('.')[1])
-      && manifestEntry.allowed_variants?.includes('a');
+      && manifestEntry.allowed_variants?.includes('a'))
+      || approvedDirectCard(outbound,affiliateMap[renderId],promotionAuthority.programs?.[program.program_id]);
     const primary=tracked?`<a class="cs-btn cs-palette-action" href="${esc(outbound.href)}" rel="sponsored noopener nofollow" data-g08-primary data-provider-card-contract="option-c" data-analytics-event="affiliate_click" data-program="${esc(renderId)}" data-link-position="provider-card" ${outbound.attributes}>Get started</a>`:`<a class="cs-btn cs-palette-action" href="${esc(program.review_path)}" data-g08-primary data-provider-card-contract="option-c" data-g08-outbound-state="held-review-fallback">Read the review</a>`;
     return {id:esc(program.program_id),name:esc(program.display_name),review:esc(program.review_path),primary,coupon:renderCouponChip(coupons[renderId]),filters:categoryFilterData(program,medication,pricingMatrix),
       evidence:providerEvidence(packet,medication,bundle.sources),prices:renderPrices(program,packet,medication,pricingMatrix),

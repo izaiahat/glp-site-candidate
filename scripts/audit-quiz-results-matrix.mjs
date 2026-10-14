@@ -42,6 +42,7 @@ import { fileURLToPath } from "node:url";
 
 import { validateQuizPolicy } from "../src/quiz.mjs";
 import { orderCandidates, rankScore } from "../src/quiz-ranking.mjs";
+import {effectiveAffiliateRegistry,relationshipDenials} from '../src/affiliate-relationship-sync.mjs';
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const PROFILE = "glp-clinic-scout";
@@ -95,6 +96,7 @@ function shippedJson(html, id) {
 }
 
 function main(config, registry, states, candidates, ranking, offered) {
+  const retiredIds=new Set(relationshipDenials(registry).filter(p=>['ended','withdrawn'].includes(p.lifecycle)).flatMap(p=>[p.program_id,p.render_id]));
   const policy = validateQuizPolicy(config);
   const findings = [];
   //: `defect` fails the audit. `evidence_gap` and `structural` are reported in
@@ -420,7 +422,7 @@ function main(config, registry, states, candidates, ranking, offered) {
   for (const vector of config.golden_vectors || []) {
     const actual = evaluateShipped(candidates, vector.answers, policy.result_count, cohortMin)
       .map((row) => String(row.program_id));
-    const expected = (vector.expected_program_ids || []).map(String);
+    const expected = (vector.expected_program_ids || []).map(String).filter(id=>!retiredIds.has(id));
     const match = JSON.stringify(actual) === JSON.stringify(expected);
     goldens.push({ vector_id: vector.vector_id, expected, actual, match });
     if (!match) note("golden_vector_drift", { vector_id: vector.vector_id, expected, actual });
@@ -471,7 +473,7 @@ function main(config, registry, states, candidates, ranking, offered) {
 }
 
 const config = await readJson("data/quiz-config.json");
-const registry = await readJson("data/program-registry.json");
+const registry = effectiveAffiliateRegistry(await readJson("data/program-registry.json"));
 const states = JSON.parse(await readFile(path.join(ROOT, "scripts/quiz-audit-states.json"), "utf8"));
 const built = await readFile(path.join(ROOT, "public/quiz/provider-fit/index.html"), "utf8");
 // What the reader is actually offered, read off the built page.

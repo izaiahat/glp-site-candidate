@@ -28,6 +28,7 @@ import { validatePriceRow, validateLegacySnapshot, deriveTypedCoverage } from ".
 import { isDeepStrictEqual } from "node:util";
 import { retainReceiptedHistoricalPricing } from "../src/historical-pricing-hold.mjs";
 import {validateAttestedRetention} from '../src/price-state.mjs';
+import {retainedManualPricingBasis} from '../src/provider-surface-append.mjs';
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 //: Operator evidence-recency rule (2026-08-12): citations ≤3 months at card time.
@@ -76,7 +77,7 @@ if (isV2) {
           const removedRows=removed.filter(r=>r.program_id===id).map(r=>historical.providers[id].medications[r.baseline_index]);
           snapshot[id]=rows.filter(r=>!removedRows.some(old=>isDeepStrictEqual(r,old)));
         }
-        violations.push(...validateLegacySnapshot(matrix,snapshot));
+        violations.push(...validateLegacySnapshot(retainedManualPricingBasis(matrix,registry,['rightwell-review','willow-review','ivim-health-review','tyde-wellness-review','feelgood-review','instarx-review','retaclinic-review']),snapshot));
       }
     } catch { violations.push("legacy_snapshot_unreadable"); }
   }

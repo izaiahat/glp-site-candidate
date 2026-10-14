@@ -139,7 +139,7 @@ function validateCalculator(calculator, profile, document, asOf) {
   if (calculator.evidence_sha256 !== stableProfileSha256(evidenceBasis)) fail("calculator_evidence_hash_mismatch", id);
 }
 
-function validateEvidenceBindings(profile, document, asOf) {
+function validateEvidenceBindings(profile, document, asOf, onStale = null) {
   const id = profile.program_id;
   if (!Array.isArray(profile.evidence_bindings) || !profile.evidence_bindings.length) fail("evidence_missing", id);
   const bound = new Map();
@@ -153,7 +153,11 @@ function validateEvidenceBindings(profile, document, asOf) {
       fail("evidence_binding_invalid", `${id}:${index}`);
     }
     const bindingAge = ageDays(binding.verified_as_of, asOf);
-    if (bindingAge === null || bindingAge < -1 || bindingAge > document.freshness_max_days) fail("evidence_binding_stale", `${id}:${index}`);
+    if (bindingAge === null || bindingAge < -1) fail("evidence_binding_stale", `${id}:${index}`);
+    if (bindingAge > document.freshness_max_days) {
+      if (!onStale) fail("evidence_binding_stale", `${id}:${index}`);
+      onStale(id);
+    }
     if (binding.evidence_sha256 !== exactBytesSha256(text)) fail("evidence_bytes_hash_mismatch", `${id}:${index}`);
     for (const field of fields) {
       const previous = bound.get(field);
@@ -197,7 +201,11 @@ export function deriveDynamicFacetCounts(profiles) {
   };
 }
 
-export function validateProviderDynamicProfiles(registry, profileId, { asOf = new Date() } = {}) {
+export function validateProviderDynamicProfiles(registry, profileId, { asOf = new Date(), staleEvidence = "fail" } = {}) {
+  // OPERATOR DECISION 2026-10-09: in "hold" mode stale profile evidence holds
+  // back that provider's therapeutic claim instead of failing the build.
+  const heldStale = new Set();
+  const onStale = staleEvidence === "hold" ? (id) => heldStale.add(id) : null;
   const document = registry?.provider_dynamic_profiles;
   if (!document || document.schema !== "glp-provider-dynamic-profiles-v1" || document.version !== 1) fail("schema_invalid");
   if (!ISO_DATE.test(String(document.sealed_as_of || ""))) fail("sealed_as_of_invalid");
@@ -228,7 +236,11 @@ export function validateProviderDynamicProfiles(registry, profileId, { asOf = ne
     labels.add(labelKey);
     if (!ISO_DATE.test(String(profile.verified_as_of || ""))) fail("verified_as_of_invalid", id);
     const age = ageDays(profile.verified_as_of, asOf);
-    if (age === null || age < -1 || age > document.freshness_max_days) fail("evidence_stale", id);
+    if (age === null || age < -1) fail("evidence_stale", id);
+    if (age > document.freshness_max_days) {
+      if (!onStale) fail("evidence_stale", id);
+      onStale(id);
+    }
     exactSortedStrings(profile.source_urls, "source_urls", id);
     if (!profile.source_urls.length || profile.source_urls.some((url) => !validHttps(url))) fail("source_urls_invalid", id);
     if (!profile.taxonomy || profile.taxonomy.treatment_type_state !== (profile.taxonomy.treatment_type_tags?.length ? "verified" : "not_verified")) fail("taxonomy_state_invalid", id);
@@ -239,7 +251,7 @@ export function validateProviderDynamicProfiles(registry, profileId, { asOf = ne
       const merged = [...new Set(sourceTaxonomy.flatMap((row) => row[field] || []))].sort();
       if (JSON.stringify(profile.taxonomy[field]) !== JSON.stringify(merged)) fail("taxonomy_conflict", `${id}:${field}`);
     }
-    validateEvidenceBindings(profile, document, asOf);
+    validateEvidenceBindings(profile, document, asOf, onStale);
     validatePositiveTaxonomySemantics(profile);
     validateCalculator(profile.calculator, profile, document, asOf);
     if (profile.normalized_sha256 !== normalizedProfileSha256(profile)) fail("normalized_hash_mismatch", id);
@@ -254,7 +266,12 @@ export function validateProviderDynamicProfiles(registry, profileId, { asOf = ne
       const exception = canonicalProfile.exceptions?.[surface];
       return exception?.enabled === true && typeof exception.surface_restriction_basis === "string" && exception.surface_restriction_basis.trim();
     };
-    if (surfaces.compare !== true) fail("registry_surface_missing", id);
+    const canonicalProgram=registryState.canonical.get(id);
+    const reviewOnly=canonicalProfile.surface_membership==='review_only';
+    if(reviewOnly && (canonicalProgram.affiliate_relationship_snapshot?.promotion_denied!==true
+      || surfaces.review!==true || surfaces.sitemap!==true
+      || !['compare','quiz','calculator','go'].every(s=>surfaces[s]===false && documentedOff(s)))) fail('review_only_surface_invalid',id);
+    if (surfaces.compare !== true && !reviewOnly) fail("registry_surface_missing", id);
     for (const surface of ["quiz", "calculator"]) {
       if (surfaces[surface] !== true && !documentedOff(surface)) fail("registry_surface_missing", `${id}:${surface}`);
     }
@@ -262,12 +279,14 @@ export function validateProviderDynamicProfiles(registry, profileId, { asOf = ne
   }
   const counts = deriveDynamicFacetCounts(profiles);
   if (JSON.stringify(document.expected_counts) !== JSON.stringify(counts)) fail("expected_counts_mismatch");
-  return Object.freeze({ document, profiles, counts: Object.freeze(counts), canonicalIds: Object.freeze(actualIds) });
+  return Object.freeze({ document, profiles, counts: Object.freeze(counts), canonicalIds: Object.freeze(actualIds),
+    held_stale: Object.freeze([...heldStale].sort()) });
 }
 
 export function providerSuggestions(registry, profileId, options) {
   const validated = validateProviderDynamicProfiles(registry, profileId, options);
-  return Object.freeze([...validated.profiles.values()].map((profile) => Object.freeze({
+  const reviewOnlyIds=new Set((registry.programs||[]).filter(p=>p.profiles?.[profileId]?.surface_membership==='review_only').map(renderId));
+  return Object.freeze([...validated.profiles.values()].filter(p=>!reviewOnlyIds.has(p.program_id)).map((profile) => Object.freeze({
     program_id: profile.program_id, provider: profile.provider,
   })).sort((a, b) => a.provider.localeCompare(b.provider) || a.program_id.localeCompare(b.program_id)));
 }

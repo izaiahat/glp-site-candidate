@@ -10,6 +10,12 @@ import {rejectDiagnosticFlags,checkExecutedProvenance} from './release-executed-
 import {bindEmittedConsent} from './consent-emitted-binding.mjs';
 const require = createRequire(import.meta.url);
 
+export const requiredNodeCounts = Object.freeze({ 'care-source-contracts': 9, 'ga4-contracts': 29, 'host-bootstrap': 388, 'material-contracts': 44, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 13 });
+export function requiredNodeCountsPass(id, log) {
+  const expected = requiredNodeCounts[id];
+  const count = key => Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1);
+  return expected !== undefined && count('tests') === expected && count('pass') === expected && count('fail') === 0 && count('skipped') === 0;
+}
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const readJson = file => JSON.parse(readFileSync(file, 'utf8'));
@@ -183,12 +189,12 @@ async function main() {
     const command = async (id, bin, args, env = {}) => {
       const receipt = await spawnLogged(bin, args, { cwd: ROOT, log: path.join(out, `${id}.log`), tee: false, env });
       receipt.log_sha256 = sha(readFileSync(path.join(out, `${id}.log`)));
-      const requiredNodeCounts = { 'care-source-contracts': 9, 'ga4-contracts': 29, 'host-bootstrap': 386, 'material-contracts': 44, 'harness-negatives': 9, 'go-destination-contracts': 43, 'public-name-regression': 1, 'release-export-artifact': 3, 'affiliati-postback-contract': 46, 'consent-attribution-withdrawal': 13 };
+
       if (requiredNodeCounts[id]) {
         const log = readFileSync(path.join(out, `${id}.log`), 'utf8');
         const counts = Object.fromEntries(['tests','pass','fail','skipped'].map(key => [key, Number(log.match(new RegExp(`^# ${key} (\\d+)$`, 'm'))?.[1] ?? -1)]));
         receipt.node_counts = counts;
-        if (counts.tests !== requiredNodeCounts[id] || counts.pass !== counts.tests || counts.fail !== 0 || counts.skipped !== 0) receipt.exit = receipt.exit || 1;
+        if (!requiredNodeCountsPass(id, log)) receipt.exit = receipt.exit || 1;
       }
       result.steps.push({ id, status: receipt.exit === 0 ? 'PASS' : 'FAIL', ...receipt }); save();
     };

@@ -1,19 +1,19 @@
 {
-  "schema": "glp-provider-cta-identity-v2",
+  "baseline_contract_sha256": "172e5a88885bf2779e83ccbdb55db18dc6f6c237b443124c21b51d7e4c9b86d8",
   "metadata_only": true,
-  "baseline_contract_sha256": "edcbabb72522b0884f6d6ac97a813b6bf7afc2bb63bf4302c42162a0d03ffef6",
   "programs": {
     "jrnys-review": {
+      "creative_id": "177612",
       "network": "Affiliati",
       "provider_offer_id": "42896",
-      "creative_id": "177612",
       "publisher_id": "15309"
     },
     "medvi-review": {
+      "creative_id": "178786",
       "network": "Affiliati",
       "provider_offer_id": "43194",
-      "creative_id": "178786",
       "publisher_id": "15309"
     }
-  }
+  },
+  "schema": "glp-provider-cta-identity-v2"
 }

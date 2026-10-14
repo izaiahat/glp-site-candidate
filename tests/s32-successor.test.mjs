@@ -6,7 +6,8 @@ import {s32LedgerPredecessor,s32CareCurrentToParent} from '../src/price-index-s3
 import {release2PriceLedgerBasis} from '../src/price-index-release2-basis.mjs';
 import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
 import {stripPriceStateDisclosures,PRICE_STATE_DISCLOSURE} from '../src/price-state.mjs';
-const read=n=>readFileSync(new URL('../'+n,import.meta.url));
+import {readHistoricalPriceFixture} from './helpers/provider-append-predecessor.mjs';
+const read=n=>readHistoricalPriceFixture(new URL('../'+n,import.meta.url));
 const sha=b=>createHash('sha256').update(b).digest('hex');
 test('exact Care successor reverses one leaf into unchanged S32 and release2 historical proofs',()=>{
  const current=read('data/program-content-ledger.json'),frozen=read('data/price-index-frozen-content-ledger.json');

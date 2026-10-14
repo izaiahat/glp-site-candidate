@@ -1,8 +1,8 @@
 {
-  "count": 57,
+  "count": 64,
   "logo_treatment_counts": {
-    "dark-chip": 11,
-    "light-chip": 46
+    "dark-chip": 12,
+    "light-chip": 52
   },
   "logo_treatment_derived_by": "scripts/analyze-provider-logo-luminance.py",
   "logo_treatment_schema": "glp-provider-logo-treatment-v1",
@@ -2970,6 +2970,370 @@
       "surface": "light",
       "verified_as_of": "",
       "width": 500
+    },
+    {
+      "bytes": 7026,
+      "height": 153,
+      "logo_fit": {
+        "center_offset": [
+          0.001,
+          0.013
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          599,
+          149
+        ],
+        "mark_share": [
+          0.998,
+          0.974
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 3.61,
+        "contrast_on_light_chip": 4.34,
+        "mean_ink_rgb": [
+          114.3,
+          115.2,
+          179.7
+        ],
+        "measured_pixels": 9426,
+        "relative_luminance": 0.192,
+        "translucent_share": 0.687
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "rightwell-review.webp",
+      "output_sha256": "32ee0fb7e7c2898f050dc21808840be82f6b3c6a60a4e241217d62b639671016",
+      "program_id": "rightwell-review",
+      "provider": "RightWell",
+      "public_path": "/assets/provider-logos/rightwell-review.webp",
+      "raw_sha256": "ed137263ef411be955e8548dff73f8c40d0432375f8c6c80f10026faefbc0129",
+      "resolved_url": "https://assets.embeddables.com/Logo_03344447052555455.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://assets.embeddables.com/Logo_03344447052555455.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.rightwell.com/get-started?",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 600
+    },
+    {
+      "bytes": 7244,
+      "height": 171,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          600,
+          171
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 14.07,
+        "contrast_on_light_chip": 1.11,
+        "mean_ink_rgb": [
+          231.0,
+          254.1,
+          116.5
+        ],
+        "measured_pixels": 10252,
+        "relative_luminance": 0.8923,
+        "translucent_share": 0.7023
+      },
+      "logo_treatment": "dark-chip",
+      "logo_treatment_reason": "cut_out_ink_below_wcag_non_text_contrast_on_white",
+      "media_type": "image/webp",
+      "output_file": "willow-review.webp",
+      "output_sha256": "1421b39293f27a1f26ebf7c508f297f2ef26bb2fcb3b5663343a0ee654ab7843",
+      "program_id": "willow-review",
+      "provider": "Willow",
+      "public_path": "/assets/provider-logos/willow-review.webp",
+      "raw_sha256": "5bb5b1ebcbf22614dbce73f607d442bbd6be084b476bd1dbe24ffdf19fade534",
+      "resolved_url": "https://cdn.prod.website-files.com/693034e0b94728017fd500b9/69387014118dfc0d5bbbe67b_Willow%20Full%20Logo%20-%20Electric.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/693034e0b94728017fd500b9/69387014118dfc0d5bbbe67b_Willow%20Full%20Logo%20-%20Electric.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.startwillow.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 600
+    },
+    {
+      "bytes": 4596,
+      "height": 104,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.005
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          1,
+          600,
+          102
+        ],
+        "mark_share": [
+          1.0,
+          0.971
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 2.71,
+        "contrast_on_light_chip": 5.79,
+        "mean_ink_rgb": [
+          88.3,
+          107.4,
+          69.1
+        ],
+        "measured_pixels": 2628,
+        "relative_luminance": 0.1312,
+        "translucent_share": 0.8945
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "ivim-health-review.webp",
+      "output_sha256": "1dba9f3934455b75728893bec6e19f7141e6746b9a09eb39b393c1ea0bc58f4d",
+      "program_id": "ivim-health-review",
+      "provider": "Ivim Health",
+      "public_path": "/assets/provider-logos/ivim-health-review.webp",
+      "raw_sha256": "ed270d2bc532970c3a2e60adc86202e99e63a0970bbf1ea13aa0e76ac6699ad0",
+      "resolved_url": "https://media-s3-cdn.ivimhealth.com/assets/images/logos/ivim-black.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://media-s3-cdn.ivimhealth.com/assets/images/logos/ivim-black.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://ivimhealth.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 600
+    },
+    {
+      "bytes": 6760,
+      "height": 113,
+      "logo_fit": {
+        "center_offset": [
+          0.001,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          599,
+          113
+        ],
+        "mark_share": [
+          0.998,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.34,
+        "contrast_on_light_chip": 21.0,
+        "mean_ink_rgb": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "measured_pixels": 5066,
+        "relative_luminance": 0.0,
+        "translucent_share": 0.8282
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "tyde-wellness-review.webp",
+      "output_sha256": "42830b5a439ad3df613a4a16317aac2df10ca8be690ac28071c75bf8add19b79",
+      "program_id": "tyde-wellness-review",
+      "provider": "Tyde Wellness",
+      "public_path": "/assets/provider-logos/tyde-wellness-review.webp",
+      "raw_sha256": "09d50ab12a9909765c43302ad022bd83aab3c04c170458f5e56a33a868fecce3",
+      "resolved_url": "https://www.tydewellness.com/wp-content/uploads/2026/09/tyde-drk.svg",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.tydewellness.com/wp-content/uploads/2026/09/tyde-drk.svg",
+      "source_kind": "remote_image",
+      "source_page_url": "https://glp1.intake.tydewellness.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 600
+    },
+    {
+      "bytes": 6908,
+      "height": 115,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.004
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          600,
+          114
+        ],
+        "mark_share": [
+          1.0,
+          0.991
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.08,
+        "contrast_on_light_chip": 14.54,
+        "mean_ink_rgb": [
+          41.1,
+          41.1,
+          40.1
+        ],
+        "measured_pixels": 7132,
+        "relative_luminance": 0.0222,
+        "translucent_share": 0.7092
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "feelgood-review.webp",
+      "output_sha256": "1c513dc15c5e21d4f003868fe95f0cf99544f5e54df39ee0bfa48a97b1608269",
+      "program_id": "feelgood-review",
+      "provider": "FeelGood",
+      "public_path": "/assets/provider-logos/feelgood-review.webp",
+      "raw_sha256": "79d676b163334fffbffce66462634168f7d51ce3c248a2600f0d8ed622ef4d32",
+      "resolved_url": "https://www.feelgoodmeds.com/images/logo.svg?dpl=dpl_7upp676uAyCwibzvdfUwfQKCH1T2",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://www.feelgoodmeds.com/images/logo.svg?dpl=dpl_7upp676uAyCwibzvdfUwfQKCH1T2",
+      "source_kind": "remote_image",
+      "source_page_url": "https://www.feelgoodmeds.com/?",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 600
+    },
+    {
+      "bytes": 8438,
+      "height": 161,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.006
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          2,
+          512,
+          161
+        ],
+        "mark_share": [
+          1.0,
+          0.988
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.27,
+        "contrast_on_light_chip": 19.99,
+        "mean_ink_rgb": [
+          1.0,
+          10.0,
+          13.1
+        ],
+        "measured_pixels": 11383,
+        "relative_luminance": 0.0025,
+        "translucent_share": 0.6971
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "instarx-review.webp",
+      "output_sha256": "e508d2d375df607f1076db5b10978bba0d73f26edb82899c22e94a7d2ad5518f",
+      "program_id": "instarx-review",
+      "provider": "InstaRx",
+      "public_path": "/assets/provider-logos/instarx-review.webp",
+      "raw_sha256": "f0b35a31e3115da7c8e54e47936fff4454b6da97cc478eef71e5def0bebb7e9a",
+      "resolved_url": "https://go.instarx.com/_next/image?url=%2Flogos%2Finstarx-logo.png&w=256&q=75&dpl=dpl_Ea8275wLSP2xzyxfETnyPD6exrn2",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://go.instarx.com/_next/image?url=%2Flogos%2Finstarx-logo.png&w=256&q=75&dpl=dpl_Ea8275wLSP2xzyxfETnyPD6exrn2",
+      "source_kind": "remote_image",
+      "source_page_url": "https://go.instarx.com/glp2",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 512
+    },
+    {
+      "bytes": 1736,
+      "height": 256,
+      "logo_fit": {
+        "center_offset": [
+          0.0,
+          0.0
+        ],
+        "content_scale": 1.0,
+        "mark_box": [
+          0,
+          0,
+          256,
+          256
+        ],
+        "mark_share": [
+          1.0,
+          1.0
+        ],
+        "reason": "mark_already_fills_the_chip"
+      },
+      "logo_luminance": {
+        "basis": "ink_pixels_alpha_weighted",
+        "contrast_on_dark_chip": 1.12,
+        "contrast_on_light_chip": 13.95,
+        "mean_ink_rgb": [
+          30.6,
+          44.9,
+          64.3
+        ],
+        "measured_pixels": 63244,
+        "relative_luminance": 0.0253,
+        "translucent_share": 0.035
+      },
+      "logo_treatment": "light-chip",
+      "logo_treatment_reason": "cut_out_ink_legible_on_white",
+      "media_type": "image/webp",
+      "output_file": "retaclinic-review.webp",
+      "output_sha256": "687549219085476db8c13df7ca6550afdbaf653e6af6b0d66c212aa6bc0b62ad",
+      "program_id": "retaclinic-review",
+      "provider": "RetaClinic",
+      "public_path": "/assets/provider-logos/retaclinic-review.webp",
+      "raw_sha256": "0c3427eecacd596efba939865bb2315d97f917daacd36832132cf7fa52e31eda",
+      "resolved_url": "https://cdn.prod.website-files.com/69d588c4a47264dd82d6f4fc/69f2e42b19ae6fdd308667d3_retaclinic-webclip-256.png",
+      "runtime_remote_load": false,
+      "source_asset_url": "https://cdn.prod.website-files.com/69d588c4a47264dd82d6f4fc/69f2e42b19ae6fdd308667d3_retaclinic-webclip-256.png",
+      "source_kind": "remote_image",
+      "source_page_url": "https://retaclinic.com/",
+      "surface": "light",
+      "verified_as_of": "",
+      "width": 256
     }
   ],
   "runtime_remote_assets": 0,

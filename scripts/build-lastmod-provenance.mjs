@@ -7,6 +7,21 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizedHash, loadRuntimePredecessor } from './postbuild-aeo-surface.mjs';
 import { loadHistoricalCarrierArticles, assertCarrierArticleOutput } from '../src/carrier-article-retention.mjs';
+import { existsSync, readFileSync } from 'node:fs';
+import { loadAcceptedUpdates } from '../src/accepted-update-source.mjs';
+
+export function recoveryEditorialDates(root, routes) {
+  const file = path.join(root, 'data/blog/accepted-guides/updates.json');
+  if (!existsSync(file)) return {}; // Historical fixtures have no accepted updates.
+  const entries = JSON.parse(readFileSync(file)).entries;
+  const recoveries = new Set(entries.filter(e => e.first_publication !== undefined).map(e => e.route));
+  if (!recoveries.size) return {};
+  // Reuse unchanged byte/QA/five-gate admission. This is an editorial-date
+  // projection only; it cannot excuse a rendered comparison or move lastmod.
+  return Object.fromEntries(loadAcceptedUpdates(root).filter(({article}) =>
+    recoveries.has(article.canonical_path) && routes.includes(article.canonical_path))
+    .map(({article}) => [article.canonical_path, article.updated_at]));
+}
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE_DIR = path.join(ROOT, 'data/predecessors/content-base');
@@ -117,7 +132,8 @@ export async function prepareLastmod(root = ROOT, { readPredecessor = readFile }
   // stdin pipe. No declared-source file, journal, build report or inherited env is read.
   env.GLP_LASTMOD_DECLARED_ROUTES_FILE = '/dev/stdin';
   const input = JSON.stringify({ schema: 'glp.lastmod_declared_routes.v1', routes: changed,
-    material_dates: Object.fromEntries(changed.map(route => [route, env.GLP_RELEASE_DATE])) });
+    material_dates: Object.fromEntries(changed.map(route => [route, env.GLP_RELEASE_DATE])),
+    editorial_dates: recoveryEditorialDates(root, changed) });
   return { env, input, comparison, comparisons, provenance };
 }
 

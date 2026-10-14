@@ -1,5 +1,6 @@
 import { resendContactsEnabled, syncResendContact } from "./resend-contacts.mjs";
 import { canonicalContactStatements, runCanonicalContactStatements } from "./canonical-contact.mjs";
+import { ONBOARDING_CONSENT_VERSION, ONBOARDING_CONSENT_SOURCE, ONBOARDING_CONSENT_TEXT, ONBOARDING_SURFACE } from './onboarding-consent.mjs';
 
 export const NEWSLETTER_CONSENT_VERSION = "glp-newsletter-v1-20260822";
 export const NEWSLETTER_CONSENT_SOURCE = "/subscribe-bottom-sheet/";
@@ -89,19 +90,21 @@ export function validateNewsletterSubscription(payload) {
   const email = String(payload.email || "").trim().toLowerCase();
   if (email.length > 254 || !EMAIL_PATTERN.test(email)) throw new Error("email_invalid");
   if (payload.email_consent !== true && payload.email_consent !== "true") throw new Error("required_consent_missing");
-  if (payload.consent_version !== NEWSLETTER_CONSENT_VERSION) throw new Error("consent_version_invalid");
+  const onboarding = payload.consent_version === ONBOARDING_CONSENT_VERSION;
+  if (!onboarding && payload.consent_version !== NEWSLETTER_CONSENT_VERSION) throw new Error("consent_version_invalid");
   if (payload.consent_source !== NEWSLETTER_CONSENT_SOURCE) throw new Error("consent_source_invalid");
   const firstName = String(payload.first_name || "").trim().replace(/\s+/g, " ");
   if (firstName.length > 60 || /[\u0000-\u001f\u007f]/.test(firstName)) throw new Error("first_name_invalid");
   const sourceSurface = String(payload.source_surface || "sitewide-price-watch").trim();
   if (!ALLOWED_SOURCE_SURFACES.has(sourceSurface)) throw new Error("source_surface_invalid");
   const providerContext = payload.provider_context ?? null;
+  if (onboarding && (sourceSurface !== ONBOARDING_SURFACE || providerContext !== null || firstName !== '')) throw new Error('onboarding_purpose_invalid');
   if (providerContext !== null) {
     if (!providerContext || typeof providerContext !== "object" || Array.isArray(providerContext)) throw new Error("provider_context_invalid");
     if (Object.keys(providerContext).some((key) => !ALLOWED_CONTEXT_KEYS.has(key))) throw new Error("provider_context_invalid");
     if (JSON.stringify(providerContext).length > 500) throw new Error("provider_context_invalid");
   }
-  return { email, firstName, sourceSurface, providerContext, consentVersion: NEWSLETTER_CONSENT_VERSION, consentSource: NEWSLETTER_CONSENT_SOURCE };
+  return { email, firstName, sourceSurface, providerContext, consentVersion: onboarding ? ONBOARDING_CONSENT_VERSION : NEWSLETTER_CONSENT_VERSION, consentSource: NEWSLETTER_CONSENT_SOURCE };
 }
 
 function captureGate(env) {
@@ -150,6 +153,26 @@ export async function handleNewsletterSubscribeRequest(request, env, fetchImpl =
   const now = new Date().toISOString();
   const subscriberId = hex(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`newsletter|glp-clinic-scout|${capture.email}`)));
   const unsubscribeToken = hex(crypto.getRandomValues(new Uint8Array(16)));
+  if (capture.consentVersion === ONBOARDING_CONSENT_VERSION) {
+    // New purpose is create-only: historic, withdrawn and suppressed identities
+    // are never silently converted/reactivated; duplicate opt-ins do not restart.
+    if (typeof db.batch !== 'function') return json(503, {status:'ATOMIC_STORAGE_REQUIRED'});
+    try {
+      const suppressed = await db.prepare("SELECT 1 AS found FROM suppression_log WHERE email=? AND vertical='glp-clinic-scout' LIMIT 1").bind(capture.email).first();
+      const prior = await db.prepare("SELECT status,consent_status,consent_version FROM subscribers WHERE email=? AND vertical='glp-clinic-scout'").bind(capture.email).first();
+      if (suppressed || prior && (prior.status !== 'active' || prior.consent_status !== 'opted-in' || prior.consent_version !== ONBOARDING_CONSENT_VERSION)) return json(409, {status:'EXISTING_PURPOSE_OR_SUPPRESSION_HELD'});
+      if (prior) return json(200, {status:'ALREADY_ENROLLED',sends_started:false});
+      const consentHash = hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ONBOARDING_CONSENT_TEXT)));
+      const insert = db.prepare("INSERT INTO subscribers(subscriber_id,email,first_name,vertical,funnel_stage,consent_status,consent_version,consent_source,consent_at,unsubscribe_token,status,next_drip_step,next_send_at,created_at,updated_at) SELECT ?,?,?,'glp-clinic-scout','newsletter','opted-in',?,?,?,?,'active',1,?,?,? WHERE NOT EXISTS (SELECT 1 FROM suppression_log WHERE email=? AND vertical='glp-clinic-scout') ON CONFLICT(email,vertical) DO NOTHING")
+        .bind(subscriberId,capture.email,capture.firstName||'there',ONBOARDING_CONSENT_VERSION,ONBOARDING_CONSENT_SOURCE,now,unsubscribeToken,now,now,now,capture.email);
+      const ledger = canonicalContactStatements(db, {subscriberId,email:capture.email,firstName:capture.firstName,funnelStage:'newsletter',sourceSurface:ONBOARDING_SURFACE,sourceContext:null,marketingConsent:true,consentVersion:ONBOARDING_CONSENT_VERSION,consentSource:ONBOARDING_CONSENT_SOURCE,consentCopySha256:consentHash,idempotencyKey:`marketing:${subscriberId}:${ONBOARDING_SURFACE}:${ONBOARDING_CONSENT_VERSION}`,capturedAt:now,unsubscribeToken,captureOnly:true});
+      const results = await db.batch([insert,...ledger]);
+      if (results.some(r=>r?.success===false)) throw new Error('batch_failed');
+      const row = await db.prepare("SELECT status,consent_status,consent_version FROM subscribers WHERE email=? AND vertical='glp-clinic-scout'").bind(capture.email).first();
+      if (!row || row.status!=='active' || row.consent_status!=='opted-in' || row.consent_version!==ONBOARDING_CONSENT_VERSION) return json(409,{status:'ENROLLMENT_HELD'});
+      return json(Number(results[0]?.meta?.changes||0)===1?201:200,{status:'ONBOARDING_ENROLLED',sends_started:false});
+    } catch { return json(503,{status:'STORAGE_FAILED'}); }
+  }
   try {
     const statements = canonicalContactStatements(db, {
       subscriberId,
@@ -168,6 +191,8 @@ export async function handleNewsletterSubscribeRequest(request, env, fetchImpl =
     });
     const results = await runCanonicalContactStatements(db, statements);
     if (results.some((result) => result?.success === false)) throw new Error("insert_failed");
+    // A ledger insert does not make a guarded subscriber no-op sendable.
+    if (Number(results[0]?.meta?.changes || 0) !== 1) return json(409, {status:'EXISTING_PURPOSE_OR_SUPPRESSION_HELD',sends_started:false});
   } catch {
     return json(503, { status: "STORAGE_FAILED" });
   }

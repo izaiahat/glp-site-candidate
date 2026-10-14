@@ -1,3 +1,4 @@
+import {readHistoricalPriceFixture} from './helpers/provider-append-predecessor.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -7,7 +8,7 @@ import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
 import {validatePriceIndexInputs,buildPriceIndexArtifacts,normalizePriceIndexSourceHashes} from '../src/price-index.mjs';
 import {reconcileTherapeuticTaxonomyWireIn} from '../src/therapeutic-taxonomy.mjs';
 import {reconcileProviderDynamicProfilesWireIn} from '../src/provider-dynamic-profiles.mjs';
-const read=p=>readFileSync(new URL('../data/'+p,import.meta.url));
+const read=p=>readHistoricalPriceFixture(new URL('../data/'+p,import.meta.url));
 const json=p=>JSON.parse(read(p));const sha=b=>createHash('sha256').update(b).digest('hex');
 const binding=frozenPriceLedger(read('program-content-ledger.json'),read('price-index-frozen-content-ledger.json'),json('price-index-nonprice-binding.json'));
 const input={tracker:json('price-tracker.json'),study:json('original-data-study.json'),programRegistry:json('program-registry.json'),contentLedger:binding.ledger,sourceHashes:{original_data_study_sha256:sha(read('original-data-study.json')),program_registry_sha256:sha(read('program-registry.json')),program_content_ledger_sha256:binding.frozen_sha256}};

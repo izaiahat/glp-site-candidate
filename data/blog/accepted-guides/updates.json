@@ -1,0 +1,114 @@
+{
+  "entries": [
+    {
+      "article": {
+        "path": "data/blog/accepted-guides/glp-1-shortage-availability-check-update-027ff7f6/article.json",
+        "sha256": "3c8f858b9e1bde01d8858e3a2b59f72dd4c8e6f339a7b982b2804e091fd8f13b"
+      },
+      "before_sha256": "a37f5205b17a8ed532fd9c7aac7ab7e034a61d6850cdad7a5a2da6d4648f44ad",
+      "entry_id": "027ff7f60699815d0bc438b6",
+      "qa": {
+        "path": "data/blog/accepted-guides/glp-1-shortage-availability-check-update-027ff7f6/qa.json",
+        "sha256": "3acf231e7114948ebbcae89d5ea3e712d9c95cde13ad7737323ccdc46644a864"
+      },
+      "review": {
+        "path": "data/blog/accepted-guides/glp-1-shortage-availability-check-update-027ff7f6/review.json",
+        "sha256": "89f1c232b9f97afcbc020a1a2ddfb8c551ecb0c0449efc7af0667b4f25f49007"
+      },
+      "route": "/guides/glp-1-shortage-availability-check/",
+      "semantic_materiality": {
+        "basis": "evidence_backed_answer_change",
+        "changed_sections": [
+          "Quick answer",
+          "What was verified, and what was not",
+          "Restart an FDA search without guessing a product URL",
+          "Keep national statements separate from the pharmacy answer",
+          "A prescription and a stock check answer different questions",
+          "Products, forms and approval status are separate checks",
+          "Insurance and payment do not answer the stock question",
+          "From an online prescription question to a pharmacy check",
+          "Do not infer a compounding permission from an availability problem",
+          "An optional record you can use immediately",
+          "Our update policy and evidence limits"
+        ],
+        "independent_semantic_review_required": true,
+        "material": true,
+        "new_primary_sources": [
+          "https://dps.fda.gov/drugshortages/activeingredient/semaglutide-injection",
+          "https://dps.fda.gov/drugshortages/resolved/tirzepatide-injection",
+          "https://www.fda.gov/drugs/development-approval-process-drugs/drug-approvals-and-databases",
+          "https://pi.lilly.com/us/zepbound-us-mg.pdf",
+          "https://www.novocare.com/pharmacy.html",
+          "https://www.amazon.com/gp/help/customer/display.html?nodeId=Tc3YmeOT3s3FXSeLMm"
+        ]
+      },
+      "weekly_strategy_sha256": "0e9eb80064d14b1ce2640fc4d19ef8d2d04eecc83370528ceabe20bf96370d9b"
+    },
+    {
+      "article": {
+        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/article-successor-4d3797d7797926c11a5cb77d858a5cf9cd8a8a7ce2db2f1e9e2e73369af4b4fc.json",
+        "sha256": "4d3797d7797926c11a5cb77d858a5cf9cd8a8a7ce2db2f1e9e2e73369af4b4fc"
+      },
+      "before_sha256": "cd90baba5d9dce8c01b632cc25fe98ed3dde3630dd2de7b00fbdcd97d0170e55",
+      "entry_id": "a17fe571440cc6cb22cd36cf",
+      "first_publication": {
+        "date": "2026-10-11",
+        "deployment_id": "1282a970-a7aa-46f5-b27f-c850c217d6bc",
+        "evidence": [
+          {
+            "path": "reports/glp-clinic-scout/seo-machine/current-release-f6745ece21e51cc21fedc7dc47d4405bac648643/CURRENT-RECEIPT.json",
+            "sha256": "07003cf8dd9239ba6e2dff485314f9ea1fbe948f0d0fde382db458c7722563d4"
+          },
+          {
+            "path": "reports/glp-clinic-scout/seo-machine/current-release-f6745ece21e51cc21fedc7dc47d4405bac648643/10-final-publication-receipt.json",
+            "sha256": "1e5c6ae1208bacf4426d50cf018087f7f540cf763918b39b2461f7d0e7a10e69"
+          },
+          {
+            "path": "reports/glp-clinic-scout/seo-machine/article-buffer/consumed/d065321eb1b8a3bbbd6a1617d5884a1623bd384a9dfccd79d0ab0ee1a7040c58.json",
+            "sha256": "909321fb9fdb27051629558a8bd0b58d5b2465033aa3c7fecb0fb742a8da482f"
+          },
+          {
+            "path": "reports/ops/fable-plan-2-20261009/lanes/A3/live-guide.headers",
+            "sha256": "26f7b593efd606e8d3389f9993ab3517da2cafe22ef225c103762d720f5f8b4a"
+          }
+        ],
+        "not_before_utc": "2026-10-12T03:15:22Z",
+        "observed_live_by_utc": "2026-10-12T03:17:31Z",
+        "site_head": "f6745ece21e51cc21fedc7dc47d4405bac648643",
+        "timezone": "America/Los_Angeles"
+      },
+      "qa": {
+        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/qa-successor-0912ba7818af5a59c87d357bdde1b88b463a8804141b37ba20318eb36ed79d1c.json",
+        "sha256": "0912ba7818af5a59c87d357bdde1b88b463a8804141b37ba20318eb36ed79d1c"
+      },
+      "review": {
+        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/review-successor-63fba1b72e3436236dda32065cdc6ec21374f9c6f68c45cd7cefea6a5815480b.json",
+        "sha256": "63fba1b72e3436236dda32065cdc6ec21374f9c6f68c45cd7cefea6a5815480b"
+      },
+      "route": "/guides/how-to-get-oral-glp-1/",
+      "semantic_materiality": {
+        "basis": "independent_five_gate_review_repair",
+        "changed_sections": [
+          "About this guide and its limits",
+          "Check 1: Identify the exact pill, not just “oral GLP-1”",
+          "Check 2: Arrange an evaluation, not a promised prescription",
+          "Label risks remain important when the medicine is a pill",
+          "Check 3: Separate coverage, savings and self-pay",
+          "Check 4: Confirm the prescription and pharmacy handoff",
+          "Check 5: Discuss daily-use fit and ongoing follow-up",
+          "Your on-page appointment and pharmacy checklist",
+          "Methodology and update policy"
+        ],
+        "independent_semantic_review_required": true,
+        "material": true,
+        "new_primary_sources": [
+          "https://www.novo-pi.com/wegovy.pdf",
+          "https://www.novo-pi.com/ozempic-pill.pdf",
+          "https://pi.lilly.com/us/foundayo-uspi.pdf"
+        ]
+      },
+      "weekly_strategy_sha256": null
+    }
+  ],
+  "schema": "glp-accepted-guide-updates-v1"
+}

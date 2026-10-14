@@ -8,6 +8,40 @@ name: Private mirror portable checks (build excluded)
 # Existing build/test logic is untouched; this is NOT a build or release PASS.
 on:
   pull_request:
+    paths:
+      - ".github/workflows/mirror-ci.yml"
+      - "assets/**"
+      - "data/**"
+      - "functions/go/program-manifest.js"
+      - "package.json"
+      - "scripts/audit-quiz-results-matrix.mjs"
+      - "scripts/build-lastmod-provenance.mjs"
+      - "scripts/build-staging.mjs"
+      - "scripts/codemod-aeo-citation-schema.mjs"
+      - "scripts/glp_evidence_ledger.mjs"
+      - "scripts/glp_material_acceptance.mjs"
+      - "scripts/postbuild-aeo-surface.mjs"
+      - "scripts/refresh-price-tracker.mjs"
+      - "scripts/refresh-therapeutic-taxonomy.py"
+      - "scripts/therapeutic-taxonomy-refresh-policies.json"
+      - "scripts/regenerate-go-runtime-manifest.mjs"
+      - "scripts/validate-provider-fastpath-plus5.mjs"
+      - "scripts/wave2-repairs.mjs"
+      - "src/**"
+      - "tests/accepted-guide-source.test.mjs"
+      - "tests/accepted-update-source.test.mjs"
+      - "tests/affiliate-relationship-sync.test.mjs"
+      - "tests/candidate-export-policy.test.mjs"
+      - "tests/carrier-analytics-emission.test.mjs"
+      - "tests/content-upgrade-contract.test.mjs"
+      - "tests/d2f-coverage-floor.test.mjs"
+      - "tests/f06-fastpath-current-hold.test.mjs"
+      - "tests/glp47-approved-onboarding.test.mjs"
+      - "tests/guide-resource-consent.test.mjs"
+      - "tests/helpers/**"
+      - "tests/pricing-deployed-row-schema.test.mjs"
+      - "tests/therapeutic-refresh-import.test.mjs"
+      - "tests/wave2-p1-surfaces.test.mjs"
   workflow_dispatch:
     inputs:
       source_sha:
@@ -17,6 +51,9 @@ on:
         default: ''
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   portable-export-contracts:
     name: Portable export contracts (build NOT checked)
@@ -52,6 +89,20 @@ jobs:
         run: node --test tests/pricing-deployed-row-schema.test.mjs tests/d2f-coverage-floor.test.mjs
       - name: Affiliate relationship synchronization contracts
         run: node --test tests/affiliate-relationship-sync.test.mjs
+      - name: Guide resource renderer and privacy regression (offline only)
+        run: node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs
+      - name: Carrier analytics emitter and alias cache regression (offline only)
+        run: node --test tests/carrier-analytics-emission.test.mjs
+      - name: Accepted guide source and on-page-only contract (offline)
+        run: node --test tests/accepted-guide-source.test.mjs tests/accepted-update-source.test.mjs tests/accepted-guide-render-contract.test.mjs
+      - name: GLP47 approved onboarding and B01 launch hold (offline only)
+        run: node --test tests/glp47-approved-onboarding.test.mjs
+      - name: GLP93 bounded provider append regressions (offline exact head)
+        run: node --test tests/provider-price-append.test.mjs tests/provider-surface-append.test.mjs tests/provider-reviewed-score.test.mjs tests/q11-price-append-adverse.test.mjs tests/review-score-contract.test.mjs
+      - name: F06 current-hold and ended-relationship validator seam (offline exact head)
+        run: node --test tests/f06-fastpath-current-hold.test.mjs
+      - name: Taxonomy refresh import boundary (offline exact head)
+        run: node --test tests/therapeutic-refresh-import.test.mjs
       - name: Record limited scope
         if: always()
         run: |

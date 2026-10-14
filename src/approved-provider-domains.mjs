@@ -15,7 +15,7 @@ import { readFileSync } from "node:fs";
 import { isNonPublicSourceUrl } from "./citation-attribution.mjs";
 import {buildAffiliateLinkMap} from './affiliate-link-map.mjs';
 import {loadProviderPageContracts} from './provider-cta-contract.mjs';
-import {loadGoSelection} from './go-runtime-selection.mjs';
+import {loadGoSelection,loadGoPromotionAuthority} from './go-runtime-selection.mjs';
 
 const SITE_PROFILE = "glp-clinic-scout";
 
@@ -246,7 +246,7 @@ export function lookupProviderDomain(domains, host) {
 export function loadApprovedProviderDomainMap(root = new URL("../", import.meta.url)) {
   const read = (relative) => JSON.parse(readFileSync(new URL(relative, root), "utf8"));
   const affiliateMap=buildAffiliateLinkMap(read('data/money-page-specs.json').pages,read('data/program-registry.json'),read('data/affiliate-activation-selection.json'),'compare',SITE_PROFILE,{
-    providerContracts:loadProviderPageContracts(root),providerFastpath:read('data/provider-fastpath-contract.json'),approvedRegistry:read('data/approved-program-registry.json'),wireInApprovals:read('data/affiliate-wire-in-approvals.json'),goSelection:loadGoSelection(root),
+    providerContracts:loadProviderPageContracts(root),providerFastpath:read('data/provider-fastpath-contract.json'),approvedRegistry:read('data/approved-program-registry.json'),wireInApprovals:read('data/affiliate-wire-in-approvals.json'),goSelection:loadGoSelection(root),promotionAuthority:loadGoPromotionAuthority(root),
   });
   return buildApprovedProviderDomainMap({
     affiliateMap,

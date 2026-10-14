@@ -249,6 +249,12 @@ function sortedUniqueStrings(value, allowed, field, pid) {
   return normalized;
 }
 
+/** True when a raw taxonomy row's evidence is past its freshness window (claim must be held). */
+export function taxonomyRowStale(row, freshnessMaxDays, asOf = new Date()) {
+  const age = ageDays(String(row?.verified_as_of || ""), asOf);
+  return age === null || age > freshnessMaxDays;
+}
+
 function ageDays(verifiedAsOf, asOf) {
   const start = Date.parse(`${verifiedAsOf}T00:00:00Z`);
   const end = asOf instanceof Date ? asOf.getTime() : Date.parse(String(asOf));
@@ -296,7 +302,7 @@ function captureAgeDays(timestamp, asOf) {
   return Number.isFinite(start) && Number.isFinite(end) ? (end - start) / 86_400_000 : null;
 }
 
-function validateRetatrutideCapture(declaration, freshnessMaxDays, asOf) {
+function validateRetatrutideCapture(declaration, freshnessMaxDays, asOf, staleEvidence = "fail") {
   if (!declaration || declaration.schema !== RETATRUTIDE_CAPTURE.schema
       || declaration.research?.path !== RETATRUTIDE_CAPTURE.research.path
       || declaration.research?.sha256 !== RETATRUTIDE_CAPTURE.research.sha256
@@ -326,10 +332,13 @@ function validateRetatrutideCapture(declaration, freshnessMaxDays, asOf) {
   const capture = RETATRUTIDE_CAPTURE.audit_summary;
   const captureAge = captureAgeDays(summary.audited_at, asOf);
   if (summary.status !== capture.status || summary.audited_at !== capture.audited_at
-      || summary.firecrawl_job_id !== capture.firecrawl_job_id || captureAge === null
-      || captureAge < -1 || captureAge > freshnessMaxDays) {
+      || summary.firecrawl_job_id !== capture.firecrawl_job_id || captureAge === null || captureAge < -1) {
     fail("consumer_authority_capture_status_time_invalid", "audit_summary");
   }
+  // OPERATOR DECISION 2026-10-09 (workflow v3): stale evidence holds back only
+  // the claim it supports. Identity, hash and semantic checks above still fail.
+  const stale = captureAge > freshnessMaxDays;
+  if (stale && staleEvidence !== "hold") fail("consumer_authority_capture_status_time_invalid", "audit_summary");
   if (!research.includes("Date: 2026-09-09") || !research.includes(`Firecrawl job: \`${capture.firecrawl_job_id}\``)) {
     fail("consumer_authority_capture_research_metadata_invalid", "research");
   }
@@ -339,7 +348,7 @@ function validateRetatrutideCapture(declaration, freshnessMaxDays, asOf) {
       fail("consumer_authority_capture_semantics_invalid", authority);
     }
   }
-  return summary;
+  return Object.freeze({ summary, stale });
 }
 
 function providerRetatrutideEvidencePositive(profile) {
@@ -360,14 +369,15 @@ function providerRetatrutideEvidencePositive(profile) {
   return true;
 }
 
-export function validateConsumerTherapeuticAuthorities(registry, profileId, { asOf = new Date(), dynamic = null } = {}) {
+export function validateConsumerTherapeuticAuthorities(registry, profileId, { asOf = new Date(), dynamic = null, staleEvidence = "fail" } = {}) {
   const document = registry?.consumer_therapeutic_authorities;
   if (!document || document.schema !== "glp-consumer-therapeutic-authority-v1" || document.version !== 1) fail("consumer_authority_schema_invalid");
   if (!ISO_DATE.test(String(document.sealed_as_of || "")) || !Number.isInteger(document.freshness_max_days)
       || document.freshness_max_days < 1 || document.freshness_max_days > 30) fail("consumer_authority_policy_invalid");
   const retatrutide = document.molecules?.retatrutide;
   if (!retatrutide || retatrutide.gate !== "positive_provider_evidence_and_all_current_lawful_regulatory_authorities") fail("consumer_authority_gate_invalid", "retatrutide");
-  validateRetatrutideCapture(retatrutide.local_capture_authority, document.freshness_max_days, asOf);
+  const capture = validateRetatrutideCapture(retatrutide.local_capture_authority, document.freshness_max_days, asOf, staleEvidence);
+  let authorityStale = capture.stale;
   const records = retatrutide.official_evidence;
   if (!Array.isArray(records) || records.length !== 2
       || JSON.stringify(records.map((row) => row.authority).sort()) !== JSON.stringify(["fda", "lilly"])) fail("consumer_authority_dual_evidence_invalid", "retatrutide");
@@ -393,15 +403,22 @@ export function validateConsumerTherapeuticAuthorities(registry, profileId, { as
     catch { fail("consumer_authority_source_invalid", record.authority); }
     if (record.evidence_sha256 !== exactEvidenceSha256(record.evidence_text)) fail("consumer_authority_hash_mismatch", record.authority);
     const age = ageDays(record.verified_as_of, asOf);
-    if (age === null || age < -1 || age > document.freshness_max_days) fail("consumer_authority_stale", `${record.authority}:${age}`);
+    if (age === null || age < -1) fail("consumer_authority_stale", `${record.authority}:${age}`);
+    if (age > document.freshness_max_days) {
+      if (staleEvidence !== "hold") fail("consumer_authority_stale", `${record.authority}:${age}`);
+      authorityStale = true;
+    }
     if (record.consumer_availability !== expected.consumer_available) fail("consumer_authority_disposition_semantics_mismatch", record.authority);
   }
-  const profiles = dynamic || validateProviderDynamicProfiles(registry, profileId, { asOf });
+  const profiles = dynamic || validateProviderDynamicProfiles(registry, profileId, { asOf, staleEvidence });
   const providerEvidencePositive = [...profiles.profiles.values()].some(providerRetatrutideEvidencePositive);
-  const lawfulAuthorityPositive = records.every((record) => RETATRUTIDE_CAPTURE.authorities[record.authority].consumer_available === true);
+  // A stale authority can never make the consumer claim positive: hold = unavailable.
+  const lawfulAuthorityPositive = !authorityStale
+    && records.every((record) => RETATRUTIDE_CAPTURE.authorities[record.authority].consumer_available === true);
   return Object.freeze({ retatrutide: Object.freeze({
     provider_evidence_positive: providerEvidencePositive,
     lawful_regulatory_authority_positive: lawfulAuthorityPositive,
+    claim_held_stale: authorityStale,
     consumer_available: providerEvidencePositive && lawfulAuthorityPositive,
     source_urls: Object.freeze(records.map((record) => record.source_url)),
   }) });
@@ -464,7 +481,8 @@ export function sameCanonicalRegistryIdentity(registryByRenderId, profileId, lef
     && [left, right].some((id) => registryByRenderId.get(id)?.profiles?.[profileId]?.canonical_identity?.role === "alias");
 }
 
-export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Date() } = {}) {
+export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Date(), staleEvidence = "fail" } = {}) {
+  const heldStale = new Set();
   const document = registry?.therapeutic_taxonomy;
   if (!document || document.schema !== "glp-therapeutic-taxonomy-v1") fail("schema_invalid");
   if (!ISO_DATE.test(String(document.sealed_as_of || ""))) fail("sealed_as_of_invalid");
@@ -513,7 +531,12 @@ export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Da
     }
     if (!ISO_DATE.test(String(row.verified_as_of || ""))) fail("verified_as_of_invalid", pid);
     const age = ageDays(row.verified_as_of, asOf);
-    if (age === null || age < -1 || age > document.freshness_max_days) fail("evidence_stale", `${pid}:${age}`);
+    if (age === null || age < -1) fail("evidence_stale", `${pid}:${age}`);
+    if (age > document.freshness_max_days) {
+      // OPERATOR DECISION 2026-10-09: hold back only this row's therapeutic claim.
+      if (staleEvidence !== "hold") fail("evidence_stale", `${pid}:${age}`);
+      heldStale.add(pid);
+    }
     if (!Array.isArray(row.source_urls) || row.source_urls.length === 0
         || row.source_urls.some((url) => {
           try { return new URL(url).protocol !== "https:"; } catch { return true; }
@@ -549,7 +572,8 @@ export function validateTherapeuticTaxonomy(registry, profileId, { asOf = new Da
     fail("expected_counts_mismatch", stableSha256({ expected: document.expected_counts, actual: counts }));
   }
   if (document.expected_counts.provider_rows !== programs.size) fail("provider_count_mismatch");
-  return Object.freeze({ document, programs, counts: Object.freeze(counts) });
+  return Object.freeze({ document, programs, counts: Object.freeze(counts),
+    held_stale: Object.freeze([...heldStale].sort()) });
 }
 
 function canonicalTherapeuticPrograms(registry, profileId, validatedPrograms) {
@@ -625,12 +649,22 @@ export function therapeuticTokens(row) {
   ])].sort();
 }
 
-export function projectTherapeuticSurfaces({ registry, profileId, pages, quizConfig, programs = [], asOf = new Date() }) {
-  const validated = validateTherapeuticTaxonomy(registry, profileId, { asOf });
+export function projectTherapeuticSurfaces({ registry, profileId, pages, quizConfig, programs = [], asOf = new Date(), staleEvidence = "fail" }) {
+  const validated = validateTherapeuticTaxonomy(registry, profileId, { asOf, staleEvidence });
   const rawCanonical = canonicalTherapeuticPrograms(registry, profileId, validated.programs);
-  const dynamic = validateProviderDynamicProfiles(registry, profileId, { asOf });
-  const consumerAuthorities = validateConsumerTherapeuticAuthorities(registry, profileId, { asOf, dynamic });
-  const effectiveFilters = consumerTherapeuticFilters(registry, profileId, { asOf, dynamic });
+  const dynamic = validateProviderDynamicProfiles(registry, profileId, { asOf, staleEvidence });
+  const consumerAuthorities = validateConsumerTherapeuticAuthorities(registry, profileId, { asOf, dynamic, staleEvidence });
+  const effectiveFilters = consumerTherapeuticFilters(registry, profileId, { asOf, dynamic, staleEvidence });
+  // A canonical provider with any stale source row renders no therapeutic tags
+  // (claim held back, treatment unknown) while its row, links and holds stay intact.
+  const heldStaleSources = new Set(validated.held_stale);
+  const registryByRenderId = new Map((registry?.programs || []).map((program) => [renderId(program), program]));
+  const heldCanonical = new Set([...heldStaleSources].map((sourceId) => {
+    const identity = registryByRenderId.get(sourceId)?.profiles?.[profileId]?.canonical_identity;
+    return identity?.role === "alias" ? String(identity.canonical_program_id || "") : sourceId;
+  }).concat(dynamic.held_stale || []));
+  const withheld = () => ({ molecule_tags: [], brand_name_tags: [], delivery_form_tags: [],
+    treatment_type_tags: [], treatment_type_state: "not_verified", claim_qualification: "", claim_held_stale: true });
   const allowedPreferenceValues = new Set([...effectiveFilters.map((item) => item.value), "not_sure"]);
   const projectedPrograms = new Map([...dynamic.profiles.entries()].map(([programId, profile]) => {
     const raw = rawCanonical.get(programId);
@@ -638,6 +672,7 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
     return [programId, Object.freeze({
       ...raw,
       ...profile.taxonomy,
+      ...(heldCanonical.has(programId) ? withheld() : {}),
       provider: profile.provider,
       render_label: null,
       verified_as_of: profile.verified_as_of,
@@ -646,7 +681,8 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
         : profile.normalized_sha256,
     })];
   }));
-  const expectedIds = new Set(projectedPrograms.keys());
+  const reviewOnlyIds=new Set((registry.programs||[]).filter(p=>p.profiles?.[profileId]?.surface_membership==='review_only').map(p=>String(p.review_slug||p.program_id)));
+  const expectedIds = new Set([...projectedPrograms.keys()].filter(id=>!reviewOnlyIds.has(id)));
   // S9-2: a receipted hold stays a DARK ROW in the raw money/quiz source
   // documents - the installed held-aware census requires the row to be present
   // and projects it off, and a missing held row is itself a fail-closed failure.
@@ -662,6 +698,7 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
       if (!scopedOff) return false;
       // Two provable non-members: a receipted, unwired hold, and a declared
       // alias identity that consolidates onto its canonical record.
+      if(reviewOnlyIds.has(String(item.review_slug||item.program_id)))return true;
       return item.commercial_state === "held"
         ? profile.wired === false
         : profile.canonical_identity?.role === "alias";
@@ -669,7 +706,7 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
     .map((item) => String(item.review_slug || item.program_id)));
   const requiredPaths = new Set(validated.document.required_surface_paths);
   const projectedPages = pages.map((page) => {
-    const rows = (page.rows || []).map((row) => {
+    const rows = (page.rows || []).filter(row=>!reviewOnlyIds.has(String(row.program_id))).map((row) => {
       const taxonomy = projectedPrograms.get(String(row.program_id));
       if (!taxonomy) return { ...row };
       const linkState = commercialLinkState(row, "compare");
@@ -696,7 +733,7 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
   for (const route of requiredPaths) {
     if (!projectedPages.some((page) => page.path === route)) fail("required_surface_missing", route);
   }
-  const candidates = (quizConfig.candidates || []).map((candidate) => {
+  const candidates = (quizConfig.candidates || []).filter(row=>!reviewOnlyIds.has(String(row.program_id))).map((candidate) => {
     const taxonomy = projectedPrograms.get(String(candidate.program_id));
     if (!taxonomy) return { ...candidate };
     // quiz-config is deliberately link-dark at rest. renderQuiz resolves the
@@ -747,6 +784,7 @@ export function projectTherapeuticSurfaces({ registry, profileId, pages, quizCon
     dynamic,
     consumerAuthorities,
     consumerTherapeuticFilters: effectiveFilters,
+    claimsHeldStale: Object.freeze([...heldCanonical].sort()),
     projectedPrograms,
     includeProgramIds: Object.freeze([...expectedIds].sort()),
   });

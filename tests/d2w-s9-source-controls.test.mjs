@@ -17,7 +17,8 @@ import {resolveCatalogDate,resolveMaterialDate,resolveRouteLastmod} from '../scr
 import {buildProviderReviewSpecs,renderProviderReviewPage} from '../src/provider-review.mjs';
 import {buildPhase3PageGraph} from '../src/phase3-page-graph.mjs';
 import {sourceDisplayPacket,projectProviderDisplayLedger,projectProviderDisplayFacts} from '../src/provider-display-evidence.mjs';
-const root=new URL('../',import.meta.url),bytes=n=>readFileSync(new URL('data/'+n,root)),read=n=>JSON.parse(bytes(n)),sha=b=>createHash('sha256').update(b).digest('hex');
+import {readHistoricalPriceFixture,readBeforeProviderAppendFixture} from './helpers/provider-append-predecessor.mjs';
+const root=new URL('../',import.meta.url),bytes=n=>['program-registry.json','provider-page-contracts.json','provider-fastpath-contract.json','quiz-config.json','money-page-specs.json','phase3-page-graph.json'].includes(n)?readBeforeProviderAppendFixture(new URL('data/'+n,root)):readHistoricalPriceFixture(new URL('data/'+n,root)),read=n=>JSON.parse(bytes(n)),sha=b=>createHash('sha256').update(b).digest('hex');
 const registry=read('program-registry.json'),money=read('money-page-specs.json'),quiz=read('quiz-config.json'),ledger=read('program-content-ledger.json'),profile='glp-clinic-scout';
 const frozen=frozenPriceLedger(bytes('program-content-ledger.json'),bytes('price-index-frozen-content-ledger.json'),read('price-index-nonprice-binding.json'));
 const bad=/Delivery in as little as 1 hour|\$129 for the weight-loss panel|Weight-loss blood work is an additional \$129|\$129 weight-loss panel/;

@@ -1,0 +1,29 @@
+name: price-refresh-evidence
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/price-refresh-evidence.yml"
+      - "assets/**"
+      - "data/**"
+      - "functions/go/program-manifest.js"
+      - "package-lock.json"
+      - "package.json"
+      - "src/**"
+      - "tests/helpers/**"
+      - "tests/price-refresh-evidence.test.mjs"
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  price-refresh-evidence-exact-head:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --include=dev --ignore-scripts --no-audit --no-fund
+      - run: node --test tests/price-refresh-evidence.test.mjs
+      - run: git diff --exit-code

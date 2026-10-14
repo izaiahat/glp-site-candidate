@@ -5,7 +5,7 @@ import { readFileSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSy
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadCarrierArticle, loadCarrierArticles, assertCarrierArticleOutput } from '../src/carrier-article-retention.mjs';
+import { loadCarrierArticle, loadCarrierArticles, assertCarrierArticleBytes } from '../src/carrier-article-retention.mjs';
 import * as retention from '../src/carrier-article-retention.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const imagePath = 'artifacts/ultracode/article-image-manifest.json';
@@ -48,7 +48,8 @@ test('registered two-carrier rebind retains frozen pins, exact held bytes and al
     assert.deepEqual(Object.keys(record).filter(k => !(k in original)).sort(), [...keys].sort());
     assert.deepEqual(Object.fromEntries(Object.entries(record).filter(([k]) => !keys.includes(k))), original);
     assert.equal(digest(original), row.manifest.bindings.find(b => b.path === imagePath).sha256);
-    assertCarrierArticleOutput(row, readFileSync(path.join(dir, row.manifest.snapshot)), 'candidate');
+    // This assertion authenticates the frozen input, not its runtime-rebound output.
+    assertCarrierArticleBytes(row, readFileSync(path.join(dir, row.manifest.snapshot)));
   }
 }));
 

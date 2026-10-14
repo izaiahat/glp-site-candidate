@@ -27,7 +27,7 @@
       "callers": [
         "GitHub PR exact-head checks"
       ],
-      "sha256": "716efb4b3c2f98bd4694a779b20352eb386dba1b9cd0bcdf268c68c79bebd544"
+      "sha256": "55dc13447564af58e3a45730796bcc28dea494a7e1fc11c1bc51b8f40930cf02"
     },
     "src/sponsor-order.mjs": {
       "kind": "site_source",
@@ -80,7 +80,7 @@
       "callers": [
         "node --test"
       ],
-      "sha256": "f74f8d4c860a1133472f856289359cb3fafab3bf06752c5efa3b8470dff992a2"
+      "sha256": "10ceafef80fc22532715f4c2eaf0c0ee875fc41a1bea01b1b1cbfa812fd6d3a1"
     },
     "data/sponsor-pricing.json": {
       "kind": "sponsor_source",
@@ -94,7 +94,7 @@
       "callers": [
         "GLP327 successor source/capture checks"
       ],
-      "sha256": "c8296a5dac5f62f9526638f94b7e253cf8bfe18d8592710c18843084af058e46"
+      "sha256": "572935c24b213b6472cf4849f8bfc9f3fbfd2eb3d69c1c3185cbe2d92af5d51b"
     },
     "tests/glp327-sponsor-r4.test.mjs": {
       "kind": "sponsor_source",
@@ -115,7 +115,7 @@
       "callers": [
         "GLP327 successor source/capture checks"
       ],
-      "sha256": "ba72271521048ee98904fe4e66b29bcff25f5654c2ff2635af6b427f8b5ac599"
+      "sha256": "bcc556bbe0a352c4c8d38b3c57f1b6095c65a809fcc5358fd2243d3612ad4a0b"
     }
   },
   "tracked_count": 17

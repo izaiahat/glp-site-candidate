@@ -2,8 +2,33 @@ name: glp80-qualified-projection
 on:
   pull_request:
     branches: [main]
+    paths:
+      - ".github/workflows/glp80-qualified-projection.yml"
+      - "assets/**"
+      - "data/**"
+      - "functions/go/program-manifest.js"
+      - "package-lock.json"
+      - "package.json"
+      - "scripts/build-lastmod-provenance.mjs"
+      - "scripts/build-staging.mjs"
+      - "scripts/codemod-aeo-citation-schema.mjs"
+      - "scripts/glp_evidence_ledger.mjs"
+      - "scripts/glp_material_acceptance.mjs"
+      - "scripts/postbuild-aeo-surface.mjs"
+      - "scripts/refresh-price-tracker.mjs"
+      - "scripts/wave2-repairs.mjs"
+      - "src/**"
+      - "tests/eden-qualified-projection.test.mjs"
+      - "tests/fixtures/eden*/**"
+      - "tests/fixtures/eden-qualified-closure.json"
+      - "tests/helpers/price-refresh-surfaces.mjs"
+      - "tests/price-index-current-offers.test.mjs"
+      - "tests/price-refresh-evidence.test.mjs"
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   focused-exact-head:
     runs-on: ubuntu-latest
@@ -31,4 +56,5 @@ jobs:
           node --experimental-test-module-mocks --test tests/paid-promo.test.mjs tests/glp327-sponsor-r4.test.mjs tests/glp327-sponsor-layouts.test.mjs tests/sponsor-placement-candidate.test.mjs tests/glp327-sponsor-design-system.test.mjs tests/glp327-sponsor-live-content.test.mjs
           python3 -m pip install 'reportlab==5.0.1' 'pypdf==6.19.0' 'pillow==12.3.0'
           python3 -m unittest discover -s tests -p test_glp327_sponsor_packet.py
+          node --test tests/price-refresh-evidence.test.mjs tests/price-index-current-offers.test.mjs
           git diff --exit-code

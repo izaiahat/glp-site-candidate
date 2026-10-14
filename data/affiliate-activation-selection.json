@@ -1,8 +1,27 @@
 {
   "email_sends_authorized": false,
+  "excluded_network_paused_programs": [
+    "try-ageless",
+    "altrx-glp1-us-cps",
+    "futurhealth-wegovy-pillform"
+  ],
+  "excluded_selection_evidence": [
+    {
+      "display_name": "AgelessRx",
+      "disposition": "historical_snapshot_only_not_activation_authority",
+      "link_mode": "transparent_direct",
+      "network": "Katalys",
+      "network_program_id": "1538",
+      "program_id": "try-ageless",
+      "sheet_row": 94,
+      "sheet_status": "approved_active_tracking_ready",
+      "tracking_host": "track.revoffers.com",
+      "tracking_link_sha256": "f160cdd13074620be4ba6fac5258d2480ae1dcb45327a9b11e0e49cc3e4ed650"
+    }
+  ],
   "go_route_program_count": 0,
   "lead_sharing_authorized": false,
-  "live_program_count": 58,
+  "live_program_count": 64,
   "live_program_count_basis": "Derived from data/program-registry.json (commercial_state=live AND vertical_fit AND wired AND surfaces.review), keyed by render identity and intersected with data/program-content-ledger.json. program_count stays the Katalys Sheet direct-activation subset with tracking-link hashes; it is NOT the count of live providers on the site and must never be rendered as one.",
   "live_review_routes_outside_program_register": [
     {
@@ -32,15 +51,6 @@
   ],
   "operator_gate_receipt_sha256": "119eb0772c7f40047a5890324e41c7f5ecc543932ac5291ccff9fc2181b288d5",
   "program_count": 10,
-  "selection_amendment": "OPERATOR-DECISION-20260925-rebuild-D1-D7 D3: network-paused offers 1538, 3162 and 3176 are excluded; their source evidence is retained.",
-  "excluded_network_paused_programs": ["try-ageless", "altrx-glp1-us-cps", "futurhealth-wegovy-pillform"],
-  "excluded_selection_evidence": [{
-    "display_name": "AgelessRx", "link_mode": "transparent_direct", "network": "Katalys",
-    "network_program_id": "1538", "program_id": "try-ageless", "sheet_row": 94,
-    "sheet_status": "approved_active_tracking_ready", "tracking_host": "track.revoffers.com",
-    "tracking_link_sha256": "f160cdd13074620be4ba6fac5258d2480ae1dcb45327a9b11e0e49cc3e4ed650",
-    "disposition": "historical_snapshot_only_not_activation_authority"
-  }],
   "programs": [
     {
       "display_name": "Enhance.MD",
@@ -154,6 +164,7 @@
     }
   ],
   "schema": "glp-affiliate-sheet-derived-selection-v1",
+  "selection_amendment": "OPERATOR-DECISION-20260925-rebuild-D1-D7 D3: network-paused offers 1538, 3162 and 3176 are excluded; their source evidence is retained.",
   "source": "live canonical Affiliate Applications Sheet snapshot",
   "source_snapshot_sha256": "6dd8e465aed3e620464e791440c86d3a1a5fff511d3f82ab0c522be60dd9deb1",
   "spend_usd": 0,

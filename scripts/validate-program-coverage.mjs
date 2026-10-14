@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { loadAcceptedGuides } from "../src/accepted-guide-source.mjs";
 import { collectCoverageInputs, validateProgramCoverage } from "../src/program-registry.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -79,6 +80,7 @@ inputs.registry = {
         + (PASS3_ADDITIVE_SITEMAP_ROUTES[profileId] || 0)
         + (LIVE_HEAD_MERGE_ADDITIVE_SITEMAP_ROUTES[profileId] || 0)
         + (ARTICLE_CARRIER_ADDITIVE_SITEMAP_ROUTES[profileId] || 0)
+        + (profileId === 'glp-clinic-scout' ? loadAcceptedGuides(root).length : 0)
         + (PASS5_ADDITIVE_SITEMAP_ROUTES[profileId] || 0)
         + phase3NetAdditiveRoutes,
     },

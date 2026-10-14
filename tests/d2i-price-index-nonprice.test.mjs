@@ -5,7 +5,8 @@ import {createHash} from 'node:crypto';
 import {frozenPriceLedger} from '../src/price-index-nonprice-binding.mjs';
 const data = new URL('../data/',import.meta.url);
 const frozen = fs.readFileSync(new URL('price-index-frozen-content-ledger.json',data));
-const current = fs.readFileSync(new URL('program-content-ledger.json',data));
+import {readHistoricalPriceFixture} from './helpers/provider-append-predecessor.mjs';
+const current = readHistoricalPriceFixture(new URL('program-content-ledger.json',data));
 const binding = JSON.parse(fs.readFileSync(new URL('price-index-nonprice-binding.json',data)));
 const sha = x => createHash('sha256').update(x).digest('hex');
 test('S21 independently stored exact successor binds current and frozen bytes',()=>{

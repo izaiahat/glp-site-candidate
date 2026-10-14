@@ -34,7 +34,7 @@ const manifest = {
 if (holdsOnly) {
   const {GO_RUNTIME_MANIFEST: before} = await import('../functions/go/program-manifest.js');
   const held = new Set(Object.entries(goPromotionAuthority.programs).filter(([, row]) => row.status === 'WITHHELD').map(([id]) => id));
-  const withdrawn = new Set(registry.programs.filter(p => p.affiliate_relationship_snapshot?.lifecycle === 'withdrawn').map(p => p.program_id));
+  const withdrawn = new Set(registry.programs.filter(p => ['withdrawn', 'ended'].includes(p.affiliate_relationship_snapshot?.lifecycle)).map(p => p.program_id));
   assertCurrentHoldGoSuccessor(before, manifest, held, withdrawn);
 }
 await writeFile(path.join(ROOT, "functions", "go", "program-manifest.js"), renderGoRuntimeManifestModule(manifest));

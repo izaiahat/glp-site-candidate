@@ -1,0 +1,74 @@
+{
+  "authority": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20260903T010105Z-scheduled-refill/attempt-06-bd0c41f1665e1139bce4/topic-queue-snapshot-buffer-bd0c41f1665e1139bce4-20260903T020600Z.json",
+    "selection_binding": {
+      "operator_directive_id": "operator-keyword-gap-20260823:B-6f81cc4a8a2f9ffc",
+      "queue_position": 50,
+      "queue_sha256": "725e1d10ed0ac4bacadeee4f69c729a6b13f64b3ccee7e12dd1d66fd9d11b494",
+      "selection_receipt_sha256": "84ee4c3f398371d62ae23a7454cf45533afc6f4d7816427a164c8d4ba6b6fcc5",
+      "strategy_map_sha256": "05d215c1bd3a8656f4bc5f5534a1ad5e13934b94a649492743fd975533f2818b",
+      "strategy_queue_sha256": "5763fcc1e92fb3cfe5b4175f7c1e2db38044274d3f8c4167333296d88d259ec9",
+      "target_query": "is valhalla vitality legit",
+      "target_route": "/guides/is-valhalla-vitality-legit/",
+      "topic_id": "bd0c41f1665e1139bce4"
+    },
+    "selection_receipt": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20260903T010105Z-scheduled-refill/selection-06.json",
+      "receipt_sha256": "84ee4c3f398371d62ae23a7454cf45533afc6f4d7816427a164c8d4ba6b6fcc5",
+      "sha256": "fd80e9ab695c7ccd3c68238fa8bd2974f7a78358deee895146644413112ec7ef"
+    },
+    "sha256": "725e1d10ed0ac4bacadeee4f69c729a6b13f64b3ccee7e12dd1d66fd9d11b494",
+    "topic_id": "bd0c41f1665e1139bce4",
+    "type": "operator_directed_queue_item"
+  },
+  "effects": {
+    "cache_purges": 0,
+    "deployments": 0,
+    "gsc_submissions": 0,
+    "publishes": 0
+  },
+  "effort": "xhigh",
+  "findings": [],
+  "gates": [
+    {
+      "findings": [],
+      "gate": "A",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "B",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "C",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "D",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "E",
+      "status": "PASS"
+    }
+  ],
+  "job_id": "buffer-bd0c41f1665e1139bce4-20260903T020600Z",
+  "model": "gpt-5.6-sol",
+  "provider": "openai-codex",
+  "raw_review_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20260903T010105Z-scheduled-refill/attempt-06-bd0c41f1665e1139bce4/opus-history-buffer-bd0c41f1665e1139bce4-20260903T020600Z/round-02-sol-raw.json",
+  "raw_review_sha256": "7f7fe9773a9e53721649d5687105d060749545c5df3122f3b7658bae1040145a",
+  "receipt_sha256": "1a017faf43b384c27800237b7593c2390cb48f797d7f6fd551a6debd295a13ff",
+  "review_transport": "hermes-openai-codex-sol",
+  "reviewed_at_utc": "2026-09-03T02:52:35.983129Z",
+  "round": 2,
+  "schema": "glp-opus-seo-round-receipt-v1",
+  "status": "PASS_OPUS_SEO_DRAFT",
+  "subject_manifest_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20260903T010105Z-scheduled-refill/attempt-06-bd0c41f1665e1139bce4/opus-history-buffer-bd0c41f1665e1139bce4-20260903T020600Z/round-02-subject-manifest.json",
+  "subject_manifest_sha256": "a8c7f6e49629f8a6209c937a0a896cad873b0b5ae2d11d765d150e906e777462",
+  "tools_disabled": true,
+  "topic_id": "bd0c41f1665e1139bce4"
+}

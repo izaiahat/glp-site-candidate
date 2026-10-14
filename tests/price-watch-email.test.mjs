@@ -13,6 +13,8 @@ import { normalizePriceIndexSourceHashes } from "../src/price-index.mjs";
 import { frozenPriceLedger } from "../src/price-index-nonprice-binding.mjs";
 import { buildMessage, emailRuntimeGate, isWeeklyPriceWatchSubscriber, resendMachinePolicy, runWeeklyPriceWatch, sendWithResend } from "../src/resend-email-machine.mjs";
 import { CONTENT_UPGRADE_TERMS_CAPTURE_SOURCES, COST_CALCULATOR_CAPTURE } from "../src/site-capture-consent-sources.mjs";
+import { GUIDE_RESOURCE, validGuidePath } from '../src/guide-resource-contract.mjs';
+import { sourceSlugForRoute } from '../src/wave2-p1-surfaces.mjs';
 import { COST_AFFILIATE_EMAIL_MANIFEST } from "../src/cost-affiliate-email-manifest.generated.mjs";
 
 const DATA = new URL("../data/", import.meta.url);
@@ -61,7 +63,7 @@ function hiddenInputValue(form, name) {
   return form.match(new RegExp(`<input\\b(?=[^>]*\\bname=["']${name}["'])(?=[^>]*\\bvalue=["']([^"']*)["'])[^>]*>`, "i"))?.[1] ?? null;
 }
 
-async function emittedTermsCaptureSources() {
+async function emittedCaptureProvenanceSources() {
   const sources = new Set();
   for (const file of await publicHtmlFiles(path.join(ROOT, "public"))) {
     const page = await readFile(file, "utf8");
@@ -70,7 +72,24 @@ async function emittedTermsCaptureSources() {
       if (!form.includes("/api/content-upgrade") && !form.includes("content-upgrade")) continue;
       const source = hiddenInputValue(form, "source_page");
       const lead = hiddenInputValue(form, "lead_magnet_key");
-      if (source && lead?.endsWith("-terms-checklist")) {
+      if (source?.startsWith('guides-')) {
+        // These two immutable carried/staged routes retain their predecessor
+        // capture contract. No derived guide may regress to bundled marketing.
+        assert.ok(['guides-ezra-glp-1-reviews','guides-top-rated-glp-1-providers'].includes(source), file);
+      }
+      if (source === GUIDE_RESOURCE.sourcePage) {
+        const route = hiddenInputValue(form, 'guide_path');
+        assert.equal(validGuidePath(route), true, file);
+        assert.equal(route, '/' + path.relative(path.join(ROOT, 'public'), file).replace(/index\.html$/, ''), file);
+        assert.equal(lead, GUIDE_RESOURCE.leadMagnetKey, file);
+        assert.equal(hiddenInputValue(form, 'consent_version'), GUIDE_RESOURCE.consentVersion, file);
+        assert.equal(/name=["'](?:email_consent|marketing_consent|subscribe_consent)["']/.test(form), false, file);
+        assert.ok(form.includes(GUIDE_RESOURCE.consentText), file);
+        // Coverage identity only: delivery-only guide forms are not terms
+        // subscriptions. Preserve their original route in the census.
+        const slug = sourceSlugForRoute(route);
+        sources.add(`${slug}:${slug}-terms-checklist`);
+      } else if (source && lead?.endsWith("-terms-checklist")) {
         sources.add(`${source}:${lead}`);
       } else if (source === "" && lead === "") {
         const precedingPage = page.slice(0, match.index);
@@ -92,6 +111,7 @@ async function emittedNonTermsCaptures() {
       if (!form.includes("/api/content-upgrade") && !form.includes("content-upgrade")) continue;
       const source = hiddenInputValue(form, "source_page");
       const lead = hiddenInputValue(form, "lead_magnet_key");
+      if (source === GUIDE_RESOURCE.sourcePage) continue; // Delivery-only census is asserted above; never classify as a subscriber capture.
       if (source && lead && !lead.endsWith("-terms-checklist")) captures.push({
         file: path.relative(path.join(ROOT, "public"), file), source, lead,
         consentVersion: hiddenInputValue(form, "consent_version"),
@@ -265,7 +285,7 @@ test("site-capture eligibility requires exact consent provenance, active state, 
 });
 
 test("content-upgrade provenance inventory includes the exact authoritative staged Phase 3 additions", async () => {
-  const emitted = await emittedTermsCaptureSources();
+  const emitted = await emittedCaptureProvenanceSources();
   const approved = [...CONTENT_UPGRADE_TERMS_CAPTURE_SOURCES].sort();
   const staged = await stagedPhase3CaptureSources();
   assert.deepEqual(emitted, [...new Set([...approved, ...staged])].sort());

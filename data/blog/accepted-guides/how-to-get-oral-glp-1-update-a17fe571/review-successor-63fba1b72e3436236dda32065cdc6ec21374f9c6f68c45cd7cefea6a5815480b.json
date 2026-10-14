@@ -1,0 +1,74 @@
+{
+  "authority": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T195641Z-scheduled-refill/topic-7610a73b64a734722f3a/topic-queue-snapshot-20261009T195641Z-scheduled-refill-oral.json",
+    "selection_binding": {
+      "operator_directive_id": "auto-supply-20260815-43759b6e2264",
+      "queue_position": 45,
+      "queue_sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+      "selection_receipt_sha256": "08cae6efa4aa34931952b850c1eac40b45bb733d6c5978b8c4608326dfbd46ea",
+      "strategy_map_sha256": "05d215c1bd3a8656f4bc5f5534a1ad5e13934b94a649492743fd975533f2818b",
+      "strategy_queue_sha256": "59627aee4ddb6a2a1eb1f2b3a0129c2b2ab184c38426194db63e404a78fd3ea6",
+      "target_query": "how to get oral glp-1",
+      "target_route": "/guides/how-to-get-oral-glp-1/",
+      "topic_id": "7610a73b64a734722f3a"
+    },
+    "selection_receipt": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T195641Z-scheduled-refill/selection-03.json",
+      "receipt_sha256": "08cae6efa4aa34931952b850c1eac40b45bb733d6c5978b8c4608326dfbd46ea",
+      "sha256": "c85df1ad49c2be34f2c19f4c378992037bb52bd0940832964a52e41cac4aa63c"
+    },
+    "sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+    "topic_id": "7610a73b64a734722f3a",
+    "type": "operator_directed_queue_item"
+  },
+  "effects": {
+    "cache_purges": 0,
+    "deployments": 0,
+    "gsc_submissions": 0,
+    "publishes": 0
+  },
+  "effort": "high",
+  "findings": [],
+  "gates": [
+    {
+      "findings": [],
+      "gate": "A",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "B",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "C",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "D",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "E",
+      "status": "PASS"
+    }
+  ],
+  "job_id": "health-e01-successor-20261014-postpublication-review-only",
+  "model": "gpt-6.1-sol",
+  "provider": "openai-codex",
+  "raw_review_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/RELEASE-OWNER/health-e01-successor-20261014/history/round-01-sol-raw.json",
+  "raw_review_sha256": "e937b43bf9d937cd5220e13191a23c6779d3d40c3ec9e10c75e0a653ae0135b4",
+  "receipt_sha256": "a7a17dda87110059cff7a3cfc651284e4e6a79bb0d76afcfb1decff52f6f4b22",
+  "review_transport": "hermes-openai-codex-sol61-independent",
+  "reviewed_at_utc": "2026-10-14T04:25:06.058710Z",
+  "round": 1,
+  "schema": "glp-opus-seo-round-receipt-v1",
+  "status": "PASS_OPUS_SEO_DRAFT",
+  "subject_manifest_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/RELEASE-OWNER/health-e01-successor-20261014/history/round-01-subject-manifest.json",
+  "subject_manifest_sha256": "49c38c8d2066ebff190fcf883d141e7bfad3573f750d589efb63dd11f1c186e0",
+  "tools_disabled": true,
+  "topic_id": "7610a73b64a734722f3a"
+}
