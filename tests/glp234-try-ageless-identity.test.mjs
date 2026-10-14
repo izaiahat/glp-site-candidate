@@ -152,7 +152,7 @@ test('GLP-234 F17 exact adopted successor retains identity plus Breeze union and
   const nodeStart = nodeSource.indexOf("test('F17 approved registry successor binds exact prior and current bytes'");
   const nodeEnd = nodeSource.indexOf("\ntest('F34", nodeStart);
   assert.ok(nodeStart >= 0 && nodeEnd > nodeStart);
-  const nodeGuard = new Function('test', 'assert', 'read', 'sha', nodeSource.slice(nodeStart, nodeEnd));
+  const nodeGuard = new Function('test', 'assert', 'f17Read', 'sha', nodeSource.slice(nodeStart, nodeEnd));
   const runNode = (candidate, fixture = pins) => {
     let calls = 0;
     nodeGuard((_name, check) => { calls++; check(); }, assert,

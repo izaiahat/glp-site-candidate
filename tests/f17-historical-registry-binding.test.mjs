@@ -31,3 +31,26 @@ test('F17 historical registry fixture executes immutable custody and refuses cur
   assert.throws(() => run(read(registryPath)), {code:'ERR_ASSERTION'}, 'today\'s source is not the historical pinned input');
   assert.throws(() => run(Buffer.concat([historical, Buffer.from(' ')])), {code:'ERR_ASSERTION'});
 });
+
+// Execute the actual maintained GLP234 extraction and its candidate/pins
+// callback, not a second copy of that compiler. Its earlier stale-pin assertion
+// is outside this bounded slice and remains a separate pre-existing failure.
+test('F17 GLP234 extracted consumer preserves candidate and pin injection', () => {
+  const caller = read('tests/glp234-try-ageless-identity.test.mjs').toString();
+  const consumerStart = caller.indexOf("  const nodeSource = read('tests/glp41-material-contracts.test.mjs').toString();");
+  const consumerEnd = caller.indexOf('\n  // Exercise only the browser consumer', consumerStart);
+  assert.ok(consumerStart >= 0 && consumerEnd > consumerStart);
+  const pins = JSON.parse(read('tests/fixtures/glp41-approved-input-successor.json'));
+  const runNode = new Function('read', 'pins', 'input', 'assert', 'sha',
+    caller.slice(consumerStart, consumerEnd) + '\nreturn runNode;')(read, pins, registryPath, assert, sha);
+  const historical = readF17PinnedRegistry();
+  assert.doesNotThrow(() => runNode(historical));
+  assert.throws(() => runNode(read(registryPath)), {code:'ERR_ASSERTION'});
+  assert.throws(() => runNode(Buffer.concat([historical, Buffer.from(' ')])), {code:'ERR_ASSERTION'});
+  const stale = structuredClone(pins);
+  stale.inputs[registryPath].after_sha256 = pins.provenance.previous_care_after_sha256;
+  assert.throws(() => runNode(historical, stale), {code:'ERR_ASSERTION'});
+  const wrongBefore = structuredClone(pins);
+  wrongBefore.inputs[registryPath].before_sha256 = pins.provenance.previous_care_after_sha256;
+  assert.throws(() => runNode(historical, wrongBefore), {code:'ERR_ASSERTION'});
+});
