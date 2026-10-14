@@ -78,6 +78,10 @@ on:
       - "tests/helpers/**"
       - "tests/pricing-deployed-row-schema.test.mjs"
       - "tests/therapeutic-refresh-import.test.mjs"
+      - "tests/provider-dynamic-profiles.test.mjs"
+      - "tests/retatrutide-capture-custody.test.mjs"
+      - "tests/fixtures/historical-retatrutide-inputs.mjs"
+      - "tests/fixtures/retatrutide-capture/**"
       - "tests/wave2-p1-surfaces.test.mjs"
       - "tests/pass2-late-audit-static.test.mjs"
       - "tests/pass2-late-audit-static-output.test.mjs"
@@ -146,6 +150,7 @@ jobs:
           python3 - <<'PY'
           import os, base64, subprocess
           closure = {
+            'e61a0017e8888570b00f4bd6c1eeef1572f421e1': ['data/program-registry.json', 'data/money-page-specs.json', 'data/quiz-config.json', 'data/cost-calculator.json', 'data/provider-page-contracts.json', 'data/provider-fastpath-contract.json'],
             '9cd63e73d743d69104fa0a281ce42113743faf4a': ['src/provider-review.mjs'],
             '34db221edec1b3fbf4ae87aac67be64f75c30ca7': ['src/provider-review.mjs', 'scripts/validate-provider-fastpath-plus5.mjs'],
           }
@@ -159,7 +164,7 @@ jobs:
               assert len(rows) == len(files)
               blobs.update(row.split()[2] for row in rows)
           subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', *sorted(blobs)], env=env, check=True)
-          print('Authenticated test-only renderer/validator closure: two refs,', len(blobs), 'blobs; checkout unchanged')
+          print('Authenticated test-only source closure:', len(closure), 'refs,', len(blobs), 'blobs; checkout unchanged')
           PY
           test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
       - name: Fastpath current neutral-score copy and real ended renderer-validator compatibility (source-only; no build)
@@ -168,6 +173,11 @@ jobs:
         run: node --test tests/f06-fastpath-current-hold.test.mjs
       - name: Taxonomy refresh import boundary (offline exact head)
         run: node --test tests/therapeutic-refresh-import.test.mjs
+      - name: September retatrutide fixture custody and current strict expiry (no build or evidence refresh)
+        run: |
+          sudo install -d -m 0755 -o "$(id -u)" -g "$(id -g)" /home/ubuntu/business
+          node tests/helpers/materialize-retatrutide-capture.mjs
+          node --test --test-name-pattern '^(one synthetic provider|retatrutide remains|field-addressable exact|retatrutide authority rejects|retatrutide historical|retatrutide captured|retatrutide current)' tests/provider-dynamic-profiles.test.mjs tests/retatrutide-capture-custody.test.mjs
       - name: Price caller dependency seam regression (synthetic inputs; not price-oracle acceptance)
         run: node --test tests/price-index-caller-seams.test.mjs
       - name: Article selection dependency seam (source catalogs only; not built-output acceptance)
