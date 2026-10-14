@@ -35,6 +35,12 @@ on:
       - "tests/affiliate-relationship-sync.test.mjs"
       - "tests/affiliate-expansion-13.test.mjs"
       - "tests/affiliate-expansion-approval-input.test.mjs"
+      - "tests/affiliate-outbound-mode.test.mjs"
+      - "tests/direct-affiliate-lane.test.mjs"
+      - "tests/high-intent-affiliate-surfaces.test.mjs"
+      - "tests/paused-offer-reason-custody.test.mjs"
+      - "tests/fixtures/historical-ageless-promotion.mjs"
+      - "tests/fixtures/ageless-promotion-pre-relationship.json"
       - "tests/candidate-export-policy.test.mjs"
       - "tests/carrier-analytics-emission.test.mjs"
       - "tests/content-upgrade-contract.test.mjs"
@@ -109,6 +115,8 @@ jobs:
         run: node --test tests/pricing-deployed-row-schema.test.mjs tests/d2f-coverage-floor.test.mjs
       - name: Affiliate relationship synchronization contracts
         run: node --test tests/affiliate-relationship-sync.test.mjs
+      - name: Paused-offer reason custody and native outbound controls (source-only)
+        run: node --test tests/paused-offer-reason-custody.test.mjs tests/affiliate-outbound-mode.test.mjs
       - name: Guide resource renderer and privacy regression (offline only)
         run: |
           node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs

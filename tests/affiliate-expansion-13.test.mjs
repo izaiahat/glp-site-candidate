@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { historicalAgelessPromotion } from './fixtures/historical-ageless-promotion.mjs';
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -53,7 +54,11 @@ function assertPausedAgeless() {
   assert.equal(selected?.network, "Katalys");
   assert.equal(selected.network_program_id, "1538");
   assert.equal(promotion[PAUSED_AGELESS]?.status, "WITHHELD");
-  assert.equal(promotion[PAUSED_AGELESS]?.reason, "network_paused_katalys_offer_1538");
+  // The original pause reason is historical; current denial retains writer provenance.
+  assert.equal(historicalAgelessPromotion().reason, "network_paused_katalys_offer_1538");
+  assert.equal(promotion[PAUSED_AGELESS]?.reason, "sole_writer_relationship_paused");
+  assert.equal(promotion[PAUSED_AGELESS]?.promotion_authorized, false);
+  assert.deepEqual(promotion[PAUSED_AGELESS]?.relationship_snapshot, {program_id: "try-ageless", render_id: "try-ageless", ...registry.programs.find(row => row.program_id === "try-ageless").affiliate_relationship_snapshot});
 }
 const networkAnchorIds = new Set(money.pages.flatMap((page) => (page.rows || [])
   .filter((row) => row.promotion_authorized && NETWORK_HOSTS.test(row.affiliate_href || ""))
