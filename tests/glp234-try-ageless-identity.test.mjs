@@ -14,6 +14,8 @@ import { readFileSync } from 'node:fs';
 import { assertCurrentHoldGoSuccessor } from '../src/go-runtime-manifest.mjs';
 import { loadGoPromotionAuthority } from '../src/go-runtime-selection.mjs';
 import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
+import { effectiveAffiliateBuildInputs, effectiveAffiliateRegistry } from '../src/affiliate-relationship-sync.mjs';
+import { quizInputSeam } from './helpers/quiz-input-seam.mjs';
 
 test('GLP-234 F3 exact identity successor reconstructs only the historical price label', async () => {
   const {readHistoricalPriceFixture} = await import('./helpers/provider-append-predecessor.mjs');
@@ -79,17 +81,11 @@ test('GLP-234 F3 exact identity successor reconstructs only the historical price
 // This is bounded caller-chain coverage: no build outputs or article admission.
 async function buildQuizInputs(ledger) {
   const source = await readFile(new URL('../scripts/build-staging.mjs', import.meta.url), 'utf8');
-  const start = source.indexOf('  const [identity, eligibility,');
-  const end = source.indexOf('  const [phase3GraphConfig,', start);
-  const call = source.match(/^  const canonicalQuiz = projectQuizFromRegistry\([^\n]+$/m)?.[0];
-  assert.ok(start >= 0 && end > start && call, 'maintained build/quiz seams must be present');
-  const scoreStart = source.indexOf('    const comparablePriceIds = comparablePriceProviderIds(');
-  const scoreEnd = source.indexOf('    const ledgerById = new Map(', scoreStart);
-  assert.ok(scoreStart >= 0 && scoreEnd > scoreStart, 'maintained scoring seam must be present');
-  const execute = new Function('readJson', 'projectProviderDisplayLedger', 'projectQuizFromRegistry', 'programRegistry', 'SITE_PROFILE', 'comparablePriceProviderIds', 'applyMeritScores', 'meritScore',
-    `return (async () => {${source.slice(start, end)}\n${source.slice(scoreStart, scoreEnd)}\n${call}\nreturn {contentLedger, canonicalQuiz};})()`);
+  const execute = quizInputSeam(source);
+  const rawProgramRegistry = await load('program-registry.json');
   return execute(name => name === 'program-content-ledger.json' ? ledger : load(name),
-    projectProviderDisplayLedger, projectQuizFromRegistry, await load('program-registry.json'), 'glp-clinic-scout', comparablePriceProviderIds, applyMeritScores, meritScore);
+    projectProviderDisplayLedger, projectQuizFromRegistry, effectiveAffiliateRegistry(rawProgramRegistry), 'glp-clinic-scout', comparablePriceProviderIds, applyMeritScores, meritScore,
+    effectiveAffiliateBuildInputs, rawProgramRegistry);
 }
 
 test('GLP-234 F1 actual build-to-quiz projection owns raw input without weakening source guards', async () => {
@@ -113,7 +109,7 @@ test('GLP-234 F1 actual build-to-quiz projection owns raw input without weakenin
   const target = contentLedger.programs.find(row => row.program_id === 'try-ageless');
   assert.equal(target.display_name, 'Try Ageless');
   assert.equal(target.research_backfill_20260830, undefined);
-  assert.deepEqual(canonicalQuiz, projectQuizFromRegistry(await load('program-registry.json'), 'glp-clinic-scout', await load('quiz-config.json'), before));
+  assert.deepEqual(canonicalQuiz, projectQuizFromRegistry(effectiveAffiliateRegistry(await load('program-registry.json')), 'glp-clinic-scout', await load('quiz-config.json'), before));
   for (const edit of [
     row => { delete row.research_backfill_20260830; },
     row => { row.research_backfill_20260830.facts.shipping.source_url = 'https://unrelated.example/'; },
