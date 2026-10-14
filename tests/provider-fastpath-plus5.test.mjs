@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { historicalUnscoredBlock } from './fixtures/historical-unscored-copy.mjs';
 import { currentCalculatorExpectation } from "./fixtures/c02-calculator-inputs.mjs";
 import { buildCostCalculatorData, costCalculatorDropdownProviders } from "../src/cost-calculator.mjs";
 import { buildProviderReviewSpecs, renderProviderReviewPage } from "../src/provider-review.mjs";
@@ -89,7 +90,11 @@ test("provider-review specs cover the registry projection with three explicit ha
     // be a named, explained state, never a bare "Score pending" placeholder. The
     // scored path (ledger supplied, as the build supplies it) is asserted below.
     assert.match(html, /class="score score-unscored">Not scored</);
-    assert.match(html, /class="score-basis">[^<]*has not published enough of the five criteria/);
+    // The old missing-information implication is historical-only. Keep its
+    // exact regex on authentic old source, and require today's neutral explanation.
+    assert.match(historicalUnscoredBlock(review.row, review.provider), /class="score-basis">[^<]*has not published enough of the five criteria/);
+    assert.match(html, /class="score-basis">No comparable editorial score is assigned to [^<]+\. This is not a claim that provider information is unpublished\. <a href="\/how-we-rate\/">How we rate<\/a>\.<\/p>/);
+    assert.doesNotMatch(html, /class="score-basis">[^<]*(?:has not published enough|insufficient information|missing information)/i);
     assert.doesNotMatch(html, /Score pending|Pending evidence|pending score/i);
     assert.doesNotMatch(html, /(?<![\d.])0(?:\.0)?\/10/);
     assert.ok(html.includes(`Checked ${review.fastpath_integration.checked_as_of || fastpath.checked_as_of}`), `checked-date:${review.program_id}`);
