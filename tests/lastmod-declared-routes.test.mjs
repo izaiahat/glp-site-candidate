@@ -154,6 +154,9 @@ async function fixture() {
   const root = await mkdtemp(path.join(work, "aeo-declared-"));
   await mkdir(path.join(root, "data"), { recursive: true });
   await mkdir(path.join(root, "artifacts", "ops"), { recursive: true });
+  // The copied carrier renderer reads the raw source, not public/assets.
+  await mkdir(path.join(root, "assets"), { recursive: true });
+  await cp(path.join(ROOT, "assets", "analytics.js"), path.join(root, "assets", "analytics.js"));
   for (const directory of ["scripts", "src", "data"]) {
     await cp(path.join(ROOT, directory), path.join(root, directory), { recursive: true });
   }

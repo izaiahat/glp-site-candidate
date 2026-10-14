@@ -68,6 +68,8 @@ on:
       - "tests/pass2-late-audit-static.test.mjs"
       - "tests/pass2-late-audit-static-output.test.mjs"
       - "tests/motion-decision-input-binding.test.mjs"
+      - "tests/lastmod-declared-routes.test.mjs"
+      - "tests/lastmod-fixture-analytics-binding.test.mjs"
   workflow_dispatch:
     inputs:
       source_sha:
@@ -139,6 +141,8 @@ jobs:
         run: node --test tests/affiliate-expansion-approval-input.test.mjs
       - name: Motion decision input binding (source-only; no private reads or rendered checks)
         run: node --test tests/motion-decision-input-binding.test.mjs
+      - name: Lastmod fixture analytics binding (source-only; no tree copies or postbuild)
+        run: node --test tests/lastmod-fixture-analytics-binding.test.mjs
       # Native R2 collection needs a genuine private deployed-baseline receipt.
       # This recorder checks only maintained fixture paths/copies, not prices.
       - name: R2 retention fixture input binding (source-only; no private reads)
