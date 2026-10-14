@@ -13,6 +13,10 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { historicalGuidesLinkMap } from './fixtures/editorial-historical-links.mjs';
+import { loadAffiliateLinkMap } from '../src/affiliate-link-map.mjs';
+import { loadGoPromotionAuthority } from '../src/go-runtime-selection.mjs';
+
 import {
   EDITORIAL_MONETIZATION_GATE_RECEIPT_SHA256,
   renderGuideOfferModule,
@@ -115,14 +119,70 @@ test("a v2 spec with no source_checked_through is rejected (the subid month cont
 });
 
 test("the four ruled comparison guides resolve live rows through the guides link map", () => {
+  // Preserve the original >=3 minimum and its entire assertion tail on authentic
+  // pre-overlay raw inputs. This map is historical evidence, never today's grant.
+  const historicalLinks = historicalGuidesLinkMap();
   for (const canonical of RULED_YES.slice(0, 4)) {
     const brief = guideOf(canonical);
-    const spec = resolveBlogComparisonSpec(brief, ledger.programs);
+    const spec = resolveBlogComparisonSpec(brief, ledger.programs, historicalLinks);
     const live = spec.rows.filter((row) => row.live_link_allowed && row.affiliate_href);
     assert.ok(live.length >= 3, `${canonical}: expected >=3 live rows, got ${live.length}`);
     for (const row of live) {
       assert.match(row.affiliate_href, /^https:\/\/(?:track\.revoffers\.com|www\.awin1\.com)\//);
       assert.equal(row.affiliate_link_mode, "transparent_direct");
+    }
+  }
+});
+
+test("current ruled guides preserve every healthy row while authentic paused Trimi remains link-dark", () => {
+  const expected = [
+    ['gala-health', 'shedrx', 'found-health', 'trimi-glp-1'],
+    ['trimi-glp-1', 'yourera-program', 'found-health', 'shedrx'],
+    ['found-health', 'trimi-glp-1', 'yourera-program', 'shedrx'],
+    ['found-health', 'shedrx', 'yourera-program', 'trimi-glp-1'],
+  ];
+  const links = loadAffiliateLinkMap('guides');
+  const authority = loadGoPromotionAuthority().programs['trimi-glp-1'];
+  const selected = readJson('data/affiliate-activation-selection.json').programs.find(row => row.program_id === 'trimi-glp-1');
+  const snapshot = registry.programs.find(row => row.program_id === 'trimi-glp-1').affiliate_relationship_snapshot;
+  assert.ok(selected, 'retained selected member must exist');
+  assert.equal(snapshot.promotion_denied, true);
+  assert.equal(snapshot.lifecycle, 'paused');
+  assert.equal(snapshot.relationship_status, 'paused_network_program_paused');
+  assert.equal(snapshot.network, selected.network.toLowerCase());
+  assert.equal(snapshot.network_program_id, selected.network_program_id);
+  assert.equal(snapshot.sheet_row, selected.sheet_row);
+  assert.equal(snapshot.reported_information, true);
+  assert.match(snapshot.source_checked_at, /^\d{4}-\d{2}-\d{2}T/);
+  assert.equal(authority.status, 'WITHHELD');
+  assert.equal(authority.promotion_authorized, false);
+  assert.equal(authority.reason, `sole_writer_relationship_${snapshot.lifecycle}`);
+  assert.deepEqual(authority.relationship_snapshot, {program_id: 'trimi-glp-1', render_id: 'trimi-glp-1', ...snapshot});
+  assert.equal(links['trimi-glp-1']?.live, false);
+  assert.equal(links['trimi-glp-1']?.affiliate_href, null);
+  assert.equal(links['trimi-glp-1']?.go_href, undefined);
+  for (const [index, canonical] of RULED_YES.slice(0, 4).entries()) {
+    const brief = guideOf(canonical);
+    const spec = resolveBlogComparisonSpec(brief, ledger.programs, links);
+    assert.deepEqual(brief.comparison_spec.row_program_ids, expected[index]);
+    assert.deepEqual(spec.rows.map(row => row.program_id), expected[index], `${canonical}: every original row remains`);
+    const healthy = expected[index].filter(id => !['trimi-glp-1', 'shedrx'].includes(id));
+    assert.deepEqual(spec.rows.filter(row => row.live_link_allowed).map(row => row.program_id), healthy);
+    for (const row of spec.rows) {
+      if (healthy.includes(row.program_id)) {
+        assert.equal(links[row.program_id]?.live, true, `${canonical}: healthy ${row.program_id} must remain live`);
+        assert.equal(row.live_link_allowed, true);
+        assert.equal(row.promotion_authorized, true);
+        assert.equal(row.affiliate_href, links[row.program_id].affiliate_href);
+        assert.match(row.affiliate_href, /^https:\/\/(?:track\.revoffers\.com|www\.awin1\.com)\//);
+        assert.equal(row.affiliate_link_mode, 'transparent_direct');
+      } else {
+        assert.equal(row.live_link_allowed, false);
+        assert.equal(row.promotion_authorized, false);
+        assert.equal(row.affiliate_href, undefined);
+        assert.equal(row.affiliate_link_mode, 'held_blog_comparison');
+        assert.equal(row.review_path, `/reviews/${row.program_id}/`);
+      }
     }
   }
 });
