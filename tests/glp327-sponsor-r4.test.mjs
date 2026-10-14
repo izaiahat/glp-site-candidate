@@ -5,12 +5,12 @@ import { renderRateCard,renderPromo } from '../src/paid-promo.mjs';
 import { SPONSOR_PRICING,refundQuote,paymentVerified } from '../src/sponsor-pricing.mjs';
 test('r4 total, split and optional renewal replace every active price without layout changes',()=>{
  const html=renderRateCard();
- assert.equal(SPONSOR_PRICING.initial,500);assert.equal(SPONSOR_PRICING.setup,250);assert.equal(SPONSOR_PRICING.placement,250);assert.equal(SPONSOR_PRICING.renewal,250);
- assert.match(html,/\$500/);assert.match(html,/\$250 setup \+ \$250 placement/);assert.match(html,/Same-scope renewal: \$250/);
+ assert.equal(SPONSOR_PRICING.initial,750);assert.equal(SPONSOR_PRICING.setup,250);assert.equal(SPONSOR_PRICING.placement,500);assert.equal(SPONSOR_PRICING.renewal,500);
+ assert.match(html,/\$750/);assert.match(html,/\$250 setup \+ \$500 placement/);assert.match(html,/Same-scope renewal: \$500/);
  assert.doesNotMatch(html,/\$200|\$100/);
  assert.match(html,/No automatic renewal/);assert.match(html,/720 consecutive hours/);assert.match(html,/data-sponsor-lead-grid/);
- assert.equal(refundQuote({kind:'initial',launched:false}).amount,500);
- assert.equal(refundQuote({kind:'renewal',launched:false}).amount,250);
+ assert.equal(refundQuote({kind:'initial',launched:false}).amount,750);
+ assert.equal(refundQuote({kind:'renewal',launched:false}).amount,500);
  assert.equal(refundQuote({kind:'initial',launched:true,undeliveredHours:360}).status,'manual_review');
  assert.throws(()=>refundQuote({kind:'initial',launched:true,undeliveredHours:721}));
 });

@@ -60,7 +60,7 @@ test('A2 exact reviewed inventory renders all factual slots on the page and dire
  assert.match(promo,/data-sponsor-facts/);assert.match(promo,/Reported information/);
  assert.ok(directory.indexOf('data-sponsored-placement')<directory.indexOf('id="provider-results"'));
  assert.equal(pricing.paymentVerified(order),false,'unmocked payment authority rejects fictional test data');
- assert.deepEqual(renderSponsorInventory(json('sponsor-inventory.json')),{order:null,pages:{}});
+ assert.deepEqual(renderSponsorInventory({schema:'glp327_sponsor_inventory_v1',selection:null,orders:[]}),{order:null,pages:{}});
  for(const change of [
   d=>d.selection.order_reference='WRONG',d=>d.orders.push({...order}),d=>d.selection.slot='OTHER',
   d=>d.orders[0].inventory_slot='OTHER',d=>d.orders[0].release_approved=false,

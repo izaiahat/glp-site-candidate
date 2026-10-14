@@ -24,10 +24,10 @@ test("rate card: a short title, then price, terms, both deliverables, renewal, b
   assert.deepEqual(headings(html), ["Sponsor placements"]);
   assert.doesNotMatch(html, /p3-index-hero|<h1[^>]*>Visibility/);
   const offer = section(html, "data-sponsor-offer");
-  for (const text of ["$500", " / 30 days", "$250 setup + $250 placement and reporting",
+  for (const text of ["$750", " / 30 days", "$250 setup + $500 placement and reporting",
     "One Sponsored directory panel.",
     "One sponsored provider intro page.",
-    "Same-scope renewal: $250 / 30 days.", "No automatic renewal or recurring charge.",
+    "Same-scope renewal: $500 / 30 days.", "No automatic renewal or recurring charge.",
     'href="mailto:partners@glpclinicscout.com" data-sponsor-booking-cta>Discuss a placement</a>',
     "Independent rankings do not change. Sponsorship does not buy a score, favorable review or SEO backlink."]) assert.ok(offer.includes(text), text);
   inOrder(html, ["data-sponsor-offer", "data-sponsor-example", "data-sponsor-details", "data-sponsor-disclaimer"]);

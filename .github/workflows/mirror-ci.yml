@@ -84,7 +84,7 @@ jobs:
           PUPPETEER_SKIP_DOWNLOAD: 'true'
         run: npm ci --ignore-scripts --include=dev --no-audit --no-fund
       - name: Existing portable candidate export tests
-        run: node --test tests/candidate-export-policy.test.mjs tests/paid-promo.test.mjs tests/sponsor-placement-candidate.test.mjs tests/glp327-sponsor-design-system.test.mjs tests/glp327-sponsor-layouts.test.mjs tests/glp327-sponsor-r4.test.mjs
+        run: node --test tests/candidate-export-policy.test.mjs tests/paid-promo.test.mjs tests/sponsor-placement-candidate.test.mjs tests/glp327-sponsor-design-system.test.mjs tests/glp327-sponsor-layouts.test.mjs tests/glp327-sponsor-r4.test.mjs tests/glp327-approved-public-resources.test.mjs
       - name: Authenticated sponsor observer boundary fixtures (no live effects)
         run: node --experimental-test-module-mocks --test tests/glp328-payment-observer.test.mjs tests/glp327-sponsor-live-content.test.mjs
       - name: Offline sponsor packet source and exact-byte attachment contracts

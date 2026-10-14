@@ -27,7 +27,7 @@
       "callers": [
         "GitHub PR exact-head checks"
       ],
-      "sha256": "d8bc2192e5ad8687817c4d3f38350e293531a32d813045e9a669e229e42d8211"
+      "sha256": "dc36fca13a3485b4b6dd4ee0cacb669ed37cd3627719f2dd537e97a8af53d370"
     },
     "src/sponsor-order.mjs": {
       "kind": "site_source",
@@ -43,7 +43,7 @@
       "callers": [
         ".github/workflows/glp80-qualified-projection.yml"
       ],
-      "sha256": "eebcc048c972314e0d650ff6fafc2da1e5a21e00dc3196868e6bbc9d6c4a1390"
+      "sha256": "5a0fb899f7606d0fabc6f6ba1802f7066320c56b10ae4256d2821e3ec8c2318b"
     },
     "src/paid-promo.mjs": {
       "kind": "site_source",
@@ -66,7 +66,7 @@
       "callers": [
         "node --test"
       ],
-      "sha256": "cf827dae606dc21fdde9b103eecf424d776846c8dc784cd9a93f98cf0bc4a126"
+      "sha256": "eeb9ac1672902a173f54f29a047f31ff7cdbfde744ef158fb54642febb919a02"
     },
     "tests/sponsor-placement-candidate.test.mjs": {
       "kind": "test",
@@ -80,14 +80,14 @@
       "callers": [
         "node --test"
       ],
-      "sha256": "10ceafef80fc22532715f4c2eaf0c0ee875fc41a1bea01b1b1cbfa812fd6d3a1"
+      "sha256": "7480ade9d387d6bed77cff83234c7155a7bf83a48d6d9bfa9836da25bc2f7aa1"
     },
     "data/sponsor-pricing.json": {
       "kind": "sponsor_source",
       "callers": [
         "GLP327 successor source/capture checks"
       ],
-      "sha256": "2d977c8ed9fda6c915f4f323b9f251f6e1fce15064ba710d30162af88be47ac4"
+      "sha256": "4b3c479981283b847ea73ed2245b18f646180bd7a10ddf4405ba71f31470f521"
     },
     "src/sponsor-pricing.mjs": {
       "kind": "sponsor_source",
@@ -101,7 +101,7 @@
       "callers": [
         "GLP327 successor source/capture checks"
       ],
-      "sha256": "67a2ed537ba6201a2fbff8c5ddfcd0dcd757da96ae6c7c382ce508e44ac2ecd4"
+      "sha256": "0ee0ca95c92124d67fc4aae60491c36dd6674ccc5b76e75b2839fcdd59e689cc"
     },
     "tests/fixtures/sponsor-payment.mjs": {
       "kind": "sponsor_source",
