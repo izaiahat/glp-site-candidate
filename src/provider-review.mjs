@@ -463,7 +463,7 @@ function renderFastpathProviderReviewPage(review, identity) {
   const holdCopy = endedNotice || (linkDark
     ? "No active affiliate link is available on this page."
     : "This page contains one active affiliate link. Clinic Scout may earn a commission at no extra cost to the reader; the link does not change the page evidence or score.");
-  const affiliateContext = holdCopy ? `<section class="affiliate-status" id="affiliate-status" aria-label="Affiliate status"><p class="affiliate-status-label">Affiliate status</p><p>${esc(holdCopy)}</p></section>` : "";
+  const affiliateContext = holdCopy ? `<section class="affiliate-status" id="affiliate-status" aria-label="Affiliate status"${endedNotice ? ' data-affiliate-state="held"' : ''}><p class="affiliate-status-label">Affiliate status</p><p>${esc(holdCopy)}</p></section>` : "";
   const affiliateCta = endedNotice ? '' : linkDark
     ? `<p class="cta secondary affiliate-hold" aria-disabled="true" data-affiliate-state="held">Partner link unavailable</p>`
     : affiliateReviewCta(row);

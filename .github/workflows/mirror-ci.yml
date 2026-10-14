@@ -40,6 +40,9 @@ on:
       - "tests/high-intent-affiliate-surfaces.test.mjs"
       - "tests/paused-offer-reason-custody.test.mjs"
       - "tests/selected-program-denial-partition.test.mjs"
+      - "tests/provider-fastpath-plus5.test.mjs"
+      - "tests/fastpath-unscored-custody.test.mjs"
+      - "tests/fixtures/historical-unscored-copy.mjs"
       - "tests/fixtures/historical-ageless-promotion.mjs"
       - "tests/fixtures/ageless-promotion-pre-relationship.json"
       - "tests/candidate-export-policy.test.mjs"
@@ -214,6 +217,24 @@ jobs:
           test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
           unset GH_TOKEN
           node --test --test-name-pattern '^(S9 citation floor|S9 every remaining|S9 held canonical|S9 real detector|the price index)' tests/d2w-s9-contract-migrations.test.mjs tests/approved-provider-link-monetization.test.mjs
+      - name: Fastpath current neutral-score copy and ended held-state semantics (source-only; no build)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import os, base64, subprocess
+          ref = '9cd63e73d743d69104fa0a281ce42113743faf4a'
+          env = dict(os.environ)
+          auth = base64.b64encode(('x-access-token:' + env.pop('GH_TOKEN')).encode()).decode()
+          env.update(GIT_CONFIG_COUNT='1', GIT_CONFIG_KEY_0='http.https://github.com/.extraheader', GIT_CONFIG_VALUE_0='AUTHORIZATION: basic ' + auth)
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', '--filter=blob:none', 'origin', ref], env=env, check=True)
+          row = subprocess.check_output(['git', 'ls-tree', ref, '--', 'src/provider-review.mjs'], text=True).splitlines()
+          assert len(row) == 1
+          subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', row[0].split()[2]], env=env, check=True)
+          PY
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          unset GH_TOKEN
+          node --test --test-name-pattern '^(provider-review specs cover|current fastpath unscored|historical unscored wording|ended fastpath review retains)' tests/provider-fastpath-plus5.test.mjs tests/fastpath-unscored-custody.test.mjs
       - name: Record limited scope
         if: always()
         run: |
