@@ -194,7 +194,7 @@ function nextSendAt(consentAt, sequence, nextStep) {
 export async function runDripScheduler(env, config, now = new Date(), fetchImpl = fetch) {
   if (config.welcome_sequence.some(item => item.copy_format === 'glp47-approved-20261009')) {
     if (!await onboardingRuntimeGate(config, env)) return {status:'HELD',sent:0,reason:'glp47_onboarding_runtime_held_b01'};
-    if (!env.EMAIL_DB?.prepare) return {status:'HELD',sent:0,reason:'email_db_missing'};
+    if (!env.EMAIL_DB?.prepare || typeof env.EMAIL_DB.batch!=='function') return {status:'HELD',sent:0,reason:'email_db_atomic_receipt_missing'};
     const dailyCap = Math.max(1, Math.min(25, Number(env.EMAIL_WARMUP_DAILY_CAP || 25) || 1));
     const daily = await env.EMAIL_DB.prepare("SELECT COUNT(*) AS count FROM email_deliveries WHERE vertical='glp-clinic-scout' AND message_type='welcome' AND sent_at>=?").bind(now.toISOString().slice(0,10)+'T00:00:00.000Z').first();
     const cap = Math.max(0, dailyCap-Number(daily?.count||0));
@@ -220,7 +220,17 @@ export async function runDripScheduler(env, config, now = new Date(), fetchImpl 
       if (!(await eligible())) {held++;continue;}
       const outcome=await sendWithResend(message,env,fetchImpl);
       if (outcome.status!=='sent') {held++;receipts.push({delivery_id:deliveryId,status:'UNKNOWN_OR_FAILED',reason:outcome.reason||`provider_http_${outcome.http_status}`});continue;}
-      await env.EMAIL_DB.prepare("UPDATE email_deliveries SET status='sent',resend_email_id=?,sent_at=? WHERE delivery_id=?").bind(outcome.resend_email_id,now.toISOString(),deliveryId).run();
+      // Bind the provider ID and reconcile durable early adverse events in one
+      // D1 transaction. A webhook can be acknowledged while the POST is in flight;
+      // its original join then sees no ID. Never arm a later message across that gap.
+      const bound = await env.EMAIL_DB.batch([
+        env.EMAIL_DB.prepare("UPDATE email_deliveries SET status='sent',resend_email_id=?,sent_at=? WHERE delivery_id=? AND status='sending'").bind(outcome.resend_email_id,now.toISOString(),deliveryId),
+        env.EMAIL_DB.prepare(`UPDATE email_deliveries SET status=(SELECT REPLACE(e.event_type,'email.','') FROM resend_webhook_events e WHERE e.resend_email_id=email_deliveries.resend_email_id AND e.event_type IN ('email.bounced','email.complained','email.suppressed') ORDER BY e.occurred_at DESC,e.svix_id DESC LIMIT 1),failed_at=(SELECT e.occurred_at FROM resend_webhook_events e WHERE e.resend_email_id=email_deliveries.resend_email_id AND e.event_type IN ('email.bounced','email.complained','email.suppressed') ORDER BY e.occurred_at DESC,e.svix_id DESC LIMIT 1) WHERE delivery_id=? AND EXISTS(SELECT 1 FROM resend_webhook_events e WHERE e.resend_email_id=email_deliveries.resend_email_id AND e.event_type IN ('email.bounced','email.complained','email.suppressed'))`).bind(deliveryId),
+        env.EMAIL_DB.prepare(`UPDATE subscribers SET status=(SELECT d.status FROM email_deliveries d WHERE d.delivery_id=?),consent_status='suppressed',next_send_at=NULL,updated_at=? WHERE subscriber_id=(SELECT d.subscriber_id FROM email_deliveries d WHERE d.delivery_id=? AND d.status IN ('bounced','complained','suppressed'))`).bind(deliveryId,now.toISOString(),deliveryId),
+        env.EMAIL_DB.prepare(`INSERT OR IGNORE INTO suppression_log(email,vertical,reason,source,created_at) SELECT s.email,s.vertical,REPLACE(e.event_type,'email.',''),'resend-webhook',e.received_at FROM subscribers s JOIN email_deliveries d ON d.subscriber_id=s.subscriber_id JOIN resend_webhook_events e ON e.resend_email_id=d.resend_email_id WHERE d.delivery_id=? AND e.event_type IN ('email.bounced','email.complained','email.suppressed')`).bind(deliveryId),
+        env.EMAIL_DB.prepare(`INSERT OR IGNORE INTO contact_capture_events(capture_id,idempotency_key,email,first_name,vertical,funnel_stage,source_surface,source_context,review_id,purpose,marketing_consent,consent_status,consent_version,consent_source,consent_copy_sha256,captured_at) SELECT ? || ':' || e.svix_id,'suppression:' || e.svix_id,s.email,s.first_name,s.vertical,s.funnel_stage,'resend-webhook',json_object('event_type',e.event_type,'resend_email_id',e.resend_email_id),NULL,'suppression',0,REPLACE(e.event_type,'email.',''),'resend-webhook-v1-20260827',e.event_type,?,e.occurred_at FROM subscribers s JOIN email_deliveries d ON d.subscriber_id=s.subscriber_id JOIN resend_webhook_events e ON e.resend_email_id=d.resend_email_id WHERE d.delivery_id=? AND e.event_type IN ('email.bounced','email.complained','email.suppressed')`).bind(`contact_${crypto.randomUUID()}`,RESEND_SUPPRESSION_COPY_SHA256,deliveryId),
+      ]);
+      if (bound.some(result=>result?.success!==true) || Number(bound[0]?.meta?.changes||0)!==1) throw new Error('onboarding_receipt_reconciliation_uncertain');
       // Day two is two days after actual welcome, not an old capture clock.
       const next=template.step===1?new Date(now.getTime()+2*86400000).toISOString():null;
       await env.EMAIL_DB.prepare(`UPDATE subscribers SET next_drip_step=?,next_send_at=?,last_sent_at=?,updated_at=? WHERE subscriber_id=? AND vertical=? AND status='active' AND consent_status='opted-in' AND NOT EXISTS(SELECT 1 FROM suppression_log z WHERE z.email=subscribers.email AND z.vertical=subscribers.vertical)`).bind(template.step+1,next,now.toISOString(),now.toISOString(),subscriber.subscriber_id,subscriber.vertical).run();

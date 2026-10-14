@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { handleNewsletterSubscribeRequest } from '../src/newsletter-subscribe.mjs';
-import { runDripScheduler } from '../src/resend-email-machine.mjs';
+import { runDripScheduler, ingestResendWebhook } from '../src/resend-email-machine.mjs';
+import { createHmac } from 'node:crypto';
 import { onRequestPost } from '../functions/unsubscribe.js';
 import { handleContentUpgradeRequest } from '../src/content-upgrade.mjs';
 const config=JSON.parse(readFileSync(new URL('../data/resend-email-machine.json',import.meta.url)));
@@ -18,6 +19,88 @@ function database(){
 const payload=(email='safe@example.invalid',changes={})=>({email,email_consent:true,consent_version:version,consent_source:'/subscribe-bottom-sheet/',source_surface:'sitewide-price-watch',company:'',...changes});
 const request=p=>new Request('https://glpclinicscout.com/api/newsletter-subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(p)});
 const environment=db=>({EMAIL_DB:db,NEWSLETTER_CAPTURE_MODE:'local_test',ONBOARDING_ENABLED:'true',ONBOARDING_B01_READY:'true',ONBOARDING_COPY_SHA256:sha,EMAIL_WARMUP_STATUS:'PASS',RESEND_API_KEY:'synthetic',RESEND_ENABLED:'true'});
+function signedAdverse(type,id) {
+ const key=Buffer.from('GLP47-offline-only-webhook-key');
+ const svixId='offline-'+type;const timestamp=String(Math.floor(Date.now()/1000));
+ const body=JSON.stringify({type,created_at:new Date().toISOString(),data:{email_id:id,from:'GLP Clinic Scout <partners@glpclinicscout.com>'}});
+ const signature=createHmac('sha256',key).update(`${svixId}.${timestamp}.${body}`).digest('base64');
+ return {secret:'whsec_'+key.toString('base64'),request:()=>new Request('https://glpclinicscout.com/api/resend-webhook',{method:'POST',headers:{'svix-id':svixId,'svix-timestamp':timestamp,'svix-signature':'v1,'+signature},body})};
+}
+test('GLP47 early signed bounce at provider receipt binding prohibits follow-up',async()=>{
+ const {sqlite,db}=database();const env=environment(db);let sends=0;
+ try {
+  assert.equal((await handleNewsletterSubscribeRequest(request(payload()),env)).status,201);
+  const now=new Date(Date.parse(sqlite.prepare('SELECT consent_at FROM subscribers').get().consent_at)+1);
+  const event=signedAdverse('email.bounced','offline-early');
+  const transport=async(url)=>{
+   if(url.endsWith('/contacts'))return new Response(JSON.stringify({id:'offline-contact'}));
+   sends++;assert.equal((await ingestResendWebhook(event.request(),{...env,RESEND_WEBHOOK_SECRET:event.secret})).status,200);
+   assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM resend_webhook_events').get().n,1);
+   assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM suppression_log').get().n,0,'webhook arrived before ID binding');
+   return new Response(JSON.stringify({id:'offline-early'}));
+  };
+  await runDripScheduler(env,config,now,transport);
+  assert.equal((await runDripScheduler(env,config,new Date(now.getTime()+2*86400000),transport)).sent,0,'early adverse event must block day two');
+  assert.equal(sends,1);
+  const row=sqlite.prepare('SELECT status,consent_status,next_send_at FROM subscribers').get();
+  assert.deepEqual({...row},{status:'bounced',consent_status:'suppressed',next_send_at:null});
+  assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM suppression_log').get().n,1);
+  assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM contact_capture_events WHERE purpose='suppression'").get().n,1);
+ } finally {sqlite.close();}
+});
+test('GLP47 all adverse types stay terminal in early and ordinary receipt order, including duplicate webhook',async()=>{
+ for(const type of ['email.bounced','email.complained','email.suppressed'])for(const early of [true,false]) {
+  const {sqlite,db}=database();const env=environment(db);let sends=0;
+  try {
+   await handleNewsletterSubscribeRequest(request(payload()),env);
+   const now=new Date(Date.parse(sqlite.prepare('SELECT consent_at FROM subscribers').get().consent_at)+1);
+   const event=signedAdverse(type,'offline-order-message');
+   const ingest=()=>ingestResendWebhook(event.request(),{...env,RESEND_WEBHOOK_SECRET:event.secret});
+   const transport=async(url)=>{
+    if(url.endsWith('/contacts'))return new Response(JSON.stringify({id:'offline-contact'}));
+    sends++;if(early)assert.equal((await ingest()).status,200);
+    return new Response(JSON.stringify({id:'offline-order-message'}));
+   };
+   const result=await runDripScheduler(env,config,now,transport);
+   assert.equal(result.sent,1);assert.equal(result.receipts[0].resend_email_id,'offline-order-message');
+   if(!early)assert.equal((await ingest()).status,200);
+   assert.equal(sqlite.prepare('SELECT status FROM email_deliveries').get().status,type.slice(6));
+   assert.equal((await ingest()).status,200);
+   assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM resend_webhook_events').get().n,1);
+   assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM contact_capture_events WHERE purpose='suppression'").get().n,1);
+   assert.equal((await handleNewsletterSubscribeRequest(request(payload()),env)).status,409);
+   assert.equal((await runDripScheduler(env,config,new Date(now.getTime()+2*86400000),transport)).sent,0);
+   assert.equal((await runDripScheduler(env,config,now,transport)).sent,0);assert.equal(sends,1);
+   const row=sqlite.prepare('SELECT status,consent_status,next_send_at FROM subscribers').get();
+   assert.deepEqual({...row},{status:type.slice(6),consent_status:'suppressed',next_send_at:null});
+  } finally {sqlite.close();}
+ }
+});
+test('GLP47 uncertain adverse reconciliation rolls back ID binding and retains no-replay claim',async()=>{
+ const {sqlite,db}=database();const env=environment(db);let sends=0;
+ try {
+  await handleNewsletterSubscribeRequest(request(payload()),env);
+  const now=new Date(Date.parse(sqlite.prepare('SELECT consent_at FROM subscribers').get().consent_at)+1);
+  sqlite.exec("CREATE TRIGGER offline_reconcile_fail BEFORE INSERT ON suppression_log BEGIN SELECT RAISE(FAIL,'offline reconciliation failure'); END");
+  const event=signedAdverse('email.complained','offline-failed-reconcile');
+  const transport=async(url)=>{
+   if(url.endsWith('/contacts'))return new Response(JSON.stringify({id:'offline-contact'}));
+   sends++;assert.equal((await ingestResendWebhook(event.request(),{...env,RESEND_WEBHOOK_SECRET:event.secret})).status,200);
+   return new Response(JSON.stringify({id:'offline-failed-reconcile'}));
+  };
+  await assert.rejects(runDripScheduler(env,config,now,transport),/offline reconciliation failure/);
+  assert.deepEqual({...sqlite.prepare('SELECT status,resend_email_id FROM email_deliveries').get()},{status:'sending',resend_email_id:null});
+  assert.equal(sqlite.prepare('SELECT next_drip_step FROM subscribers').get().next_drip_step,1);
+  sqlite.exec('DROP TRIGGER offline_reconcile_fail');
+  const later=await runDripScheduler(env,config,new Date(now.getTime()+2*86400000),transport);
+  assert.equal(later.status,'HELD');assert.equal(later.unresolved,1);assert.equal(later.sent,0);assert.equal(sends,1);
+ } finally {sqlite.close();}
+});
+test('GLP47 missing atomic receipt adapter is held before DB or provider effects',async()=>{
+ const env=environment({prepare(){assert.fail('missing batch must refuse before DB')}});
+ const out=await runDripScheduler(env,config,new Date(),()=>assert.fail('missing batch must refuse before provider'));
+ assert.equal(out.status,'HELD');assert.equal(out.sent,0);
+});
 test('GLP47 durable approved-purpose capture enrolls once; scheduler delivers exact welcome and refuses replay/withdrawal',async()=>{
  const {sqlite,db}=database();const env=environment(db);const calls=[];
  const transport=async(url,init)=>{calls.push({url,body:JSON.parse(init.body)});return new Response(JSON.stringify({id:url.endsWith('/contacts')?'synthetic-contact':'synthetic-message'}),{status:200})};
