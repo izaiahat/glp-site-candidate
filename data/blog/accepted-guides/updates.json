@@ -43,6 +43,45 @@
         ]
       },
       "weekly_strategy_sha256": "0e9eb80064d14b1ce2640fc4d19ef8d2d04eecc83370528ceabe20bf96370d9b"
+    },
+    {
+      "article": {
+        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/article.json",
+        "sha256": "5222dd97e04710eca573d684b73d7baa481f9d27adc5c75645321b124af6be55"
+      },
+      "before_sha256": "cd90baba5d9dce8c01b632cc25fe98ed3dde3630dd2de7b00fbdcd97d0170e55",
+      "entry_id": "a17fe571440cc6cb22cd36cf",
+      "qa": {
+        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/qa.json",
+        "sha256": "f307f12fe53e272cc51ff3296b62190ad1adb98c77205403d84add059f88be99"
+      },
+      "review": {
+        "path": "data/blog/accepted-guides/how-to-get-oral-glp-1-update-a17fe571/review.json",
+        "sha256": "716e5c42eecf28ed2defc1550b6a5d1c6d3854e73c12606cc2a3b29ceaa5dec2"
+      },
+      "route": "/guides/how-to-get-oral-glp-1/",
+      "semantic_materiality": {
+        "basis": "independent_five_gate_review_repair",
+        "changed_sections": [
+          "About this guide and its limits",
+          "Check 1: Identify the exact pill, not just “oral GLP-1”",
+          "Check 2: Arrange an evaluation, not a promised prescription",
+          "Label risks remain important when the medicine is a pill",
+          "Check 3: Separate coverage, savings and self-pay",
+          "Check 4: Confirm the prescription and pharmacy handoff",
+          "Check 5: Discuss daily-use fit and ongoing follow-up",
+          "Your on-page appointment and pharmacy checklist",
+          "Methodology and update policy"
+        ],
+        "independent_semantic_review_required": true,
+        "material": true,
+        "new_primary_sources": [
+          "https://www.novo-pi.com/wegovy.pdf",
+          "https://www.novo-pi.com/ozempic-pill.pdf",
+          "https://pi.lilly.com/us/foundayo-uspi.pdf"
+        ]
+      },
+      "weekly_strategy_sha256": null
     }
   ],
   "schema": "glp-accepted-guide-updates-v1"

@@ -179,7 +179,8 @@ export function remediateStructuredData(html, state) {
 }
 
 const SOURCE_LI = /<li id="(?:guide-)?source-?\d+"[\s\S]*?<\/li>/g;
-const GUIDE_SOURCE_LI = /<li id="guide-source-\d+">([\s\S]*?)<\/li>/g;
+// Accepted render-contract guides key ledger rows by source id (guide-source-s4).
+const GUIDE_SOURCE_LI = /<li id="guide-source-s?\d+">([\s\S]*?)<\/li>/g;
 
 function documentKind(url) {
   const lower = String(url).toLowerCase();
@@ -200,7 +201,9 @@ export function remediateCitationAnchors(html, state) {
   GUIDE_SOURCE_LI.lastIndex = 0;
   return html.replace(GUIDE_SOURCE_LI, (block) => {
     if (!block.includes(">Open source</a>")) return block;
-    const publisher = block.match(/<strong>([^<]+)<\/strong>/)?.[1]?.trim();
+    // The render contract prefixes the publisher with a visible source-id chip;
+    // the descriptive label names the issuer only.
+    const publisher = block.replace(/<span class="guide-source-id">[^<]*<\/span>\s*/, "").match(/<strong>([^<]+)<\/strong>/)?.[1]?.trim();
     const checked = block.match(/Checked (\d{4}-\d{2})-\d{2}/)?.[1];
     const href = block.match(/<a href="(https?:\/\/[^"]+)"[^>]*data-citation=/)?.[1];
     if (!publisher || !href) return block;

@@ -50,7 +50,9 @@ test('authenticated shortage update replaces ownership keyword without changing 
   const read = rel => JSON.parse(readFileSync(new URL('../' + rel, import.meta.url)));
   const articles = read('data/blog/content-batch.json').articles;
   const owners = read('data/blog/keyword-ownership-map.json').entries;
-  const updates = updatesSource.loadAcceptedUpdates(root);
+  // Scope to updates whose predecessor lives in this catalog (the real build
+  // passes every catalog, including accepted-guide additions).
+  const updates = updatesSource.loadAcceptedUpdates(root).filter(u => articles.some(a => a.canonical_path === u.article.canonical_path));
   const original = JSON.stringify({articles, owners, updates});
   const projected = updatesSource.applyAcceptedUpdateOwnership(owners, articles, updates);
   const update = updates[0].article;
@@ -71,7 +73,7 @@ test('authenticated shortage update replaces ownership keyword without changing 
 
 test('real neutral accepted update passes unchanged editorial gate without reviving an inactive CTA', () => {
   const articles = JSON.parse(readFileSync(new URL('../data/blog/content-batch.json', import.meta.url))).articles;
-  const updates = updatesSource.loadAcceptedUpdates(new URL('../', import.meta.url).pathname);
+  const updates = updatesSource.loadAcceptedUpdates(new URL('../', import.meta.url).pathname).filter(u => articles.some(a => a.canonical_path === u.article.canonical_path));
   const article = applyAcceptedUpdates(articles, updates).find(a => a.article_id === updates[0].article.article_id);
   const author = {status:'verified_organization', clinical_credentials_claimed:false};
   assert.equal(reviewBrief(article, author).status, 'PASS');
@@ -82,7 +84,7 @@ test('real neutral accepted update passes unchanged editorial gate without reviv
 
 test('accepted material update retains original publication date in rendered Article schema', () => {
   const articles = JSON.parse(readFileSync(new URL('../data/blog/content-batch.json', import.meta.url))).articles;
-  const updates = updatesSource.loadAcceptedUpdates(new URL('../', import.meta.url).pathname);
+  const updates = updatesSource.loadAcceptedUpdates(new URL('../', import.meta.url).pathname).filter(u => articles.some(a => a.canonical_path === u.article.canonical_path));
   const article = applyAcceptedUpdates(articles, updates).find(a => a.article_id === updates[0].article.article_id);
   const author = {status:'verified_organization', clinical_credentials_claimed:false,
     entity_type:'Organization', display_name:'GLP Clinic Scout Editorial Team', bio_path:'/authors/clinic-scout-editorial-team/'};
