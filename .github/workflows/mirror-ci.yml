@@ -38,6 +38,7 @@ on:
       - "tests/content-upgrade-contract.test.mjs"
       - "tests/d2f-coverage-floor.test.mjs"
       - "tests/d2w-s9-source-controls.test.mjs"
+      - "tests/d2w-release2-price-state.test.mjs"
       - "tests/quiz-input-seam.test.mjs"
       - "tests/glp234-try-ageless-identity.test.mjs"
       - "tests/price-index-caller-seams.test.mjs"
@@ -115,6 +116,8 @@ jobs:
       # private approval authenticity, economics or built paid-page behavior.
       - name: R11 private approval input binding (source-only; no private reads)
         run: node --test tests/r11-approval-input-binding.test.mjs
+      - name: R2 authentic source fixture and pinned tamper regression (not build or price-output acceptance)
+        run: node --test --test-name-pattern '^R2 altered evidence snapshot' tests/d2w-release2-price-state.test.mjs
       - name: Record limited scope
         if: always()
         run: |
