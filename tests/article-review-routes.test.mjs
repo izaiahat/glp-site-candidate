@@ -53,7 +53,9 @@ test('review articles cannot replace provider profiles or duplicate catalog rout
 });
 
 test('review capture promises a deliverable the resolver actually supports', () => {
-  const html = addP1ContentUpgradeSurface(metadata('/reviews/example-provider-cost/'));
+  // Deliverable contract on an already approved capture identity. A synthetic
+  // new article route must not acquire marketing consent from directory scope.
+  const html = addP1ContentUpgradeSurface(metadata('/reviews/gobymeds/'));
   assert.match(html, /Email me the checklist/);
   assert.doesNotMatch(html, /Email me the source-checked guide/);
   const key = html.match(/name="lead_magnet_key" value="([^"]+)"/)[1];

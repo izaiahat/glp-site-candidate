@@ -28,7 +28,7 @@
     "test:promotion-control": "python3 -m unittest discover -s promotion-control/tests -p 'test_*.py' -v",
     "seal:promotion-candidate": "python3 promotion-control/bin/seal_candidate.py",
     "preview:plan": "python3 promotion-control/bin/preview_deploy.py",
-    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "test": "node --experimental-test-module-mocks --test --test-concurrency=1 tests/*.test.mjs",
     "test:browser": "playwright test",
     "validate:approved-53": "node scripts/validate-approved-program-coverage.mjs",
     "validate:ready6": "node scripts/validate-ready6-editorial.mjs && python3 scripts/validate-ready6-static.py",
