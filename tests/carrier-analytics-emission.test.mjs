@@ -57,6 +57,9 @@ test('real header emitter: bare analytics alias is non-cacheable; content-addres
   assert.equal(block('/assets/site-*.css'), 'Cache-Control: public, max-age=31536000, immutable');
   assert.equal(block('/assets/fonts/*'), 'Cache-Control: public, max-age=31536000, immutable');
   assertCurrentAnalyticsCache(headers, analytics, analytics, analytics);
+  // A pervasive security-only rule is harmless; CSS/font cache rules above
+  // must also remain accepted. Cloudflare combines all matching rules.
+  assertCurrentAnalyticsCache(`${headers}\n/*\n  X-Content-Type-Options: nosniff\n`, analytics, analytics, analytics);
   // Real emitter output is the positive. Refuse stale/missing/duplicate rules,
   // immutable mutable aliases, non-immutable addressed assets and byte drift.
   for (const mutate of [
@@ -66,6 +69,12 @@ test('real header emitter: bare analytics alias is non-cacheable; content-addres
     text => text.replace('/assets/analytics.js\n  Cache-Control: no-store', ''),
     text => `${text}\n/assets/analytics.js\n  Cache-Control: no-store\n`,
     text => `${text}\n/assets/analytics*.js\n  Cache-Control: public, max-age=31536000, immutable\n`,
+    // RV113's exact counterexample, plus the same overlap via Pages splats,
+    // named path placeholders and host-qualified rules (not filename prefixes).
+    ...['/assets/*', '/*', '/*.js', '/assets/:file', '/:directory/:file',
+      'https://glpclinicscout.com/assets/*'].map(route =>
+      text => `${text}\n${route}\n  Cache-Control: public, max-age=31536000, immutable\n`),
+    text => `${text}\n/assets/*\n  ! Cache-Control\n`,
   ]) {
     const mutated = mutate(headers);
     assert.notEqual(mutated, headers, 'negative must mutate actual emitter output');
