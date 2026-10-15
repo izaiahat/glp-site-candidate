@@ -23,6 +23,7 @@ import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
 // requires approved GLP-1 providers live despite missing internal promotion rows
 // or unverified redirector terms; historical content-fit evidence still matters.
 import assert from "node:assert/strict";
+import { assertHistoricalHeldEligibility, assertCurrentHeldEligibility } from './helpers/current-review-holds.mjs';
 import { createHash } from "node:crypto";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
@@ -247,11 +248,10 @@ test("TRT retains the verified GLP-1 destination and is live under the 2026-09-2
   // current live population. Exact identity parity prevents equal-count swaps.
   assert.equal(inputs.eligibility.program_count, inputs.contentLedger.programs.length);
   assert.deepEqual(inputs.eligibility.programs.map(p => p.program_id).sort(), inputs.contentLedger.programs.map(p => p.program_id).sort());
-  const heldEligibility = inputs.eligibility.programs.filter(p => !p.live_link_allowed && !p.promotion_authorized);
-  assert.deepEqual(heldEligibility.map(p => p.program_id), ['telos-rx']);
-  assert.equal(heldEligibility[0].status, 'paused_network_program_paused');
-  assert.equal(heldEligibility[0].go_route_wired, false);
-  assert.equal(heldEligibility[0].tracking, null);
+  // The one-row Telos baseline predates the governed RV-Q13 review-only hold.
+  // It remains exact on authenticated historical bytes, never current inputs.
+  assertHistoricalHeldEligibility();
+  assertCurrentHeldEligibility(inputs);
   assert.equal(inputs.eligibility.live_program_count, inputs.activationSelection.live_program_count);
   const eligibilityRow = inputs.eligibility.programs.find((item) => item.program_id === "trt-nation");
   assert.ok(eligibilityRow, "TRT Nation must remain explicitly represented in commercial/editorial eligibility");

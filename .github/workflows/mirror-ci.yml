@@ -41,6 +41,10 @@ on:
       - "tests/high-intent-affiliate-surfaces.test.mjs"
       - "tests/paused-offer-reason-custody.test.mjs"
       - "tests/selected-program-denial-partition.test.mjs"
+      - "tests/trt-nation-link-dark.test.mjs"
+      - "tests/current-review-holds.test.mjs"
+      - "tests/fixtures/eligibility-pre-retaclinic.json.gz"
+      - "tests/standalone-review-membership.test.mjs"
       - "tests/provider-fastpath-plus5.test.mjs"
       - "tests/fastpath-unscored-custody.test.mjs"
       - "tests/fixtures/historical-unscored-copy.mjs"
@@ -169,6 +173,8 @@ jobs:
         run: node --test tests/paused-offer-reason-custody.test.mjs tests/affiliate-outbound-mode.test.mjs
       - name: Current selected-program denial partition (source-only; no build)
         run: node --test --test-name-pattern '^(the all-or-nothing money link map still resolves every selected program|calculator and quiz share one fail-closed transparent-direct resolver|current selected-program oracle requires complete live-or-authenticated-denied partition on every owning surface)$' tests/direct-affiliate-lane.test.mjs tests/high-intent-affiliate-surfaces.test.mjs tests/selected-program-denial-partition.test.mjs
+      - name: Current provider-review holds and historical eligibility custody (source-only; no build or private approvals)
+        run: node --test --test-concurrency=1 tests/current-review-holds.test.mjs tests/standalone-review-membership.test.mjs tests/paused-offer-reason-custody.test.mjs
       - name: Guide resource renderer and privacy regression (offline only)
         run: |
           node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs tests/glp361-guide-resource-custody.test.mjs
