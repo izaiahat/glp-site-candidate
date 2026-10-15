@@ -3,6 +3,7 @@ import test from "node:test";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { reviewBrief } from "../src/blog-system.mjs";
+import { assertGuideResourceCapture } from "./helpers/guide-resource-capture.mjs";
 
 const ROOT = new URL("../", import.meta.url);
 const ROUTE = "/guides/wegovy-pills-oral-semaglutide-cost/";
@@ -69,8 +70,8 @@ test("built guide is indexable, self-canonical, source-only externally, affiliat
   assert.equal((main.match(/<form\b[^>]*action="\/api\/content-upgrade"/g) || []).length, 1);
   assert.match(main, /data-p1-capture-surface/);
   assert.doesNotMatch(main, /<input\b[^>]*\bname="email_consent"/);
-  assert.match(main, /<input type="hidden" name="consent_version" value="glp-content-upgrade-v2-20260801">/);
-  assert.match(main, /<p class="capture-consent-note">By submitting your email,[\s\S]*?Privacy Policy[\s\S]*?Unsubscribe anytime\.<\/p>/);
+  assertGuideResourceCapture(main, ROUTE);
+  assert.match(html, /referrerPolicy:'no-referrer'/);
   assert.doesNotMatch(html, /<a\b[^>]*href="[^"]*(?:checkout|contact)|\bour pick\b/i);
   const externalAnchors = [...html.matchAll(/<a\b[^>]*href="(https:\/\/[^"#]+)"/g)].map((match) => match[1]);
   const shareIntents = externalAnchors.filter((href) => href.startsWith("https://x.com/intent/post?"));

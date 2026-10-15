@@ -78,6 +78,9 @@ on:
       - "tests/f06-fastpath-current-hold.test.mjs"
       - "tests/glp47-approved-onboarding.test.mjs"
       - "tests/guide-resource-consent.test.mjs"
+      - "tests/glp361-guide-resource-custody.test.mjs"
+      - "tests/pass2-late-audit-served.test.mjs"
+      - "tests/wegovy-pills-guide.test.mjs"
       - "tests/helpers/**"
       - "tests/current-comparison-cohort.test.mjs"
       - "tests/review-fixture-lifecycle.test.mjs"
@@ -160,7 +163,7 @@ jobs:
         run: node --test --test-name-pattern '^(the all-or-nothing money link map still resolves every selected program|calculator and quiz share one fail-closed transparent-direct resolver|current selected-program oracle requires complete live-or-authenticated-denied partition on every owning surface)$' tests/direct-affiliate-lane.test.mjs tests/high-intent-affiliate-surfaces.test.mjs tests/selected-program-denial-partition.test.mjs
       - name: Guide resource renderer and privacy regression (offline only)
         run: |
-          node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs
+          node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs tests/glp361-guide-resource-custody.test.mjs
           node --test --test-name-pattern '^O-28 ' tests/pass2-late-audit-static.test.mjs
       - name: Carrier analytics emitter and alias cache regression (offline only)
         run: node --test tests/carrier-analytics-emission.test.mjs
