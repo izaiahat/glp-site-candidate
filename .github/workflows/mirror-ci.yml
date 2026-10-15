@@ -54,6 +54,8 @@ on:
       - "tests/carrier-analytics-emission.test.mjs"
       - "tests/helpers/analytics-cache-contract.mjs"
       - "tests/product-ready.test.mjs"
+      - "tests/product-analytics-privacy-contract.test.mjs"
+      - "tests/d2i-analytics-hygiene.test.mjs"
       - "tests/content-upgrade-contract.test.mjs"
       - "tests/d2f-coverage-floor.test.mjs"
       - "tests/d2w-s9-source-controls.test.mjs"
@@ -187,6 +189,7 @@ jobs:
             '9cd63e73d743d69104fa0a281ce42113743faf4a': ['src/provider-review.mjs', 'data/affiliate-activation-selection.json', 'data/affiliate-held-link-manifest.json', 'data/go-runtime-promotion-authority.json', 'functions/go/program-manifest.js', 'data/program-page-eligibility.json'],
             '34db221edec1b3fbf4ae87aac67be64f75c30ca7': ['src/provider-review.mjs', 'scripts/validate-provider-fastpath-plus5.mjs'],
             '59adaddfa6800c3cd87592ad88829a081a35e3c3': ['artifacts/build4-preservation/_headers'],
+            '8cc4a4d70199b6d2604b89ca59123d0b484bda18': ['assets/analytics.js'],
           }
           env = dict(os.environ)
           auth = base64.b64encode(('x-access-token:' + env.pop('GH_TOKEN')).encode()).decode()
@@ -203,6 +206,8 @@ jobs:
           test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
       - name: Carrier emitter and historical-current analytics cache oracles (source-only; no build)
         run: node --test tests/carrier-analytics-emission.test.mjs
+      - name: Product-ready historical-current analytics privacy oracles (mock SDK only; no build or live exports)
+        run: node --test --test-concurrency=1 tests/d2i-analytics-hygiene.test.mjs tests/product-analytics-privacy-contract.test.mjs
       - name: Fastpath current neutral-score copy and real ended renderer-validator compatibility (source-only; no build)
         run: node --test --test-name-pattern '^(provider-review specs cover|current fastpath unscored|historical unscored wording|ended fastpath review retains|real ended Pallas)' tests/provider-fastpath-plus5.test.mjs tests/fastpath-unscored-custody.test.mjs
       - name: F06 current-hold and ended-relationship validator seam (offline exact head)
