@@ -13,7 +13,7 @@
       "callers": [
         ".github/workflows/mirror-ci.yml"
       ],
-      "sha256": "49c05bb8e3e39250d7a36027ce62ce61ad19873317b45a86acdb20912601bfad"
+      "sha256": "f4abb6318f0a79dcdb8afdef2b3162c3e5bc9ff56d0404283b5ebdf2a9cacfd7"
     },
     "ops/GLP327-SPONSOR-PACKET.md": {
       "kind": "procedure",
@@ -27,7 +27,7 @@
       "callers": [
         "GitHub PR exact-head checks"
       ],
-      "sha256": "dc36fca13a3485b4b6dd4ee0cacb669ed37cd3627719f2dd537e97a8af53d370"
+      "sha256": "e5c991948a16b656baf0c2dda4e653555838c599d671eabc4e433cd775742894"
     },
     "src/sponsor-order.mjs": {
       "kind": "site_source",

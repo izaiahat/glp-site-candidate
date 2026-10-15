@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { historicalRetatrutideInputs } from './fixtures/historical-retatrutide-inputs.mjs';
 import { Buffer } from "node:buffer";
 import { analyticsPolicy, buildAnalyticsEvent, emitAnalytics } from "../src/analytics.mjs";
 import { constructNetworkUrl } from "../src/network-constructors.mjs";
@@ -211,9 +212,13 @@ test("quiz policy pins AND composition, top-three order, ignored medical answers
   // config - registry surfaces applied and priority_score set to the merit score
   // derived at build. Running them against the raw file scored every newly wired
   // provider at zero and would have passed while the live quiz ranked differently.
-  const raw = await readJson("../data/quiz-config.json"); assert.equal(raw.matching_policy.result_count,'all_eligible');assert.equal(validateQuizPolicy(raw).result_count,raw.candidates.length);
-  const registry = await readJson("../data/program-registry.json");
-  const ledger = await readJson("../data/program-content-ledger.json");
+  // Historical positive: the complete authenticated September generation.
+  // Current-seal and runtime capture expiry remain required refusal tests in
+  // retatrutide-capture-custody; this fixture renews no current evidence.
+  const fixture = historicalRetatrutideInputs();
+  const raw = fixture.quiz; assert.equal(raw.matching_policy.result_count,'all_eligible');assert.equal(validateQuizPolicy(raw).result_count,raw.candidates.length);
+  const registry = fixture.registry;
+  const ledger = fixture.contentLedger;
   const { comparablePriceProviderIds } = await import("../src/provider-dynamic-profiles.mjs");
   const asOf = new Date(`${[registry.provider_dynamic_profiles.sealed_as_of, registry.therapeutic_taxonomy.sealed_as_of].sort().at(-1)}T12:00:00Z`);
   const comparablePriceIds = comparablePriceProviderIds(registry, "glp-clinic-scout", {
@@ -227,14 +232,14 @@ test("quiz policy pins AND composition, top-three order, ignored medical answers
   // that join would score every provider zero on cost and pass against an
   // ordering the live quiz does not use - the same trap the 2026-08-06 note
   // above describes, one layer further down.
-  const matrix = await readJson("../data/provider-pricing-matrix.json");
+  const matrix = fixture.pricingMatrix;
   const { applyPricingToCandidates: joinPricing, ALL_IN_MONTHS: months } = await import("../src/quiz-ranking.mjs");
   // The therapeutic projection is what attaches the medication tags a
   // medication-preference vector filters on; without it every such vector
   // returns [] and the assertion passes for the wrong reason.
   const { projectTherapeuticSurfaces } = await import("../src/therapeutic-taxonomy.mjs");
   const { projectMoneyPagesFromRegistry } = await import("../src/program-registry.mjs");
-  const moneySpecs = await readJson("../data/money-page-specs.json");
+  const moneySpecs = fixture.money;
   const projected = projectTherapeuticSurfaces({
     registry,
     profileId: "glp-clinic-scout",
