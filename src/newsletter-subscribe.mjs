@@ -1,6 +1,6 @@
 import { resendContactsEnabled, syncResendContact } from "./resend-contacts.mjs";
 import { canonicalContactStatements, runCanonicalContactStatements } from "./canonical-contact.mjs";
-import { ONBOARDING_CONSENT_VERSION, ONBOARDING_CONSENT_SOURCE, ONBOARDING_CONSENT_TEXT, ONBOARDING_SURFACE } from './onboarding-consent.mjs';
+import { ONBOARDING_TEST_EMAIL, ONBOARDING_CONSENT_VERSION, ONBOARDING_CONSENT_SOURCE, ONBOARDING_CONSENT_TEXT, ONBOARDING_SURFACE } from './onboarding-consent.mjs';
 
 export const NEWSLETTER_CONSENT_VERSION = "glp-newsletter-v1-20260822";
 export const NEWSLETTER_CONSENT_SOURCE = "/subscribe-bottom-sheet/";
@@ -111,7 +111,7 @@ function captureGate(env) {
   // `enabled` is the explicit Pages capture-only mode authorized by Design
   // Pass 4. It writes durable consent to D1 but cannot start email sends;
   // RESEND_ENABLED and the independent worker send gate still own effects.
-  if (["local_test", "enabled"].includes(env.NEWSLETTER_CAPTURE_MODE)) return true;
+  if (["local_test", "enabled", "owned_test"].includes(env.NEWSLETTER_CAPTURE_MODE)) return true;
   const receipt = String(env.NEWSLETTER_CAPTURE_RECEIPT_SHA256 || "");
   return env.NEWSLETTER_CAPTURE_MODE === "production_operator_approved"
     && /^[a-f0-9]{64}$/.test(receipt)
@@ -141,6 +141,14 @@ export async function handleNewsletterSubscribeRequest(request, env, fetchImpl =
   if (!(request.headers.get("content-type") || "").toLowerCase().startsWith("application/json")) return json(415, { status: "CONTENT_TYPE_REQUIRED" });
   if (Number(request.headers.get("content-length") || 0) > 2048) return json(413, { status: "PAYLOAD_TOO_LARGE" });
   if (!captureGate(env)) return json(503, { status: "NEWSLETTER_CAPTURE_HELD" });
+  // Dark proving window: only the owned address and approved new purpose may
+  // reach storage. This is not an alias/domain allowlist or a general live gate.
+  if (env.NEWSLETTER_CAPTURE_MODE === 'owned_test') {
+    let candidate;
+    try { candidate = validateNewsletterSubscription(await request.clone().json()); }
+    catch { return json(503, {status:'NEWSLETTER_CAPTURE_TEST_ONLY'}); }
+    if (candidate.email !== ONBOARDING_TEST_EMAIL || candidate.consentVersion !== ONBOARDING_CONSENT_VERSION) return json(503, {status:'NEWSLETTER_CAPTURE_TEST_ONLY'});
+  }
   const db = env.EMAIL_DB || env.GLP_DB;
   if (!db?.prepare) return json(503, { status: "STORAGE_UNAVAILABLE" });
   if (!(await rateLimit(env, db, request))) return json(429, { status: "RATE_LIMITED" });
