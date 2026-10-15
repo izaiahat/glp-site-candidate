@@ -4,6 +4,7 @@ import path from "node:path";
 import test, { after, before } from "node:test";
 
 import { createReviewServer } from "../scripts/serve-review.mjs";
+import { assertGuideResourceCapture } from "./helpers/guide-resource-capture.mjs";
 
 const ROOT = new URL("../", import.meta.url);
 const PUBLIC = new URL("../public/", import.meta.url);
@@ -120,10 +121,9 @@ test("all built subscription and capture surfaces have passive consent with hidd
   const { response, html } = await fetchText("/guides/mounjaro-coupon/");
   assert.equal(response.status, 200);
   assert.doesNotMatch(html, visibleConsentCheckbox);
-  assert.match(html, /name="consent_version" value="glp-content-upgrade-v2-20260801"/);
-  assert.match(html, /name="source_page" value="guides-mounjaro-coupon"/);
-  assert.match(html, /class="capture-honeypot"[\s\S]*?name="company"/);
-  assert.match(html, /class="capture-consent-note"[\s\S]*?href="\/privacy\/"/);
+  // GLP73 guide delivery is resource-only, not the commercial v2 checklist.
+  assertGuideResourceCapture(html, "/guides/mounjaro-coupon/");
+  assert.match(html, /referrerPolicy:'no-referrer'/);
   assert.match(html, /payload\.email_consent='true'/);
 });
 
