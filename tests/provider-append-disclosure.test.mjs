@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {stripPriceStateDisclosures} from '../src/price-state.mjs';
+import {historicalPriceDisclosureInput} from './helpers/price-disclosure-input.mjs';
 const root=new URL('../',import.meta.url);
 test('append producer strips only exact current and authenticated predecessor coverage copy',()=>{
  const source=readFileSync(new URL('scripts/build-staging.mjs',root),'utf8');
@@ -10,7 +11,7 @@ test('append producer strips only exact current and authenticated predecessor co
  const strip=new Function('html','stripPriceStateDisclosures','derivedTallies','pricingBaseline','predecessorLiveProgramCount',`return ${body}`);
  const baseline=JSON.parse(readFileSync(new URL('data/pricing-coverage-baseline.json',root),'utf8'));
  const apply=html=>strip(html,stripPriceStateDisclosures,tallies,baseline,59);
- const html=readFileSync(new URL('artifacts/build4-preservation/glp-1-price-index/index.html',root),'utf8');
+ const html=historicalPriceDisclosureInput();
  const aside=html.match(/<aside class="panel" data-price-state-disclosure>[\s\S]*?<\/aside>/)[0];
  assert.match(aside,/identities: 59\./); assert.match(aside,/subset contains 31 identities/);
  assert.equal(apply(html),html.replace(aside,''));
