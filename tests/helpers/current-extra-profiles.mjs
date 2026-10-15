@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { projectProviderPriceAppend } from '../../src/provider-price-append.mjs';
 import { historicalAffiliateRegistry } from '../../src/affiliate-relationship-sync.mjs';
 import { deriveIdentityGroups } from '../../src/provider-identity.mjs';
@@ -15,9 +16,12 @@ export async function assertExtraProfileMembership(extraProfiles, EXTRA_PROFILE_
   // Use the native historical-price projection, including its exact predecessor
   // and current semantic guards. Never repin or treat the old bytes as approval.
   const old = JSON.parse(projectProviderPriceAppend(Buffer.from(JSON.stringify(historicalAffiliateRegistry(registry))), binding.registry, 'registry'));
-  projectProviderPriceAppend(Buffer.from(await read('data/program-content-ledger.json')), binding.ledger, 'ledger');
-  const {aliasIds} = deriveIdentityGroups(old, 'glp-clinic-scout', ledger.programs);
-  const cards = new Set(optionCProgramIds(old));
+  const historicalLedger = JSON.parse(projectProviderPriceAppend(Buffer.from(await read('data/program-content-ledger.json')), binding.ledger, 'ledger'));
+  // Exact 9cd63e7 fact corpus; preserve it as historical, not current approval.
+  const factBytes = await read('data/provider-facts-backfill-20260830.json');
+  assert.equal(createHash('sha256').update(factBytes).digest('hex'), 'e08a533653dd20f8400ad35d4562ec21478704a4d6c5758d61e85f83c1b97f3f');
+  const {aliasIds} = deriveIdentityGroups(old, 'glp-clinic-scout', historicalLedger.programs);
+  const cards = new Set(optionCProgramIds(old, {ledger:historicalLedger, facts:JSON.parse(factBytes)}));
   const historicalExtras = currentComparisonPrograms(old).filter(program => {
     const profile = program.profiles?.['glp-clinic-scout'];
     return program.commercial_state === 'live' && profile?.vertical_fit === true && profile.wired === true

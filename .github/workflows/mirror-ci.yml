@@ -217,8 +217,6 @@ jobs:
           print('Authenticated test-only source closure:', len(closure), 'refs,', len(blobs), 'blobs; checkout unchanged')
           PY
           test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
-      - name: Money projection and historical-current directory membership (source-only; no build or private approvals)
-        run: node --max-old-space-size=256 --test --test-concurrency=1 tests/current-money-projection.test.mjs tests/historical-money-projection.test.mjs tests/current-extra-profiles.test.mjs
       - name: Carrier emitter and historical-current analytics cache oracles (source-only; no build)
         run: node --test tests/carrier-analytics-emission.test.mjs
       - name: Product-ready historical-current analytics privacy oracles (mock SDK only; no build or live exports)
@@ -235,6 +233,8 @@ jobs:
           node tests/helpers/materialize-retatrutide-capture.mjs
           node --test --test-concurrency=1 tests/provider-dynamic-profiles.test.mjs tests/identity-calculator-census.test.mjs tests/retatrutide-capture-custody.test.mjs tests/therapeutic-wire-in-propagation-build6.test.mjs tests/therapeutic-surfaces-build6.test.mjs tests/helpers/s9-held-taxonomy-case.mjs
           node --test --test-name-pattern '^quiz policy pins AND composition, top-three order, ignored medical answers, and golden vectors$' tests/playbook.test.mjs
+      - name: Money projection and historical-current directory membership (source-only; retained captures already authenticated above)
+        run: node --max-old-space-size=256 --test --test-concurrency=1 tests/current-money-projection.test.mjs tests/historical-money-projection.test.mjs tests/current-extra-profiles.test.mjs
       - name: Price caller dependency seam regression (synthetic inputs; not price-oracle acceptance)
         run: node --test tests/price-index-caller-seams.test.mjs
       - name: Article selection dependency seam (source catalogs only; not built-output acceptance)

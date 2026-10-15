@@ -26,6 +26,7 @@ test('source-only directory membership keeps historical seven, source append and
     d=>{d.programs=d.programs.filter(p=>p.program_id!=='willow-review');},
     d=>{d.programs.find(p=>p.program_id==='retaclinic-review').profiles['glp-clinic-scout'].surfaces.compare=true;},
   ]) await assert.rejects(run((path,data)=>{if(path==='data/program-registry.json')edit(data);}),/append_current_drift/);
+  await assert.rejects(run((path,data)=>{if(path==='data/provider-facts-backfill-20260830.json')data.historical_tamper=true;}),{name:'AssertionError'});
   await assert.rejects(run((path,data)=>{if(path==='data/provider-price-append.json')data.registry.predecessor_sha256='0'.repeat(64);}),/append_predecessor_drift/);
   await assert.rejects(run((path,data)=>{if(path==='data/provider-page-contracts.json')data.providers.find(p=>p.program_id==='retaclinic-review').row_contract.promotion_authorized=true;}),{name:'AssertionError'});
 });
