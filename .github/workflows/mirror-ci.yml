@@ -67,6 +67,8 @@ on:
       - "tests/f17-historical-registry-binding.test.mjs"
       - "tests/fixtures/f17-pinned-program-registry.json.gz"
       - "tests/fixtures/f17-pre-pallas-input-successor.json"
+      - "tests/pass2-quiz-collection.test.mjs"
+      - "tests/pass2-detail-quiz.test.mjs"
       - "tests/quiz-input-seam.test.mjs"
       - "tests/glp75-source-bounded-seo.test.mjs"
       - "tests/glp234-try-ageless-identity.test.mjs"
@@ -213,6 +215,10 @@ jobs:
         run: node --test tests/price-index-caller-seams.test.mjs
       - name: Article selection dependency seam (source catalogs only; not built-output acceptance)
         run: node --test tests/article-selection-seam.test.mjs
+      - name: PASS 2 quiz collection boundary and unchanged source assertions (built-output callback remains native-only)
+        run: |
+          node --test tests/pass2-quiz-collection.test.mjs
+          node --test --test-name-pattern '^(PASS 2 quiz|Phase 4 every treatment-intent)' tests/pass2-detail-quiz.test.mjs
       - name: Build-to-quiz dependency seam (synthetic inputs; not native oracle acceptance)
         run: node --test tests/quiz-input-seam.test.mjs
       - name: GLP234 native raw-scoring and current-hold quiz regression (real source inputs only)
