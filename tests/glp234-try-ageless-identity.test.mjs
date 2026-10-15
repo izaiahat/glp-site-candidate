@@ -17,6 +17,10 @@ import { GO_RUNTIME_MANIFEST } from '../functions/go/program-manifest.js';
 import { effectiveAffiliateBuildInputs, effectiveAffiliateRegistry } from '../src/affiliate-relationship-sync.mjs';
 import { quizInputSeam } from './helpers/quiz-input-seam.mjs';
 import { readF17PinnedRegistry } from './helpers/f17-pinned-registry.mjs';
+import { readGLP234HistoricalCommercial } from './helpers/glp234-historical-commercial.mjs';
+import { assertGLP234CurrentGo } from './helpers/glp234-current-go.mjs';
+import { loadAffiliateLinkMap } from '../src/affiliate-link-map.mjs';
+import { goCommercialLabels } from '../src/go-commercial-labels.mjs';
 
 test('GLP-234 F3 exact identity successor reconstructs only the historical price label', async () => {
   const {readHistoricalPriceFixture} = await import('./helpers/provider-append-predecessor.mjs');
@@ -278,11 +282,14 @@ test('GLP-234 registry projections name the first-party brand without altering r
     tracking_link_sha256: 'f160cdd13074620be4ba6fac5258d2480ae1dcb45327a9b11e0e49cc3e4ed650',
     disposition: 'historical_snapshot_only_not_activation_authority',
   });
-  for (const [name, expected] of [
+  // These three unchanged hashes describe pre-overlay custody, not current
+  // authority. Current routing, effective holds and GO successor remain checked
+  // below using only current source. No historical bytes enter those consumers.
+  for (const [file, expected] of [
     ['affiliate-activation-selection.json', '63586a11a80878a008c61b0825ff5344726906b0e7efece6811dd986f3db0de6'],
     ['affiliate-held-link-manifest.json', '613ce4dcd21357466e11f9338c71c554d71c6feac71a57127c2059d0db153675'],
     ['go-runtime-promotion-authority.json', 'ed0060a986a5703829035c29ce23c252d1285083daa17a9ae778d5655e1b53f2'],
-  ]) assert.equal(sha(await readFile(new URL(`../data/${name}`, import.meta.url))), expected, name);
+  ]) assert.equal(sha(readGLP234HistoricalCommercial(file)), expected, file);
   // Historical identity approval remains exact; the later accepted current
   // denial may remove held tracking only, never alter non-held custody.
   const historicalGo = new URL('./fixtures/f06-historical-source/program-manifest.js', import.meta.url);
@@ -290,7 +297,16 @@ test('GLP-234 registry projections name the first-party brand without altering r
     'cab1f5b4a8437080c09f580daf7be19bb4b9a177673150ba1f1e8f9abe113f7a');
   const { GO_RUNTIME_MANIFEST: beforeGo } = await import(historicalGo.href);
   const held = new Set(Object.entries(loadGoPromotionAuthority().programs).filter(([,row])=>row.status==='WITHHELD').map(([id])=>id));
-  assertCurrentHoldGoSuccessor(beforeGo, {...GO_RUNTIME_MANIFEST, programs:Object.values(GO_RUNTIME_MANIFEST.programs)}, held);
+  // Both endpoints of this narrow denial-only transition are historical now;
+  // new approved members and ended relationships cannot be compared to F06's
+  // fixed membership. The current complete producer check is separate below.
+  const afterGoText = readGLP234HistoricalCommercial('program-manifest.js').toString('utf8');
+  const afterGo = JSON.parse(afterGoText.slice(afterGoText.indexOf('Object.freeze(') + 'Object.freeze('.length, afterGoText.lastIndexOf(');')));
+  assertCurrentHoldGoSuccessor(beforeGo, {...afterGo, programs:Object.values(afterGo.programs)}, held);
+  assertGLP234CurrentGo({registry, ledger:await load('program-content-ledger.json'),
+    eligibility:await load('program-page-eligibility.json'), selection:await load('affiliate-activation-selection.json'),
+    links:loadAffiliateLinkMap('compare'), authority:loadGoPromotionAuthority(),
+    labels:goCommercialLabels(await load('affiliate-held-link-manifest.json')), manifest:GO_RUNTIME_MANIFEST});
 
   // Current editorial projections must not import the distinct AgelessRx firm's
   // dated facts. Historical raw evidence and all commercial gates stay intact.
@@ -322,7 +338,9 @@ test('GLP-234 registry projections name the first-party brand without altering r
     ['program-page-eligibility.json', '751f063a70d26ab8f2b420f9d4f433fb7786cbfc59db82e7a3d21c1d03fc9d8b'],
     ['provider-facts-backfill-20260830.json', 'e08a533653dd20f8400ad35d4562ec21478704a4d6c5758d61e85f83c1b97f3f'],
     ['price-index-frozen-content-ledger.json', '374667b3f4a13bb7dd5776f1cd29add113b25fa1826c6af4620c07668b496830'],
-  ]) assert.equal(sha(await readFile(new URL(`../data/${name}`, import.meta.url))), expected, name);
+  ]) assert.equal(sha(name === 'program-page-eligibility.json'
+    ? readGLP234HistoricalCommercial(name)
+    : await readFile(new URL(`../data/${name}`, import.meta.url))), expected, name);
 
   const quiz = (await load('quiz-config.json')).candidates.find((r) => r.program_id === 'try-ageless');
   assert.equal(quiz.display_name, 'Try Ageless');
