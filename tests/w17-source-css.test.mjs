@@ -5,6 +5,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
 import { observeW17CompositedPaint } from './w17-composited-paint.mjs';
+import { withReviewFixture } from './helpers/owned-review-fixture.mjs';
 
 // Deliberately narrow solid-paint oracle, shared by the report-only emitted test.
 // Unsupported paint is an explicit failure, NEVER a backgroundColor-only PASS.
@@ -134,6 +135,7 @@ test('W17 paint helper: ancestor alpha compositing and inherited paint refusal',
 });
 
 export async function runW17(t, { sourceCss }) {
+  return withReviewFixture(async origin => {
   const root = process.cwd(), css = new Map();
   if (sourceCss) {
     // Registered assembler, with writes captured in memory; never emitted proof.
@@ -148,14 +150,14 @@ export async function runW17(t, { sourceCss }) {
       const context = await browser.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1440, height: 900 }, isMobile: mobile, hasTouch: mobile, serviceWorkers: 'block' });
       await context.route('**/*', async route => {
         const req = route.request(), u = new URL(req.url());
-        if (u.origin !== 'http://127.0.0.1:4188' || req.method() !== 'GET' || /^\/(api|go|out|track)\//.test(u.pathname)) return route.abort();
+        if (u.origin !== origin || req.method() !== 'GET' || /^\/(api|go|out|track)\//.test(u.pathname)) return route.abort();
         if (sourceCss && css.has(path.basename(u.pathname))) return route.fulfill({ status: 200, contentType: 'text/css', body: css.get(path.basename(u.pathname)) });
         return route.continue();
       });
       const page = await context.newPage();
       for (const route of routes) {
         const rec = { route, mobile, taps: [], contrast: [] };
-        await page.goto('http://127.0.0.1:4188' + route, { waitUntil: 'networkidle' });
+        await page.goto(origin + route, { waitUntil: 'networkidle' });
         const reject = page.getByRole('button', { name: 'Reject optional', exact: true });
         if (await reject.isVisible()) await reject.click();
         const targets = page.locator('.p3-unknowns h2,.p3-provider-search-shelf a');
@@ -186,11 +188,11 @@ export async function runW17(t, { sourceCss }) {
         }
         const crumbs = await page.locator('main nav[aria-label="Breadcrumb"] a').evaluateAll(es => es.map(e => e.getAttribute('href')));
         for (const href of crumbs) {
-          if (new URL(page.url()).pathname !== route) await page.goto('http://127.0.0.1:4188' + route, { waitUntil: 'domcontentloaded' });
+          if (new URL(page.url()).pathname !== route) await page.goto(origin + route, { waitUntil: 'domcontentloaded' });
           const link = page.locator('main nav[aria-label="Breadcrumb"] a[href="' + href + '"]').first();
           try {
             await (mobile ? link.tap({ timeout: 800 }) : link.click({ timeout: 800 }));
-            await page.waitForURL(new URL(href, 'http://127.0.0.1:4188').href, { timeout: 3000 });
+            await page.waitForURL(new URL(href, origin).href, { timeout: 3000 });
             rec.taps.push({ href, ok: true });
           } catch (e) { rec.taps.push({ href, ok: false, error: e.message }); }
         }
@@ -215,6 +217,7 @@ export async function runW17(t, { sourceCss }) {
   };
   await t.test('W17 unverified headings are legible in all detail viewports', () => check('heading', 'What remains unverified', ['rest']));
   await t.test('W17 provider-search labels are legible at rest, hover and focus-visible in all detail viewports', () => check('cta', 'Start a provider search', ['rest', 'hover', 'focus-visible']));
+  });
 }
 
 // Test-name filtering executes helpers without assembler, graph, server or browser.
