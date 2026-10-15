@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { handleNewsletterSubscribeRequest } from '../src/newsletter-subscribe.mjs';
 import { runDripScheduler, ingestResendWebhook } from '../src/resend-email-machine.mjs';
 import { createHmac } from 'node:crypto';
-import { manualD1 } from '../scripts/run-onboarding-manual.mjs';
+import { manualD1, manualTestOptions } from '../scripts/run-onboarding-manual.mjs';
 import { onRequestPost } from '../functions/unsubscribe.js';
 import { handleContentUpgradeRequest } from '../src/content-upgrade.mjs';
 const config=JSON.parse(readFileSync(new URL('../data/resend-email-machine.json',import.meta.url)));
@@ -195,6 +195,50 @@ test('GLP47 scheduled day-two sends once; unknown effects are held without repla
    const replay=await runDripScheduler(env,config,new Date(day2.getTime()+2000),transport);
    assert.equal(replay.status,'HELD');assert.equal(replay.sent,0);assert.equal(sends,2);
  } finally {sqlite.close();}
+});
+
+test('GLP47 owned_test capture rejects all other addresses before storage or provider access',async()=>{
+ const deny={prepare(){assert.fail('non-owned TEST capture touched D1')}};
+ for(const email of ['other@example.invalid','izaiah+test@glpclinicscout.com']) {
+  const response=await handleNewsletterSubscribeRequest(request(payload(email)),{...environment(deny),NEWSLETTER_CAPTURE_MODE:'owned_test'},()=>assert.fail('provider touched'));
+  assert.equal(response.status,503);assert.equal((await response.json()).status,'NEWSLETTER_CAPTURE_TEST_ONLY');
+ }
+ const {sqlite,db}=database();
+ try {
+  const env={...environment(db),NEWSLETTER_CAPTURE_MODE:'owned_test',LEAD_RATE_LIMITER:{limit:async()=>({success:true})}};
+  const response=await handleNewsletterSubscribeRequest(request(payload('izaiah@glpclinicscout.com')),env,()=>assert.fail('capture sent'));
+  assert.equal(response.status,201);assert.equal(sqlite.prepare('SELECT email FROM subscribers').get().email,'izaiah@glpclinicscout.com');
+ } finally {sqlite.close();}
+});
+
+test('GLP47 TEST-only scheduler sends only owned address at both steps and leaves other consenting subscriber untouched',async()=>{
+ const {sqlite,db}=database();const env=environment(db);const sends=[];
+ const transport=async(url,init)=>{const body=JSON.parse(init.body);assert.equal(url.endsWith('/contacts')?body.email:body.to[0],'izaiah@glpclinicscout.com');if(url.endsWith('/emails'))sends.push(body);return Response.json({id:'offline-owned-'+sends.length})};
+ try {
+  await handleNewsletterSubscribeRequest(request(payload('other@example.invalid')),env);
+  await handleNewsletterSubscribeRequest(request(payload('izaiah@glpclinicscout.com')),env);
+  const testEnv={...env,ONBOARDING_TEST_ONLY:'true'};const now=new Date(Date.now()+1000);
+  assert.equal((await runDripScheduler(testEnv,config,now,transport)).sent,1);
+  assert.equal((await runDripScheduler(testEnv,config,new Date(now.getTime()+2*86400000),transport)).sent,1);
+  assert.equal((await runDripScheduler(testEnv,config,new Date(now.getTime()+3*86400000),transport)).sent,0);
+  assert.equal(sends.length,2);
+  assert.equal(sqlite.prepare("SELECT next_drip_step FROM subscribers WHERE email='other@example.invalid'").get().next_drip_step,1);
+  assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM email_deliveries d JOIN subscribers s ON s.subscriber_id=d.subscriber_id WHERE s.email='other@example.invalid'").get().n,0);
+ } finally {sqlite.close();}
+});
+
+test('GLP47 accelerated clock requires explicit TEST-only manual flag',()=>{
+ assert.throws(()=>manualTestOptions(['--test-at=2026-10-17T00:00:00Z']),/test_clock_requires_test_only/);
+ assert.throws(()=>manualTestOptions(['--test-only','--test-at=invalid']),/test_clock_invalid/);
+ const options=manualTestOptions(['--test-only','--test-at=2026-10-17T00:00:00Z']);
+ assert.equal(options.testOnly,true);assert.equal(options.now.toISOString(),'2026-10-17T00:00:00.000Z');
+});
+
+test('GLP47 TEST guard rejects unexpected due rows before any claim or outward effect',async()=>{
+ let reads=0;
+ const db={batch(){assert.fail('batch touched')},prepare(sql){return {bind(){return {first:async()=>{reads++;return {count:0}},all:async()=>({results:[{email:'other@example.invalid'}]}),run:async()=>assert.fail('claim touched')}}}}};
+ const result=await runDripScheduler({...environment(db),ONBOARDING_TEST_ONLY:'true'},config,new Date(),()=>assert.fail('provider touched'));
+ assert.equal(result.sent,0);assert.equal(result.held,1);assert.equal(reads,2);
 });
 
 test('GLP47 actual approved bytes cannot be changed under unchanged approval metadata',async()=>{

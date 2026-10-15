@@ -1,5 +1,5 @@
 import { CONTENT_UPGRADE_TERMS_CAPTURE_SOURCES, COST_CALCULATOR_CAPTURE } from "./site-capture-consent-sources.mjs";
-import { onboardingRuntimeGate, ONBOARDING_ELIGIBILITY_SQL } from './onboarding-consent.mjs';
+import { onboardingRuntimeGate, ONBOARDING_ELIGIBILITY_SQL, ONBOARDING_TEST_EMAIL } from './onboarding-consent.mjs';
 import { syncResendContact } from './resend-contacts.mjs';
 
 const RESEND_API = "https://api.resend.com/emails";
@@ -195,13 +195,16 @@ export async function runDripScheduler(env, config, now = new Date(), fetchImpl 
   if (config.welcome_sequence.some(item => item.copy_format === 'glp47-approved-20261009')) {
     if (!await onboardingRuntimeGate(config, env)) return {status:'HELD',sent:0,reason:'glp47_onboarding_runtime_held_b01'};
     if (!env.EMAIL_DB?.prepare || typeof env.EMAIL_DB.batch!=='function') return {status:'HELD',sent:0,reason:'email_db_atomic_receipt_missing'};
+    const testOnly = env.ONBOARDING_TEST_ONLY === 'true';
+    const eligibility = ONBOARDING_ELIGIBILITY_SQL + (testOnly ? ` AND s.email='${ONBOARDING_TEST_EMAIL}'` : '');
     const dailyCap = Math.max(1, Math.min(25, Number(env.EMAIL_WARMUP_DAILY_CAP || 25) || 1));
     const daily = await env.EMAIL_DB.prepare("SELECT COUNT(*) AS count FROM email_deliveries WHERE vertical='glp-clinic-scout' AND message_type='welcome' AND sent_at>=?").bind(now.toISOString().slice(0,10)+'T00:00:00.000Z').first();
     const cap = Math.max(0, dailyCap-Number(daily?.count||0));
     if (!cap) return {status:'HELD',sent:0,reason:'onboarding_daily_cap',receipts:[]};
-    const due = await env.EMAIL_DB.prepare(`SELECT s.* FROM subscribers s WHERE ${ONBOARDING_ELIGIBILITY_SQL} AND s.next_send_at<=? AND s.next_drip_step BETWEEN 1 AND 2 ORDER BY s.next_send_at LIMIT ?`).bind(now.toISOString(),cap).all();
+    const due = await env.EMAIL_DB.prepare(`SELECT s.* FROM subscribers s WHERE ${eligibility} AND s.next_send_at<=? AND s.next_drip_step BETWEEN 1 AND 2 ORDER BY s.next_send_at LIMIT ?`).bind(now.toISOString(),cap).all();
     const receipts=[];let sent=0;let held=0;
     for (const subscriber of due.results||[]) {
+      if (testOnly && subscriber.email !== ONBOARDING_TEST_EMAIL) {held++;continue;}
       const template=config.welcome_sequence.find(t=>t.step===subscriber.next_drip_step);
       const campaignId=`welcome-glp-${template.step}`;
       const message=buildMessage({config,subscriber,template,campaignId});
@@ -210,7 +213,7 @@ export async function runDripScheduler(env, config, now = new Date(), fetchImpl 
       if (Number(claim?.meta?.changes||0)!==1) continue;
       // Revalidate after claiming and before each outward effect. Unknown effects
       // retain their claim; no time-based blind retry of provider idempotency.
-      const eligible=()=>env.EMAIL_DB.prepare(`SELECT 1 AS found FROM subscribers s WHERE ${ONBOARDING_ELIGIBILITY_SQL} AND s.subscriber_id=?`).bind(subscriber.subscriber_id).first();
+      const eligible=()=>env.EMAIL_DB.prepare(`SELECT 1 AS found FROM subscribers s WHERE ${eligibility} AND s.subscriber_id=? AND s.email=?`).bind(subscriber.subscriber_id,subscriber.email).first();
       if (!(await eligible())) {held++;continue;}
       let contact=null;
       if (template.step===1) {

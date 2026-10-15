@@ -1,4 +1,5 @@
 // Comparison-guide consent is separate from historic quiz/resource/price-watch grants.
+export const ONBOARDING_TEST_EMAIL = 'izaiah@glpclinicscout.com';
 export const ONBOARDING_CONSENT_VERSION = 'glp47-comparison-guides-v1-20261013';
 export const ONBOARDING_CONSENT_SOURCE = '/subscribe-bottom-sheet/';
 export const ONBOARDING_CONSENT_TEXT = 'I want GLP Clinic Scout comparison guides and updates by email. Unsubscribe anytime.';
