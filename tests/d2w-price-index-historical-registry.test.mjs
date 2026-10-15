@@ -60,14 +60,23 @@ for(const [name,edit]of [
 ])test('owner refuses whole historical ledger '+name+' drift',()=>{const d=structuredClone(input);edit(d.contentLedger);assert.throws(()=>validatePriceIndexInputs(d),/price_index_historical_ledger_drift/);});
 test('normalization alone also authenticates whole held price registry',()=>{const r=structuredClone(input.programRegistry);r.unknown=true;assert.throws(()=>normalizePriceIndexSourceHashes(r,input.sourceHashes),/price_index_historical_registry_drift/);});
 test('reconciled owner subtrees are idempotent and Telos remains absent',()=>{
+ // Historical fixed-point input owns its recorded seal clock, not wall time.
+ // The native expired-clock refusal remains a separate executable control below.
  const registry=structuredClone(input.programRegistry),before=structuredClone(registry);
- reconcileTherapeuticTaxonomyWireIn({registry,profileId:'glp-clinic-scout',pages:json('money-page-specs.json').pages,quizConfig:json('quiz-config.json')});
+ reconcileTherapeuticTaxonomyWireIn({registry,profileId:'glp-clinic-scout',pages:json('money-page-specs.json').pages,quizConfig:json('quiz-config.json'),asOf:new Date(registry.therapeutic_taxonomy.sealed_as_of+'T12:00:00Z')});
  reconcileProviderDynamicProfilesWireIn({registry,profileId:'glp-clinic-scout'});
  const once=structuredClone(registry);
- reconcileTherapeuticTaxonomyWireIn({registry,profileId:'glp-clinic-scout',pages:json('money-page-specs.json').pages,quizConfig:json('quiz-config.json')});
+ reconcileTherapeuticTaxonomyWireIn({registry,profileId:'glp-clinic-scout',pages:json('money-page-specs.json').pages,quizConfig:json('quiz-config.json'),asOf:new Date(registry.therapeutic_taxonomy.sealed_as_of+'T12:00:00Z')});
  reconcileProviderDynamicProfilesWireIn({registry,profileId:'glp-clinic-scout'});
  assert.deepEqual(registry,once,'C02: second reconciliation must be a fixed point');
  assert.equal(Object.hasOwn(registry.therapeutic_taxonomy.programs,'telos-rx'),false);assert.equal(Object.hasOwn(registry.provider_dynamic_profiles.profiles,'telos-rx'),false);
  // Separate retained requirement: C01 owns reconciling the raw owner output.
  assert.deepEqual(once,before,'C01: raw owner output must already be reconciled');
+});
+test('historical reconciliation clock does not waive the native expired-evidence refusal',()=>{
+ const registry=structuredClone(input.programRegistry),before=structuredClone(registry);
+ const sealed=new Date(registry.therapeutic_taxonomy.sealed_as_of+'T12:00:00Z');
+ const expired=new Date(sealed.getTime()+(registry.therapeutic_taxonomy.freshness_max_days+1)*86400000);
+ assert.throws(()=>reconcileTherapeuticTaxonomyWireIn({registry,profileId:'glp-clinic-scout',pages:json('money-page-specs.json').pages,quizConfig:json('quiz-config.json'),asOf:expired}),/therapeutic_taxonomy_evidence_stale:/);
+ assert.deepEqual(registry,before);
 });
