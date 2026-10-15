@@ -108,6 +108,7 @@ on:
       - "tests/provider-append-disclosure.test.mjs"
       - "tests/price-disclosure-input.test.mjs"
       - "tests/d2w-price-index-historical-registry.test.mjs"
+      - "tests/historical-clock-custody.test.mjs"
       - "tests/fixtures/provider-append-disclosure-9add923.html.gz"
       - "tests/pass2-late-audit-served.test.mjs"
       - "tests/wegovy-pills-guide.test.mjs"
@@ -200,7 +201,9 @@ jobs:
           node --test tests/guide-resource-consent.test.mjs tests/content-upgrade-contract.test.mjs tests/wave2-p1-surfaces.test.mjs tests/glp361-guide-resource-custody.test.mjs
           node --test tests/glp361-terms-emitter-policy.test.mjs tests/glp361-test-entrypoint.test.mjs tests/article-review-routes.test.mjs
           node --test tests/provider-append-disclosure.test.mjs tests/price-disclosure-input.test.mjs
-          node --test tests/d2w-price-index-historical-registry.test.mjs
+          # Whole price-ledger suite needs excluded private hold receipts.
+          # These are the two complete changed callbacks, not rewritten oracles.
+          node --test tests/historical-clock-custody.test.mjs
           node --test --test-name-pattern '^O-28 ' tests/pass2-late-audit-static.test.mjs
       - name: Accepted guide source and on-page-only contract (offline)
         run: node --test tests/accepted-guide-source.test.mjs tests/accepted-update-source.test.mjs tests/accepted-guide-render-contract.test.mjs
