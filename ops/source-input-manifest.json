@@ -1,8 +1,9 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3914,
+  "tracked_file_count": 3915,
   "files": [
+    "tests/go-comparison-assignment.test.mjs",
     "tests/pass2-quiz-collection.test.mjs",
     "tests/therapeutic-refresh-import.test.mjs",
     "tests/maxbounty-postback-click-id.test.mjs",
