@@ -1,0 +1,53 @@
+import assert from 'node:assert/strict';
+import {mkdtemp, writeFile, rm} from 'node:fs/promises';
+import path from 'node:path';
+import test, {after} from 'node:test';
+
+// Explicit synthetic transport fixture, not rendered-site or design acceptance.
+// Bind the real review server before its first import; never write public/.
+const directory = await mkdtemp(path.join(process.env.TMPDIR || process.env.RUNNER_TEMP, 'owned-review-fixture-'));
+const bytes = Buffer.from('<!doctype html><title>TEST fixture</title><p>Exact transport bytes</p>');
+await writeFile(path.join(directory, 'index.html'), bytes);
+await writeFile(path.join(directory, '_redirects'), '');
+const previousRoot = process.env.GLP_REVIEW_PUBLIC_ROOT;
+process.env.GLP_REVIEW_PUBLIC_ROOT = directory;
+const {withReviewFixture} = await import('./helpers/owned-review-fixture.mjs');
+if (previousRoot === undefined) delete process.env.GLP_REVIEW_PUBLIC_ROOT;
+else process.env.GLP_REVIEW_PUBLIC_ROOT = previousRoot;
+after(() => rm(directory, {recursive: true, force: true}));
+
+test('owned review fixture serves exact fixture bytes without an external server', async () => {
+  let origin;
+  const value = await withReviewFixture(async url => {
+    origin = url;
+    assert.match(origin, /^http:\/\/127\.0\.0\.1:\d+$/);
+    const response = await fetch(`${origin}/`);
+    assert.equal(response.status, 200);
+    assert.deepEqual(Buffer.from(await response.arrayBuffer()), bytes);
+    return 'completed';
+  });
+  assert.equal(value, 'completed');
+  await assert.rejects(fetch(`${origin}/`));
+});
+
+test('owned review fixture releases its port when the browser callback fails', async () => {
+  let origin;
+  const failure = new Error('browser launch or assertion failed');
+  await assert.rejects(withReviewFixture(async url => {
+    origin = url;
+    assert.equal((await fetch(`${origin}/`)).status, 200);
+    throw failure;
+  }), error => error === failure);
+  await assert.rejects(fetch(`${origin}/`));
+});
+
+test('owned review fixtures have independent ephemeral origins and lifetimes', async () => {
+  await withReviewFixture(async first => {
+    await withReviewFixture(async second => {
+      assert.notEqual(first, second);
+      assert.equal((await fetch(`${first}/`)).status, 200);
+      assert.equal((await fetch(`${second}/`)).status, 200);
+    });
+    assert.equal((await fetch(`${first}/`)).status, 200);
+  });
+});

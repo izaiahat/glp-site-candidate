@@ -78,6 +78,10 @@ on:
       - "tests/guide-resource-consent.test.mjs"
       - "tests/helpers/**"
       - "tests/current-comparison-cohort.test.mjs"
+      - "tests/review-fixture-lifecycle.test.mjs"
+      - "tests/w12-motion-source.test.mjs"
+      - "tests/w17-source-css.test.mjs"
+      - "scripts/serve-review.mjs"
       - "tests/browser/governed-cohort.mjs"
       - "tests/pricing-deployed-row-schema.test.mjs"
       - "tests/therapeutic-refresh-import.test.mjs"
@@ -303,6 +307,8 @@ jobs:
           node --test --test-name-pattern '^(the four ruled comparison guides resolve|current ruled guides preserve|historical editorial inputs reject|current editorial oracle refuses)' tests/editorial-monetization.test.mjs tests/editorial-denial-custody.test.mjs
       - name: Current comparison relationship cohort (source-only; no served assertions)
         run: node --test --test-name-pattern '^current comparison' tests/current-comparison-cohort.test.mjs
+      - name: Owned loopback fixture lifecycle (synthetic transport only; no browser or build)
+        run: node --test tests/review-fixture-lifecycle.test.mjs
       - name: Record limited scope
         if: always()
         run: |
