@@ -250,7 +250,10 @@ export function deriveGoEntriesFromRegistry(registry, profileId, ledgerPrograms 
   // NO cs_click_id - a silently dark anchor behind a green build. Accepting a
   // surface code NEVER activates a route: liveAllowed still requires the governed
   // promotion authority, so held-by-default is untouched.
-  const allowedPageRoles = ["providers", "reviews", "calculator", "self-pay", "lp", "lp-quiz", "lp-compare", "semaglutide", "tirzepatide", "compounded", "compounded-tirzepatide", "lp-best-providers-compounded-semaglutide", "lp-best-providers-compounded-tirzepatide", "3-month", "6-month", "wegovy-pill", "wegovy", "ozempic", "mounjaro", "zepbound"];
+  // The maintained comparison graph emits these three preset surface codes.
+  // They identify attribution only: complete promotion receipts, current HOLDs,
+  // exact route identity, position and variant gates still control every link.
+  const allowedPageRoles = ["providers", "reviews", "calculator", "self-pay", "lp", "lp-quiz", "lp-compare", "semaglutide", "tirzepatide", "compounded", "compounded-tirzepatide", "lp-best-providers-compounded-semaglutide", "lp-best-providers-compounded-tirzepatide", "3-month", "6-month", "wegovy-pill", "wegovy", "ozempic", "mounjaro", "zepbound", "both", "starter", "step-up"];
   const allowedPositions = [
     "rv1", "rv2",
     ...Array.from({ length: 60 }, (_, index) => `lp${index + 1}`),

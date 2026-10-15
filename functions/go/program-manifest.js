@@ -4,7 +4,7 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
   "program_registry_schema": "site-program-registry-v1",
   "site_profile": "glp-clinic-scout",
   "internal_fallback": "https://glpclinicscout.com/providers/",
-  "manifest_sha256": "b5988b5441db97a49265162a7d3e94b1c80d28281acf261baffea51132218089",
+  "manifest_sha256": "adf923d3c1732514325a1355f42273456fc82c79f6c303a4eed316f947bacc3a",
   "programs": {
     "found-health": {
       "program_id": "found-health",
@@ -49,7 +49,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -348,7 +351,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -657,7 +663,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -956,7 +965,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -1255,7 +1267,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -1554,7 +1569,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -1863,7 +1881,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -2162,7 +2183,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -2461,7 +2485,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -2760,7 +2787,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -3059,7 +3089,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -3358,7 +3391,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -3673,7 +3709,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -3989,7 +4028,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -4305,7 +4347,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -4621,7 +4666,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -4938,7 +4986,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -5237,7 +5288,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -5536,7 +5590,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -5852,7 +5909,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -6151,7 +6211,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -6466,7 +6529,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -6765,7 +6831,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -7064,7 +7133,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -7363,7 +7435,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -7662,7 +7737,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -7961,7 +8039,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -8260,7 +8341,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -8749,7 +8833,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -9064,7 +9151,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -9390,7 +9480,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -9706,7 +9799,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -10005,7 +10101,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -10304,7 +10403,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -10603,7 +10705,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -10902,7 +11007,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -11201,7 +11309,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
@@ -11500,7 +11611,10 @@ export const GO_RUNTIME_MANIFEST = Object.freeze({
         "wegovy",
         "ozempic",
         "mounjaro",
-        "zepbound"
+        "zepbound",
+        "both",
+        "starter",
+        "step-up"
       ],
       "allowed_positions": [
         "rv1",
