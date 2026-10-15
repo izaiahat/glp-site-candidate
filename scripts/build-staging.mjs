@@ -191,24 +191,41 @@ const buildDerivations = {
   frozen_byte_tally_rewrites: [], frozen_byte_score_rewrites: [],
 };
 
-function resolveDerivedCounts(content, relative) {
+// `tallies` defaults to this build's derivation; scoped renders pass the same
+// registry-derived values (see deriveLiveProviders) and get the same gates.
+export function resolveDerivedCounts(content, relative, tallies = derivedTallies) {
   if (typeof content !== "string") return content;
   for (const token of TALLY_TOKENS) {
     const marker = `{{${token}}}`;
     if (!content.includes(marker)) continue;
-    if (!Number.isFinite(derivedTallies[token])) throw new Error(`tally_not_derived_yet:${token}`);
+    if (!Number.isFinite(tallies[token])) throw new Error(`tally_not_derived_yet:${token}`);
     buildDerivations.token_substitutions[token] += content.split(marker).length - 1;
-    content = content.replaceAll(marker, String(derivedTallies[token]));
+    content = content.replaceAll(marker, String(tallies[token]));
   }
   if (relative.endsWith(".html") && ANY_TOKEN.test(content)) throw new Error(`unresolved_build_token:${relative}`);
   if (relative.endsWith(".html") && isTallyGatedRoute(relative)) {
-    assertTalliesDerived(relative, content, derivedTallies);
+    assertTalliesDerived(relative, content, tallies);
     buildDerivations.tally_gated_routes += 1;
   }
   if (relative.endsWith(".html") && PROVIDER_SURFACE_ROUTE.test(relative)) {
     buildDerivations.freshness[relative] = assertStampNotStale(relative, content);
   }
   return content;
+}
+
+// The {{LIVE_PROVIDER_COUNT}} derivation main() uses: distinct live merchants,
+// counted after identity dedup over the registry and the projected content
+// ledger. Exported so a scoped render finalizes copy from the same registry
+// truth instead of a typed number.
+export function deriveLiveProviders(programRegistry, ledgerPrograms) {
+  const providerIdentity = assertDeclaredIdentityGroups(programRegistry, SITE_PROFILE, ledgerPrograms);
+  const liveRegistryRows = programRegistry.programs.filter((program) => {
+    const profile = program.profiles?.[SITE_PROFILE];
+    return program.commercial_state === "live" && profile?.vertical_fit === true
+      && profile?.wired === true && profile?.surfaces?.review === true;
+  });
+  const liveAliasRows = liveRegistryRows.filter((program) => providerIdentity.aliasIds.has(program.program_id));
+  return { providerIdentity, liveRegistryRows, liveAliasRows, liveProgramCount: liveRegistryRows.length - liveAliasRows.length };
 }
 
 //: Routes whose "updated" stamp is a claim about provider data freshness.
@@ -1298,7 +1315,7 @@ function addSharedRuntime(html) {
     // and are rewritten to site-editorial.css by optimizePaidLandingPage.
     // Insights index pages are 40-editorial-styled (cs-ins-*, p3-pagination-*)
     // so they route to the existing editorial bundle instead.
-    : /^\/(?:providers|pharmacies)\//.test(route) || ["/self-pay/", "/bulk/", "/3-month/", "/6-month/", "/ozempic/", "/wegovy/", "/wegovy-pill/", "/mounjaro/", "/zepbound/"].includes(route) ? "site-p3.css"
+    : /^\/(?:providers|pharmacies|sponsors)\//.test(route) || ["/self-pay/", "/bulk/", "/3-month/", "/6-month/", "/ozempic/", "/wegovy/", "/wegovy-pill/", "/mounjaro/", "/zepbound/"].includes(route) ? "site-p3.css"
     : route === "/insights/" || /^\/insights\/page\//.test(route) ? "site-editorial.css"
     : "site.css";
   const template = route === "/" ? "home"
@@ -1349,7 +1366,10 @@ function addSharedRuntime(html) {
   const searchPanel = `<div class="cs-search-panel" id="cs-header-search" role="search" aria-label="Search Clinic Scout" hidden><div class="cs-search-box"><button type="button" class="cs-search-back" data-search-close aria-label="Close search and clear"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m12.5 4.5-5.5 5.5 5.5 5.5M7.5 10h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><input type="search" placeholder="Search providers or pharmacies" autocomplete="off" aria-label="Search providers or pharmacies"><span class="cs-search-status" aria-hidden="true"><span class="cs-dot"></span><span class="cs-dot"></span><span class="cs-dot"></span></span></div><div class="cs-search-results"></div></div>`;
   const searchControl = `<div class="cs-search"><button class="cs-search-toggle" type="button" aria-controls="cs-header-search" aria-expanded="false"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search providers</span></button>${searchPanel}</div>`;
   const menuToggle = `<button class="cs-menu-toggle" type="button" aria-expanded="false" aria-controls="cs-drawer" aria-label="Menu" data-menu-toggle><svg width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 1h16M1 7h16M1 13h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Menu</span></button>`;
-  const nav = `<nav class="gcs-nav" aria-label="Primary"><div class="gcs-nav-inner">${brand}${searchControl}<ul class="gcs-links"><li><a href="/insights/"${current("/insights/")}>Insights</a></li>${navGroups}<li><a href="/pharmacies/"${current("/pharmacies/")}>Compounding Pharmacies</a></li><li><a href="/reviews/"${current("/reviews/")}>Reviews</a></li><li><a href="/tools/glp-1-cost-calculator/"${current("/tools/glp-1-cost-calculator/")}>Calculator</a></li><li><a class="cta primary cs-palette-action" href="/quiz/provider-fit/">Find your fit</a></li></ul>${menuToggle}</div></nav>`;
+  const sponsorPage = route.startsWith("/sponsors/");
+  const nav = sponsorPage
+    ? `<nav class="gcs-nav" aria-label="Primary" data-sponsor-header><div class="gcs-nav-inner">${brand}<a class="cs-btn cs-btn--quiet" href="/providers/">Compare providers</a></div></nav>`
+    : `<nav class="gcs-nav" aria-label="Primary"><div class="gcs-nav-inner">${brand}${searchControl}<ul class="gcs-links"><li><a href="/insights/"${current("/insights/")}>Insights</a></li>${navGroups}<li><a href="/pharmacies/"${current("/pharmacies/")}>Compounding Pharmacies</a></li><li><a href="/reviews/"${current("/reviews/")}>Reviews</a></li><li><a href="/tools/glp-1-cost-calculator/"${current("/tools/glp-1-cost-calculator/")}>Calculator</a></li><li><a class="cta primary cs-palette-action" href="/quiz/provider-fit/">Find your fit</a></li></ul>${menuToggle}</div></nav>`;
   // The drawer remains a sibling of the sticky header so its fixed panel is not
   // trapped by the header's backdrop-filter containing block.
   const drawerSection = (label, items) => {
@@ -1368,7 +1388,15 @@ function addSharedRuntime(html) {
     : route.startsWith("/security") ? "security"
     : route.startsWith("/google-ads-api/privacy/") ? "privacy"
     : "support";
-  const preFooter = `<div class="cs-prefooter"><div class="cs-prefooter__inner"><p>Still have questions? <a href="/insights/">Read the research library</a> or email us at <a href="mailto:${preFooterAlias}@glpclinicscout.com">${preFooterAlias}@glpclinicscout.com</a>.</p><button class="cs-btn cs-palette-action cs-subscribe-open" type="button" data-subscribe-open>Get price updates <span aria-hidden="true">✉</span></button></div></div>`;
+  const readerPreFooter = `<div class="cs-prefooter"><div class="cs-prefooter__inner"><p>Still have questions? <a href="/insights/">Read the research library</a> or email us at <a href="mailto:${preFooterAlias}@glpclinicscout.com">${preFooterAlias}@glpclinicscout.com</a>.</p><button class="cs-btn cs-palette-action cs-subscribe-open" type="button" data-subscribe-open>Get price updates <span aria-hidden="true">✉</span></button></div></div>`;
+  // GLP-327: paid sponsor pages address prospective sponsors. Their pre-footer
+  // band publishes the partner alias instead of the reader price-alert sign-up;
+  // the shared footer (including its newsletter link and sheet) is unchanged.
+  const sponsorRoute = route.startsWith("/sponsors/");
+  const preFooter = sponsorRoute
+    ? '<div class="cs-prefooter"><div class="cs-prefooter__inner"><p>Questions about a placement? Email <a href="mailto:partners@glpclinicscout.com">partners@glpclinicscout.com</a>.</p></div></div>'
+    : readerPreFooter;
+
   const subscribeSheet = `<div class="cs-subscribe-layer" data-subscribe-layer hidden><button class="cs-subscribe-backdrop" type="button" aria-label="Close subscribe form" data-subscribe-close></button><section class="cs-subscribe-sheet" role="dialog" aria-modal="true" aria-labelledby="cs-subscribe-title" tabindex="-1"><button class="cs-subscribe-close" type="button" aria-label="Close subscribe form" data-subscribe-close>×</button><div class="cs-subscribe-copy"><p class="gcs-kicker">Comparison guides</p><h2 id="cs-subscribe-title">Compare before you choose.</h2><p>Useful questions and comparison updates. No sold lists, and you can unsubscribe anytime.</p></div><form class="cs-subscribe-form" data-subscribe-form novalidate><label for="cs-subscribe-email">Email address</label><div class="cs-subscribe-fields"><input id="cs-subscribe-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com"><button class="cs-btn cs-palette-action" type="submit">Sign up</button></div><p class="cs-subscribe-consent-note">${ONBOARDING_CONSENT_TEXT} See our <a href="/privacy/">Privacy Policy</a>.</p><input name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"><input name="consent_version" type="hidden" value="${ONBOARDING_CONSENT_VERSION}"><input name="consent_source" type="hidden" value="/subscribe-bottom-sheet/"><p class="cs-subscribe-status" role="status" aria-live="polite"></p></form></section></div>`;
   // Footer: 02-shell's .cs-footer-grid grammar. Every destination and every
   // legal/disclosure string from the previous footer is preserved verbatim —
@@ -1388,7 +1416,7 @@ function addSharedRuntime(html) {
     .replace(/<main(?![^>]*\bid=)([^>]*)>/i, '<main id="main" tabindex="-1"$1>')
     .replace(/<main([^>]*)>/i, `<main$1 data-cs-template="${template}">`)
     .replace("</head>", `${performanceConfig}</head>`)
-    .replace(/<body([^>]*)>/i, `<body$1 data-cs-template="${template}"><a class="skip-link" href="#main">Skip to main content</a>${utility}${nav}${drawer}`)
+    .replace(/<body([^>]*)>/i, `<body$1 data-cs-template="${template}"><a class="skip-link" href="#main">Skip to main content</a>${utility}${nav}${sponsorPage ? "" : drawer}`)
     .replace("</body>", /data-article-capture="none"/.test(html)
       ? `${preFooter.replace(/<button\b[^>]*data-subscribe-open[^>]*>[\s\S]*?<\/button>/g, "")}${footer.replace(/<li><button\b[^>]*data-subscribe-open[^>]*>[\s\S]*?<\/button><\/li>/g, "")}</body>`
       : `${preFooter}${footer}${subscribeSheet}</body>`);
@@ -1650,18 +1678,11 @@ async function main() {
   // grouping from the display name AND the first-party domain, and throws unless
   // the registry says in writing which row is canonical - so the NEXT duplicate
   // fails the build instead of quietly becoming a 30th provider.
-  const providerIdentity = assertDeclaredIdentityGroups(programRegistry, SITE_PROFILE, contentLedger.programs);
+  const { providerIdentity, liveRegistryRows, liveAliasRows, liveProgramCount } = deriveLiveProviders(programRegistry, contentLedger.programs);
   buildDerivations.identity_groups = {
     merchants: providerIdentity.groups.size,
     aliases: Object.fromEntries([...providerIdentity.aliasIds].map((id) => [id, providerIdentity.canonicalOf.get(id)])),
   };
-  const liveRegistryRows = programRegistry.programs.filter((program) => {
-    const profile = program.profiles?.[SITE_PROFILE];
-    return program.commercial_state === "live" && profile?.vertical_fit === true
-      && profile?.wired === true && profile?.surfaces?.review === true;
-  });
-  const liveAliasRows = liveRegistryRows.filter((program) => providerIdentity.aliasIds.has(program.program_id));
-  const liveProgramCount = liveRegistryRows.length - liveAliasRows.length;
   const liveRowCount = liveRegistryRows.length;
   const directAffiliateRegistryRows = liveRegistryRows
     .filter((program) => ledgerLiveIds.has(String(program.review_slug || program.program_id)));
@@ -2246,7 +2267,14 @@ async function main() {
   } catch {}
   const homepage = renderHomePage({ blogCount: glpGuideArticles.filter((article) => !PHASE3_INSIGHTS_EXCLUSIONS.has(article.canonical_path)).length, comparisonCount: derivedTallies.COMPARISON_CARD_COUNT, programCount: liveProgramCount, updatedLabel, topPicks, cheapest, railMeds, verdictCards, receiptCards, readerReviews: approvedReaderReviews, reviewPrograms: reader.programRegistry.programs.filter((program) => !providerIdentity.aliasIds.has(program.program_id)), reviewPharmacies: phase3PharmacyInput });
   await write("index.html", markReleaseReady(addSharedRuntime(addOg(homepage, "home-evidence", "Clinic Scout · Compare what matters before you commit"))));
+  // The maintained inventory is empty until an exact reviewed, released order
+  // has authenticated payment custody. No caller/preview flag supplies it.
+  const { renderSponsorInventory } = await import("../src/sponsor-inventory.mjs");
+  const sponsorInventory = renderSponsorInventory(await readJson("sponsor-inventory.json"), {
+    preview: process.env.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1",
+  });
   const phase3Build = buildPhase3PageGraph({
+    sponsorOrder: sponsorInventory.order,
     graph: phase3GraphConfig,
     pharmacyInput: phase3PharmacyInput,
     pricingMatrix: reader.providerPricingMatrix,
@@ -2299,6 +2327,12 @@ async function main() {
   await write("reviews/index.html", markReleaseReady(addSharedRuntime(renderReviewDirectoryPage({ programs: reviewHubPrograms, pharmacies: phase3PharmacyInput, logoByProgram: reviewLogoByProgram, dateModified: reviewHubDateModified }))));
   await write("reviews/submit/index.html", addSharedRuntime(renderReviewSubmissionPage({ programs: reviewHubPrograms, pharmacies: phase3PharmacyInput, dateModified: reviewHubDateModified })));
   await writeOps("phase3-page-graph.json", `${JSON.stringify(phase3Build.report, null, 2)}\n`);
+  // Selected factual inventory and opt-in neutral examples share the shell.
+  // Unpaid inventory emits no routes. Sponsor pages stay noindex/out of sitemap.
+  const { SPONSOR_ROBOTS } = await import("../src/paid-promo.mjs");
+  for (const [file, html] of Object.entries(sponsorInventory.pages)) {
+    await write(file, setRobots(addSharedRuntime(html), SPONSOR_ROBOTS));
+  }
   // ---- B-17: LP-A paid landing page, first instance (SPEC-ADS §3.1) ---------
   // Built PAUSED-ready: noindex, out of the sitemap, AdsBot allowed by robots,
   // and rendered through the SAME affiliate anchor path as every organic surface
@@ -2920,4 +2954,7 @@ function buildSearchIndex({ augmented, providerReviews, programRegistry, aliasRe
   return `${JSON.stringify({ schema: "glp-clinic-scout-search-index-v1", entry_count: entries.length, entries }, null, 2)}\n`;
 }
 
-await main();
+// GLP-327: importable for scoped renders of the shared shell; the registered
+// build still runs main() when this file is executed directly.
+export { addSharedRuntime };
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();

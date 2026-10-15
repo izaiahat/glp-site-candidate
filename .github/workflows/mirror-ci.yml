@@ -2,7 +2,8 @@ name: Private mirror portable checks (build excluded)
 
 # GLP-42 registration of mirror-ci.yml from PR #8 at
 # 2927c1ea184d2ed23aa2dd448c8fc0d04df8c37d, scoped to portable checks.
-# Excludes npm ci, npm run build and the post-build full npm test suite.
+# Locked dev dependencies only: lifecycle scripts and browser downloads disabled.
+# Excludes npm run build, private-input checks and the post-build full npm test suite.
 # Approved imagery, private registry, predecessor/rail/lastmod evidence and
 # excluded owner/IndexNow keys are unavailable here. Never fabricate/upload them.
 # Existing build/test logic is untouched; this is NOT a build or release PASS.
@@ -122,8 +123,21 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
+      - name: Locked portable test dependencies (no lifecycle scripts or browsers)
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+        run: npm ci --ignore-scripts --include=dev --no-audit --no-fund
       - name: Existing portable candidate export tests
-        run: node --test tests/candidate-export-policy.test.mjs
+        run: node --test tests/candidate-export-policy.test.mjs tests/paid-promo.test.mjs tests/sponsor-placement-candidate.test.mjs tests/glp327-sponsor-design-system.test.mjs tests/glp327-sponsor-layouts.test.mjs tests/glp327-sponsor-r4.test.mjs tests/glp327-approved-public-resources.test.mjs
+      - name: Authenticated sponsor observer boundary fixtures (no live effects)
+        run: node --experimental-test-module-mocks --test tests/glp328-payment-observer.test.mjs tests/glp327-sponsor-live-content.test.mjs
+      - name: Offline sponsor packet source and exact-byte attachment contracts
+        run: |
+          python3 -m venv "$RUNNER_TEMP/glp327-packet-venv"
+          "$RUNNER_TEMP/glp327-packet-venv/bin/python" -m pip install reportlab==5.0.1 pypdf==6.19.0 pillow==12.3.0
+          mkdir -p "$RUNNER_TEMP/glp327-packet-fixtures"
+          TMPDIR="$RUNNER_TEMP/glp327-packet-fixtures" "$RUNNER_TEMP/glp327-packet-venv/bin/python" -m unittest discover -s tests -p test_glp327_sponsor_packet.py -v
       - name: Pricing manifest schema and fail-closed coverage tests
         run: node --test tests/pricing-deployed-row-schema.test.mjs tests/d2f-coverage-floor.test.mjs
       - name: Affiliate relationship synchronization contracts

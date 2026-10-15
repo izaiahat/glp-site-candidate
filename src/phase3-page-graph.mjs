@@ -1,3 +1,4 @@
+import { renderSponsorPlacementCandidate, sponsorPreviewActive } from "./sponsor-placement-candidate.mjs";
 import { renderCompoundedCategoryBody, getCompoundedCategoryMetadata } from "./compounded-category.mjs";
 import { isTypedPrice, renderTypedPrice } from "./typed-price-labels.mjs";
 import { PROVIDER_REVEAL_BATCH_SIZE } from './surface-tallies.mjs';
@@ -71,7 +72,7 @@ export function loadPass2DoseCapture() {
   return capture;
 }
 
-function loadProviderLogoManifest() {
+export function loadProviderLogoManifest() {
   const manifest = readJson(PROVIDER_LOGO_MANIFEST_URL, "phase3_provider_logo_manifest_missing");
   if (manifest?.schema !== "glp-provider-logo-manifest-v1" || !Array.isArray(manifest.logos)) throw new Error("phase3_provider_logo_manifest_invalid");
   const atlas = readJson(PROVIDER_LOGO_ATLAS_URL, "phase3_provider_logo_atlas_missing");
@@ -176,7 +177,7 @@ export const PHASE3_INSIGHTS_EXCLUSIONS = new Set([
   "/guides/glp-1-program-total-cost-comparison/",
 ]);
 
-function pageDocument({ route, title, description, body, robots = "index,follow,max-image-preview:large", schema = null, mainClass = "p3-page", listingArchetype = null }) {
+export function pageDocument({ route, title, description, body, robots = "index,follow,max-image-preview:large", schema = null, mainClass = "p3-page", listingArchetype = null }) {
   body = body.replaceAll('Source-checked provider', 'Provider information')
     .replaceAll('Compare only the plan numbers and self-pay evidence you hold.', 'Compare your insurance and self-pay costs.')
     .replaceAll('Each card opens a live listing or product page and preserves source-governed filtering.', 'Choose a medication to compare providers and plan options.');
@@ -184,14 +185,17 @@ function pageDocument({ route, title, description, body, robots = "index,follow,
   const cardDates = [...body.replaceAll('\\"', '"').matchAll(/data-source-checked="(\d{4}-\d{2}-\d{2})"/g)].map(match => match[1]);
   if (cardDates.length) {
     const freshness = deriveMoneyPageFreshness({ sources: cardDates.map(verified_as_of => ({ verified_as_of })) });
-    body = body.replace('</h1>', `</h1><p>Prices checked <span data-prices-checked-date>${esc(freshness.source_checked_from)} – ${esc(freshness.source_checked_through)}</span></p>`);
+    const dateNote = `<p>Prices checked <span data-prices-checked-date>${esc(freshness.source_checked_from)} – ${esc(freshness.source_checked_through)}</span></p>`;
+    body = sponsorPreviewActive(route)
+      ? body.replace('<div data-sponsor-preview-results-lead>', `<div data-sponsor-preview-results-lead>${dateNote}`)
+      : body.replace('</h1>', `</h1>${dateNote}`);
   }
   const jsonLd = schema ? `<script type="application/ld+json">${JSON.stringify(schema)}</script>` : "";
   const familyStyles = listingArchetype === "D" ? "" : selectedFamilyStyles(route);
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="${esc(robots)}"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${canonical(route)}">${jsonLd}${familyStyles}</head><body><main class="${esc(mainClass)}" data-phase3-route="${esc(route)}"${listingArchetype ? ` data-listing-archetype="${esc(listingArchetype)}"` : ""}>${body}</main></body></html>`;
 }
 
-function breadcrumbs(items) {
+export function breadcrumbs(items) {
   return `<nav class="breadcrumbs" aria-label="Breadcrumb">${items.map((item, index) => item.href ? `<a href="${esc(item.href)}">${esc(item.label)}</a>${index < items.length - 1 ? '<span aria-hidden="true">/</span>' : ""}` : `<span aria-current="page">${esc(item.label)}</span>`).join("")}</nav>`;
 }
 
@@ -885,30 +889,42 @@ export function providerComparisonCardCount(registry) {
       || providerCardEligible(program.program_id)).length;
 }
 
-function providerHubControls(entries, doseCapture) {
+function providerHubControls(entries, doseCapture, { compact = false } = {}) {
   // Search owns this listing's eligible canonical cards, not the whole registry.
   const ids = entries.map((entry) => entry.program_id);
   if (ids.some((id) => !/^[a-z0-9-]+$/.test(id)) || new Set(ids).size !== ids.length
     || entries.some((entry) => !String(entry.provider || "").trim())) throw new Error("phase3_provider_search_identity_invalid");
   const options = entries.map((entry, index) => `<button type="button" role="option" id="p3-provider-option-${index}" data-program="${esc(entry.program_id)}" aria-selected="false" tabindex="-1">${esc(entry.provider)}</button>`).join("");
+  if (compact) {
+    const base = providerHubControlsBase(entries, doseCapture, { compact: true });
+    const inner = base.slice(base.indexOf(">") + 1, -6);
+    return `<div data-provider-filters data-sponsor-preview-filters><form data-provider-search data-canonical-provider-ids="${esc(ids.join(","))}"><input id="p3-provider-search" name="provider" type="search" aria-label="Provider" placeholder="Provider name" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="p3-provider-options" autocomplete="off"><button class="cs-btn cs-palette-action" type="submit">Search</button>${inner}<div id="p3-provider-options" role="listbox" aria-label="Providers" hidden>${options}</div><p data-provider-search-empty role="status" hidden>No providers match your search.</p></form><noscript><p>All provider cards remain available below. Search and filtering need JavaScript.</p></noscript></div>`;
+  }
   const search = `<form data-provider-search data-canonical-provider-ids="${esc(ids.join(","))}"><label for="p3-provider-search">Provider<input id="p3-provider-search" name="provider" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="p3-provider-options" autocomplete="off"></label><button type="submit">Search providers</button><button type="button" data-provider-search-reset>Reset</button><div id="p3-provider-options" role="listbox" aria-label="Providers" hidden>${options}</div><p data-provider-search-empty role="status" hidden>No providers match your search.</p></form>`;
   const styles = '<style>[data-provider-search]{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:end;gap:8px;min-width:0}[data-provider-search] label{grid-column:1/-1;min-width:0}[data-provider-search] input{box-sizing:border-box;width:100%;min-width:0;min-height:44px}[data-provider-search] button{min-width:44px;min-height:44px}[data-provider-search] [role="listbox"],[data-provider-search-empty]{grid-column:1/-1;max-height:320px;overflow:auto}[data-provider-search] [role="option"]{display:block;width:100%;text-align:left}[data-provider-search] [hidden]{display:none!important}</style>';
-  const prefix = '<div class="p3-filterbar" data-provider-filters>';
-  const controls = providerHubControlsBase(entries, doseCapture);
+  const prefix = compact ? '<div class="p3-filterbar" data-provider-filters data-sponsor-preview-filters>' : '<div class="p3-filterbar" data-provider-filters>';
+  const controls = providerHubControlsBase(entries, doseCapture, { compact });
   if (!controls.startsWith(prefix)) throw new Error("phase3_provider_search_filter_root_missing");
   return `${prefix}${styles}<noscript><style>[data-provider-search]{display:none!important}</style></noscript>${search}${controls.slice(prefix.length)}`;
 }
 
-function providerHubStateControl() {
-  const stateOptions = STATES.map(([code, name]) => `<button type="button" role="option" data-state="${code}" aria-selected="false" tabindex="-1">${esc(name)}</button>`).join("");
+function providerHubStateControl({ nativeOnly = false } = {}) {
   const nativeStateOptions = STATES.map(([code, name]) => `<option value="${code}">${esc(name)}</option>`).join("");
+  if (nativeOnly) return `<div class="p3-state-control"><label class="p3-state-native">State<select data-state-native aria-label="Choose state"><option value="">Choose state</option>${nativeStateOptions}</select></label></div>`;
+  const stateOptions = STATES.map(([code, name]) => `<button type="button" role="option" data-state="${code}" aria-selected="false" tabindex="-1">${esc(name)}</button>`).join("");
   return `<div class="p3-state-control"><button type="button" data-state-open aria-expanded="false" aria-haspopup="listbox" aria-controls="p3-state-options">State: <span data-state-label>Choose state</span></button><div class="p3-state-popover" role="group" aria-label="State search and choices" hidden><input type="search" aria-label="Search states" placeholder="Search states" data-state-search aria-controls="p3-state-options"><div class="p3-state-options" id="p3-state-options" role="listbox" aria-label="Choose state">${stateOptions}</div><p data-state-empty role="status" hidden>No states match your search.</p></div><label class="p3-state-native"><span class="p3-state-native-label">Native state selector</span><select data-state-native aria-label="Choose state (native selector)"><option value="">Choose state</option>${nativeStateOptions}</select></label></div>`;
 }
 
-function providerHubControlsBase(entries, doseCapture) {
+function providerHubControlsBase(entries, doseCapture, { compact = false } = {}) {
   const doses = [...new Set(entries.flatMap((entry) => (entry.medications || []).flatMap((medication) => medication.dose_pricing?.status === "SOURCE_REPORTED_PER_DOSE" ? (medication.dose_pricing.tiers || []).map((row) => String(row.dose_mg)) : [])))].sort((left, right) => Number(left) - Number(right));
   const chips = (label, key, values) => filterChipGroup(label, key, values.map(([value, text], index) => ({ value, label: text, current: index === 0 })));
-  return `<div class="p3-filterbar" data-provider-filters>${chips("Medication", "treatment", [["all", "All medications"], ["SEMAGLUTIDE", "Semaglutide"], ["TIRZEPATIDE", "Tirzepatide"], ["OZEMPIC", "Ozempic"], ["MOUNJARO", "Mounjaro"], ["WEGOVY", "Wegovy"], ["WEGOVY_PILL", "Wegovy Pill"], ["ZEPBOUND", "Zepbound"]])}${chips("Form", "type", [["all", "Both"], ["compounded", "Compounded"], ["brand", "Brand name"]])}${chips("Plan", "plan", [["both", "Any term"], ["1", "1 month"], ["3", "3 months"]])}<div class="p3-more-filters">${chips("Longer plan", "duration", [["all", "Any duration"], ["6", "6+ months"]])}${chips("Dose", "dose", [["all", "All doses"], ...doses.map((dose) => [dose, `${dose} mg/week`])])}</div>${chips("Sort", "sort", [["cheapest", "Cheapest first"]])}${providerHubStateControl()}</div>`;
+  const extended = `${chips("Medication", "treatment", [["all", "All medications"], ["SEMAGLUTIDE", "Semaglutide"], ["TIRZEPATIDE", "Tirzepatide"], ["OZEMPIC", "Ozempic"], ["MOUNJARO", "Mounjaro"], ["WEGOVY", "Wegovy"], ["WEGOVY_PILL", "Wegovy Pill"], ["ZEPBOUND", "Zepbound"]])}${chips("Form", "type", [["all", "Both"], ["compounded", "Compounded"], ["brand", "Brand name"]])}${chips("Plan", "plan", [["both", "Any term"], ["1", "1 month"], ["3", "3 months"]])}<div class="p3-more-filters">${chips("Longer plan", "duration", [["all", "Any duration"], ["6", "6+ months"]])}${chips("Dose", "dose", [["all", "All doses"], ...doses.map((dose) => [dose, `${dose} mg/week`])])}</div>`;
+  const sort = chips("Sort", "sort", [["cheapest", "Cheapest first"]]);
+  // GLP-327 sponsor preview only: the same groups and runtime hooks, with the
+  // extended groups behind a native disclosure so the slot is reachable.
+  return compact
+    ? `<div class="p3-filterbar" data-provider-filters data-sponsor-preview-filters><details class="cs-details" data-sponsor-preview-more-filters><summary>Filters</summary><div data-sponsor-filter-options>${providerHubStateControl({ nativeOnly: true })}${extended}${sort}<button class="cs-btn cs-btn--quiet" type="button" data-provider-search-reset>Reset</button></div></details></div>`
+    : `<div class="p3-filterbar" data-provider-filters>${extended}${sort}${providerHubStateControl()}</div>`;
 }
 
 function renderProviderListingHub(graph, pricingMatrix, registry, coupons, doseCapture, logoManifest, articles = []) {
@@ -1523,14 +1539,15 @@ const LISTING_CONFIG = Object.freeze({
   E: Object.freeze({ mode: "provider", support: "Compare published medications, monthly cost and cancellation terms." }),
 });
 
-function listingDocument({ archetype, route, title, description, heading, support, count, controls, cards, panel = "", atfPreview = "", resultTail = "", afterGrid = "", runtime = "", schema, initialVisible = null, profileCount = null, hasNonpriced = false }) {
+function listingDocument({ archetype, route, title, description, heading, support, count, controls, cards, panel = "", atfPreview = "", resultTail = "", afterGrid = "", runtime = "", schema, initialVisible = null, profileCount = null, hasNonpriced = false, sponsorOrder = null }) {
   const pharmacy = archetype === "D";
   if (!LISTING_CONFIG[archetype] || (archetype !== "B" && panel)) throw new Error("listing_configuration_invalid");
   const statusHook = pharmacy ? "data-pharmacy-result" : "data-filter-result";
   const gridHook = pharmacy ? "data-pharmacy-grid" : "data-phase3-provider-grid";
   const emptyHook = pharmacy ? "data-pharmacy-empty" : "data-filter-empty";
   const registryScope = route === "/providers/" ? `<p data-provider-registry-scope>We track <span data-live-provider-count>{{LIVE_PROVIDER_COUNT}}</span> providers in total. ${count} meet the comparison-card evidence rules; ${profileCount - count} additional provider profiles have their own first-party pages outside this comparison. The count covers our live registry, not a claim of availability in your state.</p>` : "";
-  const stateMarkup = archetype === "C" ? stateFilterControl() : archetype === "E" ? providerHubStateControl() : "";
+  const sponsorComposition = sponsorPreviewActive(route) || (route === "/providers/" && sponsorOrder !== null);
+  const stateMarkup = archetype === "C" ? stateFilterControl() : archetype === "E" && !sponsorComposition ? providerHubStateControl() : "";
   if (stateMarkup && controls.split(stateMarkup).length !== 2) throw new Error("listing_state_control_source_missing_or_duplicate");
   const inlineControls = stateMarkup ? controls.replace(stateMarkup, "") : controls;
   // Native details remains usable if enhancement fails, while the parser-time
@@ -1549,7 +1566,18 @@ function listingDocument({ archetype, route, title, description, heading, suppor
       ? "No comparable price matches those filters. Records without a comparable price are listed separately below. This is not a medical or availability conclusion."
       : "No source-backed record matches those filters. An empty result is not a medical or availability conclusion."
     : "No source-backed record matches those filters. An empty result is not a medical or availability conclusion.";
-  const body = `<header class="listing__intro${stateMarkup ? " listing__intro--state" : ""}">${stateMarkup}<h1${archetype === "E" || archetype === "C" ? ' data-state-heading data-state-title-template="Compare weight loss providers in {state}"' : ""}>${esc(heading)}</h1><p class="listing__support">${esc(support)} <span class="listing__count" ${statusHook} aria-live="polite" aria-atomic="true">${count} ${numericListing ? "comparable price results" : pharmacy ? "pharmacy records" : "provider records"}</span></p>${registryScope}${leadDisclosure}${atfPreview}</header>${filterControls}${panel}<section id="provider-results" class="listing-results p3-provider-section" data-three-column-results${initialVisible ? ` data-initial-visible="${initialVisible}"` : ""} aria-labelledby="listing-results-heading"><h2 id="listing-results-heading" class="sr-only">Results</h2><div class="listing-grid ${pharmacy ? "p3-pharmacy-grid" : "p3-provider-grid"}" ${gridHook}>${cards || (pharmacy ? '<p class="p3-empty">No source-backed row is published for this selection. An evidence gap is not proof that no provider exists.</p>' : "")}</div>${resultTail}<div class="p3-filter-empty" ${emptyHook}${count || pharmacy ? " hidden" : ""}><p>${esc(emptyCopy)}</p>${pharmacy ? "" : '<p data-active-filter-label>Active filters: none.</p><button type="button" data-filter-reset>Reset filters</button>'}</div></section>${pharmacy ? "" : sourceDisclosure()}${afterGrid}${runtime}`;
+  const introClass = `listing__intro${stateMarkup ? " listing__intro--state" : ""}`;
+  const introHead = `${stateMarkup}<h1${archetype === "E" || archetype === "C" ? ' data-state-heading data-state-title-template="Compare weight loss providers in {state}"' : ""}>${esc(heading)}</h1><p class="listing__support">${esc(support)} <span class="listing__count" ${statusHook} aria-live="polite" aria-atomic="true">${count} ${numericListing ? "comparable price results" : pharmacy ? "pharmacy records" : "provider records"}</span></p>`;
+  const results = `<section id="provider-results" class="listing-results p3-provider-section" data-three-column-results${initialVisible ? ` data-initial-visible="${initialVisible}"` : ""} aria-labelledby="listing-results-heading"><h2 id="listing-results-heading" class="sr-only">Results</h2><div class="listing-grid ${pharmacy ? "p3-pharmacy-grid" : "p3-provider-grid"}" ${gridHook}>${cards || (pharmacy ? '<p class="p3-empty">No source-backed row is published for this selection. An evidence gap is not proof that no provider exists.</p>' : "")}</div>${resultTail}<div class="p3-filter-empty" ${emptyHook}${count || pharmacy ? " hidden" : ""}><p>${esc(emptyCopy)}</p>${pharmacy ? "" : '<p data-active-filter-label>Active filters: none.</p><button type="button" data-filter-reset>Reset filters</button>'}</div></section>${pharmacy ? "" : sourceDisclosure()}${afterGrid}${runtime}`;
+  // GLP-327: the opt-in sponsor preview recomposes /providers/ ONLY when
+  // GLP327_SPONSOR_PLACEMENT_PREVIEW=1. A concise heading and one control row
+  // lead into the separate ad. Counts, commission disclosure, registry scope,
+  // price provenance and the first organic preview follow next to the results.
+  // With the switch off this is the original composition, byte for byte.
+  const sponsorSlot = renderSponsorPlacementCandidate(route, { preview: process.env.GLP327_SPONSOR_PLACEMENT_PREVIEW === "1", sponsorOrder });
+  const body = sponsorSlot
+    ? `<header class="${introClass}" data-sponsor-preview-intro><h1 data-state-heading data-state-title-template="Compare providers in {state}">Compare providers</h1></header>${filterControls}${sponsorSlot}<div data-sponsor-preview-results-lead><p class="listing__support">${esc(support)} <span class="listing__count" ${statusHook} aria-live="polite" aria-atomic="true">${count} provider records</span></p>${leadDisclosure}${registryScope}${atfPreview}</div>${panel}${results}`
+    : `<header class="${introClass}">${introHead}${registryScope}${leadDisclosure}${atfPreview}</header>${filterControls}${panel}${results}`;
   return pageDocument({ route, title, description, body: '<noscript><style data-preserve>main.listing [data-provider-lazy-index]{display:none!important}</style></noscript>' + body, schema, listingArchetype: archetype,
     mainClass: `p3-page listing${pharmacy ? " p3-pharm-hub" : ""}`,
     ...(archetype === "C" ? { robots: "noindex,nofollow,noarchive,nosnippet,max-image-preview:large" } : {}),
@@ -1580,7 +1608,7 @@ function listingUnknownCard(program, entry, registry, logoManifest) {
   return `<article class="p3-provider-card cs-card" data-phase3-provider data-price-state-provider="${esc(id)}" data-program="${esc(id)}" data-price="" data-price-map="" data-state-mode="unknown" data-drugs="" data-forms="" data-duration="unknown" data-dose="unknown"><header class="p3-card-header">${providerIdentity({ program_id: id, provider: program.display_name }, logoManifest)}</header><p>${esc(priceStateText(entry) || 'Reported pricing is available in the provider review. Floors, bundles and starting prices are not exact monthly cash schedules.')}</p><p>Review medication options, coverage and program terms independently of price.</p><div class="p3-card-actions"><a class="cs-btn cs-btn--quiet" href="${esc(review || `/providers/${program.program_id}/`)}"${review ? " data-card-review" : ""}>${review ? `Read ${esc(program.display_name)} review` : `Open ${esc(program.display_name)} details`}</a></div></article>`;
 }
 
-export function renderConfiguredListing(archetype, page, { graph, pharmacyInput, pricingMatrix, registry, coupons, doseCapture, logoManifest, articles, goAuthority }) {
+export function renderConfiguredListing(archetype, page, { graph, pharmacyInput, pricingMatrix, registry, coupons, doseCapture, logoManifest, articles, goAuthority, sponsorOrder = null }) {
   const config = LISTING_CONFIG[archetype];
   const route = page.route;
   const pharmacy = archetype === "D";
@@ -1634,7 +1662,7 @@ export function renderConfiguredListing(archetype, page, { graph, pharmacyInput,
         unknownPrograms = [];
         heading = `Compare ${providers.length} self-pay provider options`;
       }
-      controls = providerHubControls(providers, doseCapture);
+      controls = providerHubControls(providers, doseCapture, { compact: sponsorPreviewActive(route) || (route === "/providers/" && sponsorOrder !== null) });
       if (route === "/providers/") {
         below += '<section class="section-heading" aria-labelledby="g08-category-links-title"><h2 id="g08-category-links-title">Explore compounded medication categories</h2><div class="p3-hero-actions p3-wrap-actions"><a class="cs-btn cs-btn--quiet" href="/semaglutide/">Compounded semaglutide programs</a><a class="cs-btn cs-btn--quiet" href="/tirzepatide/">Compounded tirzepatide programs</a></div></section>';
         const retatrutideFda = renderCitationAnchor({ url: "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss", label: "FDA notice", reason: CITATION_REASONS.INLINE_FACT_SOURCE });
@@ -1791,7 +1819,7 @@ const main=root.closest("main");for(const event of ["click","input","change"])ma
     !pharmacy ? providerItemListSchema(route, route === "/providers/" ? "GLP-1 provider comparison" : heading, providers, registry) : null,
   );
   const seo = route === "/providers/" ? pageSeoCopy(route) : null;
-  return listingDocument({ archetype, route, title: seo?.title ?? `${heading} · Clinic Scout`, description: seo?.meta ?? support, heading, support, count, controls, cards, atfPreview,
+  return listingDocument({ archetype, route, title: seo?.title ?? `${heading} · Clinic Scout`, description: seo?.meta ?? support, heading, support, count, controls, cards, atfPreview, sponsorOrder,
     panel: panel.html, afterGrid: below + reverseIndex + (route === '/providers/' ? approvedDirectoryLinks() : ''), schema, initialVisible: archetype === "E" ? 12 : null,
     profileCount: route === "/providers/" ? livePrograms.length : null,
     hasNonpriced,
@@ -1873,7 +1901,7 @@ function renderComparisonPreset(page, { pricingMatrix, registry, logoManifest, c
   });
 }
 
-export function buildPhase3PageGraph({ graph, pharmacyInput, pricingMatrix, programRegistry, homeSpec, articles, couponOffersByProgram = {}, goPromotionAuthority = loadGoPromotionAuthority() }) {
+export function buildPhase3PageGraph({ graph, pharmacyInput, pricingMatrix, programRegistry, homeSpec, articles, couponOffersByProgram = {}, goPromotionAuthority = loadGoPromotionAuthority(), sponsorOrder = null }) {
   validatePhase3Graph(graph, pharmacyInput);
   const doseCapture = loadPass2DoseCapture();
   const logoManifest = loadProviderLogoManifest();
@@ -1882,7 +1910,7 @@ export function buildPhase3PageGraph({ graph, pharmacyInput, pricingMatrix, prog
   const articleRoutes = glpArticles.map((article) => article.canonical_path);
   if (new Set(articleRoutes).size !== articleRoutes.length) throw new Error("phase3_insights_article_route_duplicate");
   if (glpArticles.some((article) => !String(article.canonical_path || "").startsWith("/guides/") || !(article.h1 || article.title))) throw new Error("phase3_insights_article_destination_invalid");
-  const listingContext = { graph, pharmacyInput, pricingMatrix, registry: providerRegistry, coupons: couponOffersByProgram, doseCapture, logoManifest, articles: glpArticles, goAuthority: goPromotionAuthority };
+  const listingContext = { graph, pharmacyInput, pricingMatrix, registry: providerRegistry, coupons: couponOffersByProgram, doseCapture, logoManifest, articles: glpArticles, goAuthority: goPromotionAuthority, sponsorOrder };
   const listing = (archetype, page) => renderConfiguredListing(archetype, page, listingContext);
   const pages = [];
   const add = (route, html, family) => {

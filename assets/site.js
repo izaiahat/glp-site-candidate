@@ -1753,7 +1753,7 @@
     return true;
   };
   window.CS_STATE = Object.freeze({ get: () => selected, set: (code) => apply(String(code || '').toUpperCase(), 'reader'), states: STATES });
-  const existingStateControl = document.querySelector('[data-state-open]');
+  const existingStateControl = document.querySelector('[data-state-open]') || document.querySelector('[data-sponsor-preview-filters] [data-state-native]');
   if (!targets.length && !existingStateControl) return;
 
   for (const target of targets) {
@@ -2733,7 +2733,9 @@
     const nativeState = stateControl?.querySelector('[data-state-native]');
     const stateButtons = popover ? Array.from(popover.querySelectorAll('[data-state]')) : [];
     const stateHeading = stateIntro?.querySelector('h1') || document.querySelector('[data-state-heading]');
-    if (stateIntro && stateControl && stateHeading) {
+    // Sponsor preview keeps its single native selector inside closed Filters.
+    // Do not pull it back into the heading during enhancement.
+    if (stateIntro && stateControl && stateHeading && !filters.hasAttribute('data-sponsor-preview-filters')) {
       stateHeading.dataset.stateHeading = '';
       stateHeading.dataset.stateTitleTemplate = 'Compare weight loss providers in {state}';
       if (stateControl.parentElement !== stateIntro) {

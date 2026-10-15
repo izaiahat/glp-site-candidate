@@ -8376,6 +8376,118 @@ main.guide-shell .p3-article-faq .gcs-kicker {
 
 
 
+/* GLP-327 sponsor surfaces (rate card, paid promo template, /providers/ preview
+   slot). Composition only: grid/flex, spacing and type scale built from the
+   shared tokens (--space-*, --p3-*, --radius-*). No colour values; colour,
+   surfaces, buttons, chips and focus states come from the existing
+   p3-rail-card, cs-card, cs-btn, p3-chip, cs-details and provider-logo
+   components. Every selector is scoped to a data-sponsor-* hook that only the
+   opt-in sponsor renderers emit, so the default site composition is untouched. */
+
+/* Sponsored panel: one compact card wherever it appears. */
+[data-sponsored-placement] { display: grid; gap: var(--space-3); }
+.p3-page [data-sponsored-placement] > * { margin: 0; min-width: 0; }
+[data-sponsor-panel-identity] { display: flex; align-items: center; gap: var(--space-3); }
+[data-sponsor-panel-identity] > p { display: grid; justify-items: start; gap: var(--space-1); margin: 0; font-size: 1.1rem; line-height: 1.2; }
+[data-sponsor-panel-body] { font-size: 1rem; line-height: 1.5; }
+[data-sponsored-placement] > .p3-hero-actions { margin-top: 0; }
+[data-sponsored-placement] > .p3-rail-note { max-width: none; }
+
+/* Rate card and promo: short title, then the decision content. */
+[data-sponsor-layout] { display: grid; gap: clamp(16px, 2.6vw, 32px); margin-top: 0; }
+[data-sponsor-layout] > *, [data-sponsor-lead-grid] > * { margin: 0; min-width: 0; }
+.p3-page [data-sponsor-title] { display: grid; gap: var(--space-2); padding: 0; }
+.p3-page [data-sponsor-title] > * { margin: 0; }
+[data-sponsor-layout] h1 { max-width: none; margin: 0; font-size: clamp(1.75rem, 2.6vw, 2.5rem); line-height: 1.1; }
+[data-sponsor-layout] h2 { margin: 0; font-size: clamp(1.3rem, 1.9vw, 1.7rem); line-height: 1.2; }
+[data-sponsor-layout] h3 { margin: 0 0 var(--space-2); font-size: 1.05rem; line-height: 1.3; }
+[data-sponsor-layout] .lede { margin: 0; max-width: var(--p3-reading); font-size: 1.05rem; line-height: 1.5; }
+[data-sponsor-lead-grid] { display: grid; gap: var(--space-5); align-items: start; }
+@media (min-width: 900px) {
+  [data-sponsor-lead-grid] { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+}
+[data-sponsor-offer], [data-sponsor-lead] { display: grid; gap: var(--space-3); }
+.p3-page :is([data-sponsor-offer], [data-sponsor-lead]) > * { margin: 0; }
+[data-sponsor-price] { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
+[data-sponsor-deliverables] { display: grid; gap: var(--space-2); padding-left: 1.2em; }
+.p3-page :is([data-sponsor-offer], [data-sponsor-lead]) > .p3-hero-actions { margin-top: var(--space-1); }
+.p3-page :is([data-sponsor-independence], [data-sponsor-ad-disclosure]) { max-width: none; font-size: 0.82rem; line-height: 1.45; }
+@media (min-width: 761px) {
+  [data-sponsor-layout] :is([data-sponsor-offer], [data-sponsor-lead]) > .p3-hero-actions { display: flex; }
+  [data-sponsor-layout] :is([data-sponsor-offer], [data-sponsor-lead]) > .p3-hero-actions > .cs-btn { width: auto; min-width: 280px; }
+}
+[data-sponsor-example] { display: grid; gap: var(--space-2); margin: 0; }
+[data-sponsor-details] { display: grid; gap: var(--space-4); }
+[data-sponsor-details] .p3-detail-grid { margin: 0; }
+[data-sponsor-details] :is(ul, p) { margin: 0 0 var(--space-2); }
+[data-sponsor-details] li + li, [data-sponsor-promo-checks] li + li { margin-top: var(--space-1); }
+[data-sponsor-details] > details > :not(summary) { margin: 0; }
+[data-sponsor-lead-label] { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+[data-sponsor-lead] .p3-provider-identity { gap: var(--space-3); }
+[data-sponsor-facts] { display: grid; gap: var(--space-3); }
+[data-sponsor-facts] > * { margin: 0; }
+[data-sponsor-facts] dl { display: grid; gap: var(--space-2); margin: 0; }
+[data-sponsor-fact-slot] { padding: var(--space-2) var(--space-3); border: 1px dashed var(--p3-rule); border-radius: var(--radius-control); }
+[data-sponsor-facts] dt { font-weight: 700; }
+[data-sponsor-facts] dd { margin: var(--space-1) 0 0; color: var(--p3-muted); font-size: 0.92rem; line-height: 1.45; }
+[data-sponsor-promo-checks] { margin: 0; }
+[data-sponsor-promo-checks] :is(ul, p) { margin: 0 0 var(--space-3); }
+[data-sponsor-promo-checks] h2 { margin-bottom: var(--space-3); }
+
+/* Content-first sponsor shell, using the maintained shared brand/components. */
+[data-sponsor-header] .gcs-nav-inner { min-height: 64px; gap: var(--space-3); }
+[data-sponsor-header] .gcs-brand { font-size: 1.25rem; }
+[data-sponsor-header] .gcs-brand span { display: inline; }
+[data-sponsor-header] .cs-btn { min-height: 44px; padding: var(--space-2) var(--space-3); font-size: 0.875rem; }
+.p3-page:has([data-sponsor-layout]) { padding-top: var(--space-5); }
+.p3-page [data-sponsor-offer], .p3-page [data-sponsor-lead] { padding: var(--space-5); }
+.p3-page [data-sponsor-offer] > .p3-hero-actions, .p3-page [data-sponsor-lead] > .p3-hero-actions { margin-top: 0; }
+.p3-page [data-sponsor-independence], .p3-page [data-sponsor-ad-disclosure] { font-size: 0.875rem; line-height: 1.5; }
+/* Keep the complete approved mobile offer readable before the booking action.
+   The longer setup/placement and renewal terms use the shared body scale;
+   promo and directory surfaces retain their existing composition. */
+@media (max-width: 760px) {
+  .p3-page [data-sponsor-layout="rate-card"] [data-sponsor-offer] { gap: var(--space-2); padding: var(--space-4); }
+  [data-sponsor-layout="rate-card"] :is([data-sponsor-price-terms], [data-sponsor-deliverables], [data-sponsor-renewal]) { font-size: 1rem; line-height: 1.5; }
+}
+
+/* Preview only: one search/action/Filters row. Every secondary control is in
+   one closed native disclosure, never reparented into the heading by JS. */
+.p3-page.listing:has([data-sponsor-preview-intro]) { padding-top: var(--space-5); }
+.p3-page.listing[data-listing-archetype] [data-sponsor-preview-intro] { display: block; margin: 0 0 var(--space-3); padding: 0; }
+.p3-page.listing [data-sponsor-preview-intro] h1 { margin: 0; max-width: none; font-size: clamp(1.75rem, 2.6vw, 2.5rem); line-height: 1.15; }
+.p3-page.listing [data-sponsor-preview-filters] { display: block; margin: 0 0 var(--space-4); padding: 0; border-width: 0; }
+.p3-page.listing [data-sponsor-preview-filters] > [data-provider-search] { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: start; gap: var(--space-2); min-width: 0; }
+.p3-page.listing [data-sponsor-preview-filters] input { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; }
+.p3-page.listing [data-sponsor-preview-filters] button[type="submit"] { min-height: 44px; padding: var(--space-2) var(--space-3); }
+.p3-page.listing [data-sponsor-preview-filters] [data-sponsor-preview-more-filters] { margin: 0; }
+.p3-page.listing [data-sponsor-preview-filters] [data-sponsor-preview-more-filters] > summary { box-sizing: border-box; min-height: 44px; padding: var(--space-2) var(--space-3); }
+.p3-page.listing [data-sponsor-preview-filters] [data-sponsor-preview-more-filters][open] { grid-column: 1 / -1; }
+.p3-page.listing [data-sponsor-filter-options] { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: var(--space-4); padding: var(--space-4); }
+.p3-page.listing [data-sponsor-filter-options] > .p3-state-control { align-self: start; }
+.p3-page.listing [data-sponsor-filter-options] > button { justify-self: start; min-height: 44px; padding: var(--space-2) var(--space-4); }
+@media (min-width: 761px) {
+  .p3-page.listing [data-sponsor-filter-options] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .p3-page.listing [data-sponsor-filter-options] > .p3-more-filters { grid-column: 1 / -1; }
+}
+.p3-page.listing [data-sponsor-filter-options] > *, .p3-page.listing [data-sponsor-filter-options] .p3-state-native { margin: 0; min-width: 0; }
+.p3-page.listing [data-sponsor-filter-options] fieldset { padding: 0; border-width: 0; }
+.p3-page.listing [data-sponsor-filter-options] .p3-state-native { font-size: 1rem; }
+.p3-page.listing [data-sponsor-filter-options] select { font-size: 1rem; margin-top: var(--space-2); }
+.p3-page.listing [data-sponsor-preview-filters] [role="listbox"], .p3-page.listing [data-sponsor-preview-filters] [data-provider-search-empty] { grid-column: 1 / -1; max-height: 320px; overflow: auto; }
+.p3-page.listing [data-sponsor-preview-filters] [role="option"] { display: block; width: 100%; min-height: 44px; text-align: left; }
+.p3-page.listing > aside[data-sponsored-placement] { row-gap: var(--space-3); margin: 0 0 var(--space-6); padding: var(--space-5); }
+.p3-page.listing > aside[data-sponsored-placement] > .p3-hero-actions > .cs-btn { margin-top: 0; }
+.p3-page.listing > aside[data-sponsored-placement] > .p3-rail-note { font-size: 0.875rem; line-height: 1.5; }
+.p3-page.listing > aside[data-sponsored-placement] .provider-logo.provider-logo--wordmark { width: 96px; min-width: 96px; height: 44px; min-height: 44px; }
+.p3-page.listing [data-sponsor-preview-results-lead] { display: grid; gap: var(--space-4); margin: 0 0 var(--space-5); }
+.p3-page.listing [data-sponsor-preview-results-lead] > * { margin: 0; }
+@media (min-width: 761px) {
+  .p3-page.listing > aside[data-sponsored-placement] { grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-6); align-items: center; }
+  .p3-page.listing > aside[data-sponsored-placement] > :not(.p3-hero-actions) { grid-column: 1; }
+  .p3-page.listing > aside[data-sponsored-placement] > .p3-hero-actions { grid-column: 2; grid-row: 1 / span 3; }
+}
+
 
 /* ===== 12-phase3-closure.css ===== */
 /* Pass 3 desktop closure: related product cards must own a zero-minimum grid

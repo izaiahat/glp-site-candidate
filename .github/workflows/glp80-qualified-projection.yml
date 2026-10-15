@@ -53,5 +53,8 @@ jobs:
           sudo cp tests/fixtures/eden-consumer-authority/research.md "$target/research.md"
           sudo cp tests/fixtures/eden-consumer-authority/audit-summary.json "$target/audit-summary.json"
           node --test tests/eden-qualified-projection.test.mjs
+          node --experimental-test-module-mocks --test tests/paid-promo.test.mjs tests/glp327-sponsor-r4.test.mjs tests/glp327-sponsor-layouts.test.mjs tests/sponsor-placement-candidate.test.mjs tests/glp327-sponsor-design-system.test.mjs tests/glp327-sponsor-live-content.test.mjs
+          python3 -m pip install 'reportlab==5.0.1' 'pypdf==6.19.0' 'pillow==12.3.0'
+          python3 -m unittest discover -s tests -p test_glp327_sponsor_packet.py
           node --test tests/price-refresh-evidence.test.mjs tests/price-index-current-offers.test.mjs
           git diff --exit-code

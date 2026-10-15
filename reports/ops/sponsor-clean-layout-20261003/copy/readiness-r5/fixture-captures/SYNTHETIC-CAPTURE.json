@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "scope": "Isolated fictional test artifact only. Module-mocked payment; no live/payment/creative acceptance.",
+  "checks": [
+    {
+      "surface": "promo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "dom": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "unresolvedTokens": false
+      },
+      "a11y": [],
+      "reportedFactsVisible": true,
+      "realPayment": false
+    },
+    {
+      "surface": "directory",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "dom": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "unresolvedTokens": false
+      },
+      "a11y": [],
+      "reportedFactsVisible": true,
+      "realPayment": false
+    },
+    {
+      "surface": "promo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "dom": {
+        "width": 390,
+        "scrollWidth": 390,
+        "unresolvedTokens": false
+      },
+      "a11y": [],
+      "reportedFactsVisible": true,
+      "realPayment": false
+    },
+    {
+      "surface": "directory",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "dom": {
+        "width": 390,
+        "scrollWidth": 390,
+        "unresolvedTokens": false
+      },
+      "a11y": [],
+      "reportedFactsVisible": true,
+      "realPayment": false
+    }
+  ]
+}

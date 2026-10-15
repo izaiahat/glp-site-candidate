@@ -1,0 +1,122 @@
+{
+  "description": "GLP327 sponsor-copy source subset in the site mirror; not a complete release manifest or runtime deployment receipt.",
+  "files": {
+    "scripts/glp327_sponsor_packet.py": {
+      "kind": "offline_packet_producer",
+      "callers": [
+        "ops/GLP327-SPONSOR-PACKET.md"
+      ],
+      "sha256": "5fd2593fa76253e7361d65f0818b6dd9cf2ce63d3fc69358a2641e4db4059e0e"
+    },
+    "tests/test_glp327_sponsor_packet.py": {
+      "kind": "test",
+      "callers": [
+        ".github/workflows/mirror-ci.yml"
+      ],
+      "sha256": "49c05bb8e3e39250d7a36027ce62ce61ad19873317b45a86acdb20912601bfad"
+    },
+    "ops/GLP327-SPONSOR-PACKET.md": {
+      "kind": "procedure",
+      "callers": [
+        "GLP-327 parent integration"
+      ],
+      "sha256": "5806f2f4cd9a0413ee66f4a0d0d4f67199488a9335f41d74807142ef504e56ac"
+    },
+    ".github/workflows/mirror-ci.yml": {
+      "kind": "ci",
+      "callers": [
+        "GitHub PR exact-head checks"
+      ],
+      "sha256": "dc36fca13a3485b4b6dd4ee0cacb669ed37cd3627719f2dd537e97a8af53d370"
+    },
+    "src/sponsor-order.mjs": {
+      "kind": "site_source",
+      "callers": [
+        "src/sponsor-inventory.mjs",
+        "src/paid-promo.mjs",
+        "src/sponsor-placement-candidate.mjs"
+      ],
+      "sha256": "806ca6448982b763d949e14265bc4bf07f58526dd3cc84b67376003c5c664cad"
+    },
+    "tests/glp327-sponsor-live-content.test.mjs": {
+      "kind": "test",
+      "callers": [
+        ".github/workflows/glp80-qualified-projection.yml"
+      ],
+      "sha256": "5a0fb899f7606d0fabc6f6ba1802f7066320c56b10ae4256d2821e3ec8c2318b"
+    },
+    "src/paid-promo.mjs": {
+      "kind": "site_source",
+      "callers": [
+        "scripts/build-staging.mjs",
+        "scripts/render-paid-promo.mjs"
+      ],
+      "sha256": "78ab3f915e51a1c9f361bb615834009678f4312ffdbf36e1d6525ce65394ef97"
+    },
+    "src/sponsor-placement-candidate.mjs": {
+      "kind": "site_source",
+      "callers": [
+        "src/phase3-page-graph.mjs",
+        "src/paid-promo.mjs"
+      ],
+      "sha256": "e33ad87a5fd8b90f3ea20b9747f37f6cf08cbdd7e129b037a0d395518f0b0441"
+    },
+    "tests/paid-promo.test.mjs": {
+      "kind": "test",
+      "callers": [
+        "node --test"
+      ],
+      "sha256": "eeb9ac1672902a173f54f29a047f31ff7cdbfde744ef158fb54642febb919a02"
+    },
+    "tests/sponsor-placement-candidate.test.mjs": {
+      "kind": "test",
+      "callers": [
+        "node --test"
+      ],
+      "sha256": "3105fb983b8b30fc2da99437629580b171f86d63dd6da51bfa234681ae859123"
+    },
+    "tests/glp327-sponsor-layouts.test.mjs": {
+      "kind": "test",
+      "callers": [
+        "node --test"
+      ],
+      "sha256": "7480ade9d387d6bed77cff83234c7155a7bf83a48d6d9bfa9836da25bc2f7aa1"
+    },
+    "data/sponsor-pricing.json": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "4b3c479981283b847ea73ed2245b18f646180bd7a10ddf4405ba71f31470f521"
+    },
+    "src/sponsor-pricing.mjs": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "572935c24b213b6472cf4849f8bfc9f3fbfd2eb3d69c1c3185cbe2d92af5d51b"
+    },
+    "tests/glp327-sponsor-r4.test.mjs": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "0ee0ca95c92124d67fc4aae60491c36dd6674ccc5b76e75b2839fcdd59e689cc"
+    },
+    "tests/fixtures/sponsor-payment.mjs": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "00b5c394d5995ed5e33e4736ae49d79d5bfb88e5133344dcf1c03bbfe2fcc4df"
+    },
+    "scripts/glp327-capture.mjs": {
+      "kind": "sponsor_source",
+      "callers": [
+        "GLP327 successor source/capture checks"
+      ],
+      "sha256": "bcc556bbe0a352c4c8d38b3c57f1b6095c65a809fcc5358fd2243d3612ad4a0b"
+    }
+  },
+  "tracked_count": 17
+}
