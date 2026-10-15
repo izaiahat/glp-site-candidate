@@ -66,9 +66,8 @@ export function cardEligibleIdentity(registry) {
   };
 }
 
-export function optionCProgramIds(registry = readData('program-registry.json')) {
-  const ledger = new Map(readData('program-content-ledger.json').programs.map(p => [p.program_id, p]));
-  const facts = readData('provider-facts-backfill-20260830.json');
+export function optionCProgramIds(registry = readData('program-registry.json'), {ledger: ledgerInput = readData('program-content-ledger.json'), facts = readData('provider-facts-backfill-20260830.json')} = {}) {
+  const ledger = new Map(ledgerInput.programs.map(p => [p.program_id, p]));
   const reported = f => f?.status === 'SOURCE_REPORTED' && Boolean(String(f.value || '').trim()) && Boolean(f.source_url) && Boolean(f.capture_date);
   const evidenceIds = facts.programs.filter(p => p.display_name && ledger.get(p.program_id)?.meds_offered
     && ledger.get(p.program_id)?.source_url && reported(p.facts?.total_monthly_cost) && reported(p.facts?.cancellation)).map(p => p.program_id);

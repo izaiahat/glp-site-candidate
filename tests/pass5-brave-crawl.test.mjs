@@ -4,6 +4,7 @@ import test from "node:test";
 import { deriveIdentityGroups } from "../src/provider-identity.mjs";
 import { optionCProgramIds } from "./helpers/d2w-s9-contracts.mjs";
 import { currentComparisonPrograms } from './helpers/current-comparison-cohort.mjs';
+import { assertExtraProfileMembership } from './helpers/current-extra-profiles.mjs';
 import { javascriptProviderMarkup } from "./helpers/d2p-noscript.mjs";
 import { buildRobotsTxt, isAllowed } from "../src/robots.mjs";
 
@@ -121,8 +122,7 @@ test("Pass 5 providers ItemList is an exact source-derived projection of Option 
   assert.ok(html.includes(`${programs.length} meet the comparison-card evidence rules; ${livePrograms.length - programs.length} additional provider profiles have their own first-party pages outside this comparison.`));
   const comparisonIds = new Set(programs.map((program) => program.id));
   const extraProfiles = livePrograms.filter((program) => !comparisonIds.has(program.review_slug || program.program_id));
-  assert.deepEqual(extraProfiles.map((program) => program.program_id).sort(), EXTRA_PROFILE_BASELINE,
-    'Pass-5 seven extra profiles drifted from the pinned baseline');
+  await assertExtraProfileMembership(extraProfiles, EXTRA_PROFILE_BASELINE, read);
   assert.equal(extraProfiles.length, livePrograms.length - programs.length);
   for (const program of extraProfiles) {
     const route = `/providers/${program.program_id}/`;

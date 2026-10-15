@@ -43,6 +43,13 @@ on:
       - "tests/selected-program-denial-partition.test.mjs"
       - "tests/trt-nation-link-dark.test.mjs"
       - "tests/current-review-holds.test.mjs"
+      - "tests/current-money-projection.test.mjs"
+      - "tests/historical-money-projection.test.mjs"
+      - "tests/current-extra-profiles.test.mjs"
+      - "tests/pass5-brave-crawl.test.mjs"
+      - "tests/helpers/current-money-projection.mjs"
+      - "tests/helpers/current-extra-profiles.mjs"
+      - "tests/fixtures/historical-money-projection.mjs"
       - "tests/fixtures/eligibility-pre-retaclinic.json.gz"
       - "tests/standalone-review-membership.test.mjs"
       - "tests/provider-fastpath-plus5.test.mjs"
@@ -193,7 +200,7 @@ jobs:
           import os, base64, subprocess
           closure = {
             'e61a0017e8888570b00f4bd6c1eeef1572f421e1': ['data/program-content-ledger.json', 'data/program-registry.json', 'data/money-page-specs.json', 'data/quiz-config.json', 'data/cost-calculator.json', 'data/provider-page-contracts.json', 'data/provider-fastpath-contract.json', 'data/provider-pricing-matrix.json'],
-            '9cd63e73d743d69104fa0a281ce42113743faf4a': ['src/provider-review.mjs', 'data/affiliate-activation-selection.json', 'data/affiliate-held-link-manifest.json', 'data/go-runtime-promotion-authority.json', 'functions/go/program-manifest.js', 'data/program-page-eligibility.json'],
+            '9cd63e73d743d69104fa0a281ce42113743faf4a': ['src/provider-review.mjs', 'data/affiliate-activation-selection.json', 'data/affiliate-held-link-manifest.json', 'data/go-runtime-promotion-authority.json', 'functions/go/program-manifest.js', 'data/program-page-eligibility.json', 'tests/affiliate-expansion-13.test.mjs', 'src/money-page.mjs', 'src/go-render-selection.mjs', 'src/go-runtime-selection.mjs', 'src/affiliate-link-map.mjs', 'src/provider-cta-contract.mjs', 'data/money-page-specs.json', 'data/program-registry.json', 'data/identity-registry.json', 'data/affiliate-wire-in-approvals.json', 'data/approved-program-registry.json', 'data/provider-page-contracts.json', 'data/provider-fastpath-contract.json', 'data/go-selection-receipt.json', 'data/go-terms-review-ledger.json', 'data/OPERATOR-DECISION-20261001-all-pipelines-live.md', 'data/provider-cta-identity-v2.json'],
             '34db221edec1b3fbf4ae87aac67be64f75c30ca7': ['src/provider-review.mjs', 'scripts/validate-provider-fastpath-plus5.mjs'],
             '59adaddfa6800c3cd87592ad88829a081a35e3c3': ['artifacts/build4-preservation/_headers'],
           }
@@ -226,6 +233,8 @@ jobs:
           node tests/helpers/materialize-retatrutide-capture.mjs
           node --test --test-concurrency=1 tests/provider-dynamic-profiles.test.mjs tests/identity-calculator-census.test.mjs tests/retatrutide-capture-custody.test.mjs tests/therapeutic-wire-in-propagation-build6.test.mjs tests/therapeutic-surfaces-build6.test.mjs tests/helpers/s9-held-taxonomy-case.mjs
           node --test --test-name-pattern '^quiz policy pins AND composition, top-three order, ignored medical answers, and golden vectors$' tests/playbook.test.mjs
+      - name: Money projection and historical-current directory membership (source-only; retained captures already authenticated above)
+        run: node --max-old-space-size=256 --test --test-concurrency=1 tests/current-money-projection.test.mjs tests/historical-money-projection.test.mjs tests/current-extra-profiles.test.mjs
       - name: Price caller dependency seam regression (synthetic inputs; not price-oracle acceptance)
         run: node --test tests/price-index-caller-seams.test.mjs
       - name: Article selection dependency seam (source catalogs only; not built-output acceptance)
