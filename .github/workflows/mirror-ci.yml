@@ -110,6 +110,8 @@ on:
       - "tests/helpers/**"
       - "tests/current-comparison-cohort.test.mjs"
       - "tests/review-fixture-lifecycle.test.mjs"
+      - "tests/review-server.test.mjs"
+      - "tests/review-root-input-custody.test.mjs"
       - "tests/w12-motion-source.test.mjs"
       - "tests/w17-source-css.test.mjs"
       - "scripts/serve-review.mjs"
@@ -360,7 +362,7 @@ jobs:
         run: node --test --test-name-pattern '^current comparison' tests/current-comparison-cohort.test.mjs
       - name: Owned loopback fixture lifecycle (synthetic transport only; no browser or build)
         run: |
-          node --test tests/review-fixture-lifecycle.test.mjs
+          node --test tests/review-fixture-lifecycle.test.mjs tests/review-root-input-custody.test.mjs
           env -u TMPDIR -u RUNNER_TEMP node --test tests/review-fixture-lifecycle.test.mjs
       - name: Record limited scope
         if: always()

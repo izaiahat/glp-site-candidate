@@ -29,7 +29,9 @@ test("review redirects preserve request query parameters", () => {
 });
 
 test("review static resolver stays inside public", () => {
-  assert.equal(publicFileForPath("/"), path.join(candidateRoot, "public/index.html"));
+  const declaredRoot = process.env.GLP_REVIEW_PUBLIC_ROOT
+    ? path.resolve(process.env.GLP_REVIEW_PUBLIC_ROOT) : path.join(candidateRoot, "public");
+  assert.equal(publicFileForPath("/"), path.join(declaredRoot, "index.html"));
   assert.equal(publicFileForPath("/%2e%2e/package.json"), null);
 });
 
