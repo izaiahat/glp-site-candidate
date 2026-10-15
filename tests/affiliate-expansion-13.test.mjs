@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { historicalAgelessPromotion } from './fixtures/historical-ageless-promotion.mjs';
 import { assertPausedTrimiReview } from './helpers/current-review-holds.mjs';
+import { currentMoneyInputs, currentMoneyPages, expectedMoneyIds, assertMoneyDenial } from './helpers/current-money-projection.mjs';
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -111,7 +112,30 @@ test("money programs render approved GLP-1 anchors and withhold network-unapprov
   assert.equal(promotion.mydrhank?.status, "VERIFIED");
   const seen = new Set();
   const targetRows = new Set();
-  for (const page of money.pages) {
+  const pages = currentMoneyPages(currentMoneyInputs());
+  assert.deepEqual(pages.map(page => page.path), money.pages.map(page => page.path));
+  const represented = new Set(pages.flatMap(page => page.rows.map(row => row.program_id)));
+  const expectedNetwork = new Set();
+  for (const id of networkAnchorIds) {
+    const record = registry.programs.find(p => (p.review_slug || p.program_id) === id);
+    assert.ok(record, `${id}: network identity exists`);
+    if (id === shedAlias.review_slug) {
+      assert.equal(record.profiles['glp-clinic-scout'].canonical_identity.role, 'alias');
+      assert.equal(record.profiles['glp-clinic-scout'].surfaces.compare, false);
+      assert.equal(represented.has(id), false, 'no duplicate Shed merchant');
+      assert.equal(represented.has(shedCanonicalId), true, 'canonical approved Shed merchant survives');
+    } else if (record.affiliate_relationship_snapshot?.promotion_denied === true) {
+      assertMoneyDenial(record, promotion[record.program_id]);
+      assert.equal(represented.has(id), !['ended','withdrawn'].includes(record.affiliate_relationship_snapshot.lifecycle));
+    } else {
+      assert.equal(promotion[record.program_id]?.status, 'VERIFIED', `${id}: healthy network member`);
+      assert.equal(promotion[record.program_id]?.promotion_authorized, true);
+      assert.equal(represented.has(id), true);
+      expectedNetwork.add(id);
+    }
+  }
+  for (const [index, page] of pages.entries()) {
+    assert.deepEqual(page.rows.map(row => row.program_id), expectedMoneyIds(money.pages[index], registry), `${page.path}: complete comparison membership`);
     const html = renderMoneyPage(page, identity);
     for (const row of page.rows.filter((item) => ["trt-nation", "shed", "shedrx", "mydrhank"].includes(item.program_id))) {
       targetRows.add(row.program_id);
@@ -135,13 +159,16 @@ test("money programs render approved GLP-1 anchors and withhold network-unapprov
       seen.add(match[2]);
     }
   }
-  assert.deepEqual(targetRows, new Set(["trt-nation", "shed", "shedrx", "mydrhank"]));
-  assert.deepEqual(new Set([...networkAnchorIds].filter((id) => !authorizedNetworkAnchorIds.has(id))),
-    new Set([PAUSED_AGELESS]), "only the exact network-paused offer may be link-dark");
-  assert.deepEqual(seen, authorizedNetworkAnchorIds);
+  assert.deepEqual(targetRows, new Set(["trt-nation", "shedrx", "mydrhank"]));
+  // The original raw-alias/one-pause assertion remains executable against the
+  // authentic pre-relationship closure in historical-money-projection.test.mjs.
+  assert.deepEqual(seen, expectedNetwork);
   for (const id of selectedIds) {
-    if (id === PAUSED_AGELESS) assert.equal(seen.has(id), false, "paused offer must not have an anchor");
-    else assert.ok(seen.has(id), `sheet-selected program lost its anchor: ${id}`);
+    const record = registry.programs.find(p => (p.review_slug || p.program_id) === id);
+    if (record.affiliate_relationship_snapshot?.promotion_denied === true) {
+      assertMoneyDenial(record, promotion[record.program_id]);
+      assert.equal(seen.has(id), false, `${id}: current authenticated denial remains dark`);
+    } else assert.ok(seen.has(id), `sheet-selected program lost its anchor: ${id}`);
   }
 });
 
