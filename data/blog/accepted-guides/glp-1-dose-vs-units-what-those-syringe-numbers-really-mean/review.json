@@ -1,0 +1,74 @@
+{
+  "authority": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261012T035626Z-k44-local-refill/topic-f2f755517106ff369ba5/topic-queue-snapshot-20261012T035626Z-k44-units.json",
+    "selection_binding": {
+      "operator_directive_id": "operator-keyword-gap-20260823:B-089a4472c8945a43",
+      "queue_position": 21,
+      "queue_sha256": "f8016ba93431fb9564ff7aff65130db81ee09a2652885d22492cf7f7014530a9",
+      "selection_receipt_sha256": "6e0dd66a6cfa59fd3f5804a9f3faa7f67b88d46b6d84ec874bfab690fdd1a5d4",
+      "strategy_map_sha256": "05d215c1bd3a8656f4bc5f5534a1ad5e13934b94a649492743fd975533f2818b",
+      "strategy_queue_sha256": "59627aee4ddb6a2a1eb1f2b3a0129c2b2ab184c38426194db63e404a78fd3ea6",
+      "target_query": "how many units is",
+      "target_route": "/guides/glp-1-dose-vs-units-what-those-syringe-numbers-really-mean/",
+      "topic_id": "f2f755517106ff369ba5"
+    },
+    "selection_receipt": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261012T035626Z-k44-local-refill/selection-02.json",
+      "receipt_sha256": "6e0dd66a6cfa59fd3f5804a9f3faa7f67b88d46b6d84ec874bfab690fdd1a5d4",
+      "sha256": "5dcffc03f04949785f77892f2578ffdf3736ea70eb0362494dcffb7521baf220"
+    },
+    "sha256": "f8016ba93431fb9564ff7aff65130db81ee09a2652885d22492cf7f7014530a9",
+    "topic_id": "f2f755517106ff369ba5",
+    "type": "operator_directed_queue_item"
+  },
+  "effects": {
+    "cache_purges": 0,
+    "deployments": 0,
+    "gsc_submissions": 0,
+    "publishes": 0
+  },
+  "effort": "high",
+  "findings": [],
+  "gates": [
+    {
+      "findings": [],
+      "gate": "A",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "B",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "C",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "D",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "E",
+      "status": "PASS"
+    }
+  ],
+  "job_id": "20261012T035626Z-k44-units",
+  "model": "gpt-6-astra-900k",
+  "provider": "openai-codex",
+  "raw_review_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261012T035626Z-k44-local-refill/topic-f2f755517106ff369ba5/opus-history-20261012T035626Z-k44-units/round-02-sol-raw.json",
+  "raw_review_sha256": "f4ae99d6a96fd7d32fff277af2dfbcc41997764c700082872a58d01f72471e29",
+  "receipt_sha256": "b06c54dec2567c377779b53b190579ac1c4c9da110501b29f8513e9e2a525ae3",
+  "review_transport": "hermes-openai-codex-astra-independent",
+  "reviewed_at_utc": "2026-10-12T04:31:57.881848Z",
+  "round": 2,
+  "schema": "glp-opus-seo-round-receipt-v1",
+  "status": "PASS_OPUS_SEO_DRAFT",
+  "subject_manifest_path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261012T035626Z-k44-local-refill/topic-f2f755517106ff369ba5/opus-history-20261012T035626Z-k44-units/round-02-subject-manifest.json",
+  "subject_manifest_sha256": "e1150b25fd6d747df3feacabcbad96cea91fdfeb44e62d73a415f3e7c71ecefa",
+  "tools_disabled": true,
+  "topic_id": "f2f755517106ff369ba5"
+}

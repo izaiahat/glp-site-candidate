@@ -119,6 +119,23 @@
         "path": "data/blog/accepted-guides/glp-1-savings-cards-and-patient-assistance/review.json",
         "sha256": "00f951d7d919119de233ab9b337ed92a85dc7f89176424e912e2482f5203777c"
       }
+    },
+    {
+      "entry_id": "a8daf1a01322c392efcd1858",
+      "route": "/guides/glp-1-dose-vs-units-what-those-syringe-numbers-really-mean/",
+      "decorative_image_policy": "existing-approved-editorial-evidence-hero; no new generation or shared-manifest mutation",
+      "article": {
+        "path": "data/blog/accepted-guides/glp-1-dose-vs-units-what-those-syringe-numbers-really-mean/article.json",
+        "sha256": "f9ad280cb895d25ca9c84e3de5c3cce2fb84a093d1dc2fc3fddfff6e3d6f3b3a"
+      },
+      "qa": {
+        "path": "data/blog/accepted-guides/glp-1-dose-vs-units-what-those-syringe-numbers-really-mean/qa.json",
+        "sha256": "4cfda97bae0cf25d283e4b7210c47e98b39601d8b9fe47f5d759986384848fe7"
+      },
+      "review": {
+        "path": "data/blog/accepted-guides/glp-1-dose-vs-units-what-those-syringe-numbers-really-mean/review.json",
+        "sha256": "c9f5cb018f02c499e14cde30f8cb94cc560ec478967dc309e5af5244950cff23"
+      }
     }
   ]
 }
