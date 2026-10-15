@@ -77,6 +77,8 @@ on:
       - "tests/glp47-approved-onboarding.test.mjs"
       - "tests/guide-resource-consent.test.mjs"
       - "tests/helpers/**"
+      - "tests/current-comparison-cohort.test.mjs"
+      - "tests/browser/governed-cohort.mjs"
       - "tests/pricing-deployed-row-schema.test.mjs"
       - "tests/therapeutic-refresh-import.test.mjs"
       - "tests/provider-dynamic-profiles.test.mjs"
@@ -299,6 +301,8 @@ jobs:
           test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
           unset GH_TOKEN
           node --test --test-name-pattern '^(the four ruled comparison guides resolve|current ruled guides preserve|historical editorial inputs reject|current editorial oracle refuses)' tests/editorial-monetization.test.mjs tests/editorial-denial-custody.test.mjs
+      - name: Current comparison relationship cohort (source-only; no served assertions)
+        run: node --test --test-name-pattern '^current comparison' tests/current-comparison-cohort.test.mjs
       - name: Record limited scope
         if: always()
         run: |
