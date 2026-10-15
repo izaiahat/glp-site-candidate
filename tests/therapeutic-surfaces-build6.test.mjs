@@ -1,19 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { historicalRetatrutideInputs } from './fixtures/historical-retatrutide-inputs.mjs';
 import { evaluateQuiz, renderQuiz } from "../src/quiz.mjs";
 import { projectMoneyPagesFromRegistry, projectQuizFromRegistry } from "../src/program-registry.mjs";
 import { projectTherapeuticSurfaces } from "../src/therapeutic-taxonomy.mjs";
 
-async function readJson(relative) {
-  return JSON.parse(await readFile(new URL(relative, import.meta.url), "utf8"));
-}
-
-const registry = await readJson("../data/program-registry.json");
-const money = await readJson("../data/money-page-specs.json");
-const quiz = await readJson("../data/quiz-config.json");
-const contentLedger = await readJson("../data/program-content-ledger.json");
-const asOf = new Date(`${registry.therapeutic_taxonomy.sealed_as_of}T12:00:00Z`);
+// Historical positives use one authenticated generation, including the ledger.
+// Current expired capture refusal remains covered by the paired wire-in suite.
+const { registry, money, quiz, contentLedger, asOf } = historicalRetatrutideInputs();
 const canonicalMoney = projectMoneyPagesFromRegistry(registry, "glp-clinic-scout", money.pages, contentLedger.programs);
 const canonicalQuiz = projectQuizFromRegistry(registry, "glp-clinic-scout", quiz, contentLedger);
 const projected = projectTherapeuticSurfaces({

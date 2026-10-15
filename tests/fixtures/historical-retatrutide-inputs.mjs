@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 // provider rows or relabelled as current evidence. Production does not import it.
 export const RETATRUTIDE_HISTORICAL_REF = 'e61a0017e8888570b00f4bd6c1eeef1572f421e1';
 export const RETATRUTIDE_HISTORICAL_PINS = Object.freeze({
+  'program-content-ledger.json': '88f1ec3e3d8c543e64caaa83ef5baab517e410cd180ee54ca2263eb2b1bbc95d',
   'program-registry.json': 'b37017463dbcb1b706e71f87f126e0c118ed24a6d923dbb0362cfff03f59911b',
   'money-page-specs.json': 'fccb5c440b2f3b7f97cb45de4faa224496cfa7524e338d550dfe29890b9ae0cc',
   'quiz-config.json': 'fbf9d1044cf98b7676efdaf63d42a8ef9245dfbe867413f2ead4ec55cdddd565',
@@ -25,6 +26,7 @@ export function historicalRetatrutideInputs(read = file => execFileSync('git', [
   const date = [registry.provider_dynamic_profiles.sealed_as_of, registry.therapeutic_taxonomy.sealed_as_of].sort().at(-1);
   assert.equal(date, '2026-09-24', 'authentic generation clock, not a renewed capture');
   return {registry, money: input['money-page-specs.json'], quiz: input['quiz-config.json'],
+    contentLedger: input['program-content-ledger.json'],
     calculator: input['cost-calculator.json'], providerContracts: input['provider-page-contracts.json'],
     fastpath: input['provider-fastpath-contract.json'], asOf: new Date(`${date}T12:00:00Z`)};
 }
