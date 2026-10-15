@@ -1,9 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { fileURLToPath } from 'node:url';
 import { assertCurrentProductAnalyticsPrivacy } from './helpers/product-analytics-privacy.mjs';
 
 const runtime = readFileSync(new URL('../assets/analytics.js', import.meta.url), 'utf8');
@@ -32,9 +30,9 @@ test('current product-ready privacy oracle refuses gate, property, listener and 
 });
 
 test('historical product-ready completion-name prohibition remains exact on authenticated pre-GLP44 runtime', () => {
-  const bytes = execFileSync('git', ['show', '8cc4a4d70199b6d2604b89ca59123d0b484bda18:assets/analytics.js'], {
-    cwd: fileURLToPath(new URL('../', import.meta.url)), maxBuffer: 128 * 1024,
-  });
+  // Exact assets/analytics.js from 8cc4a4d70199b6d2604b89ca59123d0b484bda18.
+  // Committed historical source bytes, not a dependency on local Git history.
+  const bytes = readFileSync(new URL('./fixtures/product-ready-pre-glp44-analytics.txt', import.meta.url));
   const authenticate = raw => {
     assert.equal(createHash('sha256').update(raw).digest('hex'), '0a0a7729cb628fc7afb694080bd07f82df28975409030ca7f19850f4dd2fb22a');
     return raw.toString();

@@ -55,6 +55,7 @@ on:
       - "tests/helpers/analytics-cache-contract.mjs"
       - "tests/product-ready.test.mjs"
       - "tests/product-analytics-privacy-contract.test.mjs"
+      - "tests/fixtures/product-ready-pre-glp44-analytics.txt"
       - "tests/d2i-analytics-hygiene.test.mjs"
       - "tests/content-upgrade-contract.test.mjs"
       - "tests/d2f-coverage-floor.test.mjs"
@@ -189,7 +190,6 @@ jobs:
             '9cd63e73d743d69104fa0a281ce42113743faf4a': ['src/provider-review.mjs', 'data/affiliate-activation-selection.json', 'data/affiliate-held-link-manifest.json', 'data/go-runtime-promotion-authority.json', 'functions/go/program-manifest.js', 'data/program-page-eligibility.json'],
             '34db221edec1b3fbf4ae87aac67be64f75c30ca7': ['src/provider-review.mjs', 'scripts/validate-provider-fastpath-plus5.mjs'],
             '59adaddfa6800c3cd87592ad88829a081a35e3c3': ['artifacts/build4-preservation/_headers'],
-            '8cc4a4d70199b6d2604b89ca59123d0b484bda18': ['assets/analytics.js'],
           }
           env = dict(os.environ)
           auth = base64.b64encode(('x-access-token:' + env.pop('GH_TOKEN')).encode()).decode()
