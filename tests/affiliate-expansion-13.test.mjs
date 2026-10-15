@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { historicalAgelessPromotion } from './fixtures/historical-ageless-promotion.mjs';
+import { assertPausedTrimiReview } from './helpers/current-review-holds.mjs';
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -156,6 +157,9 @@ test("physical canonical Shed review ships approved offer 1516 sponsored anchor"
 test("generated provider reviews use selected go routes, direct anchors, or explicit holds", () => {
   const reviews = buildProviderReviewSpecs(money.pages, providerPages, providerFastpath, registry, "glp-clinic-scout");
   assert.equal(reviews.length, providerFastpath.expected_provider_review_count);
+  assert.equal(reviews.filter(review => review.program_id === 'trimi-glp-1').length, 1);
+  const trimi = reviews.find(review => review.program_id === 'trimi-glp-1');
+  assert.equal(trimi.fastpath_contract, undefined, 'paused Trimi must not enter the active fastpath partition');
   for (const id of ["trt-nation", "shedrx", "mydrhank"]) {
     const review = reviews.find((item) => item.program_id === id);
     assert.ok(review, `${id}: editorial review exists`);
@@ -170,6 +174,10 @@ test("generated provider reviews use selected go routes, direct anchors, or expl
       assertPausedAgeless();
       assert.match(html, /data-link-dark="true"/);
       assert.doesNotMatch(html, /data-link-mode="transparent-direct"|href="\/go\/try-ageless|data-affiliate-state="active"/);
+      continue;
+    }
+    if (review.program_id === 'trimi-glp-1') {
+      assertPausedTrimiReview({html, review, selection, registry, promotion});
       continue;
     }
     if (selectedGo.get(review.program_id)?.status === "VERIFIED") {
