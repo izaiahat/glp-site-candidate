@@ -14,6 +14,7 @@ export const RETATRUTIDE_HISTORICAL_PINS = Object.freeze({
   'cost-calculator.json': '10ae898bd529c6db45100630ed59c555abd8e5b6c518bb294263bf6e5fc34d75',
   'provider-page-contracts.json': '6f64b4de008cfd9808f1007d9eb80a64f5eb7b6c7444b5ea2de2eaaff777db55',
   'provider-fastpath-contract.json': '523962644b9e4f5774234fe9db14c27724d35a1deeb8add2bb05c96ffe7b001e',
+  'provider-pricing-matrix.json': '173b7184ea490756e73c2b7e536b201aa630cf9a48782b1ce9b4de7870a7bcf0',
 });
 const root = fileURLToPath(new URL('../../', import.meta.url));
 export function historicalRetatrutideInputs(read = file => execFileSync('git', ['show', `${RETATRUTIDE_HISTORICAL_REF}:data/${file}`], {cwd: root, maxBuffer: 16 * 1024 * 1024})) {
@@ -28,5 +29,6 @@ export function historicalRetatrutideInputs(read = file => execFileSync('git', [
   return {registry, money: input['money-page-specs.json'], quiz: input['quiz-config.json'],
     contentLedger: input['program-content-ledger.json'],
     calculator: input['cost-calculator.json'], providerContracts: input['provider-page-contracts.json'],
+    pricingMatrix: input['provider-pricing-matrix.json'],
     fastpath: input['provider-fastpath-contract.json'], asOf: new Date(`${date}T12:00:00Z`)};
 }
