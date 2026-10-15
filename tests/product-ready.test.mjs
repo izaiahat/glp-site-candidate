@@ -5,6 +5,7 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { candidateExportShellFindings } from "../src/candidate-export-policy.mjs";
+import { assertCurrentAnalyticsCache } from "./helpers/analytics-cache-contract.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PUBLIC = path.join(ROOT, "public");
@@ -282,9 +283,17 @@ test("OAuth app bytes and security headers stay exact while versioned assets gai
   };
   assert.equal(oauthBlock(headers), oauthBlock(preserved));
   for (const name of ["X-Frame-Options: DENY", "X-Content-Type-Options: nosniff", "Strict-Transport-Security:", "Content-Security-Policy:"]) assert.ok(headers.includes(name), name);
-  for (const asset of ["/assets/site.css", "/assets/site-*.css", "/assets/site.js", "/assets/consent.js", "/assets/analytics.js"]) {
+  for (const asset of ["/assets/site.css", "/assets/site-*.css", "/assets/site.js", "/assets/consent.js"]) {
     assert.ok(headers.includes(`${asset}\n  Cache-Control: public, max-age=31536000, immutable`), asset);
   }
+  // The old five-asset assertion remains on authenticated historical headers
+  // in carrier-analytics-emission.test.mjs. Current analytics has a mutable
+  // no-store alias and a source-addressed immutable asset; neither may drift.
+  const source = await readFile(path.join(ROOT, "assets/analytics.js"));
+  const filename = `analytics.${createHash("sha256").update(source).digest("hex").slice(0, 16)}.js`;
+  assertCurrentAnalyticsCache(headers, source,
+    await readFile(path.join(PUBLIC, "assets/analytics.js")),
+    await readFile(path.join(PUBLIC, "assets", filename)));
 });
 
 // 2026-08-18: sticky-cta-follow.json joins the pinned set. It is the receipt of
