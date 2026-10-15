@@ -5,7 +5,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
 import { observeW17CompositedPaint } from './w17-composited-paint.mjs';
-import { withReviewFixture } from './helpers/owned-review-fixture.mjs';
+import {withReviewFixture, withReviewPage} from './helpers/owned-review-fixture.mjs';
 
 // Deliberately narrow solid-paint oracle, shared by the report-only emitted test.
 // Unsupported paint is an explicit failure, NEVER a backgroundColor-only PASS.
@@ -154,9 +154,9 @@ export async function runW17(t, { sourceCss }) {
         if (sourceCss && css.has(path.basename(u.pathname))) return route.fulfill({ status: 200, contentType: 'text/css', body: css.get(path.basename(u.pathname)) });
         return route.continue();
       });
-      const page = await context.newPage();
       for (const route of routes) {
         const rec = { route, mobile, taps: [], contrast: [] };
+        const crumbs = await withReviewPage(context, async page => {
         await page.goto(origin + route, { waitUntil: 'networkidle' });
         const reject = page.getByRole('button', { name: 'Reject optional', exact: true });
         if (await reject.isVisible()) await reject.click();
@@ -186,15 +186,22 @@ export async function runW17(t, { sourceCss }) {
             rec.contrast.push({ ...observation, state, kind: isCta ? 'cta' : 'heading' });
           }
         }
-        const crumbs = await page.locator('main nav[aria-label="Breadcrumb"] a').evaluateAll(es => es.map(e => e.getAttribute('href')));
+        return page.locator('main nav[aria-label="Breadcrumb"] a').evaluateAll(es => es.map(e => e.getAttribute('href')));
+        });
         for (const href of crumbs) {
-          if (new URL(page.url()).pathname !== route) await page.goto(origin + route, { waitUntil: 'domcontentloaded' });
+          // Each action begins on its own fully loaded source document, never
+          // the prior CTA's scrolled/focused page or a timed-out navigation.
+          await withReviewPage(context, async page => {
+          await page.goto(origin + route, { waitUntil: 'networkidle' });
+          const reject = page.getByRole('button', { name: 'Reject optional', exact: true });
+          if (await reject.isVisible()) await reject.click();
           const link = page.locator('main nav[aria-label="Breadcrumb"] a[href="' + href + '"]').first();
           try {
             await (mobile ? link.tap({ timeout: 800 }) : link.click({ timeout: 800 }));
             await page.waitForURL(new URL(href, origin).href, { timeout: 3000 });
             rec.taps.push({ href, ok: true });
           } catch (e) { rec.taps.push({ href, ok: false, error: e.message }); }
+          });
         }
         records.push(rec);
       }
