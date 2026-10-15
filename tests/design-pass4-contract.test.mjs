@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
+import { assertCleanRoomBytes } from './helpers/clean-room-citation.mjs';
 import { assertCompoundedListing } from './helpers/compounded-listing-contract.mjs';
 
 const ROOT = process.cwd();
@@ -183,7 +184,7 @@ test("every shipped HTML, CSS, and JS byte preserves the clean-room boundary", (
   walk(publicRoot);
   assert.ok(files.length > 0);
   for (const file of files) {
-    assert.doesNotMatch(readFileSync(file, "utf8"), /glpwinner/i, `clean-room marker leaked into ${path.relative(ROOT, file)}`);
+    assertCleanRoomBytes(readFileSync(file, "utf8"), path.relative(ROOT, file), ROOT);
   }
 });
 

@@ -43,6 +43,10 @@ on:
       - "tests/selected-program-denial-partition.test.mjs"
       - "tests/trt-nation-link-dark.test.mjs"
       - "tests/current-review-holds.test.mjs"
+      - "tests/clean-room-citation.test.mjs"
+      - "tests/design-pass4-contract.test.mjs"
+      - "tests/helpers/clean-room-citation.mjs"
+      - "tests/fixtures/clean-room-pre-accepted-guides.mjs"
       - "tests/current-money-projection.test.mjs"
       - "tests/historical-money-projection.test.mjs"
       - "tests/current-extra-profiles.test.mjs"
@@ -233,6 +237,8 @@ jobs:
           node tests/helpers/materialize-retatrutide-capture.mjs
           node --test --test-concurrency=1 tests/provider-dynamic-profiles.test.mjs tests/identity-calculator-census.test.mjs tests/retatrutide-capture-custody.test.mjs tests/therapeutic-wire-in-propagation-build6.test.mjs tests/therapeutic-surfaces-build6.test.mjs tests/helpers/s9-held-taxonomy-case.mjs
           node --test --test-name-pattern '^quiz policy pins AND composition, top-three order, ignored medical answers, and golden vectors$' tests/playbook.test.mjs
+      - name: Accepted citation versus implementation clean-room boundary (native source-only; no build)
+        run: node --max-old-space-size=256 --test tests/clean-room-citation.test.mjs
       - name: Money projection and historical-current directory membership (source-only; retained captures already authenticated above)
         run: node --max-old-space-size=256 --test --test-concurrency=1 tests/current-money-projection.test.mjs tests/historical-money-projection.test.mjs tests/current-extra-profiles.test.mjs
       - name: Price caller dependency seam regression (synthetic inputs; not price-oracle acceptance)
