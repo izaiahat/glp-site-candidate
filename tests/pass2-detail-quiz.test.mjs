@@ -2,24 +2,11 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { JSDOM } from "jsdom";
-import { projectMoneyPagesFromRegistry, projectQuizFromRegistry } from "../src/program-registry.mjs";
 import { renderQuiz, resolvePhase4Outcome } from "../src/quiz.mjs";
-import { projectTherapeuticSurfaces } from "../src/therapeutic-taxonomy.mjs";
 
+// These assertions exercise the quiz renderer/outcome contract, not taxonomy
+// projection. Do not evaluate unrelated, time-bound authorities at collection.
 const config = JSON.parse(readFileSync(new URL("../data/quiz-config.json", import.meta.url), "utf8"));
-const builtQuiz = readFileSync(new URL("../public/quiz/provider-fit/index.html", import.meta.url), "utf8");
-const registry = JSON.parse(readFileSync(new URL("../data/program-registry.json", import.meta.url), "utf8"));
-const money = JSON.parse(readFileSync(new URL("../data/money-page-specs.json", import.meta.url), "utf8"));
-const ledger = JSON.parse(readFileSync(new URL("../data/program-content-ledger.json", import.meta.url), "utf8"));
-const canonicalMoney = projectMoneyPagesFromRegistry(registry, "glp-clinic-scout", money.pages, ledger.programs);
-const canonicalQuiz = projectQuizFromRegistry(registry, "glp-clinic-scout", config, ledger);
-const projected = projectTherapeuticSurfaces({
-  registry,
-  profileId: "glp-clinic-scout",
-  pages: canonicalMoney,
-  quizConfig: canonicalQuiz,
-  asOf: new Date(`${registry.therapeutic_taxonomy.sealed_as_of}T12:00:00Z`),
-});
 
 test("PASS 2 quiz starts without an email or privacy checkbox gate", () => {
   const html = renderQuiz(config);
@@ -52,7 +39,7 @@ test("PASS 2 quiz leads with the governed treatment-intent choice set", () => {
 });
 
 test("Phase 4 quiz keeps uncapped eligible result sets and state/treatment-scoped exploration", () => {
-  const html = builtQuiz;
+  const html = readFileSync(new URL("../public/quiz/provider-fit/index.html", import.meta.url), "utf8");
   const payload = JSON.parse(html.match(/<script type="application\/json" id="phase4-quiz-data">([\s\S]*?)<\/script>/)?.[1] || "null");
   assert.ok(payload);
   assert.match(html, /data-explore-providers/);
