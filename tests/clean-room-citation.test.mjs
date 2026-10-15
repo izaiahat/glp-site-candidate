@@ -99,4 +99,3 @@ test('complete original clean-room callback remains byte-identical and strict on
     assert.throws(() => decode(bad), assert.AssertionError, entry.path);
   }
 });
-
