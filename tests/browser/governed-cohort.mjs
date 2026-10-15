@@ -4,6 +4,7 @@ import { deriveIdentityGroups } from "../../src/provider-identity.mjs";
 import { projectProviderDisplayFacts } from "../../src/provider-display-evidence.mjs";
 import { priceStateText } from "../../src/price-state.mjs";
 import { isTypedPrice } from "../../src/typed-price-labels.mjs";
+import { currentComparisonPrograms } from '../helpers/current-comparison-cohort.mjs';
 
 const readData = (file) => JSON.parse(readFileSync(fileURLToPath(new URL(`../../data/${file}`, import.meta.url)), "utf8"));
 import { loadGoPromotionAuthority } from '../../src/go-runtime-selection.mjs';
@@ -38,7 +39,7 @@ export function governedProviderIds() {
     return Boolean(row?.display_name && evidence?.meds_offered && evidence?.source_url
       && reported(row.facts?.total_monthly_cost) && reported(row.facts?.cancellation));
   };
-  return registry.programs.filter((row) => {
+  return currentComparisonPrograms(registry).filter((row) => {
     const profile = row.profiles?.["glp-clinic-scout"];
     return row.commercial_state === "live" && profile?.vertical_fit === true
       && profile?.wired === true && profile?.surfaces?.review === true

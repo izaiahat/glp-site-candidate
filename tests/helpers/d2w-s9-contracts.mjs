@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { phase3Registry } from '../../src/phase3-page-graph.mjs';
 import { deriveIdentityGroups } from '../../src/provider-identity.mjs';
+import { currentComparisonPrograms } from './current-comparison-cohort.mjs';
 
 export const readData = name => JSON.parse(readFileSync(new URL('../../data/' + name, import.meta.url), 'utf8'));
 
@@ -49,7 +50,7 @@ export function categoryPrograms(registry, medication) {
 // itself puts in data-program (awin-128761 renders as `coivas`, katalys-1304 as `direct-meds`).
 export function cardEligibleIdentity(registry) {
   const byIdentity = new Map();
-  for (const program of registry.programs) {
+  for (const program of currentComparisonPrograms(registry)) {
     byIdentity.set(program.program_id, program);
     if (program.review_slug) byIdentity.set(program.review_slug, program);
   }

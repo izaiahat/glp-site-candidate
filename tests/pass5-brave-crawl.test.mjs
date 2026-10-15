@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { deriveIdentityGroups } from "../src/provider-identity.mjs";
 import { optionCProgramIds } from "./helpers/d2w-s9-contracts.mjs";
+import { currentComparisonPrograms } from './helpers/current-comparison-cohort.mjs';
 import { javascriptProviderMarkup } from "./helpers/d2p-noscript.mjs";
 import { buildRobotsTxt, isAllowed } from "../src/robots.mjs";
 
@@ -31,7 +32,7 @@ async function liveCanonicalPrograms() {
   ]);
   const profileId = "glp-clinic-scout";
   const { aliasIds } = deriveIdentityGroups(registry, profileId, ledger.programs);
-  return registry.programs
+  return currentComparisonPrograms(registry)
     .filter((program) => {
       const profile = program.profiles?.[profileId];
       return program.commercial_state === "live"
