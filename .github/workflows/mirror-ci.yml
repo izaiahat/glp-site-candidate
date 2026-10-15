@@ -308,7 +308,9 @@ jobs:
       - name: Current comparison relationship cohort (source-only; no served assertions)
         run: node --test --test-name-pattern '^current comparison' tests/current-comparison-cohort.test.mjs
       - name: Owned loopback fixture lifecycle (synthetic transport only; no browser or build)
-        run: node --test tests/review-fixture-lifecycle.test.mjs
+        run: |
+          node --test tests/review-fixture-lifecycle.test.mjs
+          env -u TMPDIR -u RUNNER_TEMP node --test tests/review-fixture-lifecycle.test.mjs
       - name: Record limited scope
         if: always()
         run: |

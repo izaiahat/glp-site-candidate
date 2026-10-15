@@ -1,11 +1,17 @@
 import assert from 'node:assert/strict';
-import {mkdtemp, writeFile, rm} from 'node:fs/promises';
+import {mkdir, mkdtemp, writeFile, rm} from 'node:fs/promises';
+import {homedir} from 'node:os';
 import path from 'node:path';
 import test, {after} from 'node:test';
 
 // Explicit synthetic transport fixture, not rendered-site or design acceptance.
 // Bind the real review server before its first import; never write public/.
-const directory = await mkdtemp(path.join(process.env.TMPDIR || process.env.RUNNER_TEMP, 'owned-review-fixture-'));
+// Local shells need not define either CI/host scratch variable. Keep that
+// fallback in the user's cache rather than the shared system temp directory.
+const scratch = process.env.TMPDIR || process.env.RUNNER_TEMP || path.join(homedir(), '.cache', 'glp-test-fixtures');
+await mkdir(scratch, {recursive: true});
+const directory = await mkdtemp(path.join(scratch, 'owned-review-fixture-'));
+after(() => rm(directory, {recursive: true, force: true}));
 const bytes = Buffer.from('<!doctype html><title>TEST fixture</title><p>Exact transport bytes</p>');
 await writeFile(path.join(directory, 'index.html'), bytes);
 await writeFile(path.join(directory, '_redirects'), '');
@@ -14,7 +20,6 @@ process.env.GLP_REVIEW_PUBLIC_ROOT = directory;
 const {withReviewFixture} = await import('./helpers/owned-review-fixture.mjs');
 if (previousRoot === undefined) delete process.env.GLP_REVIEW_PUBLIC_ROOT;
 else process.env.GLP_REVIEW_PUBLIC_ROOT = previousRoot;
-after(() => rm(directory, {recursive: true, force: true}));
 
 test('owned review fixture serves exact fixture bytes without an external server', async () => {
   let origin;
