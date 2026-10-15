@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { assertCurrentAnalyticsCache } from './helpers/analytics-cache-contract.mjs';
 import { renderedCarrierArticle, assertCarrierArticleOutput } from '../src/carrier-article-retention.mjs';
 import { candidateExportShellFindings } from '../src/candidate-export-policy.mjs';
 
@@ -53,6 +56,51 @@ test('real header emitter: bare analytics alias is non-cacheable; content-addres
   assert.equal(block(currentUrl), 'Cache-Control: public, max-age=31536000, immutable');
   assert.equal(block('/assets/site-*.css'), 'Cache-Control: public, max-age=31536000, immutable');
   assert.equal(block('/assets/fonts/*'), 'Cache-Control: public, max-age=31536000, immutable');
+  assertCurrentAnalyticsCache(headers, analytics, analytics, analytics);
+  // A pervasive security-only rule is harmless; CSS/font cache rules above
+  // must also remain accepted. Cloudflare combines all matching rules.
+  assertCurrentAnalyticsCache(`${headers}\n/*\n  X-Content-Type-Options: nosniff\n`, analytics, analytics, analytics);
+  // Real emitter output is the positive. Refuse stale/missing/duplicate rules,
+  // immutable mutable aliases, non-immutable addressed assets and byte drift.
+  for (const mutate of [
+    text => text.replace('/assets/analytics.js\n  Cache-Control: no-store', '/assets/analytics.js\n  Cache-Control: public, max-age=31536000, immutable'),
+    text => text.replace(currentUrl, '/assets/analytics.0000000000000000.js'),
+    text => text.replace(`${currentUrl}\n  Cache-Control: public, max-age=31536000, immutable`, `${currentUrl}\n  Cache-Control: no-store`),
+    text => text.replace('/assets/analytics.js\n  Cache-Control: no-store', ''),
+    text => `${text}\n/assets/analytics.js\n  Cache-Control: no-store\n`,
+    text => `${text}\n/assets/analytics*.js\n  Cache-Control: public, max-age=31536000, immutable\n`,
+    // RV113's exact counterexample, plus the same overlap via Pages splats,
+    // named path placeholders and host-qualified rules (not filename prefixes).
+    ...['/assets/*', '/*', '/*.js', '/assets/:file', '/:directory/:file',
+      'https://glpclinicscout.com/assets/*'].map(route =>
+      text => `${text}\n${route}\n  Cache-Control: public, max-age=31536000, immutable\n`),
+    text => `${text}\n/assets/*\n  ! Cache-Control\n`,
+  ]) {
+    const mutated = mutate(headers);
+    assert.notEqual(mutated, headers, 'negative must mutate actual emitter output');
+    assert.throws(() => assertCurrentAnalyticsCache(mutated, analytics, analytics, analytics), assert.AssertionError);
+  }
+  const tampered = Buffer.concat([analytics, Buffer.from('\n// tamper')]);
+  assert.throws(() => assertCurrentAnalyticsCache(headers, analytics, tampered, analytics), assert.AssertionError);
+  assert.throws(() => assertCurrentAnalyticsCache(headers, analytics, analytics, tampered), assert.AssertionError);
   assert.match(build, /await write\("assets\/analytics\.js", ANALYTICS_ASSET_SOURCE\)/);
   assert.match(build, /await write\(`assets\/\$\{ANALYTICS_ASSET_FILENAME\}`, ANALYTICS_ASSET_SOURCE\)/);
+});
+
+test('historical product-ready cache assertion remains exact on authenticated retained headers, never current authority', () => {
+  const bytes = execFileSync('git', ['show', '59adaddfa6800c3cd87592ad88829a081a35e3c3:artifacts/build4-preservation/_headers'], {
+    cwd: fileURLToPath(new URL('../', import.meta.url)), maxBuffer: 64 * 1024,
+  });
+  const authenticate = raw => {
+    assert.equal(createHash('sha256').update(raw).digest('hex'), '74fbd1c7d10c9331138bb732207c58ffb70cbaeae31e601065a588f66163c587');
+    return raw.toString('utf8');
+  };
+  const headers = authenticate(bytes);
+  // Original five-asset assertion, unchanged; its cache policy belongs only to
+  // this immutable generation, predating content-addressed analytics emission.
+  for (const asset of ["/assets/site.css", "/assets/site-*.css", "/assets/site.js", "/assets/consent.js", "/assets/analytics.js"]) {
+    assert.ok(headers.includes(`${asset}\n  Cache-Control: public, max-age=31536000, immutable`), asset);
+  }
+  assert.throws(() => authenticate(Buffer.concat([bytes, Buffer.from('\n# tamper')])), assert.AssertionError);
+  assert.throws(() => assertCurrentAnalyticsCache(headers, analytics, analytics, analytics), assert.AssertionError);
 });
