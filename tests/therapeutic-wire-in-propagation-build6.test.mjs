@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
+import { historicalRetatrutideInputs } from './fixtures/historical-retatrutide-inputs.mjs';
 import {
   candidatesForMedicationPreference,
   projectTherapeuticSurfaces,
@@ -13,9 +14,9 @@ async function readJson(relative) {
   return JSON.parse(await readFile(new URL(relative, import.meta.url), "utf8"));
 }
 
-const baseRegistry = await readJson("../data/program-registry.json");
-const baseMoney = await readJson("../data/money-page-specs.json");
-const baseQuiz = await readJson("../data/quiz-config.json");
+// Keep the original wire-in oracle on one authenticated, complete generation.
+// Its September capture is not renewed or combined with October provider rows.
+const { registry: baseRegistry, money: baseMoney, quiz: baseQuiz } = historicalRetatrutideInputs();
 const sealedDate = baseRegistry.therapeutic_taxonomy.sealed_as_of;
 const asOf = new Date(`${sealedDate}T12:00:00Z`);
 
@@ -195,4 +196,22 @@ test("wire-in taxonomy cannot claim a compare link state the carrier row does no
     }),
     /therapeutic_taxonomy_wire_in_compare_link_state_mismatch:synthetic-evidence-clinic/,
   );
+});
+
+test("current wire-in projection still refuses expired capture at the sealed and runtime clocks", async () => {
+  const registry = await readJson("../data/program-registry.json");
+  const money = await readJson("../data/money-page-specs.json");
+  const quiz = await readJson("../data/quiz-config.json");
+  const before = structuredClone({ registry, money, quiz });
+  const canonical = withoutDeclaredAliases(registry, money, quiz);
+  const sealed = new Date(`${registry.therapeutic_taxonomy.sealed_as_of}T12:00:00Z`);
+  const runtime = new Date();
+  assert.ok(runtime >= sealed, "current path must not borrow the historical clock");
+  for (const clock of [sealed, runtime]) {
+    assert.throws(() => projectTherapeuticSurfaces({
+      registry, profileId: "glp-clinic-scout", pages: canonical.pages,
+      quizConfig: canonical.quizConfig, asOf: clock,
+    }), /^Error: therapeutic_taxonomy_consumer_authority_capture_status_time_invalid:audit_summary$/);
+  }
+  assert.deepEqual({ registry, money, quiz }, before, "refusal must not rewrite evidence or inputs");
 });
