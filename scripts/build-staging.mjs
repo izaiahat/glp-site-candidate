@@ -1,4 +1,3 @@
-import { parse as parseHtml } from "parse5";
 import { selectedFamilyStyles } from "../src/selected-family-styles.mjs";
 import { ONBOARDING_CONSENT_VERSION, ONBOARDING_CONSENT_TEXT } from '../src/onboarding-consent.mjs';
 import { assertArticleReviewRoutes } from "../src/article-review-routes.mjs";
@@ -1218,33 +1217,6 @@ function buildReady6Redirects(programs = []) {
   return `${lines.join("\n")}\n`;
 }
 
-// The accepted source retains its original brief and receipt bytes. At the
-// publication boundary, resolve this historical guide spelling only when its
-// actual prescribing-workflow destination belongs to the current article set.
-// Never rewrite citations, external URLs, affiliate links or the anchor label.
-function resolveGuideInternalAnchors(html, publishedGuideRoutes) {
-  const legacy = "/guides/glp-1-rx-online/";
-  const target = "/guides/how-to-get-glp-1-prescription-online/";
-  if (!html.includes(legacy) || publishedGuideRoutes.has(legacy)) return html;
-  const replacements = [];
-  const visit = node => {
-    if (node.tagName === "a" && node.attrs?.some(attr => attr.name === "href" && attr.value === legacy)) {
-      if (!publishedGuideRoutes.has(target)) throw new Error(`guide_internal_target_unpublished:${target}`);
-      const location = node.sourceCodeLocation?.attrs?.href;
-      if (!location) throw new Error("guide_internal_target_location_missing");
-      const raw = html.slice(location.startOffset, location.endOffset);
-      if (!raw.includes(legacy)) throw new Error("guide_internal_target_encoding_unhandled");
-      replacements.push({ ...location, text: raw.replace(legacy, target) });
-    }
-    for (const child of node.childNodes || []) visit(child);
-  };
-  visit(parseHtml(html, { sourceCodeLocationInfo: true }));
-  for (const row of replacements.sort((a, b) => b.startOffset - a.startOffset)) {
-    html = html.slice(0, row.startOffset) + row.text + html.slice(row.endOffset);
-  }
-  return html;
-}
-
 function addGuideFunnel(html) {
   const panel = `<aside class="panel evidence-line guide-next-step" aria-label="Next steps"><p class="gcs-kicker">Next steps</p><h2>Turn this research into a decision</h2><div class="gcs-actions"><a class="gcs-cta gcs-cta-primary" href="/tools/glp-1-cost-calculator/">Estimate your cost</a><a class="gcs-cta gcs-cta-secondary" href="${PASS5_MEDICATION_DESTINATIONS.allProviders}">Compare programs</a><a class="gcs-text-link" href="/quiz/provider-fit/">Find my match</a></div></aside>`;
   const mainStart = html.search(/<main\b[^>]*>/i);
@@ -2108,7 +2080,6 @@ async function main() {
     ...ready6Editorial.pages.map((page) => page.route),
     ...READY6_LEGACY_REDIRECTS.flat(), ...RETIRED_PROGRAM_ROUTES.flat(),
   ]);
-  const publishedGuideRoutes = new Set(allArticles.map(article => article.canonical_path));
   for (const article of allArticles) {
     // R2 target release: render Mounjaro from the refreshed catalog row.
     const key = acceptedGuides.some(a => a.canonical_path === article.canonical_path)
@@ -2120,7 +2091,7 @@ async function main() {
       : article.images?.[0]?.alt || `Guide overview for ${article.h1}`;
     const articleBase = addOg(responsiveHero(pageHero(addGuideMetadata(renderBlogPost(article, publicProviderNames(resolveBlogComparisonSpec(article, therapeuticSurfaces.programs)), resolveArticleAuthor(article), reader.contentLedger.programs), article, resolveArticleAuthor(article)), key, heroAlt), key), key, article.h1);
     const articleGraph = addArticleShareControls(articleVertical(article) === "GLP-1" ? upgradeInsightsArticle(articleBase, article, glpGuideArticles.filter((item) => item.canonical_path !== article.canonical_path && path.join(item.canonical_path.replace(/^\//, ""), "index.html") !== MOUNJARO_COUPON_ROUTE_FILE)) : articleBase);
-    const rendered = addSharedRuntime(resolveGuideInternalAnchors(addAcceptedInboundLinks(articleGraph, article.canonical_path, acceptedGuides), publishedGuideRoutes));
+    const rendered = addSharedRuntime(addAcceptedInboundLinks(articleGraph, article.canonical_path, acceptedGuides));
     await write(path.join(article.canonical_path.replace(/^\//, ""), "index.html"), articleVertical(article) === "GLP-1" ? markReleaseReady(article.suppress_cta ? rendered : addGuideFunnel(rendered)) : rendered);
   }
   const directoryStates = npi.cities.map((city) => {

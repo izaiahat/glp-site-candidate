@@ -68,7 +68,6 @@ on:
       - "tests/fixtures/f17-pinned-program-registry.json.gz"
       - "tests/fixtures/f17-pre-pallas-input-successor.json"
       - "tests/go-comparison-assignment.test.mjs"
-      - "tests/guide-internal-link-targets.test.mjs"
       - "tests/pass2-quiz-collection.test.mjs"
       - "tests/pass2-detail-quiz.test.mjs"
       - "tests/quiz-input-seam.test.mjs"
@@ -217,8 +216,8 @@ jobs:
         run: node --test tests/price-index-caller-seams.test.mjs
       - name: Article selection dependency seam (source catalogs only; not built-output acceptance)
         run: node --test tests/article-selection-seam.test.mjs
-      - name: Comparison GO assignment and accepted-guide link targets (source-only; no build or live clicks)
-        run: node --test --test-concurrency=1 tests/go-comparison-assignment.test.mjs tests/guide-internal-link-targets.test.mjs
+      - name: Comparison GO assignment producer (source-only; no build or live clicks)
+        run: node --test --test-concurrency=1 tests/go-comparison-assignment.test.mjs
       - name: PASS 2 quiz collection boundary and unchanged source assertions (built-output callback remains native-only)
         run: |
           node --test tests/pass2-quiz-collection.test.mjs
