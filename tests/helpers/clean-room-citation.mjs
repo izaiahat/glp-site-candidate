@@ -20,6 +20,15 @@ export function acceptedCleanRoomCitation(root, read = readFileSync) {
     const bytes = read(path.join(root, 'data/blog/accepted-guides/is-valhalla-vitality-legit', name));
     assert.equal(createHash('sha256').update(bytes).digest('hex'), hash, 'original accepted citation bytes drifted');
   }
+  const manifest = JSON.parse(readFileSync(path.join(root, 'data/blog/accepted-guides/manifest.json')));
+  const selected = manifest.entries.filter(entry => entry.route === route);
+  assert.equal(selected.length, 1, 'one original accepted citation entry required');
+  for (const [name, hash] of Object.entries(pins)) {
+    const descriptor = selected[0][name.replace('.json', '')];
+    assert.deepEqual(descriptor, {
+      path: 'data/blog/accepted-guides/is-valhalla-vitality-legit/' + name, sha256: hash,
+    }, 'native citation descriptor must match independently accepted original');
+  }
   const article = loadAcceptedGuides(root).find(a => a.canonical_path === route);
   assert.ok(article, 'accepted citation route missing');
   const matches = article.sources.filter(s => /glpwinner/i.test(s.url));

@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { readFileSync } from 'node:fs';
+import { readFileSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import os from 'node:os';
 import { assertCleanRoomBytes, acceptedCleanRoomCitation } from './helpers/clean-room-citation.mjs';
 import { createHash } from 'node:crypto';
 import { gunzipSync, gzipSync } from 'node:zlib';
@@ -61,6 +62,72 @@ test('clean-room source citation classification refuses implementation markers, 
       const raw = readFileSync(file);
       return file.endsWith('/' + name) ? Buffer.concat([raw, Buffer.from('\n')]) : raw;
     }), assert.AssertionError, `original ${name} raw tampering cannot be blessed by a current manifest repin`);
+  }
+});
+
+test('complete owning callback refuses a coherent manifest retarget with original authority bytes intact', () => {
+  const fixture = mkdtempSync(path.join(os.tmpdir(), 'clean-room-retarget-'));
+  try {
+    const route = '/guides/is-valhalla-vitality-legit/';
+    const originalDir = 'data/blog/accepted-guides/is-valhalla-vitality-legit';
+    const manifest = JSON.parse(readFileSync(path.join(root, 'data/blog/accepted-guides/manifest.json')));
+    const dir = path.join(fixture, 'data/blog/accepted-guides');
+    mkdirSync(dir, {recursive:true});
+    for (const entry of manifest.entries) {
+      for (const kind of ['article','qa','review']) {
+        const name = entry[kind].path;
+        mkdirSync(path.dirname(path.join(fixture, name)), {recursive:true});
+        writeFileSync(path.join(fixture, name), readFileSync(path.join(root, name)));
+      }
+    }
+    // Keep every independently pinned original untouched. Only synthetic copies
+    // and the disposable manifest change; the native acceptance reader stays real.
+    const originals = Object.fromEntries(['article','qa','review'].map(kind => [kind,
+      readFileSync(path.join(root, originalDir, kind + '.json'))]));
+    const article = JSON.parse(originals.article), qa = JSON.parse(originals.qa), review = JSON.parse(originals.review);
+    const acceptedURLs = article.sources.map(s => s.url);
+    article.sources[0].url = 'https://rv119.invalid/unapproved-source';
+    const alternate = 'data/blog/accepted-guides/clean-room-synthetic-retarget';
+    mkdirSync(path.join(fixture, alternate));
+    const save = (kind, value) => {
+      const raw = Buffer.from(JSON.stringify(value, null, 2) + '\n');
+      const name = alternate + '/' + kind + '.json';
+      writeFileSync(path.join(fixture, name), raw);
+      return {path:name, sha256:createHash('sha256').update(raw).digest('hex')};
+    };
+    const entry = manifest.entries.find(e => e.route === route);
+    entry.article = save('article', article);
+    qa.artifacts['06-article.json'].sha256 = entry.article.sha256;
+    entry.qa = save('qa', qa);
+    entry.review = save('review', review);
+    writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify(manifest));
+    const selected = loadAcceptedGuides(fixture).find(a => a.canonical_path === route);
+    assert.deepEqual(selected.sources, article.sources, 'real native reader accepts the coherent alternate roster');
+    assert.notDeepEqual(selected.sources.map(s => s.url), acceptedURLs);
+    for (const [kind, raw] of Object.entries(originals))
+      assert.deepEqual(readFileSync(path.join(fixture, originalDir, kind + '.json')), raw, 'original ' + kind + ' bytes intact');
+    const page = nativePage();
+    const before = '"citation":' + JSON.stringify(acceptedURLs);
+    const after = '"citation":' + JSON.stringify(selected.sources.map(s => s.url));
+    assert.ok(page.includes(before));
+    const substituted = page.replace(before, after);
+    assert.notEqual(substituted, page);
+    const source = readFileSync(path.join(root, 'tests/design-pass4-contract.test.mjs'), 'utf8');
+    const prefix = 'test("every shipped HTML, CSS, and JS byte preserves the clean-room boundary", () => {';
+    const start = source.indexOf(prefix), end = source.indexOf('\n});', start) + 4;
+    assert.ok(start > 0 && end > start);
+    const callback = source.slice(start, end);
+    const execute = (bytes, targetRoot) => vm.runInNewContext(callback, {
+      test:(_, fn) => fn(), assert, path, ROOT:targetRoot,
+      readdirSync:() => [relative.slice('public/'.length)], statSync:() => ({isDirectory:() => false}),
+      readFileSync:() => bytes, assertCleanRoomBytes,
+    }, {timeout:2000});
+    execute(page, root);
+    assert.throws(() => execute(substituted, root), /complete independent citation roster/);
+    assert.throws(() => execute(substituted, fixture), assert.AssertionError,
+      'manifest re-target must not substitute authenticated authority');
+  } finally {
+    rmSync(fixture, {recursive:true, force:true});
   }
 });
 
