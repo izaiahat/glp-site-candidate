@@ -28,6 +28,12 @@ test('GLP361 guide capture oracle accepts actual resource-only rendering and rej
       ['missing honeypot', s => s.replace(/<input[^>]+name="company"[^>]*>/, '')],
       ['duplicate resource form', s => s.replace('</main>', `${s.match(/<form\b[\s\S]*?<\/form>/)[0]}</main>`) ],
     ];
+    for (const name of ['company', 'consent_version', 'email', 'guide_path', 'lead_magnet_key', 'request_id', 'source_page']) {
+      mutations.push([`missing ${name}`, s => s.replace(new RegExp(`<input[^>]+name="${name}"[^>]*>`), '')]);
+    }
+    for (const name of ['consent_version', 'guide_path', 'lead_magnet_key', 'request_id', 'source_page']) {
+      mutations.push([`visible ${name}`, s => s.replace(new RegExp(`type="hidden" name="${name}"`), `type="text" name="${name}"`)]);
+    }
     for (const [name, mutate] of mutations) {
       const changed = mutate(html);
       assert.notEqual(changed, html, `${route}: ${name} mutation must change actual renderer bytes`);
