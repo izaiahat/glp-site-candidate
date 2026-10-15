@@ -82,6 +82,7 @@ on:
       - "tests/provider-dynamic-profiles.test.mjs"
       - "tests/therapeutic-wire-in-propagation-build6.test.mjs"
       - "tests/therapeutic-surfaces-build6.test.mjs"
+      - "tests/d2w-s9-source-controls.test.mjs"
       - "tests/identity-calculator-census.test.mjs"
       - "tests/retatrutide-capture-custody.test.mjs"
       - "tests/fixtures/historical-retatrutide-inputs.mjs"
@@ -167,7 +168,7 @@ jobs:
           python3 - <<'PY'
           import os, base64, subprocess
           closure = {
-            'e61a0017e8888570b00f4bd6c1eeef1572f421e1': ['data/program-registry.json', 'data/money-page-specs.json', 'data/quiz-config.json', 'data/cost-calculator.json', 'data/provider-page-contracts.json', 'data/provider-fastpath-contract.json'],
+            'e61a0017e8888570b00f4bd6c1eeef1572f421e1': ['data/program-content-ledger.json', 'data/program-registry.json', 'data/money-page-specs.json', 'data/quiz-config.json', 'data/cost-calculator.json', 'data/provider-page-contracts.json', 'data/provider-fastpath-contract.json'],
             '9cd63e73d743d69104fa0a281ce42113743faf4a': ['src/provider-review.mjs'],
             '34db221edec1b3fbf4ae87aac67be64f75c30ca7': ['src/provider-review.mjs', 'scripts/validate-provider-fastpath-plus5.mjs'],
           }
@@ -194,7 +195,7 @@ jobs:
         run: |
           sudo install -d -m 0755 -o "$(id -u)" -g "$(id -g)" /home/ubuntu/business
           node tests/helpers/materialize-retatrutide-capture.mjs
-          node --test --test-concurrency=1 tests/provider-dynamic-profiles.test.mjs tests/identity-calculator-census.test.mjs tests/retatrutide-capture-custody.test.mjs tests/therapeutic-wire-in-propagation-build6.test.mjs tests/therapeutic-surfaces-build6.test.mjs
+          node --test --test-concurrency=1 tests/provider-dynamic-profiles.test.mjs tests/identity-calculator-census.test.mjs tests/retatrutide-capture-custody.test.mjs tests/therapeutic-wire-in-propagation-build6.test.mjs tests/therapeutic-surfaces-build6.test.mjs tests/helpers/s9-held-taxonomy-case.mjs
       - name: Price caller dependency seam regression (synthetic inputs; not price-oracle acceptance)
         run: node --test tests/price-index-caller-seams.test.mjs
       - name: Article selection dependency seam (source catalogs only; not built-output acceptance)

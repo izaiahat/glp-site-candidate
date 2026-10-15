@@ -20,39 +20,13 @@ import {buildPhase3PageGraph} from '../src/phase3-page-graph.mjs';
 import {sourceDisplayPacket,projectProviderDisplayLedger,projectProviderDisplayFacts} from '../src/provider-display-evidence.mjs';
 import {readHistoricalPriceFixture,readBeforeProviderAppendFixture} from './helpers/provider-append-predecessor.mjs';
 import {priceIndexCallerSeams} from './helpers/price-index-caller-seams.mjs';
+import './helpers/s9-held-taxonomy-case.mjs';
 const root=new URL('../',import.meta.url),bytes=n=>['program-registry.json','provider-page-contracts.json','provider-fastpath-contract.json','quiz-config.json','money-page-specs.json','phase3-page-graph.json'].includes(n)?readBeforeProviderAppendFixture(new URL('data/'+n,root)):readHistoricalPriceFixture(new URL('data/'+n,root)),read=n=>JSON.parse(bytes(n)),sha=b=>createHash('sha256').update(b).digest('hex');
 const registry=read('program-registry.json'),money=read('money-page-specs.json'),quiz=read('quiz-config.json'),ledger=read('program-content-ledger.json'),profile='glp-clinic-scout';
 const frozen=frozenPriceLedger(bytes('program-content-ledger.json'),bytes('price-index-frozen-content-ledger.json'),read('price-index-nonprice-binding.json'));
 const bad=/Delivery in as little as 1 hour|\$129 for the weight-loss panel|Weight-loss blood work is an additional \$129|\$129 weight-loss panel/;
 const latest=read('price-tracker.json').price_index.observations.at(-1).observed_on;
 function priceInput(){return {tracker:read('price-tracker.json'),study:read('original-data-study.json'),programRegistry:registry,contentLedger:frozen.ledger,sourceHashes:normalizePriceIndexSourceHashes(registry,{original_data_study_sha256:sha(bytes('original-data-study.json')),program_content_ledger_sha256:frozen.frozen_sha256,program_registry_sha256:sha(bytes('program-registry.json'))})};}
-// Rebuild 1 ruling (S9-2): the receipted hold stays a DARK ROW in the raw money
-// source. The installed held-aware census requires the row to be present and
-// projects it off; a missing held row is itself a fail-closed sensor failure.
-// The taxonomy expectation is therefore surface-scoped, exactly like the quiz
-// pool, and only for a row the registry proves is held, unwired and scoped off.
-test('S9-2 held money rows stay dark in source and the required taxonomy stays fail-closed',()=>{
- const asOf=[registry.provider_dynamic_profiles.sealed_as_of,registry.therapeutic_taxonomy.sealed_as_of].sort().at(-1)+'T12:00:00Z';
- const required=money.pages.filter(p=>registry.therapeutic_taxonomy.required_surface_paths.includes(p.path));
- assert.equal(required.length,3);
- for(const p of required){
-  const held=p.rows.find(r=>r.program_id==='telos-rx');
-  assert.ok(held,p.path+': the receipted hold must remain a source row');
-  assert.equal(held.live_link_allowed,false);assert.equal(held.promotion_authorized,false);
-  assert.equal(held.affiliate_href??null,null);
- }
- const projected=projectTherapeuticSurfaces({registry,profileId:profile,pages:money.pages,quizConfig:quiz,asOf});
- assert.equal(projected.includeProgramIds.length,57);
- assert.ok(!projected.includeProgramIds.includes('telos-rx'));
- // an id the registry does not prove scoped-off still fails closed
- const forged=structuredClone(money.pages);
- forged.find(p=>registry.therapeutic_taxonomy.required_surface_paths.includes(p.path)).rows.push({program_id:'not-a-program',live_link_allowed:false,promotion_authorized:false});
- assert.throws(()=>projectTherapeuticSurfaces({registry,profileId:profile,pages:forged,quizConfig:quiz,asOf}),/surface_membership_mismatch/);
- // and a held row promoted onto a conversion surface stops being scoped-off
- const promoted=structuredClone(registry);
- promoted.programs.find(p=>p.program_id==='telos-rx').profiles[profile].surfaces.compare=true;
- assert.throws(()=>projectTherapeuticSurfaces({registry:promoted,profileId:profile,pages:money.pages,quizConfig:quiz,asOf}),/surface_membership_mismatch|dynamic_profile|taxonomy/);
-});
 // Rebuild 1 ruling (S9-5): quiz-config keeps the receipted held candidate as a
 // dark row (the documented in-tree surface_restriction pattern, and what the
 // installed census requires). The BUILT quiz drops it, and the owner projection
