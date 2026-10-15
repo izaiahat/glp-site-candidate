@@ -59,6 +59,26 @@ test('current provider-review owning oracle preserves the complete cohort and au
   assert.throws(() => run(values, (review, identity) => review.program_id === 'enhance-md' ? renderProviderReviewPage(review, identity).replaceAll('data-link-mode="transparent-direct"', '') : renderProviderReviewPage(review, identity)), {name: 'AssertionError'});
 });
 
+test('paused Trimi cannot bypass the owning hold oracle through fastpath reclassification plus an active CTA', () => {
+  const authentic = buildProviderReviewSpecs(values.money.pages, values.providerPages, values.providerFastpath, values.registry, 'glp-clinic-scout');
+  const trimi = authentic.find(r => r.program_id === 'trimi-glp-1');
+  assert.equal(trimi.fastpath_contract, undefined);
+  assert.equal(values.promotion['trimi-glp-1'].status, 'WITHHELD');
+  assert.equal(values.promotion['trimi-glp-1'].promotion_authorized, false);
+  const actualHtml = renderProviderReviewPage(trimi, values.identity);
+  // Synthetic oracle-boundary fault, not a reproduced production renderer leak.
+  const leak = '<a data-affiliate-state="active" data-link-mode="transparent-direct" href="https://track.revoffers.com/">synthetic CTA</a>';
+  function probe({reclassify = false, inject = false} = {}) {
+    run(values,
+      (r, i) => r.program_id === 'trimi-glp-1' ? actualHtml + (inject ? leak : '') : renderProviderReviewPage(r, i),
+      () => authentic.map(r => reclassify && r.program_id === 'trimi-glp-1' ? {...r, fastpath_contract: {...values.providerPages.providers[0]}} : r));
+  }
+  probe();
+  assert.throws(() => probe({inject: true}), {name: 'AssertionError'});
+  assert.throws(() => probe({reclassify: true}), {name: 'AssertionError'});
+  assert.throws(() => probe({reclassify: true, inject: true}), {name: 'AssertionError'}, 'Trimi identity-specific pause must survive fastpath routing; current oracle falsely ACCEPTS the active CTA');
+});
+
 const eligibilityValues = {
   eligibility: read('program-page-eligibility.json'), contentLedger: read('program-content-ledger.json'),
   programRegistry: values.registry, providerContracts: values.providerPages, providerFastpath: values.providerFastpath,

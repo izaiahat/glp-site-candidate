@@ -158,6 +158,8 @@ test("generated provider reviews use selected go routes, direct anchors, or expl
   const reviews = buildProviderReviewSpecs(money.pages, providerPages, providerFastpath, registry, "glp-clinic-scout");
   assert.equal(reviews.length, providerFastpath.expected_provider_review_count);
   assert.equal(reviews.filter(review => review.program_id === 'trimi-glp-1').length, 1);
+  const trimi = reviews.find(review => review.program_id === 'trimi-glp-1');
+  assert.equal(trimi.fastpath_contract, undefined, 'paused Trimi must not enter the active fastpath partition');
   for (const id of ["trt-nation", "shedrx", "mydrhank"]) {
     const review = reviews.find((item) => item.program_id === id);
     assert.ok(review, `${id}: editorial review exists`);
