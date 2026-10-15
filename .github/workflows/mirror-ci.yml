@@ -70,6 +70,8 @@ on:
       - "tests/quiz-input-seam.test.mjs"
       - "tests/glp75-source-bounded-seo.test.mjs"
       - "tests/glp234-try-ageless-identity.test.mjs"
+      - "tests/glp234-commercial-custody.test.mjs"
+      - "tests/f06-held-commercial-authority.test.mjs"
       - "tests/price-index-caller-seams.test.mjs"
       - "tests/funnel-v2-instrumentation.test.mjs"
       - "tests/r11-approval-input-binding.test.mjs"
@@ -176,7 +178,7 @@ jobs:
           import os, base64, subprocess
           closure = {
             'e61a0017e8888570b00f4bd6c1eeef1572f421e1': ['data/program-content-ledger.json', 'data/program-registry.json', 'data/money-page-specs.json', 'data/quiz-config.json', 'data/cost-calculator.json', 'data/provider-page-contracts.json', 'data/provider-fastpath-contract.json', 'data/provider-pricing-matrix.json'],
-            '9cd63e73d743d69104fa0a281ce42113743faf4a': ['src/provider-review.mjs'],
+            '9cd63e73d743d69104fa0a281ce42113743faf4a': ['src/provider-review.mjs', 'data/affiliate-activation-selection.json', 'data/affiliate-held-link-manifest.json', 'data/go-runtime-promotion-authority.json', 'functions/go/program-manifest.js', 'data/program-page-eligibility.json'],
             '34db221edec1b3fbf4ae87aac67be64f75c30ca7': ['src/provider-review.mjs', 'scripts/validate-provider-fastpath-plus5.mjs'],
           }
           env = dict(os.environ)
@@ -212,6 +214,10 @@ jobs:
         run: node --test tests/quiz-input-seam.test.mjs
       - name: GLP234 native raw-scoring and current-hold quiz regression (real source inputs only)
         run: node --test --test-name-pattern '^GLP-234 F1 actual build-to-quiz' tests/glp234-try-ageless-identity.test.mjs
+      - name: GLP234 complete current eligibility and historical commercial custody (source-only; no build)
+        run: |
+          node --test tests/glp234-commercial-custody.test.mjs tests/f06-held-commercial-authority.test.mjs
+          node --test --test-name-pattern '^GLP-234 registry projections' tests/glp234-try-ageless-identity.test.mjs
       # R11 portable coverage validates only input paths and refusal, not
       # private approval authenticity, economics or built paid-page behavior.
       - name: R11 private approval input binding (source-only; no private reads)

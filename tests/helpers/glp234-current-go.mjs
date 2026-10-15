@@ -6,6 +6,14 @@ import {manifestSha256} from '../../src/go-runtime-manifest.mjs';
 // Verify today's complete generated rows against today's maintained producer.
 // Historical snapshots are intentionally not accepted by this interface.
 export function assertGLP234CurrentGo({registry, ledger, eligibility, selection, links, authority, labels, manifest}) {
+  // The native build consumes this raw content ledger as its tracked program
+  // register (scripts/build-staging.mjs), including held/paused editorial rows.
+  // Compare BEFORE denial-only projection: live-surface parity intentionally
+  // ignores non-live rows and collapses aliases; neither it nor counts prove
+  // complete raw membership. Do not infer eligibility from commercial status.
+  const ids = rows => rows.map(row => row.program_id).sort();
+  assert.deepEqual(ids(eligibility.programs), ids(ledger.programs),
+    'glp234_current_eligibility_native_identity_drift');
   const effective = effectiveAffiliateRegistry(registry);
   const inputs = effectiveAffiliateBuildInputs(registry,
     {eligibility, activationSelection:selection, contentLedger:ledger}, 'glp-clinic-scout');
