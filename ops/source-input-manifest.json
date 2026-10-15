@@ -1,7 +1,7 @@
 {
   "schema": "glp-curated-source-inputs-v1",
   "baseline": "e61a0017e8888570b00f4bd6c1eeef1572f421e1",
-  "tracked_file_count": 3907,
+  "tracked_file_count": 3908,
   "files": [
     "tests/therapeutic-refresh-import.test.mjs",
     "tests/maxbounty-postback-click-id.test.mjs",
@@ -3909,7 +3909,8 @@
     "tests/browser/header-cta-contrast.spec.mjs",
     "tests/glp44-combined-registration.test.mjs",
     "tests/w17-composited-paint.mjs",
-    "tests/w17-composited-paint.test.mjs"
+    "tests/w17-composited-paint.test.mjs",
+    "tests/w17-page-isolation.test.mjs"
   ],
   "exclusions": [
     "new private ClickDealer issued URLs and registry/authority outputs",

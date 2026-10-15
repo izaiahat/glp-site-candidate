@@ -17,7 +17,7 @@ await writeFile(path.join(directory, 'index.html'), bytes);
 await writeFile(path.join(directory, '_redirects'), '');
 const previousRoot = process.env.GLP_REVIEW_PUBLIC_ROOT;
 process.env.GLP_REVIEW_PUBLIC_ROOT = directory;
-const {withReviewFixture} = await import('./helpers/owned-review-fixture.mjs');
+const {withReviewFixture, withReviewPage} = await import('./helpers/owned-review-fixture.mjs');
 if (previousRoot === undefined) delete process.env.GLP_REVIEW_PUBLIC_ROOT;
 else process.env.GLP_REVIEW_PUBLIC_ROOT = previousRoot;
 
@@ -55,4 +55,27 @@ test('owned review fixtures have independent ephemeral origins and lifetimes', a
     });
     assert.equal((await fetch(`${first}/`)).status, 200);
   });
+});
+
+test('review page ownership closes each page before a later case can begin', async () => {
+  assert.equal(typeof withReviewPage, 'function', 'missing per-case page owner');
+  const events = [];
+  let sequence = 0;
+  const context = { async newPage() {
+    const id = ++sequence;
+    events.push(`open:${id}`);
+    return { id, async close() { events.push(`close:${id}`); } };
+  } };
+  const result = await withReviewPage(context, async page => {
+    events.push(`collect:${page.id}`);
+    return page.id;
+  });
+  assert.equal(result, 1);
+  assert.deepEqual(events, ['open:1', 'collect:1', 'close:1']);
+  await assert.rejects(withReviewPage(context, async page => {
+    events.push(`collect:${page.id}`);
+    throw new Error('native action timed out');
+  }), /native action timed out/);
+  await withReviewPage(context, async page => events.push(`collect:${page.id}`));
+  assert.deepEqual(events, ['open:1', 'collect:1', 'close:1', 'open:2', 'collect:2', 'close:2', 'open:3', 'collect:3', 'close:3']);
 });
