@@ -102,6 +102,9 @@ on:
       - "tests/glp47-approved-onboarding.test.mjs"
       - "tests/guide-resource-consent.test.mjs"
       - "tests/glp361-guide-resource-custody.test.mjs"
+      - "tests/glp361-owned-article-input.test.mjs"
+      - "tests/fixtures/owned-phase3-articles.mjs"
+      - "tests/phase3-page-graph.test.mjs"
       - "tests/glp361-terms-emitter-policy.test.mjs"
       - "tests/glp361-test-entrypoint.test.mjs"
       - "tests/article-review-routes.test.mjs"
@@ -205,6 +208,10 @@ jobs:
           # These are the two complete changed callbacks, not rewritten oracles.
           node --test tests/historical-clock-custody.test.mjs
           node --test --test-name-pattern '^O-28 ' tests/pass2-late-audit-static.test.mjs
+      - name: Typed commercial article fixture and retained contextual-only guards (source-only; no accepted article change)
+        run: |
+          node --test tests/glp361-owned-article-input.test.mjs
+          node --test --test-name-pattern '^Insights article upgrades expose complete anatomy' tests/phase3-page-graph.test.mjs
       - name: Accepted guide source and on-page-only contract (offline)
         run: node --test tests/accepted-guide-source.test.mjs tests/accepted-update-source.test.mjs tests/accepted-guide-render-contract.test.mjs
       - name: GLP47 approved onboarding and B01 launch hold (offline only)
