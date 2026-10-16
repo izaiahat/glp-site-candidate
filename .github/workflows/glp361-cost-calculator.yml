@@ -1,0 +1,40 @@
+name: GLP-361 focused cost-calculator contracts
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/glp361-cost-calculator.yml'
+      - 'tests/cost-calculator.test.mjs'
+      - 'tests/fixtures/c02-calculator-inputs.mjs'
+      - 'src/cost-calculator.mjs'
+      - 'src/provider-dynamic-profiles.mjs'
+      - 'data/program-registry.json'
+      - 'data/provider-pricing-matrix.json'
+      - 'data/cost-calculator.json'
+      - 'data/money-page-specs.json'
+      - 'data/provider-page-contracts.json'
+      - 'data/provider-fastpath-contract.json'
+
+permissions:
+  contents: read
+
+jobs:
+  focused-cost-calculator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.EXPECTED_SHA }}
+          persist-credentials: false
+      - name: Authenticate exact checkout head
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          printf 'checked_head=%s\n' "$(git rev-parse HEAD)"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Focused source-only contracts (no build, install, or browser)
+        run: node --experimental-test-module-mocks --test --test-concurrency=1 tests/cost-calculator.test.mjs
