@@ -1,4 +1,5 @@
 import { GUIDE_RESOURCE, validGuidePath } from './guide-resource-contract.mjs';
+import { unapprovedDirectoryTermsRoute } from './terms-capture-policy.mjs';
 const CONSENT_VERSION = "glp-content-upgrade-v2-20260801";
 
 function esc(value) {
@@ -69,6 +70,17 @@ export function addP1ContentUpgradeSurface(html, relative = "") {
   // Replace this producer's carried-forward guide form before the generic
   // legacy normalizer can reintroduce bundled marketing consent.
   const guideRoute = html.match(/<link\s+rel="canonical" href="https:\/\/glpclinicscout\.com([^"#?]*)/i)?.[1];
+  if (unapprovedDirectoryTermsRoute(guideRoute)) {
+    // Remove only this producer's own carried-forward surface. Unknown forms
+    // require explicit reconciliation; directory/sponsor membership alone is
+    // not permission to add a marketing capture or a weekly subscriber grant.
+    const withoutCapture = html
+      .replace(/<aside\b[^>]*data-p1-capture-surface[^>]*>[\s\S]*?<\/aside>/gi, '')
+      .replace(/<script\b[^>]*data-p1-content-upgrade[^>]*>[\s\S]*?<\/script>/gi, '')
+      .replace(/<script\b[^>]*data-p1-capture-resilience[^>]*>[\s\S]*?<\/script>/gi, '');
+    if (/action=["']\/api\/content-upgrade["']/i.test(withoutCapture)) throw new Error('unapproved_terms_capture_requires_reconciliation');
+    return withoutCapture;
+  }
   if (validGuidePath(guideRoute)) {
     html = html.replace(/<aside\b[^>]*data-p1-capture-surface[^>]*>[\s\S]*?<\/aside>/gi, '')
       .replace(/<script\b[^>]*data-p1-content-upgrade[^>]*>[\s\S]*?<\/script>/gi, '')

@@ -152,15 +152,7 @@ function filterValues(html, key) {
     .map((tag) => attribute(tag, "data-value"));
 }
 
-function ownedArticles(count) {
-  return Array.from({ length: count }, (_, index) => ({
-    canonical_path: `/guides/lane-e-owned-guide-${index + 1}/`,
-    h1: `Clinic Scout owned guide ${index + 1}`,
-    meta_description: `Source-checked owned description ${index + 1}.`,
-    direct_answer: `Bound editorial answer ${index + 1}.`,
-    vertical: "GLP-1",
-  }));
-}
+import { ownedArticles } from './fixtures/owned-phase3-articles.mjs';
 
 async function htmlFiles(directory) {
   const files = [];
