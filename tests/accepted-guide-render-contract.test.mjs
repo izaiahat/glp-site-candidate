@@ -118,7 +118,7 @@ test('legacy accepted guides without render_contract keep their previous output 
 test('accepted additions are a mixed cohort: exact reviewed savings successor loads and renders its contract', () => {
   const loaded = loadAcceptedGuides(root);
   assert.deepEqual(loaded.map(a => a.canonical_path).sort(),
-    [...LEGACY_SLUGS, SAVINGS_SLUG].map(slug => `/guides/${slug}/`).sort());
+    [...LEGACY_SLUGS, SAVINGS_SLUG, 'texas-glp-1-access'].map(slug => `/guides/${slug}/`).sort());
   const entry = JSON.parse(readFileSync(path.join(root, 'data/blog/accepted-guides/manifest.json')))
     .entries.find(e => e.route === `/guides/${SAVINGS_SLUG}/`);
   const reviewedHashes = {
