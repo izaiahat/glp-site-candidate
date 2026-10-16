@@ -1,0 +1,98 @@
+{
+  "schema": "provider-review-brief-v1",
+  "status": "SOURCE_DRAFT_INDEPENDENT_REVIEW_REQUIRED",
+  "site_profile": "glp-clinic-scout",
+  "program_id": "rightwell-review",
+  "display_name": "RightWell",
+  "approval_id": null,
+  "approved_at": null,
+  "auto_generate": false,
+  "auto_publish": false,
+  "provider_facts": {
+    "official_url": "https://www.rightwell.com/get-started?",
+    "network": "MaxBounty",
+    "network_program_id": "32122",
+    "sheet_row": null,
+    "published_price": null,
+    "price_source_url": null,
+    "medications": null,
+    "insurance": null,
+    "shipping": null,
+    "cancellation": null
+  },
+  "required_review": {
+    "source_checked_through": "2026-10-10T06:42:51.621909+00:00",
+    "evidence_sources": [
+      {
+        "field": "monthly_price",
+        "source_url": "https://www.rightwell.com/",
+        "quote": "How much does the program cost?\n\nThe program cost varies based on your specific treatment and medication prescribed. You’ll receive exact pricing details after your initial evaluation. All program fees are transparent, clearly outlined, and include medication, delivery, and unlimited support.",
+        "quote_sha256": "efcabe0bb1fa603e58f51df38fb7af4443145c41d52c36ccf709c3a7fb400ae0",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "22cccf809a3f10eea1a2f527a843f77049cc0414a116898b3a62a4316d650b98"
+      },
+      {
+        "field": "eligibility",
+        "source_url": "https://www.rightwell.com/",
+        "quote": "Completion of any assessment or intake on the RightWell platform does not create a doctor-patient relationship. Providers independently review patient information and determine eligibility for treatment following a telehealth consultation, including whether to prescribe compounded GLP-1 medications.",
+        "quote_sha256": "0c3dcc6e24b0acf6efe5728940c8a3b334527bb490b8715c4c5365bac1f17b1d",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "22cccf809a3f10eea1a2f527a843f77049cc0414a116898b3a62a4316d650b98"
+      },
+      {
+        "field": "cancellation",
+        "source_url": "https://shop.rightwell.com/pages/terms-and-conditions",
+        "quote": "Cancellation will stop future renewal charges but generally does not reverse charges already incurred, consultations already completed, prescriptions already processed, medications already submitted for fulfillment, or other Services already provided.",
+        "quote_sha256": "37b25f8689d0ae3610325f143d3f3ed960570ab3f24dd223569d90c0163aa07b",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "22cccf809a3f10eea1a2f527a843f77049cc0414a116898b3a62a4316d650b98"
+      }
+    ],
+    "reviewer_status": "PENDING",
+    "compare_row_status": "REQUIRED",
+    "quiz_candidate_status": "REQUIRED",
+    "calculator_status": "NOT_REQUIRED_WITHOUT_USABLE_PRICE",
+    "review_page_status": "REQUIRED",
+    "go_entry_status": "REQUIRED",
+    "sitemap_status": "REQUIRED",
+    "health_status": "PENDING",
+    "legal_status": "PENDING",
+    "design_status": "PENDING",
+    "release_authority": false,
+    "canonical_authority_adopted": false
+  },
+  "approval_observation": {
+    "receipt": "reports/ops/fable-plan-2-20261009/lanes/Q3/seven-official/32122.json",
+    "receipt_sha256": "81521331505032939be77224a79ae171b649e349d033997df5ce32dd3cb4f1bf",
+    "state": "Approved",
+    "observed_at_utc": "2026-10-10T06:21:24.864524+00:00",
+    "publication_authority": false
+  },
+  "research_binding": {
+    "path": "reports/ops/fable-plan-2-20261009/lanes/Q4/rightwell-review/rightwell-review.json",
+    "sha256": "69d0cac4dd0bbe16b9e8ce311380652d4b87b479626ffdd2593d02131608467a"
+  },
+  "proposed_review_path": "/reviews/rightwell-review/",
+  "holds": [
+    "independent_health_legal_design_acceptance_absent"
+  ],
+  "page_copy": {
+    "title": "RightWell review: pricing, eligibility and cancellation",
+    "description": "Reported provider information with unsupported costs and clinical claims left unknown.",
+    "affiliate_disclosure": "Clinic Scout is an independent comparison publisher, not a clinic. We may earn a commission if you use a provider link. Compensation does not establish treatment suitability.",
+    "bottom_line": "Compare the selected plan’s complete costs and terms before considering enrollment. A provider’s marketing statements and affiliate approval do not establish medical suitability or independent quality verification.",
+    "pricing": "Reported information: RightWell says cost varies by treatment and prescribed medication, with exact pricing supplied after the initial evaluation. A universal recurring amount is not established. Promotional variants and general medication education do not supply a selected checkout or renewal total.",
+    "eligibility": "Reported information: RightWell describes independent provider review after a telehealth consultation. A consultation is not a prescription guarantee. This source draft does not assert individual suitability, independently verified licensing, or availability in every state.",
+    "cancellation": "Reported information: the retained clinical-platform terms describe cancelling before renewal to stop future renewal charges. Charges for services already performed or medications processed for fulfillment may not be reversed. Enrollment-specific cutoffs and the applicable refund policy remain UNKNOWN.",
+    "clinical_boundary": "This is research-based information, not first-hand treatment experience or medical advice. Any prescription requires individual clinician assessment. No efficacy, safety, certification or guaranteed outcome claim is approved by this draft."
+  },
+  "cta": {
+    "enabled": false,
+    "href": null,
+    "public_go_surface": false
+  },
+  "held_scope_note": null
+}

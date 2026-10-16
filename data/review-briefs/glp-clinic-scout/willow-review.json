@@ -1,0 +1,98 @@
+{
+  "schema": "provider-review-brief-v1",
+  "status": "SOURCE_DRAFT_INDEPENDENT_REVIEW_REQUIRED",
+  "site_profile": "glp-clinic-scout",
+  "program_id": "willow-review",
+  "display_name": "Willow",
+  "approval_id": null,
+  "approved_at": null,
+  "auto_generate": false,
+  "auto_publish": false,
+  "provider_facts": {
+    "official_url": "https://www.startwillow.com/",
+    "network": "MaxBounty",
+    "network_program_id": "29207",
+    "sheet_row": null,
+    "published_price": null,
+    "price_source_url": null,
+    "medications": null,
+    "insurance": null,
+    "shipping": null,
+    "cancellation": null
+  },
+  "required_review": {
+    "source_checked_through": "2026-10-10T06:45:08.336759+00:00",
+    "evidence_sources": [
+      {
+        "field": "monthly_price",
+        "source_url": "https://docs.startwillow.com/en/articles/8838999-how-much-do-treatments-cost",
+        "quote": "**Semaglutide Tablet**\n\n- All dosages: $299/month",
+        "quote_sha256": "3745920d18d538d3ab62383a884102da6b341b7440d133cf1ee93ef10ec51c3c",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "cafd440830e9bfa08e37d305394a490800d23753b2f455002daa0a9e6db4a173"
+      },
+      {
+        "field": "eligibility",
+        "source_url": "https://www.startwillow.com/faqs",
+        "quote": "Willow is available to adults 18+ who are not pregnant or breastfeeding, and who don’t have certain medical conditions that make treatment unsafe. We also can’t accept individuals with diabetes, though pre-diabetes and hypertension are welcome.",
+        "quote_sha256": "fcbb7f30d94da368ae3d83ec7c96330b8a27b2d82313d47423e8a81871403781",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "cafd440830e9bfa08e37d305394a490800d23753b2f455002daa0a9e6db4a173"
+      },
+      {
+        "field": "cancellation",
+        "source_url": "https://www.startwillow.com/faqs",
+        "quote": "You can cancel anytime by messaging our Patient Care Team.\n\nTo avoid your next charge, submit requests at least 2 business days before your next processing date. If you cancel before your prescription is sent to the pharmacy, you’ll receive a full refund within 5-10 business days. Requests received after the cutoff will apply to the next cycle.",
+        "quote_sha256": "dc6c7ef21a136cb58bdc69a29cbb14e6b19eb95cd80b7e0ba750916bf09c47a9",
+        "verified_as_of": "2026-10-10",
+        "capture_bundle": "reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/captures/capture-bundle.json",
+        "capture_bundle_sha256": "cafd440830e9bfa08e37d305394a490800d23753b2f455002daa0a9e6db4a173"
+      }
+    ],
+    "reviewer_status": "PENDING",
+    "compare_row_status": "REQUIRED",
+    "quiz_candidate_status": "REQUIRED",
+    "calculator_status": "NOT_REQUIRED_WITHOUT_USABLE_PRICE",
+    "review_page_status": "REQUIRED",
+    "go_entry_status": "REQUIRED",
+    "sitemap_status": "REQUIRED",
+    "health_status": "PENDING",
+    "legal_status": "PENDING",
+    "design_status": "PENDING",
+    "release_authority": false,
+    "canonical_authority_adopted": false
+  },
+  "approval_observation": {
+    "receipt": "reports/ops/fable-plan-2-20261009/lanes/Q3/seven-official/29207.json",
+    "receipt_sha256": "3b9d3eb207366929349f5c0b5fda0ad2ff7806cb7659e24ab0a0b7b8f9aa0091",
+    "state": "Approved",
+    "observed_at_utc": "2026-10-10T06:21:25.480982+00:00",
+    "publication_authority": false
+  },
+  "research_binding": {
+    "path": "reports/ops/fable-plan-2-20261009/lanes/Q4/willow-review/willow-review.json",
+    "sha256": "e06167f839bc3d28a01dda57d50176097ebfc7c938f766f827e2b0d373b2ca76"
+  },
+  "proposed_review_path": "/reviews/willow-review/",
+  "holds": [
+    "independent_health_legal_design_acceptance_absent"
+  ],
+  "page_copy": {
+    "title": "Willow review: pricing, eligibility and cancellation",
+    "description": "Reported provider information with unsupported costs and clinical claims left unknown.",
+    "affiliate_disclosure": "Clinic Scout is an independent comparison publisher, not a clinic. We may earn a commission if you use a provider link. Compensation does not establish treatment suitability.",
+    "bottom_line": "Compare the selected plan’s complete costs and terms before considering enrollment. A provider’s marketing statements and affiliate approval do not establish medical suitability or independent quality verification.",
+    "pricing": "Reported information: Willow’s retained updated help article describes product- and dosage-specific prices. Those are not a universal GLP-1 charge or an established selected renewal bill. Older oral-tablet tiers and non-GLP-1 product prices must not be substituted for current treatment-specific evidence.",
+    "eligibility": "Eligibility remains a clinician decision. The retained FAQ describes restrictions, but this draft does not infer individual suitability from age, weight, or a questionnaire and does not reproduce the broad contraindication summary as medical advice.",
+    "cancellation": "Reported information: Willow’s FAQ requires cancellation through the Patient Care Team at least two business days before the next processing date to avoid the next charge. Its refund language is conditional on cancellation before pharmacy submission. A processing date is not assumed to equal a billing date.",
+    "clinical_boundary": "This is research-based information, not first-hand treatment experience or medical advice. Any prescription requires individual clinician assessment. No efficacy, safety, certification or guaranteed outcome claim is approved by this draft."
+  },
+  "cta": {
+    "enabled": false,
+    "href": null,
+    "public_go_surface": false
+  },
+  "held_scope_note": null
+}
