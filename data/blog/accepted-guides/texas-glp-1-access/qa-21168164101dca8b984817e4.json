@@ -1,0 +1,98 @@
+{
+  "artifacts": {
+    "00-authority.json": {
+      "bytes": 41546,
+      "sha256": "395ac16a80177e9841230406ba5c53276712bde013202ff27aa5889d052830c3"
+    },
+    "01-evidence-ledger.json": {
+      "bytes": 690914,
+      "sha256": "b35f61e514561667f7370d49ac69a30616df9c4c5c059a37dbc1281fb0e67ba4"
+    },
+    "02-serp-brief.json": {
+      "bytes": 80632,
+      "sha256": "78a6fc20402a4949882873c40b306a50dc79184e6c5a96fa252c3f0c3aca877e"
+    },
+    "03-editorial-brief.md": {
+      "bytes": 12252,
+      "sha256": "fe323a0ad7d6456aedd30c1a0950683ab3b8b326dd511680be4ff1aee0c2916c"
+    },
+    "04-draft.md": {
+      "bytes": 24172,
+      "sha256": "3747208ab9d6fe9a43ba2ba883d18dd9b24197485a1399ee2b780ad2450077ae"
+    },
+    "05-claim-source-map.json": {
+      "bytes": 32710,
+      "sha256": "3f60c412e9e4c1e80283456cf0ee714b14a172f259fc1e7ba1db1fcb578de565"
+    },
+    "06-article.json": {
+      "bytes": 54826,
+      "sha256": "405fae657c7c9dc22b920ce2a051c017c043fa623f34cb97328caa39ac9818ab"
+    }
+  },
+  "checked_at_utc": "2026-10-13T06:29:49.927994Z",
+  "checks": {
+    "alexandria_claim_ledger": true,
+    "all_article_claim_sources_known": true,
+    "all_citations_known": true,
+    "all_claim_quote_ids_known": true,
+    "article_and_faq_schema_requested": true,
+    "article_source_ids_unique": true,
+    "article_source_minimum_and_map_complete": true,
+    "authority_matches_requested_route": true,
+    "authority_matches_requested_topic_id": true,
+    "authority_topic_id_present": true,
+    "authority_topic_ids_exact": true,
+    "authority_topic_ready": true,
+    "canonical_route_renderer_supported": true,
+    "capture_contract": true,
+    "claim_map_status": true,
+    "claim_quote_line_coverage_complete": true,
+    "draft_parity_words": true,
+    "evidence_status": true,
+    "faq_floor": true,
+    "forbidden_patterns_absent": true,
+    "inbound_link_plan_publishable": true,
+    "internal_link_floor": true,
+    "keyword_first_100": true,
+    "local_current_sitemap_hash_bound": true,
+    "meta_150_160": true,
+    "no_affiliate_cta": true,
+    "organization_author": true,
+    "primary_medical_source_present": true,
+    "prose_free_of_html_markup": true,
+    "quick_answer_40_60": true,
+    "r2_target_route_is_live": true,
+    "selection_operation_exact": true,
+    "selection_receipt_bound": true,
+    "selection_topic_query_route_exact": true,
+    "serp_top_10": true,
+    "serp_wedge_present": true,
+    "single_h1_exact": true,
+    "target_route_not_live": true,
+    "title_50_60": true,
+    "two_column_tables": true
+  },
+  "effects": {
+    "cache_purges": 0,
+    "deployments": 0,
+    "gsc_submissions": 0,
+    "publishes": 0
+  },
+  "failures": [],
+  "metrics": {
+    "draft_parity_max_words": 3600,
+    "draft_parity_min_words": 2900,
+    "draft_words": 3339,
+    "faq_count": 6,
+    "internal_link_count": 3,
+    "meta_chars": 160,
+    "non_two_column_table_count": 0,
+    "quick_answer_words": 45,
+    "r2_new_outbound_internal_link_count": 0,
+    "table_count": 3,
+    "title_chars": 50
+  },
+  "repair_request": [],
+  "schema": "glp-opus-seo-deterministic-qa-v1",
+  "status": "PASS"
+}
