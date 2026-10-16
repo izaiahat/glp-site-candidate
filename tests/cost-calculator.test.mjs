@@ -3,9 +3,22 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { buildCostCalculatorData, costCalculatorDropdownProviders, renderCostCalculator } from "../src/cost-calculator.mjs";
 import { validateProviderDynamicProfiles } from "../src/provider-dynamic-profiles.mjs";
-import { currentCalculatorExpectation } from "./fixtures/c02-calculator-inputs.mjs";
+import { currentCalculatorExpectation as retainedCalculatorExpectation } from "./fixtures/c02-calculator-inputs.mjs";
 
 const readJson = async (relative) => JSON.parse(await readFile(new URL(`../data/${relative}`, import.meta.url), "utf8"));
+
+// The shared fixture inventories retained editorial identities, including held
+// standalone reviews. Only the explicit review-only contract removes one from
+// calculator inventory; a missing cash price alone still belongs in excluded.
+function currentCalculatorExpectation(registry, matrix) {
+  const retained = retainedCalculatorExpectation(registry, matrix);
+  const reviewOnly = new Set(registry.programs
+    .filter((program) => program.profiles?.["glp-clinic-scout"]?.surface_membership === "review_only")
+    .map((program) => program.review_slug || program.program_id));
+  const allowed = (id) => !reviewOnly.has(id);
+  return { ...retained, inventory: retained.inventory.filter(allowed),
+    eligible: retained.eligible.filter(allowed), excluded: retained.excluded.filter(allowed), reviewOnly };
+}
 
 test("cost calculator inventories every live provider from dated source-ledger values", async () => {
   const config = await readJson("cost-calculator.json");
@@ -19,7 +32,8 @@ test("cost calculator inventories every live provider from dated source-ledger v
   const dynamic = validateProviderDynamicProfiles(registry, "glp-clinic-scout", {
     asOf: new Date(`${registry.provider_dynamic_profiles.sealed_as_of}T12:00:00Z`),
   });
-  const expected = new Set(dynamic.canonicalIds);
+  const expected = new Set(dynamic.canonicalIds.filter((id) => !expectedInput.reviewOnly.has(id)));
+  assert.deepEqual([...expected, ...expectedInput.reviewOnly].sort(), [...dynamic.canonicalIds].sort(), "retain the complete editorial identity census separately");
   assert.equal(data.providers.length, expected.size);
   assert.deepEqual(new Set(data.providers.map((provider) => provider.program_id)), expected);
   for (const provider of data.providers) {
@@ -49,15 +63,43 @@ test("cost calculator inventories every live provider from dated source-ledger v
   // calculator must not offer it at all.
   assert.equal(data.providers.some((provider) => provider.program_id === "synergy-rx"), false);
   const dropdown = costCalculatorDropdownProviders(data);
-  assert.equal(dropdown.eligible.length + dropdown.excluded.length, dynamic.counts.provider_identities);
+  assert.equal(dropdown.eligible.length + dropdown.excluded.length, expected.size);
   // Editorial membership is retained even when current pricing is display-only.
   assert.equal(data.providers.some((provider) => provider.program_id === "trt-nation"), true);
   assert.deepEqual(data.providers.map((provider) => provider.program_id).sort(), expectedInput.inventory);
   assert.deepEqual(dropdown.eligible.map((provider) => provider.program_id).sort(), expectedInput.eligible);
   assert.deepEqual(dropdown.excluded.map((provider) => provider.program_id).sort(), expectedInput.excluded);
   assert.equal(dropdown.eligible.some((provider) => provider.program_id === "enhance-md"), false);
-  assert.equal(data.providers.filter((provider) => provider.mode === "autofill").length, dynamic.counts.calculator_autofill);
-  assert.equal(data.providers.filter((provider) => provider.mode === "manual").length, dynamic.counts.calculator_manual);
+  const expectedProfiles = [...dynamic.profiles.values()].filter((profile) => expected.has(profile.program_id));
+  assert.equal(data.providers.filter((provider) => provider.mode === "autofill").length, expectedProfiles.filter((profile) => profile.calculator.mode === "autofill").length);
+  assert.equal(data.providers.filter((provider) => provider.mode === "manual").length, expectedProfiles.filter((profile) => profile.calculator.mode === "manual").length);
+});
+
+test("retaclinic-review remains a retained editorial identity, never live calculator inventory", async () => {
+  const registry = await readJson("program-registry.json");
+  const matrix = await readJson("provider-pricing-matrix.json");
+  const id = "retaclinic-review";
+  const program = registry.programs.find((row) => row.program_id === id);
+  const profile = program.profiles["glp-clinic-scout"];
+  assert.equal(profile.surface_membership, "review_only");
+  assert.equal(profile.surfaces.review, true);
+  assert.equal(profile.surfaces.calculator, false);
+  assert.equal(profile.exceptions.calculator.surface_restriction_basis, "editorial_only_hold");
+  assert.equal(program.affiliate_relationship_snapshot.promotion_denied, true);
+  assert.equal(matrix.providers[id].pricing_state, "not_attested");
+  assert.deepEqual(matrix.providers[id].medications, []);
+  assert.ok(registry.provider_dynamic_profiles.profiles[id], "retain the dated editorial evidence");
+  const expected = currentCalculatorExpectation(registry, matrix);
+  assert.deepEqual([...expected.reviewOnly], [id], "only the documented review-only identity leaves the inventory");
+  assert.equal(expected.inventory.includes(id), false, "the inventory oracle must honor the explicit editorial-only hold");
+  assert.equal(expected.eligible.includes(id), false);
+  assert.equal(expected.excluded.includes(id), false, "held editorial identity is absent, not a selectable manual provider");
+  const data = buildCostCalculatorData(await readJson("cost-calculator.json"), (await readJson("money-page-specs.json")).pages,
+    await readJson("provider-page-contracts.json"), await readJson("provider-fastpath-contract.json"), registry,
+    "glp-clinic-scout", new Set(), matrix);
+  assert.equal(data.providers.some((provider) => provider.program_id === id), false);
+  const dropdown = costCalculatorDropdownProviders(data);
+  assert.equal([...dropdown.eligible, ...dropdown.excluded].some((provider) => provider.program_id === id), false);
 });
 
 test("cost calculator is shareable, local-only, and makes unknowns explicit", async () => {
