@@ -44,3 +44,28 @@ test('GLP320 D-01: non-contract evidence keeps the legacy audit projection', () 
   assert.match(html, /Supports:/);
   assert.match(html, /id="verified-claims"/);
 });
+
+const editorialCss = readFileSync(new URL('../assets/css-src/40-editorial.css', import.meta.url), 'utf8');
+function editorialBlock(selector) {
+  const start = editorialCss.indexOf(selector + ' {');
+  assert.notEqual(start, -1, `missing ${selector}`);
+  return editorialCss.slice(start, editorialCss.indexOf('}', start) + 1);
+}
+
+test('GLP320 repair: mobile paper rows own readable citation and popup tokens', () => {
+  const row = editorialBlock('main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) tr');
+  for (const declaration of ['--color-evidence: #0c6e51', '--color-surface-float: #ffffff', '--color-mist-100: rgba(20, 32, 27, 0.05)', '--color-accent-soft: #deeee5']) assert.ok(row.includes(declaration), declaration);
+});
+
+test('GLP320 repair: chips style only the trigger, not the popup source link', () => {
+  assert.doesNotMatch(editorialCss, /main\.guide-shell sup\.inline-citation a(?=[\s:{])/);
+  assert.match(editorialBlock('main.guide-shell sup.inline-citation > a'), /min-block-size: 44px/);
+});
+
+test('GLP320 repair: editorial bundle owns popup layout and readable line height', () => {
+  assert.match(editorialBlock('main.guide-shell .cite-host'), /position: relative/);
+  const pop = editorialBlock('main.guide-shell .cite-pop');
+  for (const declaration of ['position: absolute', 'display: grid', 'line-height: 1.5', 'white-space: normal', 'background: var(--color-surface-float)']) assert.ok(pop.includes(declaration), declaration);
+  assert.match(editorialBlock('main.guide-shell .cite-pop[hidden]'), /display: none/);
+  for (const part of ['label', 'name', 'supports', 'date', 'link', 'close']) editorialBlock('main.guide-shell .cite-pop-' + part);
+});
