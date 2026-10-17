@@ -54,6 +54,7 @@ function editorialBlock(selector) {
 
 test('GLP320 repair: mobile paper rows own readable citation and popup tokens', () => {
   const row = editorialBlock('main.guide-shell :is(.table-scroll, .table-wrap):has(td[data-label]) tr');
+  assert.match(row, /overflow: visible/, 'source panels must not be clipped by rounded mobile rows');
   for (const declaration of ['--color-evidence: #0c6e51', '--color-surface-float: #ffffff', '--color-mist-100: rgba(20, 32, 27, 0.05)', '--color-accent-soft: #deeee5']) assert.ok(row.includes(declaration), declaration);
 });
 

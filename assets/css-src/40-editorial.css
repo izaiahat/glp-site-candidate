@@ -1159,6 +1159,7 @@ main.guide-shell tbody tr:last-child th[scope="row"] { border-bottom: 0; }
     --color-focus: #0e7d5c;
     color: var(--text-primary);
     background: var(--cs-paper-card);
+    overflow: visible; /* Open citation panels must escape the rounded row. */
     display: grid;
     gap: 2px;
     padding: 12px 0;
