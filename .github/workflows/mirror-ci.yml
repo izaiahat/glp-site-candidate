@@ -30,6 +30,7 @@ on:
       - "scripts/wave2-repairs.mjs"
       - "src/**"
       - "tests/accepted-guide-source.test.mjs"
+      - "tests/glp320-compact-evidence.test.mjs"
       - "tests/accepted-update-source.test.mjs"
       - "tests/article-selection-seam.test.mjs"
       - "tests/glp234-held-article-output.test.mjs"
@@ -213,7 +214,7 @@ jobs:
           node --test tests/glp361-owned-article-input.test.mjs
           node --test --test-name-pattern '^Insights article upgrades expose complete anatomy' tests/phase3-page-graph.test.mjs
       - name: Accepted guide source and on-page-only contract (offline)
-        run: node --test tests/accepted-guide-source.test.mjs tests/accepted-update-source.test.mjs tests/accepted-guide-render-contract.test.mjs
+        run: node --test tests/accepted-guide-source.test.mjs tests/accepted-update-source.test.mjs tests/accepted-guide-render-contract.test.mjs tests/glp320-compact-evidence.test.mjs
       - name: GLP47 approved onboarding and B01 launch hold (offline only)
         run: node --test tests/glp47-approved-onboarding.test.mjs
       - name: GLP93 bounded provider append regressions (offline exact head)

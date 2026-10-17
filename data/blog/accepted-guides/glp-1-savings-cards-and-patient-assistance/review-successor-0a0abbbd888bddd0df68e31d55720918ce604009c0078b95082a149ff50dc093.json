@@ -1,0 +1,74 @@
+{
+  "authority": {
+    "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T195641Z-scheduled-refill/topic-d126ab9d48a7c36f0d86/retry-02/topic-queue-snapshot-20261009T195641Z-scheduled-refill-savings-retry02.json",
+    "selection_binding": {
+      "operator_directive_id": "auto-supply-20260815-f375214019ec",
+      "queue_position": 3,
+      "queue_sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+      "selection_receipt_sha256": "bfebb72b3f1ecd28f8dc5c3bf8118d581ea1130eaa081573123217aaa81482dd",
+      "strategy_map_sha256": "05d215c1bd3a8656f4bc5f5534a1ad5e13934b94a649492743fd975533f2818b",
+      "strategy_queue_sha256": "59627aee4ddb6a2a1eb1f2b3a0129c2b2ab184c38426194db63e404a78fd3ea6",
+      "target_query": "glp-1 savings cards",
+      "target_route": "/guides/glp-1-savings-cards-and-patient-assistance/",
+      "topic_id": "d126ab9d48a7c36f0d86"
+    },
+    "selection_receipt": {
+      "path": "/home/ubuntu/business/reports/glp-clinic-scout/seo-machine/article-buffer-work/20261009T195641Z-scheduled-refill/selection-02.json",
+      "receipt_sha256": "bfebb72b3f1ecd28f8dc5c3bf8118d581ea1130eaa081573123217aaa81482dd",
+      "sha256": "38f46f6d64da84416b42655680cfea73e7023951f3387e9c5b4cbf6c5f5193fe"
+    },
+    "sha256": "a385b66f5226413a9b04193f6b30e8b7532cb7543c6310f4cbe215dfade02472",
+    "topic_id": "d126ab9d48a7c36f0d86",
+    "type": "operator_directed_queue_item"
+  },
+  "effects": {
+    "cache_purges": 0,
+    "deployments": 0,
+    "gsc_submissions": 0,
+    "publishes": 0
+  },
+  "effort": "high",
+  "findings": [],
+  "gates": [
+    {
+      "findings": [],
+      "gate": "A",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "B",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "C",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "D",
+      "status": "PASS"
+    },
+    {
+      "findings": [],
+      "gate": "E",
+      "status": "PASS"
+    }
+  ],
+  "job_id": "savings-corrected-pr549-sol-clinical-once-postpublication-review-only",
+  "model": "gpt-6.1-sol",
+  "provider": "openai-codex",
+  "raw_review_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/RELEASE-OWNER/savings-corrected-pr549-sol-clinical-once/history/round-01-sol-raw.json",
+  "raw_review_sha256": "4bfa1776e82aa3d24d63e86330daf06a56188d56285f9846edb906102c8119dd",
+  "receipt_sha256": "f25eb38a81f21d70c5e074d141936fa31a656d41e48308531a8078a8af3a92f5",
+  "review_transport": "hermes-openai-codex-sol61-independent",
+  "reviewed_at_utc": "2026-10-16T03:28:09.762213Z",
+  "round": 1,
+  "schema": "glp-opus-seo-round-receipt-v1",
+  "status": "PASS_OPUS_SEO_DRAFT",
+  "subject_manifest_path": "/home/ubuntu/business/reports/ops/fable-plan-2-20261009/lanes/RELEASE-OWNER/savings-corrected-pr549-sol-clinical-once/history/round-01-subject-manifest.json",
+  "subject_manifest_sha256": "929d961bc7501749018e6daba7ee1b876df3e407c3a48c8cfec8353dc7d66e4b",
+  "tools_disabled": true,
+  "topic_id": "d126ab9d48a7c36f0d86"
+}

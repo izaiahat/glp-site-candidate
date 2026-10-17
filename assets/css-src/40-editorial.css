@@ -873,7 +873,7 @@ main.guide-shell sup.inline-citation {
   line-height: 0;
   vertical-align: baseline;
 }
-main.guide-shell sup.inline-citation a {
+main.guide-shell sup.inline-citation > a {
   display: inline-grid;
   place-items: center;
   min-inline-size: 44px;
@@ -890,10 +890,42 @@ main.guide-shell sup.inline-citation a {
   font-variant-numeric: tabular-nums;
   transition: border-color var(--duration-instant) ease, background var(--duration-fast) ease;
 }
-main.guide-shell sup.inline-citation a:hover {
+main.guide-shell sup.inline-citation > a:hover {
   border-color: var(--color-sage-200);
   background: var(--color-accent-soft);
 }
+
+/* Shared site.js creates these panels on guide routes too. Keep their layout
+   in the editorial bundle, independent of the money-page component layer. */
+main.guide-shell .cite-host { position: relative; display: inline-block; }
+main.guide-shell .cite-pop {
+  position: absolute; top: calc(100% + 8px); z-index: 80;
+  width: min(340px, calc(100vw - 24px));
+  display: grid; gap: 6px;
+  background: var(--color-surface-float); color: var(--text-primary);
+  border-radius: var(--radius-control); box-shadow: var(--shadow-float);
+  padding: 14px 16px; font-size: 0.86rem; line-height: 1.5; text-align: left;
+  font-family: var(--font-body); font-weight: 400; letter-spacing: 0;
+  white-space: normal; vertical-align: baseline;
+}
+main.guide-shell .cite-pop[hidden] { display: none; }
+main.guide-shell .cite-pop-label {
+  font-family: var(--font-display); font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary);
+}
+main.guide-shell .cite-pop-name { font-weight: 700; }
+main.guide-shell .cite-pop-supports { color: var(--text-secondary); }
+main.guide-shell .cite-pop-date { color: var(--color-evidence); font-weight: 650; font-size: 0.8rem; }
+main.guide-shell .cite-pop-link { font-weight: 650; color: var(--color-interactive); word-break: break-word; }
+main.guide-shell .cite-pop-close {
+  justify-self: start; margin-top: 4px;
+  border: 1px solid var(--color-line-strong); border-radius: var(--radius-pill);
+  background: transparent; color: var(--text-primary);
+  font: inherit; font-size: 0.8rem; font-weight: 650;
+  padding: 5px 14px; min-height: 34px; cursor: pointer;
+  transition: border-color var(--duration-instant) ease, background var(--duration-fast) ease;
+}
+main.guide-shell .cite-pop-close:hover { border-color: var(--color-sage-200); background: var(--color-mist-100); }
 
 /* Data callouts — the owned data tables become mist/paper panels with the
    published figure as the loudest object. */
@@ -1116,8 +1148,18 @@ main.guide-shell tbody tr:last-child th[scope="row"] { border-bottom: 0; }
     --text-primary: var(--cs-ink-on-paper);
     --text-secondary: var(--cs-muted-on-paper);
     --color-interactive: #0b6fa8;
+    /* Stacked rows relight to paper; citations and their floating panel must
+       relight together rather than inherit dark-canvas mint and surfaces. */
+    --color-evidence: #0c6e51;
+    --color-surface-float: #ffffff;
+    --color-mist-100: rgba(20, 32, 27, 0.05);
+    --color-accent-soft: #deeee5;
+    --color-line: var(--cs-line-on-paper);
+    --color-line-strong: rgba(20, 32, 27, 0.24);
+    --color-focus: #0e7d5c;
     color: var(--text-primary);
     background: var(--cs-paper-card);
+    overflow: visible; /* Open citation panels must escape the rounded row. */
     display: grid;
     gap: 2px;
     padding: 12px 0;

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 import vm from 'node:vm';
 import { buildSchemaGraph } from '../src/schema.mjs';
@@ -85,12 +86,72 @@ test('render contract fails closed on unknown citation, bad contract or bad stru
   assert.equal(plainContractText('> **Quick:** a [S1][S2]'), 'Quick: a');
 });
 
+const LEGACY_SLUGS = [
+  'is-valhalla-vitality-legit', 'how-to-order-at-restaurants-on-a-glp-1-a-practical-guide',
+  'gobymeds-discount-code', 'glp-1-match',
+  'coby-health-tirzepatide-review-2026-flat-pricing-weekly-check-ins',
+  'how-to-get-oral-glp-1', 'glp-1-dose-vs-units-what-those-syringe-numbers-really-mean',
+];
+const SAVINGS_SLUG = 'glp-1-savings-cards-and-patient-assistance';
+
 test('legacy accepted guides without render_contract keep their previous output shape', () => {
-  for (const a of loadAcceptedGuides(root)) {
+  const loaded = loadAcceptedGuides(root);
+  const legacy = LEGACY_SLUGS.map(slug => {
+    const article = loaded.find(a => a.canonical_path === `/guides/${slug}/`);
+    assert.ok(article, `missing legacy control: ${slug}`);
+    return article;
+  });
+  // The retained savings predecessor is still a genuine legacy control; the
+  // manifest now selects its independently reviewed opt-in successor instead.
+  const predecessor = readFileSync(path.join(root, `data/blog/accepted-guides/${SAVINGS_SLUG}/article.json`));
+  assert.equal(createHash('sha256').update(predecessor).digest('hex'), '400dbb5da31092881889541f1e16666aee01b5d1ad97234eb90fcecf686fe523');
+  legacy.push(JSON.parse(predecessor));
+  for (const a of legacy) {
+    assert.equal(Object.hasOwn(a, 'render_contract'), false);
     assert.equal(a.render_contract, undefined);
+    assert.equal(acceptedRenderContract(a), null);
     const html = renderBlogPost(a, null, author, []);
     assert.doesNotMatch(html, /data-render-contract=/);
   }
+});
+
+test('accepted additions are a mixed cohort: exact reviewed savings successor loads and renders its contract', () => {
+  const loaded = loadAcceptedGuides(root);
+  assert.deepEqual(loaded.map(a => a.canonical_path).sort(),
+    [...LEGACY_SLUGS, SAVINGS_SLUG, 'texas-glp-1-access'].map(slug => `/guides/${slug}/`).sort());
+  const entry = JSON.parse(readFileSync(path.join(root, 'data/blog/accepted-guides/manifest.json')))
+    .entries.find(e => e.route === `/guides/${SAVINGS_SLUG}/`);
+  const reviewedHashes = {
+    article: '69b66d476d5b8d8a9fddc50daf3f4b8cae8326719ce269642d7fa45cf1f0d5f9',
+    qa: 'c620819ff4667191f73142695ea0c0a08f83db39ca536ea793ac07dc050bb758',
+    review: '0a0abbbd888bddd0df68e31d55720918ce604009c0078b95082a149ff50dc093',
+  };
+  const subjects = Object.fromEntries(Object.entries(reviewedHashes).map(([kind, hash]) => {
+    assert.deepEqual(entry[kind], {path: `data/blog/accepted-guides/${SAVINGS_SLUG}/${kind}-successor-${hash}.json`, sha256: hash});
+    const bytes = readFileSync(path.join(root, entry[kind].path));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), hash);
+    return [kind, JSON.parse(bytes)];
+  }));
+  const article = loaded.find(a => a.canonical_path === entry.route);
+  assert.equal(article.schema, 'blog-brief-v2-opus-autopublish');
+  assert.deepEqual(article.render_contract, CONTRACT);
+  assert.deepEqual(acceptedRenderContract(article), CONTRACT);
+  assert.deepEqual(article, {...subjects.article, operator_release_receipt: subjects.review.receipt_sha256});
+  assert.equal(subjects.qa.artifacts['06-article.json'].sha256, reviewedHashes.article);
+  const before = JSON.stringify(article);
+  const html = renderBlogPost(article, null, author, []);
+  assert.match(html, /<nav class="guide-toc" data-render-contract="automatic-sections"/);
+  assert.match(html, /<h3\b/);
+  assert.match(html, /<strong>Mounjaro:<\/strong>/);
+  assert.match(html, /href="#guide-source-s1"/);
+  assert.doesNotMatch(html, /\[S\d+\]|\*\*|Facts to compare|claim-evidence|Supports:/);
+  const schemaArticle = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+  assert.equal(schemaArticle['@type'], 'Article');
+  assert.equal(schemaArticle.headline, article.h1);
+  assert.equal(schemaArticle.description, article.meta_description);
+  assert.equal(schemaArticle.dateModified, article.updated_at);
+  assert.equal(Object.hasOwn(schemaArticle, 'datePublished'), false, 'adoption does not invent publication');
+  assert.equal(JSON.stringify(article), before, 'rendering cannot rewrite reviewed source');
 });
 
 test('render contract dates: Updated=dateModified, prices=pricesCheckedDate only', () => {
